@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C940972166E2FE00044A7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940971166E2FE00044A7D1 /* UIKit.framework */; };
+		5C940974166E2FE00044A7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940973166E2FE00044A7D1 /* Foundation.framework */; };
+		5C940976166E2FE00044A7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940975166E2FE00044A7D1 /* CoreGraphics.framework */; };
+		5C94097C166E2FE00044A7D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C94097A166E2FE00044A7D1 /* InfoPlist.strings */; };
+		5C94097E166E2FE00044A7D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C94097D166E2FE00044A7D1 /* main.m */; };
+		5C940982166E2FE00044A7D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940981166E2FE00044A7D1 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5C94096D166E2FDF0044A7D1 /* SimNICU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimNICU.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C940971166E2FE00044A7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5C940973166E2FE00044A7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5C940975166E2FE00044A7D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5C940979166E2FE00044A7D1 /* SimNICU-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Info.plist"; path = "SimNICU/SimNICU-Info.plist"; sourceTree = "<group>"; };
+		5C94097B166E2FE00044A7D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C94097D166E2FE00044A7D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SimNICU/main.m; sourceTree = "<group>"; };
+		5C94097F166E2FE00044A7D1 /* SimNICU-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SimNICU-Prefix.pch"; path = "SimNICU/SimNICU-Prefix.pch"; sourceTree = "<group>"; };
+		5C940980166E2FE00044A7D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SimNICU/AppDelegate.h; sourceTree = "<group>"; };
+		5C940981166E2FE00044A7D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SimNICU/AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C94096A166E2FDF0044A7D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C940972166E2FE00044A7D1 /* UIKit.framework in Frameworks */,
+				5C940974166E2FE00044A7D1 /* Foundation.framework in Frameworks */,
+				5C940976166E2FE00044A7D1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C940962166E2FDF0044A7D1 = {
+			isa = PBXGroup;
+			children = (
+				5C940992166E30500044A7D1 /* Config */,
+				5C940993166E30710044A7D1 /* ScreenControllers */,
+				5C940994166E30850044A7D1 /* Images */,
+				5C940995166E308C0044A7D1 /* miscObjects */,
+				5C940996166E30950044A7D1 /* 3rd Party */,
+				5C940970166E2FE00044A7D1 /* Frameworks */,
+				5C94096E166E2FDF0044A7D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C94096E166E2FDF0044A7D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C94096D166E2FDF0044A7D1 /* SimNICU.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C940970166E2FE00044A7D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C940971166E2FE00044A7D1 /* UIKit.framework */,
+				5C940973166E2FE00044A7D1 /* Foundation.framework */,
+				5C940975166E2FE00044A7D1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C940992166E30500044A7D1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5C94097D166E2FE00044A7D1 /* main.m */,
+				5C940979166E2FE00044A7D1 /* SimNICU-Info.plist */,
+				5C94097F166E2FE00044A7D1 /* SimNICU-Prefix.pch */,
+				5C94097A166E2FE00044A7D1 /* InfoPlist.strings */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		5C940993166E30710044A7D1 /* ScreenControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C940980166E2FE00044A7D1 /* AppDelegate.h */,
+				5C940981166E2FE00044A7D1 /* AppDelegate.m */,
+			);
+			name = ScreenControllers;
+			sourceTree = "<group>";
+		};
+		5C940994166E30850044A7D1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		5C940995166E308C0044A7D1 /* miscObjects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = miscObjects;
+			sourceTree = "<group>";
+		};
+		5C940996166E30950044A7D1 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C94096C166E2FDF0044A7D1 /* SimNICU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C94098B166E2FE00044A7D1 /* Build configuration list for PBXNativeTarget "SimNICU" */;
+			buildPhases = (
+				5C940969166E2FDF0044A7D1 /* Sources */,
+				5C94096A166E2FDF0044A7D1 /* Frameworks */,
+				5C94096B166E2FDF0044A7D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimNICU;
+			productName = SimNICU;
+			productReference = 5C94096D166E2FDF0044A7D1 /* SimNICU.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C940964166E2FDF0044A7D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Conrad Bosman";
+			};
+			buildConfigurationList = 5C940967166E2FDF0044A7D1 /* Build configuration list for PBXProject "SimNICU" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5C940962166E2FDF0044A7D1;
+			productRefGroup = 5C94096E166E2FDF0044A7D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C94096C166E2FDF0044A7D1 /* SimNICU */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C94096B166E2FDF0044A7D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C94097C166E2FE00044A7D1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C940969166E2FDF0044A7D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C94097E166E2FE00044A7D1 /* main.m in Sources */,
+				5C940982166E2FE00044A7D1 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5C94097A166E2FE00044A7D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C94097B166E2FE00044A7D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			path = SimNICU;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5C940989166E2FE00044A7D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5C94098A166E2FE00044A7D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C94098C166E2FE00044A7D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
+				INFOPLIST_FILE = "SimNICU/SimNICU-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5C94098D166E2FE00044A7D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
+				INFOPLIST_FILE = "SimNICU/SimNICU-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C940967166E2FDF0044A7D1 /* Build configuration list for PBXProject "SimNICU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C940989166E2FE00044A7D1 /* Debug */,
+				5C94098A166E2FE00044A7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C94098B166E2FE00044A7D1 /* Build configuration list for PBXNativeTarget "SimNICU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C94098C166E2FE00044A7D1 /* Debug */,
+				5C94098D166E2FE00044A7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C940964166E2FDF0044A7D1 /* Project object */;
+}
