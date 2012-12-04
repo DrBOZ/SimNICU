@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
 //
 
+#import "ResusViewTableViewCell.h"
 #import "ResusViewController.h"
 #import "AppDelegate.h"
 
@@ -16,6 +17,14 @@
 @end
 
 @implementation ResusViewController
+{
+    UILabel *drug;
+    UILabel *dose;
+    UILabel *equals;
+    UILabel *subLabel2;
+    UILabel *subLabel3;
+    UILabel *subLabel4;
+}
 
 - (void)viewDidLoad
 {
@@ -231,7 +240,7 @@
         // returnString = @"Hypocalcemia / hyperkalemia";
         returnString = [NSString stringWithFormat:@"%@ / %@", NSLocalizedString(@"Hypocalcaemia", nil), NSLocalizedString(@"hyperkalaemia", nil)];
     }
-    else if (section == 2) 
+    else if (section == 2)
     {
         returnString = @"Opiate overdose";
     }
@@ -243,17 +252,7 @@
 {
     float height = 44.0f;
     
-    if (section == 0) 
-    {
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
-        {
-            height = 66.0f;
-        }
-        else
-        {
-            height = 55.0f;
-        }
-    }
+    if (section == 0) height = 66.0f;
     
     return height;
 }
@@ -289,60 +288,20 @@
     return footer;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ResusViewTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *returnCell = nil;
+    ResusViewTableViewCell *returnCell = nil;
     
     if(indexPath.section == 0)
     {
         if (indexPath.row == 0) 
         {
-            static NSString *CellIdentifier = @"cell00";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"cell00";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
-            
-            drug.text = [NSString stringWithFormat:@"%@ 1:10,000 IV", NSLocalizedString(@"Adrenaline", nil)];
+            cell.drug.text = [NSString stringWithFormat:@"%@ 1:10,000 IV", NSLocalizedString(@"Adrenaline", nil)];
             
             float workingWeightKGasFloat = [self.workingWeight floatValue];
             
@@ -353,66 +312,26 @@
             
             if (adrenalineDoseMicrograms) 
             {
-                dose.text = [NSString stringWithFormat:@"%.0f micrograms",adrenalineDoseMicrograms];
+                cell.dose.text = [NSString stringWithFormat:@"%.0f micrograms",adrenalineDoseMicrograms];
                 
-                subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", adrenalineDoseMLs];
+                cell.subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", adrenalineDoseMLs];
                 
-                subLabel4.text = @"";
-                equals.hidden = NO;
+                cell.subLabel4.text = @"";
+                cell.equals.hidden = NO;
             }
             
-            subLabel2.text = @"10 micrograms/kg = 0.1 ml/kg";
+            cell.subLabel2.text = @"10 micrograms/kg = 0.1 ml/kg";
             
             returnCell = cell;
         }
         else if(indexPath.row == 1)
         {
-            static NSString *CellIdentifier = @"cell01";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"cell01";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            if(cell == nil) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
-            
-            drug.text = @"8.4% Sodium Bicarbonate IV";
+            cell.drug.text = @"8.4% Sodium Bicarbonate IV";
             
             float workingWeightKGasFloat = [self.workingWeight floatValue];
             
@@ -422,69 +341,30 @@
             {
                 if (bicarbonateDoseMLs < 1.0f) {
                     // 2 decimal places if not zeros
-                    dose.text = [NSString stringWithFormat:@"%.2f ml",bicarbonateDoseMLs];
+                    cell.dose.text = [NSString stringWithFormat:@"%.2f ml",bicarbonateDoseMLs];
                 }
                 else {
-                    dose.text = [NSString stringWithFormat:@"%.1f ml",bicarbonateDoseMLs];
+                    cell.dose.text = [NSString stringWithFormat:@"%.1f ml",bicarbonateDoseMLs];
                 }
                 
-                equals.hidden = NO;
-                subLabel3.text = @"Double volume if using 4.2% solution";
-                subLabel4.text = @"";
+                cell.equals.hidden = NO;
+                cell.subLabel3.text = @"Double volume if using 4.2% solution";
+                cell.subLabel4.text = @"";
             }
             
-            subLabel2.text = @"1 mmol/kg = 1 ml/kg";
+            cell.subLabel2.text = @"1 mmol/kg = 1 ml/kg";
             
             returnCell = cell;
         }
         else if(indexPath.row == 2)
         {
-            static NSString *CellIdentifier = @"cell02";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            // static NSString *CellIdentifier = @"cell02";
+            NSString *CellIdentifier = @"cell02";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
-            
-            drug.text = @"10% Dextrose IV";
+            cell.drug.text = @"10% Dextrose IV";
             
             float workingWeightKGasFloat = [self.workingWeight floatValue];
             
@@ -492,12 +372,12 @@
             
             if (dextroseDoseMLs) 
             {
-                dose.text = [NSString stringWithFormat:@"%1.1f ml",dextroseDoseMLs];
-                equals.hidden = NO;
+                cell.dose.text = [NSString stringWithFormat:@"%1.1f ml",dextroseDoseMLs];
+                cell.equals.hidden = NO;
             }
-            subLabel3.text = @"";
-            subLabel2.text = @"2.5 ml/kg";
-            subLabel4.text = @"";
+            cell.subLabel3.text = @"";
+            cell.subLabel2.text = @"2.5 ml/kg";
+            cell.subLabel4.text = @"";
             
             returnCell = cell;
         }
@@ -506,52 +386,12 @@
     {
         if(indexPath.row == 0)
         {
-            static NSString *CellIdentifier = @"cell10";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"cell10";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            if(cell == nil) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
-            
-            drug.text = @"Calcium Gluconate 10% IV";
+            cell.drug.text = @"Calcium Gluconate 10% IV";
             
             float workingWeightKGasFloat = [self.workingWeight floatValue];
             
@@ -571,15 +411,15 @@
                 {
                     if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
                     {
-                        dose.text = [NSString stringWithFormat:@"%.0f mmol", calciumGluconateDoseMMOL];
+                        cell.dose.text = [NSString stringWithFormat:@"%.0f mmol", calciumGluconateDoseMMOL];
                     }
                     else {
-                        dose.text = [NSString stringWithFormat:@"%.1f mmol", calciumGluconateDoseMMOL];
+                        cell.dose.text = [NSString stringWithFormat:@"%.1f mmol", calciumGluconateDoseMMOL];
                     }
                 }
                 else 
                 {
-                    dose.text = [NSString stringWithFormat:@"%.2f mmol", calciumGluconateDoseMMOL];
+                    cell.dose.text = [NSString stringWithFormat:@"%.2f mmol", calciumGluconateDoseMMOL];
                 }
                 
                 tempString = [NSString stringWithFormat:@"%.2f", calciumGluconateDoseMls];
@@ -588,24 +428,24 @@
                 {
                     if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
                     {
-                        subLabel3.text = [NSString stringWithFormat:@"(%.0f ml of neat solution)", calciumGluconateDoseMls];
+                        cell.subLabel3.text = [NSString stringWithFormat:@"(%.0f ml of neat solution)", calciumGluconateDoseMls];
                     }
                     else {
-                        subLabel3.text = [NSString stringWithFormat:@"(%.1f ml of neat solution)", calciumGluconateDoseMls];
+                        cell.subLabel3.text = [NSString stringWithFormat:@"(%.1f ml of neat solution)", calciumGluconateDoseMls];
                     }
                 }
                 else 
                 {
-                    subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", calciumGluconateDoseMls];
+                    cell.subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", calciumGluconateDoseMls];
                 }
                 
                 // subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", calciumGluconateDoseMls];
                 
-                subLabel4.text = @"Give over 5-10 minutes if possible";
+                cell.subLabel4.text = @"Give over 5-10 minutes if possible";
                 
-                equals.hidden = NO;
+                cell.equals.hidden = NO;
             }
-            subLabel2.text = @"0.11 mmol/kg = 0.5 ml/kg";
+            cell.subLabel2.text = @"0.11 mmol/kg = 0.5 ml/kg";
             
             returnCell = cell;
         }
@@ -614,60 +454,20 @@
     {
         if(indexPath.row == 0)
         {
-            static NSString *CellIdentifier = @"cell20";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"cell20";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
-            
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
             // Delivery suite Naloxone is generally 400 micrograms /ml
             // but can come in 20 micrograms/ml
             
-            drug.text = @"Naloxone (Delivery Suite)";
-            dose.text = @"200 micrograms IM";
-            subLabel3.text = @"0.5 ml of 400 microgram/ml vial";
-            subLabel2.text = @"approx 60 micrograms/kg at term";
-            subLabel4.text = @"";
-            equals.hidden = NO;
+            cell.drug.text = @"Naloxone (Delivery Suite)";
+            cell.dose.text = @"200 micrograms IM";
+            cell.subLabel3.text = @"0.5 ml of 400 microgram/ml vial";
+            cell.subLabel2.text = @"approx 60 micrograms/kg at term";
+            cell.subLabel4.text = @"";
+            cell.equals.hidden = NO;
             
             if ([self.workingWeight doubleValue] < 2.5)
             {
@@ -676,7 +476,7 @@
                 cautionLabel.text = @"Intubate and ventilate";
                 cautionLabel.font = [UIFont boldSystemFontOfSize:16.0f];
                 
-                subLabel3.text = @" ";
+                cell.subLabel3.text = @" ";
                 
                 [cell addSubview:cautionLabel];
             }
@@ -685,53 +485,13 @@
         }
         else if (indexPath.row == 1)
         {
-            static NSString *CellIdentifier = @"cell21";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"cell21";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
-            
-            drug.text = @"Naloxone IV initial dose";
-            subLabel2.text = @"10 micrograms/kg";
+            cell.drug.text = @"Naloxone IV initial dose";
+            cell.subLabel2.text = @"10 micrograms/kg";
             
             float workingWeightKGasFloat = [self.workingWeight floatValue];
             
@@ -740,64 +500,24 @@
             
             if (naloxoneDose10Micrograms) 
             {
-                dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose10Micrograms];
+                cell.dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose10Micrograms];
                 
                 // subLabel3.text = [NSString stringWithFormat:@"%.2f ml of 20 micrograms/ml", naloxoneDose10MLs];
                 // subLabel4.text = @"Note lower strength ampoule";
-                equals.hidden = NO;
+                cell.equals.hidden = NO;
             }
             
             returnCell = cell;
         }
         else if (indexPath.row == 2)
         {
-            static NSString *CellIdentifier = @"cell22";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"cell22";
+            ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
-            UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 259, 22)];
-            drug.font = [UIFont boldSystemFontOfSize:17.0];
-            drug.adjustsFontSizeToFitWidth = YES;
-            drug.textColor = [UIColor blackColor];
-            drug.backgroundColor = [UIColor clearColor];
-            UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(69, 57, 188, 21)];
-            dose.font = [UIFont boldSystemFontOfSize:17.0];
-            dose.backgroundColor = [UIColor clearColor];
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(24, 56, 37, 21)];
-            equals.textColor = [UIColor lightGrayColor];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textAlignment = UITextAlignmentRight;
-            equals.text = @"=";
-            equals.hidden = YES;
-            UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18, 28, 259, 26)];
-            subLabel2.textColor = [UIColor lightGrayColor];
-            subLabel2.font = [UIFont systemFontOfSize:14.0];
-            subLabel2.backgroundColor = [UIColor clearColor];
-            UILabel *subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69, 76, 230, 21)];
-            subLabel3.textColor = [UIColor lightGrayColor];
-            subLabel3.backgroundColor = [UIColor clearColor];
-            subLabel3.adjustsFontSizeToFitWidth = YES;
-            UILabel *subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69, 96, 230, 21)];
-            subLabel4.textColor = [UIColor lightGrayColor];
-            subLabel4.backgroundColor = [UIColor clearColor];
-            subLabel4.adjustsFontSizeToFitWidth = YES;
-            
-            [cell addSubview:drug];
-            [cell addSubview:dose];
-            [cell addSubview:equals];
-            [cell addSubview:subLabel2];
-            [cell addSubview:subLabel3];
-            [cell addSubview:subLabel4];
-            
-            drug.text = @"Naloxone IV subsequent doses";
-            subLabel2.text = @"100 micrograms/kg";
+            cell.drug.text = @"Naloxone IV subsequent doses";
+            cell.subLabel2.text = @"100 micrograms/kg";
             
             float workingWeightKGasFloat = [self.workingWeight floatValue];
             
@@ -806,18 +526,67 @@
             
             if (naloxoneDose100Micrograms) 
             {
-                dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose100Micrograms];
+                cell.dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose100Micrograms];
                 
                 // subLabel3.text = [NSString stringWithFormat:@"%.1f ml of 20 micrograms/ml", naloxoneDose100MLs];
                 // subLabel4.text = @"Note lower strength ampoule";
-                equals.hidden = NO;
+                cell.equals.hidden = NO;
             }
+            
+            cell.subLabel3 = nil;
+            cell.subLabel4 = nil;
             
             returnCell = cell;
         }
     }
     
     return returnCell;
+}
+
+- (ResusViewTableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
+{
+    ResusViewTableViewCell *cell;
+    
+    cell = [[ResusViewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 259.0f, 22.0f)];
+    cell.drug.font = [UIFont boldSystemFontOfSize:17.0f];
+    cell.drug.adjustsFontSizeToFitWidth = YES;
+    cell.drug.textColor = [UIColor blackColor];
+    cell.drug.backgroundColor = [UIColor clearColor];
+    cell.dose = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 57.0f, 188.0f, 21.0f)];
+    cell.dose.font = [UIFont boldSystemFontOfSize:17.0f];
+    cell.dose.backgroundColor = [UIColor clearColor];
+    cell.equals = [[UILabel alloc] initWithFrame:CGRectMake(24.0f, 56.0f, 37.0f, 21.0f)];
+    cell.equals.textColor = [UIColor lightGrayColor];
+    cell.equals.backgroundColor = [UIColor clearColor];
+    cell.equals.textAlignment = UITextAlignmentRight;
+    cell.equals.text = @"=";
+    cell.equals.hidden = YES;
+    cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 28.0f, 259.0f, 26.0f)];
+    cell.subLabel2.textColor = [UIColor lightGrayColor];
+    cell.subLabel2.font = [UIFont systemFontOfSize:14.0f];
+    cell.subLabel2.backgroundColor = [UIColor clearColor];
+    cell.subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 76.0f, 230.0f, 21.0f)];
+    cell.subLabel3.textColor = [UIColor lightGrayColor];
+    cell.subLabel3.backgroundColor = [UIColor clearColor];
+    cell.subLabel3.adjustsFontSizeToFitWidth = YES;
+    cell.subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 96.0f, 230.0f, 21.0f)];
+    cell.subLabel4.textColor = [UIColor lightGrayColor];
+    cell.subLabel4.backgroundColor = [UIColor clearColor];
+    cell.subLabel4.adjustsFontSizeToFitWidth = YES;
+    
+    [cell addSubview:cell.drug];
+    [cell addSubview:cell.dose];
+    [cell addSubview:cell.equals];
+    [cell addSubview:cell.subLabel2];
+    [cell addSubview:cell.subLabel3];
+    [cell addSubview:cell.subLabel4];
+    
+    return cell;
 }
 
 #pragma mark - Table view delegate

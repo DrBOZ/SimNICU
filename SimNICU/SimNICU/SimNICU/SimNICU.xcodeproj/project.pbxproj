@@ -227,6 +227,7 @@
 		5C940CE0166E48190044A7D1 /* pulmonaryHaem1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CE2166E48190044A7D1 /* pulmonaryHaem1.html */; };
 		5C940CE5166E482C0044A7D1 /* pulmonaryHaem2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CE7166E482C0044A7D1 /* pulmonaryHaem2.html */; };
 		5C940CEA166E48410044A7D1 /* pulmonaryHaem3.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CEC166E48410044A7D1 /* pulmonaryHaem3.html */; };
+		5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -574,6 +575,8 @@
 		5C940CEB166E48410044A7D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem3.html; sourceTree = "<group>"; };
 		5C940CED166E48480044A7D1 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem3.html"; sourceTree = "<group>"; };
 		5C940CEE166E48490044A7D1 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3.html"; sourceTree = "<group>"; };
+		5C940CF9166E67440044A7D1 /* ResusViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResusViewTableViewCell.h; sourceTree = "<group>"; };
+		5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResusViewTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1051,6 +1054,8 @@
 				5C940B9F166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.m */,
 				5C940BA0166E3C2E0044A7D1 /* ResusViewController.h */,
 				5C940BA1166E3C2E0044A7D1 /* ResusViewController.m */,
+				5C940CF9166E67440044A7D1 /* ResusViewTableViewCell.h */,
+				5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */,
 				5C940BA2166E3C2E0044A7D1 /* rop21.html */,
 				5C940BA3166E3C2E0044A7D1 /* ROPViewController.h */,
 				5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */,
@@ -1524,6 +1529,7 @@
 				5C940C42166E3E230044A7D1 /* Screen.m in Sources */,
 				5C940C43166E3E230044A7D1 /* GrowthChart.m in Sources */,
 				5C940CB9166E43800044A7D1 /* InfoTabBarController.m in Sources */,
+				5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
