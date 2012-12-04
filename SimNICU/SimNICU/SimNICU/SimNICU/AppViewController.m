@@ -1,0 +1,1355 @@
+//
+//  AppViewController.m
+//  SimNICU
+//
+//  Created by Conrad Bosman on 23/05/2012.
+//  Copyright (c) 2012 SimNICU Project. All rights reserved.
+//
+
+#import "PortraitOnlyNavigationController.h"
+#import "EnterWeightViewController.h"
+#import "ZUUIRevealController.h"
+#import "AppViewController.h"
+#import "AppDelegate.h"
+#import "RoundImage.h"
+#import "Patient.h"
+#import "Screen.h"
+
+// screenControllers - alphabetical order
+#import "AboutSimNICUViewController.h"
+#import "AboutSimNICUViewController2.h"
+#import "APGARTabBarController.h"
+#import "APGAR1ViewController.h"
+#import "APGAR5ViewController.h"
+#import "APGAR10ViewController.h"
+#import "APGAR15ViewController.h"
+#import "APGAR20ViewController.h"
+#import "BloodProductsViewController.h"
+// #import "CalculatorViewController.h"
+#import "CoolingViewController.h"
+#import "CurosurfViewController.h"
+#import "CDHViewController.h"
+#import "CrUSSViewController.h"
+#import "EarlyCareViewController.h"
+#import "GastroschisisViewController.h"
+#import "HFOVViewController.h"
+#import "InfusionsViewController.h"
+#import "IntubationViewController.h"
+#import "OxygenationIndexViewController.h"
+#import "PhototherapyViewController.h"
+#import "PhototherapyGraphViewController.h"
+#import "PlasticBagViewController.h"
+#import "PulmonaryHaemorrhageViewController.h"
+#import "ResusViewController.h"
+#import "ROPViewController.h"
+#import "InfoTabBarController.h"
+#import "TransportVentilatorViewController.h"
+#import "UVCUACViewController.h"
+#import "VitKViewController.h"
+#import "WeightConversionViewController.h"
+#import "ActionSheetPickerViewController.h"
+
+@interface AppViewController ()
+
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, strong) NSString *estimatedWeightUsed;
+@property (nonatomic, strong) NSString *infoPassedThrough;
+@property (nonatomic, strong) Patient *selectedPatient;
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) GrowthChart *growthChart;
+@property (nonatomic, strong) UIImageView *tableBgView;
+@property (nonatomic) BOOL earlyCareWarningShown;
+@property (nonatomic) BOOL patientSelected;
+
+
+@end
+
+@implementation AppViewController
+{
+    NSMutableArray *screens;
+}
+
+@synthesize displayDismissButtonView = _displayDismissButtonView;
+@synthesize displayDetailTextLabel = _displayDetailTextLabel;
+@synthesize earlyCareWarningShown = _earlyCareWarningShown;
+@synthesize panGestureRecognizer = _panGestureRecognizer;
+@synthesize estimatedWeightUsed = _estimatedWeightUsed;
+@synthesize infoPassedThrough = _infoPassedThrough;
+@synthesize calculationWeight = _calculationWeight;
+@synthesize displayBackground = _displayBackground;
+@synthesize displayTextLabel = _displayTextLabel;
+@synthesize patientSelected = _patientSelected;
+@synthesize selectedPatient = _selectedPatient;
+@synthesize dismissButton = _dismissButton;
+@synthesize appImageView = _appImageView;
+@synthesize myHeaderView = _myHeaderView;
+@synthesize myTableView = _myTableView;
+@synthesize tableBgView = _tableBgView;
+@synthesize growthChart = _growthChart;
+@synthesize gestation = _gestation;
+@synthesize appImage = _appImage;
+@synthesize weight = _weight;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        NSLog(@"AppViewController init");
+         
+        // parse code here
+        /*
+         PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+         [testObject setObject:@"bosman" forKey:@"foo"];
+         [testObject saveInBackground];
+         */
+        
+#if GOOGLE_ANALYTICS
+        
+#else
+        NSLog(@"GOOGLE ANALYTICS OFF");
+#endif
+        
+    }
+    
+    return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSLog(@"AppViewController viewWillAppear");
+    
+    self.title = @"Paediatrics";
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //check if RevealController can respond to selectors
+    if ([appDelegate.revealController respondsToSelector:@selector(revealToggle:)] && [appDelegate.revealController respondsToSelector:@selector(revealGesture:)])
+    {
+        //transparent button over the app's image triggers reveal transition
+        UIButton *flipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        flipButton.frame = CGRectMake(10.0f, 0.0f, 275.0f, 150.0f);
+        [flipButton addTarget:appDelegate.revealController action:nil forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:flipButton];
+        self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:appDelegate.revealController action:@selector(revealGesture:)];
+        [flipButton addGestureRecognizer:self.panGestureRecognizer];
+        
+        // Enter Weight button
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
+    }
+    
+    self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.dismissButton.frame = CGRectMake(250.0f, 35.0f, 40.0f, 40.0f);
+    [self.dismissButton addTarget:self action:@selector(clearScreen) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.dismissButton];
+    
+    // init screens list
+    screens = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    Screen *screen;
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Antibiotics";
+     screen.segueId = @"Antibiotics";
+     [screens addObject:screen];
+     */
+    
+    /*
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Phototherapy";
+    screen.segueId = @"Phototherapy";
+    [screens addObject:screen];
+     */
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Blood Pressure";
+    screen.segueId = @"Blood Pressure";    // could use menuText as ID!
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Blood Products";
+    screen.segueId = @"BloodProducts";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];   // Calculator not ready yet...
+    screen.menuText = @"Calculator";
+    screen.segueId = @"Calculator";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Drugs";
+    screen.segueId = @"Drugs";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"ECG";
+    screen.segueId = @"ECG";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Hypoglycaemia Screen";
+    screen.segueId = @"Hypo";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Infusions";
+    screen.segueId = @"Infusions";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Intubation";
+    screen.segueId = @"Intubation";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Phototherapy";
+    screen.segueId = @"Phototherapy";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Plastic Bag (at delivery)";
+    screen.segueId = @"Thermoregulation";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Resuscitation Drugs";
+    screen.segueId = @"Resus";
+    [screens addObject:screen];
+    
+    // Sarnat score
+    
+    // Sodium correction
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"UAC / UVC";
+    screen.segueId = @"UACUVC";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Vitamin K";
+    screen.segueId = @"VitK";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Weight Conversion";
+    screen.segueId = @"WeightConversion";
+    [screens addObject:screen];
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Weight Conversion";
+     screen.segueId = @"WeightTemp";
+     [screens addObject:screen];
+     */
+    
+    // screen = [[Screen alloc] init];
+    // screen.menuText = @"E-mail suggestions";
+    // screen.segueId = @"E-mail";
+    // [screens addObject:screen];
+    
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    if ([self.infoPassedThrough isEqualToString:@"Cleared"])
+    {
+        self.infoPassedThrough = nil;
+        NSLog(@"self.infoPassedThrough = nil");
+    }
+    else if ([self.infoPassedThrough isEqualToString:@"didFinishEnteringWeightOrGestation"] || [self.infoPassedThrough isEqualToString:@"Memory Warning"])
+    {
+        ZUUIRevealController *revealController = (ZUUIRevealController *)self.parentViewController.parentViewController;
+        
+        [revealController revealToggle:self];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Memory Warning"
+                                  message:@"Please re-select"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        self.infoPassedThrough = nil;
+    }
+    else if ([self.infoPassedThrough isEqualToString:@"didFinishSelectingPatient"] || [self.infoPassedThrough isEqualToString:@"Memory Warning"])
+    {
+        ZUUIRevealController *revealController = (ZUUIRevealController *)self.parentViewController.parentViewController;
+        
+        [revealController revealToggle:self];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Memory Warning"
+                                  message:@"Please re-select patient"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        self.infoPassedThrough = nil;
+    }
+    
+    NSLog(@"AppViewController viewDidLoad");
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //background
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    //info button
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+    [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    self.navigationItem.rightBarButtonItem = infoBarButton;
+    
+    //back button
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:nil
+                                                                  action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    
+    //tableView
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.sectionFooterHeight = 0.0f;
+    self.myTableView.sectionHeaderHeight = 0.0f;
+    self.myTableView.backgroundColor = [UIColor whiteColor];
+    self.myTableView.separatorColor = [UIColor grayColor];
+    [self.view addSubview:self.myTableView];
+    
+    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    {
+        NSLog(@"Iphone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
+        
+        //screen mask covers everything
+        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))]; // 430
+        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
+        tableBgView.image = tableBgImage;
+        tableBgView.userInteractionEnabled = NO;
+        tableBgView.alpha = 1.0;
+        [self.view addSubview:tableBgView];
+    }
+    else
+    {
+        //screen mask covers everything
+        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50))]; // 518 in 4inch retina
+        UIImage *tableBgImage = [UIImage imageNamed:@"bgApplication.png"];
+        self.tableBgView.image = tableBgImage;
+        self.tableBgView.userInteractionEnabled = NO;
+        [self.view addSubview:self.tableBgView];
+    }
+    
+    //header holds image and settings view..
+    self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
+    
+    //IMAGE
+    if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
+    {
+        //Retina display iPhone
+        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
+    }
+    else
+    {
+        //non Retina display iPhone/iPod Touch
+        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
+    }
+    
+    self.appImageView = [[UIImageView alloc] initWithImage:self.appImage];
+    self.appImageView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 150.0f);
+    self.appImageView.contentMode = UIViewContentModeScaleToFill;
+    [self.myHeaderView addSubview:self.appImageView];
+    
+    //display background
+    self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
+    self.displayBackground.backgroundColor = [UIColor blackColor];
+    self.displayBackground.alpha = .4;
+    self.displayBackground.hidden = YES;
+    [self.myHeaderView addSubview:self.displayBackground];
+    
+    //dismiss button image & view
+    self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
+    UIImage *displayDismissButton = [UIImage imageNamed:@"dismiss2.png"];
+    self.displayDismissButtonView.image = displayDismissButton;
+    self.displayDismissButtonView.userInteractionEnabled = YES;
+    self.displayDismissButtonView.hidden = YES;
+    [self.myHeaderView addSubview:self.displayDismissButtonView];
+    
+    //displayTextLabel (Patient's name or working weight)
+    self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
+    self.displayTextLabel.textColor = [UIColor whiteColor];
+    self.displayTextLabel.backgroundColor = [UIColor clearColor];
+    self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.displayTextLabel.textAlignment = UITextAlignmentLeft;
+    self.displayTextLabel.hidden = YES;
+    [self.myHeaderView addSubview:self.displayTextLabel];
+    
+    //displayTextLabel (Patient's name or working weight)
+    self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
+    self.displayDetailTextLabel.textColor = [UIColor whiteColor];
+    self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
+    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+    self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
+    self.displayDetailTextLabel.hidden = YES;
+    [self.myHeaderView addSubview:self.displayDetailTextLabel];
+    
+    [self.view addSubview:self.myHeaderView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"AppViewController viewDidAppear");
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    NSLog(@"AppViewController viewDidUnload");
+    
+    self.infoPassedThrough = @"Memory Warning";
+    
+    self.panGestureRecognizer = nil;
+    self.appImageView = nil;
+    self.myHeaderView = nil;
+    self.myTableView = nil;
+    self.tableBgView = nil;
+    self.appImage = nil;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    self.infoPassedThrough = @"Memory Warning";
+    
+    NSLog(@"AppViewController didReceiveMemoryWarning");
+    
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        NSLog(@"AppViewController unloaded properties");
+        
+        self.panGestureRecognizer = nil;
+        self.appImageView = nil;
+        self.myHeaderView = nil;
+        self.myTableView = nil;
+        self.tableBgView = nil;
+        self.appImage = nil;
+    }
+}
+
+// Tell the system what we support
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+// Tell the system It should autorotate
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
+
+// Tell the system which initial orientation we want to have
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation = UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    NSLog(@"Table view data source called");
+    
+    return 2;
+}
+
+//number of rows
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 3;
+    }
+    else
+    {
+        return [screens count];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *returnString;
+    
+    if (section == 0)
+    {
+        returnString = @"Emergency";
+    }
+    if (section == 1)
+    {
+        returnString = @"General";
+    }
+    
+    return returnString;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 22.0f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *returnCell = nil;
+    
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"InfusionsCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if(cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [cell setBackgroundColor:[UIColor whiteColor]];
+            }
+            
+            cell.textLabel.text = @"Infusions";
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 1)
+        {
+            static NSString *CellIdentifier = @"IntubationCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if(cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [cell setBackgroundColor:[UIColor whiteColor]];
+            }
+            
+            cell.textLabel.text = @"Intubation";
+            
+            returnCell = cell;
+        }
+        else
+        {
+            static NSString *CellIdentifier = @"ResuscitationCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if(cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [cell setBackgroundColor:[UIColor whiteColor]];
+            }
+            
+            cell.textLabel.text = @"Resuscitation Drugs";
+            
+            returnCell = cell;
+        }
+    }
+    else
+    {
+        static NSString *CellIdentifier = @"Cell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if(cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        
+        Screen *thisScreen = (Screen *)[screens objectAtIndex:indexPath.row];
+        cell.textLabel.text = [thisScreen menuText];
+        
+        returnCell = cell;
+    }
+    
+    return returnCell;
+}
+
+#pragma mark - Table view delegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // if reveal controller is showing rear then do not allow selection
+    ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+    
+    if (revealController.currentFrontViewPosition) {
+        return Nil;
+    }
+    
+    return indexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Special 'Emergency'
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            InfusionsViewController *newViewController = [[InfusionsViewController alloc] init];
+            
+            if (self.selectedPatient.workingWeight)
+            {
+                newViewController.workingWeight = self.selectedPatient.workingWeight;
+            }
+            else if (self.weight)
+            {
+                newViewController.workingWeight = self.weight;
+            }
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            
+        }
+        else if (indexPath.row == 1)
+        {
+            NSLog(@"showIntubation");
+            
+            IntubationViewController *newViewController = [[IntubationViewController alloc] init];
+            
+            newViewController.gestation = self.gestation;
+            newViewController.weight = self.weight;
+            
+            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+            
+            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+            
+            NSLog(@"enterWeightViewController.preferences.ETTRoundUp = %@", enterWeightViewController.preferences.ETTRoundUp);
+            
+            newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
+            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        else if (indexPath.row == 2)
+        {
+            NSLog(@"showResus");
+            
+            ResusViewController *newViewController = [[ResusViewController alloc] init];
+            newViewController.workingWeight = self.weight;
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+    }
+    else
+    {
+        Screen *thisScreen = (Screen *)[screens objectAtIndex:indexPath.row];
+        
+        NSString *thisScreenType = [thisScreen segueId];
+        
+#pragma mark Antibiotics
+        
+        if([thisScreenType isEqualToString:@"Antibiotics"])
+        {
+            // code
+        }
+        
+#pragma mark APGAR
+        
+        else if([thisScreenType isEqualToString:@"APGAR"])
+        {
+            APGARTabBarController *newAPGARTabBarController = [[APGARTabBarController alloc] init];
+            
+            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+            
+            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+            
+            newAPGARTabBarController.delegate2 = (EnterWeightViewController *)enterWeightViewController;
+            
+            newAPGARTabBarController.selectedPatient = self.selectedPatient;
+            
+            [appDelegate.navigationController pushViewController:newAPGARTabBarController animated:YES];
+        }
+        
+#pragma mark Blood Products
+        
+        else if ([thisScreenType isEqualToString:@"BloodProducts"])
+        {
+            NSLog(@"showBloodProducts");
+            
+            BloodProductsViewController *newViewController = [[BloodProductsViewController alloc] init];
+            newViewController.workingWeight = self.weight;
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Cooling
+        
+        else if ([thisScreenType isEqualToString:@"Cooling"])
+        {
+            NSLog(@"showCooling");
+            
+            CoolingViewController *newViewController = [[CoolingViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Curosurf
+        
+        else if ([thisScreenType isEqualToString:@"Curosurf"])
+        {
+            NSLog(@"showCurosurf");
+            
+            CurosurfViewController *newViewController = [[CurosurfViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Cranial Ultrasound
+        
+        else if ([thisScreenType isEqualToString:@"CrUSS"])
+        {
+            NSLog(@"showCrUSS");
+            CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Congenital Diaphragmatic Hernia
+        
+        else if ([thisScreenType isEqualToString:@"CDH"])
+        {
+            NSLog(@"showCDH");
+            CDHViewController *newViewController = [[CDHViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Early Care
+        
+        else if ([thisScreenType isEqualToString:@"EarlyCare"])
+        {
+            NSLog(@"showEarlyCare");
+            
+            EarlyCareViewController *newViewController = [[EarlyCareViewController alloc] init];
+            
+            if (self.earlyCareWarningShown)
+            {
+                newViewController.earlyCareWarningShown = YES;
+            }
+            else
+            {
+                self.earlyCareWarningShown = YES;
+            }
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Gastroschisis
+        
+        else if ([thisScreenType isEqualToString:@"Gastroschisis"])
+        {
+            NSLog(@"showGastroschisis");
+            GastroschisisViewController *newViewController = [[GastroschisisViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark HFOV
+        
+        else if ([thisScreenType isEqualToString:@"HFOV"])
+        {
+            NSLog(@"showHFOV");
+            HFOVViewController *newViewController = [[HFOVViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Infusions
+        
+        else if ([thisScreenType isEqualToString:@"Infusions"])
+        {
+            NSLog(@" ");
+            
+            InfusionsViewController *newViewController = [[InfusionsViewController alloc] init];
+            
+            if (self.selectedPatient.workingWeight)
+            {
+                newViewController.workingWeight = self.selectedPatient.workingWeight;
+            }
+            else if (self.weight)
+            {
+                newViewController.workingWeight = self.weight;
+            }
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Intubation
+        
+        else if ([thisScreenType isEqualToString:@"Intubation"])
+        {
+            NSLog(@" ");
+            
+            IntubationViewController *newViewController = [[IntubationViewController alloc] init];
+            
+            newViewController.gestation = self.gestation;
+            newViewController.weight = self.weight;
+            
+            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+            
+            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+            
+            NSLog(@"enterWeightViewController.preferences.ETTRoundUp = %@", enterWeightViewController.preferences.ETTRoundUp);
+            
+            newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
+            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Narcan
+        
+        else if ([thisScreenType isEqualToString:@"Narcan"])
+        {
+            NSLog(@"showNarcan");
+            
+            ResusViewController *newViewController = [[ResusViewController alloc] init];
+            newViewController.workingWeight = self.weight;
+            newViewController.narcanSelected = @"YES";
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Oxygenation Index
+        
+        else if ([thisScreenType isEqualToString:@"OI"])
+        {
+            NSLog(@"showOI");
+            
+            OxygenationIndexViewController *newViewController = [[OxygenationIndexViewController alloc] init];
+            
+            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+            
+            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+            
+            newViewController.OIPaO2UnitsIndex = enterWeightViewController.preferences.OIUnits;
+            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Thermaoregulation
+        
+        else if ([thisScreenType isEqualToString:@"Thermoregulation"])
+        {
+            PlasticBagViewController *newViewController = [[PlasticBagViewController alloc] init];
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Phototherapy
+        
+        else if ([thisScreenType isEqualToString:@"Phototherapy"])
+        {
+            PhototherapyViewController *newViewController = [[PhototherapyViewController alloc] init];
+            
+            if (self.selectedPatient.gestation)
+            {
+                NSLog(@"self.selectedPatient.gestation = YES");
+                
+                newViewController.selectedPatient = self.selectedPatient;
+                newViewController.gestationLocked = @"YES";
+            }
+            else if (self.gestation)
+            {
+                NSLog(@"self.selectedPatient = NO & self.gestation = YES");
+                
+                if ([self.gestation integerValue] >= 38)
+                {
+                    newViewController.gestation = [NSNumber numberWithInt:38];
+                }
+                else
+                {
+                    newViewController.gestation = [NSNumber numberWithInt:[self.gestation integerValue]];
+                }
+                
+                newViewController.gestationLocked = @"YES";
+                
+                NSLog(@"newViewController.gestation = %@", newViewController.gestation);
+            }
+            
+            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+            
+            if (enterWeightViewController.preferences.guidelineCountry)
+            {
+                newViewController.guidelineCountry = enterWeightViewController.preferences.guidelineCountry;
+            }
+            
+            if (enterWeightViewController.preferences.bilirubinUnits)
+            {
+                newViewController.bilirubinUnits = enterWeightViewController.preferences.bilirubinUnits;
+            }
+            
+            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Pulmonary Haemorrhage
+        
+        else if ([thisScreenType isEqualToString:@"PulmonaryHaemorrhage"])
+        {
+            NSLog(@"showPulmonaryHaemorrhage");
+            
+            PulmonaryHaemorrhageViewController *newViewController = [[PulmonaryHaemorrhageViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Resuscitation
+        
+        else if ([thisScreenType isEqualToString:@"Resus"])
+        {
+            NSLog(@"showResus");
+            
+            ResusViewController *newViewController = [[ResusViewController alloc] init];
+            newViewController.workingWeight = self.weight;
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Retinopathy of Prematurity
+        
+        else if ([thisScreenType isEqualToString:@"ROP"])
+        {
+            NSLog(@"showROP");
+            
+            ROPViewController *newViewController = [[ROPViewController alloc] init];
+            
+            newViewController.selectedPatient = self.selectedPatient;
+            
+            if ((!self.selectedPatient) && (self.gestation || self.weight))
+            {
+                Patient *newPatient = [[Patient alloc] init];
+                
+                if (self.gestation && self.weight)
+                {
+                    newPatient.gestation = self.gestation;
+                    newPatient.birthWeight = self.weight;
+                }
+                else if (self.gestation)
+                {
+                    newPatient.gestation = self.gestation;
+                    newPatient.birthWeight = NULL;
+                }
+                else if (self.weight)
+                {
+                    newPatient.birthWeight = self.weight;
+                    newPatient.gestation = NULL;
+                }
+                
+                if ([self.estimatedWeightUsed isEqualToString:@"YES"])
+                {
+                    newViewController.estimatedWeightUsed = @"YES";
+                }
+                newViewController.selectedPatient = newPatient;
+            }
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Transport Ventilator
+        
+        else if ([thisScreenType isEqualToString:@"BabyPac"])
+        {
+            NSLog(@"showTransportVent");
+            
+            TransportVentilatorViewController *newViewController = [[TransportVentilatorViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Umbilical Lines
+        
+        else if ([thisScreenType isEqualToString:@"UACUVC"])
+        {
+            NSLog(@"showUACUVC");
+            
+            UVCUACViewController *newViewController = [[UVCUACViewController alloc] init];
+            
+            newViewController.selectedPatient = self.selectedPatient;
+            
+            if ((!self.selectedPatient) && (self.gestation || self.weight))
+            {
+                Patient *newPatient = [[Patient alloc] init];
+                
+                if (self.gestation && self.weight)
+                {
+                    newPatient.gestation = self.gestation;
+                    newPatient.birthWeight = self.weight;
+                }
+                else if (self.gestation)
+                {
+                    newPatient.gestation = self.gestation;
+                    newPatient.birthWeight = NULL;
+                }
+                else if (self.weight)
+                {
+                    newPatient.birthWeight = self.weight;
+                    newPatient.gestation = NULL;
+                }
+                
+                if ([self.estimatedWeightUsed isEqualToString:@"YES"])
+                {
+                    newViewController.estimatedWeightUsed = @"YES";
+                }
+                newViewController.selectedPatient = newPatient;
+            }
+            
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Vitamin K
+        
+        else if ([thisScreenType isEqualToString:@"VitK"])
+        {
+            NSLog(@"showVitK");
+            
+            VitKViewController *newViewController = [[VitKViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+        }
+        
+#pragma mark Weight Conversion
+        
+        else if ([thisScreenType isEqualToString:@"WeightConversion"])
+        {
+            NSLog(@"showWeightConversionTable");
+            
+            WeightConversionViewController *newViewController = [[WeightConversionViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+    }
+}
+
+#pragma mark -
+
+- (void)showAboutScreen
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // AboutSimNICUViewController2 *newViewController = [[AboutSimNICUViewController2 alloc] init];
+    
+    InfoTabBarController *newViewController = [[InfoTabBarController alloc] init];
+    
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+    
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    // navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    navController.topViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    
+    [appDelegate.navigationController presentModalViewController:navController animated:YES];
+}
+
+# pragma mark - enterWeightViewController delegate methods
+
+- (void)enterWeightViewController:(EnterWeightViewController *)controller didFinishSelectingPatient:(Patient *)patient
+{
+    self.selectedPatient = patient;
+    
+    self.infoPassedThrough = @"didFinishEnteringPatient";
+    
+    NSLog(@"self.infoPassedThrough = %@", self.infoPassedThrough);
+    
+    self.displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", patient.firstname, patient.lastname];
+    
+    NSString *detailTextLabelText = @"";
+    
+    // code here
+    
+    NSString *rawBirthWeight = patient.birthWeight;
+    NSString *formattedBirthWeight;
+    
+    NSString *rawWorkingWeight = patient.workingWeight;
+    NSString *formattedWorkingWeight;
+    
+    // format birth weight
+    
+    float birthWeightKGAsFloat = [rawBirthWeight floatValue];
+    if(birthWeightKGAsFloat < 1)
+    {
+        // convert to grams as use integer
+        int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
+        formattedBirthWeight = [NSString stringWithFormat:@"%i g", birthWeightGRAMSasInt];
+    }
+    else
+    {
+        formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
+    }
+    
+    // format working weight
+    
+    float workingWeightKGAsFloat = [rawWorkingWeight floatValue];
+    if(workingWeightKGAsFloat < 1)
+    {
+        // convert to grams as use integer
+        int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
+        formattedWorkingWeight = [NSString stringWithFormat:@"%i g", workingWeightGRAMSasInt];
+    }
+    else
+    {
+        formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
+    }
+    
+    
+    
+    
+    if (patient.gestation && patient.birthWeight && patient.correctedGestation && patient.workingWeight)
+    {
+        detailTextLabelText = [NSString stringWithFormat:@"%@ (%@) now %@ (ww %@)", patient.gestation, formattedBirthWeight, patient.correctedGestation, formattedWorkingWeight];
+        
+        self.weight = patient.workingWeight;
+    }
+    else if (patient.workingWeight && patient.gestation)
+    {
+        detailTextLabelText = [NSString stringWithFormat:@"%@/40 working weight %@", patient.gestation, formattedWorkingWeight];
+        
+        self.weight = patient.workingWeight;
+    }
+    else if (patient.workingWeight && !patient.gestation)
+    {
+        detailTextLabelText = [NSString stringWithFormat:@"working weight %@", formattedWorkingWeight];
+        
+        self.weight = patient.workingWeight;
+    }
+    else if (patient.gestation && !patient.workingWeight)
+    {
+        // code here for just gestation
+        
+        // obtain estimated weight from growth chart
+        
+        NSString *estimatedWeight;
+        
+        self.growthChart = [[GrowthChart alloc] init];
+        
+        // temp code
+        NSString *sex = @"Unknown";
+        NSString *centile = @"50th";
+        
+        estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:patient.gestation];
+        
+        NSLog(@"Estimated Weight = %@", estimatedWeight);
+        
+        float estimatedWeightKGAsFloat = [estimatedWeight floatValue];
+        NSString *estimatedWeightAsString;
+        
+        if(estimatedWeightKGAsFloat < 1)
+        {
+            // convert to grams as use integer
+            int estimatedWeightGRAMSasInt = estimatedWeightKGAsFloat * 1000;
+            
+            estimatedWeightAsString = [NSString stringWithFormat:@"%i grams", estimatedWeightGRAMSasInt];
+        }
+        else
+        {
+            estimatedWeightAsString = [NSString stringWithFormat:@"%.2f kg", estimatedWeightKGAsFloat];
+        }
+        
+        detailTextLabelText = [NSString stringWithFormat:@"%@/40 estimated weight %@", patient.gestation, estimatedWeightAsString];
+        
+        self.weight = estimatedWeight;
+        self.gestation = patient.gestation;
+    }
+    
+    
+    self.displayDetailTextLabel.text = detailTextLabelText;
+    
+    self.displayBackground.hidden = NO;
+    self.displayTextLabel.hidden = NO;
+    self.displayDetailTextLabel.hidden = NO;
+    self.displayDismissButtonView.hidden = NO;
+    
+    self.patientSelected = YES;
+    
+}
+
+- (void)enterWeightViewController:(EnterWeightViewController *)controller didFinishEnteringWeight:(NSString *)weight orGestation:(NSString *)gestation forSex:(NSString *)sex atCentile:(NSString *)centile
+{
+    self.selectedPatient = NULL;
+    
+    self.infoPassedThrough = @"didFinishEnteringWeightOrGestation";
+    
+    NSLog(@"self.infoPassedThrough = %@", self.infoPassedThrough);
+    
+    if([weight isEqualToString:@""] || [weight isEqualToString:@"0"] || [weight isEqualToString:@"0."])
+    {
+        weight = NULL;
+    }
+    if([gestation isEqualToString:@""])
+    {
+        gestation = NULL;
+    }
+    
+    float weightFloat = [weight floatValue];
+    
+    if (weightFloat < 0.3f && !(weight == NULL))
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"WARNING!"
+                                  message:@"This app does not work with weights less than 300 grams"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        weight = NULL;
+        
+        return;
+    }
+    
+    // gestation entered but no weight
+    if (gestation && !weight)
+    {
+        NSLog(@"gestation only");
+        
+        if ([sex isEqualToString:@"Unknown"] && [centile isEqualToString:@"50th"])
+        {
+            self.displayTextLabel.text = [NSString stringWithFormat:@"%@ weeks gestation", gestation];
+        }
+        else
+        {
+            self.displayTextLabel.text = [NSString stringWithFormat:@"%@/40 %@ (%@ centile)", gestation, sex, centile];
+        }
+        
+        
+        // obtain estimated weight from growth chart
+        
+        NSString *estimatedWeight;
+        
+        self.growthChart = [[GrowthChart alloc] init];
+        
+        estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:gestation];
+        
+        NSLog(@"Estimated Weight = %@", estimatedWeight);
+        
+        float estimatedWeightKGAsFloat = [estimatedWeight floatValue];
+        
+        if(estimatedWeightKGAsFloat < 1)
+        {
+            // convert to grams as use integer
+            int estimatedWeightGRAMSasInt = estimatedWeightKGAsFloat * 1000;
+            
+            self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %i grams", estimatedWeightGRAMSasInt];
+        }
+        else
+        {
+            self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %.2f kg", estimatedWeightKGAsFloat];
+        }
+        
+        self.displayDetailTextLabel.hidden = NO;
+        self.displayBackground.hidden = NO;
+        self.displayTextLabel.hidden = NO;
+        self.displayDismissButtonView.hidden = NO;
+        
+        self.weight = estimatedWeight;
+        
+        self.estimatedWeightUsed = @"YES";
+        
+        self.gestation = gestation;
+    }
+    else if(weight && !gestation)
+    {
+        NSLog(@"weight only");
+        
+        float weightKGAsFloat = [weight floatValue];
+        if(weightKGAsFloat < 1)
+        {
+            // convert to grams as use integer
+            int weightGRAMSasInt = weightKGAsFloat * 1000;
+            self.displayTextLabel.text = [NSString stringWithFormat:@"%i grams", weightGRAMSasInt];
+        }
+        else
+        {
+            self.displayTextLabel.text = [NSString stringWithFormat:@"%@ kg", weight];
+        }
+        
+        self.displayDetailTextLabel.text = @"Working Weight";
+        self.displayDetailTextLabel.hidden = NO;
+        self.displayBackground.hidden = NO;
+        self.displayTextLabel.hidden = NO;
+        self.displayDismissButtonView.hidden = NO;
+        
+        self.weight = weight;
+    }
+    else if(weight && gestation)
+    {
+        NSLog(@"Both weight and gestation");
+        
+        float weightKGAsFloat = [weight floatValue];
+        if(weightKGAsFloat < 1)
+        {
+            // convert to grams as use integer
+            int weightGRAMSasInt = weightKGAsFloat * 1000;
+            self.displayTextLabel.text = [NSString stringWithFormat:@"%i grams", weightGRAMSasInt];
+        }
+        else
+        {
+            self.displayTextLabel.text = [NSString stringWithFormat:@"%@ kg", weight];
+        }
+        
+        self.displayDetailTextLabel.text = @"Working Weight";
+        self.displayDetailTextLabel.hidden = NO;
+        self.displayBackground.hidden = NO;
+        self.displayTextLabel.hidden = NO;
+        self.displayDismissButtonView.hidden = NO;
+        
+        self.gestation = gestation;
+        self.weight = weight;
+    }
+}
+
+- (void)clearScreen
+{
+    self.displayDismissButtonView.hidden = YES;
+    self.displayDetailTextLabel.hidden = YES;
+    self.displayBackground.hidden = YES;
+    self.displayTextLabel.hidden = YES;
+    
+    self.estimatedWeightUsed = NULL;
+    self.selectedPatient = NULL;
+    self.patientSelected = NO;
+    self.gestation = NULL;
+    self.weight = NULL;
+    
+    self.infoPassedThrough = @"Cleared";
+    
+    ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+    
+    EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+    
+    enterWeightViewController.weight.text = NULL;
+    enterWeightViewController.gestation.text = NULL;
+}
+
+
+@end

@@ -1,0 +1,630 @@
+//
+//  OxygenationIndexViewController.m
+//  SimNICU
+//
+//  Created by Conrad Bosman on 11/08/2012.
+//  Copyright (c) 2012 SimNICU. All rights reserved.
+//
+
+#import "OxygenationIndexViewController.h"
+#import "AppDelegate.h"
+
+@interface OxygenationIndexViewController()
+
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic) BOOL validParametersEntered;
+@property (nonatomic) BOOL resultObtained;
+
+@end
+
+@implementation OxygenationIndexViewController
+
+@synthesize validParametersEntered = _validParametersEntered;
+@synthesize meanAirwayPressure = _meanAirwayPressure;
+@synthesize oxygenationIndex = _oxygenationIndex;
+@synthesize OIPaO2UnitsIndex = _OIPaO2UnitsIndex;
+@synthesize inspiredOxygen = _inspiredOxygen;
+@synthesize resultObtained = _resultObtained;
+@synthesize myTableView = _myTableView;
+@synthesize delegate = _delegate;
+@synthesize units = _units;
+@synthesize PaO2 = _PaO2;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) 
+    {
+        self.title = @"Oxygenation Index";
+        
+        float fourInchDisplayPadding = 0.0f;
+        
+        //delegate
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            fourInchDisplayPadding = 40.0f;
+        }
+        
+        //set view background
+        [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+        
+        //tableView
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        self.myTableView.rowHeight = 44.0f;
+        self.myTableView.dataSource = self;
+        self.myTableView.delegate = self;
+        self.myTableView.sectionFooterHeight = 10.0f;
+        self.myTableView.sectionHeaderHeight = 10.0f;
+        self.myTableView.scrollEnabled = NO;
+        self.myTableView.separatorColor = [UIColor grayColor];
+        
+        [self.view addSubview:self.myTableView];
+        
+#if USE_DIMPLE_BACKGROUND
+        
+        // set background colour
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            // 4 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            [tempImageView setFrame:self.myTableView.frame];
+            
+            self.myTableView.backgroundView = tempImageView;
+        }
+        else
+        {
+            // 3.5 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            [tempImageView setFrame:self.myTableView.frame];
+            
+            self.myTableView.backgroundView = tempImageView;
+        }
+        
+#else
+        self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+#endif
+        
+#if APP_SHADING
+        //screen mask covers everything
+        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height))];
+        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
+        tableBgView.image = tableBgImage;
+        tableBgView.userInteractionEnabled = NO;
+        [self.view addSubview:tableBgView];
+#endif
+        
+    }
+    return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /*info button
+     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+     infoButton.frame = CGRectMake(270, 10, 30, 30);
+     [infoButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+     self.navigationItem.rightBarButtonItem = infoBarButton;
+     */
+    
+    self.meanAirwayPressure.delegate = self;
+    self.inspiredOxygen.delegate = self;
+    self.PaO2.delegate = self;
+    
+    //use the new decimal pad if using iOS 4.1 or greater
+    if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
+    {
+        self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
+        self.inspiredOxygen.keyboardType = UIKeyboardTypeDecimalPad;
+        self.PaO2.keyboardType = UIKeyboardTypeDecimalPad;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Oxygenation Index" withError:nil];
+    
+#endif
+    
+    [self.meanAirwayPressure becomeFirstResponder];
+    
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSString *region = [[NSLocale currentLocale] localeIdentifier];
+    
+    NSLog(@"Language = %@", language);
+    NSLog(@"Region = %@", region);
+    
+    if (self.OIPaO2UnitsIndex) 
+    {
+        switch ([self.OIPaO2UnitsIndex intValue]) 
+        {
+            case 0:
+                self.units.selectedSegmentIndex = 0;
+                self.PaO2.placeholder = @"mmHg";
+                
+                NSLog(@"Setting units to mmHg from preferences");
+                break;
+                
+            case 1:
+                self.units.selectedSegmentIndex = 1;
+                self.PaO2.placeholder = @"kPa";
+                
+                NSLog(@"Setting units to kPa from preferences");
+                break;
+                
+            default:
+                break;
+        }
+    }
+    else
+    {
+        if ([region isEqualToString:@"en_GB"]) 
+        {
+            self.units.selectedSegmentIndex = 1;
+            self.PaO2.placeholder = @"kPa";
+        }
+    }
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
+- (void)viewDidUnload
+{
+    self.meanAirwayPressure = nil;
+    self.oxygenationIndex = nil;
+    self.inspiredOxygen = nil;
+    self.PaO2 = nil;
+    self.units = nil;
+    
+    [super viewDidUnload];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    NSLog(@"OxygenationIndexViewController didReceiveMemoryWarning");
+    
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        NSLog(@"OxygenationIndexViewController unloaded properties");
+        
+        self.myTableView = nil;
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    float height;
+    
+    if (section == 0) 
+    {
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
+        {
+            float fourInchDisplayPadding = 0.0f;
+            
+            //delegate
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                fourInchDisplayPadding = 40.0f;
+            }
+            
+            height = 15.0f + fourInchDisplayPadding;
+        }
+        else
+        {
+            height = 5.0f;
+        }
+    }
+    
+    return height;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @" ";
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *returnCell = nil;
+    
+    if(indexPath.row == 0)
+    {
+        static NSString *CellIdentifier = @"MAP";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            [cell setBackgroundColor:[UIColor whiteColor]];
+        }
+        
+        self.meanAirwayPressure = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 107.0f, 31.0f)];
+        self.meanAirwayPressure.borderStyle = UITextBorderStyleRoundedRect;
+        self.meanAirwayPressure.placeholder = @"cm H2O";
+        self.meanAirwayPressure.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
+        self.meanAirwayPressure.clearButtonMode = UITextFieldViewModeAlways;
+        self.meanAirwayPressure.delegate = self;
+        self.meanAirwayPressure.tag = 10;
+        
+        //use the new decimal pad if using iOS 4.1 or greater
+        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
+        {
+            [self.meanAirwayPressure setKeyboardType:UIKeyboardTypeDecimalPad];
+            [self.meanAirwayPressure setKeyboardAppearance:UIKeyboardAppearanceAlert];
+        }
+        else 
+        {
+            [self.meanAirwayPressure setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+        }
+        self.meanAirwayPressure.textAlignment = UITextAlignmentLeft;
+        cell.accessoryView = self.meanAirwayPressure;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.textLabel.text = @"MAP:";
+        
+        returnCell = cell;
+    }
+    else if(indexPath.row == 1)
+    {
+        static NSString *CellIdentifier = @"FiO2";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            [cell setBackgroundColor:[UIColor whiteColor]];
+        }
+        
+        self.inspiredOxygen = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 107.0f, 31.0f)];
+        self.inspiredOxygen.borderStyle = UITextBorderStyleRoundedRect;
+        self.inspiredOxygen.placeholder = @"%";
+        self.inspiredOxygen.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
+        self.inspiredOxygen.clearButtonMode = UITextFieldViewModeAlways;
+        self.inspiredOxygen.delegate = self;
+        self.inspiredOxygen.tag = 20;
+        
+        //use the new decimal pad if using iOS 4.1 or greater
+        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
+        {
+            [self.inspiredOxygen setKeyboardType:UIKeyboardTypeDecimalPad];
+            [self.inspiredOxygen setKeyboardAppearance:UIKeyboardAppearanceAlert];
+        }
+        else 
+        {
+            [self.inspiredOxygen setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+        }
+        self.inspiredOxygen.textAlignment = UITextAlignmentLeft;
+        cell.accessoryView = self.inspiredOxygen;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.textLabel.text = @"FiO2:";
+        
+        returnCell = cell;
+    }
+    else if(indexPath.row == 2)
+    {
+        static NSString *CellIdentifier = @"PaO2";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            [cell setBackgroundColor:[UIColor whiteColor]];
+        }
+        
+        self.PaO2 = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 107.0f, 31.0f)];
+        self.PaO2.borderStyle = UITextBorderStyleRoundedRect;
+        self.PaO2.placeholder = @"kPa";
+        self.PaO2.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
+        self.PaO2.clearButtonMode = UITextFieldViewModeAlways;
+        self.PaO2.delegate = self;
+        self.PaO2.tag = 30;
+        
+        //use the new decimal pad if using iOS 4.1 or greater
+        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
+        {
+            [self.PaO2 setKeyboardType:UIKeyboardTypeDecimalPad];
+            [self.PaO2 setKeyboardAppearance:UIKeyboardAppearanceAlert];
+        }
+        else 
+        {
+            [self.PaO2 setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+        }
+        self.PaO2.textAlignment = UITextAlignmentLeft;
+        cell.accessoryView = self.PaO2;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.textLabel.text = @"PaO2:";
+        
+        self.units = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"mmHg", @"kPa", nil]];
+        self.units.frame = CGRectMake(80.0f, 7.0f, 108.0f, 30.0f);
+        self.units.segmentedControlStyle = UISegmentedControlStyleBar;
+        [self.units addTarget:self action:@selector(changeUnits) forControlEvents:UIControlEventValueChanged];
+        
+        [cell addSubview:self.units];
+    
+        returnCell = cell;
+    }
+    else if(indexPath.row == 3)
+    {
+        static NSString *CellIdentifier = @"OI";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.oxygenationIndex = [[UILabel alloc] initWithFrame:CGRectMake(162.0, 11.0, 132.0, 21.0)];
+        self.oxygenationIndex.font = [UIFont boldSystemFontOfSize:17.0];
+        self.oxygenationIndex.textColor = [UIColor lightGrayColor];
+        self.oxygenationIndex.highlightedTextColor = [UIColor whiteColor];
+        self.oxygenationIndex.textAlignment = UITextAlignmentCenter;
+        self.oxygenationIndex.text = @"Calculate";
+        self.oxygenationIndex.backgroundColor = [UIColor clearColor];
+        cell.accessoryView = self.oxygenationIndex;
+        
+        cell.textLabel.text = @"OI:";
+        cell.textLabel.highlightedTextColor = [UIColor blackColor];
+        
+        returnCell = cell;
+    }
+    
+    return returnCell;
+}
+
+#pragma mark - Table view delegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSIndexPath *path = nil;
+    
+    // only allow user to select the row with 'Calculate'
+    if (indexPath.row == 3) 
+    {
+        path = indexPath;
+    }
+    return path;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.validParametersEntered = YES;
+    
+    if (self.validParametersEntered) 
+    {
+        if (self.resultObtained) 
+        {
+            // clear all
+            self.meanAirwayPressure.text = @"";
+            self.inspiredOxygen.text = @"";
+            self.PaO2.text = @"";
+            
+            self.oxygenationIndex.textColor = [UIColor grayColor];
+            self.oxygenationIndex.text = @"Calculate";
+            
+            // reset index
+            self.resultObtained = NO;
+        }
+        else 
+        {
+            // Calculate OI
+            NSLog(@"Calculate OI");
+            
+            
+            [self calculateOxygenationIndexFromMAP:[self.meanAirwayPressure.text floatValue] andInspiredOxygen:[self.inspiredOxygen.text intValue] andPartialPressureOxygenkPa:[self.PaO2.text floatValue]];
+        }
+    }
+    else if (self.resultObtained) 
+    {
+        // clear all
+        self.oxygenationIndex.textColor = [UIColor grayColor];
+        self.oxygenationIndex.text = @"Calculate";
+        self.meanAirwayPressure.text = @"";
+        self.inspiredOxygen.text = @"";
+        self.PaO2.text = @"";
+        
+        self.resultObtained = NO;
+        
+        // give focus to MAP textField
+        [self.meanAirwayPressure becomeFirstResponder];
+    }
+}
+
+#pragma mark - Table view delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // reset OI label if a result is showing
+    if (!([self.oxygenationIndex.text isEqualToString:@"Calculate"]))
+    {
+        self.oxygenationIndex.textColor = [UIColor grayColor];
+        self.oxygenationIndex.text = @"Calculate";
+    }
+    
+    BOOL allowUserToChangeText = YES;
+    
+    NSLog(@"string = %@", string);
+    
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    NSLog(@"newText = %@", newText);
+    
+    if ([textField isEqual:self.meanAirwayPressure]) 
+    {
+        NSLog(@"Editing Mean Airway Pressure");
+        
+        if (newText.length > 4) 
+        {
+            return NO;
+        }
+        else if (newText.length == 1)
+        {
+            if ([string isEqualToString:@"."]) 
+            {
+                return NO;
+            }
+            
+        }
+    }
+    else if ([textField isEqual:self.inspiredOxygen])
+    {
+        NSLog(@"Editing Inspired Oxygen");
+        
+        // does not allow decimal places to be entered
+        // does no stop decimal places from being pasted in...
+        
+        if ([string isEqualToString:@"."]) 
+        {
+            return NO;
+        }
+        else if (newText.length == 1)
+        {
+            if ([string isEqualToString:@"0"])
+            {
+                return NO;
+            }
+        }
+        else if (newText.length == 3)
+        {
+            if (!([newText intValue] == 100))
+            {
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"ERROR!" 
+                                          message:@"Maximum FiO2 is 100%" 
+                                          delegate:nil cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+                
+                return NO;
+            }
+        }
+        else if (newText.length > 3) 
+        {
+            return NO;
+        }
+    }
+    else if ([textField isEqual:self.PaO2])
+    {
+        NSLog(@"Editing PaO2");
+        
+        if (newText.length > 4)
+        {
+            return NO;
+        }
+    }
+    
+    return allowUserToChangeText; // is this actually used?
+}
+
+- (float)calculateOxygenationIndexFromMAP:(float)MAP andInspiredOxygen:(int)oxygen andPartialPressureOxygenkPa:(float)PaO2
+{    
+    float OI;
+    
+    switch (self.units.selectedSegmentIndex) 
+    {
+        case 0: // mmHg
+            OI = ((oxygen * MAP) / PaO2);
+            break;
+            
+        case 1: // kPa
+            OI = ((oxygen * MAP) / (PaO2 * 7.5));
+            break;
+            
+        default:
+            break;
+    }
+    
+    self.oxygenationIndex.textColor = [UIColor blackColor];
+    self.oxygenationIndex.text = [NSString stringWithFormat:@"%.1f", OI];
+    
+    self.resultObtained = YES;
+    self.validParametersEntered = NO;
+    
+    return OI;
+}
+
+- (float)calculateOxygenationIndexFromMAP:(NSString *)MAP andInspiredOxygen:(NSString *)oxygen andPartialPressureOxygenmmHg:(NSString *)PaO2
+{
+    float result = 0;
+    
+    return result;
+}
+
+- (void)changeUnits
+{
+    NSLog(@"Changing units");
+    
+    switch (self.units.selectedSegmentIndex) 
+    {
+        case 0:
+            // mmHg
+            self.PaO2.placeholder = @"mm Hg";
+            if (self.PaO2.text.length > 1) 
+            {
+                float newValue = [self.PaO2.text floatValue] * 7.5;
+                
+                self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
+            }
+            break;
+            
+        case 1:
+            // kPa
+            self.PaO2.placeholder = @"kPa";
+            
+            if (self.PaO2.text.length > 1) 
+            {
+                float newValue = [self.PaO2.text floatValue] / 7.5;
+                
+                self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self.delegate oxygenationIndexViewController:self didChangePaO2Units:self.units.selectedSegmentIndex];
+}
+
+@end

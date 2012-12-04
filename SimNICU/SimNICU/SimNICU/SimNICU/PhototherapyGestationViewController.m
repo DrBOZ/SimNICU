@@ -1,0 +1,382 @@
+//
+//  PhototherapyGestationViewController.m
+//  SimNICU
+//
+//  Created by Conrad Bosman on 04/10/2012.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
+//
+
+#import "PhototherapyGestationViewController.h"
+#import "AppDelegate.h"
+
+@interface PhototherapyGestationViewController ()
+
+@property (nonatomic, strong) UITableViewCell *USPretermGestation;
+@property (nonatomic, strong) UITableViewCell *USTermGestation;
+@property (nonatomic, strong) UITableView *myTableView;
+
+@end
+
+@implementation PhototherapyGestationViewController
+
+@synthesize USPretermGestation = _USPretermGestation;
+@synthesize guidelineCountry = _guidelineCountry;
+@synthesize USTermGestation = _USTermGestation;
+@synthesize myTableView = _myTableView;
+@synthesize gestation = _gestation;
+@synthesize delegate = _delegate;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        // Custom initialization
+        self.view.backgroundColor = [UIColor blackColor];
+        self.title = @"Gestation";
+        
+        //delegate
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        //menu table
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        self.myTableView.rowHeight = 44.0f;
+        self.myTableView.dataSource = self;
+        self.myTableView.delegate = self;
+        self.myTableView.sectionFooterHeight = 10.0f;
+        self.myTableView.sectionHeaderHeight = 10.0f;
+        self.myTableView.separatorColor = [UIColor grayColor];
+        self.myTableView.hidden = NO;
+        self.myTableView.bounces = YES;
+        self.myTableView.scrollEnabled = YES;
+        [self.view addSubview:self.myTableView];
+        
+#if USE_DIMPLE_BACKGROUND
+        
+        // set background colour
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            // 4 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            [tempImageView setFrame:self.myTableView.frame];
+            
+            self.myTableView.backgroundView = tempImageView;
+        }
+        else
+        {
+            // 3.5 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            [tempImageView setFrame:self.myTableView.frame];
+            
+            self.myTableView.backgroundView = tempImageView;
+        }
+        
+#else
+        self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+#endif
+        
+#if APP_SHADING
+        //screen mask covers everything
+        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height - 49))];
+        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
+        tableBgView.image = tableBgImage;
+        tableBgView.userInteractionEnabled = NO;
+        tableBgView.alpha = 0.5;
+        [self.view addSubview:tableBgView];
+#endif
+        
+    }
+    return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Gestation Selector" withError:nil];
+    
+#endif
+    
+    if ([self.guidelineCountry isEqualToString:@"UK"])
+    {
+        if (self.gestation)
+        {
+            if ([self.gestation integerValue] > 30)
+            {
+                NSIndexPath *path = [NSIndexPath indexPathForRow:([self.gestation integerValue] - 23) inSection:0];
+                
+                [self.myTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+                [self.myTableView deselectRowAtIndexPath:path animated:YES];
+            }
+        }
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    self.myTableView = nil;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+
+    NSLog(@"PhototherapyGestationViewController didReceiveMemoryWarning");
+    
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        NSLog(@"PhototherapyGestationIndexViewController unloaded properties");
+        
+        self.myTableView = nil;
+    }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    int rows;
+    
+    if ([self.guidelineCountry isEqualToString:@"UK"])
+    {
+        rows = 16;
+    }
+    else if ([self.guidelineCountry isEqualToString:@"US"])
+    {
+        rows = 2;
+    }
+    
+    return rows;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    float height = 22.0f;
+    
+    float fourInchDisplayPadding = 0.0f;
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.window.bounds.size.height == 568)
+    {
+        fourInchDisplayPadding = 0.0f;
+    }
+    
+    height = 66.0f + fourInchDisplayPadding;
+    
+    return height;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return NSLocalizedString(@"Gestation at birth", nil); // need to add to localization string file
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *returnCell = nil;
+    
+    if ([self.guidelineCountry isEqualToString:@"UK"])
+    {
+        static NSString *CellIdentifier = @"UK";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        
+        // setting only row text
+        if (indexPath.row == 15)
+        {
+            cell.textLabel.text = @"38+ weeks";
+        }
+        else
+        {
+            cell.textLabel.text = [NSString stringWithFormat:@"%i weeks", (indexPath.row + 23)];
+        }
+        
+        // setting initial checkmarks and text colour
+        if (self.gestation)
+        {
+            if ([self.gestation isEqualToNumber:[NSNumber numberWithInt:(indexPath.row + 23)]])
+            {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+                
+                // self.selectedUKGestation = [NSNumber numberWithInt:(indexPath.row + 23)];
+            }
+            else
+            {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.textLabel.textColor = [UIColor blackColor];
+            }
+        }
+        
+        returnCell = cell;
+    }
+    else if ([self.guidelineCountry isEqualToString:@"US"])
+    {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"Younger";
+            self.USPretermGestation = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!self.USPretermGestation)
+            {
+                self.USPretermGestation = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                self.USPretermGestation.selectionStyle = UITableViewCellSelectionStyleBlue;
+                self.USPretermGestation.backgroundColor = [UIColor whiteColor];
+            }
+            
+            self.USPretermGestation.textLabel.text = @"35 - 37+6/40";
+            
+            if (self.gestation)
+            {
+                if ([self.gestation isEqualToNumber:[NSNumber numberWithInt:35]] || [self.gestation isEqualToNumber:[NSNumber numberWithInt:36]] || [self.gestation isEqualToNumber:[NSNumber numberWithInt:37]])
+                {
+                    self.USPretermGestation.accessoryType = UITableViewCellAccessoryCheckmark;
+                    self.USPretermGestation.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+                }
+                else
+                {
+                    self.USPretermGestation.accessoryType = UITableViewCellAccessoryNone;
+                    self.USPretermGestation.textLabel.textColor = [UIColor blackColor];
+                }
+            }
+            
+            returnCell = self.USPretermGestation;
+        }
+        else if (indexPath.row == 1)
+        {
+            static NSString *CellIdentifier = @"Older";
+            self.USTermGestation = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!self.USTermGestation)
+            {
+                self.USTermGestation = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                self.USTermGestation.selectionStyle = UITableViewCellSelectionStyleBlue;
+                self.USTermGestation.backgroundColor = [UIColor whiteColor];
+            }
+            
+            self.USTermGestation.textLabel.text = @"38+ weeks";
+            
+            if (self.gestation)
+            {
+                if ([self.gestation isEqualToNumber:[NSNumber numberWithInt:38]] || [self.gestation isEqualToNumber:[NSNumber numberWithInt:39]] || [self.gestation isEqualToNumber:[NSNumber numberWithInt:40]]) // maybe more needed here...
+                {
+                    self.USTermGestation.accessoryType = UITableViewCellAccessoryCheckmark;
+                    self.USTermGestation.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+                }
+                else
+                {
+                    self.USTermGestation.accessoryType = UITableViewCellAccessoryNone;
+                    self.USTermGestation.textLabel.textColor = [UIColor blackColor];
+                }
+            }
+            
+            returnCell = self.USTermGestation;
+        }
+        else
+        {
+            NSLog(@"More needed here");
+        }
+    }
+    
+    return returnCell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.guidelineCountry isEqualToString:@"UK"])
+    {
+        NSIndexPath *oldCellPath = [NSIndexPath indexPathForRow:([self.gestation integerValue] - 23) inSection:0];
+        
+        UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldCellPath];
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+        oldCell.textLabel.textColor = [UIColor blackColor];
+        
+        // reference new cell
+        UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        newCell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        
+        self.gestation = [NSNumber numberWithInt:(indexPath.row + 23)];
+        
+        [self.delegate phototherapyGestationViewController:self didFinishSelectingGestation:self.gestation];
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else if ([self.guidelineCountry isEqualToString:@"US"])
+    {
+        if (indexPath.row == 0)
+        {
+            self.gestation = [NSNumber numberWithInt:35];
+            
+            [self.delegate phototherapyGestationViewController:self didFinishSelectingGestation:self.gestation];
+            
+            self.USPretermGestation.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.USPretermGestation.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            
+            self.USTermGestation.accessoryType = UITableViewCellAccessoryNone;
+            self.USTermGestation.textLabel.textColor = [UIColor blackColor];
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        else
+        {
+            self.gestation = [NSNumber numberWithInt:38];
+            
+            [self.delegate phototherapyGestationViewController:self didFinishSelectingGestation:self.gestation];
+            
+            self.USTermGestation.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.USTermGestation.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            
+            self.USPretermGestation.accessoryType = UITableViewCellAccessoryNone;
+            self.USPretermGestation.textLabel.textColor = [UIColor blackColor];
+            
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    }
+    
+    // [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(popViewController:) userInfo:nil repeats:NO];
+}
+
+#pragma mark
+
+- (void)popViewController:(id)sender
+{
+   [self.navigationController popViewControllerAnimated:YES];
+}
+
+@end
+
