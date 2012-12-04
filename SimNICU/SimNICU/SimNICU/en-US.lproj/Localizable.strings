@@ -1,0 +1,67 @@
+/*
+ Localizable.strings
+ SimNICU
+ 
+ Created by Conrad Bosman on 10/08/2012.
+ Copyright (c) 2012 SimNICU Project. All rights reserved.
+ */
+
+"Adrenaline" = "Epinephrine";
+"ADRENALINE" = "EPINEPHRINE";
+"Anaemia" = "Anemia";
+"apnoea" = "apnea";
+"Apnoea" = "Apnea";
+"Atracurium" = "Atracurium";
+"Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium" = "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium";
+"Blue Line - Phototherapy" = "Blue Line - Phototherapy";
+"Dinoprostone" = "Dinoprostone";
+"Dobutamine" = "Dobutamine";
+"DOBUTAMINE" = "DOBUTAMINE";
+"Done" = "Done";
+"Dopamine" = "Dopamine";
+"Forename" = "First name";
+"Frusemide" = "Furosemide";
+"Guidelines" = "Guidelines";
+"Heparin" = "Heparin";
+"Hyperglycaemia" = "Hyperglycemia";
+"hyperkalaemia" = "hyperkalemia";
+"Hypocalcaemia" = "Hypocalcemia";
+"if required" = "if required";
+"Insulin" = "Insulin";
+"Intubation drugs" = "Intubation drugs";
+"Isoimmune Haemolytic Disease" = "Isoimmune Hemolytic Disease";
+"kilograms" = "kilograms";
+"Lidocaine" = "Lidocaine";
+"Like SimNICU?" = "Like SimNICU?";
+"Midazolam" = "Midazolam";
+"Morphine" = "Morphine";
+"Pancuronium" = "Pancuronium";
+"Paracetamol" = "Acetaminophen";
+"Passcode Lock" = "Passcode Lock";
+"Patient list" = "Patient list";
+"Phototherapy" = "Phototherapy";
+
+"Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
+
+"Pulmonary Haemorrhage" = "Pulmonary Hemorrhage";
+"Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
+"Repeat doses may be required" = "Repeat doses may be required";
+"Rocuronium" = "Rocuronium";
+"Serum bilirubin units" = "Serum bilirubin units";
+"Surname" = "Last name";
+"Today" = "Today";
+
+"The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1" = "The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1";
+
+"This chart is designed for interpreting bilirubin levels up to 14 days of age." = "This chart is designed for interpreting bilirubin levels up to 14 days of age.";
+
+"Treatment threshold" = "Treatment threshold";
+"Units" = "Units";
+"Vecuronium" = "Vecuronium";
+"WARNING" = "WARNING";
+"weeks" = "weeks";
+"Weight" = "Weight";
+"Weight not entered" = "Weight not entered";
+"Yesterday" = "Yesterday";
+
+
