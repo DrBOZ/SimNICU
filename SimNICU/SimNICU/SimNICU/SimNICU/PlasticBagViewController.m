@@ -159,14 +159,7 @@
     
     if (section == 0) 
     {
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
-        {
-            height = 50.0f;
-        }
-        else
-        {
-            height = 40.0f;
-        }
+        height = 50.0f;
     }
     
     return height;
@@ -174,7 +167,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @" ";
+    return @"Plastic bag (at delivery)";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

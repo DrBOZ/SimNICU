@@ -96,7 +96,7 @@
     if (self)
     {
         NSLog(@"AppViewController init");
-         
+        
         // parse code here
         /*
          PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
@@ -121,7 +121,7 @@
     
     NSLog(@"AppViewController viewWillAppear");
     
-    self.title = @"Paediatrics";
+    self.title = @"SimNICU";
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -158,15 +158,15 @@
      */
     
     /*
-    screen = [[Screen alloc] init];
-    screen.menuText = @"Phototherapy";
-    screen.segueId = @"Phototherapy";
-    [screens addObject:screen];
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Phototherapy";
+     screen.segueId = @"Phototherapy";
+     [screens addObject:screen];
      */
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Blood Pressure";
-    screen.segueId = @"Blood Pressure";    // could use menuText as ID!
+    screen.menuText = @"APGAR scores";
+    screen.segueId = @"APGAR";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
@@ -174,25 +174,84 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];   // Calculator not ready yet...
-    screen.menuText = @"Calculator";
-    screen.segueId = @"Calculator";
+    /*
+     screen = [[Screen alloc] init];   // Calculator not ready yet...
+     screen.menuText = @"Calculator";
+     screen.segueId = @"Calculator";
+     [screens addObject:screen];
+     */
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Cooling";
+    screen.segueId = @"Cooling";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Drugs";
-    screen.segueId = @"Drugs";
+    screen.menuText = @"Cranial Ultrasound";
+    screen.segueId = @"CrUSS";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"ECG";
-    screen.segueId = @"ECG";
+    screen.menuText = @"Curosurf\u00AE";
+    screen.segueId = @"Curosurf";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Hypoglycaemia Screen";
-    screen.segueId = @"Hypo";
+    screen.menuText = @"Diaphragmatic Hernia";
+    screen.segueId = @"CDH";
     [screens addObject:screen];
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Drugs";
+     screen.segueId = @"Drugs";
+     [screens addObject:screen];
+     */
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Early Care";
+    screen.segueId = @"EarlyCare";
+    [screens addObject:screen];
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Feeds & Fluids";
+     screen.segueId = @"EarlyCare";
+     [screens addObject:screen];
+     */
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Gastroschisis";
+    screen.segueId = @"Gastroschisis";
+    [screens addObject:screen];
+    
+    // Gentamicin levels
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Glucose Infusion Rate";
+     screen.segueId = @"GlucoseInfusionRate";
+     [screens addObject:screen];
+     */
+    
+    screen = [[Screen alloc] init];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
+    {
+        screen.menuText = @"High Frequency Oscillation";
+    }
+    else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 3.0)
+    {
+        screen.menuText = @"HFOV";
+    }
+    screen.segueId = @"HFOV";
+    [screens addObject:screen];
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Hypoglycaemia Screen";
+     screen.segueId = @"Hypo";
+     [screens addObject:screen];
+     */
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Infusions";
@@ -202,6 +261,23 @@
     screen = [[Screen alloc] init];
     screen.menuText = @"Intubation";
     screen.segueId = @"Intubation";
+    [screens addObject:screen];
+    
+    // screen = [[Screen alloc] init];
+    // screen.menuText = @"Nitric Oxide";
+    // screen.segueId = @"Nitric Oxide";
+    // [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Naloxone (Narcan)";
+    screen.segueId = @"Narcan";
+    [screens addObject:screen];
+    
+    // Outcomes
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Oxygenation Index";
+    screen.segueId = @"OI";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
@@ -215,13 +291,42 @@
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
+    screen.menuText = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
+    screen.segueId = @"PulmonaryHaemorrhage";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
     screen.menuText = @"Resuscitation Drugs";
     screen.segueId = @"Resus";
     [screens addObject:screen];
     
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Retinopathy of Prematurity";
+    screen.segueId = @"ROP";
+    [screens addObject:screen];
+    
     // Sarnat score
     
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Seizures";
+     screen.segueId = @"Fits";
+     [screens addObject:screen];
+     */
+    
     // Sodium correction
+    
+    /*
+     screen = [[Screen alloc] init];
+     screen.menuText = @"Transitional Care";
+     screen.segueId = @"TC";
+     [screens addObject:screen];
+     */
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Transport Ventilator";
+    screen.segueId = @"BabyPac";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"UAC / UVC";
