@@ -7,6 +7,7 @@
 //
 
 #import "IntubationDrugsViewController.h"
+#import "IntubationDrugsTableViewCell.h"
 #import "AppDelegate.h"
 
 @interface IntubationDrugsViewController ()
@@ -237,19 +238,22 @@
     return height;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (IntubationDrugsTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *returnCell = nil;
+    IntubationDrugsTableViewCell *returnCell = nil;
     
     if(indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
             static NSString *CellIdentifier = @"Morphine";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            IntubationDrugsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                
+                /*
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
@@ -273,8 +277,9 @@
                 [cell addSubview:drug];
                 [cell addSubview:dose];
                 [cell addSubview:subLabel2];
+                 */
                 
-                drug.text = @"Morphine";
+                cell.drug.text = @"Morphine";
                 
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
@@ -288,10 +293,10 @@
                 
                 if (morphineDose)
                 {
-                    dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:morphineDose]]];
+                    cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:morphineDose]]];
                 }
                 
-                subLabel2.text = @"50 micrograms/kg slow IV bolus";
+                cell.subLabel2.text = @"50 micrograms/kg slow IV bolus";
             }
             
             returnCell = cell;
@@ -299,10 +304,13 @@
         else if(indexPath.row == 1)
         {
             static NSString *CellIdentifier = @"Atracurium";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            IntubationDrugsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                
+                /*
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 // cell.backgroundColor = [UIColor whiteColor];
@@ -313,23 +321,26 @@
                 subLabel2.backgroundColor = [UIColor clearColor];
                 
                 [cell addSubview:subLabel2];
+                 */
                 
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 if (workingWeightKGasFloat > 0 && workingWeightKGasFloat < 1.0f)
                 {
+                    /*
                     UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 290.0f, 21.0f)];
                     drug.font = [UIFont boldSystemFontOfSize:18.0f];
                     drug.adjustsFontSizeToFitWidth = YES;
                     // drug.textColor = [UIColor blackColor];
-                    drug.textColor = [UIColor redColor];
-                    drug.shadowColor = [UIColor whiteColor];
-                    drug.shadowOffset = CGSizeMake(0.0f, 1.0f);
-                    drug.backgroundColor = [UIColor clearColor];
-                    [cell addSubview:drug];
+                     */
+                    cell.drug.textColor = [UIColor redColor];
+                    cell.drug.shadowColor = [UIColor whiteColor];
+                    cell.drug.shadowOffset = CGSizeMake(0.0f, 1.0f);
+                    cell.drug.backgroundColor = [UIColor clearColor];
+                    // [cell addSubview:drug];
                     
-                    drug.text = @"Atracurium not recommended under 1 kg";
-                    subLabel2.text = @"500 micrograms/kg slow IV bolus";
+                    cell.drug.text = @"Atracurium not recommended under 1 kg";
+                    cell.subLabel2.text = @"500 micrograms/kg slow IV bolus";
                     
                     cell.backgroundColor = [UIColor clearColor];
                     // cell.backgroundColor = [UIColor grayColor];
@@ -338,6 +349,7 @@
                 {
                     // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
+                    /*
                     UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108.0f, 21.0f)];
                     drug.font = [UIFont boldSystemFontOfSize:18.0f];
                     drug.adjustsFontSizeToFitWidth = YES;
@@ -351,10 +363,11 @@
                     
                     [cell addSubview:drug];
                     [cell addSubview:dose];
+                     */
                     
                     cell.backgroundColor = [UIColor whiteColor];
                     
-                    drug.text = @"Atracurium";
+                    cell.drug.text = @"Atracurium";
                     
                     float atracuriumDose = workingWeightKGasFloat * 500.0f;
                     
@@ -370,7 +383,7 @@
                         {
                             // dose.text = [NSString stringWithFormat:@"%.0f micrograms",atracuriumDose];
                             
-                            dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:atracuriumDose]]];
+                            cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:atracuriumDose]]];
                         }
                         else
                         {
@@ -383,11 +396,11 @@
                             formatter.minimumFractionDigits = 0;
                             formatter.maximumFractionDigits = 2;
                             
-                            dose.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:atracuriumDoseMilligramsAsFloat]]];
+                            cell.dose.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:atracuriumDoseMilligramsAsFloat]]];
                         }
                     }
                     
-                    subLabel2.text = @"500 micrograms/kg slow IV bolus";
+                    cell.subLabel2.text = @"500 micrograms/kg slow IV bolus";
                 }
             }
             
@@ -399,11 +412,14 @@
         if (indexPath.row == 0)
         {
             static NSString *CellIdentifier = @"Atropine";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            IntubationDrugsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                
+                /*
+                cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
@@ -426,9 +442,9 @@
                 [cell addSubview:drug];
                 [cell addSubview:dose];
                 [cell addSubview:subLabel2];
+                */
                 
-                
-                drug.text = @"Atropine";
+                cell.drug.text = @"Atropine";
                 
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
@@ -442,10 +458,10 @@
                 
                 if (atropineDose)
                 {
-                    dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:atropineDose]]];
+                    cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:atropineDose]]];
                 }
                 
-                subLabel2.text = @"20 micrograms/kg fast IV bolus";
+                cell.subLabel2.text = @"20 micrograms/kg fast IV bolus";
             }
             
             returnCell = cell;
@@ -453,10 +469,13 @@
         else if (indexPath.row == 1)
         {
             static NSString *CellIdentifier = @"Neostigmine";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            IntubationDrugsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                
+                /*
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
@@ -480,9 +499,9 @@
                 [cell addSubview:drug];
                 [cell addSubview:dose];
                 [cell addSubview:subLabel2];
+                */
                 
-                
-                drug.text = @"Neostigmine";
+                cell.drug.text = @"Neostigmine";
                 
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
@@ -496,10 +515,10 @@
                 
                 if (neostigmineDose)
                 {
-                    dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:neostigmineDose]]];
+                    cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:neostigmineDose]]];
                 }
                 
-                subLabel2.text = @"50 micrograms/kg slow IV bolus";
+                cell.subLabel2.text = @"50 micrograms/kg slow IV bolus";
             }
             
             returnCell = cell;
@@ -507,6 +526,37 @@
     }
     
     return returnCell;
+}
+
+- (IntubationDrugsTableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
+{
+    IntubationDrugsTableViewCell *cell;
+    
+    cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108.0f, 21.0f)];
+    cell.drug.font = [UIFont boldSystemFontOfSize:18.0f];
+    cell.drug.adjustsFontSizeToFitWidth = YES;
+    cell.drug.textColor = [UIColor blackColor];
+    cell.drug.backgroundColor = [UIColor clearColor];
+    
+    cell.dose = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, 7.0f, 142.0f, 21.0f)];
+    cell.dose.font = [UIFont boldSystemFontOfSize:18.0f];
+    cell.dose.backgroundColor = [UIColor clearColor];
+
+    cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];
+    cell.subLabel2.textColor = [UIColor lightGrayColor];
+    cell.subLabel2.font = [UIFont systemFontOfSize:14.0f];
+    cell.subLabel2.backgroundColor = [UIColor clearColor];
+    
+    [cell addSubview:cell.drug];
+    [cell addSubview:cell.dose];
+    [cell addSubview:cell.subLabel2];
+    
+    return cell;
 }
 
 #pragma mark - Table view delegate

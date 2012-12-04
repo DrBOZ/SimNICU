@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 SimNICU. All rights reserved.
 //
 
+
+#import "InfusionsViewMinimalTableViewCell.h"
+#import "InfusionsViewMaximalTableViewCell.h"
 #import "InfusionsViewController.h"
 #import "DAAnisotropicImage.h"
 #import "SVSegmentedControl.h"
@@ -565,10 +568,10 @@
     {
         if (indexPath.section == 0)
         {
-            static NSString *CellIdentifier = @"Morphine";
+            NSString *CellIdentifier = @"Morphine";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 // cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
@@ -620,56 +623,30 @@
                 self.morphineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.morphineRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.0)
+                // segmented control
+                SVSegmentedControl *morphineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                [morphineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                morphineStrength.crossFadeLabelsOnDrag = YES;
+                morphineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                morphineStrength.tag = 0;
+                
+                if ([self.morphineStrength isEqualToString:@"Single"])
                 {
-                    SVSegmentedControl *morphineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                    [morphineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                    morphineStrength.crossFadeLabelsOnDrag = YES;
-                    morphineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                    morphineStrength.tag = 0;
-                    
-                    if ([self.morphineStrength isEqualToString:@"Single"])
-                    {
-                        morphineStrength.selectedIndex = 0;
-                    }
-                    else if ([self.morphineStrength isEqualToString:@"Double"])
-                    {
-                        morphineStrength.selectedIndex = 1;
-                    }
-                    else if ([self.morphineStrength isEqualToString:@"Quad"])
-                    {
-                        morphineStrength.selectedIndex = 2;
-                    }
-                    
-                    morphineStrength.center = CGPointMake(160, 150);
-                    
-                    [cell addSubview:morphineStrength];
+                    morphineStrength.selectedIndex = 0;
                 }
-                else 
+                else if ([self.morphineStrength isEqualToString:@"Double"])
                 {
-                    UISegmentedControl *morphineStrength = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                    morphineStrength.frame = CGRectMake(0.0f, 0.0f, 240.0f, 30.0f);
-                    morphineStrength.segmentedControlStyle = UISegmentedControlStyleBordered;
-                    [morphineStrength addTarget:self action:@selector(standardSegmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                    morphineStrength.tag = 0;
-                    
-                    if ([self.morphineStrength isEqualToString:@"Single"])
-                    {
-                        morphineStrength.selectedSegmentIndex = 0;
-                    }
-                    else if ([self.morphineStrength isEqualToString:@"Double"])
-                    {
-                        morphineStrength.selectedSegmentIndex = 1;
-                    }
-                    else if ([self.morphineStrength isEqualToString:@"Quad"])
-                    {
-                        morphineStrength.selectedSegmentIndex = 2;
-                    }
-                    
-                    morphineStrength.center = CGPointMake(160, 150);
-                    
-                    [cell addSubview:morphineStrength];
+                    morphineStrength.selectedIndex = 1;
                 }
+                else if ([self.morphineStrength isEqualToString:@"Quad"])
+                {
+                    morphineStrength.selectedIndex = 2;
+                }
+                
+                morphineStrength.center = CGPointMake(160, 150);
+                
+                [cell addSubview:morphineStrength];
+                
             
                 [cell addSubview:drug];
                 [cell addSubview:self.morphineDoseLabel];
@@ -780,56 +757,32 @@
                 self.dopamineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.dopamineRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.0)
+                SVSegmentedControl *dopamineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                [dopamineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                dopamineStrength.crossFadeLabelsOnDrag = YES;
+                dopamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                dopamineStrength.tag = 1;
+                
+                if ([self.dopamineStrength isEqualToString:@"Single"])
                 {
-                    SVSegmentedControl *dopamineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                    [dopamineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                    dopamineStrength.crossFadeLabelsOnDrag = YES;
-                    dopamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                    dopamineStrength.tag = 1;
-                    
-                    if ([self.dopamineStrength isEqualToString:@"Single"])
-                    {
-                        dopamineStrength.selectedIndex = 0;
-                    }
-                    else if ([self.dopamineStrength isEqualToString:@"Double"])
-                    {
-                        dopamineStrength.selectedIndex = 1;
-                    }
-                    else if ([self.dopamineStrength isEqualToString:@"Quad"])
-                    {
-                        dopamineStrength.selectedIndex = 2;
-                    }
-                    
-                    dopamineStrength.center = CGPointMake(160, 150);
-                    
-                    [cell addSubview:dopamineStrength];
+                    dopamineStrength.selectedIndex = 0;
                 }
-                else 
+                else if ([self.dopamineStrength isEqualToString:@"Double"])
                 {
-                    UISegmentedControl *dopamineStrength = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                    dopamineStrength.frame = CGRectMake(0.0f, 0.0f, 240.0f, 30.0f);
-                    dopamineStrength.segmentedControlStyle = UISegmentedControlStyleBordered;
-                    [dopamineStrength addTarget:self action:@selector(standardSegmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                    dopamineStrength.tag = 1;
-                    
-                    if ([self.dopamineStrength isEqualToString:@"Single"]) 
-                    {
-                        dopamineStrength.selectedSegmentIndex = 0;
-                    }
-                    else if ([self.dopamineStrength isEqualToString:@"Double"])
-                    {
-                        dopamineStrength.selectedSegmentIndex = 1;
-                    }
-                    else if ([self.dopamineStrength isEqualToString:@"Quad"])
-                    {
-                        dopamineStrength.selectedSegmentIndex = 2;
-                    }
-                    
-                    dopamineStrength.center = CGPointMake(160, 150);
-                    
-                    [cell addSubview:dopamineStrength];
+                    dopamineStrength.selectedIndex = 1;
                 }
+                else if ([self.dopamineStrength isEqualToString:@"Quad"])
+                {
+                    dopamineStrength.selectedIndex = 2;
+                }
+                
+                dopamineStrength.center = CGPointMake(160, 150);
+                
+                [cell addSubview:dopamineStrength];
+                
+        
+                
+                
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.dopamineDoseLabel];
@@ -2386,31 +2339,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *path = nil;
-    
-    /*
-     if (self.workingWeight)
-     {
-     if (indexPath.section == 0)
-     {
-     path = indexPath;
-     }
-     }
-     else 
-     {
-     if (indexPath.section == 0)
-     {
-     path = indexPath;
-     }
-     }
-     */
-    
-    return path;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    return nil;
 }
 
 - (void)standardSegmentedControlChangedValue:(UISegmentedControl*)segmentedControl 
