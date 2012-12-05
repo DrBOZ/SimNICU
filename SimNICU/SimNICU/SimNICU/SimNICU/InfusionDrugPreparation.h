@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *text; // combination of "ConcentrationDrug / ConcentrationDiluent"
 
-@property (nonatomic, strong) NSNumber *ConcentrationDrug;
-@property (nonatomic, strong) NSNumber *ConcentrationDiluent;
+@property (nonatomic, strong) NSNumber *ConcentrationDrugMilligrams;
+@property (nonatomic, strong) NSNumber *ConcentrationDiluentMillilitres;
 
 @end

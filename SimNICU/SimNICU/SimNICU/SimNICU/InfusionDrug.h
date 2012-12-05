@@ -15,9 +15,12 @@
 @property (nonatomic, strong) NSString *name;
 
 @property (nonatomic, strong) InfusionDrugPreparation *defaultPreparation;
-@property (nonatomic, strong) NSMutableArray *availablePreparations;
+@property (nonatomic, strong) NSMutableArray *availablePreparations; // contains InfusionDrugPreparations
 
-// time that can be left out once prepard...
+// time that can be left out once prepared...
+
+@property (nonatomic, strong) NSString *maximumStrength; // Single, Double, Quad
+// sure I can used a typedef enum statement here...and convert to NSNumber.
 
 
 // infusion specific
