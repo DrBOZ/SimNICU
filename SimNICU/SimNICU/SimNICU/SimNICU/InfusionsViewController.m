@@ -334,11 +334,11 @@
 {
     int sections;
     
-    if (self.workingWeight) 
+    if (self.workingWeight)
     {
         sections = 10;
     }
-    else 
+    else
     {
         sections = 7;
     }
@@ -350,9 +350,9 @@
 {
     int rows = 1;
     
-    if (!self.workingWeight) 
+    if (!self.workingWeight)
     {
-        switch (section) 
+        switch (section)
         {
             case 1: // inotropes
                 rows = 3;
@@ -370,17 +370,17 @@
 {
     float height = 66;
     
-    if (self.workingWeight) 
+    if (self.workingWeight)
     {
         if (indexPath.section == 0 || indexPath.section == 1 || indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 5 || indexPath.section == 6 || indexPath.section == 8 || indexPath.section == 9)
         {
             height = 180.0f;
         }
-        else if (indexPath.section == 4) 
+        else if (indexPath.section == 4)
         {
             height = 115.0f;
         }
-        else 
+        else
         {
             height = 130.0f;
         }
@@ -393,9 +393,9 @@
 {
     NSString *header = nil;
     
-    if (self.workingWeight) 
+    if (self.workingWeight)
     {
-        switch (section) 
+        switch (section)
         {
             case 0:
                 header = @"Sedation / Analgesia";
@@ -429,9 +429,9 @@
                 break;
         }
     }
-    else 
+    else
     {
-        switch (section) 
+        switch (section)
         {
             case 0:
                 header = @"Sedation / Analgesia";
@@ -472,20 +472,20 @@
 {
     float height = 44.0f;
     
-    if (self.workingWeight) 
+    if (self.workingWeight)
     {
         if (section == 0)
         {
             height = 66.0f;
         }
-        else if (section == 2 || section == 3 || section == 8) 
+        else if (section == 2 || section == 3 || section == 8)
         {
             height = 0;
         }
     }
-    else 
+    else
     {
-        if (section == 0) 
+        if (section == 0)
         {
             height = 66.0f;
         }
@@ -516,7 +516,7 @@
         }
     }
     /*
-     else 
+     else
      {
      if (section == 6)
      {
@@ -542,14 +542,14 @@
      }
      }
      */
-    if (self.workingWeight) 
+    if (self.workingWeight)
     {
         if (section == 9)
         {
             footer = 100.0f;
         }
     }
-    else 
+    else
     {
         if (section == 6)
         {
@@ -647,7 +647,7 @@
                 
                 [cell addSubview:morphineStrength];
                 
-            
+                
                 [cell addSubview:drug];
                 [cell addSubview:self.morphineDoseLabel];
                 [cell addSubview:self.morphineStrengthLabel];
@@ -660,7 +660,7 @@
                 
                 self.morphineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.morphineStrength, self.morphineStrengthDose];
                 
-                if ([self.morphineStrength isEqualToString:@"Double"] || [self.morphineStrength isEqualToString:@"Quad"]) 
+                if ([self.morphineStrength isEqualToString:@"Double"] || [self.morphineStrength isEqualToString:@"Quad"])
                 {
                     self.morphineStrengthLabel.textColor = [UIColor redColor];
                 }
@@ -780,7 +780,7 @@
                 
                 [cell addSubview:dopamineStrength];
                 
-        
+                
                 
                 
                 
@@ -796,11 +796,11 @@
                 
                 self.dopamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dopamineStrength, self.dopamineStrengthDose];
                 
-                if ([self.dopamineStrength isEqualToString:@"Double"] || [self.dopamineStrength isEqualToString:@"Quad"]) 
+                if ([self.dopamineStrength isEqualToString:@"Double"] || [self.dopamineStrength isEqualToString:@"Quad"])
                 {
                     self.dopamineStrengthLabel.textColor = [UIColor redColor];
                 }
-                else 
+                else
                 {
                     self.dopamineStrengthLabel.textColor = [UIColor blackColor];
                 }
@@ -815,7 +815,7 @@
                     self.dopamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
                     self.dopamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
                 }
-                else if ([self.dopamineStrength isEqualToString:@"Double"]) 
+                else if ([self.dopamineStrength isEqualToString:@"Double"])
                 {
                     dopamineDoseMilligrams = workingWeightKGasFloat * 60.0f;
                     self.dopamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
@@ -905,7 +905,7 @@
                 dobutamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
                 dobutamineStrength.tag = 2;
                 
-                if ([self.dobutamineStrength isEqualToString:@"Single"]) 
+                if ([self.dobutamineStrength isEqualToString:@"Single"])
                 {
                     dobutamineStrength.selectedIndex = 0;
                 }
@@ -933,7 +933,7 @@
                 
                 self.dobutamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dobutamineStrength, self.dobutamineStrengthDose];
                 
-                if ([self.dobutamineStrength isEqualToString:@"Double"] || [self.dobutamineStrength isEqualToString:@"Quad"]) 
+                if ([self.dobutamineStrength isEqualToString:@"Double"] || [self.dobutamineStrength isEqualToString:@"Quad"])
                 {
                     self.dobutamineStrengthLabel.textColor = [UIColor redColor];
                 }
@@ -1037,7 +1037,7 @@
                 adrenalineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
                 adrenalineStrength.tag = 3;
                 
-                if ([self.adrenalineStrength isEqualToString:@"Single"]) 
+                if ([self.adrenalineStrength isEqualToString:@"Single"])
                 {
                     adrenalineStrength.selectedIndex = 0;
                 }
@@ -1065,7 +1065,7 @@
                 {
                     self.adrenalineStrengthLabel.textColor = [UIColor blackColor];
                 }
-                else if ([self.adrenalineStrength isEqualToString:@"Double"]) 
+                else if ([self.adrenalineStrength isEqualToString:@"Double"])
                 {
                     self.adrenalineStrengthLabel.textColor = [UIColor redColor];
                 }
@@ -1080,7 +1080,7 @@
                     self.adrenalineDose2Label.text = @"1 ml/hr = 1 micrograms/kg/min";
                     self.adrenalineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
                 }
-                else if ([self.adrenalineStrength isEqualToString:@"Double"]) 
+                else if ([self.adrenalineStrength isEqualToString:@"Double"])
                 {
                     adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
                     self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
@@ -1092,7 +1092,7 @@
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 
-                if (adrenalineDoseMilligrams <= 1) 
+                if (adrenalineDoseMilligrams <= 1)
                 {
                     formatter.maximumFractionDigits = 2;
                 }
@@ -1246,7 +1246,7 @@
                 insulinStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
                 insulinStrength.tag = 5;
                 
-                if ([self.insulinStrength isEqualToString:@"Single"]) 
+                if ([self.insulinStrength isEqualToString:@"Single"])
                 {
                     insulinStrength.selectedIndex = 0;
                 }
@@ -1270,7 +1270,7 @@
                 
                 self.insulinStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.insulinStrength, self.insulinStrengthDose];
                 
-                if ([self.insulinStrength isEqualToString:@"Double"] || [self.insulinStrength isEqualToString:@"Quad"]) 
+                if ([self.insulinStrength isEqualToString:@"Double"] || [self.insulinStrength isEqualToString:@"Quad"])
                 {
                     self.insulinStrengthLabel.textColor = [UIColor redColor];
                 }
@@ -1368,7 +1368,7 @@
                 atracuriumStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
                 atracuriumStrength.tag = 6;
                 
-                if ([self.atracuriumStrength isEqualToString:@"Single"]) 
+                if ([self.atracuriumStrength isEqualToString:@"Single"])
                 {
                     atracuriumStrength.selectedIndex = 0;
                 }
@@ -1396,7 +1396,7 @@
                 {
                     self.atracuriumStrengthLabel.textColor = [UIColor blackColor];
                 }
-                else if ([self.atracuriumStrength isEqualToString:@"Double"] || [self.atracuriumStrength isEqualToString:@"Quad"]) 
+                else if ([self.atracuriumStrength isEqualToString:@"Double"] || [self.atracuriumStrength isEqualToString:@"Quad"])
                 {
                     self.atracuriumStrengthLabel.textColor = [UIColor redColor];
                 }
@@ -1503,7 +1503,7 @@
                 {
                     strength.textColor = [UIColor blackColor];
                 }
-                else if ([lidocaineStrength isEqualToString:@"Double"]) 
+                else if ([lidocaineStrength isEqualToString:@"Double"])
                 {
                     strength.textColor = [UIColor redColor];
                 }
@@ -1518,7 +1518,7 @@
                     dose2.text = @"1 ml/hr = 2 mg/kg/hr";
                     range.text = @"Range 1 - 3 ml/hr";
                 }
-                else if ([lidocaineStrength isEqualToString:@"Double"]) 
+                else if ([lidocaineStrength isEqualToString:@"Double"])
                 {
                     lidocaineDoseMilligrams = workingWeightKGasFloat * 200;
                     dose2.text = @"1 ml/hr = 4 mg/kg/hr";
@@ -1530,7 +1530,7 @@
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 
-                if (lidocaineDoseMilligrams <= 1) 
+                if (lidocaineDoseMilligrams <= 1)
                 {
                     formatter.maximumFractionDigits = 2;
                 }
@@ -1616,7 +1616,7 @@
                 midazolamStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
                 midazolamStrength.tag = 8;
                 
-                if ([self.morphineStrength isEqualToString:@"Single"]) 
+                if ([self.morphineStrength isEqualToString:@"Single"])
                 {
                     midazolamStrength.selectedIndex = 0;
                 }
@@ -1640,7 +1640,7 @@
                 
                 self.midazolamStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.midazolamStrength, self.midazolamStrengthDose];
                 
-                if ([self.midazolamStrength isEqualToString:@"Double"]) 
+                if ([self.midazolamStrength isEqualToString:@"Double"])
                 {
                     self.midazolamStrengthLabel.textColor = [UIColor redColor];
                 }
@@ -1735,26 +1735,26 @@
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
                 {
                     
-                     self.anisotropicSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 280.0f, 40.0f)];
-                     self.anisotropicSlider.minimumValue = 1.0f;
-                     self.anisotropicSlider.maximumValue = 50.0f;
-                     self.anisotropicSlider.value = 1.0f;
-                     [self.anisotropicSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-                     self.anisotropicSlider.continuous = YES;
-                     
-                     UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                     UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                     [self.anisotropicSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
-                     [self.anisotropicSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
-                     
-                     UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
-                     [self.anisotropicSlider setThumbImage:initialImage forState:UIControlStateNormal];
-                     [self.anisotropicSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
-                     
-                     [cell addSubview:self.anisotropicSlider];
-                
+                    self.anisotropicSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 280.0f, 40.0f)];
+                    self.anisotropicSlider.minimumValue = 1.0f;
+                    self.anisotropicSlider.maximumValue = 50.0f;
+                    self.anisotropicSlider.value = 1.0f;
+                    [self.anisotropicSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+                    self.anisotropicSlider.continuous = YES;
+                    
+                    UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
+                    UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
+                    [self.anisotropicSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
+                    [self.anisotropicSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
+                    
+                    UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
+                    [self.anisotropicSlider setThumbImage:initialImage forState:UIControlStateNormal];
+                    [self.anisotropicSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
+                    
+                    [cell addSubview:self.anisotropicSlider];
+                    
                 }
-                else 
+                else
                 {
                     self.normalSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 280.0f, 40.0f)];
                     self.normalSlider.minimumValue = 1.0f;
@@ -1802,7 +1802,7 @@
                 
                 NSString *prostingRateAsRoundedString = [formatter2 stringFromNumber:[NSNumber numberWithFloat:prostinRate]];
                 
-                self.prostinDose3Label.text = [NSString stringWithFormat:@"%.0f nanograms/kg/min = %@ ml/hr", prostinDoseNanogramsPerKilogramPerMinute, prostingRateAsRoundedString]; 
+                self.prostinDose3Label.text = [NSString stringWithFormat:@"%.0f nanograms/kg/min = %@ ml/hr", prostinDoseNanogramsPerKilogramPerMinute, prostingRateAsRoundedString];
                 
                 dose.text = @"50 micrograms";
                 text.text = @"in";
@@ -1813,11 +1813,11 @@
             returnCell = cell;
         }
     }
-    else 
+    else
     {
         if (indexPath.section == 0)
         {
-            if (indexPath.row == 0) 
+            if (indexPath.row == 0)
             {
                 static NSString *CellIdentifier = @"Morphine";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -1862,7 +1862,7 @@
         }
         if (indexPath.section == 1)
         {
-            if (indexPath.row == 0) 
+            if (indexPath.row == 0)
             {
                 static NSString *CellIdentifier = @"Dopamine";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -1904,7 +1904,7 @@
                 
                 returnCell = cell;
             }
-            else if (indexPath.row == 1) 
+            else if (indexPath.row == 1)
             {
                 static NSString *CellIdentifier = @"Dobutamine";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -1991,7 +1991,7 @@
         }
         if (indexPath.section == 2)
         {
-            if (indexPath.row == 0) 
+            if (indexPath.row == 0)
             {
                 static NSString *CellIdentifier = @"Hepsal";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -2078,7 +2078,7 @@
         }
         if (indexPath.section == 4)
         {
-            if (indexPath.row == 0) 
+            if (indexPath.row == 0)
             {
                 static NSString *CellIdentifier = @"Atracurium";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -2342,7 +2342,7 @@
     return nil;
 }
 
-- (void)standardSegmentedControlChangedValue:(UISegmentedControl*)segmentedControl 
+- (void)standardSegmentedControlChangedValue:(UISegmentedControl*)segmentedControl
 {
     if (segmentedControl.tag == 0)      // morphine
     {
@@ -2369,11 +2369,11 @@
         
         self.morphineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.morphineStrength, self.morphineStrengthDose];
         
-        if ([self.morphineStrength isEqualToString:@"Double"] || [self.morphineStrength isEqualToString:@"Quad"]) 
+        if ([self.morphineStrength isEqualToString:@"Double"] || [self.morphineStrength isEqualToString:@"Quad"])
         {
             self.morphineStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -2388,13 +2388,13 @@
             self.morphineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.25 - 2 ml/hr";
         }
-        else if ([self.morphineStrength isEqualToString:@"Double"]) 
+        else if ([self.morphineStrength isEqualToString:@"Double"])
         {
             morphineDoseMilligrams = workingWeightKGasFloat * 2;
             self.morphineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
-            if ((morphineDoseMilligrams / 50) > 0.4) 
+            if ((morphineDoseMilligrams / 50) > 0.4)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2407,17 +2407,17 @@
                 if (!morphineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     morphineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -2431,7 +2431,7 @@
             self.morphineDose2Label.text = @"1 ml/hr = 80 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((morphineDoseMilligrams / 50) > 0.4) 
+            if ((morphineDoseMilligrams / 50) > 0.4)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2444,17 +2444,17 @@
                 if (!morphineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     morphineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -2498,11 +2498,11 @@
         
         self.dopamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dopamineStrength, self.dopamineStrengthDose];
         
-        if ([self.dopamineStrength isEqualToString:@"Double"] || [self.dopamineStrength isEqualToString:@"Quad"]) 
+        if ([self.dopamineStrength isEqualToString:@"Double"] || [self.dopamineStrength isEqualToString:@"Quad"])
         {
             self.dopamineStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -2517,13 +2517,13 @@
             self.dopamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
-        else if ([self.dopamineStrength isEqualToString:@"Double"]) 
+        else if ([self.dopamineStrength isEqualToString:@"Double"])
         {
             dopamineDoseMilligrams = workingWeightKGasFloat * 60.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
-            if ((dopamineDoseMilligrams / 50) > 3.2) 
+            if ((dopamineDoseMilligrams / 50) > 3.2)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2536,17 +2536,17 @@
                 if (!dopamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!" 
+                                              initWithTitle:@"DOPAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dopamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!" 
+                                              initWithTitle:@"DOPAMINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3.2 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -2560,7 +2560,7 @@
             self.dopamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((dopamineDoseMilligrams / 50) > 3.2) 
+            if ((dopamineDoseMilligrams / 50) > 3.2)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2573,14 +2573,14 @@
                 if (!dopamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!" 
+                                              initWithTitle:@"DOPAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dopamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
                                               initWithTitle:@"DOPAMINE - CAUTION!"
@@ -2625,11 +2625,11 @@
         
         self.dobutamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dobutamineStrength, self.dobutamineStrengthDose];
         
-        if ([self.dobutamineStrength isEqualToString:@"Double"] || [self.dobutamineStrength isEqualToString:@"Quad"]) 
+        if ([self.dobutamineStrength isEqualToString:@"Double"] || [self.dobutamineStrength isEqualToString:@"Quad"])
         {
             self.dobutamineStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -2644,13 +2644,13 @@
             self.dobutamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
-        else if ([self.dobutamineStrength isEqualToString:@"Double"]) 
+        else if ([self.dobutamineStrength isEqualToString:@"Double"])
         {
             dobutamineDoseMilligrams = workingWeightKGasFloat * 60;
             self.dobutamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
-            if ((dobutamineDoseMilligrams / 50) > 5) 
+            if ((dobutamineDoseMilligrams / 50) > 5)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2663,17 +2663,17 @@
                 if (!dobutamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dobutamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -2687,7 +2687,7 @@
             self.dobutamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((dobutamineDoseMilligrams / 50) > 5) 
+            if ((dobutamineDoseMilligrams / 50) > 5)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2700,17 +2700,17 @@
                 if (!dobutamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dobutamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -2745,7 +2745,7 @@
                 break;
         }
         
-        if (self.workingWeight) 
+        if (self.workingWeight)
         {
             self.adrenalineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.adrenalineStrength, self.adrenalineStrengthDose];
             
@@ -2753,7 +2753,7 @@
             {
                 self.adrenalineStrengthLabel.textColor = [UIColor blackColor];
             }
-            else if ([self.adrenalineStrength isEqualToString:@"Double"]) 
+            else if ([self.adrenalineStrength isEqualToString:@"Double"])
             {
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
@@ -2768,13 +2768,13 @@
                 self.adrenalineDose2Label.text = @"1 ml/hr = 1 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             }
-            else if ([self.adrenalineStrength isEqualToString:@"Double"]) 
+            else if ([self.adrenalineStrength isEqualToString:@"Double"])
             {
                 adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
                 self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
-                if ((adrenalineDoseMilligrams / 50) > 0.32) 
+                if ((adrenalineDoseMilligrams / 50) > 0.32)
                 {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -2795,10 +2795,10 @@
                         [alertView show];
                         adrenalineConcentrationHighWarningGiven = YES;
                     }
-                    else 
+                    else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)] 
+                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.32 mg/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -2834,15 +2834,15 @@
                 break;
         }
         
-        if (self.workingWeight) 
+        if (self.workingWeight)
         {
             self.insulinStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.insulinStrength, self.insulinStrengthDose];
             
-            if ([self.insulinStrength isEqualToString:@"Double"] || [self.insulinStrength isEqualToString:@"Quad"]) 
+            if ([self.insulinStrength isEqualToString:@"Double"] || [self.insulinStrength isEqualToString:@"Quad"])
             {
                 self.insulinStrengthLabel.textColor = [UIColor redColor];
             }
-            else 
+            else
             {
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
@@ -2890,7 +2890,7 @@
                 break;
         }
         
-        if (self.workingWeight) 
+        if (self.workingWeight)
         {
             self.atracuriumStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.atracuriumStrength, self.atracuriumStrengthDose];
             
@@ -2898,7 +2898,7 @@
             {
                 self.atracuriumStrengthLabel.textColor = [UIColor blackColor];
             }
-            else if ([self.atracuriumStrength isEqualToString:@"Double"]) 
+            else if ([self.atracuriumStrength isEqualToString:@"Double"])
             {
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
@@ -2913,7 +2913,7 @@
                 self.atracuriumDose2Label.text = @"1 ml/hr = 1.2 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.25 - 1 ml/hr";
                 
-                if ((atracuriumDoseMilligrams / 50) < 0.5) 
+                if ((atracuriumDoseMilligrams / 50) < 0.5)
                 {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -2926,17 +2926,17 @@
                     if (!dobutamineConcentrationHighWarningGiven)
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:@"Final concentration below\n500 micrograms/ml."
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
                         [alertView show];
                         dobutamineConcentrationHighWarningGiven = YES;
                     }
-                    else 
+                    else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(< 500 micrograms/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -2949,7 +2949,7 @@
                 self.atracuriumDose2Label.text = @"1 ml/hr = 2.4 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
-                if ((atracuriumDoseMilligrams / 50) > 5) 
+                if ((atracuriumDoseMilligrams / 50) > 5)
                 {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -2962,17 +2962,17 @@
                     if (!dobutamineConcentrationHighWarningGiven)
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:@"Final concentration exceeds\n5.0 mg/ml."
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
                         [alertView show];
                         dobutamineConcentrationHighWarningGiven = YES;
                     }
-                    else 
+                    else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -3010,11 +3010,11 @@
         
         self.midazolamStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.midazolamStrength, self.midazolamStrengthDose];
         
-        if ([self.midazolamStrength isEqualToString:@"Double"]) 
+        if ([self.midazolamStrength isEqualToString:@"Double"])
         {
             self.midazolamStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -3047,7 +3047,7 @@
 
 #pragma mark - SPSegmentedControl
 
-- (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl 
+- (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl
 {
     if (segmentedControl.tag == 0)      // morphine
     {
@@ -3074,11 +3074,11 @@
         
         self.morphineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.morphineStrength, self.morphineStrengthDose];
         
-        if ([self.morphineStrength isEqualToString:@"Double"] || [self.morphineStrength isEqualToString:@"Quad"]) 
+        if ([self.morphineStrength isEqualToString:@"Double"] || [self.morphineStrength isEqualToString:@"Quad"])
         {
             self.morphineStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -3093,13 +3093,13 @@
             self.morphineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.25 - 2 ml/hr";
         }
-        else if ([self.morphineStrength isEqualToString:@"Double"]) 
+        else if ([self.morphineStrength isEqualToString:@"Double"])
         {
             morphineDoseMilligrams = workingWeightKGasFloat * 2;
             self.morphineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
-            if ((morphineDoseMilligrams / 50) > 0.4) 
+            if ((morphineDoseMilligrams / 50) > 0.4)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3112,17 +3112,17 @@
                 if (!morphineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     morphineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -3136,7 +3136,7 @@
             self.morphineDose2Label.text = @"1 ml/hr = 80 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((morphineDoseMilligrams / 50) > 0.4) 
+            if ((morphineDoseMilligrams / 50) > 0.4)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3149,17 +3149,17 @@
                 if (!morphineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     morphineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!" 
+                                              initWithTitle:@"MORPHINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -3203,11 +3203,11 @@
         
         self.dopamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dopamineStrength, self.dopamineStrengthDose];
         
-        if ([self.dopamineStrength isEqualToString:@"Double"] || [self.dopamineStrength isEqualToString:@"Quad"]) 
+        if ([self.dopamineStrength isEqualToString:@"Double"] || [self.dopamineStrength isEqualToString:@"Quad"])
         {
             self.dopamineStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -3222,13 +3222,13 @@
             self.dopamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
-        else if ([self.dopamineStrength isEqualToString:@"Double"]) 
+        else if ([self.dopamineStrength isEqualToString:@"Double"])
         {
             dopamineDoseMilligrams = workingWeightKGasFloat * 60.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
-            if ((dopamineDoseMilligrams / 50) > 3.2) 
+            if ((dopamineDoseMilligrams / 50) > 3.2)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3241,14 +3241,14 @@
                 if (!dopamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!" 
+                                              initWithTitle:@"DOPAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dopamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
                                               initWithTitle:@"DOPAMINE - CAUTION!"
@@ -3265,7 +3265,7 @@
             self.dopamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((dopamineDoseMilligrams / 50) > 3.2) 
+            if ((dopamineDoseMilligrams / 50) > 3.2)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3278,14 +3278,14 @@
                 if (!dopamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!" 
+                                              initWithTitle:@"DOPAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dopamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
                                               initWithTitle:@"DOPAMINE - CAUTION!"
@@ -3330,11 +3330,11 @@
         
         self.dobutamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dobutamineStrength, self.dobutamineStrengthDose];
         
-        if ([self.dobutamineStrength isEqualToString:@"Double"] || [self.dobutamineStrength isEqualToString:@"Quad"]) 
+        if ([self.dobutamineStrength isEqualToString:@"Double"] || [self.dobutamineStrength isEqualToString:@"Quad"])
         {
             self.dobutamineStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -3349,13 +3349,13 @@
             self.dobutamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
-        else if ([self.dobutamineStrength isEqualToString:@"Double"]) 
+        else if ([self.dobutamineStrength isEqualToString:@"Double"])
         {
             dobutamineDoseMilligrams = workingWeightKGasFloat * 60;
             self.dobutamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
-            if ((dobutamineDoseMilligrams / 50) > 5) 
+            if ((dobutamineDoseMilligrams / 50) > 5)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3368,17 +3368,17 @@
                 if (!dobutamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dobutamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -3392,7 +3392,7 @@
             self.dobutamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((dobutamineDoseMilligrams / 50) > 5) 
+            if ((dobutamineDoseMilligrams / 50) > 5)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3405,17 +3405,17 @@
                 if (!dobutamineConcentrationHighWarningGiven)
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
                     [alertView show];
                     dobutamineConcentrationHighWarningGiven = YES;
                 }
-                else 
+                else
                 {
                     UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
@@ -3450,7 +3450,7 @@
                 break;
         }
         
-        if (self.workingWeight) 
+        if (self.workingWeight)
         {
             self.adrenalineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.adrenalineStrength, self.adrenalineStrengthDose];
             
@@ -3458,7 +3458,7 @@
             {
                 self.adrenalineStrengthLabel.textColor = [UIColor blackColor];
             }
-            else if ([self.adrenalineStrength isEqualToString:@"Double"]) 
+            else if ([self.adrenalineStrength isEqualToString:@"Double"])
             {
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
@@ -3473,13 +3473,13 @@
                 self.adrenalineDose2Label.text = @"1 ml/hr = 1 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             }
-            else if ([self.adrenalineStrength isEqualToString:@"Double"]) 
+            else if ([self.adrenalineStrength isEqualToString:@"Double"])
             {
                 adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
                 self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
-                if ((adrenalineDoseMilligrams / 50) > 0.32) 
+                if ((adrenalineDoseMilligrams / 50) > 0.32)
                 {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3493,17 +3493,17 @@
                     if (!adrenalineConcentrationHighWarningGiven)
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)] 
+                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
                                                   message:@"Final concentration exceeds\n0.32 mg/ml.\n(Can be used more concentrated, or even neat, in fluid restricted patients and always via a central line)"
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
                         [alertView show];
                         adrenalineConcentrationHighWarningGiven = YES;
                     }
-                    else 
+                    else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)] 
+                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.32 mg/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -3539,15 +3539,15 @@
                 break;
         }
         
-        if (self.workingWeight) 
+        if (self.workingWeight)
         {
             self.insulinStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.insulinStrength, self.insulinStrengthDose];
             
-            if ([self.insulinStrength isEqualToString:@"Double"] || [self.insulinStrength isEqualToString:@"Quad"]) 
+            if ([self.insulinStrength isEqualToString:@"Double"] || [self.insulinStrength isEqualToString:@"Quad"])
             {
                 self.insulinStrengthLabel.textColor = [UIColor redColor];
             }
-            else 
+            else
             {
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
@@ -3595,7 +3595,7 @@
                 break;
         }
         
-        if (self.workingWeight) 
+        if (self.workingWeight)
         {
             self.atracuriumStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.atracuriumStrength, self.atracuriumStrengthDose];
             
@@ -3603,7 +3603,7 @@
             {
                 self.atracuriumStrengthLabel.textColor = [UIColor blackColor];
             }
-            else if ([self.atracuriumStrength isEqualToString:@"Double"]) 
+            else if ([self.atracuriumStrength isEqualToString:@"Double"])
             {
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
@@ -3618,7 +3618,7 @@
                 self.atracuriumDose2Label.text = @"1 ml/hr = 1.2 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.25 - 1 ml/hr";
                 
-                if ((atracuriumDoseMilligrams / 50) < 0.5) 
+                if ((atracuriumDoseMilligrams / 50) < 0.5)
                 {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -3631,17 +3631,17 @@
                     if (!dobutamineConcentrationHighWarningGiven)
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:@"Final concentration below\n500 micrograms/ml."
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
                         [alertView show];
                         dobutamineConcentrationHighWarningGiven = YES;
                     }
-                    else 
+                    else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(< 500 micrograms/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -3654,7 +3654,7 @@
                 self.atracuriumDose2Label.text = @"1 ml/hr = 2.4 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
-                if ((atracuriumDoseMilligrams / 50) > 5) 
+                if ((atracuriumDoseMilligrams / 50) > 5)
                 {
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -3667,17 +3667,17 @@
                     if (!dobutamineConcentrationHighWarningGiven)
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:@"Final concentration exceeds\n5.0 mg/ml."
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
                         [alertView show];
                         dobutamineConcentrationHighWarningGiven = YES;
                     }
-                    else 
+                    else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!" 
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -3715,11 +3715,11 @@
         
         self.midazolamStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.midazolamStrength, self.midazolamStrengthDose];
         
-        if ([self.midazolamStrength isEqualToString:@"Double"]) 
+        if ([self.midazolamStrength isEqualToString:@"Double"])
         {
             self.midazolamStrengthLabel.textColor = [UIColor redColor];
         }
-        else 
+        else
         {
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
@@ -3766,7 +3766,7 @@
     
     NSString *prostingRateAsRoundedString = [formatter stringFromNumber:[NSNumber numberWithFloat:prostinRate]];
     
-    self.prostinDose3Label.text = [NSString stringWithFormat:@"%.0f nanograms/kg/min = %@ ml/hr", prostinDoseNanogramsPerKilogramPerMinute, prostingRateAsRoundedString]; 
+    self.prostinDose3Label.text = [NSString stringWithFormat:@"%.0f nanograms/kg/min = %@ ml/hr", prostinDoseNanogramsPerKilogramPerMinute, prostingRateAsRoundedString];
 }
 
 @end
