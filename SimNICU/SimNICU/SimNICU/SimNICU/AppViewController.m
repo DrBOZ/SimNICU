@@ -17,7 +17,6 @@
 
 // screenControllers - alphabetical order
 #import "AboutSimNICUViewController.h"
-#import "AboutSimNICUViewController2.h"
 #import "APGARTabBarController.h"
 #import "APGAR1ViewController.h"
 #import "APGAR5ViewController.h"

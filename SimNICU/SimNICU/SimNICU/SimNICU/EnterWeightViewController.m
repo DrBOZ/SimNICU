@@ -210,16 +210,7 @@
     
     if ([self isViewLoaded] && self.view.window == nil)
     {
-        NSLog(@"EnterWeightViewController unloaded properties");
-        
-        /*
-         NSLog(@"EnterWeightViewController releasing objects");
-         
-         self.myTableView = nil;
-         self.gestation = nil;
-         self.weight = nil;
-         self.button = nil;
-         */
+        NSLog(@"EnterWeightViewController DOES NOT UNLOAD properties");
     }
 }
 

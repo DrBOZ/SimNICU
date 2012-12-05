@@ -10,7 +10,10 @@
 
 @interface Preferences : NSObject <NSCoding>
 
-// List screens in alphabetical order
+// alphabetical order
+
+// Infusions
+@property (nonatomic, retain) NSNumber *defaultInfusionFluidVolumeMillilitres;
 
 // Intubation
 @property (nonatomic, retain) NSString *ETTRoundUp;
@@ -25,6 +28,7 @@
 // Retinopathy of Prematurity
 @property (nonatomic, retain) NSString *ROPGestationScreeningThreshold;
 @property (nonatomic, retain) NSString *ROPBirthWeightScreeningThreshold;
+
 
 
 @end

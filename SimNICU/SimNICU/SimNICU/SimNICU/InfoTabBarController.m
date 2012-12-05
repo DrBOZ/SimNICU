@@ -6,10 +6,9 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-#import "AcknowledgementsViewController.h"
 #import "InstructionsViewController.h"
 #import "AboutSimNICUViewController.h"
-#import "AboutSimNICUViewController2.h"
+#import "AboutSimNICUViewController.h"
 #import "DisclaimerViewController.h"
 #import "TwitterViewController.h"
 #import "InfoTabBarController.h"
@@ -28,11 +27,10 @@
     {
         self.title = @"Information";
         
-        AboutSimNICUViewController2 *firstViewController = [[AboutSimNICUViewController2 alloc] init];
+        AboutSimNICUViewController *firstViewController = [[AboutSimNICUViewController alloc] init];
         InstructionsViewController *secondViewController = [[InstructionsViewController alloc] init];
         TwitterViewController *thirdViewController = [[TwitterViewController alloc] init];
         DisclaimerViewController *fourthViewController = [[DisclaimerViewController alloc] init];
-        // AcknowledgementsViewController *fourthViewController = [[AcknowledgementsViewController alloc] init];
         
         firstViewController.tabBarItem.image = [UIImage imageNamed:@"about.png"];
         secondViewController.tabBarItem.image = [UIImage imageNamed:@"instructions.png"];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
+		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
 		5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A61166E37FE0044A7D1 /* UIKit.framework */; };
 		5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
 		5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
@@ -66,13 +68,8 @@
 		5C940B32166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */; };
 		5C940B33166E3BDF0044A7D1 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B21166E3BDF0044A7D1 /* about.png */; };
 		5C940B34166E3BDF0044A7D1 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B22166E3BDF0044A7D1 /* about@2x.png */; };
-		5C940B35166E3BDF0044A7D1 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B23166E3BDF0044A7D1 /* about.html */; };
-		5C940B36166E3BDF0044A7D1 /* about2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B24166E3BDF0044A7D1 /* about2.html */; };
-		5C940B37166E3BDF0044A7D1 /* acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B25166E3BDF0044A7D1 /* acknowledgements.html */; };
-		5C940B38166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B27166E3BDF0044A7D1 /* AboutSimNICUViewController.m */; };
-		5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController2.m */; };
+		5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController.m */; };
 		5C940B3A166E3BDF0044A7D1 /* UnderlineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B2B166E3BDF0044A7D1 /* UnderlineLabel.m */; };
-		5C940B3B166E3BDF0044A7D1 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B2D166E3BDF0044A7D1 /* AcknowledgementsViewController.m */; };
 		5C940B40166E3BED0044A7D1 /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3C166E3BED0044A7D1 /* instructions.png */; };
 		5C940B41166E3BED0044A7D1 /* instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3D166E3BED0044A7D1 /* instructions@2x.png */; };
 		5C940B42166E3BED0044A7D1 /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B3F166E3BED0044A7D1 /* InstructionsViewController.m */; };
@@ -234,6 +231,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
+		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
+		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
+		5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrugPreparation.m; sourceTree = "<group>"; };
 		5C940A5D166E37FE0044A7D1 /* SimNICU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimNICU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C940A61166E37FE0044A7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C940A63166E37FE0044A7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -333,17 +334,10 @@
 		5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon1000x1000.png; sourceTree = "<group>"; };
 		5C940B21166E3BDF0044A7D1 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		5C940B22166E3BDF0044A7D1 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
-		5C940B23166E3BDF0044A7D1 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
-		5C940B24166E3BDF0044A7D1 /* about2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about2.html; sourceTree = "<group>"; };
-		5C940B25166E3BDF0044A7D1 /* acknowledgements.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = acknowledgements.html; sourceTree = "<group>"; };
-		5C940B26166E3BDF0044A7D1 /* AboutSimNICUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSimNICUViewController.h; sourceTree = "<group>"; };
-		5C940B27166E3BDF0044A7D1 /* AboutSimNICUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSimNICUViewController.m; sourceTree = "<group>"; };
-		5C940B28166E3BDF0044A7D1 /* AboutSimNICUViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSimNICUViewController2.h; sourceTree = "<group>"; };
-		5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSimNICUViewController2.m; sourceTree = "<group>"; };
+		5C940B28166E3BDF0044A7D1 /* AboutSimNICUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutSimNICUViewController.h; sourceTree = "<group>"; };
+		5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutSimNICUViewController.m; sourceTree = "<group>"; };
 		5C940B2A166E3BDF0044A7D1 /* UnderlineLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderlineLabel.h; sourceTree = "<group>"; };
 		5C940B2B166E3BDF0044A7D1 /* UnderlineLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderlineLabel.m; sourceTree = "<group>"; };
-		5C940B2C166E3BDF0044A7D1 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
-		5C940B2D166E3BDF0044A7D1 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
 		5C940B3C166E3BED0044A7D1 /* instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions.png; sourceTree = "<group>"; };
 		5C940B3D166E3BED0044A7D1 /* instructions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instructions@2x.png"; sourceTree = "<group>"; };
 		5C940B3E166E3BED0044A7D1 /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
@@ -933,17 +927,10 @@
 		5C940B18166E3BBA0044A7D1 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B23166E3BDF0044A7D1 /* about.html */,
-				5C940B24166E3BDF0044A7D1 /* about2.html */,
-				5C940B25166E3BDF0044A7D1 /* acknowledgements.html */,
-				5C940B26166E3BDF0044A7D1 /* AboutSimNICUViewController.h */,
-				5C940B27166E3BDF0044A7D1 /* AboutSimNICUViewController.m */,
-				5C940B28166E3BDF0044A7D1 /* AboutSimNICUViewController2.h */,
-				5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController2.m */,
+				5C940B28166E3BDF0044A7D1 /* AboutSimNICUViewController.h */,
+				5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController.m */,
 				5C940B2A166E3BDF0044A7D1 /* UnderlineLabel.h */,
 				5C940B2B166E3BDF0044A7D1 /* UnderlineLabel.m */,
-				5C940B2C166E3BDF0044A7D1 /* AcknowledgementsViewController.h */,
-				5C940B2D166E3BDF0044A7D1 /* AcknowledgementsViewController.m */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -1051,6 +1038,10 @@
 				5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */,
 				5C940D02166E84120044A7D1 /* InfusionsViewMaximalTableViewCell.h */,
 				5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */,
+				5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */,
+				5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */,
+				5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */,
+				5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */,
 				5C940B92166E3C2E0044A7D1 /* IntubationViewController.h */,
 				5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */,
 				5C940B94166E3C2E0044A7D1 /* IntubationDrugsViewController.h */,
@@ -1351,9 +1342,6 @@
 				5C940B32166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png in Resources */,
 				5C940B33166E3BDF0044A7D1 /* about.png in Resources */,
 				5C940B34166E3BDF0044A7D1 /* about@2x.png in Resources */,
-				5C940B35166E3BDF0044A7D1 /* about.html in Resources */,
-				5C940B36166E3BDF0044A7D1 /* about2.html in Resources */,
-				5C940B37166E3BDF0044A7D1 /* acknowledgements.html in Resources */,
 				5C940B40166E3BED0044A7D1 /* instructions.png in Resources */,
 				5C940B41166E3BED0044A7D1 /* instructions@2x.png in Resources */,
 				5C940B47166E3BFA0044A7D1 /* twitter.png in Resources */,
@@ -1481,10 +1469,8 @@
 				5C940B14166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m in Sources */,
 				5C940B15166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m in Sources */,
 				5C940B16166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
-				5C940B38166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */,
-				5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController2.m in Sources */,
+				5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */,
 				5C940B3A166E3BDF0044A7D1 /* UnderlineLabel.m in Sources */,
-				5C940B3B166E3BDF0044A7D1 /* AcknowledgementsViewController.m in Sources */,
 				5C940B42166E3BED0044A7D1 /* InstructionsViewController.m in Sources */,
 				5C940B49166E3BFA0044A7D1 /* TwitterViewController.m in Sources */,
 				5C940B52166E3C060044A7D1 /* DisclaimerViewController.m in Sources */,
@@ -1548,6 +1534,8 @@
 				5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */,
 				5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */,
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
+				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
+				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1764,6 +1752,7 @@
 				5C940A7D166E37FE0044A7D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

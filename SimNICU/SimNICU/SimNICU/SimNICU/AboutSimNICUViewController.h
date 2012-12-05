@@ -2,11 +2,9 @@
 //  AboutSimNICUViewController.h
 //  SimNICU
 //
-//  Created by Conrad Bosman on 08/09/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Created by Conrad Bosman on 30/11/2012.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
-
-#import <UIKit/UIKit.h>
 
 @interface AboutSimNICUViewController : UIViewController
 
