@@ -9,6 +9,31 @@
 /* Begin PBXBuildFile section */
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
 		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
+		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
+		5C8C3E0616707F880073886A /* kButtonAC copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DED16707F880073886A /* kButtonAC copy.png */; };
+		5C8C3E0716707F880073886A /* kButtonAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEE16707F880073886A /* kButtonAC.png */; };
+		5C8C3E0816707F880073886A /* kButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEF16707F880073886A /* kButtonAdd.png */; };
+		5C8C3E0916707F880073886A /* kButtonChangeSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF016707F880073886A /* kButtonChangeSign.png */; };
+		5C8C3E0A16707F880073886A /* kButtonDivide.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF116707F880073886A /* kButtonDivide.png */; };
+		5C8C3E0B16707F880073886A /* kButtonDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF216707F880073886A /* kButtonDot.png */; };
+		5C8C3E0C16707F880073886A /* kButtonEight.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF316707F880073886A /* kButtonEight.png */; };
+		5C8C3E0D16707F880073886A /* kButtonEquals.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF416707F880073886A /* kButtonEquals.png */; };
+		5C8C3E0E16707F880073886A /* kButtonFive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF516707F880073886A /* kButtonFive.png */; };
+		5C8C3E0F16707F880073886A /* kButtonFour.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF616707F880073886A /* kButtonFour.png */; };
+		5C8C3E1016707F880073886A /* kButtonMC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF716707F880073886A /* kButtonMC.png */; };
+		5C8C3E1116707F880073886A /* kButtonMMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF816707F880073886A /* kButtonMMinus.png */; };
+		5C8C3E1216707F880073886A /* kButtonMPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF916707F880073886A /* kButtonMPlus.png */; };
+		5C8C3E1316707F880073886A /* kButtonMR.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFA16707F880073886A /* kButtonMR.png */; };
+		5C8C3E1416707F880073886A /* kButtonMultiply.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFB16707F880073886A /* kButtonMultiply.png */; };
+		5C8C3E1516707F880073886A /* kButtonNine.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFC16707F880073886A /* kButtonNine.png */; };
+		5C8C3E1616707F880073886A /* kButtonOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFD16707F880073886A /* kButtonOne.png */; };
+		5C8C3E1716707F880073886A /* kButtonSeven.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFE16707F880073886A /* kButtonSeven.png */; };
+		5C8C3E1816707F880073886A /* kButtonSix.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFF16707F880073886A /* kButtonSix.png */; };
+		5C8C3E1916707F880073886A /* kButtonSubtract.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0016707F880073886A /* kButtonSubtract.png */; };
+		5C8C3E1A16707F880073886A /* kButtonTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0116707F880073886A /* kButtonTemplate.png */; };
+		5C8C3E1B16707F880073886A /* kButtonThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0216707F880073886A /* kButtonThree.png */; };
+		5C8C3E1C16707F880073886A /* kButtonTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0316707F880073886A /* kButtonTwo.png */; };
+		5C8C3E1D16707F880073886A /* kButtonZero.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0416707F880073886A /* kButtonZero.png */; };
 		5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A61166E37FE0044A7D1 /* UIKit.framework */; };
 		5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
 		5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
@@ -235,6 +260,32 @@
 		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
 		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
 		5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrugPreparation.m; sourceTree = "<group>"; };
+		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		5C8C3DEB16707C900073886A /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
+		5C8C3DED16707F880073886A /* kButtonAC copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kButtonAC copy.png"; sourceTree = "<group>"; };
+		5C8C3DEE16707F880073886A /* kButtonAC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonAC.png; sourceTree = "<group>"; };
+		5C8C3DEF16707F880073886A /* kButtonAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonAdd.png; sourceTree = "<group>"; };
+		5C8C3DF016707F880073886A /* kButtonChangeSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonChangeSign.png; sourceTree = "<group>"; };
+		5C8C3DF116707F880073886A /* kButtonDivide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonDivide.png; sourceTree = "<group>"; };
+		5C8C3DF216707F880073886A /* kButtonDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonDot.png; sourceTree = "<group>"; };
+		5C8C3DF316707F880073886A /* kButtonEight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonEight.png; sourceTree = "<group>"; };
+		5C8C3DF416707F880073886A /* kButtonEquals.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonEquals.png; sourceTree = "<group>"; };
+		5C8C3DF516707F880073886A /* kButtonFive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonFive.png; sourceTree = "<group>"; };
+		5C8C3DF616707F880073886A /* kButtonFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonFour.png; sourceTree = "<group>"; };
+		5C8C3DF716707F880073886A /* kButtonMC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonMC.png; sourceTree = "<group>"; };
+		5C8C3DF816707F880073886A /* kButtonMMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonMMinus.png; sourceTree = "<group>"; };
+		5C8C3DF916707F880073886A /* kButtonMPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonMPlus.png; sourceTree = "<group>"; };
+		5C8C3DFA16707F880073886A /* kButtonMR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonMR.png; sourceTree = "<group>"; };
+		5C8C3DFB16707F880073886A /* kButtonMultiply.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonMultiply.png; sourceTree = "<group>"; };
+		5C8C3DFC16707F880073886A /* kButtonNine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonNine.png; sourceTree = "<group>"; };
+		5C8C3DFD16707F880073886A /* kButtonOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonOne.png; sourceTree = "<group>"; };
+		5C8C3DFE16707F880073886A /* kButtonSeven.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonSeven.png; sourceTree = "<group>"; };
+		5C8C3DFF16707F880073886A /* kButtonSix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonSix.png; sourceTree = "<group>"; };
+		5C8C3E0016707F880073886A /* kButtonSubtract.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonSubtract.png; sourceTree = "<group>"; };
+		5C8C3E0116707F880073886A /* kButtonTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonTemplate.png; sourceTree = "<group>"; };
+		5C8C3E0216707F880073886A /* kButtonThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonThree.png; sourceTree = "<group>"; };
+		5C8C3E0316707F880073886A /* kButtonTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonTwo.png; sourceTree = "<group>"; };
+		5C8C3E0416707F880073886A /* kButtonZero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonZero.png; sourceTree = "<group>"; };
 		5C940A5D166E37FE0044A7D1 /* SimNICU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimNICU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C940A61166E37FE0044A7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C940A63166E37FE0044A7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -994,6 +1045,8 @@
 				5C940B67166E3C2E0044A7D1 /* platelets.html */,
 				5C940B68166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.h */,
 				5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */,
+				5C8C3DE916707C7B0073886A /* CalculatorViewController.h */,
+				5C8C3DEB16707C900073886A /* CalculatorViewController.m */,
 				5C940B6A166E3C2E0044A7D1 /* cooling2.html */,
 				5C940B6B166E3C2E0044A7D1 /* CoolingViewController.h */,
 				5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */,
@@ -1233,6 +1286,30 @@
 		5C940C45166E3E3F0044A7D1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				5C8C3DED16707F880073886A /* kButtonAC copy.png */,
+				5C8C3DEE16707F880073886A /* kButtonAC.png */,
+				5C8C3DEF16707F880073886A /* kButtonAdd.png */,
+				5C8C3DF016707F880073886A /* kButtonChangeSign.png */,
+				5C8C3DF116707F880073886A /* kButtonDivide.png */,
+				5C8C3DF216707F880073886A /* kButtonDot.png */,
+				5C8C3DF316707F880073886A /* kButtonEight.png */,
+				5C8C3DF416707F880073886A /* kButtonEquals.png */,
+				5C8C3DF516707F880073886A /* kButtonFive.png */,
+				5C8C3DF616707F880073886A /* kButtonFour.png */,
+				5C8C3DF716707F880073886A /* kButtonMC.png */,
+				5C8C3DF816707F880073886A /* kButtonMMinus.png */,
+				5C8C3DF916707F880073886A /* kButtonMPlus.png */,
+				5C8C3DFA16707F880073886A /* kButtonMR.png */,
+				5C8C3DFB16707F880073886A /* kButtonMultiply.png */,
+				5C8C3DFC16707F880073886A /* kButtonNine.png */,
+				5C8C3DFD16707F880073886A /* kButtonOne.png */,
+				5C8C3DFE16707F880073886A /* kButtonSeven.png */,
+				5C8C3DFF16707F880073886A /* kButtonSix.png */,
+				5C8C3E0016707F880073886A /* kButtonSubtract.png */,
+				5C8C3E0116707F880073886A /* kButtonTemplate.png */,
+				5C8C3E0216707F880073886A /* kButtonThree.png */,
+				5C8C3E0316707F880073886A /* kButtonTwo.png */,
+				5C8C3E0416707F880073886A /* kButtonZero.png */,
 			);
 			name = Calculator;
 			sourceTree = "<group>";
@@ -1426,6 +1503,30 @@
 				5C940C9A166E404C0044A7D1 /* SimNICU_Icon57x57.png in Resources */,
 				5C940C9C166E40520044A7D1 /* SimNICU_Icon114x114.png in Resources */,
 				5C940CC2166E45860044A7D1 /* Localizable.strings in Resources */,
+				5C8C3E0616707F880073886A /* kButtonAC copy.png in Resources */,
+				5C8C3E0716707F880073886A /* kButtonAC.png in Resources */,
+				5C8C3E0816707F880073886A /* kButtonAdd.png in Resources */,
+				5C8C3E0916707F880073886A /* kButtonChangeSign.png in Resources */,
+				5C8C3E0A16707F880073886A /* kButtonDivide.png in Resources */,
+				5C8C3E0B16707F880073886A /* kButtonDot.png in Resources */,
+				5C8C3E0C16707F880073886A /* kButtonEight.png in Resources */,
+				5C8C3E0D16707F880073886A /* kButtonEquals.png in Resources */,
+				5C8C3E0E16707F880073886A /* kButtonFive.png in Resources */,
+				5C8C3E0F16707F880073886A /* kButtonFour.png in Resources */,
+				5C8C3E1016707F880073886A /* kButtonMC.png in Resources */,
+				5C8C3E1116707F880073886A /* kButtonMMinus.png in Resources */,
+				5C8C3E1216707F880073886A /* kButtonMPlus.png in Resources */,
+				5C8C3E1316707F880073886A /* kButtonMR.png in Resources */,
+				5C8C3E1416707F880073886A /* kButtonMultiply.png in Resources */,
+				5C8C3E1516707F880073886A /* kButtonNine.png in Resources */,
+				5C8C3E1616707F880073886A /* kButtonOne.png in Resources */,
+				5C8C3E1716707F880073886A /* kButtonSeven.png in Resources */,
+				5C8C3E1816707F880073886A /* kButtonSix.png in Resources */,
+				5C8C3E1916707F880073886A /* kButtonSubtract.png in Resources */,
+				5C8C3E1A16707F880073886A /* kButtonTemplate.png in Resources */,
+				5C8C3E1B16707F880073886A /* kButtonThree.png in Resources */,
+				5C8C3E1C16707F880073886A /* kButtonTwo.png in Resources */,
+				5C8C3E1D16707F880073886A /* kButtonZero.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1536,6 +1637,7 @@
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
 				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
+				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

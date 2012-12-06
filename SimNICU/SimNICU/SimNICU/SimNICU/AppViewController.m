@@ -24,7 +24,7 @@
 #import "APGAR15ViewController.h"
 #import "APGAR20ViewController.h"
 #import "BloodProductsViewController.h"
-// #import "CalculatorViewController.h"
+#import "CalculatorViewController.h"
 #import "CoolingViewController.h"
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
@@ -305,12 +305,10 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-    /*
-     screen = [[Screen alloc] init];   // Calculator not ready yet...
-     screen.menuText = @"Calculator";
-     screen.segueId = @"Calculator";
-     [screens addObject:screen];
-     */
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Calculator";
+    screen.segueId = @"Calculator";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Cooling";
@@ -760,6 +758,16 @@
             
             BloodProductsViewController *newViewController = [[BloodProductsViewController alloc] init];
             newViewController.workingWeight = self.weight;
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Calculator
+        
+        else if ([thisScreenType isEqualToString:@"Calculator"])
+        {
+            NSLog(@"showCalculator");
+            
+            CalculatorViewController *newViewController = [[CalculatorViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         
