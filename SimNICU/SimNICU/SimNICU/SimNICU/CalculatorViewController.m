@@ -168,43 +168,6 @@
 {
     [super viewDidLoad];
     
-    if (self.selectedPatient)
-    {
-        if (self.selectedPatient.lastname && self.selectedPatient.firstname)
-        {
-            int nameLength;
-            
-            nameLength = [self.selectedPatient.firstname length] + [self.selectedPatient.lastname length];
-            
-            if (nameLength > 15)
-            {
-                self.title = [NSString stringWithFormat:@"%@", self.selectedPatient.lastname];
-            }
-            else
-            {
-                self.title = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
-            }
-        }
-        else
-        {
-            self.title = @"Working Weight";
-        }
-        
-        
-        // Working weight button
-        
-        if (self.selectedPatient.workingWeight)
-        {
-            NSString *formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", self.selectedPatient.workingWeight];
-            
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:formattedWorkingWeight style:UIBarButtonItemStyleBordered target:self action:@selector(workingWeightPressed)];
-        }
-    }
-    else
-    {
-        self.title = @"";
-    }
-    
     // background
     
     // self.view.backgroundColor = [UIColor lightGrayColor];
@@ -275,6 +238,46 @@
     self.workingWeightButtonLabel.shadowOffset = CGSizeMake(0, -1);
     
     [self.view addSubview:self.workingWeightButtonLabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.selectedPatient)
+    {
+        if (self.selectedPatient.lastname && self.selectedPatient.firstname)
+        {
+            int nameLength;
+            
+            nameLength = [self.selectedPatient.firstname length] + [self.selectedPatient.lastname length];
+            
+            if (nameLength > 15)
+            {
+                self.title = [NSString stringWithFormat:@"%@", self.selectedPatient.lastname];
+            }
+            else
+            {
+                self.title = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
+            }
+        }
+        else
+        {
+            self.title = @"Calculator";
+        }
+        
+        
+        // Working weight button
+        
+        if (self.selectedPatient.workingWeight)
+        {
+            NSString *formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", self.selectedPatient.workingWeight];
+            
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:formattedWorkingWeight style:UIBarButtonItemStyleBordered target:self action:@selector(workingWeightPressed)];
+        }
+    }
+    else
+    {
+        self.title = @"Calculator";
+    }
 }
 
 - (void)didReceiveMemoryWarning

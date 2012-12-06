@@ -768,6 +768,19 @@
             NSLog(@"showCalculator");
             
             CalculatorViewController *newViewController = [[CalculatorViewController alloc] init];
+            
+            if (self.selectedPatient)
+            {
+                newViewController.selectedPatient = self.selectedPatient;
+            }
+            else if (self.weight)
+            {
+                Patient *tempPatient = [[Patient alloc] init];
+                tempPatient.workingWeight = self.weight;
+                
+                newViewController.selectedPatient = tempPatient;
+            }
+            
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         
