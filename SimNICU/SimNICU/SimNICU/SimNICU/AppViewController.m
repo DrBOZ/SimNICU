@@ -68,27 +68,6 @@
     NSMutableArray *screens;
 }
 
-@synthesize displayDismissButtonView = _displayDismissButtonView;
-@synthesize displayDetailTextLabel = _displayDetailTextLabel;
-@synthesize earlyCareWarningShown = _earlyCareWarningShown;
-@synthesize panGestureRecognizer = _panGestureRecognizer;
-@synthesize estimatedWeightUsed = _estimatedWeightUsed;
-@synthesize infoPassedThrough = _infoPassedThrough;
-@synthesize calculationWeight = _calculationWeight;
-@synthesize displayBackground = _displayBackground;
-@synthesize displayTextLabel = _displayTextLabel;
-@synthesize patientSelected = _patientSelected;
-@synthesize selectedPatient = _selectedPatient;
-@synthesize dismissButton = _dismissButton;
-@synthesize appImageView = _appImageView;
-@synthesize myHeaderView = _myHeaderView;
-@synthesize myTableView = _myTableView;
-@synthesize tableBgView = _tableBgView;
-@synthesize growthChart = _growthChart;
-@synthesize gestation = _gestation;
-@synthesize appImage = _appImage;
-@synthesize weight = _weight;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -112,6 +91,159 @@
     }
     
     return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    if ([self.infoPassedThrough isEqualToString:@"Cleared"])
+    {
+        self.infoPassedThrough = nil;
+        NSLog(@"self.infoPassedThrough = nil");
+    }
+    else if ([self.infoPassedThrough isEqualToString:@"didFinishEnteringWeightOrGestation"] || [self.infoPassedThrough isEqualToString:@"Memory Warning"])
+    {
+        ZUUIRevealController *revealController = (ZUUIRevealController *)self.parentViewController.parentViewController;
+        
+        [revealController revealToggle:self];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Memory Warning"
+                                  message:@"Please re-select"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        self.infoPassedThrough = nil;
+    }
+    else if ([self.infoPassedThrough isEqualToString:@"didFinishSelectingPatient"] || [self.infoPassedThrough isEqualToString:@"Memory Warning"])
+    {
+        ZUUIRevealController *revealController = (ZUUIRevealController *)self.parentViewController.parentViewController;
+        
+        [revealController revealToggle:self];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Memory Warning"
+                                  message:@"Please re-select patient"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        self.infoPassedThrough = nil;
+    }
+    
+    NSLog(@"AppViewController viewDidLoad");
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //background
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    //info button
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+    [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    self.navigationItem.rightBarButtonItem = infoBarButton;
+    
+    //back button
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:nil
+                                                                  action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    
+    //tableView
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.sectionFooterHeight = 0.0f;
+    self.myTableView.sectionHeaderHeight = 0.0f;
+    self.myTableView.backgroundColor = [UIColor whiteColor];
+    self.myTableView.separatorColor = [UIColor grayColor];
+    [self.view addSubview:self.myTableView];
+    
+    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    {
+        NSLog(@"Iphone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
+        
+        //screen mask covers everything
+        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))]; // 430
+        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
+        tableBgView.image = tableBgImage;
+        tableBgView.userInteractionEnabled = NO;
+        tableBgView.alpha = 1.0;
+        [self.view addSubview:tableBgView];
+    }
+    else
+    {
+        //screen mask covers everything
+        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50))]; // 518 in 4inch retina
+        UIImage *tableBgImage = [UIImage imageNamed:@"bgApplication.png"];
+        self.tableBgView.image = tableBgImage;
+        self.tableBgView.userInteractionEnabled = NO;
+        [self.view addSubview:self.tableBgView];
+    }
+    
+    //header holds image and settings view..
+    self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
+    
+    //IMAGE
+    if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
+    {
+        //Retina display iPhone
+        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
+    }
+    else
+    {
+        //non Retina display iPhone/iPod Touch
+        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
+    }
+    
+    self.appImageView = [[UIImageView alloc] initWithImage:self.appImage];
+    self.appImageView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 150.0f);
+    self.appImageView.contentMode = UIViewContentModeScaleToFill;
+    [self.myHeaderView addSubview:self.appImageView];
+    
+    //display background
+    self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
+    self.displayBackground.backgroundColor = [UIColor blackColor];
+    self.displayBackground.alpha = .4;
+    self.displayBackground.hidden = YES;
+    [self.myHeaderView addSubview:self.displayBackground];
+    
+    //dismiss button image & view
+    self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
+    UIImage *displayDismissButton = [UIImage imageNamed:@"dismiss2.png"];
+    self.displayDismissButtonView.image = displayDismissButton;
+    self.displayDismissButtonView.userInteractionEnabled = YES;
+    self.displayDismissButtonView.hidden = YES;
+    [self.myHeaderView addSubview:self.displayDismissButtonView];
+    
+    //displayTextLabel (Patient's name or working weight)
+    self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
+    self.displayTextLabel.textColor = [UIColor whiteColor];
+    self.displayTextLabel.backgroundColor = [UIColor clearColor];
+    self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.displayTextLabel.textAlignment = UITextAlignmentLeft;
+    self.displayTextLabel.hidden = YES;
+    [self.myHeaderView addSubview:self.displayTextLabel];
+    
+    //displayTextLabel (Patient's name or working weight)
+    self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
+    self.displayDetailTextLabel.textColor = [UIColor whiteColor];
+    self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
+    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+    self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
+    self.displayDetailTextLabel.hidden = YES;
+    [self.myHeaderView addSubview:self.displayDetailTextLabel];
+    
+    [self.view addSubview:self.myHeaderView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -356,178 +488,9 @@
     
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    if ([self.infoPassedThrough isEqualToString:@"Cleared"])
-    {
-        self.infoPassedThrough = nil;
-        NSLog(@"self.infoPassedThrough = nil");
-    }
-    else if ([self.infoPassedThrough isEqualToString:@"didFinishEnteringWeightOrGestation"] || [self.infoPassedThrough isEqualToString:@"Memory Warning"])
-    {
-        ZUUIRevealController *revealController = (ZUUIRevealController *)self.parentViewController.parentViewController;
-        
-        [revealController revealToggle:self];
-        
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Memory Warning"
-                                  message:@"Please re-select"
-                                  delegate:nil cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-        [alertView show];
-        
-        self.infoPassedThrough = nil;
-    }
-    else if ([self.infoPassedThrough isEqualToString:@"didFinishSelectingPatient"] || [self.infoPassedThrough isEqualToString:@"Memory Warning"])
-    {
-        ZUUIRevealController *revealController = (ZUUIRevealController *)self.parentViewController.parentViewController;
-        
-        [revealController revealToggle:self];
-        
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Memory Warning"
-                                  message:@"Please re-select patient"
-                                  delegate:nil cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-        [alertView show];
-        
-        self.infoPassedThrough = nil;
-    }
-    
-    NSLog(@"AppViewController viewDidLoad");
-    
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //background
-    self.view.backgroundColor = [UIColor blackColor];
-    
-    //info button
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-    [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    self.navigationItem.rightBarButtonItem = infoBarButton;
-    
-    //back button
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                                   style:UIBarButtonItemStyleBordered
-                                                                  target:nil
-                                                                  action:nil];
-    self.navigationItem.backBarButtonItem = backButton;
-    
-    //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
-    self.myTableView.rowHeight = 50.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 0.0f;
-    self.myTableView.sectionHeaderHeight = 0.0f;
-    self.myTableView.backgroundColor = [UIColor whiteColor];
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
-    
-    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-    {
-        NSLog(@"Iphone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
-        
-        //screen mask covers everything
-        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))]; // 430
-        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-        tableBgView.image = tableBgImage;
-        tableBgView.userInteractionEnabled = NO;
-        tableBgView.alpha = 1.0;
-        [self.view addSubview:tableBgView];
-    }
-    else
-    {
-        //screen mask covers everything
-        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50))]; // 518 in 4inch retina
-        UIImage *tableBgImage = [UIImage imageNamed:@"bgApplication.png"];
-        self.tableBgView.image = tableBgImage;
-        self.tableBgView.userInteractionEnabled = NO;
-        [self.view addSubview:self.tableBgView];
-    }
-    
-    //header holds image and settings view..
-    self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
-    
-    //IMAGE
-    if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
-    {
-        //Retina display iPhone
-        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
-    }
-    else
-    {
-        //non Retina display iPhone/iPod Touch
-        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
-    }
-    
-    self.appImageView = [[UIImageView alloc] initWithImage:self.appImage];
-    self.appImageView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 150.0f);
-    self.appImageView.contentMode = UIViewContentModeScaleToFill;
-    [self.myHeaderView addSubview:self.appImageView];
-    
-    //display background
-    self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
-    self.displayBackground.backgroundColor = [UIColor blackColor];
-    self.displayBackground.alpha = .4;
-    self.displayBackground.hidden = YES;
-    [self.myHeaderView addSubview:self.displayBackground];
-    
-    //dismiss button image & view
-    self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
-    UIImage *displayDismissButton = [UIImage imageNamed:@"dismiss2.png"];
-    self.displayDismissButtonView.image = displayDismissButton;
-    self.displayDismissButtonView.userInteractionEnabled = YES;
-    self.displayDismissButtonView.hidden = YES;
-    [self.myHeaderView addSubview:self.displayDismissButtonView];
-    
-    //displayTextLabel (Patient's name or working weight)
-    self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
-    self.displayTextLabel.textColor = [UIColor whiteColor];
-    self.displayTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
-    self.displayTextLabel.textAlignment = UITextAlignmentLeft;
-    self.displayTextLabel.hidden = YES;
-    [self.myHeaderView addSubview:self.displayTextLabel];
-    
-    //displayTextLabel (Patient's name or working weight)
-    self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
-    self.displayDetailTextLabel.textColor = [UIColor whiteColor];
-    self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
-    self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-    self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
-    self.displayDetailTextLabel.hidden = YES;
-    [self.myHeaderView addSubview:self.displayDetailTextLabel];
-    
-    [self.view addSubview:self.myHeaderView];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"AppViewController viewDidAppear");
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    NSLog(@"AppViewController viewDidUnload");
-    
-    self.infoPassedThrough = @"Memory Warning";
-    
-    self.panGestureRecognizer = nil;
-    self.appImageView = nil;
-    self.myHeaderView = nil;
-    self.myTableView = nil;
-    self.tableBgView = nil;
-    self.appImage = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -551,19 +514,32 @@
     }
 }
 
-// Tell the system what we support
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    NSLog(@"AppViewController viewDidUnload");
+    
+    self.infoPassedThrough = @"Memory Warning";
+    
+    self.panGestureRecognizer = nil;
+    self.appImageView = nil;
+    self.myHeaderView = nil;
+    self.myTableView = nil;
+    self.tableBgView = nil;
+    self.appImage = nil;
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationPortrait;
 }
 
-// Tell the system It should autorotate
 - (BOOL) shouldAutorotate
 {
     return NO;
 }
 
-// Tell the system which initial orientation we want to have
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     return UIInterfaceOrientationPortrait;
@@ -578,38 +554,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSLog(@"Table view data source called");
-    
     return 2;
 }
 
 //number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-    {
-        return 3;
-    }
-    else
-    {
-        return [screens count];
-    }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *returnString;
-    
-    if (section == 0)
-    {
-        returnString = @"Emergency";
-    }
-    if (section == 1)
-    {
-        returnString = @"General";
-    }
-    
-    return returnString;
+    if (section == 0) return 3;
+    else return [screens count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -617,17 +569,29 @@
     return 22.0f;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *header;
+    
+    if (section == 0) header = @"Emergency";
+    else if (section == 1) header = @"General";
+    
+    return header;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *returnCell = nil;
+    
+    static NSString *CellIdentifier;
     
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
-            static NSString *CellIdentifier = @"InfusionsCell";
+            CellIdentifier = @"InfusionsCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -640,9 +604,9 @@
         }
         else if (indexPath.row == 1)
         {
-            static NSString *CellIdentifier = @"IntubationCell";
+            CellIdentifier = @"IntubationCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -655,9 +619,9 @@
         }
         else
         {
-            static NSString *CellIdentifier = @"ResuscitationCell";
+            CellIdentifier = @"ResuscitationCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -671,16 +635,16 @@
     }
     else
     {
-        static NSString *CellIdentifier = @"Cell";
+        CellIdentifier = @"Cell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.backgroundColor = [UIColor whiteColor];
         }
-        
-        Screen *thisScreen = (Screen *)[screens objectAtIndex:indexPath.row];
+
+        Screen *thisScreen = screens[indexPath.row];
         cell.textLabel.text = [thisScreen menuText];
         
         returnCell = cell;
@@ -696,11 +660,8 @@
     // if reveal controller is showing rear then do not allow selection
     ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
     
-    if (revealController.currentFrontViewPosition) {
-        return Nil;
-    }
-    
-    return indexPath;
+    if (revealController.currentFrontViewPosition) return nil;
+    else return indexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -762,9 +723,10 @@
     }
     else
     {
-        Screen *thisScreen = (Screen *)[screens objectAtIndex:indexPath.row];
+        Screen *thisScreen = screens[indexPath.row];
         
-        NSString *thisScreenType = [thisScreen segueId];
+        // NSString *thisScreenType = [thisScreen segueId];
+        NSString *thisScreenType = thisScreen.segueId;
         
 #pragma mark Antibiotics
         
@@ -799,7 +761,6 @@
             BloodProductsViewController *newViewController = [[BloodProductsViewController alloc] init];
             newViewController.workingWeight = self.weight;
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
         }
         
 #pragma mark Cooling

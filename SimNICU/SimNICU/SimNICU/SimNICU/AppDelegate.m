@@ -46,6 +46,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
 #else
     
+    NSLog(@"iRATE OFF");
     [iRate sharedInstance].promptAtLaunch = NO;
     
 #endif

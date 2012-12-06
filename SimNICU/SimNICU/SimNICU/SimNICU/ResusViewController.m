@@ -469,7 +469,7 @@
             cell.subLabel4.text = @"";
             cell.equals.hidden = NO;
             
-            if ([self.workingWeight doubleValue] < 2.5)
+            if (self.workingWeight && ([self.workingWeight doubleValue] < 2.5))
             {
                 UILabel *cautionLabel = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 57.0f, 188.0f, 21.0f)];
                 cautionLabel.textColor = [UIColor lightGrayColor];
@@ -557,23 +557,28 @@
     cell.drug.adjustsFontSizeToFitWidth = YES;
     cell.drug.textColor = [UIColor blackColor];
     cell.drug.backgroundColor = [UIColor clearColor];
+    
     cell.dose = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 57.0f, 188.0f, 21.0f)];
     cell.dose.font = [UIFont boldSystemFontOfSize:17.0f];
     cell.dose.backgroundColor = [UIColor clearColor];
+    
     cell.equals = [[UILabel alloc] initWithFrame:CGRectMake(24.0f, 56.0f, 37.0f, 21.0f)];
     cell.equals.textColor = [UIColor lightGrayColor];
     cell.equals.backgroundColor = [UIColor clearColor];
     cell.equals.textAlignment = UITextAlignmentRight;
     cell.equals.text = @"=";
     cell.equals.hidden = YES;
+    
     cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 28.0f, 259.0f, 26.0f)];
     cell.subLabel2.textColor = [UIColor lightGrayColor];
     cell.subLabel2.font = [UIFont systemFontOfSize:14.0f];
     cell.subLabel2.backgroundColor = [UIColor clearColor];
+    
     cell.subLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 76.0f, 230.0f, 21.0f)];
     cell.subLabel3.textColor = [UIColor lightGrayColor];
     cell.subLabel3.backgroundColor = [UIColor clearColor];
     cell.subLabel3.adjustsFontSizeToFitWidth = YES;
+    
     cell.subLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 96.0f, 230.0f, 21.0f)];
     cell.subLabel4.textColor = [UIColor lightGrayColor];
     cell.subLabel4.backgroundColor = [UIColor clearColor];
