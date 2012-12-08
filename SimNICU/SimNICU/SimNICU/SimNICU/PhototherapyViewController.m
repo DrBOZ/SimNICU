@@ -121,6 +121,11 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     if (self.selectedPatient)
@@ -131,21 +136,17 @@
         
         self.gestation = [NSNumber numberWithInteger:[self.selectedPatient.gestation integerValue]];
         
-        NSLog(@"self.gestation = %@", self.gestation);
+        NSLog(@"PhototherapyViewController: viewWillAppear: self.gestation = %@", self.gestation);
         
-        if (self.gestation > ([NSNumber numberWithInteger:38]))
+        if ([self.gestation integerValue] > ([[NSNumber numberWithInteger:38] integerValue]))
         {
+            NSLog(@"resetting");
             self.gestation = [NSNumber numberWithInteger:38];
         }
         // self.title = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
         
-        NSLog(@"viewWillAppear: self.selectedPatient.birthTimeSet = %@", self.selectedPatient.birthTimeSet);
+        // NSLog(@"viewWillAppear: self.selectedPatient.birthTimeSet = %@", self.selectedPatient.birthTimeSet);
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -348,7 +349,7 @@
             static NSString *CellIdentifier = @"Gestation";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 
@@ -364,8 +365,11 @@
                 }
                 
                 cell.backgroundColor = [UIColor whiteColor];
-                cell.textLabel.text = @"Gestation";
             }
+            
+            cell.textLabel.text = @"Gestation";
+            
+            NSLog(@"PhototherapyViewController: self.gestation = %@", self.gestation);
             
             if (self.gestation)
             {
