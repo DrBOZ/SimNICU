@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
+		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
+		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
 		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
@@ -258,6 +260,8 @@
 
 /* Begin PBXFileReference section */
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
+		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
+		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
 		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
 		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
@@ -923,6 +927,8 @@
 		5C940AFD166E3B030044A7D1 /* Front View */ = {
 			isa = PBXGroup;
 			children = (
+				5C6982D51672CA1900590AFF /* SimNICU_round.png */,
+				5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */,
 				5C940AFE166E3B110044A7D1 /* AppViewController.h */,
 				5C940AFF166E3B110044A7D1 /* AppViewController.m */,
 				5C940B00166E3B110044A7D1 /* AppViewController.xib */,
@@ -1531,6 +1537,8 @@
 				5C8C3E1C16707F880073886A /* kButtonTwo.png in Resources */,
 				5C8C3E1D16707F880073886A /* kButtonZero.png in Resources */,
 				5C3448971671385B0076FA08 /* bg_calc.png in Resources */,
+				5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */,
+				5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

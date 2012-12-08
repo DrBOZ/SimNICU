@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-// #import "CustomButton.h"
 #import "Patient.h"
 
 typedef enum
@@ -43,18 +40,8 @@ typedef enum
 } kButton;
 
 @interface CalculatorViewController : UIViewController
-{
-    NSNumber *leftOperator;
-    NSNumber *lastResult;
-    kButton operation;
-    BOOL deleteInput;
-    double memory;
-}
 
-@property (nonatomic, strong) NSMutableString *resultText;
 @property (nonatomic, strong) Patient *selectedPatient;
-@property (nonatomic, strong) UILabel *patientDetails;
-@property (nonatomic, strong) UILabel *resultLabel;
 
 - (void)buttonPressed:(id)sender;
 

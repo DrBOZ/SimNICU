@@ -268,7 +268,30 @@
         [flipButton addGestureRecognizer:self.panGestureRecognizer];
         
         // Enter Weight button
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
+        // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
+        
+        UIView *roundIconView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 48.0f, 48.0f)];
+        // UIButton *roundIconButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        // roundIconButton.frame = CGRectMake(0.0f, 0.0f, 48.0f, 48.0f);
+        
+        UIImageView *roundIconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SimNICU_round.png"]];
+        roundIconImageView.frame = CGRectMake(0.0f, 0.0f, 48.0f, 48.0f);
+        roundIconImageView.contentMode = UIViewContentModeScaleToFill;
+        [roundIconView addSubview:roundIconImageView];
+        
+        UIBarButtonItem *SimNICUButton = [[UIBarButtonItem alloc] initWithCustomView:roundIconView];
+        self.navigationItem.leftBarButtonItem = SimNICUButton;
+        
+        
+        /*
+        //info button
+        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+        [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        self.navigationItem.rightBarButtonItem = infoBarButton;
+         */
+        
     }
     
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];

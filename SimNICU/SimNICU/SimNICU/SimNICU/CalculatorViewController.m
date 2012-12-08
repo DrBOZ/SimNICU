@@ -24,10 +24,22 @@
 @property (nonatomic) BOOL userHasPressedWorkingWeightButton;
 @property (nonatomic, strong) UILabel *workingWeightButtonLabel;
 @property (nonatomic, strong) NSMutableString *calculation;
+@property (nonatomic, strong) UILabel *calculationLabel;
+
+// result
+@property (nonatomic, strong) NSMutableString *resultText;
+@property (nonatomic, strong) UILabel *resultLabel; // display
 
 @end
 
 @implementation CalculatorViewController
+{
+    NSNumber *leftOperator;
+    NSNumber *lastResult;
+    kButton operation;
+    BOOL deleteInput;
+    double memory;
+}
 
 - (void)addButtonWithTitle:(NSString *)aTitle tag:(int)tag row:(int)row column:(int)column width:(int)width height:(int)height
 {
@@ -187,14 +199,14 @@
     [self.view addSubview:self.resultLabel];
     
     // patient
-    self.patientDetails = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, TEXTAREA_WIDTH, TEXTAREA_HEIGHT)];
-    self.patientDetails.backgroundColor = [UIColor clearColor];
-    self.patientDetails.text = @"";
-    self.patientDetails.textColor = [UIColor whiteColor];
-    self.patientDetails.textAlignment = UITextAlignmentLeft;
-    self.patientDetails.font = [UIFont systemFontOfSize:30];
+    self.calculationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 70, TEXTAREA_WIDTH, TEXTAREA_HEIGHT)];
+    self.calculationLabel.backgroundColor = [UIColor clearColor];
+    self.calculationLabel.text = @"";
+    self.calculationLabel.textColor = [UIColor whiteColor];
+    self.calculationLabel.textAlignment = UITextAlignmentLeft;
+    self.calculationLabel.font = [UIFont systemFontOfSize:30];
     
-    [self.view addSubview:self.patientDetails];
+    [self.view addSubview:self.calculationLabel];
     
     memory = 0;
     
@@ -226,18 +238,6 @@
     
     [self addButtonWithTitle:@""      tag:kButtonZero         row:5 column:0 width:2 height:1];
     [self addButtonWithTitle:@""      tag:kButtonDot          row:5 column:2 width:1 height:1];
-    
-    // working weight button label
-    self.workingWeightButtonLabel = [[UILabel alloc] initWithFrame:CGRectMake(88, 125, 70, 40)];
-    self.workingWeightButtonLabel.backgroundColor = [UIColor clearColor];
-    self.workingWeightButtonLabel.text = @"";
-    self.workingWeightButtonLabel.textAlignment = UITextAlignmentCenter;
-    self.workingWeightButtonLabel.font = [UIFont boldSystemFontOfSize:18];
-    self.workingWeightButtonLabel.textColor = [UIColor whiteColor];
-    self.workingWeightButtonLabel.shadowColor = [UIColor blackColor];
-    self.workingWeightButtonLabel.shadowOffset = CGSizeMake(0, -1);
-    
-    [self.view addSubview:self.workingWeightButtonLabel];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -264,7 +264,6 @@
             self.title = @"Calculator";
         }
         
-        
         // Working weight button
         
         if (self.selectedPatient.workingWeight)
@@ -280,16 +279,6 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -302,12 +291,15 @@
     
     if (theOperation == 0)
     {
+        
+        
         theOperation = operation;
     }
     
     NSString *operatorCharacter;
     
-    switch (theOperation) {
+    switch (theOperation)
+    {
         case kButtonMultiply:
             result = [leftOperator doubleValue] * [self.resultText doubleValue];
             operatorCharacter = @"\u00D7";
@@ -329,8 +321,8 @@
             
             // do nothing for now
             
-            self.patientDetails.font = [UIFont boldSystemFontOfSize:20];
-            self.patientDetails.text = @"Single Strength Dopamine";
+            self.calculationLabel.font = [UIFont boldSystemFontOfSize:20];
+            self.calculationLabel.text = @"Single Strength Dopamine";
             
             break;
     }
@@ -345,7 +337,7 @@
         [self.calculation appendFormat:@" %@ %@", operatorCharacter, self.resultText];
     }
     
-    self.patientDetails.text = self.calculation;
+    self.calculationLabel.text = self.calculation;
     
     // reset the leftOperator
     leftOperator = nil;
@@ -430,7 +422,8 @@
 - (void)buttonPressed:(id)sender
 {
     // We sometimes need to delete the current text, but we never have to do so for the change sign button
-    if (deleteInput && [sender tag] != kButtonChangeSign) {
+    if (deleteInput && [sender tag] != kButtonChangeSign)
+    {
         [self.resultText setString:@""];
     }
     deleteInput = NO;
@@ -459,7 +452,7 @@
         case kButtonAC:
             // reset screen
             self.resultText = [NSMutableString stringWithString:@"0"];
-            self.patientDetails.text = @"";
+            self.calculationLabel.text = @"";
             leftOperator = nil;
             self.userHasPressedWorkingWeightButton = NO;
             self.equalsButtonWasLastButtonPressed = NO;
