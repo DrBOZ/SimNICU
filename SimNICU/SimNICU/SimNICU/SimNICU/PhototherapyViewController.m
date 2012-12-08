@@ -21,16 +21,6 @@
 
 @implementation PhototherapyViewController
 
-@synthesize neurotoxicityRiskFactors = _neurotoxicityRiskFactors;
-@synthesize guidelineCountry = _guidelineCountry;
-@synthesize selectedPatient = _selectedPatient;
-@synthesize gestationLocked = _gestationLocked;
-@synthesize clinicalStatus = _clinicalStatus;
-@synthesize bilirubinUnits = _bilirubinUnits;
-@synthesize myTableView = _myTableView;
-@synthesize gestation = _gestation;
-@synthesize delegate = _delegate;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -131,21 +121,17 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated
-{    
+{
     if (self.selectedPatient)
     {
         // Unfortunately set Patient.gestation as NSString. Did not know how to use NSNumber then...
         
-        
         // conditional statement here.
         
         self.gestation = [NSNumber numberWithInteger:[self.selectedPatient.gestation integerValue]];
+        
+        NSLog(@"self.gestation = %@", self.gestation);
         
         if (self.gestation > ([NSNumber numberWithInteger:38]))
         {
@@ -157,16 +143,9 @@
     }
 }
 
-- (void)viewDidUnload
+- (void)viewDidLoad
 {
-    [super viewDidUnload];
-    
-    self.myTableView = nil;
-    self.gestationLocked = nil;
-    self.guidelineCountry = nil;
-    self.selectedPatient = nil;
-    self.bilirubinUnits = nil;
-    self.gestation = nil;
+    [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -177,7 +156,6 @@
     [[GANTracker sharedTracker] trackPageview:@"Phototherapy" withError:nil];
     
 #endif
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -192,6 +170,18 @@
         
         self.myTableView = nil;
     }
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    self.myTableView = nil;
+    self.gestationLocked = nil;
+    self.guidelineCountry = nil;
+    self.selectedPatient = nil;
+    self.bilirubinUnits = nil;
+    self.gestation = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -345,10 +335,11 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
-                cell.textLabel.text = @"Patient";
             }
             
+            cell.textLabel.text = @"Patient";
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             
             returnCell = cell;
         }
