@@ -12,9 +12,9 @@
 #define BACKGROUND_IPHONE_35_PORTRAIT_PNG @"LightGreyWithDimples35inchRetinaPortrait.png"
 #define BACKGROUND_IPHONE_4_PORTRAIT_PNG @"LightGreyWithDimples4inchRetinaPortrait.png"
 
-#define GOOGLE_ANALYTICS 0
+#define GOOGLE_ANALYTICS 1
 #define IRATE_PREVIEW_MODE 0
-#define IRATE_SET 0
+#define IRATE_SET 1
 #define DCINTROSPECT_ON 0
 
 // @"LightGrayBackground35inchRetina.png"
@@ -72,6 +72,7 @@
 // 4) DCINTROSPECT_ON    set to 0
 // 5) Clean
 // 6) Increment build
+// 6) Increment version and in about
 // 7) Git commit (Release)
 // 8) GitHub push (Release)
 // 9) swap to Develop
