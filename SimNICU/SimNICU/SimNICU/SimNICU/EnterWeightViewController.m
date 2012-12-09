@@ -1426,10 +1426,9 @@
     NSLog(@"addPatient");
     
     PatientDetailsViewController *patientDetailsViewController = [[PatientDetailsViewController alloc] init];
-    
     patientDetailsViewController.delegate = self;
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:patientDetailsViewController];
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
     
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     navController.navigationBar.tintColor = [UIColor blackColor];
