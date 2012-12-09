@@ -268,12 +268,10 @@
         [flipButton addGestureRecognizer:self.panGestureRecognizer];
         
         // Enter Weight button
-        // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
         
+        /*
         UIView *roundIconView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 48.0f, 48.0f)];
-        // UIButton *roundIconButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        // roundIconButton.frame = CGRectMake(0.0f, 0.0f, 48.0f, 48.0f);
-        
         UIImageView *roundIconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SimNICU_round.png"]];
         roundIconImageView.frame = CGRectMake(0.0f, 0.0f, 48.0f, 48.0f);
         roundIconImageView.contentMode = UIViewContentModeScaleToFill;
@@ -281,7 +279,7 @@
         
         UIBarButtonItem *SimNICUButton = [[UIBarButtonItem alloc] initWithCustomView:roundIconView];
         self.navigationItem.leftBarButtonItem = SimNICUButton;
-        
+        */
         
         /*
         //info button
@@ -328,10 +326,10 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
-    screen.menuText = @"Calculator";
-    screen.segueId = @"Calculator";
-    [screens addObject:screen];
+    // screen = [[Screen alloc] init];
+    // screen.menuText = @"Calculator";
+    // screen.segueId = @"Calculator";
+    // [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Cooling";

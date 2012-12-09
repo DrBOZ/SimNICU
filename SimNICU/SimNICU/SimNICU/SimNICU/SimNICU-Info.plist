@@ -14,8 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>SimNICU_Icon57x57.png</string>
-				<string>SimNICU_Icon114x114.png</string>
+				<string>SimNICU_iPhone_Icon.png</string>
+				<string>SimNICU_iPhone_Icon@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -39,6 +39,8 @@
 	<true/>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>CFBundleIconFile</key>
+	<string>SimNICU_iPhone_Icon.png</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

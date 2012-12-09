@@ -229,8 +229,6 @@
 		5C940C96166E3FEF0044A7D1 /* APGAR9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7E166E3FEF0044A7D1 /* APGAR9@2x.png */; };
 		5C940C97166E3FEF0044A7D1 /* APGAR10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7F166E3FEF0044A7D1 /* APGAR10.png */; };
 		5C940C98166E3FEF0044A7D1 /* APGAR10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C80166E3FEF0044A7D1 /* APGAR10@2x.png */; };
-		5C940C9A166E404C0044A7D1 /* SimNICU_Icon57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C99166E404B0044A7D1 /* SimNICU_Icon57x57.png */; };
-		5C940C9C166E40520044A7D1 /* SimNICU_Icon114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C9B166E40510044A7D1 /* SimNICU_Icon114x114.png */; };
 		5C940C9E166E40B70044A7D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940C9D166E40B70044A7D1 /* SystemConfiguration.framework */; };
 		5C940CA0166E40D50044A7D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940C9F166E40D50044A7D1 /* Security.framework */; };
 		5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CA1166E40E40044A7D1 /* QuartzCore.framework */; };
@@ -256,6 +254,8 @@
 		5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */; };
 		5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */; };
 		5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
+		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
+		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -585,8 +585,6 @@
 		5C940C7E166E3FEF0044A7D1 /* APGAR9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "APGAR9@2x.png"; sourceTree = "<group>"; };
 		5C940C7F166E3FEF0044A7D1 /* APGAR10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APGAR10.png; sourceTree = "<group>"; };
 		5C940C80166E3FEF0044A7D1 /* APGAR10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "APGAR10@2x.png"; sourceTree = "<group>"; };
-		5C940C99166E404B0044A7D1 /* SimNICU_Icon57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Icon57x57.png; sourceTree = SOURCE_ROOT; };
-		5C940C9B166E40510044A7D1 /* SimNICU_Icon114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Icon114x114.png; sourceTree = SOURCE_ROOT; };
 		5C940C9D166E40B70044A7D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5C940C9F166E40D50044A7D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5C940CA1166E40E40044A7D1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -637,6 +635,8 @@
 		5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMinimalTableViewCell.m; sourceTree = "<group>"; };
 		5C940D02166E84120044A7D1 /* InfusionsViewMaximalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionsViewMaximalTableViewCell.h; sourceTree = "<group>"; };
 		5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMaximalTableViewCell.m; sourceTree = "<group>"; };
+		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
+		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1275,8 +1275,8 @@
 				5C940C4B166E3FDE0044A7D1 /* bgOverlay.png */,
 				5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */,
 				5C940C4D166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg */,
-				5C940C9B166E40510044A7D1 /* SimNICU_Icon114x114.png */,
-				5C940C99166E404B0044A7D1 /* SimNICU_Icon57x57.png */,
+				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
+				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
 				5C940C4E166E3FDE0044A7D1 /* ScrollViewBackground4inchRetina.png */,
 				5C940C4F166E3FDE0044A7D1 /* ScrollViewBackground35inchRetina.png */,
 				5C940C50166E3FDE0044A7D1 /* LightGrayBackground4inchRetina.png */,
@@ -1509,8 +1509,6 @@
 				5C940C96166E3FEF0044A7D1 /* APGAR9@2x.png in Resources */,
 				5C940C97166E3FEF0044A7D1 /* APGAR10.png in Resources */,
 				5C940C98166E3FEF0044A7D1 /* APGAR10@2x.png in Resources */,
-				5C940C9A166E404C0044A7D1 /* SimNICU_Icon57x57.png in Resources */,
-				5C940C9C166E40520044A7D1 /* SimNICU_Icon114x114.png in Resources */,
 				5C940CC2166E45860044A7D1 /* Localizable.strings in Resources */,
 				5C8C3E0616707F880073886A /* kButtonAC copy.png in Resources */,
 				5C8C3E0716707F880073886A /* kButtonAC.png in Resources */,
@@ -1539,6 +1537,8 @@
 				5C3448971671385B0076FA08 /* bg_calc.png in Resources */,
 				5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */,
 				5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */,
+				5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */,
+				5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

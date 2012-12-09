@@ -138,9 +138,8 @@
         
         NSLog(@"PhototherapyViewController: viewWillAppear: self.gestation = %@", self.gestation);
         
-        if ([self.gestation integerValue] > ([[NSNumber numberWithInteger:38] integerValue]))
+        if ([self.gestation integerValue] > 38)
         {
-            NSLog(@"resetting");
             self.gestation = [NSNumber numberWithInteger:38];
         }
         // self.title = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
