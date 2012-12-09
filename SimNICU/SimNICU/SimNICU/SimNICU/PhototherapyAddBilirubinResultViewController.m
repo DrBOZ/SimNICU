@@ -129,7 +129,7 @@
     
 #if GOOGLE_ANALYTICS
     
-    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Graph/Add Bilirubin" withError:nil];
+    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Graph/Add Bili" withError:nil];
     
 #endif
     
