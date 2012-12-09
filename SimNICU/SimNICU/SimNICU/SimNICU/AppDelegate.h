@@ -41,8 +41,8 @@
 // SWITCH TO RELEASE BRANCH
 // (BUG FIXES ONLY)
 // 1) GOOGLE_ANALYTICS   set to 0
-// 2) IRATE_PREVIEW_MODE set to 0
-// 3) IRATE_SET          set to 0
+// 2) IRATE_SET          set to 0
+// 3) IRATE_PREVIEW_MODE set to 0
 // 4) DCINTROSPECT_ON    set to 0
 // 5) Clean
 // 6) Increment build
@@ -73,16 +73,16 @@
 // 4) DCINTROSPECT_ON    set to 0
 // 5) Clean
 // 6) Increment build
-// 6) Increment version and in about
-// 7) Git commit (Release)
-// 8) GitHub push (Release)
-// 9) swap to Develop
-//10) Merge release into Develop
-//11) swap to MASTER
-//12) Merge release into MASTER
-//13) GitHub push
-//13) Setup in iTunes Connect
-//13) ARCHIVE FOR RELEASE
-//14) Swap to develop
-//15) GitHub push
+// 7) Increment version and in about
+// 8) Git commit (Release)
+// 9) GitHub push (Release)
+//10) swap to Develop
+//11) Merge release into Develop
+//12) swap to MASTER
+//13) Merge release into MASTER
+//14) GitHub push
+//15) Setup in iTunes Connect
+//16) ARCHIVE FOR RELEASE
+//17) Swap to develop
+//18) GitHub push
 
