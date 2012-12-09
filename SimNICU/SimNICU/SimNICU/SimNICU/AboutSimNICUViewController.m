@@ -202,7 +202,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 2.1.2";
+        returnString = @"Version 1.2.2";
     }
     
     return returnString;

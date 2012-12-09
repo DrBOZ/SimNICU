@@ -80,6 +80,7 @@
 //11) swap to MASTER
 //12) Merge release into MASTER
 //13) GitHub push
+//13) Setup in iTunes Connect
 //13) ARCHIVE FOR RELEASE
 //14) Swap to develop
 //15) GitHub push
