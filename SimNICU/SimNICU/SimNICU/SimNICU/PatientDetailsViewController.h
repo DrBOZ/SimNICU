@@ -9,7 +9,6 @@
 #import "PatientDetailsEnterWorkingWeightViewController.h"
 #import "PatientDetailsEnterWeightViewController.h"
 #import "PatientDetailsEnterNameViewController.h"
-#import <UIKit/UIKit.h>
 #import "Patient.h"
 #import "Kal.h"
 

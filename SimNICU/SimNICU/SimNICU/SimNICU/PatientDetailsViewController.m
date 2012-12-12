@@ -19,17 +19,6 @@
 
 @implementation PatientDetailsViewController
 
-@synthesize userWantsToAddAPatient = _userWantsToAddAPatient;
-@synthesize patientNavigationBar = _patientNavigationBar;
-@synthesize myNavigationItem = _myNavigationItem;
-@synthesize patientFirstname = _patientFirstname;
-@synthesize patientGestation = _patientGestation;
-@synthesize patientLastname = _patientLastname;
-@synthesize patientToEdit = _patientToEdit;
-@synthesize myTableView = _myTableView;
-@synthesize delegate = _delegate;
-@synthesize calendar = _calendar;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -222,22 +211,26 @@
 {
     UITableViewCell *returnCell = nil;
     
+    NSString *CellIdentifier;
+    
     if (indexPath.section == 0) 
     {
-        static NSString *CellIdentifier = @"Patient Details";
+        CellIdentifier = @"Patient Details";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (indexPath.row == 0)     // Name
         {
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.backgroundColor = [UIColor whiteColor];
+
             }
             
             cell.textLabel.text = @"Name";
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             //
             //
             //
@@ -274,10 +267,11 @@
         }
         else if(indexPath.row == 1) // Date of Birth
         {
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.textLabel.text = @"Date of Birth";
@@ -285,7 +279,6 @@
             cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
             cell.detailTextLabel.text = @"";
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             if (self.patientToEdit.formattedBirthDate)
             {
@@ -296,7 +289,7 @@
         }
         else if(indexPath.row == 2) // Gestation
         {
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
                 [cell setBackgroundColor:[UIColor whiteColor]];
@@ -323,7 +316,7 @@
         }
         else if(indexPath.row == 3) // Birth weight
         {
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
                 [cell setBackgroundColor:[UIColor whiteColor]];
@@ -355,12 +348,12 @@
     }
     else if (indexPath.section == 1)
     {
-        static NSString *CellIdentifier = @"Working Weight";
+        CellIdentifier = @"Working Weight";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if(indexPath.row == 0)
         {
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
                 [cell setBackgroundColor:[UIColor whiteColor]];
