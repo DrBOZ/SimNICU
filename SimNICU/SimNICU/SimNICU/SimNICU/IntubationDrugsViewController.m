@@ -543,8 +543,9 @@
     cell.drug.textColor = [UIColor blackColor];
     cell.drug.backgroundColor = [UIColor clearColor];
     
-    cell.dose = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, 7.0f, 142.0f, 21.0f)];
-    cell.dose.font = [UIFont boldSystemFontOfSize:18.0f];
+    cell.dose = [[UILabel alloc] initWithFrame:CGRectMake(154.0f, 7.0f, 152.0f, 21.0f)];
+    cell.dose.font = [UIFont boldSystemFontOfSize:17.0f];
+    cell.dose.adjustsFontSizeToFitWidth = YES;
     cell.dose.backgroundColor = [UIColor clearColor];
 
     cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];

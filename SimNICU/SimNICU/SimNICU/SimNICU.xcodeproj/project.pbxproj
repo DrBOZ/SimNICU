@@ -256,6 +256,7 @@
 		5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
+		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -637,6 +638,8 @@
 		5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMaximalTableViewCell.m; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
+		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1055,6 +1058,8 @@
 				5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */,
 				5C8C3DE916707C7B0073886A /* CalculatorViewController.h */,
 				5C8C3DEB16707C900073886A /* CalculatorViewController.m */,
+				5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */,
+				5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */,
 				5C940B6A166E3C2E0044A7D1 /* cooling2.html */,
 				5C940B6B166E3C2E0044A7D1 /* CoolingViewController.h */,
 				5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */,
@@ -1650,6 +1655,7 @@
 				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
+				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1816,6 +1822,7 @@
 		5C940A7C166E37FE0044A7D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1828,6 +1835,7 @@
 					"\"$(SRCROOT)/SimNICU\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "239A31E8-F207-408A-BBA3-C68281CCBEFA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
 //
 
+#import "CalculatorBrain.h"
 #import "Patient.h"
 
 typedef enum

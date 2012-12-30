@@ -326,10 +326,10 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-    // screen = [[Screen alloc] init];
-    // screen.menuText = @"Calculator";
-    // screen.segueId = @"Calculator";
-    // [screens addObject:screen];
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Calculator";
+    screen.segueId = @"Calculator";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Cooling";

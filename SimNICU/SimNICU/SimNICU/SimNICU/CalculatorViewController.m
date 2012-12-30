@@ -30,6 +30,11 @@
 @property (nonatomic, strong) NSMutableString *resultText;
 @property (nonatomic, strong) UILabel *resultLabel; // display
 
+// new system
+@property (nonatomic, strong) CalculatorBrain *brain;
+
+@property (nonatomic) BOOL userIsInTheMiddleOfTypingANumber;
+
 @end
 
 @implementation CalculatorViewController
@@ -39,6 +44,19 @@
     kButton operation;
     BOOL deleteInput;
     double memory;
+    
+    // new
+    BOOL operationPressed;
+    BOOL dotPressed;
+}
+
+-(CalculatorBrain *)brain
+{
+	if(!_brain)
+    {
+		_brain = [[CalculatorBrain alloc] init];
+	}
+	return _brain;
 }
 
 - (void)addButtonWithTitle:(NSString *)aTitle tag:(int)tag row:(int)row column:(int)column width:(int)width height:(int)height
@@ -284,6 +302,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+
+
+
+
 // If you pass 0, it will use the previously saved operation
 - (void)doOperation:(int)theOperation
 {
@@ -291,7 +314,10 @@
     
     if (theOperation == 0)
     {
-        
+        if (!leftOperator)
+        {
+            return;
+        }
         
         theOperation = operation;
     }
@@ -537,7 +563,8 @@
     self.resultText = [self readableNumberFromString:self.resultText];
     
     // check if we need to add a dot, like Apple's calculator does.
-    if ([sender tag] == kButtonDot) {
+    if ([sender tag] == kButtonDot)
+    {
         [self.resultText appendString:@"."];
     }
     
@@ -547,9 +574,39 @@
 
 - (void)addDigit:(int)digit
 {
-    if ([self.resultText length] < 6) 
+    if ([self.resultText length] < 6)
     {
-        [self.resultText appendFormat:@"%d", digit];
+        // [self.resultText appendFormat:@"%d", digit];
+        
+        NSString *newValue = [NSString stringWithFormat:@"%i", digit];
+        BOOL isDotPressed = [newValue isEqual:@"."];
+        BOOL isOk = YES;
+        
+        if(isDotPressed)
+        {
+            if(dotPressed)
+            {
+                isOk= NO;
+            }
+            else
+            {
+                dotPressed = YES;  // this prevents dot from being pressed twice.
+            }
+        }
+        
+        if(isOk)
+        {
+            if(!operationPressed)
+            {
+                [self.resultText appendFormat:@"%d", digit];
+            }
+            else
+            {
+                self.resultLabel.text = newValue;
+                operationPressed = NO;
+            }
+            [self.brain setOperand:[self.resultLabel.text doubleValue]];
+        }
     }
 }
 
