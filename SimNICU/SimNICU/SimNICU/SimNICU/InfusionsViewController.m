@@ -84,6 +84,7 @@
     BOOL dobutamineConcentrationHighWarningGiven;
     BOOL dopamineConcentrationHighWarningGiven;
     BOOL morphineConcentrationHighWarningGiven;
+    BOOL atracuriumConcentrationHighWarningGiven;
     NSString *heparinDiluent;
     NSString *lidocaineStrength;
     NSString *lidocaineStrengthDose;
@@ -93,8 +94,12 @@
 {
     if (self.workingWeight)
     {
-        float workingWeightKGAsFloat = [self.workingWeight floatValue];
+        // goes through the entire string and replaces any commas with full stops in case
+        // user is using a european locale
+        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
         
+        float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+         
         if (workingWeightKGAsFloat < 1.0f)
         {
             int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
@@ -119,6 +124,13 @@
             {
                 self.title = [NSString stringWithFormat:@"Working weight %.2f kg", workingWeightKGAsFloat];
             }
+        }
+        
+        // if european locale
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            self.title = [self.title stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
         
         self.adrenalineStrength = @"Single";
@@ -171,6 +183,13 @@
         else
         {
             heparinDiluent = @"0.9% Sodium Chloride";
+        }
+        
+        // only need one localization converter code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            heparinDiluent = [heparinDiluent stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
         
         if (workingWeightKGAsFloat < 2.0f)
@@ -564,8 +583,17 @@
 {
     UITableViewCell *returnCell = nil;
     
+#pragma mark - Working Weight Supplied
+#pragma mark -
     if (self.workingWeight)
     {
+        // goes through the entire string and replaces any commas with full stops in case
+        // user is using a european locale
+        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        
+        float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+        
+#pragma mark Morphine
         if (indexPath.section == 0)
         {
             NSString *CellIdentifier = @"Morphine";
@@ -665,8 +693,6 @@
                     self.morphineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
-                
                 float morphineDoseMilligrams;
                 
                 if ([self.morphineStrength isEqualToString:@"Single"])
@@ -687,6 +713,13 @@
                     self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
                 
+                // only need one localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.morphineRangeLabel.text = [self.morphineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
+                
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -701,6 +734,7 @@
             
             returnCell = cell;
         }
+#pragma mark Dopamine
         else if (indexPath.section == 1)
         {
             static NSString *CellIdentifier = @"Dopamine";
@@ -780,10 +814,6 @@
                 
                 [cell addSubview:dopamineStrength];
                 
-                
-                
-                
-                
                 [cell addSubview:drug];
                 [cell addSubview:self.dopamineDoseLabel];
                 [cell addSubview:self.dopamineStrengthLabel];
@@ -805,7 +835,7 @@
                     self.dopamineStrengthLabel.textColor = [UIColor blackColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float dopamineDoseMilligrams;
                 
@@ -828,6 +858,13 @@
                     self.dopamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
                 
+                // only need one localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.dopamineRangeLabel.text = [self.dopamineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
+                
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -842,6 +879,7 @@
             
             returnCell = cell;
         }
+#pragma mark Dobutamine
         else if (indexPath.section == 2)
         {
             static NSString *CellIdentifier = @"Dobutamine";
@@ -938,7 +976,7 @@
                     self.dobutamineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float dobutamineDoseMilligrams;
                 
@@ -960,6 +998,13 @@
                     self.dobutamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
                 
+                // only need one localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.dobutamineRangeLabel.text = [self.dobutamineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
+                
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -974,6 +1019,7 @@
             
             returnCell = cell;
         }
+#pragma mark Adrenaline
         else if (indexPath.section == 3)
         {
             static NSString *CellIdentifier = @"Adrenaline";
@@ -1070,7 +1116,7 @@
                     self.adrenalineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float adrenalineDoseMilligrams;
                 
@@ -1085,6 +1131,13 @@
                     adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
                     self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
                     self.adrenalineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
+                }
+                
+                // only need one localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.adrenalineRangeLabel.text = [self.adrenalineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
                 }
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -1115,6 +1168,7 @@
             
             returnCell = cell;
         }
+#pragma mark Hepsal
         else if (indexPath.section == 4)
         {
             static NSString *CellIdentifier = @"Hepsal";
@@ -1179,10 +1233,18 @@
                 diluent.text = [NSString stringWithFormat:@"%@ (to 50 ml)", heparinDiluent];
                 dose2.text = @"1 ml/hr = 1 Unit/hr";
                 range.text = @"Range 0.5 - 1 ml/hr";
+                
+                // Localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    range.text = [range.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
             }
             
             returnCell = cell;
         }
+#pragma mark Insulin
         else if (indexPath.section == 5)
         {
             static NSString *CellIdentifier = @"Insulin";
@@ -1275,7 +1337,7 @@
                     self.insulinStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float insulinDoseUnits;
                 
@@ -1301,10 +1363,19 @@
                 
                 text.text = @"in";
                 diluent.text = @"0.9% Sodium Chloride (to 50 ml)";
+                
+                // Localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.insulinRangeLabel.text = [self.insulinRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                    diluent.text = [diluent.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
             }
             
             returnCell = cell;
         }
+#pragma mark Atracurium
         else if (indexPath.section == 6)
         {
             static NSString *CellIdentifier = @"Atracurium";
@@ -1401,7 +1472,7 @@
                     self.atracuriumStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float atracuriumDoseMilligrams;
                 
@@ -1427,6 +1498,14 @@
                 
                 text.text = @"in";
                 diluent.text = @"0.9% Sodium Chloride (to 50 ml)";
+                
+                // Localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.atracuriumRangeLabel.text = [self.atracuriumRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                    diluent.text = [diluent.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
             }
             
             returnCell = cell;
@@ -1508,7 +1587,7 @@
                     strength.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float lidocaineDoseMilligrams;
                 
@@ -1523,6 +1602,13 @@
                     lidocaineDoseMilligrams = workingWeightKGasFloat * 200;
                     dose2.text = @"1 ml/hr = 4 mg/kg/hr";
                     range.text = @"Range 0.5 - 1.5 ml/hr";
+                }
+                
+                // Localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    range.text = [range.text stringByReplacingOccurrencesOfString:@"." withString:@","];
                 }
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -1645,7 +1731,7 @@
                     self.midazolamStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float midazolamDoseMilligrams;
                 
@@ -1659,6 +1745,13 @@
                     midazolamDoseMilligrams = workingWeightKGasFloat * 20;
                     self.midazolamDose2Label.text = @"1 ml/hr = 400 micrograms/kg/hr";
                     self.midazolamRangeLabel.text = @"Range 0.15 - 0.75 ml/hr";
+                }
+                
+                // Localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    self.midazolamRangeLabel.text = [self.midazolamRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
                 }
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -1776,7 +1869,7 @@
                 
                 drug.text = @"DINOPROSTONE";
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 // ie 1 ml/hr = x nanograms/kg/min at above weight
                 float prostinDoseNanogramsPerKgPerMinuteAtOneMlPerHour = (1.0f / (0.06f * workingWeightKGasFloat));
@@ -2029,6 +2122,14 @@
                     drug.text = NSLocalizedString(@"Heparin", nil);
                     strength.text = @"50 Units in 50 mls 0.9% Sodium Chloride";
                     text.text = @"0.5 - 1 ml/hr";
+                    
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        // replace dots with commas
+                        strength.text = [strength.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                        text.text = [text.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                    }
                 }
                 
                 returnCell = cell;
@@ -2072,6 +2173,14 @@
                 drug.text = NSLocalizedString(@"Insulin", nil);
                 strength.text = @"10 Units/kg in 50 ml 0.9% Sodium Chloride";
                 text.text = @"1 ml/hr = 0.2 Units/kg/hour";
+                
+                // only need one localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    strength.text = [strength.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                    text.text = [text.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
             }
             
             returnCell = cell;
@@ -2116,6 +2225,14 @@
                     drug.text = NSLocalizedString(@"Atracurium", nil);
                     strength.text = @"60 mg/kg in 50 ml 0.9% Sodium Chloride";
                     text.text = @"1 ml/hr = 1.2 mg/kg/hour";
+                    
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        // replace dots with commas
+                        strength.text = [strength.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                        text.text = [text.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                    }
                 }
                 
                 returnCell = cell;
@@ -2326,6 +2443,13 @@
                 drug.text = NSLocalizedString(@"Dinoprostone", nil);
                 strength.text = @"50 micrograms in 50 mls 5% Dextrose";
                 text.text = @"ml/hr = 0.06 x kg x dose (nanograms/kg/minute)";
+                
+                // only need one localization converter code
+                if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                {
+                    // replace dots with commas
+                    text.text = [text.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                }
             }
             
             returnCell = cell;
@@ -2344,6 +2468,12 @@
 
 - (void)standardSegmentedControlChangedValue:(UISegmentedControl*)segmentedControl
 {
+    // goes through the entire string and replaces any commas with full stops in case
+    // user is using a european locale
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    
+    float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+    
     if (segmentedControl.tag == 0)      // morphine
     {
         switch (segmentedControl.selectedSegmentIndex)
@@ -2378,7 +2508,7 @@
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGasFloat = [self.workingWeight floatValue];
         
         float morphineDoseMilligrams;
         
@@ -2507,7 +2637,7 @@
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGasFloat = [self.workingWeight floatValue];
         
         float dopamineDoseMilligrams;
         
@@ -2634,7 +2764,7 @@
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGasFloat = [self.workingWeight floatValue];
         
         float dobutamineDoseMilligrams;
         
@@ -2758,7 +2888,7 @@
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGasFloat = [self.workingWeight floatValue];
             
             float adrenalineDoseMilligrams;
             
@@ -2847,7 +2977,7 @@
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGasFloat = [self.workingWeight floatValue];
             
             float insulinDoseUnits;
             
@@ -2903,7 +3033,7 @@
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGasFloat = [self.workingWeight floatValue];
             
             float atracuriumDoseMilligrams;
             
@@ -3019,7 +3149,7 @@
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGasFloat = [self.workingWeight floatValue];
         
         float midazolamDoseMilligrams;
         
@@ -3049,6 +3179,13 @@
 
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl
 {
+    // Set workingWeightKGasFloat
+    //
+    // converts if user is using a european locale
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    
+    float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+    
     if (segmentedControl.tag == 0)      // morphine
     {
         switch (segmentedControl.selectedIndex)
@@ -3083,8 +3220,6 @@
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
-        
         float morphineDoseMilligrams;
         
         if ([self.morphineStrength isEqualToString:@"Single"])
@@ -3111,22 +3246,49 @@
                 
                 if (!morphineConcentrationHighWarningGiven)
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!"
-                                              message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n0,4 mg/ml.\n(although higher concentrations have been used)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    
                     morphineConcentrationHighWarningGiven = YES;
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!"
-                                              message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0,4 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
                 }
             }
         }
@@ -3136,7 +3298,7 @@
             self.morphineDose2Label.text = @"1 ml/hr = 80 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
-            if ((morphineDoseMilligrams / 50) > 0.4)
+            if ((morphineDoseMilligrams / 50) > 0.4f)
             {
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3148,24 +3310,58 @@
                 
                 if (!morphineConcentrationHighWarningGiven)
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!"
-                                              message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n0,4 mg/ml.\n(although higher concentrations have been used)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    
                     morphineConcentrationHighWarningGiven = YES;
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"MORPHINE - CAUTION!"
-                                              message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0,4 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"MORPHINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
                 }
             }
+        }
+        
+        // only need one localization converter code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            self.morphineRangeLabel.text = [self.morphineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -3176,6 +3372,7 @@
         
         self.morphineDoseLabel.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:morphineDoseMilligrams]]];
     }
+#pragma mark dopamine
     else if (segmentedControl.tag == 1) // dopamine
     {
         switch (segmentedControl.selectedIndex)
@@ -3212,7 +3409,7 @@
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGasFloat = [self.workingWeight floatValue];
         
         float dopamineDoseMilligrams;
         
@@ -3240,22 +3437,49 @@
                 
                 if (!dopamineConcentrationHighWarningGiven)
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!"
-                                              message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n3,2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    
                     dopamineConcentrationHighWarningGiven = YES;
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!"
-                                              message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3.2 mg/ml)", tempString]
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3,2 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3.2 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
                 }
             }
         }
@@ -3277,24 +3501,58 @@
                 
                 if (!dopamineConcentrationHighWarningGiven)
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!"
-                                              message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n3,2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    
                     dopamineConcentrationHighWarningGiven = YES;
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOPAMINE - CAUTION!"
-                                              message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3.2 mg/ml)", tempString]
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3,2 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOPAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3.2 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
                 }
             }
+        }
+        
+        // only need one localization converter code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            self.dopamineRangeLabel.text = [self.dopamineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -3305,6 +3563,7 @@
         
         self.dopamineDoseLabel.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:dopamineDoseMilligrams]]];
     }
+#pragma mark dobutamine
     else if (segmentedControl.tag == 2) // dobutamine
     {
         switch (segmentedControl.selectedIndex)
@@ -3339,8 +3598,6 @@
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
-        
         float dobutamineDoseMilligrams;
         
         if ([self.dobutamineStrength isEqualToString:@"Single"])
@@ -3367,22 +3624,49 @@
                 
                 if (!dobutamineConcentrationHighWarningGiven)
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
-                                              message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n5,0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    
                     dobutamineConcentrationHighWarningGiven = YES;
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
-                                              message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5,0 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
                 }
             }
         }
@@ -3404,24 +3688,58 @@
                 
                 if (!dobutamineConcentrationHighWarningGiven)
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
-                                              message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n5,0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:@"Final concentration exceeds\n5.0 mg/ml.\n(Concentrations up to 10 mg/ml have been used centrally)"
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    
                     dobutamineConcentrationHighWarningGiven = YES;
                 }
                 else
                 {
-                    UIAlertView *alertView = [[UIAlertView alloc]
-                                              initWithTitle:@"DOBUTAMINE - CAUTION!"
-                                              message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
-                                              delegate:nil cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-                    [alertView show];
+                    // only need one localization converter code
+                    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5,0 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
+                    else
+                    {
+                        UIAlertView *alertView = [[UIAlertView alloc]
+                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
+                                                  delegate:nil cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+                        [alertView show];
+                    }
                 }
             }
+        }
+        
+        // only need one localization converter code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            self.dobutamineRangeLabel.text = [self.dobutamineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -3432,6 +3750,7 @@
         
         self.dobutamineDoseLabel.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:dobutamineDoseMilligrams]]];
     }
+#pragma mark adrenaline
     else if (segmentedControl.tag == 3) // adrenaline
     {
         switch (segmentedControl.selectedIndex)
@@ -3463,7 +3782,7 @@
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGasFloat = [self.workingWeight floatValue];
             
             float adrenalineDoseMilligrams;
             
@@ -3492,24 +3811,58 @@
                     
                     if (!adrenalineConcentrationHighWarningGiven)
                     {
-                        UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
-                                                  message:@"Final concentration exceeds\n0.32 mg/ml.\n(Can be used more concentrated, or even neat, in fluid restricted patients and always via a central line)"
-                                                  delegate:nil cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-                        [alertView show];
+                        // only need one localization converter code
+                        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
+                                                      message:@"Final concentration exceeds\n0,32 mg/ml.\n(Can be used more concentrated, or even neat, in fluid restricted patients and always via a central line)"
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        else
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
+                                                      message:@"Final concentration exceeds\n0.32 mg/ml.\n(Can be used more concentrated, or even neat, in fluid restricted patients and always via a central line)"
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        
                         adrenalineConcentrationHighWarningGiven = YES;
                     }
                     else
                     {
-                        UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
-                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.32 mg/ml)", tempString]
-                                                  delegate:nil cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-                        [alertView show];
+                        // only need one localization converter code
+                        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
+                                                      message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0,32 mg/ml)", tempString]
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        else
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:[NSString stringWithFormat:@"%@ - CAUTION!", NSLocalizedString(@"ADRENALINE", nil)]
+                                                      message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.32 mg/ml)", tempString]
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
                     }
                 }
+            }
+            
+            // only need one localization converter code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                // replace dots with commas
+                self.adrenalineRangeLabel.text = [self.adrenalineRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
             }
             
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -3521,6 +3874,7 @@
             self.adrenalineDoseLabel.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:adrenalineDoseMilligrams]]];
         }
     }
+#pragma mark insulin
     else if (segmentedControl.tag == 5) // insulin
     {
         switch (segmentedControl.selectedIndex)
@@ -3552,7 +3906,7 @@
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGasFloat = [self.workingWeight floatValue];
             
             float insulinDoseUnits;
             
@@ -3568,6 +3922,13 @@
                 self.insulinRangeLabel.text = @"Start at 0.12 - 0.25 ml/hr";
             }
             
+            // only need one localization converter code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                // replace dots with commas
+                self.insulinRangeLabel.text = [self.insulinRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+            }
+            
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.roundingMode = NSNumberFormatterRoundHalfEven;
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3577,6 +3938,7 @@
             self.insulinDoseLabel.text = [NSString stringWithFormat:@"%@ Units", [formatter stringFromNumber:[NSNumber numberWithFloat:insulinDoseUnits]]];
         }
     }
+#pragma mark atraurium
     else if (segmentedControl.tag == 6) // atracurium
     {
         switch (segmentedControl.selectedIndex)
@@ -3608,8 +3970,6 @@
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
-            
             float atracuriumDoseMilligrams;
             
             if ([self.atracuriumStrength isEqualToString:@"Single"])
@@ -3628,20 +3988,21 @@
                     
                     NSString *tempString = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:(atracuriumDoseMilligrams / 50)]]];
                     
-                    if (!dobutamineConcentrationHighWarningGiven)
+                    if (!atracuriumConcentrationHighWarningGiven)
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  initWithTitle:@"ATRACURIUM - CAUTION!"
                                                   message:@"Final concentration below\n500 micrograms/ml."
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
                         [alertView show];
-                        dobutamineConcentrationHighWarningGiven = YES;
+                        
+                        atracuriumConcentrationHighWarningGiven = YES;
                     }
                     else
                     {
                         UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
+                                                  initWithTitle:@"ATRACURIUM - CAUTION!"
                                                   message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(< 500 micrograms/ml)", tempString]
                                                   delegate:nil cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
@@ -3664,26 +4025,60 @@
                     
                     NSString *tempString = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:(atracuriumDoseMilligrams / 50)]]];
                     
-                    if (!dobutamineConcentrationHighWarningGiven)
+                    if (!atracuriumConcentrationHighWarningGiven)
                     {
-                        UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
-                                                  message:@"Final concentration exceeds\n5.0 mg/ml."
-                                                  delegate:nil cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-                        [alertView show];
-                        dobutamineConcentrationHighWarningGiven = YES;
+                        // only need one localization converter code
+                        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:@"ATRACURIUM - CAUTION!"
+                                                      message:@"Final concentration exceeds\n5,0 mg/ml."
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        else
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:@"ATRACURIUM - CAUTION!"
+                                                      message:@"Final concentration exceeds\n5.0 mg/ml."
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        
+                        atracuriumConcentrationHighWarningGiven = YES;
                     }
                     else
                     {
-                        UIAlertView *alertView = [[UIAlertView alloc]
-                                                  initWithTitle:@"DOBUTAMINE - CAUTION!"
-                                                  message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
-                                                  delegate:nil cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-                        [alertView show];
+                        // only need one localization converter code
+                        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:@"ATRACURIUM - CAUTION!"
+                                                      message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5,0 mg/ml)", tempString]
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        else
+                        {
+                            UIAlertView *alertView = [[UIAlertView alloc]
+                                                      initWithTitle:@"ATRACURIUM - CAUTION!"
+                                                      message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 5.0 mg/ml)", tempString]
+                                                      delegate:nil cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                            [alertView show];
+                        }
                     }
                 }
+            }
+            
+            // only need one localization converter code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                // replace dots with commas
+                self.atracuriumRangeLabel.text = [self.atracuriumRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
             }
             
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -3695,6 +4090,7 @@
             self.atracuriumDoseLabel.text = [NSString stringWithFormat:@"%@ mg", [formatter stringFromNumber:[NSNumber numberWithFloat:atracuriumDoseMilligrams]]];
         }
     }
+#pragma mark midazolam
     else if (segmentedControl.tag == 8) // midazolam
     {
         switch (segmentedControl.selectedIndex)
@@ -3724,8 +4120,6 @@
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float workingWeightKGasFloat = [self.workingWeight floatValue];
-        
         float midazolamDoseMilligrams;
         
         if ([self.midazolamStrength isEqualToString:@"Single"])
@@ -3740,6 +4134,13 @@
             self.midazolamRangeLabel.text = @"Range 0.15 - 0.75 ml/hr";
         }
         
+        // only need one localization converter code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            self.midazolamRangeLabel.text = [self.midazolamRangeLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+        }
+        
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.roundingMode = NSNumberFormatterRoundHalfEven;
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -3752,7 +4153,12 @@
 
 - (void)sliderValueChanged:(UISlider *)sender
 {
-    float workingWeightKGasFloat = [self.workingWeight floatValue];
+    // Set workingWeightKGasFloat
+    //
+    // converts if user is using a european locale
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    
+    float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
     
     float prostinDoseNanogramsPerKilogramPerMinute = roundf(sender.value);
     

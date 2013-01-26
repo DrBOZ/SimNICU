@@ -801,7 +801,7 @@
     return returnCell;
 }
 
-# pragma mark
+# pragma mark Editing
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -821,7 +821,8 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
-    if (!self.confidentialityModeOn) {
+    if (!self.confidentialityModeOn)
+    {
         [super setEditing:editing animated:animated];
         
         if (editing) 
@@ -864,11 +865,12 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.editingModeOn) 
+    if (self.editingModeOn)
     {
         if (indexPath.section == 2) 
         {
-            if (indexPath.row == [self.patientList count]-1) 
+            NSLog(@"([self.patientList count] - 1) = %i", ([self.patientList count] - 1));
+            if (indexPath.row == ([self.patientList count] -1))
             {
                 return UITableViewCellEditingStyleInsert;
             }
@@ -894,7 +896,6 @@
     }
     
     return UITableViewCellEditingStyleNone;
-    
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -1133,7 +1134,7 @@
         }
         if(newText.length == 1)
         {
-            if([string isEqualToString:@"."])
+            if([string isEqualToString:@"."] || [string isEqualToString:@","])
             {
                 self.weight.text = @"0";
             }
@@ -1154,11 +1155,11 @@
         else if(newText.length == 2)
         {
             // first character is a "."
-            if([[newText substringToIndex:1] isEqualToString:@"."])
+            if([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
             {
                 return NO;
             }
-            else if (![[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"."])
+            else if (!([[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@","]))
             {
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"ERROR!" 
@@ -1175,7 +1176,7 @@
         else if(newText.length == 3)
         {            
             // first character is a "."
-            if ([[newText substringToIndex:1] isEqualToString:@"."]) 
+            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
             {
                 return NO;
             }
@@ -1186,34 +1187,34 @@
         }
         else if(newText.length == 4)
         {
-            if ([[newText substringToIndex:1] isEqualToString:@"."]) 
+            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."])
+            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@","])
             {
                 return NO;
             }
         }
         else if(newText.length == 5)
         {
-            if ([[newText substringToIndex:1] isEqualToString:@"."]) 
+            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."])
+            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@","])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@"."])
+            else if ([[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@","])
             {
                 return NO;
             }

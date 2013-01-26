@@ -168,7 +168,7 @@
     
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
-        NSLog(@"Iphone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
+        NSLog(@"iPhone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
         
         //screen mask covers everything
         UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))]; // 430
@@ -1303,22 +1303,23 @@
 
 - (void)enterWeightViewController:(EnterWeightViewController *)controller didFinishEnteringWeight:(NSString *)weight orGestation:(NSString *)gestation forSex:(NSString *)sex atCentile:(NSString *)centile
 {
+    // remove patient details, as working with weight or gestation data
     self.selectedPatient = NULL;
     
+    // why is this important?
     self.infoPassedThrough = @"didFinishEnteringWeightOrGestation";
     
-    NSLog(@"self.infoPassedThrough = %@", self.infoPassedThrough);
+    // ensure non-valid strings are not entered
+    if([weight isEqualToString:@""] || [weight isEqualToString:@"0"] || [weight isEqualToString:@"0."] || [weight isEqualToString:@"0,"]) weight = NULL;
     
-    if([weight isEqualToString:@""] || [weight isEqualToString:@"0"] || [weight isEqualToString:@"0."])
-    {
-        weight = NULL;
-    }
-    if([gestation isEqualToString:@""])
-    {
-        gestation = NULL;
-    }
+    if([gestation isEqualToString:@""]) gestation = NULL;
     
-    float weightFloat = [weight floatValue];
+    // goes through the entire string and replaces any commas with full stops in case
+    // user is using a european locale
+    NSString *UKLocaleWeight = [weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    
+    // ensure that weight is not less that 300 grams
+    float weightFloat = [UKLocaleWeight floatValue];
     
     if (weightFloat < 0.3f && !(weight == NULL))
     {
@@ -1339,6 +1340,7 @@
     {
         NSLog(@"gestation only");
         
+        // set display text
         if ([sex isEqualToString:@"Unknown"] && [centile isEqualToString:@"50th"])
         {
             self.displayTextLabel.text = [NSString stringWithFormat:@"%@ weeks gestation", gestation];
@@ -1348,16 +1350,13 @@
             self.displayTextLabel.text = [NSString stringWithFormat:@"%@/40 %@ (%@ centile)", gestation, sex, centile];
         }
         
-        
         // obtain estimated weight from growth chart
-        
         NSString *estimatedWeight;
         
+        // create growth chart and retrieve estimated weight
         self.growthChart = [[GrowthChart alloc] init];
         
         estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:gestation];
-        
-        NSLog(@"Estimated Weight = %@", estimatedWeight);
         
         float estimatedWeightKGAsFloat = [estimatedWeight floatValue];
         
@@ -1370,13 +1369,28 @@
         }
         else
         {
-            self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %.2f kg", estimatedWeightKGAsFloat];
+            NSString *tempString = [NSString stringWithFormat:@"Estimated weight %.2f kg", estimatedWeightKGAsFloat];
+            
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                // replace dots with commas
+                tempString = [tempString stringByReplacingOccurrencesOfString:@"." withString:@","];
+            }
+            
+            self.displayDetailTextLabel.text = tempString;
         }
         
         self.displayDetailTextLabel.hidden = NO;
         self.displayBackground.hidden = NO;
         self.displayTextLabel.hidden = NO;
         self.displayDismissButtonView.hidden = NO;
+        
+        // localisation checker
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            estimatedWeight = [estimatedWeight stringByReplacingOccurrencesOfString:@"." withString:@","];
+        }
         
         self.weight = estimatedWeight;
         
@@ -1388,7 +1402,9 @@
     {
         NSLog(@"weight only");
         
-        float weightKGAsFloat = [weight floatValue];
+        // float weightKGAsFloat = [weight floatValue];
+        float weightKGAsFloat = [UKLocaleWeight floatValue];
+        
         if(weightKGAsFloat < 1)
         {
             // convert to grams as use integer
