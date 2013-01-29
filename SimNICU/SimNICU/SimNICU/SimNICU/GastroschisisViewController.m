@@ -166,7 +166,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height;
+    float height = 0.0f;
     
     switch (indexPath.section) 
     {

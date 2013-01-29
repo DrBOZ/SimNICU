@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
+		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
@@ -261,6 +262,7 @@
 
 /* Begin PBXFileReference section */
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
+		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
@@ -1137,6 +1139,7 @@
 				5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */,
 				5C940BA9166E3C2E0044A7D1 /* VitKViewController.h */,
 				5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */,
+				5C3962FA16B807A30039C387 /* weightConversionTableComma.html */,
 				5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */,
 				5C940BAC166E3C2E0044A7D1 /* WeightConversionViewController.h */,
 				5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */,
@@ -1544,6 +1547,7 @@
 				5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */,
 				5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */,
 				5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */,
+				5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

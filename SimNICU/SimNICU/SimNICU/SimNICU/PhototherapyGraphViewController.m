@@ -472,7 +472,7 @@
 // Returns the number of points for a specific series in the specified chart
 - (int)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(int)seriesIndex
 {
-    int points;
+    int points = 0;
     
     if ([self.guidelineCountry isEqualToString:@"US"])
     {

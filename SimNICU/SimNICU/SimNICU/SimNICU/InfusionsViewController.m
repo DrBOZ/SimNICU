@@ -591,7 +591,7 @@
         // user is using a european locale
         NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
         
-        float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+        float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
         
 #pragma mark Morphine
         if (indexPath.section == 0)
@@ -675,7 +675,6 @@
                 
                 [cell addSubview:morphineStrength];
                 
-                
                 [cell addSubview:drug];
                 [cell addSubview:self.morphineDoseLabel];
                 [cell addSubview:self.morphineStrengthLabel];
@@ -693,22 +692,22 @@
                     self.morphineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                float morphineDoseMilligrams;
+                float morphineDoseMilligrams = 0.0f;
                 
                 if ([self.morphineStrength isEqualToString:@"Single"])
                 {
-                    morphineDoseMilligrams = workingWeightKGasFloat;
+                    morphineDoseMilligrams = workingWeightKGAsFloat;
                     self.morphineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/hr";
                     self.morphineRangeLabel.text = @"Range 0.25 - 2 ml/hr";
                 }
                 else if ([self.morphineStrength isEqualToString:@"Double"]) {
-                    morphineDoseMilligrams = workingWeightKGasFloat * 2.0f;
+                    morphineDoseMilligrams = workingWeightKGAsFloat * 2.0f;
                     self.morphineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/hr";
                     self.morphineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
                 }
                 else if ([self.morphineStrength isEqualToString:@"Quad"])
                 {
-                    morphineDoseMilligrams = workingWeightKGasFloat * 4.0f;
+                    morphineDoseMilligrams = workingWeightKGAsFloat * 4.0f;
                     self.morphineDose2Label.text = @"1 ml/hr = 80 micrograms/kg/hr";
                     self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
@@ -835,25 +834,25 @@
                     self.dopamineStrengthLabel.textColor = [UIColor blackColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float dopamineDoseMilligrams;
+                float dopamineDoseMilligrams = 0.0f;
                 
                 if ([self.dopamineStrength isEqualToString:@"Single"])
                 {
-                    dopamineDoseMilligrams = workingWeightKGasFloat * 30.0f;
+                    dopamineDoseMilligrams = workingWeightKGAsFloat * 30.0f;
                     self.dopamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
                     self.dopamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
                 }
                 else if ([self.dopamineStrength isEqualToString:@"Double"])
                 {
-                    dopamineDoseMilligrams = workingWeightKGasFloat * 60.0f;
+                    dopamineDoseMilligrams = workingWeightKGAsFloat * 60.0f;
                     self.dopamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
                     self.dopamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
                 }
                 else if ([self.dopamineStrength isEqualToString:@"Quad"])
                 {
-                    dopamineDoseMilligrams = workingWeightKGasFloat * 120.0f;
+                    dopamineDoseMilligrams = workingWeightKGAsFloat * 120.0f;
                     self.dopamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
                     self.dopamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
@@ -976,24 +975,24 @@
                     self.dobutamineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float dobutamineDoseMilligrams;
+                float dobutamineDoseMilligrams = 0.0f;
                 
                 if ([self.dobutamineStrength isEqualToString:@"Single"])
                 {
-                    dobutamineDoseMilligrams = workingWeightKGasFloat * 30;
+                    dobutamineDoseMilligrams = workingWeightKGAsFloat * 30;
                     self.dobutamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
                     self.dobutamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
                 }
                 else if ([self.dobutamineStrength isEqualToString:@"Double"]) {
-                    dobutamineDoseMilligrams = workingWeightKGasFloat * 60;
+                    dobutamineDoseMilligrams = workingWeightKGAsFloat * 60;
                     self.dobutamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
                     self.dobutamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
                 }
                 else if ([self.dobutamineStrength isEqualToString:@"Quad"])
                 {
-                    dobutamineDoseMilligrams = workingWeightKGasFloat * 120;
+                    dobutamineDoseMilligrams = workingWeightKGAsFloat * 120;
                     self.dobutamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
                     self.dobutamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
@@ -1116,19 +1115,19 @@
                     self.adrenalineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
                 float adrenalineDoseMilligrams;
                 
                 if ([self.adrenalineStrength isEqualToString:@"Single"])
                 {
-                    adrenalineDoseMilligrams = workingWeightKGasFloat * 3;
+                    adrenalineDoseMilligrams = workingWeightKGAsFloat * 3;
                     self.adrenalineDose2Label.text = @"1 ml/hr = 1 micrograms/kg/min";
                     self.adrenalineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
                 }
                 else if ([self.adrenalineStrength isEqualToString:@"Double"])
                 {
-                    adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
+                    adrenalineDoseMilligrams = workingWeightKGAsFloat * 6;
                     self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
                     self.adrenalineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
@@ -1337,18 +1336,18 @@
                     self.insulinStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float insulinDoseUnits;
+                float insulinDoseUnits = 0.0f;
                 
                 if ([self.insulinStrength isEqualToString:@"Single"])
                 {
-                    insulinDoseUnits = workingWeightKGasFloat * 10;
+                    insulinDoseUnits = workingWeightKGAsFloat * 10;
                     self.insulinDose2Label.text = @"1 ml/hr = 0.2 units/kg/hr";
                     self.insulinRangeLabel.text = @"Start at 0.25 - 0.5 ml/hr";
                 }
                 else if ([self.insulinStrength isEqualToString:@"Double"]) {
-                    insulinDoseUnits = workingWeightKGasFloat * 20;
+                    insulinDoseUnits = workingWeightKGAsFloat * 20;
                     self.insulinDose2Label.text = @"1 ml/hr = 0.4 units/kg/hr";
                     self.insulinRangeLabel.text = @"Start at 0.12 - 0.25 ml/hr";
                 }
@@ -1472,18 +1471,18 @@
                     self.atracuriumStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float atracuriumDoseMilligrams;
+                float atracuriumDoseMilligrams =0.0f;
                 
                 if ([self.atracuriumStrength isEqualToString:@"Single"])
                 {
-                    atracuriumDoseMilligrams = workingWeightKGasFloat * 60;
+                    atracuriumDoseMilligrams = workingWeightKGAsFloat * 60;
                     self.atracuriumDose2Label.text = @"1 ml/hr = 1.2 mg/kg/hr";
                     self.atracuriumRangeLabel.text = @"Range 0.25 - 1 ml/hr";
                 }
                 else if ([self.atracuriumStrength isEqualToString:@"Double"]) {
-                    atracuriumDoseMilligrams = workingWeightKGasFloat * 120;
+                    atracuriumDoseMilligrams = workingWeightKGAsFloat * 120;
                     self.atracuriumDose2Label.text = @"1 ml/hr = 2.4 mg/kg/hr";
                     self.atracuriumRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 }
@@ -1587,19 +1586,19 @@
                     strength.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
                 float lidocaineDoseMilligrams;
                 
                 if ([lidocaineStrength isEqualToString:@"Single"])
                 {
-                    lidocaineDoseMilligrams = workingWeightKGasFloat * 100;
+                    lidocaineDoseMilligrams = workingWeightKGAsFloat * 100;
                     dose2.text = @"1 ml/hr = 2 mg/kg/hr";
                     range.text = @"Range 1 - 3 ml/hr";
                 }
                 else if ([lidocaineStrength isEqualToString:@"Double"])
                 {
-                    lidocaineDoseMilligrams = workingWeightKGasFloat * 200;
+                    lidocaineDoseMilligrams = workingWeightKGAsFloat * 200;
                     dose2.text = @"1 ml/hr = 4 mg/kg/hr";
                     range.text = @"Range 0.5 - 1.5 ml/hr";
                 }
@@ -1731,18 +1730,18 @@
                     self.midazolamStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
                 float midazolamDoseMilligrams;
                 
                 if ([self.midazolamStrength isEqualToString:@"Single"])
                 {
-                    midazolamDoseMilligrams = workingWeightKGasFloat * 10;
+                    midazolamDoseMilligrams = workingWeightKGAsFloat * 10;
                     self.midazolamDose2Label.text = @"1 ml/hr = 200 micrograms/kg/hr";
                     self.midazolamRangeLabel.text = @"Range 0.3 - 1.5 ml/hr";
                 }
                 else if ([self.midazolamStrength isEqualToString:@"Double"]) {
-                    midazolamDoseMilligrams = workingWeightKGasFloat * 20;
+                    midazolamDoseMilligrams = workingWeightKGAsFloat * 20;
                     self.midazolamDose2Label.text = @"1 ml/hr = 400 micrograms/kg/hr";
                     self.midazolamRangeLabel.text = @"Range 0.15 - 0.75 ml/hr";
                 }
@@ -1869,10 +1868,10 @@
                 
                 drug.text = @"DINOPROSTONE";
                 
-                // float workingWeightKGasFloat = [self.workingWeight floatValue];
+                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
                 // ie 1 ml/hr = x nanograms/kg/min at above weight
-                float prostinDoseNanogramsPerKgPerMinuteAtOneMlPerHour = (1.0f / (0.06f * workingWeightKGasFloat));
+                float prostinDoseNanogramsPerKgPerMinuteAtOneMlPerHour = (1.0f / (0.06f * workingWeightKGAsFloat));
                 
                 NSNumberFormatter *formatter1 = [[NSNumberFormatter alloc] init];
                 formatter1.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -1885,7 +1884,7 @@
                 // next slider values
                 float prostinDoseNanogramsPerKilogramPerMinute = roundf(self.anisotropicSlider.value);
                 
-                float prostinRate = (0.06f * workingWeightKGasFloat * prostinDoseNanogramsPerKilogramPerMinute);
+                float prostinRate = (0.06f * workingWeightKGAsFloat * prostinDoseNanogramsPerKilogramPerMinute);
                 
                 NSNumberFormatter *formatter2 = [[NSNumberFormatter alloc] init];
                 formatter2.roundingMode = NSNumberFormatterRoundHalfEven;
@@ -2472,7 +2471,7 @@
     // user is using a european locale
     NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
     
-    float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+    float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
     
     if (segmentedControl.tag == 0)      // morphine
     {
@@ -2508,19 +2507,19 @@
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float morphineDoseMilligrams;
         
         if ([self.morphineStrength isEqualToString:@"Single"])
         {
-            morphineDoseMilligrams = workingWeightKGasFloat;
+            morphineDoseMilligrams = workingWeightKGAsFloat;
             self.morphineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.25 - 2 ml/hr";
         }
         else if ([self.morphineStrength isEqualToString:@"Double"])
         {
-            morphineDoseMilligrams = workingWeightKGasFloat * 2;
+            morphineDoseMilligrams = workingWeightKGAsFloat * 2;
             self.morphineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
@@ -2557,7 +2556,7 @@
         }
         else if ([self.morphineStrength isEqualToString:@"Quad"])
         {
-            morphineDoseMilligrams = workingWeightKGasFloat * 4;
+            morphineDoseMilligrams = workingWeightKGAsFloat * 4;
             self.morphineDose2Label.text = @"1 ml/hr = 80 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
@@ -2637,19 +2636,19 @@
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float dopamineDoseMilligrams;
         
         if ([self.dopamineStrength isEqualToString:@"Single"])
         {
-            dopamineDoseMilligrams = workingWeightKGasFloat * 30.0f;
+            dopamineDoseMilligrams = workingWeightKGAsFloat * 30.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
         else if ([self.dopamineStrength isEqualToString:@"Double"])
         {
-            dopamineDoseMilligrams = workingWeightKGasFloat * 60.0f;
+            dopamineDoseMilligrams = workingWeightKGAsFloat * 60.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
@@ -2686,7 +2685,7 @@
         }
         else if ([self.dopamineStrength isEqualToString:@"Quad"])
         {
-            dopamineDoseMilligrams = workingWeightKGasFloat * 120.0f;
+            dopamineDoseMilligrams = workingWeightKGAsFloat * 120.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
@@ -2764,19 +2763,19 @@
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float dobutamineDoseMilligrams;
         
         if ([self.dobutamineStrength isEqualToString:@"Single"])
         {
-            dobutamineDoseMilligrams = workingWeightKGasFloat * 30;
+            dobutamineDoseMilligrams = workingWeightKGAsFloat * 30;
             self.dobutamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
         else if ([self.dobutamineStrength isEqualToString:@"Double"])
         {
-            dobutamineDoseMilligrams = workingWeightKGasFloat * 60;
+            dobutamineDoseMilligrams = workingWeightKGAsFloat * 60;
             self.dobutamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
@@ -2813,7 +2812,7 @@
         }
         else if ([self.dobutamineStrength isEqualToString:@"Quad"])
         {
-            dobutamineDoseMilligrams = workingWeightKGasFloat * 120;
+            dobutamineDoseMilligrams = workingWeightKGAsFloat * 120;
             self.dobutamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
@@ -2888,19 +2887,19 @@
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
             
-            // float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float adrenalineDoseMilligrams;
             
             if ([self.adrenalineStrength isEqualToString:@"Single"])
             {
-                adrenalineDoseMilligrams = workingWeightKGasFloat * 3;
+                adrenalineDoseMilligrams = workingWeightKGAsFloat * 3;
                 self.adrenalineDose2Label.text = @"1 ml/hr = 1 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             }
             else if ([self.adrenalineStrength isEqualToString:@"Double"])
             {
-                adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
+                adrenalineDoseMilligrams = workingWeightKGAsFloat * 6;
                 self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
@@ -2977,18 +2976,18 @@
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
             
-            // float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float insulinDoseUnits;
             
             if ([self.insulinStrength isEqualToString:@"Single"])
             {
-                insulinDoseUnits = workingWeightKGasFloat * 10;
+                insulinDoseUnits = workingWeightKGAsFloat * 10;
                 self.insulinDose2Label.text = @"1 ml/hr = 0.2 units/kg/hr";
                 self.insulinRangeLabel.text = @"Start at 0.25 - 0.5 ml/hr";
             }
             else if ([self.insulinStrength isEqualToString:@"Double"]) {
-                insulinDoseUnits = workingWeightKGasFloat * 20;
+                insulinDoseUnits = workingWeightKGAsFloat * 20;
                 self.insulinDose2Label.text = @"1 ml/hr = 0.4 units/kg/hr";
                 self.insulinRangeLabel.text = @"Start at 0.12 - 0.25 ml/hr";
             }
@@ -3033,13 +3032,13 @@
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
             
-            // float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float atracuriumDoseMilligrams;
             
             if ([self.atracuriumStrength isEqualToString:@"Single"])
             {
-                atracuriumDoseMilligrams = workingWeightKGasFloat * 60;
+                atracuriumDoseMilligrams = workingWeightKGAsFloat * 60;
                 self.atracuriumDose2Label.text = @"1 ml/hr = 1.2 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.25 - 1 ml/hr";
                 
@@ -3075,7 +3074,7 @@
                 }
             }
             else if ([self.atracuriumStrength isEqualToString:@"Double"]) {
-                atracuriumDoseMilligrams = workingWeightKGasFloat * 120;
+                atracuriumDoseMilligrams = workingWeightKGAsFloat * 120;
                 self.atracuriumDose2Label.text = @"1 ml/hr = 2.4 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
@@ -3149,18 +3148,18 @@
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float midazolamDoseMilligrams;
         
         if ([self.midazolamStrength isEqualToString:@"Single"])
         {
-            midazolamDoseMilligrams = workingWeightKGasFloat * 10.0f;
+            midazolamDoseMilligrams = workingWeightKGAsFloat * 10.0f;
             self.midazolamDose2Label.text = @"1 ml/hr = 200 micrograms/kg/hr";
             self.midazolamRangeLabel.text = @"Range 0.3 - 1.5 ml/hr";
         }
         else if ([self.midazolamStrength isEqualToString:@"Double"]) {
-            midazolamDoseMilligrams = workingWeightKGasFloat * 20.0f;
+            midazolamDoseMilligrams = workingWeightKGAsFloat * 20.0f;
             self.midazolamDose2Label.text = @"1 ml/hr = 400 micrograms/kg/hr";
             self.midazolamRangeLabel.text = @"Range 0.15 - 0.75 ml/hr";
         }
@@ -3179,12 +3178,12 @@
 
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl
 {
-    // Set workingWeightKGasFloat
+    // Set workingWeightKGAsFloat
     //
     // converts if user is using a european locale
     NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
     
-    float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+    float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
     
     if (segmentedControl.tag == 0)      // morphine
     {
@@ -3224,13 +3223,13 @@
         
         if ([self.morphineStrength isEqualToString:@"Single"])
         {
-            morphineDoseMilligrams = workingWeightKGasFloat;
+            morphineDoseMilligrams = workingWeightKGAsFloat;
             self.morphineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.25 - 2 ml/hr";
         }
         else if ([self.morphineStrength isEqualToString:@"Double"])
         {
-            morphineDoseMilligrams = workingWeightKGasFloat * 2;
+            morphineDoseMilligrams = workingWeightKGAsFloat * 2;
             self.morphineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
@@ -3294,7 +3293,7 @@
         }
         else if ([self.morphineStrength isEqualToString:@"Quad"])
         {
-            morphineDoseMilligrams = workingWeightKGasFloat * 4;
+            morphineDoseMilligrams = workingWeightKGAsFloat * 4;
             self.morphineDose2Label.text = @"1 ml/hr = 80 micrograms/kg/hr";
             self.morphineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
@@ -3409,19 +3408,19 @@
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGasFloat = [self.workingWeight floatValue];
+        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float dopamineDoseMilligrams;
         
         if ([self.dopamineStrength isEqualToString:@"Single"])
         {
-            dopamineDoseMilligrams = workingWeightKGasFloat * 30.0f;
+            dopamineDoseMilligrams = workingWeightKGAsFloat * 30.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
         else if ([self.dopamineStrength isEqualToString:@"Double"])
         {
-            dopamineDoseMilligrams = workingWeightKGasFloat * 60.0f;
+            dopamineDoseMilligrams = workingWeightKGAsFloat * 60.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
@@ -3485,7 +3484,7 @@
         }
         else if ([self.dopamineStrength isEqualToString:@"Quad"])
         {
-            dopamineDoseMilligrams = workingWeightKGasFloat * 120.0f;
+            dopamineDoseMilligrams = workingWeightKGAsFloat * 120.0f;
             self.dopamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dopamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
@@ -3602,13 +3601,13 @@
         
         if ([self.dobutamineStrength isEqualToString:@"Single"])
         {
-            dobutamineDoseMilligrams = workingWeightKGasFloat * 30;
+            dobutamineDoseMilligrams = workingWeightKGAsFloat * 30;
             self.dobutamineDose2Label.text = @"1 ml/hr = 10 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.2 - 2 ml/hr";
         }
         else if ([self.dobutamineStrength isEqualToString:@"Double"])
         {
-            dobutamineDoseMilligrams = workingWeightKGasFloat * 60;
+            dobutamineDoseMilligrams = workingWeightKGAsFloat * 60;
             self.dobutamineDose2Label.text = @"1 ml/hr = 20 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             
@@ -3672,7 +3671,7 @@
         }
         else if ([self.dobutamineStrength isEqualToString:@"Quad"])
         {
-            dobutamineDoseMilligrams = workingWeightKGasFloat * 120;
+            dobutamineDoseMilligrams = workingWeightKGAsFloat * 120;
             self.dobutamineDose2Label.text = @"1 ml/hr = 40 micrograms/kg/min";
             self.dobutamineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
             
@@ -3782,19 +3781,19 @@
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
             
-            // float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float adrenalineDoseMilligrams;
             
             if ([self.adrenalineStrength isEqualToString:@"Single"])
             {
-                adrenalineDoseMilligrams = workingWeightKGasFloat * 3;
+                adrenalineDoseMilligrams = workingWeightKGAsFloat * 3;
                 self.adrenalineDose2Label.text = @"1 ml/hr = 1 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 1 ml/hr";
             }
             else if ([self.adrenalineStrength isEqualToString:@"Double"])
             {
-                adrenalineDoseMilligrams = workingWeightKGasFloat * 6;
+                adrenalineDoseMilligrams = workingWeightKGAsFloat * 6;
                 self.adrenalineDose2Label.text = @"1 ml/hr = 2 micrograms/kg/min";
                 self.adrenalineRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
@@ -3906,18 +3905,18 @@
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
             
-            // float workingWeightKGasFloat = [self.workingWeight floatValue];
+            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float insulinDoseUnits;
             
             if ([self.insulinStrength isEqualToString:@"Single"])
             {
-                insulinDoseUnits = workingWeightKGasFloat * 10;
+                insulinDoseUnits = workingWeightKGAsFloat * 10;
                 self.insulinDose2Label.text = @"1 ml/hr = 0.2 units/kg/hr";
                 self.insulinRangeLabel.text = @"Start at 0.25 - 0.5 ml/hr";
             }
             else if ([self.insulinStrength isEqualToString:@"Double"]) {
-                insulinDoseUnits = workingWeightKGasFloat * 20;
+                insulinDoseUnits = workingWeightKGAsFloat * 20;
                 self.insulinDose2Label.text = @"1 ml/hr = 0.4 units/kg/hr";
                 self.insulinRangeLabel.text = @"Start at 0.12 - 0.25 ml/hr";
             }
@@ -3974,7 +3973,7 @@
             
             if ([self.atracuriumStrength isEqualToString:@"Single"])
             {
-                atracuriumDoseMilligrams = workingWeightKGasFloat * 60;
+                atracuriumDoseMilligrams = workingWeightKGAsFloat * 60;
                 self.atracuriumDose2Label.text = @"1 ml/hr = 1.2 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.25 - 1 ml/hr";
                 
@@ -4011,7 +4010,7 @@
                 }
             }
             else if ([self.atracuriumStrength isEqualToString:@"Double"]) {
-                atracuriumDoseMilligrams = workingWeightKGasFloat * 120;
+                atracuriumDoseMilligrams = workingWeightKGAsFloat * 120;
                 self.atracuriumDose2Label.text = @"1 ml/hr = 2.4 mg/kg/hr";
                 self.atracuriumRangeLabel.text = @"Range 0.1 - 0.5 ml/hr";
                 
@@ -4124,12 +4123,12 @@
         
         if ([self.midazolamStrength isEqualToString:@"Single"])
         {
-            midazolamDoseMilligrams = workingWeightKGasFloat * 10.0f;
+            midazolamDoseMilligrams = workingWeightKGAsFloat * 10.0f;
             self.midazolamDose2Label.text = @"1 ml/hr = 200 micrograms/kg/hr";
             self.midazolamRangeLabel.text = @"Range 0.3 - 1.5 ml/hr";
         }
         else if ([self.midazolamStrength isEqualToString:@"Double"]) {
-            midazolamDoseMilligrams = workingWeightKGasFloat * 20.0f;
+            midazolamDoseMilligrams = workingWeightKGAsFloat * 20.0f;
             self.midazolamDose2Label.text = @"1 ml/hr = 400 micrograms/kg/hr";
             self.midazolamRangeLabel.text = @"Range 0.15 - 0.75 ml/hr";
         }
@@ -4153,16 +4152,16 @@
 
 - (void)sliderValueChanged:(UISlider *)sender
 {
-    // Set workingWeightKGasFloat
+    // Set workingWeightKGAsFloat
     //
     // converts if user is using a european locale
     NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
     
-    float workingWeightKGasFloat = [UKLocaleWorkingWeight floatValue];
+    float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
     
     float prostinDoseNanogramsPerKilogramPerMinute = roundf(sender.value);
     
-    float prostinRate = (0.06f * workingWeightKGasFloat * prostinDoseNanogramsPerKilogramPerMinute);
+    float prostinRate = (0.06f * workingWeightKGAsFloat * prostinDoseNanogramsPerKilogramPerMinute);
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.roundingMode = NSNumberFormatterRoundHalfEven;

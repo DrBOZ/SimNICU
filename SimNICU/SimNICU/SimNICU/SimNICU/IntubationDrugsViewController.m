@@ -224,7 +224,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    float height;
+    float height = 0;
     
     if (section == 0)
     {

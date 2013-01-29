@@ -198,7 +198,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows;
+    int rows = 0;
     
     if (section == 0)
     {

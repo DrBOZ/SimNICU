@@ -79,46 +79,50 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.0)
+    if (self.workingWeight)
     {
-        if (self.workingWeight) 
+        // goes through the entire string and replaces any commas with full stops in case
+        // user is using a european locale
+        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        
+        float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+        
+        if (workingWeightKGAsFloat < 1.0f)
         {
-            float workingWeightKGAsFloat = [self.workingWeight floatValue];
+            int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
             
-            if (workingWeightKGAsFloat < 1.0f)
+            self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+        }
+        else  // present weight as kilograms
+        {
+            NSString *tempString = [NSString stringWithFormat:@"%1.2f", workingWeightKGAsFloat];
+            
+            if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
             {
-                int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
-                
-                self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+                if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
+                {
+                    self.title = [NSString stringWithFormat:@"Working weight %1.0f kg", workingWeightKGAsFloat];
+                }
+                else {
+                    self.title = [NSString stringWithFormat:@"Working weight %1.1f kg", workingWeightKGAsFloat];
+                }
             }
-            else  // present weight as kilograms
+            else
             {
-                NSString *tempString = [NSString stringWithFormat:@"%1.2f", workingWeightKGAsFloat];
-                
-                if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-                {
-                    if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                    {
-                        self.title = [NSString stringWithFormat:@"Working weight %1.0f kg", workingWeightKGAsFloat];
-                    }
-                    else {
-                        self.title = [NSString stringWithFormat:@"Working weight %1.1f kg", workingWeightKGAsFloat];
-                    }
-                }
-                else 
-                {
-                    self.title = [NSString stringWithFormat:@"Working weight %1.2f kg", workingWeightKGAsFloat];
-                }
+                self.title = [NSString stringWithFormat:@"Working weight %1.2f kg", workingWeightKGAsFloat];
             }
         }
-        else 
+        
+        // if european locale
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
         {
-            self.title = @"Weight not entered";
+            // replace dots with commas
+            self.title = [self.title stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
     }
-    else 
+    else
     {
-        self.title = @"Resuscitation Drugs";
+        self.title = @"Weight not entered";
     }
 }
 
@@ -292,35 +296,54 @@
 {
     ResusViewTableViewCell *returnCell = nil;
     
+    // this is to ensure that if using a european locale, the commas are replaced with dots.
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+    
+    // instantiate number formatter
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+    formatter.minimumFractionDigits = 0;
+    formatter.maximumFractionDigits = 2;
+    
     if(indexPath.section == 0)
     {
-        if (indexPath.row == 0) 
+        if (indexPath.row == 0)
         {
             NSString *CellIdentifier = @"cell00";
             ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-            
+
             cell.drug.text = [NSString stringWithFormat:@"%@ 1:10,000 IV", NSLocalizedString(@"Adrenaline", nil)];
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
-            
-            float adrenalineDoseMicrograms = (workingWeightKGasFloat * 10.0);
-            float adrenalineDoseMLs = (workingWeightKGasFloat * 0.10);
+            float adrenalineDoseMicrograms = (workingWeightKGAsFloat * 10.0);
+            float adrenalineDoseMLs = (workingWeightKGAsFloat * 0.10);
             
             adrenalineDoseMLs = roundf(adrenalineDoseMLs *100.0f)/100.0f;
             
             if (adrenalineDoseMicrograms) 
             {
-                cell.dose.text = [NSString stringWithFormat:@"%.0f micrograms",adrenalineDoseMicrograms];
+                formatter.maximumFractionDigits = 0;
+                cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:adrenalineDoseMicrograms]]];
                 
-                cell.subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", adrenalineDoseMLs];
+                formatter.maximumFractionDigits = 2;
+                cell.subLabel3.text = [NSString stringWithFormat:@"%@ ml of neat solution", [formatter stringFromNumber:[NSNumber numberWithFloat:adrenalineDoseMLs]]];
                 
                 cell.subLabel4.text = @"";
                 cell.equals.hidden = NO;
             }
             
             cell.subLabel2.text = @"10 micrograms/kg = 0.1 ml/kg";
+            
+            // Number localization code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                cell.drug.text = [cell.drug.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                cell.subLabel2.text = [cell.subLabel2.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+                cell.subLabel3.text = [cell.subLabel3.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+            }
             
             returnCell = cell;
         }
@@ -333,18 +356,21 @@
             
             cell.drug.text = @"8.4% Sodium Bicarbonate IV";
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
-            
-            float bicarbonateDoseMLs = workingWeightKGasFloat;
+            float bicarbonateDoseMLs = workingWeightKGAsFloat;
             
             if (bicarbonateDoseMLs) 
             {
-                if (bicarbonateDoseMLs < 1.0f) {
-                    // 2 decimal places if not zeros
-                    cell.dose.text = [NSString stringWithFormat:@"%.2f ml",bicarbonateDoseMLs];
+                if (bicarbonateDoseMLs < 1.0f)
+                {
+                    formatter.maximumFractionDigits = 2;
+                    
+                    cell.dose.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:bicarbonateDoseMLs]]];
                 }
-                else {
-                    cell.dose.text = [NSString stringWithFormat:@"%.1f ml",bicarbonateDoseMLs];
+                else
+                {
+                    formatter.maximumFractionDigits = 1;
+                    
+                    cell.dose.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:bicarbonateDoseMLs]]];
                 }
                 
                 cell.equals.hidden = NO;
@@ -354,11 +380,16 @@
             
             cell.subLabel2.text = @"1 mmol/kg = 1 ml/kg";
             
+            // Number localization code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                cell.subLabel3.text = [cell.subLabel3.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+            }
+            
             returnCell = cell;
         }
         else if(indexPath.row == 2)
         {
-            // static NSString *CellIdentifier = @"cell02";
             NSString *CellIdentifier = @"cell02";
             ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
@@ -366,18 +397,26 @@
             
             cell.drug.text = @"10% Dextrose IV";
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
-            
-            float dextroseDoseMLs = workingWeightKGasFloat * 2.5;
+            float dextroseDoseMLs = workingWeightKGAsFloat * 2.5f;
             
             if (dextroseDoseMLs) 
             {
-                cell.dose.text = [NSString stringWithFormat:@"%1.1f ml",dextroseDoseMLs];
+                formatter.maximumFractionDigits = 1;
+                
+                cell.dose.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:dextroseDoseMLs]]];
+                
                 cell.equals.hidden = NO;
             }
             cell.subLabel3.text = @"";
             cell.subLabel2.text = @"2.5 ml/kg";
             cell.subLabel4.text = @"";
+            
+            // Number localization code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+        
+                cell.subLabel2.text = [cell.subLabel2.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+            }
             
             returnCell = cell;
         }
@@ -393,59 +432,32 @@
             
             cell.drug.text = @"Calcium Gluconate 10% IV";
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
-            
-            float calciumGluconateDoseMMOL = workingWeightKGasFloat * 0.11;
-            float calciumGluconateDoseMls = workingWeightKGasFloat * 0.5;
+            float calciumGluconateDoseMMOL = workingWeightKGAsFloat * 0.11f;
+            float calciumGluconateDoseMls = workingWeightKGAsFloat * 0.5f;
             
             calciumGluconateDoseMMOL = roundf(calciumGluconateDoseMMOL * 100.0f)/100.0f;
             calciumGluconateDoseMls = roundf(calciumGluconateDoseMls * 100.0f)/100.0f;
             
             if(calciumGluconateDoseMMOL)
             {
-                // code to remove zeros to help avoid ten fold errors
-                // 
-                NSString *tempString = [NSString stringWithFormat:@"%.2f", calciumGluconateDoseMMOL];
+                formatter.maximumFractionDigits = 2;
                 
-                if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-                {
-                    if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                    {
-                        cell.dose.text = [NSString stringWithFormat:@"%.0f mmol", calciumGluconateDoseMMOL];
-                    }
-                    else {
-                        cell.dose.text = [NSString stringWithFormat:@"%.1f mmol", calciumGluconateDoseMMOL];
-                    }
-                }
-                else 
-                {
-                    cell.dose.text = [NSString stringWithFormat:@"%.2f mmol", calciumGluconateDoseMMOL];
-                }
+                cell.dose.text = [NSString stringWithFormat:@"%@ mmol", [formatter stringFromNumber:[NSNumber numberWithFloat:calciumGluconateDoseMMOL]]];
                 
-                tempString = [NSString stringWithFormat:@"%.2f", calciumGluconateDoseMls];
-                
-                if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-                {
-                    if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                    {
-                        cell.subLabel3.text = [NSString stringWithFormat:@"(%.0f ml of neat solution)", calciumGluconateDoseMls];
-                    }
-                    else {
-                        cell.subLabel3.text = [NSString stringWithFormat:@"(%.1f ml of neat solution)", calciumGluconateDoseMls];
-                    }
-                }
-                else 
-                {
-                    cell.subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", calciumGluconateDoseMls];
-                }
-                
-                // subLabel3.text = [NSString stringWithFormat:@"(%.2f ml of neat solution)", calciumGluconateDoseMls];
+                cell.subLabel3.text = [NSString stringWithFormat:@"(%@ ml of neat solution)", [formatter stringFromNumber:[NSNumber numberWithFloat:calciumGluconateDoseMls]]];
                 
                 cell.subLabel4.text = @"Give over 5-10 minutes if possible";
                 
                 cell.equals.hidden = NO;
             }
             cell.subLabel2.text = @"0.11 mmol/kg = 0.5 ml/kg";
+            
+            // Number localization code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                
+                cell.subLabel2.text = [cell.subLabel2.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+            }
             
             returnCell = cell;
         }
@@ -469,7 +481,7 @@
             cell.subLabel4.text = @"";
             cell.equals.hidden = NO;
             
-            if (self.workingWeight && ([self.workingWeight doubleValue] < 2.5))
+            if (self.workingWeight && ([UKLocaleWorkingWeight doubleValue] < 2.5))
             {
                 UILabel *cautionLabel = [[UILabel alloc] initWithFrame:CGRectMake(69.0f, 57.0f, 188.0f, 21.0f)];
                 cautionLabel.textColor = [UIColor lightGrayColor];
@@ -479,6 +491,13 @@
                 cell.subLabel3.text = @" ";
                 
                 [cell addSubview:cautionLabel];
+            }
+            
+            // Number localization code
+            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            {
+                
+                cell.subLabel3.text = [cell.subLabel3.text stringByReplacingOccurrencesOfString:@"." withString:@","];
             }
             
             returnCell = cell;
@@ -493,17 +512,14 @@
             cell.drug.text = @"Naloxone IV initial dose";
             cell.subLabel2.text = @"10 micrograms/kg";
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
-            
-            int naloxoneDose10Micrograms = workingWeightKGasFloat * 10;
-            // float naloxoneDose10MLs = workingWeightKGasFloat * 0.5;
+            float naloxoneDose10Micrograms = workingWeightKGAsFloat * 10.0f;
             
             if (naloxoneDose10Micrograms) 
             {
-                cell.dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose10Micrograms];
+                formatter.maximumFractionDigits = 0;
                 
-                // subLabel3.text = [NSString stringWithFormat:@"%.2f ml of 20 micrograms/ml", naloxoneDose10MLs];
-                // subLabel4.text = @"Note lower strength ampoule";
+                cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:naloxoneDose10Micrograms]]];
+
                 cell.equals.hidden = NO;
             }
             
@@ -519,14 +535,17 @@
             cell.drug.text = @"Naloxone IV subsequent doses";
             cell.subLabel2.text = @"100 micrograms/kg";
             
-            float workingWeightKGasFloat = [self.workingWeight floatValue];
+            float naloxoneDose100Micrograms = workingWeightKGAsFloat * 100.0f;
             
-            int naloxoneDose100Micrograms = workingWeightKGasFloat * 100;
-            // float naloxoneDose100MLs = workingWeightKGasFloat * 5;
+            naloxoneDose100Micrograms = roundf(naloxoneDose100Micrograms / 10.0f) *10.0f;
             
             if (naloxoneDose100Micrograms) 
             {
-                cell.dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose100Micrograms];
+                formatter.maximumFractionDigits = 0;
+                
+                cell.dose.text = [NSString stringWithFormat:@"%@ micrograms", [formatter stringFromNumber:[NSNumber numberWithFloat:naloxoneDose100Micrograms]]];
+                
+                // cell.dose.text = [NSString stringWithFormat:@"%i micrograms",naloxoneDose100Micrograms];
                 
                 // subLabel3.text = [NSString stringWithFormat:@"%.1f ml of 20 micrograms/ml", naloxoneDose100MLs];
                 // subLabel4.text = @"Note lower strength ampoule";

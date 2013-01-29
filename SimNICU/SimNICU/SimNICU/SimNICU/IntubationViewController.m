@@ -37,7 +37,7 @@
     
     self.endotrachealTubeType = @"Portex Blue Line + holder";
     
-    if (self.endotrachealTubeType = @"Portex Blue Line + holder")
+    if ([self.endotrachealTubeType isEqualToString:@"Portex Blue Line + holder"])
     {
         self.displayLengthToCutETT = YES;
     }

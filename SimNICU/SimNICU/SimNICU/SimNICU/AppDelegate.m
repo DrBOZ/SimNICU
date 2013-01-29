@@ -64,15 +64,6 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     // Setup security
     [[KKPasscodeLock sharedLock] setDefaultSettings];
     
-    // System information
-    // NSLog(@"uniqueIdentifier: %@", [[UIDevice currentDevice] uniqueIdentifier]);
-    NSLog(@"name: %@", [[UIDevice currentDevice] name]);
-    NSLog(@"systemName: %@", [[UIDevice currentDevice] systemName]);
-    NSLog(@"systemVersion: %@", [[UIDevice currentDevice] systemVersion]);
-    NSLog(@"model: %@", [[UIDevice currentDevice] model]);
-    NSLog(@"localizedModel: %@", [[UIDevice currentDevice] localizedModel]);
-    NSLog(@" ");
-    
     // setup Parse
     
     /*

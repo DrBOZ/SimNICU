@@ -20,14 +20,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
     self.title = @"Conversion Table";
+    self.view.backgroundColor = [UIColor grayColor];
     
-    //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //view background
-    [self.view setBackgroundColor:[UIColor grayColor]];
     
     //webView    
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64))];
@@ -35,7 +32,20 @@
     self.webView.dataDetectorTypes = UIDataDetectorTypeAll;
     [self.view addSubview:self.webView];
     
-    NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"weightConversionTable" ofType:@"html"] isDirectory:NO];
+    NSString *filename = Nil;
+    
+    // Number localization code
+    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+    {
+        filename = @"weightConversionTableComma";
+    }
+    else
+    {
+        filename = @"weightConversionTable";
+    }
+    
+    NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"html"] isDirectory:NO];
+    
     NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
     [self.webView loadRequest:URLReq];
     

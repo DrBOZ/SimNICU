@@ -73,8 +73,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        NSLog(@"AppViewController init");
-        
         // parse code here
         /*
          PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
@@ -89,6 +87,15 @@
 #endif
         
     }
+    // System information
+    // NSLog(@"uniqueIdentifier: %@", [[UIDevice currentDevice] uniqueIdentifier]);
+    NSLog(@" ");
+    NSLog(@"name: %@", [[UIDevice currentDevice] name]);
+    NSLog(@"systemName: %@", [[UIDevice currentDevice] systemName]);
+    NSLog(@"systemVersion: %@", [[UIDevice currentDevice] systemVersion]);
+    NSLog(@"model: %@", [[UIDevice currentDevice] model]);
+    NSLog(@"localizedModel: %@", [[UIDevice currentDevice] localizedModel]);
+    NSLog(@" ");
     
     return self;
 }
