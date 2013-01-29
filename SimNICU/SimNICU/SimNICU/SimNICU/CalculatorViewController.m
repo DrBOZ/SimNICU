@@ -342,15 +342,15 @@
             result = [leftOperator doubleValue] - [self.resultText doubleValue];
             operatorCharacter = @"\u2212";
             break;
-        case kButtonChangeSign:
+        // case kButtonChangeSign:
             // result = [leftOperator doubleValue] * -1;
             
             // do nothing for now
             
-            self.calculationLabel.font = [UIFont boldSystemFontOfSize:20];
-            self.calculationLabel.text = @"Single Strength Dopamine";
+            // self.calculationLabel.font = [UIFont boldSystemFontOfSize:20];
+            // self.calculationLabel.text = @"Single Strength Dopamine";
             
-            break;
+            // break;
     }
     
     if (!self.calculation) 

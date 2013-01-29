@@ -223,7 +223,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    float height;
+    float height = 0.0f;
     
     if (section == 0) 
     {
@@ -559,7 +559,7 @@
 
 - (float)calculateOxygenationIndexFromMAP:(float)MAP andInspiredOxygen:(int)oxygen andPartialPressureOxygenkPa:(float)PaO2
 {    
-    float OI;
+    float OI = 0.0f;
     
     switch (self.units.selectedSegmentIndex) 
     {

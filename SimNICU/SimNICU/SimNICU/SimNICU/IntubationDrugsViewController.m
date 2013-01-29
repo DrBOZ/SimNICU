@@ -288,6 +288,11 @@
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 1;
                 
@@ -374,6 +379,11 @@
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.numberStyle = NSNumberFormatterDecimalStyle;
                     formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                    // if locale has an arabic decimal separator then use english
+                    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                    {
+                        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                    }
                     formatter.minimumFractionDigits = 0;
                     formatter.maximumFractionDigits = 1;
                     
@@ -453,6 +463,11 @@
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 1;
                 
@@ -510,6 +525,11 @@
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 1;
                 

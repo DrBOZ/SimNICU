@@ -493,22 +493,22 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height;
+    float height = 0.0f;
     
     switch (indexPath.section) 
     {
         case 0:
             // height = 120;
-            height = 44;
+            height = 44.0f;
             break;
             
         case 1:
             // height = 125;
-            height = 44;
+            height = 44.0f;
             break;
             
         case 2:
-            height = 335;
+            height = 335.0f;
             break;
             
         default:

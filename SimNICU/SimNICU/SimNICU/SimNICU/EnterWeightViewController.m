@@ -1134,7 +1134,7 @@
         }
         if(newText.length == 1)
         {
-            if([string isEqualToString:@"."] || [string isEqualToString:@","])
+            if([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 self.weight.text = @"0";
             }
@@ -1155,11 +1155,12 @@
         else if(newText.length == 2)
         {
             // first character is a "."
-            if([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            // if([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if (!([[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@","]))
+            else if(![[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"ERROR!" 
@@ -1176,45 +1177,45 @@
         else if(newText.length == 3)
         {            
             // first character is a "."
-            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if ([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
         }
         else if(newText.length == 4)
         {
-            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if ([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
         }
         else if(newText.length == 5)
         {
-            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if ([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }

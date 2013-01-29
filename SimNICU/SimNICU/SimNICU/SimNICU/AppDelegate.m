@@ -25,13 +25,13 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 + (void)initialize
 {
-	NSLog(@"SimNICU log:");
+    NSLog(@"SimNICU log:");
     NSLog(@" ");
     
 #if IRATE_SET
     
     // using iRate version 1.6.2
-    
+
 	[iRate sharedInstance].appStoreID = 518447654;
     [iRate sharedInstance].applicationBundleID = @"com.conradbosman.SimNICU";
     [iRate sharedInstance].applicationName = @"SimNICU";

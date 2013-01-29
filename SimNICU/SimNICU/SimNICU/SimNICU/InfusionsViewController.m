@@ -96,7 +96,7 @@
     {
         // goes through the entire string and replaces any commas with full stops in case
         // user is using a european locale
-        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
          
@@ -589,7 +589,7 @@
     {
         // goes through the entire string and replaces any commas with full stops in case
         // user is using a european locale
-        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
         
@@ -721,6 +721,12 @@
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 2;
@@ -866,6 +872,11 @@
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 2;
@@ -1006,6 +1017,11 @@
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 2;
@@ -1117,7 +1133,7 @@
                 
                 // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float adrenalineDoseMilligrams;
+                float adrenalineDoseMilligrams = 0.0f;
                 
                 if ([self.adrenalineStrength isEqualToString:@"Single"])
                 {
@@ -1141,6 +1157,11 @@
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 
@@ -1354,6 +1375,11 @@
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 2;
@@ -1490,6 +1516,11 @@
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 2;
                 
@@ -1588,7 +1619,7 @@
                 
                 // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float lidocaineDoseMilligrams;
+                float lidocaineDoseMilligrams = 0.0f;
                 
                 if ([lidocaineStrength isEqualToString:@"Single"])
                 {
@@ -1612,6 +1643,11 @@
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.minimumFractionDigits = 0;
                 
@@ -1732,7 +1768,7 @@
                 
                 // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
-                float midazolamDoseMilligrams;
+                float midazolamDoseMilligrams = 0.0f;
                 
                 if ([self.midazolamStrength isEqualToString:@"Single"])
                 {
@@ -1756,6 +1792,11 @@
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter.minimumFractionDigits = 0;
                 formatter.maximumFractionDigits = 2;
                 
@@ -1876,6 +1917,11 @@
                 NSNumberFormatter *formatter1 = [[NSNumberFormatter alloc] init];
                 formatter1.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter1.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter1.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter1.minimumFractionDigits = 0;
                 formatter1.maximumFractionDigits = 1;
                 
@@ -1889,6 +1935,11 @@
                 NSNumberFormatter *formatter2 = [[NSNumberFormatter alloc] init];
                 formatter2.roundingMode = NSNumberFormatterRoundHalfEven;
                 formatter2.numberStyle = NSNumberFormatterDecimalStyle;
+                // if locale has an arabic decimal separator then use english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter2.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
                 formatter2.minimumFractionDigits = 0;
                 formatter2.maximumFractionDigits = 2;
                 
@@ -2469,7 +2520,7 @@
 {
     // goes through the entire string and replaces any commas with full stops in case
     // user is using a european locale
-    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
     
@@ -2509,7 +2560,7 @@
         
         // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
-        float morphineDoseMilligrams;
+        float morphineDoseMilligrams = 0.0f;
         
         if ([self.morphineStrength isEqualToString:@"Single"])
         {
@@ -2638,7 +2689,7 @@
         
         // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
-        float dopamineDoseMilligrams;
+        float dopamineDoseMilligrams = 0.0f;
         
         if ([self.dopamineStrength isEqualToString:@"Single"])
         {
@@ -2765,7 +2816,7 @@
         
         // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
-        float dobutamineDoseMilligrams;
+        float dobutamineDoseMilligrams = 0.0f;
         
         if ([self.dobutamineStrength isEqualToString:@"Single"])
         {
@@ -2889,7 +2940,7 @@
             
             // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
-            float adrenalineDoseMilligrams;
+            float adrenalineDoseMilligrams = 0.0f;
             
             if ([self.adrenalineStrength isEqualToString:@"Single"])
             {
@@ -2978,7 +3029,7 @@
             
             // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
-            float insulinDoseUnits;
+            float insulinDoseUnits = 0.0f;
             
             if ([self.insulinStrength isEqualToString:@"Single"])
             {
@@ -3034,7 +3085,7 @@
             
             // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
-            float atracuriumDoseMilligrams;
+            float atracuriumDoseMilligrams = 0.0f;
             
             if ([self.atracuriumStrength isEqualToString:@"Single"])
             {
@@ -3150,7 +3201,7 @@
         
         // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
-        float midazolamDoseMilligrams;
+        float midazolamDoseMilligrams = 0.0f;
         
         if ([self.midazolamStrength isEqualToString:@"Single"])
         {
@@ -3181,10 +3232,10 @@
     // Set workingWeightKGAsFloat
     //
     // converts if user is using a european locale
-    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
-    
+#pragma mark morphine
     if (segmentedControl.tag == 0)      // morphine
     {
         switch (segmentedControl.selectedIndex)
@@ -3219,7 +3270,7 @@
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float morphineDoseMilligrams;
+        float morphineDoseMilligrams = 0.0f;
         
         if ([self.morphineStrength isEqualToString:@"Single"])
         {
@@ -3366,6 +3417,11 @@
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
         formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+        // if locale has an arabic decimal separator then use english
+        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+        {
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+        }
         formatter.minimumFractionDigits = 0;
         formatter.maximumFractionDigits = 2;
         
@@ -3410,7 +3466,7 @@
         
         // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
-        float dopamineDoseMilligrams;
+        float dopamineDoseMilligrams = 0.0f;
         
         if ([self.dopamineStrength isEqualToString:@"Single"])
         {
@@ -3557,6 +3613,11 @@
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
         formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+        // if locale has an arabic decimal separator then use english
+        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+        {
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+        }
         formatter.minimumFractionDigits = 0;
         formatter.maximumFractionDigits = 2;
         
@@ -3597,7 +3658,7 @@
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float dobutamineDoseMilligrams;
+        float dobutamineDoseMilligrams = 0.0f;
         
         if ([self.dobutamineStrength isEqualToString:@"Single"])
         {
@@ -3744,6 +3805,11 @@
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
         formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+        // if locale has an arabic decimal separator then use english
+        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+        {
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+        }
         formatter.minimumFractionDigits = 0;
         formatter.maximumFractionDigits = 2;
         
@@ -3783,7 +3849,7 @@
             
             // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
-            float adrenalineDoseMilligrams;
+            float adrenalineDoseMilligrams = 0.0f;
             
             if ([self.adrenalineStrength isEqualToString:@"Single"])
             {
@@ -3867,6 +3933,11 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.roundingMode = NSNumberFormatterRoundHalfEven;
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if locale has an arabic decimal separator then use english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
             formatter.minimumFractionDigits = 0;
             formatter.maximumFractionDigits = 2;
             
@@ -3907,7 +3978,7 @@
             
             // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
-            float insulinDoseUnits;
+            float insulinDoseUnits = 0.0f;
             
             if ([self.insulinStrength isEqualToString:@"Single"])
             {
@@ -3931,13 +4002,18 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.roundingMode = NSNumberFormatterRoundHalfEven;
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if locale has an arabic decimal separator then use english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
             formatter.minimumFractionDigits = 0;
             formatter.maximumFractionDigits = 2;
             
             self.insulinDoseLabel.text = [NSString stringWithFormat:@"%@ Units", [formatter stringFromNumber:[NSNumber numberWithFloat:insulinDoseUnits]]];
         }
     }
-#pragma mark atraurium
+#pragma mark atracurium
     else if (segmentedControl.tag == 6) // atracurium
     {
         switch (segmentedControl.selectedIndex)
@@ -3969,7 +4045,7 @@
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
             
-            float atracuriumDoseMilligrams;
+            float atracuriumDoseMilligrams = 0.0f;
             
             if ([self.atracuriumStrength isEqualToString:@"Single"])
             {
@@ -4083,6 +4159,11 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.roundingMode = NSNumberFormatterRoundHalfEven;
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if locale has an arabic decimal separator then use english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
             formatter.minimumFractionDigits = 0;
             formatter.maximumFractionDigits = 2;
             
@@ -4119,7 +4200,7 @@
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        float midazolamDoseMilligrams;
+        float midazolamDoseMilligrams = 0.0f;
         
         if ([self.midazolamStrength isEqualToString:@"Single"])
         {
@@ -4143,6 +4224,11 @@
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.roundingMode = NSNumberFormatterRoundHalfEven;
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        // if locale has an arabic decimal separator then use english
+        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+        {
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+        }
         formatter.minimumFractionDigits = 0;
         formatter.maximumFractionDigits = 2;
         
@@ -4155,7 +4241,7 @@
     // Set workingWeightKGAsFloat
     //
     // converts if user is using a european locale
-    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
     
@@ -4166,6 +4252,11 @@
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.roundingMode = NSNumberFormatterRoundHalfEven;
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // if locale has an arabic decimal separator then use english
+    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+    {
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+    }
     formatter.minimumFractionDigits = 0;
     formatter.maximumFractionDigits = 2;
     

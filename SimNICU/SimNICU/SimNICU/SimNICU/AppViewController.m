@@ -95,6 +95,7 @@
     NSLog(@"systemVersion: %@", [[UIDevice currentDevice] systemVersion]);
     NSLog(@"model: %@", [[UIDevice currentDevice] model]);
     NSLog(@"localizedModel: %@", [[UIDevice currentDevice] localizedModel]);
+    NSLog(@"Current locale = %@", [[NSLocale currentLocale] localeIdentifier]);
     NSLog(@" ");
     
     return self;
@@ -1192,10 +1193,6 @@
 {
     self.selectedPatient = patient;
     
-    self.infoPassedThrough = @"didFinishEnteringPatient";
-    
-    NSLog(@"self.infoPassedThrough = %@", self.infoPassedThrough);
-    
     self.displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", patient.firstname, patient.lastname];
     
     NSString *detailTextLabelText = @"";
@@ -1209,7 +1206,7 @@
     NSString *formattedWorkingWeight;
     
     // format birth weight
-    
+#warning CODE NEEDED
     float birthWeightKGAsFloat = [rawBirthWeight floatValue];
     if(birthWeightKGAsFloat < 1)
     {
@@ -1223,7 +1220,7 @@
     }
     
     // format working weight
-    
+#warning CODE NEEDED
     float workingWeightKGAsFloat = [rawWorkingWeight floatValue];
     if(workingWeightKGAsFloat < 1)
     {
@@ -1317,13 +1314,23 @@
     self.infoPassedThrough = @"didFinishEnteringWeightOrGestation";
     
     // ensure non-valid strings are not entered
-    if([weight isEqualToString:@""] || [weight isEqualToString:@"0"] || [weight isEqualToString:@"0."] || [weight isEqualToString:@"0,"]) weight = NULL;
+    if([weight isEqualToString:@""] || [weight isEqualToString:@"0"] || [weight isEqualToString:@"0."] || [weight isEqualToString:@"0,"] || [weight isEqualToString:@"0٫"] || [weight isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]) weight = NULL;
     
     if([gestation isEqualToString:@""]) gestation = NULL;
     
+    // Arabic numbers are not supported. Therefore convert arabic decimal separator to english
+    // If weight string contains the arabic decimal separator then replace it with a dot.
+    // NSString *arabicDecimalSeparator = @"٫";
+    if (!([weight rangeOfString:@"٫"].location == NSNotFound))
+    {
+        weight = [weight stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+    }
+    
     // goes through the entire string and replaces any commas with full stops in case
     // user is using a european locale
-    NSString *UKLocaleWeight = [weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    NSString *UKLocaleWeight;
+    UKLocaleWeight = [weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    UKLocaleWeight = [weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
     
     // ensure that weight is not less that 300 grams
     float weightFloat = [UKLocaleWeight floatValue];
@@ -1344,9 +1351,7 @@
     
     // gestation entered but no weight
     if (gestation && !weight)
-    {
-        NSLog(@"gestation only");
-        
+    {        
         // set display text
         if ([sex isEqualToString:@"Unknown"] && [centile isEqualToString:@"50th"])
         {
@@ -1406,9 +1411,7 @@
         self.gestation = gestation;
     }
     else if(weight && !gestation)
-    {
-        NSLog(@"weight only");
-        
+    {        
         // float weightKGAsFloat = [weight floatValue];
         float weightKGAsFloat = [UKLocaleWeight floatValue];
         
@@ -1433,9 +1436,8 @@
     }
     else if(weight && gestation)
     {
-        NSLog(@"Both weight and gestation");
+        float weightKGAsFloat = [UKLocaleWeight floatValue];
         
-        float weightKGAsFloat = [weight floatValue];
         if(weightKGAsFloat < 1)
         {
             // convert to grams as use integer

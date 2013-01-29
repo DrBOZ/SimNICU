@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
+		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
+		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
@@ -263,6 +265,10 @@
 /* Begin PBXFileReference section */
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
+		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
+		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
+		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
+		5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettingsComma.html; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
@@ -671,6 +677,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B7F166E3C2E0044A7D1 /* earlyCare0.html */,
+				5C940B80166E3C2E0044A7D1 /* earlyCare1.html */,
+				5C940B81166E3C2E0044A7D1 /* earlyCare2.html */,
+				5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */,
+				5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */,
+				5C940B82166E3C2E0044A7D1 /* earlyCareNICUAdmission.html */,
+				5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */,
+				5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */,
+				5C940B86166E3C2E0044A7D1 /* EarlyCareViewController.h */,
+				5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */,
+			);
+			name = Screen_EarlyCare;
+			sourceTree = "<group>";
+		};
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +744,7 @@
 				5C940AF9166E3AED0044A7D1 /* Application */,
 				5C940B17166E3B8B0044A7D1 /* Screen_About */,
 				5C940B53166E3C130044A7D1 /* Screen_SimNICU */,
+				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
 				5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */,
 				5C940C26166E3CE40044A7D1 /* Settings */,
 			);
@@ -1079,19 +1103,11 @@
 				5C940B78166E3C2E0044A7D1 /* CurosurfViewController.m */,
 				5C940B79166E3C2E0044A7D1 /* cdh0.html */,
 				5C940CD3166E47070044A7D1 /* cdh1.html */,
+				5C39630316B839790039C387 /* cdh1Comma.html */,
 				5C940B7B166E3C2E0044A7D1 /* cdh2.html */,
 				5C940CD8166E47420044A7D1 /* cdh3.html */,
 				5C940B7D166E3C2E0044A7D1 /* CDHViewController.h */,
 				5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */,
-				5C940B7F166E3C2E0044A7D1 /* earlyCare0.html */,
-				5C940B80166E3C2E0044A7D1 /* earlyCare1.html */,
-				5C940B81166E3C2E0044A7D1 /* earlyCare2.html */,
-				5C940B82166E3C2E0044A7D1 /* earlyCareNICUAdmission.html */,
-				5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */,
-				5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */,
-				5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */,
-				5C940B86166E3C2E0044A7D1 /* EarlyCareViewController.h */,
-				5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */,
 				5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */,
 				5C940CDD166E47D80044A7D1 /* gastroschisis1.html */,
 				5C940B8A166E3C2E0044A7D1 /* GastroschisisViewController.h */,
@@ -1548,6 +1564,8 @@
 				5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */,
 				5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */,
 				5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */,
+				5C39630116B839790039C387 /* cdh1Comma.html in Resources */,
+				5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1666,6 +1684,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5C39630316B839790039C387 /* cdh1Comma.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C39630216B839790039C387 /* en */,
+				5C39630416B839850039C387 /* en-GB */,
+				5C39630516B839860039C387 /* en-US */,
+			);
+			name = cdh1Comma.html;
+			sourceTree = "<group>";
+		};
 		5C940A6A166E37FE0044A7D1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
