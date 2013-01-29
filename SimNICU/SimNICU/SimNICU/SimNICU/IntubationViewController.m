@@ -349,6 +349,7 @@
     
     if (self.weight)
     {
+#warning CODE NEEDED
         float workingWeightKGAsFloat = [self.weight floatValue];
         
         if (workingWeightKGAsFloat < 1.0f)

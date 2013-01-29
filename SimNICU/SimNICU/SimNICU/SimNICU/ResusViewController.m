@@ -388,6 +388,7 @@
             // Number localization code
             if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
             {
+                cell.drug.text = [cell.drug.text stringByReplacingOccurrencesOfString:@"." withString:@","];
                 cell.subLabel3.text = [cell.subLabel3.text stringByReplacingOccurrencesOfString:@"." withString:@","];
             }
             

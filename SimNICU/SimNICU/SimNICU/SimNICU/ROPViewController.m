@@ -633,6 +633,13 @@
                 break;
         }
         
+        // Number localization code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            
+            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+        }
+        
         returnCell = cell;
     }
     else if(indexPath.section == 1)
@@ -661,6 +668,13 @@
                 
             default:
                 break;
+        }
+        
+        // Number localization code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            
+            cell.textLabel.text = [cell.textLabel.text stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
         
         returnCell = cell;

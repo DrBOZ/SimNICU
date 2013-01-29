@@ -694,6 +694,49 @@
 			name = Screen_EarlyCare;
 			sourceTree = "<group>";
 		};
+		5C39630916B842870039C387 /* Screen_Resus */ = {
+			isa = PBXGroup;
+			children = (
+				5C940BA0166E3C2E0044A7D1 /* ResusViewController.h */,
+				5C940BA1166E3C2E0044A7D1 /* ResusViewController.m */,
+				5C940CF9166E67440044A7D1 /* ResusViewTableViewCell.h */,
+				5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */,
+			);
+			name = Screen_Resus;
+			sourceTree = "<group>";
+		};
+		5C39630A16B843EA0039C387 /* Screen_Thermoregulation */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B98166E3C2E0044A7D1 /* PlasticBagViewController.h */,
+				5C940B99166E3C2E0044A7D1 /* PlasticBagViewController.m */,
+			);
+			name = Screen_Thermoregulation;
+			sourceTree = "<group>";
+		};
+		5C39630B16B8442E0039C387 /* Screen_ROP */ = {
+			isa = PBXGroup;
+			children = (
+				5C940BA2166E3C2E0044A7D1 /* rop21.html */,
+				5C940BA3166E3C2E0044A7D1 /* ROPViewController.h */,
+				5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */,
+			);
+			name = Screen_ROP;
+			sourceTree = "<group>";
+		};
+		5C39630C16B849D40039C387 /* Screen_Intubation */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B92166E3C2E0044A7D1 /* IntubationViewController.h */,
+				5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */,
+				5C940B94166E3C2E0044A7D1 /* IntubationDrugsViewController.h */,
+				5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */,
+				5C940CFC166E724B0044A7D1 /* IntubationDrugsTableViewCell.h */,
+				5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */,
+			);
+			name = Screen_Intubation;
+			sourceTree = "<group>";
+		};
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
@@ -745,7 +788,11 @@
 				5C940B17166E3B8B0044A7D1 /* Screen_About */,
 				5C940B53166E3C130044A7D1 /* Screen_SimNICU */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
+				5C39630C16B849D40039C387 /* Screen_Intubation */,
 				5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */,
+				5C39630916B842870039C387 /* Screen_Resus */,
+				5C39630B16B8442E0039C387 /* Screen_ROP */,
+				5C39630A16B843EA0039C387 /* Screen_Thermoregulation */,
 				5C940C26166E3CE40044A7D1 /* Settings */,
 			);
 			name = ScreenControllers;
@@ -1126,29 +1173,14 @@
 				5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */,
 				5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */,
 				5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */,
-				5C940B92166E3C2E0044A7D1 /* IntubationViewController.h */,
-				5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */,
-				5C940B94166E3C2E0044A7D1 /* IntubationDrugsViewController.h */,
-				5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */,
-				5C940CFC166E724B0044A7D1 /* IntubationDrugsTableViewCell.h */,
-				5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */,
 				5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */,
 				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
-				5C940B98166E3C2E0044A7D1 /* PlasticBagViewController.h */,
-				5C940B99166E3C2E0044A7D1 /* PlasticBagViewController.m */,
 				5C940B9A166E3C2E0044A7D1 /* pulmonaryHaem0.html */,
 				5C940CE2166E48190044A7D1 /* pulmonaryHaem1.html */,
 				5C940CE7166E482C0044A7D1 /* pulmonaryHaem2.html */,
 				5C940CEC166E48410044A7D1 /* pulmonaryHaem3.html */,
 				5C940B9E166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.h */,
 				5C940B9F166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.m */,
-				5C940BA0166E3C2E0044A7D1 /* ResusViewController.h */,
-				5C940BA1166E3C2E0044A7D1 /* ResusViewController.m */,
-				5C940CF9166E67440044A7D1 /* ResusViewTableViewCell.h */,
-				5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */,
-				5C940BA2166E3C2E0044A7D1 /* rop21.html */,
-				5C940BA3166E3C2E0044A7D1 /* ROPViewController.h */,
-				5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */,
 				5C940BA5166E3C2E0044A7D1 /* TransportVentilatorViewController.h */,
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 				5C940BA7166E3C2E0044A7D1 /* UVCUACViewController.h */,
