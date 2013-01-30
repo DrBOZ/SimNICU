@@ -716,7 +716,7 @@
             NSString *formattedWorkingWeight;
             
             // format birth weight
-            
+#warning CODE NEEDED
             float birthWeightKGAsFloat = [rawBirthWeight floatValue];
             
             if(birthWeightKGAsFloat < 1)
@@ -749,6 +749,7 @@
                 // details = [NSString stringWithFormat:@"%@ (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [thisPatient correctedGestation], formattedWorkingWeight];
                 
                 details = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [self calculateCurrentGestation:thisPatient], formattedWorkingWeight];
+                thisPatient.correctedGestation = [self calculateCurrentGestation:thisPatient];
             }
             else 
             {

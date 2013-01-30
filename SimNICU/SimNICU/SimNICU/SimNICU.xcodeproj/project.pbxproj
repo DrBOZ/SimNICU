@@ -265,9 +265,9 @@
 /* Begin PBXFileReference section */
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
-		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
-		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
-		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
+		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
+		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
+		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettingsComma.html; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
@@ -737,6 +737,42 @@
 			name = Screen_Intubation;
 			sourceTree = "<group>";
 		};
+		5C63B12516B9CDA700B31431 /* Screen_APGAR */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B54166E3C2E0044A7D1 /* APGARTabBarController.h */,
+				5C940B55166E3C2E0044A7D1 /* APGARTabBarController.m */,
+				5C940B56166E3C2E0044A7D1 /* APGAR1ViewController.h */,
+				5C940B57166E3C2E0044A7D1 /* APGAR1ViewController.m */,
+				5C940B58166E3C2E0044A7D1 /* APGAR5ViewController.h */,
+				5C940B59166E3C2E0044A7D1 /* APGAR5ViewController.m */,
+				5C940B5A166E3C2E0044A7D1 /* APGAR10ViewController.h */,
+				5C940B5B166E3C2E0044A7D1 /* APGAR10ViewController.m */,
+				5C940B5C166E3C2E0044A7D1 /* APGAR15ViewController.h */,
+				5C940B5D166E3C2E0044A7D1 /* APGAR15ViewController.m */,
+				5C940B5E166E3C2E0044A7D1 /* APGAR20ViewController.h */,
+				5C940B5F166E3C2E0044A7D1 /* APGAR20ViewController.m */,
+			);
+			name = Screen_APGAR;
+			sourceTree = "<group>";
+		};
+		5C63B12616B9D03D00B31431 /* Screen_Infusions */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B90166E3C2E0044A7D1 /* InfusionsViewController.h */,
+				5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */,
+				5C940CFF166E83DC0044A7D1 /* InfusionsViewMinimalTableViewCell.h */,
+				5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */,
+				5C940D02166E84120044A7D1 /* InfusionsViewMaximalTableViewCell.h */,
+				5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */,
+				5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */,
+				5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */,
+				5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */,
+				5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */,
+			);
+			name = Screen_Infusions;
+			sourceTree = "<group>";
+		};
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
@@ -787,7 +823,9 @@
 				5C940AF9166E3AED0044A7D1 /* Application */,
 				5C940B17166E3B8B0044A7D1 /* Screen_About */,
 				5C940B53166E3C130044A7D1 /* Screen_SimNICU */,
+				5C63B12516B9CDA700B31431 /* Screen_APGAR */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
+				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
 				5C39630C16B849D40039C387 /* Screen_Intubation */,
 				5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */,
 				5C39630916B842870039C387 /* Screen_Resus */,
@@ -1107,18 +1145,6 @@
 		5C940B53166E3C130044A7D1 /* Screen_SimNICU */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B54166E3C2E0044A7D1 /* APGARTabBarController.h */,
-				5C940B55166E3C2E0044A7D1 /* APGARTabBarController.m */,
-				5C940B56166E3C2E0044A7D1 /* APGAR1ViewController.h */,
-				5C940B57166E3C2E0044A7D1 /* APGAR1ViewController.m */,
-				5C940B58166E3C2E0044A7D1 /* APGAR5ViewController.h */,
-				5C940B59166E3C2E0044A7D1 /* APGAR5ViewController.m */,
-				5C940B5A166E3C2E0044A7D1 /* APGAR10ViewController.h */,
-				5C940B5B166E3C2E0044A7D1 /* APGAR10ViewController.m */,
-				5C940B5C166E3C2E0044A7D1 /* APGAR15ViewController.h */,
-				5C940B5D166E3C2E0044A7D1 /* APGAR15ViewController.m */,
-				5C940B5E166E3C2E0044A7D1 /* APGAR20ViewController.h */,
-				5C940B5F166E3C2E0044A7D1 /* APGAR20ViewController.m */,
 				5C940B60166E3C2E0044A7D1 /* BloodProductsViewController.h */,
 				5C940B61166E3C2E0044A7D1 /* BloodProductsViewController.m */,
 				5C940B62166E3C2E0044A7D1 /* bloodTransfusionCriteria0.html */,
@@ -1163,16 +1189,6 @@
 				5C940B8D166E3C2E0044A7D1 /* hfov1.html */,
 				5C940B8E166E3C2E0044A7D1 /* HFOVViewController.h */,
 				5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */,
-				5C940B90166E3C2E0044A7D1 /* InfusionsViewController.h */,
-				5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */,
-				5C940CFF166E83DC0044A7D1 /* InfusionsViewMinimalTableViewCell.h */,
-				5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */,
-				5C940D02166E84120044A7D1 /* InfusionsViewMaximalTableViewCell.h */,
-				5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */,
-				5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */,
-				5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */,
-				5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */,
-				5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */,
 				5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */,
 				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
 				5C940B9A166E3C2E0044A7D1 /* pulmonaryHaem0.html */,

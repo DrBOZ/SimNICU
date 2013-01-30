@@ -102,35 +102,26 @@
          
         if (workingWeightKGAsFloat < 1.0f)
         {
+            // present weight as grams
             int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
             
             self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
         }
-        else  // present weight as kilograms
+        else
         {
-            NSString *tempString = [NSString stringWithFormat:@"%.2f", workingWeightKGAsFloat];
+            // present weight as kilograms
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if using arabic locale, force to english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.minimumFractionDigits = 0;
+            formatter.maximumFractionDigits = 3;
             
-            if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-            {
-                if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                {
-                    self.title = [NSString stringWithFormat:@"Working weight %.0f kg", workingWeightKGAsFloat];
-                }
-                else {
-                    self.title = [NSString stringWithFormat:@"Working weight %.1f kg", workingWeightKGAsFloat];
-                }
-            }
-            else
-            {
-                self.title = [NSString stringWithFormat:@"Working weight %.2f kg", workingWeightKGAsFloat];
-            }
-        }
-        
-        // if european locale
-        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        {
-            // replace dots with commas
-            self.title = [self.title stringByReplacingOccurrencesOfString:@"." withString:@","];
+            self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
         }
         
         self.adrenalineStrength = @"Single";
@@ -185,13 +176,6 @@
             heparinDiluent = @"0.9% Sodium Chloride";
         }
         
-        // only need one localization converter code
-        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        {
-            // replace dots with commas
-            heparinDiluent = [heparinDiluent stringByReplacingOccurrencesOfString:@"." withString:@","];
-        }
-        
         if (workingWeightKGAsFloat < 2.0f)
         {
             lidocaineStrength = @"Double";
@@ -201,6 +185,13 @@
         {
             lidocaineStrength = @"Single";
             lidocaineStrengthDose = @"100 mg/kg";
+        }
+        
+        // only need one localization converter code
+        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        {
+            // replace dots with commas
+            heparinDiluent = [heparinDiluent stringByReplacingOccurrencesOfString:@"." withString:@","];
         }
     }
     else

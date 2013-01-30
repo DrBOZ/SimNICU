@@ -255,34 +255,8 @@
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 
-                /*
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundColor = [UIColor whiteColor];
-                
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108.0f, 21.0f)];
-                drug.font = [UIFont boldSystemFontOfSize:18.0f];
-                drug.adjustsFontSizeToFitWidth = YES;
-                drug.textColor = [UIColor blackColor];
-                drug.backgroundColor = [UIColor clearColor];
-                
-                UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, 7.0f, 142.0f, 21.0f)];
-                dose.font = [UIFont boldSystemFontOfSize:18.0f];
-                dose.adjustsFontSizeToFitWidth = YES;
-                dose.backgroundColor = [UIColor clearColor];
-                
-                UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];
-                subLabel2.textColor = [UIColor lightGrayColor];
-                subLabel2.font = [UIFont systemFontOfSize:14.0f];
-                subLabel2.backgroundColor = [UIColor clearColor];
-                
-                [cell addSubview:drug];
-                [cell addSubview:dose];
-                [cell addSubview:subLabel2];
-                 */
-                
                 cell.drug.text = @"Morphine";
-                
+#warning CODE NEEDED
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 float morphineDose = workingWeightKGasFloat * 50.0f;
@@ -329,7 +303,7 @@
                 
                 [cell addSubview:subLabel2];
                  */
-                
+#warning CODE NEEDED
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
                 
                 if (workingWeightKGasFloat > 0 && workingWeightKGasFloat < 1.0f)
@@ -344,6 +318,7 @@
                     cell.drug.shadowColor = [UIColor whiteColor];
                     cell.drug.shadowOffset = CGSizeMake(0.0f, 1.0f);
                     cell.drug.backgroundColor = [UIColor clearColor];
+                    cell.drug.frame = CGRectMake(18.0f, 7.0f, 280.0f, 21.0f);
                     // [cell addSubview:drug];
                     
                     cell.drug.text = @"Atracurium not recommended under 1 kg";
@@ -430,32 +405,6 @@
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 
-                /*
-                cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundColor = [UIColor whiteColor];
-                
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108, 21.0f)];
-                drug.font = [UIFont boldSystemFontOfSize:18.0f];
-                drug.adjustsFontSizeToFitWidth = YES;
-                drug.textColor = [UIColor blackColor];
-                drug.backgroundColor = [UIColor clearColor];
-                
-                UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, 7.0f, 142, 21.0f)];
-                dose.font = [UIFont boldSystemFontOfSize:18.0f];
-                dose.adjustsFontSizeToFitWidth = YES;
-                dose.backgroundColor = [UIColor clearColor];
-                
-                UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];
-                subLabel2.textColor = [UIColor lightGrayColor];
-                subLabel2.font = [UIFont systemFontOfSize:14.0f];
-                subLabel2.backgroundColor = [UIColor clearColor];
-                
-                [cell addSubview:drug];
-                [cell addSubview:dose];
-                [cell addSubview:subLabel2];
-                */
-                
                 cell.drug.text = @"Atropine";
                 
                 float workingWeightKGasFloat = [self.workingWeight floatValue];
@@ -491,32 +440,6 @@
             if(!cell)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                
-                /*
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundColor = [UIColor whiteColor];
-                
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108.0f, 21.0f)];
-                drug.font = [UIFont boldSystemFontOfSize:18.0f];
-                drug.adjustsFontSizeToFitWidth = YES;
-                drug.textColor = [UIColor blackColor];
-                drug.backgroundColor = [UIColor clearColor];
-                
-                UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, 7.0f, 142.0f, 21.0f)];
-                dose.font = [UIFont boldSystemFontOfSize:18.0f];
-                dose.adjustsFontSizeToFitWidth = YES;
-                dose.backgroundColor = [UIColor clearColor];
-                
-                UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];
-                subLabel2.textColor = [UIColor lightGrayColor];
-                subLabel2.font = [UIFont systemFontOfSize:14.0f];
-                subLabel2.backgroundColor = [UIColor clearColor];
-                
-                [cell addSubview:drug];
-                [cell addSubview:dose];
-                [cell addSubview:subLabel2];
-                */
                 
                 cell.drug.text = @"Neostigmine";
                 

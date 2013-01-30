@@ -176,7 +176,7 @@
     
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
-        NSLog(@"iPhone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
+        // NSLog(@"iPhone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
         
         //screen mask covers everything
         UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))]; // 430
@@ -258,7 +258,7 @@
 {
     [super viewWillAppear:animated];
     
-    NSLog(@"AppViewController viewWillAppear");
+    // NSLog(@"AppViewController viewWillAppear");
     
     self.title = @"SimNICU";
     
@@ -517,7 +517,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"AppViewController viewDidAppear");
+    // NSLog(@"AppViewController viewDidAppear");
 }
 
 - (void)didReceiveMemoryWarning
@@ -545,7 +545,7 @@
 {
     [super viewDidUnload];
     
-    NSLog(@"AppViewController viewDidUnload");
+    // NSLog(@"AppViewController viewDidUnload");
     
     self.infoPassedThrough = @"Memory Warning";
     
@@ -1193,11 +1193,10 @@
 {
     self.selectedPatient = patient;
     
+    // display patient's name
     self.displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", patient.firstname, patient.lastname];
     
     NSString *detailTextLabelText = @"";
-    
-    // code here
     
     NSString *rawBirthWeight = patient.birthWeight;
     NSString *formattedBirthWeight;
@@ -1206,9 +1205,13 @@
     NSString *formattedWorkingWeight;
     
     // format birth weight
-#warning CODE NEEDED
-    float birthWeightKGAsFloat = [rawBirthWeight floatValue];
-    if(birthWeightKGAsFloat < 1)
+    NSString *UKLocaleRawBirthWeight;
+    UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
+    
+    if(birthWeightKGAsFloat < 1.0f)
     {
         // convert to grams as use integer
         int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
@@ -1220,9 +1223,13 @@
     }
     
     // format working weight
-#warning CODE NEEDED
-    float workingWeightKGAsFloat = [rawWorkingWeight floatValue];
-    if(workingWeightKGAsFloat < 1)
+    NSString *UKLocaleRawWorkingWeight;
+    UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
+    
+    if(workingWeightKGAsFloat < 1.0f)
     {
         // convert to grams as use integer
         int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
@@ -1233,12 +1240,10 @@
         formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
     }
     
-    
-    
-    
+    // all information present (missing this stage
     if (patient.gestation && patient.birthWeight && patient.correctedGestation && patient.workingWeight)
     {
-        detailTextLabelText = [NSString stringWithFormat:@"%@ (%@) now %@ (ww %@)", patient.gestation, formattedBirthWeight, patient.correctedGestation, formattedWorkingWeight];
+        detailTextLabelText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", patient.gestation, formattedBirthWeight, patient.correctedGestation, formattedWorkingWeight];
         
         self.weight = patient.workingWeight;
     }
@@ -1302,7 +1307,6 @@
     self.displayDismissButtonView.hidden = NO;
     
     self.patientSelected = YES;
-    
 }
 
 - (void)enterWeightViewController:(EnterWeightViewController *)controller didFinishEnteringWeight:(NSString *)weight orGestation:(NSString *)gestation forSex:(NSString *)sex atCentile:(NSString *)centile
