@@ -631,7 +631,7 @@
 {
     NSLog(@" ");
     NSLog(@"PatientDetailsEnterWorkingWeightViewController didFinishEditingPatientWorkingWeight");
-    
+#warning BUG AROUND HERE try changing working weight es_es
     self.patientToEdit.workingWeight = patient.workingWeight;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

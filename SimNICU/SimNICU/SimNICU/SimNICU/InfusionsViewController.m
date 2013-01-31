@@ -96,7 +96,9 @@
     {
         // goes through the entire string and replaces any commas with full stops in case
         // user is using a european locale
-        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        NSString *UKLocaleWorkingWeight;
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
          
@@ -580,7 +582,9 @@
     {
         // goes through the entire string and replaces any commas with full stops in case
         // user is using a european locale
-        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        NSString *UKLocaleWorkingWeight;
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
         

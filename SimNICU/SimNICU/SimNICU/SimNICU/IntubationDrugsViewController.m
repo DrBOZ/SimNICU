@@ -19,10 +19,6 @@
 
 @implementation IntubationDrugsViewController
 
-@synthesize workingWeight = _workingWeight;
-@synthesize selectedDrug = _selectedDrug;
-@synthesize myTableView = _myTableView;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -87,36 +83,33 @@
 {
     if (self.workingWeight)
     {
+        NSString *UKLocaleWorkingWeight;
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
-#warning CODE NEEDED
-        float workingWeightKGAsFloat = [self.workingWeight floatValue];
+        float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
         
         if (workingWeightKGAsFloat < 1.0f)
         {
             int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
             
-            // NSLocalizedString(@"Working weight", nil)
-            
             self.title = [NSString stringWithFormat:@"%@ %i g", NSLocalizedString(@"Working weight", nil), workingWeightGRAMSAsInt];
         }
-        else  // present weight as kilograms
+        else
         {
-            NSString *tempString = [NSString stringWithFormat:@"%1.2f", workingWeightKGAsFloat];
+            // present weight as kilograms
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if using arabic locale, force to english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.minimumFractionDigits = 1;
+            formatter.maximumFractionDigits = 3;
             
-            if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-            {
-                if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                {
-                    self.title = [NSString stringWithFormat:@"%@ %1.0f kg", NSLocalizedString(@"Working weight", nil), workingWeightKGAsFloat];
-                }
-                else {
-                    self.title = [NSString stringWithFormat:@"%@ %1.1f kg", NSLocalizedString(@"Working weight", nil), workingWeightKGAsFloat];
-                }
-            }
-            else
-            {
-                self.title = [NSString stringWithFormat:@"%@ %1.2f kg", NSLocalizedString(@"Working weight", nil), workingWeightKGAsFloat];
-            }
+            self.title = [NSString stringWithFormat:@"%@ %@ kg", NSLocalizedString(@"Working weight", nil), [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
         }
     }
     else
@@ -246,6 +239,7 @@
     
     if(indexPath.section == 0)
     {
+#pragma mark Morphine
         if (indexPath.row == 0)
         {
             static NSString *CellIdentifier = @"Morphine";
@@ -256,10 +250,14 @@
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 
                 cell.drug.text = @"Morphine";
-#warning CODE NEEDED
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+
+                NSString *UKLocaleWorkingWeight;
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
                 
-                float morphineDose = workingWeightKGasFloat * 50.0f;
+                float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+                
+                float morphineDose = workingWeightKGAsFloat * 50.0f;
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -282,6 +280,7 @@
             
             returnCell = cell;
         }
+#pragma mark Atracurium
         else if(indexPath.row == 1)
         {
             static NSString *CellIdentifier = @"Atracurium";
@@ -291,67 +290,32 @@
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 
-                /*
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                // cell.backgroundColor = [UIColor whiteColor];
+                NSString *UKLocaleWorkingWeight;
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
                 
-                UILabel *subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];
-                subLabel2.textColor = [UIColor lightGrayColor];
-                subLabel2.font = [UIFont systemFontOfSize:14.0f];
-                subLabel2.backgroundColor = [UIColor clearColor];
+                float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
                 
-                [cell addSubview:subLabel2];
-                 */
-#warning CODE NEEDED
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
-                
-                if (workingWeightKGasFloat > 0 && workingWeightKGasFloat < 1.0f)
+                if (workingWeightKGAsFloat > 0 && workingWeightKGAsFloat < 1.0f)
                 {
-                    /*
-                    UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 290.0f, 21.0f)];
-                    drug.font = [UIFont boldSystemFontOfSize:18.0f];
-                    drug.adjustsFontSizeToFitWidth = YES;
-                    // drug.textColor = [UIColor blackColor];
-                     */
                     cell.drug.textColor = [UIColor redColor];
                     cell.drug.shadowColor = [UIColor whiteColor];
                     cell.drug.shadowOffset = CGSizeMake(0.0f, 1.0f);
                     cell.drug.backgroundColor = [UIColor clearColor];
                     cell.drug.frame = CGRectMake(18.0f, 7.0f, 280.0f, 21.0f);
-                    // [cell addSubview:drug];
                     
                     cell.drug.text = @"Atracurium not recommended under 1 kg";
                     cell.subLabel2.text = @"500 micrograms/kg slow IV bolus";
                     
                     cell.backgroundColor = [UIColor clearColor];
-                    // cell.backgroundColor = [UIColor grayColor];
                 }
                 else
                 {
-                    // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    
-                    /*
-                    UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108.0f, 21.0f)];
-                    drug.font = [UIFont boldSystemFontOfSize:18.0f];
-                    drug.adjustsFontSizeToFitWidth = YES;
-                    drug.textColor = [UIColor blackColor];
-                    drug.backgroundColor = [UIColor clearColor];
-                    
-                    UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, 7.0f, 142.0f, 21.0f)];
-                    dose.font = [UIFont boldSystemFontOfSize:18.0f];
-                    dose.backgroundColor = [UIColor clearColor];
-                    dose.adjustsFontSizeToFitWidth = YES;
-                    
-                    [cell addSubview:drug];
-                    [cell addSubview:dose];
-                     */
-                    
                     cell.backgroundColor = [UIColor whiteColor];
                     
                     cell.drug.text = @"Atracurium";
                     
-                    float atracuriumDose = workingWeightKGasFloat * 500.0f;
+                    float atracuriumDose = workingWeightKGAsFloat * 500.0f;
                     
                     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                     formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -396,6 +360,7 @@
     }
     else if(indexPath.section == 1)
     {
+#pragma mark Atropine
         if (indexPath.row == 0)
         {
             static NSString *CellIdentifier = @"Atropine";
@@ -407,9 +372,13 @@
                 
                 cell.drug.text = @"Atropine";
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                NSString *UKLocaleWorkingWeight;
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
                 
-                float atropineDose = workingWeightKGasFloat * 20.0f;
+                float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+                
+                float atropineDose = workingWeightKGAsFloat * 20.0f;
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -432,6 +401,7 @@
             
             returnCell = cell;
         }
+#pragma mark Neostigmine
         else if (indexPath.row == 1)
         {
             static NSString *CellIdentifier = @"Neostigmine";
@@ -443,9 +413,13 @@
                 
                 cell.drug.text = @"Neostigmine";
                 
-                float workingWeightKGasFloat = [self.workingWeight floatValue];
+                NSString *UKLocaleWorkingWeight;
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
                 
-                float neostigmineDose = workingWeightKGasFloat * 50.0f;
+                float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+                
+                float neostigmineDose = workingWeightKGAsFloat * 50.0f;
                 
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -510,38 +484,6 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
-    
-    // return indexPath;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.section == 0)
-    {
-        if(indexPath.row == 0)
-        {
-            self.selectedDrug = @"Morphine";
-        }
-        else if (indexPath.row == 1)
-        {
-            self.selectedDrug = @"Atracurium";
-        }
-    }
-    else if (indexPath.section == 1)
-    {
-        if (indexPath.row == 0)
-        {
-            self.selectedDrug = @"Atropine";
-        }
-        else if (indexPath.row == 1)
-        {
-            self.selectedDrug = @"Neostigmine";
-        }
-    }
-    
-    [self performSegueWithIdentifier:@"IntubationDrugDetails" sender:nil];
 }
 
 @end

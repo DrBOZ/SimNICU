@@ -27,14 +27,12 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"IntubationViewController viewDidLoad");
+    // NSLog(@"IntubationViewController viewDidLoad");
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    
-    
-    
+    // setting default, as haven't coded options yet
     self.endotrachealTubeType = @"Portex Blue Line + holder";
     
     if ([self.endotrachealTubeType isEqualToString:@"Portex Blue Line + holder"])
@@ -339,7 +337,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"IntubationViewController viewWillAppear: self.weight = %@", self.weight);
+    // NSLog(@"IntubationViewController viewWillAppear: self.weight = %@", self.weight);
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"Back"
@@ -349,8 +347,11 @@
     
     if (self.weight)
     {
-#warning CODE NEEDED
-        float workingWeightKGAsFloat = [self.weight floatValue];
+        NSString *UKLocaleWeight;
+        UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        float workingWeightKGAsFloat = [UKLocaleWeight floatValue];
         
         if (workingWeightKGAsFloat < 1.0f)
         {
@@ -358,25 +359,21 @@
             
             self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
         }
-        else  // present weight as kilograms
+        else
         {
-            NSString *tempString = [NSString stringWithFormat:@"%1.2f", workingWeightKGAsFloat];
+            // present weight as kilograms
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if using arabic locale, force to english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.minimumFractionDigits = 1;
+            formatter.maximumFractionDigits = 3;
             
-            if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-            {
-                if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                {
-                    self.title = [NSString stringWithFormat:@"Working weight %1.0f kg", workingWeightKGAsFloat];
-                }
-                else 
-                {
-                    self.title = [NSString stringWithFormat:@"Working weight %1.1f kg", workingWeightKGAsFloat];
-                }
-            }
-            else 
-            {
-                self.title = [NSString stringWithFormat:@"Working weight %1.2f kg", workingWeightKGAsFloat];
-            }
+            self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
         }
     }
     else 
@@ -580,7 +577,11 @@
     {
         if (self.weight)
         {
-            float weightKGAsFloat = [self.weight floatValue];
+            NSString *UKLocaleWeight;
+            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            float weightKGAsFloat = [UKLocaleWeight floatValue];
             
             int weightGRAMSasInt = weightKGAsFloat * 1000;
             
@@ -655,9 +656,11 @@
     {
         if (self.weight)
         {
-            NSLog(@"in weight");
+            NSString *UKLocaleWeight;
+            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             
-            float weightKGAsFloat = [self.weight floatValue];
+            float weightKGAsFloat = [UKLocaleWeight floatValue];
             
             int weightGRAMSasInt = weightKGAsFloat * 1000;
             
@@ -699,8 +702,6 @@
         
         if (self.gestation)
         {
-            NSLog(@"in gestation");
-            
             int value = [self.gestation intValue];
             
             if (value <24)
