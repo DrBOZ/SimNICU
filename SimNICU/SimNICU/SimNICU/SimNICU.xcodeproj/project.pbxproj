@@ -773,6 +773,15 @@
 			name = Screen_Infusions;
 			sourceTree = "<group>";
 		};
+		5C63B12716B9F57B00B31431 /* Screen_VitK */ = {
+			isa = PBXGroup;
+			children = (
+				5C940BA9166E3C2E0044A7D1 /* VitKViewController.h */,
+				5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */,
+			);
+			name = Screen_VitK;
+			sourceTree = "<group>";
+		};
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +840,7 @@
 				5C39630916B842870039C387 /* Screen_Resus */,
 				5C39630B16B8442E0039C387 /* Screen_ROP */,
 				5C39630A16B843EA0039C387 /* Screen_Thermoregulation */,
+				5C63B12716B9F57B00B31431 /* Screen_VitK */,
 				5C940C26166E3CE40044A7D1 /* Settings */,
 			);
 			name = ScreenControllers;
@@ -1201,8 +1211,6 @@
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 				5C940BA7166E3C2E0044A7D1 /* UVCUACViewController.h */,
 				5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */,
-				5C940BA9166E3C2E0044A7D1 /* VitKViewController.h */,
-				5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */,
 				5C3962FA16B807A30039C387 /* weightConversionTableComma.html */,
 				5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */,
 				5C940BAC166E3C2E0044A7D1 /* WeightConversionViewController.h */,

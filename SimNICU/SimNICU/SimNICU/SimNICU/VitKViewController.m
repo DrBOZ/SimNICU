@@ -172,18 +172,17 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(22, 13, 182, 22)];
-        weight.font = [UIFont boldSystemFontOfSize:18];
+        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(22.0f, 13.0f, 182.0f, 22.0f)];
+        weight.font = [UIFont boldSystemFontOfSize:18.0f];
         weight.textColor = [UIColor blackColor];
-        weight.text = @"< 1.5 kg birth weight";
+        weight.text = [NSString stringWithFormat:@"< 1%@5 kg birth weight", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
+        
+        UILabel *vitK = [[UILabel alloc] initWithFrame:CGRectMake(42.0f, 35.0f, 228.0f, 50.0f)];
+        vitK.font = [UIFont systemFontOfSize:17.0f];
+        vitK.textColor = [UIColor lightGrayColor];
+        vitK.text = [NSString stringWithFormat:@"0%@5 mg Konakion MM", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
         
         [cell addSubview:weight];
-        
-        UILabel *vitK = [[UILabel alloc] initWithFrame:CGRectMake(42, 35, 228, 50)];
-        vitK.font = [UIFont systemFontOfSize:17];
-        vitK.textColor = [UIColor lightGrayColor];
-        vitK.text = @"0.5 mg Konakion MM";
-        
         [cell addSubview:vitK];
         
         returnCell = cell;
@@ -202,15 +201,15 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(22, 13, 182, 22)];
-        weight.font = [UIFont boldSystemFontOfSize:18];
+        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(22.0f, 13.0f, 182.0f, 22.0f)];
+        weight.font = [UIFont boldSystemFontOfSize:18.0f];
         weight.textColor = [UIColor blackColor];
-        weight.text = @"> 1.5 kg";
+        weight.text = [NSString stringWithFormat:@"> 1%@5 kg", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]];
         
         [cell addSubview:weight];
         
-        UILabel *vitK = [[UILabel alloc] initWithFrame:CGRectMake(42, 35, 228, 50)];
-        vitK.font = [UIFont systemFontOfSize:17];
+        UILabel *vitK = [[UILabel alloc] initWithFrame:CGRectMake(42.0f, 35.0f, 228.0f, 50.0f)];
+        vitK.font = [UIFont systemFontOfSize:17.0f];
         vitK.textColor = [UIColor lightGrayColor];
         vitK.text = @"1 mg Konakion MM";
         
