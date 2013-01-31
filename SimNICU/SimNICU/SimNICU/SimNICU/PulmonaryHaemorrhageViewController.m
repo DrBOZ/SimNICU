@@ -89,7 +89,15 @@
     
     webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 345.0f)];
     webView.header = @"Initial Management";
-    webView.resource = @"pulmonaryHaem0";
+    // Number localization code
+    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+    {
+        webView.resource = @"pulmonaryHaem0Comma";
+    }
+    else
+    {
+        webView.resource = @"pulmonaryHaem0";
+    }
     webView.cellIdentifier = @"Cell0";
     webView.heightForRowAtIndexPath = @350.0f;
     [webViews addObject:webView];
@@ -105,14 +113,22 @@
     webView = [[SimNICUWebView alloc] init];
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
     {
-        webView.frame = CGRectMake(0.0, 0.0, 300.0, 230.0);
+        webView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 230.0f);
     }
     else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.0)
     {
-        webView.frame = CGRectMake(0.0, 0.0, 300.0, 250.0);
+        webView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 250.0f);
     }
     webView.header = @"Ongoing Management";
-    webView.resource = @"pulmonaryHaem2";
+    // Number localization code
+    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+    {
+        webView.resource = @"pulmonaryHaem2Comma";
+    }
+    else
+    {
+        webView.resource = @"pulmonaryHaem2";
+    }
     webView.cellIdentifier = @"Cell2";
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
     {
@@ -125,9 +141,17 @@
     [webViews addObject:webView];
     
     webView = [[SimNICUWebView alloc] init];
-    webView.frame = CGRectMake(0.0, 0.0, 300.0, 175.0);
+    webView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 175.0f);
     webView.header = @"With blood results";
-    webView.resource = @"pulmonaryHaem3";
+    // Number localization code
+    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+    {
+        webView.resource = @"pulmonaryHaem3Comma";
+    }
+    else
+    {
+        webView.resource = @"pulmonaryHaem3";
+    }
     webView.cellIdentifier = @"Cell3";
     webView.heightForRowAtIndexPath = @180.0f;
     [webViews addObject:webView];

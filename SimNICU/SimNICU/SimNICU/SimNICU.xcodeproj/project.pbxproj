@@ -11,6 +11,9 @@
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
+		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
+		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
+		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
@@ -269,6 +272,13 @@
 		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettingsComma.html; sourceTree = "<group>"; };
+		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
+		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
+		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
+		5C63B13616B9FD0B00B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-US"; path = "en-US.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
+		5C63B13816B9FD1200B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
+		5C63B13A16B9FD1600B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
+		5C63B13B16B9FD1700B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = file; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
@@ -782,6 +792,55 @@
 			name = Screen_VitK;
 			sourceTree = "<group>";
 		};
+		5C63B12816B9F9DD00B31431 /* Screen_HFOV */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B8C166E3C2E0044A7D1 /* hfov0.html */,
+				5C940B8D166E3C2E0044A7D1 /* hfov1.html */,
+				5C940B8E166E3C2E0044A7D1 /* HFOVViewController.h */,
+				5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */,
+			);
+			name = Screen_HFOV;
+			sourceTree = "<group>";
+		};
+		5C63B12916B9FA0B00B31431 /* Screen_WeightConversion */ = {
+			isa = PBXGroup;
+			children = (
+				5C3962FA16B807A30039C387 /* weightConversionTableComma.html */,
+				5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */,
+				5C940BAC166E3C2E0044A7D1 /* WeightConversionViewController.h */,
+				5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */,
+			);
+			name = Screen_WeightConversion;
+			sourceTree = "<group>";
+		};
+		5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */,
+				5C940CDD166E47D80044A7D1 /* gastroschisis1.html */,
+				5C940B8A166E3C2E0044A7D1 /* GastroschisisViewController.h */,
+				5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */,
+			);
+			name = Screen_Gastroschisis;
+			sourceTree = "<group>";
+		};
+		5C63B12B16B9FB1D00B31431 /* Screen_PulmonaryHaemorrhage */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B9A166E3C2E0044A7D1 /* pulmonaryHaem0.html */,
+				5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */,
+				5C940CE2166E48190044A7D1 /* pulmonaryHaem1.html */,
+				5C940CE7166E482C0044A7D1 /* pulmonaryHaem2.html */,
+				5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */,
+				5C940CEC166E48410044A7D1 /* pulmonaryHaem3.html */,
+				5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */,
+				5C940B9E166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.h */,
+				5C940B9F166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.m */,
+			);
+			name = Screen_PulmonaryHaemorrhage;
+			sourceTree = "<group>";
+		};
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
@@ -834,13 +893,17 @@
 				5C940B53166E3C130044A7D1 /* Screen_SimNICU */,
 				5C63B12516B9CDA700B31431 /* Screen_APGAR */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
+				5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */,
+				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
 				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
 				5C39630C16B849D40039C387 /* Screen_Intubation */,
 				5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */,
+				5C63B12B16B9FB1D00B31431 /* Screen_PulmonaryHaemorrhage */,
 				5C39630916B842870039C387 /* Screen_Resus */,
 				5C39630B16B8442E0039C387 /* Screen_ROP */,
 				5C39630A16B843EA0039C387 /* Screen_Thermoregulation */,
 				5C63B12716B9F57B00B31431 /* Screen_VitK */,
+				5C63B12916B9FA0B00B31431 /* Screen_WeightConversion */,
 				5C940C26166E3CE40044A7D1 /* Settings */,
 			);
 			name = ScreenControllers;
@@ -1191,30 +1254,12 @@
 				5C940CD8166E47420044A7D1 /* cdh3.html */,
 				5C940B7D166E3C2E0044A7D1 /* CDHViewController.h */,
 				5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */,
-				5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */,
-				5C940CDD166E47D80044A7D1 /* gastroschisis1.html */,
-				5C940B8A166E3C2E0044A7D1 /* GastroschisisViewController.h */,
-				5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */,
-				5C940B8C166E3C2E0044A7D1 /* hfov0.html */,
-				5C940B8D166E3C2E0044A7D1 /* hfov1.html */,
-				5C940B8E166E3C2E0044A7D1 /* HFOVViewController.h */,
-				5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */,
 				5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */,
 				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
-				5C940B9A166E3C2E0044A7D1 /* pulmonaryHaem0.html */,
-				5C940CE2166E48190044A7D1 /* pulmonaryHaem1.html */,
-				5C940CE7166E482C0044A7D1 /* pulmonaryHaem2.html */,
-				5C940CEC166E48410044A7D1 /* pulmonaryHaem3.html */,
-				5C940B9E166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.h */,
-				5C940B9F166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.m */,
 				5C940BA5166E3C2E0044A7D1 /* TransportVentilatorViewController.h */,
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 				5C940BA7166E3C2E0044A7D1 /* UVCUACViewController.h */,
 				5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */,
-				5C3962FA16B807A30039C387 /* weightConversionTableComma.html */,
-				5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */,
-				5C940BAC166E3C2E0044A7D1 /* WeightConversionViewController.h */,
-				5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */,
 			);
 			name = Screen_SimNICU;
 			sourceTree = "<group>";
@@ -1622,6 +1667,9 @@
 				5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */,
 				5C39630116B839790039C387 /* cdh1Comma.html in Resources */,
 				5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */,
+				5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */,
+				5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */,
+				5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1748,6 +1796,26 @@
 				5C39630516B839860039C387 /* en-US */,
 			);
 			name = cdh1Comma.html;
+			sourceTree = "<group>";
+		};
+		5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C63B13316B9FD0400B31431 /* en */,
+				5C63B13516B9FD0A00B31431 /* en-GB */,
+				5C63B13616B9FD0B00B31431 /* en-US */,
+			);
+			name = pulmonaryHaem2Comma.html;
+			sourceTree = "<group>";
+		};
+		5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C63B13816B9FD1200B31431 /* en */,
+				5C63B13A16B9FD1600B31431 /* en-GB */,
+				5C63B13B16B9FD1700B31431 /* en-US */,
+			);
+			name = pulmonaryHaem3Comma.html;
 			sourceTree = "<group>";
 		};
 		5C940A6A166E37FE0044A7D1 /* InfoPlist.strings */ = {
