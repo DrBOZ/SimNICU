@@ -479,7 +479,6 @@
             {
                 return NO;
             }
-            
         }
     }
     else if ([textField isEqual:self.inspiredOxygen])

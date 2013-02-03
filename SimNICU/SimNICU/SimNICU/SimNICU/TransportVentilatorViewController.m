@@ -23,8 +23,6 @@
 
 @implementation TransportVentilatorViewController
 
-#warning CODE NEEDED
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -80,17 +78,8 @@
     [self.view addSubview:tableBgView];
 #endif
     
-    //use the new decimal pad if using iOS 4.1 or greater
-    if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-    {
-        [self.inspiratoryTime setKeyboardType:UIKeyboardTypeDecimalPad];
-        [self.rate setKeyboardType:UIKeyboardTypeDecimalPad];
-    }
-    else 
-    {
-        [self.inspiratoryTime setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-        [self.rate setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-    }
+    self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
+    self.rate.keyboardType = UIKeyboardTypeDecimalPad;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -150,24 +139,17 @@
 {
     float height;
     
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
+    float fourInchDisplayPadding = 0.0f;
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.window.bounds.size.height == 568)
     {
-        float fourInchDisplayPadding = 0.0f;
-        
-        //delegate
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            fourInchDisplayPadding = 40.0f;
-        }
-        
-        height = 40.0f + fourInchDisplayPadding;
+        fourInchDisplayPadding = 40.0f;
     }
-    else
-    {
-        height = 30.0f;
-    }
+    
+    height = 40.0f + fourInchDisplayPadding;
     
     return height;
 }
@@ -202,18 +184,10 @@
             self.inspiratoryTime.clearButtonMode = UITextFieldViewModeAlways;
             self.inspiratoryTime.delegate = self;
             self.inspiratoryTime.tag = 10;
-            
-            //use the new decimal pad if using iOS 4.1 or greater
-            if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-            {
-                [self.inspiratoryTime setKeyboardType:UIKeyboardTypeDecimalPad];
-                [self.inspiratoryTime setKeyboardAppearance:UIKeyboardAppearanceAlert];
-            }
-            else 
-            {
-                [self.inspiratoryTime setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-            }
+            self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
+            self.inspiratoryTime.keyboardAppearance = UIKeyboardAppearanceAlert;
             self.inspiratoryTime.textAlignment = UITextAlignmentLeft;
+            
             cell.accessoryView = self.inspiratoryTime;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Inspiratory time:";
@@ -239,18 +213,10 @@
             self.rate.clearButtonMode = UITextFieldViewModeAlways;
             self.rate.delegate = self;
             self.rate.tag = 20;
-            
-            //use the new decimal pad if using iOS 4.1 or greater
-            if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-            {
-                [self.rate setKeyboardType:UIKeyboardTypeDecimalPad];
-                [self.rate setKeyboardAppearance:UIKeyboardAppearanceAlert];
-            }
-            else 
-            {
-                [self.rate setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-            }
+            self.rate.keyboardType = UIKeyboardTypeDecimalPad;
+            self.rate.keyboardAppearance = UIKeyboardAppearanceAlert;
             self.rate.textAlignment = UITextAlignmentLeft;
+            
             cell.accessoryView = self.rate;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Desired rate:";
@@ -308,8 +274,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NSLog(@"section = %d", indexPath.section);
-    NSLog(@"row = %d", indexPath.row);
+    // NSLog(@"section = %d", indexPath.section);
+    // NSLog(@"row = %d", indexPath.row);
     
     if (self.validParametersEntered) 
     {
@@ -328,7 +294,18 @@
         else 
         {
             // Calculate Te
-            [self calculateExpiratoryTimefromRate:[self.rate.text floatValue] andInspiratoryTime:[self.inspiratoryTime.text floatValue]];
+            
+            // Mean Airway Pressure
+            NSString *UKLocaleRate;
+            UKLocaleRate = [self.rate.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleRate = [self.rate.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            // Inspired Oxygen
+            NSString *UKLocaleInspiratoryTime;
+            UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            [self calculateExpiratoryTimefromRate:[UKLocaleRate floatValue] andInspiratoryTime:[UKLocaleInspiratoryTime floatValue]];
         }
     }
     else if (self.resultObtained) 
@@ -361,25 +338,20 @@
     
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
-    //
-    //
-    //validate inspiratoryTime value
-    //
-    //
+    // validate inspiratory time
     if([textField isEqual:self.inspiratoryTime])
     {
         if(newText.length > 4)
         {
             return NO;
         }
-        
-        if(newText.length == 1)
+        else if(newText.length == 1)
         {
-            if([string isEqualToString:@"."])
+            if([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 self.inspiratoryTime.text = @"0";
             }
-            else if ([string floatValue] > 1)  // this is rubbish...
+            else if ([string floatValue] > 1)
             {
                 if ([string floatValue] > 1.4 && [string floatValue] < 2.2) 
                 {
@@ -442,7 +414,7 @@
         }
         else if(newText.length == 2)
         {
-            if(!([[newText substringToIndex:2] isEqualToString:@"0."] || [[newText substringToIndex:2] isEqualToString:@"1."]))
+            if(!([newText isEqualToString:[NSString stringWithFormat:@"0%@", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]] || [newText isEqualToString:[NSString stringWithFormat:@"1%@", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]]))
             {
                 return NO;
             }
@@ -453,19 +425,26 @@
         }
         else if(newText.length == 3)
         {
-            if(!([[newText substringToIndex:2] isEqualToString:@"0."] || [[newText substringToIndex:2] isEqualToString:@"1."]))
+            // ensure first two characters are "0." or "1," or number localised version
+            if(!([[newText substringToIndex:2] isEqualToString:[NSString stringWithFormat:@"0%@", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]] || [[newText substringToIndex:2] isEqualToString:[NSString stringWithFormat:@"1%@", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]]))
             {
                 return NO;
             }
-            if([[newText substringFromIndex:2] isEqualToString:@"."])
+            // ensure third character is not a decimal
+            if([[newText substringFromIndex:2] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
+            
+            
             // warn against very low Ti
+
+            NSString *UKLocaleInspiratoryTime;
+            UKLocaleInspiratoryTime = [newText stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleInspiratoryTime = [newText stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             
-            float Ti = [newText floatValue];
-            // NSLog(@"Ti = %f", Ti);
-            
+            float Ti = [UKLocaleInspiratoryTime floatValue];
+            NSLog(@"Ti = %f", Ti);
             
             if (Ti >= 0.1 && Ti < 0.2) 
             {
@@ -497,7 +476,7 @@
                 // ensure Ti not too high
                 
                 // Ti
-                float Ti = [newText floatValue];
+                // float Ti = [newText floatValue]; Conrad change Sunday night
                 // NSLog(@"Ti = %f", Ti);
                 
                 // calculate Te
@@ -560,41 +539,36 @@
         }
         else if(newText.length == 4)
         {
-            if(!([[newText substringToIndex:2] isEqualToString:@"0."] || [[newText substringToIndex:2] isEqualToString:@"1."]))
+            if(!([[newText substringToIndex:2] isEqualToString:[NSString stringWithFormat:@"0%@", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]] || [[newText substringToIndex:2] isEqualToString:[NSString stringWithFormat:@"1%@", [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]]))
             {
                 return NO;
             }
-            
             NSRange thirdCharacter = NSMakeRange(3, 0);
-            if([[newText substringWithRange:thirdCharacter] isEqualToString:@"."])
+            NSLog(@"%@", [newText substringWithRange:thirdCharacter]);
+            if([[newText substringWithRange:thirdCharacter] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            if([[newText substringFromIndex:3] isEqualToString:@"."])
+            NSLog(@"%@", [newText substringFromIndex:3]);
+            if([[newText substringFromIndex:3] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
         }
     }
-    
-    //
-    //
-    // validate rate value
-    //
-    //
-    if([textField isEqual:self.rate])
+    // validate rate
+    else if([textField isEqual:self.rate])
     {
         // check that no decimal places are being used
-        if ([string isEqualToString:@"."]) 
+        if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]) 
         {
             return NO;
         }
         
-        
         if (newText.length == 2) 
         {
             // check if value is greater than 60
-            if(([newText intValue] > 60) && ([newText intValue] <81))
+            if(([newText intValue] > 60) && ([newText intValue] < 81))
             {
                 if (self.userHasTypedAVeryFastRateIn) 
                 {
@@ -642,7 +616,12 @@
             }
             
             // check if Ti has been entered. i.e. valid rate and Ti
-            if ([self.inspiratoryTime.text floatValue] > 0)
+#warning CODE NEEDED
+            NSString *UKLocaleInspiratoryTime;
+            UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            if ([UKLocaleInspiratoryTime floatValue] > 0)
             {
                 // NSLog(@"Calculation READY!!!!!!!!!!!");
                 self.expiratoryTime.textColor = [UIColor blackColor];
@@ -700,10 +679,14 @@
         }
         
         // if inspiratory time has been entered already
-        if ([self.inspiratoryTime.text floatValue] > 0) 
+        NSString *UKLocaleInspiratoryTime;
+        UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+        if ([UKLocaleInspiratoryTime floatValue] > 0.0f)
         {
             // report Ti
-            float Ti = [self.inspiratoryTime.text floatValue];
+            float Ti = [UKLocaleInspiratoryTime floatValue];
             // NSLog(@"Ti = %f", Ti);
             
             // calculate Te
@@ -756,10 +739,27 @@
 {
     float Te = ((60 / rate) - time);
     
-    // would be nice to check if result was an integer and carve off those training zeros.  Hope this extra long comment bring some attention to this in days to come...
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // if using arabic locale, force to english
+    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+    {
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+    }
+    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+    formatter.minimumFractionDigits = 0;
+    formatter.maximumFractionDigits = 2;
     
     self.expiratoryTime.textColor = [UIColor blackColor];
-    self.expiratoryTime.text = [NSString stringWithFormat:@"%1.2f seconds",Te];
+    
+    if(Te == 1)
+    {
+        self.expiratoryTime.text = [NSString stringWithFormat:@"%@ second", [formatter stringFromNumber:[NSNumber numberWithFloat:Te]]];
+    }
+    else
+    {
+        self.expiratoryTime.text = [NSString stringWithFormat:@"%@ seconds", [formatter stringFromNumber:[NSNumber numberWithFloat:Te]]];
+    }
     
     self.resultObtained = YES;
     self.validParametersEntered = NO;
