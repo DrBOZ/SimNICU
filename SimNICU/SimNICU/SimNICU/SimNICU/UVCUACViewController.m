@@ -17,8 +17,6 @@
 
 @implementation UVCUACViewController
 
-#warning CODE NEEDED
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -106,7 +104,12 @@
             NSString *rawBirthWeight = self.selectedPatient.birthWeight;
             NSString *formattedBirthWeight;
             
-            float birthWeightKGAsFloat = [rawBirthWeight floatValue];
+            NSString *UKLocaleRawBirthWeight;
+            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
+            
             if(birthWeightKGAsFloat < 1)
             {
                 // convert to grams as use integer
@@ -120,7 +123,6 @@
             
             self.title = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
             birthWeightInNavBar = YES;
-            
         }
         // Passed in patient does not have a gestation or birth weight, and incomplete name or 'New BABY'
         else
@@ -243,7 +245,13 @@
             
             if (self.selectedPatient.workingWeight) 
             {
-                float workingWeightKGAsFloat = [self.selectedPatient.workingWeight floatValue];
+                NSString *UKLocaleWorkingWeight;
+                UKLocaleWorkingWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWorkingWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+                
+                // float workingWeightKGAsFloat = [self.selectedPatient.workingWeight floatValue];
                 
                 if (workingWeightKGAsFloat < 1.0f)
                 {
@@ -251,30 +259,32 @@
                     
                     footer = [NSString stringWithFormat:@"%@ %i g", typeOfWeight, workingWeightGRAMSAsInt];
                 }
-                else  // present weight as kilograms
+                else
                 {
-                    NSString *tempString = [NSString stringWithFormat:@"%1.2f", workingWeightKGAsFloat];
+                    // present weight as kilograms
+                    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                    // if using arabic locale, force to english
+                    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                    {
+                        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                    }
+                    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                    formatter.minimumFractionDigits = 0;
+                    formatter.maximumFractionDigits = 3;
                     
-                    if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-                    {
-                        if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                        {
-                            footer = [NSString stringWithFormat:@"%@ %1.0f kg",typeOfWeight ,workingWeightKGAsFloat];
-                        }
-                        else 
-                        {
-                            footer = [NSString stringWithFormat:@"%@ %1.1f kg", typeOfWeight ,workingWeightKGAsFloat];
-                        }
-                    }
-                    else 
-                    {
-                        footer = [NSString stringWithFormat:@"%@ %1.2f kg", typeOfWeight,workingWeightKGAsFloat];
-                    }
+                    footer = [NSString stringWithFormat:@"%@ %@ kg", typeOfWeight, [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
                 }
             }
             else if (self.selectedPatient.birthWeight && !birthWeightInNavBar)
             {
-                float birthWeightKGAsFloat = [self.selectedPatient.birthWeight floatValue];
+                NSString *UKLocaleBirthWeight;
+                UKLocaleBirthWeight = [self.selectedPatient.birthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleBirthWeight = [self.selectedPatient.birthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float birthWeightKGAsFloat = [UKLocaleBirthWeight floatValue];
+                
+                // float birthWeightKGAsFloat = [self.selectedPatient.birthWeight floatValue];
                 
                 if (birthWeightKGAsFloat < 1.0f)
                 {
@@ -282,8 +292,23 @@
                     
                     footer = [NSString stringWithFormat:@"%@ %i grams", typeOfWeight, birthWeightGRAMSAsInt];
                 }
-                else  // present weight as kilograms
+                else
                 {
+                    // present weight as kilograms
+                    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                    // if using arabic locale, force to english
+                    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                    {
+                        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                    }
+                    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                    formatter.minimumFractionDigits = 0;
+                    formatter.maximumFractionDigits = 3;
+                    
+                    footer = [NSString stringWithFormat:@"%@ %@ kg", typeOfWeight, [formatter stringFromNumber:[NSNumber numberWithFloat:birthWeightKGAsFloat]]];
+                    
+                    /*
                     NSString *tempString = [NSString stringWithFormat:@"%1.2f", birthWeightKGAsFloat];
                     
                     if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
@@ -301,6 +326,7 @@
                     {
                         footer = [NSString stringWithFormat:@"%@ %1.2f kg", typeOfWeight,birthWeightKGAsFloat];
                     }
+                     */
                 }
             }
         }
@@ -351,7 +377,11 @@
                 
                 if (self.selectedPatient.birthWeight) 
                 {
-                    length = (([self.selectedPatient.birthWeight floatValue] * 3) + 9);
+                    NSString *UKLocaleBirthWeight;
+                    UKLocaleBirthWeight = [self.selectedPatient.birthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                    UKLocaleBirthWeight = [self.selectedPatient.birthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                    
+                    length = (([UKLocaleBirthWeight floatValue] * 3) + 9);
                     
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f cm + stump", length];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -429,7 +459,11 @@
                 
                 if (self.selectedPatient.birthWeight) 
                 {
-                    length = (([self.selectedPatient.birthWeight floatValue] * 2) + 5);
+                    NSString *UKLocaleBirthWeight;
+                    UKLocaleBirthWeight = [self.selectedPatient.birthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                    UKLocaleBirthWeight = [self.selectedPatient.birthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                    
+                    length = (([UKLocaleBirthWeight floatValue] * 2) + 5);
                     
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%.0f cm + stump", length];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
