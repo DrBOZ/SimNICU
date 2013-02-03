@@ -2074,6 +2074,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Conrad Bosman";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2086,7 +2087,8 @@
 					"\"$(SRCROOT)/SimNICU\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F9F7F305-6170-4DEF-A7A4-F893E99207F5";
+				PROVISIONING_PROFILE = "5A73DFAA-98EF-4458-8A65-426507F19023";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A73DFAA-98EF-4458-8A65-426507F19023";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
