@@ -20,15 +20,6 @@
 
 @implementation PatientDetailsEnterWorkingWeightViewController
 
-@synthesize textFieldToBecomeFirstResponder = _textFieldToBecomeFirstResponder;
-@synthesize formattedWorkingWeightDate = _formattedWorkingWeightDate;
-@synthesize workingWeightDate = _workingWeightDate;
-@synthesize patientToEdit = _patientToEdit;
-@synthesize workingWeight = _workingWeight;
-@synthesize myTableView = _myTableView;
-@synthesize delegate = _delegate;
-@synthesize calendar = _calendar;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -207,7 +198,7 @@
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
-        self.workingWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0, 1.0, 180, 30)];
+        self.workingWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
         self.workingWeight.borderStyle = UITextBorderStyleRoundedRect;
         self.workingWeight.placeholder = @"kilograms";
         self.workingWeight.clearButtonMode = UITextFieldViewModeAlways;
@@ -219,12 +210,8 @@
         self.workingWeight.text = self.patientToEdit.workingWeight;
         self.workingWeight.autocorrectionType = UITextAutocorrectionTypeNo;
         
-        //use the new decimal pad if using iOS 4.1 or greater
-        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-        {
-            [self.workingWeight setKeyboardType:UIKeyboardTypeDecimalPad];
-            [self.workingWeight setKeyboardAppearance:UIKeyboardAppearanceAlert];
-        }
+        self.workingWeight.keyboardType = UIKeyboardTypeDecimalPad;
+        self.workingWeight.keyboardAppearance = UIKeyboardAppearanceAlert;
         
         cell.accessoryView = self.workingWeight;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

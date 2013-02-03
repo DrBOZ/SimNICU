@@ -938,9 +938,9 @@
 				5C940A71166E37FE0044A7D1 /* AppDelegate.m */,
 				5C940AF9166E3AED0044A7D1 /* Application */,
 				5C940B17166E3B8B0044A7D1 /* Screen_About */,
-				5C940B53166E3C130044A7D1 /* Screen_SimNICU */,
 				5C63B12516B9CDA700B31431 /* Screen_APGAR */,
 				5CDB9F2616BE333200B457EC /* Screen_BloodProducts */,
+				5C940B53166E3C130044A7D1 /* Screen_Calculator */,
 				5C63B13C16B9FEF900B31431 /* Screen_CDH */,
 				5CDB9F2416BE322900B457EC /* Screen_Cooling */,
 				5C63B14016B9FFFA00B31431 /* Screen_CrUSS */,
@@ -1271,7 +1271,7 @@
 			name = Instructions;
 			sourceTree = "<group>";
 		};
-		5C940B53166E3C130044A7D1 /* Screen_SimNICU */ = {
+		5C940B53166E3C130044A7D1 /* Screen_Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				5C8C3DE916707C7B0073886A /* CalculatorViewController.h */,
@@ -1279,7 +1279,7 @@
 				5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */,
 				5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */,
 			);
-			name = Screen_SimNICU;
+			name = Screen_Calculator;
 			sourceTree = "<group>";
 		};
 		5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */ = {

@@ -1134,11 +1134,6 @@
     
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
-    // NSLog(@" ");
-    // NSLog(@"newText = %@", newText);
-    // NSLog(@"newText.length = %i", newText.length);
-    // NSLog(@"string = %@", string);
-    
     if ([textField isEqual:self.weight]) 
     {
         if(newText.length > 5)
@@ -1163,12 +1158,10 @@
                     [alertView show];
                 }
             }
-            
         }
         else if(newText.length == 2)
         {
-            // first character is a "."
-            // if([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            // first character is a "." or "," or decimal separator
             if([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;

@@ -835,8 +835,6 @@
                     self.dopamineStrengthLabel.textColor = [UIColor blackColor];
                 }
                 
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-                
                 float dopamineDoseMilligrams = 0.0f;
                 
                 if ([self.dopamineStrength isEqualToString:@"Single"])
@@ -981,8 +979,6 @@
                     self.dobutamineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-                
                 float dobutamineDoseMilligrams = 0.0f;
                 
                 if ([self.dobutamineStrength isEqualToString:@"Single"])
@@ -1126,8 +1122,6 @@
                     self.adrenalineStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-                
                 float adrenalineDoseMilligrams = 0.0f;
                 
                 if ([self.adrenalineStrength isEqualToString:@"Single"])
@@ -1167,8 +1161,6 @@
                 else if (adrenalineDoseMilligrams > 1 && adrenalineDoseMilligrams <= 3)
                 {
                     formatter.maximumFractionDigits = 2;
-                    // round to nearest 0.05
-                    // adrenalineDoseMilligrams = roundf(adrenalineDoseMilligrams * 20.0f)/20.0f;
                 }
                 else if (adrenalineDoseMilligrams > 3)
                 {
@@ -1352,8 +1344,6 @@
                     self.insulinStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-                
                 float insulinDoseUnits = 0.0f;
                 
                 if ([self.insulinStrength isEqualToString:@"Single"])
@@ -1492,8 +1482,6 @@
                     self.atracuriumStrengthLabel.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-                
                 float atracuriumDoseMilligrams =0.0f;
                 
                 if ([self.atracuriumStrength isEqualToString:@"Single"])
@@ -1612,8 +1600,6 @@
                     strength.textColor = [UIColor redColor];
                 }
                 
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-                
                 float lidocaineDoseMilligrams = 0.0f;
                 
                 if ([lidocaineStrength isEqualToString:@"Single"])
@@ -1653,8 +1639,6 @@
                 else if (lidocaineDoseMilligrams > 1 && lidocaineDoseMilligrams <= 3)
                 {
                     formatter.maximumFractionDigits = 2;
-                    // round to nearest 0.05
-                    // lidocaineDoseMilligrams = roundf(lidocaineDoseMilligrams * 20.0f)/20.0f;
                 }
                 else if (lidocaineDoseMilligrams > 3)
                 {
@@ -1760,8 +1744,6 @@
                 {
                     self.midazolamStrengthLabel.textColor = [UIColor redColor];
                 }
-                
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
                 float midazolamDoseMilligrams = 0.0f;
                 
@@ -1903,8 +1885,6 @@
                 [cell addSubview:self.prostinDose3Label];
                 
                 drug.text = @"DINOPROSTONE";
-                
-                // float workingWeightKGAsFloat = [self.workingWeight floatValue];
                 
                 // ie 1 ml/hr = x nanograms/kg/min at above weight
                 float prostinDoseNanogramsPerKgPerMinuteAtOneMlPerHour = (1.0f / (0.06f * workingWeightKGAsFloat));
@@ -2553,8 +2533,6 @@
             self.morphineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-        
         float morphineDoseMilligrams = 0.0f;
         
         if ([self.morphineStrength isEqualToString:@"Single"])
@@ -2682,8 +2660,6 @@
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-        
         float dopamineDoseMilligrams = 0.0f;
         
         if ([self.dopamineStrength isEqualToString:@"Single"])
@@ -2809,8 +2785,6 @@
             self.dobutamineStrengthLabel.textColor = [UIColor blackColor];
         }
         
-        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-        
         float dobutamineDoseMilligrams = 0.0f;
         
         if ([self.dobutamineStrength isEqualToString:@"Single"])
@@ -2933,8 +2907,6 @@
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
             
-            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-            
             float adrenalineDoseMilligrams = 0.0f;
             
             if ([self.adrenalineStrength isEqualToString:@"Single"])
@@ -3022,8 +2994,6 @@
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
             
-            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-            
             float insulinDoseUnits = 0.0f;
             
             if ([self.insulinStrength isEqualToString:@"Single"])
@@ -3077,8 +3047,6 @@
             {
                 self.atracuriumStrengthLabel.textColor = [UIColor redColor];
             }
-            
-            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float atracuriumDoseMilligrams = 0.0f;
             
@@ -3193,8 +3161,6 @@
         {
             self.midazolamStrengthLabel.textColor = [UIColor blackColor];
         }
-        
-        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float midazolamDoseMilligrams = 0.0f;
         
@@ -3458,8 +3424,6 @@
         {
             self.dopamineStrengthLabel.textColor = [UIColor blackColor];
         }
-        
-        // float workingWeightKGAsFloat = [self.workingWeight floatValue];
         
         float dopamineDoseMilligrams = 0.0f;
         
@@ -3842,8 +3806,6 @@
                 self.adrenalineStrengthLabel.textColor = [UIColor redColor];
             }
             
-            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
-            
             float adrenalineDoseMilligrams = 0.0f;
             
             if ([self.adrenalineStrength isEqualToString:@"Single"])
@@ -3970,8 +3932,6 @@
             {
                 self.insulinStrengthLabel.textColor = [UIColor blackColor];
             }
-            
-            // float workingWeightKGAsFloat = [self.workingWeight floatValue];
             
             float insulinDoseUnits = 0.0f;
             

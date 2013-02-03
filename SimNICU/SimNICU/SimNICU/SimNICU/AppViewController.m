@@ -1391,6 +1391,7 @@
         
         estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:gestation];
         
+        // always returns UKLocale value
         float estimatedWeightKGAsFloat = [estimatedWeight floatValue];
         
         if(estimatedWeightKGAsFloat < 1)
@@ -1402,15 +1403,18 @@
         }
         else
         {
-            NSString *tempString = [NSString stringWithFormat:@"Estimated weight %.2f kg", estimatedWeightKGAsFloat];
-            
-            if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if locale has an arabic decimal separator then use english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
             {
-                // replace dots with commas
-                tempString = [tempString stringByReplacingOccurrencesOfString:@"." withString:@","];
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
             }
+            formatter.minimumFractionDigits = 0;
+            formatter.maximumFractionDigits = 3;
             
-            self.displayDetailTextLabel.text = tempString;
+            self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:estimatedWeightKGAsFloat]]];
         }
         
         self.displayDetailTextLabel.hidden = NO;
@@ -1432,8 +1436,7 @@
         self.gestation = gestation;
     }
     else if(weight && !gestation)
-    {        
-        // float weightKGAsFloat = [weight floatValue];
+    {
         float weightKGAsFloat = [UKLocaleWeight floatValue];
         
         if(weightKGAsFloat < 1)

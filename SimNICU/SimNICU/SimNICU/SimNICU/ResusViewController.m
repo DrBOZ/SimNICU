@@ -313,10 +313,8 @@
 
             cell.drug.text = [NSString stringWithFormat:@"%@ 1:10,000 IV", NSLocalizedString(@"Adrenaline", nil)];
             
-            float adrenalineDoseMicrograms = (workingWeightKGAsFloat * 10.0);
-            float adrenalineDoseMLs = (workingWeightKGAsFloat * 0.10);
-            
-            adrenalineDoseMLs = roundf(adrenalineDoseMLs *100.0f)/100.0f;
+            float adrenalineDoseMicrograms = (workingWeightKGAsFloat * 10.0f);
+            float adrenalineDoseMLs = (workingWeightKGAsFloat * 0.10f);
             
             if (adrenalineDoseMicrograms) 
             {
@@ -431,9 +429,6 @@
             float calciumGluconateDoseMMOL = workingWeightKGAsFloat * 0.11f;
             float calciumGluconateDoseMls = workingWeightKGAsFloat * 0.5f;
             
-            calciumGluconateDoseMMOL = roundf(calciumGluconateDoseMMOL * 100.0f)/100.0f;
-            calciumGluconateDoseMls = roundf(calciumGluconateDoseMls * 100.0f)/100.0f;
-            
             if(calciumGluconateDoseMMOL)
             {
                 formatter.maximumFractionDigits = 2;
@@ -532,8 +527,6 @@
             cell.subLabel2.text = @"100 micrograms/kg";
             
             float naloxoneDose100Micrograms = workingWeightKGAsFloat * 100.0f;
-            
-            naloxoneDose100Micrograms = roundf(naloxoneDose100Micrograms / 10.0f) *10.0f;
             
             if (naloxoneDose100Micrograms) 
             {

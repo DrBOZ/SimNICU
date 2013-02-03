@@ -15,13 +15,6 @@
 
 @implementation PatientDetailsEnterWeightViewController
 
-@synthesize textFieldToBecomeFirstResponder = _textFieldToBecomeFirstResponder;
-@synthesize patientToEdit = _patientToEdit;
-@synthesize myTableView = _myTableView;
-@synthesize birthWeight = _birthWeight;
-@synthesize gestation = _gestation;
-@synthesize delegate = _delegate;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -181,12 +174,8 @@
         self.gestation.text = self.patientToEdit.gestation;
         self.gestation.autocorrectionType = UITextAutocorrectionTypeNo;
         
-        //use the new decimal pad if using iOS 4.1 or greater
-        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-        {
-            [self.gestation setKeyboardType:UIKeyboardTypeDecimalPad];
-            [self.gestation setKeyboardAppearance:UIKeyboardAppearanceAlert];
-        }
+        self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
+        self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
         
         cell.accessoryView = self.gestation;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -218,12 +207,8 @@
         self.birthWeight.text = self.patientToEdit.birthWeight;
         self.birthWeight.autocorrectionType = UITextAutocorrectionTypeNo;
         
-        //use the new decimal pad if using iOS 4.1 or greater
-        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-        {
-            [self.birthWeight setKeyboardType:UIKeyboardTypeDecimalPad];
-            [self.birthWeight setKeyboardAppearance:UIKeyboardAppearanceAlert];
-        }
+        self.birthWeight.keyboardType = UIKeyboardTypeDecimalPad;
+        self.birthWeight.keyboardAppearance = UIKeyboardAppearanceAlert;
         
         cell.accessoryView = self.birthWeight;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -256,7 +241,7 @@
         }
         if(newText.length == 1)
         {
-            if([string isEqualToString:@"."] || [string isEqualToString:@","])
+            if([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 self.birthWeight.text = @"0";
             }
@@ -272,16 +257,15 @@
                     [alertView show];
                 }
             }
-            
         }
         else if(newText.length == 2)
         {
             // first character is a "." or ","
-            if([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if (!([[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:@","]))
+            else if(![[newText substringWithRange:NSMakeRange(1, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"ERROR!"
@@ -298,45 +282,45 @@
         else if(newText.length == 3)
         {
             // first character is a "."
-            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if ([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
         }
         else if(newText.length == 4)
         {
-            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if ([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
         }
         else if(newText.length == 5)
         {
-            if ([[newText substringToIndex:1] isEqualToString:@"."] || [[newText substringToIndex:1] isEqualToString:@","])
+            if ([[newText substringToIndex:1] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(2, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(3, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
-            else if ([[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@"."] || [[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:@","])
+            else if ([[newText substringWithRange:NSMakeRange(4, 1)] isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
@@ -344,7 +328,7 @@
     }
     else if ([textField isEqual:self.gestation])
     {
-        // NSLog(@"validating Gestation");
+        // validating gestation
         if (newText.length > 0)
         {
             // NSLog(@"newText substringToIndex:1 = %@", [newText substringToIndex:1]);

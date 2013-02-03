@@ -598,11 +598,8 @@
             if (self.PaO2.text.length > 1) 
             {
                 float newValue = [UKLocalePaO2 floatValue] * 7.5;
-                // float newValue = [self.PaO2.text floatValue] * 7.5;
                 
                 self.PaO2.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:newValue]]];
-                
-                // self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
             }
             break;
             
@@ -613,11 +610,8 @@
             if (self.PaO2.text.length > 1) 
             {
                 float newValue = [UKLocalePaO2 floatValue] / 7.5;
-                // float newValue = [self.PaO2.text floatValue] / 7.5;
                 
                 self.PaO2.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:newValue]]];
-                
-                // self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
             }
             break;
             

@@ -330,7 +330,11 @@
             
             if (self.patientToEdit.birthWeight) 
             {
-                float weightKGAsFloat = [self.patientToEdit.birthWeight floatValue];
+                NSString *UKLocaleBirthWeight;
+                UKLocaleBirthWeight = [self.patientToEdit.birthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleBirthWeight = [self.patientToEdit.birthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float weightKGAsFloat = [UKLocaleBirthWeight floatValue];
                 if(weightKGAsFloat < 1)
                 {
                     // convert to grams as use integer
@@ -370,9 +374,13 @@
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            if (self.patientToEdit.workingWeight) 
+            if (self.patientToEdit.workingWeight)
             {
-                float weightKGAsFloat = [self.patientToEdit.workingWeight floatValue];
+                NSString *UKLocaleWorkingWeight;
+                UKLocaleWorkingWeight = [self.patientToEdit.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWorkingWeight = [self.patientToEdit.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float weightKGAsFloat = [UKLocaleWorkingWeight floatValue];
                 if(weightKGAsFloat < 1)
                 {
                     // convert to grams as use integer
@@ -631,7 +639,7 @@
 {
     NSLog(@" ");
     NSLog(@"PatientDetailsEnterWorkingWeightViewController didFinishEditingPatientWorkingWeight");
-#warning BUG AROUND HERE try changing working weight es_es
+
     self.patientToEdit.workingWeight = patient.workingWeight;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
