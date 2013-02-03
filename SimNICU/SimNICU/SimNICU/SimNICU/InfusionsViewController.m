@@ -175,7 +175,7 @@
         }
         else
         {
-            heparinDiluent = @"0.9% Sodium Chloride";
+            heparinDiluent = @"0.45% Sodium Chloride";
         }
         
         if (workingWeightKGAsFloat < 2.0f)
@@ -2165,7 +2165,7 @@
                     [cell addSubview:text];
                     
                     drug.text = NSLocalizedString(@"Heparin", nil);
-                    strength.text = @"50 Units in 50 mls 0.9% Sodium Chloride";
+                    strength.text = @"50 Units in 50 mls 0.45% Sodium Chloride";
                     text.text = @"0.5 - 1 ml/hr";
                     
                     // only need one localization converter code
