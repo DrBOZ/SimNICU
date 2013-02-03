@@ -19,19 +19,6 @@
 
 @implementation OxygenationIndexViewController
 
-@synthesize validParametersEntered = _validParametersEntered;
-@synthesize meanAirwayPressure = _meanAirwayPressure;
-@synthesize oxygenationIndex = _oxygenationIndex;
-@synthesize OIPaO2UnitsIndex = _OIPaO2UnitsIndex;
-@synthesize inspiredOxygen = _inspiredOxygen;
-@synthesize resultObtained = _resultObtained;
-@synthesize myTableView = _myTableView;
-@synthesize delegate = _delegate;
-@synthesize units = _units;
-@synthesize PaO2 = _PaO2;
-
-#warning CODE NEEDED
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -107,7 +94,7 @@
     
     /*info button
      UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-     infoButton.frame = CGRectMake(270, 10, 30, 30);
+     infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
      [infoButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
      UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
      self.navigationItem.rightBarButtonItem = infoBarButton;
@@ -117,13 +104,9 @@
     self.inspiredOxygen.delegate = self;
     self.PaO2.delegate = self;
     
-    //use the new decimal pad if using iOS 4.1 or greater
-    if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-    {
-        self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
-        self.inspiredOxygen.keyboardType = UIKeyboardTypeDecimalPad;
-        self.PaO2.keyboardType = UIKeyboardTypeDecimalPad;
-    }
+    self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
+    self.inspiredOxygen.keyboardType = UIKeyboardTypeDecimalPad;
+    self.PaO2.keyboardType = UIKeyboardTypeDecimalPad;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -229,24 +212,17 @@
     
     if (section == 0) 
     {
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
+        float fourInchDisplayPadding = 0.0f;
+        
+        //delegate
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if (appDelegate.window.bounds.size.height == 568)
         {
-            float fourInchDisplayPadding = 0.0f;
-            
-            //delegate
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
-            if (appDelegate.window.bounds.size.height == 568)
-            {
-                fourInchDisplayPadding = 40.0f;
-            }
-            
-            height = 15.0f + fourInchDisplayPadding;
+            fourInchDisplayPadding = 40.0f;
         }
-        else
-        {
-            height = 5.0f;
-        }
+        
+        height = 15.0f + fourInchDisplayPadding;
     }
     
     return height;
@@ -280,18 +256,15 @@
         self.meanAirwayPressure.clearButtonMode = UITextFieldViewModeAlways;
         self.meanAirwayPressure.delegate = self;
         self.meanAirwayPressure.tag = 10;
-        
-        //use the new decimal pad if using iOS 4.1 or greater
-        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-        {
-            [self.meanAirwayPressure setKeyboardType:UIKeyboardTypeDecimalPad];
-            [self.meanAirwayPressure setKeyboardAppearance:UIKeyboardAppearanceAlert];
-        }
-        else 
-        {
-            [self.meanAirwayPressure setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-        }
+        self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
+        self.meanAirwayPressure.keyboardAppearance = UIKeyboardAppearanceAlert;
         self.meanAirwayPressure.textAlignment = UITextAlignmentLeft;
+        
+        /*
+        [self.meanAirwayPressure setKeyboardType:UIKeyboardTypeDecimalPad];
+        [self.meanAirwayPressure setKeyboardAppearance:UIKeyboardAppearanceAlert];
+         */
+        
         cell.accessoryView = self.meanAirwayPressure;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -318,17 +291,9 @@
         self.inspiredOxygen.clearButtonMode = UITextFieldViewModeAlways;
         self.inspiredOxygen.delegate = self;
         self.inspiredOxygen.tag = 20;
+        [self.inspiredOxygen setKeyboardType:UIKeyboardTypeDecimalPad];
+        [self.inspiredOxygen setKeyboardAppearance:UIKeyboardAppearanceAlert];
         
-        //use the new decimal pad if using iOS 4.1 or greater
-        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-        {
-            [self.inspiredOxygen setKeyboardType:UIKeyboardTypeDecimalPad];
-            [self.inspiredOxygen setKeyboardAppearance:UIKeyboardAppearanceAlert];
-        }
-        else 
-        {
-            [self.inspiredOxygen setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-        }
         self.inspiredOxygen.textAlignment = UITextAlignmentLeft;
         cell.accessoryView = self.inspiredOxygen;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -357,16 +322,9 @@
         self.PaO2.delegate = self;
         self.PaO2.tag = 30;
         
-        //use the new decimal pad if using iOS 4.1 or greater
-        if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
-        {
-            [self.PaO2 setKeyboardType:UIKeyboardTypeDecimalPad];
-            [self.PaO2 setKeyboardAppearance:UIKeyboardAppearanceAlert];
-        }
-        else 
-        {
-            [self.PaO2 setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-        }
+        [self.PaO2 setKeyboardType:UIKeyboardTypeDecimalPad];
+        [self.PaO2 setKeyboardAppearance:UIKeyboardAppearanceAlert];
+        
         self.PaO2.textAlignment = UITextAlignmentLeft;
         cell.accessoryView = self.PaO2;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -391,12 +349,12 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0f];
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        self.oxygenationIndex = [[UILabel alloc] initWithFrame:CGRectMake(162.0, 11.0, 132.0, 21.0)];
-        self.oxygenationIndex.font = [UIFont boldSystemFontOfSize:17.0];
+        self.oxygenationIndex = [[UILabel alloc] initWithFrame:CGRectMake(162.0f, 11.0f, 132.0f, 21.0f)];
+        self.oxygenationIndex.font = [UIFont boldSystemFontOfSize:17.0f];
         self.oxygenationIndex.textColor = [UIColor lightGrayColor];
         self.oxygenationIndex.highlightedTextColor = [UIColor whiteColor];
         self.oxygenationIndex.textAlignment = UITextAlignmentCenter;
@@ -453,8 +411,23 @@
             // Calculate OI
             NSLog(@"Calculate OI");
             
+            // Mean Airway Pressure
+            NSString *UKLocaleMeanAirwayPressure;
+            UKLocaleMeanAirwayPressure = [self.meanAirwayPressure.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleMeanAirwayPressure = [self.meanAirwayPressure.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             
-            [self calculateOxygenationIndexFromMAP:[self.meanAirwayPressure.text floatValue] andInspiredOxygen:[self.inspiredOxygen.text intValue] andPartialPressureOxygenkPa:[self.PaO2.text floatValue]];
+            // Inspired Oxygen
+            NSString *UKLocaleInspiredOxygen;
+            UKLocaleInspiredOxygen = [self.inspiredOxygen.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleInspiredOxygen = [self.inspiredOxygen.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            // Partial Pressure Oxygen
+            NSString *UKLocalePartialPressureOxygen;
+            UKLocalePartialPressureOxygen = [self.PaO2.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocalePartialPressureOxygen = [self.PaO2.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            // Calculation
+            [self calculateOxygenationIndexFromMAP:[UKLocaleMeanAirwayPressure floatValue] andInspiredOxygen:[UKLocaleInspiredOxygen intValue] andPartialPressureOxygenkPa:[UKLocalePartialPressureOxygen floatValue]];
         }
     }
     else if (self.resultObtained) 
@@ -486,15 +459,15 @@
     
     BOOL allowUserToChangeText = YES;
     
-    NSLog(@"string = %@", string);
+    // NSLog(@"string = %@", string);
     
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
-    NSLog(@"newText = %@", newText);
+    // NSLog(@"newText = %@", newText);
     
     if ([textField isEqual:self.meanAirwayPressure]) 
     {
-        NSLog(@"Editing Mean Airway Pressure");
+        // NSLog(@"Editing Mean Airway Pressure");
         
         if (newText.length > 4) 
         {
@@ -502,7 +475,7 @@
         }
         else if (newText.length == 1)
         {
-            if ([string isEqualToString:@"."]) 
+            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 return NO;
             }
@@ -515,8 +488,7 @@
         
         // does not allow decimal places to be entered
         // does no stop decimal places from being pasted in...
-        
-        if ([string isEqualToString:@"."]) 
+        if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]]) 
         {
             return NO;
         }
@@ -549,7 +521,7 @@
     else if ([textField isEqual:self.PaO2])
     {
         NSLog(@"Editing PaO2");
-        
+        // more code required...
         if (newText.length > 4)
         {
             return NO;
@@ -576,9 +548,23 @@
         default:
             break;
     }
-    
+
     self.oxygenationIndex.textColor = [UIColor blackColor];
-    self.oxygenationIndex.text = [NSString stringWithFormat:@"%.1f", OI];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // if locale has an arabic decimal separator then use english
+    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+    {
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+    }
+    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+    formatter.minimumFractionDigits = 0;
+    formatter.maximumFractionDigits = 1;
+    
+    self.oxygenationIndex.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:OI]]];
+    
+    // self.oxygenationIndex.text = [NSString stringWithFormat:@"%.1f", OI];
     
     self.resultObtained = YES;
     self.validParametersEntered = NO;
@@ -586,16 +572,24 @@
     return OI;
 }
 
-- (float)calculateOxygenationIndexFromMAP:(NSString *)MAP andInspiredOxygen:(NSString *)oxygen andPartialPressureOxygenmmHg:(NSString *)PaO2
-{
-    float result = 0;
-    
-    return result;
-}
-
 - (void)changeUnits
 {
-    NSLog(@"Changing units");
+    // NSLog(@"Changing units");
+    
+    NSString *UKLocalePaO2;
+    UKLocalePaO2 = [self.PaO2.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    UKLocalePaO2 = [self.PaO2.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // if locale has an arabic decimal separator then use english
+    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+    {
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+    }
+    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+    formatter.minimumFractionDigits = 0;
+    formatter.maximumFractionDigits = 1;
     
     switch (self.units.selectedSegmentIndex) 
     {
@@ -604,9 +598,12 @@
             self.PaO2.placeholder = @"mm Hg";
             if (self.PaO2.text.length > 1) 
             {
-                float newValue = [self.PaO2.text floatValue] * 7.5;
+                float newValue = [UKLocalePaO2 floatValue] * 7.5;
+                // float newValue = [self.PaO2.text floatValue] * 7.5;
                 
-                self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
+                self.PaO2.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:newValue]]];
+                
+                // self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
             }
             break;
             
@@ -616,9 +613,12 @@
             
             if (self.PaO2.text.length > 1) 
             {
-                float newValue = [self.PaO2.text floatValue] / 7.5;
+                float newValue = [UKLocalePaO2 floatValue] / 7.5;
+                // float newValue = [self.PaO2.text floatValue] / 7.5;
                 
-                self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
+                self.PaO2.text = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithFloat:newValue]]];
+                
+                // self.PaO2.text = [NSString stringWithFormat:@"%.1f", newValue];
             }
             break;
             

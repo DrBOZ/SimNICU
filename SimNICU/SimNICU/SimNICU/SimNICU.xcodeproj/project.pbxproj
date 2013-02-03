@@ -941,6 +941,7 @@
 				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
 				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
 				5C39630C16B849D40039C387 /* Screen_Intubation */,
+				5CDB9F2B16BE414D00B457EC /* Screen_OxygenationIndex */,
 				5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */,
 				5C63B12B16B9FB1D00B31431 /* Screen_PulmonaryHaemorrhage */,
 				5C39630916B842870039C387 /* Screen_Resus */,
@@ -1267,8 +1268,6 @@
 				5C8C3DEB16707C900073886A /* CalculatorViewController.m */,
 				5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */,
 				5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */,
-				5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */,
-				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
 				5C940BA5166E3C2E0044A7D1 /* TransportVentilatorViewController.h */,
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 			);
@@ -1531,6 +1530,15 @@
 				5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */,
 			);
 			name = Screen_BloodProducts;
+			sourceTree = "<group>";
+		};
+		5CDB9F2B16BE414D00B457EC /* Screen_OxygenationIndex */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */,
+				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
+			);
+			name = Screen_OxygenationIndex;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
