@@ -81,9 +81,9 @@
 {
     if (self.workingWeight)
     {
-        // goes through the entire string and replaces any commas with full stops in case
-        // user is using a european locale
-        NSString *UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSString *UKLocaleWorkingWeight;
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
         
@@ -95,29 +95,19 @@
         }
         else  // present weight as kilograms
         {
-            NSString *tempString = [NSString stringWithFormat:@"%1.2f", workingWeightKGAsFloat];
+            // present weight as kilograms
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if using arabic locale, force to english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.minimumFractionDigits = 0;
+            formatter.maximumFractionDigits = 3;
             
-            if ([[tempString substringFromIndex:[tempString length] - 1] isEqualToString:@"0"])
-            {
-                if ([[tempString substringFromIndex:[tempString length] - 2] isEqualToString:@"00"])
-                {
-                    self.title = [NSString stringWithFormat:@"Working weight %1.0f kg", workingWeightKGAsFloat];
-                }
-                else {
-                    self.title = [NSString stringWithFormat:@"Working weight %1.1f kg", workingWeightKGAsFloat];
-                }
-            }
-            else
-            {
-                self.title = [NSString stringWithFormat:@"Working weight %1.2f kg", workingWeightKGAsFloat];
-            }
-        }
-        
-        // if european locale
-        if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        {
-            // replace dots with commas
-            self.title = [self.title stringByReplacingOccurrencesOfString:@"." withString:@","];
+            self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
         }
     }
     else

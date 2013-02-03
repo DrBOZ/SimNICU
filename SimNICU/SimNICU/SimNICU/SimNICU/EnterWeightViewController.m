@@ -673,8 +673,11 @@
             NSString *formattedWorkingWeight;
             
             // format birth weight
+            NSString *UKLocaleRawBirthWeight;
+            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             
-            float birthWeightKGAsFloat = [rawBirthWeight floatValue];
+            float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
             
             if(birthWeightKGAsFloat < 1)
             {
@@ -688,8 +691,11 @@
             }
             
             // format working weight
+            NSString *UKLocaleRawWorkingWeight;
+            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             
-            float workingWeightKGAsFloat = [rawWorkingWeight floatValue];
+            float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
             if(workingWeightKGAsFloat < 1)
             {
                 // convert to grams as use integer
@@ -716,8 +722,11 @@
             NSString *formattedWorkingWeight;
             
             // format birth weight
-#warning CODE NEEDED
-            float birthWeightKGAsFloat = [rawBirthWeight floatValue];
+            NSString *UKLocaleRawBirthWeight;
+            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
             
             if(birthWeightKGAsFloat < 1)
             {
@@ -731,8 +740,11 @@
             }
             
             // format working weight
+            NSString *UKLocaleRawWorkingWeight;
+            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
             
-            float workingWeightKGAsFloat = [rawWorkingWeight floatValue];
+            float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
             if(workingWeightKGAsFloat < 1)
             {
                 // convert to grams as use integer
@@ -1356,7 +1368,21 @@
     {
         // return in kilos
         float kilos = ([weightInGrams floatValue] / 1000);
-        formattedWeight = [NSString stringWithFormat:@"%1.2fkg",kilos];
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        // if using arabic locale, force to english
+        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+        {
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+        }
+        formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+        formatter.minimumFractionDigits = 0;
+        formatter.maximumFractionDigits = 2;
+        
+        formattedWeight = [NSString stringWithFormat:@"%@kg", [formatter stringFromNumber:[NSNumber numberWithFloat:kilos]]];
+        
+        // formattedWeight = [NSString stringWithFormat:@"%1.2fkg",kilos];
     }
     else
     {

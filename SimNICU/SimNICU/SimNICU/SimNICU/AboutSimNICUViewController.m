@@ -149,7 +149,7 @@
     tableFooterLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
     tableFooterLabel.numberOfLines = 1;
     tableFooterLabel.font = [UIFont systemFontOfSize:15.0f];
-    tableFooterLabel.text = @"\nCopyright 2012 © Conrad Bosman";
+    tableFooterLabel.text = @"\nCopyright 2013 © Conrad Bosman";
     [footerView addSubview:tableFooterLabel];
     
     // [self.myTableView setTableFooterView:tableFooterLabel];
@@ -202,7 +202,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 1.2.2";
+        returnString = @"Version 1.3";
     }
     
     return returnString;

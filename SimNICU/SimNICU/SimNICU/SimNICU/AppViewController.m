@@ -1275,9 +1275,13 @@
         
         estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:patient.gestation];
         
-        NSLog(@"Estimated Weight = %@", estimatedWeight);
+        // NSLog(@"Estimated Weight = %@", estimatedWeight);
         
-        float estimatedWeightKGAsFloat = [estimatedWeight floatValue];
+        NSString *UKLocaleEstimatedWeight;
+        UKLocaleEstimatedWeight = [estimatedWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleEstimatedWeight = [estimatedWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        float estimatedWeightKGAsFloat = [UKLocaleEstimatedWeight floatValue];
         NSString *estimatedWeightAsString;
         
         if(estimatedWeightKGAsFloat < 1)
@@ -1289,7 +1293,20 @@
         }
         else
         {
-            estimatedWeightAsString = [NSString stringWithFormat:@"%.2f kg", estimatedWeightKGAsFloat];
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if using arabic locale, force to english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.minimumFractionDigits = 0;
+            formatter.maximumFractionDigits = 3;
+            
+            estimatedWeightAsString = [NSString stringWithFormat:@"%@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:estimatedWeightKGAsFloat]]];
+            
+            // estimatedWeightAsString = [NSString stringWithFormat:@"%.2f kg", estimatedWeightKGAsFloat];
         }
         
         detailTextLabelText = [NSString stringWithFormat:@"%@/40 estimated weight %@", patient.gestation, estimatedWeightAsString];

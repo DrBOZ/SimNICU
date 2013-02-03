@@ -113,6 +113,11 @@
     
     riskFactor = [[NeurotoxicityRiskFactor alloc] init];
     riskFactor.text = @"Albumin < 3.0 g/dL"; // localize to mmol/L
+    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+    {
+        // replace dots with commas
+        riskFactor.text = [riskFactor.text stringByReplacingOccurrencesOfString:@"." withString:@","];
+    }
     riskFactor.checked = NO;
     [riskFactors addObject:riskFactor];
     

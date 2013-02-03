@@ -616,7 +616,6 @@
             }
             
             // check if Ti has been entered. i.e. valid rate and Ti
-#warning CODE NEEDED
             NSString *UKLocaleInspiratoryTime;
             UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
             UKLocaleInspiratoryTime = [self.inspiratoryTime.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
