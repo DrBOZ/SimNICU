@@ -43,20 +43,23 @@
         NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
         NSLog(@"Current locale = %@", currentLocale);
         
-        if ([currentLocale isEqualToString:@"en_GB"])
+        if (!self.guidelineCountry)
         {
-            self.guidelineCountry = @"UK";
-            self.bilirubinUnits = @"SI";
-        }
-        else if ([currentLocale isEqualToString:@"en_US"])
-        {
-            self.guidelineCountry = @"US";
-            self.bilirubinUnits = @"US";
-        }
-        else
-        {
-            self.guidelineCountry = @"US";
-            self.bilirubinUnits = @"US";
+            if ([currentLocale isEqualToString:@"en_GB"])
+            {
+                self.guidelineCountry = @"UK";
+                self.bilirubinUnits = @"SI";
+            }
+            else if ([currentLocale isEqualToString:@"en_US"])
+            {
+                self.guidelineCountry = @"US";
+                self.bilirubinUnits = @"US";
+            }
+            else
+            {
+                self.guidelineCountry = @"US";
+                self.bilirubinUnits = @"US";
+            }
         }
         
         //delegate

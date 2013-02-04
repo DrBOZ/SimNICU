@@ -30,7 +30,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.bilirubinUnits forKey:@"BilirubinUnits"];
-    [aCoder encodeObject:self.guidelineCountry forKey:@"GuideLineCountry"];
+    [aCoder encodeObject:self.guidelineCountry forKey:@"GuidelineCountry"];
     [aCoder encodeObject:self.ETTRoundUp forKey:@"ETTRoundUp"];
     [aCoder encodeObject:self.OIUnits forKey:@"OIUnits"];
     [aCoder encodeObject:self.ROPGestationScreeningThreshold forKey:@"ROPGestationScreeningThreshold"];

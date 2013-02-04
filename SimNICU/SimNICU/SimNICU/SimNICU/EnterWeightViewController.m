@@ -33,30 +33,6 @@
 
 @implementation EnterWeightViewController
 
-@synthesize userIsStartingToEnterGestationWhenNoWeightEntered = _userIsStartingToEnterGestationWhenNoWeightEntered;
-@synthesize enterWeightViewControllerNavigationBarItem = _enterWeightViewControllerNavigationBarItem;
-@synthesize weightOrGestationMessageAlreadyDisplayed = _weightOrGestationMessageAlreadyDisplayed;
-@synthesize enterWeightViewControllerNavigationBar = _enterWeightViewControllerNavigationBar;
-@synthesize allowUserToAccessPatientList = _allowUserToAccessPatientList;
-@synthesize confidentialityModeOn = _confidentialityModeOn;
-@synthesize navigationController = _navigationController;
-@synthesize userEditingTextField = _userEditingTextField;
-@synthesize selectedCentile = _selectedCentile;
-@synthesize gestationMode = _gestationMode;
-@synthesize editingModeOn = _editingModeOn;
-@synthesize preferences = _preferences;
-@synthesize myTableView = _myTableView;
-@synthesize patientList = _patientList;
-@synthesize selectedSex = _selectedSex;
-@synthesize switchObj = _switchObj;
-@synthesize eraseData = _eraseData;
-@synthesize gestation = _gestation;
-@synthesize delegate = _delegate;
-@synthesize centile = _centile;
-@synthesize weight = _weight;
-@synthesize button = _button;
-@synthesize sex = _sex;
-
 // new properties
 @synthesize NumberOfBabiesInBay1 = _NumberOfBabiesInBay1;
 @synthesize NumberOfBabiesInBay2 = _NumberOfBabiesInBay2;
