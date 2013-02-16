@@ -441,12 +441,25 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+#ifdef LITE_VERSION
+    
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"SimNICU Lite Version"
+                              message:@"Bilirubin result plotting is not enabled in the Lite version."
+                              delegate:nil cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+    [alertView show];
+    
+#else
+    
     PhototherapyHoursOldViewController *newViewController = [[PhototherapyHoursOldViewController alloc] init];
     newViewController.dateAndTimeOfBirth = self.dateAndTimeOfBirthForThisChart;
     newViewController.selectedPatient = self.selectedPatient;
     newViewController.delegate = self;
     
     [self.navigationController pushViewController:newViewController animated:YES];
+    
+#endif
 }
 
 #pragma mark - UITextView delegate
@@ -505,6 +518,19 @@
             self.navigationItem.leftBarButtonItem.enabled = NO;
         }
     }
+    
+#ifdef LITE_VERSION
+    
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"SimNICU Lite Version"
+                              message:@"Bilirubin result plotting is not enabled in the Lite version."
+                              delegate:nil cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+    [alertView show];
+    
+    allowUserToChangeText = NO;
+    
+#endif
     
     return allowUserToChangeText;
 }

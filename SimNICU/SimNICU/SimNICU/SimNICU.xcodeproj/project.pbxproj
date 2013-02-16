@@ -264,6 +264,9 @@
 		5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */; };
 		5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */; };
 		5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
+		5C99FBB316CF5F9300AE74D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB216CF5F9300AE74D2 /* Default.png */; };
+		5C99FBB516CF5F9800AE74D2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB416CF5F9800AE74D2 /* Default@2x.png */; };
+		5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
 		5CD3AFA816CF38D500DE362C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A6D166E37FE0044A7D1 /* main.m */; };
@@ -445,9 +448,6 @@
 		5CD3B05A16CF38D500DE362C /* rop21.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BA2166E3C2E0044A7D1 /* rop21.html */; };
 		5CD3B05B16CF38D500DE362C /* weightConversionTable.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */; };
 		5CD3B05C16CF38D500DE362C /* ActionSheetPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BEE166E3C5A0044A7D1 /* ActionSheetPickerViewController.xib */; };
-		5CD3B05D16CF38D500DE362C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */; };
-		5CD3B05E16CF38D500DE362C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C48166E3FDE0044A7D1 /* Default@2x.png */; };
-		5CD3B05F16CF38D500DE362C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C49166E3FDE0044A7D1 /* Default.png */; };
 		5CD3B06016CF38D500DE362C /* bgApplication.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4A166E3FDE0044A7D1 /* bgApplication.png */; };
 		5CD3B06116CF38D500DE362C /* bgOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4B166E3FDE0044A7D1 /* bgOverlay.png */; };
 		5CD3B06216CF38D500DE362C /* SimNICU_MainPhoto320x150.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */; };
@@ -918,6 +918,9 @@
 		5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMinimalTableViewCell.m; sourceTree = "<group>"; };
 		5C940D02166E84120044A7D1 /* InfusionsViewMaximalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionsViewMaximalTableViewCell.h; sourceTree = "<group>"; };
 		5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMaximalTableViewCell.m; sourceTree = "<group>"; };
+		5C99FBB216CF5F9300AE74D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		5C99FBB416CF5F9800AE74D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1694,23 +1697,17 @@
 			isa = PBXGroup;
 			children = (
 				5C940B1C166E3BDF0044A7D1 /* safari.png */,
+				5C99FBB916CF603100AE74D2 /* SimNICU */,
+				5C99FBB816CF602700AE74D2 /* SimNICU Lite */,
 				5C940B1D166E3BDF0044A7D1 /* safari@2x.png */,
 				5C940B1E166E3BDF0044A7D1 /* star.png */,
 				5C940B1F166E3BDF0044A7D1 /* star@2x.png */,
-				5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */,
 				5C940B21166E3BDF0044A7D1 /* about.png */,
 				5C940B22166E3BDF0044A7D1 /* about@2x.png */,
-				5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */,
-				5C940C48166E3FDE0044A7D1 /* Default@2x.png */,
-				5C940C49166E3FDE0044A7D1 /* Default.png */,
 				5C940C4A166E3FDE0044A7D1 /* bgApplication.png */,
 				5C940C4B166E3FDE0044A7D1 /* bgOverlay.png */,
 				5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */,
 				5C940C4D166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg */,
-				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
-				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
-				5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */,
-				5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */,
 				5C940C4E166E3FDE0044A7D1 /* ScrollViewBackground4inchRetina.png */,
 				5C940C4F166E3FDE0044A7D1 /* ScrollViewBackground35inchRetina.png */,
 				5C940C50166E3FDE0044A7D1 /* LightGrayBackground4inchRetina.png */,
@@ -1786,6 +1783,31 @@
 				5C940C80166E3FEF0044A7D1 /* APGAR10@2x.png */,
 			);
 			name = APGAR;
+			sourceTree = "<group>";
+		};
+		5C99FBB816CF602700AE74D2 /* SimNICU Lite */ = {
+			isa = PBXGroup;
+			children = (
+				5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */,
+				5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */,
+				5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */,
+				5C99FBB416CF5F9800AE74D2 /* Default@2x.png */,
+				5C99FBB216CF5F9300AE74D2 /* Default.png */,
+			);
+			name = "SimNICU Lite";
+			sourceTree = "<group>";
+		};
+		5C99FBB916CF603100AE74D2 /* SimNICU */ = {
+			isa = PBXGroup;
+			children = (
+				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
+				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
+				5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */,
+				5C940C48166E3FDE0044A7D1 /* Default@2x.png */,
+				5C940C49166E3FDE0044A7D1 /* Default.png */,
+				5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */,
+			);
+			name = SimNICU;
 			sourceTree = "<group>";
 		};
 		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
@@ -2121,9 +2143,6 @@
 				5CD3B05A16CF38D500DE362C /* rop21.html in Resources */,
 				5CD3B05B16CF38D500DE362C /* weightConversionTable.html in Resources */,
 				5CD3B05C16CF38D500DE362C /* ActionSheetPickerViewController.xib in Resources */,
-				5CD3B05D16CF38D500DE362C /* Default-568h@2x.png in Resources */,
-				5CD3B05E16CF38D500DE362C /* Default@2x.png in Resources */,
-				5CD3B05F16CF38D500DE362C /* Default.png in Resources */,
 				5CD3B06016CF38D500DE362C /* bgApplication.png in Resources */,
 				5CD3B06116CF38D500DE362C /* bgOverlay.png in Resources */,
 				5CD3B06216CF38D500DE362C /* SimNICU_MainPhoto320x150.jpg in Resources */,
@@ -2200,6 +2219,9 @@
 				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
 				5C48455916CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */,
 				5C48455B16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
+				5C99FBB316CF5F9300AE74D2 /* Default.png in Resources */,
+				5C99FBB516CF5F9800AE74D2 /* Default@2x.png in Resources */,
+				5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

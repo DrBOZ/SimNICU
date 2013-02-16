@@ -18,7 +18,7 @@
 #define IRATE_PREVIEW_MODE 0
 #define DCINTROSPECT_ON 0
 
-#define LOADING_GRAPHICS 1
+#define LOADING_GRAPHICS 0
 
 // @"LightGrayBackground35inchRetina.png"
 // @"LightGrayBackground4inchRetina.png"
