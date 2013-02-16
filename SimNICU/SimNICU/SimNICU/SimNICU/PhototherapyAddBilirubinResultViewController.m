@@ -230,7 +230,16 @@
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+#ifdef LITE_VERSION
+                
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+#else
+                
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                
+#endif
                 
                 cell.backgroundColor = [UIColor whiteColor];
             }
