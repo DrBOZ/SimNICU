@@ -92,7 +92,7 @@
     
 #ifdef LITE_VERSION
     
-    [aboutMenuItems addObject:@"Purchase SimNICU!"];
+    [aboutMenuItems addObject:@"SimNICU in the App Store"];
     [aboutMenuItems addObject:@"Rate SimNICU Lite"];
     
 #else
