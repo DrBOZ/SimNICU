@@ -524,6 +524,13 @@
 		5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
+		5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
+		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
+		5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5CE04B6D16D04B3F0002BBD7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */; };
+		5CE04B6F16D04B570002BBD7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */; };
+		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
@@ -929,6 +936,12 @@
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
+		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		5CE04B6816D04B1D0002BBD7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -954,6 +967,7 @@
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
 				5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */,
 				5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */,
+				5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +975,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */,
+				5CE04B6F16D04B570002BBD7 /* libsqlite3.dylib in Frameworks */,
+				5CE04B6D16D04B3F0002BBD7 /* CoreLocation.framework in Frameworks */,
+				5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */,
+				5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */,
 				5CD3B00F16CF38D500DE362C /* libz.1.1.3.dylib in Frameworks */,
 				5CD3B01016CF38D500DE362C /* libsqlite3.0.dylib in Frameworks */,
 				5CD3B01116CF38D500DE362C /* AudioToolbox.framework in Frameworks */,
@@ -977,6 +996,7 @@
 				5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */,
 				5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */,
 				5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */,
+				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1226,12 @@
 		5C940A60166E37FE0044A7D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
+				5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */,
+				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
+				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
+				5CE04B7016D04B6C0002BBD7 /* Social.framework */,
+				5CE04B6516D04AFB0002BBD7 /* Parse.framework */,
 				5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
@@ -2709,9 +2735,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 				);
+				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
-				PROVISIONING_PROFILE = "C9365CA6-BBBE-4893-8B6F-76072EF2AE49";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C9365CA6-BBBE-4893-8B6F-76072EF2AE49";
+				PROVISIONING_PROFILE = "0C5B2EA4-C0C9-4E41-A6AC-80F76526E873";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C5B2EA4-C0C9-4E41-A6AC-80F76526E873";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2719,8 +2746,8 @@
 		5CD3B0AE16CF38D500DE362C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Conrad Bosman";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -2734,7 +2761,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 				);
+				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
+				PROVISIONING_PROFILE = "DC83FD50-7B51-4840-9DF2-8250CCDCB315";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DC83FD50-7B51-4840-9DF2-8250CCDCB315";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

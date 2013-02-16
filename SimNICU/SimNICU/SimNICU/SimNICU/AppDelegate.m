@@ -11,7 +11,7 @@
 #import "KKPasscodeLock.h"
 #import "DCIntrospect.h"
 #import "AppDelegate.h"
-// #import <Parse/Parse.h>
+#import <Parse/Parse.h>
 #import "iRate.h"
 
 // Dispatch period in seconds
@@ -97,13 +97,11 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 #ifdef LITE_VERSION
     
     // PARSE FRAMEWORK SETUP
-    /*
-     [Parse setApplicationId:@"zmGmyZdJF3Hbk2Z1UI3DpAdrwySHxA2smfydCaTY"
-     clientKey:@"QbQfnVkAFNwHWIowNFLaCZIsv7p5Dz8jiZYdQoA7"];
+    [Parse setApplicationId:@"zmGmyZdJF3Hbk2Z1UI3DpAdrwySHxA2smfydCaTY"
+                  clientKey:@"QbQfnVkAFNwHWIowNFLaCZIsv7p5Dz8jiZYdQoA7"];
      
      // Register for push notifications
-     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
-     */
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
 
 #endif
 
@@ -198,6 +196,20 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 #endif
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
