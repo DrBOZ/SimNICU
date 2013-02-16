@@ -11,10 +11,6 @@
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
-		5C48455816CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */; };
-		5C48455916CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */; };
-		5C48455A16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */; };
-		5C48455B16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -269,6 +265,8 @@
 		5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
+		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
+		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CD3AFA816CF38D500DE362C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A6D166E37FE0044A7D1 /* main.m */; };
 		5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A71166E37FE0044A7D1 /* AppDelegate.m */; };
 		5CD3AFAA16CF38D500DE362C /* DAAnisotropicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A92166E38770044A7D1 /* DAAnisotropicImage.m */; };
@@ -534,8 +532,6 @@
 		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettingsComma.html; sourceTree = "<group>"; };
-		5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = "<group>"; };
-		5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -923,6 +919,8 @@
 		5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = "<group>"; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
@@ -1182,6 +1180,7 @@
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
+				5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */,
 				5C940AF8166E3AB60044A7D1 /* Config */,
 				5C940A67166E37FE0044A7D1 /* ScreenControllers */,
 				5C940C2D166E3DF10044A7D1 /* Images */,
@@ -1788,8 +1787,7 @@
 		5C99FBB816CF602700AE74D2 /* SimNICU Lite */ = {
 			isa = PBXGroup;
 			children = (
-				5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */,
-				5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */,
+				5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */,
 				5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */,
 				5C99FBB416CF5F9800AE74D2 /* Default@2x.png */,
 				5C99FBB216CF5F9300AE74D2 /* Default.png */,
@@ -2073,8 +2071,6 @@
 				5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */,
 				5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */,
-				5C48455816CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */,
-				5C48455A16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2217,11 +2213,11 @@
 				5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */,
 				5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
-				5C48455916CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */,
-				5C48455B16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
 				5C99FBB316CF5F9300AE74D2 /* Default.png in Resources */,
 				5C99FBB516CF5F9800AE74D2 /* Default@2x.png in Resources */,
 				5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */,
+				5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
+				5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
