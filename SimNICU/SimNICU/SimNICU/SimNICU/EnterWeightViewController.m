@@ -33,12 +33,6 @@
 
 @implementation EnterWeightViewController
 
-// new properties
-@synthesize NumberOfBabiesInBay1 = _NumberOfBabiesInBay1;
-@synthesize NumberOfBabiesInBay2 = _NumberOfBabiesInBay2;
-@synthesize NumberOfBabiesInBay3 = _NumberOfBabiesInBay3;
-@synthesize NumberOfBabiesInLowDependency = _NumberOfBabiesInLowDependency;
-
 - (Preferences *)preferences
 {
     if (!_preferences) 
@@ -151,7 +145,16 @@
 
 - (NSString *)dataFilePath
 {
+#ifdef LITE_VERSION
+    
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"SimNICU-Lite.plist"];
+    
+#else
+    
     return [[self documentsDirectory] stringByAppendingPathComponent:@"SimNICU.plist"];
+    
+#endif
+    
 }
 
 - (void)savePatientList
@@ -163,7 +166,16 @@
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
     
+#ifdef LITE_VERSION
+    
+    NSLog(@"PatientList saved to SimNICU-Lite.plist");
+    
+#else
+    
     NSLog(@"PatientList saved to SimNICU.plist");
+    
+#endif
+
 }
 
 - (void)viewDidLoad
@@ -1272,6 +1284,19 @@
             }
         }
         
+#ifdef LITE_VERSION
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"SimNICU Lite Version"
+                                  message:@"Estimated weight from gestation is disabled in the Lite Version."
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        allowUserToChangeText = NO;
+        
+#endif
+        
     }
     
     return allowUserToChangeText;
@@ -1421,19 +1446,40 @@
 
 - (void)addPatient
 {
-    NSLog(@"addPatient");
+    BOOL allowUserToEnterANewPatient = YES;
     
-    PatientDetailsViewController *patientDetailsViewController = [[PatientDetailsViewController alloc] init];
-    patientDetailsViewController.delegate = self;
+#ifdef LITE_VERSION
     
-    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
+    // check how many patients
+    // if already two then issue warning and do not allow
+    if([self.patientList count] == 3)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"SimNICU Lite Version"
+                                  message:@"Only two patients are allowed in the Lite version."
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        allowUserToEnterANewPatient = NO;
+    }
     
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navController.navigationBar.tintColor = [UIColor blackColor];
+#endif
     
-    patientDetailsViewController.userWantsToAddAPatient = @"YES";
-    
-    [self presentModalViewController:navController animated:YES];
+    if(allowUserToEnterANewPatient)
+    {
+        PatientDetailsViewController *patientDetailsViewController = [[PatientDetailsViewController alloc] init];
+        patientDetailsViewController.delegate = self;
+        
+        PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
+        
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+        
+        patientDetailsViewController.userWantsToAddAPatient = @"YES";
+        
+        [self presentModalViewController:navController animated:YES];
+    }
 }
 
 - (void)selectSex

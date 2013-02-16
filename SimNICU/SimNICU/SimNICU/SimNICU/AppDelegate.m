@@ -25,14 +25,41 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 + (void)initialize
 {
+    
+#ifdef LITE_VERSION
+    
+    NSLog(@"SimNICU Lite log:");
+    NSLog(@" ");
+    
+#else
+    
     NSLog(@"SimNICU log:");
     NSLog(@" ");
+    
+#endif
+
     
 #if IRATE_SET
     
     // using iRate version 1.6.2
-
-	[iRate sharedInstance].appStoreID = 518447654;
+    
+#ifdef LITE_VERSION
+    
+    [iRate sharedInstance].appStoreID = 604031639;
+    [iRate sharedInstance].applicationBundleID = @"com.conradbosman.SimNICU-Lite";
+    [iRate sharedInstance].applicationName = @"SimNICU Lite";
+    [iRate sharedInstance].messageTitle = NSLocalizedString(@"Like SimNICU Lite?", nil);
+    [iRate sharedInstance].message = NSLocalizedString(@"Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.", nil);
+    
+    // Will only prompt after 10 days AND/OR 20 uses, with a remind period of 7 days
+    
+    [iRate sharedInstance].daysUntilPrompt = 10;
+    [iRate sharedInstance].usesUntilPrompt = 20;
+    [iRate sharedInstance].remindPeriod = 7;
+    
+#else
+    
+    [iRate sharedInstance].appStoreID = 518447654;
     [iRate sharedInstance].applicationBundleID = @"com.conradbosman.SimNICU";
     [iRate sharedInstance].applicationName = @"SimNICU";
     [iRate sharedInstance].messageTitle = NSLocalizedString(@"Like SimNICU?", nil);
@@ -43,6 +70,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [iRate sharedInstance].daysUntilPrompt = 10;
     [iRate sharedInstance].usesUntilPrompt = 20;
     [iRate sharedInstance].remindPeriod = 7;
+    
+#endif
+
     
 #else
     
@@ -64,19 +94,37 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     // Setup security
     [[KKPasscodeLock sharedLock] setDefaultSettings];
     
-    // setup Parse
+#ifdef LITE_VERSION
     
+    // PARSE FRAMEWORK SETUP
     /*
-     [Parse setApplicationId:@"7ULqlR7Nkx7YUpFQ3pyoDavwYBPWwdEDzkyuatbM"
-     clientKey:@"MQWPuRvve0p1YHzTUu5hJtUtBuPAk3AVBZK90DEZ"];
+     [Parse setApplicationId:@"zmGmyZdJF3Hbk2Z1UI3DpAdrwySHxA2smfydCaTY"
+     clientKey:@"QbQfnVkAFNwHWIowNFLaCZIsv7p5Dz8jiZYdQoA7"];
+     
+     // Register for push notifications
+     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
      */
+
+#endif
+
     
 #if GOOGLE_ANALYTICS
     
     // Google Analytics
+    
+#ifdef LITE_VERSION
+    
+    [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-35056388-4"
+                                           dispatchPeriod:kGANDispatchPeriodSec
+                                                 delegate:self];
+    
+#else
+    
     [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-35056388-2"
                                            dispatchPeriod:kGANDispatchPeriodSec
                                                  delegate:self];
+    
+#endif
     
     NSError *error;
     if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1

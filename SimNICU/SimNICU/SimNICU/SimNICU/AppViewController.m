@@ -241,7 +241,7 @@
     self.displayTextLabel.hidden = YES;
     [self.myHeaderView addSubview:self.displayTextLabel];
     
-    //displayTextLabel (Patient's name or working weight)
+    //displayDetailTextLabel (Patient's name or working weight)
     self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
     self.displayDetailTextLabel.textColor = [UIColor whiteColor];
     self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
@@ -258,9 +258,31 @@
 {
     [super viewWillAppear:animated];
     
-    // NSLog(@"AppViewController viewWillAppear");
+#ifdef LITE_VERSION
+    
+    self.title = @"SimNICU Lite";
+    
+#else
     
     self.title = @"SimNICU";
+    
+#endif
+    
+#if LOADING_GRAPHICS
+    
+    NSLog(@"LOADING_GRAPHICS SET");
+    
+    self.displayBackground.hidden = NO;
+    
+    self.displayTextLabel.text = @"LOADING";
+    self.displayTextLabel.textAlignment = UITextAlignmentCenter;
+    self.displayTextLabel.hidden = NO;
+    
+    self.displayDetailTextLabel.text = @"Please wait...";
+    self.displayDetailTextLabel.textAlignment = UITextAlignmentCenter;
+    self.displayDetailTextLabel.hidden = NO;
+    
+#endif
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -958,7 +980,17 @@
         
         else if ([thisScreenType isEqualToString:@"OI"])
         {
-            NSLog(@"showOI");
+            
+#ifdef LITE_VERSION
+            
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"SimNICU Lite Version"
+                                      message:@"Oxygenation Index calculator is disabled in the Lite Version."
+                                      delegate:nil cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+            
+#else
             
             OxygenationIndexViewController *newViewController = [[OxygenationIndexViewController alloc] init];
             
@@ -970,6 +1002,8 @@
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+#endif
             
         }
         
@@ -1160,10 +1194,23 @@
         
         else if ([thisScreenType isEqualToString:@"WeightConversion"])
         {
-            NSLog(@"showWeightConversionTable");
+            
+#ifdef LITE_VERSION
+            
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"SimNICU Lite Version"
+                                      message:@"Weight conversion table is disabled in the Lite Version."
+                                      delegate:nil cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+            
+#else
             
             WeightConversionViewController *newViewController = [[WeightConversionViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+#endif
+            
         }
     }
 }
