@@ -25,6 +25,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 + (void)initialize
 {
+    
 #ifdef LITE_VERSION
     
     NSLog(@"SimNICU Lite log:");
@@ -93,19 +94,37 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     // Setup security
     [[KKPasscodeLock sharedLock] setDefaultSettings];
     
-    // setup Parse
+#ifdef LITE_VERSION
     
+    // PARSE FRAMEWORK SETUP
     /*
-     [Parse setApplicationId:@"7ULqlR7Nkx7YUpFQ3pyoDavwYBPWwdEDzkyuatbM"
-     clientKey:@"MQWPuRvve0p1YHzTUu5hJtUtBuPAk3AVBZK90DEZ"];
+     [Parse setApplicationId:@"zmGmyZdJF3Hbk2Z1UI3DpAdrwySHxA2smfydCaTY"
+     clientKey:@"QbQfnVkAFNwHWIowNFLaCZIsv7p5Dz8jiZYdQoA7"];
+     
+     // Register for push notifications
+     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
      */
+
+#endif
+
     
 #if GOOGLE_ANALYTICS
     
     // Google Analytics
+    
+#ifdef LITE_VERSION
+    
+    [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-35056388-4"
+                                           dispatchPeriod:kGANDispatchPeriodSec
+                                                 delegate:self];
+    
+#else
+    
     [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-35056388-2"
                                            dispatchPeriod:kGANDispatchPeriodSec
                                                  delegate:self];
+    
+#endif
     
     NSError *error;
     if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1

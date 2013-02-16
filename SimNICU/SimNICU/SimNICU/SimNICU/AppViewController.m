@@ -980,7 +980,17 @@
         
         else if ([thisScreenType isEqualToString:@"OI"])
         {
-            NSLog(@"showOI");
+            
+#ifdef LITE_VERSION
+            
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"SimNICU Lite Version"
+                                      message:@"Oxygenation Index calculator is disabled in the Lite Version."
+                                      delegate:nil cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+            
+#else
             
             OxygenationIndexViewController *newViewController = [[OxygenationIndexViewController alloc] init];
             
@@ -992,6 +1002,8 @@
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+#endif
             
         }
         
@@ -1182,10 +1194,23 @@
         
         else if ([thisScreenType isEqualToString:@"WeightConversion"])
         {
-            NSLog(@"showWeightConversionTable");
+            
+#ifdef LITE_VERSION
+            
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"SimNICU Lite Version"
+                                      message:@"Weight conversion table is disabled in the Lite Version."
+                                      delegate:nil cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+            
+#else
             
             WeightConversionViewController *newViewController = [[WeightConversionViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+#endif
+            
         }
     }
 }
