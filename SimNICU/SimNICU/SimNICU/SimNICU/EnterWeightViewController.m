@@ -33,12 +33,6 @@
 
 @implementation EnterWeightViewController
 
-// new properties
-@synthesize NumberOfBabiesInBay1 = _NumberOfBabiesInBay1;
-@synthesize NumberOfBabiesInBay2 = _NumberOfBabiesInBay2;
-@synthesize NumberOfBabiesInBay3 = _NumberOfBabiesInBay3;
-@synthesize NumberOfBabiesInLowDependency = _NumberOfBabiesInLowDependency;
-
 - (Preferences *)preferences
 {
     if (!_preferences) 
@@ -151,7 +145,16 @@
 
 - (NSString *)dataFilePath
 {
+#ifdef LITE_VERSION
+    
+    return [[self documentsDirectory] stringByAppendingPathComponent:@"SimNICU-Lite.plist"];
+    
+#else
+    
     return [[self documentsDirectory] stringByAppendingPathComponent:@"SimNICU.plist"];
+    
+#endif
+    
 }
 
 - (void)savePatientList
@@ -163,7 +166,16 @@
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
     
+#ifdef LITE_VERSION
+    
+    NSLog(@"PatientList saved to SimNICU-Lite.plist");
+    
+#else
+    
     NSLog(@"PatientList saved to SimNICU.plist");
+    
+#endif
+
 }
 
 - (void)viewDidLoad

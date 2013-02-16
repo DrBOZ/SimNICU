@@ -211,7 +211,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 1.3";
+        returnString = @"Version 1.3.1";
     }
     
     return returnString;
