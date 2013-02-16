@@ -262,6 +262,264 @@
 		5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
+		5CD3AFA816CF38D500DE362C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A6D166E37FE0044A7D1 /* main.m */; };
+		5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A71166E37FE0044A7D1 /* AppDelegate.m */; };
+		5CD3AFAA16CF38D500DE362C /* DAAnisotropicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A92166E38770044A7D1 /* DAAnisotropicImage.m */; };
+		5CD3AFAB16CF38D500DE362C /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A96166E38B10044A7D1 /* ZUUIRevealController.m */; };
+		5CD3AFAC16CF38D500DE362C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A9A166E38CA0044A7D1 /* SVSegmentedControl.m */; };
+		5CD3AFAD16CF38D500DE362C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A9C166E38CA0044A7D1 /* SVSegmentedThumb.m */; };
+		5CD3AFAE16CF38D500DE362C /* KKKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AA1166E38E20044A7D1 /* KKKeychain.m */; };
+		5CD3AFAF16CF38D500DE362C /* KKPasscodeLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AA4166E38E20044A7D1 /* KKPasscodeLock.m */; };
+		5CD3AFB016CF38D500DE362C /* KKPasscodeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AA6166E38E20044A7D1 /* KKPasscodeSettingsViewController.m */; };
+		5CD3AFB116CF38D500DE362C /* KKPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AA8166E38E20044A7D1 /* KKPasscodeViewController.m */; };
+		5CD3AFB216CF38D500DE362C /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AB2166E39130044A7D1 /* KalDataSource.m */; };
+		5CD3AFB316CF38D500DE362C /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AB4166E39130044A7D1 /* KalDate.m */; };
+		5CD3AFB416CF38D500DE362C /* KalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AB6166E39130044A7D1 /* KalGridView.m */; };
+		5CD3AFB516CF38D500DE362C /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AB8166E39130044A7D1 /* KalLogic.m */; };
+		5CD3AFB616CF38D500DE362C /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940ABA166E39130044A7D1 /* KalMonthView.m */; };
+		5CD3AFB716CF38D500DE362C /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940ABD166E39130044A7D1 /* KalTileView.m */; };
+		5CD3AFB816CF38D500DE362C /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940ABF166E39130044A7D1 /* KalView.m */; };
+		5CD3AFB916CF38D500DE362C /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AC1166E39130044A7D1 /* KalViewController.m */; };
+		5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AC3166E39130044A7D1 /* NSDateAdditions.m */; };
+		5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AC5166E39130044A7D1 /* UIViewAdditions.m */; };
+		5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AD5166E393B0044A7D1 /* iRate.m */; };
+		5CD3AFBD16CF38D500DE362C /* DCIntrospect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940ADF166E39A10044A7D1 /* DCIntrospect.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFBE16CF38D500DE362C /* DCStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AE1166E39A10044A7D1 /* DCStatusBarOverlay.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFBF16CF38D500DE362C /* DCFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AE3166E39A10044A7D1 /* DCFrameView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFC016CF38D500DE362C /* DCCrossHairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AE5166E39A10044A7D1 /* DCCrossHairView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFC116CF38D500DE362C /* CoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AEB166E39B30044A7D1 /* CoolButton.m */; };
+		5CD3AFC216CF38D500DE362C /* PortraitOnlyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AFB166E3AFE0044A7D1 /* PortraitOnlyNavigationController.m */; };
+		5CD3AFC316CF38D500DE362C /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AFF166E3B110044A7D1 /* AppViewController.m */; };
+		5CD3AFC416CF38D500DE362C /* EnterWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B05166E3B420044A7D1 /* EnterWeightViewController.m */; };
+		5CD3AFC516CF38D500DE362C /* PatientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B0B166E3B650044A7D1 /* PatientDetailsViewController.m */; };
+		5CD3AFC616CF38D500DE362C /* PatientDetailsEnterNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B0F166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m */; };
+		5CD3AFC716CF38D500DE362C /* PatientDetailsEnterWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B11166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m */; };
+		5CD3AFC816CF38D500DE362C /* PatientDetailsEnterWorkingWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B13166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m */; };
+		5CD3AFC916CF38D500DE362C /* AboutSimNICUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController.m */; };
+		5CD3AFCA16CF38D500DE362C /* UnderlineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B2B166E3BDF0044A7D1 /* UnderlineLabel.m */; };
+		5CD3AFCB16CF38D500DE362C /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B3F166E3BED0044A7D1 /* InstructionsViewController.m */; };
+		5CD3AFCC16CF38D500DE362C /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B46166E3BFA0044A7D1 /* TwitterViewController.m */; };
+		5CD3AFCD16CF38D500DE362C /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B4E166E3C060044A7D1 /* DisclaimerViewController.m */; };
+		5CD3AFCE16CF38D500DE362C /* APGARTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B55166E3C2E0044A7D1 /* APGARTabBarController.m */; };
+		5CD3AFCF16CF38D500DE362C /* APGAR1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B57166E3C2E0044A7D1 /* APGAR1ViewController.m */; };
+		5CD3AFD016CF38D500DE362C /* APGAR5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B59166E3C2E0044A7D1 /* APGAR5ViewController.m */; };
+		5CD3AFD116CF38D500DE362C /* APGAR10ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B5B166E3C2E0044A7D1 /* APGAR10ViewController.m */; };
+		5CD3AFD216CF38D500DE362C /* APGAR15ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B5D166E3C2E0044A7D1 /* APGAR15ViewController.m */; };
+		5CD3AFD316CF38D500DE362C /* APGAR20ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B5F166E3C2E0044A7D1 /* APGAR20ViewController.m */; };
+		5CD3AFD416CF38D500DE362C /* BloodProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B61166E3C2E0044A7D1 /* BloodProductsViewController.m */; };
+		5CD3AFD516CF38D500DE362C /* BloodTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B66166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m */; };
+		5CD3AFD616CF38D500DE362C /* PlateletTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */; };
+		5CD3AFD716CF38D500DE362C /* CoolingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */; };
+		5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6E166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m */; };
+		5CD3AFD916CF38D500DE362C /* CrUSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B73166E3C2E0044A7D1 /* CrUSSViewController.m */; };
+		5CD3AFDA16CF38D500DE362C /* CurosurfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B78166E3C2E0044A7D1 /* CurosurfViewController.m */; };
+		5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */; };
+		5CD3AFDC16CF38D500DE362C /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */; };
+		5CD3AFDD16CF38D500DE362C /* GastroschisisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */; };
+		5CD3AFDE16CF38D500DE362C /* HFOVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */; };
+		5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */; };
+		5CD3AFE016CF38D500DE362C /* IntubationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */; };
+		5CD3AFE116CF38D500DE362C /* IntubationDrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */; };
+		5CD3AFE216CF38D500DE362C /* OxygenationIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */; };
+		5CD3AFE316CF38D500DE362C /* PlasticBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B99166E3C2E0044A7D1 /* PlasticBagViewController.m */; };
+		5CD3AFE416CF38D500DE362C /* PulmonaryHaemorrhageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B9F166E3C2E0044A7D1 /* PulmonaryHaemorrhageViewController.m */; };
+		5CD3AFE516CF38D500DE362C /* ResusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA1166E3C2E0044A7D1 /* ResusViewController.m */; };
+		5CD3AFE616CF38D500DE362C /* ROPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */; };
+		5CD3AFE716CF38D500DE362C /* TransportVentilatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */; };
+		5CD3AFE816CF38D500DE362C /* UVCUACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */; };
+		5CD3AFE916CF38D500DE362C /* VitKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */; };
+		5CD3AFEA16CF38D500DE362C /* WeightConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */; };
+		5CD3AFEB16CF38D500DE362C /* ActionSheetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BED166E3C5A0044A7D1 /* ActionSheetPickerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFEC16CF38D500DE362C /* PhototherapyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BF0166E3C5A0044A7D1 /* PhototherapyViewController.m */; };
+		5CD3AFED16CF38D500DE362C /* PhototherapyGestationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BF2166E3C5A0044A7D1 /* PhototherapyGestationViewController.m */; };
+		5CD3AFEE16CF38D500DE362C /* PhototherapyGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BF4166E3C5A0044A7D1 /* PhototherapyGraphViewController.m */; };
+		5CD3AFEF16CF38D500DE362C /* PhototherapyGuidelineCountryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BF6166E3C5B0044A7D1 /* PhototherapyGuidelineCountryViewController.m */; };
+		5CD3AFF016CF38D500DE362C /* PhototherapyClinicalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BF8166E3C5B0044A7D1 /* PhototherapyClinicalStatusViewController.m */; };
+		5CD3AFF116CF38D500DE362C /* PhototherapyNeurotoxicityRiskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BFA166E3C5B0044A7D1 /* PhototherapyNeurotoxicityRiskViewController.m */; };
+		5CD3AFF216CF38D500DE362C /* NeurotoxicityRiskFactor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BFC166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m */; };
+		5CD3AFF316CF38D500DE362C /* PhototherapyUnitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BFE166E3C5B0044A7D1 /* PhototherapyUnitsViewController.m */; };
+		5CD3AFF416CF38D500DE362C /* PhototherapyAddBilirubinResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C00166E3C5B0044A7D1 /* PhototherapyAddBilirubinResultViewController.m */; };
+		5CD3AFF516CF38D500DE362C /* PhototherapyHoursOldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C02166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.m */; };
+		5CD3AFF616CF38D500DE362C /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C14166E3CAC0044A7D1 /* AbstractActionSheetPicker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFF716CF38D500DE362C /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C16166E3CAC0044A7D1 /* ActionSheetStringPicker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFF816CF38D500DE362C /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C18166E3CAC0044A7D1 /* ActionSheetDatePicker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFF916CF38D500DE362C /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C1A166E3CAC0044A7D1 /* ActionSheetDistancePicker.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFFA16CF38D500DE362C /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C1C166E3CAC0044A7D1 /* DistancePickerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFFB16CF38D500DE362C /* NSDate+TCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C24166E3CCA0044A7D1 /* NSDate+TCUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFFC16CF38D500DE362C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C28166E3D030044A7D1 /* User.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFFD16CF38D500DE362C /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C2A166E3D030044A7D1 /* Device.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3AFFE16CF38D500DE362C /* Patient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C30166E3E230044A7D1 /* Patient.m */; };
+		5CD3AFFF16CF38D500DE362C /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C32166E3E230044A7D1 /* Preferences.m */; };
+		5CD3B00016CF38D500DE362C /* RoundImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C34166E3E230044A7D1 /* RoundImage.m */; };
+		5CD3B00116CF38D500DE362C /* BilirubinResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C36166E3E230044A7D1 /* BilirubinResult.m */; };
+		5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C38166E3E230044A7D1 /* SimNICUWebView.m */; };
+		5CD3B00316CF38D500DE362C /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C3A166E3E230044A7D1 /* Screen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5CD3B00416CF38D500DE362C /* GrowthChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C3C166E3E230044A7D1 /* GrowthChart.m */; };
+		5CD3B00516CF38D500DE362C /* InfoTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CB8166E43800044A7D1 /* InfoTabBarController.m */; };
+		5CD3B00616CF38D500DE362C /* ResusViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */; };
+		5CD3B00716CF38D500DE362C /* IntubationDrugsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */; };
+		5CD3B00816CF38D500DE362C /* InfusionsViewMinimalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */; };
+		5CD3B00916CF38D500DE362C /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
+		5CD3B00A16CF38D500DE362C /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
+		5CD3B00B16CF38D500DE362C /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
+		5CD3B00C16CF38D500DE362C /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
+		5CD3B00D16CF38D500DE362C /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
+		5CD3B00F16CF38D500DE362C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */; };
+		5CD3B01016CF38D500DE362C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */; };
+		5CD3B01116CF38D500DE362C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */; };
+		5CD3B01216CF38D500DE362C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CA9166E412E0044A7D1 /* CFNetwork.framework */; };
+		5CD3B01316CF38D500DE362C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CA7166E411D0044A7D1 /* CoreMotion.framework */; };
+		5CD3B01416CF38D500DE362C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CA5166E41040044A7D1 /* MobileCoreServices.framework */; };
+		5CD3B01516CF38D500DE362C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CA3166E40F30044A7D1 /* OpenGLES.framework */; };
+		5CD3B01616CF38D500DE362C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CA1166E40E40044A7D1 /* QuartzCore.framework */; };
+		5CD3B01716CF38D500DE362C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940C9F166E40D50044A7D1 /* Security.framework */; };
+		5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940C9D166E40B70044A7D1 /* SystemConfiguration.framework */; };
+		5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A61166E37FE0044A7D1 /* UIKit.framework */; };
+		5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
+		5CD3B01B16CF38D500DE362C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
+		5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AEE166E39C10044A7D1 /* libGoogleAnalytics.a */; };
+		5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AF1166E39E80044A7D1 /* libTestFlight.a */; };
+		5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */; };
+		5CD3B02016CF38D500DE362C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A6A166E37FE0044A7D1 /* InfoPlist.strings */; };
+		5CD3B02116CF38D500DE362C /* base@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A85166E386C0044A7D1 /* base@2x.png */; };
+		5CD3B02216CF38D500DE362C /* dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A86166E386C0044A7D1 /* dark@2x.png */; };
+		5CD3B02316CF38D500DE362C /* left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A87166E386C0044A7D1 /* left@2x.png */; };
+		5CD3B02416CF38D500DE362C /* right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A88166E386C0044A7D1 /* right@2x.png */; };
+		5CD3B02516CF38D500DE362C /* slider-fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A89166E386C0044A7D1 /* slider-fill@2x.png */; };
+		5CD3B02616CF38D500DE362C /* slider-track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A8A166E386C0044A7D1 /* slider-track@2x.png */; };
+		5CD3B02716CF38D500DE362C /* KKPasscodeLock.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AA2166E38E20044A7D1 /* KKPasscodeLock.bundle */; };
+		5CD3B02816CF38D500DE362C /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AD0166E391D0044A7D1 /* Kal.bundle */; };
+		5CD3B02916CF38D500DE362C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AD3166E393B0044A7D1 /* iRate.bundle */; };
+		5CD3B02A16CF38D500DE362C /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF2166E39E80044A7D1 /* release_notes.md */; };
+		5CD3B02B16CF38D500DE362C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF3166E39E80044A7D1 /* README.md */; };
+		5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B00166E3B110044A7D1 /* AppViewController.xib */; };
+		5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */; };
+		5CD3B02E16CF38D500DE362C /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1C166E3BDF0044A7D1 /* safari.png */; };
+		5CD3B02F16CF38D500DE362C /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1D166E3BDF0044A7D1 /* safari@2x.png */; };
+		5CD3B03016CF38D500DE362C /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1E166E3BDF0044A7D1 /* star.png */; };
+		5CD3B03116CF38D500DE362C /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1F166E3BDF0044A7D1 /* star@2x.png */; };
+		5CD3B03216CF38D500DE362C /* SimNICU_RoundedIcon1000x1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */; };
+		5CD3B03316CF38D500DE362C /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B21166E3BDF0044A7D1 /* about.png */; };
+		5CD3B03416CF38D500DE362C /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B22166E3BDF0044A7D1 /* about@2x.png */; };
+		5CD3B03516CF38D500DE362C /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3C166E3BED0044A7D1 /* instructions.png */; };
+		5CD3B03616CF38D500DE362C /* instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3D166E3BED0044A7D1 /* instructions@2x.png */; };
+		5CD3B03716CF38D500DE362C /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B43166E3BFA0044A7D1 /* twitter.png */; };
+		5CD3B03816CF38D500DE362C /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B44166E3BFA0044A7D1 /* twitter@2x.png */; };
+		5CD3B03916CF38D500DE362C /* disclaimer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4A166E3C060044A7D1 /* disclaimer.png */; };
+		5CD3B03A16CF38D500DE362C /* disclaimer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4B166E3C060044A7D1 /* disclaimer@2x.png */; };
+		5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4C166E3C060044A7D1 /* disclaimer.html */; };
+		5CD3B03C16CF38D500DE362C /* bloodTransfusionCriteria0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B62166E3C2E0044A7D1 /* bloodTransfusionCriteria0.html */; };
+		5CD3B03D16CF38D500DE362C /* bloodTransfusionCriteria1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B63166E3C2E0044A7D1 /* bloodTransfusionCriteria1.html */; };
+		5CD3B03E16CF38D500DE362C /* bloodTransfusionCriteria2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CC9166E45FA0044A7D1 /* bloodTransfusionCriteria2.html */; };
+		5CD3B03F16CF38D500DE362C /* platelets.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B67166E3C2E0044A7D1 /* platelets.html */; };
+		5CD3B04016CF38D500DE362C /* cooling2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B6A166E3C2E0044A7D1 /* cooling2.html */; };
+		5CD3B04116CF38D500DE362C /* crUSS.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B6F166E3C2E0044A7D1 /* crUSS.html */; };
+		5CD3B04216CF38D500DE362C /* crUSS0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B70166E3C2E0044A7D1 /* crUSS0.html */; };
+		5CD3B04316CF38D500DE362C /* crUSS1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B71166E3C2E0044A7D1 /* crUSS1.html */; };
+		5CD3B04416CF38D500DE362C /* curosurfIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CCE166E469A0044A7D1 /* curosurfIndications.html */; };
+		5CD3B04516CF38D500DE362C /* curosurfDoses2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B75166E3C2E0044A7D1 /* curosurfDoses2.html */; };
+		5CD3B04616CF38D500DE362C /* curosurfFurtherDoses.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B76166E3C2E0044A7D1 /* curosurfFurtherDoses.html */; };
+		5CD3B04716CF38D500DE362C /* cdh0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B79166E3C2E0044A7D1 /* cdh0.html */; };
+		5CD3B04816CF38D500DE362C /* cdh1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CD3166E47070044A7D1 /* cdh1.html */; };
+		5CD3B04916CF38D500DE362C /* cdh2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B7B166E3C2E0044A7D1 /* cdh2.html */; };
+		5CD3B04A16CF38D500DE362C /* cdh3.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CD8166E47420044A7D1 /* cdh3.html */; };
+		5CD3B04B16CF38D500DE362C /* earlyCare0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B7F166E3C2E0044A7D1 /* earlyCare0.html */; };
+		5CD3B04C16CF38D500DE362C /* earlyCare1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B80166E3C2E0044A7D1 /* earlyCare1.html */; };
+		5CD3B04D16CF38D500DE362C /* earlyCare2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B81166E3C2E0044A7D1 /* earlyCare2.html */; };
+		5CD3B04E16CF38D500DE362C /* earlyCareNICUAdmission.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B82166E3C2E0044A7D1 /* earlyCareNICUAdmission.html */; };
+		5CD3B04F16CF38D500DE362C /* earlyCareVentStrategies.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */; };
+		5CD3B05016CF38D500DE362C /* earlyCareMisc.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */; };
+		5CD3B05116CF38D500DE362C /* earlyCareVentSettings.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */; };
+		5CD3B05216CF38D500DE362C /* gastroschisis0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */; };
+		5CD3B05316CF38D500DE362C /* gastroschisis1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CDD166E47D80044A7D1 /* gastroschisis1.html */; };
+		5CD3B05416CF38D500DE362C /* hfov0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B8C166E3C2E0044A7D1 /* hfov0.html */; };
+		5CD3B05516CF38D500DE362C /* hfov1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B8D166E3C2E0044A7D1 /* hfov1.html */; };
+		5CD3B05616CF38D500DE362C /* pulmonaryHaem0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B9A166E3C2E0044A7D1 /* pulmonaryHaem0.html */; };
+		5CD3B05716CF38D500DE362C /* pulmonaryHaem1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CE2166E48190044A7D1 /* pulmonaryHaem1.html */; };
+		5CD3B05816CF38D500DE362C /* pulmonaryHaem2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CE7166E482C0044A7D1 /* pulmonaryHaem2.html */; };
+		5CD3B05916CF38D500DE362C /* pulmonaryHaem3.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CEC166E48410044A7D1 /* pulmonaryHaem3.html */; };
+		5CD3B05A16CF38D500DE362C /* rop21.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BA2166E3C2E0044A7D1 /* rop21.html */; };
+		5CD3B05B16CF38D500DE362C /* weightConversionTable.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */; };
+		5CD3B05C16CF38D500DE362C /* ActionSheetPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BEE166E3C5A0044A7D1 /* ActionSheetPickerViewController.xib */; };
+		5CD3B05D16CF38D500DE362C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */; };
+		5CD3B05E16CF38D500DE362C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C48166E3FDE0044A7D1 /* Default@2x.png */; };
+		5CD3B05F16CF38D500DE362C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C49166E3FDE0044A7D1 /* Default.png */; };
+		5CD3B06016CF38D500DE362C /* bgApplication.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4A166E3FDE0044A7D1 /* bgApplication.png */; };
+		5CD3B06116CF38D500DE362C /* bgOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4B166E3FDE0044A7D1 /* bgOverlay.png */; };
+		5CD3B06216CF38D500DE362C /* SimNICU_MainPhoto320x150.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */; };
+		5CD3B06316CF38D500DE362C /* SimNICU_MainPhoto640x300.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4D166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg */; };
+		5CD3B06416CF38D500DE362C /* ScrollViewBackground4inchRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4E166E3FDE0044A7D1 /* ScrollViewBackground4inchRetina.png */; };
+		5CD3B06516CF38D500DE362C /* ScrollViewBackground35inchRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4F166E3FDE0044A7D1 /* ScrollViewBackground35inchRetina.png */; };
+		5CD3B06616CF38D500DE362C /* LightGrayBackground4inchRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C50166E3FDE0044A7D1 /* LightGrayBackground4inchRetina.png */; };
+		5CD3B06716CF38D500DE362C /* LightGrayBackground35inchRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C51166E3FDE0044A7D1 /* LightGrayBackground35inchRetina.png */; };
+		5CD3B06816CF38D500DE362C /* LightGreyWithDimples4inchRetinaPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C52166E3FDE0044A7D1 /* LightGreyWithDimples4inchRetinaPortrait.png */; };
+		5CD3B06916CF38D500DE362C /* LightGreyWithDimples35inchRetinaPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C53166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png */; };
+		5CD3B06A16CF38D500DE362C /* LightGreyWithDimples35inchForKal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C54166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png */; };
+		5CD3B06B16CF38D500DE362C /* LightGreyWithDimples4inchForKal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */; };
+		5CD3B06C16CF38D500DE362C /* dismiss.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C56166E3FDE0044A7D1 /* dismiss.png */; };
+		5CD3B06D16CF38D500DE362C /* dismiss2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C57166E3FDE0044A7D1 /* dismiss2.png */; };
+		5CD3B06E16CF38D500DE362C /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C69166E3FEF0044A7D1 /* clock.png */; };
+		5CD3B06F16CF38D500DE362C /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6A166E3FEF0044A7D1 /* clock@2x.png */; };
+		5CD3B07016CF38D500DE362C /* APGAR0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6B166E3FEF0044A7D1 /* APGAR0.png */; };
+		5CD3B07116CF38D500DE362C /* APGAR0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6C166E3FEF0044A7D1 /* APGAR0@2x.png */; };
+		5CD3B07216CF38D500DE362C /* APGAR1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6D166E3FEF0044A7D1 /* APGAR1.png */; };
+		5CD3B07316CF38D500DE362C /* APGAR1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6E166E3FEF0044A7D1 /* APGAR1@2x.png */; };
+		5CD3B07416CF38D500DE362C /* APGAR2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6F166E3FEF0044A7D1 /* APGAR2.png */; };
+		5CD3B07516CF38D500DE362C /* APGAR2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C70166E3FEF0044A7D1 /* APGAR2@2x.png */; };
+		5CD3B07616CF38D500DE362C /* APGAR3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C71166E3FEF0044A7D1 /* APGAR3.png */; };
+		5CD3B07716CF38D500DE362C /* APGAR3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C72166E3FEF0044A7D1 /* APGAR3@2x.png */; };
+		5CD3B07816CF38D500DE362C /* APGAR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C73166E3FEF0044A7D1 /* APGAR4.png */; };
+		5CD3B07916CF38D500DE362C /* APGAR4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C74166E3FEF0044A7D1 /* APGAR4@2x.png */; };
+		5CD3B07A16CF38D500DE362C /* APGAR5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C75166E3FEF0044A7D1 /* APGAR5.png */; };
+		5CD3B07B16CF38D500DE362C /* APGAR5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C76166E3FEF0044A7D1 /* APGAR5@2x.png */; };
+		5CD3B07C16CF38D500DE362C /* APGAR6.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C77166E3FEF0044A7D1 /* APGAR6.png */; };
+		5CD3B07D16CF38D500DE362C /* APGAR6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C78166E3FEF0044A7D1 /* APGAR6@2x.png */; };
+		5CD3B07E16CF38D500DE362C /* APGAR7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C79166E3FEF0044A7D1 /* APGAR7.png */; };
+		5CD3B07F16CF38D500DE362C /* APGAR7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7A166E3FEF0044A7D1 /* APGAR7@2x.png */; };
+		5CD3B08016CF38D500DE362C /* APGAR8.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7B166E3FEF0044A7D1 /* APGAR8.png */; };
+		5CD3B08116CF38D500DE362C /* APGAR8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7C166E3FEF0044A7D1 /* APGAR8@2x.png */; };
+		5CD3B08216CF38D500DE362C /* APGAR9.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7D166E3FEF0044A7D1 /* APGAR9.png */; };
+		5CD3B08316CF38D500DE362C /* APGAR9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7E166E3FEF0044A7D1 /* APGAR9@2x.png */; };
+		5CD3B08416CF38D500DE362C /* APGAR10.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C7F166E3FEF0044A7D1 /* APGAR10.png */; };
+		5CD3B08516CF38D500DE362C /* APGAR10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C80166E3FEF0044A7D1 /* APGAR10@2x.png */; };
+		5CD3B08616CF38D500DE362C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CC4166E45860044A7D1 /* Localizable.strings */; };
+		5CD3B08716CF38D500DE362C /* kButtonAC copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DED16707F880073886A /* kButtonAC copy.png */; };
+		5CD3B08816CF38D500DE362C /* kButtonAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEE16707F880073886A /* kButtonAC.png */; };
+		5CD3B08916CF38D500DE362C /* kButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEF16707F880073886A /* kButtonAdd.png */; };
+		5CD3B08A16CF38D500DE362C /* kButtonChangeSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF016707F880073886A /* kButtonChangeSign.png */; };
+		5CD3B08B16CF38D500DE362C /* kButtonDivide.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF116707F880073886A /* kButtonDivide.png */; };
+		5CD3B08C16CF38D500DE362C /* kButtonDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF216707F880073886A /* kButtonDot.png */; };
+		5CD3B08D16CF38D500DE362C /* kButtonEight.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF316707F880073886A /* kButtonEight.png */; };
+		5CD3B08E16CF38D500DE362C /* kButtonEquals.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF416707F880073886A /* kButtonEquals.png */; };
+		5CD3B08F16CF38D500DE362C /* kButtonFive.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF516707F880073886A /* kButtonFive.png */; };
+		5CD3B09016CF38D500DE362C /* kButtonFour.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF616707F880073886A /* kButtonFour.png */; };
+		5CD3B09116CF38D500DE362C /* kButtonMC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF716707F880073886A /* kButtonMC.png */; };
+		5CD3B09216CF38D500DE362C /* kButtonMMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF816707F880073886A /* kButtonMMinus.png */; };
+		5CD3B09316CF38D500DE362C /* kButtonMPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DF916707F880073886A /* kButtonMPlus.png */; };
+		5CD3B09416CF38D500DE362C /* kButtonMR.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFA16707F880073886A /* kButtonMR.png */; };
+		5CD3B09516CF38D500DE362C /* kButtonMultiply.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFB16707F880073886A /* kButtonMultiply.png */; };
+		5CD3B09616CF38D500DE362C /* kButtonNine.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFC16707F880073886A /* kButtonNine.png */; };
+		5CD3B09716CF38D500DE362C /* kButtonOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFD16707F880073886A /* kButtonOne.png */; };
+		5CD3B09816CF38D500DE362C /* kButtonSeven.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFE16707F880073886A /* kButtonSeven.png */; };
+		5CD3B09916CF38D500DE362C /* kButtonSix.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DFF16707F880073886A /* kButtonSix.png */; };
+		5CD3B09A16CF38D500DE362C /* kButtonSubtract.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0016707F880073886A /* kButtonSubtract.png */; };
+		5CD3B09B16CF38D500DE362C /* kButtonTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0116707F880073886A /* kButtonTemplate.png */; };
+		5CD3B09C16CF38D500DE362C /* kButtonThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0216707F880073886A /* kButtonThree.png */; };
+		5CD3B09D16CF38D500DE362C /* kButtonTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0316707F880073886A /* kButtonTwo.png */; };
+		5CD3B09E16CF38D500DE362C /* kButtonZero.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0416707F880073886A /* kButtonZero.png */; };
+		5CD3B09F16CF38D500DE362C /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
+		5CD3B0A016CF38D500DE362C /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
+		5CD3B0A116CF38D500DE362C /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
+		5CD3B0A216CF38D500DE362C /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
+		5CD3B0A316CF38D500DE362C /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
+		5CD3B0A416CF38D500DE362C /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
+		5CD3B0A516CF38D500DE362C /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
+		5CD3B0A616CF38D500DE362C /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
+		5CD3B0A716CF38D500DE362C /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
+		5CD3B0A816CF38D500DE362C /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
+		5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
+		5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
+		5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
@@ -658,6 +916,8 @@
 		5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMaximalTableViewCell.m; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		5CD3B0AF16CF38D500DE362C /* SimNICU copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
@@ -685,6 +945,29 @@
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
 				5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */,
 				5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CD3B00E16CF38D500DE362C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CD3B00F16CF38D500DE362C /* libz.1.1.3.dylib in Frameworks */,
+				5CD3B01016CF38D500DE362C /* libsqlite3.0.dylib in Frameworks */,
+				5CD3B01116CF38D500DE362C /* AudioToolbox.framework in Frameworks */,
+				5CD3B01216CF38D500DE362C /* CFNetwork.framework in Frameworks */,
+				5CD3B01316CF38D500DE362C /* CoreMotion.framework in Frameworks */,
+				5CD3B01416CF38D500DE362C /* MobileCoreServices.framework in Frameworks */,
+				5CD3B01516CF38D500DE362C /* OpenGLES.framework in Frameworks */,
+				5CD3B01616CF38D500DE362C /* QuartzCore.framework in Frameworks */,
+				5CD3B01716CF38D500DE362C /* Security.framework in Frameworks */,
+				5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */,
+				5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */,
+				5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */,
+				5CD3B01B16CF38D500DE362C /* CoreGraphics.framework in Frameworks */,
+				5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */,
+				5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */,
+				5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,6 +1189,7 @@
 			isa = PBXGroup;
 			children = (
 				5C940A5D166E37FE0044A7D1 /* SimNICU.app */,
+				5CD3B0AF16CF38D500DE362C /* SimNICU copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1149,6 +1433,7 @@
 			children = (
 				5C940A6D166E37FE0044A7D1 /* main.m */,
 				5C940A69166E37FE0044A7D1 /* SimNICU-Info.plist */,
+				5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */,
 				5C940A6F166E37FE0044A7D1 /* SimNICU-Prefix.pch */,
 				5C940A6A166E37FE0044A7D1 /* InfoPlist.strings */,
 				5C940CC4166E45860044A7D1 /* Localizable.strings */,
@@ -1569,6 +1854,23 @@
 			productReference = 5C940A5D166E37FE0044A7D1 /* SimNICU.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5CD3AFA616CF38D500DE362C /* SimNICU Lite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CD3B0AC16CF38D500DE362C /* Build configuration list for PBXNativeTarget "SimNICU Lite" */;
+			buildPhases = (
+				5CD3AFA716CF38D500DE362C /* Sources */,
+				5CD3B00E16CF38D500DE362C /* Frameworks */,
+				5CD3B01F16CF38D500DE362C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SimNICU Lite";
+			productName = SimNICU;
+			productReference = 5CD3B0AF16CF38D500DE362C /* SimNICU copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1593,6 +1895,7 @@
 			projectRoot = "";
 			targets = (
 				5C940A5C166E37FE0044A7D1 /* SimNICU */,
+				5CD3AFA616CF38D500DE362C /* SimNICU Lite */,
 			);
 		};
 /* End PBXProject section */
@@ -1745,6 +2048,153 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CD3B01F16CF38D500DE362C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CD3B02016CF38D500DE362C /* InfoPlist.strings in Resources */,
+				5CD3B02116CF38D500DE362C /* base@2x.png in Resources */,
+				5CD3B02216CF38D500DE362C /* dark@2x.png in Resources */,
+				5CD3B02316CF38D500DE362C /* left@2x.png in Resources */,
+				5CD3B02416CF38D500DE362C /* right@2x.png in Resources */,
+				5CD3B02516CF38D500DE362C /* slider-fill@2x.png in Resources */,
+				5CD3B02616CF38D500DE362C /* slider-track@2x.png in Resources */,
+				5CD3B02716CF38D500DE362C /* KKPasscodeLock.bundle in Resources */,
+				5CD3B02816CF38D500DE362C /* Kal.bundle in Resources */,
+				5CD3B02916CF38D500DE362C /* iRate.bundle in Resources */,
+				5CD3B02A16CF38D500DE362C /* release_notes.md in Resources */,
+				5CD3B02B16CF38D500DE362C /* README.md in Resources */,
+				5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */,
+				5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */,
+				5CD3B02E16CF38D500DE362C /* safari.png in Resources */,
+				5CD3B02F16CF38D500DE362C /* safari@2x.png in Resources */,
+				5CD3B03016CF38D500DE362C /* star.png in Resources */,
+				5CD3B03116CF38D500DE362C /* star@2x.png in Resources */,
+				5CD3B03216CF38D500DE362C /* SimNICU_RoundedIcon1000x1000.png in Resources */,
+				5CD3B03316CF38D500DE362C /* about.png in Resources */,
+				5CD3B03416CF38D500DE362C /* about@2x.png in Resources */,
+				5CD3B03516CF38D500DE362C /* instructions.png in Resources */,
+				5CD3B03616CF38D500DE362C /* instructions@2x.png in Resources */,
+				5CD3B03716CF38D500DE362C /* twitter.png in Resources */,
+				5CD3B03816CF38D500DE362C /* twitter@2x.png in Resources */,
+				5CD3B03916CF38D500DE362C /* disclaimer.png in Resources */,
+				5CD3B03A16CF38D500DE362C /* disclaimer@2x.png in Resources */,
+				5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */,
+				5CD3B03C16CF38D500DE362C /* bloodTransfusionCriteria0.html in Resources */,
+				5CD3B03D16CF38D500DE362C /* bloodTransfusionCriteria1.html in Resources */,
+				5CD3B03E16CF38D500DE362C /* bloodTransfusionCriteria2.html in Resources */,
+				5CD3B03F16CF38D500DE362C /* platelets.html in Resources */,
+				5CD3B04016CF38D500DE362C /* cooling2.html in Resources */,
+				5CD3B04116CF38D500DE362C /* crUSS.html in Resources */,
+				5CD3B04216CF38D500DE362C /* crUSS0.html in Resources */,
+				5CD3B04316CF38D500DE362C /* crUSS1.html in Resources */,
+				5CD3B04416CF38D500DE362C /* curosurfIndications.html in Resources */,
+				5CD3B04516CF38D500DE362C /* curosurfDoses2.html in Resources */,
+				5CD3B04616CF38D500DE362C /* curosurfFurtherDoses.html in Resources */,
+				5CD3B04716CF38D500DE362C /* cdh0.html in Resources */,
+				5CD3B04816CF38D500DE362C /* cdh1.html in Resources */,
+				5CD3B04916CF38D500DE362C /* cdh2.html in Resources */,
+				5CD3B04A16CF38D500DE362C /* cdh3.html in Resources */,
+				5CD3B04B16CF38D500DE362C /* earlyCare0.html in Resources */,
+				5CD3B04C16CF38D500DE362C /* earlyCare1.html in Resources */,
+				5CD3B04D16CF38D500DE362C /* earlyCare2.html in Resources */,
+				5CD3B04E16CF38D500DE362C /* earlyCareNICUAdmission.html in Resources */,
+				5CD3B04F16CF38D500DE362C /* earlyCareVentStrategies.html in Resources */,
+				5CD3B05016CF38D500DE362C /* earlyCareMisc.html in Resources */,
+				5CD3B05116CF38D500DE362C /* earlyCareVentSettings.html in Resources */,
+				5CD3B05216CF38D500DE362C /* gastroschisis0.html in Resources */,
+				5CD3B05316CF38D500DE362C /* gastroschisis1.html in Resources */,
+				5CD3B05416CF38D500DE362C /* hfov0.html in Resources */,
+				5CD3B05516CF38D500DE362C /* hfov1.html in Resources */,
+				5CD3B05616CF38D500DE362C /* pulmonaryHaem0.html in Resources */,
+				5CD3B05716CF38D500DE362C /* pulmonaryHaem1.html in Resources */,
+				5CD3B05816CF38D500DE362C /* pulmonaryHaem2.html in Resources */,
+				5CD3B05916CF38D500DE362C /* pulmonaryHaem3.html in Resources */,
+				5CD3B05A16CF38D500DE362C /* rop21.html in Resources */,
+				5CD3B05B16CF38D500DE362C /* weightConversionTable.html in Resources */,
+				5CD3B05C16CF38D500DE362C /* ActionSheetPickerViewController.xib in Resources */,
+				5CD3B05D16CF38D500DE362C /* Default-568h@2x.png in Resources */,
+				5CD3B05E16CF38D500DE362C /* Default@2x.png in Resources */,
+				5CD3B05F16CF38D500DE362C /* Default.png in Resources */,
+				5CD3B06016CF38D500DE362C /* bgApplication.png in Resources */,
+				5CD3B06116CF38D500DE362C /* bgOverlay.png in Resources */,
+				5CD3B06216CF38D500DE362C /* SimNICU_MainPhoto320x150.jpg in Resources */,
+				5CD3B06316CF38D500DE362C /* SimNICU_MainPhoto640x300.jpg in Resources */,
+				5CD3B06416CF38D500DE362C /* ScrollViewBackground4inchRetina.png in Resources */,
+				5CD3B06516CF38D500DE362C /* ScrollViewBackground35inchRetina.png in Resources */,
+				5CD3B06616CF38D500DE362C /* LightGrayBackground4inchRetina.png in Resources */,
+				5CD3B06716CF38D500DE362C /* LightGrayBackground35inchRetina.png in Resources */,
+				5CD3B06816CF38D500DE362C /* LightGreyWithDimples4inchRetinaPortrait.png in Resources */,
+				5CD3B06916CF38D500DE362C /* LightGreyWithDimples35inchRetinaPortrait.png in Resources */,
+				5CD3B06A16CF38D500DE362C /* LightGreyWithDimples35inchForKal.png in Resources */,
+				5CD3B06B16CF38D500DE362C /* LightGreyWithDimples4inchForKal.png in Resources */,
+				5CD3B06C16CF38D500DE362C /* dismiss.png in Resources */,
+				5CD3B06D16CF38D500DE362C /* dismiss2.png in Resources */,
+				5CD3B06E16CF38D500DE362C /* clock.png in Resources */,
+				5CD3B06F16CF38D500DE362C /* clock@2x.png in Resources */,
+				5CD3B07016CF38D500DE362C /* APGAR0.png in Resources */,
+				5CD3B07116CF38D500DE362C /* APGAR0@2x.png in Resources */,
+				5CD3B07216CF38D500DE362C /* APGAR1.png in Resources */,
+				5CD3B07316CF38D500DE362C /* APGAR1@2x.png in Resources */,
+				5CD3B07416CF38D500DE362C /* APGAR2.png in Resources */,
+				5CD3B07516CF38D500DE362C /* APGAR2@2x.png in Resources */,
+				5CD3B07616CF38D500DE362C /* APGAR3.png in Resources */,
+				5CD3B07716CF38D500DE362C /* APGAR3@2x.png in Resources */,
+				5CD3B07816CF38D500DE362C /* APGAR4.png in Resources */,
+				5CD3B07916CF38D500DE362C /* APGAR4@2x.png in Resources */,
+				5CD3B07A16CF38D500DE362C /* APGAR5.png in Resources */,
+				5CD3B07B16CF38D500DE362C /* APGAR5@2x.png in Resources */,
+				5CD3B07C16CF38D500DE362C /* APGAR6.png in Resources */,
+				5CD3B07D16CF38D500DE362C /* APGAR6@2x.png in Resources */,
+				5CD3B07E16CF38D500DE362C /* APGAR7.png in Resources */,
+				5CD3B07F16CF38D500DE362C /* APGAR7@2x.png in Resources */,
+				5CD3B08016CF38D500DE362C /* APGAR8.png in Resources */,
+				5CD3B08116CF38D500DE362C /* APGAR8@2x.png in Resources */,
+				5CD3B08216CF38D500DE362C /* APGAR9.png in Resources */,
+				5CD3B08316CF38D500DE362C /* APGAR9@2x.png in Resources */,
+				5CD3B08416CF38D500DE362C /* APGAR10.png in Resources */,
+				5CD3B08516CF38D500DE362C /* APGAR10@2x.png in Resources */,
+				5CD3B08616CF38D500DE362C /* Localizable.strings in Resources */,
+				5CD3B08716CF38D500DE362C /* kButtonAC copy.png in Resources */,
+				5CD3B08816CF38D500DE362C /* kButtonAC.png in Resources */,
+				5CD3B08916CF38D500DE362C /* kButtonAdd.png in Resources */,
+				5CD3B08A16CF38D500DE362C /* kButtonChangeSign.png in Resources */,
+				5CD3B08B16CF38D500DE362C /* kButtonDivide.png in Resources */,
+				5CD3B08C16CF38D500DE362C /* kButtonDot.png in Resources */,
+				5CD3B08D16CF38D500DE362C /* kButtonEight.png in Resources */,
+				5CD3B08E16CF38D500DE362C /* kButtonEquals.png in Resources */,
+				5CD3B08F16CF38D500DE362C /* kButtonFive.png in Resources */,
+				5CD3B09016CF38D500DE362C /* kButtonFour.png in Resources */,
+				5CD3B09116CF38D500DE362C /* kButtonMC.png in Resources */,
+				5CD3B09216CF38D500DE362C /* kButtonMMinus.png in Resources */,
+				5CD3B09316CF38D500DE362C /* kButtonMPlus.png in Resources */,
+				5CD3B09416CF38D500DE362C /* kButtonMR.png in Resources */,
+				5CD3B09516CF38D500DE362C /* kButtonMultiply.png in Resources */,
+				5CD3B09616CF38D500DE362C /* kButtonNine.png in Resources */,
+				5CD3B09716CF38D500DE362C /* kButtonOne.png in Resources */,
+				5CD3B09816CF38D500DE362C /* kButtonSeven.png in Resources */,
+				5CD3B09916CF38D500DE362C /* kButtonSix.png in Resources */,
+				5CD3B09A16CF38D500DE362C /* kButtonSubtract.png in Resources */,
+				5CD3B09B16CF38D500DE362C /* kButtonTemplate.png in Resources */,
+				5CD3B09C16CF38D500DE362C /* kButtonThree.png in Resources */,
+				5CD3B09D16CF38D500DE362C /* kButtonTwo.png in Resources */,
+				5CD3B09E16CF38D500DE362C /* kButtonZero.png in Resources */,
+				5CD3B09F16CF38D500DE362C /* bg_calc.png in Resources */,
+				5CD3B0A016CF38D500DE362C /* SimNICU_round.png in Resources */,
+				5CD3B0A116CF38D500DE362C /* SimNICU_round@2x.png in Resources */,
+				5CD3B0A216CF38D500DE362C /* SimNICU_iPhone_Icon.png in Resources */,
+				5CD3B0A316CF38D500DE362C /* SimNICU_iPhone_Icon@2x.png in Resources */,
+				5CD3B0A416CF38D500DE362C /* weightConversionTableComma.html in Resources */,
+				5CD3B0A516CF38D500DE362C /* cdh1Comma.html in Resources */,
+				5CD3B0A616CF38D500DE362C /* earlyCareVentSettingsComma.html in Resources */,
+				5CD3B0A716CF38D500DE362C /* pulmonaryHaem0Comma.html in Resources */,
+				5CD3B0A816CF38D500DE362C /* pulmonaryHaem3Comma.html in Resources */,
+				5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */,
+				5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */,
+				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1854,6 +2304,115 @@
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
 				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CD3AFA716CF38D500DE362C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CD3AFA816CF38D500DE362C /* main.m in Sources */,
+				5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */,
+				5CD3AFAA16CF38D500DE362C /* DAAnisotropicImage.m in Sources */,
+				5CD3AFAB16CF38D500DE362C /* ZUUIRevealController.m in Sources */,
+				5CD3AFAC16CF38D500DE362C /* SVSegmentedControl.m in Sources */,
+				5CD3AFAD16CF38D500DE362C /* SVSegmentedThumb.m in Sources */,
+				5CD3AFAE16CF38D500DE362C /* KKKeychain.m in Sources */,
+				5CD3AFAF16CF38D500DE362C /* KKPasscodeLock.m in Sources */,
+				5CD3AFB016CF38D500DE362C /* KKPasscodeSettingsViewController.m in Sources */,
+				5CD3AFB116CF38D500DE362C /* KKPasscodeViewController.m in Sources */,
+				5CD3AFB216CF38D500DE362C /* KalDataSource.m in Sources */,
+				5CD3AFB316CF38D500DE362C /* KalDate.m in Sources */,
+				5CD3AFB416CF38D500DE362C /* KalGridView.m in Sources */,
+				5CD3AFB516CF38D500DE362C /* KalLogic.m in Sources */,
+				5CD3AFB616CF38D500DE362C /* KalMonthView.m in Sources */,
+				5CD3AFB716CF38D500DE362C /* KalTileView.m in Sources */,
+				5CD3AFB816CF38D500DE362C /* KalView.m in Sources */,
+				5CD3AFB916CF38D500DE362C /* KalViewController.m in Sources */,
+				5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */,
+				5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */,
+				5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */,
+				5CD3AFBD16CF38D500DE362C /* DCIntrospect.m in Sources */,
+				5CD3AFBE16CF38D500DE362C /* DCStatusBarOverlay.m in Sources */,
+				5CD3AFBF16CF38D500DE362C /* DCFrameView.m in Sources */,
+				5CD3AFC016CF38D500DE362C /* DCCrossHairView.m in Sources */,
+				5CD3AFC116CF38D500DE362C /* CoolButton.m in Sources */,
+				5CD3AFC216CF38D500DE362C /* PortraitOnlyNavigationController.m in Sources */,
+				5CD3AFC316CF38D500DE362C /* AppViewController.m in Sources */,
+				5CD3AFC416CF38D500DE362C /* EnterWeightViewController.m in Sources */,
+				5CD3AFC516CF38D500DE362C /* PatientDetailsViewController.m in Sources */,
+				5CD3AFC616CF38D500DE362C /* PatientDetailsEnterNameViewController.m in Sources */,
+				5CD3AFC716CF38D500DE362C /* PatientDetailsEnterWeightViewController.m in Sources */,
+				5CD3AFC816CF38D500DE362C /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
+				5CD3AFC916CF38D500DE362C /* AboutSimNICUViewController.m in Sources */,
+				5CD3AFCA16CF38D500DE362C /* UnderlineLabel.m in Sources */,
+				5CD3AFCB16CF38D500DE362C /* InstructionsViewController.m in Sources */,
+				5CD3AFCC16CF38D500DE362C /* TwitterViewController.m in Sources */,
+				5CD3AFCD16CF38D500DE362C /* DisclaimerViewController.m in Sources */,
+				5CD3AFCE16CF38D500DE362C /* APGARTabBarController.m in Sources */,
+				5CD3AFCF16CF38D500DE362C /* APGAR1ViewController.m in Sources */,
+				5CD3AFD016CF38D500DE362C /* APGAR5ViewController.m in Sources */,
+				5CD3AFD116CF38D500DE362C /* APGAR10ViewController.m in Sources */,
+				5CD3AFD216CF38D500DE362C /* APGAR15ViewController.m in Sources */,
+				5CD3AFD316CF38D500DE362C /* APGAR20ViewController.m in Sources */,
+				5CD3AFD416CF38D500DE362C /* BloodProductsViewController.m in Sources */,
+				5CD3AFD516CF38D500DE362C /* BloodTransfusionCriteriaViewController.m in Sources */,
+				5CD3AFD616CF38D500DE362C /* PlateletTransfusionCriteriaViewController.m in Sources */,
+				5CD3AFD716CF38D500DE362C /* CoolingViewController.m in Sources */,
+				5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
+				5CD3AFD916CF38D500DE362C /* CrUSSViewController.m in Sources */,
+				5CD3AFDA16CF38D500DE362C /* CurosurfViewController.m in Sources */,
+				5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */,
+				5CD3AFDC16CF38D500DE362C /* EarlyCareViewController.m in Sources */,
+				5CD3AFDD16CF38D500DE362C /* GastroschisisViewController.m in Sources */,
+				5CD3AFDE16CF38D500DE362C /* HFOVViewController.m in Sources */,
+				5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */,
+				5CD3AFE016CF38D500DE362C /* IntubationViewController.m in Sources */,
+				5CD3AFE116CF38D500DE362C /* IntubationDrugsViewController.m in Sources */,
+				5CD3AFE216CF38D500DE362C /* OxygenationIndexViewController.m in Sources */,
+				5CD3AFE316CF38D500DE362C /* PlasticBagViewController.m in Sources */,
+				5CD3AFE416CF38D500DE362C /* PulmonaryHaemorrhageViewController.m in Sources */,
+				5CD3AFE516CF38D500DE362C /* ResusViewController.m in Sources */,
+				5CD3AFE616CF38D500DE362C /* ROPViewController.m in Sources */,
+				5CD3AFE716CF38D500DE362C /* TransportVentilatorViewController.m in Sources */,
+				5CD3AFE816CF38D500DE362C /* UVCUACViewController.m in Sources */,
+				5CD3AFE916CF38D500DE362C /* VitKViewController.m in Sources */,
+				5CD3AFEA16CF38D500DE362C /* WeightConversionViewController.m in Sources */,
+				5CD3AFEB16CF38D500DE362C /* ActionSheetPickerViewController.m in Sources */,
+				5CD3AFEC16CF38D500DE362C /* PhototherapyViewController.m in Sources */,
+				5CD3AFED16CF38D500DE362C /* PhototherapyGestationViewController.m in Sources */,
+				5CD3AFEE16CF38D500DE362C /* PhototherapyGraphViewController.m in Sources */,
+				5CD3AFEF16CF38D500DE362C /* PhototherapyGuidelineCountryViewController.m in Sources */,
+				5CD3AFF016CF38D500DE362C /* PhototherapyClinicalStatusViewController.m in Sources */,
+				5CD3AFF116CF38D500DE362C /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
+				5CD3AFF216CF38D500DE362C /* NeurotoxicityRiskFactor.m in Sources */,
+				5CD3AFF316CF38D500DE362C /* PhototherapyUnitsViewController.m in Sources */,
+				5CD3AFF416CF38D500DE362C /* PhototherapyAddBilirubinResultViewController.m in Sources */,
+				5CD3AFF516CF38D500DE362C /* PhototherapyHoursOldViewController.m in Sources */,
+				5CD3AFF616CF38D500DE362C /* AbstractActionSheetPicker.m in Sources */,
+				5CD3AFF716CF38D500DE362C /* ActionSheetStringPicker.m in Sources */,
+				5CD3AFF816CF38D500DE362C /* ActionSheetDatePicker.m in Sources */,
+				5CD3AFF916CF38D500DE362C /* ActionSheetDistancePicker.m in Sources */,
+				5CD3AFFA16CF38D500DE362C /* DistancePickerView.m in Sources */,
+				5CD3AFFB16CF38D500DE362C /* NSDate+TCUtils.m in Sources */,
+				5CD3AFFC16CF38D500DE362C /* User.m in Sources */,
+				5CD3AFFD16CF38D500DE362C /* Device.m in Sources */,
+				5CD3AFFE16CF38D500DE362C /* Patient.m in Sources */,
+				5CD3AFFF16CF38D500DE362C /* Preferences.m in Sources */,
+				5CD3B00016CF38D500DE362C /* RoundImage.m in Sources */,
+				5CD3B00116CF38D500DE362C /* BilirubinResult.m in Sources */,
+				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
+				5CD3B00316CF38D500DE362C /* Screen.m in Sources */,
+				5CD3B00416CF38D500DE362C /* GrowthChart.m in Sources */,
+				5CD3B00516CF38D500DE362C /* InfoTabBarController.m in Sources */,
+				5CD3B00616CF38D500DE362C /* ResusViewTableViewCell.m in Sources */,
+				5CD3B00716CF38D500DE362C /* IntubationDrugsTableViewCell.m in Sources */,
+				5CD3B00816CF38D500DE362C /* InfusionsViewMinimalTableViewCell.m in Sources */,
+				5CD3B00916CF38D500DE362C /* InfusionsViewMaximalTableViewCell.m in Sources */,
+				5CD3B00A16CF38D500DE362C /* InfusionDrug.m in Sources */,
+				5CD3B00B16CF38D500DE362C /* InfusionDrugPreparation.m in Sources */,
+				5CD3B00C16CF38D500DE362C /* CalculatorViewController.m in Sources */,
+				5CD3B00D16CF38D500DE362C /* CalculatorBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2093,6 +2652,50 @@
 			};
 			name = Release;
 		};
+		5CD3B0AD16CF38D500DE362C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SimNICU-Lite-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SimNICU\"",
+				);
+				PRODUCT_NAME = "SimNICU copy";
+				PROVISIONING_PROFILE = "C9365CA6-BBBE-4893-8B6F-76072EF2AE49";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C9365CA6-BBBE-4893-8B6F-76072EF2AE49";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5CD3B0AE16CF38D500DE362C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SimNICU-Lite-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/SimNICU\"",
+				);
+				PRODUCT_NAME = "SimNICU copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2110,6 +2713,15 @@
 			buildConfigurations = (
 				5C940A7C166E37FE0044A7D1 /* Debug */,
 				5C940A7D166E37FE0044A7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CD3B0AC16CF38D500DE362C /* Build configuration list for PBXNativeTarget "SimNICU Lite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CD3B0AD16CF38D500DE362C /* Debug */,
+				5CD3B0AE16CF38D500DE362C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
