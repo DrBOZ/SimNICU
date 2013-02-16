@@ -1,5 +1,5 @@
 //
-//  AboutSimNICUViewController2.m
+//  AboutSimNICUViewController.m
 //  SimNICU
 //
 //  Created by Conrad Bosman on 30/11/2012.
@@ -90,14 +90,14 @@
     
     aboutMenuItems = [[NSMutableArray alloc] initWithCapacity:5];
     
-    [aboutMenuItems addObject:@"SimNICU mobile Web page"];
-    
 #ifdef LITE_VERSION
     
+    [aboutMenuItems addObject:@"Purchase SimNICU!"];
     [aboutMenuItems addObject:@"Rate SimNICU Lite"];
     
 #else
     
+    [aboutMenuItems addObject:@"SimNICU mobile Web page"];
     [aboutMenuItems addObject:@"Rate SimNICU"];
     
 #endif
@@ -249,7 +249,15 @@
         
         if (indexPath.row == 0)
         {
+#ifdef LITE_VERSION
+            
+            cell.imageView.image = [UIImage imageNamed:@"SimNICU_RoundedIcon.png"];
+            
+#else
+            
             cell.imageView.image = [UIImage imageNamed:@"safari.png"];
+            
+#endif
         }
         else if (indexPath.row == 1)
         {
@@ -284,7 +292,18 @@
     
     if (indexPath.row == 0)
     {
+        
+#ifdef LITE_VERSION
+        
+        // goto purchase page
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=518447654&amp;amp;amp;amp;mt=8"]];
+        
+#else
+        // goto SimNICU mobile website
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.simnicu.co.uk/?page_id=98"]];
+        
+#endif
+        
     }
     else if (indexPath.row == 1)
     {
