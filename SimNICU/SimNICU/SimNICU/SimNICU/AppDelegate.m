@@ -25,8 +25,18 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 + (void)initialize
 {
+#ifdef LITE_VERSION
+    
+    NSLog(@"SimNICU Lite log:");
+    NSLog(@" ");
+    
+#else
+    
     NSLog(@"SimNICU log:");
     NSLog(@" ");
+    
+#endif
+
     
 #if IRATE_SET
     

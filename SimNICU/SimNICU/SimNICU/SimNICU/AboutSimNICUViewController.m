@@ -91,7 +91,16 @@
     aboutMenuItems = [[NSMutableArray alloc] initWithCapacity:5];
     
     [aboutMenuItems addObject:@"SimNICU mobile Web page"];
+    
+#ifdef LITE_VERSION
+    
+    [aboutMenuItems addObject:@"Rate SimNICU Lite"];
+    
+#else
+    
     [aboutMenuItems addObject:@"Rate SimNICU"];
+    
+#endif
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
     

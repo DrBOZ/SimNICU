@@ -920,7 +920,7 @@
 		5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewMaximalTableViewCell.m; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
-		5CD3B0AF16CF38D500DE362C /* SimNICU copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
@@ -1193,7 +1193,7 @@
 			isa = PBXGroup;
 			children = (
 				5C940A5D166E37FE0044A7D1 /* SimNICU.app */,
-				5CD3B0AF16CF38D500DE362C /* SimNICU copy.app */,
+				5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1874,7 +1874,7 @@
 			);
 			name = "SimNICU Lite";
 			productName = SimNICU;
-			productReference = 5CD3B0AF16CF38D500DE362C /* SimNICU copy.app */;
+			productReference = 5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2671,12 +2671,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					LITE_VERSION,
+				);
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SimNICU-Lite-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 				);
-				PRODUCT_NAME = "SimNICU copy";
+				PRODUCT_NAME = "SimNICU Lite";
 				PROVISIONING_PROFILE = "C9365CA6-BBBE-4893-8B6F-76072EF2AE49";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C9365CA6-BBBE-4893-8B6F-76072EF2AE49";
 				WRAPPER_EXTENSION = app;
@@ -2694,12 +2699,14 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = LITE_VERSION;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SimNICU-Lite-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 				);
-				PRODUCT_NAME = "SimNICU copy";
+				PRODUCT_NAME = "SimNICU Lite";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
