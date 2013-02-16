@@ -11,6 +11,10 @@
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
+		5C48455816CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */; };
+		5C48455916CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */; };
+		5C48455A16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */; };
+		5C48455B16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -510,8 +514,6 @@
 		5CD3B09F16CF38D500DE362C /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5CD3B0A016CF38D500DE362C /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5CD3B0A116CF38D500DE362C /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
-		5CD3B0A216CF38D500DE362C /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
-		5CD3B0A316CF38D500DE362C /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
 		5CD3B0A416CF38D500DE362C /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5CD3B0A516CF38D500DE362C /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5CD3B0A616CF38D500DE362C /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
@@ -532,6 +534,8 @@
 		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettingsComma.html; sourceTree = "<group>"; };
+		5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = "<group>"; };
+		5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -1705,6 +1709,8 @@
 				5C940C4D166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg */,
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
+				5C48455616CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png */,
+				5C48455716CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png */,
 				5C940C4E166E3FDE0044A7D1 /* ScrollViewBackground4inchRetina.png */,
 				5C940C4F166E3FDE0044A7D1 /* ScrollViewBackground35inchRetina.png */,
 				5C940C50166E3FDE0044A7D1 /* LightGrayBackground4inchRetina.png */,
@@ -2045,6 +2051,8 @@
 				5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */,
 				5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */,
+				5C48455816CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */,
+				5C48455A16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2182,8 +2190,6 @@
 				5CD3B09F16CF38D500DE362C /* bg_calc.png in Resources */,
 				5CD3B0A016CF38D500DE362C /* SimNICU_round.png in Resources */,
 				5CD3B0A116CF38D500DE362C /* SimNICU_round@2x.png in Resources */,
-				5CD3B0A216CF38D500DE362C /* SimNICU_iPhone_Icon.png in Resources */,
-				5CD3B0A316CF38D500DE362C /* SimNICU_iPhone_Icon@2x.png in Resources */,
 				5CD3B0A416CF38D500DE362C /* weightConversionTableComma.html in Resources */,
 				5CD3B0A516CF38D500DE362C /* cdh1Comma.html in Resources */,
 				5CD3B0A616CF38D500DE362C /* earlyCareVentSettingsComma.html in Resources */,
@@ -2192,6 +2198,8 @@
 				5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */,
 				5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
+				5C48455916CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon.png in Resources */,
+				5C48455B16CF4C8B008F2910 /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
