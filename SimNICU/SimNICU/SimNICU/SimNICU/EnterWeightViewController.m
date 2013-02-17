@@ -77,7 +77,7 @@
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // Custom initialization
-        self.enterWeightViewControllerNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        self.enterWeightViewControllerNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
         self.enterWeightViewControllerNavigationBar.barStyle = UIBarStyleBlackOpaque;
         self.enterWeightViewControllerNavigationBar.tintColor = [UIColor blackColor];
         self.enterWeightViewControllerNavigationBar.delegate = self;
