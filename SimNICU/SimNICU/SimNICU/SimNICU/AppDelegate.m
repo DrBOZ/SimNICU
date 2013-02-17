@@ -97,11 +97,13 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 #ifdef LITE_VERSION
     
     // PARSE FRAMEWORK SETUP
+    
     [Parse setApplicationId:@"zmGmyZdJF3Hbk2Z1UI3DpAdrwySHxA2smfydCaTY"
                   clientKey:@"QbQfnVkAFNwHWIowNFLaCZIsv7p5Dz8jiZYdQoA7"];
      
      // Register for push notifications
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
+     
 
 #endif
 

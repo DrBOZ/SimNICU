@@ -16,8 +16,6 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>SimNICU_Lite_iPhone_Icon_2.png</string>
-				<string>SimNICU_Lite_iPhone_Icon@2x_2.png</string>
 				<string>SimNICU_Lite_iPhone_Icon.png</string>
 				<string>SimNICU_Lite_iPhone_Icon@2x.png</string>
 			</array>
