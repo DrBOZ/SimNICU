@@ -17,6 +17,12 @@
 // Dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
 
+@interface AppDelegate()
+
+// @property (nonatomic, retain) ADBannerView *bannerView;
+
+@end
+
 @implementation AppDelegate
 
 + (void)initialize
@@ -196,6 +202,14 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
 #endif
     
+    self.bannerView = [[ADBannerView alloc] init];
+    CGRect frame = self.bannerView.frame;
+    frame.origin = CGPointMake(CGRectGetMaxX(screenBounds), CGRectGetMaxY(screenBounds));
+    self.bannerView.frame = frame;
+    self.bannerView.delegate = self;
+    
+    self.currentController = (UIViewController <BannerViewContainer> *)self.navigationController.topViewController;
+    
     // ensure badges are removed
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
@@ -292,6 +306,43 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
               eventsFailedDispatch:(NSUInteger)hitsFailedDispatch
 {
     NSLog(@"Dispatch completed (%u OK, %u failed)", hitsDispatched, hitsFailedDispatch);
+}
+
+#pragma mark - ADBannerViewDelegate methods
+
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"%s", __FUNCTION__);
+    [self.currentController showBannerView:banner];
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"%s %@", __FUNCTION__, error);
+    [self.currentController hideBannerView:banner];
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    if ([self.currentController respondsToSelector:@selector(bannerViewActionWillBegin)])
+    {
+        [self.currentController bannerViewActionWillBegin];
+    }
+    
+    return YES;
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    if ([self.currentController respondsToSelector:@selector(bannerViewActionDidFinish:)])
+    {
+        [self.currentController bannerViewActionDidFinish];
+    }
 }
 
 @end

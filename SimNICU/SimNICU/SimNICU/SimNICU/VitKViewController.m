@@ -7,9 +7,8 @@
 //
 
 #import "VitKViewController.h"
-#import "AppDelegate.h"
 
-@interface VitKViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface VitKViewController ()
 
 @property (nonatomic, strong) UITableView *myTableView;
 
@@ -72,6 +71,7 @@
     tableBgView.alpha = 0.5;
     [self.view addSubview:tableBgView];
 #endif
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated

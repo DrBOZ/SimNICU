@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 SimNICU. All rights reserved.
 //
 
-@interface VitKViewController : UIViewController
+#import "AppDelegate.h"
+
+@interface VitKViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

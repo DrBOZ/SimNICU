@@ -11,7 +11,7 @@
 #import "GrowthChart.h"
 #import "AppDelegate.h"
 
-@interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate>
+@interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate, BannerViewContainer>
 
 @property (nonatomic, strong) UIImageView *displayDismissButtonView;
 @property (nonatomic, strong) UILabel *displayDetailTextLabel;
@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIButton *dismissButton;
 @property (nonatomic, strong) UIView *myHeaderView;
 @property (nonatomic, strong) NSString *gestation;
+@property (nonatomic, retain) UIView *contentView;
 @property (nonatomic, strong) UIImage *appImage;
 @property (nonatomic, strong) NSString *weight;
 @property (nonatomic) float *calculationWeight;

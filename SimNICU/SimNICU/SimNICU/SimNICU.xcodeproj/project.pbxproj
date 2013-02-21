@@ -274,6 +274,8 @@
 		5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CCC272216D66A8B00D14080 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */; };
 		5CCC272316D66AC500D14080 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5CCC272416D66F0000D14080 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCC271816D64A1F00D14080 /* iAd.framework */; };
+		5CCC272516D66F0D00D14080 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCC271816D64A1F00D14080 /* iAd.framework */; };
 		5CD3AFA816CF38D500DE362C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A6D166E37FE0044A7D1 /* main.m */; };
 		5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A71166E37FE0044A7D1 /* AppDelegate.m */; };
 		5CD3AFAA16CF38D500DE362C /* DAAnisotropicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A92166E38770044A7D1 /* DAAnisotropicImage.m */; };
@@ -970,6 +972,7 @@
 				5CCC272216D66A8B00D14080 /* CoreLocation.framework in Frameworks */,
 				5C940CA8166E411D0044A7D1 /* CoreMotion.framework in Frameworks */,
 				5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */,
+				5CCC272416D66F0000D14080 /* iAd.framework in Frameworks */,
 				5C940CA6166E41050044A7D1 /* MobileCoreServices.framework in Frameworks */,
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
 				5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */,
@@ -999,6 +1002,7 @@
 				5CE04B6D16D04B3F0002BBD7 /* CoreLocation.framework in Frameworks */,
 				5CD3B01316CF38D500DE362C /* CoreMotion.framework in Frameworks */,
 				5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */,
+				5CCC272516D66F0D00D14080 /* iAd.framework in Frameworks */,
 				5CD3B01416CF38D500DE362C /* MobileCoreServices.framework in Frameworks */,
 				5CD3B01516CF38D500DE362C /* OpenGLES.framework in Frameworks */,
 				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,

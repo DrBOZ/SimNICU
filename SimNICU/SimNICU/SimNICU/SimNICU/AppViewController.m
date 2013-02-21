@@ -1,4 +1,4 @@
-//
+#//
 //  AppViewController.m
 //  SimNICU
 //
@@ -60,6 +60,10 @@
 @property (nonatomic) BOOL earlyCareWarningShown;
 @property (nonatomic) BOOL patientSelected;
 
+@property (nonatomic, assign) ADBannerView *banner;
+
+- (void)layoutForCurrentOrientation:(BOOL)animated;
+
 @end
 
 @implementation AppViewController
@@ -98,6 +102,96 @@
     NSLog(@" ");
     
     return self;
+}
+
+- (void)layoutForCurrentOrientation:(BOOL)animated
+{
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    CGFloat animationDuration = animated ? 0.2f : 0.0f;
+    // by default consumes the entire view area
+    CGRect contentFrame = self.view.bounds;
+    CGRect myTableViewContentFrame = CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230));
+    
+    CGRect myTableBgViewContentFrame;
+    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    {
+        myTableBgViewContentFrame = CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196));
+    }
+    else
+    {
+        myTableBgViewContentFrame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50));
+    }
+
+    // the banner still needs to be adjusted further, but this is a reasonable starting point
+    // the y value will need to be adjusted by the banner height to get the final position
+    CGPoint bannerOrigin = CGPointMake(CGRectGetMinX(contentFrame), CGRectGetMaxY(contentFrame));
+    CGFloat bannerHeight = 0.0f;
+    
+    if (self.banner != nil)
+    {
+        // First, setup the banner's content size and adjustment based on the current orientation
+        self.banner.currentContentSizeIdentifier = UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? ADBannerContentSizeIdentifierLandscape : ADBannerContentSizeIdentifierPortrait;
+        bannerHeight = self.banner.bounds.size.height;
+        
+        // Depending on if the banner has been loaded, we adjust the content frame and banner location
+        // to accomodate the ad being on or off screen.
+        // This layout is for an add at the bottom of the view
+        if (self.banner.bannerLoaded)
+        {
+            contentFrame.size.height -= bannerHeight;
+            myTableViewContentFrame.size.height -= bannerHeight;
+            myTableBgViewContentFrame.size.height -= bannerHeight;
+            
+            if (!(appDelegate.window.bounds.size.height == 568)) // 4 inch Retina
+            {
+                myTableBgViewContentFrame.origin.y += 18;
+            }
+            
+            bannerOrigin.y -= bannerHeight;
+        }
+        else
+        {
+            contentFrame.size.height += bannerHeight;
+            myTableViewContentFrame.size.height += bannerHeight;
+            myTableBgViewContentFrame.size.height += bannerHeight;
+            
+            if (!(appDelegate.window.bounds.size.height == 568)) // 4 inch Retina
+            {
+                myTableBgViewContentFrame.origin.y -= 18;
+            }
+            
+            bannerOrigin.y += bannerHeight;
+        }
+    }
+    
+    // And finally animate the changes, running layout for the content view if required
+    [UIView animateWithDuration:animationDuration
+                     animations:^{
+                         self.tableBgView.frame = myTableBgViewContentFrame;
+                         [self.tableBgView layoutIfNeeded];
+                         self.myTableView.frame = myTableViewContentFrame;
+                         [self.myTableView layoutIfNeeded];
+                         self.contentView.frame = contentFrame;
+                         [self.contentView layoutIfNeeded];
+                         
+                         self.banner.frame = CGRectMake(bannerOrigin.x, bannerOrigin.y, self.banner.frame.size.width, self.banner.frame.size.height);
+                     }];
+}
+
+- (void)showBannerView:(ADBannerView *)bannerView
+{
+    self.banner = bannerView;
+    [self.view addSubview:self.banner];
+    [self layoutForCurrentOrientation:YES];
+}
+
+- (void)hideBannerView:(ADBannerView *)bannerView
+{
+    [self.banner removeFromSuperview];
+    self.banner = nil;
+    [self layoutForCurrentOrientation:YES];
 }
 
 - (void)viewDidLoad
@@ -145,6 +239,8 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
+    
     //background
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -171,28 +267,31 @@
     self.myTableView.sectionHeaderHeight = 0.0f;
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
+    [self.contentView addSubview:self.myTableView];
+    // [self.view addSubview:self.myTableView];
     
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
         // NSLog(@"iPhone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
         
         //screen mask covers everything
-        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))]; // 430
+        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))];
         UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-        tableBgView.image = tableBgImage;
-        tableBgView.userInteractionEnabled = NO;
-        tableBgView.alpha = 1.0;
-        [self.view addSubview:tableBgView];
+        self.tableBgView.image = tableBgImage;
+        self.tableBgView.userInteractionEnabled = NO;
+        self.tableBgView.alpha = 1.0;
+        [self.contentView addSubview:self.tableBgView];
+        // [self.view addSubview:tableBgView];
     }
     else
     {
         //screen mask covers everything
-        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50))]; // 518 in 4inch retina
+        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50))];
         UIImage *tableBgImage = [UIImage imageNamed:@"bgApplication.png"];
         self.tableBgView.image = tableBgImage;
         self.tableBgView.userInteractionEnabled = NO;
-        [self.view addSubview:self.tableBgView];
+        [self.contentView addSubview:self.tableBgView];
+        // [self.view addSubview:self.tableBgView];
     }
     
     //header holds image and settings view..
@@ -250,7 +349,10 @@
     self.displayDetailTextLabel.hidden = YES;
     [self.myHeaderView addSubview:self.displayDetailTextLabel];
     
-    [self.view addSubview:self.myHeaderView];
+    [self.contentView addSubview:self.myHeaderView];
+    
+    [self.view addSubview:self.contentView];
+    // [self.view addSubview:self.myHeaderView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -535,11 +637,19 @@
     // screen.segueId = @"E-mail";
     // [screens addObject:screen];
     
+    //delegate
+    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // appDelegate.currentController = (UIViewController <BannerViewContainer> *)self;
+    appDelegate.currentController = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     // NSLog(@"AppViewController viewDidAppear");
+    
+    NSLog(@"viewDidAppear: UITableView height = %f", self.myTableView.frame.size.height);
+    NSLog(@"viewDidAppear: Shadow height = %f", self.tableBgView.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -1187,7 +1297,6 @@
             
             VitKViewController *newViewController = [[VitKViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
         }
         
 #pragma mark Weight Conversion

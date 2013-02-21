@@ -26,13 +26,28 @@
 
 #import "ZUUIRevealController.h"
 #import "GANTracker.h"
+#import <iAd/iAd.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, GANTrackerDelegate>
+@protocol BannerViewContainer <NSObject>
 
+- (void)showBannerView:(ADBannerView *)bannerView;
+- (void)hideBannerView:(ADBannerView *)bannerView;
+
+@optional
+
+- (void)bannerViewActionWillBegin;
+- (void)bannerViewActionDidFinish;
+
+@end
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, GANTrackerDelegate, ADBannerViewDelegate>
+
+@property (nonatomic, assign) UIViewController <BannerViewContainer> *currentController;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) ZUUIRevealController *revealController;
 // @property (strong, nonatomic) ACAccountStore *accountStore;
 // @property (strong, nonatomic) ACAccount *twitterAccount;
+@property (nonatomic, retain) ADBannerView *bannerView;
 @property (strong, nonatomic) UIWindow *window;
 
 // - (void)getTwitterAccount;
