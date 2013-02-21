@@ -269,6 +269,11 @@
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
 		5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */; };
+		5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */; };
+		5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5CCC272216D66A8B00D14080 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */; };
+		5CCC272316D66AC500D14080 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CD3AFA816CF38D500DE362C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A6D166E37FE0044A7D1 /* main.m */; };
 		5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A71166E37FE0044A7D1 /* AppDelegate.m */; };
 		5CD3AFAA16CF38D500DE362C /* DAAnisotropicImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A92166E38770044A7D1 /* DAAnisotropicImage.m */; };
@@ -932,6 +937,7 @@
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
 		5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_RoundedIcon@2x.png"; sourceTree = "<group>"; };
+		5CCC271816D64A1F00D14080 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
@@ -951,23 +957,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */,
+				5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */,
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
 				5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */,
+				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
+				5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */,
+				5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */,
 				5C940CAC166E413A0044A7D1 /* AudioToolbox.framework in Frameworks */,
 				5C940CAA166E412E0044A7D1 /* CFNetwork.framework in Frameworks */,
+				5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */,
+				5CCC272216D66A8B00D14080 /* CoreLocation.framework in Frameworks */,
 				5C940CA8166E411D0044A7D1 /* CoreMotion.framework in Frameworks */,
+				5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */,
 				5C940CA6166E41050044A7D1 /* MobileCoreServices.framework in Frameworks */,
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
+				5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 				5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */,
 				5C940CA0166E40D50044A7D1 /* Security.framework in Frameworks */,
+				5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */,
+				5CCC272316D66AC500D14080 /* Social.framework in Frameworks */,
 				5C940C9E166E40B70044A7D1 /* SystemConfiguration.framework in Frameworks */,
 				5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */,
-				5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */,
-				5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */,
-				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
-				5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */,
-				5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */,
-				5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,28 +986,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */,
+				5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */,
 				5CE04B6F16D04B570002BBD7 /* libsqlite3.dylib in Frameworks */,
-				5CE04B6D16D04B3F0002BBD7 /* CoreLocation.framework in Frameworks */,
-				5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */,
-				5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */,
 				5CD3B00F16CF38D500DE362C /* libz.1.1.3.dylib in Frameworks */,
 				5CD3B01016CF38D500DE362C /* libsqlite3.0.dylib in Frameworks */,
+				5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */,
+				5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */,
+				5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */,
 				5CD3B01116CF38D500DE362C /* AudioToolbox.framework in Frameworks */,
 				5CD3B01216CF38D500DE362C /* CFNetwork.framework in Frameworks */,
+				5CD3B01B16CF38D500DE362C /* CoreGraphics.framework in Frameworks */,
+				5CE04B6D16D04B3F0002BBD7 /* CoreLocation.framework in Frameworks */,
 				5CD3B01316CF38D500DE362C /* CoreMotion.framework in Frameworks */,
+				5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */,
 				5CD3B01416CF38D500DE362C /* MobileCoreServices.framework in Frameworks */,
 				5CD3B01516CF38D500DE362C /* OpenGLES.framework in Frameworks */,
+				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 				5CD3B01616CF38D500DE362C /* QuartzCore.framework in Frameworks */,
 				5CD3B01716CF38D500DE362C /* Security.framework in Frameworks */,
+				5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */,
+				5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */,
 				5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */,
 				5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */,
-				5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */,
-				5CD3B01B16CF38D500DE362C /* CoreGraphics.framework in Frameworks */,
-				5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */,
-				5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */,
-				5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */,
-				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,6 +1081,13 @@
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 			);
 			name = Screen_TransportVentilator;
+			sourceTree = "<group>";
+		};
+		5C5380E916D267AB0003F7BB /* Screen_Drugs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Screen_Drugs;
 			sourceTree = "<group>";
 		};
 		5C63B12516B9CDA700B31431 /* Screen_APGAR */ = {
@@ -1227,23 +1245,24 @@
 			isa = PBXGroup;
 			children = (
 				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
-				5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */,
-				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
-				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
-				5CE04B7016D04B6C0002BBD7 /* Social.framework */,
-				5CE04B6516D04AFB0002BBD7 /* Parse.framework */,
-				5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
+				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
+				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
 				5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */,
+				5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */,
 				5C940CA9166E412E0044A7D1 /* CFNetwork.framework */,
 				5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */,
 				5C940CA7166E411D0044A7D1 /* CoreMotion.framework */,
 				5C940A63166E37FE0044A7D1 /* Foundation.framework */,
+				5CCC271816D64A1F00D14080 /* iAd.framework */,
 				5C940CA5166E41040044A7D1 /* MobileCoreServices.framework */,
 				5C940CA3166E40F30044A7D1 /* OpenGLES.framework */,
+				5CE04B6516D04AFB0002BBD7 /* Parse.framework */,
 				5C940CA1166E40E40044A7D1 /* QuartzCore.framework */,
 				5C940C9F166E40D50044A7D1 /* Security.framework */,
+				5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */,
+				5CE04B7016D04B6C0002BBD7 /* Social.framework */,
 				5C940C9D166E40B70044A7D1 /* SystemConfiguration.framework */,
 				5C940A61166E37FE0044A7D1 /* UIKit.framework */,
 			);
@@ -1264,6 +1283,7 @@
 				5CDB9F2416BE322900B457EC /* Screen_Cooling */,
 				5C63B14016B9FFFA00B31431 /* Screen_CrUSS */,
 				5CDB9F2516BE326600B457EC /* Screen_Curosurf */,
+				5C5380E916D267AB0003F7BB /* Screen_Drugs */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
 				5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */,
 				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
@@ -2765,8 +2785,8 @@
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
-				PROVISIONING_PROFILE = "D25487DE-73C0-4E06-A77A-322A9F08CED4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D25487DE-73C0-4E06-A77A-322A9F08CED4";
+				PROVISIONING_PROFILE = "B874652F-F518-4AC3-A9E7-54492F8361FE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B874652F-F518-4AC3-A9E7-54492F8361FE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

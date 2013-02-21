@@ -60,7 +60,6 @@
 @property (nonatomic) BOOL earlyCareWarningShown;
 @property (nonatomic) BOOL patientSelected;
 
-
 @end
 
 @implementation AppViewController
@@ -294,6 +293,7 @@
         flipButton.frame = CGRectMake(10.0f, 0.0f, 275.0f, 150.0f);
         [flipButton addTarget:appDelegate.revealController action:nil forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:flipButton];
+        
         self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:appDelegate.revealController action:@selector(revealGesture:)];
         [flipButton addGestureRecognizer:self.panGestureRecognizer];
         
@@ -1553,6 +1553,5 @@
     enterWeightViewController.weight.text = NULL;
     enterWeightViewController.gestation.text = NULL;
 }
-
 
 @end

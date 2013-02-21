@@ -9,6 +9,7 @@
 #import "EnterWeightViewController.h"
 #import <UIKit/UIKit.h>
 #import "GrowthChart.h"
+#import "AppDelegate.h"
 
 @interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate>
 

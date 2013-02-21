@@ -19,10 +19,6 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 @implementation AppDelegate
 
-@synthesize navigationController = _navigationController;
-@synthesize revealController = _revealController;
-@synthesize window = _window;
-
 + (void)initialize
 {
     
@@ -159,7 +155,10 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     }
     
     // setup window
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // iAD Banner re-code
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     
     // navigationController - (Front Screen)
     self.navigationController = [[UINavigationController alloc] init];
@@ -196,6 +195,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 #endif
     
 #endif
+    
+    // ensure badges are removed
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     return YES;
 }
