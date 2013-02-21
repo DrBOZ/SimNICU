@@ -12,11 +12,11 @@
 #define BACKGROUND_IPHONE_35_PORTRAIT_PNG @"LightGreyWithDimples35inchRetinaPortrait.png"
 #define BACKGROUND_IPHONE_4_PORTRAIT_PNG @"LightGreyWithDimples4inchRetinaPortrait.png"
 
-#define GOOGLE_ANALYTICS 1
-#define IRATE_SET 1
+#define GOOGLE_ANALYTICS 0
+#define IRATE_SET 0
 
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 0
+#define DCINTROSPECT_ON 1
 
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0
@@ -102,5 +102,9 @@
 //15) Setup in iTunes Connect
 //16) ARCHIVE FOR RELEASE
 //17) Swap to develop
-//18) GitHub push
+//18) GOOGLE_ANALYTICS   set to 0
+//19) IRATE_SET          set to 1
+//20) DCINTROSPECT_ON    set to 1
+//21) Git commit
+//22) GitHub push
 
