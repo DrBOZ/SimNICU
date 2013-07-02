@@ -13,6 +13,7 @@
 
 @interface IntubationViewController () <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) NSMutableArray *intubationArray;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UIPickerView *pickerView;
@@ -333,6 +334,10 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -402,9 +407,15 @@
     
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
     // self.webView0 = nil;
     // self.webView1 = nil;
     self.pickerView = nil;
@@ -427,6 +438,7 @@
             NSLog(@"IntubationViewController unloaded properties");
             
             self.myTableView = nil;
+            self.swipeGestureRecognizer = nil;
         }
     }
 }

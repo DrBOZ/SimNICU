@@ -72,6 +72,8 @@
 @property (nonatomic, strong) UISlider *anisotropicSlider;
 @property (nonatomic, strong) UISlider *normalSlider;
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
+
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;
 - (void)standardSegmentedControlChangedValue:(UISegmentedControl*)segmentedControl;
 - (void)sliderValueChanged:(id)sender;
@@ -265,12 +267,22 @@
     tableBgView.userInteractionEnabled = NO;
     [self.view addSubview:tableBgView];
 #endif
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
 {
     self.workingWeight = nil;
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
     
     self.morphineStrength = nil;
     self.morphineStrengthDose = nil;
@@ -304,6 +316,7 @@
         
         self.workingWeight = nil;
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
         
         self.morphineStrength = nil;
         self.morphineStrengthDose = nil;
