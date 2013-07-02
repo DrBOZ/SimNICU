@@ -12,6 +12,7 @@
 
 @interface IntubationDrugsViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSString *selectedDrug;
 
@@ -71,6 +72,11 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
     return self;
 }
 
@@ -129,9 +135,15 @@
     
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }
@@ -147,6 +159,7 @@
         NSLog(@"IntubationDrugsViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 
