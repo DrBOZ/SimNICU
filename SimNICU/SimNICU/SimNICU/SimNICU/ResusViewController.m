@@ -12,6 +12,7 @@
 
 @interface ResusViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 
 @end
@@ -75,6 +76,10 @@
     tableBgView.userInteractionEnabled = NO;
     [self.view addSubview:tableBgView];
 #endif
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -135,11 +140,17 @@
     }
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
     self.narcanSelected = nil;
     self.workingWeight = nil;
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }
@@ -155,6 +166,7 @@
         NSLog(@"ResusViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 
