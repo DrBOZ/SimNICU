@@ -35,18 +35,6 @@
 
 @implementation PhototherapyHoursOldViewController
 
-@synthesize birthDateTextField = _birthDateTextField;
-@synthesize birthTimeTextField = _birthTimeTextField;
-@synthesize dateAndTimeOfBirth = _dateAndTimeOfBirth;
-@synthesize actionSheetPicker = _actionSheetPicker;
-@synthesize selectedPatient = _selectedPatient;
-@synthesize dateTextField = _dateTextField;
-@synthesize selectedDate = _selectedDate;
-@synthesize formattedAge = _formattedAge;
-@synthesize myTableView = _myTableView;
-@synthesize ageInDays = _ageInDays;
-@synthesize delegate = _delegate;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

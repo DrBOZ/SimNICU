@@ -14,7 +14,7 @@
 #import <Parse/Parse.h>
 #import "iRate.h"
 
-// Dispatch period in seconds
+// Google Analytics dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
 
 @interface AppDelegate()
@@ -40,7 +40,6 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
 #endif
 
-    
 #if IRATE_SET
     
     // using iRate version 1.6.2
@@ -73,15 +72,14 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [iRate sharedInstance].usesUntilPrompt = 20;
     [iRate sharedInstance].remindPeriod = 7;
     
-#endif
+#endif //#endif LITE_VERSION
 
-    
 #else
     
     NSLog(@"iRATE OFF");
     [iRate sharedInstance].promptAtLaunch = NO;
     
-#endif
+#endif //#endif IRATE_SET
     
 #if IRATE_PREVIEW_MODE
     
@@ -109,7 +107,6 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 #endif
 
-    
 #if GOOGLE_ANALYTICS
     
     // Google Analytics
@@ -125,8 +122,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-35056388-2"
                                            dispatchPeriod:kGANDispatchPeriodSec
                                                  delegate:self];
-    
-#endif
+
+#endif //#endif LITE_VERSION
     
     NSError *error;
     if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
@@ -151,7 +148,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
         // Handle error here
     }
     
-#endif
+#endif //#endif GOOGLE_ANALYTICS
     
     // set UIStatusBarStyle explicitly - for iOS 4 and 5
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] < 6.0)
@@ -202,6 +199,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
 #endif
     
+#ifdef LITE_VERSION
+    
     self.bannerView = [[ADBannerView alloc] init];
     CGRect frame = self.bannerView.frame;
     frame.origin = CGPointMake(CGRectGetMaxX(screenBounds), CGRectGetMaxY(screenBounds));
@@ -212,6 +211,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     // ensure badges are removed
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+#endif //#endif LITE_VERSION
     
     return YES;
 }

@@ -399,7 +399,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0, 1.0, 120, 30)];
+            self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
             self.gestation.borderStyle = UITextBorderStyleRoundedRect;
             self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
             self.gestation.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -496,7 +496,7 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0, 1.0, 120, 30)];
+                self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
                 [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
                 [self.button setSelected:NO];
                 [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
