@@ -11,6 +11,7 @@
 
 @interface ROPViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic) BOOL selectedPatientMeetsCriteriaForROPScreening;
 
 @property (nonatomic, strong) UITableView *myTableView;
@@ -85,6 +86,10 @@
     self.myTableView.sectionHeaderHeight = 10.0f;
     self.myTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -439,8 +444,14 @@
     
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
+    self.swipeGestureRecognizer = nil;
     self.selectedPatientMeetsCriteriaForROPScreening = NO;
     self.estimatedWeightUsed = NO;
     self.selectedPatient = nil;
@@ -463,6 +474,7 @@
         
         self.myTableView = nil;
         self.webView0 = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 

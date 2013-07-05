@@ -11,6 +11,7 @@
 
 @interface WeightConversionViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, retain) UIWebView *webView;
 
 @end
@@ -57,6 +58,15 @@
     tableBgView.userInteractionEnabled = NO;
     [self.view addSubview:tableBgView];
 #endif
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.webView addGestureRecognizer:self.swipeGestureRecognizer];
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -64,6 +74,7 @@
     [super viewDidUnload];
     
     self.webView = nil;
+    self.swipeGestureRecognizer = nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -88,6 +99,7 @@
         NSLog(@"WeightConversionViewController unloaded properties");
         
         self.webView = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 

@@ -11,6 +11,7 @@
 
 @interface UVCUACViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, retain) UITableView *myTableView;
 
 @end
@@ -70,6 +71,10 @@
     tableBgView.alpha = 0.5;
     [self.view addSubview:tableBgView];
 #endif
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -154,7 +159,13 @@
         NSLog(@"UVCUACViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -162,6 +173,7 @@
     self.estimatedWeightUsed = nil;
     self.selectedPatient = nil;
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }

@@ -11,6 +11,7 @@
 
 @interface PhototherapyGuidelineCountryViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property UITableView *myTableView;
 @property UITableViewCell *cellUS;
 @property UITableViewCell *cellUK;
@@ -84,6 +85,11 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
     return self;
 }
 
@@ -115,7 +121,13 @@
         NSLog(@"PhototherapyGuidelineCountryViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

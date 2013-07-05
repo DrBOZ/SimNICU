@@ -15,6 +15,7 @@
 
 @interface PhototherapyViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 
 @end
@@ -121,6 +122,11 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
     return self;
 }
 
@@ -172,7 +178,13 @@
         NSLog(@"PhototherapyIndexViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -185,6 +197,7 @@
     self.selectedPatient = nil;
     self.bilirubinUnits = nil;
     self.gestation = nil;
+    self.swipeGestureRecognizer = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

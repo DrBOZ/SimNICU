@@ -11,6 +11,7 @@
 
 @interface TransportVentilatorViewController() <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITextField *inspiratoryTime;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic) BOOL userHasTypedAVeryFastRateIn;
@@ -80,6 +81,10 @@
     
     self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
     self.rate.keyboardType = UIKeyboardTypeDecimalPad;
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -105,7 +110,13 @@
         NSLog(@"TransportVentilatorViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -114,6 +125,7 @@
     self.inspiratoryTime = nil;
     self.expiratoryTime = nil;
     self.rate = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }

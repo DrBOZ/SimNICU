@@ -11,6 +11,7 @@
 
 @interface OxygenationIndexViewController()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic) BOOL validParametersEntered;
 @property (nonatomic) BOOL resultObtained;
@@ -85,6 +86,11 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
     return self;
 }
 
@@ -164,8 +170,14 @@
     [super viewDidLoad];
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
+    self.swipeGestureRecognizer = nil;
     self.meanAirwayPressure = nil;
     self.oxygenationIndex = nil;
     self.inspiredOxygen = nil;
@@ -186,6 +198,7 @@
         NSLog(@"OxygenationIndexViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 

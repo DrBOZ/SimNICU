@@ -11,6 +11,7 @@
 
 @interface GastroschisisViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UIWebView *webView0;
 @property (nonatomic, strong) UIWebView *webView1;
@@ -70,6 +71,10 @@
     tableBgView.userInteractionEnabled = NO;
     [self.view addSubview:tableBgView];
 #endif
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -95,7 +100,13 @@
         self.myTableView = nil;
         self.webView0 = nil;
         self.webView1 = nil;
+        self.swipeGestureRecognizer = nil;
     }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -103,6 +114,7 @@
     self.myTableView = nil;
     self.webView0 = nil;
     self.webView1 = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }

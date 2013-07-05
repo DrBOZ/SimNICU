@@ -11,6 +11,7 @@
 
 @interface PlasticBagViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 
 @end
@@ -39,9 +40,9 @@
         self.myTableView.delegate = self;
         self.myTableView.sectionFooterHeight = 10.0f;
         self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.scrollEnabled = NO;
+        // self.myTableView.scrollEnabled = NO;
         self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.userInteractionEnabled = NO;
+        self.myTableView.userInteractionEnabled = YES;
         
         [self.view addSubview:self.myTableView];
         
@@ -80,6 +81,11 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
     return self;
 }
 
@@ -115,9 +121,15 @@
     
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }
@@ -133,6 +145,7 @@
         NSLog(@"PlasticBagViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 

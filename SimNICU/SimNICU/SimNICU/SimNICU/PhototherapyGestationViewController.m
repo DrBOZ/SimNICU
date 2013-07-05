@@ -11,6 +11,7 @@
 
 @interface PhototherapyGestationViewController ()
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableViewCell *USPretermGestation;
 @property (nonatomic, strong) UITableViewCell *USTermGestation;
 @property (nonatomic, strong) UITableView *myTableView;
@@ -86,6 +87,11 @@
 #endif
         
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
     return self;
 }
 
@@ -120,10 +126,16 @@
     
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     self.myTableView = nil;
+    self.swipeGestureRecognizer = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -137,6 +149,7 @@
         NSLog(@"PhototherapyGestationIndexViewController unloaded properties");
         
         self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
     }
 }
 

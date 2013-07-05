@@ -13,7 +13,7 @@
 @interface PulmonaryHaemorrhageViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *myTableView;
-
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UIWebView *webView0;
 @property (nonatomic, strong) UIWebView *webView1;
 @property (nonatomic, strong) UIWebView *webView2;
@@ -162,6 +162,10 @@
     self.webView3 = [self getWebViewforIndexPathSection:3];
     
     readyWebViews = [[NSMutableArray alloc] initWithObjects:self.webView0, self.webView1, self.webView2, self.webView3, nil];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -190,7 +194,13 @@
         self.webView1 = nil;
         self.webView2 = nil;
         self.webView3 = nil;
+        self.swipeGestureRecognizer = nil;
     }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidUnload
@@ -200,6 +210,7 @@
     self.webView1 = nil;
     self.webView2 = nil;
     self.webView3 = nil;
+    self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
 }
