@@ -483,12 +483,10 @@
     screen.segueId = @"CDH";
     [screens addObject:screen];
     
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Drugs";
-     screen.segueId = @"Drugs";
-     [screens addObject:screen];
-     */
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Drugs";
+    screen.segueId = @"Drugs";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Early Care";
