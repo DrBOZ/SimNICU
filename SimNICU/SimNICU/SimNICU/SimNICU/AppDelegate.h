@@ -25,6 +25,7 @@
 // @"LightGrayBackground4inchRetina.png"
 
 #import "ZUUIRevealController.h"
+#import "DrugDatabase.h"
 #import "GANTracker.h"
 #import <iAd/iAd.h>
 
@@ -49,6 +50,7 @@
 // @property (strong, nonatomic) ACAccount *twitterAccount;
 @property (nonatomic, retain) ADBannerView *bannerView;
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) DrugDatabase *drugDatabase;
 
 // - (void)getTwitterAccount;
 

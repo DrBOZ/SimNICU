@@ -214,6 +214,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
 #endif //#endif LITE_VERSION
     
+    self.drugDatabase = [[DrugDatabase alloc] init];
+    
     return YES;
 }
 

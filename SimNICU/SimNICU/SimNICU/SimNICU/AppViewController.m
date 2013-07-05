@@ -29,6 +29,7 @@
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
 #import "CrUSSViewController.h"
+#import "DrugCategoriesViewController.h"
 #import "EarlyCareViewController.h"
 #import "GastroschisisViewController.h"
 #import "HFOVViewController.h"
@@ -982,7 +983,17 @@
             NSLog(@"showCDH");
             CDHViewController *newViewController = [[CDHViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+        }
+        
+#pragma mark Drugs
+        
+        else if ([thisScreenType isEqualToString:@"Drugs"])
+        {
+            NSLog(@"showDrugs");
+            // DrugsTabBarController *newTabBarController = [[DrugsTabBarController alloc] init];
+            // [appDelegate.navigationController pushViewController:newTabBarController animated:YES];
+            DrugCategoriesViewController *newViewController = [[DrugCategoriesViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Early Care
