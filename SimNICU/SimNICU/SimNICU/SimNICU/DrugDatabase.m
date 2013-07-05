@@ -25,6 +25,27 @@
         Drug *drug;
         // Portion *portion;
         // NSMutableArray *portions;
+      
+#pragma mark - ALL DRUGS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"All Drugs";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - FAVOURITES
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Favourites";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - ANALGESICS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Analgesics";
+        
+        [self.drugCategories addObject:drugCategory];
         
 #pragma mark ANTIBIOTICS
         drugCategory = [[DrugCategory alloc] init];
@@ -46,10 +67,144 @@
         
         [self.drugCategories addObject:drugCategory];
         
-#pragma mark - FAVOURITES
+#pragma mark - ANTIVIRALS
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Favourites";
+        drugCategory.name = @"Antivirals";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Aciclovir";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Ganciclovir";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - ANTIEPILEPTICS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Antiepileptics";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - CREAMS & LOTIONS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Creams & Lotions";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - DIURETICS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Diuretics";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - ELECTROLYTES
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Electrolytes";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - GALACTAGOGUES
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Galactagogues";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - HIV
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"HIV";
+        
+        [self.drugCategories addObject:drugCategory];
+   
+#pragma mark - IMMUNOGLOBULINS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Immunoglobulins";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - INOTROPES
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Inotropes";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - MUSCLE RELAXANTS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Muscle Relaxants";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - NUTRITIONAL SUPPLEMENTS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Nutritional Supplements";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - PDA
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"PDA Prophylaxis";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - SURFACTANTS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Surfactants";
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - VACINES
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Vaccines";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Haemophilus influenza (Hib)";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Hepatitis B";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Rotavirus";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Whooping cough";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - VITAMINS
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Vitamins";
         
         [self.drugCategories addObject:drugCategory];
         
