@@ -30,6 +30,7 @@
 #import "CDHViewController.h"
 #import "CrUSSViewController.h"
 #import "DrugCategoriesViewController.h"
+#import "DrugsViewController.h"
 #import "EarlyCareViewController.h"
 #import "GastroschisisViewController.h"
 #import "HFOVViewController.h"
@@ -986,7 +987,12 @@
             NSLog(@"showDrugs");
             // DrugsTabBarController *newTabBarController = [[DrugsTabBarController alloc] init];
             // [appDelegate.navigationController pushViewController:newTabBarController animated:YES];
-            DrugCategoriesViewController *newViewController = [[DrugCategoriesViewController alloc] init];
+            
+            // DrugCategoriesViewController *newViewController = [[DrugCategoriesViewController alloc] init];
+            // [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            DrugsViewController *newViewController = [[DrugsViewController alloc] init];
+            newViewController.index = 0;
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         

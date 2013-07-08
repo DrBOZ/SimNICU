@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrugsViewController : UIViewController
+@interface DrugsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+
+@property (nonatomic, strong) NSNumber *index;
 
 @end

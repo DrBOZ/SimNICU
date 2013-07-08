@@ -7,6 +7,7 @@
 //
 
 #import "DrugCategoriesViewController.h"
+#import "DrugsViewController.h"
 #import "DrugDatabase.h"
 #import "DrugCategory.h"
 #import "Drug.h"
@@ -162,10 +163,10 @@
     
     if (tableView == self.myTableView)
     {
-        // FoodsViewController *foodsViewController = [[FoodsViewController alloc] init];
-        // foodsViewController.index = [NSNumber numberWithInt:indexPath.row];
+        DrugsViewController *drugsViewController = [[DrugsViewController alloc] init];
+        drugsViewController.index = [NSNumber numberWithInt:indexPath.row];
         
-        // [self.navigationController pushViewController:foodsViewController animated:YES];
+        [self.navigationController pushViewController:drugsViewController animated:YES];
     }
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
