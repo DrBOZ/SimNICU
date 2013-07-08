@@ -53,6 +53,7 @@
 @interface AppViewController ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) NSString *estimatedWeightUsed;
 @property (nonatomic, strong) NSString *infoPassedThrough;
 @property (nonatomic, strong) Patient *selectedPatient;
@@ -355,6 +356,43 @@
     
     [self.view addSubview:self.contentView];
     // [self.view addSubview:self.myHeaderView];
+    
+    //SimNICU / Date tapGesture button
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+    self.tapGestureRecognizer.numberOfTapsRequired = 1;
+    
+    CGRect frame = CGRectMake(self.view.frame.size.width/4, 0, self.view.frame.size.width/2, 44);
+    UIView *navBarTapView = [[UIView alloc] initWithFrame:frame];
+    [self.navigationController.navigationBar addSubview:navBarTapView];
+    navBarTapView.backgroundColor = [UIColor clearColor];
+    navBarTapView.userInteractionEnabled = YES;
+    [navBarTapView addGestureRecognizer:self.tapGestureRecognizer];
+}
+
+-(void)handleTapFrom:(UITapGestureRecognizer *)recognizer
+{
+    NSDate *currentDate = [NSDate date];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    
+    self.title = [formatter stringFromDate:currentDate];
+        
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+      
+#ifdef LITE_VERSION
+        
+        self.title = @"SimNICU Lite";
+        
+#else
+        
+        self.title = @"SimNICU";
+        
+#endif
+        
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -363,11 +401,17 @@
     
 #ifdef LITE_VERSION
     
-    self.title = @"SimNICU Lite";
+    if (!self.title)
+    {
+        self.title = @"SimNICU Lite";
+    }
     
 #else
     
-    self.title = @"SimNICU";
+    if (!self.title)
+    {
+        self.title = @"SimNICU";
+    }
     
 #endif
     

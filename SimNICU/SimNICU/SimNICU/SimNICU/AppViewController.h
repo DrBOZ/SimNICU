@@ -14,6 +14,7 @@
 @interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate, BannerViewContainer>
 
 @property (nonatomic, strong) UIImageView *displayDismissButtonView;
+@property (nonatomic, strong) UIImageView *displaySimNICUDateToggle;
 @property (nonatomic, strong) UILabel *displayDetailTextLabel;
 @property (nonatomic, strong) UILabel *displayBackground;
 @property (nonatomic, strong) UIImageView *appImageView;

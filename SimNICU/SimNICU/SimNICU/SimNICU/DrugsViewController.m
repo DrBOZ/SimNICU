@@ -80,6 +80,46 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    if (self.workingWeight)
+    {
+        // goes through the entire string and replaces any commas with full stops in case
+        // user is using a european locale
+        NSString *UKLocaleWorkingWeight;
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+        
+        if (workingWeightKGAsFloat < 1.0f)
+        {
+            // present weight as grams
+            int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
+            
+            self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+        }
+        else
+        {
+            // present weight as kilograms
+            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            formatter.numberStyle = NSNumberFormatterDecimalStyle;
+            // if using arabic locale, force to english
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            {
+                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+            }
+            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+            formatter.minimumFractionDigits = 0;
+            formatter.maximumFractionDigits = 3;
+            
+            self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
+        }
+    }
+    else
+    {
+        self.title = @"Weight not entered";
+        // self.title = self.drugCategory.name;
+    }
+    
     // workout UITableView values here
     
     // self.drugCategory.drugs is the array
@@ -138,8 +178,6 @@
             drugSectionExists = NO;
         }
     }
-    
-    self.title = self.drugCategory.name;
     
     self.myTableView.contentOffset = CGPointMake(0.0f, 44.0f);
     
