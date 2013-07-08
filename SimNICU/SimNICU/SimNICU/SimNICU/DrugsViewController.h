@@ -10,6 +10,7 @@
 
 @interface DrugsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
+@property (nonatomic, strong) NSString *workingWeight;
 @property (nonatomic, strong) NSNumber *index;
 
 @end

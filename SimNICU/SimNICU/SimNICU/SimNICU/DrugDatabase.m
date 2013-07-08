@@ -99,6 +99,10 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Ceftazidime";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Cefuroxime";
         [drugs addObject:drug];
         
@@ -108,6 +112,14 @@
         
         drug = [[Drug alloc] init];
         drug.name = @"Daktarin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Dexamethasone";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Digoxin";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
@@ -123,6 +135,10 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Erythropoetin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Fentanyl";
         [drugs addObject:drug];
         
@@ -135,11 +151,23 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Flucytosine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Folic acid";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Ganciclovir";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
         drug.name = @"Gentamicin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Hydrocortisone";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
@@ -219,11 +247,23 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Nitrous oxide";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Nystatin";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Ranitidine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Salbutamol";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Sildenafil";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
@@ -244,6 +284,10 @@
         
         drug = [[Drug alloc] init];
         drug.name = @"Thiopentone";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Trimethoprim";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];

@@ -985,14 +985,19 @@
         else if ([thisScreenType isEqualToString:@"Drugs"])
         {
             NSLog(@"showDrugs");
-            // DrugsTabBarController *newTabBarController = [[DrugsTabBarController alloc] init];
-            // [appDelegate.navigationController pushViewController:newTabBarController animated:YES];
-            
-            // DrugCategoriesViewController *newViewController = [[DrugCategoriesViewController alloc] init];
-            // [appDelegate.navigationController pushViewController:newViewController animated:YES];
             
             DrugsViewController *newViewController = [[DrugsViewController alloc] init];
             newViewController.index = 0;
+            
+            if (self.selectedPatient.workingWeight)
+            {
+                newViewController.workingWeight = self.selectedPatient.workingWeight;
+            }
+            else if (self.weight)
+            {
+                newViewController.workingWeight = self.weight;
+            }
+            
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         

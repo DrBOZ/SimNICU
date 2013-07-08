@@ -282,18 +282,17 @@
     {
         DrugSection *drugSection = [self.drugSections objectAtIndex:indexPath.section];
         Drug *drug = [drugSection.drugs objectAtIndex:indexPath.row];
-        drug.selected = !drug.selected;
-        [self.myTableView reloadData];
+        // drug.selected = !drug.selected;
+        // [self.myTableView reloadData];
+        NSLog(@"Drug selected = %@", drug.name);
     }
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         Drug *drug = [searchData objectAtIndex:indexPath.row];
-        drug.selected = !drug.selected;
-        [self.searchDisplayController.searchResultsTableView reloadData];
+        // drug.selected = !drug.selected;
+        // [self.searchDisplayController.searchResultsTableView reloadData];
+        NSLog(@"Drug selected = %@", drug.name);
     }
-    
-    // goto plate?
-    NSLog(@"GOTO PLATE");
     
     /*
      DrugsViewController_iPhone *drugsViewController = [[DrugsViewController_iPhone alloc] init];
