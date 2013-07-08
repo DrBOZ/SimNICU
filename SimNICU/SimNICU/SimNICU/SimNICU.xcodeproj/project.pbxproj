@@ -18,6 +18,8 @@
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
 		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
+		5C8606CC178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
+		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
 		5C8C3E0616707F880073886A /* kButtonAC copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DED16707F880073886A /* kButtonAC copy.png */; };
 		5C8C3E0716707F880073886A /* kButtonAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEE16707F880073886A /* kButtonAC.png */; };
@@ -571,6 +573,8 @@
 		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
 		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
 		5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrugPreparation.m; sourceTree = "<group>"; };
+		5C8606CA178AD30D00428ED4 /* DrugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsViewController.h; sourceTree = "<group>"; };
+		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		5C8C3DEB16707C900073886A /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		5C8C3DED16707F880073886A /* kButtonAC copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kButtonAC copy.png"; sourceTree = "<group>"; };
@@ -1114,6 +1118,8 @@
 				5C98A6AE17875BD000F246E3 /* DrugsTabBarController.m */,
 				5C98A6B117875CCA00F246E3 /* DrugCategoriesViewController.h */,
 				5C98A6B217875CCA00F246E3 /* DrugCategoriesViewController.m */,
+				5C8606CA178AD30D00428ED4 /* DrugsViewController.h */,
+				5C8606CB178AD30D00428ED4 /* DrugsViewController.m */,
 				5C98A6A11787553400F246E3 /* DrugDatabase.h */,
 				5C98A6A21787553400F246E3 /* DrugDatabase.m */,
 				5C98A6A51787562700F246E3 /* DrugCategory.h */,
@@ -1253,6 +1259,13 @@
 			name = Screen_UVCUAC;
 			sourceTree = "<group>";
 		};
+		5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Screen_GlucoseCalculation;
+			sourceTree = "<group>";
+		};
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
@@ -1320,6 +1333,7 @@
 				5C5380E916D267AB0003F7BB /* Screen_Drugs */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
 				5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */,
+				5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */,
 				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
 				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
 				5C39630C16B849D40039C387 /* Screen_Intubation */,
@@ -2423,6 +2437,7 @@
 				5C98A6AB1787577000F246E3 /* Drug.m in Sources */,
 				5C98A6AF17875BD000F246E3 /* DrugsTabBarController.m in Sources */,
 				5C98A6B317875CCA00F246E3 /* DrugCategoriesViewController.m in Sources */,
+				5C8606CC178AD30D00428ED4 /* DrugsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2537,6 +2552,7 @@
 				5C98A6AC1787577000F246E3 /* Drug.m in Sources */,
 				5C98A6B017875BD000F246E3 /* DrugsTabBarController.m in Sources */,
 				5C98A6B417875CCA00F246E3 /* DrugCategoriesViewController.m in Sources */,
+				5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

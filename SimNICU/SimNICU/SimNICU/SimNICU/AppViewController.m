@@ -459,10 +459,10 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-    // screen = [[Screen alloc] init];
-    // screen.menuText = @"Calculator";
-    // screen.segueId = @"Calculator";
-    // [screens addObject:screen];
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Calculator";
+    screen.segueId = @"Calculator";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Cooling";
@@ -494,26 +494,20 @@
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Feeds & Fluids";
-     screen.segueId = @"EarlyCare";
-     [screens addObject:screen];
-     */
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Feeds & Fluids";
+    screen.segueId = @"FeedsAndFluids";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Gastroschisis";
     screen.segueId = @"Gastroschisis";
     [screens addObject:screen];
     
-    // Gentamicin levels
-    
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Glucose Infusion Rate";
-     screen.segueId = @"GlucoseInfusionRate";
-     [screens addObject:screen];
-     */
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Glucose Infusion Rate";
+    screen.segueId = @"GlucoseInfusionRate";
+    [screens addObject:screen];
     
     screen = [[Screen alloc] init];
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)

@@ -40,26 +40,24 @@
         
         [self.drugCategories addObject:drugCategory];
         
-#pragma mark - ANALGESICS
+#pragma mark - ANALGESIA
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Analgesics";
-        
-        [self.drugCategories addObject:drugCategory];
-        
-#pragma mark ANTIBIOTICS
-        drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Antibiotics";
+        drugCategory.name = @"Analgesia";
         
         // create array
         NSMutableArray *drugs = [[NSMutableArray alloc] initWithCapacity:10];
         
         drug = [[Drug alloc] init];
-        drug.name = @"Benzylpenicillin";
+        drug.name = @"Paracetamol";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
-        drug.name = @"Gentamicin";
+        drug.name = @"Morphine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Sucrose";
         [drugs addObject:drug];
         
         // Add array to drugs
@@ -67,10 +65,80 @@
         
         [self.drugCategories addObject:drugCategory];
         
-#pragma mark - ANTIVIRALS
+#pragma mark - ANTIBIOTIC
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Antivirals";
+        drugCategory.name = @"Antibiotics & Sepsis";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Benzylpenicillin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Flucloxacillin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Gentamicin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Meropenem";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Piperacillin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Teicoplanin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Vancomycin";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - ANTICONVULSIVE
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Anticonvulsive";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Lignocaine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Lorazepam";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Midazolam";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Phenobarbitone";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - ANTIVIRAL
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Antiviral";
         
         // create array
         drugs = [[NSMutableArray alloc] initWithCapacity:10];
@@ -93,19 +161,85 @@
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"Antiepileptics";
         
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Lignocaine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Midazolam";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Phenobarbitone";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Thiopentone";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
         [self.drugCategories addObject:drugCategory];
         
-#pragma mark - CREAMS & LOTIONS
+#pragma mark - ANTIFUNGAL
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Creams & Lotions";
+        drugCategory.name = @"Antifungal";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Amphotericin B";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Daktarin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Nystatin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Spironolactone";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
         
         [self.drugCategories addObject:drugCategory];
         
-#pragma mark - DIURETICS
+#pragma mark - CARDIAC
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Diuretics";
+        drugCategory.name = @"Cardiac";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Adenosine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Alprostadil";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Atropine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Captopril";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
         
         [self.drugCategories addObject:drugCategory];
         
@@ -114,6 +248,28 @@
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"Electrolytes";
         
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Sodium Chloride";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Potassium Chloride";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Calcium Chloride";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Magnesium";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
         [self.drugCategories addObject:drugCategory];
         
 #pragma mark - GALACTAGOGUES
@@ -121,12 +277,53 @@
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"Galactagogues";
         
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Domperidone";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - GASTRO
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Gastrointestinal";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Domperidone";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Ursodeoxycholic acid";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
         [self.drugCategories addObject:drugCategory];
         
 #pragma mark - HIV
         
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"HIV";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Zidovudine";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
         
         [self.drugCategories addObject:drugCategory];
    
@@ -142,12 +339,56 @@
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"Inotropes";
         
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Adrenaline";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Dobutamine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Dopamine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Calcium gluconate";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Milrinone";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
         [self.drugCategories addObject:drugCategory];
         
 #pragma mark - MUSCLE RELAXANTS
         
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"Muscle Relaxants";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Atracurium";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Pancuronium";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Vecuronium";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
         
         [self.drugCategories addObject:drugCategory];
         
@@ -161,14 +402,59 @@
 #pragma mark - PDA
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"PDA Prophylaxis";
+        drugCategory.name = @"Patent ductus arteriosus";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Ibuprofen";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Indomethancin";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
         
         [self.drugCategories addObject:drugCategory];
         
-#pragma mark - SURFACTANTS
+#pragma mark - SEDATIVES
         
         drugCategory = [[DrugCategory alloc] init];
-        drugCategory.name = @"Surfactants";
+        drugCategory.name = @"Sedatives";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Fentanyl";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
+        
+        [self.drugCategories addObject:drugCategory];
+        
+#pragma mark - SURFACTANT
+        
+        drugCategory = [[DrugCategory alloc] init];
+        drugCategory.name = @"Surfactant";
+        
+        // create array
+        drugs = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Curosurf\u00AE";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Survanta\u00AE";
+        [drugs addObject:drug];
+        
+        // Add array to drugs
+        drugCategory.drugs = drugs;
         
         [self.drugCategories addObject:drugCategory];
         
