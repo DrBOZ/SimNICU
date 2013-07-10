@@ -17,6 +17,8 @@
 		5C4350B4178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */; };
 		5C4350B7178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
 		5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
+		5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
+		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -573,6 +575,7 @@
 		5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugBenzylpenicillinViewController.h; sourceTree = "<group>"; };
 		5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBenzylpenicillinViewController.m; sourceTree = "<group>"; };
 		5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPharmacology.html; sourceTree = "<group>"; };
+		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -1131,6 +1134,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */,
+				5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
 			);
@@ -2210,6 +2214,7 @@
 				5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */,
 				5C4350B7178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */,
+				5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2360,6 +2365,7 @@
 				5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */,
 				5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */,
 				5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */,
+				5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
