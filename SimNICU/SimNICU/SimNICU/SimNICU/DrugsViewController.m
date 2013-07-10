@@ -6,12 +6,15 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "DrugInfoSimpleViewController.h"
 #import "DrugsViewController.h"
 #import "DrugDatabase.h"
 #import "DrugCategory.h"
 #import "DrugSection.h"
 #import "AppDelegate.h"
 #import "Drug.h"
+
+#import "DrugBenzylpenicillinViewController.h"
 
 @interface DrugsViewController ()
 {
@@ -39,6 +42,13 @@
     {
         //delegate
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        //back button
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:nil
+                                                                      action:nil];
+        self.navigationItem.backBarButtonItem = backButton;
         
         //tableView
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - (20 + 44))) style:UITableViewStylePlain];
@@ -184,6 +194,14 @@
     [self.myTableView reloadData];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:1];
+    
+    
+    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -315,6 +333,8 @@
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NSString *selectedDrug;
+    
     // select drug
     if (tableView == self.myTableView)
     {
@@ -322,6 +342,8 @@
         Drug *drug = [drugSection.drugs objectAtIndex:indexPath.row];
         // drug.selected = !drug.selected;
         // [self.myTableView reloadData];
+        
+        selectedDrug = drug.name;
         NSLog(@"Drug selected = %@", drug.name);
     }
     if (tableView == self.searchDisplayController.searchResultsTableView)
@@ -329,9 +351,18 @@
         Drug *drug = [searchData objectAtIndex:indexPath.row];
         // drug.selected = !drug.selected;
         // [self.searchDisplayController.searchResultsTableView reloadData];
+        selectedDrug = drug.name;
         NSLog(@"Drug selected = %@", drug.name);
     }
     
+    if ([selectedDrug isEqualToString:@"Benzylpenicillin"])
+    {
+        // DrugInfoSimpleViewController *drugInfoSimpleViewController = [[DrugInfoSimpleViewController alloc] init];
+        
+        DrugBenzylpenicillinViewController *drugBenzylpenicillinViewController = [[DrugBenzylpenicillinViewController alloc] init];
+        
+        [self.navigationController pushViewController:drugBenzylpenicillinViewController animated:YES];
+    }
     /*
      DrugsViewController_iPhone *drugsViewController = [[DrugsViewController_iPhone alloc] init];
      drugsViewController.index = [NSNumber numberWithInt:indexPath.row];

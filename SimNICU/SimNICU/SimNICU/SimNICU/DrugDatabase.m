@@ -307,6 +307,14 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Vitamin K";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Vitamins (Multivitamins)";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Zidovudine";
         [drugs addObject:drug];
         
