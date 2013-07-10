@@ -152,11 +152,11 @@
     switch (section)
     {
         case 0:
-            header = @"Delivery Room Care";
+            header = @"Pharmacology";
             break;
             
         case 1:
-            header = @"Neonatal Unit";
+            header = @"Indications";
             break;
             
         default:
@@ -192,7 +192,7 @@
     switch (indexPath.section)
     {
         case 0:
-            height = 250.0f;
+            height = 100.0f;
             break;
             
         case 1:
@@ -221,7 +221,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
             
-            self.webView0 = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 300, 245)];
+            self.webView0 = [[UIWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 245.0f)];
             self.webView0.backgroundColor = [UIColor clearColor];
             self.webView0.opaque = NO;
             self.webView0.scalesPageToFit = NO;
@@ -239,7 +239,7 @@
             
             self.webView0.dataDetectorTypes = UIDataDetectorTypeNone;
             
-            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"gastroschisis0" ofType:@"html"] isDirectory:NO];
+            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"benzylpenicillinPharmacology" ofType:@"html"] isDirectory:NO];
             NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
             [self.webView0 loadRequest:URLReq];
             
