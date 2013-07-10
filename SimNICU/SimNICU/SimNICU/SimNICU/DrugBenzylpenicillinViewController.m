@@ -196,7 +196,7 @@
             break;
             
         case 1:
-            height = 140.0f;
+            height = 80.0f;
             break;
             
         default:
@@ -259,7 +259,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
             
-            self.webView1 = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 300, 135)];
+            self.webView1 = [[UIWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 135.0f)];
             self.webView1.backgroundColor = [UIColor clearColor];
             self.webView1.opaque = NO;
             self.webView1.scalesPageToFit = NO;
@@ -277,7 +277,7 @@
             
             self.webView1.dataDetectorTypes = UIDataDetectorTypeNone;
             
-            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"gastroschisis1" ofType:@"html"] isDirectory:NO];
+            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"benzylpenicillinIndications" ofType:@"html"] isDirectory:NO];
             NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
             [self.webView1 loadRequest:URLReq];
             
