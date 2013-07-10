@@ -192,14 +192,12 @@
     self.myTableView.contentOffset = CGPointMake(0.0f, 44.0f);
     
     [self.myTableView reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:1];
     
-    
-    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    // scroll to last drug selected
+    if (appDelegate.lastDrugPath)
+    {
+        [self.myTableView scrollToRowAtIndexPath:appDelegate.lastDrugPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -332,6 +330,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // save this drug as last drug selected
+    appDelegate.lastDrugPath = indexPath;
     
     NSString *selectedDrug;
     

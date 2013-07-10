@@ -51,6 +51,7 @@
 @property (nonatomic, retain) ADBannerView *bannerView;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) DrugDatabase *drugDatabase;
+@property (nonatomic, strong) NSIndexPath *lastDrugPath;
 
 // - (void)getTwitterAccount;
 
