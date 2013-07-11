@@ -10,4 +10,6 @@
 
 @interface DrugInfoSimpleViewController : UIViewController
 
+@property (nonatomic, strong) NSString *selectedDrug;
+
 @end

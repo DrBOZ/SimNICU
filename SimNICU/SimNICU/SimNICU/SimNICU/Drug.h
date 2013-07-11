@@ -14,6 +14,8 @@
 @property (nonatomic) BOOL selected;
 @property (nonatomic) BOOL favourite;
 @property (nonatomic) NSNumber *defaultPortionIndex;
-@property (nonatomic, strong) NSMutableArray *portions;
+@property (nonatomic, strong) NSMutableArray *info;
+
+
 
 @end

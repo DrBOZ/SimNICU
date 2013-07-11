@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0E05DD178EF77800768739 /* benzylpenicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */; };
+		5C0E05DF178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */; };
+		5C0E05E0178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */; };
+		5C0E05E2178EF7D500768739 /* benzylpenicillinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05E1178EF7D500768739 /* benzylpenicillinMonitoring.html */; };
+		5C0E05E3178EF7D500768739 /* benzylpenicillinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05E1178EF7D500768739 /* benzylpenicillinMonitoring.html */; };
+		5C0E05E5178EF7F100768739 /* benzylpenicillinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05E4178EF7F100768739 /* benzylpenicillinSideEffects.html */; };
+		5C0E05E6178EF7F100768739 /* benzylpenicillinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05E4178EF7F100768739 /* benzylpenicillinSideEffects.html */; };
+		5C0E05E8178EF80E00768739 /* benzylpenicillinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05E7178EF80E00768739 /* benzylpenicillinContraindications.html */; };
+		5C0E05E9178EF80E00768739 /* benzylpenicillinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05E7178EF80E00768739 /* benzylpenicillinContraindications.html */; };
+		5C0E05EB178EF82200768739 /* benzylpenicillinIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05EA178EF82100768739 /* benzylpenicillinIncompatibilities.html */; };
+		5C0E05EC178EF82200768739 /* benzylpenicillinIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05EA178EF82100768739 /* benzylpenicillinIncompatibilities.html */; };
+		5C0E05EE178EF83400768739 /* benzylpenicillinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05ED178EF83400768739 /* benzylpenicillinPreparation.html */; };
+		5C0E05EF178EF83400768739 /* benzylpenicillinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05ED178EF83400768739 /* benzylpenicillinPreparation.html */; };
+		5C0E05F1178EF86B00768739 /* benzylpenicillinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05F0178EF86B00768739 /* benzylpenicillinDose.html */; };
+		5C0E05F2178EF86B00768739 /* benzylpenicillinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05F0178EF86B00768739 /* benzylpenicillinDose.html */; };
+		5C0E05F4178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05F3178EF87C00768739 /* benzylpenicillinPresentation.html */; };
+		5C0E05F5178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05F3178EF87C00768739 /* benzylpenicillinPresentation.html */; };
+		5C0E05F8178EFDE300768739 /* DrugInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E05F7178EFDE300768739 /* DrugInfo.m */; };
+		5C0E05F9178EFDE300768739 /* DrugInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E05F7178EFDE300768739 /* DrugInfo.m */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
@@ -564,6 +583,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinReferences.html; sourceTree = "<group>"; };
+		5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinLicenceStatus.html; sourceTree = "<group>"; };
+		5C0E05E1178EF7D500768739 /* benzylpenicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinMonitoring.html; sourceTree = "<group>"; };
+		5C0E05E4178EF7F100768739 /* benzylpenicillinSideEffects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinSideEffects.html; sourceTree = "<group>"; };
+		5C0E05E7178EF80E00768739 /* benzylpenicillinContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinContraindications.html; sourceTree = "<group>"; };
+		5C0E05EA178EF82100768739 /* benzylpenicillinIncompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIncompatibilities.html; sourceTree = "<group>"; };
+		5C0E05ED178EF83400768739 /* benzylpenicillinPreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPreparation.html; sourceTree = "<group>"; };
+		5C0E05F0178EF86B00768739 /* benzylpenicillinDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinDose.html; sourceTree = "<group>"; };
+		5C0E05F3178EF87C00768739 /* benzylpenicillinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPresentation.html; sourceTree = "<group>"; };
+		5C0E05F6178EFDE200768739 /* DrugInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugInfo.h; sourceTree = "<group>"; };
+		5C0E05F7178EFDE300768739 /* DrugInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugInfo.m; sourceTree = "<group>"; };
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
@@ -1125,6 +1155,8 @@
 			children = (
 				5C4350AC178DDD5200E926B1 /* DrugInfoSimpleViewController.h */,
 				5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */,
+				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
+				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
 			);
 			name = Drugs;
@@ -1135,8 +1167,15 @@
 			children = (
 				5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */,
 				5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */,
-				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
-				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
+				5C0E05F3178EF87C00768739 /* benzylpenicillinPresentation.html */,
+				5C0E05F0178EF86B00768739 /* benzylpenicillinDose.html */,
+				5C0E05ED178EF83400768739 /* benzylpenicillinPreparation.html */,
+				5C0E05EA178EF82100768739 /* benzylpenicillinIncompatibilities.html */,
+				5C0E05E7178EF80E00768739 /* benzylpenicillinContraindications.html */,
+				5C0E05E4178EF7F100768739 /* benzylpenicillinSideEffects.html */,
+				5C0E05E1178EF7D500768739 /* benzylpenicillinMonitoring.html */,
+				5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */,
+				5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */,
 			);
 			name = Benzylpenicillin;
 			sourceTree = "<group>";
@@ -1168,6 +1207,8 @@
 				5C98A6A61787562700F246E3 /* DrugCategory.m */,
 				5C98A6A91787577000F246E3 /* Drug.h */,
 				5C98A6AA1787577000F246E3 /* Drug.m */,
+				5C0E05F6178EFDE200768739 /* DrugInfo.h */,
+				5C0E05F7178EFDE300768739 /* DrugInfo.m */,
 			);
 			name = Screen_Drugs;
 			sourceTree = "<group>";
@@ -2215,6 +2256,15 @@
 				5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */,
 				5C4350B7178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */,
 				5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */,
+				5C0E05DD178EF77800768739 /* benzylpenicillinReferences.html in Resources */,
+				5C0E05DF178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */,
+				5C0E05E2178EF7D500768739 /* benzylpenicillinMonitoring.html in Resources */,
+				5C0E05E5178EF7F100768739 /* benzylpenicillinSideEffects.html in Resources */,
+				5C0E05E8178EF80E00768739 /* benzylpenicillinContraindications.html in Resources */,
+				5C0E05EB178EF82200768739 /* benzylpenicillinIncompatibilities.html in Resources */,
+				5C0E05EE178EF83400768739 /* benzylpenicillinPreparation.html in Resources */,
+				5C0E05F1178EF86B00768739 /* benzylpenicillinDose.html in Resources */,
+				5C0E05F4178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2366,6 +2416,14 @@
 				5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */,
 				5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */,
 				5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */,
+				5C0E05E0178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */,
+				5C0E05E3178EF7D500768739 /* benzylpenicillinMonitoring.html in Resources */,
+				5C0E05E6178EF7F100768739 /* benzylpenicillinSideEffects.html in Resources */,
+				5C0E05E9178EF80E00768739 /* benzylpenicillinContraindications.html in Resources */,
+				5C0E05EC178EF82200768739 /* benzylpenicillinIncompatibilities.html in Resources */,
+				5C0E05EF178EF83400768739 /* benzylpenicillinPreparation.html in Resources */,
+				5C0E05F2178EF86B00768739 /* benzylpenicillinDose.html in Resources */,
+				5C0E05F5178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2487,6 +2545,7 @@
 				5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */,
 				5C4350AE178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */,
 				5C4350B3178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */,
+				5C0E05F8178EFDE300768739 /* DrugInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2605,6 +2664,7 @@
 				5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */,
 				5C4350AF178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */,
 				5C4350B4178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */,
+				5C0E05F9178EFDE300768739 /* DrugInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

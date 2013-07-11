@@ -10,4 +10,6 @@
 
 @interface DrugBenzylpenicillinViewController : UIViewController
 
+@property (nonatomic, strong) NSString *selectedDrug;
+
 @end

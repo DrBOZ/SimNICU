@@ -14,8 +14,6 @@
 #import "AppDelegate.h"
 #import "Drug.h"
 
-#import "DrugBenzylpenicillinViewController.h"
-
 @interface DrugsViewController ()
 {
     int numberOfSectionsInTableView;
@@ -27,6 +25,7 @@
     UISearchDisplayController *searchDisplayController;
 }
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) DrugCategory *drugCategory;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *drugSections;
@@ -83,6 +82,10 @@
     self.myTableView.tableHeaderView = searchBar;
     
     searchData = [[NSMutableArray alloc] init];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -204,6 +207,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source
@@ -359,20 +367,9 @@
         NSLog(@"Drug selected = %@", drug.name);
     }
     
-    if ([selectedDrug isEqualToString:@"Benzylpenicillin"])
-    {
-        // DrugInfoSimpleViewController *drugInfoSimpleViewController = [[DrugInfoSimpleViewController alloc] init];
-        
-        DrugBenzylpenicillinViewController *drugBenzylpenicillinViewController = [[DrugBenzylpenicillinViewController alloc] init];
-        
-        [self.navigationController pushViewController:drugBenzylpenicillinViewController animated:YES];
-    }
-    /*
-     DrugsViewController_iPhone *drugsViewController = [[DrugsViewController_iPhone alloc] init];
-     drugsViewController.index = [NSNumber numberWithInt:indexPath.row];
-     
-     [self.navigationController pushViewController:drugsViewController animated:YES];
-     */
+    DrugInfoSimpleViewController *drugInfoSimpleViewController = [[DrugInfoSimpleViewController alloc] init];
+    drugInfoSimpleViewController.selectedDrug = selectedDrug;
+    [self.navigationController pushViewController:drugInfoSimpleViewController animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index

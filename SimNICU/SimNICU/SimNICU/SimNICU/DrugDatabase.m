@@ -8,6 +8,7 @@
 
 #import "DrugDatabase.h"
 #import "DrugCategory.h"
+#import "Druginfo.h"
 #import "Drug.h"
 
 @implementation DrugDatabase
@@ -23,6 +24,9 @@
         
         DrugCategory *drugCategory;
         Drug *drug;
+        NSMutableArray *drugInfoSections;
+        DrugInfo *drugInfoSection;
+        
         // Portion *portion;
         // NSMutableArray *portions;
       
@@ -72,6 +76,33 @@
         
         drug = [[Drug alloc] init];
         drug.name = @"Benzylpenicillin";
+        
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        // section 0
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:0];
+        drugInfoSection.header = @"Pharmacology";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:100.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinPharmacology";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 1
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:1];
+        drugInfoSection.header = @"Indications";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:80.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinIndications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 2
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:2];
+        drugInfoSection.header = @"Presentation";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:40.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinPresentation";
+        [drugInfoSections addObject:drugInfoSection];
+        
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
@@ -195,6 +226,10 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Magnesium";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Meropenem";
         [drugs addObject:drug];
         
@@ -207,7 +242,19 @@
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
+        drug.name = @"Morphine";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Naloxone";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
         drug.name = @"Nystatin";
+        [drugs addObject:drug];
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Nitrous oxide";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];
@@ -232,26 +279,6 @@
         
         drug = [[Drug alloc] init];
         drug.name = @"Pyridoxine";
-        [drugs addObject:drug];
-        
-        drug = [[Drug alloc] init];
-        drug.name = @"Magnesium";
-        [drugs addObject:drug];
-        
-        drug = [[Drug alloc] init];
-        drug.name = @"Morphine";
-        [drugs addObject:drug];
-        
-        drug = [[Drug alloc] init];
-        drug.name = @"Naloxone";
-        [drugs addObject:drug];
-        
-        drug = [[Drug alloc] init];
-        drug.name = @"Nitrous oxide";
-        [drugs addObject:drug];
-        
-        drug = [[Drug alloc] init];
-        drug.name = @"Nystatin";
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];

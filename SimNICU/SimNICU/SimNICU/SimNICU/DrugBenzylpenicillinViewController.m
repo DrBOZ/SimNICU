@@ -7,7 +7,13 @@
 //
 
 #import "DrugBenzylpenicillinViewController.h"
+#import "DrugDatabase.h"
+#import "DrugCategory.h"
+#import "DrugSection.h"
 #import "AppDelegate.h"
+#import "DrugInfo.h"
+#import "Drug.h"
+
 
 @interface DrugBenzylpenicillinViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -15,6 +21,10 @@
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UIWebView *webView0;
 @property (nonatomic, strong) UIWebView *webView1;
+@property (nonatomic, strong) UIWebView *webView2;
+
+@property (nonatomic, strong) DrugCategory *drugCategory;
+@property (nonatomic, strong) NSMutableArray *drugSections;
 
 @end
 
@@ -109,6 +119,7 @@
         self.myTableView = nil;
         self.webView0 = nil;
         self.webView1 = nil;
+        self.webView2 = nil;
         self.swipeGestureRecognizer = nil;
     }
 }
@@ -123,6 +134,7 @@
     self.myTableView = nil;
     self.webView0 = nil;
     self.webView1 = nil;
+    self.webView2 = nil;
     self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
@@ -137,7 +149,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    int sections = 1;
+    
+    
+    return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -157,6 +172,42 @@
             
         case 1:
             header = @"Indications";
+            break;
+            
+        case 2:
+            header = @"Presentation";
+            break;
+            
+        case 3:
+            header = @"Dose / Route";
+            break;
+            
+        case 4:
+            header = @"Preparation / Administration";
+            break;
+            
+        case 5:
+            header = @"Incompatibilities";
+            break;
+            
+        case 6:
+            header = @"Contraindications / Warnings";
+            break;
+            
+        case 7:
+            header = @"Side effects";
+            break;
+            
+        case 8:
+            header = @"Monitoring";
+            break;
+            
+        case 9:
+            header = @"Licence status";
+            break;
+            
+        case 10:
+            header = @"References";
             break;
             
         default:
@@ -197,6 +248,10 @@
             
         case 1:
             height = 80.0f;
+            break;
+            
+        case 2:
+            height = 40.0f;
             break;
             
         default:
@@ -282,6 +337,44 @@
             [self.webView1 loadRequest:URLReq];
             
             [cell addSubview:self.webView1];
+        }
+        
+        returnCell = cell;
+    }
+    else if(indexPath.section == 2)
+    {
+        static NSString *CellIdentifier = @"textView2";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor whiteColor];
+            
+            self.webView2 = [[UIWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 135.0f)];
+            self.webView2.backgroundColor = [UIColor clearColor];
+            self.webView2.opaque = NO;
+            self.webView2.scalesPageToFit = NO;
+            
+            if ([self.webView2 respondsToSelector:@selector(scrollView)])
+            {
+                self.webView2.scrollView.scrollEnabled = NO;
+            }
+            else
+            {
+                for (id subview in self.webView2.subviews)
+                    if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+                        ((UIScrollView *)subview).scrollEnabled = NO;
+            }
+            
+            self.webView1.dataDetectorTypes = UIDataDetectorTypeNone;
+            
+            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"benzylpenicillinPresentation" ofType:@"html"] isDirectory:NO];
+            NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
+            [self.webView2 loadRequest:URLReq];
+            
+            [cell addSubview:self.webView2];
         }
         
         returnCell = cell;
