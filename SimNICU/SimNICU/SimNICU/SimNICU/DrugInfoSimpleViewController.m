@@ -7,6 +7,7 @@
 //
 
 #import "DrugInfoSimpleViewController.h"
+#import "SimNICUWebView.h"
 #import "DrugDatabase.h"
 #import "DrugCategory.h"
 #import "DrugSection.h"
@@ -18,18 +19,17 @@
 @interface DrugInfoSimpleViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) UIWebView *webView0;
-@property (nonatomic, strong) UIWebView *webView1;
-@property (nonatomic, strong) UIWebView *webView2;
-
-@property (nonatomic, strong) DrugCategory *drugCategory;
 @property (nonatomic, strong) NSMutableArray *drugSections;
+@property (nonatomic, strong) DrugCategory *drugCategory;
+@property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) Drug *drug;
 
 @end
 
 @implementation DrugInfoSimpleViewController
+{
+    NSMutableArray *webViewSections;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -115,6 +115,28 @@
             }
         }
     }
+    
+    // Setup section array
+    webViewSections = [[NSMutableArray alloc] initWithCapacity:[self.drug.info count]];
+    
+    NSMutableArray *webViewRows;
+    SimNICUWebView *webView;
+    DrugInfo *info;
+    
+    // cycle through all the sections in self.drug.info
+    for (info in self.drug.info)
+    {
+        webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
+        webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, [info.heightForRow floatValue])];
+        webView.header = info.header;
+        webView.resource = info.htmlFile;
+        webView.cellIdentifier = info.header;
+        webView.heightForRowAtIndexPath = info.heightForRow;
+        [self formatAndLoadSimNICUWebView:webView];
+        [webViewRows addObject:webView];
+        
+        [webViewSections addObject:webViewRows];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,9 +150,6 @@
         NSLog(@"DrugInfoSimpleViewController unloaded properties");
         
         self.myTableView = nil;
-        self.webView0 = nil;
-        self.webView1 = nil;
-        self.webView2 = nil;
         self.swipeGestureRecognizer = nil;
     }
 }
@@ -143,9 +162,6 @@
 - (void)viewDidUnload
 {
     self.myTableView = nil;
-    self.webView0 = nil;
-    self.webView1 = nil;
-    self.webView2 = nil;
     self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
@@ -160,23 +176,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.drug.info count];
+    return [webViewSections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [webViewSections[section] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *header;
-    
-    DrugInfo *info = [self.drug.info objectAtIndex:section];
-    
-    header = info.header;
-    
-    return header;
+    return [[webViewSections[section] objectAtIndex:0] header];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -200,135 +210,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height;
-    
-    DrugInfo *info = [self.drug.info objectAtIndex:indexPath.section];
-    
-    height = [info.heightForRow floatValue];
-    
-    return height;
+    return [[[webViewSections[indexPath.section] objectAtIndex:indexPath.row] heightForRowAtIndexPath] floatValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *returnCell = nil;
+    NSString *cellIdentifier = [[webViewSections[indexPath.section] objectAtIndex:indexPath.row] cellIdentifier];
     
-    if(indexPath.section == 0)
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(!cell)
     {
-        static NSString *CellIdentifier = @"textView0";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if(cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.backgroundColor = [UIColor whiteColor];
-            
-            self.webView0 = [[UIWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 245.0f)];
-            self.webView0.backgroundColor = [UIColor clearColor];
-            self.webView0.opaque = NO;
-            self.webView0.scalesPageToFit = NO;
-            
-            if ([self.webView0 respondsToSelector:@selector(scrollView)])
-            {
-                self.webView0.scrollView.scrollEnabled = NO;
-            }
-            else
-            {
-                for (id subview in self.webView0.subviews)
-                    if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-                        ((UIScrollView *)subview).scrollEnabled = NO;
-            }
-            
-            self.webView0.dataDetectorTypes = UIDataDetectorTypeNone;
-            
-            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"benzylpenicillinPharmacology" ofType:@"html"] isDirectory:NO];
-            NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
-            [self.webView0 loadRequest:URLReq];
-            
-            [cell addSubview:self.webView0];
-        }
-        
-        returnCell = cell;
-    }
-    else if(indexPath.section == 1)
-    {
-        static NSString *CellIdentifier = @"textView1";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if(cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.backgroundColor = [UIColor whiteColor];
-            
-            self.webView1 = [[UIWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 135.0f)];
-            self.webView1.backgroundColor = [UIColor clearColor];
-            self.webView1.opaque = NO;
-            self.webView1.scalesPageToFit = NO;
-            
-            if ([self.webView1 respondsToSelector:@selector(scrollView)])
-            {
-                self.webView1.scrollView.scrollEnabled = NO;
-            }
-            else
-            {
-                for (id subview in self.webView1.subviews)
-                    if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-                        ((UIScrollView *)subview).scrollEnabled = NO;
-            }
-            
-            self.webView1.dataDetectorTypes = UIDataDetectorTypeNone;
-            
-            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"benzylpenicillinIndications" ofType:@"html"] isDirectory:NO];
-            NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
-            [self.webView1 loadRequest:URLReq];
-            
-            [cell addSubview:self.webView1];
-        }
-        
-        returnCell = cell;
-    }
-    else if(indexPath.section == 2)
-    {
-        static NSString *CellIdentifier = @"textView2";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if(cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.backgroundColor = [UIColor whiteColor];
-            
-            self.webView2 = [[UIWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 135.0f)];
-            self.webView2.backgroundColor = [UIColor clearColor];
-            self.webView2.opaque = NO;
-            self.webView2.scalesPageToFit = NO;
-            
-            if ([self.webView2 respondsToSelector:@selector(scrollView)])
-            {
-                self.webView2.scrollView.scrollEnabled = NO;
-            }
-            else
-            {
-                for (id subview in self.webView2.subviews)
-                    if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-                        ((UIScrollView *)subview).scrollEnabled = NO;
-            }
-            
-            self.webView1.dataDetectorTypes = UIDataDetectorTypeNone;
-            
-            NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"benzylpenicillinPresentation" ofType:@"html"] isDirectory:NO];
-            NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
-            [self.webView2 loadRequest:URLReq];
-            
-            [cell addSubview:self.webView2];
-        }
-        
-        returnCell = cell;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor whiteColor];
     }
     
-    return returnCell;
+    [cell addSubview:[webViewSections[indexPath.section] objectAtIndex:indexPath.row]];
+    
+    return cell;
 }
 
 #pragma mark - Table view delegate
@@ -336,6 +236,32 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+- (SimNICUWebView *)formatAndLoadSimNICUWebView:(SimNICUWebView *)webView
+{
+    webView.backgroundColor = [UIColor clearColor];
+    webView.opaque = NO;
+    webView.scalesPageToFit = NO;
+    
+    if ([webView respondsToSelector:@selector(scrollView)]) {
+        webView.scrollView.scrollEnabled = NO;
+    }
+    else
+    {
+        for (id subview in webView.subviews)
+            if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+                ((UIScrollView *)subview).scrollEnabled = NO;
+    }
+    
+    webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    
+    NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:webView.resource ofType:@"html"] isDirectory:NO];
+    NSMutableURLRequest *URLReq = [NSMutableURLRequest requestWithURL:htmlURL];
+    [URLReq setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+    [webView loadRequest:URLReq];
+    
+    return webView;
 }
 
 @end

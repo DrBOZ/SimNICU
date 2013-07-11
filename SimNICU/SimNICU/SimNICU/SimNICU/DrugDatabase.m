@@ -27,7 +27,7 @@
         NSMutableArray *drugInfoSections;
         DrugInfo *drugInfoSection;
       
-#pragma mark - UK Drugs
+#pragma mark - UK DRUGS
         
         drugCategory = [[DrugCategory alloc] init];
         drugCategory.name = @"Drugs";
@@ -35,50 +35,62 @@
         // create array
         NSMutableArray *drugs = [[NSMutableArray alloc] initWithCapacity:10];
         
+#pragma mark Abidec
         drug = [[Drug alloc] init];
         drug.name = @"Abidec";
         [drugs addObject:drug];
         
+#pragma mark Aciclovir
         drug = [[Drug alloc] init];
         drug.name = @"Aciclovir";
         [drugs addObject:drug];
         
+#pragma mark Adenosine
         drug = [[Drug alloc] init];
         drug.name = @"Adenosine";
         [drugs addObject:drug];
         
+#pragma mark Adrenaline
         drug = [[Drug alloc] init];
         drug.name = @"Adrenaline";
         [drugs addObject:drug];
         
+#pragma mark Alprostadil
         drug = [[Drug alloc] init];
         drug.name = @"Alprostadil";
         [drugs addObject:drug];
         
+#pragma mark Amoxycillin
         drug = [[Drug alloc] init];
         drug.name = @"Amoxycillin";
         [drugs addObject:drug];
         
+#pragma mark Amphotericin B (liposomal)
         drug = [[Drug alloc] init];
         drug.name = @"Amphotericin B (liposomal)";
         [drugs addObject:drug];
         
+#pragma mark Ampicillin
         drug = [[Drug alloc] init];
         drug.name = @"Ampicillin";
         [drugs addObject:drug];
         
+#pragma mark Atracurium
         drug = [[Drug alloc] init];
         drug.name = @"Atracurium";
         [drugs addObject:drug];
         
+#pragma mark Atropine
         drug = [[Drug alloc] init];
         drug.name = @"Atropine";
         [drugs addObject:drug];
         
+#pragma mark BCG
         drug = [[Drug alloc] init];
         drug.name = @"BCG";
         [drugs addObject:drug];
         
+#pragma mark Benzylpenicillin
         drug = [[Drug alloc] init];
         drug.name = @"Benzylpenicillin";
         
@@ -104,328 +116,453 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:40.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPresentation";
         [drugInfoSections addObject:drugInfoSection];
+        
+        // section 3
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:3];
+        drugInfoSection.header = @"Dose";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:40.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinDose";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 4
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:4];
+        drugInfoSection.header = @"Preparation";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:310.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinPreparation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 5
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:5];
+        drugInfoSection.header = @"Incompatibilities";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:125.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinIncompatibilities";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 6
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:6];
+        drugInfoSection.header = @"Contraindications";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:125.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinContraindications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 7
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:7];
+        drugInfoSection.header = @"Side effects";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:230.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinSideEffects";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 8
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:8];
+        drugInfoSection.header = @"Monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 9
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:9];
+        drugInfoSection.header = @"Licence status";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinLicenceStatus";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 10
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:10];
+        drugInfoSection.header = @"References";
+        drugInfoSection.heightForRow = [NSNumber numberWithInt:220.0f];
+        drugInfoSection.htmlFile = @"benzylpenicillinReferences";
+        [drugInfoSections addObject:drugInfoSection];
+        
         drug.info = drugInfoSections;
         [drugs addObject:drug];
         
+#pragma mark Breast milk fortifier
         drug = [[Drug alloc] init];
         drug.name = @"Breast milk fortifier";
         [drugs addObject:drug];
         
+#pragma mark Caffeine
         drug = [[Drug alloc] init];
         drug.name = @"Caffeine";
         [drugs addObject:drug];
         
+#pragma mark Calcium chloride
         drug = [[Drug alloc] init];
         drug.name = @"Calcium chloride";
         [drugs addObject:drug];
         
+#pragma mark Calcium gluconate
         drug = [[Drug alloc] init];
         drug.name = @"Calcium gluconate";
         [drugs addObject:drug];
         
+#pragma mark Captopril
         drug = [[Drug alloc] init];
         drug.name = @"Captopril";
         [drugs addObject:drug];
         
+#pragma mark Caspofungin
         drug = [[Drug alloc] init];
         drug.name = @"Caspofungin";
         [drugs addObject:drug];
         
+#pragma mark Cefotaxime
         drug = [[Drug alloc] init];
         drug.name = @"Cefotaxime";
         [drugs addObject:drug];
         
+#pragma mark Ceftazidime
         drug = [[Drug alloc] init];
         drug.name = @"Ceftazidime";
         [drugs addObject:drug];
         
+#pragma mark Cefuroxime
         drug = [[Drug alloc] init];
         drug.name = @"Cefuroxime";
         [drugs addObject:drug];
         
+#pragma mark Chloral hydrate
         drug = [[Drug alloc] init];
         drug.name = @"Chloral hydrate";
         [drugs addObject:drug];
         
+#pragma mark Ciprofloxacin
         drug = [[Drug alloc] init];
         drug.name = @"Ciprofloxacin";
         [drugs addObject:drug];
         
+#pragma mark Co-amoxyclav (Augmentin)
         drug = [[Drug alloc] init];
         drug.name = @"Co-amoxyclav (Augmentin)";
         [drugs addObject:drug];
         
+#pragma mark Daktarin
         drug = [[Drug alloc] init];
         drug.name = @"Daktarin";
         [drugs addObject:drug];
         
+#pragma mark Dalivit
         drug = [[Drug alloc] init];
         drug.name = @"Dalivit";
         [drugs addObject:drug];
         
+#pragma mark Dexamethasone
         drug = [[Drug alloc] init];
         drug.name = @"Dexamethasone";
         [drugs addObject:drug];
         
+#pragma mark Diamorphine
         drug = [[Drug alloc] init];
         drug.name = @"Diamorphine";
         [drugs addObject:drug];
         
+#pragma mark Digoxin
         drug = [[Drug alloc] init];
         drug.name = @"Digoxin";
         [drugs addObject:drug];
-        
+
+#pragma mark Dobutamine
         drug = [[Drug alloc] init];
         drug.name = @"Dobutamine";
         [drugs addObject:drug];
         
+#pragma mark Dopamine
         drug = [[Drug alloc] init];
         drug.name = @"Dopamine";
         [drugs addObject:drug];
-        
+    
+#pragma mark Domperidone
         drug = [[Drug alloc] init];
         drug.name = @"Domperidone";
         [drugs addObject:drug];
         
+#pragma mark Erthyropoetin
         drug = [[Drug alloc] init];
         drug.name = @"Erythropoetin";
         [drugs addObject:drug];
         
+#pragma mark Fentanyl
         drug = [[Drug alloc] init];
         drug.name = @"Fentanyl";
         [drugs addObject:drug];
         
+#pragma mark Flucloxacillin
         drug = [[Drug alloc] init];
         drug.name = @"Flucloxacillin";
         [drugs addObject:drug];
         
+#pragma mark Fluconazole
         drug = [[Drug alloc] init];
         drug.name = @"Fluconazole";
         [drugs addObject:drug];
         
+#pragma mark Flucytosine
         drug = [[Drug alloc] init];
         drug.name = @"Flucytosine";
         [drugs addObject:drug];
         
+#pragma mark Folic acid
         drug = [[Drug alloc] init];
         drug.name = @"Folic acid";
         [drugs addObject:drug];
         
+#pragma mark Ganciclovir
         drug = [[Drug alloc] init];
         drug.name = @"Ganciclovir";
         [drugs addObject:drug];
         
+#pragma mark Gaviscon
         drug = [[Drug alloc] init];
         drug.name = @"Gaviscon";
         [drugs addObject:drug];
         
+#pragma mark Gentamicin
         drug = [[Drug alloc] init];
         drug.name = @"Gentamicin";
         [drugs addObject:drug];
         
+#pragma mark Glucagon
         drug = [[Drug alloc] init];
         drug.name = @"Glucagon";
         [drugs addObject:drug];
         
+#pragma mark Hydrocortisone
         drug = [[Drug alloc] init];
         drug.name = @"Hydrocortisone";
         [drugs addObject:drug];
         
+#pragma mark Ibuprofen
         drug = [[Drug alloc] init];
         drug.name = @"Ibuprofen";
         [drugs addObject:drug];
         
+#pragma mark Immunoglobulin
         drug = [[Drug alloc] init];
         drug.name = @"Immunoglobulin";
         [drugs addObject:drug];
         
+#pragma mark Indomethacin
         drug = [[Drug alloc] init];
         drug.name = @"Indomethacin";
         [drugs addObject:drug];
         
+#pragma mark Insulin
         drug = [[Drug alloc] init];
         drug.name = @"Insulin";
         [drugs addObject:drug];
         
+#pragma mark Lignocaine
         drug = [[Drug alloc] init];
         drug.name = @"Lignocaine";
         [drugs addObject:drug];
         
+#pragma mark Lorazepam
         drug = [[Drug alloc] init];
         drug.name = @"Lorazepam";
         [drugs addObject:drug];
         
+#pragma mark Magnesium sulphate
         drug = [[Drug alloc] init];
         drug.name = @"Magnesium sulphate";
         [drugs addObject:drug];
         
+#pragma mark Meropenem
         drug = [[Drug alloc] init];
         drug.name = @"Meropenem";
         [drugs addObject:drug];
         
+#pragma mark Midazolam
         drug = [[Drug alloc] init];
         drug.name = @"Midazolam";
         [drugs addObject:drug];
         
-        drug = [[Drug alloc] init];
-        drug.name = @"Milrinone";
-        [drugs addObject:drug];
-        
+#pragma mark Morphine
         drug = [[Drug alloc] init];
         drug.name = @"Morphine";
         [drugs addObject:drug];
         
+#pragma mark Naloxone
         drug = [[Drug alloc] init];
         drug.name = @"Naloxone";
         [drugs addObject:drug];
         
+#pragma mark Nystatin
         drug = [[Drug alloc] init];
         drug.name = @"Nystatin";
         [drugs addObject:drug];
         
+#pragma mark Nitrous oxide
         drug = [[Drug alloc] init];
         drug.name = @"Nitrous oxide";
         [drugs addObject:drug];
         
+#pragma mark Omeprazole
         drug = [[Drug alloc] init];
         drug.name = @"Omeprazole";
         [drugs addObject:drug];
         
+#pragma mark Palivizumab
         drug = [[Drug alloc] init];
         drug.name = @"Palivizumab";
         [drugs addObject:drug];
         
+#pragma mark Pancuronium
         drug = [[Drug alloc] init];
         drug.name = @"Pancuronium";
         [drugs addObject:drug];
         
+#pragma mark Paracetamol
         drug = [[Drug alloc] init];
         drug.name = @"Paracetamol";
         [drugs addObject:drug];
         
+#pragma mark Paraldehyde
         drug = [[Drug alloc] init];
         drug.name = @"Paraldehyde";
         [drugs addObject:drug];
         
+#pragma mark Phenobarbitone
         drug = [[Drug alloc] init];
         drug.name = @"Phenobarbitone";
         [drugs addObject:drug];
         
-        drug = [[Drug alloc] init];
-        drug.name = @"Piperacillin";
-        [drugs addObject:drug];
-        
+#pragma mark Potassium acid phosphate
         drug = [[Drug alloc] init];
         drug.name = @"Potassium acid phosphate";
         [drugs addObject:drug];
         
+#pragma mark Potassium chloride
         drug = [[Drug alloc] init];
         drug.name = @"Potassium chloride";
         [drugs addObject:drug];
         
+#pragma mark Pyridoxine
         drug = [[Drug alloc] init];
         drug.name = @"Pyridoxine";
         [drugs addObject:drug];
         
+#pragma mark Ranitidine
         drug = [[Drug alloc] init];
         drug.name = @"Ranitidine";
         [drugs addObject:drug];
         
+#pragma mark Salbutamol
         drug = [[Drug alloc] init];
         drug.name = @"Salbutamol";
         [drugs addObject:drug];
         
+#pragma mark Sildenafil
         drug = [[Drug alloc] init];
         drug.name = @"Sildenafil";
         [drugs addObject:drug];
         
+#pragma mark Sodium benzoate
         drug = [[Drug alloc] init];
         drug.name = @"Sodium benzoate";
         [drugs addObject:drug];
         
+#pragma mark Sodium bicarbonate
         drug = [[Drug alloc] init];
         drug.name = @"Sodium bicarbonate";
         [drugs addObject:drug];
         
+#pragma mark Sodium phenylbutyrate
         drug = [[Drug alloc] init];
         drug.name = @"Sodium phenylbutyrate";
         [drugs addObject:drug];
         
+#pragma mark Sodium chloride
         drug = [[Drug alloc] init];
         drug.name = @"Sodium chloride";
         [drugs addObject:drug];
         
+#pragma mark Sodium valproate
         drug = [[Drug alloc] init];
         drug.name = @"Sodium valproate";
         [drugs addObject:drug];
         
+#pragma mark Sucrose
         drug = [[Drug alloc] init];
         drug.name = @"Sucrose";
         [drugs addObject:drug];
         
+#pragma mark Sytron
         drug = [[Drug alloc] init];
         drug.name = @"Sytron";
         [drugs addObject:drug];
         
+#pragma mark Tazocin
         drug = [[Drug alloc] init];
         drug.name = @"Tazocin";
         [drugs addObject:drug];
         
+#pragma mark Teicoplanin
         drug = [[Drug alloc] init];
         drug.name = @"Teicoplanin";
         [drugs addObject:drug];
         
+#pragma mark THAM
         drug = [[Drug alloc] init];
         drug.name = @"THAM";
         [drugs addObject:drug];
         
+#pragma mark Thiopentone
         drug = [[Drug alloc] init];
         drug.name = @"Thiopentone";
         [drugs addObject:drug];
         
+#pragma mark Tobramycin
         drug = [[Drug alloc] init];
         drug.name = @"Tobramycin";
         [drugs addObject:drug];
         
+#pragma mark Trimethoprim
         drug = [[Drug alloc] init];
         drug.name = @"Trimethoprim";
         [drugs addObject:drug];
         
+#pragma mark Thyroxine
         drug = [[Drug alloc] init];
         drug.name = @"Thyroxine (levothyroxine)";
         [drugs addObject:drug];
         
-        drug = [[Drug alloc] init];
-        drug.name = @"Urokinase";
-        [drugs addObject:drug];
-        
+#pragma mark Ursodeoxycholic acid
         drug = [[Drug alloc] init];
         drug.name = @"Ursodeoxycholic acid";
         [drugs addObject:drug];
         
+#pragma mark Vancomycin
         drug = [[Drug alloc] init];
         drug.name = @"Vancomycin";
         [drugs addObject:drug];
         
+#pragma mark Vecuronium
         drug = [[Drug alloc] init];
         drug.name = @"Vecuronium";
         [drugs addObject:drug];
         
+#pragma mark Vitamin D
         drug = [[Drug alloc] init];
         drug.name = @"Vitamin D";
         [drugs addObject:drug];
         
+#pragma mark Vitamin K
         drug = [[Drug alloc] init];
         drug.name = @"Vitamin K";
         [drugs addObject:drug];
         
-        drug = [[Drug alloc] init];
-        drug.name = @"Warfarin";
-        [drugs addObject:drug];
-        
+#pragma mark Zidovudine
         drug = [[Drug alloc] init];
         drug.name = @"Zidovudine";
         [drugs addObject:drug];
