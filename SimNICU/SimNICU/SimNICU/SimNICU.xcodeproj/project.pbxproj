@@ -26,6 +26,30 @@
 		5C0E05F5178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05F3178EF87C00768739 /* benzylpenicillinPresentation.html */; };
 		5C0E05F8178EFDE300768739 /* DrugInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E05F7178EFDE300768739 /* DrugInfo.m */; };
 		5C0E05F9178EFDE300768739 /* DrugInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0E05F7178EFDE300768739 /* DrugInfo.m */; };
+		5C0E05FC178F51AA00768739 /* adrenalinePharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05FB178F51AA00768739 /* adrenalinePharmacology.html */; };
+		5C0E05FD178F51AA00768739 /* adrenalinePharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05FB178F51AA00768739 /* adrenalinePharmacology.html */; };
+		5C0E05FF178F51BC00768739 /* adrenalineIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05FE178F51BC00768739 /* adrenalineIndications.html */; };
+		5C0E0600178F51BC00768739 /* adrenalineIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05FE178F51BC00768739 /* adrenalineIndications.html */; };
+		5C0E0602178F51CB00768739 /* adrenalinePresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0601178F51CB00768739 /* adrenalinePresentation.html */; };
+		5C0E0603178F51CB00768739 /* adrenalinePresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0601178F51CB00768739 /* adrenalinePresentation.html */; };
+		5C0E0605178F51D900768739 /* adrenalineDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0604178F51D900768739 /* adrenalineDose.html */; };
+		5C0E0606178F51D900768739 /* adrenalineDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0604178F51D900768739 /* adrenalineDose.html */; };
+		5C0E0608178F51E800768739 /* adrenalinePreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0607178F51E800768739 /* adrenalinePreparation.html */; };
+		5C0E0609178F51E800768739 /* adrenalinePreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0607178F51E800768739 /* adrenalinePreparation.html */; };
+		5C0E060B178F51FC00768739 /* adrenalineStability.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E060A178F51FC00768739 /* adrenalineStability.html */; };
+		5C0E060C178F51FC00768739 /* adrenalineStability.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E060A178F51FC00768739 /* adrenalineStability.html */; };
+		5C0E060E178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E060D178F521200768739 /* adrenalineYSiteCompatibilities.html */; };
+		5C0E060F178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E060D178F521200768739 /* adrenalineYSiteCompatibilities.html */; };
+		5C0E0611178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0610178F522700768739 /* adrenalineYSiteIncompatibilities.html */; };
+		5C0E0612178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0610178F522700768739 /* adrenalineYSiteIncompatibilities.html */; };
+		5C0E0614178F523900768739 /* adrenalineSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0613178F523900768739 /* adrenalineSideEffects.html */; };
+		5C0E0615178F523900768739 /* adrenalineSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0613178F523900768739 /* adrenalineSideEffects.html */; };
+		5C0E0617178F524700768739 /* adrenalineMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0616178F524600768739 /* adrenalineMonitoring.html */; };
+		5C0E0618178F524700768739 /* adrenalineMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0616178F524600768739 /* adrenalineMonitoring.html */; };
+		5C0E061A178F525700768739 /* adrenalineLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0619178F525700768739 /* adrenalineLicenceStatus.html */; };
+		5C0E061B178F525700768739 /* adrenalineLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0619178F525700768739 /* adrenalineLicenceStatus.html */; };
+		5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E061C178F526600768739 /* adrenalineReferences.html */; };
+		5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E061C178F526600768739 /* adrenalineReferences.html */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
@@ -594,6 +618,18 @@
 		5C0E05F3178EF87C00768739 /* benzylpenicillinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPresentation.html; sourceTree = "<group>"; };
 		5C0E05F6178EFDE200768739 /* DrugInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugInfo.h; sourceTree = "<group>"; };
 		5C0E05F7178EFDE300768739 /* DrugInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugInfo.m; sourceTree = "<group>"; };
+		5C0E05FB178F51AA00768739 /* adrenalinePharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalinePharmacology.html; sourceTree = "<group>"; };
+		5C0E05FE178F51BC00768739 /* adrenalineIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineIndications.html; sourceTree = "<group>"; };
+		5C0E0601178F51CB00768739 /* adrenalinePresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalinePresentation.html; sourceTree = "<group>"; };
+		5C0E0604178F51D900768739 /* adrenalineDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineDose.html; sourceTree = "<group>"; };
+		5C0E0607178F51E800768739 /* adrenalinePreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalinePreparation.html; sourceTree = "<group>"; };
+		5C0E060A178F51FC00768739 /* adrenalineStability.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineStability.html; sourceTree = "<group>"; };
+		5C0E060D178F521200768739 /* adrenalineYSiteCompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineYSiteCompatibilities.html; sourceTree = "<group>"; };
+		5C0E0610178F522700768739 /* adrenalineYSiteIncompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineYSiteIncompatibilities.html; sourceTree = "<group>"; };
+		5C0E0613178F523900768739 /* adrenalineSideEffects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineSideEffects.html; sourceTree = "<group>"; };
+		5C0E0616178F524600768739 /* adrenalineMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineMonitoring.html; sourceTree = "<group>"; };
+		5C0E0619178F525700768739 /* adrenalineLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineLicenceStatus.html; sourceTree = "<group>"; };
+		5C0E061C178F526600768739 /* adrenalineReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineReferences.html; sourceTree = "<group>"; };
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
@@ -1090,6 +1126,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0E05FA178F518C00768739 /* Adrenaline */ = {
+			isa = PBXGroup;
+			children = (
+				5C0E05FB178F51AA00768739 /* adrenalinePharmacology.html */,
+				5C0E05FE178F51BC00768739 /* adrenalineIndications.html */,
+				5C0E0601178F51CB00768739 /* adrenalinePresentation.html */,
+				5C0E0604178F51D900768739 /* adrenalineDose.html */,
+				5C0E0607178F51E800768739 /* adrenalinePreparation.html */,
+				5C0E060A178F51FC00768739 /* adrenalineStability.html */,
+				5C0E060D178F521200768739 /* adrenalineYSiteCompatibilities.html */,
+				5C0E0610178F522700768739 /* adrenalineYSiteIncompatibilities.html */,
+				5C0E0613178F523900768739 /* adrenalineSideEffects.html */,
+				5C0E0616178F524600768739 /* adrenalineMonitoring.html */,
+				5C0E0619178F525700768739 /* adrenalineLicenceStatus.html */,
+				5C0E061C178F526600768739 /* adrenalineReferences.html */,
+			);
+			name = Adrenaline;
+			sourceTree = "<group>";
+		};
 		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
 			isa = PBXGroup;
 			children = (
@@ -1157,6 +1212,7 @@
 				5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
+				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
 			);
 			name = Drugs;
@@ -2265,6 +2321,18 @@
 				5C0E05EE178EF83400768739 /* benzylpenicillinPreparation.html in Resources */,
 				5C0E05F1178EF86B00768739 /* benzylpenicillinDose.html in Resources */,
 				5C0E05F4178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */,
+				5C0E05FC178F51AA00768739 /* adrenalinePharmacology.html in Resources */,
+				5C0E05FF178F51BC00768739 /* adrenalineIndications.html in Resources */,
+				5C0E0602178F51CB00768739 /* adrenalinePresentation.html in Resources */,
+				5C0E0605178F51D900768739 /* adrenalineDose.html in Resources */,
+				5C0E0608178F51E800768739 /* adrenalinePreparation.html in Resources */,
+				5C0E060B178F51FC00768739 /* adrenalineStability.html in Resources */,
+				5C0E060E178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
+				5C0E0611178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */,
+				5C0E0614178F523900768739 /* adrenalineSideEffects.html in Resources */,
+				5C0E0617178F524700768739 /* adrenalineMonitoring.html in Resources */,
+				5C0E061A178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
+				5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2424,6 +2492,18 @@
 				5C0E05EF178EF83400768739 /* benzylpenicillinPreparation.html in Resources */,
 				5C0E05F2178EF86B00768739 /* benzylpenicillinDose.html in Resources */,
 				5C0E05F5178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */,
+				5C0E05FD178F51AA00768739 /* adrenalinePharmacology.html in Resources */,
+				5C0E0600178F51BC00768739 /* adrenalineIndications.html in Resources */,
+				5C0E0603178F51CB00768739 /* adrenalinePresentation.html in Resources */,
+				5C0E0606178F51D900768739 /* adrenalineDose.html in Resources */,
+				5C0E0609178F51E800768739 /* adrenalinePreparation.html in Resources */,
+				5C0E060C178F51FC00768739 /* adrenalineStability.html in Resources */,
+				5C0E060F178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
+				5C0E0612178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */,
+				5C0E0615178F523900768739 /* adrenalineSideEffects.html in Resources */,
+				5C0E0618178F524700768739 /* adrenalineMonitoring.html in Resources */,
+				5C0E061B178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
+				5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
