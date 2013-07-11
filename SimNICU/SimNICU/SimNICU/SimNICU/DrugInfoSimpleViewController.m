@@ -94,17 +94,22 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     
-    NSLog(@"DrugBenzylpenicillinViewController didReceiveMemoryWarning");
+    NSLog(@"DrugInfoSimpleViewController didReceiveMemoryWarning");
     
     if ([self isViewLoaded] && self.view.window == nil)
     {
-        NSLog(@"DrugBenzylpenicillinViewController unloaded properties");
+        NSLog(@"DrugInfoSimpleViewController unloaded properties");
         
         self.myTableView = nil;
         self.webView0 = nil;
