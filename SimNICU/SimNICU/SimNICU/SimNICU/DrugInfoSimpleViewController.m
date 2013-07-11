@@ -172,55 +172,9 @@
 {
     NSString *header;
     
-    switch (section)
-    {
-        case 0:
-            header = @"Pharmacology";
-            break;
-            
-        case 1:
-            header = @"Indications";
-            break;
-            
-        case 2:
-            header = @"Presentation";
-            break;
-            
-        case 3:
-            header = @"Dose / Route";
-            break;
-            
-        case 4:
-            header = @"Preparation / Administration";
-            break;
-            
-        case 5:
-            header = @"Incompatibilities";
-            break;
-            
-        case 6:
-            header = @"Contraindications / Warnings";
-            break;
-            
-        case 7:
-            header = @"Side effects";
-            break;
-            
-        case 8:
-            header = @"Monitoring";
-            break;
-            
-        case 9:
-            header = @"Licence status";
-            break;
-            
-        case 10:
-            header = @"References";
-            break;
-            
-        default:
-            break;
-    }
+    DrugInfo *info = [self.drug.info objectAtIndex:section];
+    
+    header = info.header;
     
     return header;
 }
@@ -246,25 +200,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height = 0.0f;
+    float height;
     
-    switch (indexPath.section)
-    {
-        case 0:
-            height = 100.0f;
-            break;
-            
-        case 1:
-            height = 80.0f;
-            break;
-            
-        case 2:
-            height = 40.0f;
-            break;
-            
-        default:
-            break;
-    }
+    DrugInfo *info = [self.drug.info objectAtIndex:indexPath.section];
+    
+    height = [info.heightForRow floatValue];
     
     return height;
 }
