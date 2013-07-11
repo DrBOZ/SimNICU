@@ -60,7 +60,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:0];
         drugInfoSection.header = @"Pharmacology";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:400.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:400.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalinePharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -68,7 +69,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:1];
         drugInfoSection.header = @"Indications";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:80.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineIndications";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -76,7 +78,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"adrenalinePresentation";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -84,7 +87,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:40.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:650.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"adrenalineDose";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -92,7 +96,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:310.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:1060.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalinePreparation";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -100,7 +105,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:5];
         drugInfoSection.header = @"Stability";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineStability";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -108,7 +114,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:6];
         drugInfoSection.header = @"Y-site Compatibilities";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:105.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineYSiteCompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -116,7 +123,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:7];
         drugInfoSection.header = @"Y-site Incompatibilities";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:60.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineYSiteIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -124,7 +132,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:8];
         drugInfoSection.header = @"Side effects";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:230.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:170.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineSideEffects";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -132,7 +141,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:9];
         drugInfoSection.header = @"Monitoring";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:165.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:165.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -140,7 +150,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:10];
         drugInfoSection.header = @"Licence status";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineLicenceStatus";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -148,7 +159,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:11];
         drugInfoSection.header = @"References";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:220.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineReferences";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -200,7 +212,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:0];
         drugInfoSection.header = @"Pharmacology";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:100.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -208,7 +221,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:1];
         drugInfoSection.header = @"Indications";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:80.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinIndications";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -216,7 +230,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPresentation";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -224,7 +239,7 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:40.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:40.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinDose";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -232,7 +247,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:310.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPreparation";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -240,7 +256,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:5];
         drugInfoSection.header = @"Incompatibilities";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:125.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -248,7 +265,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:6];
         drugInfoSection.header = @"Contraindications";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:125.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinContraindications";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -256,7 +274,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:7];
         drugInfoSection.header = @"Side effects";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:230.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:230.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinSideEffects";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -264,7 +283,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:8];
         drugInfoSection.header = @"Monitoring";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -272,7 +292,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:9];
         drugInfoSection.header = @"Licence status";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinLicenceStatus";
         [drugInfoSections addObject:drugInfoSection];
         
@@ -280,7 +301,8 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:10];
         drugInfoSection.header = @"References";
-        drugInfoSection.heightForRow = [NSNumber numberWithInt:220.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinReferences";
         [drugInfoSections addObject:drugInfoSection];
         

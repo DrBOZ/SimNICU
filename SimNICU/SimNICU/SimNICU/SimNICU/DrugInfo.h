@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSNumber *section;
 @property (nonatomic, strong) NSString *header;
 @property (nonatomic, strong) NSNumber *heightForRow;
+@property (nonatomic, strong) NSNumber *inset;
 @property (nonatomic, strong) NSString *htmlFile;
 
 @end

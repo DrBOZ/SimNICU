@@ -127,7 +127,7 @@
     for (info in self.drug.info)
     {
         webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-        webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, [info.heightForRow floatValue])];
+        webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake([info.inset floatValue], 0.0f, 300.0f, [info.heightForRow floatValue])];
         webView.header = info.header;
         webView.resource = info.htmlFile;
         webView.cellIdentifier = info.header;
