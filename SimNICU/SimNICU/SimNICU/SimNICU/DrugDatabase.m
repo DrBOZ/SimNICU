@@ -107,7 +107,7 @@
         drugInfoSection.heightForRow = [NSNumber numberWithInt:40.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPresentation";
         [drugInfoSections addObject:drugInfoSection];
-        
+        drug.info = drugInfoSections;
         [drugs addObject:drug];
         
         drug = [[Drug alloc] init];

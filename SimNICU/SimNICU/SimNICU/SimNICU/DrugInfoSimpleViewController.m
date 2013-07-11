@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) DrugCategory *drugCategory;
 @property (nonatomic, strong) NSMutableArray *drugSections;
+@property (nonatomic, strong) Drug *drug;
 
 @end
 
@@ -95,10 +96,25 @@
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     
+    // cycle through drug database and find current drugCategory
     
+    DrugCategory *drugCategory;
     
-    
-    
+    for (drugCategory in appDelegate.drugDatabase.drugCategories)
+    {
+        if ([drugCategory.name isEqualToString:@"Drugs"]) // will have to substitue this later
+        {
+            Drug *drug;
+            
+            for(drug in drugCategory.drugs)
+            {
+                if ([drug.name isEqualToString:self.selectedDrug])
+                {
+                    self.drug = drug;
+                }
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -144,10 +160,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int sections = 1;
-    
-    
-    return sections;
+    return [self.drug.info count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
