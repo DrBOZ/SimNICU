@@ -172,9 +172,112 @@
         drug.name = @"Alprostadil";
         [drugs addObject:drug];
         
-#pragma mark Amoxycillin
+#pragma mark Amoxicillin
         drug = [[Drug alloc] init];
-        drug.name = @"Amoxycillin";
+        drug.name = @"Amoxicillin";
+        
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        // section 0
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:0];
+        drugInfoSection.header = @"Pharmacology";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinPharmacology";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 1
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:1];
+        drugInfoSection.header = @"Indications";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinIndications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 2
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:2];
+        drugInfoSection.header = @"Presentation";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinPresentation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 3
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:3];
+        drugInfoSection.header = @"Dose";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"amoxicillinDose";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 4
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:4];
+        drugInfoSection.header = @"Preparation";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinPreparation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 5
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:5];
+        drugInfoSection.header = @"Incompatibilities";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinIncompatibilities";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 6
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:6];
+        drugInfoSection.header = @"Contraindications";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:185.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinContraindications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 7
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:7];
+        drugInfoSection.header = @"Side effects";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:170.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinSideEffects";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 8
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:8];
+        drugInfoSection.header = @"Monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:165.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 9
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:9];
+        drugInfoSection.header = @"Licence status";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinLicence";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 10
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:10];
+        drugInfoSection.header = @"References";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"amoxicillinReferences";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drug.info = drugInfoSections;
         [drugs addObject:drug];
         
 #pragma mark Amphotericin B (liposomal)

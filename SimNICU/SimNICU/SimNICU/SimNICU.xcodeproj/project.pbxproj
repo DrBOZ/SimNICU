@@ -76,6 +76,28 @@
 		5C0E0643178F838600768739 /* gentamicinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0641178F838500768739 /* gentamicinReferences.html */; };
 		5C0E0645178F83A500768739 /* gentamicinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */; };
 		5C0E0646178F83A500768739 /* gentamicinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */; };
+		5C0E0649178F93F900768739 /* amoxicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0648178F93F900768739 /* amoxicillinPharmacology.html */; };
+		5C0E064A178F93F900768739 /* amoxicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0648178F93F900768739 /* amoxicillinPharmacology.html */; };
+		5C0E064C178F940B00768739 /* amoxicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E064B178F940B00768739 /* amoxicillinIndications.html */; };
+		5C0E064D178F940B00768739 /* amoxicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E064B178F940B00768739 /* amoxicillinIndications.html */; };
+		5C0E064F178F941D00768739 /* amoxicillinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E064E178F941C00768739 /* amoxicillinPresentation.html */; };
+		5C0E0650178F941D00768739 /* amoxicillinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E064E178F941C00768739 /* amoxicillinPresentation.html */; };
+		5C0E0652178F942C00768739 /* amoxicillinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0651178F942C00768739 /* amoxicillinDose.html */; };
+		5C0E0653178F942C00768739 /* amoxicillinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0651178F942C00768739 /* amoxicillinDose.html */; };
+		5C0E0655178F943C00768739 /* amoxicillinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0654178F943C00768739 /* amoxicillinPreparation.html */; };
+		5C0E0656178F943C00768739 /* amoxicillinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0654178F943C00768739 /* amoxicillinPreparation.html */; };
+		5C0E0658178F945B00768739 /* amoxicillinIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0657178F945B00768739 /* amoxicillinIncompatibilities.html */; };
+		5C0E0659178F945B00768739 /* amoxicillinIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0657178F945B00768739 /* amoxicillinIncompatibilities.html */; };
+		5C0E065B178F946F00768739 /* amoxicillinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E065A178F946F00768739 /* amoxicillinContraindications.html */; };
+		5C0E065C178F946F00768739 /* amoxicillinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E065A178F946F00768739 /* amoxicillinContraindications.html */; };
+		5C0E065E178F948000768739 /* amoxicillinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E065D178F948000768739 /* amoxicillinSideEffects.html */; };
+		5C0E065F178F948100768739 /* amoxicillinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E065D178F948000768739 /* amoxicillinSideEffects.html */; };
+		5C0E0661178F94BE00768739 /* amoxicillinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */; };
+		5C0E0662178F94BE00768739 /* amoxicillinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */; };
+		5C0E0664178F94CE00768739 /* amoxicillinLicence.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0663178F94CD00768739 /* amoxicillinLicence.html */; };
+		5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0663178F94CD00768739 /* amoxicillinLicence.html */; };
+		5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
+		5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
@@ -669,6 +691,17 @@
 		5C0E063E178F837700768739 /* gentamicinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinMonitoring.html; sourceTree = "<group>"; };
 		5C0E0641178F838500768739 /* gentamicinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinReferences.html; sourceTree = "<group>"; };
 		5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinLicenceStatus.html; sourceTree = "<group>"; };
+		5C0E0648178F93F900768739 /* amoxicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinPharmacology.html; sourceTree = "<group>"; };
+		5C0E064B178F940B00768739 /* amoxicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinIndications.html; sourceTree = "<group>"; };
+		5C0E064E178F941C00768739 /* amoxicillinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinPresentation.html; sourceTree = "<group>"; };
+		5C0E0651178F942C00768739 /* amoxicillinDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinDose.html; sourceTree = "<group>"; };
+		5C0E0654178F943C00768739 /* amoxicillinPreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinPreparation.html; sourceTree = "<group>"; };
+		5C0E0657178F945B00768739 /* amoxicillinIncompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinIncompatibilities.html; sourceTree = "<group>"; };
+		5C0E065A178F946F00768739 /* amoxicillinContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinContraindications.html; sourceTree = "<group>"; };
+		5C0E065D178F948000768739 /* amoxicillinSideEffects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinSideEffects.html; sourceTree = "<group>"; };
+		5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinMonitoring.html; sourceTree = "<group>"; };
+		5C0E0663178F94CD00768739 /* amoxicillinLicence.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinLicence.html; sourceTree = "<group>"; };
+		5C0E0666178F94DE00768739 /* amoxicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinReferences.html; sourceTree = "<group>"; };
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
@@ -1204,6 +1237,24 @@
 			name = Gentamicin;
 			sourceTree = "<group>";
 		};
+		5C0E0647178F93D400768739 /* Amoxicillin */ = {
+			isa = PBXGroup;
+			children = (
+				5C0E0648178F93F900768739 /* amoxicillinPharmacology.html */,
+				5C0E064B178F940B00768739 /* amoxicillinIndications.html */,
+				5C0E064E178F941C00768739 /* amoxicillinPresentation.html */,
+				5C0E0651178F942C00768739 /* amoxicillinDose.html */,
+				5C0E0654178F943C00768739 /* amoxicillinPreparation.html */,
+				5C0E0657178F945B00768739 /* amoxicillinIncompatibilities.html */,
+				5C0E065A178F946F00768739 /* amoxicillinContraindications.html */,
+				5C0E065D178F948000768739 /* amoxicillinSideEffects.html */,
+				5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */,
+				5C0E0663178F94CD00768739 /* amoxicillinLicence.html */,
+				5C0E0666178F94DE00768739 /* amoxicillinReferences.html */,
+			);
+			name = Amoxicillin;
+			sourceTree = "<group>";
+		};
 		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,6 +1322,7 @@
 				5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
+				5C0E0647178F93D400768739 /* Amoxicillin */,
 				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
 				5C0E061F178F814000768739 /* Gentamicin */,
@@ -2406,6 +2458,17 @@
 				5C0E063F178F837800768739 /* gentamicinMonitoring.html in Resources */,
 				5C0E0642178F838600768739 /* gentamicinReferences.html in Resources */,
 				5C0E0645178F83A500768739 /* gentamicinLicenceStatus.html in Resources */,
+				5C0E0649178F93F900768739 /* amoxicillinPharmacology.html in Resources */,
+				5C0E064C178F940B00768739 /* amoxicillinIndications.html in Resources */,
+				5C0E064F178F941D00768739 /* amoxicillinPresentation.html in Resources */,
+				5C0E0652178F942C00768739 /* amoxicillinDose.html in Resources */,
+				5C0E0655178F943C00768739 /* amoxicillinPreparation.html in Resources */,
+				5C0E0658178F945B00768739 /* amoxicillinIncompatibilities.html in Resources */,
+				5C0E065B178F946F00768739 /* amoxicillinContraindications.html in Resources */,
+				5C0E065E178F948000768739 /* amoxicillinSideEffects.html in Resources */,
+				5C0E0661178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
+				5C0E0664178F94CE00768739 /* amoxicillinLicence.html in Resources */,
+				5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2590,6 +2653,17 @@
 				5C0E0640178F837800768739 /* gentamicinMonitoring.html in Resources */,
 				5C0E0643178F838600768739 /* gentamicinReferences.html in Resources */,
 				5C0E0646178F83A500768739 /* gentamicinLicenceStatus.html in Resources */,
+				5C0E064A178F93F900768739 /* amoxicillinPharmacology.html in Resources */,
+				5C0E064D178F940B00768739 /* amoxicillinIndications.html in Resources */,
+				5C0E0650178F941D00768739 /* amoxicillinPresentation.html in Resources */,
+				5C0E0653178F942C00768739 /* amoxicillinDose.html in Resources */,
+				5C0E0656178F943C00768739 /* amoxicillinPreparation.html in Resources */,
+				5C0E0659178F945B00768739 /* amoxicillinIncompatibilities.html in Resources */,
+				5C0E065C178F946F00768739 /* amoxicillinContraindications.html in Resources */,
+				5C0E065F178F948100768739 /* amoxicillinSideEffects.html in Resources */,
+				5C0E0662178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
+				5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */,
+				5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
