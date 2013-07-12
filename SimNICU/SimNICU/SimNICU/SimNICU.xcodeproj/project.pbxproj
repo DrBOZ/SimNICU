@@ -110,6 +110,12 @@
 		5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
 		5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
+		5C552AA117901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA017901D0000577BE0 /* DrugDoseWeightViewController.m */; };
+		5C552AA217901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA017901D0000577BE0 /* DrugDoseWeightViewController.m */; };
+		5C552AA517901D1000577BE0 /* DrugDosePatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */; };
+		5C552AA617901D1000577BE0 /* DrugDosePatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */; };
+		5C552AA91790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */; };
+		5C552AAA1790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -714,6 +720,12 @@
 		5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBenzylpenicillinViewController.m; sourceTree = "<group>"; };
 		5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPharmacology.html; sourceTree = "<group>"; };
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
+		5C552A9F17901D0000577BE0 /* DrugDoseWeightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDoseWeightViewController.h; sourceTree = "<group>"; };
+		5C552AA017901D0000577BE0 /* DrugDoseWeightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseWeightViewController.m; sourceTree = "<group>"; };
+		5C552AA317901D1000577BE0 /* DrugDosePatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDosePatientViewController.h; sourceTree = "<group>"; };
+		5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientViewController.m; sourceTree = "<group>"; };
+		5C552AA71790267800577BE0 /* DrugDosePatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDosePatientTableViewCell.h; sourceTree = "<group>"; };
+		5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientTableViewCell.m; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -1320,6 +1332,12 @@
 			children = (
 				5C4350AC178DDD5200E926B1 /* DrugInfoSimpleViewController.h */,
 				5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */,
+				5C552A9F17901D0000577BE0 /* DrugDoseWeightViewController.h */,
+				5C552AA017901D0000577BE0 /* DrugDoseWeightViewController.m */,
+				5C552AA317901D1000577BE0 /* DrugDosePatientViewController.h */,
+				5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */,
+				5C552AA71790267800577BE0 /* DrugDosePatientTableViewCell.h */,
+				5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
 				5C0E0647178F93D400768739 /* Amoxicillin */,
@@ -2786,6 +2804,9 @@
 				5C4350AE178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */,
 				5C4350B3178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */,
 				5C0E05F8178EFDE300768739 /* DrugInfo.m in Sources */,
+				5C552AA117901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */,
+				5C552AA517901D1000577BE0 /* DrugDosePatientViewController.m in Sources */,
+				5C552AA91790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2905,6 +2926,9 @@
 				5C4350AF178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */,
 				5C4350B4178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */,
 				5C0E05F9178EFDE300768739 /* DrugInfo.m in Sources */,
+				5C552AA217901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */,
+				5C552AA617901D1000577BE0 /* DrugDosePatientViewController.m in Sources */,
+				5C552AAA1790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

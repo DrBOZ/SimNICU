@@ -95,7 +95,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // Determining if a patient has been passed into view controller
-    
     if (self.selectedPatient) 
     {
         // Setting title of view controller

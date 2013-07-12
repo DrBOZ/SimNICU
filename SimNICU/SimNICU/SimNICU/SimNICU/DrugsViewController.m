@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "DrugDosePatientViewController.h"
 #import "DrugInfoSimpleViewController.h"
 #import "DrugsViewController.h"
 #import "DrugDatabase.h"
@@ -367,9 +368,25 @@
         NSLog(@"Drug selected = %@", drug.name);
     }
     
-    DrugInfoSimpleViewController *drugInfoSimpleViewController = [[DrugInfoSimpleViewController alloc] init];
-    drugInfoSimpleViewController.selectedDrug = selectedDrug;
-    [self.navigationController pushViewController:drugInfoSimpleViewController animated:YES];
+    if (self.selectedPatient)
+    {
+        // push DrugDosePatientViewController
+        DrugDosePatientViewController *drugDosePatientViewController = [[DrugDosePatientViewController alloc] init];
+        drugDosePatientViewController.selectedDrug = selectedDrug;
+        drugDosePatientViewController.selectedPatient = self.selectedPatient;
+        [self.navigationController pushViewController:drugDosePatientViewController animated:YES];
+    }
+    else if (self.workingWeight)
+    {
+        // push DrugDoseWeightViewController
+    }
+    else
+    {
+        // push DrugInfoSimpleViewController
+        DrugInfoSimpleViewController *drugInfoSimpleViewController = [[DrugInfoSimpleViewController alloc] init];
+        drugInfoSimpleViewController.selectedDrug = selectedDrug;
+        [self.navigationController pushViewController:drugInfoSimpleViewController animated:YES];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
