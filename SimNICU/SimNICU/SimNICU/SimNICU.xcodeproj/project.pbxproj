@@ -50,6 +50,32 @@
 		5C0E061B178F525700768739 /* adrenalineLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0619178F525700768739 /* adrenalineLicenceStatus.html */; };
 		5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E061C178F526600768739 /* adrenalineReferences.html */; };
 		5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E061C178F526600768739 /* adrenalineReferences.html */; };
+		5C0E0621178F816700768739 /* gentamicinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0620178F816700768739 /* gentamicinPharmacology.html */; };
+		5C0E0622178F816700768739 /* gentamicinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0620178F816700768739 /* gentamicinPharmacology.html */; };
+		5C0E0624178F82E300768739 /* gentamicinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0623178F82E300768739 /* gentamicinIndications.html */; };
+		5C0E0625178F82E300768739 /* gentamicinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0623178F82E300768739 /* gentamicinIndications.html */; };
+		5C0E0627178F82F500768739 /* gentamicinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0626178F82F500768739 /* gentamicinPresentation.html */; };
+		5C0E0628178F82F500768739 /* gentamicinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0626178F82F500768739 /* gentamicinPresentation.html */; };
+		5C0E062A178F830500768739 /* gentamicinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0629178F830400768739 /* gentamicinDose.html */; };
+		5C0E062B178F830500768739 /* gentamicinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0629178F830400768739 /* gentamicinDose.html */; };
+		5C0E062D178F831800768739 /* gentamicinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E062C178F831700768739 /* gentamicinPreparation.html */; };
+		5C0E062E178F831800768739 /* gentamicinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E062C178F831700768739 /* gentamicinPreparation.html */; };
+		5C0E0630178F832900768739 /* gentamicinDrugMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E062F178F832900768739 /* gentamicinDrugMonitoring.html */; };
+		5C0E0631178F832900768739 /* gentamicinDrugMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E062F178F832900768739 /* gentamicinDrugMonitoring.html */; };
+		5C0E0633178F833D00768739 /* gentamicinIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0632178F833C00768739 /* gentamicinIncompatibilities.html */; };
+		5C0E0634178F833D00768739 /* gentamicinIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0632178F833C00768739 /* gentamicinIncompatibilities.html */; };
+		5C0E0636178F834C00768739 /* gentamicinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0635178F834B00768739 /* gentamicinContraindications.html */; };
+		5C0E0637178F834C00768739 /* gentamicinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0635178F834B00768739 /* gentamicinContraindications.html */; };
+		5C0E0639178F835900768739 /* gentamicinInteractions.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0638178F835900768739 /* gentamicinInteractions.html */; };
+		5C0E063A178F835900768739 /* gentamicinInteractions.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0638178F835900768739 /* gentamicinInteractions.html */; };
+		5C0E063C178F836700768739 /* gentamicinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E063B178F836700768739 /* gentamicinSideEffects.html */; };
+		5C0E063D178F836700768739 /* gentamicinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E063B178F836700768739 /* gentamicinSideEffects.html */; };
+		5C0E063F178F837800768739 /* gentamicinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E063E178F837700768739 /* gentamicinMonitoring.html */; };
+		5C0E0640178F837800768739 /* gentamicinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E063E178F837700768739 /* gentamicinMonitoring.html */; };
+		5C0E0642178F838600768739 /* gentamicinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0641178F838500768739 /* gentamicinReferences.html */; };
+		5C0E0643178F838600768739 /* gentamicinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0641178F838500768739 /* gentamicinReferences.html */; };
+		5C0E0645178F83A500768739 /* gentamicinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */; };
+		5C0E0646178F83A500768739 /* gentamicinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
@@ -630,6 +656,19 @@
 		5C0E0616178F524600768739 /* adrenalineMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineMonitoring.html; sourceTree = "<group>"; };
 		5C0E0619178F525700768739 /* adrenalineLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineLicenceStatus.html; sourceTree = "<group>"; };
 		5C0E061C178F526600768739 /* adrenalineReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = adrenalineReferences.html; sourceTree = "<group>"; };
+		5C0E0620178F816700768739 /* gentamicinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinPharmacology.html; sourceTree = "<group>"; };
+		5C0E0623178F82E300768739 /* gentamicinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinIndications.html; sourceTree = "<group>"; };
+		5C0E0626178F82F500768739 /* gentamicinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinPresentation.html; sourceTree = "<group>"; };
+		5C0E0629178F830400768739 /* gentamicinDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinDose.html; sourceTree = "<group>"; };
+		5C0E062C178F831700768739 /* gentamicinPreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinPreparation.html; sourceTree = "<group>"; };
+		5C0E062F178F832900768739 /* gentamicinDrugMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinDrugMonitoring.html; sourceTree = "<group>"; };
+		5C0E0632178F833C00768739 /* gentamicinIncompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinIncompatibilities.html; sourceTree = "<group>"; };
+		5C0E0635178F834B00768739 /* gentamicinContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinContraindications.html; sourceTree = "<group>"; };
+		5C0E0638178F835900768739 /* gentamicinInteractions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinInteractions.html; sourceTree = "<group>"; };
+		5C0E063B178F836700768739 /* gentamicinSideEffects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinSideEffects.html; sourceTree = "<group>"; };
+		5C0E063E178F837700768739 /* gentamicinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinMonitoring.html; sourceTree = "<group>"; };
+		5C0E0641178F838500768739 /* gentamicinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinReferences.html; sourceTree = "<group>"; };
+		5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gentamicinLicenceStatus.html; sourceTree = "<group>"; };
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
@@ -1145,6 +1184,26 @@
 			name = Adrenaline;
 			sourceTree = "<group>";
 		};
+		5C0E061F178F814000768739 /* Gentamicin */ = {
+			isa = PBXGroup;
+			children = (
+				5C0E0620178F816700768739 /* gentamicinPharmacology.html */,
+				5C0E0623178F82E300768739 /* gentamicinIndications.html */,
+				5C0E0626178F82F500768739 /* gentamicinPresentation.html */,
+				5C0E0629178F830400768739 /* gentamicinDose.html */,
+				5C0E062C178F831700768739 /* gentamicinPreparation.html */,
+				5C0E062F178F832900768739 /* gentamicinDrugMonitoring.html */,
+				5C0E0632178F833C00768739 /* gentamicinIncompatibilities.html */,
+				5C0E0635178F834B00768739 /* gentamicinContraindications.html */,
+				5C0E0638178F835900768739 /* gentamicinInteractions.html */,
+				5C0E063B178F836700768739 /* gentamicinSideEffects.html */,
+				5C0E063E178F837700768739 /* gentamicinMonitoring.html */,
+				5C0E0644178F83A400768739 /* gentamicinLicenceStatus.html */,
+				5C0E0641178F838500768739 /* gentamicinReferences.html */,
+			);
+			name = Gentamicin;
+			sourceTree = "<group>";
+		};
 		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,6 +1273,7 @@
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
 				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
+				5C0E061F178F814000768739 /* Gentamicin */,
 			);
 			name = Drugs;
 			sourceTree = "<group>";
@@ -2333,6 +2393,19 @@
 				5C0E0617178F524700768739 /* adrenalineMonitoring.html in Resources */,
 				5C0E061A178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
 				5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */,
+				5C0E0621178F816700768739 /* gentamicinPharmacology.html in Resources */,
+				5C0E0624178F82E300768739 /* gentamicinIndications.html in Resources */,
+				5C0E0627178F82F500768739 /* gentamicinPresentation.html in Resources */,
+				5C0E062A178F830500768739 /* gentamicinDose.html in Resources */,
+				5C0E062D178F831800768739 /* gentamicinPreparation.html in Resources */,
+				5C0E0630178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
+				5C0E0633178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
+				5C0E0636178F834C00768739 /* gentamicinContraindications.html in Resources */,
+				5C0E0639178F835900768739 /* gentamicinInteractions.html in Resources */,
+				5C0E063C178F836700768739 /* gentamicinSideEffects.html in Resources */,
+				5C0E063F178F837800768739 /* gentamicinMonitoring.html in Resources */,
+				5C0E0642178F838600768739 /* gentamicinReferences.html in Resources */,
+				5C0E0645178F83A500768739 /* gentamicinLicenceStatus.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2504,6 +2577,19 @@
 				5C0E0618178F524700768739 /* adrenalineMonitoring.html in Resources */,
 				5C0E061B178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
 				5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */,
+				5C0E0622178F816700768739 /* gentamicinPharmacology.html in Resources */,
+				5C0E0625178F82E300768739 /* gentamicinIndications.html in Resources */,
+				5C0E0628178F82F500768739 /* gentamicinPresentation.html in Resources */,
+				5C0E062B178F830500768739 /* gentamicinDose.html in Resources */,
+				5C0E062E178F831800768739 /* gentamicinPreparation.html in Resources */,
+				5C0E0631178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
+				5C0E0634178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
+				5C0E0637178F834C00768739 /* gentamicinContraindications.html in Resources */,
+				5C0E063A178F835900768739 /* gentamicinInteractions.html in Resources */,
+				5C0E063D178F836700768739 /* gentamicinSideEffects.html in Resources */,
+				5C0E0640178F837800768739 /* gentamicinMonitoring.html in Resources */,
+				5C0E0643178F838600768739 /* gentamicinReferences.html in Resources */,
+				5C0E0646178F83A500768739 /* gentamicinLicenceStatus.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

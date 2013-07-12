@@ -453,6 +453,127 @@
 #pragma mark Gentamicin
         drug = [[Drug alloc] init];
         drug.name = @"Gentamicin";
+        
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:13];
+        
+        // section 0
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:0];
+        drugInfoSection.header = @"Pharmacology";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinPharmacology";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 1
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:1];
+        drugInfoSection.header = @"Indications";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinIndications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 2
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:2];
+        drugInfoSection.header = @"Presentation";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinPresentation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 3
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:3];
+        drugInfoSection.header = @"Dose / Route";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinDose";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 4
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:4];
+        drugInfoSection.header = @"Preparation / Administration";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"gentamicinPreparation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 5
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:5];
+        drugInfoSection.header = @"Therapeutic drug monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinDrugMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 6
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:6];
+        drugInfoSection.header = @"Incompatibilities";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:165.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinIncompatibilities";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 7
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:7];
+        drugInfoSection.header = @"Contraindications / Warnings";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinContraindications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 8
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:8];
+        drugInfoSection.header = @"Interactions";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:230.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinInteractions";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 9
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:9];
+        drugInfoSection.header = @"Side effects";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinSideEffects";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 10
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:10];
+        drugInfoSection.header = @"Monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 11
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:11];
+        drugInfoSection.header = @"Licence status";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinLicenceStatus";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        // section 12
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.section = [NSNumber numberWithInt:12];
+        drugInfoSection.header = @"References";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"gentamicinReferences";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drug.info = drugInfoSections;
         [drugs addObject:drug];
         
 #pragma mark Glucagon
