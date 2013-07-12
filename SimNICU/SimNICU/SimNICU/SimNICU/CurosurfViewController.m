@@ -35,7 +35,8 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
+    // self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -45,7 +46,7 @@
     [self.view addSubview:self.myTableView];
     
 #if USE_DIMPLE_BACKGROUND
-    
+    /*
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)
     {
@@ -63,6 +64,7 @@
         
         self.myTableView.backgroundView = tempImageView;
     }
+     */
     
 #else
     self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -213,6 +215,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    /*
     float height = 44.0f;
     
     if (section == 0)
@@ -221,6 +224,9 @@
     }
     
     return height;
+    */
+     
+    return 22.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

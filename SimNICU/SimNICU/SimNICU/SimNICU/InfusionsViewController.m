@@ -236,7 +236,7 @@
     [self.view addSubview:self.myTableView];
     
 #if USE_DIMPLE_BACKGROUND
-    
+
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)
     {
