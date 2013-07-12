@@ -239,7 +239,7 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose / Route";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:300.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinDose";
         [drugInfoSections addObject:drugInfoSection];
@@ -248,7 +248,7 @@
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:370.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPreparation";
         [drugInfoSections addObject:drugInfoSection];
