@@ -238,8 +238,9 @@
         // section 3
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.section = [NSNumber numberWithInt:3];
-        drugInfoSection.header = @"Dose";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:40.0f];
+        drugInfoSection.header = @"Dose / Route";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinDose";
         [drugInfoSections addObject:drugInfoSection];
         
