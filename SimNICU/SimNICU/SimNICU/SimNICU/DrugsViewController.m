@@ -322,15 +322,6 @@
     
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
     
-    if (drug.selected)
-    {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else
-    {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
     return cell;
 }
 
@@ -348,13 +339,11 @@
     
     NSString *selectedDrug;
     
-    // select drug
+    // set selected row and get drug, set drug name
     if (tableView == self.myTableView)
     {
         DrugSection *drugSection = [self.drugSections objectAtIndex:indexPath.section];
         Drug *drug = [drugSection.drugs objectAtIndex:indexPath.row];
-        // drug.selected = !drug.selected;
-        // [self.myTableView reloadData];
         
         selectedDrug = drug.name;
         NSLog(@"Drug selected = %@", drug.name);
@@ -362,12 +351,13 @@
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         Drug *drug = [searchData objectAtIndex:indexPath.row];
-        // drug.selected = !drug.selected;
-        // [self.searchDisplayController.searchResultsTableView reloadData];
+
         selectedDrug = drug.name;
         NSLog(@"Drug selected = %@", drug.name);
     }
     
+    // load appropriate Drug view Controller
+
     if (self.selectedPatient)
     {
         // push DrugDosePatientViewController

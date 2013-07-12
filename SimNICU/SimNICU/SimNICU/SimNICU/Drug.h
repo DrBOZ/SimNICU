@@ -10,12 +10,16 @@
 
 @interface Drug : NSObject
 
+// drug list name
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic) BOOL selected;
+
+// drug favourite toggle
 @property (nonatomic) BOOL favourite;
-@property (nonatomic) NSNumber *defaultPortionIndex;
+
+// array to store dosing information
+@property (nonatomic, strong) NSMutableArray *dosingDetails;
+
+// array containing all the information to display the HTML information
 @property (nonatomic, strong) NSMutableArray *info;
-
-
 
 @end

@@ -10,6 +10,9 @@
 #import "DrugCategory.h"
 #import "Druginfo.h"
 #import "Drug.h"
+#import "DrugIndication.h"
+#import "DrugRouteOfAdministration.h"
+#import "DrugDose.h"
 
 @implementation DrugDatabase
 
@@ -24,6 +27,12 @@
         
         DrugCategory *drugCategory;
         Drug *drug;
+        NSMutableArray *drugDosingDetails;
+        DrugIndication *drugIndication;
+        NSMutableArray *drugRoutesOfAdministration;
+        DrugRouteOfAdministration *drugRouteOfAdministration;
+        NSMutableArray *drugDoses;
+        DrugDose *drugDose;
         NSMutableArray *drugInfoSections;
         DrugInfo *drugInfoSection;
       
@@ -54,110 +63,86 @@
         drug = [[Drug alloc] init];
         drug.name = @"Adrenaline";
         
-        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:10];
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:12];
         
-        // section 0
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:0];
         drugInfoSection.header = @"Pharmacology";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:400.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalinePharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 1
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:1];
         drugInfoSection.header = @"Indications";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineIndications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 2
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"adrenalinePresentation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 3
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:650.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"adrenalineDose";
         [drugInfoSections addObject:drugInfoSection];
-        
-        // section 4
+
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:1060.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalinePreparation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 5
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:5];
         drugInfoSection.header = @"Stability";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineStability";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 6
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:6];
         drugInfoSection.header = @"Y-site Compatibilities";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineYSiteCompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 7
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:7];
         drugInfoSection.header = @"Y-site Incompatibilities";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineYSiteIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 8
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:8];
         drugInfoSection.header = @"Side effects";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:170.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineSideEffects";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 9
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:9];
         drugInfoSection.header = @"Monitoring";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:165.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 10
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:10];
         drugInfoSection.header = @"Licence status";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"adrenalineLicenceStatus";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 11
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:11];
         drugInfoSection.header = @"References";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
@@ -178,99 +163,77 @@
         
         drugInfoSections = [[NSMutableArray alloc] initWithCapacity:10];
         
-        // section 0
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:0];
         drugInfoSection.header = @"Pharmacology";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinPharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 1
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:1];
         drugInfoSection.header = @"Indications";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinIndications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 2
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinPresentation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 3
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"amoxicillinDose";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 4
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinPreparation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 5
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:5];
         drugInfoSection.header = @"Incompatibilities";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
-        
-        // section 6
+
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:6];
         drugInfoSection.header = @"Contraindications";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:185.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinContraindications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 7
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:7];
         drugInfoSection.header = @"Side effects";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:170.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinSideEffects";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 8
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:8];
         drugInfoSection.header = @"Monitoring";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:165.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 9
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:9];
         drugInfoSection.header = @"Licence status";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinLicence";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 10
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:10];
         drugInfoSection.header = @"References";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
@@ -311,99 +274,77 @@
         
         drugInfoSections = [[NSMutableArray alloc] initWithCapacity:10];
         
-        // section 0
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:0];
         drugInfoSection.header = @"Pharmacology";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 1
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:1];
         drugInfoSection.header = @"Indications";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinIndications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 2
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPresentation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 3
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose / Route";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:300.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinDose";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 4
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:370.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinPreparation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 5
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:5];
         drugInfoSection.header = @"Incompatibilities";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 6
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:6];
         drugInfoSection.header = @"Contraindications";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinContraindications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 7
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:7];
         drugInfoSection.header = @"Side effects";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:230.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinSideEffects";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 8
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:8];
         drugInfoSection.header = @"Monitoring";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 9
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:9];
         drugInfoSection.header = @"Licence status";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"benzylpenicillinLicenceStatus";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 10
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:10];
         drugInfoSection.header = @"References";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
@@ -557,119 +498,141 @@
         drug = [[Drug alloc] init];
         drug.name = @"Gentamicin";
         
+        //
+        // populate drug.dosingDetails
+        drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // 1st one is "Neonatal sepsis"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Neonatal sepsis";
+        
+        // at least two regimes for administration, there setup array - though just adding one
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // main route for "Neonatal sepsis" is single daily dose
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"Extended interval dose regime by slow intravenous injection or intravenous infusion";
+        drugRouteOfAdministration.routeAbbreviation = @"IV";
+        
+        // 2 regimes, one for <32 weekers, and one for 32 weeks and over
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        // <32 weekers
+        drugDose = [[DrugDose alloc] init];
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = [NSNumber numberWithInt:31];
+        [drugDoses addObject:drugDose];
+        
+        // 32 weeks and greater
+        drugDose = [[DrugDose alloc] init];
+        drugDose.gestationMinInWeeks = [NSNumber numberWithInt:32];
+        drugDose.gestationMaxInWeeks = nil;
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add Neonatal Sepsis to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        // finally add to drug.info
+        drug.dosingDetails = drugDosingDetails;
+        
+        //
+        // populate drug.info array
         drugInfoSections = [[NSMutableArray alloc] initWithCapacity:13];
         
-        // section 0
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:0];
         drugInfoSection.header = @"Pharmacology";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinPharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 1
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:1];
         drugInfoSection.header = @"Indications";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinIndications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 2
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:2];
         drugInfoSection.header = @"Presentation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinPresentation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 3
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:3];
         drugInfoSection.header = @"Dose / Route";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinDose";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 4
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:4];
         drugInfoSection.header = @"Preparation / Administration";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"gentamicinPreparation";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 5
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:5];
         drugInfoSection.header = @"Therapeutic drug monitoring";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinDrugMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 6
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:6];
         drugInfoSection.header = @"Incompatibilities";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:165.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 7
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:7];
         drugInfoSection.header = @"Contraindications / Warnings";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinContraindications";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 8
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:8];
         drugInfoSection.header = @"Interactions";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:230.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinInteractions";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 9
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:9];
         drugInfoSection.header = @"Side effects";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinSideEffects";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 10
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:10];
         drugInfoSection.header = @"Monitoring";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 11
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:11];
         drugInfoSection.header = @"Licence status";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"gentamicinLicenceStatus";
         [drugInfoSections addObject:drugInfoSection];
         
-        // section 12
         drugInfoSection = [[DrugInfo alloc] init];
-        drugInfoSection.section = [NSNumber numberWithInt:12];
         drugInfoSection.header = @"References";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
@@ -677,6 +640,7 @@
         [drugInfoSections addObject:drugInfoSection];
         
         drug.info = drugInfoSections;
+        
         [drugs addObject:drug];
         
 #pragma mark Glucagon

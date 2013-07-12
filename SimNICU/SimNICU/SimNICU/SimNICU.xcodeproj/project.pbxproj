@@ -648,6 +648,20 @@
 		5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
+		5CD3B0B51790705000DA0278 /* abidecPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B41790705000DA0278 /* abidecPharmacology.html */; };
+		5CD3B0B61790705000DA0278 /* abidecPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B41790705000DA0278 /* abidecPharmacology.html */; };
+		5CD3B0B81790706100DA0278 /* abidecIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B71790706100DA0278 /* abidecIndications.html */; };
+		5CD3B0B91790706100DA0278 /* abidecIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B71790706100DA0278 /* abidecIndications.html */; };
+		5CD3B0BB1790707300DA0278 /* abidecPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BA1790707300DA0278 /* abidecPreparation.html */; };
+		5CD3B0BC1790707300DA0278 /* abidecPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BA1790707300DA0278 /* abidecPreparation.html */; };
+		5CD3B0BE1790708300DA0278 /* abidecDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BD1790708300DA0278 /* abidecDose.html */; };
+		5CD3B0BF1790708300DA0278 /* abidecDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BD1790708300DA0278 /* abidecDose.html */; };
+		5CD3B0C21790729200DA0278 /* DrugDose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C11790729100DA0278 /* DrugDose.m */; };
+		5CD3B0C31790729200DA0278 /* DrugDose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C11790729100DA0278 /* DrugDose.m */; };
+		5CD3B0C61790759600DA0278 /* DrugIndication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C51790759500DA0278 /* DrugIndication.m */; };
+		5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C51790759500DA0278 /* DrugIndication.m */; };
+		5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
+		5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
@@ -1134,6 +1148,16 @@
 		5CCC271816D64A1F00D14080 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
+		5CD3B0B41790705000DA0278 /* abidecPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecPharmacology.html; sourceTree = "<group>"; };
+		5CD3B0B71790706100DA0278 /* abidecIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecIndications.html; sourceTree = "<group>"; };
+		5CD3B0BA1790707300DA0278 /* abidecPreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecPreparation.html; sourceTree = "<group>"; };
+		5CD3B0BD1790708300DA0278 /* abidecDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecDose.html; sourceTree = "<group>"; };
+		5CD3B0C01790729100DA0278 /* DrugDose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDose.h; sourceTree = "<group>"; };
+		5CD3B0C11790729100DA0278 /* DrugDose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDose.m; sourceTree = "<group>"; };
+		5CD3B0C41790759500DA0278 /* DrugIndication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugIndication.h; sourceTree = "<group>"; };
+		5CD3B0C51790759500DA0278 /* DrugIndication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugIndication.m; sourceTree = "<group>"; };
+		5CD3B0C81790773600DA0278 /* DrugRouteOfAdministration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugRouteOfAdministration.h; sourceTree = "<group>"; };
+		5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugRouteOfAdministration.m; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -1340,6 +1364,7 @@
 				5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
+				5CD3B0B31790702100DA0278 /* Abidec */,
 				5C0E0647178F93D400768739 /* Amoxicillin */,
 				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
@@ -1393,6 +1418,12 @@
 				5C98A6A61787562700F246E3 /* DrugCategory.m */,
 				5C98A6A91787577000F246E3 /* Drug.h */,
 				5C98A6AA1787577000F246E3 /* Drug.m */,
+				5CD3B0C41790759500DA0278 /* DrugIndication.h */,
+				5CD3B0C51790759500DA0278 /* DrugIndication.m */,
+				5CD3B0C81790773600DA0278 /* DrugRouteOfAdministration.h */,
+				5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */,
+				5CD3B0C01790729100DA0278 /* DrugDose.h */,
+				5CD3B0C11790729100DA0278 /* DrugDose.m */,
 				5C0E05F6178EFDE200768739 /* DrugInfo.h */,
 				5C0E05F7178EFDE300768739 /* DrugInfo.m */,
 			);
@@ -2177,6 +2208,17 @@
 			name = SimNICU;
 			sourceTree = "<group>";
 		};
+		5CD3B0B31790702100DA0278 /* Abidec */ = {
+			isa = PBXGroup;
+			children = (
+				5CD3B0B41790705000DA0278 /* abidecPharmacology.html */,
+				5CD3B0B71790706100DA0278 /* abidecIndications.html */,
+				5CD3B0BA1790707300DA0278 /* abidecPreparation.html */,
+				5CD3B0BD1790708300DA0278 /* abidecDose.html */,
+			);
+			name = Abidec;
+			sourceTree = "<group>";
+		};
 		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
 			isa = PBXGroup;
 			children = (
@@ -2487,6 +2529,10 @@
 				5C0E0661178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
 				5C0E0664178F94CE00768739 /* amoxicillinLicence.html in Resources */,
 				5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */,
+				5CD3B0B51790705000DA0278 /* abidecPharmacology.html in Resources */,
+				5CD3B0B81790706100DA0278 /* abidecIndications.html in Resources */,
+				5CD3B0BB1790707300DA0278 /* abidecPreparation.html in Resources */,
+				5CD3B0BE1790708300DA0278 /* abidecDose.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2682,6 +2728,10 @@
 				5C0E0662178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
 				5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */,
 				5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */,
+				5CD3B0B61790705000DA0278 /* abidecPharmacology.html in Resources */,
+				5CD3B0B91790706100DA0278 /* abidecIndications.html in Resources */,
+				5CD3B0BC1790707300DA0278 /* abidecPreparation.html in Resources */,
+				5CD3B0BF1790708300DA0278 /* abidecDose.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2807,6 +2857,9 @@
 				5C552AA117901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */,
 				5C552AA517901D1000577BE0 /* DrugDosePatientViewController.m in Sources */,
 				5C552AA91790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */,
+				5CD3B0C21790729200DA0278 /* DrugDose.m in Sources */,
+				5CD3B0C61790759600DA0278 /* DrugIndication.m in Sources */,
+				5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2929,6 +2982,9 @@
 				5C552AA217901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */,
 				5C552AA617901D1000577BE0 /* DrugDosePatientViewController.m in Sources */,
 				5C552AAA1790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */,
+				5CD3B0C31790729200DA0278 /* DrugDose.m in Sources */,
+				5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */,
+				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

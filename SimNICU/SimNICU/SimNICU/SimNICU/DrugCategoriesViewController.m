@@ -141,15 +141,6 @@
         Drug *drug = [searchData objectAtIndex:indexPath.row];
         cell.textLabel.text = drug.name;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
-        
-        if (drug.selected)
-        {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
     }
     
     return cell;
@@ -172,10 +163,9 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
-        Drug *drug = [searchData objectAtIndex:indexPath.row];
-        drug.selected = !drug.selected;
-        // reload
-        [self.searchDisplayController.searchResultsTableView reloadData];
+        // Drug *drug = [searchData objectAtIndex:indexPath.row];
+        
+        // push Drug view controller if I use this class again
     }
 }
 

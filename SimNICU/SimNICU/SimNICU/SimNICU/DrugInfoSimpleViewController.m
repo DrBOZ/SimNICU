@@ -50,7 +50,6 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //tableView
-    // self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped]; // 416
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewCellStyleDefault]; // 416
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
@@ -60,46 +59,11 @@
     self.myTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView];
     
-#if USE_DIMPLE_BACKGROUND
-    /*
-    // set background colour
-    if (appDelegate.window.bounds.size.height == 568)
-    {
-        // 4 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-        [tempImageView setFrame:self.myTableView.frame];
-        
-        self.myTableView.backgroundView = tempImageView;
-    }
-    else
-    {
-        // 3.5 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-        [tempImageView setFrame:self.myTableView.frame];
-        
-        self.myTableView.backgroundView = tempImageView;
-    }
-     */
-    
-#else
-    self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-#endif
-    
-#if APP_SHADING
-    //screen mask covers everything
-    UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height))];
-    UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-    tableBgView.image = tableBgImage;
-    tableBgView.userInteractionEnabled = NO;
-    [self.view addSubview:tableBgView];
-#endif
-    
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     
     // cycle through drug database and find current drugCategory
-    
     DrugCategory *drugCategory;
     
     for (drugCategory in appDelegate.drugDatabase.drugCategories)
@@ -108,6 +72,7 @@
         {
             Drug *drug;
             
+            // find selected drug
             for(drug in drugCategory.drugs)
             {
                 if ([drug.name isEqualToString:self.selectedDrug])
