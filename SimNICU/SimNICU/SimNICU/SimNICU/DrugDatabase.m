@@ -498,7 +498,6 @@
         drug = [[Drug alloc] init];
         drug.name = @"Gentamicin";
         
-        //
         // populate drug.dosingDetails
         drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -519,14 +518,36 @@
         
         // <32 weekers
         drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
         drugDose.gestationMinInWeeks = nil;
         drugDose.gestationMaxInWeeks = [NSNumber numberWithInt:31];
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:4];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 36 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"YES";
+        drugDose.doseToCheckLevel = [NSNumber numberWithInt:3];
         [drugDoses addObject:drugDose];
         
         // 32 weeks and greater
         drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
         drugDose.gestationMinInWeeks = [NSNumber numberWithInt:32];
         drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:4];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 24 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"YES";
+        drugDose.doseToCheckLevel = [NSNumber numberWithInt:3];
         [drugDoses addObject:drugDose];
         
         // add drugDoses to drugRouteOfAdministration
@@ -544,7 +565,6 @@
         // finally add to drug.info
         drug.dosingDetails = drugDosingDetails;
         
-        //
         // populate drug.info array
         drugInfoSections = [[NSMutableArray alloc] initWithCapacity:13];
         

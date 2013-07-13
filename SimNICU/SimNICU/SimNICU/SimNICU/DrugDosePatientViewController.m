@@ -9,13 +9,17 @@
 #import "DrugDosePatientViewController.h"
 #import "DrugDosePatientTableViewCell.h"
 #import "DrugInfoSimpleViewController.h"
+#import "DrugIndication.h"
+#import "DrugCategory.h"
 #import "AppDelegate.h"
+#import "Drug.h"
 
 @interface DrugDosePatientViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSString *workingWeight;
+@property (nonatomic, strong) Drug *drug;
 
 @end
 
@@ -36,17 +40,11 @@
     
     self.title = self.selectedDrug;
     
-    // self.selectedPatient must be true to even get here
-    
-    // to calculate drug dose we must have age of patient and weight
-    
-    // Display patient name and details working out age
-    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -56,7 +54,7 @@
     [self.view addSubview:self.myTableView];
     
 #if USE_DIMPLE_BACKGROUND
-    
+    /*
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)
     {
@@ -74,7 +72,7 @@
         
         self.myTableView.backgroundView = tempImageView;
     }
-    
+    */
 #else
     self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 #endif
@@ -91,6 +89,26 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
+    // cycle through drug database and find current drugCategory
+    DrugCategory *drugCategory;
+    
+    for (drugCategory in appDelegate.drugDatabase.drugCategories)
+    {
+        if ([drugCategory.name isEqualToString:@"Drugs"]) // will have to substitue this later
+        {
+            Drug *drug;
+            
+            // find selected drug
+            for(drug in drugCategory.drugs)
+            {
+                if ([drug.name isEqualToString:self.selectedDrug])
+                {
+                    self.drug = drug;
+                }
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,23 +126,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    int sections = nil;
+    
+    sections = 2 + [self.drug.dosingDetails count]; // can simplify this later
+    
+    return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows = 1;
-    
-    if (section == 0)
-    {
-        rows = 1;
-    }
-    else if (section == 1)
-    {
-        rows = 2;
-    }
-    
-    return rows;
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -135,9 +146,13 @@
     {
         returnString = @"Patient";
     }
+    else if (section == ([self.drug.dosingDetails count] +1))
+    {
+        returnString = @"";
+    }
     else
     {
-        returnString = @"Dose";
+        returnString = [self.drug.dosingDetails[section - 1] indicationDescription];
     }
     
     return returnString;
@@ -145,7 +160,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 44.0f;
+    // return 44.0f;
+    return 22.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -166,36 +182,33 @@
         
         returnCell = cell;
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == ([self.drug.dosingDetails count] + 1))
     {
-        if (indexPath.row == 0)
+        NSString *CellIdentifier = @"Drug Info";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!cell)
         {
-            NSString *CellIdentifier = @"Dose";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            
-            returnCell = cell;
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        else
+        
+        cell.textLabel.text = @"Drug Information";
+        
+        returnCell = cell;
+    }
+    else
+    {
+        NSString *CellIdentifier = @"Dose";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!cell)
         {
-            NSString *CellIdentifier = @"Drug Info";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
-            
-            cell.textLabel.text = @"Drug Information";
-            
-            returnCell = cell;
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
+        
+        returnCell = cell;
     }
     
     return returnCell;
