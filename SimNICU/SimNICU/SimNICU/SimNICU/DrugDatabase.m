@@ -1283,20 +1283,20 @@
         // populate drug.dosingDetails
         drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
         
-        // 1st one is "Prevention of Vit K def bleeding"
+        // 1st indication for Vit K is "Prevention of Vit K def bleeding"
         drugIndication = [[DrugIndication alloc] init];
         drugIndication.indicationDescription = @"Prevention of Vit K def bleeding";
         drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
         
-        // at least three regimes for administration
+        // I am only including the intramuscular route for now
         drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
         
-        // main route for "Vit K def bleeding"
+        // main route for "Prevention of Vit K def bleeding" is intramuscular
         drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
         drugRouteOfAdministration.routeDescription = @"By intramuscular injection";
         drugRouteOfAdministration.routeAbbreviation = @"IM";
         
-        // 2 regimes, one for <1.5kg, and one for >1.5kg
+        // 2 intramuscular regimes, one for <1.5kg, and one for >1.5kg
         drugDoses = [[NSMutableArray alloc] initWithCapacity:2];
         
         // <1.5kg
@@ -1394,7 +1394,7 @@
         
         // 3rd one is "Biliary atresia, cholestasis, liver disease"
         drugIndication = [[DrugIndication alloc] init];
-        drugIndication.indicationDescription = @"Biliary atresia, cholestasis, liver disease";
+        drugIndication.indicationDescription = @"Biliary atresia, cholestasis";
         drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
         
         // one regime
@@ -1427,7 +1427,7 @@
         // add drugDoses to drugRouteOfAdministration
         drugRouteOfAdministration.drugDoses = drugDoses;
         
-        // add 1st route to array
+        // add oral route to array
         [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
         
         // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
@@ -1438,6 +1438,88 @@
         
         // finally add to drug.info
         drug.dosingDetails = drugDosingDetails;
+        
+        // populate drug.info array
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:13];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Pharmacology";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKPharmacology";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Indications";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKIndications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Presentation";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKPresentation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Dose / Route";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKDose";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Preparation / Administration";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"vitaminKPreparation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Contraindications / Warnings";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKContraindications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Interactions";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:230.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKInteractions";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Side effects";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKSideEffects";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Licence status";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKLicenceStatus";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"References";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vitaminKReferences";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drug.info = drugInfoSections;
         
         [drugs addObject:drug];
         
