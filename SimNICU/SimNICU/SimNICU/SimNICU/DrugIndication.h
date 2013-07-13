@@ -11,6 +11,8 @@
 @interface DrugIndication : NSObject
 
 @property (nonatomic, strong) NSString *indicationDescription;
+@property (nonatomic, strong) NSNumber *heightForHeader;
+@property (nonatomic, strong) NSNumber *heightForRow;
 @property (nonatomic, strong) NSMutableArray *routesOfAdministration;
 
 // @property (nonatomic, strong) NSMutableArray *drugDosesForIndication;

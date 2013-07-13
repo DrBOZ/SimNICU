@@ -611,6 +611,11 @@
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
+    screen.menuText = @"Postnatal Ward";
+    screen.segueId = @"PostnatalWard";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
     screen.menuText = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
     screen.segueId = @"PulmonaryHaemorrhage";
     [screens addObject:screen];
@@ -635,13 +640,6 @@
      */
     
     // Sodium correction
-    
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Transitional Care";
-     screen.segueId = @"TC";
-     [screens addObject:screen];
-     */
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Transport Ventilator";

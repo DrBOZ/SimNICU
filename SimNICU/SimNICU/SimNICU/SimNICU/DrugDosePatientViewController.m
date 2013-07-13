@@ -187,7 +187,7 @@
     
     if (!(indexPath.section == 0 || indexPath.section == ([self.drug.dosingDetails count] +1)))
     {
-        height = 130.0f;
+        height = [[self.drug.dosingDetails[indexPath.section -1] heightForRow] floatValue];
     }
     
     return height;
@@ -348,9 +348,11 @@
                 // identified correct drugIndication
                 DrugRouteOfAdministration *drugRouteOfAdministration;
                 
+                float y = 10.0f;
+                
                 for (drugRouteOfAdministration in drugIndication.routesOfAdministration)
                 {
-                    float y = 10.0f;
+                    
                     
                     //displayTextLabel (Patient's name)
                     UILabel *routeDescription = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, y, 300.0f, 60.0f)];
@@ -377,7 +379,7 @@
                     
                     // set text
                     
-                    
+                    /*
                     UILabel *testLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 210.0f, 30.0f)];
                     testLabel2.textColor = [UIColor blackColor];
                     testLabel2.backgroundColor = [UIColor clearColor];
@@ -386,6 +388,7 @@
                     testLabel2.textAlignment = UITextAlignmentLeft;
                     testLabel2.text = @"= 4mg/kg <32 weeks gestation";
                     [cell addSubview:testLabel2];
+                     */
                 }
             }
         }
