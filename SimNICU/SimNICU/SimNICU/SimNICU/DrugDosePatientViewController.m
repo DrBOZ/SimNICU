@@ -43,6 +43,13 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    //back button
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:nil
+                                                                  action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    
     //tableView
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 44.0f;
@@ -54,6 +61,7 @@
     [self.view addSubview:self.myTableView];
     
 #if USE_DIMPLE_BACKGROUND
+    
     /*
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)
@@ -73,6 +81,7 @@
         self.myTableView.backgroundView = tempImageView;
     }
     */
+     
 #else
     self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 #endif
@@ -160,13 +169,26 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    // return 44.0f;
-    return 22.0f;
+    float height = 22.0f;
+    
+    if (section == ([self.drug.dosingDetails count] +1))
+    {
+        height = 0.0f;
+    }
+    
+    return height;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55.0f;
+    float height = 55.0f;
+    
+    if (!(indexPath.section == 0 || indexPath.section == ([self.drug.dosingDetails count] +1)))
+    {
+        height = 110.0f;
+    }
+    
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -200,7 +222,7 @@
     }
     else
     {
-        NSString *CellIdentifier = @"Dose";
+        NSString *CellIdentifier = [self.drug.dosingDetails[indexPath.section - 1] indicationDescription];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!cell)
@@ -323,7 +345,7 @@
 {
     NSIndexPath *path = nil;
     
-    if (indexPath.section == 1 && indexPath.row == 1)
+    if (indexPath.section == ([self.drug.dosingDetails count] +1))
     {
         path = indexPath;
     }
@@ -335,7 +357,7 @@
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 1 && indexPath.row == 1)
+    if (indexPath.section == ([self.drug.dosingDetails count] +1))
     {
         DrugInfoSimpleViewController *newViewController = [[DrugInfoSimpleViewController alloc] init];
         newViewController.selectedDrug = self.selectedDrug;
