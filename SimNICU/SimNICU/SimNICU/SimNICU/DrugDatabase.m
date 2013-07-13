@@ -1451,14 +1451,14 @@
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Indications";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:100.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vitaminKIndications";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Presentation";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vitaminKPresentation";
         [drugInfoSections addObject:drugInfoSection];
