@@ -25,6 +25,9 @@
 @property (nonatomic, strong) NSNumber *gestationMinInWeeks;
 @property (nonatomic, strong) NSNumber *gestationMaxInWeeks;
 
+@property (nonatomic, strong) NSNumber *weightMinInKg;
+@property (nonatomic, strong) NSNumber *weightMaxInKg;
+
 @property (nonatomic, strong) NSNumber *dose;
 @property (nonatomic, strong) NSString *unit;
 @property (nonatomic, strong) NSString *frequency;
