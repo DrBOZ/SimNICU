@@ -284,7 +284,7 @@
         
         // main route for "Neonatal sepsis"
         drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
-        drugRouteOfAdministration.routeDescription = @"Intravenous injection";
+        drugRouteOfAdministration.routeDescription = @"By slow intravenous injection";
         drugRouteOfAdministration.routeAbbreviation = @"IV";
         
         // 3 regimes, one for <7 days old, one for 7-28 days old, and one for over 28 days old
@@ -362,7 +362,7 @@
         
         // main route for "Neonatal meningitis"
         drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
-        drugRouteOfAdministration.routeDescription = @"Intravenous injection";
+        drugRouteOfAdministration.routeDescription = @"By intravenous infusion";
         drugRouteOfAdministration.routeAbbreviation = @"IV";
         
         // 2 regimes, one for <28 days old, and one for >28 days old
@@ -656,7 +656,7 @@
         
         // main route for "Neonatal sepsis" is single daily dose
         drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
-        drugRouteOfAdministration.routeDescription = @"Extended interval dose regime by slow intravenous injection or intravenous infusion";
+        drugRouteOfAdministration.routeDescription = @"By slow intravenous injection or infusion";
         drugRouteOfAdministration.routeAbbreviation = @"IV";
         
         // 2 regimes, one for <32 weekers, and one for 32 weeks and over

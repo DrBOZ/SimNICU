@@ -127,6 +127,8 @@
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
 		5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
+		5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
+		5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
 		5C8C3E0616707F880073886A /* kButtonAC copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DED16707F880073886A /* kButtonAC copy.png */; };
 		5C8C3E0716707F880073886A /* kButtonAC.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEE16707F880073886A /* kButtonAC.png */; };
@@ -757,6 +759,8 @@
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
 		5C8606D0178ADD3E00428ED4 /* DrugSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSection.m; sourceTree = "<group>"; };
+		5C8B20631791125000579522 /* DrugDoseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDoseTableViewCell.h; sourceTree = "<group>"; };
+		5C8B20641791125000579522 /* DrugDoseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseTableViewCell.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		5C8C3DEB16707C900073886A /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		5C8C3DED16707F880073886A /* kButtonAC copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kButtonAC copy.png"; sourceTree = "<group>"; };
@@ -1362,6 +1366,8 @@
 				5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */,
 				5C552AA71790267800577BE0 /* DrugDosePatientTableViewCell.h */,
 				5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */,
+				5C8B20631791125000579522 /* DrugDoseTableViewCell.h */,
+				5C8B20641791125000579522 /* DrugDoseTableViewCell.m */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
 				5CD3B0B31790702100DA0278 /* Abidec */,
@@ -2860,6 +2866,7 @@
 				5CD3B0C21790729200DA0278 /* DrugDose.m in Sources */,
 				5CD3B0C61790759600DA0278 /* DrugIndication.m in Sources */,
 				5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
+				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2985,6 +2992,7 @@
 				5CD3B0C31790729200DA0278 /* DrugDose.m in Sources */,
 				5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */,
 				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
+				5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

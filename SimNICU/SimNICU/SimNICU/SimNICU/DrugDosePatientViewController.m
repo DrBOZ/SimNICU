@@ -9,6 +9,8 @@
 #import "DrugDosePatientViewController.h"
 #import "DrugDosePatientTableViewCell.h"
 #import "DrugInfoSimpleViewController.h"
+#import "DrugRouteOfAdministration.h"
+#import "DrugDoseTableViewCell.h"
 #import "DrugIndication.h"
 #import "DrugCategory.h"
 #import "AppDelegate.h"
@@ -185,7 +187,7 @@
     
     if (!(indexPath.section == 0 || indexPath.section == ([self.drug.dosingDetails count] +1)))
     {
-        height = 110.0f;
+        height = 130.0f;
     }
     
     return height;
@@ -198,7 +200,7 @@
     if (indexPath.section == 0)
     {
         NSString *CellIdentifier = @"Patient";
-        DrugDosePatientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
         
@@ -225,10 +227,7 @@
         NSString *CellIdentifier = [self.drug.dosingDetails[indexPath.section - 1] indicationDescription];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if (!cell)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
+        if (!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
         
         returnCell = cell;
     }
@@ -236,108 +235,165 @@
     return returnCell;
 }
 
-- (DrugDosePatientTableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
+- (UITableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
 {
-    DrugDosePatientTableViewCell *cell;
+    UITableViewCell *cell;
     
-    cell = [[DrugDosePatientTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    //displayTextLabel (Patient's name or working weight)
-    UILabel *displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 210.0f, 30.0f)];
-    displayTextLabel.textColor = [UIColor blackColor];
-    displayTextLabel.backgroundColor = [UIColor clearColor];
-    displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    displayTextLabel.adjustsFontSizeToFitWidth = YES;
-    displayTextLabel.textAlignment = UITextAlignmentLeft;
-    [cell addSubview:displayTextLabel];
-    
-    //displayDetailTextLabel (Patient's name or working weight)
-    UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 21.0f, 227.0f, 30.0f)];
-    displayDetailTextLabel.textColor = [UIColor blackColor];
-    displayDetailTextLabel.backgroundColor = [UIColor clearColor];
-    displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
-    displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-    displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
-    [cell addSubview:displayDetailTextLabel];
-    
-    // display patient's name
-    displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
-    
-    NSString *detailTextLabelText = @"";
-    
-    NSString *rawBirthWeight = self.selectedPatient.birthWeight;
-    NSString *formattedBirthWeight;
-    
-    NSString *rawWorkingWeight = self.selectedPatient.workingWeight;
-    NSString *formattedWorkingWeight;
-    
-    // format birth weight
-    NSString *UKLocaleRawBirthWeight;
-    UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
-    float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-    
-    if(birthWeightKGAsFloat < 1.0f)
+    if ([CellIdentifier isEqualToString:@"Patient"])
     {
-        // convert to grams as use integer
-        int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-        formattedBirthWeight = [NSString stringWithFormat:@"%i g", birthWeightGRAMSasInt];
+        //displayTextLabel (Patient's name)
+        UILabel *displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 210.0f, 30.0f)];
+        displayTextLabel.textColor = [UIColor blackColor];
+        displayTextLabel.backgroundColor = [UIColor clearColor];
+        displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+        displayTextLabel.adjustsFontSizeToFitWidth = YES;
+        displayTextLabel.textAlignment = UITextAlignmentLeft;
+        [cell addSubview:displayTextLabel];
+        
+        //displayDetailTextLabel (Gestation, birth weight, corrected gestation and working weight)
+        UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 21.0f, 227.0f, 30.0f)];
+        displayDetailTextLabel.textColor = [UIColor blackColor];
+        displayDetailTextLabel.backgroundColor = [UIColor clearColor];
+        displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+        displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+        displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
+        [cell addSubview:displayDetailTextLabel];
+        
+        // display patient's name
+        displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
+        
+        NSString *detailTextLabelText = @"";
+        
+        NSString *rawBirthWeight = self.selectedPatient.birthWeight;
+        NSString *formattedBirthWeight;
+        
+        NSString *rawWorkingWeight = self.selectedPatient.workingWeight;
+        NSString *formattedWorkingWeight;
+        
+        // format birth weight
+        NSString *UKLocaleRawBirthWeight;
+        UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
+        
+        if(birthWeightKGAsFloat < 1.0f)
+        {
+            // convert to grams as use integer
+            int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
+            formattedBirthWeight = [NSString stringWithFormat:@"%i g", birthWeightGRAMSasInt];
+        }
+        else
+        {
+            formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
+        }
+        
+        // format working weight
+        NSString *UKLocaleRawWorkingWeight;
+        UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+        
+        float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
+        
+        if(workingWeightKGAsFloat < 1.0f)
+        {
+            // convert to grams as use integer
+            int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
+            formattedWorkingWeight = [NSString stringWithFormat:@"%i g", workingWeightGRAMSasInt];
+        }
+        else
+        {
+            formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
+        }
+        
+        // all information present (missing this stage
+        if (self.selectedPatient.gestation && self.selectedPatient.birthWeight && self.selectedPatient.correctedGestation && self.selectedPatient.workingWeight)
+        {
+            detailTextLabelText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", self.selectedPatient.gestation, formattedBirthWeight, self.selectedPatient.correctedGestation, formattedWorkingWeight];
+            
+            self.workingWeight = self.selectedPatient.workingWeight;
+        }
+        else if (self.selectedPatient.workingWeight && self.selectedPatient.gestation)
+        {
+            detailTextLabelText = [NSString stringWithFormat:@"%@/40 working weight %@", self.selectedPatient.gestation, formattedWorkingWeight];
+            
+            self.workingWeight = self.selectedPatient.workingWeight;
+        }
+        else if (self.selectedPatient.workingWeight && !self.selectedPatient.gestation)
+        {
+            detailTextLabelText = [NSString stringWithFormat:@"working weight %@", formattedWorkingWeight];
+            
+            self.workingWeight = self.selectedPatient.workingWeight;
+        }
+        else if (self.selectedPatient.gestation && !self.selectedPatient.workingWeight)
+        {
+            // no working weight
+            NSLog(@"NO WORKING WEIGHT - ERROR!!!!!!!!!!!!!!!");
+        }
+        
+        displayDetailTextLabel.text = detailTextLabelText;
     }
     else
     {
-        formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
-    }
-    
-    // format working weight
-    NSString *UKLocaleRawWorkingWeight;
-    UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
-    float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-    
-    if(workingWeightKGAsFloat < 1.0f)
-    {
-        // convert to grams as use integer
-        int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-        formattedWorkingWeight = [NSString stringWithFormat:@"%i g", workingWeightGRAMSasInt];
-    }
-    else
-    {
-        formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
-    }
-    
-    // all information present (missing this stage
-    if (self.selectedPatient.gestation && self.selectedPatient.birthWeight && self.selectedPatient.correctedGestation && self.selectedPatient.workingWeight)
-    {
-        detailTextLabelText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", self.selectedPatient.gestation, formattedBirthWeight, self.selectedPatient.correctedGestation, formattedWorkingWeight];
+        DrugIndication *drugIndication;
         
-        self.workingWeight = self.selectedPatient.workingWeight;
+        for (drugIndication in self.drug.dosingDetails)
+        {
+            if ([drugIndication.indicationDescription isEqualToString:CellIdentifier])
+            {
+                // identified correct drugIndication
+                DrugRouteOfAdministration *drugRouteOfAdministration;
+                
+                for (drugRouteOfAdministration in drugIndication.routesOfAdministration)
+                {
+                    float y = 10.0f;
+                    
+                    //displayTextLabel (Patient's name)
+                    UILabel *routeDescription = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, y, 300.0f, 60.0f)];
+                    routeDescription.textColor = [UIColor blackColor];
+                    routeDescription.backgroundColor = [UIColor clearColor];
+                    routeDescription.font = [UIFont boldSystemFontOfSize:16.0f];
+                    routeDescription.adjustsFontSizeToFitWidth = NO;
+                    routeDescription.textAlignment = UITextAlignmentLeft;
+                    routeDescription.numberOfLines = 2;
+                    routeDescription.text = drugRouteOfAdministration.routeDescription;
+                    [routeDescription sizeToFit];
+                    [cell addSubview:routeDescription];
+                    
+                    y = y + 100.0f;
+                    
+                    // check if drug is gestation dependent
+                    // if so then check against current corrected gestation
+                    
+                    // next check if drug is age dependent
+                    // if so then check against current age
+                    
+                    // calculate rough dose
+                    // intelligently round dose
+                    
+                    // set text
+                    
+                    
+                    UILabel *testLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 210.0f, 30.0f)];
+                    testLabel2.textColor = [UIColor blackColor];
+                    testLabel2.backgroundColor = [UIColor clearColor];
+                    testLabel2.font = [UIFont boldSystemFontOfSize:20.0f];
+                    testLabel2.adjustsFontSizeToFitWidth = YES;
+                    testLabel2.textAlignment = UITextAlignmentLeft;
+                    testLabel2.text = @"= 4mg/kg <32 weeks gestation";
+                    [cell addSubview:testLabel2];
+                }
+            }
+        }
     }
-    else if (self.selectedPatient.workingWeight && self.selectedPatient.gestation)
-    {
-        detailTextLabelText = [NSString stringWithFormat:@"%@/40 working weight %@", self.selectedPatient.gestation, formattedWorkingWeight];
-        
-        self.workingWeight = self.selectedPatient.workingWeight;
-    }
-    else if (self.selectedPatient.workingWeight && !self.selectedPatient.gestation)
-    {
-        detailTextLabelText = [NSString stringWithFormat:@"working weight %@", formattedWorkingWeight];
-        
-        self.workingWeight = self.selectedPatient.workingWeight;
-    }
-    else if (self.selectedPatient.gestation && !self.selectedPatient.workingWeight)
-    {
-        // no working weight
-        NSLog(@"NO WORKING WEIGHT - ERROR!!!!!!!!!!!!!!!");
-    }
-    
-    displayDetailTextLabel.text = detailTextLabelText;
     
     return cell;
 }
+
 
 #pragma mark - Table view delegate
 
