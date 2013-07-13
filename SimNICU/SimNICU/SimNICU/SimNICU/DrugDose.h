@@ -38,5 +38,8 @@
 
 @property (nonatomic, strong) NSNumber *doseToCheckLevel;
 
+@property (nonatomic, strong) NSNumber *roundDosesToNearest;
+@property (nonatomic, strong) NSString *alwaysRoundDown;              // YES or NO
+
 
 @end

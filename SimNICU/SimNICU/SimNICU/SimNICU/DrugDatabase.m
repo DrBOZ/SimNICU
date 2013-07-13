@@ -272,6 +272,152 @@
         drug = [[Drug alloc] init];
         drug.name = @"Benzylpenicillin";
         
+        // populate drug.dosingDetails
+        drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // 1st one is "Neonatal sepsis"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Neonatal sepsis";
+        
+        // at least two regimes for administration, there setup array - though just adding one
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // main route for "Neonatal sepsis"
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"Intravenous injection";
+        drugRouteOfAdministration.routeAbbreviation = @"IV";
+        
+        // 3 regimes, one for <7 days old, one for 7-28 days old, and one for over 28 days old
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:3];
+        
+        // <7 days old
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = [NSNumber numberWithInt:6];
+        drugDose.dose = [NSNumber numberWithInt:50];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 12 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // 7-28 days old
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = [NSNumber numberWithInt:7];
+        drugDose.ageMaxInDays = [NSNumber numberWithInt:27];
+        drugDose.dose = [NSNumber numberWithInt:50];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 8 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // >28 days old
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = [NSNumber numberWithInt:28];
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:50];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 6 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add Neonatal Sepsis to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        // 2nd one is "Neonatal meningitis"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Neonatal meningitis";
+        
+        // at least two regimes for administration, there setup array - though just adding one
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // main route for "Neonatal meningitis"
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"Intravenous injection";
+        drugRouteOfAdministration.routeAbbreviation = @"IV";
+        
+        // 2 regimes, one for <28 days old, and one for >28 days old
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        // <28 days old
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = [NSNumber numberWithInt:27];
+        drugDose.dose = [NSNumber numberWithInt:75];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 8 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // >28 days old
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = [NSNumber numberWithInt:28];
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:50];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 4-6 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add Neonatal meningitis to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        
+        // finally add to drug.info
+        drug.dosingDetails = drugDosingDetails;
+        
         drugInfoSections = [[NSMutableArray alloc] initWithCapacity:10];
         
         drugInfoSection = [[DrugInfo alloc] init];
