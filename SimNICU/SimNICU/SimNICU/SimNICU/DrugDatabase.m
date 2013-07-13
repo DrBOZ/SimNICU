@@ -1279,6 +1279,166 @@
 #pragma mark Vitamin K
         drug = [[Drug alloc] init];
         drug.name = @"Vitamin K";
+        
+        // populate drug.dosingDetails
+        drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // 1st one is "Prevention of Vit K def bleeding"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Prevention of Vit K def bleeding";
+        drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
+        
+        // at least three regimes for administration
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // main route for "Vit K def bleeding"
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"By intramuscular injection";
+        drugRouteOfAdministration.routeAbbreviation = @"IM";
+        
+        // 2 regimes, one for <1.5kg, and one for >1.5kg
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        // <1.5kg
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.weightMinInKg = nil;
+        drugDose.weightMaxInKg = [NSNumber numberWithFloat:1.4999f];
+        drugDose.dose = [NSNumber numberWithFloat:0.5f];  // might have to change to double...
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"at birth";
+        drugDose.unitsPerKilogram = nil;
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // >1.5kg
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:1];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"at birth";
+        drugDose.unitsPerKilogram = nil;
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add Vit K def bleeding to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        // 2nd one is "Treatment of vit K def bleeding"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Treatment of Vit K def bleeding";
+        drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
+        
+        // only one regime
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // main route for "Treatment of vit K def bleeding"
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"By intravenous injection";
+        drugRouteOfAdministration.routeAbbreviation = @"IV";
+        
+        // 1 regime
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // only regime
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:1];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 8 hours";
+        drugDose.unitsPerKilogram = nil;
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add Treatment of vit K def bleeding to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        // 3rd one is "Biliary atresia, cholestasis, liver disease"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Biliary atresia, cholestasis, liver disease";
+        drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
+        
+        // one regime
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // oral route for "Biliary atresia, etc"
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"Orally";
+        drugRouteOfAdministration.routeAbbreviation = @"PO";
+        
+        // 1 regime
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithInt:1];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 24 hours";
+        drugDose.unitsPerKilogram = nil;
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"NO";
+        drugDose.doseToCheckLevel = nil;
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add Biliary atresia to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        // finally add to drug.info
+        drug.dosingDetails = drugDosingDetails;
+        
         [drugs addObject:drug];
         
 #pragma mark Zidovudine
