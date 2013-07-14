@@ -110,6 +110,22 @@
 		5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
 		5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
+		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
+		5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
+		5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
+		5C51D8CB17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
+		5C51D8CD17932A1B004A7FF5 /* vitaminsPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */; };
+		5C51D8CE17932A1B004A7FF5 /* vitaminsPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */; };
+		5C51D8D017932A26004A7FF5 /* vitaminsDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8CF17932A25004A7FF5 /* vitaminsDose.html */; };
+		5C51D8D117932A26004A7FF5 /* vitaminsDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8CF17932A25004A7FF5 /* vitaminsDose.html */; };
+		5C51D8D317932A34004A7FF5 /* vitaminsAdministration.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D217932A34004A7FF5 /* vitaminsAdministration.html */; };
+		5C51D8D417932A34004A7FF5 /* vitaminsAdministration.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D217932A34004A7FF5 /* vitaminsAdministration.html */; };
+		5C51D8D617932A3F004A7FF5 /* vitaminsContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D517932A3E004A7FF5 /* vitaminsContraindications.html */; };
+		5C51D8D717932A3F004A7FF5 /* vitaminsContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D517932A3E004A7FF5 /* vitaminsContraindications.html */; };
+		5C51D8D917932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D817932A4E004A7FF5 /* vitaminsLicenceStatus.html */; };
+		5C51D8DA17932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D817932A4E004A7FF5 /* vitaminsLicenceStatus.html */; };
+		5C51D8DC17932A5B004A7FF5 /* vitaminsReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */; };
+		5C51D8DD17932A5B004A7FF5 /* vitaminsReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */; };
 		5C52F3AF1791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B21791656D000CFD80 /* vitaminKIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3B11791656D000CFD80 /* vitaminKIndications.html */; };
@@ -786,6 +802,14 @@
 		5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBenzylpenicillinViewController.m; sourceTree = "<group>"; };
 		5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPharmacology.html; sourceTree = "<group>"; };
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
+		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
+		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
+		5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPresentation.html; sourceTree = "<group>"; };
+		5C51D8CF17932A25004A7FF5 /* vitaminsDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsDose.html; sourceTree = "<group>"; };
+		5C51D8D217932A34004A7FF5 /* vitaminsAdministration.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsAdministration.html; sourceTree = "<group>"; };
+		5C51D8D517932A3E004A7FF5 /* vitaminsContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsContraindications.html; sourceTree = "<group>"; };
+		5C51D8D817932A4E004A7FF5 /* vitaminsLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsLicenceStatus.html; sourceTree = "<group>"; };
+		5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsReferences.html; sourceTree = "<group>"; };
 		5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPharmacology.html; sourceTree = "<group>"; };
 		5C52F3B11791656D000CFD80 /* vitaminKIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKIndications.html; sourceTree = "<group>"; };
 		5C52F3B41791657C000CFD80 /* vitaminKPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPresentation.html; sourceTree = "<group>"; };
@@ -1445,13 +1469,13 @@
 				5C8B20641791125000579522 /* DrugDoseTableViewCell.m */,
 				5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */,
 				5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */,
-				5CD3B0B31790702100DA0278 /* Abidec */,
 				5C0E0647178F93D400768739 /* Amoxicillin */,
 				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
 				5C0E061F178F814000768739 /* Gentamicin */,
 				5CA3C114179240DD002AB53D /* Vancomycin */,
 				5C52F3AD17916473000CFD80 /* Vitamin K */,
+				5CD3B0B31790702100DA0278 /* Vitamins (Multivitamins) */,
 			);
 			name = Drugs;
 			sourceTree = "<group>";
@@ -2330,15 +2354,23 @@
 			name = Vancomycin;
 			sourceTree = "<group>";
 		};
-		5CD3B0B31790702100DA0278 /* Abidec */ = {
+		5CD3B0B31790702100DA0278 /* Vitamins (Multivitamins) */ = {
 			isa = PBXGroup;
 			children = (
 				5CD3B0B41790705000DA0278 /* abidecPharmacology.html */,
 				5CD3B0B71790706100DA0278 /* abidecIndications.html */,
 				5CD3B0BA1790707300DA0278 /* abidecPreparation.html */,
 				5CD3B0BD1790708300DA0278 /* abidecDose.html */,
+				5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */,
+				5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */,
+				5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */,
+				5C51D8CF17932A25004A7FF5 /* vitaminsDose.html */,
+				5C51D8D217932A34004A7FF5 /* vitaminsAdministration.html */,
+				5C51D8D517932A3E004A7FF5 /* vitaminsContraindications.html */,
+				5C51D8D817932A4E004A7FF5 /* vitaminsLicenceStatus.html */,
+				5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */,
 			);
-			name = Abidec;
+			name = "Vitamins (Multivitamins)";
 			sourceTree = "<group>";
 		};
 		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
@@ -2680,6 +2712,14 @@
 				5CA3C137179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
 				5CA3C13A179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
 				5CA3C13D179241D8002AB53D /* vancomycinReferences.html in Resources */,
+				5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */,
+				5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */,
+				5C51D8CD17932A1B004A7FF5 /* vitaminsPresentation.html in Resources */,
+				5C51D8D017932A26004A7FF5 /* vitaminsDose.html in Resources */,
+				5C51D8D317932A34004A7FF5 /* vitaminsAdministration.html in Resources */,
+				5C51D8D617932A3F004A7FF5 /* vitaminsContraindications.html in Resources */,
+				5C51D8D917932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */,
+				5C51D8DC17932A5B004A7FF5 /* vitaminsReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2904,6 +2944,14 @@
 				5CA3C138179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
 				5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
 				5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */,
+				5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */,
+				5C51D8CB17932A0E004A7FF5 /* vitaminsIndications.html in Resources */,
+				5C51D8CE17932A1B004A7FF5 /* vitaminsPresentation.html in Resources */,
+				5C51D8D117932A26004A7FF5 /* vitaminsDose.html in Resources */,
+				5C51D8D417932A34004A7FF5 /* vitaminsAdministration.html in Resources */,
+				5C51D8D717932A3F004A7FF5 /* vitaminsContraindications.html in Resources */,
+				5C51D8DA17932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */,
+				5C51D8DD17932A5B004A7FF5 /* vitaminsReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

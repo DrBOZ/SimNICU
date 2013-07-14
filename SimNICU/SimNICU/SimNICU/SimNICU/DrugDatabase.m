@@ -44,11 +44,6 @@
         // create array
         NSMutableArray *drugs = [[NSMutableArray alloc] initWithCapacity:10];
         
-#pragma mark Abidec
-        drug = [[Drug alloc] init];
-        drug.name = @"Abidec";
-        [drugs addObject:drug];
-        
 #pragma mark Aciclovir
         drug = [[Drug alloc] init];
         drug.name = @"Aciclovir";
@@ -565,11 +560,6 @@
 #pragma mark Daktarin
         drug = [[Drug alloc] init];
         drug.name = @"Daktarin";
-        [drugs addObject:drug];
-        
-#pragma mark Dalivit
-        drug = [[Drug alloc] init];
-        drug.name = @"Dalivit";
         [drugs addObject:drug];
         
 #pragma mark Dexamethasone
@@ -1710,6 +1700,70 @@
         drugInfoSection.htmlFile = @"vitaminKReferences";
         [drugInfoSections addObject:drugInfoSection];
         
+#pragma mark Vitamins (Multivitamins)
+        
+        drug = [[Drug alloc] init];
+        drug.name = @"Vitamins (Multivitamins)";
+        
+        // populate drug.info array
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:13];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Pharmacology";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecPharmacology";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Indications";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecIndications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Presentation";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecPresentation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Dose / Route";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecDose";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Preparation / Administration";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"abidecPreparation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Contraindications / Warnings";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecContraindications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Licence status";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecLicenceStatus";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"References";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"abidecReferences";
+        [drugInfoSections addObject:drugInfoSection];
+    
         drug.info = drugInfoSections;
         
         [drugs addObject:drug];
