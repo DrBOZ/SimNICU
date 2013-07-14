@@ -406,6 +406,34 @@
 		5C99FBB316CF5F9300AE74D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB216CF5F9300AE74D2 /* Default.png */; };
 		5C99FBB516CF5F9800AE74D2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB416CF5F9800AE74D2 /* Default@2x.png */; };
 		5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */; };
+		5CA3C11617924112002AB53D /* vancomycinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11517924112002AB53D /* vancomycinPharmacology.html */; };
+		5CA3C11717924112002AB53D /* vancomycinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11517924112002AB53D /* vancomycinPharmacology.html */; };
+		5CA3C11917924123002AB53D /* vancomycinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11817924123002AB53D /* vancomycinIndications.html */; };
+		5CA3C11A17924123002AB53D /* vancomycinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11817924123002AB53D /* vancomycinIndications.html */; };
+		5CA3C11C1792412F002AB53D /* vancomycinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11B1792412F002AB53D /* vancomycinPresentation.html */; };
+		5CA3C11D1792412F002AB53D /* vancomycinPresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11B1792412F002AB53D /* vancomycinPresentation.html */; };
+		5CA3C11F17924142002AB53D /* vancomycinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11E17924142002AB53D /* vancomycinDose.html */; };
+		5CA3C12017924142002AB53D /* vancomycinDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11E17924142002AB53D /* vancomycinDose.html */; };
+		5CA3C1221792414D002AB53D /* vancomycinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C1211792414D002AB53D /* vancomycinPreparation.html */; };
+		5CA3C1231792414D002AB53D /* vancomycinPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C1211792414D002AB53D /* vancomycinPreparation.html */; };
+		5CA3C12517924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12417924160002AB53D /* vancomycinYSiteCompatibilities.html */; };
+		5CA3C12617924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12417924160002AB53D /* vancomycinYSiteCompatibilities.html */; };
+		5CA3C12817924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12717924170002AB53D /* vancomycinYSiteIncompatibilities.html */; };
+		5CA3C12917924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12717924170002AB53D /* vancomycinYSiteIncompatibilities.html */; };
+		5CA3C12B1792417E002AB53D /* vancomycinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12A1792417E002AB53D /* vancomycinMonitoring.html */; };
+		5CA3C12C1792417E002AB53D /* vancomycinMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12A1792417E002AB53D /* vancomycinMonitoring.html */; };
+		5CA3C12E1792418C002AB53D /* vancomycinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12D1792418C002AB53D /* vancomycinContraindications.html */; };
+		5CA3C12F1792418C002AB53D /* vancomycinContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C12D1792418C002AB53D /* vancomycinContraindications.html */; };
+		5CA3C13117924198002AB53D /* vancomycinInteractions.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13017924197002AB53D /* vancomycinInteractions.html */; };
+		5CA3C13217924198002AB53D /* vancomycinInteractions.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13017924197002AB53D /* vancomycinInteractions.html */; };
+		5CA3C134179241A7002AB53D /* vancomycinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C133179241A7002AB53D /* vancomycinSideEffects.html */; };
+		5CA3C135179241A7002AB53D /* vancomycinSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C133179241A7002AB53D /* vancomycinSideEffects.html */; };
+		5CA3C137179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C136179241BE002AB53D /* vancomycinDrugMonitoring.html */; };
+		5CA3C138179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C136179241BE002AB53D /* vancomycinDrugMonitoring.html */; };
+		5CA3C13A179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */; };
+		5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */; };
+		5CA3C13D179241D8002AB53D /* vancomycinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13C179241D8002AB53D /* vancomycinReferences.html */; };
+		5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13C179241D8002AB53D /* vancomycinReferences.html */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
@@ -1176,6 +1204,20 @@
 		5C99FBB216CF5F9300AE74D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		5C99FBB416CF5F9800AE74D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		5CA3C11517924112002AB53D /* vancomycinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPharmacology.html; sourceTree = "<group>"; };
+		5CA3C11817924123002AB53D /* vancomycinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinIndications.html; sourceTree = "<group>"; };
+		5CA3C11B1792412F002AB53D /* vancomycinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPresentation.html; sourceTree = "<group>"; };
+		5CA3C11E17924142002AB53D /* vancomycinDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinDose.html; sourceTree = "<group>"; };
+		5CA3C1211792414D002AB53D /* vancomycinPreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPreparation.html; sourceTree = "<group>"; };
+		5CA3C12417924160002AB53D /* vancomycinYSiteCompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinYSiteCompatibilities.html; sourceTree = "<group>"; };
+		5CA3C12717924170002AB53D /* vancomycinYSiteIncompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinYSiteIncompatibilities.html; sourceTree = "<group>"; };
+		5CA3C12A1792417E002AB53D /* vancomycinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinMonitoring.html; sourceTree = "<group>"; };
+		5CA3C12D1792418C002AB53D /* vancomycinContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinContraindications.html; sourceTree = "<group>"; };
+		5CA3C13017924197002AB53D /* vancomycinInteractions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinInteractions.html; sourceTree = "<group>"; };
+		5CA3C133179241A7002AB53D /* vancomycinSideEffects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinSideEffects.html; sourceTree = "<group>"; };
+		5CA3C136179241BE002AB53D /* vancomycinDrugMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinDrugMonitoring.html; sourceTree = "<group>"; };
+		5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinLicenceStatus.html; sourceTree = "<group>"; };
+		5CA3C13C179241D8002AB53D /* vancomycinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinReferences.html; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1408,6 +1450,7 @@
 				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
 				5C0E061F178F814000768739 /* Gentamicin */,
+				5CA3C114179240DD002AB53D /* Vancomycin */,
 				5C52F3AD17916473000CFD80 /* Vitamin K */,
 			);
 			name = Drugs;
@@ -2266,6 +2309,27 @@
 			name = SimNICU;
 			sourceTree = "<group>";
 		};
+		5CA3C114179240DD002AB53D /* Vancomycin */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3C11517924112002AB53D /* vancomycinPharmacology.html */,
+				5CA3C11817924123002AB53D /* vancomycinIndications.html */,
+				5CA3C11B1792412F002AB53D /* vancomycinPresentation.html */,
+				5CA3C11E17924142002AB53D /* vancomycinDose.html */,
+				5CA3C1211792414D002AB53D /* vancomycinPreparation.html */,
+				5CA3C12417924160002AB53D /* vancomycinYSiteCompatibilities.html */,
+				5CA3C12717924170002AB53D /* vancomycinYSiteIncompatibilities.html */,
+				5CA3C136179241BE002AB53D /* vancomycinDrugMonitoring.html */,
+				5CA3C12D1792418C002AB53D /* vancomycinContraindications.html */,
+				5CA3C13017924197002AB53D /* vancomycinInteractions.html */,
+				5CA3C133179241A7002AB53D /* vancomycinSideEffects.html */,
+				5CA3C12A1792417E002AB53D /* vancomycinMonitoring.html */,
+				5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */,
+				5CA3C13C179241D8002AB53D /* vancomycinReferences.html */,
+			);
+			name = Vancomycin;
+			sourceTree = "<group>";
+		};
 		5CD3B0B31790702100DA0278 /* Abidec */ = {
 			isa = PBXGroup;
 			children = (
@@ -2602,6 +2666,20 @@
 				5C52F3C7179165EB000CFD80 /* vitaminKMonitoring.html in Resources */,
 				5C52F3CA17916687000CFD80 /* vitaminKLicenceStatus.html in Resources */,
 				5C52F3CD17916696000CFD80 /* vitaminKReferences.html in Resources */,
+				5CA3C11617924112002AB53D /* vancomycinPharmacology.html in Resources */,
+				5CA3C11917924123002AB53D /* vancomycinIndications.html in Resources */,
+				5CA3C11C1792412F002AB53D /* vancomycinPresentation.html in Resources */,
+				5CA3C11F17924142002AB53D /* vancomycinDose.html in Resources */,
+				5CA3C1221792414D002AB53D /* vancomycinPreparation.html in Resources */,
+				5CA3C12517924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */,
+				5CA3C12817924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */,
+				5CA3C12B1792417E002AB53D /* vancomycinMonitoring.html in Resources */,
+				5CA3C12E1792418C002AB53D /* vancomycinContraindications.html in Resources */,
+				5CA3C13117924198002AB53D /* vancomycinInteractions.html in Resources */,
+				5CA3C134179241A7002AB53D /* vancomycinSideEffects.html in Resources */,
+				5CA3C137179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
+				5CA3C13A179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
+				5CA3C13D179241D8002AB53D /* vancomycinReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2812,6 +2890,20 @@
 				5C52F3C8179165EB000CFD80 /* vitaminKMonitoring.html in Resources */,
 				5C52F3CB17916687000CFD80 /* vitaminKLicenceStatus.html in Resources */,
 				5C52F3CE17916696000CFD80 /* vitaminKReferences.html in Resources */,
+				5CA3C11717924112002AB53D /* vancomycinPharmacology.html in Resources */,
+				5CA3C11A17924123002AB53D /* vancomycinIndications.html in Resources */,
+				5CA3C11D1792412F002AB53D /* vancomycinPresentation.html in Resources */,
+				5CA3C12017924142002AB53D /* vancomycinDose.html in Resources */,
+				5CA3C1231792414D002AB53D /* vancomycinPreparation.html in Resources */,
+				5CA3C12617924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */,
+				5CA3C12917924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */,
+				5CA3C12C1792417E002AB53D /* vancomycinMonitoring.html in Resources */,
+				5CA3C12F1792418C002AB53D /* vancomycinContraindications.html in Resources */,
+				5CA3C13217924198002AB53D /* vancomycinInteractions.html in Resources */,
+				5CA3C135179241A7002AB53D /* vancomycinSideEffects.html in Resources */,
+				5CA3C138179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
+				5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
+				5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

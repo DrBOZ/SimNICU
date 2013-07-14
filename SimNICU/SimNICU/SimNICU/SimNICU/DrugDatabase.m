@@ -1264,6 +1264,197 @@
 #pragma mark Vancomycin
         drug = [[Drug alloc] init];
         drug.name = @"Vancomycin";
+        
+        // populate drug.dosingDetails
+        drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // 1st indication for Vancomycin is "Infections due to Gram positivie bacteria"
+        drugIndication = [[DrugIndication alloc] init];
+        drugIndication.indicationDescription = @"Infections due to Gram positive bacteria";
+        drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
+        
+        // Intravenous route
+        drugRoutesOfAdministration = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        // main route for "Infections due to Gram positive bacteria" is intravenous infusion
+        drugRouteOfAdministration = [[DrugRouteOfAdministration alloc] init];
+        drugRouteOfAdministration.routeDescription = @"By intravenous infusion";
+        drugRouteOfAdministration.routeAbbreviation = @"IV";
+        
+        // 1 intravenous infusion regime, one for <28/40, one for 28-35/40, and one for >35/40
+        drugDoses = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        // <28/40
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = nil;
+        drugDose.gestationMaxInWeeks = [NSNumber numberWithInt:27];
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.weightMinInKg = nil;
+        drugDose.weightMaxInKg = nil;
+        drugDose.dose = [NSNumber numberWithFloat:15.0f];  // might have to change to double...
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 24 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"YES";
+        drugDose.doseToCheckLevel = [NSNumber numberWithInt:3];
+        [drugDoses addObject:drugDose];
+        
+        // 28-35/40
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = [NSNumber numberWithInt:28];
+        drugDose.gestationMaxInWeeks = [NSNumber numberWithInt:34];
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithFloat:15.0f];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 12 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"YES";
+        drugDose.doseToCheckLevel = [NSNumber numberWithInt:3];
+        [drugDoses addObject:drugDose];
+        
+        // >35/40
+        drugDose = [[DrugDose alloc] init];
+        drugDose.loadingDose = @"NO";
+        drugDose.subsequentDose = @"NO";
+        drugDose.gestationMinInWeeks = [NSNumber numberWithInt:35];
+        drugDose.gestationMaxInWeeks = nil;
+        drugDose.ageMinInDays = nil;
+        drugDose.ageMaxInDays = nil;
+        drugDose.dose = [NSNumber numberWithFloat:15.0f];
+        drugDose.unit = @"mg";
+        drugDose.frequency = @"every 12 hours";
+        drugDose.unitsPerKilogram = @"mg/kg";
+        drugDose.doseDoubled = @"NO";
+        drugDose.requiresLevelsMonitoring = @"YES";
+        drugDose.doseToCheckLevel = [NSNumber numberWithInt:3];
+        [drugDoses addObject:drugDose];
+        
+        // add drugDoses to drugRouteOfAdministration
+        drugRouteOfAdministration.drugDoses = drugDoses;
+        
+        // add 1st route to array
+        [drugRoutesOfAdministration addObject:drugRouteOfAdministration];
+        
+        // add drugRoutesOfAdministration to drugIndication.drugRoutesOfAdministration
+        drugIndication.routesOfAdministration = drugRoutesOfAdministration;
+        
+        // add to drug dosing array
+        [drugDosingDetails addObject:drugIndication];
+        
+        // finally add to drug.info
+        drug.dosingDetails = drugDosingDetails;
+        
+        // populate drug.info array
+        drugInfoSections = [[NSMutableArray alloc] initWithCapacity:13];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Pharmacology";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinPharmacology";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Indications";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinIndications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Presentation";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinPresentation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Dose / Route";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinDose";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Preparation / Administration";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"vancomycinPreparation";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Y-site Compatibilities";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"vancomycinYSiteCompatibilities";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Y-site Incompatibilities";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
+        drugInfoSection.htmlFile = @"vancomycinYSiteIncompatibilities";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Therapeutic drug monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinDrugMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Contraindications / Warnings";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinContraindications";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Interactions";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:230.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinInteractions";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Side effects";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinSideEffects";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Monitoring";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinMonitoring";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"Licence status";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinLicenceStatus";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drugInfoSection = [[DrugInfo alloc] init];
+        drugInfoSection.header = @"References";
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
+        drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
+        drugInfoSection.htmlFile = @"vancomycinReferences";
+        [drugInfoSections addObject:drugInfoSection];
+        
+        drug.info = drugInfoSections;
+        
         [drugs addObject:drug];
         
 #pragma mark Vecuronium
