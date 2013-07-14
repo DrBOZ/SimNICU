@@ -1268,9 +1268,9 @@
         // populate drug.dosingDetails
         drugDosingDetails = [[NSMutableArray alloc] initWithCapacity:1];
         
-        // 1st indication for Vancomycin is "Infections due to Gram positivie bacteria"
+        // 1st indication for Vancomycin is "Gram positive sepsis"
         drugIndication = [[DrugIndication alloc] init];
-        drugIndication.indicationDescription = @"Infections due to Gram positive bacteria";
+        drugIndication.indicationDescription = @"Gram positive sepsis";
         drugIndication.heightForRow = [NSNumber numberWithFloat:130.0f];
         
         // Intravenous route
@@ -1294,7 +1294,7 @@
         drugDose.ageMaxInDays = nil;
         drugDose.weightMinInKg = nil;
         drugDose.weightMaxInKg = nil;
-        drugDose.dose = [NSNumber numberWithFloat:15.0f];  // might have to change to double...
+        drugDose.dose = [NSNumber numberWithFloat:15.0f];
         drugDose.unit = @"mg";
         drugDose.frequency = @"every 24 hours";
         drugDose.unitsPerKilogram = @"mg/kg";
@@ -1357,14 +1357,14 @@
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Pharmacology";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vancomycinPharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Indications";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vancomycinIndications";
         [drugInfoSections addObject:drugInfoSection];
@@ -1392,28 +1392,28 @@
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Y-site Compatibilities";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"vancomycinYSiteCompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Y-site Incompatibilities";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:65.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
         drugInfoSection.htmlFile = @"vancomycinYSiteIncompatibilities";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Therapeutic drug monitoring";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:400.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vancomycinDrugMonitoring";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Contraindications / Warnings";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:125.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vancomycinContraindications";
         [drugInfoSections addObject:drugInfoSection];
@@ -1427,7 +1427,7 @@
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Side effects";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:170.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"vancomycinSideEffects";
         [drugInfoSections addObject:drugInfoSection];
