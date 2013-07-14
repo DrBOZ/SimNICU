@@ -1710,58 +1710,58 @@
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Pharmacology";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:60.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecPharmacology";
+        drugInfoSection.htmlFile = @"vitaminsPharmacology";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Indications";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:85.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:160.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecIndications";
+        drugInfoSection.htmlFile = @"vitaminsIndications";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Presentation";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:80.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecPresentation";
+        drugInfoSection.htmlFile = @"vitaminsPresentation";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Dose / Route";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:250.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecDose";
+        drugInfoSection.htmlFile = @"vitaminsDose";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Preparation / Administration";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:310.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:0.0f];
-        drugInfoSection.htmlFile = @"abidecPreparation";
+        drugInfoSection.htmlFile = @"vitaminsAdministration";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Contraindications / Warnings";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:105.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecContraindications";
+        drugInfoSection.htmlFile = @"vitaminsContraindications";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Licence status";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:38.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecLicenceStatus";
+        drugInfoSection.htmlFile = @"vitaminsLicenceStatus";
         [drugInfoSections addObject:drugInfoSection];
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"References";
         drugInfoSection.heightForRow = [NSNumber numberWithFloat:220.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
-        drugInfoSection.htmlFile = @"abidecReferences";
+        drugInfoSection.htmlFile = @"vitaminsReferences";
         [drugInfoSections addObject:drugInfoSection];
     
         drug.info = drugInfoSections;

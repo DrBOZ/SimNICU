@@ -126,6 +126,30 @@
 		5C51D8DA17932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8D817932A4E004A7FF5 /* vitaminsLicenceStatus.html */; };
 		5C51D8DC17932A5B004A7FF5 /* vitaminsReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */; };
 		5C51D8DD17932A5B004A7FF5 /* vitaminsReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */; };
+		5C51D8E017932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8DF17932E6B004A7FF5 /* sodiumChloridePharmacology.html */; };
+		5C51D8E117932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8DF17932E6B004A7FF5 /* sodiumChloridePharmacology.html */; };
+		5C51D8E317932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8E217932E7B004A7FF5 /* sodiumChlorideIndications.html */; };
+		5C51D8E417932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8E217932E7B004A7FF5 /* sodiumChlorideIndications.html */; };
+		5C51D8E617932E8F004A7FF5 /* sodiumChloridePresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8E517932E8F004A7FF5 /* sodiumChloridePresentation.html */; };
+		5C51D8E717932E8F004A7FF5 /* sodiumChloridePresentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8E517932E8F004A7FF5 /* sodiumChloridePresentation.html */; };
+		5C51D8E917932E9E004A7FF5 /* sodiumChloridePreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8E817932E9E004A7FF5 /* sodiumChloridePreparation.html */; };
+		5C51D8EA17932E9E004A7FF5 /* sodiumChloridePreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8E817932E9E004A7FF5 /* sodiumChloridePreparation.html */; };
+		5C51D8EC17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8EB17932EAF004A7FF5 /* sodiumChlorideExpiry.html */; };
+		5C51D8ED17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8EB17932EAF004A7FF5 /* sodiumChlorideExpiry.html */; };
+		5C51D8EF17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8EE17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html */; };
+		5C51D8F017932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8EE17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html */; };
+		5C51D8F217932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8F117932ED4004A7FF5 /* sodiumChlorideContraindications.html */; };
+		5C51D8F317932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8F117932ED4004A7FF5 /* sodiumChlorideContraindications.html */; };
+		5C51D8F517932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8F417932EDE004A7FF5 /* sodiumChlorideInteractions.html */; };
+		5C51D8F617932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8F417932EDE004A7FF5 /* sodiumChlorideInteractions.html */; };
+		5C51D8F817932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8F717932EE7004A7FF5 /* sodiumChlorideSideEffects.html */; };
+		5C51D8F917932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8F717932EE7004A7FF5 /* sodiumChlorideSideEffects.html */; };
+		5C51D8FB17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8FA17932EF4004A7FF5 /* sodiumChlorideMonitoring.html */; };
+		5C51D8FC17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8FA17932EF4004A7FF5 /* sodiumChlorideMonitoring.html */; };
+		5C51D8FE17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */; };
+		5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */; };
+		5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */; };
+		5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */; };
 		5C52F3AF1791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B21791656D000CFD80 /* vitaminKIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3B11791656D000CFD80 /* vitaminKIndications.html */; };
@@ -716,14 +740,6 @@
 		5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
-		5CD3B0B51790705000DA0278 /* abidecPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B41790705000DA0278 /* abidecPharmacology.html */; };
-		5CD3B0B61790705000DA0278 /* abidecPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B41790705000DA0278 /* abidecPharmacology.html */; };
-		5CD3B0B81790706100DA0278 /* abidecIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B71790706100DA0278 /* abidecIndications.html */; };
-		5CD3B0B91790706100DA0278 /* abidecIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0B71790706100DA0278 /* abidecIndications.html */; };
-		5CD3B0BB1790707300DA0278 /* abidecPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BA1790707300DA0278 /* abidecPreparation.html */; };
-		5CD3B0BC1790707300DA0278 /* abidecPreparation.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BA1790707300DA0278 /* abidecPreparation.html */; };
-		5CD3B0BE1790708300DA0278 /* abidecDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BD1790708300DA0278 /* abidecDose.html */; };
-		5CD3B0BF1790708300DA0278 /* abidecDose.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CD3B0BD1790708300DA0278 /* abidecDose.html */; };
 		5CD3B0C21790729200DA0278 /* DrugDose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C11790729100DA0278 /* DrugDose.m */; };
 		5CD3B0C31790729200DA0278 /* DrugDose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C11790729100DA0278 /* DrugDose.m */; };
 		5CD3B0C61790759600DA0278 /* DrugIndication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C51790759500DA0278 /* DrugIndication.m */; };
@@ -810,6 +826,18 @@
 		5C51D8D517932A3E004A7FF5 /* vitaminsContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsContraindications.html; sourceTree = "<group>"; };
 		5C51D8D817932A4E004A7FF5 /* vitaminsLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsLicenceStatus.html; sourceTree = "<group>"; };
 		5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsReferences.html; sourceTree = "<group>"; };
+		5C51D8DF17932E6B004A7FF5 /* sodiumChloridePharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChloridePharmacology.html; sourceTree = "<group>"; };
+		5C51D8E217932E7B004A7FF5 /* sodiumChlorideIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideIndications.html; sourceTree = "<group>"; };
+		5C51D8E517932E8F004A7FF5 /* sodiumChloridePresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChloridePresentation.html; sourceTree = "<group>"; };
+		5C51D8E817932E9E004A7FF5 /* sodiumChloridePreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChloridePreparation.html; sourceTree = "<group>"; };
+		5C51D8EB17932EAF004A7FF5 /* sodiumChlorideExpiry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideExpiry.html; sourceTree = "<group>"; };
+		5C51D8EE17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideYSiteCompatibilities.html; sourceTree = "<group>"; };
+		5C51D8F117932ED4004A7FF5 /* sodiumChlorideContraindications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideContraindications.html; sourceTree = "<group>"; };
+		5C51D8F417932EDE004A7FF5 /* sodiumChlorideInteractions.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideInteractions.html; sourceTree = "<group>"; };
+		5C51D8F717932EE7004A7FF5 /* sodiumChlorideSideEffects.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideSideEffects.html; sourceTree = "<group>"; };
+		5C51D8FA17932EF4004A7FF5 /* sodiumChlorideMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideMonitoring.html; sourceTree = "<group>"; };
+		5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideLicenceStatus.html; sourceTree = "<group>"; };
+		5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideReferences.html; sourceTree = "<group>"; };
 		5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPharmacology.html; sourceTree = "<group>"; };
 		5C52F3B11791656D000CFD80 /* vitaminKIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKIndications.html; sourceTree = "<group>"; };
 		5C52F3B41791657C000CFD80 /* vitaminKPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPresentation.html; sourceTree = "<group>"; };
@@ -1251,10 +1279,6 @@
 		5CCC271816D64A1F00D14080 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
-		5CD3B0B41790705000DA0278 /* abidecPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecPharmacology.html; sourceTree = "<group>"; };
-		5CD3B0B71790706100DA0278 /* abidecIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecIndications.html; sourceTree = "<group>"; };
-		5CD3B0BA1790707300DA0278 /* abidecPreparation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecPreparation.html; sourceTree = "<group>"; };
-		5CD3B0BD1790708300DA0278 /* abidecDose.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = abidecDose.html; sourceTree = "<group>"; };
 		5CD3B0C01790729100DA0278 /* DrugDose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDose.h; sourceTree = "<group>"; };
 		5CD3B0C11790729100DA0278 /* DrugDose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDose.m; sourceTree = "<group>"; };
 		5CD3B0C41790759500DA0278 /* DrugIndication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugIndication.h; sourceTree = "<group>"; };
@@ -1473,6 +1497,7 @@
 				5C0E05FA178F518C00768739 /* Adrenaline */,
 				5C4350B5178DE22000E926B1 /* Benzylpenicillin */,
 				5C0E061F178F814000768739 /* Gentamicin */,
+				5C51D8DE17932E51004A7FF5 /* Sodium chloride */,
 				5CA3C114179240DD002AB53D /* Vancomycin */,
 				5C52F3AD17916473000CFD80 /* Vitamin K */,
 				5CD3B0B31790702100DA0278 /* Vitamins (Multivitamins) */,
@@ -1505,6 +1530,25 @@
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 			);
 			name = Screen_TransportVentilator;
+			sourceTree = "<group>";
+		};
+		5C51D8DE17932E51004A7FF5 /* Sodium chloride */ = {
+			isa = PBXGroup;
+			children = (
+				5C51D8DF17932E6B004A7FF5 /* sodiumChloridePharmacology.html */,
+				5C51D8E217932E7B004A7FF5 /* sodiumChlorideIndications.html */,
+				5C51D8E517932E8F004A7FF5 /* sodiumChloridePresentation.html */,
+				5C51D8E817932E9E004A7FF5 /* sodiumChloridePreparation.html */,
+				5C51D8EB17932EAF004A7FF5 /* sodiumChlorideExpiry.html */,
+				5C51D8EE17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html */,
+				5C51D8F117932ED4004A7FF5 /* sodiumChlorideContraindications.html */,
+				5C51D8F417932EDE004A7FF5 /* sodiumChlorideInteractions.html */,
+				5C51D8F717932EE7004A7FF5 /* sodiumChlorideSideEffects.html */,
+				5C51D8FA17932EF4004A7FF5 /* sodiumChlorideMonitoring.html */,
+				5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */,
+				5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */,
+			);
+			name = "Sodium chloride";
 			sourceTree = "<group>";
 		};
 		5C52F3AD17916473000CFD80 /* Vitamin K */ = {
@@ -2357,10 +2401,6 @@
 		5CD3B0B31790702100DA0278 /* Vitamins (Multivitamins) */ = {
 			isa = PBXGroup;
 			children = (
-				5CD3B0B41790705000DA0278 /* abidecPharmacology.html */,
-				5CD3B0B71790706100DA0278 /* abidecIndications.html */,
-				5CD3B0BA1790707300DA0278 /* abidecPreparation.html */,
-				5CD3B0BD1790708300DA0278 /* abidecDose.html */,
 				5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */,
 				5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */,
 				5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */,
@@ -2683,10 +2723,6 @@
 				5C0E0661178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
 				5C0E0664178F94CE00768739 /* amoxicillinLicence.html in Resources */,
 				5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */,
-				5CD3B0B51790705000DA0278 /* abidecPharmacology.html in Resources */,
-				5CD3B0B81790706100DA0278 /* abidecIndications.html in Resources */,
-				5CD3B0BB1790707300DA0278 /* abidecPreparation.html in Resources */,
-				5CD3B0BE1790708300DA0278 /* abidecDose.html in Resources */,
 				5C52F3AF1791655E000CFD80 /* vitaminKPharmacology.html in Resources */,
 				5C52F3B21791656D000CFD80 /* vitaminKIndications.html in Resources */,
 				5C52F3B51791657C000CFD80 /* vitaminKPresentation.html in Resources */,
@@ -2720,6 +2756,18 @@
 				5C51D8D617932A3F004A7FF5 /* vitaminsContraindications.html in Resources */,
 				5C51D8D917932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */,
 				5C51D8DC17932A5B004A7FF5 /* vitaminsReferences.html in Resources */,
+				5C51D8E017932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */,
+				5C51D8E317932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */,
+				5C51D8E617932E8F004A7FF5 /* sodiumChloridePresentation.html in Resources */,
+				5C51D8E917932E9E004A7FF5 /* sodiumChloridePreparation.html in Resources */,
+				5C51D8EC17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */,
+				5C51D8EF17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */,
+				5C51D8F217932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */,
+				5C51D8F517932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */,
+				5C51D8F817932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */,
+				5C51D8FB17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
+				5C51D8FE17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
+				5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2915,10 +2963,6 @@
 				5C0E0662178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
 				5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */,
 				5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */,
-				5CD3B0B61790705000DA0278 /* abidecPharmacology.html in Resources */,
-				5CD3B0B91790706100DA0278 /* abidecIndications.html in Resources */,
-				5CD3B0BC1790707300DA0278 /* abidecPreparation.html in Resources */,
-				5CD3B0BF1790708300DA0278 /* abidecDose.html in Resources */,
 				5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */,
 				5C52F3B31791656D000CFD80 /* vitaminKIndications.html in Resources */,
 				5C52F3B61791657C000CFD80 /* vitaminKPresentation.html in Resources */,
@@ -2952,6 +2996,18 @@
 				5C51D8D717932A3F004A7FF5 /* vitaminsContraindications.html in Resources */,
 				5C51D8DA17932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */,
 				5C51D8DD17932A5B004A7FF5 /* vitaminsReferences.html in Resources */,
+				5C51D8E117932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */,
+				5C51D8E417932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */,
+				5C51D8E717932E8F004A7FF5 /* sodiumChloridePresentation.html in Resources */,
+				5C51D8EA17932E9E004A7FF5 /* sodiumChloridePreparation.html in Resources */,
+				5C51D8ED17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */,
+				5C51D8F017932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */,
+				5C51D8F317932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */,
+				5C51D8F617932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */,
+				5C51D8F917932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */,
+				5C51D8FC17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
+				5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
+				5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -495,6 +495,11 @@
      */
     
     screen = [[Screen alloc] init];
+    screen.menuText = @"Drugs";
+    screen.segueId = @"Drugs";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
     screen.menuText = @"APGAR scores";
     screen.segueId = @"APGAR";
     [screens addObject:screen];
