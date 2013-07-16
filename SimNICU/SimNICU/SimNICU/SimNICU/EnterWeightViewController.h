@@ -39,19 +39,12 @@
 @property (nonatomic) BOOL allowUserToAccessPatientList;
 @property (nonatomic, strong) Preferences *preferences;
 @property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) NSMutableArray *bayData;
 @property (nonatomic, strong) UITextField *gestation;
 @property (nonatomic, strong) NSString *eraseData;
 @property (nonatomic, strong) UITextField *weight;
 @property (nonatomic, strong) UISwitch *switchObj;
 @property (nonatomic) BOOL confidentialityModeOn;
-
-// new properties
-@property (nonatomic, strong) NSMutableArray *bayData;
-
-// @property (nonatomic) NSInteger NumberOfBabiesInBay1;
-// @property (nonatomic) NSInteger NumberOfBabiesInBay2;
-// @property (nonatomic) NSInteger NumberOfBabiesInBay3;
-// @property (nonatomic) NSInteger NumberOfBabiesInLowDependency;
 
 - (void)savePatientList;
 - (void)patientConfidentialityModeToggle;

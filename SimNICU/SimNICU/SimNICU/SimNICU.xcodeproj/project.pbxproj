@@ -183,6 +183,8 @@
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
 		5C679FBE1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
 		5C679FBF1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
+		5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FC21795B83900B9A813 /* BayEditorViewController.m */; };
+		5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FC21795B83900B9A813 /* BayEditorViewController.m */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
@@ -866,6 +868,8 @@
 		5C63B13B16B9FD1700B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
 		5C679FBC1794CA0100B9A813 /* Bay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bay.h; sourceTree = "<group>"; };
 		5C679FBD1794CA0100B9A813 /* Bay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bay.m; sourceTree = "<group>"; };
+		5C679FC11795B83900B9A813 /* BayEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BayEditorViewController.h; sourceTree = "<group>"; };
+		5C679FC21795B83900B9A813 /* BayEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BayEditorViewController.m; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
@@ -1732,6 +1736,15 @@
 			name = Screen_UVCUAC;
 			sourceTree = "<group>";
 		};
+		5C679FC01795B7E500B9A813 /* Bay Editor */ = {
+			isa = PBXGroup;
+			children = (
+				5C679FC11795B83900B9A813 /* BayEditorViewController.h */,
+				5C679FC21795B83900B9A813 /* BayEditorViewController.m */,
+			);
+			name = "Bay Editor";
+			sourceTree = "<group>";
+		};
 		5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -2047,6 +2060,7 @@
 				5C940B05166E3B420044A7D1 /* EnterWeightViewController.m */,
 				5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
+				5C679FC01795B7E500B9A813 /* Bay Editor */,
 			);
 			name = "Rear View";
 			sourceTree = "<group>";
@@ -3144,6 +3158,7 @@
 				5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
+				5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3271,6 +3286,7 @@
 				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBF1794CA0100B9A813 /* Bay.m in Sources */,
+				5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

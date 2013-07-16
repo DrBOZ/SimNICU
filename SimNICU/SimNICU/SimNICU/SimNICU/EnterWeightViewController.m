@@ -8,6 +8,7 @@
 
 #import "PortraitOnlyNavigationController.h"
 #import "EnterWeightViewController.h"
+#import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import "Patient.h"
@@ -1149,7 +1150,15 @@
         }
         else if (indexPath.row == 2)
         {
-            // goto Bay Editor
+            BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
+            bayEditorViewController.bayData = self.bayData;
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:bayEditorViewController];
+            
+            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+            navController.navigationBar.tintColor = [UIColor blackColor];
+            
+            [self presentModalViewController:navController animated:YES];
         }
         else
         {
