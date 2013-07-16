@@ -1746,8 +1746,87 @@
                 [self presentModalViewController:nav animated:YES];
             });
             
+            double delayInSeconds = 1.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                
+                self.confidentialityModeOn = !self.confidentialityModeOn;
+                
+                if (!self.confidentialityModeOn)
+                {
+                    // enable edit button
+                    self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = YES;
+                }
+                else
+                {
+                    self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
+                }
+                
+                // reload patient sections
+                [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, [self.bayData count])] withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+                // if patient array is empty then go straight into edit mode
+                Bay *bay;
+                BOOL patientInDatabase = NO;
+                
+                for (bay in self.bayData)
+                {
+                    if ([bay.patientsInBay count] > 1)
+                    {
+                        patientInDatabase = YES;
+                    }
+                }
+                
+                if (patientInDatabase)
+                {
+                    NSLog(@"There is a patient in the list");
+                }
+                else // there isn't
+                {
+                    [self setEditing:YES animated:YES];
+                }
+            });
+        }
+        else
+        {
+            self.confidentialityModeOn = !self.confidentialityModeOn;
+            
+            if (!self.confidentialityModeOn)
+            {
+                // enable edit button
+                self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = YES;
+            }
+            else
+            {
+                self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
+            }
+            
+            // reload patient sections
+            [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, [self.bayData count])] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            // if patient array is empty then go straight into edit mode
+            Bay *bay;
+            BOOL patientInDatabase = NO;
+            
+            for (bay in self.bayData)
+            {
+                if ([bay.patientsInBay count] > 1)
+                {
+                    patientInDatabase = YES;
+                }
+            }
+            
+            if (patientInDatabase)
+            {
+                NSLog(@"There is a patient in the list");
+            }
+            else // there isn't
+            {
+                [self setEditing:YES animated:YES];
+            }
         }
         
+        /*
         self.confidentialityModeOn = !self.confidentialityModeOn;
         
         if (!self.confidentialityModeOn) 
@@ -1772,6 +1851,7 @@
         {
             [self setEditing:YES animated:YES];
         }
+         */
     }
 }
 
