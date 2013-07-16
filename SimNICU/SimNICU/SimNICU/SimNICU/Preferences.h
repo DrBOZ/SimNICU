@@ -29,6 +29,4 @@
 @property (nonatomic, retain) NSString *ROPGestationScreeningThreshold;
 @property (nonatomic, retain) NSString *ROPBirthWeightScreeningThreshold;
 
-
-
 @end

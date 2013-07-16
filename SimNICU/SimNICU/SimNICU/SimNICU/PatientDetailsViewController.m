@@ -725,7 +725,8 @@
     {
         [self.delegate patientDetailsViewController:self didFinishAddingPatient:self.patientToEdit];
     }
-    else {
+    else
+    {
         [self.delegate patientDetailsViewController:self didFinishEditingPatient:self.patientToEdit];
     }
     

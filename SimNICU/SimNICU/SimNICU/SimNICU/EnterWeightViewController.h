@@ -46,10 +46,12 @@
 @property (nonatomic) BOOL confidentialityModeOn;
 
 // new properties
-@property (nonatomic) NSInteger NumberOfBabiesInBay1;
-@property (nonatomic) NSInteger NumberOfBabiesInBay2;
-@property (nonatomic) NSInteger NumberOfBabiesInBay3;
-@property (nonatomic) NSInteger NumberOfBabiesInLowDependency;
+@property (nonatomic, strong) NSMutableArray *bayData;
+
+// @property (nonatomic) NSInteger NumberOfBabiesInBay1;
+// @property (nonatomic) NSInteger NumberOfBabiesInBay2;
+// @property (nonatomic) NSInteger NumberOfBabiesInBay3;
+// @property (nonatomic) NSInteger NumberOfBabiesInLowDependency;
 
 - (void)savePatientList;
 - (void)patientConfidentialityModeToggle;

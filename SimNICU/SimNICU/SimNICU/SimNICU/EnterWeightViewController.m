@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import "Patient.h"
+#import "Bay.h"
 
 @interface EnterWeightViewController ()
 
@@ -24,6 +25,7 @@
 @property (nonatomic) BOOL userEditingTextField;
 @property (nonatomic) BOOL editingModeOn;
 @property (nonatomic) int gestationMode;
+@property (nonatomic) int patientListMode;
 
 - (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 - (void)selectCentile;
@@ -43,6 +45,66 @@
     return _preferences;
 }
 
+- (NSMutableArray *)bayData
+{
+    if (!_bayData)
+    {
+        _bayData = [[NSMutableArray alloc] initWithCapacity:7];
+        
+        // add default bay data
+        Bay *bay1 = [[Bay alloc] init];
+        bay1.bayName = @"Bay 1";
+        bay1.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [_bayData addObject:bay1];
+        
+        Bay *bay2 = [[Bay alloc] init];
+        bay2.bayName = @"Bay 2";
+        bay2.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [_bayData addObject:bay2];
+        
+        Bay *bay3 = [[Bay alloc] init];
+        bay3.bayName = @"Bay 3";
+        bay3.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [_bayData addObject:bay3];
+        
+        Bay *bay4 = [[Bay alloc] init];
+        bay4.bayName = @"Low Dependency";
+        bay4.patientsInBay = [[NSMutableArray alloc] initWithCapacity:8];
+        
+        [_bayData addObject:bay4];
+        
+        Bay *bay5 = [[Bay alloc] init];
+        bay5.bayName = @"Transitional Care";
+        bay5.patientsInBay = [[NSMutableArray alloc] initWithCapacity:8];
+        
+        [_bayData addObject:bay5];
+        
+        Bay *bay6 = [[Bay alloc] init];
+        bay6.bayName = @"Postnatal Ward";
+        bay6.patientsInBay = [[NSMutableArray alloc] initWithCapacity:20];
+        
+        [_bayData addObject:bay6];
+        
+        Bay *bay7 = [[Bay alloc] init];
+        bay7.bayName = @"Misc";
+        bay7.patientsInBay = [[NSMutableArray alloc] initWithCapacity:20];
+        
+        Patient *patient;
+        
+        for (patient in self.patientList)
+        {
+            [bay7.patientsInBay addObject:patient];
+        }
+        
+        [_bayData addObject:bay7];
+    }
+    
+    return _bayData;
+}
+
 # pragma mark
 
 - (void)loadPatientList
@@ -54,13 +116,13 @@
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         self.patientList = [unarchiver decodeObjectForKey:@"PatientList"];
         self.preferences = [unarchiver decodeObjectForKey:@"Preferences"];
+        self.bayData = [unarchiver decodeObjectForKey:@"BayData"];
         
         [unarchiver finishDecoding];
     }
     else
     {
         self.patientList = [[NSMutableArray alloc] initWithCapacity:20];
-        self.preferences = [[Preferences alloc] init];
     }
 }
 
@@ -163,6 +225,7 @@
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:self.patientList forKey:@"PatientList"];
     [archiver encodeObject:self.preferences forKey:@"Preferences"];
+    [archiver encodeObject:self.bayData forKey:@"BayData"];
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
     
@@ -211,7 +274,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [self.bayData count] + 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -224,7 +287,7 @@
         {
             rows = 5;
         }
-        else if (self.gestationMode == 1)
+        else if (self.gestationMode == 1)  // Advanced settings: Male / Female / Unknown displayed
         {
             rows = 4;
         }
@@ -233,12 +296,20 @@
             rows = 3;
         }
     }
-    else if(section == 1)
+    else if(section == 1) // patient list UISwitch and Passcode lock
     {
-        // patient list UISwitch and Passcode lock
-        rows = 2;
+        // Implementing Advanced settings for Patient List
+        
+        if (self.patientListMode == 1)
+        {
+            rows = 4;                      // Advanced settings: Advanced Patient List & Bay editor
+        }
+        else
+        {
+            rows = 2;
+        }
     }
-    else if(section == 2)
+    else
     {
         if (self.confidentialityModeOn) 
         {
@@ -246,25 +317,8 @@
         }
         else 
         {
-            if ([self.patientList count] < 5) 
-            {
-                rows = [self.patientList count];
-            }
-            else 
-            {
-                // rows = 4;
-                rows = [self.patientList count];
-            }
-        }
-    }
-    else
-    {
-        if (self.confidentialityModeOn) {
-            rows = 0;
-        }
-        else 
-        {
-            rows = 1;
+            // lookup how many patients in bay
+            rows = [[self.bayData[section - 2] patientsInBay] count];
         }
     }
     
@@ -273,15 +327,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    CGFloat result = 0;
+    CGFloat result = 0.0f;
     
-    if (!self.confidentialityModeOn) 
+    if (!self.confidentialityModeOn)
     {
-        if(section == 2)
+        if(!(section == 0 || section == 1))
         {
-            // result = 30;
-            
-            result = 0;
+            result = 30.0f;
         }
     }
     
@@ -292,36 +344,9 @@
 {
     UIView *view = nil;
     
-    return view;  // delete this
-    
     if (!self.confidentialityModeOn) 
     {
-        if (section == 2) 
-        {
-            
-            UIView *headerView;
-            
-            headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-            
-            
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
-            
-            // headerLabel.textColor = [UIColor whiteColor];
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0, 1);
-            headerLabel.backgroundColor = [self.myTableView backgroundColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18];
-            // headerLabel.textAlignment = UITextAlignmentCenter;
-            
-            headerLabel.text = @"Bay 1";
-            
-            [headerView addSubview:headerLabel];
-            
-            view = headerView;
-        }
-        else if (section == 3) 
+        if (!(section == 0 || section == 1))
         {
             UIView *headerView;
             
@@ -329,16 +354,17 @@
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
             
-            // headerLabel.textColor = [UIColor whiteColor];
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
+            headerLabel.textColor = [UIColor whiteColor];
+            // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            headerLabel.shadowColor = [UIColor blackColor];
             headerLabel.shadowOffset = CGSizeMake(0, 1);
             headerLabel.backgroundColor = [self.myTableView backgroundColor];
             headerLabel.opaque = YES;
             headerLabel.font = [UIFont boldSystemFontOfSize:18];
-            // headerLabel.textAlignment = UITextAlignmentCenter;
+            headerLabel.textAlignment = UITextAlignmentLeft;
             
-            headerLabel.text = @"Bay 2";
+            headerLabel.text = [self.bayData[section - 2] bayName];
+            NSLog(@"section = %i", section);
             
             [headerView addSubview:headerLabel];
             
@@ -360,7 +386,7 @@
             static NSString *CellIdentifier = @"WeightCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.backgroundColor = [UIColor whiteColor];
@@ -419,44 +445,18 @@
             
             UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestationSwipeLeft:)];
             swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-            // swipeLeft.delegate = self;
             [cell addGestureRecognizer:swipeLeft];
             
             UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestationSwipeRight:)];
             swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
             [cell addGestureRecognizer:swipeRight];
             
-            
             cell.textLabel.text = @"Gestation";
-            
-            returnCell = cell;
-        }
-        else if(indexPath.row == 4)
-        {
-            static NSString *CellIdentifier = @"DoneCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
-            }
-            
-            self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-            [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-            self.button.selected = NO;
-            [self.button setTitle:NSLocalizedString(NSLocalizedString(@"Done", nil), nil) forState:UIControlStateNormal];
-            self.button.buttonColor = [UIColor darkGrayColor];
-            
-            cell.accessoryView = self.button;
-            cell.textLabel.text = @"";
             
             returnCell = cell;
         }
         else if(indexPath.row == 2)
         {
-            // if (self.userIsStartingToEnterGestationWhenNoWeightEntered)
             if (self.gestationMode == 1 || self.gestationMode == 2)
             {
                 static NSString *CellIdentifier = @"SexCell";
@@ -475,8 +475,8 @@
                 self.sex.segmentedControlStyle = UISegmentedControlStyleBar;
                 self.sex.selectedSegmentIndex = 2;
                 
-                [self.sex addTarget:self 
-                             action:@selector(selectSex) 
+                [self.sex addTarget:self
+                             action:@selector(selectSex)
                    forControlEvents:UIControlEventValueChanged];
                 
                 cell.accessoryView = self.sex;
@@ -511,7 +511,6 @@
         }
         else if(indexPath.row == 3)
         {
-            // if (self.userIsStartingToEnterGestationWhenNoWeightEntered)
             if (self.gestationMode == 2)
             {
                 static NSString *CellIdentifier = @"PercentileCell";
@@ -545,7 +544,7 @@
                 static NSString *CellIdentifier = @"DoneCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if (cell == nil)
+                if (!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -564,6 +563,29 @@
                 returnCell = cell;
             }
         }
+        else if(indexPath.row == 4)
+        {
+            static NSString *CellIdentifier = @"DoneCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+            }
+            
+            self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+            [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
+            self.button.selected = NO;
+            [self.button setTitle:NSLocalizedString(NSLocalizedString(@"Done", nil), nil) forState:UIControlStateNormal];
+            self.button.buttonColor = [UIColor darkGrayColor];
+            
+            cell.accessoryView = self.button;
+            cell.textLabel.text = @"";
+            
+            returnCell = cell;
+        }
     }
     else if (indexPath.section == 1)
     {
@@ -576,7 +598,7 @@
             if(cell == nil)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+                // cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
                 cell.textLabel.adjustsFontSizeToFitWidth = YES;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
@@ -588,12 +610,80 @@
             [self.switchObj addTarget:self action:@selector(patientConfidentialityModeToggle) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
             cell.accessoryView = self.switchObj;
             
-            cell.textLabel.text = NSLocalizedString(@"Patient list", nil);
+            cell.textLabel.text = NSLocalizedString(@"Patient List", nil);
+            
+            UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePatientListSwipeLeft:)];
+            swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+            [cell addGestureRecognizer:swipeLeft];
+            
+            UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePatientListSwipeRight:)];
+            swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+            [cell addGestureRecognizer:swipeRight];
             
             returnCell = cell;
-            
         }
         else if (indexPath.row == 1)
+        {
+            if (self.patientListMode == 1)
+            {
+                static NSString *CellIdentifier = @"Advanced Patient List";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if(cell == nil)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.backgroundColor = [UIColor whiteColor];
+                }
+                
+                cell.textLabel.text = NSLocalizedString(@"Advanced Patient List", nil);
+                
+                returnCell = cell;
+            }
+            else
+            {
+                static NSString *CellIdentifier = @"Password row";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if(cell == nil)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.backgroundColor = [UIColor whiteColor];
+                }
+                
+                cell.textLabel.text = NSLocalizedString(@"Passcode Lock", nil);
+                
+                if ([[KKPasscodeLock sharedLock] isPasscodeRequired])
+                {
+                    cell.detailTextLabel.text = NSLocalizedString(@"On", "");
+                } else
+                {
+                    cell.detailTextLabel.text = NSLocalizedString(@"Off", "");
+                }
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                returnCell = cell;
+            }
+        }
+        else if (indexPath.row == 2)
+        {
+            static NSString *CellIdentifier = @"Bay Editor";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            cell.textLabel.text = NSLocalizedString(@"Bay Editor", nil);
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 3)
         {
             static NSString *CellIdentifier = @"Password row";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -607,10 +697,10 @@
             
             cell.textLabel.text = NSLocalizedString(@"Passcode Lock", nil);
             
-            if ([[KKPasscodeLock sharedLock] isPasscodeRequired]) 
+            if ([[KKPasscodeLock sharedLock] isPasscodeRequired])
             {
                 cell.detailTextLabel.text = NSLocalizedString(@"On", "");
-            } else 
+            } else
             {
                 cell.detailTextLabel.text = NSLocalizedString(@"Off", "");
             }
@@ -620,183 +710,190 @@
             returnCell = cell;
         }
     }
-    else if (indexPath.section == 2)
+    else
     {
-        static NSString *CellIdentifier = @"PatientCell";
+        NSString *CellIdentifier = [self.bayData[indexPath.section - 2] bayName];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        Patient *thisPatient = (Patient *)[self.patientList objectAtIndex:indexPath.row];
-        
-        if ([thisPatient.lastname isEqualToString:@""]) 
+        if ([[self.bayData[indexPath.section - 2] patientsInBay] count])
         {
-            thisPatient.lastname = @"BABY";
-            thisPatient.firstname = @"New";
-        }
-        else 
-        {
-            if ([thisPatient.firstname isEqualToString:@""]) 
+            // there is a patient in the bay
+            // Patient *thisPatient = (Patient *)self.patientList[indexPath.row];  old remove once bays working
+            
+            Bay *bay;
+            
+            bay = self.bayData[indexPath.section - 2];
+            Patient *thisPatient = (Patient *)bay.patientsInBay[indexPath.row];
+            
+            if ([thisPatient.lastname isEqualToString:@""])
             {
-                thisPatient.firstname = @"Baby";
+                thisPatient.lastname = @"BABY";
+                thisPatient.firstname = @"New";
             }
-        }
-        
-        NSString *name = [NSString stringWithFormat:@"%@ %@",[thisPatient firstname], [thisPatient lastname]];
-        
-        NSString *details;
-        
-        if ([thisPatient.firstname isEqualToString:@"add"] && [thisPatient.lastname isEqualToString:@"new patient"]) 
-        {
-            details = @"";
-        }
-        else if (!thisPatient.birthWeight && !thisPatient.gestation)
-        {
-            details = @"";
-        }
-        else if (thisPatient.birthWeight && !thisPatient.gestation)
-        {
-            NSString *rawBirthWeight = [thisPatient birthWeight];
-            NSString *formattedBirthWeight;
-            
-            NSString *rawWorkingWeight = [thisPatient workingWeight];
-            NSString *formattedWorkingWeight;
-            
-            // format birth weight
-            NSString *UKLocaleRawBirthWeight;
-            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            
-            float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-            
-            if(birthWeightKGAsFloat < 1)
+            else
             {
-                // convert to grams as use integer
-                int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-                formattedBirthWeight = [NSString stringWithFormat:@"%i grams", birthWeightGRAMSasInt];
-            }
-            else 
-            {
-                formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
+                if ([thisPatient.firstname isEqualToString:@""])
+                {
+                    thisPatient.firstname = @"Baby";
+                }
             }
             
-            // format working weight
-            NSString *UKLocaleRawWorkingWeight;
-            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            NSString *name = [NSString stringWithFormat:@"%@ %@",[thisPatient firstname], [thisPatient lastname]];
             
-            float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-            if(workingWeightKGAsFloat < 1)
+            NSString *details;
+            
+            if ([thisPatient.firstname isEqualToString:@"add"] && [thisPatient.lastname isEqualToString:@"new patient"])
             {
-                // convert to grams as use integer
-                int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-                formattedWorkingWeight = [NSString stringWithFormat:@"%i grams", workingWeightGRAMSasInt];
+                details = @"";
             }
-            else 
+            else if (!thisPatient.birthWeight && !thisPatient.gestation)
             {
-                formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
+                details = @"";
             }
-            
-            details = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
-        }
-        else if (thisPatient.gestation && !thisPatient.birthWeight)
-        {
-            details = [NSString stringWithFormat:@"%@/40 gestation - no weight", thisPatient.gestation];
-        }
-        else if (thisPatient.gestation && thisPatient.birthWeight)
-        {
-            NSString *rawBirthWeight = [thisPatient birthWeight];
-            NSString *formattedBirthWeight;
-            
-            NSString *rawWorkingWeight = [thisPatient workingWeight];
-            NSString *formattedWorkingWeight;
-            
-            // format birth weight
-            NSString *UKLocaleRawBirthWeight;
-            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            
-            float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-            
-            if(birthWeightKGAsFloat < 1)
+            else if (thisPatient.birthWeight && !thisPatient.gestation)
             {
-                // convert to grams as use integer
-                int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-                formattedBirthWeight = [NSString stringWithFormat:@"%i grams", birthWeightGRAMSasInt];
-            }
-            else 
-            {
-                formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
-            }
-            
-            // format working weight
-            NSString *UKLocaleRawWorkingWeight;
-            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            
-            float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-            if(workingWeightKGAsFloat < 1)
-            {
-                // convert to grams as use integer
-                int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-                formattedWorkingWeight = [NSString stringWithFormat:@"%i grams", workingWeightGRAMSasInt];
-            }
-            else 
-            {
-                formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
-            }
-            
-            if (thisPatient.workingWeight && thisPatient.birthDate)
-            {
-                // details = [NSString stringWithFormat:@"%@ (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [thisPatient correctedGestation], formattedWorkingWeight];
+                NSString *rawBirthWeight = [thisPatient birthWeight];
+                NSString *formattedBirthWeight;
                 
-                details = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [self calculateCurrentGestation:thisPatient], formattedWorkingWeight];
-                thisPatient.correctedGestation = [self calculateCurrentGestation:thisPatient];
+                NSString *rawWorkingWeight = [thisPatient workingWeight];
+                NSString *formattedWorkingWeight;
+                
+                // format birth weight
+                NSString *UKLocaleRawBirthWeight;
+                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
+                
+                if(birthWeightKGAsFloat < 1)
+                {
+                    // convert to grams as use integer
+                    int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
+                    formattedBirthWeight = [NSString stringWithFormat:@"%i grams", birthWeightGRAMSasInt];
+                }
+                else
+                {
+                    formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
+                }
+                
+                // format working weight
+                NSString *UKLocaleRawWorkingWeight;
+                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
+                if(workingWeightKGAsFloat < 1)
+                {
+                    // convert to grams as use integer
+                    int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
+                    formattedWorkingWeight = [NSString stringWithFormat:@"%i grams", workingWeightGRAMSasInt];
+                }
+                else
+                {
+                    formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
+                }
+                
+                details = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
             }
-            else 
+            else if (thisPatient.gestation && !thisPatient.birthWeight)
             {
-                details = [NSString stringWithFormat:@"%@/40 birth weight %@", [thisPatient gestation], formattedBirthWeight];
+                details = [NSString stringWithFormat:@"%@/40 gestation - no weight", thisPatient.gestation];
             }
-        }
-        
-        //
-        //Create patient details cell
-        if(cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            else if (thisPatient.gestation && thisPatient.birthWeight)
+            {
+                NSString *rawBirthWeight = [thisPatient birthWeight];
+                NSString *formattedBirthWeight;
+                
+                NSString *rawWorkingWeight = [thisPatient workingWeight];
+                NSString *formattedWorkingWeight;
+                
+                // format birth weight
+                NSString *UKLocaleRawBirthWeight;
+                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
+                
+                if(birthWeightKGAsFloat < 1)
+                {
+                    // convert to grams as use integer
+                    int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
+                    formattedBirthWeight = [NSString stringWithFormat:@"%i grams", birthWeightGRAMSasInt];
+                }
+                else
+                {
+                    formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
+                }
+                
+                // format working weight
+                NSString *UKLocaleRawWorkingWeight;
+                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
+                if(workingWeightKGAsFloat < 1)
+                {
+                    // convert to grams as use integer
+                    int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
+                    formattedWorkingWeight = [NSString stringWithFormat:@"%i grams", workingWeightGRAMSasInt];
+                }
+                else
+                {
+                    formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
+                }
+                
+                if (thisPatient.workingWeight && thisPatient.birthDate)
+                {
+                    // details = [NSString stringWithFormat:@"%@ (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [thisPatient correctedGestation], formattedWorkingWeight];
+                    
+                    details = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [self calculateCurrentGestation:thisPatient], formattedWorkingWeight];
+                    thisPatient.correctedGestation = [self calculateCurrentGestation:thisPatient];
+                }
+                else
+                {
+                    details = [NSString stringWithFormat:@"%@/40 birth weight %@", [thisPatient gestation], formattedBirthWeight];
+                }
+            }
             
-            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-            cell.textLabel.adjustsFontSizeToFitWidth = YES;
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-            cell.backgroundColor = [UIColor whiteColor];
-        }
-        
-        [cell.textLabel setText:name];
-        [cell.detailTextLabel setText:details];
-        
-        if ([thisPatient.NewBabyAPGARSSaved isEqualToString:@"YES"]) 
-        {
-            cell.detailTextLabel.text = @"APGARS saved";
-        }
-        
-        returnCell = cell;
-    }
-    else if(indexPath.section == 3)
-    {
-        static NSString *CellIdentifier = @"BayCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if(cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.textLabel.adjustsFontSizeToFitWidth = YES;
-            // cell.textLabel.minimumFontSize = 14;
-            [cell setBackgroundColor:[UIColor whiteColor]];
+            //
+            //Create patient details cell
+            if(cell == nil)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                
+                cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
             
+            [cell.textLabel setText:name];
+            [cell.detailTextLabel setText:details];
+            
+            if ([thisPatient.NewBabyAPGARSSaved isEqualToString:@"YES"]) 
+            {
+                cell.detailTextLabel.text = @"APGARS saved";
+            }
+            
+            returnCell = cell;
         }
-        
-        cell.textLabel.text = @"Organise bays";
-        
-        returnCell = cell;
+        else
+        {
+            //Create empty bay cell
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                
+                cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+                cell.textLabel.adjustsFontSizeToFitWidth = YES;
+                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            cell.textLabel.text = @"No patients in bay";
+            
+            returnCell = cell;
+        }
     }
     
     return returnCell;
@@ -811,7 +908,7 @@
     // only allow editing in PatientList if patient list is on
     if(!self.confidentialityModeOn && self.editingModeOn)
     {
-        if (indexPath.section == 2) 
+        if (indexPath.section > 1)
         {
             result = YES;
         }
@@ -822,6 +919,7 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
+    // turning on Patient List
     if (!self.confidentialityModeOn)
     {
         [super setEditing:editing animated:animated];
@@ -830,17 +928,23 @@
         {
             self.editingModeOn = YES;
             
-            int newRowIndex = [self.patientList count];
+            // add patient to the last bayData
+            int sectionToAddPatient = [self.bayData count] +1;
+            
+            int newRowIndex = [[self.bayData[([self.bayData count] -1)] patientsInBay] count];
             
             Patient *newPatient = [[Patient alloc] init];
             newPatient.firstname = @"add";
             newPatient.lastname = @"new patient";
             
-            [self.patientList addObject:newPatient];
+            [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:newPatient];
             
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:2];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddPatient];
             NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
             [self.myTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            // scroll down 
+            [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
         else 
         {
@@ -848,17 +952,16 @@
             
             self.editingModeOn = NO;
             
-            int oldRowIndex = [self.patientList count]-1;
+            int sectionToRemovePatient = [self.bayData count] +1;
             
-            [self.patientList removeLastObject];
+            int oldRowIndex = [[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1;
             
-            // [self savePatientList];
+            [[self.bayData[([self.bayData count] -1)] patientsInBay] removeLastObject];
             
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:oldRowIndex inSection:2];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:oldRowIndex inSection:sectionToRemovePatient];
             NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
             [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
         }
-        
         
         [self.myTableView setEditing:editing animated:YES];
     }
@@ -868,12 +971,18 @@
 {
     if (self.editingModeOn)
     {
-        if (indexPath.section == 2) 
+        if (indexPath.section > 1)
         {
-            NSLog(@"([self.patientList count] - 1) = %i", ([self.patientList count] - 1));
-            if (indexPath.row == ([self.patientList count] -1))
+            if (indexPath.section == ([self.bayData count] + 1))
             {
-                return UITableViewCellEditingStyleInsert;
+                if (indexPath.row == ([[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1))
+                {
+                    return UITableViewCellEditingStyleInsert;
+                }
+                else
+                {
+                    return UITableViewCellEditingStyleDelete;
+                }
             }
             else
             {
@@ -883,9 +992,9 @@
     }
     else 
     {
-        if (indexPath.section == 2) 
+        if (indexPath.section > 1)
         {
-            if (indexPath.row == [self.patientList count]) 
+            if (indexPath.row == [[self.bayData[([self.bayData count] -1)] patientsInBay] count]) 
             {
                 return UITableViewCellEditingStyleInsert;
             }
@@ -901,14 +1010,13 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 2)
+    if(indexPath.section > 1)
     {
         // check if a delete row
         if (editingStyle == UITableViewCellEditingStyleDelete)
         {
-            [self.patientList removeObjectAtIndex:indexPath.row];
-            
-            // [self savePatientList];
+            // [self.patientList removeObjectAtIndex:indexPath.row];
+            [[self.bayData[indexPath.section -2] patientsInBay] removeObjectAtIndex:indexPath.row];
             
             NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
             [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
@@ -922,18 +1030,21 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // BOOL result = YES;
     BOOL result = NO;
     
-    if (indexPath.section == 2)
+    if (indexPath.section > 1)
     {
-        NSInteger lastRow = [self.patientList count] -1;
-        
-        if (indexPath.row == lastRow) 
+        if (indexPath.section == [self.bayData count] +1) // Unclassified section
         {
-            result = NO;
+            int lastRow = [[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1;
+            
+            if (!(indexPath.row == lastRow))
+            {
+                result = YES;
+            }
         }
-        else {
+        else
+        {
             result = YES;
         }
     }
@@ -943,40 +1054,49 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-    if(sourceIndexPath.section != proposedDestinationIndexPath.section)
+    NSIndexPath *path = proposedDestinationIndexPath;
+    
+    int miscSection = ([self.bayData count] + 1);
+    
+    if (proposedDestinationIndexPath.section < 2)                  // above Bay 1
     {
-        // ensures that if reorder above patient section, sets final place at top of list
-        NSInteger row = 0;
-        if (sourceIndexPath.section < proposedDestinationIndexPath.section) 
-        {
-            row = [tableView numberOfRowsInSection:sourceIndexPath.section] -2;
-        }
-        
-        return [NSIndexPath indexPathForRow:row inSection:sourceIndexPath.section];
+        // ensures that if reorder above patient section, sets final place at top of list in Bay 1
+        path = [NSIndexPath indexPathForRow:0 inSection:2];
     }
-    else
+    else if (proposedDestinationIndexPath.section == miscSection)  // in MiscSection
     {
-        // ensures reorder does not place row beyond new patient cell.
-        NSInteger lastRow = [self.patientList count];
+        // ensures reorder does not place row beyond new patient cell
+        Bay *bay = self.bayData[([self.bayData count] - 1)];
         
-        if (proposedDestinationIndexPath.row == lastRow -1) 
+        int lastRow = [bay.patientsInBay count] - 1;
+        
+        if (proposedDestinationIndexPath.row >= lastRow)
         {
-            return [NSIndexPath indexPathForRow:(lastRow -2) inSection:2];
+            if (lastRow == 0)
+            {
+                // if only 'add new patient'
+                path = [NSIndexPath indexPathForRow:(lastRow) inSection:proposedDestinationIndexPath.section]; // ([self.bayData count] +1)
+            }
+            else
+            {
+                // more than one patient
+                path = [NSIndexPath indexPathForRow:(lastRow - 1) inSection:proposedDestinationIndexPath.section];
+            }
         }
-        
-        return proposedDestinationIndexPath;
     }
+    
+    return path;
 }
 
 // reorder data source after move
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    Patient *patient = [self.patientList objectAtIndex:sourceIndexPath.row];
+    NSLog(@"moveRowAtIndexPath: destinationIndexPath.row = %i", destinationIndexPath.row);
     
-    [self.patientList removeObjectAtIndex:(sourceIndexPath.row)];
-    [self.patientList insertObject:patient atIndex:(destinationIndexPath.row)];
+    Patient *patient = [[self.bayData[sourceIndexPath.section - 2] patientsInBay] objectAtIndex:sourceIndexPath.row];
     
-    // [self savePatientList];
+    [[self.bayData[sourceIndexPath.section -2] patientsInBay] removeObjectAtIndex:sourceIndexPath.row];
+    [[self.bayData[destinationIndexPath.section -2] patientsInBay] insertObject:patient atIndex:destinationIndexPath.row];
 }
 
 # pragma mark - Table view delegate
@@ -987,19 +1107,17 @@
     
     if (indexPath.section == 1) 
     {
-        if (indexPath.row == 1 || indexPath.row == 2)
+        // only disallow 'Patient List' toggle row to be selected
+        if (!indexPath.row == 0)
         {
             path = indexPath;
         }
     }
-    else if (indexPath.section == 2)
+    else
     {
         path = indexPath;
     }
-    else if (indexPath.section == 3)
-    {
-        path = indexPath;
-    }
+    
     return path;
 }
 
@@ -1008,24 +1126,55 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.section == 1 && indexPath.row == 1)
+    if(indexPath.section == 1)
     {
-        KKPasscodeSettingsViewController *controller = [[KKPasscodeSettingsViewController alloc] init];
-        controller.delegate = self;
-        
-        PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
-        
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        navController.navigationBar.tintColor = [UIColor blackColor];
-        
-        [self presentModalViewController:navController animated:YES];
+        if (indexPath.row == 1)
+        {
+            if (self.patientListMode)
+            {
+                // goto Advanced Patient List
+            }
+            else
+            {
+                KKPasscodeSettingsViewController *controller = [[KKPasscodeSettingsViewController alloc] init];
+                controller.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
+                
+                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                navController.navigationBar.tintColor = [UIColor blackColor];
+                
+                [self presentModalViewController:navController animated:YES];
+            }
+        }
+        else if (indexPath.row == 2)
+        {
+            // goto Bay Editor
+        }
+        else
+        {
+            KKPasscodeSettingsViewController *controller = [[KKPasscodeSettingsViewController alloc] init];
+            controller.delegate = self;
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
+            
+            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+            navController.navigationBar.tintColor = [UIColor blackColor];
+            
+            [self presentModalViewController:navController animated:YES];
+        }
     }
-    else if(indexPath.section == 2)
+    else if(indexPath.section > 1)
     {
-        Patient *patient = [self.patientList objectAtIndex:indexPath.row];
+        // Patient *patient = [self.patientList objectAtIndex:indexPath.row];
         
+        Bay *bay;
+        bay = self.bayData[indexPath.section - 2];
+        Patient *patient = (Patient *)bay.patientsInBay[indexPath.row];
         
-        if (!patient.birthWeight && !patient.gestation && !patient.workingWeight) 
+        NSLog(@"Selected patient = %@", patient.lastname);
+        
+        if (!patient.birthWeight && !patient.gestation && !patient.workingWeight)
         {
             // no usable data
             // present warning if not already shown before
@@ -1100,7 +1249,11 @@
     
     patientDetailsViewController.delegate = self;
     
-    Patient *patient = [self.patientList objectAtIndex:indexPath.row];
+    Bay *bay;
+    bay = self.bayData[indexPath.section - 2];
+    Patient *patient = (Patient *)bay.patientsInBay[indexPath.row];
+    
+    // Patient *patient = [self.patientList objectAtIndex:indexPath.row];
     
     patient.NewBabyAPGARSSaved = NULL;
     
@@ -1452,7 +1605,17 @@
     
     // check how many patients
     // if already two then issue warning and do not allow
-    if([self.patientList count] == 3)
+    
+    int patientCount = 0;
+    
+    Bay *bay;
+    
+    for (bay in self.bayData)
+    {
+        patientCount = patientCount + [bay.patientsInBay count];
+    }
+    
+    if(patientCount > 1)
     {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"SimNICU Lite Version"
@@ -1549,8 +1712,8 @@
             self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
         }
         
-        // reload table
-        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+        // reload patient sections
+        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, [self.bayData count])] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else  // ie opening patient list
     {
@@ -1597,8 +1760,8 @@
             self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
         }
         
-        // reload section 2
-        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+        // reload patient sections
+        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, [self.bayData count])] withRowAnimation:UITableViewRowAnimationAutomatic];
         
         // if patient array is empty then go straight into edit mode
         if ([self.patientList count]) // there is a patient in the list
@@ -1652,6 +1815,26 @@
     
 }
 
+- (void)handlePatientListSwipeLeft:(UISwipeGestureRecognizer *)recognizer
+{
+    if (self.patientListMode == 0)
+    {
+        self.patientListMode = 1;
+        
+        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
+
+- (void)handlePatientListSwipeRight:(UISwipeGestureRecognizer *)recognizer
+{
+    if (self.patientListMode == 1)
+    {
+        self.patientListMode = 0;
+        
+        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationRight];
+    }
+}
+
 # pragma mark - PatientDetailsViewController delegate methods
 
 - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient
@@ -1660,12 +1843,24 @@
     
     [self setEditing:NO animated:YES];
     
-    int newRowIndex = [self.patientList count];
-    [self.patientList addObject:patient];
+    // work out where to add new patient, both in database and in table view
+    int sectionToAddNewPatient = [self.bayData count] + 1;
+    int lastBayInBayData = [self.bayData count] - 1;
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:2];
+    Bay *bay = self.bayData[lastBayInBayData];
+    int newRowIndex = [bay.patientsInBay count];
+    
+    // add patient into
+    [bay.patientsInBay addObject:patient];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddNewPatient];
     NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    
+    // insert newly added patient into table view
     [self.myTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    // scroll down to newly added patient
+    [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -1688,8 +1883,6 @@
     // cell.textLabel.text = name;
     
     [self.myTableView reloadData];
-    
-    // [self savePatientList];
     
     [self dismissModalViewControllerAnimated:YES];
 }

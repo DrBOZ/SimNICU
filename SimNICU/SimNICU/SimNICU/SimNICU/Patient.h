@@ -39,7 +39,6 @@
 // Bilirubin results
 @property (nonatomic, strong) NSMutableArray *bilirubinResults;
 
-
 // APGAR Scores
 // Could use an array for this
 @property (nonatomic, retain) NSString *NewBabyAPGARSSaved;

@@ -181,6 +181,8 @@
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
+		5C679FBE1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
+		5C679FBF1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
@@ -862,6 +864,8 @@
 		5C63B13816B9FD1200B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
 		5C63B13A16B9FD1600B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
 		5C63B13B16B9FD1700B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
+		5C679FBC1794CA0100B9A813 /* Bay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bay.h; sourceTree = "<group>"; };
+		5C679FBD1794CA0100B9A813 /* Bay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bay.m; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
@@ -2239,6 +2243,8 @@
 		5C940C2E166E3E0F0044A7D1 /* miscObjects */ = {
 			isa = PBXGroup;
 			children = (
+				5C679FBC1794CA0100B9A813 /* Bay.h */,
+				5C679FBD1794CA0100B9A813 /* Bay.m */,
 				5C940C2F166E3E230044A7D1 /* Patient.h */,
 				5C940C30166E3E230044A7D1 /* Patient.m */,
 				5C940C31166E3E230044A7D1 /* Preferences.h */,
@@ -3137,6 +3143,7 @@
 				5CD3B0C61790759600DA0278 /* DrugIndication.m in Sources */,
 				5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
+				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3263,6 +3270,7 @@
 				5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */,
 				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */,
+				5C679FBF1794CA0100B9A813 /* Bay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -606,6 +606,11 @@
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
+    screen.menuText = @"Patient List";
+    screen.segueId = @"PatientList";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
     screen.menuText = @"Phototherapy";
     screen.segueId = @"Phototherapy";
     [screens addObject:screen];
