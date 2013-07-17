@@ -28,17 +28,17 @@
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        // setup edit button
-        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        // Setup Add button
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                               target:self
+                                                                                               action:@selector(add)];
         
-        // setup back button
+        // Setup Back button
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                        style:UIBarButtonItemStyleBordered
                                                                       target:self
                                                                       action:@selector(done)];
         self.navigationItem.leftBarButtonItem = backButton;
-        
-        // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBar target:self action:@selector(done)];
         
         // Instantiate TableView
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20 - 44)) style:UITableViewStyleGrouped];
@@ -66,6 +66,7 @@
         
         [self.view addSubview:self.myTableView];
     }
+    
     return self;
 }
 
@@ -77,7 +78,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+    [self.myTableView setEditing:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,7 +89,18 @@
 
 - (void)done
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate bayEditorViewControllerDidFinishEditingBays:self];
+}
+
+- (void)add
+{
+    Bay *bay = [[Bay alloc] init];
+    bay.bayName = @"New Bay";
+    bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+    
+    [self.bayData addObject:bay];
+    
+    [self.myTableView reloadData];
 }
 
 # pragma mark - Table view data source
@@ -100,11 +112,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows = 0;
-    
-    rows = [self.bayData count];
-    
-    return rows;
+    return [self.bayData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,6 +134,39 @@
     returnCell = cell;
     
     return returnCell;
+}
+
+# pragma mark Editing
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // code
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    return proposedDestinationIndexPath;
+}
+
+// reorder data source after move
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    // code
 }
 
 # pragma mark - Table view delegate

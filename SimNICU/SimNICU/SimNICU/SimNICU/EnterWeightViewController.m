@@ -1152,6 +1152,7 @@
         {
             BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
             bayEditorViewController.bayData = self.bayData;
+            bayEditorViewController.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:bayEditorViewController];
             
@@ -2108,6 +2109,15 @@
 - (void)didSettingsChanged:(KKPasscodeSettingsViewController*)viewController
 {
     [self.myTableView reloadData];
-} 
+}
+
+#pragma mark - BayEditorViewController delegate
+
+- (void)bayEditorViewControllerDidFinishEditingBays:(BayEditorViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    [self.myTableView reloadData];
+}
 
 @end

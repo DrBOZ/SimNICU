@@ -11,6 +11,7 @@
 #import "PatientDetailsViewController.h"
 #import "PhototherapyViewController.h"
 #import "IntubationViewController.h"
+#import "BayEditorViewController.h"
 #import "APGARTabBarController.h"
 #import "ZUUIRevealController.h"
 #import "KKPasscodeLock.h" 
@@ -29,7 +30,7 @@
 
 @end
 
-@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, patientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, OxygenationIndexViewControllerDelegate, IntubationViewControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, PhototherapyViewControllerDelegate>
+@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, patientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, OxygenationIndexViewControllerDelegate, IntubationViewControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, PhototherapyViewControllerDelegate, BayEditorViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationBarItem;
 @property (nonatomic, strong) UINavigationBar *enterWeightViewControllerNavigationBar;

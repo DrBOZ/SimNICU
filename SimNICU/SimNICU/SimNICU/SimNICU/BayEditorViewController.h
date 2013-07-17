@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class BayEditorViewController;
+
+@protocol BayEditorViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)bayEditorViewControllerDidFinishEditingBays:(BayEditorViewController *)controller;
+
+@end
+
 @interface BayEditorViewController : UIViewController
 
+@property (nonatomic, unsafe_unretained) id <BayEditorViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSMutableArray *bayData;
 
 @end
