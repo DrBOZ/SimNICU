@@ -117,7 +117,6 @@
 - (void)viewDidUnload
 {
     self.userWantsToAddAPatient = nil;
-    self.patientNavigationBar = nil;
     self.myNavigationItem = nil;
     self.myTableView = nil;
     

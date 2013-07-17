@@ -11,7 +11,6 @@
 @implementation Screen
 @synthesize	guid, appGuid, appApiKey, parentScreenGuid, menuText, menuIcon, menuIndex, screenType;
 @synthesize jsonScreenOptions, customText, dateStampUTC, modifiedUTC, status;
-@synthesize screenVars;
 
 @synthesize segueId = _segueId;
 	

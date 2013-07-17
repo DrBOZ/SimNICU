@@ -480,25 +480,6 @@
     
     Screen *screen;
     
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Antibiotics";
-     screen.segueId = @"Antibiotics";
-     [screens addObject:screen];
-     */
-    
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Phototherapy";
-     screen.segueId = @"Phototherapy";
-     [screens addObject:screen];
-     */
-    
-    screen = [[Screen alloc] init];
-    screen.menuText = @"Drugs";
-    screen.segueId = @"Drugs";
-    [screens addObject:screen];
-    
     screen = [[Screen alloc] init];
     screen.menuText = @"APGAR scores";
     screen.segueId = @"APGAR";
@@ -511,6 +492,7 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Calculator";
+    screen.detailMenuText = @"Almost finished!";
     screen.segueId = @"Calculator";
     [screens addObject:screen];
     
@@ -536,6 +518,7 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Drugs";
+    screen.detailMenuText = @"Currently working on!";
     screen.segueId = @"Drugs";
     [screens addObject:screen];
     
@@ -546,6 +529,7 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Feeds & Fluids";
+    screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"FeedsAndFluids";
     [screens addObject:screen];
     
@@ -556,6 +540,7 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Glucose Infusion Rate";
+    screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"GlucoseInfusionRate";
     [screens addObject:screen];
     
@@ -588,11 +573,6 @@
     screen.segueId = @"Intubation";
     [screens addObject:screen];
     
-    // screen = [[Screen alloc] init];
-    // screen.menuText = @"Nitric Oxide";
-    // screen.segueId = @"Nitric Oxide";
-    // [screens addObject:screen];
-    
     screen = [[Screen alloc] init];
     screen.menuText = @"Naloxone (Narcan)";
     screen.segueId = @"Narcan";
@@ -603,11 +583,6 @@
     screen = [[Screen alloc] init];
     screen.menuText = @"Oxygenation Index";
     screen.segueId = @"OI";
-    [screens addObject:screen];
-    
-    screen = [[Screen alloc] init];
-    screen.menuText = @"Patient List";
-    screen.segueId = @"PatientList";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
@@ -670,13 +645,6 @@
     screen.menuText = @"Weight Conversion";
     screen.segueId = @"WeightConversion";
     [screens addObject:screen];
-    
-    /*
-     screen = [[Screen alloc] init];
-     screen.menuText = @"Weight Conversion";
-     screen.segueId = @"WeightTemp";
-     [screens addObject:screen];
-     */
     
     // screen = [[Screen alloc] init];
     // screen.menuText = @"E-mail suggestions";
@@ -844,13 +812,14 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if(!cell)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.backgroundColor = [UIColor whiteColor];
         }
 
         Screen *thisScreen = screens[indexPath.row];
         cell.textLabel.text = [thisScreen menuText];
+        cell.detailTextLabel.text = [thisScreen detailMenuText];
         
         returnCell = cell;
     }

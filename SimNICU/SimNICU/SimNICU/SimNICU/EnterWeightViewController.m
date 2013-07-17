@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 SimNICU. All rights reserved.
 //
 
+#import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "EnterWeightViewController.h"
 #import "BayEditorViewController.h"
@@ -671,7 +672,7 @@
         {
             if (self.patientListMode == 1)
             {
-                static NSString *CellIdentifier = @"Advanced Patient List";
+                static NSString *CellIdentifier = @"Handover";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
                 if(cell == nil)
@@ -681,8 +682,8 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                cell.textLabel.text = NSLocalizedString(@"Advanced Patient List", nil);
-                cell.detailTextLabel.text = @"Coming soon";
+                cell.textLabel.text = NSLocalizedString(@"Handover", nil);
+                cell.detailTextLabel.text = @"In progress - planned for 2014";
                 
                 returnCell = cell;
             }
@@ -1174,7 +1175,15 @@
         {
             if (self.patientListMode)
             {
-                // goto Advanced Patient List
+                AdvancedPatientEditorViewController *advancedPatientList = [[AdvancedPatientEditorViewController alloc] init];
+                advancedPatientList.bayData = self.bayData;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:advancedPatientList];
+                
+                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                navController.navigationBar.tintColor = [UIColor blackColor];
+                
+                [self presentModalViewController:navController animated:YES];
             }
             else
             {

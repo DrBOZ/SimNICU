@@ -45,9 +45,10 @@
 
 
 @property (nonatomic, retain) NSString *menuText;   // iOS 5.1 version
+@property (nonatomic, retain) NSString *detailMenuText;
 @property (nonatomic, retain) NSString *segueId;
 
-@property (nonatomic, retain) NSDictionary *screenVars;
+// @property (nonatomic, retain) NSDictionary *screenVars;
 
 
 @end
