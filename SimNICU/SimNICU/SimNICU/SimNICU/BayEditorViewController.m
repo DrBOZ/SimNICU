@@ -8,6 +8,7 @@
 
 #import "BayEditorViewController.h"
 #import "AppDelegate.h"
+#import "Patient.h"
 #import "Bay.h"
 
 @interface BayEditorViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -150,7 +151,30 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // code
+    // first check if there are any patient in the bay
+    if ([[self.bayData[indexPath.row] patientsInBay] count])
+    {
+        // ideally present dialog box to ask user if they want the patients moving or deleting
+        
+        // just move them to the last bay for now
+        Patient *patientToMove;
+        
+        // first copy patients to last bay
+        for (patientToMove in [self.bayData[indexPath.row] patientsInBay])
+        {
+            // copy patient
+            [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:patientToMove];
+        }
+        
+        // then delete patients from bay to be deleted
+        [[self.bayData[indexPath.row] patientsInBay] removeAllObjects];
+    }
+    
+    // then delete bay
+    [self.bayData removeObjectAtIndex:indexPath.row];
+    
+    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -166,7 +190,13 @@
 // reorder data source after move
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    // code
+    Bay *bay = self.bayData[sourceIndexPath.row];
+    
+    // remove bay at old location
+    [self.bayData removeObjectAtIndex:sourceIndexPath.row];
+    
+    // add bay at new location
+    [self.bayData insertObject:bay atIndex:destinationIndexPath.row];
 }
 
 # pragma mark - Table view delegate
