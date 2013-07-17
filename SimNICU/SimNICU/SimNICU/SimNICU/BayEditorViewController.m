@@ -11,7 +11,7 @@
 #import "Patient.h"
 #import "Bay.h"
 
-@interface BayEditorViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface BayEditorViewController () <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
 
@@ -90,6 +90,17 @@
 
 - (void)done
 {
+    // Ensure that there is at least one bay
+    if ([self.bayData count] == 0)
+    {
+        // create bay
+        Bay *bay = [[Bay alloc] init];
+        bay.bayName = @"Patients";
+        bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [self.bayData addObject:bay];
+    }
+    
     [self.delegate bayEditorViewControllerDidFinishEditingBays:self];
 }
 
@@ -151,30 +162,57 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // first check if there are any patient in the bay
-    if ([[self.bayData[indexPath.row] patientsInBay] count])
+    // check to see if this is the last bay
+    if ([self.bayData count] == 1)
     {
-        // ideally present dialog box to ask user if they want the patients moving or deleting
-        
-        // just move them to the last bay for now
-        Patient *patientToMove;
-        
-        // first copy patients to last bay
-        for (patientToMove in [self.bayData[indexPath.row] patientsInBay])
+        // check to see if there are any patients in the bay
+        if ([[self.bayData[indexPath.row] patientsInBay] count] >= 1)
         {
-            // copy patient
-            [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:patientToMove];
+            // if there are then then warn the user that they will be deleted
+            NSLog(@"There are patients that are going to be deleted");
+            UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"WARNING: Deleting the last bay will\ndelete all remaining patients"
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                                 destructiveButtonTitle:NSLocalizedString(@"Delete", @"")
+                                                      otherButtonTitles:nil];
+            [sheet showInView:self.view];
+        }
+        else
+        {
+            // then delete bay
+            [self.bayData removeObjectAtIndex:indexPath.row];
+            
+            NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+            [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+    else
+    {
+        // check if there are any patient in the bay
+        if ([[self.bayData[indexPath.row] patientsInBay] count])
+        {
+            // ideally present dialog box to ask user if they want the patients moving or deleting
+            
+            // just move them to the last bay for now
+            Patient *patientToMove;
+            
+            // first copy patients to last bay
+            for (patientToMove in [self.bayData[indexPath.row] patientsInBay])
+            {
+                // copy patient
+                [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:patientToMove];
+            }
+            
+            // then delete patients from bay to be deleted
+            [[self.bayData[indexPath.row] patientsInBay] removeAllObjects];
         }
         
-        // then delete patients from bay to be deleted
-        [[self.bayData[indexPath.row] patientsInBay] removeAllObjects];
+        // then delete bay
+        [self.bayData removeObjectAtIndex:indexPath.row];
+        
+        NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+        [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     }
-    
-    // then delete bay
-    [self.bayData removeObjectAtIndex:indexPath.row];
-    
-    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-    [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -211,6 +249,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // nil
+}
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0) // Delete last bay and all remaining patients
+    {
+		[self.bayData removeAllObjects];
+        [self.myTableView reloadData];
+	}
 }
 
 @end

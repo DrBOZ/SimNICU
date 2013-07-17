@@ -196,6 +196,7 @@
         self.selectedSex = @"Unknown";
         self.selectedCentile = @"50th";
     }
+    
     return self;
 }
 
@@ -226,7 +227,7 @@
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:self.patientList forKey:@"PatientList"];
     [archiver encodeObject:self.preferences forKey:@"Preferences"];
-    [archiver encodeObject:self.bayData forKey:@"BayData"];
+    // [archiver encodeObject:self.bayData forKey:@"BayData"];
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
     
@@ -245,6 +246,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // Ensure that there is at least one bay
+    if ([self.bayData count] == 0)
+    {
+        // create bay
+        Bay *bay = [[Bay alloc] init];
+        bay.bayName = @"Patients";
+        bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [self.bayData addObject:bay];
+    }
 }
 
 - (void)viewDidUnload
@@ -2115,6 +2130,17 @@
 
 - (void)bayEditorViewControllerDidFinishEditingBays:(BayEditorViewController *)controller
 {
+    // Ensure that there is at least one bay
+    if ([self.bayData count] == 0)
+    {
+        // create bay
+        Bay *bay = [[Bay alloc] init];
+        bay.bayName = @"Patients";
+        bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [self.bayData addObject:bay];
+    }
+    
     [self dismissModalViewControllerAnimated:YES];
     
     [self.myTableView reloadData];
