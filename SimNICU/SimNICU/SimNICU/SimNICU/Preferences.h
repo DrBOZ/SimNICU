@@ -29,4 +29,8 @@
 @property (nonatomic, retain) NSString *ROPGestationScreeningThreshold;
 @property (nonatomic, retain) NSString *ROPBirthWeightScreeningThreshold;
 
+// Swipe function in EnterWeightViewController
+@property (nonatomic, retain) NSString *userKnowsHowToSwipeGestation;
+@property (nonatomic, retain) NSString *userKnowsHowToSwipePatientList;
+
 @end

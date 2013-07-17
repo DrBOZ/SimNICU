@@ -325,6 +325,13 @@
     [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    // set Bay Name
+    Bay *bay = self.bayData[textField.tag];
+    bay.bayName = textField.text;
+}
+
 #pragma mark - UIActionSheet delegate
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -23,6 +23,8 @@
         self.ROPGestationScreeningThreshold = [aDecoder decodeObjectForKey:@"ROPGestationScreeningThreshold"];
         self.ROPBirthWeightScreeningThreshold = [aDecoder decodeObjectForKey:@"ROPBirthWeightScreeningThreshold"];
         self.defaultInfusionFluidVolumeMillilitres = [aDecoder decodeObjectForKey:@"defaultInfusionFluidVolumeMillilitres"];
+        self.userKnowsHowToSwipeGestation = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipeGestation"];
+        self.userKnowsHowToSwipePatientList = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipePatientList"];
     }
     return self;
 }
@@ -36,6 +38,8 @@
     [aCoder encodeObject:self.ROPGestationScreeningThreshold forKey:@"ROPGestationScreeningThreshold"];
     [aCoder encodeObject:self.ROPBirthWeightScreeningThreshold forKey:@"ROPBirthWeightScreeningThreshold"];
     [aCoder encodeObject:self.defaultInfusionFluidVolumeMillilitres forKey:@"defaultInfusionFluidVolumeMillilitres"];
+    [aCoder encodeObject:self.userKnowsHowToSwipeGestation forKey:@"userKnowsHowToSwipeGestation"];
+    [aCoder encodeObject:self.userKnowsHowToSwipePatientList forKey:@"userKnowsHowToSwipePatientList"];
 }
 
 @end

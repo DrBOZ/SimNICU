@@ -27,6 +27,8 @@
 @property (nonatomic) BOOL editingModeOn;
 @property (nonatomic) int gestationMode;
 @property (nonatomic) int patientListMode;
+@property (nonatomic, strong) NSString *gestationSwipeText;
+@property (nonatomic, strong) NSString *patientListSwipeText;
 
 - (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 - (void)selectCentile;
@@ -195,6 +197,15 @@
         self.gestationMode = 0;
         self.selectedSex = @"Unknown";
         self.selectedCentile = @"50th";
+        
+        if (![self.preferences.userKnowsHowToSwipeGestation isEqualToString:@"YES"])
+        {
+            self.gestationSwipeText = @"swipe left";
+        }
+        if (![self.preferences.userKnowsHowToSwipePatientList isEqualToString:@"YES"])
+        {
+            self.patientListSwipeText = @"swipe left";
+        }
     }
     
     return self;
@@ -437,7 +448,7 @@
             
             if(cell == nil)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
@@ -468,6 +479,15 @@
             [cell addGestureRecognizer:swipeRight];
             
             cell.textLabel.text = @"Gestation";
+            
+            if (![self.preferences.userKnowsHowToSwipeGestation isEqualToString:@"YES"])
+            {
+                cell.detailTextLabel.text = self.gestationSwipeText;
+            }
+            else
+            {
+                cell.detailTextLabel.text = nil;
+            }
             
             returnCell = cell;
         }
@@ -627,6 +647,15 @@
             cell.accessoryView = self.switchObj;
             
             cell.textLabel.text = NSLocalizedString(@"Patient List", nil);
+            
+            if (![self.preferences.userKnowsHowToSwipePatientList isEqualToString:@"YES"])
+            {
+                cell.detailTextLabel.text = self.patientListSwipeText;
+            }
+            else
+            {
+                cell.detailTextLabel.text = nil;
+            }
             
             UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePatientListSwipeLeft:)];
             swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -1885,6 +1914,7 @@
     if (self.gestationMode == 0)
     {
         self.gestationMode = 1;
+        self.gestationSwipeText = @"swipe right";
         
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationLeft];
         
@@ -1912,6 +1942,8 @@
     else if (self.gestationMode == 1)
     {
         self.gestationMode = 0;
+        self.gestationSwipeText = nil;
+        self.preferences.userKnowsHowToSwipeGestation = @"YES";
         
         self.selectedSex = @"Unknown";
         
@@ -1925,6 +1957,7 @@
     if (self.patientListMode == 0)
     {
         self.patientListMode = 1;
+        self.patientListSwipeText = @"swipe right";
         
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationLeft];
     }
@@ -1935,6 +1968,8 @@
     if (self.patientListMode == 1)
     {
         self.patientListMode = 0;
+        self.patientListSwipeText = nil;
+        self.preferences.userKnowsHowToSwipePatientList = @"YES";
         
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationRight];
     }
