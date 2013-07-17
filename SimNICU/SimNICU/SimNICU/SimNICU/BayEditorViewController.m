@@ -166,7 +166,7 @@
     if ([self.bayData count] == 1)
     {
         // check to see if there are any patients in the bay
-        if ([[self.bayData[indexPath.row] patientsInBay] count] >= 1)
+        if ([[self.bayData[indexPath.row] patientsInBay] count])
         {
             // if there are then then warn the user that they will be deleted
             NSLog(@"There are patients that are going to be deleted");
@@ -192,15 +192,28 @@
         if ([[self.bayData[indexPath.row] patientsInBay] count])
         {
             // ideally present dialog box to ask user if they want the patients moving or deleting
+            // just move them for now
             
-            // just move them to the last bay for now
             Patient *patientToMove;
             
-            // first copy patients to last bay
-            for (patientToMove in [self.bayData[indexPath.row] patientsInBay])
+            // if this is that last bay then copy patients to the bay above
+            if (indexPath.row == ([self.bayData count] -1))
             {
-                // copy patient
-                [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:patientToMove];
+                // copy patients to second to last bay
+                for (patientToMove in [self.bayData[indexPath.row] patientsInBay])
+                {
+                    // copy patient
+                    [[self.bayData[([self.bayData count] -2)] patientsInBay] addObject:patientToMove];
+                }
+            }
+            else
+            {
+                // copy patients to last bay
+                for (patientToMove in [self.bayData[indexPath.row] patientsInBay])
+                {
+                    // copy patient
+                    [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:patientToMove];
+                }
             }
             
             // then delete patients from bay to be deleted

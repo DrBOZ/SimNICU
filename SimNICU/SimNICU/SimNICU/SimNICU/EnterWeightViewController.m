@@ -227,7 +227,7 @@
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:self.patientList forKey:@"PatientList"];
     [archiver encodeObject:self.preferences forKey:@"Preferences"];
-    // [archiver encodeObject:self.bayData forKey:@"BayData"];
+    [archiver encodeObject:self.bayData forKey:@"BayData"];
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
     
