@@ -676,12 +676,13 @@
                 
                 if(cell == nil)
                 {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
                 cell.textLabel.text = NSLocalizedString(@"Advanced Patient List", nil);
+                cell.detailTextLabel.text = @"Coming soon";
                 
                 returnCell = cell;
             }
@@ -707,8 +708,6 @@
                     cell.detailTextLabel.text = NSLocalizedString(@"Off", "");
                 }
                 
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                
                 returnCell = cell;
             }
         }
@@ -717,9 +716,9 @@
             static NSString *CellIdentifier = @"Bay Editor";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.backgroundColor = [UIColor whiteColor];
             }
@@ -749,8 +748,6 @@
             {
                 cell.detailTextLabel.text = NSLocalizedString(@"Off", "");
             }
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
             returnCell = cell;
         }
