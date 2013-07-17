@@ -366,9 +366,9 @@
         {
             UIView *headerView;
             
-            headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+            headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 30)];
             
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
+            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 250, 30)];
             
             headerLabel.textColor = [UIColor whiteColor];
             // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -378,9 +378,9 @@
             headerLabel.opaque = YES;
             headerLabel.font = [UIFont boldSystemFontOfSize:18];
             headerLabel.textAlignment = UITextAlignmentLeft;
+            headerLabel.adjustsFontSizeToFitWidth = YES;
             
             headerLabel.text = [self.bayData[section - 2] bayName];
-            NSLog(@"section = %i", section);
             
             [headerView addSubview:headerLabel];
             

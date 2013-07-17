@@ -18,7 +18,7 @@
 
 @end
 
-@interface BayEditorViewController : UIViewController
+@interface BayEditorViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, unsafe_unretained) id <BayEditorViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSMutableArray *bayData;

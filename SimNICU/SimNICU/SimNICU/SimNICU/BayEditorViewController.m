@@ -106,13 +106,25 @@
 
 - (void)add
 {
-    Bay *bay = [[Bay alloc] init];
-    bay.bayName = @"New Bay";
-    bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
-    
-    [self.bayData addObject:bay];
-    
-    [self.myTableView reloadData];
+    if ([self.bayData count] <20)
+    {
+        Bay *bay = [[Bay alloc] init];
+        bay.bayName = @"New Bay";
+        bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        [self.bayData addObject:bay];
+        
+        [self.myTableView reloadData];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@""
+                                  message:@"The maximum allowed number of bays is 20"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 
 # pragma mark - Table view data source
@@ -127,11 +139,14 @@
     return [self.bayData count];
 }
 
+- (float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 220.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *returnCell = nil;
-    
-    static NSString *CellIdentifier = @"Bay Names";
+    NSString *CellIdentifier = [NSString stringWithFormat:@"Bay %i",indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(!cell)
@@ -139,13 +154,25 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
+        
+        UITextField *textField = [[UITextField alloc] init];
+        textField.frame = CGRectMake(10.0f, 10.0f, 220.0f, 33.0f);
+        textField.font = [UIFont boldSystemFontOfSize:17.0f];
+        textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        textField.returnKeyType = UIReturnKeyDone;
+        textField.adjustsFontSizeToFitWidth = YES;
+        textField.tag = indexPath.row;
+        textField.delegate = self;
+        textField.text = [self.bayData[indexPath.row] bayName];
+        
+        [cell.contentView addSubview:textField];
     }
     
     cell.textLabel.text = [self.bayData[indexPath.row] bayName];
+    cell.textLabel.hidden = YES;
     
-    returnCell = cell;
-    
-    return returnCell;
+    return cell;
 }
 
 # pragma mark Editing
@@ -262,6 +289,40 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // nil
+}
+
+#pragma mark - UITextField delegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    BOOL allowUserEditText = YES;
+    
+    // should check text is not longer than a certain number of characters
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (newText.length > 24)
+    {
+        allowUserEditText = NO;
+    }
+    
+    return allowUserEditText;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    // set Bay Name
+    Bay *bay = self.bayData[textField.tag];
+    bay.bayName = textField.text;
+    
+    [textField resignFirstResponder];
+    
+    return NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:textField.tag inSection:0];
+    
+    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 #pragma mark - UIActionSheet delegate
