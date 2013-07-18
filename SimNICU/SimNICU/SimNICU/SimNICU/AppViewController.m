@@ -541,7 +541,6 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Gestational Age";
-    screen.detailMenuText = @"Current Project";
     screen.segueId = @"Gestational Age";
     [screens addObject:screen];
     

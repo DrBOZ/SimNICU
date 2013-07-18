@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "ChronologicalAgeViewController.h"
 #import "CorrectedAgeViewController.h"
 #import "AppDelegate.h"
 
@@ -23,6 +24,11 @@
     if (self)
     {
         self.title = @"Corrected Age";
+        
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                                 style:UIBarButtonItemStyleBordered
+                                                                                target:nil
+                                                                                action:nil];
         
         //delegate
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -156,7 +162,7 @@
         
         if(!cell)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
 #ifdef LITE_VERSION
@@ -172,7 +178,8 @@
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        cell.textLabel.text = @"Chronological Age";
+        cell.textLabel.text = @"Age";
+        cell.detailTextLabel.text = @"5/6/13 - 18/7/13";
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -199,6 +206,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ChronologicalAgeViewController *newViewController = [[ChronologicalAgeViewController alloc] init];
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 #pragma mark - TextField delegate

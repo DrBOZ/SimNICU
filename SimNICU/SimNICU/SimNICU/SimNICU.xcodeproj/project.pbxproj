@@ -197,6 +197,8 @@
 		5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */; };
 		5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */; };
 		5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */; };
+		5C756C9817987A61002F983E /* ChronologicalAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C9717987A61002F983E /* ChronologicalAgeViewController.m */; };
+		5C756C9917987A61002F983E /* ChronologicalAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C9717987A61002F983E /* ChronologicalAgeViewController.m */; };
 		5C8606CC178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
@@ -896,6 +898,8 @@
 		5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPGestationCalculatorViewController.m; sourceTree = "<group>"; };
 		5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDDGestationalAgeViewController.h; sourceTree = "<group>"; };
 		5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDDGestationalAgeViewController.m; sourceTree = "<group>"; };
+		5C756C9617987A60002F983E /* ChronologicalAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChronologicalAgeViewController.h; sourceTree = "<group>"; };
+		5C756C9717987A61002F983E /* ChronologicalAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChronologicalAgeViewController.m; sourceTree = "<group>"; };
 		5C8606CA178AD30D00428ED4 /* DrugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsViewController.h; sourceTree = "<group>"; };
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
@@ -1776,6 +1780,8 @@
 				5C756C831798521F002F983E /* GestationalAgeTabBarController.m */,
 				5C756C861798526D002F983E /* CorrectedAgeViewController.h */,
 				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
+				5C756C9617987A60002F983E /* ChronologicalAgeViewController.h */,
+				5C756C9717987A61002F983E /* ChronologicalAgeViewController.m */,
 				5C756C8A1798528A002F983E /* LMPGestationCalculatorViewController.h */,
 				5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */,
 				5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */,
@@ -3217,6 +3223,7 @@
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
+				5C756C9817987A61002F983E /* ChronologicalAgeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3351,6 +3358,7 @@
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
+				5C756C9917987A61002F983E /* ChronologicalAgeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
