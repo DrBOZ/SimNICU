@@ -33,6 +33,7 @@
 #import "DrugsViewController.h"
 #import "EarlyCareViewController.h"
 #import "GastroschisisViewController.h"
+#import "CorrectedAgeViewController.h"
 #import "HFOVViewController.h"
 #import "InfusionsViewController.h"
 #import "IntubationViewController.h"
@@ -536,6 +537,12 @@
     screen = [[Screen alloc] init];
     screen.menuText = @"Gastroschisis";
     screen.segueId = @"Gastroschisis";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Gestational Age";
+    screen.detailMenuText = @"Current Project";
+    screen.segueId = @"Gestational Age";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
@@ -1052,6 +1059,16 @@
             GastroschisisViewController *newViewController = [[GastroschisisViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
             
+        }
+        
+#pragma mark Gestational Age
+        
+        else if ([thisScreenType isEqualToString:@"Gestational Age"])
+        {
+            // GestationalAgeTabBarController *newViewController = [[GestationalAgeTabBarController alloc] init];
+            
+            CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
+            [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark HFOV

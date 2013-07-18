@@ -189,6 +189,14 @@
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
 		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
+		5C756C841798521F002F983E /* GestationalAgeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C831798521F002F983E /* GestationalAgeTabBarController.m */; };
+		5C756C851798521F002F983E /* GestationalAgeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C831798521F002F983E /* GestationalAgeTabBarController.m */; };
+		5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C871798526D002F983E /* CorrectedAgeViewController.m */; };
+		5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C871798526D002F983E /* CorrectedAgeViewController.m */; };
+		5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */; };
+		5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */; };
+		5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */; };
+		5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */; };
 		5C8606CC178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
@@ -880,6 +888,14 @@
 		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
 		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
 		5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrugPreparation.m; sourceTree = "<group>"; };
+		5C756C821798521F002F983E /* GestationalAgeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestationalAgeTabBarController.h; sourceTree = "<group>"; };
+		5C756C831798521F002F983E /* GestationalAgeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestationalAgeTabBarController.m; sourceTree = "<group>"; };
+		5C756C861798526D002F983E /* CorrectedAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeViewController.h; sourceTree = "<group>"; };
+		5C756C871798526D002F983E /* CorrectedAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeViewController.m; sourceTree = "<group>"; };
+		5C756C8A1798528A002F983E /* LMPGestationCalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPGestationCalculatorViewController.h; sourceTree = "<group>"; };
+		5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPGestationCalculatorViewController.m; sourceTree = "<group>"; };
+		5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDDGestationalAgeViewController.h; sourceTree = "<group>"; };
+		5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDDGestationalAgeViewController.m; sourceTree = "<group>"; };
 		5C8606CA178AD30D00428ED4 /* DrugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsViewController.h; sourceTree = "<group>"; };
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
@@ -1753,6 +1769,21 @@
 			name = "Bay Editor";
 			sourceTree = "<group>";
 		};
+		5C756C81179851A3002F983E /* Gestational Age */ = {
+			isa = PBXGroup;
+			children = (
+				5C756C821798521F002F983E /* GestationalAgeTabBarController.h */,
+				5C756C831798521F002F983E /* GestationalAgeTabBarController.m */,
+				5C756C861798526D002F983E /* CorrectedAgeViewController.h */,
+				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
+				5C756C8A1798528A002F983E /* LMPGestationCalculatorViewController.h */,
+				5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */,
+				5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */,
+				5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */,
+			);
+			name = "Gestational Age";
+			sourceTree = "<group>";
+		};
 		5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1827,6 +1858,7 @@
 				5C5380E916D267AB0003F7BB /* Screen_Drugs */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
 				5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */,
+				5C756C81179851A3002F983E /* Gestational Age */,
 				5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */,
 				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
 				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
@@ -3181,6 +3213,10 @@
 				5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C9BE6281797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */,
+				5C756C841798521F002F983E /* GestationalAgeTabBarController.m in Sources */,
+				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
+				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
+				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3311,6 +3347,10 @@
 				5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C9BE6291797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */,
+				5C756C851798521F002F983E /* GestationalAgeTabBarController.m in Sources */,
+				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
+				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
+				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

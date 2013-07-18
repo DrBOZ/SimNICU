@@ -162,7 +162,7 @@
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
-        self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0, 1.0, 180, 30)];
+        self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
         self.gestation.borderStyle = UITextBorderStyleRoundedRect;
         self.gestation.placeholder = @"weeks";
         self.gestation.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -195,7 +195,7 @@
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
-        self.birthWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0, 1.0, 180, 30)];
+        self.birthWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
         self.birthWeight.borderStyle = UITextBorderStyleRoundedRect;
         self.birthWeight.placeholder = @"kilograms";
         self.birthWeight.clearButtonMode = UITextFieldViewModeAlways;
