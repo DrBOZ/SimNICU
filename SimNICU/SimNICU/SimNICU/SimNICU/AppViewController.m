@@ -17,6 +17,7 @@
 
 // screenControllers - alphabetical order
 #import "AboutSimNICUViewController.h"
+#import "AgeCalculatorsViewController.h"
 #import "APGARTabBarController.h"
 #import "APGAR1ViewController.h"
 #import "APGAR5ViewController.h"
@@ -482,6 +483,12 @@
     Screen *screen;
     
     screen = [[Screen alloc] init];
+    screen.menuText = @"Age Calculators";
+    screen.detailMenuText = @"Under Construction!";
+    screen.segueId = @"Age Calculators";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
     screen.menuText = @"APGAR scores";
     screen.segueId = @"APGAR";
     [screens addObject:screen];
@@ -908,11 +915,12 @@
         // NSString *thisScreenType = [thisScreen segueId];
         NSString *thisScreenType = thisScreen.segueId;
         
-#pragma mark Antibiotics
+#pragma mark Age Calculators
         
-        if([thisScreenType isEqualToString:@"Antibiotics"])
+        if([thisScreenType isEqualToString:@"Age Calculators"])
         {
-            // code
+            AgeCalculatorsViewController *newViewController = [[AgeCalculatorsViewController alloc] init];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark APGAR
