@@ -371,6 +371,16 @@
 
 - (void)selectABirthDate:(UIControl *)sender
 {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    
+    [comps setYear:-18];
+    NSDate *currentDateMinus18Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    
+    [comps setYear:-12];
+    NSDate *currentDateMinus12Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    
     // if selected patient has a birth date entered then present picker with this date, otherwise present current date
     if (self.selectedPatient.birthDate)
     {
@@ -378,9 +388,9 @@
     }
     else
     {
-        self.dateAndTimeOfBirth = [NSDate date];
+        self.dateAndTimeOfBirth = currentDate;
     }
-    
+    /*
     self.actionSheetPicker = [[ActionSheetDatePicker alloc]
                               initWithTitle:@""
                               datePickerMode:UIDatePickerModeDateAndTime
@@ -388,6 +398,16 @@
                               target:self
                               action:@selector(birthDateWasSelected:element:)
                               origin:sender];
+     */
+    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                           datePickerMode:UIDatePickerModeDateAndTime
+                                                             selectedDate:self.dateAndTimeOfBirth
+                                                                  minDate:currentDateMinus18Years
+                                                                  maxDate:currentDate
+                                                                   target:self
+                                                                   action:@selector(birthDateWasSelected:element:)
+                                                                   origin:sender];
     
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
@@ -398,6 +418,7 @@
 
 - (void)selectABirthTime:(UIControl *)sender
 {
+    /*
     self.actionSheetPicker = [[ActionSheetDatePicker alloc]
                               initWithTitle:@""
                               datePickerMode:UIDatePickerModeTime
@@ -407,14 +428,20 @@
                               origin:sender];
     
     [self.actionSheetPicker showActionSheetPicker];
+     */
 }
 
 - (void)selectADate:(UIControl *)sender
 {
-    
     self.selectedDate = [NSDate date];
     
+    /*
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate target:self action:@selector(dateWasSelected:element:) origin:sender];
+    */
+    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate minDate:nil maxDate:nil target:self action:@selector(dateWasSelected:element:) origin:sender];
+    
+    
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
     self.actionSheetPicker.hideCancel = YES;

@@ -371,6 +371,7 @@
         self.dateAndTimeOfBirth = [NSDate date];
     }
     
+    /*
     self.actionSheetPicker = [[ActionSheetDatePicker alloc]
                               initWithTitle:@""
                               datePickerMode:UIDatePickerModeDateAndTime
@@ -378,6 +379,8 @@
                               target:self
                               action:@selector(birthDateWasSelected:element:)
                               origin:sender];
+     */
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.dateAndTimeOfBirth minDate:nil maxDate:nil target:self action:@selector(birthDateWasSelected:element:) origin:sender];
     
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
@@ -388,6 +391,7 @@
 
 - (void)selectABirthTime:(UIControl *)sender
 {
+    /*
     self.actionSheetPicker = [[ActionSheetDatePicker alloc]
                               initWithTitle:@""
                               datePickerMode:UIDatePickerModeTime
@@ -395,6 +399,8 @@
                               target:self
                               action:@selector(birthTimeWasSelected:element:)
                               origin:sender];
+     */
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedPatient.birthDate minDate:nil maxDate:nil target:self action:@selector(birthTimeWasSelected:element:) origin:sender];
     
     [self.actionSheetPicker showActionSheetPicker];
 }
@@ -403,8 +409,12 @@
 {
     
     self.selectedDate = [NSDate date];
-    
+    /*
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate target:self action:@selector(dateWasSelected:element:) origin:sender];
+    */
+    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate minDate:nil maxDate:nil target:self action:@selector(dateWasSelected:element:) origin:sender];
+    
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
     self.actionSheetPicker.hideCancel = YES;
