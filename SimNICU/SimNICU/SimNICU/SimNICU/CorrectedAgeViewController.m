@@ -203,6 +203,18 @@
 
 #pragma mark - UITableView delegate
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSIndexPath *path = nil;
+    
+    if (indexPath.row == 1)
+    {
+        path = indexPath;
+    }
+    
+    return path;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

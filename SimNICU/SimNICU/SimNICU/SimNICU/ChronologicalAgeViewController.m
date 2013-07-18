@@ -209,7 +209,7 @@
         }
         else
         {
-            self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 140.0f, 30.0f)];
             self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             
             // if date and time of birth have already been set, then remove rounded rect border
@@ -249,7 +249,7 @@
     }
     else if(indexPath.row == 1)
     {
-        static NSString *CellIdentifier = @"CurrentDateAndTime";
+        static NSString *CellIdentifier = @"Date";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if(cell == nil)
@@ -259,11 +259,11 @@
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+        self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 140.0f, 30.0f)];
         self.dateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.dateTextField.borderStyle = UITextBorderStyleRoundedRect;
         self.dateTextField.clearButtonMode = UITextFieldViewModeNever;
-        self.dateTextField.placeholder = @"date to measure to";
+        self.dateTextField.placeholder = @"date";
         self.dateTextField.textAlignment = UITextAlignmentCenter;
         self.dateTextField.adjustsFontSizeToFitWidth = YES;
         self.dateTextField.userInteractionEnabled = NO;
@@ -271,8 +271,8 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeZone:[NSTimeZone localTimeZone]];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        // [formatter setTimeZone:[NSTimeZone localTimeZone]];
+        // [formatter setTimeStyle:NSDateFormatterShortStyle];
         
         self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
         
@@ -283,7 +283,7 @@
     }
     else if(indexPath.row == 2)
     {
-        static NSString *CellIdentifier = @"Sample Age";
+        static NSString *CellIdentifier = @"Age";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if(cell == nil)
@@ -293,7 +293,7 @@
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        cell.textLabel.text = @"Exact Age";
+        cell.textLabel.text = @"Age";
         
         if (self.formattedAge)
         {
