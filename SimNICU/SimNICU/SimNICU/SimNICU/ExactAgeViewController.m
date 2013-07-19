@@ -812,18 +812,6 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
     [self.myTableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-    
-    // if sample age more than 14 days, warn user
-    
-    if ([self.ageInDays integerValue] > 14)
-    {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:NSLocalizedString(@"WARNING!", nil)
-                                  message:[NSString stringWithFormat:NSLocalizedString(@"This chart is designed for interpreting bilirubin levels up to 14 days of age.", nil)]
-                                  delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                  otherButtonTitles:nil];
-        [alertView show];
-    }
 }
 
 // format set age in days
