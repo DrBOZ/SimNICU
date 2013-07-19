@@ -24,11 +24,6 @@
 @property (nonatomic, strong) NSString *formattedAge2;
 @property (nonatomic, retain) NSDate *selectedDate;
 @property (nonatomic, strong) NSNumber *ageInDays;
-@property (nonatomic, strong) UILabel *label1;
-@property (nonatomic, strong) UILabel *label2;
-@property (nonatomic, strong) UILabel *label3;
-@property (nonatomic, strong) UILabel *label4;
-@property (nonatomic, strong) UILabel *label5;
 @property (nonatomic) int months;
 @property (nonatomic) int years;
 @property (nonatomic) int weeks;

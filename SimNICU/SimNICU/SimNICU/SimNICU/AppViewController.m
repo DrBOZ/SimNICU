@@ -403,17 +403,11 @@
     
 #ifdef LITE_VERSION
     
-    if (!self.title)
-    {
-        self.title = @"SimNICU Lite";
-    }
+    if (!self.title) self.title = @"SimNICU Lite";
     
 #else
     
-    if (!self.title)
-    {
-        self.title = @"SimNICU";
-    }
+    if (!self.title) self.title = @"SimNICU";
     
 #endif
     
@@ -484,7 +478,6 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Age Calculators";
-    screen.detailMenuText = @"Under Construction!";
     screen.segueId = @"Age Calculators";
     [screens addObject:screen];
     

@@ -81,6 +81,7 @@
 #endif
         
     }
+    
     return self;
 }
 
@@ -88,6 +89,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.selectedPatient.birthDate && self.selectedPatient.birthTimeSet && !self.selectedDate)
+    {
+        self.dateAndTimeOfBirth = self.selectedPatient.birthDate;
+        self.selectedDate = [NSDate date];
+        [self dateWasSelected:self.selectedDate element:nil];
+        [self setAgeInDays];
+        [self.myTableView reloadData];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -257,17 +270,17 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
+            
+            self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.dateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            self.dateTextField.borderStyle = UITextBorderStyleRoundedRect;
+            self.dateTextField.clearButtonMode = UITextFieldViewModeNever;
+            self.dateTextField.placeholder = @"date and time";
+            self.dateTextField.textAlignment = UITextAlignmentCenter;
+            self.dateTextField.adjustsFontSizeToFitWidth = YES;
+            self.dateTextField.userInteractionEnabled = NO;
+            self.dateTextField.delegate = self;
         }
-        
-        self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
-        self.dateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.dateTextField.borderStyle = UITextBorderStyleRoundedRect;
-        self.dateTextField.clearButtonMode = UITextFieldViewModeNever;
-        self.dateTextField.placeholder = @"date and time";
-        self.dateTextField.textAlignment = UITextAlignmentCenter;
-        self.dateTextField.adjustsFontSizeToFitWidth = YES;
-        self.dateTextField.userInteractionEnabled = NO;
-        self.dateTextField.delegate = self;
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
