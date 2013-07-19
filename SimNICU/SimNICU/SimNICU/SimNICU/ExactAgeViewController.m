@@ -375,11 +375,11 @@
     NSDate *currentDate = [NSDate date];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     
-    [comps setYear:-18];
-    NSDate *currentDateMinus18Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    // [comps setYear:-18];
+    // NSDate *currentDateMinus18Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
     
-    [comps setYear:-12];
-    NSDate *currentDateMinus12Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    [comps setYear:-2];
+    NSDate *currentDateMinus2Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
     
     // if selected patient has a birth date entered then present picker with this date, otherwise present current date
     if (self.selectedPatient.birthDate)
@@ -403,7 +403,7 @@
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
                                                            datePickerMode:UIDatePickerModeDateAndTime
                                                              selectedDate:self.dateAndTimeOfBirth
-                                                                  minDate:currentDateMinus18Years
+                                                                  minDate:currentDateMinus2Years
                                                                   maxDate:currentDate
                                                                    target:self
                                                                    action:@selector(birthDateWasSelected:element:)
@@ -439,8 +439,14 @@
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate target:self action:@selector(dateWasSelected:element:) origin:sender];
     */
     
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate minDate:nil maxDate:nil target:self action:@selector(dateWasSelected:element:) origin:sender];
-    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                           datePickerMode:UIDatePickerModeDateAndTime
+                                                             selectedDate:self.selectedDate
+                                                                  minDate:nil
+                                                                  maxDate:nil
+                                                                   target:self
+                                                                   action:@selector(dateWasSelected:element:)
+                                                                   origin:sender];
     
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];

@@ -275,7 +275,7 @@
 
 - (void)nextPatient
 {
-    int numberOfBays = [self.bayData count];
+    // int numberOfBays = [self.bayData count];
     int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];
     
     // check to see if there is another patient in the bay
