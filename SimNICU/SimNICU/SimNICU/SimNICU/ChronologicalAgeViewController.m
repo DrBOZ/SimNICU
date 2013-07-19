@@ -9,6 +9,7 @@
 #import "ChronologicalAgeViewController.h"
 #import "ActionSheetPicker.h"
 #import "NSDate+TCUtils.h"
+#import "AgeResultsCell.h"
 #import "AppDelegate.h"
 
 @interface ChronologicalAgeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
@@ -19,8 +20,19 @@
 @property (nonatomic, retain) UITextField *dateTextField;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSString *formattedAge;
+@property (nonatomic, strong) NSString *formattedAge1;
+@property (nonatomic, strong) NSString *formattedAge2;
 @property (nonatomic, retain) NSDate *selectedDate;
 @property (nonatomic, strong) NSNumber *ageInDays;
+@property (nonatomic, strong) UILabel *label1;
+@property (nonatomic, strong) UILabel *label2;
+@property (nonatomic, strong) UILabel *label3;
+@property (nonatomic, strong) UILabel *label4;
+@property (nonatomic, strong) UILabel *label5;
+@property (nonatomic) int months;
+@property (nonatomic) int years;
+@property (nonatomic) int weeks;
+@property (nonatomic) int days;
 
 - (double)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 - (void)birthTimeWasSelected:(NSDate *)selectedDate element:(id)element;
@@ -40,8 +52,6 @@
     if (self)
     {
         self.title = @"Chronological Age";
-        
-        // self.view.backgroundColor = [UIColor lightGrayColor];
         
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -128,16 +138,29 @@
     return 3;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 50.0f;
+    
+    if (indexPath.row == 2)
+    {
+        height = 110.0f;
+    }
+    
+    return height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *returnCell = nil;
+    NSString *CellIdentifier;
     
     if(indexPath.row == 0)
     {
-        static NSString *CellIdentifier = @"birthDateAndTime";
+        CellIdentifier = @"birthDateAndTime";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -146,7 +169,7 @@
         
         cell.textLabel.text = @"Date of Birth";
         
-        self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+        self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 140.0f, 30.0f)];
         self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.birthDateTextField.textAlignment = UITextAlignmentCenter;
         self.birthDateTextField.adjustsFontSizeToFitWidth = YES;
@@ -209,9 +232,6 @@
         }
         else
         {
-            self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 140.0f, 30.0f)];
-            self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-            
             // if date and time of birth have already been set, then remove rounded rect border
             if (self.dateAndTimeOfBirth)
             {
@@ -249,7 +269,7 @@
     }
     else if(indexPath.row == 1)
     {
-        static NSString *CellIdentifier = @"Date";
+        CellIdentifier = @"Date";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if(cell == nil)
@@ -271,8 +291,8 @@
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
-        // [formatter setTimeZone:[NSTimeZone localTimeZone]];
-        // [formatter setTimeStyle:NSDateFormatterShortStyle];
+        [formatter setTimeZone:[NSTimeZone localTimeZone]];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
         
         self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
         
@@ -283,22 +303,33 @@
     }
     else if(indexPath.row == 2)
     {
-        static NSString *CellIdentifier = @"Age";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        CellIdentifier = @"Age";
+        AgeResultsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell = [[AgeResultsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
         }
         
         cell.textLabel.text = @"Age";
         
-        if (self.formattedAge)
+        if ([self.formattedAge isEqualToString:self.formattedAge1])
         {
-            cell.detailTextLabel.text = self.formattedAge;
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            cell.label1.text = nil;
+            cell.label2.text = self.formattedAge;
+            cell.label3.text = nil;
+            cell.label4.text = self.formattedAge2;
+            cell.label5.text = nil;
+        }
+        else
+        {
+            cell.label1.text = self.formattedAge;
+            cell.label2.text = nil;
+            cell.label3.text = self.formattedAge1;
+            cell.label4.text = nil;
+            cell.label5.text = self.formattedAge2;
         }
         
         returnCell = cell;
@@ -361,6 +392,14 @@
 
 - (void)selectABirthDate:(UIControl *)sender
 {
+    // NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *currentDate = [NSDate date];
+    // NSDateComponents *comps = [[NSDateComponents alloc] init];
+    
+    // max age can be 2 years as this is a neonatal app
+    // [comps setYear:-2];
+    // NSDate *currentDateMinus2Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    
     // if selected patient has a birth date entered then present picker with this date, otherwise present current date
     if (self.selectedPatient.birthDate)
     {
@@ -368,19 +407,17 @@
     }
     else
     {
-        self.dateAndTimeOfBirth = [NSDate date];
+        self.dateAndTimeOfBirth = currentDate;
     }
     
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc]
-                              initWithTitle:@""
-                              datePickerMode:UIDatePickerModeDateAndTime
-                              selectedDate:self.dateAndTimeOfBirth
-                              target:self
-                              action:@selector(birthDateWasSelected:element:)
-                              origin:sender];
-     */
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.dateAndTimeOfBirth minDate:nil maxDate:nil target:self action:@selector(birthDateWasSelected:element:) origin:sender];
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                           datePickerMode:UIDatePickerModeDate
+                                                             selectedDate:self.dateAndTimeOfBirth
+                                                                  minDate:nil
+                                                                  maxDate:currentDate
+                                                                   target:self
+                                                                   action:@selector(birthDateWasSelected:element:)
+                                                                   origin:sender];
     
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
@@ -391,29 +428,30 @@
 
 - (void)selectABirthTime:(UIControl *)sender
 {
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc]
-                              initWithTitle:@""
-                              datePickerMode:UIDatePickerModeTime
-                              selectedDate:self.selectedPatient.birthDate
-                              target:self
-                              action:@selector(birthTimeWasSelected:element:)
-                              origin:sender];
-     */
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedPatient.birthDate minDate:nil maxDate:nil target:self action:@selector(birthTimeWasSelected:element:) origin:sender];
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                           datePickerMode:UIDatePickerModeDateAndTime
+                                                             selectedDate:self.selectedPatient.birthDate
+                                                                  minDate:nil
+                                                                  maxDate:nil
+                                                                   target:self
+                                                                   action:@selector(birthTimeWasSelected:element:)
+                                                                   origin:sender];
     
     [self.actionSheetPicker showActionSheetPicker];
 }
 
 - (void)selectADate:(UIControl *)sender
 {
+    // if date has not already been selected, then select current date
+    if (!self.selectedDate) self.selectedDate = [NSDate date];
     
-    self.selectedDate = [NSDate date];
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate target:self action:@selector(dateWasSelected:element:) origin:sender];
-    */
-    
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate minDate:nil maxDate:nil target:self action:@selector(dateWasSelected:element:) origin:sender];
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDate
+                                                             selectedDate:self.selectedDate
+                                                                  minDate:nil
+                                                                  maxDate:nil
+                                                                   target:self
+                                                                   action:@selector(dateWasSelected:element:)
+                                                                   origin:sender];
     
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
@@ -438,6 +476,316 @@
     double days = seconds / (60 * 60 * 24);
     
     return days;
+}
+
+- (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
+{
+    NSString *formattedDate = nil;
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    self.years = [comps year];
+    self.months = [comps month];
+    self.weeks = [comps week];
+    self.days = [comps day];
+    
+    NSLog(@"Age = %i years, %i months, %i weeks, %i days", self.years, self.months, self.weeks, self.days);
+    
+    // format in normal English
+    if (self.years < 1)
+    {
+        if (self.months == 0)
+        {
+            if (self.weeks == 0)
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"day of birth"];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i days", self.days];
+                }
+            }
+            else if (self.weeks == 1)
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 week"];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 week, 1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 week, %i days", self.days];
+                }
+            }
+            else
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i weeks", self.weeks];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i weeks, 1 day", self.weeks];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i weeks, %i days", self.weeks, self.days];
+                }
+            }
+        }
+        else if (self.months == 1)
+        {
+            if (self.weeks == 0)
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month"];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i days", self.days];
+                }
+            }
+            else if (self.weeks == 1)
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 week"];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 week, 1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 week, %i days", self.days];
+                }
+            }
+            else
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i weeks", self.weeks];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i weeks, 1 day", self.weeks];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i weeks, %i days", self.weeks, self.days];
+                }
+            }
+        }
+        else // months
+        {
+            if (self.weeks == 0)
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months", self.months];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 day", self.months];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i days", self.months, self.days];
+                }
+            }
+            else if (self.weeks == 1)
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 week", self.months];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 week, 1 day", self.months];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 week, %i days", self.months, self.days];
+                }
+            }
+            else
+            {
+                if (self.days == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i weeks", self.months, self.weeks];
+                }
+                else if (self.days == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i weeks, 1 day", self.months, self.weeks];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i weeks, %i days", self.months, self.weeks, self.days];
+                }
+            }
+        }
+    }
+    else if (self.years == 1)
+    {
+        if (self.months == 0)
+        {
+            if (self.days == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i year", self.years];
+            }
+            else if (self.days == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i day", self.years, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i year", self.years];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i days", self.years, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i year", self.years];
+            }
+        }
+        else if (self.months == 1)
+        {
+            if (self.days == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i year, %i month", self.years, self.months];
+            }
+            else if (self.days == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i month, %i day", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i month", self.years, self.months];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i month, %i days", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i month", self.years, self.months];
+            }
+        }
+        else
+        {
+            if (self.days == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i year, %i months", self.years, self.months];
+            }
+            else if (self.days == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i months, %i day", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i months", self.years, self.months];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i months, %i days", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i months", self.years, self.months];
+            }
+        }
+    }
+    else
+    {
+        if (self.months == 0)
+        {
+            if (self.days == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i years", self.years];
+            }
+            else if (self.days == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i day", self.years, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i years", self.years];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i days", self.years, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i years", self.years];
+            }
+        }
+        else if (self.months == 1)
+        {
+            if (self.days == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i years, %i month", self.years, self.months];
+            }
+            else if (self.days == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i month, %i day", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i month", self.years, self.months];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i month, %i days", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i month", self.years, self.months];
+            }
+        }
+        else
+        {
+            if (self.days == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i years, %i months", self.years, self.months];
+            }
+            else if (self.days == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i months, %i day", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i months", self.years, self.months];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i months, %i days", self.years, self.months, self.days];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i months", self.years, self.months];
+            }
+        }
+    }
+    
+    // format in days (i.e.  day 57)
+    NSString *formattedDate1 = nil;
+    unitFlags = NSDayCalendarUnit;
+    comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    self.days = [comps day];
+    
+    if (self.days == 0)
+    {
+        formattedDate1 = [NSString stringWithFormat:@""];
+    }
+    else if (self.days == 1)
+    {
+        formattedDate1 = [NSString stringWithFormat:@"1 day"];
+    }
+    else
+    {
+        formattedDate1 = [NSString stringWithFormat:@"%i days", self.days];
+    }
+    NSLog(@"%i days", self.days);
+    
+    // format in weeks and days spelt
+    NSString *formattedDate2 = nil;
+    unitFlags = NSWeekCalendarUnit | NSDayCalendarUnit;
+    comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    self.weeks = [comps week];
+    self.days = [comps day];
+    // format in weeks and days (57+4)
+    formattedDate2 = [NSString stringWithFormat:@"%i + %i", self.weeks, self.days];
+    NSLog(@"%i + %i", self.weeks, self.days);
+    
+    // create Array
+    NSMutableArray *formattedDates = [[NSMutableArray alloc] init];
+    [formattedDates addObject:formattedDate];
+    [formattedDates addObject:formattedDate1];
+    [formattedDates addObject:formattedDate2];
+    
+    return formattedDates;
 }
 
 // return formatted string of days hours minutes difference
@@ -630,9 +978,9 @@
         self.selectedPatient.birthDate = selectedDate;
     }
     
-    // round selectedDate to remove seconds
+    // round selectedDate to remove hours, minutes, seconds
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit);
+    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
     
     NSDateComponents *dateComponents = [gregorian components:flags fromDate:selectedDate];
     
@@ -646,7 +994,6 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setTimeZone:[NSTimeZone localTimeZone]];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
         
         self.birthDateTextField.text = [formatter stringFromDate:self.dateAndTimeOfBirth];
         
@@ -675,47 +1022,27 @@
 // Sample date
 - (void)dateWasSelected:(NSDate *)selectedDate element:(id)element
 {
-    // round selectedDate to remove seconds
+    // round selectedDate to remove hours, minutes and seconds
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit);
+    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSWeekCalendarUnit | NSDayCalendarUnit);
     
     NSDateComponents *dateComponents = [gregorian components:flags fromDate:selectedDate];
     
     selectedDate = [gregorian dateFromComponents:dateComponents];
     
-    // Ensure sample date is not in the future
-    if ([self getDaysDifferenceBetween:selectedDate and:[NSDate date]] > 0)
+    // if birth date set, ensure sample date is not before this...
+    if (self.dateAndTimeOfBirth)
     {
-        // if birth date set, ensure sample date is not before this...
-        if (self.dateAndTimeOfBirth)
+        if ([self getDaysDifferenceBetween:selectedDate and:self.dateAndTimeOfBirth] > 0)
         {
-            if ([self getDaysDifferenceBetween:selectedDate and:self.dateAndTimeOfBirth] > 0)
-            {
-                self.selectedDate = nil;
-                
-                UIAlertView *alertView = [[UIAlertView alloc]
-                                          initWithTitle:@"ERROR!"
-                                          message:[NSString stringWithFormat:@"Sample date cannot be before birthdate"]
-                                          delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                          otherButtonTitles:nil];
-                [alertView show];
-            }
-            else
-            {
-                self.selectedDate = selectedDate;
-                
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-                [formatter setDateStyle:NSDateFormatterMediumStyle];
-                [formatter setTimeZone:[NSTimeZone localTimeZone]];
-                [formatter setTimeStyle:NSDateFormatterShortStyle];
-                
-                self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
-                
-                if (self.dateAndTimeOfBirth && self.selectedDate)
-                {
-                    [self setAgeInDays];
-                }
-            }
+            self.selectedDate = nil;
+            
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"ERROR!"
+                                      message:[NSString stringWithFormat:@"Sample date cannot be before birthdate"]
+                                      delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                      otherButtonTitles:nil];
+            [alertView show];
         }
         else
         {
@@ -724,7 +1051,6 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateStyle:NSDateFormatterMediumStyle];
             [formatter setTimeZone:[NSTimeZone localTimeZone]];
-            [formatter setTimeStyle:NSDateFormatterShortStyle];
             
             self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
             
@@ -736,14 +1062,18 @@
     }
     else
     {
-        self.selectedDate = nil;
+        self.selectedDate = selectedDate;
         
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"ERROR!"
-                                  message:[NSString stringWithFormat:@"Sample date cannot be in the future"]
-                                  delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                  otherButtonTitles:nil];
-        [alertView show];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeZone:[NSTimeZone localTimeZone]];
+        
+        self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
+        
+        if (self.dateAndTimeOfBirth && self.selectedDate)
+        {
+            [self setAgeInDays];
+        }
     }
 }
 
@@ -755,24 +1085,17 @@
     
     self.ageInDays = [NSNumber numberWithDouble:daysDifference];
     
-    self.formattedAge = [self getFormattedDaysHoursMinutesDifferenceBetween:self.dateAndTimeOfBirth and:self.selectedDate];
+    // self.formattedAge = [self getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.dateAndTimeOfBirth and:self.selectedDate];
+    NSMutableArray *formattedDates = [self getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.dateAndTimeOfBirth and:self.selectedDate];
+    self.formattedAge = formattedDates[0];
+    self.formattedAge1 = formattedDates[1];
+    self.formattedAge2 = formattedDates[2];
     
     // update table
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
     NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    
     [self.myTableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-    
-    // if sample age more than 14 days, warn user
-    
-    if ([self.ageInDays integerValue] > 14)
-    {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:NSLocalizedString(@"WARNING!", nil)
-                                  message:[NSString stringWithFormat:NSLocalizedString(@"This chart is designed for interpreting bilirubin levels up to 14 days of age.", nil)]
-                                  delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                  otherButtonTitles:nil];
-        [alertView show];
-    }
 }
 
 // format set age in days

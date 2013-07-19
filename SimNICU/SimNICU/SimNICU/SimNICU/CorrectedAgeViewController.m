@@ -118,38 +118,53 @@
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 50.0f;
+    
+    if (indexPath.row == 1)
+    {
+        height = 110.0f;
+    }
+    
+    return height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *returnCell = nil;
     
-    static NSString *CellIdentifier = @"Age";
+    NSString *CellIdentifier;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (indexPath.row == 0)
     {
+        CellIdentifier = @"Gestation";
+        
         if (!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.backgroundColor = [UIColor whiteColor];
+            
+            self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+            self.gestation.borderStyle = UITextBorderStyleRoundedRect;
+            self.gestation.placeholder = @"weeks";
+            self.gestation.clearButtonMode = UITextFieldViewModeWhileEditing;
+            self.gestation.adjustsFontSizeToFitWidth = YES;
+            self.gestation.returnKeyType = UIReturnKeyNext;
+            // not for capitilisation
+            self.gestation.textAlignment = UITextAlignmentLeft;
+            self.gestation.delegate = self;
+            self.gestation.autocorrectionType = UITextAutocorrectionTypeNo;
+            self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
+            self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
+            // [self.gestation becomeFirstResponder];
+            
+            cell.accessoryView = self.gestation;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        
-        self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-        self.gestation.borderStyle = UITextBorderStyleRoundedRect;
-        self.gestation.placeholder = @"weeks";
-        self.gestation.clearButtonMode = UITextFieldViewModeWhileEditing;
-        self.gestation.adjustsFontSizeToFitWidth = YES;
-        self.gestation.returnKeyType = UIReturnKeyNext;
-        // not for capitilisation
-        self.gestation.textAlignment = UITextAlignmentLeft;
-        self.gestation.delegate = self;
-        self.gestation.autocorrectionType = UITextAutocorrectionTypeNo;
-        self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
-        self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
-        // [self.gestation becomeFirstResponder];
-        
-        cell.accessoryView = self.gestation;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         cell.textLabel.text = @"Gestation at birth";
         
@@ -157,7 +172,7 @@
     }
     else if (indexPath.row == 1)
     {
-        static NSString *CellIdentifier = @"Age";
+        CellIdentifier = @"Age";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if(!cell)
@@ -179,7 +194,6 @@
         }
         
         cell.textLabel.text = @"Age";
-        cell.detailTextLabel.text = @"5/6/13 - 18/7/13";
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterDecimalStyle;

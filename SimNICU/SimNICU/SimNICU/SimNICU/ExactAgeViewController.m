@@ -41,8 +41,6 @@
     {
         self.title = @"Exact Age";
         
-        // self.view.backgroundColor = [UIColor lightGrayColor];
-        
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
@@ -130,12 +128,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 100.0f;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    return @"Need to remove warnings and set date picker to not allow certain dates.";
+    return 0.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -219,9 +212,6 @@
         }
         else
         {
-            // self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 140.0f, 30.0f)];
-            // self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-            
             // if date and time of birth have already been set, then remove rounded rect border
             if (self.dateAndTimeOfBirth)
             {

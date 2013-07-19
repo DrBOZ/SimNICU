@@ -7,6 +7,7 @@
 //
 
 #import "AgeCalculatorsViewController.h"
+#import "CorrectedAgeViewController.h"
 #import "ExactAgeViewController.h"
 #import "AppDelegate.h"
 #import "Calculator.h"
@@ -198,6 +199,12 @@
     {
         ExactAgeViewController *newViewController = [[ExactAgeViewController alloc] init];
         newViewController.selectedPatient = self.selectedPatient;
+        [self.navigationController pushViewController:newViewController animated:YES];
+    }
+    else if ([calculator.text isEqualToString:@"Corrected age"])
+    {
+        CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
+        
         [self.navigationController pushViewController:newViewController animated:YES];
     }
 }
