@@ -375,9 +375,7 @@
     NSDate *currentDate = [NSDate date];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     
-    // [comps setYear:-18];
-    // NSDate *currentDateMinus18Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
-    
+    // max age can be 2 years as this is a neonatal app
     [comps setYear:-2];
     NSDate *currentDateMinus2Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
     
@@ -390,15 +388,6 @@
     {
         self.dateAndTimeOfBirth = currentDate;
     }
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc]
-                              initWithTitle:@""
-                              datePickerMode:UIDatePickerModeDateAndTime
-                              selectedDate:self.dateAndTimeOfBirth
-                              target:self
-                              action:@selector(birthDateWasSelected:element:)
-                              origin:sender];
-     */
     
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
                                                            datePickerMode:UIDatePickerModeDateAndTime
@@ -409,8 +398,12 @@
                                                                    action:@selector(birthDateWasSelected:element:)
                                                                    origin:sender];
     
-    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
-    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
+    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil)
+                                               value:[NSDate date]];
+    
+    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil)
+                                               value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
+    
     self.actionSheetPicker.hideCancel = YES;
     
     [self.actionSheetPicker showActionSheetPicker];
@@ -418,38 +411,58 @@
 
 - (void)selectABirthTime:(UIControl *)sender
 {
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc]
-                              initWithTitle:@""
-                              datePickerMode:UIDatePickerModeTime
-                              selectedDate:self.selectedPatient.birthDate
-                              target:self
-                              action:@selector(birthTimeWasSelected:element:)
-                              origin:sender];
-    
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeTime
+                                                             selectedDate:self.selectedPatient.birthDate
+                                                                  minDate:nil
+                                                                  maxDate:nil
+                                                                   target:self
+                                                                   action:@selector(birthTimeWasSelected:element:)
+                                                                   origin:sender];
     [self.actionSheetPicker showActionSheetPicker];
-     */
 }
 
 - (void)selectADate:(UIControl *)sender
 {
-    self.selectedDate = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
     
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate target:self action:@selector(dateWasSelected:element:) origin:sender];
-    */
+    // max age can be 2 years as this is a neonatal app
+    [comps setYear:-2];
+    NSDate *currentDateMinus2Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
     
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
-                                                           datePickerMode:UIDatePickerModeDateAndTime
-                                                             selectedDate:self.selectedDate
-                                                                  minDate:nil
-                                                                  maxDate:nil
-                                                                   target:self
-                                                                   action:@selector(dateWasSelected:element:)
-                                                                   origin:sender];
+    self.selectedDate = currentDate;
     
-    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
-    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
+    // if birth date and time set, then this is the minimum date
+    if (self.dateAndTimeOfBirth)
+    {
+        self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                               datePickerMode:UIDatePickerModeDateAndTime
+                                                                 selectedDate:self.selectedDate
+                                                                      minDate:self.dateAndTimeOfBirth
+                                                                      maxDate:nil
+                                                                       target:self
+                                                                       action:@selector(dateWasSelected:element:)
+                                                                       origin:sender];
+    }
+    else
+    {
+        self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                               datePickerMode:UIDatePickerModeDateAndTime
+                                                                 selectedDate:self.selectedDate
+                                                                      minDate:currentDateMinus2Years
+                                                                      maxDate:nil
+                                                                       target:self
+                                                                       action:@selector(dateWasSelected:element:)
+                                                                       origin:sender];
+    }
+    
+    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil)
+                                               value:[NSDate date]];
+    
+    [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil)
+                                               value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
+    
     self.actionSheetPicker.hideCancel = YES;
     [self.actionSheetPicker showActionSheetPicker];
 }
@@ -715,9 +728,9 @@
     NSDateComponents *dateComponents = [gregorian components:flags fromDate:selectedDate];
     
     selectedDate = [gregorian dateFromComponents:dateComponents];
+    NSDate *currentDate = [NSDate date];
     
-    // Ensure sample date is not in the future
-    if ([self getDaysDifferenceBetween:selectedDate and:[NSDate date]] > 0)
+    if ([self getDaysDifferenceBetween:selectedDate and:currentDate] > 0)
     {
         // if birth date set, ensure sample date is not before this...
         if (self.dateAndTimeOfBirth)
@@ -769,14 +782,19 @@
     }
     else
     {
-        self.selectedDate = nil;
+        self.selectedDate = selectedDate;
         
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"ERROR!"
-                                  message:[NSString stringWithFormat:@"Sample date cannot be in the future"]
-                                  delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                                  otherButtonTitles:nil];
-        [alertView show];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setTimeZone:[NSTimeZone localTimeZone]];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        
+        self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
+        
+        if (self.dateAndTimeOfBirth && self.selectedDate)
+        {
+            [self setAgeInDays];
+        }
     }
 }
 

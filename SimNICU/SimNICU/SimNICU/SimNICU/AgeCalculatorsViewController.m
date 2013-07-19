@@ -28,8 +28,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Age Calculators";
-        
         // delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
@@ -119,7 +117,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.selectedPatient)
+    {
+        self.title = @"Patient selected";
+    }
+    else
+    {
+        self.title = @"Age Calculators";
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,6 +197,7 @@
     if ([calculator.text isEqualToString:@"Exact age"])
     {
         ExactAgeViewController *newViewController = [[ExactAgeViewController alloc] init];
+        newViewController.selectedPatient = self.selectedPatient;
         [self.navigationController pushViewController:newViewController animated:YES];
     }
 }

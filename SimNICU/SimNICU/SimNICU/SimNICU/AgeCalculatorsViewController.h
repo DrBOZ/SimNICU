@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Patient.h"
 
 @interface AgeCalculatorsViewController : UIViewController
+
+@property (nonatomic, strong) Patient *selectedPatient;
 
 @end

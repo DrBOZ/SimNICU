@@ -920,6 +920,7 @@
         if([thisScreenType isEqualToString:@"Age Calculators"])
         {
             AgeCalculatorsViewController *newViewController = [[AgeCalculatorsViewController alloc] init];
+            newViewController.selectedPatient = self.selectedPatient;
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
