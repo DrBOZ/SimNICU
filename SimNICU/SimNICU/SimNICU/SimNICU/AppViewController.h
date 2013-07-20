@@ -22,7 +22,6 @@
 @property (nonatomic, strong) UIButton *dismissButton;
 @property (nonatomic, strong) UIView *myHeaderView;
 @property (nonatomic, strong) NSString *gestation;
-@property (nonatomic, retain) UIView *contentView;
 @property (nonatomic, strong) UIImage *appImage;
 @property (nonatomic, strong) NSString *weight;
 @property (nonatomic) float *calculationWeight;

@@ -62,6 +62,7 @@
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) GrowthChart *growthChart;
 @property (nonatomic, strong) UIImageView *tableBgView;
+@property (nonatomic, retain) UIView *contentView;
 @property (nonatomic) BOOL earlyCareWarningShown;
 @property (nonatomic) BOOL patientSelected;
 
@@ -241,29 +242,31 @@
     
     NSLog(@"AppViewController viewDidLoad");
     
-    //delegate
+    // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    // self.contentView is a UIView that covers the entire window and contains
+    // both the UITableView and the non-scrolling HeaderView (containing the image)
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
     
-    //background
+    // background set to black
     self.view.backgroundColor = [UIColor blackColor];
     
-    //info button
+    // info button
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
     [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
     self.navigationItem.rightBarButtonItem = infoBarButton;
     
-    //back button
+    // back button text for subsequent screens
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:nil
                                                                   action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     
-    //tableView
+    // UITableView
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 50.0f;
     self.myTableView.dataSource = self;
@@ -273,36 +276,29 @@
     self.myTableView.backgroundColor = [UIColor whiteColor];
     self.myTableView.separatorColor = [UIColor grayColor];
     [self.contentView addSubview:self.myTableView];
-    // [self.view addSubview:self.myTableView];
     
+    // Add the screen mask gradient to the UITableView
+    self.tableBgView = [[UIImageView alloc] init];
+    
+    // Different image gradients for iPhone 4 and iPhone 5
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
-        // NSLog(@"iPhone 5 height for png file = %f", (appDelegate.window.bounds.size.height - 50));
-        
-        //screen mask covers everything
-        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196))];
-        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-        self.tableBgView.image = tableBgImage;
-        self.tableBgView.userInteractionEnabled = NO;
-        self.tableBgView.alpha = 1.0;
-        [self.contentView addSubview:self.tableBgView];
-        // [self.view addSubview:tableBgView];
+        self.tableBgView.frame = CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196));
+        self.tableBgView.image = [UIImage imageNamed:@"bgOverlay.png"];
+        // self.tableBgView.alpha = 1.0;
     }
     else
     {
-        //screen mask covers everything
-        self.tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50))];
-        UIImage *tableBgImage = [UIImage imageNamed:@"bgApplication.png"];
-        self.tableBgView.image = tableBgImage;
-        self.tableBgView.userInteractionEnabled = NO;
-        [self.contentView addSubview:self.tableBgView];
-        // [self.view addSubview:self.tableBgView];
+        self.tableBgView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50));
+        self.tableBgView.image = [UIImage imageNamed:@"bgApplication.png"];
     }
+    self.tableBgView.userInteractionEnabled = NO;
+    [self.contentView addSubview:self.tableBgView];
     
     //header holds image and settings view..
     self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
     
-    //IMAGE
+    // IMAGE
     if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
     {
         //Retina display iPhone
@@ -334,7 +330,7 @@
     self.displayDismissButtonView.hidden = YES;
     [self.myHeaderView addSubview:self.displayDismissButtonView];
     
-    //displayTextLabel (Patient's name or working weight)
+    //displayTextLabel (Patient's name)
     self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
     self.displayTextLabel.textColor = [UIColor whiteColor];
     self.displayTextLabel.backgroundColor = [UIColor clearColor];
@@ -344,7 +340,7 @@
     self.displayTextLabel.hidden = YES;
     [self.myHeaderView addSubview:self.displayTextLabel];
     
-    //displayDetailTextLabel (Patient's name or working weight)
+    //displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
     self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
     self.displayDetailTextLabel.textColor = [UIColor whiteColor];
     self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
@@ -356,13 +352,14 @@
     
     [self.contentView addSubview:self.myHeaderView];
     
+    // Add the content view (containing self.myHeaderView and self.myTableView
     [self.view addSubview:self.contentView];
-    // [self.view addSubview:self.myHeaderView];
     
     //SimNICU / Date tapGesture button
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
     self.tapGestureRecognizer.numberOfTapsRequired = 1;
     
+    // create an invisible UIView over the SimNICU to allow taps
     CGRect frame = CGRectMake(self.view.frame.size.width/4, 0, self.view.frame.size.width/2, 44);
     UIView *navBarTapView = [[UIView alloc] initWithFrame:frame];
     [self.navigationController.navigationBar addSubview:navBarTapView];
@@ -410,7 +407,8 @@
     if (!self.title) self.title = @"SimNICU";
     
 #endif
-    
+
+// This is used to create the Launch images easily
 #if LOADING_GRAPHICS
     
     NSLog(@"LOADING_GRAPHICS SET");
@@ -444,6 +442,7 @@
         // Enter Weight button
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
         
+        // How to make a custom BarButtonItem...
         /*
         UIView *roundIconView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 48.0f, 48.0f)];
         UIImageView *roundIconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SimNICU_round.png"]];
@@ -454,16 +453,6 @@
         UIBarButtonItem *SimNICUButton = [[UIBarButtonItem alloc] initWithCustomView:roundIconView];
         self.navigationItem.leftBarButtonItem = SimNICUButton;
         */
-        
-        /*
-        //info button
-        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-        [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-        self.navigationItem.rightBarButtonItem = infoBarButton;
-         */
-        
     }
     
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -736,10 +725,9 @@
     return 2;
 }
 
-//number of rows
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) return 3;
+    if (section == 0) return 3; // Emergency
     else return [screens count];
 }
 
@@ -774,7 +762,7 @@
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.textLabel.text = @"Infusions";
@@ -789,7 +777,7 @@
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.textLabel.text = @"Intubation";
@@ -804,7 +792,7 @@
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.textLabel.text = @"Resuscitation Drugs";
