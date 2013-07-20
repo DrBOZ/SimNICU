@@ -743,28 +743,6 @@
 
 #pragma mark - Methods
 
-- (NSDate *)getDateFromDaysDifference:(NSInteger)days fromDate:(NSDate *)date;
-{
-    if (days == 0) 
-    {
-        return date;
-    }
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
-    NSDateComponents *dateComponents = 
-    [gregorian components:flags fromDate:date];
-    
-    NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
-    
-    NSTimeInterval timeInterval = days * (24 * 60 * 60);
-    
-    NSDate *futureDate = [roundedDate dateByAddingTimeInterval:timeInterval];
-    
-    return futureDate;
-}
-
 - (NSDate *)ROPScreeningDateFromBirthDate:(NSDate *)birthDate andGestation:(NSString *)gestation
 {
     NSDate *screeningDate;
@@ -810,7 +788,7 @@
     
     // add days to birthdate to get screening date
     
-    screeningDate = [self getDateFromDaysDifference:days fromDate:birthDate];
+    screeningDate = [CBTimeMethods getDateFromDaysDifference:days fromDate:birthDate];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
@@ -826,11 +804,10 @@
     
     NSLog(@"daysTillScreeningDate = %i", daysTillScreeningDate);
     
-    
     return screeningDate;
 }
 
-- (NSString *)ROPScreeningGestationFromGestation:(NSString *)gestation;
+- (NSString *)ROPScreeningGestationFromGestation:(NSString *)gestation
 {
     NSString *screeningGestation;
     

@@ -77,6 +77,28 @@
     return differenceToReturn;
 }
 
++ (NSDate *)getDateFromDaysDifference:(NSInteger)days fromDate:(NSDate *)date
+{
+    if (days == 0)
+    {
+        return date;
+    }
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
+    NSDateComponents *dateComponents =
+    [gregorian components:flags fromDate:date];
+    
+    NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
+    
+    NSTimeInterval timeInterval = days * (24 * 60 * 60);
+    
+    NSDate *futureDate = [roundedDate dateByAddingTimeInterval:timeInterval];
+    
+    return futureDate;
+}
+
 + (NSString *)calculateCurrentGestation:(Patient *)patient
 {
     NSString *currentGestation = @"0+0";

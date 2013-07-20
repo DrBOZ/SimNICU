@@ -17,6 +17,8 @@
 + (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB;
 + (double)getDaysDifferenceDoubleBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
++ (NSDate *)getDateFromDaysDifference:(NSInteger)days fromDate:(NSDate *)date;
+
 + (NSString *)calculateCurrentGestation:(Patient *)patient;
 
 @end

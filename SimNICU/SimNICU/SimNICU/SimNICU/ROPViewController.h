@@ -14,5 +14,8 @@
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) UILabel *label;
 
+- (NSDate *)ROPScreeningDateFromBirthDate:(NSDate *)birthDate andGestation:(NSString *)gestation;
+- (NSString *)ROPScreeningGestationFromGestation:(NSString *)gestation;
+
 @end
  
