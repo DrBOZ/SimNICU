@@ -10,6 +10,7 @@
 
 @implementation Patient
 
+/*
 @synthesize formattedBirthDate = _formattedBirthDate;
 @synthesize formattedWorkingWeightDate = _formattedWorkingWeightDate;
 @synthesize correctedGestation = _correctedGestation;
@@ -66,6 +67,7 @@
 @synthesize APGAR20minReflexes = _APGAR20minReflexes;
 
 @synthesize bilirubinResults = _bilirubinResults;
+*/
 
 // lazily instantiate bilirubinResults;
  

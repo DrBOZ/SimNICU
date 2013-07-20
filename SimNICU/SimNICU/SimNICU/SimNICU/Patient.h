@@ -74,16 +74,16 @@
 @property (nonatomic, retain) NSString *APGAR20minReflexes;
 
 // I am not sure what these are doing???
-@property (nonatomic) int birthYear;  // Try these as NSNumber if doesn't work.
-@property (nonatomic) int birthMonth;
-@property (nonatomic) int birthDay;
-@property (nonatomic) int birthHour;
-@property (nonatomic) int birthMinute;
+// @property (nonatomic) int birthYear;  // Try these as NSNumber if doesn't work.
+// @property (nonatomic) int birthMonth;
+// @property (nonatomic) int birthDay;
+// @property (nonatomic) int birthHour;
+// @property (nonatomic) int birthMinute;
 @property (nonatomic, retain) NSDate *dueDate;
 
 // @property (nonatomic, retain) NSNumber *lastWeight;
 // @property (nonatomic, retain) NSNumber *workingWeight;
-@property (nonatomic, retain) NSNumber *gestationWeeks;
-@property (nonatomic, retain) NSNumber *gestationDays;
+// @property (nonatomic, retain) NSNumber *gestationWeeks;
+// @property (nonatomic, retain) NSNumber *gestationDays;
 
 @end

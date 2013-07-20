@@ -1605,7 +1605,7 @@
 {
     NSString *currentGestation = @"0+0";
     
-    NSDate *now = [[NSDate alloc] init];
+    NSDate *now = [NSDate date];
     
     int daysDifference = [self getDaysDifferenceBetween:patient.birthDate and:now];
     int weeksDifference = daysDifference / 7;
@@ -1642,13 +1642,12 @@
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     NSDate *dateToRound = [dateA earlierDate:dateB];
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
-    NSDateComponents * dateComponents = 
-    [gregorian components:flags fromDate:dateToRound];
+    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    NSDateComponents *dateComponents = [gregorian components:flags fromDate:dateToRound];
     
-    NSDate * roundedDate = [gregorian dateFromComponents:dateComponents];
+    NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
     
-    NSDate * otherDate = (dateToRound == dateA) ? dateB : dateA ;
+    NSDate *otherDate = (dateToRound == dateA) ? dateB : dateA ;
     
     NSInteger diff = abs([roundedDate timeIntervalSinceDate:otherDate]);
     
