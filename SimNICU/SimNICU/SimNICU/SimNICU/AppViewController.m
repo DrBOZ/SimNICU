@@ -1376,8 +1376,6 @@
 
 - (void)showAboutScreen
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     // AboutSimNICUViewController2 *newViewController = [[AboutSimNICUViewController2 alloc] init];
     
     InfoTabBarController *newViewController = [[InfoTabBarController alloc] init];
@@ -1385,10 +1383,9 @@
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
     navController.navigationBar.tintColor = [UIColor blackColor];
-    // navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     navController.topViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     
-    [appDelegate.navigationController presentModalViewController:navController animated:YES];
+    [self.navigationController presentModalViewController:navController animated:YES];
 }
 
 # pragma mark - enterWeightViewController delegate methods
