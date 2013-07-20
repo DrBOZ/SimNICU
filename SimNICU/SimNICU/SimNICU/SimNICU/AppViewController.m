@@ -1,4 +1,4 @@
-#//
+//
 //  AppViewController.m
 //  SimNICU
 //
@@ -56,13 +56,21 @@
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) UIImageView *displayDismissButtonView;         // gray circle with cross
+@property (nonatomic, strong) UIImageView *displaySimNICUDateToggle;         // just to toggle SimNICU / Date
+@property (nonatomic, strong) UILabel *displayDetailTextLabel;               // gestation, birth weight, etc
 @property (nonatomic, strong) NSString *estimatedWeightUsed;
 @property (nonatomic, strong) NSString *infoPassedThrough;
+@property (nonatomic, strong) UILabel *displayBackground;                    // gray background square
+@property (nonatomic, strong) UILabel *displayTextLabel;                     // Patient name
+@property (nonatomic, strong) UIImageView *appImageView;                     // Baby being born image
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) GrowthChart *growthChart;
-@property (nonatomic, strong) UIImageView *tableBgView;
-@property (nonatomic, retain) UIView *contentView;
+@property (nonatomic, strong) UIImageView *tableBgView;                      // gradient over UITableView
+@property (nonatomic, strong) UIButton *dismissButton;
+@property (nonatomic, strong) UIView *myHeaderView;
+@property (nonatomic, retain) UIView *contentView;                           // both myHeaderView & myTableView
 @property (nonatomic) BOOL earlyCareWarningShown;
 @property (nonatomic) BOOL patientSelected;
 
@@ -295,42 +303,42 @@
     self.tableBgView.userInteractionEnabled = NO;
     [self.contentView addSubview:self.tableBgView];
     
-    //header holds image and settings view..
+    // header holds image and settings view..
     self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
     
     // IMAGE
+    UIImage *image;
     if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
     {
-        //Retina display iPhone
-        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
+        // Retina display iPhone
+        image = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
     }
     else
     {
-        //non Retina display iPhone/iPod Touch
-        self.appImage = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
+        // non Retina display iPhone/iPod Touch
+        image = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
     }
     
-    self.appImageView = [[UIImageView alloc] initWithImage:self.appImage];
+    self.appImageView = [[UIImageView alloc] initWithImage:image];
     self.appImageView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 150.0f);
     self.appImageView.contentMode = UIViewContentModeScaleToFill;
     [self.myHeaderView addSubview:self.appImageView];
     
-    //display background
+    // display background
     self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
     self.displayBackground.backgroundColor = [UIColor blackColor];
     self.displayBackground.alpha = .4;
     self.displayBackground.hidden = YES;
     [self.myHeaderView addSubview:self.displayBackground];
     
-    //dismiss button image & view
+    // dismiss button image & view
     self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
-    UIImage *displayDismissButton = [UIImage imageNamed:@"dismiss2.png"];
-    self.displayDismissButtonView.image = displayDismissButton;
+    self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2.png"];
     self.displayDismissButtonView.userInteractionEnabled = YES;
     self.displayDismissButtonView.hidden = YES;
     [self.myHeaderView addSubview:self.displayDismissButtonView];
     
-    //displayTextLabel (Patient's name)
+    // displayTextLabel (Patient's name)
     self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
     self.displayTextLabel.textColor = [UIColor whiteColor];
     self.displayTextLabel.backgroundColor = [UIColor clearColor];
@@ -340,7 +348,7 @@
     self.displayTextLabel.hidden = YES;
     [self.myHeaderView addSubview:self.displayTextLabel];
     
-    //displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
+    // displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
     self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
     self.displayDetailTextLabel.textColor = [UIColor whiteColor];
     self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
@@ -355,7 +363,7 @@
     // Add the content view (containing self.myHeaderView and self.myTableView
     [self.view addSubview:self.contentView];
     
-    //SimNICU / Date tapGesture button
+    // SimNICU / Date tapGesture button
     self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
     self.tapGestureRecognizer.numberOfTapsRequired = 1;
     
@@ -427,10 +435,10 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    //check if RevealController can respond to selectors
+    // check if RevealController can respond to selectors
     if ([appDelegate.revealController respondsToSelector:@selector(revealToggle:)] && [appDelegate.revealController respondsToSelector:@selector(revealGesture:)])
     {
-        //transparent button over the app's image triggers reveal transition
+        // transparent button over the app's image triggers reveal transition
         UIButton *flipButton = [UIButton buttonWithType:UIButtonTypeCustom];
         flipButton.frame = CGRectMake(10.0f, 0.0f, 275.0f, 150.0f);
         [flipButton addTarget:appDelegate.revealController action:nil forControlEvents:UIControlEventTouchUpInside];
@@ -646,7 +654,7 @@
     // screen.segueId = @"E-mail";
     // [screens addObject:screen];
     
-    //delegate
+    // delegate
     // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // appDelegate.currentController = (UIViewController <BannerViewContainer> *)self;
@@ -678,7 +686,6 @@
         self.myHeaderView = nil;
         self.myTableView = nil;
         self.tableBgView = nil;
-        self.appImage = nil;
     }
 }
 
@@ -695,7 +702,6 @@
     self.myHeaderView = nil;
     self.myTableView = nil;
     self.tableBgView = nil;
-    self.appImage = nil;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
