@@ -28,11 +28,7 @@
 
 @optional
 
-// - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient;
-
 - (void)KalViewControllerDelegate:(KalViewController *)controller didFinishSelectingPatientDOB:(Patient *)patient;
-
-// - (void)KalViewControllerDelegate:(KalViewController *)controller didFinishSelectingWorkingWeightDate:(Patient *)patient;
 
 @end
 

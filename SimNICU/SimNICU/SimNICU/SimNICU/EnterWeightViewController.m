@@ -11,6 +11,7 @@
 #import "EnterWeightViewController.h"
 #import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
@@ -31,7 +32,6 @@
 @property (nonatomic, strong) NSString *gestationSwipeText;
 @property (nonatomic, strong) NSString *patientListSwipeText;
 
-- (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 - (void)selectCentile;
 - (void)selectSex;
 
@@ -1607,7 +1607,7 @@
     
     NSDate *now = [NSDate date];
     
-    int daysDifference = [self getDaysDifferenceBetween:patient.birthDate and:now];
+    int daysDifference = [CBTimeMethods getDaysDifferenceIntBetween:patient.birthDate and:now];
     int weeksDifference = daysDifference / 7;
     int plusDays = (daysDifference - (weeksDifference * 7));
     int gestationWeeks = [[patient.gestation substringToIndex:2] intValue];
@@ -1632,28 +1632,6 @@
     currentGestation = [NSString stringWithFormat:@"%d+%d",correctedGestationWeeks, correctedGestationDays];
     
     return currentGestation;
-}
-
-- (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
-{
-    if ([dateA isEqualToDate:dateB])
-        return 0;
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    NSDate *dateToRound = [dateA earlierDate:dateB];
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
-    NSDateComponents *dateComponents = [gregorian components:flags fromDate:dateToRound];
-    
-    NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
-    
-    NSDate *otherDate = (dateToRound == dateA) ? dateB : dateA ;
-    
-    NSInteger diff = abs([roundedDate timeIntervalSinceDate:otherDate]);
-    
-    NSInteger daysDifference = floor(diff/(24 * 60 * 60));
-    
-    return daysDifference;
 }
 
 - (void)addPatient

@@ -7,6 +7,7 @@
 //
 
 #import "ROPViewController.h"
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
 
 @interface ROPViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -193,7 +194,7 @@
                     
                     NSString *formattedScreeningDate = [formatter stringFromDate:screeningDate];
                     
-                    int daysTillScreeningDate = [self getDaysDifferenceBetween:screeningDate and:[NSDate date]];
+                    int daysTillScreeningDate = [CBTimeMethods getDaysDifferenceIntBetween:screeningDate and:[NSDate date]];
                     
                     if (daysTillScreeningDate == 0) 
                     {
@@ -259,7 +260,7 @@
                     
                     NSString *formattedScreeningDate = [formatter stringFromDate:screeningDate];
                     
-                    int daysTillScreeningDate = [self getDaysDifferenceBetween:screeningDate and:[NSDate date]];
+                    int daysTillScreeningDate = [CBTimeMethods getDaysDifferenceIntBetween:screeningDate and:[NSDate date]];
                     
                     if (daysTillScreeningDate == 0) 
                     {
@@ -334,7 +335,7 @@
                     
                     NSString *formattedScreeningDate = [formatter stringFromDate:screeningDate];
                     
-                    int daysTillScreeningDate = [self getDaysDifferenceBetween:screeningDate and:[NSDate date]];
+                    int daysTillScreeningDate = [CBTimeMethods getDaysDifferenceIntBetween:screeningDate and:[NSDate date]];
                     
                     if (daysTillScreeningDate == 0) 
                     {
@@ -750,7 +751,7 @@
     NSDate *now = [[NSDate alloc] init];
     // NSLog(@"%@",now);
     
-    int daysDifference = [self getDaysDifferenceBetween:patient.birthDate and:now];
+    int daysDifference = [CBTimeMethods getDaysDifferenceIntBetween:patient.birthDate and:now];
     
     NSLog(@" ");
     NSLog(@"Patient: %@ %@", patient.firstname, patient.lastname);
@@ -800,29 +801,6 @@
     // NSNumber *correctedGestationWeeks = ([patient gestationWeeks] + [NSNumber numberWithInt:intWeeks]);
     
     return currentGestation;
-}
-
-- (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
-{
-    if ([dateA isEqualToDate:dateB])
-        return 0;
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    NSDate *dateToRound = [dateA earlierDate:dateB];
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
-    NSDateComponents * dateComponents = 
-    [gregorian components:flags fromDate:dateToRound];
-    
-    NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
-    
-    NSDate *otherDate = (dateToRound == dateA) ? dateB : dateA ;
-    
-    NSInteger diff = abs([roundedDate timeIntervalSinceDate:otherDate]);
-    
-    NSInteger daysDifference = floor(diff/(24 * 60 * 60));
-    
-    return daysDifference;
 }
 
 - (NSDate *)getDateFromDaysDifference:(NSInteger)days fromDate:(NSDate *)date;
@@ -904,7 +882,7 @@
     NSLog(@"formattedScreeningDate = %@", formattedScreeningDate);
     
     // number of days between screening date and current date is number of days to ROP screening
-    int daysTillScreeningDate = [self getDaysDifferenceBetween:screeningDate and:[NSDate date]];
+    int daysTillScreeningDate = [CBTimeMethods getDaysDifferenceIntBetween:screeningDate and:[NSDate date]];
     
     NSLog(@"daysTillScreeningDate = %i", daysTillScreeningDate);
     

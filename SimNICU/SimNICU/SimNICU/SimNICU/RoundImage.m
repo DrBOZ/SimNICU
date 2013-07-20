@@ -31,7 +31,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGContextRestoreGState(context);
 }
 
-+(UIImage *)makeRoundCornerImage : (UIImage*) img : (int) cornerWidth : (int) cornerHeight
++(UIImage *)makeRoundCornerImage:(UIImage *)img :(int)cornerWidth :(int)cornerHeight
 {
 	UIImage * newImage = nil;
 	

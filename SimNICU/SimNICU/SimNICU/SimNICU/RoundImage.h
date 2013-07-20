@@ -10,6 +10,6 @@
 
 @interface RoundImage : NSObject
 
-+(UIImage *)makeRoundCornerImage:(UIImage*)img :(int) cornerWidth :(int) cornerHeight;
++(UIImage *)makeRoundCornerImage:(UIImage*)img :(int)cornerWidth :(int)cornerHeight;
 
 @end

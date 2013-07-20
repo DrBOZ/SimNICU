@@ -9,7 +9,9 @@
 #import "ExactAgeViewController.h"
 #import "ActionSheetPicker.h"
 #import "NSDate+TCUtils.h"
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
+
 
 @interface ExactAgeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
@@ -22,7 +24,6 @@
 @property (nonatomic, retain) NSDate *selectedDate;
 @property (nonatomic, strong) NSNumber *ageInDays;
 
-- (double)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 - (void)birthTimeWasSelected:(NSDate *)selectedDate element:(id)element;
 - (void)dateWasSelected:(NSDate *)selectedDate element:(id)element;
 - (void)dateButtonTapped:(UIBarButtonItem *)sender;
@@ -477,18 +478,6 @@
 
 #pragma mark - Implementation
 
-- (double)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
-{
-    if ([dateA isEqualToDate:dateB])
-        return 0;
-    
-    double seconds = [dateB timeIntervalSinceDate:dateA];
-    
-    double days = seconds / (60 * 60 * 24);
-    
-    return days;
-}
-
 // return formatted string of days hours minutes difference
 - (NSString *)getFormattedDaysHoursMinutesDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
 {
@@ -688,7 +677,7 @@
     selectedDate = [gregorian dateFromComponents:dateComponents];
     
     // Ensure birthdate is not in the future
-    if ([self getDaysDifferenceBetween:selectedDate and:[NSDate date]] > 0)
+    if ([CBTimeMethods getDaysDifferenceDoubleBetween:selectedDate and:[NSDate date]] > 0)
     {
         self.dateAndTimeOfBirth = selectedDate;
         
@@ -733,12 +722,12 @@
     selectedDate = [gregorian dateFromComponents:dateComponents];
     NSDate *currentDate = [NSDate date];
     
-    if ([self getDaysDifferenceBetween:selectedDate and:currentDate] > 0)
+    if ([CBTimeMethods getDaysDifferenceDoubleBetween:selectedDate and:currentDate] > 0)
     {
         // if birth date set, ensure sample date is not before this...
         if (self.dateAndTimeOfBirth)
         {
-            if ([self getDaysDifferenceBetween:selectedDate and:self.dateAndTimeOfBirth] > 0)
+            if ([CBTimeMethods getDaysDifferenceDoubleBetween:selectedDate and:self.dateAndTimeOfBirth] > 0)
             {
                 self.selectedDate = nil;
                 
@@ -805,7 +794,8 @@
 - (void)setAgeInDays
 {
     // calculate days difference
-    double daysDifference = [self getDaysDifferenceBetween:self.dateAndTimeOfBirth and:self.selectedDate];
+    double daysDifference = [CBTimeMethods getDaysDifferenceDoubleBetween:self.dateAndTimeOfBirth
+                                                                      and:self.selectedDate];
     
     self.ageInDays = [NSNumber numberWithDouble:daysDifference];
     

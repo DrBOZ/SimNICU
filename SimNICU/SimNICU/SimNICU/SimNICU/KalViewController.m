@@ -4,12 +4,12 @@
  */
 
 #import "KalViewController.h"
-#import "KalLogic.h"
 #import "KalDataSource.h"
-#import "KalDate.h"
-#import "KalPrivate.h"
-
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
+#import "KalPrivate.h"
+#import "KalLogic.h"
+#import "KalDate.h"
 
 #define PROFILER 0
 #if PROFILER
@@ -40,7 +40,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 @property (nonatomic) BOOL userSwappingMonths;
 
 - (KalView *)calendarView;
-- (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
 @end
 
@@ -123,7 +122,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
             
             int daysDifference;
             
-            daysDifference = [self getDaysDifferenceBetween:selDate and:today];
+            daysDifference = [CBTimeMethods getDaysDifferenceIntBetween:selDate and:today];
             
             NSLog(@"daysDifference = %i", daysDifference);
             
@@ -196,7 +195,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
             
             int daysDifference;
             
-            daysDifference = [self getDaysDifferenceBetween:selDate and:today];
+            daysDifference = [CBTimeMethods getDaysDifferenceIntBetween:selDate and:today];
             
             NSLog(@"daysDifference = %i", daysDifference);
             
@@ -445,29 +444,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     [tableView flashScrollIndicators];
 }
 
-- (NSInteger)getDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
-{
-    if ([dateA isEqualToDate:dateB])
-        return 0;
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    NSDate *dateToRound = [dateA earlierDate:dateB];
-    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
-    NSDateComponents * dateComponents = 
-    [gregorian components:flags fromDate:dateToRound];
-
-    NSDate * roundedDate = [gregorian dateFromComponents:dateComponents];
-    
-    NSDate * otherDate = (dateToRound == dateA) ? dateB : dateA ;
-    
-    NSInteger diff = abs([roundedDate timeIntervalSinceDate:otherDate]);
-    
-    NSInteger daysDifference = floor(diff/(24 * 60 * 60));
-    
-    return daysDifference;
-}
-
 - (void)selectToday
 {
     NSDate *today = [NSDate date];
@@ -476,17 +452,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     [[self calendarView] selectDate:[KalDate dateFromNSDate:today]];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
-
-#pragma mark -
-/*
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationSignificantTimeChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:KalDataSourceChangedNotification object:nil];
-}
- */
 
 @end
 
