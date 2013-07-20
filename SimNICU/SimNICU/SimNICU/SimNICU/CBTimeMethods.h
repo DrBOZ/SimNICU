@@ -9,11 +9,14 @@
 #define CALCULATION_METHOD 0
 
 #import <Foundation/Foundation.h>
+#import "Patient.h"
 
 @interface CBTimeMethods : NSObject
 
 // + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 + (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB;
 + (double)getDaysDifferenceDoubleBetween:(NSDate *)dateA and:(NSDate *)dateB;
+
++ (NSString *)calculateCurrentGestation:(Patient *)patient;
 
 @end

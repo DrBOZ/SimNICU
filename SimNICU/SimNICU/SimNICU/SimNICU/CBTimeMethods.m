@@ -77,4 +77,37 @@
     return differenceToReturn;
 }
 
++ (NSString *)calculateCurrentGestation:(Patient *)patient
+{
+    NSString *currentGestation = @"0+0";
+    
+    NSDate *now = [NSDate date];
+    
+    int daysDifference = [CBTimeMethods getDaysDifferenceIntBetween:patient.birthDate and:now];
+    int weeksDifference = daysDifference / 7;
+    int plusDays = (daysDifference - (weeksDifference * 7));
+    int gestationWeeks = [[patient.gestation substringToIndex:2] intValue];
+    int gestationDays;
+    
+    if ([patient.gestation length] > 3)
+    {
+        gestationDays = [[patient.gestation substringFromIndex:2] intValue];
+    }
+    else gestationDays = 0;
+    
+    int correctedGestationWeeks = gestationWeeks + weeksDifference;
+    
+    int correctedGestationDays = gestationDays + plusDays;
+    
+    if (correctedGestationDays > 6)
+    {
+        correctedGestationWeeks = correctedGestationWeeks + 1;
+        correctedGestationDays = correctedGestationDays - 7;
+    }
+    
+    currentGestation = [NSString stringWithFormat:@"%d+%d",correctedGestationWeeks, correctedGestationDays];
+    
+    return currentGestation;
+}
+
 @end
