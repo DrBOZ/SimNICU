@@ -130,6 +130,11 @@
 {
     float height = 55.0f;
     
+    if (indexPath.section == 0)
+    {
+        height = 80.0f;
+    }
+    
     return height;
 }
 
@@ -140,6 +145,8 @@
     if (indexPath.section == 0)
     {
         NSString *CellIdentifier = @"Patient";
+        
+        // need a dequeue cell for cell identifier call
         UITableViewCell *cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
         
         returnCell = cell;
@@ -152,6 +159,7 @@
 {
     UITableViewCell *cell;
     
+    // this is wrong...
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -159,20 +167,29 @@
     if ([CellIdentifier isEqualToString:@"Patient"])
     {
         //displayTextLabel (Patient's name)
-        UILabel *displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 210.0f, 30.0f)];
+        UILabel *displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 22.0f)];
         displayTextLabel.textColor = [UIColor blackColor];
         displayTextLabel.backgroundColor = [UIColor clearColor];
-        displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-        displayTextLabel.adjustsFontSizeToFitWidth = YES;
+        displayTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+        displayTextLabel.adjustsFontSizeToFitWidth = NO;
         displayTextLabel.textAlignment = UITextAlignmentLeft;
         [cell addSubview:displayTextLabel];
         
+        UILabel *tempTestLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 21.0f, 300.0f, 22.0f)];
+        tempTestLabel.textColor = [UIColor blackColor];
+        tempTestLabel.backgroundColor = [UIColor clearColor];
+        tempTestLabel.font = [UIFont systemFontOfSize:14.0f];
+        tempTestLabel.adjustsFontSizeToFitWidth = NO;
+        tempTestLabel.textAlignment = UITextAlignmentLeft;
+        tempTestLabel.text = @"day 14 (2 + 0)";
+        [cell addSubview:tempTestLabel];
+        
         //displayDetailTextLabel (Gestation, birth weight, corrected gestation and working weight)
-        UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 21.0f, 227.0f, 30.0f)];
+        UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 41.0f, 300.0f, 30.0f)];
         displayDetailTextLabel.textColor = [UIColor blackColor];
         displayDetailTextLabel.backgroundColor = [UIColor clearColor];
-        displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
-        displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+        displayDetailTextLabel.font = [UIFont systemFontOfSize:14.0f];
+        displayDetailTextLabel.adjustsFontSizeToFitWidth = NO;
         displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
         [cell addSubview:displayDetailTextLabel];
         

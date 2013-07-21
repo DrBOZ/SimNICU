@@ -206,14 +206,13 @@
     return detailDisplayText;
 }
 
-- (NSString *)returnThreeLineDetailDisplayLabelText
-{
-    return nil; // implement later
-}
-
 - (NSString *)returnDaysAndCorrectedGestationalAge;
 {
-    return nil;
+    NSString *daysAndCorrectedGestationalAge = nil;
+    
+    
+    
+    return daysAndCorrectedGestationalAge;
 }
 
 + (NSString *)formatWeight:(NSString *)weight
