@@ -132,7 +132,7 @@
     
     if (indexPath.section == 0)
     {
-        height = 80.0f;
+        height = 70.0f;
     }
     
     return height;
@@ -163,6 +163,7 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if ([CellIdentifier isEqualToString:@"Patient"])
     {
@@ -175,8 +176,8 @@
         displayTextLabel.textAlignment = UITextAlignmentLeft;
         [cell addSubview:displayTextLabel];
         
-        UILabel *tempTestLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 21.0f, 300.0f, 22.0f)];
-        tempTestLabel.textColor = [UIColor blackColor];
+        UILabel *tempTestLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 22.0f, 300.0f, 22.0f)];
+        tempTestLabel.textColor = [UIColor grayColor];
         tempTestLabel.backgroundColor = [UIColor clearColor];
         tempTestLabel.font = [UIFont systemFontOfSize:14.0f];
         tempTestLabel.adjustsFontSizeToFitWidth = NO;
@@ -185,8 +186,8 @@
         [cell addSubview:tempTestLabel];
         
         //displayDetailTextLabel (Gestation, birth weight, corrected gestation and working weight)
-        UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 41.0f, 300.0f, 30.0f)];
-        displayDetailTextLabel.textColor = [UIColor blackColor];
+        UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 44.0f, 300.0f, 22.0f)];
+        displayDetailTextLabel.textColor = [UIColor grayColor];
         displayDetailTextLabel.backgroundColor = [UIColor clearColor];
         displayDetailTextLabel.font = [UIFont systemFontOfSize:14.0f];
         displayDetailTextLabel.adjustsFontSizeToFitWidth = NO;
