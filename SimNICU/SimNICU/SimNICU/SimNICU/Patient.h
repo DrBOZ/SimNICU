@@ -36,6 +36,9 @@
 @property (nonatomic, retain) NSString *currentWeight;
 @property (nonatomic, retain) NSString *workingWeight;
 
+// Estimated Weight
+@property (nonatomic, strong) NSString *estimatedWeight;
+
 // Bilirubin results
 @property (nonatomic, strong) NSMutableArray *bilirubinResults;
 
@@ -85,5 +88,14 @@
 // @property (nonatomic, retain) NSNumber *workingWeight;
 // @property (nonatomic, retain) NSNumber *gestationWeeks;
 // @property (nonatomic, retain) NSNumber *gestationDays;
+
++ (NSString *)formatWeight:(NSString *)weight;
+
+- (NSString *)returnDisplayTextLabelText;
+- (NSString *)returnTwoLineDetailDisplayLabelText;
+- (NSString *)returnThreeLineDetailDisplayLabelText;
+- (NSString *)returnDaysAndCorrectedGestationalAge;
+
+- (BOOL)meetsCriteriaForROPScreening;
 
 @end

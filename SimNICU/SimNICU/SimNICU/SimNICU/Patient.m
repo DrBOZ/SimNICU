@@ -6,70 +6,15 @@
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
 //
 
+#import "CBTimeMethods.h"
+#import "GrowthChart.h"
 #import "Patient.h"
 
+@interface Patient ()
+
+@end
+
 @implementation Patient
-
-/*
-@synthesize formattedBirthDate = _formattedBirthDate;
-@synthesize formattedWorkingWeightDate = _formattedWorkingWeightDate;
-@synthesize correctedGestation = _correctedGestation;
-@synthesize lastname = _lastname;
-@synthesize firstname = _firstname;
-@synthesize gestation = _gestation;
-@synthesize birthTimeSet = _birthTimeSet;
-
-@synthesize birthDate = _birthDate;
-@synthesize birthYear = _birthYear;
-@synthesize birthMonth = _birthMonth;
-@synthesize birthDay = _birthDay;
-@synthesize birthHour = _birthHour;
-@synthesize birthMinute = _birthMinute;
-@synthesize dueDate = _dueDate;
-@synthesize birthWeight = _birthWeight;
-@synthesize currentWeight = _currentWeight;
-@synthesize lastWeight = _lastWeight;
-@synthesize workingWeight = _workingWeight;
-@synthesize workingWeightDate = _workingWeightDate;
-@synthesize gestationWeeks = _gestationWeeks;
-@synthesize gestationDays = _gestationDays;
-
-@synthesize NewBabyAPGARSSaved = _NewBabyAPGARSSaved;
-
-@synthesize APGAR1minColour = _APGAR1minColour;
-@synthesize APGAR1minHeartRate = _APGAR1minHeartRate;
-@synthesize APGAR1minRespiratoryEffort = _APGAR1minRespiratoryEffort;
-@synthesize APGAR1minTone = _APGAR1minTone;
-@synthesize APGAR1minReflexes = _APGAR1minReflexes;
-
-@synthesize APGAR5minColour = _APGAR5minColour;
-@synthesize APGAR5minHeartRate = _APGAR5minHeartRate;
-@synthesize APGAR5minRespiratoryEffort = _APGAR5minRespiratoryEffort;
-@synthesize APGAR5minTone = _APGAR5minTone;
-@synthesize APGAR5minReflexes = _APGAR5minReflexes;
-
-@synthesize APGAR10minColour = _APGAR10minColour;
-@synthesize APGAR10minHeartRate = _APGAR10minHeartRate;
-@synthesize APGAR10minRespiratoryEffort = _APGAR10minRespiratoryEffort;
-@synthesize APGAR10minTone = _APGAR10minTone;
-@synthesize APGAR10minReflexes = _APGAR10minReflexes;
-
-@synthesize APGAR15minColour = _APGAR15minColour;
-@synthesize APGAR15minHeartRate = _APGAR15minHeartRate;
-@synthesize APGAR15minRespiratoryEffort = _APGAR15minRespiratoryEffort;
-@synthesize APGAR15minTone = _APGAR15minTone;
-@synthesize APGAR15minReflexes = _APGAR15minReflexes;
-
-@synthesize APGAR20minColour = _APGAR20minColour;
-@synthesize APGAR20minHeartRate = _APGAR20minHeartRate;
-@synthesize APGAR20minRespiratoryEffort = _APGAR20minRespiratoryEffort;
-@synthesize APGAR20minTone = _APGAR20minTone;
-@synthesize APGAR20minReflexes = _APGAR20minReflexes;
-
-@synthesize bilirubinResults = _bilirubinResults;
-*/
-
-// lazily instantiate bilirubinResults;
  
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -181,6 +126,146 @@
     // bilirubin results
     [aCoder encodeObject:self.bilirubinResults forKey:@"BilirubinResults"];
     [aCoder encodeObject:self.birthTimeSet forKey:@"BirthTimeSet"];
+}
+
+- (NSString *)returnDisplayTextLabelText
+{
+    if ([self.lastname isEqualToString:@""])
+    {
+        self.lastname = @"BABY";
+        self.firstname = @"New";
+    }
+    else
+    {
+        if ([self.firstname isEqualToString:@""])
+        {
+            self.firstname = @"Baby";
+        }
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
+}
+
+- (NSString *)returnTwoLineDetailDisplayLabelText
+{
+    NSString *detailDisplayText;
+    
+    if ([self.lastname isEqualToString:@""])                                                        // Nil of names entered
+    {
+        self.lastname = @"BABY";
+        self.firstname = @"New";
+    }
+    else if ([self.firstname isEqualToString:@""]) self.firstname = @"Baby";                        // Surname only
+    
+    if ([self.firstname isEqualToString:@"add"] && [self.lastname isEqualToString:@"new patient"])  // New patient
+    {
+        detailDisplayText = @"";
+    }
+    else if (!self.birthWeight && !self.gestation)                                                  // Name only
+    {
+        detailDisplayText = @"";
+    }
+    else if (self.birthWeight && !self.gestation)                                                   // Birth weight (or ww) but no gestation
+    {
+        if (self.workingWeight)
+        {
+            NSString *formattedWorkingWeight = [Patient formatWeight:self.workingWeight];
+            detailDisplayText = [NSString stringWithFormat:@"Working weight %@", formattedWorkingWeight];
+        }
+        else
+        {
+            NSString *formattedBirthWeight = [Patient formatWeight:self.birthWeight];
+            detailDisplayText = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
+        }
+    }
+    else if (self.gestation && !self.birthWeight)                                                   // Gestation but no birth weight
+    {
+        NSString *estimatedWeight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:self.gestation];
+        
+        NSString *formattedEstimatedWeight = [Patient formatWeight:estimatedWeight];
+        
+        detailDisplayText = [NSString stringWithFormat:@"%@/40 estimated weight %@", self.gestation, formattedEstimatedWeight];
+        // detailDisplayText = [NSString stringWithFormat:@"%@/40 gestation - no weight", self.gestation];
+    }
+    else if (self.gestation && self.birthWeight)                                                    // Gestation and birth weight
+    {
+        NSString *formattedBirthWeight = [Patient formatWeight:[self birthWeight]];
+        NSString *formattedWorkingWeight = [Patient formatWeight:[self workingWeight]];
+        
+        if (self.workingWeight && self.birthDate)                                                   // + Working Weight
+        {
+            detailDisplayText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", [self gestation], formattedBirthWeight, [CBTimeMethods calculateCurrentGestation:self], formattedWorkingWeight];
+            self.correctedGestation = [CBTimeMethods calculateCurrentGestation:self];
+        }
+        else                                                                                        // - Working Weight
+        {
+            detailDisplayText = [NSString stringWithFormat:@"%@/40 birth weight %@", [self gestation], formattedBirthWeight];
+        }
+    }
+    
+    return detailDisplayText;
+}
+
+- (NSString *)returnThreeLineDetailDisplayLabelText
+{
+    return nil; // implement later
+}
+
+- (NSString *)returnDaysAndCorrectedGestationalAge;
+{
+    return nil;
+}
+
++ (NSString *)formatWeight:(NSString *)weight
+{
+    NSString *formattedWeight = nil;
+    
+    // format weight
+    NSString *UKLocaleRawWeight;
+    UKLocaleRawWeight = [weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+    UKLocaleRawWeight = [weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+    
+    float weightKGAsFloat = [UKLocaleRawWeight floatValue];
+    
+    if(weightKGAsFloat < 1.0f)
+    {
+        // convert to grams as use integer
+        int weightGRAMSasInt = weightKGAsFloat * 1000;
+        formattedWeight = [NSString stringWithFormat:@"%i g", weightGRAMSasInt];
+    }
+    else
+    {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];  // this all came from the estimated weight code
+        formatter.numberStyle = NSNumberFormatterDecimalStyle;
+        formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+        // if locale has an arabic decimal separator then use english
+        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+        {
+            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+        }
+        formatter.minimumFractionDigits = 0;
+        formatter.maximumFractionDigits = 3;
+        
+        formattedWeight = [NSString stringWithFormat:@"%@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:weightKGAsFloat]]];
+        // formattedWeight = [NSString stringWithFormat:@"%@ kg", weight];
+    }
+    
+    return formattedWeight;
+}
+
+- (BOOL)meetsCriteriaForROPScreening
+{
+    BOOL patientMeetsCriteria = NO;
+    
+    int gestation = [self.gestation intValue];
+    float birthWeight = [self.birthWeight floatValue];
+    
+    if ((gestation > 0 && gestation < 32) || (birthWeight > 0.0f && birthWeight < 1.5f))
+    {
+        patientMeetsCriteria = YES;
+    }
+    
+    return patientMeetsCriteria;
 }
 
 @end

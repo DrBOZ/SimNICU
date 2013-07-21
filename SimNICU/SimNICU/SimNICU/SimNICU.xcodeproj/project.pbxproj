@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
+		5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
+		5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
 		5C0E05DD178EF77800768739 /* benzylpenicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */; };
 		5C0E05DF178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */; };
 		5C0E05E0178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */; };
@@ -776,6 +778,14 @@
 		5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
+		5CDBACAC179C0F8800D1A03D /* PatientListWarningROP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */; };
+		5CDBACAD179C0F8800D1A03D /* PatientListWarningROP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */; };
+		5CDBACAF179C0F9300D1A03D /* PatientListWarningROP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAE179C0F9300D1A03D /* PatientListWarningROP@2x.png */; };
+		5CDBACB0179C0F9300D1A03D /* PatientListWarningROP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAE179C0F9300D1A03D /* PatientListWarningROP@2x.png */; };
+		5CDBACB4179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */; };
+		5CDBACB5179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */; };
+		5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */; };
+		5CDBACB7179C145800D1A03D /* PatientListWarningImms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */; };
 		5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -789,6 +799,8 @@
 /* Begin PBXFileReference section */
 		5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTimeMethods.h; sourceTree = "<group>"; };
 		5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTimeMethods.m; sourceTree = "<group>"; };
+		5C0C9D9E179B26360077B881 /* PatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientCell.h; sourceTree = "<group>"; };
+		5C0C9D9F179B26360077B881 /* PatientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientCell.m; sourceTree = "<group>"; };
 		5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinReferences.html; sourceTree = "<group>"; };
 		5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinLicenceStatus.html; sourceTree = "<group>"; };
 		5C0E05E1178EF7D500768739 /* benzylpenicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinMonitoring.html; sourceTree = "<group>"; };
@@ -1343,6 +1355,10 @@
 		5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugRouteOfAdministration.m; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
+		5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PatientListWarningROP.png; sourceTree = "<group>"; };
+		5CDBACAE179C0F9300D1A03D /* PatientListWarningROP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PatientListWarningROP@2x.png"; sourceTree = "<group>"; };
+		5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PatientListWarningImms@2x.png"; sourceTree = "<group>"; };
+		5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PatientListWarningImms.png; sourceTree = "<group>"; };
 		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5CE04B6816D04B1D0002BBD7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -1820,8 +1836,6 @@
 				5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */,
 				5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */,
 				5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */,
-				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
-				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
 			);
 			name = Calculators;
 			sourceTree = "<group>";
@@ -2126,8 +2140,6 @@
 		5C940AFD166E3B030044A7D1 /* Front View */ = {
 			isa = PBXGroup;
 			children = (
-				5C6982D51672CA1900590AFF /* SimNICU_round.png */,
-				5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */,
 				5C940AFE166E3B110044A7D1 /* AppViewController.h */,
 				5C940AFF166E3B110044A7D1 /* AppViewController.m */,
 				5C940B00166E3B110044A7D1 /* AppViewController.xib */,
@@ -2141,6 +2153,8 @@
 				5C940B04166E3B420044A7D1 /* EnterWeightViewController.h */,
 				5C940B05166E3B420044A7D1 /* EnterWeightViewController.m */,
 				5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */,
+				5C0C9D9E179B26360077B881 /* PatientCell.h */,
+				5C0C9D9F179B26360077B881 /* PatientCell.m */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
 				5C9BE62117970F31009616CA /* Advanced Patient Editor */,
 				5C679FC01795B7E500B9A813 /* Bay Editor */,
@@ -2332,6 +2346,7 @@
 				5C940C44166E3E340044A7D1 /* App */,
 				5C940C46166E3E470044A7D1 /* APGAR */,
 				5C940C45166E3E3F0044A7D1 /* Calculator */,
+				5CDBACB1179C142400D1A03D /* PatientListWarnings */,
 			);
 			name = Images;
 			path = SimNICU;
@@ -2358,6 +2373,8 @@
 				5C940C3A166E3E230044A7D1 /* Screen.m */,
 				5C940C3B166E3E230044A7D1 /* GrowthChart.h */,
 				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
+				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
+				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
 			);
 			name = miscObjects;
 			path = SimNICU;
@@ -2579,6 +2596,19 @@
 				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
 			);
 			name = Screen_OxygenationIndex;
+			sourceTree = "<group>";
+		};
+		5CDBACB1179C142400D1A03D /* PatientListWarnings */ = {
+			isa = PBXGroup;
+			children = (
+				5C6982D51672CA1900590AFF /* SimNICU_round.png */,
+				5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */,
+				5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */,
+				5CDBACAE179C0F9300D1A03D /* PatientListWarningROP@2x.png */,
+				5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */,
+				5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */,
+			);
+			name = PatientListWarnings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2884,6 +2914,10 @@
 				5C51D8FB17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FE17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
 				5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
+				5CDBACAC179C0F8800D1A03D /* PatientListWarningROP.png in Resources */,
+				5CDBACAF179C0F9300D1A03D /* PatientListWarningROP@2x.png in Resources */,
+				5CDBACB4179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */,
+				5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3124,6 +3158,10 @@
 				5C51D8FC17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
 				5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
+				5CDBACAD179C0F8800D1A03D /* PatientListWarningROP.png in Resources */,
+				5CDBACB0179C0F9300D1A03D /* PatientListWarningROP@2x.png in Resources */,
+				5CDBACB5179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */,
+				5CDBACB7179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3267,6 +3305,7 @@
 				5C756CA517989E15002F983E /* Calculator.m in Sources */,
 				5C7A453017999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
+				5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3407,6 +3446,7 @@
 				5C756CA617989E15002F983E /* Calculator.m in Sources */,
 				5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
+				5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

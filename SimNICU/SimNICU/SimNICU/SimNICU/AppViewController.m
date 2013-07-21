@@ -1394,52 +1394,15 @@
 {
     self.selectedPatient = patient;
     
-    // display patient's name
-    self.displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", patient.firstname, patient.lastname];
+    self.displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
+    self.displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
     
+    // this was the old code
+    /*
     NSString *detailTextLabelText = @"";
-    
-    NSString *rawBirthWeight = patient.birthWeight;
-    NSString *formattedBirthWeight;
-    
-    NSString *rawWorkingWeight = patient.workingWeight;
-    NSString *formattedWorkingWeight;
-    
-    // format birth weight
-    NSString *UKLocaleRawBirthWeight;
-    UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
-    float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-    
-    if(birthWeightKGAsFloat < 1.0f)
-    {
-        // convert to grams as use integer
-        int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-        formattedBirthWeight = [NSString stringWithFormat:@"%i g", birthWeightGRAMSasInt];
-    }
-    else
-    {
-        formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
-    }
-    
-    // format working weight
-    NSString *UKLocaleRawWorkingWeight;
-    UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-    UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-    
-    float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-    
-    if(workingWeightKGAsFloat < 1.0f)
-    {
-        // convert to grams as use integer
-        int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-        formattedWorkingWeight = [NSString stringWithFormat:@"%i g", workingWeightGRAMSasInt];
-    }
-    else
-    {
-        formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
-    }
+     
+    NSString *formattedBirthWeight = [Patient formatWeight:patient.birthWeight];
+    NSString *formattedWorkingWeight = [Patient formatWeight:patient.workingWeight];
     
     // all information present (missing this stage
     if (patient.gestation && patient.birthWeight && patient.correctedGestation && patient.workingWeight)
@@ -1460,64 +1423,24 @@
         
         self.weight = patient.workingWeight;
     }
-    else if (patient.gestation && !patient.workingWeight)
+    else if (patient.gestation && !patient.workingWeight) // one would only get here if !patient.birthWeight also
     {
-        // code here for just gestation
-        
         // obtain estimated weight from growth chart
+        NSString *estimatedWeight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:patient.gestation];
         
-        NSString *estimatedWeight;
+        NSString *formattedEstimatedWeight = [Patient formatWeight:estimatedWeight];
         
-        self.growthChart = [[GrowthChart alloc] init];
-        
-        // temp code
-        NSString *sex = @"Unknown";
-        NSString *centile = @"50th";
-        
-        estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:patient.gestation];
-        
-        // NSLog(@"Estimated Weight = %@", estimatedWeight);
-        
-        NSString *UKLocaleEstimatedWeight;
-        UKLocaleEstimatedWeight = [estimatedWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        UKLocaleEstimatedWeight = [estimatedWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        float estimatedWeightKGAsFloat = [UKLocaleEstimatedWeight floatValue];
-        NSString *estimatedWeightAsString;
-        
-        if(estimatedWeightKGAsFloat < 1)
-        {
-            // convert to grams as use integer
-            int estimatedWeightGRAMSasInt = estimatedWeightKGAsFloat * 1000;
-            
-            estimatedWeightAsString = [NSString stringWithFormat:@"%i grams", estimatedWeightGRAMSasInt];
-        }
-        else
-        {
-            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-            formatter.numberStyle = NSNumberFormatterDecimalStyle;
-            // if using arabic locale, force to english
-            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
-            {
-                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
-            }
-            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
-            formatter.minimumFractionDigits = 0;
-            formatter.maximumFractionDigits = 3;
-            
-            estimatedWeightAsString = [NSString stringWithFormat:@"%@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:estimatedWeightKGAsFloat]]];
-            
-            // estimatedWeightAsString = [NSString stringWithFormat:@"%.2f kg", estimatedWeightKGAsFloat];
-        }
-        
-        detailTextLabelText = [NSString stringWithFormat:@"%@/40 estimated weight %@", patient.gestation, estimatedWeightAsString];
+        detailTextLabelText = [NSString stringWithFormat:@"%@/40 estimated weight %@", patient.gestation, formattedEstimatedWeight];
         
         self.weight = estimatedWeight;
         self.gestation = patient.gestation;
     }
-    
-    
-    self.displayDetailTextLabel.text = detailTextLabelText;
+     */
+    if (patient.gestation && !patient.workingWeight)
+    {
+        self.weight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:patient.gestation];
+        self.gestation = patient.gestation;
+    }
     
     self.displayBackground.hidden = NO;
     self.displayTextLabel.hidden = NO;
@@ -1545,7 +1468,7 @@
     // NSString *arabicDecimalSeparator = @"٫";
     if (!([weight rangeOfString:@"٫"].location == NSNotFound))
     {
-        weight = [weight stringByReplacingOccurrencesOfString:@"٫" withString:@"."];
+        weight = [weight stringByReplacingOccurrencesOfString:@"٫" withString:@"."]; // check this out later
     }
     
     // goes through the entire string and replaces any commas with full stops in case
@@ -1588,9 +1511,9 @@
         NSString *estimatedWeight;
         
         // create growth chart and retrieve estimated weight
-        self.growthChart = [[GrowthChart alloc] init];
+        // self.growthChart = [[GrowthChart alloc] init];
         
-        estimatedWeight = [self.growthChart getWeightForSex:sex atCentile:centile atGestation:gestation];
+        estimatedWeight = [GrowthChart getWeightForSex:sex atCentile:centile atGestation:gestation];
         
         // always returns UKLocale value
         float estimatedWeightKGAsFloat = [estimatedWeight floatValue];

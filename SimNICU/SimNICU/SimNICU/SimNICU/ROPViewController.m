@@ -159,7 +159,6 @@
             // Both gestation and birth weight must have been set, and meet criteria
             if ((gestation > 0 && gestation < 32) && (birthWeight > 0.0f && birthWeight < 1.5f)) 
             {
-                
                 // Patient meets criteria for screening, now letting user know why, based on which criteria
                 if ([self.estimatedWeightUsed isEqualToString:@"YES"]) 
                 {
@@ -185,7 +184,7 @@
                 if (self.selectedPatient.birthDate) 
                 {
                     // Obtaining screening date
-                    NSDate *screeningDate = [self ROPScreeningDateFromBirthDate:self.selectedPatient.birthDate andGestation:self.selectedPatient.gestation];
+                    NSDate *screeningDate = [ROPViewController ROPScreeningDateFromBirthDate:self.selectedPatient.birthDate andGestation:self.selectedPatient.gestation];
                     
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     
@@ -251,7 +250,7 @@
                 
                 if (self.selectedPatient.birthDate) 
                 {
-                    NSDate *screeningDate = [self ROPScreeningDateFromBirthDate:self.selectedPatient.birthDate andGestation:self.selectedPatient.gestation];
+                    NSDate *screeningDate = [ROPViewController ROPScreeningDateFromBirthDate:self.selectedPatient.birthDate andGestation:self.selectedPatient.gestation];
                     
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     
@@ -326,7 +325,7 @@
                 
                 if (self.selectedPatient.birthDate) 
                 {
-                    NSDate *screeningDate = [self ROPScreeningDateFromBirthDate:self.selectedPatient.birthDate andGestation:self.selectedPatient.gestation];
+                    NSDate *screeningDate = [ROPViewController ROPScreeningDateFromBirthDate:self.selectedPatient.birthDate andGestation:self.selectedPatient.gestation];
                     
                     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                     
@@ -743,7 +742,7 @@
 
 #pragma mark - Methods
 
-- (NSDate *)ROPScreeningDateFromBirthDate:(NSDate *)birthDate andGestation:(NSString *)gestation
++ (NSDate *)ROPScreeningDateFromBirthDate:(NSDate *)birthDate andGestation:(NSString *)gestation
 {
     NSDate *screeningDate;
     
@@ -807,7 +806,7 @@
     return screeningDate;
 }
 
-- (NSString *)ROPScreeningGestationFromGestation:(NSString *)gestation
++ (NSString *)ROPScreeningGestationFromGestation:(NSString *)gestation
 {
     NSString *screeningGestation;
     
@@ -863,10 +862,5 @@
 }
 
 #pragma mark - Features to add in the future
-
-- (void)checkAllPatientsInPatientListForROPScreeningThisWeek
-{
-    // code
-}
 
 @end

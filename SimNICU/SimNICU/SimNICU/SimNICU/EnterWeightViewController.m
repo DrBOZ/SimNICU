@@ -11,13 +11,16 @@
 #import "EnterWeightViewController.h"
 #import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ROPViewController.h"
 #import "CBTimeMethods.h"
 #import "AppDelegate.h"
+#import "PatientCell.h"
 #import "Patient.h"
 #import "Bay.h"
 
 @interface EnterWeightViewController ()
 
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic) BOOL userIsStartingToEnterGestationWhenNoWeightEntered;
 @property (nonatomic) BOOL weightOrGestationMessageAlreadyDisplayed;
 @property (nonatomic, strong) UISegmentedControl *centile;
@@ -38,6 +41,9 @@
 @end
 
 @implementation EnterWeightViewController
+{
+    UIView *tapView;
+}
 
 - (Preferences *)preferences
 {
@@ -403,6 +409,23 @@
     return view;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 50.0f;
+    
+    /*
+    if (!self.confidentialityModeOn)
+    {
+        if (!(indexPath.section == 0 || indexPath.section == 1))
+        {
+            height = 60.0f;
+        }
+    }
+     */
+    
+    return height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *returnCell = nil;
@@ -756,187 +779,88 @@
     else
     {
         NSString *CellIdentifier = [self.bayData[indexPath.section - 2] bayName];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        PatientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if ([[self.bayData[indexPath.section - 2] patientsInBay] count])
+        if(!cell)
         {
-            // there is a patient in the bay
-            // Patient *thisPatient = (Patient *)self.patientList[indexPath.row];  old remove once bays working
+            cell = [[PatientCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                          reuseIdentifier:CellIdentifier];
             
-            Bay *bay;
-            
-            bay = self.bayData[indexPath.section - 2];
-            Patient *thisPatient = (Patient *)bay.patientsInBay[indexPath.row];
-            
-            if ([thisPatient.lastname isEqualToString:@""])
+            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        
+        Bay *bay = self.bayData[indexPath.section - 2];
+        Patient *patient = bay.patientsInBay[indexPath.row];
+        
+        cell.textLabel.text = [patient returnDisplayTextLabelText];
+        cell.detailTextLabel.text = [patient returnTwoLineDetailDisplayLabelText];
+        
+        // check if any warnings should be shown in patient list
+        BOOL patientMeetsCriteriaForROPScreening = [patient meetsCriteriaForROPScreening];
+        
+        BOOL patientMeetsCriteriaForRoutineCrUSS = NO;
+        
+        if (patientMeetsCriteriaForROPScreening && !patientMeetsCriteriaForRoutineCrUSS)
+        {
+            // ensure that patient birthdate and gestation have been set
+            if (patient.birthDate && patient.gestation) // patient.gestation might already have been checked
             {
-                thisPatient.lastname = @"BABY";
-                thisPatient.firstname = @"New";
-            }
-            else
-            {
-                if ([thisPatient.firstname isEqualToString:@""])
+                // check if patient is due ROP screening in the next 4 days
+                // get ROP due date
+                
+                NSDate *ROPdate = [ROPViewController ROPScreeningDateFromBirthDate:patient.birthDate andGestation:patient.gestation];
+                
+                // check if due date is in the next 4 days
+                NSDate *dateToCheck = [CBTimeMethods getDateFromDaysDifference:4 fromDate:[NSDate date]];
+                
+                NSTimeInterval interval = [dateToCheck timeIntervalSinceDate:ROPdate];
+                
+                if (interval >= (4 * 24 * 60 * 60))
                 {
-                    thisPatient.firstname = @"Baby";
-                }
-            }
-            
-            NSString *name = [NSString stringWithFormat:@"%@ %@",[thisPatient firstname], [thisPatient lastname]];
-            
-            NSString *details;
-            
-            if ([thisPatient.firstname isEqualToString:@"add"] && [thisPatient.lastname isEqualToString:@"new patient"])
-            {
-                details = @"";
-            }
-            else if (!thisPatient.birthWeight && !thisPatient.gestation)
-            {
-                details = @"";
-            }
-            else if (thisPatient.birthWeight && !thisPatient.gestation)
-            {
-                NSString *rawBirthWeight = [thisPatient birthWeight];
-                NSString *formattedBirthWeight;
-                
-                NSString *rawWorkingWeight = [thisPatient workingWeight];
-                NSString *formattedWorkingWeight;
-                
-                // format birth weight
-                NSString *UKLocaleRawBirthWeight;
-                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                
-                float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-                
-                if(birthWeightKGAsFloat < 1)
-                {
-                    // convert to grams as use integer
-                    int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-                    formattedBirthWeight = [NSString stringWithFormat:@"%i grams", birthWeightGRAMSasInt];
+                    cell.imageView.image = [UIImage imageNamed:@"PatientListWarningROP.png"];
                 }
                 else
                 {
-                    formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
-                }
-                
-                // format working weight
-                NSString *UKLocaleRawWorkingWeight;
-                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                
-                float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-                if(workingWeightKGAsFloat < 1)
-                {
-                    // convert to grams as use integer
-                    int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-                    formattedWorkingWeight = [NSString stringWithFormat:@"%i grams", workingWeightGRAMSasInt];
-                }
-                else
-                {
-                    formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
-                }
-                
-                details = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
-            }
-            else if (thisPatient.gestation && !thisPatient.birthWeight)
-            {
-                details = [NSString stringWithFormat:@"%@/40 gestation - no weight", thisPatient.gestation];
-            }
-            else if (thisPatient.gestation && thisPatient.birthWeight)
-            {
-                NSString *rawBirthWeight = [thisPatient birthWeight];
-                NSString *formattedBirthWeight;
-                
-                NSString *rawWorkingWeight = [thisPatient workingWeight];
-                NSString *formattedWorkingWeight;
-                
-                // format birth weight
-                NSString *UKLocaleRawBirthWeight;
-                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-                UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                
-                float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-                
-                if(birthWeightKGAsFloat < 1)
-                {
-                    // convert to grams as use integer
-                    int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-                    formattedBirthWeight = [NSString stringWithFormat:@"%i grams", birthWeightGRAMSasInt];
-                }
-                else
-                {
-                    formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
-                }
-                
-                // format working weight
-                NSString *UKLocaleRawWorkingWeight;
-                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-                UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-                
-                float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-                if(workingWeightKGAsFloat < 1)
-                {
-                    // convert to grams as use integer
-                    int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-                    formattedWorkingWeight = [NSString stringWithFormat:@"%i grams", workingWeightGRAMSasInt];
-                }
-                else
-                {
-                    formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
-                }
-                
-                if (thisPatient.workingWeight && thisPatient.birthDate)
-                {
-                    // details = [NSString stringWithFormat:@"%@ (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [thisPatient correctedGestation], formattedWorkingWeight];
-                    
-                    details = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", [thisPatient gestation], formattedBirthWeight, [CBTimeMethods calculateCurrentGestation:thisPatient], formattedWorkingWeight];
-                    thisPatient.correctedGestation = [CBTimeMethods calculateCurrentGestation:thisPatient];
-                }
-                else
-                {
-                    details = [NSString stringWithFormat:@"%@/40 birth weight %@", [thisPatient gestation], formattedBirthWeight];
+                    cell.imageView.image = nil;
                 }
             }
-            
-            //
-            //Create patient details cell
-            if(cell == nil)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                
-                cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-                cell.textLabel.adjustsFontSizeToFitWidth = YES;
-                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-                cell.backgroundColor = [UIColor whiteColor];
-            }
-            
-            [cell.textLabel setText:name];
-            [cell.detailTextLabel setText:details];
-            
-            if ([thisPatient.NewBabyAPGARSSaved isEqualToString:@"YES"]) 
-            {
-                cell.detailTextLabel.text = @"APGARS saved";
-            }
-            
-            returnCell = cell;
         }
         else
         {
-            //Create empty bay cell
-            if(!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                
-                cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-                cell.textLabel.adjustsFontSizeToFitWidth = YES;
-                cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-                cell.backgroundColor = [UIColor whiteColor];
-            }
-            
-            cell.textLabel.text = @"No patients in bay";
-            
-            returnCell = cell;
+            cell.imageView.image = nil;
         }
+        
+        // Here are the Patient List warnings
+        /*
+        if (indexPath.section == 2 && indexPath.row == 2)
+        {
+            cell.imageView.image = [UIImage imageNamed:@"PatientListWarningImms.png"];
+            
+            // SimNICU / Date tapGesture button
+            self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+            self.tap.numberOfTapsRequired = 1;
+            
+            // create an invisible UIView over the SimNICU to allow taps
+            CGRect frame = CGRectMake(-20.0f, -20.0f, 60.0f, 60.0f);
+            tapView = [[UIView alloc] initWithFrame:frame];
+            tapView.backgroundColor = [UIColor clearColor];
+            tapView.userInteractionEnabled = YES;
+            [tapView addGestureRecognizer:self.tap];
+            [cell.contentView addSubview:tapView];
+        }
+         */
+        
+        // This must remain
+        if ([patient.NewBabyAPGARSSaved isEqualToString:@"YES"])
+        {
+            cell.detailTextLabel.hidden = NO;
+            cell.detailTextLabel.text = @"APGARS saved";
+        }
+        
+        returnCell = cell;
     }
     
     return returnCell;
@@ -1081,15 +1005,9 @@
         {
             int lastRow = [[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1;
             
-            if (!(indexPath.row == lastRow))
-            {
-                result = YES;
-            }
+            if (!(indexPath.row == lastRow)) result = YES;
         }
-        else
-        {
-            result = YES;
-        }
+        else result = YES;
     }
     
     return result;
@@ -1134,8 +1052,6 @@
 // reorder data source after move
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    NSLog(@"moveRowAtIndexPath: destinationIndexPath.row = %i", destinationIndexPath.row);
-    
     Patient *patient = [[self.bayData[sourceIndexPath.section - 2] patientsInBay] objectAtIndex:sourceIndexPath.row];
     
     [[self.bayData[sourceIndexPath.section -2] patientsInBay] removeObjectAtIndex:sourceIndexPath.row];
@@ -1151,15 +1067,9 @@
     if (indexPath.section == 1) 
     {
         // only disallow 'Patient List' toggle row to be selected
-        if (!indexPath.row == 0)
-        {
-            path = indexPath;
-        }
+        if (!indexPath.row == 0) path = indexPath;
     }
-    else
-    {
-        path = indexPath;
-    }
+    else path = indexPath;
     
     return path;
 }
@@ -1226,13 +1136,9 @@
     }
     else if(indexPath.section > 1)
     {
-        // Patient *patient = [self.patientList objectAtIndex:indexPath.row];
-        
         Bay *bay;
         bay = self.bayData[indexPath.section - 2];
         Patient *patient = (Patient *)bay.patientsInBay[indexPath.row];
-        
-        NSLog(@"Selected patient = %@", patient.lastname);
         
         if (!patient.birthWeight && !patient.gestation && !patient.workingWeight)
         {
@@ -1262,10 +1168,10 @@
         }
         else 
         {
-            if (patient.birthWeight && !patient.workingWeight) 
+            if (patient.birthWeight && !patient.workingWeight)                      // selecting a patient where birth weight has been entered and no ww
             {
                 // could enter a check to see if user want to use birth weight as working weight.
-                
+            
                 UIAlertView *alertView = [[UIAlertView alloc]
                                           initWithTitle:@"Message" 
                                           message:@"Working weight set to birth weight" 
@@ -1273,8 +1179,8 @@
                                           otherButtonTitles:nil];
                 [alertView show];
                 
-                patient.workingWeight = patient.birthWeight;
-                
+                patient.workingWeight = patient.birthWeight;                        // set working weight to birth weight
+                                                                                    // therefore if birth weight then also ww
                 if (patient.birthDate) 
                 {
                     patient.workingWeightDate = patient.birthDate;
@@ -1685,10 +1591,7 @@
     [self.weight resignFirstResponder];
     [self.gestation resignFirstResponder];
     
-    if (self.gestation.text.length == 3) 
-    {
-        self.gestation.text = [self.gestation.text substringToIndex:2];
-    }
+    if (self.gestation.text.length == 3) self.gestation.text = [self.gestation.text substringToIndex:2];
     
     [self.delegate enterWeightViewController:self didFinishEnteringWeight:self.weight.text orGestation:self.gestation.text forSex:self.selectedSex atCentile:self.selectedCentile];
     
@@ -1922,6 +1825,30 @@
         
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationRight];
     }
+}
+
+-(void)handleTapFrom:(UITapGestureRecognizer *)recognizer
+{
+    NSLog(@"TAAPPP");
+    
+    CGFloat animationDuration = 1.0f; // 2.0 initially
+    CGFloat animationDelay = 0.25f;  // 0.5 initially
+    
+    CGRect tapViewFrame = tapView.frame;
+    tapViewFrame.origin.x = -(tapViewFrame.origin.x);
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         tapView.frame = tapViewFrame;
+
+                     }
+                     completion:^(BOOL finished){
+                         NSLog(@"Animation finished:");
+                         [self.myTableView reloadData];
+                     }];
+    
 }
 
 # pragma mark - PatientDetailsViewController delegate methods

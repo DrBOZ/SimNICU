@@ -10,7 +10,7 @@
 
 @implementation GrowthChart
 
-- (NSString *)getWeightForSex:(NSString *)sex atCentile:(NSString *)centile atGestation:(NSString *)gestation
++ (NSString *)getWeightForSex:(NSString *)sex atCentile:(NSString *)centile atGestation:(NSString *)gestation
 {
     NSArray *unknown = [NSArray arrayWithObjects:
                      [NSDictionary dictionaryWithObjectsAndKeys:
