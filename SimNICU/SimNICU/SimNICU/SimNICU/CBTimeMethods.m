@@ -132,4 +132,176 @@
     return currentGestation;
 }
 
++ (NSString *)getFormattedExactDaysHoursMinutesDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
+{
+    NSString *formattedExactTimeDifference;
+    double days, hours, minutes, seconds;
+    
+    seconds = [dateB timeIntervalSinceDate:dateA];
+    
+    days = seconds / (60 * 60 * 24);
+    hours = seconds / (60 * 60);
+    minutes = seconds / (60);
+    
+    if (days >= 1)
+    {
+        hours = hours - (abs(days) * 24);
+        minutes = minutes - (abs(days) * 24 * 60) - (abs(hours) * 60);
+        
+        if (abs(days) == 1)
+        {
+            if (abs(hours) == 0)
+            {
+                if (abs(minutes) == 0)
+                {
+                    formattedExactTimeDifference = @"1 day";
+                }
+                else if (abs(minutes) == 1)
+                {
+                    formattedExactTimeDifference = @"1 day and 1 minute";
+                }
+                else
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"1 day and %d minutes", abs(minutes)];
+                }
+            }
+            else if (abs(hours) == 1)
+            {
+                if (abs(minutes) == 0)
+                {
+                    formattedExactTimeDifference = @"1 day and 1 hour";
+                }
+                else if (abs(minutes) == 1)
+                {
+                    formattedExactTimeDifference = @"1 day, 1 hour and 1 minute!";
+                }
+                else
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"1 day, 1 hour, %d minutes", abs(minutes)];
+                }
+            }
+            else
+            {
+                if (abs(minutes) == 0)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"1 day and %d hours", abs(hours)];
+                }
+                else if (abs(minutes) == 1)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"1 day, %d hours, 1 minute", abs(hours)];
+                }
+                else
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"1 day, %d hours, %d minutes", abs(hours), abs(minutes)];
+                }
+            }
+        }
+        else
+        {
+            if (abs(hours) == 0)
+            {
+                if (abs(minutes) == 0)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days", abs(days)];
+                }
+                else if (abs(minutes) == 1)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days and 1 minute", abs(days)];
+                }
+                else
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days and %d minutes", abs(days), abs(minutes)];
+                }
+            }
+            else if (abs(hours) == 1)
+            {
+                if (abs(minutes) == 0)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days and 1 hour", abs(days)];
+                }
+                else if (abs(minutes) == 1)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days, 1 hour, 1 minute", abs(days)];
+                }
+                else
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days, 1 hour, %d minutes", abs(days), abs(minutes)];
+                }
+            }
+            else
+            {
+                if (abs(minutes) == 0)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days and %d hours", abs(days), abs(hours)];
+                }
+                else if (abs(minutes) == 1)
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days, %d hours, 1 minute", abs(days), abs(hours)];
+                }
+                else
+                {
+                    formattedExactTimeDifference = [NSString stringWithFormat:@"%d days, %d hours, %d minutes", abs(days), abs(hours), abs(minutes)];
+                }
+            }
+        }
+    }
+    else if (hours >= 1)
+    {
+        minutes = minutes - (abs(hours) * 60);
+        
+        if (abs(hours) == 1)
+        {
+            if (abs(minutes) == 0)
+            {
+                formattedExactTimeDifference = @"1 hour";
+            }
+            else if (abs(minutes) == 1)
+            {
+                formattedExactTimeDifference = @"1 hour and 1 minute";
+            }
+            else
+            {
+                formattedExactTimeDifference = [NSString stringWithFormat:@"1 hour and %d minutes", abs(minutes)];
+            }
+        }
+        else
+        {
+            if (abs(minutes) == 0)
+            {
+                formattedExactTimeDifference = [NSString stringWithFormat:@"%d hours", abs(hours)];
+            }
+            else if (abs(minutes) == 1)
+            {
+                formattedExactTimeDifference = [NSString stringWithFormat:@"%d hours and 1 minute", abs(hours)];
+            }
+            else
+            {
+                formattedExactTimeDifference = [NSString stringWithFormat:@"%d hours and %d minutes", abs(hours), abs(minutes)];
+            }
+        }
+    }
+    else
+    {
+        if (abs(minutes) < 1)
+        {
+            formattedExactTimeDifference = @"less than 1 minute";
+        }
+        else if (abs(minutes) == 1)
+        {
+            formattedExactTimeDifference = @"1 minute";
+        }
+        else
+        {
+            formattedExactTimeDifference = [NSString stringWithFormat:@"%d minutes", abs(minutes)];
+        }
+    }
+    
+    if ([dateA isEqualToDate:dateB])
+    {
+        formattedExactTimeDifference = @"No Difference";
+    }
+    
+    return formattedExactTimeDifference;
+}
+
 @end

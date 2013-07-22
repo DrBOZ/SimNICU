@@ -481,6 +481,8 @@
 // return formatted string of days hours minutes difference
 - (NSString *)getFormattedDaysHoursMinutesDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
 {
+    // Need to move this code to CBTimeMethods...
+    
     NSString *formattedDate;
     double days, hours, minutes, seconds;
     
@@ -794,16 +796,15 @@
 - (void)setAgeInDays
 {
     // calculate days difference
-    double daysDifference = [CBTimeMethods getDaysDifferenceDoubleBetween:self.dateAndTimeOfBirth
-                                                                      and:self.selectedDate];
+    self.ageInDays = [NSNumber numberWithDouble:[CBTimeMethods getDaysDifferenceDoubleBetween:self.dateAndTimeOfBirth and:self.selectedDate]];
     
-    self.ageInDays = [NSNumber numberWithDouble:daysDifference];
+    self.formattedAge = [CBTimeMethods getFormattedExactDaysHoursMinutesDifferenceBetween:self.dateAndTimeOfBirth and:self.selectedDate];
     
-    self.formattedAge = [self getFormattedDaysHoursMinutesDifferenceBetween:self.dateAndTimeOfBirth and:self.selectedDate];
+    if ([self.formattedAge isEqualToString:@"No Difference"]) self.formattedAge = @"Birth";
     
     // update table
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    // NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:0]];
     [self.myTableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 }
 

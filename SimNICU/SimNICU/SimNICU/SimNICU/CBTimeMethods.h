@@ -21,4 +21,7 @@
 
 + (NSString *)calculateCurrentGestation:(Patient *)patient;
 
+// Exact Time Difference Methods (non-calendrical)
++ (NSString *)getFormattedExactDaysHoursMinutesDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
+
 @end

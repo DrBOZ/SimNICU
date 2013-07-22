@@ -93,7 +93,6 @@
 
 - (NSString *)returnDisplayTextLabelText;
 - (NSString *)returnTwoLineDetailDisplayLabelText;
-- (NSString *)returnThreeLineDetailDisplayLabelText;
 - (NSString *)returnDaysAndCorrectedGestationalAge;
 
 - (BOOL)meetsCriteriaForROPScreening;
