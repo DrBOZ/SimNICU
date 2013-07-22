@@ -818,7 +818,9 @@
                 
                 NSTimeInterval interval = [dateToCheck timeIntervalSinceDate:ROPdate];
                 
-                if (interval >= (4 * 24 * 60 * 60))
+                NSLog(@"%@: intervalInDays = %f", patient.lastname, (interval / (24 * 60 * 60)));
+                
+                if ((interval / (24 * 60 * 60) >= 0))
                 {
                     cell.imageView.image = [UIImage imageNamed:@"PatientListWarningROP.png"];
                 }
