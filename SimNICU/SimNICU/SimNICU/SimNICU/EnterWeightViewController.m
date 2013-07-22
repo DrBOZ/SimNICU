@@ -1181,7 +1181,8 @@
                 
                 patient.workingWeight = patient.birthWeight;                        // set working weight to birth weight
                                                                                     // therefore if birth weight then also ww
-                if (patient.birthDate) 
+                // set the Working Weight date
+                if (patient.birthDate)
                 {
                     patient.workingWeightDate = patient.birthDate;
                 }
@@ -1961,7 +1962,13 @@
     
     patient.formattedBirthDate = [formatter stringFromDate:patient.birthDate];
     
-    [self.patientList addObject:patient];
+    // work out where to add new patient, both in database and in table view
+    int lastBayInBayData = [self.bayData count] - 1;
+    
+    Bay *bay = self.bayData[lastBayInBayData];
+    
+    // add patient into
+    [bay.patientsInBay addObject:patient];
     
     [self.myTableView reloadData];
 }

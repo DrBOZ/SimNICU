@@ -1105,14 +1105,20 @@
             
             IntubationViewController *newViewController = [[IntubationViewController alloc] init];
             
-            newViewController.gestation = self.gestation;
-            newViewController.weight = self.weight;
+            if (self.selectedPatient)
+            {
+                newViewController.gestation = self.selectedPatient.gestation;
+                newViewController.weight = self.selectedPatient.workingWeight;
+            }
+            else
+            {
+                newViewController.gestation = self.gestation;
+                newViewController.weight = self.weight;
+            }
             
             ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
             
             EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
-            
-            NSLog(@"enterWeightViewController.preferences.ETTRoundUp = %@", enterWeightViewController.preferences.ETTRoundUp);
             
             newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
@@ -1397,49 +1403,21 @@
     self.displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
     self.displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
     
-    // this was the old code
-    /*
-    NSString *detailTextLabelText = @"";
-     
-    NSString *formattedBirthWeight = [Patient formatWeight:patient.birthWeight];
-    NSString *formattedWorkingWeight = [Patient formatWeight:patient.workingWeight];
-    
-    // all information present (missing this stage
-    if (patient.gestation && patient.birthWeight && patient.correctedGestation && patient.workingWeight)
+    // set weight and gestation
+    if (patient.gestation && patient.workingWeight)
     {
-        detailTextLabelText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", patient.gestation, formattedBirthWeight, patient.correctedGestation, formattedWorkingWeight];
-        
-        self.weight = patient.workingWeight;
-    }
-    else if (patient.workingWeight && patient.gestation)
-    {
-        detailTextLabelText = [NSString stringWithFormat:@"%@/40 working weight %@", patient.gestation, formattedWorkingWeight];
-        
-        self.weight = patient.workingWeight;
-    }
-    else if (patient.workingWeight && !patient.gestation)
-    {
-        detailTextLabelText = [NSString stringWithFormat:@"working weight %@", formattedWorkingWeight];
-        
-        self.weight = patient.workingWeight;
-    }
-    else if (patient.gestation && !patient.workingWeight) // one would only get here if !patient.birthWeight also
-    {
-        // obtain estimated weight from growth chart
-        NSString *estimatedWeight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:patient.gestation];
-        
-        NSString *formattedEstimatedWeight = [Patient formatWeight:estimatedWeight];
-        
-        detailTextLabelText = [NSString stringWithFormat:@"%@/40 estimated weight %@", patient.gestation, formattedEstimatedWeight];
-        
-        self.weight = estimatedWeight;
         self.gestation = patient.gestation;
+        self.weight = patient.workingWeight;
     }
-     */
-    if (patient.gestation && !patient.workingWeight)
+    else if (patient.gestation && !patient.workingWeight)
     {
         self.weight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:patient.gestation];
         self.gestation = patient.gestation;
+    }
+    else if (!patient.gestation && patient.workingWeight)
+    {
+        self.weight = patient.workingWeight;
+        self.gestation = nil;
     }
     
     self.displayBackground.hidden = NO;
