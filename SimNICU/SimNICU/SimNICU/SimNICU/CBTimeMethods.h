@@ -13,15 +13,16 @@
 
 @interface CBTimeMethods : NSObject
 
-// + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
-+ (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB;
+// Exact (non-calendrical) Time Difference Methods 
 + (double)getDaysDifferenceDoubleBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
 + (NSDate *)getDateFromDaysDifference:(NSInteger)days fromDate:(NSDate *)date;
 
-+ (NSString *)calculateCurrentGestation:(Patient *)patient;
-
-// Exact Time Difference Methods (non-calendrical)
 + (NSString *)getFormattedExactDaysHoursMinutesDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
+
+// Calendrical Time Difference Methods
++ (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB;
+
++ (NSString *)calculateCurrentGestation:(Patient *)patient;
 
 @end
