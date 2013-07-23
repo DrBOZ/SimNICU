@@ -38,29 +38,8 @@
     
     [self.view addSubview:self.myTableView];
     
-#if USE_DIMPLE_BACKGROUND
-    
-    // set background colour
-    if (appDelegate.window.bounds.size.height == 568)
-    {
-        // 4 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-        [tempImageView setFrame:self.myTableView.frame];
-        
-        self.myTableView.backgroundView = tempImageView;
-    }
-    else
-    {
-        // 3.5 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-        [tempImageView setFrame:self.myTableView.frame];
-        
-        self.myTableView.backgroundView = tempImageView;
-    }
-    
-#else
-    self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-#endif
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     
 #if APP_SHADING
     //screen mask covers everything

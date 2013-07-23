@@ -191,6 +191,8 @@
 		5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FC21795B83900B9A813 /* BayEditorViewController.m */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
+		5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
+		5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
 		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
 		5C756C841798521F002F983E /* GestationalAgeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C831798521F002F983E /* GestationalAgeTabBarController.m */; };
@@ -910,6 +912,8 @@
 		5C679FC21795B83900B9A813 /* BayEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BayEditorViewController.m; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
+		5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDisplayMethods.h; sourceTree = "<group>"; };
+		5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDisplayMethods.m; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
 		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
 		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
@@ -2373,6 +2377,8 @@
 				5C940C3A166E3E230044A7D1 /* Screen.m */,
 				5C940C3B166E3E230044A7D1 /* GrowthChart.h */,
 				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
+				5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */,
+				5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */,
 				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
 				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
 			);
@@ -3306,6 +3312,7 @@
 				5C7A453017999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
 				5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */,
+				5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3447,6 +3454,7 @@
 				5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
 				5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */,
+				5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

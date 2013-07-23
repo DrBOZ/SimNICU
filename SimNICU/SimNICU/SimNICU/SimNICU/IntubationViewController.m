@@ -66,32 +66,10 @@
         self.myTableView.hidden = NO;
         self.myTableView.bounces = NO;
         self.myTableView.scrollEnabled = NO;
-        
         [self.view addSubview:self.myTableView];
         
-#if USE_DIMPLE_BACKGROUND
-        
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        else
-        {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        
-#else
-        self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-#endif
+        // add TableView background
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         
         // rounded Switch
         self.roundedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(230.0f, roundedSwitchHeight, 80.0f, 44.0f)];
@@ -207,30 +185,8 @@
         
         [self.view addSubview:self.myTableView];
         
-#if USE_DIMPLE_BACKGROUND
-        
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        else
-        {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        
-#else
-        self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-#endif
-        
+        // add TableView background
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.0)
         {

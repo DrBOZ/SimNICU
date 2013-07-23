@@ -8,6 +8,7 @@
 
 #import "ExactAgeViewController.h"
 #import "ActionSheetPicker.h"
+#import "CBDisplayMethods.h"
 #import "NSDate+TCUtils.h"
 #import "CBTimeMethods.h"
 #import "AppDelegate.h"
@@ -42,7 +43,7 @@
     {
         self.title = @"Exact Age";
         
-        //delegate
+        // Delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
@@ -57,30 +58,8 @@
         self.myTableView.scrollEnabled = YES;
         [self.view addSubview:self.myTableView];
         
-#if USE_DIMPLE_BACKGROUND
-        
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        else
-        {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        
-#else
-        self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-#endif
-        
+        // add TableView background
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     }
     
     return self;

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#define CALCULATION_METHOD 0
-
 #import <Foundation/Foundation.h>
 #import "Patient.h"
 
