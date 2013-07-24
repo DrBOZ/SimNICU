@@ -75,7 +75,8 @@
 
 - (id)initWithTarget:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin  {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         self.target = target;
         self.successAction = successAction;
         self.cancelAction = cancelActionOrNil;
@@ -130,7 +131,8 @@
 
 #pragma mark - Actions
 
-- (void)showActionSheetPicker {
+- (void)showActionSheetPicker
+{
     UIView *masterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, 260)];    
     UIToolbar *pickerToolbar = [self createPickerToolbarWithTitle:self.title];
     [pickerToolbar setBarStyle:UIBarStyleBlackTranslucent];
@@ -285,7 +287,8 @@
         [self configureAndPresentActionSheetForView:aView];
 }
 
-- (void)configureAndPresentActionSheetForView:(UIView *)aView {
+- (void)configureAndPresentActionSheetForView:(UIView *)aView
+{
     NSString *paddedSheetTitle = nil;
     CGFloat sheetHeight = self.viewSize.height - 47;
     if ([self isViewPortrait]) {

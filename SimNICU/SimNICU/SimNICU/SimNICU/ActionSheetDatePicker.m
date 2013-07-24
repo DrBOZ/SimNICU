@@ -33,6 +33,8 @@
 @property (nonatomic, assign) UIDatePickerMode datePickerMode;
 @property (nonatomic, retain) UIDatePicker *datePicker;
 @property (nonatomic, retain) NSDate *selectedDate;
+@property (nonatomic, retain) NSDate *minDate;
+@property (nonatomic, retain) NSDate *maxDate;
 
 @end
 
@@ -40,11 +42,11 @@
 @synthesize selectedDate = _selectedDate;
 @synthesize datePickerMode = _datePickerMode;
 
-+ (id)showPickerWithTitle:(NSString *)title
-           datePickerMode:(UIDatePickerMode)datePickerMode selectedDate:(NSDate *)selectedDate
-                   target:(id)target action:(SEL)action origin:(id)origin
++ (id)showPickerWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)datePickerMode selectedDate:(NSDate *)selectedDate minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate target:(id)target action:(SEL)action origin:(id)origin
 {
-    ActionSheetDatePicker *picker = [[ActionSheetDatePicker alloc] initWithTitle:title datePickerMode:datePickerMode selectedDate:selectedDate target:target action:action origin:origin];
+    // ActionSheetDatePicker *picker = [[ActionSheetDatePicker alloc] initWithTitle:title datePickerMode:datePickerMode selectedDate:selectedDate target:target action:action origin:origin];
+    
+    ActionSheetDatePicker *picker = [[ActionSheetDatePicker alloc] initWithTitle:title datePickerMode:datePickerMode selectedDate:selectedDate minDate:nil maxDate:nil target:target action:action origin:origin];
     
     [picker showActionSheetPicker];
     return [picker autorelease];
@@ -119,15 +121,18 @@
 {
     if ([target respondsToSelector:action])
         objc_msgSend(target, action, self.selectedDate, origin);
-    else
-        NSAssert(NO, @"Invalid target/action ( %s / %s ) combination used for ActionSheetPicker", object_getClassName(target), (char *)action);
+    // else
+        // NSAssert(NO, @"Invalid target/action ( %s / %s ) combination used for ActionSheetPicker", object_getClassName(target), (char *)action);
 }
 
 - (void)eventForDatePicker:(id)sender
 {
     if (!sender || ![sender isKindOfClass:[UIDatePicker class]])
+    {
         return;
+    }
     
+    /*
     // Snap back if out of range
     NSDate* oneSecondAfterPickersDate = [self.datePicker.date dateByAddingTimeInterval:1] ;
     if ([self.datePicker.date compare:self.datePicker.minimumDate] == -1)
@@ -136,9 +141,22 @@
     }
     else if ([self.datePicker.date compare:self.datePicker.maximumDate] == -1)
     {
+        self.datePicker.date = oneSecondAfterPickersDate;
+    }
+     */
+    /*
+    // Snap back if out of range
+    NSDate* oneSecondAfterPickersDate = [self.datePicker.date dateByAddingTimeInterval:1] ;
+    if ([self.datePicker.date compare:self.datePicker.minimumDate] == NSOrderedSame)
+    {
         self.datePicker.date = oneSecondAfterPickersDate ;
     }
-    
+    else if ([self.datePicker.date compare:self.datePicker.maximumDate] == NSOrderedSame)
+    {
+        self.datePicker.date = oneSecondAfterPickersDate;
+    }
+    */
+     
     UIDatePicker *myDatePicker = (UIDatePicker *)sender;
     self.selectedDate = myDatePicker.date;
 }

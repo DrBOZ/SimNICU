@@ -102,6 +102,8 @@
 		5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0663178F94CD00768739 /* amoxicillinLicence.html */; };
 		5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
 		5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
+		5C1FC128179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
+		5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
@@ -795,6 +797,8 @@
 		5CE04B6D16D04B3F0002BBD7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */; };
 		5CE04B6F16D04B570002BBD7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */; };
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
+		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
@@ -850,6 +854,8 @@
 		5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinMonitoring.html; sourceTree = "<group>"; };
 		5C0E0663178F94CD00768739 /* amoxicillinLicence.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinLicence.html; sourceTree = "<group>"; };
 		5C0E0666178F94DE00768739 /* amoxicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinReferences.html; sourceTree = "<group>"; };
+		5C1FC126179EB32E00E345C4 /* CBDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePicker.h; sourceTree = "<group>"; };
+		5C1FC127179EB32E00E345C4 /* CBDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePicker.m; sourceTree = "<group>"; };
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
@@ -1369,6 +1375,8 @@
 		5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
+		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2261,9 +2269,6 @@
 		5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */ = {
 			isa = PBXGroup;
 			children = (
-				5C940BEC166E3C5A0044A7D1 /* ActionSheetPickerViewController.h */,
-				5C940BED166E3C5A0044A7D1 /* ActionSheetPickerViewController.m */,
-				5C940BEE166E3C5A0044A7D1 /* ActionSheetPickerViewController.xib */,
 				5C940BEF166E3C5A0044A7D1 /* PhototherapyViewController.h */,
 				5C940BF0166E3C5A0044A7D1 /* PhototherapyViewController.m */,
 				5C940BF1166E3C5A0044A7D1 /* PhototherapyGestationViewController.h */,
@@ -2284,7 +2289,6 @@
 				5C940C00166E3C5B0044A7D1 /* PhototherapyAddBilirubinResultViewController.m */,
 				5C940C01166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.h */,
 				5C940C02166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.m */,
-				5C940C0F166E3C780044A7D1 /* Classes */,
 			);
 			name = Screen_Phototherapy;
 			sourceTree = "<group>";
@@ -2359,6 +2363,10 @@
 		5C940C2E166E3E0F0044A7D1 /* miscObjects */ = {
 			isa = PBXGroup;
 			children = (
+				5C940BEC166E3C5A0044A7D1 /* ActionSheetPickerViewController.h */,
+				5C940BED166E3C5A0044A7D1 /* ActionSheetPickerViewController.m */,
+				5C940BEE166E3C5A0044A7D1 /* ActionSheetPickerViewController.xib */,
+				5C940C0F166E3C780044A7D1 /* Classes */,
 				5C679FBC1794CA0100B9A813 /* Bay.h */,
 				5C679FBD1794CA0100B9A813 /* Bay.m */,
 				5C756CA317989E15002F983E /* Calculator.h */,
@@ -2381,6 +2389,10 @@
 				5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */,
 				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
 				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
+				5C1FC126179EB32E00E345C4 /* CBDatePicker.h */,
+				5C1FC127179EB32E00E345C4 /* CBDatePicker.m */,
+				5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */,
+				5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */,
 			);
 			name = miscObjects;
 			path = SimNICU;
@@ -3313,6 +3325,8 @@
 				5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
 				5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */,
 				5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
+				5C1FC128179EB32E00E345C4 /* CBDatePicker.m in Sources */,
+				5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3455,6 +3469,8 @@
 				5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
 				5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */,
 				5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
+				5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */,
+				5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

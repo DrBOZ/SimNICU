@@ -9,11 +9,11 @@
 #import "AgeCalculatorsViewController.h"
 #import "CorrectedAgeViewController.h"
 #import "ExactAgeViewController.h"
-#import "AppDelegate.h"
 #import "Calculator.h"
 
 @interface AgeCalculatorsViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 
 @end
@@ -89,6 +89,10 @@
         
         // add TableView background
         [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        
+        // swipe gesture recognizer
+        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     }
     return self;
 }
@@ -115,6 +119,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source
