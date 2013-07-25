@@ -234,7 +234,7 @@
 {
     NSString *paddedSheetTitle = nil;
     
-    CGFloat sheetHeight = self.viewSize.height - 260; // was 47
+    // CGFloat sheetHeight = self.viewSize.height - 260; // was 47
     
     paddedSheetTitle = @"\n\n\n";
     

@@ -30,11 +30,9 @@
 @property (nonatomic) int weeks;
 @property (nonatomic) int days;
 
-- (void)birthTimeWasSelected:(NSDate *)selectedDate element:(id)element;
 - (void)dateWasSelected:(NSDate *)selectedDate element:(id)element;
 - (void)dateButtonTapped:(UIBarButtonItem *)sender;
 - (void)selectABirthDate:(id)sender;
-- (void)selectABirthTime:(id)sender;
 - (void)selectADate:(id)sender;
 
 @end
@@ -366,11 +364,7 @@
     {
         if (self.selectedPatient)
         {
-            if (!self.dateOfBirth && !self.selectedPatient.birthTimeSet)
-            {
-                [self selectABirthTime:self.birthDateTextField];
-            }
-            else
+            if (!self.dateOfBirth)
             {
                 [self selectABirthDate:self.birthDateTextField];
             }
