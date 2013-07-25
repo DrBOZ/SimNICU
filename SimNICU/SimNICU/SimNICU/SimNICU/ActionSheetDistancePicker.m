@@ -125,8 +125,8 @@
         //sending three objects, so can't use performSelector:
     if ([target respondsToSelector:action])
         objc_msgSend(target, action, [NSNumber numberWithInt:bigUnits], [NSNumber numberWithInt:smallUnits], origin);
-    else
-        NSAssert(NO, @"Invalid target/action ( %s / %s ) combination used for ActionSheetPicker", object_getClassName(target), (char *)action);
+    // else
+        // NSAssert(NO, @"Invalid target/action ( %s / %s ) combination used for ActionSheetPicker", object_getClassName(target), (char *)action);
 }
 
 #pragma mark -

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Patient.h"
 
 @interface CorrectedAgeViewController : UIViewController
 
+@property (nonatomic, strong) Patient *selectedPatient;
+@property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, strong) UITextField *gestation;
 
 @end

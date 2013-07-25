@@ -81,19 +81,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound)
-    {
-        if (self.ageInDays && self.formattedAge)
-        {
-            // [self.delegate phototherapyHoursOldViewController:self didFinishAddingAgeInDays:self.ageInDays formattedAge:self.formattedAge forBirthDate:self.dateAndTimeOfBirth];
-        }
-    }
-    
-    [super viewWillDisappear:animated];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
