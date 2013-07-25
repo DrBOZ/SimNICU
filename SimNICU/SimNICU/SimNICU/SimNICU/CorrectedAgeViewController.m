@@ -46,6 +46,8 @@
     {
         self.title = @"Corrected Age";
         
+        self.selectedDate = [NSDate date]; // set default to now
+        
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:nil
@@ -73,7 +75,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -213,7 +214,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateStyle:NSDateFormatterMediumStyle];
             [formatter setTimeZone:[NSTimeZone localTimeZone]];
-            [formatter setTimeStyle:NSDateFormatterShortStyle];
+            // [formatter setTimeStyle:NSDateFormatterShortStyle];
             
             if (self.dateOfBirth)
             {
@@ -254,7 +255,7 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setTimeZone:[NSTimeZone localTimeZone]];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        // [formatter setTimeStyle:NSDateFormatterShortStyle];
         
         self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
         
