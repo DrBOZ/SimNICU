@@ -74,18 +74,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows = nil;
+    int rows = 0;
     
-    if (section == 0)
-    {
-        rows = 0;
-    }
-    else
+    if (section == 1)
     {
         rows = 1;
     }
@@ -95,14 +91,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height = 50.0f;
-    
-    if (indexPath.row == 3)
-    {
-        height = 110.0f;
-    }
-    
-    return height;
+    return 50.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -113,14 +102,19 @@
     {
         header = @"Info";
     }
-    else
+    else if (section == 1)
     {
         header = @"Settings";
+    }
+    else if (section == 2)
+    {
+        header = @"References";
     }
     
     return header;
 }
 
+/*
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     NSString *footer = nil;
@@ -131,6 +125,56 @@
     }
     
     return footer;
+}
+ */
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    float height = 200.0f;
+    
+    if (section == 1)
+    {
+        height = 0.0f;
+    }
+    
+    return height;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
+    footerView.backgroundColor = [UIColor clearColor];
+    
+    if (section == 0)
+    {
+        UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 280.0f, 200.0f)];
+        tableFooterLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        tableFooterLabel.font = [UIFont systemFontOfSize:15.0f];
+        tableFooterLabel.backgroundColor = [UIColor clearColor];
+        tableFooterLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        tableFooterLabel.textAlignment = UITextAlignmentLeft;
+        tableFooterLabel.shadowColor = [UIColor whiteColor];
+        tableFooterLabel.numberOfLines = 0;
+        tableFooterLabel.text = @"This calculator is designed to calculate the chronological age of the baby, and to provide a corrected age.\n\nCountries either correct to 1 or 2 years of age, and you can set your preference below.";
+        [tableFooterLabel sizeToFit];
+        [footerView addSubview:tableFooterLabel];
+    }
+    else if (section == 2)
+    {
+        UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 280.0f, 100.0f)];
+        tableFooterLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        tableFooterLabel.font = [UIFont systemFontOfSize:15.0f];
+        tableFooterLabel.backgroundColor = [UIColor clearColor];
+        tableFooterLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        tableFooterLabel.textAlignment = UITextAlignmentLeft;
+        tableFooterLabel.shadowColor = [UIColor whiteColor];
+        tableFooterLabel.numberOfLines = 0;
+        tableFooterLabel.text = @"1. Engle WA. Age terminology during the\n    perinatal period. Pediatrics 2004;114:\n    1362-4.";
+        [tableFooterLabel sizeToFit];
+        [footerView addSubview:tableFooterLabel];
+    }
+    
+    return footerView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

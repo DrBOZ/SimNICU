@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "AgeCalculatorsInfoViewController.h"
 #import "AgeCalculatorsViewController.h"
 #import "CorrectedAgeViewController.h"
 #import "ExactAgeViewController.h"
@@ -29,6 +30,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        // info button
+        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+        [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        self.navigationItem.rightBarButtonItem = infoBarButton;
+        
         // delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
@@ -46,8 +54,17 @@
         [calculators addObject:calculator];
         
         calculator = [[Calculator alloc] init];
+        calculator.text = @"Including postmenstrual age";
+        calculator.detailText = @"During neonatal hospital stay";
+        [calculators addObject:calculator];
+        
+        [calculatorGroup addObject:calculators];
+        
+        calculators = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        calculator = [[Calculator alloc] init];
         calculator.text = @"Corrected age";
-        calculator.detailText = @"years, months, days";
+        calculator.detailText = @"After neonatal hospital stay";
         [calculators addObject:calculator];
         
         calculator = [[Calculator alloc] init];
@@ -148,7 +165,8 @@
     NSString *header = nil;
     
     if (section == 0) header = @"Chronological Age";
-    else if (section == 1) header = @"Gestational Age";
+    else if (section == 1) header = @"Corrected Age";
+    else if (section == 2) header = @"Gestational Age";
     
     return header;
 }
@@ -194,6 +212,18 @@
         
         [self.navigationController pushViewController:newViewController animated:YES];
     }
+}
+
+- (void)showInfoScreen
+{
+    AgeCalculatorsInfoViewController *newViewController = [[AgeCalculatorsInfoViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+    
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self.navigationController presentModalViewController:navController animated:YES];
 }
 
 @end

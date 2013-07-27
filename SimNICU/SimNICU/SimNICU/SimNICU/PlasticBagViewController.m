@@ -75,7 +75,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 320, 44)];
+    UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 320.0f, 44.0f)];
     tableFooterLabel.numberOfLines = 2;
     tableFooterLabel.textAlignment = UITextAlignmentLeft;
     tableFooterLabel.textColor = [UIColor darkGrayColor];
