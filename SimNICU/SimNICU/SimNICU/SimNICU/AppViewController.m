@@ -474,7 +474,7 @@
     Screen *screen;
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Age Calculations";
+    screen.menuText = @"Age";
     screen.segueId = @"Age Calculators";
     [screens addObject:screen];
     

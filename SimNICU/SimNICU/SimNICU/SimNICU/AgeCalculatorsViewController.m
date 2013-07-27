@@ -111,7 +111,7 @@
     }
     else
     {
-        self.title = @"Age Calculators";
+        self.title = @"Age";
     }
 }
 

@@ -470,9 +470,9 @@
             static NSString *CellIdentifier = @"GestationCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
@@ -522,7 +522,7 @@
                 static NSString *CellIdentifier = @"SexCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.backgroundColor = [UIColor whiteColor];
@@ -549,7 +549,7 @@
                 static NSString *CellIdentifier = @"DoneCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if (cell == nil)
+                if (!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -576,7 +576,7 @@
                 static NSString *CellIdentifier = @"PercentileCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.backgroundColor = [UIColor whiteColor];
@@ -655,7 +655,7 @@
             static NSString *CellIdentifier = @"ConfidentialitySwitch";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 // cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
@@ -698,7 +698,7 @@
                 static NSString *CellIdentifier = @"Handover";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -715,7 +715,7 @@
                 static NSString *CellIdentifier = @"Password row";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -756,7 +756,7 @@
             static NSString *CellIdentifier = @"Password row";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
