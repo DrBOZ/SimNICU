@@ -15,6 +15,7 @@
 
 @interface CorrectedAgeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, retain) AbstractActionSheetPicker *actionSheetPicker;
 @property (nonatomic, retain) UITextField *birthDateTextField;
 @property (nonatomic, retain) UITextField *birthTimeTextField;
@@ -68,6 +69,10 @@
         
         // add TableView background
         [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        
+        // swipe gesture recognizer
+        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     }
     return self;
 }
@@ -99,6 +104,11 @@
     }
     
     [super viewWillDisappear:animated];
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
