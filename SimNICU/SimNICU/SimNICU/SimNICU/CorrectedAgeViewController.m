@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "CorrectedAgeInfoViewController.h"
 #import "CorrectedAgeViewController.h"
 #import "ActionSheetPicker.h"
 #import "NSDate+TCUtils.h"
@@ -49,6 +50,13 @@
         
         self.selectedDate = [NSDate date]; // set default to now
         
+        // info button
+        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+        [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        self.navigationItem.rightBarButtonItem = infoBarButton;
+        
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:nil
@@ -71,8 +79,16 @@
         [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         
         // swipe gesture recognizer
-        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+        // self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        // [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+        
+        UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.myTableView addGestureRecognizer:swipeLeft];
+        
+        UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
+        swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.myTableView addGestureRecognizer:swipeRight];
     }
     return self;
 }
@@ -106,9 +122,14 @@
     [super viewWillDisappear:animated];
 }
 
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+- (void)handleSwipeRight:(UISwipeGestureRecognizer *)recognizer
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)handleSwipeLeft:(UISwipeGestureRecognizer *)recognizer
+{
+    [self showInfoScreen];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -1130,7 +1151,6 @@
     
     self.ageInDays = [NSNumber numberWithDouble:daysDifference];
     
-    // self.formattedAge = [self getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.dateOfBirth and:self.selectedDate];
     NSMutableArray *formattedDates = [self getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.dateOfBirth and:self.selectedDate];
     self.formattedAge = formattedDates[0];
     self.formattedAge1 = formattedDates[1];
@@ -1148,6 +1168,18 @@
 - (void)actionPickerCancelled:(id)sender
 {
     NSLog(@"Delegate has been informed that ActionSheetPicker was cancelled");
+}
+
+- (void)showInfoScreen
+{
+    CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+    
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    [self.navigationController presentModalViewController:navController animated:YES];
 }
 
 @end

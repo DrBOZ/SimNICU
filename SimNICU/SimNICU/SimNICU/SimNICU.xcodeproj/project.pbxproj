@@ -799,6 +799,8 @@
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
+		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
+		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
@@ -1377,6 +1379,8 @@
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
+		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
+		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1840,6 +1844,8 @@
 				5C756C9B179898A3002F983E /* ExactAgeViewController.m */,
 				5C756C861798526D002F983E /* CorrectedAgeViewController.h */,
 				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
+				5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */,
+				5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */,
 				5C756C9617987A60002F983E /* ChronologicalAgeViewController.h */,
 				5C756C9717987A61002F983E /* ChronologicalAgeViewController.m */,
 				5C7A452E17999A6E00D95614 /* AgeResultsCell.h */,
@@ -3327,6 +3333,7 @@
 				5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
 				5C1FC128179EB32E00E345C4 /* CBDatePicker.m in Sources */,
 				5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
+				5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3471,6 +3478,7 @@
 				5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
 				5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */,
 				5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
+				5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
