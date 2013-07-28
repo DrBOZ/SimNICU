@@ -3698,8 +3698,8 @@
 		5C940A7D166E37FE0044A7D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Conrad Bosman";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -3712,6 +3712,8 @@
 					"\"$(SRCROOT)/SimNICU\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "AC0EBF10-8104-440F-8B31-C3F0EFF8397A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AC0EBF10-8104-440F-8B31-C3F0EFF8397A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
