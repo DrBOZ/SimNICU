@@ -10,6 +10,7 @@
 
 @interface AgeResultsCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *ageTextLabel;
 @property (nonatomic, strong) UILabel *label1;
 @property (nonatomic, strong) UILabel *label2;
 @property (nonatomic, strong) UILabel *label3;

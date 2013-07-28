@@ -18,9 +18,19 @@
 
 + (NSString *)getFormattedExactDaysHoursMinutesDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
++ (NSString *)convertPostMenstualAgeToTermPlusDays:(NSString *)postMenstrualAge;
+
++ (NSString *)convertPostMenstrualAgeToCorrectedGestationalAge:(NSString *)postMenstrualAge;
+
 // Calendrical Time Difference Methods
 + (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
++ (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
+
 + (NSString *)calculateCurrentGestation:(Patient *)patient;
+
++ (NSString *)calculatePostMenstrualGestationFromDateOfBirth:(NSDate *)birthDate andCurrentDate:(NSDate *)currentDate withGestation:(NSString *)gestation;
+
++ (NSDate *)calculateEDDFromBirthDate:(NSDate *)birthDate andGestation:(NSString *)gestation;
 
 @end

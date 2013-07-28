@@ -219,6 +219,50 @@
     return formattedExactTimeDifference;
 }
 
++ (NSString *)convertPostMenstualAgeToTermPlusDays:(NSString *)postMenstrualAge
+{
+    // get gestation in weeks from string
+    int gestationWeeks = [[postMenstrualAge substringToIndex:2] intValue];
+    
+    int daysPostTerm;
+    
+    daysPostTerm = ((gestationWeeks - 40) * 7);
+    
+    // check postMenstrualAge string is 4 characters long
+    if ([postMenstrualAge length] > 2)
+    {
+        daysPostTerm += [[postMenstrualAge substringFromIndex:3] intValue];
+    }
+    
+    NSString *returnString;
+    
+    if (daysPostTerm == 0)
+    {
+        returnString = @"Term";
+    }
+    else
+    {
+        returnString = [NSString stringWithFormat:@"Term + %d", daysPostTerm];
+    }
+    
+    return returnString;
+}
+
++ (NSString *)convertPostMenstrualAgeToCorrectedGestationalAge:(NSString *)postMenstrualAge
+{
+    // get gestation in weeks from string
+    int gestationWeeks = [[postMenstrualAge substringToIndex:2] intValue];
+    
+    // subtract 40
+    gestationWeeks -= 40;
+    
+    // reform string
+    NSString *correctedGestation;
+    correctedGestation = [NSString stringWithFormat:@"%d%@", gestationWeeks, [postMenstrualAge substringFromIndex:2]];
+    
+    return correctedGestation;
+}
+
 // Calendrical Time Difference Methods
 
 + (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB
@@ -246,33 +290,318 @@
     
     differenceToReturn = abs([difference day]);
     
-    /*
-     // Old Int Method (not returned but logged)
-     // This method is time dependant and carries summer time errors over for 1 hour
-     // It correctly identifies the Samoan issue
-     if ([dateA isEqualToDate:dateB])
-     return 0;
-     
-     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-     
-     NSDate *dateToRound = [dateA earlierDate:dateB];
-     int flags = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
-     NSDateComponents *dateComponents = [gregorian components:flags fromDate:dateToRound];
-     
-     NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
-     
-     NSDate *otherDate = (dateToRound == dateA) ? dateB : dateA ;
-     
-     NSInteger diff = abs([roundedDate timeIntervalSinceDate:otherDate]);
-     
-     NSInteger daysDifference = floor(diff/(24 * 60 * 60));
-     
-     NSLog(@"daysBetweenDate (old method) = %i", daysDifference);
-     NSLog(@"---------------------------------");
-     // differenceToReturn = daysDifference;
-     */
-    
     return differenceToReturn;
+}
+
++ (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
+{
+    NSString *formattedDate = nil;
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    int compsYears = [comps year];
+    int compsMonths = [comps month];
+    int compsWeeks = [comps week];
+    int compsDays = [comps day];
+    
+    NSLog(@"Age = %i years, %i months, %i weeks, %i days", compsYears, compsMonths, compsWeeks, compsDays);
+    
+    // format in normal English
+    if (compsYears < 1)
+    {
+        if (compsMonths == 0)
+        {
+            if (compsWeeks == 0)
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"day of birth"];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i days", compsDays];
+                }
+            }
+            else if (compsWeeks == 1)
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 week"];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 week, 1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 week, %i days", compsDays];
+                }
+            }
+            else
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i weeks", compsWeeks];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i weeks, 1 day", compsWeeks];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i weeks, %i days", compsWeeks, compsDays];
+                }
+            }
+        }
+        else if (compsMonths == 1)
+        {
+            if (compsWeeks == 0)
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month"];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i days", compsDays];
+                }
+            }
+            else if (compsWeeks == 1)
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 week"];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 week, 1 day"];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, 1 week, %i days", compsDays];
+                }
+            }
+            else
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i weeks", compsWeeks];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i weeks, 1 day", compsWeeks];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"1 month, %i weeks, %i days", compsWeeks, compsDays];
+                }
+            }
+        }
+        else // months
+        {
+            if (compsWeeks == 0)
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months", compsMonths];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 day", compsMonths];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i days", compsMonths, compsDays];
+                }
+            }
+            else if (compsWeeks == 1)
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 week", compsMonths];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 week, 1 day", compsMonths];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, 1 week, %i days", compsMonths, compsDays];
+                }
+            }
+            else
+            {
+                if (compsDays == 0)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i weeks", compsMonths, compsWeeks];
+                }
+                else if (compsDays == 1)
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i weeks, 1 day", compsMonths, compsWeeks];
+                }
+                else
+                {
+                    formattedDate = [NSString stringWithFormat:@"%i months, %i weeks, %i days", compsMonths, compsWeeks, compsDays];
+                }
+            }
+        }
+    }
+    else if (compsYears == 1)
+    {
+        if (compsMonths == 0)
+        {
+            if (compsDays == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i year", compsYears];
+            }
+            else if (compsDays == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i day", compsYears, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i year", compsYears];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i days", compsYears, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i year", compsYears];
+            }
+        }
+        else if (compsMonths == 1)
+        {
+            if (compsDays == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i year, %i month", compsYears, compsMonths];
+            }
+            else if (compsDays == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i month, %i day", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i month", compsYears, compsMonths];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i month, %i days", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i month", compsYears, compsMonths];
+            }
+        }
+        else
+        {
+            if (compsDays == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i year, %i months", compsYears, compsMonths];
+            }
+            else if (compsDays == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i months, %i day", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i months", compsYears, compsMonths];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i year, %i months, %i days", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i year, %i months", compsYears, compsMonths];
+            }
+        }
+    }
+    else
+    {
+        if (compsMonths == 0)
+        {
+            if (compsDays == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i years", compsYears];
+            }
+            else if (compsDays == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i day", compsYears, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i years", compsYears];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i days", compsYears, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i years", compsYears];
+            }
+        }
+        else if (compsMonths == 1)
+        {
+            if (compsDays == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i years, %i month", compsYears, compsMonths];
+            }
+            else if (compsDays == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i month, %i day", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i month", compsYears, compsMonths];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i month, %i days", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i month", compsYears, compsMonths];
+            }
+        }
+        else
+        {
+            if (compsDays == 0)
+            {
+                formattedDate = [NSString stringWithFormat:@"%i years, %i months", compsYears, compsMonths];
+            }
+            else if (compsDays == 1)
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i months, %i day", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i months", compsYears, compsMonths];
+            }
+            else
+            {
+                // formattedDate = [NSString stringWithFormat:@"%i years, %i months, %i days", compsYears, compsMonths, compsDays];
+                formattedDate = [NSString stringWithFormat:@"%i years, %i months", compsYears, compsMonths];
+            }
+        }
+    }
+    
+    // format in days (i.e.  day 57)
+    NSString *formattedDate1 = nil;
+    unitFlags = NSDayCalendarUnit;
+    comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    compsDays = [comps day];
+    
+    if (compsDays == 0)
+    {
+        formattedDate1 = [NSString stringWithFormat:@""];
+    }
+    else if (compsDays == 1)
+    {
+        formattedDate1 = [NSString stringWithFormat:@"1 day"];
+    }
+    else
+    {
+        formattedDate1 = [NSString stringWithFormat:@"%i days", compsDays];
+    }
+    NSLog(@"%i days", compsDays);
+    
+    // format in weeks and days spelt
+    NSString *formattedDate2 = nil;
+    unitFlags = NSWeekCalendarUnit | NSDayCalendarUnit;
+    comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    compsWeeks = [comps week];
+    compsDays = [comps day];
+    
+    // format in weeks and days (57+4)
+    formattedDate2 = [NSString stringWithFormat:@"%i+%i", compsWeeks, compsDays];
+    NSLog(@"%i+%i", compsWeeks, compsDays);
+    
+    // create Array
+    NSMutableArray *formattedDates = [[NSMutableArray alloc] init];
+    [formattedDates addObject:formattedDate];
+    [formattedDates addObject:formattedDate1];
+    [formattedDates addObject:formattedDate2];
+    
+    return formattedDates;
 }
 
 + (NSString *)calculateCurrentGestation:(Patient *)patient
@@ -306,6 +635,61 @@
     currentGestation = [NSString stringWithFormat:@"%d+%d",correctedGestationWeeks, correctedGestationDays];
     
     return currentGestation;
+}
+
++ (NSString *)calculatePostMenstrualGestationFromDateOfBirth:(NSDate *)birthDate andCurrentDate:(NSDate *)currentDate withGestation:(NSString *)gestation
+{
+    NSString *currentGestation = @"0 + 0";
+    
+    int daysDifference = [CBTimeMethods getDaysDifferenceIntBetween:birthDate and:currentDate];
+    int weeksDifference = daysDifference /7;
+    int plusDays = (daysDifference - (weeksDifference * 7));
+    int gestationWeeks = [[gestation substringToIndex:2] intValue];
+    int gestationDays;
+    
+    if ([gestation length] > 3)
+    {
+        gestationDays = [[gestation substringFromIndex:2] intValue];
+    }
+    else gestationDays = 0;
+    
+    int correctedGestationWeeks = gestationWeeks + weeksDifference;
+    
+    int correctedGestationDays = gestationDays + plusDays;
+    
+    if (correctedGestationDays > 6)
+    {
+        correctedGestationWeeks = correctedGestationWeeks + 1;
+        correctedGestationDays = correctedGestationDays - 7;
+    }
+    
+    currentGestation = [NSString stringWithFormat:@"%d+%d", correctedGestationWeeks, correctedGestationDays];
+    
+    return currentGestation;
+}
+
++ (NSDate *)calculateEDDFromBirthDate:(NSDate *)birthDate andGestation:(NSString *)gestation
+{
+    NSDate *EDD = nil;
+    
+    // work out number of days to 40+0 from gestation
+    int daysTillEDD;
+    
+    int GestationWeeks = [[gestation substringToIndex:2] intValue];
+    
+    daysTillEDD = ((40 - GestationWeeks) * 7) - [[gestation substringFromIndex:3] intValue];
+    
+    // use a calendrical function to work out days from birthDate
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
+    NSDateComponents *dateComponents = [gregorian components:flags fromDate:birthDate];
+    
+    dateComponents.day += daysTillEDD;
+    
+    EDD = [gregorian dateFromComponents:dateComponents];
+    
+    return EDD;
 }
 
 @end
