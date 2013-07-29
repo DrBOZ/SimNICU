@@ -209,7 +209,7 @@
         
         drugInfoSection = [[DrugInfo alloc] init];
         drugInfoSection.header = @"Side effects";
-        drugInfoSection.heightForRow = [NSNumber numberWithFloat:170.0f];
+        drugInfoSection.heightForRow = [NSNumber numberWithFloat:240.0f];
         drugInfoSection.inset = [NSNumber numberWithFloat:10.0f];
         drugInfoSection.htmlFile = @"amoxicillinSideEffects";
         [drugInfoSections addObject:drugInfoSection];

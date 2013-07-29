@@ -122,7 +122,7 @@
     
     if (section == 0)
     {
-        footer = @"There is currently no global consensus among professionals regarding when to stop correcting a child's age for prematurity.  The majority of professionals correct through age two years, though it is common to stop at 1 year.";
+        footer = @"There is currently no global consensus among professionals regarding when to stop correcting a child's age for prematurity.  The majority of professionals correct through to age two years, though it is common to stop at 1 year.";
     }
     
     return footer;
