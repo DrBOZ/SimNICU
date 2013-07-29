@@ -261,11 +261,7 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     // info button
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-    [infoButton addTarget:self action:@selector(showAboutScreen) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    self.navigationItem.rightBarButtonItem = infoBarButton;
+    self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showAboutScreen)];
     
     // back button text for subsequent screens
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
