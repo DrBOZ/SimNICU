@@ -20,26 +20,15 @@
         self.ageTextLabel.backgroundColor = [UIColor clearColor];
         self.ageTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
         [self addSubview:self.ageTextLabel];
-    
-        /*
-        self.label1 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 10.0f, 200.0f, 30.0f)];
-        self.label2 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 20.0f, 200.0f, 30.0f)];
-        self.label3 = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 40.0f, 160.0f, 30.0f)];
-        self.label4 = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 60.0f, 160.0f, 30.0f)];
-        self.label5 = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 70.0f, 160.0f, 30.0f)];
-        */
-         
+        
+        // they are the opposite way round, because I initially started with age in words at the top
+        // but they moved the UITableViewCell textLabel to the top and they collided
+        //
         self.label5 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 10.0f, 200.0f, 30.0f)];
         self.label4 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 20.0f, 200.0f, 30.0f)];
         self.label3 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 40.0f, 200.0f, 30.0f)];
         self.label2 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 60.0f, 200.0f, 30.0f)];
-        self.label1 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 70.0f, 200.0f, 30.0f)];
-        
-        // self.label1 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 30.0f, 200.0f, 30.0f)];
-        // self.label2 = [[UILabel alloc] initWithFrame:CGRectMake(100.0f, 50.0f, 200.0f, 30.0f)];
-        // self.label3 = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 50.0f, 160.0f, 30.0f)];
-        // self.label4 = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 80.0f, 160.0f, 30.0f)];
-        // self.label5 = [[UILabel alloc] initWithFrame:CGRectMake(140.0f, 70.0f, 160.0f, 30.0f)];
+        self.label1 = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 70.0f, 250.0f, 30.0f)];
         
         self.label1.textAlignment = UITextAlignmentRight;
         self.label2.textAlignment = UITextAlignmentRight;

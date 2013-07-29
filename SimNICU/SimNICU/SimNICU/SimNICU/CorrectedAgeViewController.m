@@ -386,7 +386,6 @@
             
             self.ageInDays = [NSNumber numberWithDouble:daysDifference];
             
-            // NSMutableArray *formattedDates = [self getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.dateOfBirth and:self.selectedDate];
             NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.dateOfBirth and:self.selectedDate];
             self.formattedAge = formattedDates[0];
             self.formattedAge1 = formattedDates[1];

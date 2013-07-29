@@ -197,8 +197,6 @@
 		5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
 		5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */; };
-		5C756C841798521F002F983E /* GestationalAgeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C831798521F002F983E /* GestationalAgeTabBarController.m */; };
-		5C756C851798521F002F983E /* GestationalAgeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C831798521F002F983E /* GestationalAgeTabBarController.m */; };
 		5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C871798526D002F983E /* CorrectedAgeViewController.m */; };
 		5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C871798526D002F983E /* CorrectedAgeViewController.m */; };
 		5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */; };
@@ -926,8 +924,6 @@
 		5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrug.m; sourceTree = "<group>"; };
 		5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrugPreparation.h; sourceTree = "<group>"; };
 		5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionDrugPreparation.m; sourceTree = "<group>"; };
-		5C756C821798521F002F983E /* GestationalAgeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GestationalAgeTabBarController.h; sourceTree = "<group>"; };
-		5C756C831798521F002F983E /* GestationalAgeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GestationalAgeTabBarController.m; sourceTree = "<group>"; };
 		5C756C861798526D002F983E /* CorrectedAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeViewController.h; sourceTree = "<group>"; };
 		5C756C871798526D002F983E /* CorrectedAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeViewController.m; sourceTree = "<group>"; };
 		5C756C8A1798528A002F983E /* LMPGestationCalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPGestationCalculatorViewController.h; sourceTree = "<group>"; };
@@ -1828,8 +1824,6 @@
 		5C756C81179851A3002F983E /* Age Calculators */ = {
 			isa = PBXGroup;
 			children = (
-				5C756C821798521F002F983E /* GestationalAgeTabBarController.h */,
-				5C756C831798521F002F983E /* GestationalAgeTabBarController.m */,
 				5C756C9F17989A32002F983E /* AgeCalculatorsViewController.h */,
 				5C756CA017989A33002F983E /* AgeCalculatorsViewController.m */,
 				5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */,
@@ -1846,10 +1840,10 @@
 				5C756C9B179898A3002F983E /* ExactAgeViewController.m */,
 				5C756C861798526D002F983E /* CorrectedAgeViewController.h */,
 				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
-				5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */,
-				5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */,
 				5C7A452E17999A6E00D95614 /* AgeResultsCell.h */,
 				5C7A452F17999A6F00D95614 /* AgeResultsCell.m */,
+				5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */,
+				5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */,
 				5C756C8A1798528A002F983E /* LMPGestationCalculatorViewController.h */,
 				5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */,
 				5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */,
@@ -3319,7 +3313,6 @@
 				5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C9BE6281797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */,
-				5C756C841798521F002F983E /* GestationalAgeTabBarController.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
@@ -3464,7 +3457,6 @@
 				5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C9BE6291797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */,
-				5C756C851798521F002F983E /* GestationalAgeTabBarController.m in Sources */,
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
