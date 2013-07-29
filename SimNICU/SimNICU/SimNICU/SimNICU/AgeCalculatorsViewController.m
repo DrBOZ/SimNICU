@@ -31,11 +31,11 @@
     if (self)
     {
         // info button
-        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-        [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-        self.navigationItem.rightBarButtonItem = infoBarButton;
+        // UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        // infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+        // [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
+        // UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showInfoScreen)];
         
         // delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

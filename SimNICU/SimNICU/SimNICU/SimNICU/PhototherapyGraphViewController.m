@@ -26,18 +26,6 @@
     BOOL portraitOrientationDefaultsSet;
 }
 
-@synthesize dateAndTimeOfBirthForThisChart = _dateAndTimeOfBirthForThisChart;
-@synthesize neurotoxicityRisk = _neurotoxicityRisk;
-@synthesize guidelineCountry = _guidelineCountry;
-@synthesize sampleAgeInDays = _sampleAgeInDays;
-@synthesize selectedPatient = _selectedPatient;
-@synthesize bilirubinLevel = _bilirubinLevel;
-@synthesize bilirubinUnits = _bilirubinUnits;
-@synthesize xAxisLong = _xAxisLong;
-@synthesize chart = _chart;
-@synthesize xAxis = _xAxis;
-@synthesize yAxis = _yAxis;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     NSLog(@"init");
@@ -47,8 +35,7 @@
     {
         // setup Done button
         self.navigationItem.hidesBackButton = YES;
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(closeModal)];
-        self.navigationItem.leftBarButtonItem = backButton;
+        self.navigationItem.leftBarButtonItem = [CBBarButtonItems doneBarButtonWithTarget:self action:@selector(closeModal)];
         
         // setup addBilirubin button
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBilirubin)];

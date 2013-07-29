@@ -51,38 +51,15 @@
     if (self)
     {
         self.selectedDate = [NSDate date]; // set default to now
-        
+    
         // settings button
-        // UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showInfoScreen)];
-        
-        UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
-        UIImageView *settingsButtonImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings.png"]];
-        settingsButtonImageView.frame = CGRectMake(5.0f, 5.0f, 20.0f, 20.0f);
-        [container addSubview:settingsButtonImageView];
-        
-        UIButton *settingsUIButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0, 30.0f)];
-        [settingsUIButton addSubview:container];
-        [settingsUIButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:settingsUIButton];
-        
-        self.navigationItem.rightBarButtonItem = settingsButton;
-        
-        
+        self.navigationItem.rightBarButtonItem = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showInfoScreen)];
         
         // info button
-        /*
-        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-        [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-        self.navigationItem.rightBarButtonItem = infoBarButton;
-         */
+        // self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showInfoScreen)];
         
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                                                 style:UIBarButtonItemStyleBordered
-                                                                                target:nil
-                                                                                action:nil];
+        // back button
+        self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
         
         //delegate
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
