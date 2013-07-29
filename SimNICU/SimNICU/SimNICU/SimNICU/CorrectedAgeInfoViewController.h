@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class CorrectedAgeInfoViewController;
+
+@protocol CorrectedAgeInfoViewControllerDelegate <NSObject>
+
+- (void)correctedAgeInfoViewController:(CorrectedAgeInfoViewController *)controller didChangeCorrectAgeForPrematurityUntilYears:(NSNumber *)correctAgeForPrematurityUntilYears;
+
+@end
+
 @interface CorrectedAgeInfoViewController : UIViewController
+
+@property (nonatomic, unsafe_unretained) id <CorrectedAgeInfoViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSNumber *correctAgeForPrematurityUntilYears;
 
 @end

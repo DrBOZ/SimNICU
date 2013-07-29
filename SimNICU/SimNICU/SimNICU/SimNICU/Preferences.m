@@ -25,6 +25,7 @@
         self.defaultInfusionFluidVolumeMillilitres = [aDecoder decodeObjectForKey:@"defaultInfusionFluidVolumeMillilitres"];
         self.userKnowsHowToSwipeGestation = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipeGestation"];
         self.userKnowsHowToSwipePatientList = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipePatientList"];
+        self.correctAgeForPrematurityUntilYears = [aDecoder decodeObjectForKey:@"correctAgeForPrematurityUntilYears"];
     }
     return self;
 }
@@ -40,6 +41,7 @@
     [aCoder encodeObject:self.defaultInfusionFluidVolumeMillilitres forKey:@"defaultInfusionFluidVolumeMillilitres"];
     [aCoder encodeObject:self.userKnowsHowToSwipeGestation forKey:@"userKnowsHowToSwipeGestation"];
     [aCoder encodeObject:self.userKnowsHowToSwipePatientList forKey:@"userKnowsHowToSwipePatientList"];
+    [aCoder encodeObject:self.correctAgeForPrematurityUntilYears forKey:@"correctAgeForPrematurityUntilYears"];
 }
 
 @end

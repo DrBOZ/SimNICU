@@ -33,4 +33,7 @@
 @property (nonatomic, retain) NSString *userKnowsHowToSwipeGestation;
 @property (nonatomic, retain) NSString *userKnowsHowToSwipePatientList;
 
+// Corrected age calculator
+@property (nonatomic, retain) NSNumber *correctAgeForPrematurityUntilYears;
+
 @end

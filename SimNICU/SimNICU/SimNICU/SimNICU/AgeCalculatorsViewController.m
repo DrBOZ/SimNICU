@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "ZUUIRevealController.h"
+#import "EnterWeightViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "AgeCalculatorsInfoViewController.h"
 #import "AgeCalculatorsViewController.h"
@@ -206,6 +208,19 @@
     else if ([calculator.text isEqualToString:@"Including postmenstrual age"])
     {
         CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
+        
+        ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+        EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+        
+        if (enterWeightViewController.preferences.correctAgeForPrematurityUntilYears)
+        {
+            newViewController.correctAgeForPrematurityUntilYears = enterWeightViewController.preferences.correctAgeForPrematurityUntilYears;
+        }
+        else
+        {
+            newViewController.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2]; // default
+        }
+        
         newViewController.typeOfAgeCalculator = calculator.text;
         newViewController.selectedPatient = self.selectedPatient;
         [self.navigationController pushViewController:newViewController animated:YES];
@@ -213,8 +228,23 @@
     else if ([calculator.text isEqualToString:@"Corrected age"])
     {
         CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
+        
+        ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
+        EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
+        
+        if (enterWeightViewController.preferences.correctAgeForPrematurityUntilYears)
+        {
+            newViewController.correctAgeForPrematurityUntilYears = enterWeightViewController.preferences.correctAgeForPrematurityUntilYears;
+        }
+        else
+        {
+            newViewController.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2]; // default
+        }
+        
+        newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
         newViewController.typeOfAgeCalculator = calculator.text;
         newViewController.selectedPatient = self.selectedPatient;
+        
         [self.navigationController pushViewController:newViewController animated:YES];
     }
 }

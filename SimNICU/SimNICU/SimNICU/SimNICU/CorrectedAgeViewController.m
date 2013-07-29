@@ -15,7 +15,7 @@
 #import "CBTimeMethods.h"
 #import "AppDelegate.h"
 
-@interface CorrectedAgeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface CorrectedAgeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CorrectedAgeInfoViewControllerDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, retain) AbstractActionSheetPicker *actionSheetPicker;
@@ -920,6 +920,8 @@
 - (void)showInfoScreen
 {
     CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
+    newViewController.correctAgeForPrematurityUntilYears = self.correctAgeForPrematurityUntilYears;
+    newViewController.delegate = self;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
@@ -927,6 +929,15 @@
     navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
     [self.navigationController presentModalViewController:navController animated:YES];
+}
+
+#pragma mark - CorrectedAgeViewController delegate
+
+- (void)correctedAgeInfoViewController:(CorrectedAgeInfoViewController *)controller didChangeCorrectAgeForPrematurityUntilYears:(NSNumber *)correctAgeForPrematurityUntilYears
+{
+    self.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
+    
+    [self.delegate correctedAgeViewController:self didChangePreferencesForCorrectAgeForPrematurityUntilYears:correctAgeForPrematurityUntilYears];
 }
 
 @end

@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "CorrectedAgeCorrectToAgeSettingsViewController.h"
 #import "CorrectedAgeInfoViewController.h"
 
-@interface CorrectedAgeInfoViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CorrectedAgeInfoViewController () <UITableViewDataSource, UITableViewDelegate, CorrectedAgeCorrectToAgeSettingsViewControllerDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
@@ -195,7 +196,29 @@
     }
     
     cell.textLabel.text = @"Correct to age";
-    cell.detailTextLabel.text = @"2 years";
+    
+    if ([self.correctAgeForPrematurityUntilYears intValue] == 1)
+    {
+        cell.detailTextLabel.text = @"1 year";
+    }
+    else if ([self.correctAgeForPrematurityUntilYears intValue] == 2)
+    {
+        cell.detailTextLabel.text = @"2 years";
+    }
+    else if ([self.correctAgeForPrematurityUntilYears intValue] == 3)
+    {
+        cell.detailTextLabel.text = @"3 years";
+    }
+    else if ([self.correctAgeForPrematurityUntilYears intValue] == 4)
+    {
+        cell.detailTextLabel.text = @"4 years";
+    }
+    else
+    {
+        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
+        cell.detailTextLabel.text = @"2 years";
+    }
+    
     
     returnCell = cell;
     
@@ -207,11 +230,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CorrectedAgeCorrectToAgeSettingsViewController *newViewController = [[CorrectedAgeCorrectToAgeSettingsViewController alloc] init];
+    newViewController.correctAgeForPrematurityUntilYears = self.correctAgeForPrematurityUntilYears;
+    newViewController.delegate = self;
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 - (void)closeModal
 {
     [[self navigationController] dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - delegate method
+
+- (void)correctedAgeCorrectToAgeSettingsViewController:(CorrectedAgeCorrectToAgeSettingsViewController *)controller didFinishSelectingCorrectionUntilAge:(NSNumber *)correctAgeForPrematurityUntilYears
+{
+    self.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
+    
+    [self.delegate correctedAgeInfoViewController:self didChangeCorrectAgeForPrematurityUntilYears:correctAgeForPrematurityUntilYears];
+    
+    [self.myTableView reloadData];
 }
 
 @end

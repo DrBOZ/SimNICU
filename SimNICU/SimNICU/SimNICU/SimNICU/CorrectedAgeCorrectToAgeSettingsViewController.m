@@ -1,0 +1,444 @@
+//
+//  CorrectedAgeCorrectToAgeSettingsViewController.m
+//  SimNICU
+//
+//  Created by Conrad Bosman on 29/07/2013.
+//  Copyright (c) 2013 Conrad Bosman. All rights reserved.
+//
+
+#import "CorrectedAgeCorrectToAgeSettingsViewController.h"
+
+@interface CorrectedAgeCorrectToAgeSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
+@property UITableView *myTableView;
+@property UITableViewCell *oneYear;
+@property UITableViewCell *twoYears;
+@property UITableViewCell *threeYears;
+@property UITableViewCell *fourYears;
+
+@end
+
+@implementation CorrectedAgeCorrectToAgeSettingsViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        // Custom initialization
+        self.view.backgroundColor = [UIColor blackColor];
+        
+        self.title = NSLocalizedString(@"Correct to age", nil);  // needs add to localization string file
+        
+        //delegate
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        //menu table
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        self.myTableView.rowHeight = 50.0f;
+        self.myTableView.dataSource = self;
+        self.myTableView.delegate = self;
+        self.myTableView.sectionFooterHeight = 10.0f;
+        self.myTableView.sectionHeaderHeight = 10.0f;
+        self.myTableView.separatorColor = [UIColor grayColor];
+        self.myTableView.hidden = NO;
+        self.myTableView.bounces = YES;
+        self.myTableView.scrollEnabled = YES;
+        [self.view addSubview:self.myTableView];
+        
+        // add TableView background
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        
+        // swipe gesture recognizer
+        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Age/CorrectedAge/Settings/AgeSelector" withError:nil];
+    
+#endif
+    
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+    
+    if ([self isViewLoaded] && self.view.window == nil)
+    {
+        self.myTableView = nil;
+        self.swipeGestureRecognizer = nil;
+    }
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *returnCell = nil;
+    
+    if (indexPath.row == 0)
+    {
+        static NSString *CellIdentifier = @"oneYear";
+        self.oneYear = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.oneYear)
+        {
+            self.oneYear = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            self.oneYear.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.oneYear.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.oneYear.textLabel.text = @"1 year";
+        
+        if ([self.correctAgeForPrematurityUntilYears intValue] == 1)
+        {
+            self.oneYear.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.oneYear.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.oneYear.accessoryType = UITableViewCellAccessoryNone;
+            self.oneYear.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.oneYear;
+    }
+    else if (indexPath.row == 1)
+    {
+        static NSString *CellIdentifier = @"twoYears";
+        self.twoYears = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.twoYears)
+        {
+            self.twoYears = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            self.twoYears.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.twoYears.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.twoYears.textLabel.text = @"2 years";
+        
+        if ([self.correctAgeForPrematurityUntilYears intValue] == 2)
+        {
+            self.twoYears.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.twoYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.twoYears.accessoryType = UITableViewCellAccessoryNone;
+            self.twoYears.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.twoYears;
+    }
+    else if (indexPath.row == 2)
+    {
+        static NSString *CellIdentifier = @"threeYears";
+        self.threeYears = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.threeYears)
+        {
+            self.threeYears = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            self.threeYears.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.threeYears.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.threeYears.textLabel.text = @"3 years";
+        
+        if ([self.correctAgeForPrematurityUntilYears intValue] == 3)
+        {
+            self.threeYears.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.threeYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.threeYears.accessoryType = UITableViewCellAccessoryNone;
+            self.threeYears.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.threeYears;
+    }
+    else if (indexPath.row == 3)
+    {
+        static NSString *CellIdentifier = @"fourYears";
+        self.fourYears = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.fourYears)
+        {
+            self.fourYears = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            self.fourYears.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.fourYears.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.fourYears.textLabel.text = @"4 years";
+        
+        if ([self.correctAgeForPrematurityUntilYears intValue] == 4)
+        {
+            self.fourYears.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.fourYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.fourYears.accessoryType = UITableViewCellAccessoryNone;
+            self.fourYears.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.fourYears;
+    }
+    
+    return returnCell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0)
+    {
+        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:1];
+        
+        self.oneYear.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.oneYear.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        
+        self.twoYears.accessoryType = UITableViewCellAccessoryNone;
+        self.twoYears.textLabel.textColor = [UIColor blackColor];
+        
+        self.threeYears.accessoryType = UITableViewCellAccessoryNone;
+        self.threeYears.textLabel.textColor = [UIColor blackColor];
+        
+        self.fourYears.accessoryType = UITableViewCellAccessoryNone;
+        self.fourYears.textLabel.textColor = [UIColor blackColor];
+    }
+    else if (indexPath.row == 1)
+    {
+        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
+        
+        self.twoYears.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.twoYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        
+        self.oneYear.accessoryType = UITableViewCellAccessoryNone;
+        self.oneYear.textLabel.textColor = [UIColor blackColor];
+        
+        self.threeYears.accessoryType = UITableViewCellAccessoryNone;
+        self.threeYears.textLabel.textColor = [UIColor blackColor];
+        
+        self.fourYears.accessoryType = UITableViewCellAccessoryNone;
+        self.fourYears.textLabel.textColor = [UIColor blackColor];
+    }
+    else if (indexPath.row == 2)
+    {
+        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:3];
+        
+        self.threeYears.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.threeYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        
+        self.oneYear.accessoryType = UITableViewCellAccessoryNone;
+        self.oneYear.textLabel.textColor = [UIColor blackColor];
+        
+        self.twoYears.accessoryType = UITableViewCellAccessoryNone;
+        self.twoYears.textLabel.textColor = [UIColor blackColor];
+        
+        self.fourYears.accessoryType = UITableViewCellAccessoryNone;
+        self.fourYears.textLabel.textColor = [UIColor blackColor];
+    }
+    else if (indexPath.row == 3)
+    {
+        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:4];
+        
+        self.fourYears.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.fourYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        
+        self.oneYear.accessoryType = UITableViewCellAccessoryNone;
+        self.oneYear.textLabel.textColor = [UIColor blackColor];
+        
+        self.twoYears.accessoryType = UITableViewCellAccessoryNone;
+        self.twoYears.textLabel.textColor = [UIColor blackColor];
+        
+        self.threeYears.accessoryType = UITableViewCellAccessoryNone;
+        self.threeYears.textLabel.textColor = [UIColor blackColor];
+    }
+    
+    [self.delegate correctedAgeCorrectToAgeSettingsViewController:self didFinishSelectingCorrectionUntilAge:self.correctAgeForPrematurityUntilYears];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark
+
+- (void)popViewController:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+@end
+
+/*
+
+
+@interface PhototherapyGuidelineCountryViewController ()
+
+
+@property UITableViewCell *cellUS;
+@property UITableViewCell *cellUK;
+
+@end
+
+@implementation PhototherapyGuidelineCountryViewController
+
+
+
+
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    float height = 22.0f;
+    
+    float fourInchDisplayPadding = 0.0f;
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.window.bounds.size.height == 568)
+    {
+        fourInchDisplayPadding = 22.0f;
+    }
+    
+    height = 66.0f + fourInchDisplayPadding;
+    
+    return height;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return NSLocalizedString(@"Guideline Country", nil); // needs adding to string file
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    float footer = 0.0f;
+    
+    if (section == 0)
+    {
+        // footer = 66.0f;
+        footer = 200.0f;
+    }
+    
+    return footer;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSString *footer = nil;
+    
+    // footer = NSLocalizedString(@"The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1", nil);
+    
+    return footer;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *returnCell = nil;
+    
+    if (indexPath.row == 0)
+    {
+        static NSString *CellIdentifier = @"US";
+        self.cellUS = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.cellUS)
+        {
+            self.cellUS = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            self.cellUS.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.cellUS.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.cellUS.textLabel.text = @"United States";
+        self.cellUS.detailTextLabel.text = @"AAP 2004 Guidelines";
+        
+        if ([self.guidelineCountry isEqualToString:@"US"])
+        {
+            self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.cellUS.accessoryType = UITableViewCellAccessoryNone;
+            self.cellUS.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.cellUS;
+    }
+    else
+    {
+        static NSString *CellIdentifier = @"UK";
+        self.cellUK = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.cellUK)
+        {
+            self.cellUK = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            self.cellUK.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.cellUK.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.cellUK.textLabel.text = @"United Kingdom";
+        self.cellUK.detailTextLabel.text = @"NICE Guidelines";
+        
+        if ([self.guidelineCountry isEqualToString:@"UK"])
+        {
+            self.cellUK.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.cellUK.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.cellUK.accessoryType = UITableViewCellAccessoryNone;
+            self.cellUK.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.cellUK;
+    }
+    
+    return returnCell;
+}
+
+
+
+
+@end
+*/

@@ -2065,4 +2065,11 @@
     [self.myTableView reloadData];
 }
 
+#pragma mark - CorrectedAgeViewController delegate
+
+- (void)correctedAgeViewController:(CorrectedAgeViewController *)controller didChangePreferencesForCorrectAgeForPrematurityUntilYears:(NSNumber *)correctAgeForPrematurityUntilYears
+{
+    self.preferences.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
+}
+
 @end
