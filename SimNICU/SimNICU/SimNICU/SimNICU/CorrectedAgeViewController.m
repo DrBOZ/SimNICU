@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "PortraitOnlyNavigationController.h"
 #import "CorrectedAgeInfoViewController.h"
 #import "CorrectedAgeViewController.h"
 #import "ActionSheetPicker.h"
@@ -920,7 +921,7 @@
 {
     CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
     navController.navigationBar.tintColor = [UIColor blackColor];
     navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

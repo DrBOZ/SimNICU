@@ -22,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Info & Settings";
+        self.title = @"Settings";
         
         // setup Done button
         self.navigationItem.hidesBackButton = YES;
@@ -80,7 +80,7 @@
 {
     int rows = 0;
     
-    if (section == 1)
+    if (section == 0)
     {
         rows = 1;
     }
@@ -97,6 +97,7 @@
 {
     NSString *header = nil;
     
+    /*
     if (section == 0)
     {
         header = @"Info";
@@ -109,23 +110,22 @@
     {
         header = @"References";
     }
+     */
     
     return header;
 }
 
-/*
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     NSString *footer = nil;
     
     if (section == 0)
     {
-        footer = @"This calculator is designed to calculate the chronological age of the baby, and to provide a corrected age.\n\nCountries either correct to 1 or 2 years of age, and you can set your preference below.";
+        footer = @"There is currently no global consensus among professionals regarding when to stop correcting a child's age for prematurity.  The majority of professionals correct through age two years, though it is common to stop at 1 year.";
     }
     
     return footer;
 }
- */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -139,6 +139,7 @@
     return height;
 }
 
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
@@ -175,6 +176,7 @@
     
     return footerView;
 }
+ */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -186,13 +188,14 @@
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
     }
     
     cell.textLabel.text = @"Correct to age";
+    cell.detailTextLabel.text = @"2 years";
     
     returnCell = cell;
     

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "PortraitOnlyNavigationController.h"
 #import "AgeCalculatorsInfoViewController.h"
 #import "AgeCalculatorsViewController.h"
 #import "CorrectedAgeViewController.h"
@@ -31,10 +32,6 @@
     if (self)
     {
         // info button
-        // UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        // infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-        // [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
-        // UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
         self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showInfoScreen)];
         
         // delegate
@@ -226,7 +223,7 @@
 {
     AgeCalculatorsInfoViewController *newViewController = [[AgeCalculatorsInfoViewController alloc] init];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
     navController.navigationBar.tintColor = [UIColor blackColor];
     navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
