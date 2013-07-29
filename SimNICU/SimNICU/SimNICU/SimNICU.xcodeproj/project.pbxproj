@@ -211,6 +211,10 @@
 		5C756CA617989E15002F983E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756CA417989E15002F983E /* Calculator.m */; };
 		5C7A453017999A7000D95614 /* AgeResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A452F17999A6F00D95614 /* AgeResultsCell.m */; };
 		5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A452F17999A6F00D95614 /* AgeResultsCell.m */; };
+		5C7FD72017A6416700FF39E1 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7FD71E17A6416700FF39E1 /* settings.png */; };
+		5C7FD72117A6416700FF39E1 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7FD71E17A6416700FF39E1 /* settings.png */; };
+		5C7FD72217A6416700FF39E1 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7FD71F17A6416700FF39E1 /* settings@2x.png */; };
+		5C7FD72317A6416700FF39E1 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7FD71F17A6416700FF39E1 /* settings@2x.png */; };
 		5C8606CC178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
@@ -938,6 +942,8 @@
 		5C756CA417989E15002F983E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		5C7A452E17999A6E00D95614 /* AgeResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeResultsCell.h; sourceTree = "<group>"; };
 		5C7A452F17999A6F00D95614 /* AgeResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeResultsCell.m; sourceTree = "<group>"; };
+		5C7FD71E17A6416700FF39E1 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		5C7FD71F17A6416700FF39E1 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		5C8606CA178AD30D00428ED4 /* DrugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsViewController.h; sourceTree = "<group>"; };
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
@@ -2425,6 +2431,8 @@
 				5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */,
 				5C940C56166E3FDE0044A7D1 /* dismiss.png */,
 				5C940C57166E3FDE0044A7D1 /* dismiss2.png */,
+				5C7FD71E17A6416700FF39E1 /* settings.png */,
+				5C7FD71F17A6416700FF39E1 /* settings@2x.png */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -2936,6 +2944,8 @@
 				5CDBACAF179C0F9300D1A03D /* PatientListWarningROP@2x.png in Resources */,
 				5CDBACB4179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */,
 				5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */,
+				5C7FD72017A6416700FF39E1 /* settings.png in Resources */,
+				5C7FD72217A6416700FF39E1 /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3180,6 +3190,8 @@
 				5CDBACB0179C0F9300D1A03D /* PatientListWarningROP@2x.png in Resources */,
 				5CDBACB5179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */,
 				5CDBACB7179C145800D1A03D /* PatientListWarningImms.png in Resources */,
+				5C7FD72117A6416700FF39E1 /* settings.png in Resources */,
+				5C7FD72317A6416700FF39E1 /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
