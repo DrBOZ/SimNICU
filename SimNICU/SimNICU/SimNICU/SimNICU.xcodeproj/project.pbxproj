@@ -2510,8 +2510,6 @@
 				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
 				5C7A452E17999A6E00D95614 /* AgeResultsCell.h */,
 				5C7A452F17999A6F00D95614 /* AgeResultsCell.m */,
-				5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */,
-				5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */,
 				5C940DE017AD508F00840511 /* Info */,
 			);
 			name = "Corrected Age";
@@ -2540,6 +2538,8 @@
 			children = (
 				5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */,
 				5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */,
+				5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */,
+				5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */,
 			);
 			name = Info;
 			sourceTree = "<group>";

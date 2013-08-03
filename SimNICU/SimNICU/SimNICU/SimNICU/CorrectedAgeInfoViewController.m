@@ -213,6 +213,10 @@
     {
         cell.detailTextLabel.text = @"4 years";
     }
+    else if ([self.correctAgeForPrematurityUntilYears intValue] == 5)
+    {
+        cell.detailTextLabel.text = @"5 years";
+    }
     else
     {
         self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
