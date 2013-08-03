@@ -466,11 +466,6 @@
     Screen *screen;
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Age";
-    screen.segueId = @"Age Calculators";
-    [screens addObject:screen];
-    
-    screen = [[Screen alloc] init];
     screen.menuText = @"APGAR scores";
     screen.segueId = @"APGAR";
     [screens addObject:screen];
@@ -480,15 +475,22 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
+    /*
     screen = [[Screen alloc] init];
     screen.menuText = @"Calculator";
     screen.detailMenuText = @"Almost finished!";
     screen.segueId = @"Calculator";
     [screens addObject:screen];
+     */
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Cooling";
     screen.segueId = @"Cooling";
+    [screens addObject:screen];
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Corrected Age";
+    screen.segueId = @"Age Calculators";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
@@ -506,31 +508,30 @@
     screen.segueId = @"CDH";
     [screens addObject:screen];
     
+    /*
     screen = [[Screen alloc] init];
     screen.menuText = @"Drugs";
     screen.detailMenuText = @"Currently working on!";
     screen.segueId = @"Drugs";
     [screens addObject:screen];
+     */
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Early Care";
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
+    /*
     screen = [[Screen alloc] init];
     screen.menuText = @"Feeds & Fluids";
     screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"FeedsAndFluids";
     [screens addObject:screen];
+     */
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Gastroschisis";
     screen.segueId = @"Gastroschisis";
-    [screens addObject:screen];
-    
-    screen = [[Screen alloc] init];
-    screen.menuText = @"Gestational Age";
-    screen.segueId = @"Gestational Age";
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];

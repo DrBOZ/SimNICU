@@ -401,9 +401,6 @@
 		5C940C41166E3E230044A7D1 /* SimNICUWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C38166E3E230044A7D1 /* SimNICUWebView.m */; };
 		5C940C42166E3E230044A7D1 /* Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C3A166E3E230044A7D1 /* Screen.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5C940C43166E3E230044A7D1 /* GrowthChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940C3C166E3E230044A7D1 /* GrowthChart.m */; };
-		5C940C58166E3FDE0044A7D1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */; };
-		5C940C59166E3FDE0044A7D1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C48166E3FDE0044A7D1 /* Default@2x.png */; };
-		5C940C5A166E3FDE0044A7D1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C49166E3FDE0044A7D1 /* Default.png */; };
 		5C940C5B166E3FDE0044A7D1 /* bgApplication.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4A166E3FDE0044A7D1 /* bgApplication.png */; };
 		5C940C5C166E3FDE0044A7D1 /* bgOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4B166E3FDE0044A7D1 /* bgOverlay.png */; };
 		5C940C5D166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */; };
@@ -467,6 +464,9 @@
 		5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */; };
 		5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */; };
 		5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
+		5C940DE117AD9ABA00840511 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB216CF5F9300AE74D2 /* Default.png */; };
+		5C940DE217AD9ACC00840511 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB416CF5F9800AE74D2 /* Default@2x.png */; };
+		5C940DE317AD9AD300840511 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */; };
 		5C98A6A31787553400F246E3 /* DrugDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A21787553400F246E3 /* DrugDatabase.m */; };
 		5C98A6A41787553400F246E3 /* DrugDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A21787553400F246E3 /* DrugDatabase.m */; };
 		5C98A6A71787562700F246E3 /* DrugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A61787562700F246E3 /* DrugCategory.m */; };
@@ -1236,9 +1236,6 @@
 		5C940C3A166E3E230044A7D1 /* Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
 		5C940C3B166E3E230044A7D1 /* GrowthChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthChart.h; sourceTree = "<group>"; };
 		5C940C3C166E3E230044A7D1 /* GrowthChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthChart.m; sourceTree = "<group>"; };
-		5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5C940C48166E3FDE0044A7D1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		5C940C49166E3FDE0044A7D1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5C940C4A166E3FDE0044A7D1 /* bgApplication.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgApplication.png; sourceTree = "<group>"; };
 		5C940C4B166E3FDE0044A7D1 /* bgOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgOverlay.png; sourceTree = "<group>"; };
 		5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SimNICU_MainPhoto320x150.jpg; sourceTree = "<group>"; };
@@ -2549,9 +2546,6 @@
 			children = (
 				5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */,
 				5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */,
-				5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */,
-				5C99FBB416CF5F9800AE74D2 /* Default@2x.png */,
-				5C99FBB216CF5F9300AE74D2 /* Default.png */,
 			);
 			name = "SimNICU Lite";
 			sourceTree = "<group>";
@@ -2561,10 +2555,10 @@
 			children = (
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
-				5C940C47166E3FDE0044A7D1 /* Default-568h@2x.png */,
-				5C940C48166E3FDE0044A7D1 /* Default@2x.png */,
-				5C940C49166E3FDE0044A7D1 /* Default.png */,
 				5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */,
+				5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */,
+				5C99FBB416CF5F9800AE74D2 /* Default@2x.png */,
+				5C99FBB216CF5F9300AE74D2 /* Default.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -2813,9 +2807,6 @@
 				5C940BE4166E3C2F0044A7D1 /* rop21.html in Resources */,
 				5C940BE9166E3C2F0044A7D1 /* weightConversionTable.html in Resources */,
 				5C940C04166E3C5B0044A7D1 /* ActionSheetPickerViewController.xib in Resources */,
-				5C940C58166E3FDE0044A7D1 /* Default-568h@2x.png in Resources */,
-				5C940C59166E3FDE0044A7D1 /* Default@2x.png in Resources */,
-				5C940C5A166E3FDE0044A7D1 /* Default.png in Resources */,
 				5C940C5B166E3FDE0044A7D1 /* bgApplication.png in Resources */,
 				5C940C5C166E3FDE0044A7D1 /* bgOverlay.png in Resources */,
 				5C940C5D166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg in Resources */,
@@ -2990,6 +2981,9 @@
 				5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 				5C7FD72017A6416700FF39E1 /* settings.png in Resources */,
 				5C7FD72217A6416700FF39E1 /* settings@2x.png in Resources */,
+				5C940DE117AD9ABA00840511 /* Default.png in Resources */,
+				5C940DE217AD9ACC00840511 /* Default@2x.png in Resources */,
+				5C940DE317AD9AD300840511 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

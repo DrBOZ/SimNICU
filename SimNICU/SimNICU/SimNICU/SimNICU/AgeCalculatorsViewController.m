@@ -66,13 +66,17 @@
         calculator.detailText = @"After neonatal hospital stay";
         [calculators addObject:calculator];
         
+#warning features to complete
+        /*
         calculator = [[Calculator alloc] init];
         calculator.text = @"Decimal age";
         calculator.detailText = @"for older growth charts";
         [calculators addObject:calculator];
+         */
         
         [calculatorGroup addObject:calculators];
         
+        /*
         calculators = [[NSMutableArray alloc] initWithCapacity:2];
         
         calculator = [[Calculator alloc] init];
@@ -86,6 +90,7 @@
         [calculators addObject:calculator];
         
         [calculatorGroup addObject:calculators];
+         */
         
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                                  style:UIBarButtonItemStyleBordered

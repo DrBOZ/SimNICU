@@ -700,12 +700,12 @@
                 if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryType = UITableViewCellAccessoryNone;// change later
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
                 cell.textLabel.text = NSLocalizedString(@"Handover", nil);
-                cell.detailTextLabel.text = @"In progress - planned for 2014";
+                cell.detailTextLabel.text = @"Coming 2014!";
                 
                 returnCell = cell;
             }
@@ -798,7 +798,9 @@
         cell.detailTextLabel.text = [patient returnTwoLineDetailDisplayLabelText];
         
         // check if any warnings should be shown in patient list
-        BOOL patientMeetsCriteriaForROPScreening = [patient meetsCriteriaForROPScreening];
+        // BOOL patientMeetsCriteriaForROPScreening = [patient meetsCriteriaForROPScreening];
+#warning remove next line for release
+        BOOL patientMeetsCriteriaForROPScreening = NO; // disables for next release
         
         BOOL patientMeetsCriteriaForRoutineCrUSS = NO;
         
@@ -1063,14 +1065,23 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *path = nil;
+    NSIndexPath *path = indexPath;
     
     if (indexPath.section == 1) 
     {
-        // only disallow 'Patient List' toggle row to be selected
-        if (!indexPath.row == 0) path = indexPath;
+        // disallow 'Patient List' toggle row to be selected
+        if (indexPath.row == 0)
+        {
+            path = nil;
+        }
+        else if (self.patientListMode == 1)
+        {
+            if (indexPath.row == 1)
+            {
+                path = nil;
+            }
+        }
     }
-    else path = indexPath;
     
     return path;
 }
