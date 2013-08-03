@@ -105,7 +105,8 @@
     developerNameLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
     developerNameLabel.numberOfLines = 3;
     developerNameLabel.font = [UIFont systemFontOfSize:13.0f];
-    developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
+    // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
+    developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nNottingham, England";
     [footerView addSubview:developerNameLabel];
     
     // Acknowledgment text
@@ -191,7 +192,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 1.4 (beta build 5)";
+        returnString = @"Version 1.4";
     }
     
     return returnString;
