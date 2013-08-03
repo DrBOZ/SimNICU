@@ -853,8 +853,6 @@
             }
             
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
-            
         }
         else if (indexPath.row == 1)
         {
