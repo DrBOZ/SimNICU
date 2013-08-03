@@ -700,7 +700,7 @@
                 if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                    cell.accessoryType = UITableViewCellAccessoryNone;// change later
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
@@ -1074,13 +1074,6 @@
         {
             path = nil;
         }
-        else if (self.patientListMode == 1)
-        {
-            if (indexPath.row == 1)
-            {
-                path = nil;
-            }
-        }
     }
     
     return path;
@@ -1097,6 +1090,7 @@
         {
             if (self.patientListMode)
             {
+                /*
                 AdvancedPatientEditorViewController *advancedPatientList = [[AdvancedPatientEditorViewController alloc] init];
                 advancedPatientList.bayData = self.bayData;
                 
@@ -1106,6 +1100,7 @@
                 navController.navigationBar.tintColor = [UIColor blackColor];
                 
                 [self presentModalViewController:navController animated:YES];
+                 */
             }
             else
             {
