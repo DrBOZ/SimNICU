@@ -671,23 +671,6 @@
 // Birthdate
 - (void)birthDateWasSelected:(NSDate *)selectedDate element:(id)element
 {
-    /* not sure what this is about...
-    if (![self.selectedPatient.birthDate isEqualToDate:selectedDate])
-    {
-        if (self.selectedDate)
-        {
-            if ([selectedDate timeIntervalSinceDate:self.selectedDate] > 0)
-            {
-                self.selected
-            }
-        }
-        else
-        {
-            self.selectedPatient.birthDate = selectedDate;
-        }
-    }
-     */
-    
     // round selectedDate to remove seconds
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit);
