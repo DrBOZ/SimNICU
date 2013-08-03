@@ -374,6 +374,12 @@
     // max age can be 2 years as this is a neonatal app
     [comps setYear:-2];
     NSDate *currentDateMinus2Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    NSDate *maxDate = currentDate;
+    
+    if (self.selectedDate)
+    {
+        maxDate = self.selectedDate;
+    }
     
     // if selected patient has a birth date entered then present picker with this date, otherwise present current date
     if (self.selectedPatient.birthDate)
@@ -382,14 +388,21 @@
     }
     else
     {
-        self.dateAndTimeOfBirth = currentDate;
+        if (self.selectedDate)
+        {
+            self.dateAndTimeOfBirth = self.selectedDate;
+        }
+        else
+        {
+            self.dateAndTimeOfBirth = currentDate;
+        }
     }
     
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
                                                            datePickerMode:UIDatePickerModeDateAndTime
                                                              selectedDate:self.dateAndTimeOfBirth
                                                                   minDate:currentDateMinus2Years
-                                                                  maxDate:currentDate
+                                                                  maxDate:maxDate
                                                                    target:self
                                                                    action:@selector(birthDateWasSelected:element:)
                                                                    origin:sender];
@@ -649,6 +662,7 @@
 - (void)birthTimeWasSelected:(NSDate *)selectedDate element:(id)element
 {
     self.selectedPatient.birthTimeSet = @"YES";
+    self.selectedPatient.birthDate = selectedDate;
     self.dateAndTimeOfBirth = selectedDate;
     
     [self birthDateWasSelected:selectedDate element:element];
@@ -657,10 +671,22 @@
 // Birthdate
 - (void)birthDateWasSelected:(NSDate *)selectedDate element:(id)element
 {
+    /* not sure what this is about...
     if (![self.selectedPatient.birthDate isEqualToDate:selectedDate])
     {
-        self.selectedPatient.birthDate = selectedDate;
+        if (self.selectedDate)
+        {
+            if ([selectedDate timeIntervalSinceDate:self.selectedDate] > 0)
+            {
+                self.selected
+            }
+        }
+        else
+        {
+            self.selectedPatient.birthDate = selectedDate;
+        }
     }
+     */
     
     // round selectedDate to remove seconds
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
