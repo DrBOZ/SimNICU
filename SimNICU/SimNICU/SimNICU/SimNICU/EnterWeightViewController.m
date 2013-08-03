@@ -1724,7 +1724,7 @@
             
             for (bay in self.bayData)
             {
-                if ([bay.patientsInBay count] > 1)
+                if ([bay.patientsInBay count] >= 1)
                 {
                     patientInDatabase = YES;
                 }
