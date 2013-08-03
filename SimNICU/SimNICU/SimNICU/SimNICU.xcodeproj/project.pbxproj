@@ -1840,32 +1840,23 @@
 			children = (
 				5C756C9F17989A32002F983E /* AgeCalculatorsViewController.h */,
 				5C756CA017989A33002F983E /* AgeCalculatorsViewController.m */,
-				5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */,
-				5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */,
-				5C756C9E17989A15002F983E /* Calculators */,
+				5C940DDF17AD506900840511 /* Info */,
+				5C940DDE17AD504900840511 /* Exact Age */,
+				5C940DDD17AD503600840511 /* Corrected Age */,
+				5C756C9E17989A15002F983E /* Gestational Age */,
 			);
 			name = "Age Calculators";
 			sourceTree = "<group>";
 		};
-		5C756C9E17989A15002F983E /* Calculators */ = {
+		5C756C9E17989A15002F983E /* Gestational Age */ = {
 			isa = PBXGroup;
 			children = (
-				5C756C9A179898A2002F983E /* ExactAgeViewController.h */,
-				5C756C9B179898A3002F983E /* ExactAgeViewController.m */,
-				5C756C861798526D002F983E /* CorrectedAgeViewController.h */,
-				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
-				5C7A452E17999A6E00D95614 /* AgeResultsCell.h */,
-				5C7A452F17999A6F00D95614 /* AgeResultsCell.m */,
-				5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */,
-				5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */,
-				5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */,
-				5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */,
 				5C756C8A1798528A002F983E /* LMPGestationCalculatorViewController.h */,
 				5C756C8B1798528A002F983E /* LMPGestationCalculatorViewController.m */,
 				5C756C8E1798529F002F983E /* EDDGestationalAgeViewController.h */,
 				5C756C8F1798529F002F983E /* EDDGestationalAgeViewController.m */,
 			);
-			name = Calculators;
+			name = "Gestational Age";
 			sourceTree = "<group>";
 		};
 		5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */ = {
@@ -2510,6 +2501,47 @@
 				5C940C80166E3FEF0044A7D1 /* APGAR10@2x.png */,
 			);
 			name = APGAR;
+			sourceTree = "<group>";
+		};
+		5C940DDD17AD503600840511 /* Corrected Age */ = {
+			isa = PBXGroup;
+			children = (
+				5C756C861798526D002F983E /* CorrectedAgeViewController.h */,
+				5C756C871798526D002F983E /* CorrectedAgeViewController.m */,
+				5C7A452E17999A6E00D95614 /* AgeResultsCell.h */,
+				5C7A452F17999A6F00D95614 /* AgeResultsCell.m */,
+				5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */,
+				5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */,
+				5C940DE017AD508F00840511 /* Info */,
+			);
+			name = "Corrected Age";
+			sourceTree = "<group>";
+		};
+		5C940DDE17AD504900840511 /* Exact Age */ = {
+			isa = PBXGroup;
+			children = (
+				5C756C9A179898A2002F983E /* ExactAgeViewController.h */,
+				5C756C9B179898A3002F983E /* ExactAgeViewController.m */,
+			);
+			name = "Exact Age";
+			sourceTree = "<group>";
+		};
+		5C940DDF17AD506900840511 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */,
+				5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		5C940DE017AD508F00840511 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */,
+				5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 		5C99FBB816CF602700AE74D2 /* SimNICU Lite */ = {

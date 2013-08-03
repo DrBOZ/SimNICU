@@ -539,15 +539,7 @@
 {
     NSIndexPath *path = nil;
     
-    // if birthdate set then don't allow to change
-    if (indexPath.row == 0)
-    {
-        if (!self.dateOfBirth && !self.selectedPatient.birthTimeSet)
-        {
-            path = indexPath;
-        }
-    }
-    else if (indexPath.row == 1)
+    if (indexPath.row == 0 || indexPath.row == 1)
     {
         path = indexPath;
     }
@@ -774,10 +766,13 @@
 // Birthdate
 - (void)birthDateWasSelected:(NSDate *)selectedDate element:(id)element
 {
+    /*
+    // I am not sure what this code is meant to do - add comment asap
     if (![self.selectedPatient.birthDate isEqualToDate:selectedDate])
     {
         self.selectedPatient.birthDate = selectedDate;
     }
+     */
     
     // round selectedDate to remove hours, minutes, seconds
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -799,7 +794,11 @@
         self.birthDateTextField.text = [formatter stringFromDate:self.dateOfBirth];
         
         // deselect borderstyle to indicate that UITextField is now set
-        self.birthDateTextField.borderStyle = UITextBorderStyleNone;
+        // but only if selectedPatient is loaded
+        if (self.selectedPatient)
+        {
+            self.birthDateTextField.borderStyle = UITextBorderStyleNone;
+        }
         
         // if both set display sample age
         if (self.dateOfBirth && self.selectedDate)
