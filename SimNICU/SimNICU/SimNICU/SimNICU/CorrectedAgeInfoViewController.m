@@ -59,6 +59,17 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Age Calculators/Corrected Age/Info" withError:nil];
+    
+#endif
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -222,7 +233,6 @@
         self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
         cell.detailTextLabel.text = @"2 years";
     }
-    
     
     returnCell = cell;
     

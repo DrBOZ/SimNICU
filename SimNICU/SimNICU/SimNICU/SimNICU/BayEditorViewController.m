@@ -76,6 +76,17 @@
     [self.myTableView setEditing:YES animated:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Bay Editor" withError:nil];
+    
+#endif
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

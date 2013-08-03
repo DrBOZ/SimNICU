@@ -109,6 +109,11 @@
         self.title = @"Age";
     }
     
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Age Calculators/Corrected Age" withError:nil];
+    
+#endif
     
 }
 

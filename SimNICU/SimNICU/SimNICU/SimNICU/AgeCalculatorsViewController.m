@@ -66,7 +66,6 @@
         calculator.detailText = @"After neonatal hospital stay";
         [calculators addObject:calculator];
         
-#warning features to complete
         /*
         calculator = [[Calculator alloc] init];
         calculator.text = @"Decimal age";
@@ -134,6 +133,12 @@
     {
         self.title = @"Age";
     }
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Age Calculators" withError:nil];
+    
+#endif
 }
 
 - (void)didReceiveMemoryWarning

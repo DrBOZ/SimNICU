@@ -799,7 +799,6 @@
         
         // check if any warnings should be shown in patient list
         // BOOL patientMeetsCriteriaForROPScreening = [patient meetsCriteriaForROPScreening];
-#warning remove next line for release
         BOOL patientMeetsCriteriaForROPScreening = NO; // disables for next release
         
         BOOL patientMeetsCriteriaForRoutineCrUSS = NO;
