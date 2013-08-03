@@ -245,15 +245,7 @@
         }
         else
         {
-            // if date and time of birth have already been set, then remove rounded rect border
-            if (self.dateOfBirth)
-            {
-                self.birthDateTextField.borderStyle = UITextBorderStyleNone;
-            }
-            else
-            {
-                self.birthDateTextField.borderStyle = UITextBorderStyleRoundedRect;
-            }
+            self.birthDateTextField.borderStyle = UITextBorderStyleRoundedRect;
             
             self.birthDateTextField.placeholder = @"date of birth";
             self.birthDateTextField.textAlignment = UITextAlignmentCenter;
@@ -746,6 +738,7 @@
     // max age 20 years
     [comps setYear:-20];
     NSDate *currentDateMinus20Years = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    NSDate *maxDate = currentDate;
     
     // if selected patient has a birth date entered then present picker with this date, otherwise present current date
     if (self.selectedPatient.birthDate)
@@ -754,14 +747,22 @@
     }
     else
     {
-        self.dateOfBirth = currentDate;
+        if (!self.dateOfBirth)
+        {
+            self.dateOfBirth = currentDate;
+        }
+    }
+    
+    if (self.selectedDate)
+    {
+        maxDate = self.selectedDate;
     }
     
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
                                                            datePickerMode:UIDatePickerModeDate
                                                              selectedDate:self.dateOfBirth
                                                                   minDate:currentDateMinus20Years
-                                                                  maxDate:currentDate
+                                                                  maxDate:maxDate
                                                                    target:self
                                                                    action:@selector(birthDateWasSelected:element:)
                                                                    origin:sender];
