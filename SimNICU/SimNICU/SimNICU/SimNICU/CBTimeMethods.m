@@ -604,6 +604,18 @@
     return formattedDates;
 }
 
++ (NSInteger)getYearsDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    // unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit;
+    unsigned int unitFlag = NSYearCalendarUnit;
+    NSDateComponents *comps = [gregorian components:unitFlag fromDate:dateA  toDate:dateB  options:0];
+    int compsYears = [comps year];
+    
+    return compsYears;
+}
+
 + (NSString *)calculateCurrentGestation:(Patient *)patient
 {
     NSString *currentGestation = @"0+0";

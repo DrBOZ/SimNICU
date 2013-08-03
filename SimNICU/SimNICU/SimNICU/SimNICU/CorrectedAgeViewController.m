@@ -410,6 +410,7 @@
     else if (indexPath.row == 4)
     {
         CellIdentifier = @"PostmenstrualAgeOrCorrectedAge";
+        
         AgeResultsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!cell)
@@ -445,33 +446,36 @@
         }
         else
         {
+            // set default textLabel.text to nil, as this is the one centered on the cell
             cell.textLabel.text = @"";
-            cell.ageTextLabel.text = @"Corrected Age";
+            cell.ageTextLabel.text = @"Corrected Age"; // this is the label top justified
             
             if (gestationHasBeenEntered && self.dateOfBirth && self.selectedDate)
             {
                 // get postmenstrual age
-                
                 NSString *postMenstrualAge = [CBTimeMethods calculatePostMenstrualGestationFromDateOfBirth:self.dateOfBirth andCurrentDate:self.selectedDate withGestation:self.gestation.text];
                 
-                // check to see if postmenstrual age is 40+0 or greater
-                
-                // ensure we are dealing with <100 weeks
+                // get corrected gestation in weeks
                 int gestationWeeks;
                 
+                // postMenstrual age can be 1000+ weeks (1000 weeks is about 20 years old)
+                //
+                // if postMenstrual Age is < 5 characters then dealing with <100 weeks
                 if ([postMenstrualAge length] < 5)
                 {
                     gestationWeeks = [[postMenstrualAge substringToIndex:2] intValue];
                 }
+                // dealing with 100 - 999 weeks
                 else if ([postMenstrualAge length] == 5)
                 {
                     gestationWeeks = [[postMenstrualAge substringToIndex:3] intValue];
                 }
-                else
+                else // dealing with >999 weeks
                 {
                     gestationWeeks = [[postMenstrualAge substringToIndex:4] intValue];
                 }
                 
+                // for corrected gestation calc, gestationWeeks must be >= 40 weeks
                 if (gestationWeeks < 40)
                 {
                     self.typeOfAgeCalculator = @"Including postmenstrual age";
@@ -491,37 +495,90 @@
                     }
                     else
                     {
-                        // too old for Term + value
-                        cell.label5.text = [CBTimeMethods convertPostMenstrualAgeToCorrectedGestationalAge:postMenstrualAge];
+                        // code here to check if age is greater than corrected limit
                         
-                        NSLog(@"Method 1: corrected Gestational age = %@", cell.label5.text);
-                        
-                        NSDate *EDD = [CBTimeMethods calculateEDDFromBirthDate:self.dateOfBirth andGestation:self.gestation.text];
-                        
-                        NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:EDD and:self.selectedDate];
-                        self.formattedAge = formattedDates[0];
-                        self.formattedAge1 = formattedDates[1];
-                        self.formattedAge2 = formattedDates[2];
-                        
-                        cell.label3.text = nil;
-                        
-                        if ([self.formattedAge isEqualToString:self.formattedAge1])
+                        if (self.correctAgeForPrematurityUntilYears)
                         {
-                            cell.label1.text = nil;
-                            cell.label2.text = self.formattedAge;
-                            cell.label3.text = nil;
-                            cell.label4.text = self.formattedAge2;
-                            cell.label5.text = nil;
+                            // find out age in years
+                            // NB. this is a calendrical operation
+                            int patientAgeInYears = [CBTimeMethods getYearsDifferenceBetween:self.dateOfBirth and:self.selectedDate];
+                            
+                            if (patientAgeInYears >= [self.correctAgeForPrematurityUntilYears intValue])
+                            {
+                                cell.label5.text = @"";
+                                cell.label4.text = @"";
+                                cell.label3.text = [NSString stringWithFormat:@"Patient is over %d years old", [self.correctAgeForPrematurityUntilYears intValue]];
+                                cell.label2.text = @"";
+                                cell.label1.text = @"No need to correct for prematurity";
+                            }
+                            else
+                            {
+                                cell.label5.text = [CBTimeMethods convertPostMenstrualAgeToCorrectedGestationalAge:postMenstrualAge];
+                                
+                                NSLog(@"Method 1: corrected Gestational age = %@", cell.label5.text);
+                                
+                                NSDate *EDD = [CBTimeMethods calculateEDDFromBirthDate:self.dateOfBirth andGestation:self.gestation.text];
+                                
+                                NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:EDD and:self.selectedDate];
+                                self.formattedAge = formattedDates[0];
+                                self.formattedAge1 = formattedDates[1];
+                                self.formattedAge2 = formattedDates[2];
+                                
+                                cell.label3.text = nil;
+                                
+                                if ([self.formattedAge isEqualToString:self.formattedAge1])
+                                {
+                                    cell.label1.text = nil;
+                                    cell.label2.text = self.formattedAge;
+                                    cell.label3.text = nil;
+                                    cell.label4.text = self.formattedAge2;
+                                    cell.label5.text = nil;
+                                }
+                                else
+                                {
+                                    cell.label1.text = self.formattedAge;
+                                    cell.label2.text = nil;
+                                    cell.label3.text = self.formattedAge1;
+                                    cell.label4.text = nil;
+                                    cell.label5.text = self.formattedAge2;
+                                }
+                                NSLog(@"Method 2: corrected Gestational age = %@", cell.label5.text);
+                            }
                         }
                         else
                         {
-                            cell.label1.text = self.formattedAge;
-                            cell.label2.text = nil;
-                            cell.label3.text = self.formattedAge1;
-                            cell.label4.text = nil;
-                            cell.label5.text = self.formattedAge2;
+                            // too old for Term + value
+                            cell.label5.text = [CBTimeMethods convertPostMenstrualAgeToCorrectedGestationalAge:postMenstrualAge];
+                            
+                            NSLog(@"Method 1: corrected Gestational age = %@", cell.label5.text);
+                            
+                            NSDate *EDD = [CBTimeMethods calculateEDDFromBirthDate:self.dateOfBirth andGestation:self.gestation.text];
+                            
+                            NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:EDD and:self.selectedDate];
+                            self.formattedAge = formattedDates[0];
+                            self.formattedAge1 = formattedDates[1];
+                            self.formattedAge2 = formattedDates[2];
+                            
+                            cell.label3.text = nil;
+                            
+                            if ([self.formattedAge isEqualToString:self.formattedAge1])
+                            {
+                                cell.label1.text = nil;
+                                cell.label2.text = self.formattedAge;
+                                cell.label3.text = nil;
+                                cell.label4.text = self.formattedAge2;
+                                cell.label5.text = nil;
+                            }
+                            else
+                            {
+                                cell.label1.text = self.formattedAge;
+                                cell.label2.text = nil;
+                                cell.label3.text = self.formattedAge1;
+                                cell.label4.text = nil;
+                                cell.label5.text = self.formattedAge2;
+                            }
+                            NSLog(@"Method 2: corrected Gestational age = %@", cell.label5.text);
                         }
-                        NSLog(@"Method 2: corrected Gestational age = %@", cell.label5.text);
                     }
                 }
             }
@@ -937,6 +994,8 @@
     self.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
     
     [self.delegate correctedAgeViewController:self didChangePreferencesForCorrectAgeForPrematurityUntilYears:correctAgeForPrematurityUntilYears];
+    
+    [self.myTableView reloadData];
 }
 
 @end

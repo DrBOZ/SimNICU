@@ -27,6 +27,8 @@
 
 + (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
++ (NSInteger)getYearsDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
+
 + (NSString *)calculateCurrentGestation:(Patient *)patient;
 
 + (NSString *)calculatePostMenstrualGestationFromDateOfBirth:(NSDate *)birthDate andCurrentDate:(NSDate *)currentDate withGestation:(NSString *)gestation;
