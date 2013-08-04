@@ -219,6 +219,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     return YES;
 }
 
+#ifdef LITE_VERSION
+
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
@@ -228,10 +230,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     [currentInstallation saveInBackground];
 }
 
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
     [PFPush handlePush:userInfo];
 }
+
+#endif //#endif LITE_VERSION
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
