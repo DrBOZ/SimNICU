@@ -184,6 +184,18 @@
     return height;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSString *footer = nil;
+    
+    if ([self.typeOfAgeCalculator isEqualToString:@"Including postmenstrual age"])
+    {
+        footer = @"The calculator will automatically change to corrected age if the baby is more than 43 weeks postmenstrual age";
+    }
+    
+    return footer;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *returnCell = nil;
@@ -422,19 +434,41 @@
             
             if (gestationHasBeenEntered && self.dateOfBirth && self.selectedDate)
             {
-                cell.label5.text = [CBTimeMethods calculatePostMenstrualGestationFromDateOfBirth:self.dateOfBirth andCurrentDate:self.selectedDate withGestation:self.gestation.text];
-                cell.label4.text = @"";
-                cell.label3.text = @"";
-                cell.label2.text = @"";
-                cell.label1.text = @"";
+                // get postmenstrual age
+                NSString *postMenstrualAge = [CBTimeMethods calculatePostMenstrualGestationFromDateOfBirth:self.dateOfBirth andCurrentDate:self.selectedDate withGestation:self.gestation.text];
                 
-                // check to see if postmenstrual age is 40+0 or greater
-                int gestationWeeks = [[cell.label5.text substringToIndex:2] intValue];
+                // get corrected gestation in weeks
+                int gestationWeeks;
                 
-                if (gestationWeeks >= 40)
+                // postMenstrual age can be 1000+ weeks (1000 weeks is about 20 years old)
+                //
+                // if postMenstrual Age is < 5 characters then dealing with <100 weeks
+                if ([postMenstrualAge length] < 5)
+                {
+                    gestationWeeks = [[postMenstrualAge substringToIndex:2] intValue];
+                }
+                // dealing with 100 - 999 weeks
+                else if ([postMenstrualAge length] == 5)
+                {
+                    gestationWeeks = [[postMenstrualAge substringToIndex:3] intValue];
+                }
+                else // dealing with >999 weeks
+                {
+                    gestationWeeks = [[postMenstrualAge substringToIndex:4] intValue];
+                }
+                
+                if (gestationWeeks >= 43)
                 {
                     self.typeOfAgeCalculator = @"Corrected age";
                     [self.myTableView reloadData];
+                }
+                else
+                {
+                    cell.label5.text = postMenstrualAge;
+                    cell.label4.text = @"";
+                    cell.label3.text = @"";
+                    cell.label2.text = @"";
+                    cell.label1.text = @"";
                 }
             }
         }
