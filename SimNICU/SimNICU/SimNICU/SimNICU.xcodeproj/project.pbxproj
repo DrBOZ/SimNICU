@@ -102,6 +102,8 @@
 		5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0663178F94CD00768739 /* amoxicillinLicence.html */; };
 		5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
 		5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
+		5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
+		5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -862,6 +864,8 @@
 		5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinMonitoring.html; sourceTree = "<group>"; };
 		5C0E0663178F94CD00768739 /* amoxicillinLicence.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinLicence.html; sourceTree = "<group>"; };
 		5C0E0666178F94DE00768739 /* amoxicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinReferences.html; sourceTree = "<group>"; };
+		5C101D2217AE4DA50095E751 /* GlucoseLoadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseLoadController.h; sourceTree = "<group>"; };
+		5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseLoadController.m; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -1856,11 +1860,13 @@
 			name = "Gestational Age";
 			sourceTree = "<group>";
 		};
-		5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */ = {
+		5C8606CE178AD99700428ED4 /* Screen_GlucoseLoad */ = {
 			isa = PBXGroup;
 			children = (
+				5C101D2217AE4DA50095E751 /* GlucoseLoadController.h */,
+				5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */,
 			);
-			name = Screen_GlucoseCalculation;
+			name = Screen_GlucoseLoad;
 			sourceTree = "<group>";
 		};
 		5C940A52166E37FE0044A7D1 = {
@@ -1931,7 +1937,7 @@
 				5C5380E916D267AB0003F7BB /* Screen_Drugs */,
 				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
 				5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */,
-				5C8606CE178AD99700428ED4 /* Screen_GlucoseCalculation */,
+				5C8606CE178AD99700428ED4 /* Screen_GlucoseLoad */,
 				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
 				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
 				5C39630C16B849D40039C387 /* Screen_Intubation */,
@@ -3379,6 +3385,7 @@
 				5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */,
 				5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
+				5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3525,6 +3532,7 @@
 				5CED220017A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */,
 				5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE617A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
+				5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

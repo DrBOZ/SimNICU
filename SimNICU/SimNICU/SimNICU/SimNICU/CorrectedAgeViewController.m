@@ -56,9 +56,6 @@
         // settings button
         self.navigationItem.rightBarButtonItem = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showInfoScreen)];
         
-        // info button
-        // self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showInfoScreen)];
-        
         // back button
         self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
         

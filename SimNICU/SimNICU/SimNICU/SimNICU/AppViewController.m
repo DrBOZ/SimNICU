@@ -34,6 +34,7 @@
 #import "DrugsViewController.h"
 #import "EarlyCareViewController.h"
 #import "GastroschisisViewController.h"
+#import "GlucoseLoadController.h"
 #import "CorrectedAgeViewController.h"
 #import "HFOVViewController.h"
 #import "InfusionsViewController.h"
@@ -535,7 +536,7 @@
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Glucose Infusion Rate";
+    screen.menuText = @"Glucose Load";
     screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"GlucoseInfusionRate";
     [screens addObject:screen];
@@ -1040,7 +1041,6 @@
         
         else if ([thisScreenType isEqualToString:@"Gastroschisis"])
         {
-            NSLog(@"showGastroschisis");
             GastroschisisViewController *newViewController = [[GastroschisisViewController alloc] init];
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
             
@@ -1051,6 +1051,8 @@
         else if ([thisScreenType isEqualToString:@"GlucoseInfusionRate"])
         {
             [self.myTableView deselectRowAtIndexPath:indexPath animated:YES];
+            // GlucoseLoadController *newViewController = [[GlucoseLoadController alloc] init];
+            // [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark HFOV
