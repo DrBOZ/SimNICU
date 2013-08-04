@@ -104,6 +104,12 @@
 		5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
 		5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
 		5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
+		5C101D2E17AE99020095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2D17AE99020095E751 /* Default.png */; };
+		5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2F17AE991C0095E751 /* Default-568h@2x.png */; };
+		5C101D3217AE99250095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3117AE99250095E751 /* Default@2x.png */; };
+		5C101D3417AE99E30095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3317AE99E30095E751 /* Default.png */; };
+		5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3517AE99ED0095E751 /* Default@2x.png */; };
+		5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3717AE99FA0095E751 /* Default-568h@2x.png */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -466,9 +472,6 @@
 		5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */; };
 		5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D00166E83E30044A7D1 /* InfusionsViewMinimalTableViewCell.m */; };
 		5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940D03166E84230044A7D1 /* InfusionsViewMaximalTableViewCell.m */; };
-		5C940DE117AD9ABA00840511 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB216CF5F9300AE74D2 /* Default.png */; };
-		5C940DE217AD9ACC00840511 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB416CF5F9800AE74D2 /* Default@2x.png */; };
-		5C940DE317AD9AD300840511 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */; };
 		5C98A6A31787553400F246E3 /* DrugDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A21787553400F246E3 /* DrugDatabase.m */; };
 		5C98A6A41787553400F246E3 /* DrugDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A21787553400F246E3 /* DrugDatabase.m */; };
 		5C98A6A71787562700F246E3 /* DrugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A61787562700F246E3 /* DrugCategory.m */; };
@@ -479,9 +482,6 @@
 		5C98A6B017875BD000F246E3 /* DrugsTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6AE17875BD000F246E3 /* DrugsTabBarController.m */; };
 		5C98A6B317875CCA00F246E3 /* DrugCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6B217875CCA00F246E3 /* DrugCategoriesViewController.m */; };
 		5C98A6B417875CCA00F246E3 /* DrugCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6B217875CCA00F246E3 /* DrugCategoriesViewController.m */; };
-		5C99FBB316CF5F9300AE74D2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB216CF5F9300AE74D2 /* Default.png */; };
-		5C99FBB516CF5F9800AE74D2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB416CF5F9800AE74D2 /* Default@2x.png */; };
-		5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */; };
 		5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */; };
 		5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */; };
 		5C9BE6281797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE6271797122F009616CA /* AdvancedPatientTableViewCell.m */; };
@@ -866,6 +866,12 @@
 		5C0E0666178F94DE00768739 /* amoxicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinReferences.html; sourceTree = "<group>"; };
 		5C101D2217AE4DA50095E751 /* GlucoseLoadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseLoadController.h; sourceTree = "<group>"; };
 		5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseLoadController.m; sourceTree = "<group>"; };
+		5C101D2D17AE99020095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5C101D2F17AE991C0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5C101D3117AE99250095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5C101D3317AE99E30095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		5C101D3517AE99ED0095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		5C101D3717AE99FA0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -1338,9 +1344,6 @@
 		5C98A6AE17875BD000F246E3 /* DrugsTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsTabBarController.m; sourceTree = "<group>"; };
 		5C98A6B117875CCA00F246E3 /* DrugCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugCategoriesViewController.h; sourceTree = "<group>"; };
 		5C98A6B217875CCA00F246E3 /* DrugCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugCategoriesViewController.m; sourceTree = "<group>"; };
-		5C99FBB216CF5F9300AE74D2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
-		5C99FBB416CF5F9800AE74D2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPatientEditorViewController.h; sourceTree = "<group>"; };
 		5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPatientEditorViewController.m; sourceTree = "<group>"; };
 		5C9BE6261797122F009616CA /* AdvancedPatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPatientTableViewCell.h; sourceTree = "<group>"; };
@@ -2552,6 +2555,9 @@
 			children = (
 				5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */,
 				5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */,
+				5C101D2D17AE99020095E751 /* Default.png */,
+				5C101D2F17AE991C0095E751 /* Default-568h@2x.png */,
+				5C101D3117AE99250095E751 /* Default@2x.png */,
 			);
 			name = "SimNICU Lite";
 			sourceTree = "<group>";
@@ -2562,9 +2568,9 @@
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
 				5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */,
-				5C99FBB616CF5F9B00AE74D2 /* Default-568h@2x.png */,
-				5C99FBB416CF5F9800AE74D2 /* Default@2x.png */,
-				5C99FBB216CF5F9300AE74D2 /* Default.png */,
+				5C101D3717AE99FA0095E751 /* Default-568h@2x.png */,
+				5C101D3517AE99ED0095E751 /* Default@2x.png */,
+				5C101D3317AE99E30095E751 /* Default.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -2987,9 +2993,9 @@
 				5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 				5C7FD72017A6416700FF39E1 /* settings.png in Resources */,
 				5C7FD72217A6416700FF39E1 /* settings@2x.png in Resources */,
-				5C940DE117AD9ABA00840511 /* Default.png in Resources */,
-				5C940DE217AD9ACC00840511 /* Default@2x.png in Resources */,
-				5C940DE317AD9AD300840511 /* Default-568h@2x.png in Resources */,
+				5C101D3417AE99E30095E751 /* Default.png in Resources */,
+				5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */,
+				5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3132,9 +3138,6 @@
 				5CD3B0A916CF38D500DE362C /* pulmonaryHaem2Comma.html in Resources */,
 				5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
-				5C99FBB316CF5F9300AE74D2 /* Default.png in Resources */,
-				5C99FBB516CF5F9800AE74D2 /* Default@2x.png in Resources */,
-				5C99FBB716CF5F9B00AE74D2 /* Default-568h@2x.png in Resources */,
 				5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
 				5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */,
 				5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */,
@@ -3236,6 +3239,9 @@
 				5CDBACB7179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 				5C7FD72117A6416700FF39E1 /* settings.png in Resources */,
 				5C7FD72317A6416700FF39E1 /* settings@2x.png in Resources */,
+				5C101D2E17AE99020095E751 /* Default.png in Resources */,
+				5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */,
+				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3775,8 +3781,8 @@
 		5CD3B0AD16CF38D500DE362C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -3796,6 +3802,8 @@
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
+				PROVISIONING_PROFILE = "0C5B2EA4-C0C9-4E41-A6AC-80F76526E873";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C5B2EA4-C0C9-4E41-A6AC-80F76526E873";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3803,8 +3811,8 @@
 		5CD3B0AE16CF38D500DE362C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Conrad Bosman";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -3821,6 +3829,8 @@
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
+				PROVISIONING_PROFILE = "DE5D847B-18A9-46EA-BC84-70B376456830";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DE5D847B-18A9-46EA-BC84-70B376456830";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
