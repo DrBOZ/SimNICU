@@ -198,8 +198,7 @@
     return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) || (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark -
-#pragma mark UIActionSheetDelegate methods
+#pragma mark - UIActionSheetDelegate methods
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -367,8 +366,9 @@
 		}
 		
 		[self.navigationController presentModalViewController:nav animated:YES];	
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)didSettingsChanged:(KKPasscodeViewController*)viewController 

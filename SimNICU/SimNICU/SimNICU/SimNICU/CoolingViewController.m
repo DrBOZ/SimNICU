@@ -66,6 +66,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
+    
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"Cooling" withError:nil];
@@ -330,8 +334,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if (indexPath.section == 2 && indexPath.row == 1)
     {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

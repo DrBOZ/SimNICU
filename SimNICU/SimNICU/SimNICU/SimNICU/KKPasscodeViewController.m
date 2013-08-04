@@ -676,8 +676,7 @@
 	return [NSArray arrayWithArray:squareViews];
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource methods
+#pragma mark - UITableViewDataSource methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView*)tableView
 {
@@ -719,9 +718,7 @@
 	return cell;
 }
 
-
-#pragma mark -
-#pragma mark UITextFieldDelegate methods
+#pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField*)textField
 {

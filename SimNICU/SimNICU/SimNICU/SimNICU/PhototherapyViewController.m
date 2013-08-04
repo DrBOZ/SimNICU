@@ -138,6 +138,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
     
 #if GOOGLE_ANALYTICS
     
@@ -781,8 +784,6 @@
                 }
             }
         }
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
     else if (indexPath.section == 1)
     {
@@ -805,8 +806,6 @@
             
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

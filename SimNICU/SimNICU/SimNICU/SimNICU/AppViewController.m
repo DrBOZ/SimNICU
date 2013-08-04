@@ -591,10 +591,12 @@
     screen.segueId = @"Thermoregulation";
     [screens addObject:screen];
     
+    /*
     screen = [[Screen alloc] init];
     screen.menuText = @"Postnatal Ward";
     screen.segueId = @"PostnatalWard";
     [screens addObject:screen];
+     */
     
     screen = [[Screen alloc] init];
     screen.menuText = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
@@ -656,10 +658,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    // NSLog(@"AppViewController viewDidAppear");
+    [super viewDidAppear:animated];
     
-    NSLog(@"viewDidAppear: UITableView height = %f", self.myTableView.frame.size.height);
-    NSLog(@"viewDidAppear: Shadow height = %f", self.tableBgView.frame.size.height);
+    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -833,8 +834,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Special 'Emergency'
@@ -1047,14 +1046,11 @@
             
         }
         
-#pragma mark Gestational Age
+#pragma mark Glucose Infusion Rate
         
-        else if ([thisScreenType isEqualToString:@"Gestational Age"])
+        else if ([thisScreenType isEqualToString:@"GlucoseInfusionRate"])
         {
-            // GestationalAgeTabBarController *newViewController = [[GestationalAgeTabBarController alloc] init];
-            
-            CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.myTableView deselectRowAtIndexPath:indexPath animated:YES];
         }
         
 #pragma mark HFOV

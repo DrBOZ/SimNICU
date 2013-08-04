@@ -31,7 +31,6 @@
 
 @end
 
-// @interface KKPasscodeSettingsViewController : UITableViewController <UIActionSheetDelegate, KKPasscodeViewControllerDelegate>
 @interface KKPasscodeSettingsViewController : UIViewController <UIActionSheetDelegate, UITableViewDataSource, UITableViewDelegate, KKPasscodeViewControllerDelegate>
 {
 	

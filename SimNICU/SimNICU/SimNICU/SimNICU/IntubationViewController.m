@@ -28,8 +28,6 @@
 {
     [super viewDidLoad];
     
-    // NSLog(@"IntubationViewController viewDidLoad");
-    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -353,7 +351,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"IntubationViewController viewDidAppear");
+    [super viewDidAppear:animated];
+    
+    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
     
 #if GOOGLE_ANALYTICS
     
@@ -490,11 +490,8 @@
 
 #pragma mark - Table view delegate
 
-//on row select
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     if (indexPath.row == 0) 

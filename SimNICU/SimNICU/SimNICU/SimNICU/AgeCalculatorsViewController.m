@@ -133,12 +133,20 @@
     {
         self.title = @"Age";
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
     
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"Age Calculators" withError:nil];
     
 #endif
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -205,8 +213,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     Calculator *calculator = [calculatorGroup[indexPath.section] objectAtIndex:indexPath.row];
     
     if ([calculator.text isEqualToString:@"Exact age"])
