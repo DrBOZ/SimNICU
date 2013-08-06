@@ -258,6 +258,8 @@
 		5C8C3E1B16707F880073886A /* kButtonThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0216707F880073886A /* kButtonThree.png */; };
 		5C8C3E1C16707F880073886A /* kButtonTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0316707F880073886A /* kButtonTwo.png */; };
 		5C8C3E1D16707F880073886A /* kButtonZero.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8C3E0416707F880073886A /* kButtonZero.png */; };
+		5C930AE817B0C2D100CBE616 /* CrUSSOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AE717B0C2D100CBE616 /* CrUSSOptionsTableViewController.m */; };
+		5C930AE917B0C2D100CBE616 /* CrUSSOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AE717B0C2D100CBE616 /* CrUSSOptionsTableViewController.m */; };
 		5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A61166E37FE0044A7D1 /* UIKit.framework */; };
 		5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
 		5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
@@ -994,6 +996,8 @@
 		5C8C3E0216707F880073886A /* kButtonThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonThree.png; sourceTree = "<group>"; };
 		5C8C3E0316707F880073886A /* kButtonTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonTwo.png; sourceTree = "<group>"; };
 		5C8C3E0416707F880073886A /* kButtonZero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kButtonZero.png; sourceTree = "<group>"; };
+		5C930AE617B0C2D100CBE616 /* CrUSSOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSOptionsTableViewController.h; sourceTree = "<group>"; };
+		5C930AE717B0C2D100CBE616 /* CrUSSOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSOptionsTableViewController.m; sourceTree = "<group>"; };
 		5C940A5D166E37FE0044A7D1 /* SimNICU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimNICU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C940A61166E37FE0044A7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C940A63166E37FE0044A7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1812,6 +1816,8 @@
 		5C63B14016B9FFFA00B31431 /* Screen_CrUSS */ = {
 			isa = PBXGroup;
 			children = (
+				5C930AE617B0C2D100CBE616 /* CrUSSOptionsTableViewController.h */,
+				5C930AE717B0C2D100CBE616 /* CrUSSOptionsTableViewController.m */,
 				5C940B6F166E3C2E0044A7D1 /* crUSS.html */,
 				5C940B70166E3C2E0044A7D1 /* crUSS0.html */,
 				5C940B71166E3C2E0044A7D1 /* crUSS1.html */,
@@ -3392,6 +3398,7 @@
 				5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
+				5C930AE817B0C2D100CBE616 /* CrUSSOptionsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3539,6 +3546,7 @@
 				5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE617A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
+				5C930AE917B0C2D100CBE616 /* CrUSSOptionsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
