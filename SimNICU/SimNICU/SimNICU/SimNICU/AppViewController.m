@@ -30,6 +30,7 @@
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
 #import "CrUSSViewController.h"
+#import "CrUSSOptionsViewController.h"
 #import "DrugCategoriesViewController.h"
 #import "DrugsViewController.h"
 #import "EarlyCareViewController.h"
@@ -980,9 +981,10 @@
         else if ([thisScreenType isEqualToString:@"CrUSS"])
         {
             NSLog(@"showCrUSS");
-            CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            // CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
+            // [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Congenital Diaphragmatic Hernia
