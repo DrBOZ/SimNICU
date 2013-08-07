@@ -223,6 +223,11 @@
         CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
         [self.navigationController pushViewController:newViewController animated:YES];
     }
+    else if (indexPath.section == 1)
+    {
+        CrUSSRadiologyViewController *newViewController = [[CrUSSRadiologyViewController alloc] init];
+        [self.navigationController pushViewController:newViewController animated:YES];
+    }
     else if (indexPath.section == 2)
     {
         // CrUSSRadiologyViewController *newViewController = [[CrUSSRadiologyViewController alloc] init];

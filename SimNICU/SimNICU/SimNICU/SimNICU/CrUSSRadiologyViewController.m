@@ -12,10 +12,14 @@
 #import "CrUSSViewController.h"
 #import "CBTableViewRowData.h"
 
-@interface CrUSSRadiologyViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CrUSSRadiologyViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
+@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) NSMutableArray *pageViews;
 @property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) NSMutableArray *crUSSImages;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
@@ -29,93 +33,50 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        // delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        //delegate
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        tableData = [[NSMutableArray alloc] initWithCapacity:3];
-        CBTableViewSectionData *sectionData;
-        CBTableViewRowData *rowData;
+        self.title = @"Cranial Ultrasound";
         
-        // section 0
-        sectionData = [[CBTableViewSectionData alloc] init];
-        sectionData.titleForHeader = @"General Information";
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Indications";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Timings of Scans";
-        [sectionData.rowData addObject:rowData];
-        
-        [tableData addObject:sectionData];
-        
-        // section 1
-        sectionData = [[CBTableViewSectionData alloc] init];
-        sectionData.titleForHeader = @"Technique";
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Holding the probe";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Standard sequence";
-        [sectionData.rowData addObject:rowData];
-        
-        [tableData addObject:sectionData];
-        
-        // section 2
-        sectionData = [[CBTableViewSectionData alloc] init];
-        sectionData.titleForHeader = @"Radiology";
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:5];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"23 - 24/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"25 - 27/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"28 - 33/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"34 - 36/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Term views";
-        [sectionData.rowData addObject:rowData];
-        
-        [tableData addObject:sectionData];
-        
+        self.view.backgroundColor = [UIColor blackColor];
+        // self.view.backgroundColor = [UIColor grayColor];
         
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:nil
                                                                                 action:nil];
+        // instantiate UIScrollView & UIPageControl
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
+            self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
+            // self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, (self.view.bounds.size.height - 70), 320.0f, 20.0f)];
+        }
+        else // 3.5 inch Retina
+        {
+            self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
+            self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 417.0f, 320.0f, 36.0f)];
+            // self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, (self.view.bounds.size.height - 70), 320.0f, 20.0f)];
+        }
         
-        // create UITableView
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 50.0f;  // was 44.0f
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
+        self.scrollView.delegate = self;
+        self.scrollView.showsHorizontalScrollIndicator = NO;
+        self.scrollView.showsVerticalScrollIndicator = NO;
+        self.scrollView.scrollEnabled = YES;
+        self.scrollView.clipsToBounds = YES;
+        self.scrollView.pagingEnabled = YES;
+        self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.scrollView.bounces = YES;
+        self.scrollView.bouncesZoom = YES;
+        self.scrollView.userInteractionEnabled = YES;
+        self.scrollView.canCancelContentTouches = YES;
+        self.scrollView.delaysContentTouches = YES;
+        self.scrollView.opaque = YES;
+        self.scrollView.autoresizesSubviews = YES;
+        self.scrollView.clearsContextBeforeDrawing = YES;
+        self.scrollView.multipleTouchEnabled = YES;
         
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-        
-        // swipe gesture recognizer
-        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+        self.pageControl.opaque = YES;
     }
     return self;
 }
@@ -123,19 +84,95 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
+    self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    // UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"export--164643114.png"]];
+    // imageView.frame = CGRectMake(0.0f, 99.0f, 320.0f, 274.0f);
+    // imageView.autoresizesSubviews = YES;
+    // imageView.opaque = YES;
+    // imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    UIImage *image = [UIImage imageNamed:@"CrUSSOptimumSize.png"];
+    
+    [self.crUSSImages addObject:image];
+    [self.crUSSImages addObject:image];
+    
+    NSInteger pageCount = self.crUSSImages.count;
+    
+    NSLog(@"pageCount = %i", pageCount);
+    
+    // Set up the page control
+    self.pageControl.currentPage = 0;
+    self.pageControl.numberOfPages = pageCount;
+    
+    // Set up the array to hold the views for each page
+    self.pageViews = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < pageCount; ++i)
+    {
+        [self.pageViews addObject:[NSNull null]];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.title = @"Cranial Ultrasound";
+    // remove all the objects to display in the scrollView
+    [self.pageViews removeAllObjects];
+    
+    if (!self.crUSSImages)
+    {
+        self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
+    }
+    else
+    {
+        [self.crUSSImages removeAllObjects];
+    }
+    
+    UIImage *image = [UIImage imageNamed:@"CrUSSOptimumSize.png"];
+    
+    [self.crUSSImages addObject:image];
+    [self.crUSSImages addObject:image];
+    
+    /*
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"export--164643114.png"]];
+    imageView.frame = CGRectMake(0.0f, 99.0f, 320.0f, 274.0f);
+    imageView.autoresizesSubviews = YES;
+    imageView.opaque = YES;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
+    [self.crUSSImages addObject:imageView];
+    [self.crUSSImages addObject:imageView];
+     */
+    
+    NSInteger pageCount = self.crUSSImages.count;
+    
+    // Set up the page control
+    self.pageControl.currentPage = 0;
+    self.pageControl.numberOfPages = pageCount;
+    
+    // Set up the array to hold the views for each page
+    self.pageViews = [[NSMutableArray alloc] init];
+    
+    for (NSInteger i = 0; i < pageCount; ++i)
+    {
+        [self.pageViews addObject:[NSNull null]];
+    }
+    
+    // Set up the content size of the scroll view
+    CGSize pagesScrollViewSize = self.scrollView.frame.size;
+    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.crUSSImages.count, pagesScrollViewSize.height);
+    
+    // clear self.scrollView contents
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    // Load the initial set of pages that are on screen
+    [self loadVisiblePages];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
     
 #if GOOGLE_ANALYTICS
     
@@ -143,6 +180,8 @@
     
 #endif
     
+    [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.pageControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,74 +195,84 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - UITableView data source
+#pragma mark -
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)loadVisiblePages
 {
-    return [tableData count];;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    int rows = nil;
+    // First, determine which page is currently visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
     
-    CBTableViewSectionData *sectionData = tableData[section];
+    // Update the page control
+    self.pageControl.currentPage = page;
     
-    rows = [sectionData.rowData count];
+    // Work out which pages we want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
     
-    return rows;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 44.0f;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString *header = nil;
-    
-    CBTableViewSectionData *sectionData = tableData[section];
-    header = sectionData.titleForHeader;
-    
-    return header;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if(!cell)
+    // Purge anything before the first page
+    for (NSInteger i=0; i<firstPage; i++)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.backgroundColor = [UIColor whiteColor];
+        [self purgePage:i];
+    }
+    for (NSInteger i=firstPage; i<=lastPage; i++)
+    {
+        [self loadPage:i];
+    }
+    for (NSInteger i=lastPage+1; i<self.crUSSImages.count; i++)
+    {
+        [self purgePage:i];
+    }
+}
+
+- (void)loadPage:(NSInteger)page
+{
+    if (page < 0 || page >= self.crUSSImages.count)
+    {
+        // If it's outside the range of what we have to display, then do nothing
+        return;
     }
     
-    CBTableViewSectionData *sectionData = tableData[indexPath.section];
-    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
-    
-    cell.textLabel.text = rowData.text;
-    cell.detailTextLabel.text = rowData.detailText;
-    
-    return cell;
+    // Load an individual page, first seeing if we've already loaded it
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull *)pageView == [NSNull null])
+    {
+        CGRect frame = self.scrollView.bounds;
+        frame.origin.x = frame.size.width * page;
+        frame.origin.y = 0.0f;
+        // frame = CGRectInset(frame, 10.0f, 0.0f);
+        
+        UIImageView *newPageView = [[UIImageView alloc] initWithImage:[self.crUSSImages objectAtIndex:page]];
+        newPageView.contentMode = UIViewContentModeScaleAspectFill;
+        newPageView.frame = frame;
+        [self.scrollView addSubview:newPageView];
+        [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
+    }
 }
 
-#pragma mark - UITableView delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)purgePage:(NSInteger)page
 {
-    if (indexPath.section == 0)
+    if (page < 0 || page >= self.crUSSImages.count)
     {
-        CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
-        [self.navigationController pushViewController:newViewController animated:YES];
+        // If it's outside the range of what we have to display, then do nothing
+        return;
     }
-    else
+    
+    // Remove a page from the scroll view and reset the container array
+    UIView *pageView = [self.pageViews objectAtIndex:page];
+    if ((NSNull*)pageView != [NSNull null])
     {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [pageView removeFromSuperview];
+        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
     }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // Load the pages which are now on screen
+    [self loadVisiblePages];
 }
 
 @end

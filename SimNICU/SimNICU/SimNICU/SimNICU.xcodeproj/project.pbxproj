@@ -128,6 +128,10 @@
 		5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
 		5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
+		5C44D8B317B2CE3F0097EBAC /* export--164643114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B217B2CE3F0097EBAC /* export--164643114.png */; };
+		5C44D8B417B2CE3F0097EBAC /* export--164643114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B217B2CE3F0097EBAC /* export--164643114.png */; };
+		5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */; };
+		5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */; };
 		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
@@ -904,6 +908,8 @@
 		5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBenzylpenicillinViewController.m; sourceTree = "<group>"; };
 		5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPharmacology.html; sourceTree = "<group>"; };
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
+		5C44D8B217B2CE3F0097EBAC /* export--164643114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "export--164643114.png"; sourceTree = "<group>"; };
+		5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CrUSSOptimumSize.png; sourceTree = "<group>"; };
 		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
 		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
 		5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPresentation.html; sourceTree = "<group>"; };
@@ -1934,6 +1940,8 @@
 			isa = PBXGroup;
 			children = (
 				5C930B0517B0EF2000CBE616 /* 01_Frontal lobes.jpg */,
+				5C44D8B217B2CE3F0097EBAC /* export--164643114.png */,
+				5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */,
 			);
 			name = Scans;
 			sourceTree = "<group>";
@@ -3068,6 +3076,8 @@
 				5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */,
 				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C930B0617B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
+				5C44D8B317B2CE3F0097EBAC /* export--164643114.png in Resources */,
+				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3316,6 +3326,8 @@
 				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,
 				5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C930B0717B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
+				5C44D8B417B2CE3F0097EBAC /* export--164643114.png in Resources */,
+				5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
