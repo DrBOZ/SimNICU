@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *crUSSImages;
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIScrollView *scrollView1;
 
 @end
 
@@ -48,34 +48,34 @@
         // instantiate UIScrollView & UIPageControl
         if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
         {
-            self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
+            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
             self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
         }
         else // 3.5 inch Retina
         {
-            self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
+            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
             self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 417.0f, 320.0f, 36.0f)];
         }
         
-        self.scrollView.delegate = self;
-        self.scrollView.showsHorizontalScrollIndicator = NO;
-        self.scrollView.showsVerticalScrollIndicator = NO;
-        self.scrollView.scrollEnabled = YES;
-        self.scrollView.clipsToBounds = YES;
-        self.scrollView.pagingEnabled = YES;
-        self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
-        self.scrollView.bounces = YES;
-        self.scrollView.bouncesZoom = YES;
-        self.scrollView.userInteractionEnabled = YES;
-        self.scrollView.canCancelContentTouches = YES;
-        self.scrollView.delaysContentTouches = YES;
-        self.scrollView.opaque = YES;
-        self.scrollView.autoresizesSubviews = YES;
-        self.scrollView.clearsContextBeforeDrawing = YES;
-        self.scrollView.multipleTouchEnabled = YES;
+        self.scrollView1.delegate = self;
+        self.scrollView1.showsHorizontalScrollIndicator = NO;
+        self.scrollView1.showsVerticalScrollIndicator = NO;
+        self.scrollView1.scrollEnabled = YES;
+        self.scrollView1.clipsToBounds = YES;
+        self.scrollView1.pagingEnabled = YES;
+        self.scrollView1.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.scrollView1.bounces = YES;
+        self.scrollView1.bouncesZoom = YES;
+        self.scrollView1.userInteractionEnabled = YES;
+        self.scrollView1.canCancelContentTouches = YES;
+        self.scrollView1.delaysContentTouches = YES;
+        self.scrollView1.opaque = YES;
+        self.scrollView1.autoresizesSubviews = YES;
+        self.scrollView1.clearsContextBeforeDrawing = YES;
+        self.scrollView1.multipleTouchEnabled = YES;
         
         self.pageControl.opaque = YES;
-        [self.pageControl addTarget:self action:@selector(pageControlTapped) forControlEvents:UIControlEventValueChanged];
+        self.pageControl.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -141,16 +141,16 @@
     }
     
     // Set up the content size of the scroll view
-    CGSize pagesScrollViewSize = self.scrollView.frame.size;
-    self.scrollView.contentSize = CGSizeMake(pagesScrollViewSize.width * self.crUSSImages.count, pagesScrollViewSize.height);
+    CGSize pagesScrollViewSize = self.scrollView1.frame.size;
+    self.scrollView1.contentSize = CGSizeMake(pagesScrollViewSize.width * self.crUSSImages.count, pagesScrollViewSize.height);
     
     // clear self.scrollView contents
-    [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.scrollView1.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // Load the initial set of pages that are on screen
     [self loadVisiblePages];
     
-    [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.scrollView1];
     [self.view addSubview:self.pageControl];
 }
 
@@ -164,7 +164,7 @@
     
 #endif
     
-    //[self.view addSubview:self.scrollView];
+    //[self.view addSubview:self.scrollView1];
     // [self.view addSubview:self.pageControl];
 }
 
@@ -184,8 +184,8 @@
 - (void)loadVisiblePages
 {
     // First, determine which page is currently visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    CGFloat pageWidth = self.scrollView1.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView1.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
     
     // Update the page control
     self.pageControl.currentPage = page;
@@ -221,7 +221,7 @@
     UIView *pageView = [self.pageViews objectAtIndex:page];
     if ((NSNull *)pageView == [NSNull null])
     {
-        CGRect frame = self.scrollView.bounds;
+        CGRect frame = self.scrollView1.bounds;
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0.0f;
         // frame = CGRectInset(frame, 10.0f, 0.0f);
@@ -229,7 +229,7 @@
         UIImageView *newPageView = [[UIImageView alloc] initWithImage:[self.crUSSImages objectAtIndex:page]];
         newPageView.contentMode = UIViewContentModeScaleAspectFill;
         newPageView.frame = frame;
-        [self.scrollView addSubview:newPageView];
+        [self.scrollView1 addSubview:newPageView];
         [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
     }
 }
@@ -257,39 +257,6 @@
 {
     // Load the pages which are now on screen
     [self loadVisiblePages];
-}
-
-- (void)pageControlTapped
-{
-    // Scroll to appropriate page
-    
-    
-    // CGFloat pageWidth = self.scrollView.frame.size.width;
-    // NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
-    
-    /*
-    // First, determine which page is currently visible
-    
-    NSInteger page = self.pageControl.currentPage;
-    
-    // Work out which pages we want to load
-    NSInteger firstPage = page - 1;
-    NSInteger lastPage = page + 1;
-    
-    // Purge anything before the first page
-    for (NSInteger i=0; i<firstPage; i++)
-    {
-        [self purgePage:i];
-    }
-    for (NSInteger i=firstPage; i<=lastPage; i++)
-    {
-        [self loadPage:i];
-    }
-    for (NSInteger i=lastPage+1; i<self.crUSSImages.count; i++)
-    {
-        [self purgePage:i];
-    }
-     */
 }
 
 @end
