@@ -50,13 +50,11 @@
         {
             self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
             self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
-            // self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, (self.view.bounds.size.height - 70), 320.0f, 20.0f)];
         }
         else // 3.5 inch Retina
         {
             self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
             self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 417.0f, 320.0f, 36.0f)];
-            // self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, (self.view.bounds.size.height - 70), 320.0f, 20.0f)];
         }
         
         self.scrollView.delegate = self;
@@ -77,6 +75,7 @@
         self.scrollView.multipleTouchEnabled = YES;
         
         self.pageControl.opaque = YES;
+        [self.pageControl addTarget:self action:@selector(pageControlTapped) forControlEvents:UIControlEventValueChanged];
     }
     return self;
 }
@@ -86,12 +85,6 @@
     [super viewDidLoad];
     
     self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    // UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"export--164643114.png"]];
-    // imageView.frame = CGRectMake(0.0f, 99.0f, 320.0f, 274.0f);
-    // imageView.autoresizesSubviews = YES;
-    // imageView.opaque = YES;
-    // imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     UIImage *image = [UIImage imageNamed:@"CrUSSOptimumSize.png"];
     
@@ -133,18 +126,6 @@
     [self.crUSSImages addObject:image];
     [self.crUSSImages addObject:image];
     
-    /*
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"export--164643114.png"]];
-    imageView.frame = CGRectMake(0.0f, 99.0f, 320.0f, 274.0f);
-    imageView.autoresizesSubviews = YES;
-    imageView.opaque = YES;
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-    self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
-    [self.crUSSImages addObject:imageView];
-    [self.crUSSImages addObject:imageView];
-     */
-    
     NSInteger pageCount = self.crUSSImages.count;
     
     // Set up the page control
@@ -168,6 +149,9 @@
     
     // Load the initial set of pages that are on screen
     [self loadVisiblePages];
+    
+    [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.pageControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -176,12 +160,12 @@
     
 #if GOOGLE_ANALYTICS
     
-    [[GANTracker sharedTracker] trackPageview:@"CrUSS Options" withError:nil];
+    [[GANTracker sharedTracker] trackPageview:@"CrUSS Radiology" withError:nil];
     
 #endif
     
-    [self.view addSubview:self.scrollView];
-    [self.view addSubview:self.pageControl];
+    //[self.view addSubview:self.scrollView];
+    // [self.view addSubview:self.pageControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -273,6 +257,39 @@
 {
     // Load the pages which are now on screen
     [self loadVisiblePages];
+}
+
+- (void)pageControlTapped
+{
+    // Scroll to appropriate page
+    
+    
+    // CGFloat pageWidth = self.scrollView.frame.size.width;
+    // NSInteger page = (NSInteger)floor((self.scrollView.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    
+    /*
+    // First, determine which page is currently visible
+    
+    NSInteger page = self.pageControl.currentPage;
+    
+    // Work out which pages we want to load
+    NSInteger firstPage = page - 1;
+    NSInteger lastPage = page + 1;
+    
+    // Purge anything before the first page
+    for (NSInteger i=0; i<firstPage; i++)
+    {
+        [self purgePage:i];
+    }
+    for (NSInteger i=firstPage; i<=lastPage; i++)
+    {
+        [self loadPage:i];
+    }
+    for (NSInteger i=lastPage+1; i<self.crUSSImages.count; i++)
+    {
+        [self purgePage:i];
+    }
+     */
 }
 
 @end

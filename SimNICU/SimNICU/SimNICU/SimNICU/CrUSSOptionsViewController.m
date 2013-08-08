@@ -225,15 +225,12 @@
     }
     else if (indexPath.section == 1)
     {
-        CrUSSRadiologyViewController *newViewController = [[CrUSSRadiologyViewController alloc] init];
+        CrUSSTestingViewController *newViewController = [[CrUSSTestingViewController alloc] init];
         [self.navigationController pushViewController:newViewController animated:YES];
     }
     else if (indexPath.section == 2)
     {
-        // CrUSSRadiologyViewController *newViewController = [[CrUSSRadiologyViewController alloc] init];
-        // [self.navigationController pushViewController:newViewController animated:YES];
-        
-        CrUSSTestingViewController *newViewController = [[CrUSSTestingViewController alloc] init];
+        CrUSSRadiologyViewController *newViewController = [[CrUSSRadiologyViewController alloc] init];
         [self.navigationController pushViewController:newViewController animated:YES];
     }
     else
