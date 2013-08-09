@@ -84,13 +84,6 @@
 {
     [super viewDidLoad];
     
-    self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    UIImage *image = [UIImage imageNamed:@"CrUSSOptimumSize.png"];
-    
-    [self.crUSSImages addObject:image];
-    [self.crUSSImages addObject:image];
-    
     NSInteger pageCount = self.crUSSImages.count;
     
     NSLog(@"pageCount = %i", pageCount);
@@ -114,16 +107,29 @@
     
     if (!self.crUSSImages)
     {
-        self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:2];
+        self.crUSSImages = [[NSMutableArray alloc] initWithCapacity:5];
     }
     else
     {
         [self.crUSSImages removeAllObjects];
     }
     
-    UIImage *image = [UIImage imageNamed:@"CrUSSOptimumSize.png"];
+    // load images
+    UIImage *image;
     
+    image = [UIImage imageNamed:@"01_Frontal_lobes.png"];
     [self.crUSSImages addObject:image];
+    
+    image = [UIImage imageNamed:@"02_Anterior_horns_of_lateral_ventricles.png"];
+    [self.crUSSImages addObject:image];
+    
+    image = [UIImage imageNamed:@"03_Third_ventricle.png"];
+    [self.crUSSImages addObject:image];
+    
+    image = [UIImage imageNamed:@"04_Trigone.png"];
+    [self.crUSSImages addObject:image];
+    
+    image = [UIImage imageNamed:@"05_Final_coronal.png"];
     [self.crUSSImages addObject:image];
     
     NSInteger pageCount = self.crUSSImages.count;

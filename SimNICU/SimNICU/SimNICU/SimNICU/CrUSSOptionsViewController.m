@@ -71,7 +71,7 @@
         
         // section 2
         sectionData = [[CBTableViewSectionData alloc] init];
-        sectionData.titleForHeader = @"Radiology";
+        sectionData.titleForHeader = @"Scans";
         sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:5];
         
         rowData = [[CBTableViewRowData alloc] init];

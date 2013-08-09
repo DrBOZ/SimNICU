@@ -110,6 +110,16 @@
 		5C101D3417AE99E30095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3317AE99E30095E751 /* Default.png */; };
 		5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3517AE99ED0095E751 /* Default@2x.png */; };
 		5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3717AE99FA0095E751 /* Default-568h@2x.png */; };
+		5C169E5117B579F3003D0166 /* 01_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */; };
+		5C169E5217B579F3003D0166 /* 01_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */; };
+		5C169E5417B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */; };
+		5C169E5517B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */; };
+		5C169E5717B57A21003D0166 /* 03_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */; };
+		5C169E5817B57A21003D0166 /* 03_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */; };
+		5C169E5A17B57A2C003D0166 /* 04_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_Trigone.png */; };
+		5C169E5B17B57A2C003D0166 /* 04_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_Trigone.png */; };
+		5C169E5D17B57A35003D0166 /* 05_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */; };
+		5C169E5E17B57A35003D0166 /* 05_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -128,8 +138,6 @@
 		5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
 		5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
-		5C44D8B317B2CE3F0097EBAC /* export--164643114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B217B2CE3F0097EBAC /* export--164643114.png */; };
-		5C44D8B417B2CE3F0097EBAC /* export--164643114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B217B2CE3F0097EBAC /* export--164643114.png */; };
 		5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */; };
 		5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */; };
 		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
@@ -890,6 +898,11 @@
 		5C101D3317AE99E30095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		5C101D3517AE99ED0095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		5C101D3717AE99FA0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_Frontal_lobes.png; sourceTree = "<group>"; };
+		5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
+		5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_Third_ventricle.png; sourceTree = "<group>"; };
+		5C169E5917B57A2C003D0166 /* 04_Trigone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04_Trigone.png; sourceTree = "<group>"; };
+		5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05_Final_coronal.png; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -908,7 +921,6 @@
 		5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBenzylpenicillinViewController.m; sourceTree = "<group>"; };
 		5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPharmacology.html; sourceTree = "<group>"; };
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
-		5C44D8B217B2CE3F0097EBAC /* export--164643114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "export--164643114.png"; sourceTree = "<group>"; };
 		5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CrUSSOptimumSize.png; sourceTree = "<group>"; };
 		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
 		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
@@ -1552,6 +1564,18 @@
 			name = Amoxicillin;
 			sourceTree = "<group>";
 		};
+		5C169E4F17B579E0003D0166 /* 29-33 */ = {
+			isa = PBXGroup;
+			children = (
+				5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */,
+				5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */,
+				5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */,
+				5C169E5917B57A2C003D0166 /* 04_Trigone.png */,
+				5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */,
+			);
+			name = "29-33";
+			sourceTree = "<group>";
+		};
 		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
 			isa = PBXGroup;
 			children = (
@@ -1940,7 +1964,7 @@
 			isa = PBXGroup;
 			children = (
 				5C930B0517B0EF2000CBE616 /* 01_Frontal lobes.jpg */,
-				5C44D8B217B2CE3F0097EBAC /* export--164643114.png */,
+				5C169E4F17B579E0003D0166 /* 29-33 */,
 				5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */,
 			);
 			name = Scans;
@@ -3076,8 +3100,12 @@
 				5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */,
 				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C930B0617B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
-				5C44D8B317B2CE3F0097EBAC /* export--164643114.png in Resources */,
 				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
+				5C169E5117B579F3003D0166 /* 01_Frontal_lobes.png in Resources */,
+				5C169E5417B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5C169E5717B57A21003D0166 /* 03_Third_ventricle.png in Resources */,
+				5C169E5A17B57A2C003D0166 /* 04_Trigone.png in Resources */,
+				5C169E5D17B57A35003D0166 /* 05_Final_coronal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3326,8 +3354,12 @@
 				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,
 				5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C930B0717B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
-				5C44D8B417B2CE3F0097EBAC /* export--164643114.png in Resources */,
 				5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
+				5C169E5217B579F3003D0166 /* 01_Frontal_lobes.png in Resources */,
+				5C169E5517B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5C169E5817B57A21003D0166 /* 03_Third_ventricle.png in Resources */,
+				5C169E5B17B57A2C003D0166 /* 04_Trigone.png in Resources */,
+				5C169E5E17B57A35003D0166 /* 05_Final_coronal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
