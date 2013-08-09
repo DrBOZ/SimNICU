@@ -831,6 +831,8 @@
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
+		5CEAAD1317B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */; };
+		5CEAAD1417B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */; };
 		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
@@ -1435,6 +1437,7 @@
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
+		5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06_Midline_sagittal.png; sourceTree = "<group>"; };
 		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
@@ -1572,6 +1575,7 @@
 				5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */,
 				5C169E5917B57A2C003D0166 /* 04_Trigone.png */,
 				5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */,
+				5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */,
 			);
 			name = "29-33";
 			sourceTree = "<group>";
@@ -3106,6 +3110,7 @@
 				5C169E5717B57A21003D0166 /* 03_Third_ventricle.png in Resources */,
 				5C169E5A17B57A2C003D0166 /* 04_Trigone.png in Resources */,
 				5C169E5D17B57A35003D0166 /* 05_Final_coronal.png in Resources */,
+				5CEAAD1317B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3360,6 +3365,7 @@
 				5C169E5817B57A21003D0166 /* 03_Third_ventricle.png in Resources */,
 				5C169E5B17B57A2C003D0166 /* 04_Trigone.png in Resources */,
 				5C169E5E17B57A35003D0166 /* 05_Final_coronal.png in Resources */,
+				5CEAAD1417B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

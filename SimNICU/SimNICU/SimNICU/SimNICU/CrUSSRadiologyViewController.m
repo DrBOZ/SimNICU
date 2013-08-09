@@ -132,6 +132,9 @@
     image = [UIImage imageNamed:@"05_Final_coronal.png"];
     [self.crUSSImages addObject:image];
     
+    image = [UIImage imageNamed:@"06_Midline_sagittal.png"];
+    [self.crUSSImages addObject:image];
+    
     NSInteger pageCount = self.crUSSImages.count;
     
     // Set up the page control
