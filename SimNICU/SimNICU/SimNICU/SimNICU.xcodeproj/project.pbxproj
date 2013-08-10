@@ -110,16 +110,16 @@
 		5C101D3417AE99E30095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3317AE99E30095E751 /* Default.png */; };
 		5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3517AE99ED0095E751 /* Default@2x.png */; };
 		5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3717AE99FA0095E751 /* Default-568h@2x.png */; };
-		5C169E5117B579F3003D0166 /* 01_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */; };
-		5C169E5217B579F3003D0166 /* 01_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */; };
-		5C169E5417B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */; };
-		5C169E5517B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */; };
-		5C169E5717B57A21003D0166 /* 03_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */; };
-		5C169E5817B57A21003D0166 /* 03_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */; };
-		5C169E5A17B57A2C003D0166 /* 04_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_Trigone.png */; };
-		5C169E5B17B57A2C003D0166 /* 04_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_Trigone.png */; };
-		5C169E5D17B57A35003D0166 /* 05_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */; };
-		5C169E5E17B57A35003D0166 /* 05_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */; };
+		5C169E5117B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */; };
+		5C169E5217B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */; };
+		5C169E5417B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
+		5C169E5517B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
+		5C169E5717B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */; };
+		5C169E5817B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */; };
+		5C169E5A17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */; };
+		5C169E5B17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */; };
+		5C169E5D17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */; };
+		5C169E5E17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -134,6 +134,8 @@
 		5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
 		5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */; };
 		5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */; };
+		5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE817B652C500F8CED6 /* CrUSSScanSeries.m */; };
+		5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE817B652C500F8CED6 /* CrUSSScanSeries.m */; };
 		5C4350AE178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */; };
 		5C4350AF178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */; };
 		5C4350B3178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */; };
@@ -835,8 +837,8 @@
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
-		5CEAAD1317B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */; };
-		5CEAAD1417B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */; };
+		5CEAAD1317B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */; };
+		5CEAAD1417B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */; };
 		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
@@ -904,11 +906,11 @@
 		5C101D3317AE99E30095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		5C101D3517AE99ED0095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		5C101D3717AE99FA0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_Frontal_lobes.png; sourceTree = "<group>"; };
-		5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
-		5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_Third_ventricle.png; sourceTree = "<group>"; };
-		5C169E5917B57A2C003D0166 /* 04_Trigone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04_Trigone.png; sourceTree = "<group>"; };
-		5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05_Final_coronal.png; sourceTree = "<group>"; };
+		5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_30_Normal_Frontal_lobes.png; sourceTree = "<group>"; };
+		5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_30_Normal_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
+		5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_30_Normal_Third_ventricle.png; sourceTree = "<group>"; };
+		5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04_30_Normal_Trigone.png; sourceTree = "<group>"; };
+		5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05_30_Normal_Final_coronal.png; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -925,6 +927,8 @@
 		5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSDataBase.m; sourceTree = "<group>"; };
 		5C427FE317B63A0C00F8CED6 /* CrUSSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSImage.h; sourceTree = "<group>"; };
 		5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSImage.m; sourceTree = "<group>"; };
+		5C427FE717B652C500F8CED6 /* CrUSSScanSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSScanSeries.h; sourceTree = "<group>"; };
+		5C427FE817B652C500F8CED6 /* CrUSSScanSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSScanSeries.m; sourceTree = "<group>"; };
 		5C4350AC178DDD5200E926B1 /* DrugInfoSimpleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugInfoSimpleViewController.h; sourceTree = "<group>"; };
 		5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugInfoSimpleViewController.m; sourceTree = "<group>"; };
 		5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugBenzylpenicillinViewController.h; sourceTree = "<group>"; };
@@ -1445,7 +1449,7 @@
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
-		5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06_Midline_sagittal.png; sourceTree = "<group>"; };
+		5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06_30_Normal_Midline_sagittal.png; sourceTree = "<group>"; };
 		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
@@ -1578,12 +1582,12 @@
 		5C169E4F17B579E0003D0166 /* 29-33 */ = {
 			isa = PBXGroup;
 			children = (
-				5C169E5017B579F3003D0166 /* 01_Frontal_lobes.png */,
-				5C169E5317B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png */,
-				5C169E5617B57A21003D0166 /* 03_Third_ventricle.png */,
-				5C169E5917B57A2C003D0166 /* 04_Trigone.png */,
-				5C169E5C17B57A35003D0166 /* 05_Final_coronal.png */,
-				5CEAAD1217B583EC00DD02BD /* 06_Midline_sagittal.png */,
+				5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */,
+				5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */,
+				5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */,
+				5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */,
+				5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */,
+				5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */,
 			);
 			name = "29-33";
 			sourceTree = "<group>";
@@ -1969,6 +1973,8 @@
 				5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */,
 				5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */,
 				5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */,
+				5C427FE717B652C500F8CED6 /* CrUSSScanSeries.h */,
+				5C427FE817B652C500F8CED6 /* CrUSSScanSeries.m */,
 				5C427FE317B63A0C00F8CED6 /* CrUSSImage.h */,
 				5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */,
 				5C930B0417B0EF0C00CBE616 /* Scans */,
@@ -3117,12 +3123,12 @@
 				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C930B0617B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
 				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
-				5C169E5117B579F3003D0166 /* 01_Frontal_lobes.png in Resources */,
-				5C169E5417B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */,
-				5C169E5717B57A21003D0166 /* 03_Third_ventricle.png in Resources */,
-				5C169E5A17B57A2C003D0166 /* 04_Trigone.png in Resources */,
-				5C169E5D17B57A35003D0166 /* 05_Final_coronal.png in Resources */,
-				5CEAAD1317B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */,
+				5C169E5117B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */,
+				5C169E5417B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5C169E5717B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */,
+				5C169E5A17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */,
+				5C169E5D17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */,
+				5CEAAD1317B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3372,12 +3378,12 @@
 				5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C930B0717B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
 				5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
-				5C169E5217B579F3003D0166 /* 01_Frontal_lobes.png in Resources */,
-				5C169E5517B57A14003D0166 /* 02_Anterior_horns_of_lateral_ventricles.png in Resources */,
-				5C169E5817B57A21003D0166 /* 03_Third_ventricle.png in Resources */,
-				5C169E5B17B57A2C003D0166 /* 04_Trigone.png in Resources */,
-				5C169E5E17B57A35003D0166 /* 05_Final_coronal.png in Resources */,
-				5CEAAD1417B583EC00DD02BD /* 06_Midline_sagittal.png in Resources */,
+				5C169E5217B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */,
+				5C169E5517B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5C169E5817B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */,
+				5C169E5B17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */,
+				5C169E5E17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */,
+				5CEAAD1417B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3535,6 +3541,7 @@
 				5C930B0017B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */,
 				5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
+				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3689,6 +3696,7 @@
 				5C930B0117B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */,
 				5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
+				5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
