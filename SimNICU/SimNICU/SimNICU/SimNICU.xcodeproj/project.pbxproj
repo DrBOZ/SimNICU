@@ -826,6 +826,26 @@
 		5CD541D817B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C517B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png */; };
 		5CD541D917B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */; };
 		5CD541DA17B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */; };
+		5CD541E517B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DB17B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png */; };
+		5CD541E617B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DB17B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png */; };
+		5CD541E717B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DC17B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png */; };
+		5CD541E817B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DC17B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png */; };
+		5CD541E917B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DD17B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png */; };
+		5CD541EA17B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DD17B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png */; };
+		5CD541EB17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DE17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png */; };
+		5CD541EC17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DE17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png */; };
+		5CD541ED17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DF17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png */; };
+		5CD541EE17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541DF17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png */; };
+		5CD541EF17B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E017B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png */; };
+		5CD541F017B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E017B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png */; };
+		5CD541F117B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E117B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png */; };
+		5CD541F217B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E117B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png */; };
+		5CD541F317B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E217B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png */; };
+		5CD541F417B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E217B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png */; };
+		5CD541F517B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E317B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png */; };
+		5CD541F617B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E317B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png */; };
+		5CD541F717B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */; };
+		5CD541F817B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CDBACAC179C0F8800D1A03D /* PatientListWarningROP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */; };
@@ -1445,6 +1465,16 @@
 		5CD541C417B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08_30_Normal_Rt_Tangential_parasagittal.png; sourceTree = "<group>"; };
 		5CD541C517B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09_30_Normal_Lt_Angled_parasagittal.png; sourceTree = "<group>"; };
 		5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10_30_Normal_Lt_Tangential_parasagittal.png; sourceTree = "<group>"; };
+		5CD541DB17B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_30_Lt_IVH_Frontal_lobes.png; sourceTree = "<group>"; };
+		5CD541DC17B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
+		5CD541DD17B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_30_Lt_IVH_Third_ventricle.png; sourceTree = "<group>"; };
+		5CD541DE17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04_30_Lt_IVH_Trigone.png; sourceTree = "<group>"; };
+		5CD541DF17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05_30_Lt_IVH_Occiptal_lobes.png; sourceTree = "<group>"; };
+		5CD541E017B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06_30_Lt_IVH_Midline.png; sourceTree = "<group>"; };
+		5CD541E117B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 07_30_Lt_IVH_Rt_Angled_parasagittal.png; sourceTree = "<group>"; };
+		5CD541E217B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08_30_Lt_IVH_Rt_Tangential_parasagittal.png; sourceTree = "<group>"; };
+		5CD541E317B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09_30_Lt_IVH_Lt_Angled_parasagittal.png; sourceTree = "<group>"; };
+		5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10_30_Lt_IVH_Lt_Tangential_parasagittal.png; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PatientListWarningROP.png; sourceTree = "<group>"; };
@@ -2734,6 +2764,16 @@
 		5CA0BE3217B69DA500BDF842 /* Lt IVH */ = {
 			isa = PBXGroup;
 			children = (
+				5CD541DB17B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png */,
+				5CD541DC17B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png */,
+				5CD541DD17B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png */,
+				5CD541DE17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png */,
+				5CD541DF17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png */,
+				5CD541E017B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png */,
+				5CD541E117B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png */,
+				5CD541E217B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png */,
+				5CD541E317B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png */,
+				5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */,
 			);
 			name = "Lt IVH";
 			sourceTree = "<group>";
@@ -3160,6 +3200,16 @@
 				5CD541D517B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png in Resources */,
 				5CD541D717B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */,
 				5CD541D917B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */,
+				5CD541E517B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png in Resources */,
+				5CD541E717B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5CD541E917B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png in Resources */,
+				5CD541EB17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png in Resources */,
+				5CD541ED17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png in Resources */,
+				5CD541EF17B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png in Resources */,
+				5CD541F117B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png in Resources */,
+				5CD541F317B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png in Resources */,
+				5CD541F517B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */,
+				5CD541F717B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3418,6 +3468,16 @@
 				5CD541D617B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png in Resources */,
 				5CD541D817B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */,
 				5CD541DA17B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */,
+				5CD541E617B6A3E900FCAE5C /* 01_30_Lt_IVH_Frontal_lobes.png in Resources */,
+				5CD541E817B6A3E900FCAE5C /* 02_30_Lt_IVH_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5CD541EA17B6A3E900FCAE5C /* 03_30_Lt_IVH_Third_ventricle.png in Resources */,
+				5CD541EC17B6A3E900FCAE5C /* 04_30_Lt_IVH_Trigone.png in Resources */,
+				5CD541EE17B6A3E900FCAE5C /* 05_30_Lt_IVH_Occiptal_lobes.png in Resources */,
+				5CD541F017B6A3E900FCAE5C /* 06_30_Lt_IVH_Midline.png in Resources */,
+				5CD541F217B6A3E900FCAE5C /* 07_30_Lt_IVH_Rt_Angled_parasagittal.png in Resources */,
+				5CD541F417B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png in Resources */,
+				5CD541F617B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */,
+				5CD541F817B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
