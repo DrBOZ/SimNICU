@@ -61,6 +61,18 @@
     scanImage.image = [UIImage imageNamed:@"06_30_Normal_Midline_sagittal.png"];
     [scanSeries.scans addObject:scanImage];
     
+    scanImage = [[CrUSSImage alloc] init];
+    scanImage.text = @"Angled parasagittal";
+    scanImage.orientation = @"Sagittal";
+    scanImage.image = [UIImage imageNamed:@"07_30_Normal_Angled_parasagittal.png"];
+    [scanSeries.scans addObject:scanImage];
+    
+    scanImage = [[CrUSSImage alloc] init];
+    scanImage.text = @"Tangential parasagittal";
+    scanImage.orientation = @"Sagittal";
+    scanImage.image = [UIImage imageNamed:@"08_30_Normal_Tangential_parasagittal.png"];
+    [scanSeries.scans addObject:scanImage];
+    
     [scans addObject:scanSeries];
     
     // add another

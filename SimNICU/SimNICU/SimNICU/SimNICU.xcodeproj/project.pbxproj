@@ -186,6 +186,10 @@
 		5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */; };
 		5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */; };
 		5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */; };
+		5C52A5A117B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */; };
+		5C52A5A217B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */; };
+		5C52A5A417B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */; };
+		5C52A5A517B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */; };
 		5C52F3AF1791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B21791656D000CFD80 /* vitaminKIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3B11791656D000CFD80 /* vitaminKIndications.html */; };
@@ -956,6 +960,8 @@
 		5C51D8FA17932EF4004A7FF5 /* sodiumChlorideMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideMonitoring.html; sourceTree = "<group>"; };
 		5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideLicenceStatus.html; sourceTree = "<group>"; };
 		5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideReferences.html; sourceTree = "<group>"; };
+		5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 07_30_Normal_Angled_parasagittal.png; sourceTree = "<group>"; };
+		5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08_30_Normal_Tangential_parasagittal.png; sourceTree = "<group>"; };
 		5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPharmacology.html; sourceTree = "<group>"; };
 		5C52F3B11791656D000CFD80 /* vitaminKIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKIndications.html; sourceTree = "<group>"; };
 		5C52F3B41791657C000CFD80 /* vitaminKPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPresentation.html; sourceTree = "<group>"; };
@@ -1588,6 +1594,8 @@
 				5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */,
 				5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */,
 				5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */,
+				5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */,
+				5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */,
 			);
 			name = "29-33";
 			sourceTree = "<group>";
@@ -3129,6 +3137,8 @@
 				5C169E5A17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */,
 				5C169E5D17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */,
 				5CEAAD1317B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */,
+				5C52A5A117B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */,
+				5C52A5A417B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3384,6 +3394,8 @@
 				5C169E5B17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */,
 				5C169E5E17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */,
 				5CEAAD1417B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */,
+				5C52A5A217B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */,
+				5C52A5A517B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
