@@ -130,6 +130,10 @@
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
+		5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
+		5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
+		5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */; };
+		5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */; };
 		5C4350AE178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */; };
 		5C4350AF178DDD5200E926B1 /* DrugInfoSimpleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */; };
 		5C4350B3178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */; };
@@ -917,6 +921,10 @@
 		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630516B839860039C387 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
 		5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettingsComma.html; sourceTree = "<group>"; };
+		5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSDataBase.h; sourceTree = "<group>"; };
+		5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSDataBase.m; sourceTree = "<group>"; };
+		5C427FE317B63A0C00F8CED6 /* CrUSSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSImage.h; sourceTree = "<group>"; };
+		5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSImage.m; sourceTree = "<group>"; };
 		5C4350AC178DDD5200E926B1 /* DrugInfoSimpleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugInfoSimpleViewController.h; sourceTree = "<group>"; };
 		5C4350AD178DDD5200E926B1 /* DrugInfoSimpleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugInfoSimpleViewController.m; sourceTree = "<group>"; };
 		5C4350B1178DE17300E926B1 /* DrugBenzylpenicillinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugBenzylpenicillinViewController.h; sourceTree = "<group>"; };
@@ -1959,6 +1967,10 @@
 				5C930AFD17B0EA9D00CBE616 /* CrUSSTestingViewController.h */,
 				5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */,
 				5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */,
+				5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */,
+				5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */,
+				5C427FE317B63A0C00F8CED6 /* CrUSSImage.h */,
+				5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */,
 				5C930B0417B0EF0C00CBE616 /* Scans */,
 			);
 			name = Radiology;
@@ -3521,6 +3533,8 @@
 				5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFB17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
 				5C930B0017B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */,
+				5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
+				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3673,6 +3687,8 @@
 				5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
 				5C930B0117B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */,
+				5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
+				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
