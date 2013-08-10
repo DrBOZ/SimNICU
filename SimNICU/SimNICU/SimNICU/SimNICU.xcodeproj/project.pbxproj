@@ -110,16 +110,6 @@
 		5C101D3417AE99E30095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3317AE99E30095E751 /* Default.png */; };
 		5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3517AE99ED0095E751 /* Default@2x.png */; };
 		5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3717AE99FA0095E751 /* Default-568h@2x.png */; };
-		5C169E5117B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */; };
-		5C169E5217B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */; };
-		5C169E5417B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
-		5C169E5517B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
-		5C169E5717B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */; };
-		5C169E5817B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */; };
-		5C169E5A17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */; };
-		5C169E5B17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */; };
-		5C169E5D17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */; };
-		5C169E5E17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -186,10 +176,6 @@
 		5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */; };
 		5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */; };
 		5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */; };
-		5C52A5A117B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */; };
-		5C52A5A217B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */; };
-		5C52A5A417B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */; };
-		5C52A5A517B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */; };
 		5C52F3AF1791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */; };
 		5C52F3B21791656D000CFD80 /* vitaminKIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C52F3B11791656D000CFD80 /* vitaminKIndications.html */; };
@@ -292,8 +278,6 @@
 		5C930B0117B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */; };
 		5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */; };
 		5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */; };
-		5C930B0617B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C930B0517B0EF2000CBE616 /* 01_Frontal lobes.jpg */; };
-		5C930B0717B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C930B0517B0EF2000CBE616 /* 01_Frontal lobes.jpg */; };
 		5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A61166E37FE0044A7D1 /* UIKit.framework */; };
 		5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
 		5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
@@ -841,8 +825,6 @@
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
-		5CEAAD1317B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */; };
-		5CEAAD1417B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */; };
 		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
@@ -910,11 +892,6 @@
 		5C101D3317AE99E30095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		5C101D3517AE99ED0095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		5C101D3717AE99FA0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_30_Normal_Frontal_lobes.png; sourceTree = "<group>"; };
-		5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_30_Normal_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
-		5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_30_Normal_Third_ventricle.png; sourceTree = "<group>"; };
-		5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04_30_Normal_Trigone.png; sourceTree = "<group>"; };
-		5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05_30_Normal_Final_coronal.png; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -960,8 +937,6 @@
 		5C51D8FA17932EF4004A7FF5 /* sodiumChlorideMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideMonitoring.html; sourceTree = "<group>"; };
 		5C51D8FD17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideLicenceStatus.html; sourceTree = "<group>"; };
 		5C51D90017932F09004A7FF5 /* sodiumChlorideReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sodiumChlorideReferences.html; sourceTree = "<group>"; };
-		5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 07_30_Normal_Angled_parasagittal.png; sourceTree = "<group>"; };
-		5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08_30_Normal_Tangential_parasagittal.png; sourceTree = "<group>"; };
 		5C52F3AE1791655E000CFD80 /* vitaminKPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPharmacology.html; sourceTree = "<group>"; };
 		5C52F3B11791656D000CFD80 /* vitaminKIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKIndications.html; sourceTree = "<group>"; };
 		5C52F3B41791657C000CFD80 /* vitaminKPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminKPresentation.html; sourceTree = "<group>"; };
@@ -1057,7 +1032,6 @@
 		5C930AFD17B0EA9D00CBE616 /* CrUSSTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSTestingViewController.h; sourceTree = "<group>"; };
 		5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSTestingViewController.m; sourceTree = "<group>"; };
 		5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CrUSSTestingViewController.xib; sourceTree = "<group>"; };
-		5C930B0517B0EF2000CBE616 /* 01_Frontal lobes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "01_Frontal lobes.jpg"; sourceTree = "<group>"; };
 		5C940A5D166E37FE0044A7D1 /* SimNICU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimNICU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C940A61166E37FE0044A7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C940A63166E37FE0044A7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1455,7 +1429,6 @@
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
-		5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06_30_Normal_Midline_sagittal.png; sourceTree = "<group>"; };
 		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
@@ -1588,14 +1561,8 @@
 		5C169E4F17B579E0003D0166 /* 29-33 */ = {
 			isa = PBXGroup;
 			children = (
-				5C169E5017B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png */,
-				5C169E5317B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */,
-				5C169E5617B57A21003D0166 /* 03_30_Normal_Third_ventricle.png */,
-				5C169E5917B57A2C003D0166 /* 04_30_Normal_Trigone.png */,
-				5C169E5C17B57A35003D0166 /* 05_30_Normal_Final_coronal.png */,
-				5CEAAD1217B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png */,
-				5C52A5A017B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png */,
-				5C52A5A317B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png */,
+				5CA0BE3217B69DA500BDF842 /* Lt IVH */,
+				5CA0BE3117B69D8E00BDF842 /* Normal */,
 			);
 			name = "29-33";
 			sourceTree = "<group>";
@@ -1993,7 +1960,6 @@
 		5C930B0417B0EF0C00CBE616 /* Scans */ = {
 			isa = PBXGroup;
 			children = (
-				5C930B0517B0EF2000CBE616 /* 01_Frontal lobes.jpg */,
 				5C169E4F17B579E0003D0166 /* 29-33 */,
 				5C44D8B517B2EA9B0097EBAC /* CrUSSOptimumSize.png */,
 			);
@@ -2718,6 +2684,20 @@
 			name = "Advanced Patient Editor";
 			sourceTree = "<group>";
 		};
+		5CA0BE3117B69D8E00BDF842 /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Normal;
+			sourceTree = "<group>";
+		};
+		5CA0BE3217B69DA500BDF842 /* Lt IVH */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Lt IVH";
+			sourceTree = "<group>";
+		};
 		5CA3C114179240DD002AB53D /* Vancomycin */ = {
 			isa = PBXGroup;
 			children = (
@@ -3129,16 +3109,7 @@
 				5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */,
 				5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */,
 				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
-				5C930B0617B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
 				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
-				5C169E5117B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */,
-				5C169E5417B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
-				5C169E5717B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */,
-				5C169E5A17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */,
-				5C169E5D17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */,
-				5CEAAD1317B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */,
-				5C52A5A117B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */,
-				5C52A5A417B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3386,16 +3357,7 @@
 				5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */,
 				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,
 				5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
-				5C930B0717B0EF2000CBE616 /* 01_Frontal lobes.jpg in Resources */,
 				5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
-				5C169E5217B579F3003D0166 /* 01_30_Normal_Frontal_lobes.png in Resources */,
-				5C169E5517B57A14003D0166 /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
-				5C169E5817B57A21003D0166 /* 03_30_Normal_Third_ventricle.png in Resources */,
-				5C169E5B17B57A2C003D0166 /* 04_30_Normal_Trigone.png in Resources */,
-				5C169E5E17B57A35003D0166 /* 05_30_Normal_Final_coronal.png in Resources */,
-				5CEAAD1417B583EC00DD02BD /* 06_30_Normal_Midline_sagittal.png in Resources */,
-				5C52A5A217B692E8008DAABF /* 07_30_Normal_Angled_parasagittal.png in Resources */,
-				5C52A5A517B692F9008DAABF /* 08_30_Normal_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
