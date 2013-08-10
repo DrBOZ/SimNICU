@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *orientation;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *labelledImage;
 
 @end

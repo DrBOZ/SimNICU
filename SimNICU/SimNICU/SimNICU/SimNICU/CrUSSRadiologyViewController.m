@@ -32,7 +32,7 @@
 
 @implementation CrUSSRadiologyViewController
 {
-    // NSMutableArray *tableData;
+    NSInteger oldPage;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -128,6 +128,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    oldPage = 0;
+    
     // remove all the objects to display in the scrollView
     [self.pageViews1 removeAllObjects];
     
@@ -175,7 +177,6 @@
     //
     // setup pageControl1
     CrUSSScanSeries *scanSeries = self.crUSSScans[self.pageControl2.currentPage];
-    // CrUSSScanSeries *scanSeries = self.crUSSScans[0]; // temp
     
     pageCount = [scanSeries.scans count];
     
@@ -240,6 +241,8 @@
         // First, determine which page is currently visible
         CGFloat pageWidth = self.scrollView1.frame.size.width;
         NSInteger page = (NSInteger)floor((self.scrollView1.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+        // NSLog(@" ");
+        // NSLog(@"page = %i", page);
         
         // Update the page control
         if (page < scanSeries.scans.count)
@@ -262,21 +265,24 @@
         self.viewLabel.text = image.text;
         
         // Work out which pages we want to load
-        NSInteger firstPage = page - 1;
-        NSInteger lastPage = page + 1;
+        NSInteger previousPage = page - 1;
+        NSInteger nextPage = page + 1;
         
         // Purge anything before the first page
-        for (NSInteger i = 0; i < firstPage; i++)
+        for (NSInteger i = 0; i < previousPage; i++)
         {
             [self purgePage:i forPageControl:self.pageControl1];
+            // NSLog(@"Purge page");
         }
-        for (NSInteger i = firstPage; i <= lastPage; i++)
+        for (NSInteger i = previousPage; i <= nextPage; i++)
         {
             [self loadPage:i forPageControl:self.pageControl1];
+            // NSLog(@"Load page");
         }
-        for (NSInteger i = lastPage + 1; i < [scanSeries.scans count]; i++)
+        for (NSInteger i = nextPage + 1; i < [scanSeries.scans count]; i++)
         {
             [self purgePage:i forPageControl:self.pageControl1];
+            // NSLog(@"Purge page");
         }
     }
     else if ([pageControl isEqual:self.pageControl2])
@@ -287,6 +293,12 @@
         
         // Update the page control
         self.pageControl2.currentPage = page;
+        
+        if (page != oldPage)
+        {
+            oldPage = page;
+            [self reloadVisiblePagesAfterChangingSeries];
+        }
         
         // Work out which pages we want to load
         NSInteger previousPage = page - 1;
@@ -324,6 +336,7 @@
         UIView *pageView = [self.pageViews1 objectAtIndex:page];
         if ((NSNull *)pageView == [NSNull null])
         {
+            // NSLog(@"Loading... page %i", page);
             CGRect frame = self.scrollView1.bounds;
             frame.origin.x = frame.size.width * page;
             frame.origin.y = 0.0f;
@@ -429,6 +442,67 @@
     else if ([scrollView isEqual:self.scrollView2])
     {
         [self loadVisiblePagesForPageControl:self.pageControl2];
+    }
+}
+
+- (void)reloadVisiblePagesAfterChangingSeries
+{
+    [self.pageViews1 removeAllObjects];
+    
+    CrUSSScanSeries *scanSeries = self.crUSSScans[self.pageControl2.currentPage];
+    
+    NSInteger pageCount = [scanSeries.scans count];
+    
+    for (NSInteger i = 0; i < pageCount; ++i)
+    {
+        [self.pageViews1 addObject:[NSNull null]];
+    }
+    
+    // First, determine which page is currently visible
+    CGFloat pageWidth = self.scrollView1.frame.size.width;
+    NSInteger page = (NSInteger)floor((self.scrollView1.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
+    // NSLog(@" ");
+    // NSLog(@"page = %i", page);
+    
+    // Update the page control
+    if (page < scanSeries.scans.count)
+    {
+        self.pageControl1.currentPage = page;
+    }
+    else if (page == scanSeries.scans.count)
+    {
+        // user trying to load more images than in database
+        page -= 1;
+    }
+    else
+    {
+        // user trying to load image -1
+        page = 0;
+    }
+    
+    CrUSSImage *image = scanSeries.scans[page];
+    
+    self.viewLabel.text = image.text;
+    
+    // Work out which pages we want to load
+    NSInteger previousPage = page - 1;
+    NSInteger nextPage = page + 1;
+    
+    // Purge anything before the first page
+    for (NSInteger i = 0; i < previousPage; i++)
+    {
+        [self purgePage:i forPageControl:self.pageControl1];
+        // NSLog(@"Purge page");
+    }
+    for (NSInteger i = previousPage; i <= nextPage; i++)
+    {
+        [self loadPage:i forPageControl:self.pageControl1];
+        // NSLog(@"Load page");
+    }
+    for (NSInteger i = nextPage + 1; i < [scanSeries.scans count]; i++)
+    {
+        [self purgePage:i forPageControl:self.pageControl1];
+        // NSLog(@"Purge page");
     }
 }
 

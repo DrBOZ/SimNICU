@@ -80,7 +80,7 @@
     [scanSeries.scans addObject:scanImage];
     
     scanImage = [[CrUSSImage alloc] init];
-    scanImage.text = @"Lt Tangential parasagittal";
+    scanImage.text = @"Left Tangential parasagittal";
     scanImage.orientation = @"Sagittal";
     scanImage.image = [UIImage imageNamed:@"10_30_Normal_Lt_Tangential_parasagittal.png"];
     [scanSeries.scans addObject:scanImage];
@@ -149,7 +149,7 @@
     [scanSeries.scans addObject:scanImage];
     
     scanImage = [[CrUSSImage alloc] init];
-    scanImage.text = @"Lt Tangential parasagittal";
+    scanImage.text = @"Left Tangential parasagittal";
     scanImage.orientation = @"Sagittal";
     scanImage.image = [UIImage imageNamed:@"10_30_Lt_IVH_Lt_Tangential_parasagittal.png"];
     [scanSeries.scans addObject:scanImage];
