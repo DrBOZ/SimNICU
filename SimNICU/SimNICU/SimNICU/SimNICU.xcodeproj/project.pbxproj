@@ -806,6 +806,26 @@
 		5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C51790759500DA0278 /* DrugIndication.m */; };
 		5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
 		5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
+		5CD541C717B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */; };
+		5CD541C817B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */; };
+		5CD541C917B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
+		5CD541CA17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
+		5CD541CB17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BF17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png */; };
+		5CD541CC17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BF17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png */; };
+		5CD541CD17B6A3B900FCAE5C /* 04_30_Normal_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C017B6A3B900FCAE5C /* 04_30_Normal_Trigone.png */; };
+		5CD541CE17B6A3B900FCAE5C /* 04_30_Normal_Trigone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C017B6A3B900FCAE5C /* 04_30_Normal_Trigone.png */; };
+		5CD541CF17B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C117B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png */; };
+		5CD541D017B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C117B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png */; };
+		5CD541D117B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C217B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png */; };
+		5CD541D217B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C217B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png */; };
+		5CD541D317B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C317B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png */; };
+		5CD541D417B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C317B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png */; };
+		5CD541D517B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C417B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png */; };
+		5CD541D617B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C417B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png */; };
+		5CD541D717B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C517B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png */; };
+		5CD541D817B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C517B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png */; };
+		5CD541D917B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */; };
+		5CD541DA17B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CDBACAC179C0F8800D1A03D /* PatientListWarningROP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */; };
@@ -1415,6 +1435,16 @@
 		5CD3B0C51790759500DA0278 /* DrugIndication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugIndication.m; sourceTree = "<group>"; };
 		5CD3B0C81790773600DA0278 /* DrugRouteOfAdministration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugRouteOfAdministration.h; sourceTree = "<group>"; };
 		5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugRouteOfAdministration.m; sourceTree = "<group>"; };
+		5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_30_Normal_Frontal_lobes.png; sourceTree = "<group>"; };
+		5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_30_Normal_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
+		5CD541BF17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_30_Normal_Third_ventricle.png; sourceTree = "<group>"; };
+		5CD541C017B6A3B900FCAE5C /* 04_30_Normal_Trigone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04_30_Normal_Trigone.png; sourceTree = "<group>"; };
+		5CD541C117B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05_30_Normal_Occipital_lobes.png; sourceTree = "<group>"; };
+		5CD541C217B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06_30_Normal_Midline_Sagittal.png; sourceTree = "<group>"; };
+		5CD541C317B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 07_30_Normal_Rt_Angled_parasagittal.png; sourceTree = "<group>"; };
+		5CD541C417B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08_30_Normal_Rt_Tangential_parasagittal.png; sourceTree = "<group>"; };
+		5CD541C517B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09_30_Normal_Lt_Angled_parasagittal.png; sourceTree = "<group>"; };
+		5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10_30_Normal_Lt_Tangential_parasagittal.png; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PatientListWarningROP.png; sourceTree = "<group>"; };
@@ -2687,6 +2717,16 @@
 		5CA0BE3117B69D8E00BDF842 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
+				5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */,
+				5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */,
+				5CD541BF17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png */,
+				5CD541C017B6A3B900FCAE5C /* 04_30_Normal_Trigone.png */,
+				5CD541C117B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png */,
+				5CD541C217B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png */,
+				5CD541C317B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png */,
+				5CD541C417B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png */,
+				5CD541C517B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png */,
+				5CD541C617B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png */,
 			);
 			name = Normal;
 			sourceTree = "<group>";
@@ -3110,6 +3150,16 @@
 				5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */,
 				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
+				5CD541C717B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */,
+				5CD541C917B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5CD541CB17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png in Resources */,
+				5CD541CD17B6A3B900FCAE5C /* 04_30_Normal_Trigone.png in Resources */,
+				5CD541CF17B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png in Resources */,
+				5CD541D117B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png in Resources */,
+				5CD541D317B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png in Resources */,
+				5CD541D517B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png in Resources */,
+				5CD541D717B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */,
+				5CD541D917B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3358,6 +3408,16 @@
 				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,
 				5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
+				5CD541C817B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */,
+				5CD541CA17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
+				5CD541CC17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png in Resources */,
+				5CD541CE17B6A3B900FCAE5C /* 04_30_Normal_Trigone.png in Resources */,
+				5CD541D017B6A3B900FCAE5C /* 05_30_Normal_Occipital_lobes.png in Resources */,
+				5CD541D217B6A3B900FCAE5C /* 06_30_Normal_Midline_Sagittal.png in Resources */,
+				5CD541D417B6A3B900FCAE5C /* 07_30_Normal_Rt_Angled_parasagittal.png in Resources */,
+				5CD541D617B6A3B900FCAE5C /* 08_30_Normal_Rt_Tangential_parasagittal.png in Resources */,
+				5CD541D817B6A3B900FCAE5C /* 09_30_Normal_Lt_Angled_parasagittal.png in Resources */,
+				5CD541DA17B6A3B900FCAE5C /* 10_30_Normal_Lt_Tangential_parasagittal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
