@@ -15,11 +15,15 @@
 @interface CrUSSRadiologyViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UIPageControl *pageControl;
-@property (nonatomic, strong) NSMutableArray *pageViews;
-@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UIPageControl *pageControl1;
+@property (nonatomic, strong) UIPageControl *pageControl2;
 @property (nonatomic, strong) NSMutableArray *crUSSImages;
+@property (nonatomic, strong) NSMutableArray *pageViews1;
+@property (nonatomic, strong) NSMutableArray *pageViews2;
 @property (nonatomic, strong) UIScrollView *scrollView1;
+@property (nonatomic, strong) UIScrollView *scrollView2;
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UILabel *viewLabel;
 
 @end
 
@@ -45,16 +49,30 @@
                                                                                  style:UIBarButtonItemStyleBordered
                                                                                 target:nil
                                                                                 action:nil];
+        
+        // view label
+        self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 46.0f, 320.0f, 21.0f)];
+        self.viewLabel.font = [UIFont boldSystemFontOfSize:23.0f];
+        self.viewLabel.backgroundColor = [UIColor blackColor];
+        self.viewLabel.textAlignment = UITextAlignmentCenter;
+        self.viewLabel.textColor = [UIColor whiteColor];
+        self.viewLabel.text = @"Frontal lobes";
+        [self.view addSubview:self.viewLabel];
+        
         // instantiate UIScrollView & UIPageControl
         if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
         {
             self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
-            self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
+            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 476.0f, 320.0f, 21.0f)];
+            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
+            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 512.0f, 320.0f, 36.0f)];
         }
         else // 3.5 inch Retina
         {
             self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
-            self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 417.0f, 320.0f, 36.0f)];
+            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 476.0f, 320.0f, 21.0f)];
+            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 417.0f, 320.0f, 36.0f)];
+            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 512.0f, 320.0f, 36.0f)];
         }
         
         self.scrollView1.delegate = self;
@@ -74,8 +92,28 @@
         self.scrollView1.clearsContextBeforeDrawing = YES;
         self.scrollView1.multipleTouchEnabled = YES;
         
-        self.pageControl.opaque = YES;
-        self.pageControl.userInteractionEnabled = NO;
+        self.scrollView2.delegate = self;
+        self.scrollView2.showsHorizontalScrollIndicator = NO;
+        self.scrollView2.showsVerticalScrollIndicator = NO;
+        self.scrollView2.scrollEnabled = YES;
+        self.scrollView2.clipsToBounds = YES;
+        self.scrollView2.pagingEnabled = YES;
+        self.scrollView2.decelerationRate = UIScrollViewDecelerationRateFast;
+        self.scrollView2.bounces = YES;
+        self.scrollView2.bouncesZoom = YES;
+        self.scrollView2.userInteractionEnabled = YES;
+        self.scrollView2.canCancelContentTouches = YES;
+        self.scrollView2.delaysContentTouches = YES;
+        self.scrollView2.opaque = YES;
+        self.scrollView2.autoresizesSubviews = YES;
+        self.scrollView2.clearsContextBeforeDrawing = YES;
+        self.scrollView2.multipleTouchEnabled = YES;
+        
+        self.pageControl1.opaque = YES;
+        self.pageControl1.userInteractionEnabled = NO;
+        
+        self.pageControl2.opaque = YES;
+        self.pageControl2.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -84,26 +122,13 @@
 {
     [super viewDidLoad];
     
-    NSInteger pageCount = self.crUSSImages.count;
     
-    NSLog(@"pageCount = %i", pageCount);
-    
-    // Set up the page control
-    self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = pageCount;
-    
-    // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < pageCount; ++i)
-    {
-        [self.pageViews addObject:[NSNull null]];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     // remove all the objects to display in the scrollView
-    [self.pageViews removeAllObjects];
+    [self.pageViews1 removeAllObjects];
     
     if (!self.crUSSImages)
     {
@@ -138,15 +163,15 @@
     NSInteger pageCount = self.crUSSImages.count;
     
     // Set up the page control
-    self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = pageCount;
+    self.pageControl1.currentPage = 0;
+    self.pageControl1.numberOfPages = pageCount;
     
     // Set up the array to hold the views for each page
-    self.pageViews = [[NSMutableArray alloc] init];
+    self.pageViews1 = [[NSMutableArray alloc] init];
     
     for (NSInteger i = 0; i < pageCount; ++i)
     {
-        [self.pageViews addObject:[NSNull null]];
+        [self.pageViews1 addObject:[NSNull null]];
     }
     
     // Set up the content size of the scroll view
@@ -160,7 +185,7 @@
     [self loadVisiblePages];
     
     [self.view addSubview:self.scrollView1];
-    [self.view addSubview:self.pageControl];
+    [self.view addSubview:self.pageControl1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -174,7 +199,7 @@
 #endif
     
     //[self.view addSubview:self.scrollView1];
-    // [self.view addSubview:self.pageControl];
+    // [self.view addSubview:self.pageControl1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -197,7 +222,7 @@
     NSInteger page = (NSInteger)floor((self.scrollView1.contentOffset.x * 2.0f + pageWidth) / (pageWidth * 2.0f));
     
     // Update the page control
-    self.pageControl.currentPage = page;
+    self.pageControl1.currentPage = page;
     
     // Work out which pages we want to load
     NSInteger firstPage = page - 1;
@@ -227,7 +252,7 @@
     }
     
     // Load an individual page, first seeing if we've already loaded it
-    UIView *pageView = [self.pageViews objectAtIndex:page];
+    UIView *pageView = [self.pageViews1 objectAtIndex:page];
     if ((NSNull *)pageView == [NSNull null])
     {
         CGRect frame = self.scrollView1.bounds;
@@ -239,7 +264,7 @@
         newPageView.contentMode = UIViewContentModeScaleAspectFill;
         newPageView.frame = frame;
         [self.scrollView1 addSubview:newPageView];
-        [self.pageViews replaceObjectAtIndex:page withObject:newPageView];
+        [self.pageViews1 replaceObjectAtIndex:page withObject:newPageView];
     }
 }
 
@@ -252,11 +277,11 @@
     }
     
     // Remove a page from the scroll view and reset the container array
-    UIView *pageView = [self.pageViews objectAtIndex:page];
+    UIView *pageView = [self.pageViews1 objectAtIndex:page];
     if ((NSNull*)pageView != [NSNull null])
     {
         [pageView removeFromSuperview];
-        [self.pageViews replaceObjectAtIndex:page withObject:[NSNull null]];
+        [self.pageViews1 replaceObjectAtIndex:page withObject:[NSNull null]];
     }
 }
 
