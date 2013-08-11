@@ -869,37 +869,38 @@
                 newViewController.workingWeight = self.weight;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         else if (indexPath.row == 1)
         {
-            NSLog(@"showIntubation");
-            
             IntubationViewController *newViewController = [[IntubationViewController alloc] init];
             
-            newViewController.gestation = self.gestation;
-            newViewController.weight = self.weight;
+            if (self.selectedPatient)
+            {
+                newViewController.gestation = self.selectedPatient.gestation;
+                newViewController.weight = self.selectedPatient.workingWeight;
+            }
+            else
+            {
+                newViewController.gestation = self.gestation;
+                newViewController.weight = self.weight;
+            }
             
             ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
             
             EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
             
-            NSLog(@"enterWeightViewController.preferences.ETTRoundUp = %@", enterWeightViewController.preferences.ETTRoundUp);
-            
             newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         else if (indexPath.row == 2)
         {
-            NSLog(@"showResus");
-            
             ResusViewController *newViewController = [[ResusViewController alloc] init];
             newViewController.workingWeight = self.weight;
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
     }
     else
@@ -932,26 +933,23 @@
             
             newAPGARTabBarController.selectedPatient = self.selectedPatient;
             
-            [appDelegate.navigationController pushViewController:newAPGARTabBarController animated:YES];
+            [self.navigationController pushViewController:newAPGARTabBarController animated:YES];
         }
         
 #pragma mark Blood Products
         
         else if ([thisScreenType isEqualToString:@"BloodProducts"])
         {
-            NSLog(@"showBloodProducts");
-            
             BloodProductsViewController *newViewController = [[BloodProductsViewController alloc] init];
             newViewController.workingWeight = self.weight;
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Calculator
         
         else if ([thisScreenType isEqualToString:@"Calculator"])
         {
-            NSLog(@"showCalculator");
-            
             CalculatorViewController *newViewController = [[CalculatorViewController alloc] init];
             
             if (self.selectedPatient)
@@ -966,38 +964,34 @@
                 newViewController.selectedPatient = tempPatient;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Cooling
         
         else if ([thisScreenType isEqualToString:@"Cooling"])
         {
-            NSLog(@"showCooling");
-            
             CoolingViewController *newViewController = [[CoolingViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+    
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Curosurf
         
         else if ([thisScreenType isEqualToString:@"Curosurf"])
         {
-            NSLog(@"showCurosurf");
-            
             CurosurfViewController *newViewController = [[CurosurfViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Cranial Ultrasound
         
         else if ([thisScreenType isEqualToString:@"CrUSS"])
         {
-            NSLog(@"showCrUSS");
             CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
             // CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
+            
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
@@ -1005,17 +999,15 @@
         
         else if ([thisScreenType isEqualToString:@"CDH"])
         {
-            NSLog(@"showCDH");
             CDHViewController *newViewController = [[CDHViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Drugs
         
         else if ([thisScreenType isEqualToString:@"Drugs"])
         {
-            NSLog(@"showDrugs");
-            
             DrugsViewController *newViewController = [[DrugsViewController alloc] init];
             newViewController.index = 0;
             
@@ -1029,15 +1021,13 @@
                 newViewController.workingWeight = self.weight;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Early Care
         
         else if ([thisScreenType isEqualToString:@"EarlyCare"])
         {
-            NSLog(@"showEarlyCare");
-            
             EarlyCareViewController *newViewController = [[EarlyCareViewController alloc] init];
             
             if (self.earlyCareWarningShown)
@@ -1049,8 +1039,7 @@
                 self.earlyCareWarningShown = YES;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Gastroschisis
@@ -1058,8 +1047,8 @@
         else if ([thisScreenType isEqualToString:@"Gastroschisis"])
         {
             GastroschisisViewController *newViewController = [[GastroschisisViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
             
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Glucose Infusion Rate
@@ -1075,18 +1064,15 @@
         
         else if ([thisScreenType isEqualToString:@"HFOV"])
         {
-            NSLog(@"showHFOV");
             HFOVViewController *newViewController = [[HFOVViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Infusions
         
         else if ([thisScreenType isEqualToString:@"Infusions"])
         {
-            NSLog(@" ");
-            
             InfusionsViewController *newViewController = [[InfusionsViewController alloc] init];
             
             if (self.selectedPatient.workingWeight)
@@ -1098,8 +1084,7 @@
                 newViewController.workingWeight = self.weight;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Intubation
@@ -1127,7 +1112,6 @@
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
             [self.navigationController pushViewController:newViewController animated:YES];
-            // [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Narcan
@@ -1180,8 +1164,7 @@
         {
             PlasticBagViewController *newViewController = [[PlasticBagViewController alloc] init];
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Phototherapy
@@ -1199,8 +1182,6 @@
             }
             else if (self.gestation)
             {
-                NSLog(@"self.selectedPatient = NO & self.gestation = YES");
-                
                 if ([self.gestation integerValue] >= 38)
                 {
                     newViewController.gestation = [NSNumber numberWithInt:38];
@@ -1211,8 +1192,6 @@
                 }
                 
                 newViewController.gestationLocked = @"YES";
-                
-                NSLog(@"newViewController.gestation = %@", newViewController.gestation);
             }
             
             ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
@@ -1230,37 +1209,32 @@
             
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Pulmonary Haemorrhage
         
         else if ([thisScreenType isEqualToString:@"PulmonaryHaemorrhage"])
         {
-            NSLog(@"showPulmonaryHaemorrhage");
-            
             PulmonaryHaemorrhageViewController *newViewController = [[PulmonaryHaemorrhageViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Resuscitation
         
         else if ([thisScreenType isEqualToString:@"Resus"])
         {
-            NSLog(@"showResus");
-            
             ResusViewController *newViewController = [[ResusViewController alloc] init];
             newViewController.workingWeight = self.weight;
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
             
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Retinopathy of Prematurity
         
         else if ([thisScreenType isEqualToString:@"ROP"])
         {
-            NSLog(@"showROP");
-            
             ROPViewController *newViewController = [[ROPViewController alloc] init];
             
             newViewController.selectedPatient = self.selectedPatient;
@@ -1292,26 +1266,22 @@
                 newViewController.selectedPatient = newPatient;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Transport Ventilator
         
         else if ([thisScreenType isEqualToString:@"BabyPac"])
         {
-            NSLog(@"showTransportVent");
-            
             TransportVentilatorViewController *newViewController = [[TransportVentilatorViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Umbilical Lines
         
         else if ([thisScreenType isEqualToString:@"UACUVC"])
         {
-            NSLog(@"showUACUVC");
-            
             UVCUACViewController *newViewController = [[UVCUACViewController alloc] init];
             
             newViewController.selectedPatient = self.selectedPatient;
@@ -1343,17 +1313,16 @@
                 newViewController.selectedPatient = newPatient;
             }
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Vitamin K
         
         else if ([thisScreenType isEqualToString:@"VitK"])
         {
-            NSLog(@"showVitK");
-            
             VitKViewController *newViewController = [[VitKViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Weight Conversion
@@ -1373,8 +1342,9 @@
 #else
             
             WeightConversionViewController *newViewController = [[WeightConversionViewController alloc] init];
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
             
+            [self.navigationController pushViewController:newViewController animated:YES];
+
 #endif
             
         }
