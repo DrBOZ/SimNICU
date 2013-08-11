@@ -54,7 +54,7 @@
         
         calculator = [[Calculator alloc] init];
         calculator.text = @"Including postmenstrual age";
-        calculator.detailText = @"During neonatal hospital stay";
+        calculator.detailText = @"Until 40 weeks gestation";
         [calculators addObject:calculator];
         
         [calculatorGroup addObject:calculators];
@@ -63,7 +63,7 @@
         
         calculator = [[Calculator alloc] init];
         calculator.text = @"Corrected age";
-        calculator.detailText = @"After neonatal hospital stay";
+        calculator.detailText = @"After 40 weeks gestation";
         [calculators addObject:calculator];
         
         /*

@@ -67,6 +67,10 @@
         rowData.text = @"Standard sequence";
         [sectionData.rowData addObject:rowData];
         
+        rowData = [[CBTableViewRowData alloc] init];
+        rowData.text = @"Measuring ventricular index";
+        [sectionData.rowData addObject:rowData];
+        
         [tableData addObject:sectionData];
         
         // section 2
@@ -75,27 +79,10 @@
         sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:5];
         
         rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"23 - 24/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"25 - 27/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"28 - 33/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"34 - 36/40 views";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Term views";
+        rowData.text = @"Image viewer";
         [sectionData.rowData addObject:rowData];
         
         [tableData addObject:sectionData];
-        
         
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                                                                  style:UIBarButtonItemStyleBordered
