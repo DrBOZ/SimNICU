@@ -43,7 +43,7 @@
         //delegate
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        self.title = @"Cranial Ultrasound";
+        self.title = @"Image Viewer";
         
         self.view.backgroundColor = [UIColor blackColor];
         // self.view.backgroundColor = [UIColor grayColor];
