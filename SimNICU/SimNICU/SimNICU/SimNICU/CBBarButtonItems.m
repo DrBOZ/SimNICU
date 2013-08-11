@@ -70,4 +70,16 @@
     return settingsBarButton;
 }
 
+// How to make a custom BarButtonItem...
+/*
+ UIView *roundIconView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 48.0f, 48.0f)];
+ UIImageView *roundIconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SimNICU_round.png"]];
+ roundIconImageView.frame = CGRectMake(0.0f, 0.0f, 48.0f, 48.0f);
+ roundIconImageView.contentMode = UIViewContentModeScaleToFill;
+ [roundIconView addSubview:roundIconImageView];
+ 
+ UIBarButtonItem *SimNICUButton = [[UIBarButtonItem alloc] initWithCustomView:roundIconView];
+ self.navigationItem.leftBarButtonItem = SimNICUButton;
+ */
+
 @end

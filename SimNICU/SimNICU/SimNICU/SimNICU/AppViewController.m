@@ -426,14 +426,30 @@
     
     NSLog(@"LOADING_GRAPHICS SET");
     
+    // reset display background
+    self.displayBackground.frame = CGRectMake(30.0f, 40.0f, 245.0f, 50.0f);
+    self.displayBackground.backgroundColor = [UIColor blackColor];
     self.displayBackground.hidden = NO;
+    self.displayBackground.alpha = .4;
     
-    self.displayTextLabel.text = @"LOADING";
+    // reset displayTextLabel
+    self.displayTextLabel.frame = CGRectMake(39.0f, 39.0f, 210.0f, 30.0f);
+    self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+    self.displayTextLabel.backgroundColor = [UIColor clearColor];
     self.displayTextLabel.textAlignment = UITextAlignmentCenter;
+    self.displayTextLabel.textColor = [UIColor whiteColor];
+    self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.displayTextLabel.text = @"LOADING";
     self.displayTextLabel.hidden = NO;
     
-    self.displayDetailTextLabel.text = @"Please wait...";
+    // reset displayDetailTextLabel
+    self.displayDetailTextLabel.frame = CGRectMake(39.0f, 60.0f, 227.0f, 30.0f);
+    self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
+    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
     self.displayDetailTextLabel.textAlignment = UITextAlignmentCenter;
+    self.displayDetailTextLabel.textColor = [UIColor whiteColor];
+    self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.displayDetailTextLabel.text = @"Please wait...";
     self.displayDetailTextLabel.hidden = NO;
     
 #endif
@@ -454,18 +470,6 @@
         
         // Enter Weight button
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:appDelegate.revealController action:@selector(revealToggle:)];
-        
-        // How to make a custom BarButtonItem...
-        /*
-        UIView *roundIconView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 48.0f, 48.0f)];
-        UIImageView *roundIconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SimNICU_round.png"]];
-        roundIconImageView.frame = CGRectMake(0.0f, 0.0f, 48.0f, 48.0f);
-        roundIconImageView.contentMode = UIViewContentModeScaleToFill;
-        [roundIconView addSubview:roundIconImageView];
-        
-        UIBarButtonItem *SimNICUButton = [[UIBarButtonItem alloc] initWithCustomView:roundIconView];
-        self.navigationItem.leftBarButtonItem = SimNICUButton;
-        */
     }
     
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
