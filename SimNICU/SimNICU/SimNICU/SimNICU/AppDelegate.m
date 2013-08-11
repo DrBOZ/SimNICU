@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 23/05/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #import "EnterWeightViewController.h"
@@ -62,9 +62,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     [iRate sharedInstance].appStoreID = 518447654;
     [iRate sharedInstance].applicationBundleID = @"com.conradbosman.SimNICU";
-    [iRate sharedInstance].applicationName = @"SimNICU";
-    [iRate sharedInstance].messageTitle = NSLocalizedString(@"Like SimNICU?", nil);
-    [iRate sharedInstance].message = NSLocalizedString(@"Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.", nil);
+    [iRate sharedInstance].applicationName = @"Neonatal Intensive Care";
+    [iRate sharedInstance].messageTitle = NSLocalizedString(@"Find the App useful?", nil);
+    [iRate sharedInstance].message = NSLocalizedString(@"Please rate it on the App Store.\nIt will only take a moment, and ratings really help me to work hard on future improvements.", nil);
     
     // Will only prompt after 10 days AND/OR 20 uses, with a remind period of 7 days
     

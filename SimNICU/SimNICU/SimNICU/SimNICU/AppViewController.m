@@ -1,9 +1,9 @@
 //
 //  AppViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 23/05/2012.
-//  Copyright (c) 2012 SimNICU Project. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #import "PortraitOnlyNavigationController.h"

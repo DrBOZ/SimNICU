@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 23/05/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #define APP_SHADING 0
@@ -13,7 +13,7 @@
 #define BACKGROUND_IPHONE_4_PORTRAIT_PNG @"LightGreyWithDimples4inchRetinaPortrait.png"
 
 #define GOOGLE_ANALYTICS 0
-#define IRATE_SET 0
+#define IRATE_SET 1
 
 #define IRATE_PREVIEW_MODE 0
 #define DCINTROSPECT_ON 0
