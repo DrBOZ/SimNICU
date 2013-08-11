@@ -107,9 +107,6 @@
 		5C101D2E17AE99020095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2D17AE99020095E751 /* Default.png */; };
 		5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2F17AE991C0095E751 /* Default-568h@2x.png */; };
 		5C101D3217AE99250095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3117AE99250095E751 /* Default@2x.png */; };
-		5C101D3417AE99E30095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3317AE99E30095E751 /* Default.png */; };
-		5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3517AE99ED0095E751 /* Default@2x.png */; };
-		5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3717AE99FA0095E751 /* Default-568h@2x.png */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -927,9 +924,6 @@
 		5C101D2D17AE99020095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5C101D2F17AE991C0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C101D3117AE99250095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		5C101D3317AE99E30095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
-		5C101D3517AE99ED0095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
-		5C101D3717AE99FA0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -2722,9 +2716,6 @@
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
 				5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */,
-				5C101D3717AE99FA0095E751 /* Default-568h@2x.png */,
-				5C101D3517AE99ED0095E751 /* Default@2x.png */,
-				5C101D3317AE99E30095E751 /* Default.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -3180,9 +3171,6 @@
 				5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 				5C7FD72017A6416700FF39E1 /* settings.png in Resources */,
 				5C7FD72217A6416700FF39E1 /* settings@2x.png in Resources */,
-				5C101D3417AE99E30095E751 /* Default.png in Resources */,
-				5C101D3617AE99ED0095E751 /* Default@2x.png in Resources */,
-				5C101D3817AE99FA0095E751 /* Default-568h@2x.png in Resources */,
 				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
 				5CD541C717B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */,

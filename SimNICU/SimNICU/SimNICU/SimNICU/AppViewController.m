@@ -996,9 +996,8 @@
         else if ([thisScreenType isEqualToString:@"CrUSS"])
         {
             NSLog(@"showCrUSS");
-            // CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
-            // [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
+            CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
+            // CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
