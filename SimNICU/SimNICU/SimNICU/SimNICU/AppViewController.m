@@ -1106,8 +1106,6 @@
         
         else if ([thisScreenType isEqualToString:@"Intubation"])
         {
-            NSLog(@" ");
-            
             IntubationViewController *newViewController = [[IntubationViewController alloc] init];
             
             if (self.selectedPatient)
@@ -1128,8 +1126,8 @@
             newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
-            
+            [self.navigationController pushViewController:newViewController animated:YES];
+            // [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Narcan

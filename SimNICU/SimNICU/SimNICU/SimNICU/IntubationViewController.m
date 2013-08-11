@@ -1,9 +1,9 @@
 //
 //  IntubationViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 11/08/2012.
-//  Copyright (c) 2012 SimNICU Project. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #import "IntubationDrugsViewController.h"
@@ -23,6 +23,17 @@
 @end
 
 @implementation IntubationViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        // code
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -55,15 +66,15 @@
         
         //menu table
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 44.0f;
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
+        self.myTableView.separatorColor = [UIColor grayColor];
         self.myTableView.sectionFooterHeight = 10.0f;
         self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = NO;
+        self.myTableView.rowHeight = 44.0f;
+        self.myTableView.dataSource = self;
         self.myTableView.scrollEnabled = NO;
+        self.myTableView.delegate = self;
+        self.myTableView.bounces = NO;
+        self.myTableView.hidden = NO;
         [self.view addSubview:self.myTableView];
         
         // add TableView background
@@ -344,9 +355,6 @@
     {
         self.roundedSwitch.on = YES;
     }
-    
-    [self setPicker];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -354,6 +362,8 @@
     [super viewDidAppear:animated];
     
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
+    
+    [self setPicker]; // select picker only once view appears
     
 #if GOOGLE_ANALYTICS
     

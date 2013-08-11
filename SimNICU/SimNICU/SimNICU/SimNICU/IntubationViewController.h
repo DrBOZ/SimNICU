@@ -1,10 +1,12 @@
 //
 //  IntubationViewController.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 05/09/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
+
+#import "Patient.h"
 
 @class IntubationViewController;
 
@@ -18,8 +20,9 @@
 
 @property (nonatomic, unsafe_unretained) id <IntubationViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSString *endotrachealTubeType;
+@property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *gestation;
-@property (nonatomic, strong) NSString *weight;
 @property (nonatomic, strong) NSString *roundUp;
+@property (nonatomic, strong) NSString *weight;
 
 @end
