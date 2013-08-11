@@ -339,9 +339,6 @@
 		5C940B40166E3BED0044A7D1 /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3C166E3BED0044A7D1 /* instructions.png */; };
 		5C940B41166E3BED0044A7D1 /* instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3D166E3BED0044A7D1 /* instructions@2x.png */; };
 		5C940B42166E3BED0044A7D1 /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B3F166E3BED0044A7D1 /* InstructionsViewController.m */; };
-		5C940B47166E3BFA0044A7D1 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B43166E3BFA0044A7D1 /* twitter.png */; };
-		5C940B48166E3BFA0044A7D1 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B44166E3BFA0044A7D1 /* twitter@2x.png */; };
-		5C940B49166E3BFA0044A7D1 /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B46166E3BFA0044A7D1 /* TwitterViewController.m */; };
 		5C940B4F166E3C060044A7D1 /* disclaimer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4A166E3C060044A7D1 /* disclaimer.png */; };
 		5C940B50166E3C060044A7D1 /* disclaimer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4B166E3C060044A7D1 /* disclaimer@2x.png */; };
 		5C940B51166E3C060044A7D1 /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4C166E3C060044A7D1 /* disclaimer.html */; };
@@ -582,7 +579,6 @@
 		5CD3AFC916CF38D500DE362C /* AboutSimNICUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController.m */; };
 		5CD3AFCA16CF38D500DE362C /* UnderlineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B2B166E3BDF0044A7D1 /* UnderlineLabel.m */; };
 		5CD3AFCB16CF38D500DE362C /* InstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B3F166E3BED0044A7D1 /* InstructionsViewController.m */; };
-		5CD3AFCC16CF38D500DE362C /* TwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B46166E3BFA0044A7D1 /* TwitterViewController.m */; };
 		5CD3AFCD16CF38D500DE362C /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B4E166E3C060044A7D1 /* DisclaimerViewController.m */; };
 		5CD3AFCE16CF38D500DE362C /* APGARTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B55166E3C2E0044A7D1 /* APGARTabBarController.m */; };
 		5CD3AFCF16CF38D500DE362C /* APGAR1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B57166E3C2E0044A7D1 /* APGAR1ViewController.m */; };
@@ -687,8 +683,6 @@
 		5CD3B03416CF38D500DE362C /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B22166E3BDF0044A7D1 /* about@2x.png */; };
 		5CD3B03516CF38D500DE362C /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3C166E3BED0044A7D1 /* instructions.png */; };
 		5CD3B03616CF38D500DE362C /* instructions@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B3D166E3BED0044A7D1 /* instructions@2x.png */; };
-		5CD3B03716CF38D500DE362C /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B43166E3BFA0044A7D1 /* twitter.png */; };
-		5CD3B03816CF38D500DE362C /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B44166E3BFA0044A7D1 /* twitter@2x.png */; };
 		5CD3B03916CF38D500DE362C /* disclaimer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4A166E3C060044A7D1 /* disclaimer.png */; };
 		5CD3B03A16CF38D500DE362C /* disclaimer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4B166E3C060044A7D1 /* disclaimer@2x.png */; };
 		5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4C166E3C060044A7D1 /* disclaimer.html */; };
@@ -1174,10 +1168,6 @@
 		5C940B3D166E3BED0044A7D1 /* instructions@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instructions@2x.png"; sourceTree = "<group>"; };
 		5C940B3E166E3BED0044A7D1 /* InstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionsViewController.h; sourceTree = "<group>"; };
 		5C940B3F166E3BED0044A7D1 /* InstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionsViewController.m; sourceTree = "<group>"; };
-		5C940B43166E3BFA0044A7D1 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
-		5C940B44166E3BFA0044A7D1 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
-		5C940B45166E3BFA0044A7D1 /* TwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterViewController.h; sourceTree = "<group>"; };
-		5C940B46166E3BFA0044A7D1 /* TwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterViewController.m; sourceTree = "<group>"; };
 		5C940B4A166E3C060044A7D1 /* disclaimer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclaimer.png; sourceTree = "<group>"; };
 		5C940B4B166E3C060044A7D1 /* disclaimer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclaimer@2x.png"; sourceTree = "<group>"; };
 		5C940B4C166E3C060044A7D1 /* disclaimer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disclaimer.html; sourceTree = "<group>"; };
@@ -2368,7 +2358,6 @@
 				5C940CB8166E43800044A7D1 /* InfoTabBarController.m */,
 				5C940B18166E3BBA0044A7D1 /* About */,
 				5C940B1B166E3BCF0044A7D1 /* Instructions */,
-				5C940B1A166E3BC90044A7D1 /* Twitter */,
 				5C940B19166E3BC00044A7D1 /* Disclaimer */,
 			);
 			name = Screen_About;
@@ -2395,17 +2384,6 @@
 				5C940B4E166E3C060044A7D1 /* DisclaimerViewController.m */,
 			);
 			name = Disclaimer;
-			sourceTree = "<group>";
-		};
-		5C940B1A166E3BC90044A7D1 /* Twitter */ = {
-			isa = PBXGroup;
-			children = (
-				5C940B43166E3BFA0044A7D1 /* twitter.png */,
-				5C940B44166E3BFA0044A7D1 /* twitter@2x.png */,
-				5C940B45166E3BFA0044A7D1 /* TwitterViewController.h */,
-				5C940B46166E3BFA0044A7D1 /* TwitterViewController.m */,
-			);
-			name = Twitter;
 			sourceTree = "<group>";
 		};
 		5C940B1B166E3BCF0044A7D1 /* Instructions */ = {
@@ -2969,8 +2947,6 @@
 				5C940B34166E3BDF0044A7D1 /* about@2x.png in Resources */,
 				5C940B40166E3BED0044A7D1 /* instructions.png in Resources */,
 				5C940B41166E3BED0044A7D1 /* instructions@2x.png in Resources */,
-				5C940B47166E3BFA0044A7D1 /* twitter.png in Resources */,
-				5C940B48166E3BFA0044A7D1 /* twitter@2x.png in Resources */,
 				5C940B4F166E3C060044A7D1 /* disclaimer.png in Resources */,
 				5C940B50166E3C060044A7D1 /* disclaimer@2x.png in Resources */,
 				5C940B51166E3C060044A7D1 /* disclaimer.html in Resources */,
@@ -3235,8 +3211,6 @@
 				5CD3B03416CF38D500DE362C /* about@2x.png in Resources */,
 				5CD3B03516CF38D500DE362C /* instructions.png in Resources */,
 				5CD3B03616CF38D500DE362C /* instructions@2x.png in Resources */,
-				5CD3B03716CF38D500DE362C /* twitter.png in Resources */,
-				5CD3B03816CF38D500DE362C /* twitter@2x.png in Resources */,
 				5CD3B03916CF38D500DE362C /* disclaimer.png in Resources */,
 				5CD3B03A16CF38D500DE362C /* disclaimer@2x.png in Resources */,
 				5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */,
@@ -3518,7 +3492,6 @@
 				5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */,
 				5C940B3A166E3BDF0044A7D1 /* UnderlineLabel.m in Sources */,
 				5C940B42166E3BED0044A7D1 /* InstructionsViewController.m in Sources */,
-				5C940B49166E3BFA0044A7D1 /* TwitterViewController.m in Sources */,
 				5C940B52166E3C060044A7D1 /* DisclaimerViewController.m in Sources */,
 				5C940BAE166E3C2E0044A7D1 /* APGARTabBarController.m in Sources */,
 				5C940BAF166E3C2E0044A7D1 /* APGAR1ViewController.m in Sources */,
@@ -3673,7 +3646,6 @@
 				5CD3AFC916CF38D500DE362C /* AboutSimNICUViewController.m in Sources */,
 				5CD3AFCA16CF38D500DE362C /* UnderlineLabel.m in Sources */,
 				5CD3AFCB16CF38D500DE362C /* InstructionsViewController.m in Sources */,
-				5CD3AFCC16CF38D500DE362C /* TwitterViewController.m in Sources */,
 				5CD3AFCD16CF38D500DE362C /* DisclaimerViewController.m in Sources */,
 				5CD3AFCE16CF38D500DE362C /* APGARTabBarController.m in Sources */,
 				5CD3AFCF16CF38D500DE362C /* APGAR1ViewController.m in Sources */,
