@@ -441,7 +441,6 @@
 		5C940C64166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C53166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png */; };
 		5C940C65166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C54166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png */; };
 		5C940C66166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */; };
-		5C940C67166E3FDE0044A7D1 /* dismiss.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C56166E3FDE0044A7D1 /* dismiss.png */; };
 		5C940C68166E3FDE0044A7D1 /* dismiss2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C57166E3FDE0044A7D1 /* dismiss2.png */; };
 		5C940C81166E3FEF0044A7D1 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C69166E3FEF0044A7D1 /* clock.png */; };
 		5C940C82166E3FEF0044A7D1 /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6A166E3FEF0044A7D1 /* clock@2x.png */; };
@@ -738,7 +737,6 @@
 		5CD3B06916CF38D500DE362C /* LightGreyWithDimples35inchRetinaPortrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C53166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png */; };
 		5CD3B06A16CF38D500DE362C /* LightGreyWithDimples35inchForKal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C54166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png */; };
 		5CD3B06B16CF38D500DE362C /* LightGreyWithDimples4inchForKal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */; };
-		5CD3B06C16CF38D500DE362C /* dismiss.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C56166E3FDE0044A7D1 /* dismiss.png */; };
 		5CD3B06D16CF38D500DE362C /* dismiss2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C57166E3FDE0044A7D1 /* dismiss2.png */; };
 		5CD3B06E16CF38D500DE362C /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C69166E3FEF0044A7D1 /* clock.png */; };
 		5CD3B06F16CF38D500DE362C /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940C6A166E3FEF0044A7D1 /* clock@2x.png */; };
@@ -1336,7 +1334,6 @@
 		5C940C53166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LightGreyWithDimples35inchRetinaPortrait.png; sourceTree = "<group>"; };
 		5C940C54166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LightGreyWithDimples35inchForKal.png; sourceTree = "<group>"; };
 		5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LightGreyWithDimples4inchForKal.png; sourceTree = "<group>"; };
-		5C940C56166E3FDE0044A7D1 /* dismiss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismiss.png; sourceTree = "<group>"; };
 		5C940C57166E3FDE0044A7D1 /* dismiss2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismiss2.png; sourceTree = "<group>"; };
 		5C940C69166E3FEF0044A7D1 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		5C940C6A166E3FEF0044A7D1 /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
@@ -2596,7 +2593,6 @@
 				5C940C53166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png */,
 				5C940C54166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png */,
 				5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */,
-				5C940C56166E3FDE0044A7D1 /* dismiss.png */,
 				5C940C57166E3FDE0044A7D1 /* dismiss2.png */,
 				5C7FD71E17A6416700FF39E1 /* settings.png */,
 				5C7FD71F17A6416700FF39E1 /* settings@2x.png */,
@@ -3023,7 +3019,6 @@
 				5C940C64166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png in Resources */,
 				5C940C65166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png in Resources */,
 				5C940C66166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png in Resources */,
-				5C940C67166E3FDE0044A7D1 /* dismiss.png in Resources */,
 				5C940C68166E3FDE0044A7D1 /* dismiss2.png in Resources */,
 				5C940C81166E3FEF0044A7D1 /* clock.png in Resources */,
 				5C940C82166E3FEF0044A7D1 /* clock@2x.png in Resources */,
@@ -3290,7 +3285,6 @@
 				5CD3B06916CF38D500DE362C /* LightGreyWithDimples35inchRetinaPortrait.png in Resources */,
 				5CD3B06A16CF38D500DE362C /* LightGreyWithDimples35inchForKal.png in Resources */,
 				5CD3B06B16CF38D500DE362C /* LightGreyWithDimples4inchForKal.png in Resources */,
-				5CD3B06C16CF38D500DE362C /* dismiss.png in Resources */,
 				5CD3B06D16CF38D500DE362C /* dismiss2.png in Resources */,
 				5CD3B06E16CF38D500DE362C /* clock.png in Resources */,
 				5CD3B06F16CF38D500DE362C /* clock@2x.png in Resources */,

@@ -10,6 +10,7 @@
 #import "EnterWeightViewController.h"
 #import "ZUUIRevealController.h"
 #import "AppViewController.h"
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
 #import "RoundImage.h"
 #import "Patient.h"
@@ -349,7 +350,6 @@
     self.displayAgeTextLabel.backgroundColor = [UIColor clearColor];
     self.displayAgeTextLabel.font = [UIFont systemFontOfSize:15.0f];
     self.displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
-    self.displayAgeTextLabel.text = @"day 14";
     self.displayAgeTextLabel.hidden = YES;
     [self.myHeaderView addSubview:self.displayAgeTextLabel];
     
@@ -1407,6 +1407,12 @@
     self.selectedPatient = patient;
     
     self.displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
+    
+    if (self.selectedPatient.birthDate)
+    {
+        self.displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i", [CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]]];
+    }
+    
     self.displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
     
     // set weight and gestation

@@ -77,7 +77,7 @@
     
 #else
     
-    [aboutMenuItems addObject:@"More Information"];
+    [aboutMenuItems addObject:@"Developer Information"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
     
 #endif
