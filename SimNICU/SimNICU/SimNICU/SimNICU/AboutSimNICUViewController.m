@@ -72,13 +72,13 @@
     
 #ifdef LITE_VERSION
     
-    [aboutMenuItems addObject:@"SimNICU in the App Store"];
-    [aboutMenuItems addObject:@"Rate SimNICU Lite"];
+    [aboutMenuItems addObject:@"Neonatal Intensive Care Full Version"];
+    [aboutMenuItems addObject:@"Rate on iTunes"];
     
 #else
     
-    [aboutMenuItems addObject:@"SimNICU mobile Web page"];
-    [aboutMenuItems addObject:@"Rate SimNICU"];
+    [aboutMenuItems addObject:@"More Information"];
+    [aboutMenuItems addObject:@"Rate on iTunes"];
     
 #endif
     
@@ -192,7 +192,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 1.4";
+        returnString = @"Version 1.4.1";
     }
     
     return returnString;
