@@ -62,6 +62,7 @@
 @property (nonatomic, strong) UIImageView *displaySimNICUDateToggle;         // just to toggle SimNICU / Date
 @property (nonatomic, strong) UILabel *displayDetailTextLabel;               // gestation, birth weight, etc
 @property (nonatomic, strong) NSString *estimatedWeightUsed;
+@property (nonatomic, strong) UILabel *displayAgeTextLabel;
 @property (nonatomic, strong) NSString *infoPassedThrough;
 @property (nonatomic, strong) UILabel *displayBackground;                    // gray background square
 @property (nonatomic, strong) UILabel *displayTextLabel;                     // Patient name
@@ -319,9 +320,9 @@
     [self.myHeaderView addSubview:self.appImageView];
     
     // display background
-    self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
+    self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 65.0f)];
     self.displayBackground.backgroundColor = [UIColor blackColor];
-    self.displayBackground.alpha = .4;
+    self.displayBackground.alpha = .5;
     self.displayBackground.hidden = YES;
     [self.myHeaderView addSubview:self.displayBackground];
     
@@ -342,11 +343,21 @@
     self.displayTextLabel.hidden = YES;
     [self.myHeaderView addSubview:self.displayTextLabel];
     
+    // displayAgeTextLabel (Age in days)
+    self.displayAgeTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 58.0f, 227.0f, 30.0f)];
+    self.displayAgeTextLabel.textColor = [UIColor whiteColor];
+    self.displayAgeTextLabel.backgroundColor = [UIColor clearColor];
+    self.displayAgeTextLabel.font = [UIFont systemFontOfSize:15.0f];
+    self.displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
+    self.displayAgeTextLabel.text = @"day 14";
+    self.displayAgeTextLabel.hidden = YES;
+    [self.myHeaderView addSubview:self.displayAgeTextLabel];
+    
     // displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
-    self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
+    self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 76.0f, 230.0f, 30.0f)];
     self.displayDetailTextLabel.textColor = [UIColor whiteColor];
     self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:15.0f];
     self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
     self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
     self.displayDetailTextLabel.hidden = YES;
@@ -1413,6 +1424,7 @@
     
     self.displayBackground.hidden = NO;
     self.displayTextLabel.hidden = NO;
+    self.displayAgeTextLabel.hidden = NO;
     self.displayDetailTextLabel.hidden = NO;
     self.displayDismissButtonView.hidden = NO;
     
@@ -1511,6 +1523,7 @@
         }
         
         self.displayDetailTextLabel.hidden = NO;
+        self.displayAgeTextLabel.hidden = NO;
         self.displayBackground.hidden = NO;
         self.displayTextLabel.hidden = NO;
         self.displayDismissButtonView.hidden = NO;
@@ -1545,6 +1558,7 @@
         
         self.displayDetailTextLabel.text = @"Working Weight";
         self.displayDetailTextLabel.hidden = NO;
+        self.displayAgeTextLabel.hidden = NO;
         self.displayBackground.hidden = NO;
         self.displayTextLabel.hidden = NO;
         self.displayDismissButtonView.hidden = NO;
@@ -1568,6 +1582,7 @@
         
         self.displayDetailTextLabel.text = @"Working Weight";
         self.displayDetailTextLabel.hidden = NO;
+        self.displayAgeTextLabel.hidden = NO;
         self.displayBackground.hidden = NO;
         self.displayTextLabel.hidden = NO;
         self.displayDismissButtonView.hidden = NO;
@@ -1581,6 +1596,7 @@
 {
     self.displayDismissButtonView.hidden = YES;
     self.displayDetailTextLabel.hidden = YES;
+    self.displayAgeTextLabel.hidden = YES;
     self.displayBackground.hidden = YES;
     self.displayTextLabel.hidden = YES;
     
