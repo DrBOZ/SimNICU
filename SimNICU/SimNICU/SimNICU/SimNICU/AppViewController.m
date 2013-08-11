@@ -879,6 +879,7 @@
             {
                 newViewController.gestation = self.selectedPatient.gestation;
                 newViewController.weight = self.selectedPatient.workingWeight;
+                newViewController.selectedPatient = self.selectedPatient;
             }
             else
             {
@@ -1097,6 +1098,7 @@
             {
                 newViewController.gestation = self.selectedPatient.gestation;
                 newViewController.weight = self.selectedPatient.workingWeight;
+                newViewController.selectedPatient = self.selectedPatient;        // any changes here to update above also...
             }
             else
             {
