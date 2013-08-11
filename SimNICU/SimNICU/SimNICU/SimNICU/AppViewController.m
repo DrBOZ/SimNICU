@@ -385,11 +385,11 @@
       
 #ifdef LITE_VERSION
         
-        self.title = @"SimNICU Lite";
+        self.title = @"Neonatal Intensive Care";
         
 #else
         
-        self.title = @"SimNICU";
+        self.title = @"Neonatal Intensive Care";
         
 #endif
         
@@ -402,11 +402,11 @@
     
 #ifdef LITE_VERSION
     
-    if (!self.title) self.title = @"SimNICU Lite";
+    if (!self.title) self.title = @"Neonatal Intensive Care";
     
 #else
     
-    if (!self.title) self.title = @"SimNICU";
+    if (!self.title) self.title = @"Neonatal Intensive Care";
     
 #endif
 
