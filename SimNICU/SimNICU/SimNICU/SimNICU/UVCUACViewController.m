@@ -322,6 +322,13 @@
             }
         }
     }
+    else if (section == 1)
+    {
+        if (!self.selectedPatient && !self.estimatedWeightUsed)
+        {
+            footer = @"If you are looking for calculated lengths,\nyou need to enter a weight or gestation";
+        }
+    }
     
     return footer;
 }

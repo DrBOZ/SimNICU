@@ -1531,6 +1531,7 @@
             self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:estimatedWeightKGAsFloat]]];
         }
         
+        self.displayAgeTextLabel.text = @"";
         self.displayDetailTextLabel.hidden = NO;
         self.displayAgeTextLabel.hidden = NO;
         self.displayBackground.hidden = NO;
@@ -1566,6 +1567,7 @@
         }
         
         self.displayDetailTextLabel.text = @"Working Weight";
+        self.displayAgeTextLabel.text = @"";
         self.displayDetailTextLabel.hidden = NO;
         self.displayAgeTextLabel.hidden = NO;
         self.displayBackground.hidden = NO;

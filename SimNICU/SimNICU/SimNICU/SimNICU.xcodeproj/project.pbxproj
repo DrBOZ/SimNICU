@@ -530,6 +530,9 @@
 		5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */; };
 		5CA3C13D179241D8002AB53D /* vancomycinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13C179241D8002AB53D /* vancomycinReferences.html */; };
 		5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13C179241D8002AB53D /* vancomycinReferences.html */; };
+		5CA3CC1E17B79996002E96DC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC1D17B79996002E96DC /* Default.png */; };
+		5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC1F17B7999F002E96DC /* Default@2x.png */; };
+		5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
@@ -1431,6 +1434,9 @@
 		5CA3C136179241BE002AB53D /* vancomycinDrugMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinDrugMonitoring.html; sourceTree = "<group>"; };
 		5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinLicenceStatus.html; sourceTree = "<group>"; };
 		5CA3C13C179241D8002AB53D /* vancomycinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinReferences.html; sourceTree = "<group>"; };
+		5CA3CC1D17B79996002E96DC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		5CA3CC1F17B7999F002E96DC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -2716,6 +2722,9 @@
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
 				5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */,
+				5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */,
+				5CA3CC1F17B7999F002E96DC /* Default@2x.png */,
+				5CA3CC1D17B79996002E96DC /* Default.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -3193,6 +3202,9 @@
 				5CD541F317B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png in Resources */,
 				5CD541F517B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */,
 				5CD541F717B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */,
+				5CA3CC1E17B79996002E96DC /* Default.png in Resources */,
+				5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */,
+				5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
