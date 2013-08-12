@@ -1,9 +1,9 @@
 //
 //  WeightConversionTableViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 09/06/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #import "WeightConversionViewController.h"

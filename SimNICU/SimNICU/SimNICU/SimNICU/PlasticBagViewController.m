@@ -1,6 +1,6 @@
 //
 //  PlasticBagViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 18/06/2012.
 //  Copyright (c) 2012 SimNICU. All rights reserved.

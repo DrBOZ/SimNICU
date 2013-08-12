@@ -1,6 +1,6 @@
 //
 //  ResusViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 13/08/2012.
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
