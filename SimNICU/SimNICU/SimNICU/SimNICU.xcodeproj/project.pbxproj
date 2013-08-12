@@ -864,6 +864,8 @@
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
 		5CF73EC517B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */; };
 		5CF73EC617B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */; };
+		5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
+		5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1486,6 +1488,8 @@
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 		5CF73EC317B8F5DA00096965 /* PatientDetails2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetails2ViewController.h; sourceTree = "<group>"; };
 		5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetails2ViewController.m; sourceTree = "<group>"; };
+		5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeightMethods.h; sourceTree = "<group>"; };
+		5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeightMethods.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2547,6 +2551,8 @@
 				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
 				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
 				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
+				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
+				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
 			);
 			name = miscObjects;
 			path = SimNICU;
@@ -3610,6 +3616,7 @@
 				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 				5CF73EC517B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */,
+				5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3765,6 +3772,7 @@
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 				5CF73EC617B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */,
+				5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
