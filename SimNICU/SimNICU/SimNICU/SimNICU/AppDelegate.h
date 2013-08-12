@@ -13,7 +13,7 @@
 #define BACKGROUND_IPHONE_4_PORTRAIT_PNG @"LightGreyWithDimples4inchRetinaPortrait.png"
 
 #define GOOGLE_ANALYTICS 0
-#define IRATE_SET 0
+#define IRATE_SET 
 
 #define IRATE_PREVIEW_MODE 0
 #define DCINTROSPECT_ON 0
