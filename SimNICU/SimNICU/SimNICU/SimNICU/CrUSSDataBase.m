@@ -21,7 +21,7 @@
     
     scanSeries = [[CrUSSScanSeries alloc] init];
     
-    scanSeries.description = @"Normal";
+    scanSeries.description = @"30/40 - normal";
     scanSeries.report = @"Normal";
     scanSeries.scans = [[NSMutableArray alloc] initWithCapacity:8];
     
@@ -90,7 +90,7 @@
     // add another
     scanSeries = [[CrUSSScanSeries alloc] init];
     
-    scanSeries.description = @"Left IVH";
+    scanSeries.description = @"30/40 - left IVH";
     scanSeries.report = @"Abnormal";
     scanSeries.scans = [[NSMutableArray alloc] initWithCapacity:8];
     

@@ -17,7 +17,6 @@
 
 @interface CrUSSRadiologyViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UIPageControl *pageControl1;
 @property (nonatomic, strong) UIPageControl *pageControl2;
 @property (nonatomic, strong) NSMutableArray *crUSSScans;
@@ -53,8 +52,25 @@
                                                                                 target:nil
                                                                                 action:nil];
         
-        // view label
-        self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 46.0f, 320.0f, 40.0f)];
+        
+        // instantiate UIScrollView & UIPageControl
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 46.0f, 320.0f, 40.0f)];
+            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
+            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
+            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 60.0f)];
+            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 448.0f, 320.0f, 36.0f)];
+        }
+        else // 3.5 inch Retina
+        {
+            self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 40.0f)];
+            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 50.0f, 320.0f, 274.0f)];
+            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 310.0f, 320.0f, 36.0f)];
+            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 340.0f, 320.0f, 60.0f)];
+            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 370.0f, 320.0f, 36.0f)];
+        }
+        
         self.viewLabel.adjustsFontSizeToFitWidth = YES;
         self.viewLabel.font = [UIFont boldSystemFontOfSize:23.0f];
         self.viewLabel.backgroundColor = [UIColor blackColor];
@@ -62,19 +78,6 @@
         self.viewLabel.textColor = [UIColor whiteColor];
         self.viewLabel.text = @"";
         [self.view addSubview:self.viewLabel];
-        
-        // instantiate UIScrollView & UIPageControl
-        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-        {
-            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
-            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 60.0f)];
-            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
-            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 448.0f, 320.0f, 36.0f)];
-        }
-        else // 3.5 inch Retina
-        {
-            // code
-        }
         
         self.scrollView1.delegate = self;
         self.scrollView1.showsHorizontalScrollIndicator = NO;
@@ -116,6 +119,7 @@
         self.pageControl2.opaque = YES;
         self.pageControl2.userInteractionEnabled = NO;
     }
+    
     return self;
 }
 
@@ -223,11 +227,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -

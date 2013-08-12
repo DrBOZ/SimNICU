@@ -990,8 +990,16 @@
         
         else if ([thisScreenType isEqualToString:@"CrUSS"])
         {
+
+#ifdef CRUSS_PREVIEW_MODE
+            
+            CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
+            
+#else
+            
             CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
-            // CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
+            
+#endif
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }

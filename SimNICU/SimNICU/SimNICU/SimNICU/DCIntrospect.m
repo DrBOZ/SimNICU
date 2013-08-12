@@ -239,6 +239,7 @@ id UITextInputTraits_valueForKey(id self, SEL _cmd, NSString *key)
 		self.currentViewHistory = [[[NSMutableArray alloc] init] autorelease];
 	
 	NSLog(@"DCIntrospect is setup. %@ to start.", [kDCIntrospectKeysInvoke isEqualToString:@" "] ? @"Push the space bar" : [NSString stringWithFormat:@"Type '%@'",  kDCIntrospectKeysInvoke]);
+    NSLog(@" ");
 }
 
 - (void)takeFirstResponder

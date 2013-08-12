@@ -271,10 +271,6 @@
 		5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */; };
 		5C930AFB17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AFA17B0E86D00CBE616 /* CrUSSRadiologyViewController.m */; };
 		5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AFA17B0E86D00CBE616 /* CrUSSRadiologyViewController.m */; };
-		5C930B0017B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */; };
-		5C930B0117B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */; };
-		5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */; };
-		5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */; };
 		5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A61166E37FE0044A7D1 /* UIKit.framework */; };
 		5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
 		5C940A66166E37FE0044A7D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
@@ -1062,9 +1058,6 @@
 		5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewRowData.m; sourceTree = "<group>"; };
 		5C930AF917B0E86D00CBE616 /* CrUSSRadiologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSRadiologyViewController.h; sourceTree = "<group>"; };
 		5C930AFA17B0E86D00CBE616 /* CrUSSRadiologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSRadiologyViewController.m; sourceTree = "<group>"; };
-		5C930AFD17B0EA9D00CBE616 /* CrUSSTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSTestingViewController.h; sourceTree = "<group>"; };
-		5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSTestingViewController.m; sourceTree = "<group>"; };
-		5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CrUSSTestingViewController.xib; sourceTree = "<group>"; };
 		5C940A5D166E37FE0044A7D1 /* SimNICU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimNICU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C940A61166E37FE0044A7D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C940A63166E37FE0044A7D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1998,9 +1991,6 @@
 			children = (
 				5C930AF917B0E86D00CBE616 /* CrUSSRadiologyViewController.h */,
 				5C930AFA17B0E86D00CBE616 /* CrUSSRadiologyViewController.m */,
-				5C930AFD17B0EA9D00CBE616 /* CrUSSTestingViewController.h */,
-				5C930AFE17B0EA9D00CBE616 /* CrUSSTestingViewController.m */,
-				5C930AFF17B0EA9D00CBE616 /* CrUSSTestingViewController.xib */,
 				5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */,
 				5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */,
 				5C427FE717B652C500F8CED6 /* CrUSSScanSeries.h */,
@@ -3168,7 +3158,6 @@
 				5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */,
 				5C7FD72017A6416700FF39E1 /* settings.png in Resources */,
 				5C7FD72217A6416700FF39E1 /* settings@2x.png in Resources */,
-				5C930B0217B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C44D8B617B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
 				5CD541C717B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */,
 				5CD541C917B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
@@ -3436,7 +3425,6 @@
 				5C101D2E17AE99020095E751 /* Default.png in Resources */,
 				5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */,
 				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,
-				5C930B0317B0EA9D00CBE616 /* CrUSSTestingViewController.xib in Resources */,
 				5C44D8B717B2EA9B0097EBAC /* CrUSSOptimumSize.png in Resources */,
 				5CD541C817B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */,
 				5CD541CA17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */,
@@ -3611,7 +3599,6 @@
 				5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
 				5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFB17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
-				5C930B0017B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */,
 				5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
@@ -3767,7 +3754,6 @@
 				5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
 				5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
-				5C930B0117B0EA9D00CBE616 /* CrUSSTestingViewController.m in Sources */,
 				5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,

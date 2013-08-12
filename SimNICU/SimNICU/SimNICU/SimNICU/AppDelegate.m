@@ -35,7 +35,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
 #else
     
-    NSLog(@"SimNICU log:");
+    NSLog(@"Neonatal Intensive Care log:");
     NSLog(@" ");
     
 #endif

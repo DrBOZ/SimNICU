@@ -13,8 +13,6 @@
 #import "CrUSSViewController.h"
 #import "CBTableViewRowData.h"
 
-#import "CrUSSTestingViewController.h"
-
 @interface CrUSSOptionsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
@@ -45,11 +43,7 @@
         sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
         
         rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Indications";
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = @"Timings of Scans";
+        rowData.text = @"Indications & Timings";
         [sectionData.rowData addObject:rowData];
         
         [tableData addObject:sectionData];
@@ -75,7 +69,7 @@
         
         // section 2
         sectionData = [[CBTableViewSectionData alloc] init];
-        sectionData.titleForHeader = @"Scans";
+        sectionData.titleForHeader = @"Example Scans";
         sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:5];
         
         rowData = [[CBTableViewRowData alloc] init];
@@ -212,8 +206,7 @@
     }
     else if (indexPath.section == 1)
     {
-        CrUSSTestingViewController *newViewController = [[CrUSSTestingViewController alloc] init];
-        [self.navigationController pushViewController:newViewController animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     else if (indexPath.section == 2)
     {
