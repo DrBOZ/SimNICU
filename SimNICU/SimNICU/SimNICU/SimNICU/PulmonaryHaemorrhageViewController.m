@@ -8,7 +8,6 @@
 
 #import "PulmonaryHaemorrhageViewController.h"
 #import "SimNICUWebView.h"
-#import "AppDelegate.h"
 
 @interface PulmonaryHaemorrhageViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,15 +30,12 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"PulmonaryHaemorrhageViewController viewDidLoad");
-    
     self.title = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
     
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // tableView
-    // self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
