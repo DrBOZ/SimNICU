@@ -492,13 +492,15 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-    /*
+#ifdef CALCULATOR_PREVIEW_MODE
+    
     screen = [[Screen alloc] init];
     screen.menuText = @"Calculator";
     screen.detailMenuText = @"Almost finished!";
     screen.segueId = @"Calculator";
     [screens addObject:screen];
-     */
+    
+#endif
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Cooling";
@@ -525,26 +527,30 @@
     screen.segueId = @"CDH";
     [screens addObject:screen];
     
-    /*
+#ifdef DRUGS_PREVIEW_MODE
+    
     screen = [[Screen alloc] init];
     screen.menuText = @"Drugs";
     screen.detailMenuText = @"Currently working on!";
     screen.segueId = @"Drugs";
     [screens addObject:screen];
-     */
+    
+#endif
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Early Care";
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
-    /*
+#ifdef FEEDS_AND_FLUIDS_PREVIEW_MODE
+    
     screen = [[Screen alloc] init];
     screen.menuText = @"Feeds & Fluids";
     screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"FeedsAndFluids";
     [screens addObject:screen];
-     */
+    
+#endif
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Gastroschisis";
@@ -569,12 +575,14 @@
     screen.segueId = @"HFOV";
     [screens addObject:screen];
     
-    /*
+#ifdef HYPOGLYCAEMIA_PREVIEW_MODE
+    
      screen = [[Screen alloc] init];
      screen.menuText = @"Hypoglycaemia Screen";
      screen.segueId = @"Hypo";
      [screens addObject:screen];
-     */
+    
+#endif
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Infusions";
@@ -608,12 +616,14 @@
     screen.segueId = @"Thermoregulation";
     [screens addObject:screen];
     
-    /*
+#ifdef POSTNATAL_WARD_PREVIEW_MODE
+    
     screen = [[Screen alloc] init];
     screen.menuText = @"Postnatal Ward";
     screen.segueId = @"PostnatalWard";
     [screens addObject:screen];
-     */
+    
+#endif
     
     screen = [[Screen alloc] init];
     screen.menuText = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
@@ -661,15 +671,6 @@
     screen.segueId = @"WeightConversion";
     [screens addObject:screen];
     
-    // screen = [[Screen alloc] init];
-    // screen.menuText = @"E-mail suggestions";
-    // screen.segueId = @"E-mail";
-    // [screens addObject:screen];
-    
-    // delegate
-    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // appDelegate.currentController = (UIViewController <BannerViewContainer> *)self;
     appDelegate.currentController = self;
 }
 
@@ -851,7 +852,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Special 'Emergency'
     if (indexPath.section == 0)
@@ -1051,6 +1052,13 @@
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
+#pragma mark Feeds & Fluids
+        
+        else if ([thisScreenType isEqualToString:@"FeedsAndFluids"])
+        {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        
 #pragma mark Gastroschisis
         
         else if ([thisScreenType isEqualToString:@"Gastroschisis"])
@@ -1134,7 +1142,7 @@
             newViewController.workingWeight = self.weight;
             newViewController.narcanSelected = @"YES";
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         
 #pragma mark Oxygenation Index
@@ -1162,7 +1170,7 @@
             newViewController.OIPaO2UnitsIndex = enterWeightViewController.preferences.OIUnits;
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
-            [appDelegate.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:newViewController animated:YES];
             
 #endif
             

@@ -366,8 +366,6 @@
             
             cell.textLabel.text = @"Gestation";
             
-            NSLog(@"PhototherapyViewController: self.gestation = %@", self.gestation);
-            
             if (self.gestation)
             {
                 if ([self.guidelineCountry isEqualToString:@"UK"])

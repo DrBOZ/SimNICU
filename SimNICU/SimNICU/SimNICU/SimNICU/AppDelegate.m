@@ -19,8 +19,6 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 @interface AppDelegate()
 
-// @property (nonatomic, retain) ADBannerView *bannerView;
-
 @end
 
 @implementation AppDelegate
