@@ -9,12 +9,14 @@
 #import "IntubationDrugsViewController.h"
 #import "IntubationViewController.h"
 #import "CurosurfViewController.h"
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
 
 @interface IntubationViewController () <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) NSMutableArray *intubationArray;
+@property (nonatomic, strong) UILabel *suggestionBasedOn;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) UISwitch *roundedSwitch;
@@ -93,6 +95,15 @@
         roundingLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
         roundingLabel.font = [UIFont boldSystemFontOfSize:16.0f];
         [self.view addSubview:roundingLabel];
+        
+        self.suggestionBasedOn = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 64.0f - 60.0f), 286.0f, 30.0f)];
+        self.suggestionBasedOn.text = @"";
+        self.suggestionBasedOn.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];  //iOS 6.0
+        self.suggestionBasedOn.backgroundColor = [UIColor clearColor];
+        self.suggestionBasedOn.shadowColor = [UIColor whiteColor];
+        self.suggestionBasedOn.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        self.suggestionBasedOn.font = [UIFont boldSystemFontOfSize:16.0f];
+        [self.view addSubview:self.suggestionBasedOn];
         
         UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 64.0f - 31.0f), 65.0f, 30.0f)]; // 205
         weight.text = @"Weight";
@@ -315,40 +326,95 @@
                                      target:nil
                                      action:nil];
     
-    if (self.weight)
+    // set title
+    if (self.selectedPatient)
     {
-        NSString *UKLocaleWeight;
-        UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        float workingWeightKGAsFloat = [UKLocaleWeight floatValue];
-        
-        if (workingWeightKGAsFloat < 1.0f)
+        if (self.selectedPatient.gestation)
         {
-            int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
+            self.title = [NSString stringWithFormat:@"%@/40 now %@", self.selectedPatient.gestation, [CBTimeMethods calculateCurrentGestation:self.selectedPatient]];
             
-            self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+            self.suggestionBasedOn.text = @"Suggestion based on gestation";
         }
         else
         {
-            // present weight as kilograms
-            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-            formatter.numberStyle = NSNumberFormatterDecimalStyle;
-            // if using arabic locale, force to english
-            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
-            {
-                formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
-            }
-            formatter.roundingMode = NSNumberFormatterRoundHalfEven;
-            formatter.minimumFractionDigits = 1;
-            formatter.maximumFractionDigits = 3;
+            self.suggestionBasedOn.text = @"Suggestion based on working weight";
             
-            self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
+            NSString *UKLocaleWeight;
+            UKLocaleWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            float workingWeightKGAsFloat = [UKLocaleWeight floatValue];
+            
+            if (workingWeightKGAsFloat < 1.0f)
+            {
+                int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
+                
+                self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+            }
+            else
+            {
+                // present weight as kilograms
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if using arabic locale, force to english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
+                formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                formatter.minimumFractionDigits = 1;
+                formatter.maximumFractionDigits = 3;
+                
+                self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
+            }
         }
     }
-    else 
+    else
     {
-        self.title = @"Intubation";
+        if (self.gestation)
+        {
+            self.title = [NSString stringWithFormat:@"Gestation %@/40", self.gestation];
+            
+            self.suggestionBasedOn.text = @"";
+        }
+        else if (self.weight)
+        {
+            self.suggestionBasedOn.text = @"";
+            
+            NSString *UKLocaleWeight;
+            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+            
+            float workingWeightKGAsFloat = [UKLocaleWeight floatValue];
+            
+            if (workingWeightKGAsFloat < 1.0f)
+            {
+                int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
+                
+                self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+            }
+            else
+            {
+                // present weight as kilograms
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                // if using arabic locale, force to english
+                if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+                {
+                    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+                }
+                formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+                formatter.minimumFractionDigits = 1;
+                formatter.maximumFractionDigits = 3;
+                
+                self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
+            }
+        }
+        else 
+        {
+            self.title = @"Intubation";
+            self.suggestionBasedOn.text = @"";
+        }
     }
     
     if ([self.roundUp isEqualToString:@"1"]) 
@@ -382,8 +448,6 @@
 {
     self.myTableView = nil;
     self.swipeGestureRecognizer = nil;
-    // self.webView0 = nil;
-    // self.webView1 = nil;
     self.pickerView = nil;
     self.roundedSwitch = nil;
     self.intubationArray = nil;
@@ -543,173 +607,345 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"%@",[self.intubationArray objectAtIndex:row]);
+    self.suggestionBasedOn.text = @"";
 }
 
 - (void)setPicker
 {
-    if (self.roundedSwitch.on) 
+    // check if user wants to round up
+    if (self.roundedSwitch.on)
     {
-        if (self.weight)
+        if (self.selectedPatient)
         {
-            NSString *UKLocaleWeight;
-            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            
-            float weightKGAsFloat = [UKLocaleWeight floatValue];
-            
-            int weightGRAMSasInt = weightKGAsFloat * 1000;
-            
-            if (weightGRAMSasInt < 800)
+            if (self.selectedPatient.gestation)
             {
-                [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                // work out on corrected gestation
+                NSString *correctedGestation = [CBTimeMethods calculateCurrentGestation:self.selectedPatient];
+                
+                int value = [correctedGestation intValue];
+                
+                if (value <26)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((value >= 26) && (value < 29))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((value >= 29) && (value < 32))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((value >= 32) && (value < 35))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((value >= 35) && (value < 37))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((value >= 37) && (value < 39))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
             }
-            else if ((weightGRAMSasInt >= 800) && (weightGRAMSasInt < 1300))
+            else if (self.selectedPatient.workingWeight)
             {
-                [self.pickerView selectRow:1 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 1300) && (weightGRAMSasInt < 1800))
-            {
-                [self.pickerView selectRow:2 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 1800) && (weightGRAMSasInt < 2300))
-            {
-                [self.pickerView selectRow:3 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 2300) && (weightGRAMSasInt < 2800))
-            {
-                [self.pickerView selectRow:4 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 2800) && (weightGRAMSasInt < 3300))
-            {
-                [self.pickerView selectRow:5 inComponent:0 animated:YES];
-            }
-            else if (weightGRAMSasInt >= 3300)
-            {
-                [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                // else work out on working weight
+                NSString *UKLocaleWeight;
+                UKLocaleWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float weightKGAsFloat = [UKLocaleWeight floatValue];
+                
+                int weightGRAMSasInt = weightKGAsFloat * 1000;
+                
+                if (weightGRAMSasInt < 800)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 800) && (weightGRAMSasInt < 1300))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1300) && (weightGRAMSasInt < 1800))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1800) && (weightGRAMSasInt < 2300))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2300) && (weightGRAMSasInt < 2800))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2800) && (weightGRAMSasInt < 3300))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else if (weightGRAMSasInt >= 3300)
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
             }
         }
-        
-        if (self.gestation)
+        else
         {
-            NSLog(@"in gestation");
+            if (self.weight)
+            {
+                NSString *UKLocaleWeight;
+                UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float weightKGAsFloat = [UKLocaleWeight floatValue];
+                
+                int weightGRAMSasInt = weightKGAsFloat * 1000;
+                
+                if (weightGRAMSasInt < 800)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 800) && (weightGRAMSasInt < 1300))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1300) && (weightGRAMSasInt < 1800))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1800) && (weightGRAMSasInt < 2300))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2300) && (weightGRAMSasInt < 2800))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2800) && (weightGRAMSasInt < 3300))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else if (weightGRAMSasInt >= 3300)
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
+            }
             
-            int value = [self.gestation intValue];
-            
-            if (value <26)
+            if (self.gestation)
             {
-                [self.pickerView selectRow:0 inComponent:0 animated:YES];
-            }
-            else if ((value >= 26) && (value < 29)) 
-            {
-                [self.pickerView selectRow:1 inComponent:0 animated:YES];
-            }
-            else if ((value >= 29) && (value < 32)) 
-            {
-                [self.pickerView selectRow:2 inComponent:0 animated:YES];
-            }
-            else if ((value >= 32) && (value < 35)) 
-            {
-                [self.pickerView selectRow:3 inComponent:0 animated:YES];
-            }
-            else if ((value >= 35) && (value < 37))
-            {
-                [self.pickerView selectRow:4 inComponent:0 animated:YES];
-            }
-            else if ((value >= 37) && (value < 39))
-            {
-                [self.pickerView selectRow:5 inComponent:0 animated:YES];
-            }
-            else
-            {
-                [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                int value = [self.gestation intValue];
+                
+                if (value <26)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((value >= 26) && (value < 29))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((value >= 29) && (value < 32))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((value >= 32) && (value < 35))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((value >= 35) && (value < 37))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((value >= 37) && (value < 39))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
             }
         }
-        
     }
     else 
     {
-        if (self.weight)
+        if (self.selectedPatient)
         {
-            NSString *UKLocaleWeight;
-            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-            UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-            
-            float weightKGAsFloat = [UKLocaleWeight floatValue];
-            
-            int weightGRAMSasInt = weightKGAsFloat * 1000;
-            
-            NSLog(@"Weight = %i", weightGRAMSasInt);
-            
-            if (weightGRAMSasInt < 500)
+            if (self.selectedPatient.gestation)
             {
-                [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                // work out on corrected gestation
+                NSString *correctedGestation = [CBTimeMethods calculateCurrentGestation:self.selectedPatient];
+                
+                int value = [correctedGestation intValue];
+                
+                if (value <24)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((value >= 24) && (value < 27))
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((value >= 27) && (value < 30))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((value >= 30) && (value < 33))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((value >= 33) && (value < 36))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((value >= 36) && (value < 38))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((value >= 38) && (value < 40))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
             }
-            else if ((weightGRAMSasInt >= 500) && (weightGRAMSasInt < 1000))
+            else if (self.selectedPatient.workingWeight)
             {
-                [self.pickerView selectRow:0 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 1000) && (weightGRAMSasInt < 1500))
-            {
-                [self.pickerView selectRow:1 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 1500) && (weightGRAMSasInt < 2000))
-            {
-                [self.pickerView selectRow:2 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 2000) && (weightGRAMSasInt < 2500))
-            {
-                [self.pickerView selectRow:3 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 2500) && (weightGRAMSasInt < 3000))
-            {
-                [self.pickerView selectRow:4 inComponent:0 animated:YES];
-            }
-            else if ((weightGRAMSasInt >= 3000) && (weightGRAMSasInt < 3500))
-            {
-                [self.pickerView selectRow:5 inComponent:0 animated:YES];
-            }
-            else if (weightGRAMSasInt >= 3500)
-            {
-                [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                // else work out on working weight
+                NSString *UKLocaleWeight;
+                UKLocaleWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWeight = [self.selectedPatient.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float weightKGAsFloat = [UKLocaleWeight floatValue];
+                
+                int weightGRAMSasInt = weightKGAsFloat * 1000;
+                
+                NSLog(@"Weight = %i", weightGRAMSasInt);
+                
+                if (weightGRAMSasInt < 500)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 500) && (weightGRAMSasInt < 1000))
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1000) && (weightGRAMSasInt < 1500))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1500) && (weightGRAMSasInt < 2000))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2000) && (weightGRAMSasInt < 2500))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2500) && (weightGRAMSasInt < 3000))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 3000) && (weightGRAMSasInt < 3500))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else if (weightGRAMSasInt >= 3500)
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
             }
         }
-        
-        if (self.gestation)
+        else
         {
-            int value = [self.gestation intValue];
+            if (self.weight)
+            {
+                NSString *UKLocaleWeight;
+                UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:@"," withString:@"."];
+                UKLocaleWeight = [self.weight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
+                
+                float weightKGAsFloat = [UKLocaleWeight floatValue];
+                
+                int weightGRAMSasInt = weightKGAsFloat * 1000;
+                
+                NSLog(@"Weight = %i", weightGRAMSasInt);
+                
+                if (weightGRAMSasInt < 500)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 500) && (weightGRAMSasInt < 1000))
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1000) && (weightGRAMSasInt < 1500))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 1500) && (weightGRAMSasInt < 2000))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2000) && (weightGRAMSasInt < 2500))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 2500) && (weightGRAMSasInt < 3000))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((weightGRAMSasInt >= 3000) && (weightGRAMSasInt < 3500))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else if (weightGRAMSasInt >= 3500)
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
+            }
             
-            if (value <24)
+            if (self.gestation)
             {
-                [self.pickerView selectRow:0 inComponent:0 animated:YES];
-            }
-            else if ((value >= 24) && (value < 27)) 
-            {
-                [self.pickerView selectRow:0 inComponent:0 animated:YES];
-            }
-            else if ((value >= 27) && (value < 30)) 
-            {
-                [self.pickerView selectRow:1 inComponent:0 animated:YES];
-            }
-            else if ((value >= 30) && (value < 33)) 
-            {
-                [self.pickerView selectRow:2 inComponent:0 animated:YES];
-            }
-            else if ((value >= 33) && (value < 36)) 
-            {
-                [self.pickerView selectRow:3 inComponent:0 animated:YES];
-            }
-            else if ((value >= 36) && (value < 38))
-            {
-                [self.pickerView selectRow:4 inComponent:0 animated:YES];
-            }
-            else if ((value >= 38) && (value < 40))
-            {
-                [self.pickerView selectRow:5 inComponent:0 animated:YES];
-            }
-            else
-            {
-                [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                int value = [self.gestation intValue];
+                
+                if (value <24)
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((value >= 24) && (value < 27))
+                {
+                    [self.pickerView selectRow:0 inComponent:0 animated:YES];
+                }
+                else if ((value >= 27) && (value < 30))
+                {
+                    [self.pickerView selectRow:1 inComponent:0 animated:YES];
+                }
+                else if ((value >= 30) && (value < 33))
+                {
+                    [self.pickerView selectRow:2 inComponent:0 animated:YES];
+                }
+                else if ((value >= 33) && (value < 36))
+                {
+                    [self.pickerView selectRow:3 inComponent:0 animated:YES];
+                }
+                else if ((value >= 36) && (value < 38))
+                {
+                    [self.pickerView selectRow:4 inComponent:0 animated:YES];
+                }
+                else if ((value >= 38) && (value < 40))
+                {
+                    [self.pickerView selectRow:5 inComponent:0 animated:YES];
+                }
+                else
+                {
+                    [self.pickerView selectRow:6 inComponent:0 animated:YES];
+                }
             }
         }
     }

@@ -10,7 +10,6 @@
 #import "AboutSimNICUViewController.h"
 #import "AboutSimNICUViewController.h"
 #import "DisclaimerViewController.h"
-#import "TwitterViewController.h"
 #import "InfoTabBarController.h"
 #import "AppDelegate.h"
 
@@ -29,12 +28,10 @@
         
         AboutSimNICUViewController *firstViewController = [[AboutSimNICUViewController alloc] init];
         InstructionsViewController *secondViewController = [[InstructionsViewController alloc] init];
-        TwitterViewController *thirdViewController = [[TwitterViewController alloc] init];
         DisclaimerViewController *fourthViewController = [[DisclaimerViewController alloc] init];
         
         firstViewController.tabBarItem.image = [UIImage imageNamed:@"about.png"];
         secondViewController.tabBarItem.image = [UIImage imageNamed:@"instructions.png"];
-        thirdViewController.tabBarItem.image = [UIImage imageNamed:@"twitter.png"];
         fourthViewController.tabBarItem.image = [UIImage imageNamed:@"disclaimer.png"];
         
         self.viewControllers = @[firstViewController, fourthViewController];
