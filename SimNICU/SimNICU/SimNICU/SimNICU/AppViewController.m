@@ -705,8 +705,6 @@
 {
     [super viewDidUnload];
     
-    // NSLog(@"AppViewController viewDidUnload");
-    
     self.infoPassedThrough = @"Memory Warning";
     
     self.panGestureRecognizer = nil;

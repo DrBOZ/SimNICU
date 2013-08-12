@@ -323,10 +323,6 @@
 		5C940B14166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B0F166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m */; };
 		5C940B15166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B11166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m */; };
 		5C940B16166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B13166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m */; };
-		5C940B2E166E3BDF0044A7D1 /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1C166E3BDF0044A7D1 /* safari.png */; };
-		5C940B2F166E3BDF0044A7D1 /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1D166E3BDF0044A7D1 /* safari@2x.png */; };
-		5C940B30166E3BDF0044A7D1 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1E166E3BDF0044A7D1 /* star.png */; };
-		5C940B31166E3BDF0044A7D1 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1F166E3BDF0044A7D1 /* star@2x.png */; };
 		5C940B32166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */; };
 		5C940B33166E3BDF0044A7D1 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B21166E3BDF0044A7D1 /* about.png */; };
 		5C940B34166E3BDF0044A7D1 /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B22166E3BDF0044A7D1 /* about@2x.png */; };
@@ -670,10 +666,6 @@
 		5CD3B02B16CF38D500DE362C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF3166E39E80044A7D1 /* README.md */; };
 		5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B00166E3B110044A7D1 /* AppViewController.xib */; };
 		5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */; };
-		5CD3B02E16CF38D500DE362C /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1C166E3BDF0044A7D1 /* safari.png */; };
-		5CD3B02F16CF38D500DE362C /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1D166E3BDF0044A7D1 /* safari@2x.png */; };
-		5CD3B03016CF38D500DE362C /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1E166E3BDF0044A7D1 /* star.png */; };
-		5CD3B03116CF38D500DE362C /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B1F166E3BDF0044A7D1 /* star@2x.png */; };
 		5CD3B03216CF38D500DE362C /* SimNICU_RoundedIcon1000x1000.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */; };
 		5CD3B03316CF38D500DE362C /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B21166E3BDF0044A7D1 /* about.png */; };
 		5CD3B03416CF38D500DE362C /* about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B22166E3BDF0044A7D1 /* about@2x.png */; };
@@ -853,6 +845,18 @@
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
+		5CE9EB5017B9653E0085422F /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4A17B9653E0085422F /* safari.png */; };
+		5CE9EB5117B9653E0085422F /* safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4A17B9653E0085422F /* safari.png */; };
+		5CE9EB5217B9653E0085422F /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4B17B9653E0085422F /* safari@2x.png */; };
+		5CE9EB5317B9653E0085422F /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4B17B9653E0085422F /* safari@2x.png */; };
+		5CE9EB5417B9653E0085422F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4C17B9653E0085422F /* star.png */; };
+		5CE9EB5517B9653E0085422F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4C17B9653E0085422F /* star.png */; };
+		5CE9EB5617B9653E0085422F /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4D17B9653E0085422F /* star@2x.png */; };
+		5CE9EB5717B9653E0085422F /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4D17B9653E0085422F /* star@2x.png */; };
+		5CE9EB5817B9653E0085422F /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4E17B9653E0085422F /* tutorial.png */; };
+		5CE9EB5917B9653E0085422F /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4E17B9653E0085422F /* tutorial.png */; };
+		5CE9EB5A17B9653E0085422F /* tutorial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4F17B9653E0085422F /* tutorial@2x.png */; };
+		5CE9EB5B17B9653E0085422F /* tutorial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE9EB4F17B9653E0085422F /* tutorial@2x.png */; };
 		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
@@ -1150,10 +1154,6 @@
 		5C940B11166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsEnterWeightViewController.m; sourceTree = "<group>"; };
 		5C940B12166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsEnterWorkingWeightViewController.h; sourceTree = "<group>"; };
 		5C940B13166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsEnterWorkingWeightViewController.m; sourceTree = "<group>"; };
-		5C940B1C166E3BDF0044A7D1 /* safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = safari.png; sourceTree = "<group>"; };
-		5C940B1D166E3BDF0044A7D1 /* safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@2x.png"; sourceTree = "<group>"; };
-		5C940B1E166E3BDF0044A7D1 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
-		5C940B1F166E3BDF0044A7D1 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		5C940B20166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon1000x1000.png; sourceTree = "<group>"; };
 		5C940B21166E3BDF0044A7D1 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		5C940B22166E3BDF0044A7D1 /* about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about@2x.png"; sourceTree = "<group>"; };
@@ -1473,6 +1473,12 @@
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
+		5CE9EB4A17B9653E0085422F /* safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = safari.png; sourceTree = "<group>"; };
+		5CE9EB4B17B9653E0085422F /* safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@2x.png"; sourceTree = "<group>"; };
+		5CE9EB4C17B9653E0085422F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		5CE9EB4D17B9653E0085422F /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		5CE9EB4E17B9653E0085422F /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
+		5CE9EB4F17B9653E0085422F /* tutorial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial@2x.png"; sourceTree = "<group>"; };
 		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
@@ -2357,7 +2363,6 @@
 				5C940CB7166E43800044A7D1 /* InfoTabBarController.h */,
 				5C940CB8166E43800044A7D1 /* InfoTabBarController.m */,
 				5C940B18166E3BBA0044A7D1 /* About */,
-				5C940B1B166E3BCF0044A7D1 /* Instructions */,
 				5C940B19166E3BC00044A7D1 /* Disclaimer */,
 			);
 			name = Screen_About;
@@ -2370,6 +2375,7 @@
 				5C940B29166E3BDF0044A7D1 /* AboutSimNICUViewController.m */,
 				5C940B2A166E3BDF0044A7D1 /* UnderlineLabel.h */,
 				5C940B2B166E3BDF0044A7D1 /* UnderlineLabel.m */,
+				5C940B1B166E3BCF0044A7D1 /* Instructions */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -2551,12 +2557,14 @@
 		5C940C44166E3E340044A7D1 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B1C166E3BDF0044A7D1 /* safari.png */,
+				5CE9EB4A17B9653E0085422F /* safari.png */,
+				5CE9EB4B17B9653E0085422F /* safari@2x.png */,
+				5CE9EB4C17B9653E0085422F /* star.png */,
+				5CE9EB4D17B9653E0085422F /* star@2x.png */,
+				5CE9EB4E17B9653E0085422F /* tutorial.png */,
+				5CE9EB4F17B9653E0085422F /* tutorial@2x.png */,
 				5C99FBB916CF603100AE74D2 /* SimNICU */,
 				5C99FBB816CF602700AE74D2 /* SimNICU Lite */,
-				5C940B1D166E3BDF0044A7D1 /* safari@2x.png */,
-				5C940B1E166E3BDF0044A7D1 /* star.png */,
-				5C940B1F166E3BDF0044A7D1 /* star@2x.png */,
 				5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */,
 				5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */,
 				5C940B21166E3BDF0044A7D1 /* about.png */,
@@ -2940,10 +2948,6 @@
 				5C940AF6166E39E80044A7D1 /* README.md in Resources */,
 				5C940B02166E3B110044A7D1 /* AppViewController.xib in Resources */,
 				5C940B08166E3B420044A7D1 /* EnterWeightViewController.xib in Resources */,
-				5C940B2E166E3BDF0044A7D1 /* safari.png in Resources */,
-				5C940B2F166E3BDF0044A7D1 /* safari@2x.png in Resources */,
-				5C940B30166E3BDF0044A7D1 /* star.png in Resources */,
-				5C940B31166E3BDF0044A7D1 /* star@2x.png in Resources */,
 				5C940B32166E3BDF0044A7D1 /* SimNICU_RoundedIcon1000x1000.png in Resources */,
 				5C940B33166E3BDF0044A7D1 /* about.png in Resources */,
 				5C940B34166E3BDF0044A7D1 /* about@2x.png in Resources */,
@@ -3182,6 +3186,12 @@
 				5CA3CC1E17B79996002E96DC /* Default.png in Resources */,
 				5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */,
 				5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */,
+				5CE9EB5017B9653E0085422F /* safari.png in Resources */,
+				5CE9EB5217B9653E0085422F /* safari@2x.png in Resources */,
+				5CE9EB5417B9653E0085422F /* star.png in Resources */,
+				5CE9EB5617B9653E0085422F /* star@2x.png in Resources */,
+				5CE9EB5817B9653E0085422F /* tutorial.png in Resources */,
+				5CE9EB5A17B9653E0085422F /* tutorial@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3203,10 +3213,6 @@
 				5CD3B02B16CF38D500DE362C /* README.md in Resources */,
 				5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */,
 				5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */,
-				5CD3B02E16CF38D500DE362C /* safari.png in Resources */,
-				5CD3B02F16CF38D500DE362C /* safari@2x.png in Resources */,
-				5CD3B03016CF38D500DE362C /* star.png in Resources */,
-				5CD3B03116CF38D500DE362C /* star@2x.png in Resources */,
 				5CD3B03216CF38D500DE362C /* SimNICU_RoundedIcon1000x1000.png in Resources */,
 				5CD3B03316CF38D500DE362C /* about.png in Resources */,
 				5CD3B03416CF38D500DE362C /* about@2x.png in Resources */,
@@ -3446,6 +3452,12 @@
 				5CD541F417B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png in Resources */,
 				5CD541F617B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */,
 				5CD541F817B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */,
+				5CE9EB5117B9653E0085422F /* safari.png in Resources */,
+				5CE9EB5317B9653E0085422F /* safari@2x.png in Resources */,
+				5CE9EB5517B9653E0085422F /* star.png in Resources */,
+				5CE9EB5717B9653E0085422F /* star@2x.png in Resources */,
+				5CE9EB5917B9653E0085422F /* tutorial.png in Resources */,
+				5CE9EB5B17B9653E0085422F /* tutorial@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

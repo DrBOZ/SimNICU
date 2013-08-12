@@ -1,6 +1,6 @@
 //
 //  AboutSimNICUViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 30/11/2012.
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
@@ -15,8 +15,6 @@
 @interface AboutSimNICUViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *myTableView;
-
-- (void)gotoAcknowledgments;
 
 @end
 
@@ -34,8 +32,9 @@
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    //tableView
+    // tableView
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64 - 49)) style:UITableViewStyleGrouped];
+    
     self.myTableView.rowHeight = 50.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -59,15 +58,6 @@
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     
-#if APP_SHADING
-    //screen mask covers everything
-    UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height))];
-    UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-    tableBgView.image = tableBgImage;
-    tableBgView.userInteractionEnabled = NO;
-    [self.view addSubview:tableBgView];
-#endif
-    
     aboutMenuItems = [[NSMutableArray alloc] initWithCapacity:5];
     
 #ifdef LITE_VERSION
@@ -77,73 +67,13 @@
     
 #else
     
-    [aboutMenuItems addObject:@"Developer Information"];
+    [aboutMenuItems addObject:@"Tutorial"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
+    [aboutMenuItems addObject:@"Developer Information"];
     
 #endif
     
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
-    
-    // Developer
-    UILabel *developerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
-    developerLabel.backgroundColor = [UIColor clearColor];
-    developerLabel.textAlignment = UITextAlignmentCenter;
-    developerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    developerLabel.shadowColor = [UIColor whiteColor];
-    developerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    developerLabel.numberOfLines = 1;
-    developerLabel.font = [UIFont boldSystemFontOfSize:15.0f];
-    developerLabel.text = @"DEVELOPER";
-    [footerView addSubview:developerLabel];
-    
-    // Conrad Bosman
-    UILabel *developerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, 320.0f, 90.0f)];
-    developerNameLabel.backgroundColor = [UIColor clearColor];
-    developerNameLabel.textAlignment = UITextAlignmentCenter;
-    developerNameLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    developerNameLabel.shadowColor = [UIColor whiteColor];
-    developerNameLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    developerNameLabel.numberOfLines = 3;
-    developerNameLabel.font = [UIFont systemFontOfSize:13.0f];
-    // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
-    developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nNottingham, England";
-    [footerView addSubview:developerNameLabel];
-    
-    // Acknowledgment text
-    UnderlineLabel *acknowledgmentsLabel = [[UnderlineLabel alloc] initWithFrame:CGRectMake(0.0f, 100.0f, 320.0f, 44.0f)];
-    acknowledgmentsLabel.backgroundColor = [UIColor clearColor];
-    acknowledgmentsLabel.textAlignment = UITextAlignmentCenter;
-    acknowledgmentsLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    // acknowledgmentsLabel.textColor = [UIColor blueColor];
-    acknowledgmentsLabel.shadowColor = [UIColor whiteColor];
-    acknowledgmentsLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    acknowledgmentsLabel.numberOfLines = 1;
-    acknowledgmentsLabel.font = [UIFont systemFontOfSize:15.0f];
-    acknowledgmentsLabel.text = @"Thank you for your support";
-    [footerView addSubview:acknowledgmentsLabel];
-    
-    // overlying button to trigger transition
-    UIButton *acknowledgmentsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    acknowledgmentsButton.frame = CGRectMake(0.0f, 100.0f, 320.0f, 44.0f);
-    // acknowledgmentsLabel.alpha = 0.0f;
-    // acknowledgmentsLabel.backgroundColor = [UIColor clearColor];
-    [acknowledgmentsButton addTarget:self action:@selector(gotoAcknowledgments) forControlEvents:UIControlEventTouchUpInside];
-    [footerView addSubview:acknowledgmentsButton];
-    
-    // Copyright text
-    UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 140.0f, 320.0f, 44.0f)];
-    tableFooterLabel.backgroundColor = [UIColor clearColor];
-    tableFooterLabel.textAlignment = UITextAlignmentCenter;
-    tableFooterLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    tableFooterLabel.shadowColor = [UIColor whiteColor];
-    tableFooterLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    tableFooterLabel.numberOfLines = 1;
-    tableFooterLabel.font = [UIFont systemFontOfSize:15.0f];
-    tableFooterLabel.text = @"\nCopyright 2013 © Conrad Bosman";
-    [footerView addSubview:tableFooterLabel];
-    
-    // [self.myTableView setTableFooterView:tableFooterLabel];
-    [self.myTableView setTableFooterView:footerView];
+    [self.myTableView setTableFooterView:[self setupFooterView]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -216,7 +146,7 @@
     
     if (indexPath.section == 0)
     {
-        static NSString *CellIdentifier = @"section1";
+        static NSString *CellIdentifier = @"Section One";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!cell)
@@ -236,7 +166,7 @@
             
 #else
             
-            cell.imageView.image = [UIImage imageNamed:@"safari.png"];
+            cell.imageView.image = [UIImage imageNamed:@"tutorial.png"];
             
 #endif
         }
@@ -244,12 +174,16 @@
         {
             cell.imageView.image = [UIImage imageNamed:@"star.png"];
         }
+        else if (indexPath.row == 2)
+        {
+            cell.imageView.image = [UIImage imageNamed:@"safari.png"];
+        }
         
         returnCell = cell;
     }
     else if (indexPath.section == 1)
     {
-        static NSString *CellIdentifier = @"section2";
+        static NSString *CellIdentifier = @"Section Two";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!cell)
@@ -292,13 +226,71 @@
     }
 }
 
-#pragma mark
+#pragma mark Methods
 
-- (void)gotoAcknowledgments
+- (UIView *)setupFooterView
 {
-    // AcknowledgementsViewController *newViewController = [[AcknowledgementsViewController alloc] init];
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
     
-    // [self.navigationController presentModalViewController:newViewController animated:YES];
+    // Developer
+    UILabel *developerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+    developerLabel.backgroundColor = [UIColor clearColor];
+    developerLabel.textAlignment = UITextAlignmentCenter;
+    developerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+    developerLabel.shadowColor = [UIColor whiteColor];
+    developerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    developerLabel.numberOfLines = 1;
+    developerLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    developerLabel.text = @"DEVELOPER";
+    [footerView addSubview:developerLabel];
+    
+    // Conrad Bosman
+    UILabel *developerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, 320.0f, 90.0f)];
+    developerNameLabel.backgroundColor = [UIColor clearColor];
+    developerNameLabel.textAlignment = UITextAlignmentCenter;
+    developerNameLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+    developerNameLabel.shadowColor = [UIColor whiteColor];
+    developerNameLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    developerNameLabel.numberOfLines = 3;
+    developerNameLabel.font = [UIFont systemFontOfSize:13.0f];
+    // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
+    developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nNottingham, England";
+    [footerView addSubview:developerNameLabel];
+    
+    // Acknowledgment text
+    UnderlineLabel *acknowledgmentsLabel = [[UnderlineLabel alloc] initWithFrame:CGRectMake(0.0f, 100.0f, 320.0f, 44.0f)];
+    acknowledgmentsLabel.backgroundColor = [UIColor clearColor];
+    acknowledgmentsLabel.textAlignment = UITextAlignmentCenter;
+    acknowledgmentsLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+    // acknowledgmentsLabel.textColor = [UIColor blueColor];
+    acknowledgmentsLabel.shadowColor = [UIColor whiteColor];
+    acknowledgmentsLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    acknowledgmentsLabel.numberOfLines = 1;
+    acknowledgmentsLabel.font = [UIFont systemFontOfSize:15.0f];
+    acknowledgmentsLabel.text = @"Thank you for your support";
+    [footerView addSubview:acknowledgmentsLabel];
+    
+    // overlying button to trigger transition
+    UIButton *acknowledgmentsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    acknowledgmentsButton.frame = CGRectMake(0.0f, 100.0f, 320.0f, 44.0f);
+    // acknowledgmentsLabel.alpha = 0.0f;
+    // acknowledgmentsLabel.backgroundColor = [UIColor clearColor];
+    [acknowledgmentsButton addTarget:self action:@selector(gotoAcknowledgments) forControlEvents:UIControlEventTouchUpInside];
+    [footerView addSubview:acknowledgmentsButton];
+    
+    // Copyright text
+    UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 140.0f, 320.0f, 44.0f)];
+    tableFooterLabel.backgroundColor = [UIColor clearColor];
+    tableFooterLabel.textAlignment = UITextAlignmentCenter;
+    tableFooterLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+    tableFooterLabel.shadowColor = [UIColor whiteColor];
+    tableFooterLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    tableFooterLabel.numberOfLines = 1;
+    tableFooterLabel.font = [UIFont systemFontOfSize:15.0f];
+    tableFooterLabel.text = @"\nCopyright 2013 © Conrad Bosman";
+    [footerView addSubview:tableFooterLabel];
+    
+    return footerView;
 }
 
 @end
