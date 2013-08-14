@@ -62,18 +62,8 @@
         self.APGAR10minController.tabBarItem.image = [UIImage imageNamed:@"clock.png"];
         self.APGAR15minController.tabBarItem.image = [UIImage imageNamed:@"clock.png"];
         self.APGAR20minController.tabBarItem.image = [UIImage imageNamed:@"clock.png"];
-        
-#if APP_SHADING
-        //screen mask covers everything
-        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height - 49))];
-        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-        tableBgView.image = tableBgImage;
-        tableBgView.userInteractionEnabled = NO;
-        tableBgView.alpha = 0.5;
-        [self.view addSubview:tableBgView];
-#endif
-        
     }
+    
     return self;
 }
 
@@ -85,71 +75,144 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.APGAR1minController.patient = self.selectedPatient;
-    self.APGAR5minController.patient = self.selectedPatient;
-    self.APGAR10minController.patient = self.selectedPatient;
-    self.APGAR15minController.patient = self.selectedPatient;
-    self.APGAR20minController.patient = self.selectedPatient;
-    
-    if (self.selectedPatient.APGAR1minColour && self.selectedPatient.APGAR1minHeartRate && self.selectedPatient.APGAR1minRespiratoryEffort && self.selectedPatient.APGAR1minTone && self.selectedPatient.APGAR1minReflexes)
+    // check if a patient is selected
+    if (self.selectedPatient)
     {
-        int total;
+        self.APGAR1minController.patient = self.selectedPatient;
+        self.APGAR5minController.patient = self.selectedPatient;
+        self.APGAR10minController.patient = self.selectedPatient;
+        self.APGAR15minController.patient = self.selectedPatient;
+        self.APGAR20minController.patient = self.selectedPatient;
         
-        total = ([self.selectedPatient.APGAR1minColour intValue] + [self.selectedPatient.APGAR1minHeartRate intValue] + [self.selectedPatient.APGAR1minRespiratoryEffort intValue] + [self.selectedPatient.APGAR1minTone intValue] + [self.selectedPatient.APGAR1minReflexes intValue]);
-        
-        self.APGAR1minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
-        
-        NSString *icon;
-        icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR1minController.totalAPGARScore];
-        self.APGAR1minController.tabBarItem.image = [UIImage imageNamed:icon];
+        if (self.selectedPatient.APGAR1minColour && self.selectedPatient.APGAR1minHeartRate && self.selectedPatient.APGAR1minRespiratoryEffort && self.selectedPatient.APGAR1minTone && self.selectedPatient.APGAR1minReflexes)
+        {
+            int total;
+            
+            total = ([self.selectedPatient.APGAR1minColour intValue] + [self.selectedPatient.APGAR1minHeartRate intValue] + [self.selectedPatient.APGAR1minRespiratoryEffort intValue] + [self.selectedPatient.APGAR1minTone intValue] + [self.selectedPatient.APGAR1minReflexes intValue]);
+            
+            self.APGAR1minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR1minController.totalAPGARScore];
+            self.APGAR1minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.selectedPatient.APGAR5minColour && self.selectedPatient.APGAR5minHeartRate && self.selectedPatient.APGAR5minRespiratoryEffort && self.selectedPatient.APGAR5minTone && self.selectedPatient.APGAR5minReflexes)
+        {
+            int total;
+            
+            total = ([self.selectedPatient.APGAR5minColour intValue] + [self.selectedPatient.APGAR5minHeartRate intValue] + [self.selectedPatient.APGAR5minRespiratoryEffort intValue] + [self.selectedPatient.APGAR5minTone intValue] + [self.selectedPatient.APGAR5minReflexes intValue]);
+            
+            self.APGAR5minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR5minController.totalAPGARScore];
+            self.APGAR5minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.selectedPatient.APGAR10minColour && self.selectedPatient.APGAR10minHeartRate && self.selectedPatient.APGAR10minRespiratoryEffort && self.selectedPatient.APGAR10minTone && self.selectedPatient.APGAR10minReflexes)
+        {
+            int total;
+            
+            total = ([self.selectedPatient.APGAR10minColour intValue] + [self.selectedPatient.APGAR10minHeartRate intValue] + [self.selectedPatient.APGAR10minRespiratoryEffort intValue] + [self.selectedPatient.APGAR10minTone intValue] + [self.selectedPatient.APGAR10minReflexes intValue]);
+            
+            self.APGAR10minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR10minController.totalAPGARScore];
+            self.APGAR10minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.selectedPatient.APGAR15minColour && self.selectedPatient.APGAR15minHeartRate && self.selectedPatient.APGAR15minRespiratoryEffort && self.selectedPatient.APGAR15minTone && self.selectedPatient.APGAR15minReflexes)
+        {
+            int total;
+            
+            total = ([self.selectedPatient.APGAR15minColour intValue] + [self.selectedPatient.APGAR15minHeartRate intValue] + [self.selectedPatient.APGAR15minRespiratoryEffort intValue] + [self.selectedPatient.APGAR15minTone intValue] + [self.selectedPatient.APGAR15minReflexes intValue]);
+            
+            self.APGAR15minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR15minController.totalAPGARScore];
+            self.APGAR15minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.selectedPatient.APGAR20minColour && self.selectedPatient.APGAR20minHeartRate && self.selectedPatient.APGAR20minRespiratoryEffort && self.selectedPatient.APGAR20minTone && self.selectedPatient.APGAR20minReflexes)
+        {
+            int total;
+            
+            total = ([self.selectedPatient.APGAR20minColour intValue] + [self.selectedPatient.APGAR20minHeartRate intValue] + [self.selectedPatient.APGAR20minRespiratoryEffort intValue] + [self.selectedPatient.APGAR20minTone intValue] + [self.selectedPatient.APGAR20minReflexes intValue]);
+            
+            self.APGAR20minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR20minController.totalAPGARScore];
+            self.APGAR20minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
     }
-    if (self.selectedPatient.APGAR5minColour && self.selectedPatient.APGAR5minHeartRate && self.selectedPatient.APGAR5minRespiratoryEffort && self.selectedPatient.APGAR5minTone && self.selectedPatient.APGAR5minReflexes)
+    else if (self.tempPatient)
     {
-        int total;
+        self.APGAR1minController.patient = self.tempPatient;
+        self.APGAR5minController.patient = self.tempPatient;
+        self.APGAR10minController.patient = self.tempPatient;
+        self.APGAR15minController.patient = self.tempPatient;
+        self.APGAR20minController.patient = self.tempPatient;
         
-        total = ([self.selectedPatient.APGAR5minColour intValue] + [self.selectedPatient.APGAR5minHeartRate intValue] + [self.selectedPatient.APGAR5minRespiratoryEffort intValue] + [self.selectedPatient.APGAR5minTone intValue] + [self.selectedPatient.APGAR5minReflexes intValue]);
-        
-        self.APGAR5minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
-        
-        NSString *icon;
-        icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR5minController.totalAPGARScore];
-        self.APGAR5minController.tabBarItem.image = [UIImage imageNamed:icon];
-    }
-    if (self.selectedPatient.APGAR10minColour && self.selectedPatient.APGAR10minHeartRate && self.selectedPatient.APGAR10minRespiratoryEffort && self.selectedPatient.APGAR10minTone && self.selectedPatient.APGAR10minReflexes)
-    {
-        int total;
-        
-        total = ([self.selectedPatient.APGAR10minColour intValue] + [self.selectedPatient.APGAR10minHeartRate intValue] + [self.selectedPatient.APGAR10minRespiratoryEffort intValue] + [self.selectedPatient.APGAR10minTone intValue] + [self.selectedPatient.APGAR10minReflexes intValue]);
-        
-        self.APGAR10minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
-        
-        NSString *icon;
-        icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR10minController.totalAPGARScore];
-        self.APGAR10minController.tabBarItem.image = [UIImage imageNamed:icon];
-    }
-    if (self.selectedPatient.APGAR15minColour && self.selectedPatient.APGAR15minHeartRate && self.selectedPatient.APGAR15minRespiratoryEffort && self.selectedPatient.APGAR15minTone && self.selectedPatient.APGAR15minReflexes)
-    {
-        int total;
-        
-        total = ([self.selectedPatient.APGAR15minColour intValue] + [self.selectedPatient.APGAR15minHeartRate intValue] + [self.selectedPatient.APGAR15minRespiratoryEffort intValue] + [self.selectedPatient.APGAR15minTone intValue] + [self.selectedPatient.APGAR15minReflexes intValue]);
-        
-        self.APGAR15minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
-        
-        NSString *icon;
-        icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR15minController.totalAPGARScore];
-        self.APGAR15minController.tabBarItem.image = [UIImage imageNamed:icon];
-    }
-    if (self.selectedPatient.APGAR20minColour && self.selectedPatient.APGAR20minHeartRate && self.selectedPatient.APGAR20minRespiratoryEffort && self.selectedPatient.APGAR20minTone && self.selectedPatient.APGAR20minReflexes)
-    {
-        int total;
-        
-        total = ([self.selectedPatient.APGAR20minColour intValue] + [self.selectedPatient.APGAR20minHeartRate intValue] + [self.selectedPatient.APGAR20minRespiratoryEffort intValue] + [self.selectedPatient.APGAR20minTone intValue] + [self.selectedPatient.APGAR20minReflexes intValue]);
-        
-        self.APGAR20minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
-        
-        NSString *icon;
-        icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR20minController.totalAPGARScore];
-        self.APGAR20minController.tabBarItem.image = [UIImage imageNamed:icon];
+        if (self.tempPatient.APGAR1minColour && self.tempPatient.APGAR1minHeartRate && self.tempPatient.APGAR1minRespiratoryEffort && self.tempPatient.APGAR1minTone && self.tempPatient.APGAR1minReflexes)
+        {
+            int total;
+            
+            total = ([self.tempPatient.APGAR1minColour intValue] + [self.tempPatient.APGAR1minHeartRate intValue] + [self.tempPatient.APGAR1minRespiratoryEffort intValue] + [self.tempPatient.APGAR1minTone intValue] + [self.tempPatient.APGAR1minReflexes intValue]);
+            
+            self.APGAR1minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR1minController.totalAPGARScore];
+            self.APGAR1minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.tempPatient.APGAR5minColour && self.tempPatient.APGAR5minHeartRate && self.tempPatient.APGAR5minRespiratoryEffort && self.tempPatient.APGAR5minTone && self.tempPatient.APGAR5minReflexes)
+        {
+            int total;
+            
+            total = ([self.tempPatient.APGAR5minColour intValue] + [self.tempPatient.APGAR5minHeartRate intValue] + [self.tempPatient.APGAR5minRespiratoryEffort intValue] + [self.tempPatient.APGAR5minTone intValue] + [self.tempPatient.APGAR5minReflexes intValue]);
+            
+            self.APGAR5minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR5minController.totalAPGARScore];
+            self.APGAR5minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.tempPatient.APGAR10minColour && self.tempPatient.APGAR10minHeartRate && self.tempPatient.APGAR10minRespiratoryEffort && self.tempPatient.APGAR10minTone && self.tempPatient.APGAR10minReflexes)
+        {
+            int total;
+            
+            total = ([self.tempPatient.APGAR10minColour intValue] + [self.tempPatient.APGAR10minHeartRate intValue] + [self.tempPatient.APGAR10minRespiratoryEffort intValue] + [self.tempPatient.APGAR10minTone intValue] + [self.tempPatient.APGAR10minReflexes intValue]);
+            
+            self.APGAR10minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR10minController.totalAPGARScore];
+            self.APGAR10minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.tempPatient.APGAR15minColour && self.tempPatient.APGAR15minHeartRate && self.tempPatient.APGAR15minRespiratoryEffort && self.tempPatient.APGAR15minTone && self.tempPatient.APGAR15minReflexes)
+        {
+            int total;
+            
+            total = ([self.tempPatient.APGAR15minColour intValue] + [self.tempPatient.APGAR15minHeartRate intValue] + [self.tempPatient.APGAR15minRespiratoryEffort intValue] + [self.tempPatient.APGAR15minTone intValue] + [self.tempPatient.APGAR15minReflexes intValue]);
+            
+            self.APGAR15minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR15minController.totalAPGARScore];
+            self.APGAR15minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
+        if (self.tempPatient.APGAR20minColour && self.tempPatient.APGAR20minHeartRate && self.tempPatient.APGAR20minRespiratoryEffort && self.tempPatient.APGAR20minTone && self.tempPatient.APGAR20minReflexes)
+        {
+            int total;
+            
+            total = ([self.tempPatient.APGAR20minColour intValue] + [self.tempPatient.APGAR20minHeartRate intValue] + [self.tempPatient.APGAR20minRespiratoryEffort intValue] + [self.tempPatient.APGAR20minTone intValue] + [self.tempPatient.APGAR20minReflexes intValue]);
+            
+            self.APGAR20minController.totalAPGARScore = [NSString stringWithFormat:@"%i",total];
+            
+            NSString *icon;
+            icon = [NSString stringWithFormat:@"APGAR%@.png", self.APGAR20minController.totalAPGARScore];
+            self.APGAR20minController.tabBarItem.image = [UIImage imageNamed:icon];
+        }
     }
 }
 
@@ -204,80 +267,35 @@
 
 - (void)saveAPGAR
 {
-    if (!self.selectedPatient) 
+    // check to see if there is tempPatient data first
+    if (self.tempPatient)
     {
-        Patient *newPatient = [[Patient alloc] init];
+        [self assignAPGARValuesForPatient:self.tempPatient];
         
-        newPatient.APGAR1minColour = self.APGAR1minController.scoreColour.text;
-        newPatient.APGAR1minHeartRate = self.APGAR1minController.scoreHeartRate.text;
-        newPatient.APGAR1minRespiratoryEffort = self.APGAR1minController.scoreRespiratoryEffort.text;
-        newPatient.APGAR1minTone = self.APGAR1minController.scoreTone.text;
-        newPatient.APGAR1minReflexes = self.APGAR1minController.scoreReflexes.text;
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:nil
+                                  message:@"APGAR scores saved"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
         
-        newPatient.APGAR5minColour = self.APGAR5minController.scoreColour.text;
-        newPatient.APGAR5minHeartRate = self.APGAR5minController.scoreHeartRate.text;
-        newPatient.APGAR5minRespiratoryEffort = self.APGAR5minController.scoreRespiratoryEffort.text;
-        newPatient.APGAR5minTone = self.APGAR5minController.scoreTone.text;
-        newPatient.APGAR5minReflexes = self.APGAR5minController.scoreReflexes.text;
-        
-        newPatient.APGAR10minColour = self.APGAR10minController.scoreColour.text;
-        newPatient.APGAR10minHeartRate = self.APGAR10minController.scoreHeartRate.text;
-        newPatient.APGAR10minRespiratoryEffort = self.APGAR10minController.scoreRespiratoryEffort.text;
-        newPatient.APGAR10minTone = self.APGAR10minController.scoreTone.text;
-        newPatient.APGAR10minReflexes = self.APGAR10minController.scoreReflexes.text;
-        
-        newPatient.APGAR15minColour = self.APGAR15minController.scoreColour.text;
-        newPatient.APGAR15minHeartRate = self.APGAR15minController.scoreHeartRate.text;
-        newPatient.APGAR15minRespiratoryEffort = self.APGAR15minController.scoreRespiratoryEffort.text;
-        newPatient.APGAR15minTone = self.APGAR15minController.scoreTone.text;
-        newPatient.APGAR15minReflexes = self.APGAR15minController.scoreReflexes.text;
-        
-        newPatient.APGAR20minColour = self.APGAR20minController.scoreColour.text;
-        newPatient.APGAR20minHeartRate = self.APGAR20minController.scoreHeartRate.text;
-        newPatient.APGAR20minRespiratoryEffort = self.APGAR20minController.scoreRespiratoryEffort.text;
-        newPatient.APGAR20minTone = self.APGAR20minController.scoreTone.text;
-        newPatient.APGAR20minReflexes = self.APGAR20minController.scoreReflexes.text;
-        
-        [self.delegate2 APGARTabBarController:self didFinishEnteringAPGARValuesForANewPatient:newPatient];
-        
-        ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
-        
-        EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
-        
-        BOOL ableToViewNewPatient = !enterWeightViewController.confidentialityModeOn;
-        
-        if (ableToViewNewPatient) 
-        {
-            UIAlertView *alertView = [[UIAlertView alloc]
-                                      initWithTitle:@"NEW PATIENT CREATED" 
-                                      message:@"APGAR scores saved below.\nPlease update name, gestation and birth weight when known." 
-                                      delegate:nil cancelButtonTitle:@"OK"
-                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-        else 
-        {
-            UIAlertView *alertView = [[UIAlertView alloc]
-                                      initWithTitle:@"NEW PATIENT CREATED" 
-                                      message:@"APGAR scores saved in patient list." 
-                                      delegate:nil cancelButtonTitle:@"OK"
-                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-        
-        [revealController revealToggle:self];
-        
-        [self.navigationController popViewControllerAnimated:YES];
+        // update saved patient data also
+        [self.delegate2 APGARTabBarController:self updateAPGARValuesForTheNewPatient:self.tempPatient];
     }
-    else 
+    // if not check if there is a selected Patient
+    else if (self.selectedPatient)
     {
-        if (self.selectedPatient.firstname && self.selectedPatient.lastname) 
+        // save APGARS
+        [self assignAPGARValuesForPatient:self.selectedPatient];
+        
+        // alert message
+        if (self.selectedPatient.firstname && self.selectedPatient.lastname)
         {
             NSString *alertString = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
             
             UIAlertView *alertView = [[UIAlertView alloc]
                                       initWithTitle:alertString
-                                      message:@"APGAR scores saved" 
+                                      message:@"APGAR scores saved"
                                       delegate:nil cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];
             [alertView show];
@@ -288,7 +306,7 @@
             
             UIAlertView *alertView = [[UIAlertView alloc]
                                       initWithTitle:alertString
-                                      message:@"APGAR scores saved" 
+                                      message:@"APGAR scores saved"
                                       delegate:nil cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];
             [alertView show];
@@ -299,42 +317,73 @@
             
             UIAlertView *alertView = [[UIAlertView alloc]
                                       initWithTitle:alertString
-                                      message:@"APGAR scores saved" 
+                                      message:@"APGAR scores saved"
                                       delegate:nil cancelButtonTitle:@"OK"
                                       otherButtonTitles:nil];
             [alertView show];
         }
-        
-        if (self.APGAR1minController.scoreColour.text) self.selectedPatient.APGAR1minColour = self.APGAR1minController.scoreColour.text;
-        if (self.APGAR1minController.scoreHeartRate.text) self.selectedPatient.APGAR1minHeartRate = self.APGAR1minController.scoreHeartRate.text;
-        if (self.APGAR1minController.scoreRespiratoryEffort.text) self.selectedPatient.APGAR1minRespiratoryEffort = self.APGAR1minController.scoreRespiratoryEffort.text;
-        if (self.APGAR1minController.scoreTone.text) self.selectedPatient.APGAR1minTone = self.APGAR1minController.scoreTone.text;
-        if (self.APGAR1minController.scoreReflexes.text) self.selectedPatient.APGAR1minReflexes = self.APGAR1minController.scoreReflexes.text;
-        
-        if (self.APGAR5minController.scoreColour.text) self.selectedPatient.APGAR5minColour = self.APGAR5minController.scoreColour.text;
-        if (self.APGAR5minController.scoreHeartRate.text) self.selectedPatient.APGAR5minHeartRate = self.APGAR5minController.scoreHeartRate.text;
-        if (self.APGAR5minController.scoreRespiratoryEffort.text) self.selectedPatient.APGAR5minRespiratoryEffort = self.APGAR5minController.scoreRespiratoryEffort.text;
-        if (self.APGAR5minController.scoreTone.text) self.selectedPatient.APGAR5minTone = self.APGAR5minController.scoreTone.text;
-        if (self.APGAR5minController.scoreReflexes.text) self.selectedPatient.APGAR5minReflexes = self.APGAR5minController.scoreReflexes.text;
-        
-        if (self.APGAR10minController.scoreColour.text) self.selectedPatient.APGAR10minColour = self.APGAR10minController.scoreColour.text;
-        if (self.APGAR10minController.scoreHeartRate.text) self.selectedPatient.APGAR10minHeartRate = self.APGAR10minController.scoreHeartRate.text;
-        if (self.APGAR10minController.scoreRespiratoryEffort.text) self.selectedPatient.APGAR10minRespiratoryEffort = self.APGAR10minController.scoreRespiratoryEffort.text;
-        if (self.APGAR10minController.scoreTone.text) self.selectedPatient.APGAR10minTone = self.APGAR10minController.scoreTone.text;
-        if (self.APGAR10minController.scoreReflexes.text) self.selectedPatient.APGAR10minReflexes = self.APGAR10minController.scoreReflexes.text;
-        
-        if (self.APGAR15minController.scoreColour.text) self.selectedPatient.APGAR15minColour = self.APGAR15minController.scoreColour.text;
-        if (self.APGAR15minController.scoreHeartRate.text) self.selectedPatient.APGAR15minHeartRate = self.APGAR15minController.scoreHeartRate.text;
-        if (self.APGAR15minController.scoreRespiratoryEffort.text) self.selectedPatient.APGAR15minRespiratoryEffort = self.APGAR15minController.scoreRespiratoryEffort.text;
-        if (self.APGAR15minController.scoreTone.text) self.selectedPatient.APGAR15minTone = self.APGAR15minController.scoreTone.text;
-        if (self.APGAR15minController.scoreReflexes.text) self.selectedPatient.APGAR15minReflexes = self.APGAR15minController.scoreReflexes.text;
-        
-        if (self.APGAR20minController.scoreColour.text) self.selectedPatient.APGAR20minColour = self.APGAR20minController.scoreColour.text;
-        if (self.APGAR20minController.scoreHeartRate.text) self.selectedPatient.APGAR20minHeartRate = self.APGAR20minController.scoreHeartRate.text;
-        if (self.APGAR20minController.scoreRespiratoryEffort.text) self.selectedPatient.APGAR20minRespiratoryEffort = self.APGAR20minController.scoreRespiratoryEffort.text;
-        if (self.APGAR20minController.scoreTone.text) self.selectedPatient.APGAR20minTone = self.APGAR20minController.scoreTone.text;
-        if (self.APGAR20minController.scoreReflexes.text) self.selectedPatient.APGAR20minReflexes = self.APGAR20minController.scoreReflexes.text;
     }
+    else // create new patient and create tempPatient data
+    {
+        // create new patient
+        Patient *newPatient = [[Patient alloc] init];
+        
+        [self assignAPGARValuesForPatient:newPatient];
+        
+        // create new patient in patientList
+        [self.delegate2 APGARTabBarController:self didFinishEnteringAPGARValuesForANewPatient:newPatient];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"APGAR scores saved"
+                                  message:@"New patient created in Patient List"
+                                  delegate:nil cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        // create a temporary patient
+        self.tempPatient = [[Patient alloc] init];
+        
+        // save APGARS
+        [self assignAPGARValuesForPatient:self.tempPatient];
+        
+        // delegate method
+        [self.delegateAppVC APGARTabBarController:self didFinishEnteringAPGARValuesForANewPatient:self.tempPatient];
+    }
+}
+
+- (void)assignAPGARValuesForPatient:(Patient *)patient
+{
+    // the conditional statements here are to prevent uninitialised VC data overwriting existing patient data
+    //
+    if (self.APGAR1minController.scoreColour.text) patient.APGAR1minColour = self.APGAR1minController.scoreColour.text;
+    if (self.APGAR1minController.scoreHeartRate.text) patient.APGAR1minHeartRate = self.APGAR1minController.scoreHeartRate.text;
+    if (self.APGAR1minController.scoreRespiratoryEffort.text) patient.APGAR1minRespiratoryEffort = self.APGAR1minController.scoreRespiratoryEffort.text;
+    if (self.APGAR1minController.scoreTone.text) patient.APGAR1minTone = self.APGAR1minController.scoreTone.text;
+    if (self.APGAR1minController.scoreReflexes.text) patient.APGAR1minReflexes = self.APGAR1minController.scoreReflexes.text;
+    
+    if (self.APGAR5minController.scoreColour.text) patient.APGAR5minColour = self.APGAR5minController.scoreColour.text;
+    if (self.APGAR5minController.scoreHeartRate.text) patient.APGAR5minHeartRate = self.APGAR5minController.scoreHeartRate.text;
+    if (self.APGAR5minController.scoreRespiratoryEffort.text) patient.APGAR5minRespiratoryEffort = self.APGAR5minController.scoreRespiratoryEffort.text;
+    if (self.APGAR5minController.scoreTone.text) patient.APGAR5minTone = self.APGAR5minController.scoreTone.text;
+    if (self.APGAR5minController.scoreReflexes.text) patient.APGAR5minReflexes = self.APGAR5minController.scoreReflexes.text;
+    
+    if (self.APGAR10minController.scoreColour.text) patient.APGAR10minColour = self.APGAR10minController.scoreColour.text;
+    if (self.APGAR10minController.scoreHeartRate.text) patient.APGAR10minHeartRate = self.APGAR10minController.scoreHeartRate.text;
+    if (self.APGAR10minController.scoreRespiratoryEffort.text) patient.APGAR10minRespiratoryEffort = self.APGAR10minController.scoreRespiratoryEffort.text;
+    if (self.APGAR10minController.scoreTone.text) patient.APGAR10minTone = self.APGAR10minController.scoreTone.text;
+    if (self.APGAR10minController.scoreReflexes.text) patient.APGAR10minReflexes = self.APGAR10minController.scoreReflexes.text;
+    
+    if (self.APGAR15minController.scoreColour.text) patient.APGAR15minColour = self.APGAR15minController.scoreColour.text;
+    if (self.APGAR15minController.scoreHeartRate.text) patient.APGAR15minHeartRate = self.APGAR15minController.scoreHeartRate.text;
+    if (self.APGAR15minController.scoreRespiratoryEffort.text) patient.APGAR15minRespiratoryEffort = self.APGAR15minController.scoreRespiratoryEffort.text;
+    if (self.APGAR15minController.scoreTone.text) patient.APGAR15minTone = self.APGAR15minController.scoreTone.text;
+    if (self.APGAR15minController.scoreReflexes.text) patient.APGAR15minReflexes = self.APGAR15minController.scoreReflexes.text;
+    
+    if (self.APGAR20minController.scoreColour.text) patient.APGAR20minColour = self.APGAR20minController.scoreColour.text;
+    if (self.APGAR20minController.scoreHeartRate.text) patient.APGAR20minHeartRate = self.APGAR20minController.scoreHeartRate.text;
+    if (self.APGAR20minController.scoreRespiratoryEffort.text) patient.APGAR20minRespiratoryEffort = self.APGAR20minController.scoreRespiratoryEffort.text;
+    if (self.APGAR20minController.scoreTone.text) patient.APGAR20minTone = self.APGAR20minController.scoreTone.text;
+    if (self.APGAR20minController.scoreReflexes.text) patient.APGAR20minReflexes = self.APGAR20minController.scoreReflexes.text;
 }
 
 @end

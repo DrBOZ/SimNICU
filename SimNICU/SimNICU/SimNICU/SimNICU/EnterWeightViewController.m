@@ -1979,6 +1979,53 @@
     [self.myTableView reloadData];
 }
 
+- (void)APGARTabBarController:(APGARTabBarController *)controller updateAPGARValuesForTheNewPatient:(Patient *)patient
+{
+    // New Baby will be the last one in the list
+    
+    int lastBayInBayData = [self.bayData count] - 1;
+    
+    Bay *bay = self.bayData[lastBayInBayData];
+    
+    int lastPatientInLastBay = bay.patientsInBay.count - 1;
+    
+    // check that this is the right baby
+    Patient *lastPatient = bay.patientsInBay[lastPatientInLastBay];
+    if ([lastPatient.firstname isEqualToString:@"New"])
+    {
+        // update only APGAR data
+        lastPatient.APGAR1minColour = patient.APGAR1minColour;
+        lastPatient.APGAR1minHeartRate = patient.APGAR1minHeartRate;
+        lastPatient.APGAR1minRespiratoryEffort = patient.APGAR1minRespiratoryEffort;
+        lastPatient.APGAR1minTone = patient.APGAR1minTone;
+        lastPatient.APGAR1minReflexes = patient.APGAR1minReflexes;
+        
+        lastPatient.APGAR5minColour = patient.APGAR5minColour;
+        lastPatient.APGAR5minHeartRate = patient.APGAR5minHeartRate;
+        lastPatient.APGAR5minRespiratoryEffort = patient.APGAR5minRespiratoryEffort;
+        lastPatient.APGAR5minTone = patient.APGAR5minTone;
+        lastPatient.APGAR5minReflexes = patient.APGAR5minReflexes;
+        
+        lastPatient.APGAR10minColour = patient.APGAR10minColour;
+        lastPatient.APGAR10minHeartRate = patient.APGAR10minHeartRate;
+        lastPatient.APGAR10minRespiratoryEffort = patient.APGAR10minRespiratoryEffort;
+        lastPatient.APGAR10minTone = patient.APGAR10minTone;
+        lastPatient.APGAR10minReflexes = patient.APGAR10minReflexes;
+        
+        lastPatient.APGAR15minColour = patient.APGAR15minColour;
+        lastPatient.APGAR15minHeartRate = patient.APGAR15minHeartRate;
+        lastPatient.APGAR15minRespiratoryEffort = patient.APGAR15minRespiratoryEffort;
+        lastPatient.APGAR15minTone = patient.APGAR15minTone;
+        lastPatient.APGAR15minReflexes = patient.APGAR15minReflexes;
+        
+        lastPatient.APGAR20minColour = patient.APGAR20minColour;
+        lastPatient.APGAR20minHeartRate = patient.APGAR20minHeartRate;
+        lastPatient.APGAR20minRespiratoryEffort = patient.APGAR20minRespiratoryEffort;
+        lastPatient.APGAR20minTone = patient.APGAR20minTone;
+        lastPatient.APGAR20minReflexes = patient.APGAR20minReflexes;
+    }
+}
+
 #pragma mark - OxygenationIndexViewController delegate
 
 - (void)oxygenationIndexViewController:(OxygenationIndexViewController *)controller didChangePaO2Units:(int)index

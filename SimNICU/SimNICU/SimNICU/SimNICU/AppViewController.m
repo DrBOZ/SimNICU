@@ -930,8 +930,9 @@
             EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
             
             newAPGARTabBarController.delegate2 = (EnterWeightViewController *)enterWeightViewController;
-            
             newAPGARTabBarController.selectedPatient = self.selectedPatient;
+            newAPGARTabBarController.tempPatient = self.tempPatient;
+            newAPGARTabBarController.delegateAppVC = self;
             
             [self.navigationController pushViewController:newAPGARTabBarController animated:YES];
         }
@@ -1585,6 +1586,11 @@
         self.gestation = gestation;
         self.weight = weight;
     }
+    
+    if (self.tempPatient)
+    {
+        self.displayAgeTextLabel.text = @"APGAR scores saved";
+    }
 }
 
 - (void)clearScreen
@@ -1598,6 +1604,7 @@
     self.estimatedWeightUsed = NULL;
     self.selectedPatient = NULL;
     self.patientSelected = NO;
+    self.tempPatient = NULL;  // clears APGAR data
     self.gestation = NULL;
     self.weight = NULL;
     
@@ -1609,6 +1616,22 @@
     
     enterWeightViewController.weight.text = NULL;
     enterWeightViewController.gestation.text = NULL;
+}
+
+#pragma mark APGARTabBarController delegate
+
+- (void)APGARTabBarController:(APGARTabBarController *)controller didFinishEnteringAPGARValuesForANewPatient:(Patient *)patient
+{
+    self.tempPatient = patient;
+    
+    self.displayTextLabel.text = @"New BABY";
+    self.displayDismissButtonView.hidden = NO;
+    self.displayDetailTextLabel.hidden = NO;
+    self.displayDetailTextLabel.text = @"";
+    self.displayAgeTextLabel.text = @"APGAR scores saved";
+    self.displayAgeTextLabel.hidden = NO;
+    self.displayBackground.hidden = NO;
+    self.displayTextLabel.hidden = NO;
 }
 
 @end

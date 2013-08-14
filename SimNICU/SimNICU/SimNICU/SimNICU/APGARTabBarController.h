@@ -14,11 +14,17 @@
 
 - (void)APGARTabBarController:(APGARTabBarController *)controller didFinishEnteringAPGARValuesForANewPatient:(Patient *)patient;
 
+@optional
+
+- (void)APGARTabBarController:(APGARTabBarController *)controller updateAPGARValuesForTheNewPatient:(Patient *)patient;
+
 @end
 
 @interface APGARTabBarController : UITabBarController
 
 @property (nonatomic, unsafe_unretained) id <APGARTabBarControllerDelegate> delegate2;
+@property (nonatomic, unsafe_unretained) id <APGARTabBarControllerDelegate> delegateAppVC;
 @property (nonatomic, strong) Patient *selectedPatient;
+@property (nonatomic, strong) Patient *tempPatient;
 
 @end

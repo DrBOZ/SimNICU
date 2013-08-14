@@ -10,9 +10,11 @@
 #import <UIKit/UIKit.h>
 #import "GrowthChart.h"
 #import "AppDelegate.h"
+#import "Patient.h"
 
-@interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate, BannerViewContainer>
+@interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate, BannerViewContainer, APGARTabBarControllerDelegate>
 
+@property (nonatomic, strong) Patient *tempPatient;
 @property (nonatomic, strong) NSString *gestation;
 @property (nonatomic, strong) NSString *weight;
 @property (nonatomic) float *calculationWeight;
