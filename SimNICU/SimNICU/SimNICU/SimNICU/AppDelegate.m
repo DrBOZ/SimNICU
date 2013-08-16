@@ -12,6 +12,7 @@
 #import "DCIntrospect.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "Flurry.h"
 #import "iRate.h"
 
 // Google Analytics dispatch period in seconds
@@ -147,6 +148,17 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     }
     
 #endif //#endif GOOGLE_ANALYTICS
+    
+#if FLURRY
+    
+    [Flurry startSession:@"NK3DP8RWF6NM7R27RW76"];
+    [Flurry logEvent:@"App Loaded"];
+    
+#else
+    
+    NSLog@"FLURRY OFF";
+    
+#endif
     
     // set UIStatusBarStyle explicitly - for iOS 4 and 5
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] < 6.0)

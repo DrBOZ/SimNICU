@@ -204,6 +204,8 @@
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
+		5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */; };
+		5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */; };
 		5C679FBE1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
 		5C679FBF1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
 		5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FC21795B83900B9A813 /* BayEditorViewController.m */; };
@@ -994,6 +996,8 @@
 		5C63B13816B9FD1200B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
 		5C63B13A16B9FD1600B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
 		5C63B13B16B9FD1700B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
+		5C66527A17BE9AE9005F8171 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		5C679FBC1794CA0100B9A813 /* Bay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bay.h; sourceTree = "<group>"; };
 		5C679FBD1794CA0100B9A813 /* Bay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bay.m; sourceTree = "<group>"; };
 		5C679FC11795B83900B9A813 /* BayEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BayEditorViewController.h; sourceTree = "<group>"; };
@@ -1501,6 +1505,7 @@
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
 				5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */,
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
+				5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
 				5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */,
 				5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */,
 				5C940CAC166E413A0044A7D1 /* AudioToolbox.framework in Frameworks */,
@@ -1549,6 +1554,7 @@
 				5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */,
 				5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */,
 				5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */,
+				5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1931,6 +1937,14 @@
 			name = Screen_UVCUAC;
 			sourceTree = "<group>";
 		};
+		5C66527917BE9AD6005F8171 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				5C66527A17BE9AE9005F8171 /* Flurry.h */,
+			);
+			name = Flurry;
+			sourceTree = "<group>";
+		};
 		5C679FC01795B7E500B9A813 /* Bay Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -2045,6 +2059,7 @@
 				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
+				5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */,
 				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
 				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
 				5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */,
@@ -2112,6 +2127,7 @@
 				5C940ADB166E39690044A7D1 /* DCIntrospect */,
 				5C940AD8166E394F0044A7D1 /* CoolButton */,
 				5C940AD9166E39570044A7D1 /* Google Analytics */,
+				5C66527917BE9AD6005F8171 /* Flurry */,
 				5C940AD2166E392D0044A7D1 /* iRate */,
 				5C940AAE166E38F60044A7D1 /* Kal */,
 				5C940A9F166E38D10044A7D1 /* KKPasscodeLock */,
@@ -3979,6 +3995,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
@@ -4002,6 +4019,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "C8A0189B-FFE7-4787-9D8B-8993CCBA5408";
@@ -4031,6 +4049,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
@@ -4058,6 +4077,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
