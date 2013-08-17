@@ -1469,8 +1469,8 @@
         return;
     }
     
-    // gestation entered but no weight
-    if (gestation && !weight)
+    
+    if (gestation && !weight)      // gestation entered but no weight
     {        
         // set display text
         if ([sex isEqualToString:@"Unknown"] && [centile isEqualToString:@"50th"])
@@ -1535,8 +1535,18 @@
         self.estimatedWeightUsed = @"YES";
         
         self.gestation = gestation;
+        
+        // Flurry event
+        NSDictionary *articleParams =
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         @"Gestation", gestation,
+         @"Sex", sex,
+         @"Centile", centile,
+         nil];
+        
+        [Flurry logEvent:@"User didFinishEnteringWeightOrGestation" withParameters:articleParams];
     }
-    else if(weight && !gestation)
+    else if(weight && !gestation)  // weight entered but no gestation
     {
         float weightKGAsFloat = [UKLocaleWeight floatValue];
         
@@ -1561,7 +1571,7 @@
         
         self.weight = weight;
     }
-    else if(weight && gestation)
+    else if(weight && gestation)   // both weight and gestation entered
     {
         float weightKGAsFloat = [UKLocaleWeight floatValue];
         
@@ -1587,6 +1597,7 @@
         self.weight = weight;
     }
     
+    // APGAR
     if (self.tempPatient)
     {
         self.displayAgeTextLabel.text = @"APGAR scores saved";

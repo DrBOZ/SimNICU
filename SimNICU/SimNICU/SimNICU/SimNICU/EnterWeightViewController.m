@@ -1932,22 +1932,15 @@
         // set editing to no
         [self setEditing:NO animated:YES];
     }
+    
+    // Flurry event
+    [Flurry endTimedEvent:@"EnterWeightViewController: revealed" withParameters:nil];
 }
 
 - (void)revealController:(ZUUIRevealController *)revealController willRevealRearViewController:(UIViewController *)rearViewController
 {
-    /*
-     self.userIsStartingToEnterGestationWhenNoWeightEntered = NO;
-     
-     [self.myTableView reloadData];
-     
-     NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-     
-     [self.myTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
-     
-     
-     // code here: set sex buttons to 'unknown'
-     */
+    // Flurry event
+    [Flurry logEvent:@"EnterWeightViewController: revealed" timed:YES];
 }
 
 #pragma mark - APGARTabBarController delegate

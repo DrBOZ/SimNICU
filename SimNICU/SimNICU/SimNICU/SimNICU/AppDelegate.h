@@ -17,7 +17,7 @@
 // @"LightGrayBackground4inchRetina.png"
 
 #define GOOGLE_ANALYTICS 0
-#define FLURRY 1
+#define FLURRY_LIVE 0
 #define IRATE_SET 0
 
 #define IRATE_PREVIEW_MODE 0
