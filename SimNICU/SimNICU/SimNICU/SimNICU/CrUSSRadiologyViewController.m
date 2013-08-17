@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *pageViews2;
 @property (nonatomic, strong) UIScrollView *scrollView1;
 @property (nonatomic, strong) UIScrollView *scrollView2;
-@property (nonatomic, strong) UITableView *myTableView;
+// @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UILabel *viewLabel;
 
 @end

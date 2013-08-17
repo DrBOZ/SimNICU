@@ -556,7 +556,7 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Fluid Requirements";
-    screen.detailMenuText = @"In development";
+    screen.detailMenuText = @"";
     screen.segueId = @"FluidRequirements";
     [screens addObject:screen];
     

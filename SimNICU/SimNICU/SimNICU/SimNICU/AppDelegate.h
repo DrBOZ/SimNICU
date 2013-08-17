@@ -21,7 +21,7 @@
 #define IRATE_SET 0
 
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 1
+#define DCINTROSPECT_ON 0
 
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0
@@ -31,9 +31,9 @@
 #define FEEDS_AND_FLUIDS_PREVIEW_MODE 0
 #define POSTNATAL_WARD_PREVIEW_MODE 0
 #define HYPOGLYCAEMIA_PREVIEW_MODE 0
-#define CALCULATOR_PREVIEW_MODE 1
+#define CALCULATOR_PREVIEW_MODE 0
 #define HANDOVER_PREVIEW_MODE 0
-#define CRUSS_PREVIEW_MODE 1
+#define CRUSS_PREVIEW_MODE 0
 #define DRUGS_PREVIEW_MODE 0
 
 #import "ZUUIRevealController.h"

@@ -72,6 +72,9 @@
         self.myTableView.scrollEnabled = YES;
         [self.view addSubview:self.myTableView];
         
+        NSLog(@"tempImageView2.frame  = (%f, %f, %f, %f)", self.myTableView.frame.origin.x, self.myTableView.frame.origin.y, self.myTableView.frame.size.width, self.myTableView.frame.size.height);
+        NSLog(@"tempImageView2.bounds = (%f, %f, %f, %f)", self.myTableView.bounds.origin.x, self.myTableView.bounds.origin.y, self.myTableView.bounds.size.width, self.myTableView.bounds.size.height);
+        
         // add TableView background
         [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         
