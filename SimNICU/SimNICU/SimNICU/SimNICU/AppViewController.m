@@ -35,6 +35,7 @@
 #import "DrugCategoriesViewController.h"
 #import "DrugsViewController.h"
 #import "EarlyCareViewController.h"
+#import "FluidRequirementsViewController.h"
 #import "GastroschisisViewController.h"
 #import "GlucoseLoadController.h"
 #import "CorrectedAgeViewController.h"
@@ -87,6 +88,11 @@
 @implementation AppViewController
 {
     NSMutableArray *screens;
+    BOOL appViewControllerLoadingForTheFirstTime;
+    
+    UILabel *loadingDisplayBackground;
+    UILabel *loadingDisplayTextLabel;
+    UILabel *loadingDisplayDetailTextLabel;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -118,6 +124,9 @@
     NSLog(@"localizedModel: %@", [[UIDevice currentDevice] localizedModel]);
     NSLog(@"Current locale = %@", [[NSLocale currentLocale] localeIdentifier]);
     NSLog(@" ");
+    
+    // set toggle
+    appViewControllerLoadingForTheFirstTime = YES;
     
     return self;
 }
@@ -289,7 +298,6 @@
     {
         self.tableBgView.frame = CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196));
         self.tableBgView.image = [UIImage imageNamed:@"bgOverlay.png"];
-        // self.tableBgView.alpha = 1.0;
     }
     else
     {
@@ -420,40 +428,42 @@
     if (!self.title) self.title = @"Neonatal Intensive Care";
     
 #endif
-
-// This is used to create the Launch images easily
-#if LOADING_GRAPHICS
     
-    NSLog(@"LOADING_GRAPHICS SET");
+    if (appViewControllerLoadingForTheFirstTime)
+    {
+        // recreate loading screen to animate off
+        
+        // display background
+        loadingDisplayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
+        loadingDisplayBackground.backgroundColor = [UIColor blackColor];
+        loadingDisplayBackground.hidden = NO;
+        loadingDisplayBackground.alpha = .4;
+        [self.myHeaderView addSubview:loadingDisplayBackground];
+        
+        // displayTextLabel
+        loadingDisplayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
+        loadingDisplayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+        loadingDisplayTextLabel.backgroundColor = [UIColor clearColor];
+        loadingDisplayTextLabel.textAlignment = UITextAlignmentCenter;
+        loadingDisplayTextLabel.textColor = [UIColor whiteColor];
+        loadingDisplayTextLabel.adjustsFontSizeToFitWidth = YES;
+        loadingDisplayTextLabel.text = @"LOADING";
+        loadingDisplayTextLabel.hidden = NO;
+        [self.myHeaderView addSubview:loadingDisplayTextLabel];
+        
+        // displayDetailTextLabel
+        loadingDisplayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
+        loadingDisplayDetailTextLabel.backgroundColor = [UIColor clearColor];
+        loadingDisplayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+        loadingDisplayDetailTextLabel.textAlignment = UITextAlignmentCenter;
+        loadingDisplayDetailTextLabel.textColor = [UIColor whiteColor];
+        loadingDisplayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+        loadingDisplayDetailTextLabel.text = @"Please wait...";
+        loadingDisplayDetailTextLabel.hidden = NO;
+        [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
+    }
     
-    // reset display background
-    self.displayBackground.frame = CGRectMake(30.0f, 40.0f, 245.0f, 50.0f);
-    self.displayBackground.backgroundColor = [UIColor blackColor];
-    self.displayBackground.hidden = NO;
-    self.displayBackground.alpha = .4;
-    
-    // reset displayTextLabel
-    self.displayTextLabel.frame = CGRectMake(39.0f, 39.0f, 210.0f, 30.0f);
-    self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    self.displayTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayTextLabel.textAlignment = UITextAlignmentCenter;
-    self.displayTextLabel.textColor = [UIColor whiteColor];
-    self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
-    self.displayTextLabel.text = @"LOADING";
-    self.displayTextLabel.hidden = NO;
-    
-    // reset displayDetailTextLabel
-    self.displayDetailTextLabel.frame = CGRectMake(39.0f, 60.0f, 227.0f, 30.0f);
-    self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
-    self.displayDetailTextLabel.textAlignment = UITextAlignmentCenter;
-    self.displayDetailTextLabel.textColor = [UIColor whiteColor];
-    self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-    self.displayDetailTextLabel.text = @"Please wait...";
-    self.displayDetailTextLabel.hidden = NO;
-    
-#endif
-    
+    // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // check if RevealController can respond to selectors
@@ -492,7 +502,7 @@
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
-#ifdef CALCULATOR_PREVIEW_MODE
+#if CALCULATOR_PREVIEW_MODE
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Calculator";
@@ -527,7 +537,7 @@
     screen.segueId = @"CDH";
     [screens addObject:screen];
     
-#ifdef DRUGS_PREVIEW_MODE
+#if DRUGS_PREVIEW_MODE
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Drugs";
@@ -542,7 +552,17 @@
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
-#ifdef FEEDS_AND_FLUIDS_PREVIEW_MODE
+#if FLUID_REQUIREMENTS_PREVIEW_MODE
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Fluid Requirements";
+    screen.detailMenuText = @"In development";
+    screen.segueId = @"FluidRequirements";
+    [screens addObject:screen];
+    
+#endif
+    
+#if FEEDS_AND_FLUIDS_PREVIEW_MODE
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Feeds & Fluids";
@@ -575,7 +595,7 @@
     screen.segueId = @"HFOV";
     [screens addObject:screen];
     
-#ifdef HYPOGLYCAEMIA_PREVIEW_MODE
+#if HYPOGLYCAEMIA_PREVIEW_MODE
     
      screen = [[Screen alloc] init];
      screen.menuText = @"Hypoglycaemia Screen";
@@ -616,7 +636,7 @@
     screen.segueId = @"Thermoregulation";
     [screens addObject:screen];
     
-#ifdef POSTNATAL_WARD_PREVIEW_MODE
+#if POSTNATAL_WARD_PREVIEW_MODE
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Postnatal Ward";
@@ -677,6 +697,39 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if (appViewControllerLoadingForTheFirstTime)
+    {
+        // This is used to create the Launch images easily
+#if LOADING_GRAPHICS
+        
+        // do not animate the load screen off...
+#else
+        // clear loading screen animation
+        CGFloat animationDuration = 1.0f;
+        CGFloat animationDelay = 0.0f;
+        
+        [UIView animateWithDuration:animationDuration
+                              delay:animationDelay
+                            options: UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             loadingDisplayDetailTextLabel.alpha = 0.0f;
+                             loadingDisplayBackground.alpha = 0.0f;
+                             loadingDisplayTextLabel.alpha = 0.0f;
+                         }
+                         completion:^(BOOL finished){
+                             
+                             // animation finished
+                             loadingDisplayDetailTextLabel.hidden = YES;
+                             loadingDisplayBackground.hidden = YES;
+                             loadingDisplayTextLabel.hidden = YES;
+                             
+                             appViewControllerLoadingForTheFirstTime = NO;
+                         }];
+        
+#endif
+        
+    }
     
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
 }
@@ -1051,6 +1104,15 @@
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
+#pragma mark Fluid Requirements
+        
+        else if ([thisScreenType isEqual:@"FluidRequirements"])
+        {
+            FluidRequirementsViewController *newViewController = [[FluidRequirementsViewController alloc] init];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
+        }
+        
 #pragma mark Feeds & Fluids
         
         else if ([thisScreenType isEqualToString:@"FeedsAndFluids"])
@@ -1416,6 +1478,14 @@
         self.gestation = nil;
     }
     
+    // reset alpha
+    self.displayDismissButtonView.alpha = 1.0f;
+    self.displayDetailTextLabel.alpha = 1.0f;
+    self.displayAgeTextLabel.alpha = 1.0f;
+    self.displayBackground.alpha = 0.5f;
+    self.displayTextLabel.alpha = 1.0f;
+    
+    // add text
     self.displayBackground.hidden = NO;
     self.displayTextLabel.hidden = NO;
     self.displayAgeTextLabel.hidden = NO;
@@ -1516,6 +1586,14 @@
             self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:estimatedWeightKGAsFloat]]];
         }
         
+        // reset alpha
+        self.displayDismissButtonView.alpha = 1.0f;
+        self.displayDetailTextLabel.alpha = 1.0f;
+        self.displayAgeTextLabel.alpha = 1.0f;
+        self.displayBackground.alpha = 0.5f;
+        self.displayTextLabel.alpha = 1.0f;
+        
+        // add text
         self.displayAgeTextLabel.text = @"";
         self.displayDetailTextLabel.hidden = NO;
         self.displayAgeTextLabel.hidden = NO;
@@ -1606,11 +1684,28 @@
 
 - (void)clearScreen
 {
-    self.displayDismissButtonView.hidden = YES;
-    self.displayDetailTextLabel.hidden = YES;
-    self.displayAgeTextLabel.hidden = YES;
-    self.displayBackground.hidden = YES;
-    self.displayTextLabel.hidden = YES;
+    CGFloat animationDuration = 0.5f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         self.displayDismissButtonView.alpha = 0.0f;
+                         self.displayDetailTextLabel.alpha = 0.0f;
+                         self.displayAgeTextLabel.alpha = 0.0f;
+                         self.displayBackground.alpha = 0.0f;
+                         self.displayTextLabel.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         
+                         // animation finished
+                         self.displayDismissButtonView.hidden = YES;
+                         self.displayDetailTextLabel.hidden = YES;
+                         self.displayAgeTextLabel.hidden = YES;
+                         self.displayBackground.hidden = YES;
+                         self.displayTextLabel.hidden = YES;
+                     }];
     
     self.estimatedWeightUsed = NULL;
     self.selectedPatient = NULL;
@@ -1635,6 +1730,14 @@
 {
     self.tempPatient = patient;
     
+    // reset alpha
+    self.displayDismissButtonView.alpha = 100.0f;
+    self.displayDetailTextLabel.alpha = 100.0f;
+    self.displayAgeTextLabel.alpha = 100.0f;
+    self.displayBackground.alpha = 100.0f;
+    self.displayTextLabel.alpha = 100.0f;
+    
+    // add text
     self.displayTextLabel.text = @"New BABY";
     self.displayDismissButtonView.hidden = NO;
     self.displayDetailTextLabel.hidden = NO;

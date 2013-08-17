@@ -594,6 +594,8 @@
                 [cell setBackgroundColor:[UIColor whiteColor]];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
+#warning subclass required
+                
                 UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
                 drug.font = [UIFont boldSystemFontOfSize:17.0];
                 drug.adjustsFontSizeToFitWidth = YES;
@@ -733,7 +735,7 @@
             static NSString *CellIdentifier = @"Dopamine";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -881,7 +883,7 @@
             static NSString *CellIdentifier = @"Dobutamine";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1024,7 +1026,7 @@
             static NSString *CellIdentifier = @"Adrenaline";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1174,7 +1176,7 @@
             static NSString *CellIdentifier = @"Hepsal";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1250,7 +1252,7 @@
             static NSString *CellIdentifier = @"Insulin";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1384,7 +1386,7 @@
             static NSString *CellIdentifier = @"Atracurium";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1521,7 +1523,7 @@
             static NSString *CellIdentifier = @"Lidocaine";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1651,7 +1653,7 @@
             static NSString *CellIdentifier = @"Midazolam";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1784,7 +1786,7 @@
             static NSString *CellIdentifier = @"Prostin";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1933,7 +1935,7 @@
                 static NSString *CellIdentifier = @"Morphine";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -1978,7 +1980,7 @@
                 static NSString *CellIdentifier = @"Dopamine";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2020,7 +2022,7 @@
                 static NSString *CellIdentifier = @"Dobutamine";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2062,7 +2064,7 @@
                 static NSString *CellIdentifier = @"Adrenaline";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2107,7 +2109,7 @@
                 static NSString *CellIdentifier = @"Hepsal";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2158,7 +2160,7 @@
             static NSString *CellIdentifier = @"Insulin";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2210,7 +2212,7 @@
                 static NSString *CellIdentifier = @"Atracurium";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2260,7 +2262,7 @@
                 static NSString *CellIdentifier = @"Pancuronium";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2302,7 +2304,7 @@
                 static NSString *CellIdentifier = @"Rocuronium";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2342,7 +2344,7 @@
                 static NSString *CellIdentifier = @"Vecuronium";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2385,7 +2387,7 @@
                 static NSString *CellIdentifier = @"Midazolam";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if(cell == nil)
+                if(!cell)
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -2428,7 +2430,7 @@
             static NSString *CellIdentifier = @"Prostin";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
