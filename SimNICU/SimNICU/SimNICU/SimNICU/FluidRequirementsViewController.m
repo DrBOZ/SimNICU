@@ -15,18 +15,25 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERKGPERDAY;
 @property (nonatomic, strong) UITableView *MLperHOURTableView;
-@property (nonatomic, strong) UISlider *totalPotassiumSlider;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERHOUR;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERDAY;
-@property (nonatomic, strong) UISlider *totalCalciumSlider;
-@property (nonatomic, strong) UISlider *totalSodiumSlider;
 @property (nonatomic, strong) UISlider *totalFluidSlider;
-@property (nonatomic, strong) UITableView *additives;
-
+// @property (nonatomic, strong) UITableView *additives;
 
 @property (nonatomic, strong) UILabel *totalSodiumMMOLPERKGPERDAY;
+@property (nonatomic, strong) UILabel *totalSodiumMMOLPERDAY;
+@property (nonatomic, strong) UILabel *totalSodiumMMOLPERBAG;
+@property (nonatomic, strong) UISlider *totalSodiumSlider;
+
 @property (nonatomic, strong) UILabel *totalPotassiumMMOLPERKGPERDAY;
+@property (nonatomic, strong) UILabel *totalPotassiumMMOLPERDAY;
+@property (nonatomic, strong) UILabel *totalPotassiumMMOLPERBAG;
+@property (nonatomic, strong) UISlider *totalPotassiumSlider;
+
 @property (nonatomic, strong) UILabel *totalCalciumMMOLPERKGPERDAY;
+@property (nonatomic, strong) UILabel *totalCalciumMMOLPERDAY;
+@property (nonatomic, strong) UILabel *totalCalciumMMOLPERBAG;
+@property (nonatomic, strong) UISlider *totalCalciumSlider;
 
 @end
 
@@ -37,6 +44,18 @@
     double mlPerKgPerDay;
     double mlPerDay;
     double mlPerHour;
+    
+    double naMMOLPerKgPerDay;
+    double naMMOLPerDay;
+    double naMMOLPerBag;
+    
+    double kMMOLPerKgPerDay;
+    double kMMOLPerDay;
+    double kMMOLPerBag;
+    
+    double caMMOLPerKgPerDay;
+    double caMMOLPerDay;
+    double caMMOLPerBag;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,6 +65,10 @@
     {
         // default values
         mlPerKgPerDay = 60;
+        
+        naMMOLPerKgPerDay = 3;
+        kMMOLPerKgPerDay = 2;
+        caMMOLPerKgPerDay = 1;
     }
     return self;
 }
@@ -393,25 +416,43 @@
                     self.totalSodiumMMOLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
                     self.totalSodiumMMOLPERKGPERDAY.backgroundColor = [UIColor clearColor];
                     self.totalSodiumMMOLPERKGPERDAY.textColor = [UIColor blackColor];
-                    self.totalSodiumMMOLPERKGPERDAY.text = @"3 mmol/kg/day";
                     [cell addSubview:self.totalSodiumMMOLPERKGPERDAY];
+
+                    // will have to change this to a property to allow animation
+                    UILabel *mmolPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 41.0f, 150.0f, 22.0f)];
+                    mmolPerKgPerDay.font = [UIFont boldSystemFontOfSize:16.0f];
+                    mmolPerKgPerDay.backgroundColor = [UIColor clearColor];
+                    mmolPerKgPerDay.textAlignment = UITextAlignmentLeft;
+                    mmolPerKgPerDay.textColor = [UIColor blackColor];
+                    mmolPerKgPerDay.text = @"mmol/kg/day";
+                    [cell addSubview:mmolPerKgPerDay];
                     
-                    UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 40.0f, 10.0f, 22.0f)];
+                    // and this one
+                    UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(167.0f, 40.0f, 10.0f, 22.0f)];
                     equals.font = [UIFont boldSystemFontOfSize:17.0f];
                     equals.backgroundColor = [UIColor clearColor];
                     equals.textColor = [UIColor blackColor];
                     equals.text = @"=";
                     [cell addSubview:equals];
                     
-                    UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 140.0f, 22.0f)];
-                    mmol.font = [UIFont boldSystemFontOfSize:17.0f];
-                    mmol.backgroundColor = [UIColor clearColor];
-                    mmol.textAlignment = UITextAlignmentRight;
-                    mmol.textColor = [UIColor blackColor];
-                    mmol.text = @"10 mmol/day";
-                    [cell addSubview:mmol];
-                    
-                    mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
+                    // mmol/day
+                    self.totalSodiumMMOLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 58.0f, 22.0f)];
+                    self.totalSodiumMMOLPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
+                    self.totalSodiumMMOLPERDAY.backgroundColor = [UIColor clearColor];
+                    self.totalSodiumMMOLPERDAY.textAlignment = UITextAlignmentRight;
+                    self.totalSodiumMMOLPERDAY.textColor = [UIColor blackColor];
+                    [cell addSubview:self.totalSodiumMMOLPERDAY];
+
+                    UILabel *mmolPerDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 41.0f, 128.0f, 22.0f)];
+                    mmolPerDayLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+                    mmolPerDayLabel.backgroundColor = [UIColor clearColor];
+                    mmolPerDayLabel.textAlignment = UITextAlignmentRight;
+                    mmolPerDayLabel.textColor = [UIColor blackColor];
+                    mmolPerDayLabel.text = @"mmol/day";
+                    [cell addSubview:mmolPerDayLabel];
+#warning update required
+                    // mmol/500ml bag
+                    UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
                     mmol.font = [UIFont systemFontOfSize:17.0f];
                     mmol.backgroundColor = [UIColor clearColor];
                     mmol.textAlignment = UITextAlignmentRight;
@@ -457,6 +498,8 @@
                     }
                     
                     [cell addSubview:self.totalSodiumSlider];
+                    
+                    [self calculateInitialValuesForCellWithIdentifier:CellIdentifier];
                 }
                 
                 cell.textLabel.text = @"";
@@ -480,13 +523,20 @@
                     potassium.textColor = [UIColor blackColor];
                     potassium.text = @"Potassium chloride 15%";
                     [cell addSubview:potassium];
-#warning change required
-                    UILabel *misc = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
-                    misc.font = [UIFont boldSystemFontOfSize:17.0f];
-                    misc.backgroundColor = [UIColor clearColor];
-                    misc.textColor = [UIColor blackColor];
-                    misc.text = @"2 mmol/kg/day";
-                    [cell addSubview:misc];
+
+                    self.totalPotassiumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
+                    self.totalPotassiumMMOLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
+                    self.totalPotassiumMMOLPERKGPERDAY.backgroundColor = [UIColor clearColor];
+                    self.totalPotassiumMMOLPERKGPERDAY.textColor = [UIColor blackColor];
+                    [cell addSubview:self.totalPotassiumMMOLPERKGPERDAY];
+                    
+                    UILabel *mmolPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 41.0f, 150.0f, 22.0f)];
+                    mmolPerKgPerDay.font = [UIFont boldSystemFontOfSize:16.0f];
+                    mmolPerKgPerDay.backgroundColor = [UIColor clearColor];
+                    mmolPerKgPerDay.textAlignment = UITextAlignmentLeft;
+                    mmolPerKgPerDay.textColor = [UIColor blackColor];
+                    mmolPerKgPerDay.text = @"mmol/kg/day";
+                    [cell addSubview:mmolPerKgPerDay];
                     
                     UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 40.0f, 10.0f, 22.0f)];
                     equals.font = [UIFont boldSystemFontOfSize:17.0f];
@@ -494,16 +544,25 @@
                     equals.textColor = [UIColor blackColor];
                     equals.text = @"=";
                     [cell addSubview:equals];
-#warning change required
-                    UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 140.0f, 22.0f)];
-                    mmol.font = [UIFont boldSystemFontOfSize:17.0f];
-                    mmol.backgroundColor = [UIColor clearColor];
-                    mmol.textAlignment = UITextAlignmentRight;
-                    mmol.textColor = [UIColor blackColor];
-                    mmol.text = @"7.5 mmol/day";
-                    [cell addSubview:mmol];
-#warning change required
-                    mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
+                    
+                    // mmol/day
+                    self.totalPotassiumMMOLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 58.0f, 22.0f)];
+                    self.totalPotassiumMMOLPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
+                    self.totalPotassiumMMOLPERDAY.backgroundColor = [UIColor clearColor];
+                    self.totalPotassiumMMOLPERDAY.textAlignment = UITextAlignmentRight;
+                    self.totalPotassiumMMOLPERDAY.textColor = [UIColor blackColor];
+                    [cell addSubview:self.totalPotassiumMMOLPERDAY];
+                    
+                    UILabel *mmolPerDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 41.0f, 128.0f, 22.0f)];
+                    mmolPerDayLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+                    mmolPerDayLabel.backgroundColor = [UIColor clearColor];
+                    mmolPerDayLabel.textAlignment = UITextAlignmentRight;
+                    mmolPerDayLabel.textColor = [UIColor blackColor];
+                    mmolPerDayLabel.text = @"mmol/day";
+                    [cell addSubview:mmolPerDayLabel];
+#warning update required
+                    // mmol/500ml bag
+                    UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
                     mmol.font = [UIFont systemFontOfSize:17.0f];
                     mmol.backgroundColor = [UIColor clearColor];
                     mmol.textAlignment = UITextAlignmentRight;
@@ -548,6 +607,8 @@
                     }
                     
                     [cell addSubview:self.totalPotassiumSlider];
+                    
+                    [self calculateInitialValuesForCellWithIdentifier:CellIdentifier];
                 }
                 
                 cell.textLabel.text = @"";
@@ -571,13 +632,20 @@
                     potassium.textColor = [UIColor blackColor];
                     potassium.text = @"Calcium";
                     [cell addSubview:potassium];
-#warning change required
-                    UILabel *misc = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
-                    misc.font = [UIFont boldSystemFontOfSize:17.0f];
-                    misc.backgroundColor = [UIColor clearColor];
-                    misc.textColor = [UIColor blackColor];
-                    misc.text = @"1 mmol/kg/day";
-                    [cell addSubview:misc];
+
+                    self.totalCalciumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
+                    self.totalCalciumMMOLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
+                    self.totalCalciumMMOLPERKGPERDAY.backgroundColor = [UIColor clearColor];
+                    self.totalCalciumMMOLPERKGPERDAY.textColor = [UIColor blackColor];
+                    [cell addSubview:self.totalCalciumMMOLPERKGPERDAY];
+                    
+                    UILabel *mmolPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 41.0f, 150.0f, 22.0f)];
+                    mmolPerKgPerDay.font = [UIFont boldSystemFontOfSize:16.0f];
+                    mmolPerKgPerDay.backgroundColor = [UIColor clearColor];
+                    mmolPerKgPerDay.textAlignment = UITextAlignmentLeft;
+                    mmolPerKgPerDay.textColor = [UIColor blackColor];
+                    mmolPerKgPerDay.text = @"mmol/kg/day";
+                    [cell addSubview:mmolPerKgPerDay];
                     
                     UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 40.0f, 10.0f, 22.0f)];
                     equals.font = [UIFont boldSystemFontOfSize:17.0f];
@@ -585,16 +653,24 @@
                     equals.textColor = [UIColor blackColor];
                     equals.text = @"=";
                     [cell addSubview:equals];
-#warning change required
-                    UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 140.0f, 22.0f)];
-                    mmol.font = [UIFont boldSystemFontOfSize:17.0f];
-                    mmol.backgroundColor = [UIColor clearColor];
-                    mmol.textAlignment = UITextAlignmentRight;
-                    mmol.textColor = [UIColor blackColor];
-                    mmol.text = @"3.75 mmol/day";
-                    [cell addSubview:mmol];
-#warning change required
-                    mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
+
+                    // mmol/day
+                    self.totalCalciumMMOLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 58.0f, 22.0f)];
+                    self.totalCalciumMMOLPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
+                    self.totalCalciumMMOLPERDAY.backgroundColor = [UIColor clearColor];
+                    self.totalCalciumMMOLPERDAY.textAlignment = UITextAlignmentRight;
+                    self.totalCalciumMMOLPERDAY.textColor = [UIColor blackColor];
+                    [cell addSubview:self.totalCalciumMMOLPERDAY];
+                    
+                    UILabel *mmolPerDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 41.0f, 128.0f, 22.0f)];
+                    mmolPerDayLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+                    mmolPerDayLabel.backgroundColor = [UIColor clearColor];
+                    mmolPerDayLabel.textAlignment = UITextAlignmentRight;
+                    mmolPerDayLabel.textColor = [UIColor blackColor];
+                    mmolPerDayLabel.text = @"mmol/day";
+                    [cell addSubview:mmolPerDayLabel];
+#warning update required
+                    UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
                     mmol.font = [UIFont systemFontOfSize:17.0f];
                     mmol.backgroundColor = [UIColor clearColor];
                     mmol.textAlignment = UITextAlignmentRight;
@@ -639,6 +715,8 @@
                     }
                     
                     [cell addSubview:self.totalCalciumSlider];
+                    
+                    [self calculateInitialValuesForCellWithIdentifier:CellIdentifier];
                 }
                 
                 cell.textLabel.text = @"";
@@ -673,33 +751,48 @@
     }
     else if ([sender isEqual:self.totalSodiumSlider])
     {
+        // handle slider
         [self incrementSlider:sender withInterval:0.5 withMinValue:0 andMaxValue:15];
         
-        double totalSodium = sender.value;
+        // update variable
+        naMMOLPerKgPerDay = sender.value;
         
-        NSString *formattedTotalSodium = [self formatResultWithDouble:(double)totalSodium maximumFractionDigits:1];
-        
-        self.totalSodiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalSodium];
+        // calculate values
+        [self calculateValuesWhenSliderChanged:sender];
     }
     else if ([sender isEqual:self.totalPotassiumSlider])
     {
+        // handle slider
         [self incrementSlider:sender withInterval:0.5 withMinValue:0 andMaxValue:5];
         
-        double totalPotassium = sender.value;
+        // update variable
+        kMMOLPerKgPerDay = sender.value;
         
+        // calculate values
+        [self calculateValuesWhenSliderChanged:sender];
+        
+        /*
         NSString *formattedTotalPotassium = [self formatResultWithDouble:totalPotassium maximumFractionDigits:1];
         
-        self.totalPotassiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalPotassium];
+        self.totalPotassiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", formattedTotalPotassium];
+         */
     }
     else if ([sender isEqual:self.totalCalciumSlider])
     {
+        // handle slider
         [self incrementSlider:sender withInterval:0.5 withMinValue:0 andMaxValue:5];
         
-        double totalCalcium = sender.value;
+        // update variable
+        caMMOLPerKgPerDay = sender.value;
         
+        // calculate values
+        [self calculateValuesWhenSliderChanged:sender];
+        
+        /*
         NSString *formattedTotalCalcium = [self formatResultWithDouble:totalCalcium maximumFractionDigits:1];
         
-        self.totalCalciumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalCalcium];
+        self.totalCalciumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", formattedTotalCalcium];
+         */
     }
 }
 
@@ -812,6 +905,39 @@
         mlPerHour = mlPerDay / 24;
         self.totalFluidsMLPERHOUR.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:mlPerHour maximumFractionDigits:1]];
     }
+    else if ([CellIdentifier isEqual:@"Sodium"])
+    {
+        // mmol/kg/day
+        self.totalSodiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:naMMOLPerKgPerDay maximumFractionDigits:1]];
+        
+        // mmol/day
+        naMMOLPerDay = naMMOLPerKgPerDay * workingWeightKGAsDouble;
+        self.totalSodiumMMOLPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:naMMOLPerDay maximumFractionDigits:1]];
+        
+        // mmol/500ml bag
+    }
+    else if ([CellIdentifier isEqual:@"Potassium"])
+    {
+        // mmol/kg/day
+        self.totalPotassiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:kMMOLPerKgPerDay maximumFractionDigits:1]];
+        
+        // mmol/day
+        kMMOLPerDay = kMMOLPerKgPerDay * workingWeightKGAsDouble;
+        self.totalPotassiumMMOLPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:kMMOLPerDay maximumFractionDigits:1]];
+        
+        // mmol/500ml bag
+    }
+    else if ([CellIdentifier isEqual:@"Calcium"])
+    {
+        // mmol/kg/day
+        self.totalCalciumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:caMMOLPerKgPerDay maximumFractionDigits:1]];
+        
+        // mmol/day
+        caMMOLPerDay = caMMOLPerKgPerDay * workingWeightKGAsDouble;
+        self.totalCalciumMMOLPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:caMMOLPerDay maximumFractionDigits:1]];
+        
+        // mmol/500ml bag
+    }
 }
 
 - (void)calculateValuesWhenSliderChanged:(UISlider *)slider
@@ -828,6 +954,39 @@
         // ml/hour
         mlPerHour = mlPerDay / 24;
         self.totalFluidsMLPERHOUR.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:mlPerHour maximumFractionDigits:1]];
+    }
+    else if ([slider isEqual:self.totalSodiumSlider])
+    {
+        // mmol/kg/day
+        self.totalSodiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:naMMOLPerKgPerDay maximumFractionDigits:1]];
+        
+        // mmol/day
+        naMMOLPerDay = naMMOLPerKgPerDay * workingWeightKGAsDouble;
+        self.totalSodiumMMOLPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:naMMOLPerDay maximumFractionDigits:1]];
+        
+        // mmol/500ml
+    }
+    else if ([slider isEqual:self.totalPotassiumSlider])
+    {
+        // mmol/kg/day
+        self.totalPotassiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:kMMOLPerKgPerDay maximumFractionDigits:1]];
+        
+        // mmol/day
+        kMMOLPerDay = kMMOLPerKgPerDay * workingWeightKGAsDouble;
+        self.totalPotassiumMMOLPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:kMMOLPerDay maximumFractionDigits:1]];
+        
+        // mmol/500ml
+    }
+    else if ([slider isEqual:self.totalCalciumSlider])
+    {
+        // mmol/kg/day
+        self.totalCalciumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:caMMOLPerKgPerDay maximumFractionDigits:1]];
+        
+        // mmol/day
+        caMMOLPerDay = caMMOLPerKgPerDay * workingWeightKGAsDouble;
+        self.totalCalciumMMOLPERDAY.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:caMMOLPerDay maximumFractionDigits:1]];
+        
+        // mmol/500ml
     }
 }
 
