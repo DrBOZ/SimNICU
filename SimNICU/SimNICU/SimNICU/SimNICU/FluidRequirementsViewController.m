@@ -68,7 +68,7 @@
         
         naMMOLPerKgPerDay = 3;
         kMMOLPerKgPerDay = 2;
-        caMMOLPerKgPerDay = 1;
+        caMMOLPerKgPerDay = 0;
     }
     return self;
 }
@@ -545,7 +545,7 @@
                     mmolPerKgPerDay.text = @"mmol/kg/day";
                     [cell addSubview:mmolPerKgPerDay];
                     
-                    UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 40.0f, 10.0f, 22.0f)];
+                    UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(167.0f, 40.0f, 10.0f, 22.0f)];
                     equals.font = [UIFont boldSystemFontOfSize:17.0f];
                     equals.backgroundColor = [UIColor clearColor];
                     equals.textColor = [UIColor blackColor];
@@ -661,7 +661,7 @@
                     mmolPerKgPerDay.text = @"mmol/kg/day";
                     [cell addSubview:mmolPerKgPerDay];
                     
-                    UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 40.0f, 10.0f, 22.0f)];
+                    UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(167.0f, 40.0f, 10.0f, 22.0f)];
                     equals.font = [UIFont boldSystemFontOfSize:17.0f];
                     equals.backgroundColor = [UIColor clearColor];
                     equals.textColor = [UIColor blackColor];
