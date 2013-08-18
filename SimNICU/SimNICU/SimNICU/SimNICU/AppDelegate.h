@@ -32,8 +32,8 @@
 #define HYPOGLYCAEMIA_PREVIEW_MODE 0
 #define CALCULATOR_PREVIEW_MODE 0
 #define HANDOVER_PREVIEW_MODE 0
-#define CRUSS_PREVIEW_MODE 0
-#define DRUGS_PREVIEW_MODE 0
+#define CRUSS_PREVIEW_MODE 1
+#define DRUGS_PREVIEW_MODE 1
 
 #import "ZUUIRevealController.h"
 #import "DrugDatabase.h"
