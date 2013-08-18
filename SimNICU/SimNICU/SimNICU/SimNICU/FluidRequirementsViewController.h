@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Patient.h"
 
 @interface FluidRequirementsViewController : UIViewController
 
 @property (nonatomic, strong) NSString *workingWeight;
+@property (nonatomic, strong) Patient *selectedPatient;
 
 @end

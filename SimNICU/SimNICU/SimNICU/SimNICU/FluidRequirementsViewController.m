@@ -9,6 +9,7 @@
 #import "FluidRequirementsViewController.h"
 #import "DAAnisotropicImage.h"
 #import "UnderlineLabel.h"
+#import "CBTimeMethods.h"
 
 @interface FluidRequirementsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -66,8 +67,8 @@
         // default values
         mlPerKgPerDay = 60;
         
-        naMMOLPerKgPerDay = 3;
-        kMMOLPerKgPerDay = 2;
+        naMMOLPerKgPerDay = 0;
+        kMMOLPerKgPerDay = 0;
         caMMOLPerKgPerDay = 0;
     }
     return self;
@@ -159,6 +160,74 @@
              [self.totalPotassiumSlider setThumbImage:image forState:UIControlStateHighlighted];
          }];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    /*
+    if (self.selectedPatient)
+    {
+        if (self.selectedPatient.birthDate && self.selectedPatient.birthTimeSet)
+        {
+            // calculate exact age
+            double ageInDays = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[NSDate date]];
+            
+            if (self.selectedPatient.gestation)
+            {
+                int gestation = [self.selectedPatient.gestation integerValue];
+                
+                if (gestation < 28)
+                {
+                    // extreme preterm fluids
+                    if (ageInDays < 1)
+                    {
+                        mlPerKgPerDay = 60;
+                    }
+                    else if (ageInDays >= 1 && ageInDays < 2)
+                    {
+                        mlPerKgPerDay = 75;
+                    }
+                    else if (ageInDays >= 2 && ageInDays < 3)
+                    {
+                        mlPerKgPerDay = 80;
+                    }
+                    else if (ageInDays >= 3 && ageInDays < 4)
+                    {
+                        mlPerKgPerDay = 90;
+                    }
+                    else if (ageInDays >= 4)
+                    {
+                        mlPerKgPerDay = 120;
+                    }
+                }
+                else
+                {
+                    // normal fluids
+                    if (ageInDays < 1)
+                    {
+                        mlPerKgPerDay = 60;
+                    }
+                    else if (ageInDays >= 1 && ageInDays < 2)
+                    {
+                        mlPerKgPerDay = 70;
+                    }
+                    else if (ageInDays >= 2 && ageInDays < 3)
+                    {
+                        mlPerKgPerDay = 80;
+                    }
+                    else if (ageInDays >= 3 && ageInDays < 4)
+                    {
+                        mlPerKgPerDay = 90;
+                    }
+                    else if (ageInDays >= 4)
+                    {
+                        mlPerKgPerDay = 120;
+                    }
+                }
+            }
+        }
+    }
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -366,7 +435,7 @@
                 self.totalFluidSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 70.0f, 280.0f, 40.0f)];
                 self.totalFluidSlider.minimumValue = 40.0f;
                 self.totalFluidSlider.maximumValue = 150.0f;
-                self.totalFluidSlider.value = 60.0f;
+                self.totalFluidSlider.value = mlPerKgPerDay;
                 [self.totalFluidSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                 self.totalFluidSlider.continuous = YES;
                 
@@ -486,7 +555,7 @@
                     self.totalSodiumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
                     self.totalSodiumSlider.minimumValue = 0.0f;
                     self.totalSodiumSlider.maximumValue = 15.0f;
-                    self.totalSodiumSlider.value = 3.0f;
+                    self.totalSodiumSlider.value = naMMOLPerKgPerDay;
                     [self.totalSodiumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                     self.totalSodiumSlider.continuous = YES;
                     
@@ -602,7 +671,7 @@
                     self.totalPotassiumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
                     self.totalPotassiumSlider.minimumValue = 0.0f;
                     self.totalPotassiumSlider.maximumValue = 5.0f;
-                    self.totalPotassiumSlider.value = 2.0f;
+                    self.totalPotassiumSlider.value = kMMOLPerKgPerDay;
                     [self.totalPotassiumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                     self.totalPotassiumSlider.continuous = YES;
                     
@@ -717,7 +786,7 @@
                     self.totalCalciumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
                     self.totalCalciumSlider.minimumValue = 0.0f;
                     self.totalCalciumSlider.maximumValue = 5.0f;
-                    self.totalCalciumSlider.value = 1.0f;
+                    self.totalCalciumSlider.value = caMMOLPerKgPerDay;
                     [self.totalCalciumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                     self.totalCalciumSlider.continuous = YES;
                     

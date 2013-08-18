@@ -67,8 +67,8 @@
     
 #else
     
-    [aboutMenuItems addObject:@"Quick Tutorial"];
-    [aboutMenuItems addObject:@"FAQ"];
+    // [aboutMenuItems addObject:@"Quick Tutorial"];
+    // [aboutMenuItems addObject:@"FAQ"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
     [aboutMenuItems addObject:@"Developer Information"];
     
@@ -123,7 +123,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 1.4.1";
+        returnString = @"Version 1.4.2";
     }
     
     return returnString;
@@ -167,13 +167,14 @@
             
 #else
             
-            cell.imageView.image = [UIImage imageNamed:@"tutorial.png"];
-            
+            // cell.imageView.image = [UIImage imageNamed:@"tutorial.png"];
+            cell.imageView.image = [UIImage imageNamed:@"star.png"];
 #endif
         }
         else if (indexPath.row == 1)
         {
-            cell.imageView.image = [UIImage imageNamed:@"star.png"];
+            // cell.imageView.image = [UIImage imageNamed:@"star.png"];
+            cell.imageView.image = [UIImage imageNamed:@"safari.png"];
         }
         else if (indexPath.row == 2)
         {
@@ -208,7 +209,10 @@
     
     if (indexPath.row == 0)
     {
-        
+        [[iRate sharedInstance] openRatingsPageInAppStore];
+    }
+    else if (indexPath.row == 1)
+    {
 #ifdef LITE_VERSION
         
         // goto purchase page
@@ -217,13 +221,7 @@
 #else
         // goto SimNICU mobile website
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.simnicu.co.uk/?page_id=98"]];
-        
 #endif
-        
-    }
-    else if (indexPath.row == 1)
-    {
-        [[iRate sharedInstance] openRatingsPageInAppStore];
     }
 }
 

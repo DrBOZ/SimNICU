@@ -552,15 +552,11 @@
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
-#if FLUID_REQUIREMENTS_PREVIEW_MODE
-    
     screen = [[Screen alloc] init];
     screen.menuText = @"Fluid Requirements";
     screen.detailMenuText = @"";
     screen.segueId = @"FluidRequirements";
     [screens addObject:screen];
-    
-#endif
     
 #if FEEDS_AND_FLUIDS_PREVIEW_MODE
     
