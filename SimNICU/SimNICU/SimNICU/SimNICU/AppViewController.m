@@ -706,7 +706,7 @@
         // do not animate the load screen off...
 #else
         // clear loading screen animation
-        CGFloat animationDuration = 1.0f;
+        CGFloat animationDuration = 0.5f;
         CGFloat animationDelay = 0.0f;
         
         [UIView animateWithDuration:animationDuration

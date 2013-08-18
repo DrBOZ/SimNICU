@@ -31,13 +31,21 @@
 @end
 
 @implementation FluidRequirementsViewController
+{
+    float workingWeightKGAsFloat;
+    double workingWeightKGAsDouble;
+    double mlPerKgPerDay;
+    double mlPerDay;
+    double mlPerHour;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        // code
+        // default values
+        mlPerKgPerDay = 60;
     }
     return self;
 }
@@ -64,10 +72,6 @@
     if (!self.workingWeight)
     {
         self.MLperHOURTableView.tableFooterView = [self setupFooterView];
-        
-        // swipe gesture recognizer
-        // self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        // [self.MLperHOURTableView addGestureRecognizer:self.swipeGestureRecognizer];
     }
     
     // swipe gesture recognizer
@@ -85,7 +89,8 @@
         UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
         UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
-        float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+        workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
+        workingWeightKGAsDouble = [UKLocaleWorkingWeight doubleValue];
         
         if (workingWeightKGAsFloat < 1.0f)
         {
@@ -195,16 +200,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    float footer = 15.0f;
-    
-    /*
-    if (!self.workingWeight)
-    {
-        footer = 500.0f;
-    }
-     */
-    
-    return footer;
+    return 15.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -225,22 +221,6 @@
     
     return header;
 }
-
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    NSString *footer = nil;
-    
-    if (!self.workingWeight)
-    {
-#warning adapt for iPhone 4S
-        // iPhone 5
-        footer = @"\n\n\n\n\n\n\n\nA weight is need for this calculator.\n\nPlease go back and press the    button or slide the image to the right, and enter a weight or gestation, or select a patient.\n\nThank you.";
-    }
-    
-    return footer;
-}
- */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -265,25 +245,41 @@
                 // ml/kg/day
                 self.totalFluidsMLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 144.0f, 22.0f)];
                 self.totalFluidsMLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
-                self.totalFluidsMLPERKGPERDAY.textColor = [UIColor blackColor];
                 self.totalFluidsMLPERKGPERDAY.backgroundColor = [UIColor clearColor];
-                self.totalFluidsMLPERKGPERDAY.text = @"60 ml/kg/day";
+                self.totalFluidsMLPERKGPERDAY.textColor = [UIColor blackColor];
                 [cell addSubview:self.totalFluidsMLPERKGPERDAY];
                 
-                // ml/kg/hour
-                self.totalFluidsMLPERHOUR = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 10.0f, 100.0f, 22.0f)];
+                // ml/hour
+                self.totalFluidsMLPERHOUR = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 10.0f, 59.0f, 22.0f)];
                 self.totalFluidsMLPERHOUR.font = [UIFont boldSystemFontOfSize:17.0f];
+                self.totalFluidsMLPERHOUR.backgroundColor = [UIColor clearColor];
+                self.totalFluidsMLPERHOUR.textAlignment = UITextAlignmentRight;
                 self.totalFluidsMLPERHOUR.textColor = [UIColor blackColor];
-                self.totalFluidsMLPERHOUR.text = @"3.4 ml/hour";
                 [cell addSubview:self.totalFluidsMLPERHOUR];
                 
-                // ml/kg/day
-                self.totalFluidsMLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 32.0f, 100.0f, 22.0f)];
-                // self.totalFluidsMLPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
+                UILabel *mlPerHourLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 10.0f, 128.0f, 22.0f)];
+                mlPerHourLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+                mlPerHourLabel.backgroundColor = [UIColor clearColor];
+                mlPerHourLabel.textAlignment = UITextAlignmentRight;
+                mlPerHourLabel.textColor = [UIColor blackColor];
+                mlPerHourLabel.text = @"ml/hour";
+                [cell addSubview:mlPerHourLabel];
+                
+                // ml/day
+                self.totalFluidsMLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 32.0f, 67.0f, 22.0f)];
                 self.totalFluidsMLPERDAY.font = [UIFont systemFontOfSize:17.0f];
+                self.totalFluidsMLPERDAY.backgroundColor = [UIColor clearColor];
+                self.totalFluidsMLPERDAY.textAlignment = UITextAlignmentRight;
                 self.totalFluidsMLPERDAY.textColor = [UIColor grayColor];
-                self.totalFluidsMLPERDAY.text = @"(120 ml/day)";
                 [cell addSubview:self.totalFluidsMLPERDAY];
+                
+                UILabel *mlPerDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 32.0f, 128.0f, 22.0f)];
+                mlPerDayLabel.font = [UIFont systemFontOfSize:17.0f];
+                mlPerDayLabel.backgroundColor = [UIColor clearColor];
+                mlPerDayLabel.textAlignment = UITextAlignmentRight;
+                mlPerDayLabel.textColor = [UIColor grayColor];
+                mlPerDayLabel.text = @"ml/day)";
+                [cell addSubview:mlPerDayLabel];
                 
                 // equals sign
                 UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 10.0f, 10.0f, 22.0f)];
@@ -365,6 +361,8 @@
                 }
                 
                 [cell addSubview:self.totalFluidSlider];
+                
+                [self calculateInitialValuesForCellWithIdentifier:CellIdentifier];
             }
             
             cell.textLabel.text = @"";
@@ -664,15 +662,14 @@
 {
     if ([sender isEqual:self.totalFluidSlider])
     {
+        // handle slider
         [self incrementSlider:sender withInterval:5 withMinValue:40 andMaxValue:150];
         
-        int totalFluids = sender.value;
+        // update variable
+        mlPerKgPerDay = sender.value;
 
-        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%i ml/kg/day", totalFluids];
-        
-        // ml/day
-        
-        // ml/hour
+        // calculate values
+        [self calculateValuesWhenSliderChanged:sender];
     }
     else if ([sender isEqual:self.totalSodiumSlider])
     {
@@ -680,7 +677,7 @@
         
         double totalSodium = sender.value;
         
-        NSString *formattedTotalSodium = [self formatResultWithDouble:(double)totalSodium];
+        NSString *formattedTotalSodium = [self formatResultWithDouble:(double)totalSodium maximumFractionDigits:1];
         
         self.totalSodiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalSodium];
     }
@@ -690,7 +687,7 @@
         
         double totalPotassium = sender.value;
         
-        NSString *formattedTotalPotassium = [self formatResultWithDouble:totalPotassium];
+        NSString *formattedTotalPotassium = [self formatResultWithDouble:totalPotassium maximumFractionDigits:1];
         
         self.totalPotassiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalPotassium];
     }
@@ -700,7 +697,7 @@
         
         double totalCalcium = sender.value;
         
-        NSString *formattedTotalCalcium = [self formatResultWithDouble:totalCalcium];
+        NSString *formattedTotalCalcium = [self formatResultWithDouble:totalCalcium maximumFractionDigits:1];
         
         self.totalCalciumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalCalcium];
     }
@@ -726,7 +723,7 @@
     }
 }
 
-- (NSString *)formatResultWithDouble:(double)result
+- (NSString *)formatResultWithDouble:(double)result maximumFractionDigits:(NSUInteger)digits
 {
     NSString *formattedResult;
     
@@ -739,7 +736,7 @@
         formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
     }
     formatter.minimumFractionDigits = 0;
-    formatter.maximumFractionDigits = 1;
+    formatter.maximumFractionDigits = digits;
     
     formattedResult = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:result]]];
      
@@ -798,6 +795,40 @@
     [footerView addSubview:instructions];
     
     return footerView;
+}
+
+- (void)calculateInitialValuesForCellWithIdentifier:(NSString *)CellIdentifier
+{
+    if ([CellIdentifier isEqual:@"Total Fluid Volume"])
+    {
+        // ml/kg/day
+        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ ml/kg/day", [self formatResultWithDouble:(double)mlPerKgPerDay maximumFractionDigits:0]];
+        
+        // ml/day
+        mlPerDay = mlPerKgPerDay * workingWeightKGAsDouble;
+        self.totalFluidsMLPERDAY.text = [NSString stringWithFormat:@"(%@", [self formatResultWithDouble:mlPerDay maximumFractionDigits:1]];
+        
+        // ml/hour
+        mlPerHour = mlPerDay / 24;
+        self.totalFluidsMLPERHOUR.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:mlPerHour maximumFractionDigits:1]];
+    }
+}
+
+- (void)calculateValuesWhenSliderChanged:(UISlider *)slider
+{
+    if ([slider isEqual:self.totalFluidSlider])
+    {
+        // ml/kg/day
+        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ ml/kg/day", [self formatResultWithDouble:(double)mlPerKgPerDay maximumFractionDigits:0]];
+        
+        // ml/day
+        mlPerDay = mlPerKgPerDay * workingWeightKGAsDouble;
+        self.totalFluidsMLPERDAY.text = [NSString stringWithFormat:@"(%@", [self formatResultWithDouble:mlPerDay maximumFractionDigits:1]];
+        
+        // ml/hour
+        mlPerHour = mlPerDay / 24;
+        self.totalFluidsMLPERHOUR.text = [NSString stringWithFormat:@"%@", [self formatResultWithDouble:mlPerHour maximumFractionDigits:1]];
+    }
 }
 
 @end
