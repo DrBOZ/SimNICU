@@ -67,7 +67,8 @@
     
 #else
     
-    [aboutMenuItems addObject:@"Tutorial"];
+    [aboutMenuItems addObject:@"Quick Tutorial"];
+    [aboutMenuItems addObject:@"FAQ"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
     [aboutMenuItems addObject:@"Developer Information"];
     
@@ -267,6 +268,8 @@
     acknowledgmentsLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
     acknowledgmentsLabel.numberOfLines = 1;
     acknowledgmentsLabel.font = [UIFont systemFontOfSize:15.0f];
+    acknowledgmentsLabel.start = 70.0f;
+    acknowledgmentsLabel.end = 251.0f;
     acknowledgmentsLabel.text = @"Thank you for your support";
     [footerView addSubview:acknowledgmentsLabel];
     

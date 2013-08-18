@@ -1110,6 +1110,15 @@
         {
             FluidRequirementsViewController *newViewController = [[FluidRequirementsViewController alloc] init];
             
+            if (self.selectedPatient.workingWeight)
+            {
+                newViewController.workingWeight = self.selectedPatient.workingWeight;
+            }
+            else if (self.weight)
+            {
+                newViewController.workingWeight = self.weight;
+            }
+            
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         

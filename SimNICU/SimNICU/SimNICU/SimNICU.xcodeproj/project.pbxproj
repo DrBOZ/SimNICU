@@ -832,6 +832,10 @@
 		5CD541F617B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E317B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png */; };
 		5CD541F717B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */; };
 		5CD541F817B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */; };
+		5CDA652317C0FC7900AC5266 /* plusButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA652217C0FC7900AC5266 /* plusButton2@2x.png */; };
+		5CDA652417C0FC7900AC5266 /* plusButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA652217C0FC7900AC5266 /* plusButton2@2x.png */; };
+		5CDA652617C0FC8200AC5266 /* plusButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA652517C0FC8200AC5266 /* plusButton2.png */; };
+		5CDA652717C0FC8200AC5266 /* plusButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDA652517C0FC8200AC5266 /* plusButton2.png */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CDBACAC179C0F8800D1A03D /* PatientListWarningROP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */; };
@@ -1471,6 +1475,8 @@
 		5CD541E217B6A3E900FCAE5C /* 08_30_Lt_IVH_Rt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08_30_Lt_IVH_Rt_Tangential_parasagittal.png; sourceTree = "<group>"; };
 		5CD541E317B6A3E900FCAE5C /* 09_30_Lt_IVH_Lt_Angled_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09_30_Lt_IVH_Lt_Angled_parasagittal.png; sourceTree = "<group>"; };
 		5CD541E417B6A3E900FCAE5C /* 10_30_Lt_IVH_Lt_Tangential_parasagittal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10_30_Lt_IVH_Lt_Tangential_parasagittal.png; sourceTree = "<group>"; };
+		5CDA652217C0FC7900AC5266 /* plusButton2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plusButton2@2x.png"; sourceTree = "<group>"; };
+		5CDA652517C0FC8200AC5266 /* plusButton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusButton2.png; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CDBACAB179C0F8800D1A03D /* PatientListWarningROP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PatientListWarningROP.png; sourceTree = "<group>"; };
@@ -1745,6 +1751,8 @@
 			children = (
 				5C4AAC7517BF49BC00BD68F5 /* FluidRequirementsViewController.h */,
 				5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */,
+				5CDA652517C0FC8200AC5266 /* plusButton2.png */,
+				5CDA652217C0FC7900AC5266 /* plusButton2@2x.png */,
 			);
 			name = Screen_FeedsAndFluids;
 			sourceTree = "<group>";
@@ -3228,6 +3236,8 @@
 				5CE9EB5617B9653E0085422F /* star@2x.png in Resources */,
 				5CE9EB5817B9653E0085422F /* tutorial.png in Resources */,
 				5CE9EB5A17B9653E0085422F /* tutorial@2x.png in Resources */,
+				5CDA652317C0FC7900AC5266 /* plusButton2@2x.png in Resources */,
+				5CDA652617C0FC8200AC5266 /* plusButton2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3494,6 +3504,8 @@
 				5CE9EB5717B9653E0085422F /* star@2x.png in Resources */,
 				5CE9EB5917B9653E0085422F /* tutorial.png in Resources */,
 				5CE9EB5B17B9653E0085422F /* tutorial@2x.png in Resources */,
+				5CDA652417C0FC7900AC5266 /* plusButton2@2x.png in Resources */,
+				5CDA652717C0FC8200AC5266 /* plusButton2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

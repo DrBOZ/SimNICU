@@ -10,4 +10,7 @@
 
 @interface UnderlineLabel : UILabel
 
+@property (nonatomic) float start;
+@property (nonatomic) float end;
+
 @end
