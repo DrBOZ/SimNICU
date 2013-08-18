@@ -12,6 +12,7 @@
 
 @interface FluidRequirementsViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERKGPERDAY;
 @property (nonatomic, strong) UITableView *MLperHOURTableView;
 @property (nonatomic, strong) UISlider *totalPotassiumSlider;
@@ -63,7 +64,15 @@
     if (!self.workingWeight)
     {
         self.MLperHOURTableView.tableFooterView = [self setupFooterView];
+        
+        // swipe gesture recognizer
+        // self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+        // [self.MLperHOURTableView addGestureRecognizer:self.swipeGestureRecognizer];
     }
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.MLperHOURTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -128,6 +137,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source
