@@ -16,9 +16,11 @@
 @property (nonatomic, strong) UISlider *totalPotassiumSlider;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERHOUR;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERDAY;
+@property (nonatomic, strong) UISlider *totalCalciumSlider;
 @property (nonatomic, strong) UISlider *totalSodiumSlider;
 @property (nonatomic, strong) UISlider *totalFluidSlider;
 @property (nonatomic, strong) UITableView *additives;
+
 
 @property (nonatomic, strong) UILabel *totalSodiumMMOLPERKGPERDAY;
 @property (nonatomic, strong) UILabel *totalPotassiumMMOLPERKGPERDAY;
@@ -190,56 +192,8 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
             
-            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 10.0f, 10.0f, 22.0f)];
-            equals.font = [UIFont boldSystemFontOfSize:17.0f];
-            equals.backgroundColor = [UIColor clearColor];
-            equals.textColor = [UIColor blackColor];
-            equals.text = @"=";
-            [cell addSubview:equals];
-            
-            UILabel *forty = [[UILabel alloc] initWithFrame:CGRectMake(28.0f, 56.0f, 30.0f, 22.0f)];
-            forty.font = [UIFont systemFontOfSize:12.0f];
-            forty.textColor = [UIColor grayColor];
-            forty.text = @"40";
-            [cell addSubview:forty];
-            
-            UILabel *sixty = [[UILabel alloc] initWithFrame:CGRectMake(73.0f, 56.0f, 30.0f, 22.0f)];
-            sixty.font = [UIFont systemFontOfSize:12.0f];
-            sixty.textColor = [UIColor grayColor];
-            sixty.text = @"60";
-            [cell addSubview:sixty];
-            
-            UILabel *eighty = [[UILabel alloc] initWithFrame:CGRectMake(119.0f, 56.0f, 30.0f, 22.0f)];
-            eighty.font = [UIFont systemFontOfSize:12.0f];
-            eighty.textColor = [UIColor grayColor];
-            eighty.text = @"80";
-            [cell addSubview:eighty];
-            
-            UILabel *ninety = [[UILabel alloc] initWithFrame:CGRectMake(142.0f, 56.0f, 30.0f, 22.0f)];
-            ninety.font = [UIFont systemFontOfSize:12.0f];
-            ninety.textColor = [UIColor grayColor];
-            ninety.text = @"90";
-            [cell addSubview:ninety];
-            
-            UILabel *oneHundred = [[UILabel alloc] initWithFrame:CGRectMake(161.0f, 56.0f, 30.0f, 22.0f)];
-            oneHundred.font = [UIFont systemFontOfSize:12.0f];
-            oneHundred.textColor = [UIColor grayColor];
-            oneHundred.text = @"100";
-            [cell addSubview:oneHundred];
-            
-            UILabel *oneTwenty = [[UILabel alloc] initWithFrame:CGRectMake(207.0f, 56.0f, 30.0f, 22.0f)];
-            oneTwenty.font = [UIFont systemFontOfSize:12.0f];
-            oneTwenty.textColor = [UIColor grayColor];
-            oneTwenty.text = @"120";
-            [cell addSubview:oneTwenty];
-            
-            UILabel *oneFifty = [[UILabel alloc] initWithFrame:CGRectMake(274.0f, 56.0f, 30.0f, 22.0f)];
-            oneFifty.font = [UIFont systemFontOfSize:12.0f];
-            oneFifty.textColor = [UIColor grayColor];
-            oneFifty.text = @"150";
-            [cell addSubview:oneFifty];
-            
             // setup labels
+            // ml/kg/day
             self.totalFluidsMLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 144.0f, 22.0f)];
             self.totalFluidsMLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
             self.totalFluidsMLPERKGPERDAY.textColor = [UIColor blackColor];
@@ -247,18 +201,78 @@
             self.totalFluidsMLPERKGPERDAY.text = @"60 ml/kg/day";
             [cell addSubview:self.totalFluidsMLPERKGPERDAY];
             
+            // ml/kg/hour
             self.totalFluidsMLPERHOUR = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 10.0f, 100.0f, 22.0f)];
             self.totalFluidsMLPERHOUR.font = [UIFont boldSystemFontOfSize:17.0f];
             self.totalFluidsMLPERHOUR.textColor = [UIColor blackColor];
             self.totalFluidsMLPERHOUR.text = @"3.4 ml/hour";
             [cell addSubview:self.totalFluidsMLPERHOUR];
             
+            // ml/kg/day
             self.totalFluidsMLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 32.0f, 100.0f, 22.0f)];
             // self.totalFluidsMLPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
             self.totalFluidsMLPERDAY.font = [UIFont systemFontOfSize:17.0f];
             self.totalFluidsMLPERDAY.textColor = [UIColor grayColor];
             self.totalFluidsMLPERDAY.text = @"(120 ml/day)";
             [cell addSubview:self.totalFluidsMLPERDAY];
+            
+            // equals sign
+            UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(159.0f, 10.0f, 10.0f, 22.0f)];
+            equals.font = [UIFont boldSystemFontOfSize:17.0f];
+            equals.backgroundColor = [UIColor clearColor];
+            equals.textColor = [UIColor blackColor];
+            equals.text = @"=";
+            [cell addSubview:equals];
+            
+            // setup slider labels
+            // '40'
+            UILabel *forty = [[UILabel alloc] initWithFrame:CGRectMake(28.0f, 56.0f, 30.0f, 22.0f)];
+            forty.font = [UIFont systemFontOfSize:12.0f];
+            forty.textColor = [UIColor grayColor];
+            forty.text = @"40";
+            [cell addSubview:forty];
+            
+            // '60'
+            UILabel *sixty = [[UILabel alloc] initWithFrame:CGRectMake(73.0f, 56.0f, 30.0f, 22.0f)];
+            sixty.font = [UIFont systemFontOfSize:12.0f];
+            sixty.textColor = [UIColor grayColor];
+            sixty.text = @"60";
+            [cell addSubview:sixty];
+            
+            // '80'
+            UILabel *eighty = [[UILabel alloc] initWithFrame:CGRectMake(119.0f, 56.0f, 30.0f, 22.0f)];
+            eighty.font = [UIFont systemFontOfSize:12.0f];
+            eighty.textColor = [UIColor grayColor];
+            eighty.text = @"80";
+            [cell addSubview:eighty];
+            
+            // '90'
+            UILabel *ninety = [[UILabel alloc] initWithFrame:CGRectMake(142.0f, 56.0f, 30.0f, 22.0f)];
+            ninety.font = [UIFont systemFontOfSize:12.0f];
+            ninety.textColor = [UIColor grayColor];
+            ninety.text = @"90";
+            [cell addSubview:ninety];
+            
+            // '100'
+            UILabel *oneHundred = [[UILabel alloc] initWithFrame:CGRectMake(161.0f, 56.0f, 30.0f, 22.0f)];
+            oneHundred.font = [UIFont systemFontOfSize:12.0f];
+            oneHundred.textColor = [UIColor grayColor];
+            oneHundred.text = @"100";
+            [cell addSubview:oneHundred];
+            
+            // '120'
+            UILabel *oneTwenty = [[UILabel alloc] initWithFrame:CGRectMake(207.0f, 56.0f, 30.0f, 22.0f)];
+            oneTwenty.font = [UIFont systemFontOfSize:12.0f];
+            oneTwenty.textColor = [UIColor grayColor];
+            oneTwenty.text = @"120";
+            [cell addSubview:oneTwenty];
+            
+            // '150'
+            UILabel *oneFifty = [[UILabel alloc] initWithFrame:CGRectMake(274.0f, 56.0f, 30.0f, 22.0f)];
+            oneFifty.font = [UIFont systemFontOfSize:12.0f];
+            oneFifty.textColor = [UIColor grayColor];
+            oneFifty.text = @"150";
+            [cell addSubview:oneFifty];
             
             // setup slider for total fluids
             self.totalFluidSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 70.0f, 280.0f, 40.0f)];
@@ -338,6 +352,21 @@
                 mmol.text = @"(17.5 mmol/500 ml)";
                 [cell addSubview:mmol];
                 
+                // setup slider labels
+                // '0'
+                UILabel *zero = [[UILabel alloc] initWithFrame:CGRectMake(31.0f, 86.0f, 30.0f, 22.0f)];
+                zero.font = [UIFont systemFontOfSize:12.0f];
+                zero.textColor = [UIColor grayColor];
+                zero.text = @"0";
+                [cell addSubview:zero];
+                
+                // '15'
+                UILabel *fifteen = [[UILabel alloc] initWithFrame:CGRectMake(278.0f, 86.0f, 30.0f, 22.0f)];
+                fifteen.font = [UIFont systemFontOfSize:12.0f];
+                fifteen.textColor = [UIColor grayColor];
+                fifteen.text = @"15";
+                [cell addSubview:fifteen];
+                
                 // setup slider for Sodium
                 self.totalSodiumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
                 self.totalSodiumSlider.minimumValue = 0.0f;
@@ -384,7 +413,7 @@
                 potassium.textColor = [UIColor blackColor];
                 potassium.text = @"Potassium chloride 15%";
                 [cell addSubview:potassium];
-                
+#warning change required
                 UILabel *misc = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
                 misc.font = [UIFont boldSystemFontOfSize:17.0f];
                 misc.backgroundColor = [UIColor clearColor];
@@ -398,7 +427,7 @@
                 equals.textColor = [UIColor blackColor];
                 equals.text = @"=";
                 [cell addSubview:equals];
-                
+#warning change required
                 UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 140.0f, 22.0f)];
                 mmol.font = [UIFont boldSystemFontOfSize:17.0f];
                 mmol.backgroundColor = [UIColor clearColor];
@@ -406,7 +435,7 @@
                 mmol.textColor = [UIColor blackColor];
                 mmol.text = @"7.5 mmol/day";
                 [cell addSubview:mmol];
-                
+#warning change required
                 mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
                 mmol.font = [UIFont systemFontOfSize:17.0f];
                 mmol.backgroundColor = [UIColor clearColor];
@@ -415,10 +444,25 @@
                 mmol.text = @"(12.5 mmol/500 ml)";
                 [cell addSubview:mmol];
                 
+                // setup slider labels
+                // '0'
+                UILabel *zero = [[UILabel alloc] initWithFrame:CGRectMake(31.0f, 86.0f, 30.0f, 22.0f)];
+                zero.font = [UIFont systemFontOfSize:12.0f];
+                zero.textColor = [UIColor grayColor];
+                zero.text = @"0";
+                [cell addSubview:zero];
+                
+                // '5'
+                UILabel *five = [[UILabel alloc] initWithFrame:CGRectMake(282.0f, 86.0f, 30.0f, 22.0f)];
+                five.font = [UIFont systemFontOfSize:12.0f];
+                five.textColor = [UIColor grayColor];
+                five.text = @"5";
+                [cell addSubview:five];
+                
                 self.totalPotassiumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
-                self.totalPotassiumSlider.minimumValue = 40.0f;
-                self.totalPotassiumSlider.maximumValue = 150.0f;
-                self.totalPotassiumSlider.value = 60.0f;
+                self.totalPotassiumSlider.minimumValue = 0.0f;
+                self.totalPotassiumSlider.maximumValue = 5.0f;
+                self.totalPotassiumSlider.value = 2.0f;
                 [self.totalPotassiumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                 self.totalPotassiumSlider.continuous = YES;
                 
@@ -460,7 +504,7 @@
                 potassium.textColor = [UIColor blackColor];
                 potassium.text = @"Calcium";
                 [cell addSubview:potassium];
-                
+#warning change required
                 UILabel *misc = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
                 misc.font = [UIFont boldSystemFontOfSize:17.0f];
                 misc.backgroundColor = [UIColor clearColor];
@@ -474,7 +518,7 @@
                 equals.textColor = [UIColor blackColor];
                 equals.text = @"=";
                 [cell addSubview:equals];
-                
+#warning change required
                 UILabel *mmol = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 140.0f, 22.0f)];
                 mmol.font = [UIFont boldSystemFontOfSize:17.0f];
                 mmol.backgroundColor = [UIColor clearColor];
@@ -482,7 +526,7 @@
                 mmol.textColor = [UIColor blackColor];
                 mmol.text = @"3.75 mmol/day";
                 [cell addSubview:mmol];
-                
+#warning change required
                 mmol = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, 62.0f, 155.0f, 22.0f)];
                 mmol.font = [UIFont systemFontOfSize:17.0f];
                 mmol.backgroundColor = [UIColor clearColor];
@@ -491,12 +535,27 @@
                 mmol.text = @"(10 mmol/500 ml)";
                 [cell addSubview:mmol];
                 
-                self.totalPotassiumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
-                self.totalPotassiumSlider.minimumValue = 40.0f;
-                self.totalPotassiumSlider.maximumValue = 150.0f;
-                self.totalPotassiumSlider.value = 60.0f;
-                [self.totalPotassiumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-                self.totalPotassiumSlider.continuous = YES;
+                // setup slider labels
+                // '0'
+                UILabel *zero = [[UILabel alloc] initWithFrame:CGRectMake(31.0f, 86.0f, 30.0f, 22.0f)];
+                zero.font = [UIFont systemFontOfSize:12.0f];
+                zero.textColor = [UIColor grayColor];
+                zero.text = @"0";
+                [cell addSubview:zero];
+                
+                // '5'
+                UILabel *five = [[UILabel alloc] initWithFrame:CGRectMake(282.0f, 86.0f, 30.0f, 22.0f)];
+                five.font = [UIFont systemFontOfSize:12.0f];
+                five.textColor = [UIColor grayColor];
+                five.text = @"5";
+                [cell addSubview:five];
+                
+                self.totalCalciumSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 100.0f, 280.0f, 40.0f)];
+                self.totalCalciumSlider.minimumValue = 0.0f;
+                self.totalCalciumSlider.maximumValue = 5.0f;
+                self.totalCalciumSlider.value = 1.0f;
+                [self.totalCalciumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+                self.totalCalciumSlider.continuous = YES;
                 
                 // if accelerometer add anisotropic images to sliders
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
@@ -504,15 +563,15 @@
                     UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
                     UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
                     
-                    [self.totalPotassiumSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
-                    [self.totalPotassiumSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
+                    [self.totalCalciumSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
+                    [self.totalCalciumSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
                     
                     UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
-                    [self.totalPotassiumSlider setThumbImage:initialImage forState:UIControlStateNormal];
-                    [self.totalPotassiumSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
+                    [self.totalCalciumSlider setThumbImage:initialImage forState:UIControlStateNormal];
+                    [self.totalCalciumSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
                 }
                 
-                [cell addSubview:self.totalPotassiumSlider];
+                [cell addSubview:self.totalCalciumSlider];
             }
             
             cell.textLabel.text = @"";
@@ -535,24 +594,7 @@
 {
     if ([sender isEqual:self.totalFluidSlider])
     {
-        int interval = 5;
-        
-        for (int i = 40; i <= 150; i = i + interval)
-        {
-            if(sender.value > i && sender.value < i + interval)
-            {
-                if(sender.value - i < i + interval - sender.value)
-                {
-                    sender.value = i;
-                }
-                else
-                {
-                    sender.value = i + interval;
-                }
-                
-                break;
-            }
-        }
+        [self incrementSlider:sender withInterval:5 withMinValue:40 andMaxValue:150];
         
         int totalFluids = sender.value;
 
@@ -564,40 +606,74 @@
     }
     else if ([sender isEqual:self.totalSodiumSlider])
     {
-        double interval = 0.5;
-        
-        for (double i = 0; i <= 15; i = i + interval)
-        {
-            if(sender.value > i && sender.value < i + interval)
-            {
-                if(sender.value - i < i + interval - sender.value)
-                {
-                    sender.value = i;
-                }
-                else
-                {
-                    sender.value = i + interval;
-                }
-                
-                break;
-            }
-        }
+        [self incrementSlider:sender withInterval:0.5 withMinValue:0 andMaxValue:15];
         
         double totalSodium = sender.value;
         
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        formatter.roundingMode = NSNumberFormatterRoundHalfEven;
-        formatter.numberStyle = NSNumberFormatterDecimalStyle;
-        // if locale has an arabic decimal separator then use english
-        if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
-        {
-            formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
-        }
-        formatter.minimumFractionDigits = 0;
-        formatter.maximumFractionDigits = 1;
+        NSString *formattedTotalSodium = [self formatResultWithDouble:(double)totalSodium];
         
-        self.totalSodiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", [formatter stringFromNumber:[NSNumber numberWithDouble:totalSodium]]];
+        self.totalSodiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalSodium];
     }
+    else if ([sender isEqual:self.totalPotassiumSlider])
+    {
+        [self incrementSlider:sender withInterval:0.5 withMinValue:0 andMaxValue:5];
+        
+        double totalPotassium = sender.value;
+        
+        NSString *formattedTotalPotassium = [self formatResultWithDouble:totalPotassium];
+        
+        self.totalPotassiumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalPotassium];
+    }
+    else if ([sender isEqual:self.totalCalciumSlider])
+    {
+        [self incrementSlider:sender withInterval:0.5 withMinValue:0 andMaxValue:5];
+        
+        double totalCalcium = sender.value;
+        
+        NSString *formattedTotalCalcium = [self formatResultWithDouble:totalCalcium];
+        
+        self.totalCalciumMMOLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ mmol/kg/day", formattedTotalCalcium];
+    }
+}
+
+- (void)incrementSlider:(UISlider *)slider withInterval:(double)interval withMinValue:(double)minValue andMaxValue:(double)maxValue
+{
+    for (double i = minValue; i <= maxValue; i = i + interval)
+    {
+        if (slider.value > i && slider.value < i + interval)
+        {
+            if (slider.value - i < i + interval - slider.value)
+            {
+                slider.value = i;
+            }
+            else
+            {
+                slider.value = i + interval;
+            }
+            
+            break;
+        }
+    }
+}
+
+- (NSString *)formatResultWithDouble:(double)result
+{
+    NSString *formattedResult;
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.roundingMode = NSNumberFormatterRoundHalfEven;
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    // if locale has an arabic decimal separator then use english
+    if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+    {
+        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
+    }
+    formatter.minimumFractionDigits = 0;
+    formatter.maximumFractionDigits = 1;
+    
+    formattedResult = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:result]]];
+     
+    return formattedResult;
 }
 
 @end
