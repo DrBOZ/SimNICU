@@ -590,11 +590,8 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                // cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
                 [cell setBackgroundColor:[UIColor whiteColor]];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                
-#warning subclass required
                 
                 UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
                 drug.font = [UIFont boldSystemFontOfSize:17.0];

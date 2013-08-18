@@ -1040,7 +1040,7 @@
         else if ([thisScreenType isEqualToString:@"CrUSS"])
         {
 
-#ifdef CRUSS_PREVIEW_MODE
+#if CRUSS_PREVIEW_MODE
             
             CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
             
