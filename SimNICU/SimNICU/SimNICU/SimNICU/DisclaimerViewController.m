@@ -59,20 +59,16 @@
     self.webView.hidden = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"DisclaimerViewController viewWillAppear");
     
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"Disclaimer" withError:nil];
     
 #endif
-}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"DisclaimerViewController viewDidAppear");
+    [Flurry logEvent:@"Disclaimer: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,8 +87,6 @@
 
 - (void)viewDidUnload
 {
-    NSLog(@"DisclaimerViewController viewDidUnload");
-    
     self.webView = nil;
 }
 

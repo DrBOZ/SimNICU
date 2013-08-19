@@ -525,6 +525,13 @@
     screen = [[Screen alloc] init];
     screen.menuText = @"Cranial Ultrasound";
     screen.segueId = @"CrUSS";
+    
+#if CRUSS_PREVIEW_MODE
+    
+    screen.detailMenuText = @"New Image Viewer!";
+    
+#endif
+    
     [screens addObject:screen];
     
     screen = [[Screen alloc] init];
@@ -1367,7 +1374,7 @@
         }
         
 #pragma mark Umbilical Lines
-        
+#warning check this out
         else if ([thisScreenType isEqualToString:@"UACUVC"])
         {
             UVCUACViewController *newViewController = [[UVCUACViewController alloc] init];

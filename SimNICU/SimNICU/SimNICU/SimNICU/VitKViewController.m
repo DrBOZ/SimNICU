@@ -42,16 +42,6 @@
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     
-#if APP_SHADING
-    //screen mask covers everything
-    UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height - 49))];
-    UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-    tableBgView.image = tableBgImage;
-    tableBgView.userInteractionEnabled = NO;
-    tableBgView.alpha = 0.5;
-    [self.view addSubview:tableBgView];
-#endif
-    
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
@@ -65,6 +55,8 @@
     [[GANTracker sharedTracker] trackPageview:@"Vitamin K" withError:nil];
     
 #endif
+    
+    [Flurry logEvent:@"VitK: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

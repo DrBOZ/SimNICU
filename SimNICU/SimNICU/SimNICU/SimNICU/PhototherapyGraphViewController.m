@@ -259,10 +259,6 @@
     
     // Add the chart to the view controller
     [self.view addSubview:self.chart];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
     
 #if GOOGLE_ANALYTICS
     
@@ -270,6 +266,11 @@
     
 #endif
     
+    [Flurry logEvent:@"PhototherapyGraph: viewDidLoad"];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
     {
         self.navigationItem.rightBarButtonItem.enabled = NO;

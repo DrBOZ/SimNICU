@@ -89,13 +89,17 @@
         [self setAgeInDays];
         [self.myTableView reloadData];
     }
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"Age Calculators/Exact Age" withError:nil];
     
 #endif
     
+    [Flurry logEvent:@"ExactAge: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

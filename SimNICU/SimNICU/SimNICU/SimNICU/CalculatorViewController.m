@@ -297,15 +297,22 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Calculator" withError:nil];
+    
+#endif
+    
+    [Flurry logEvent:@"Calculator: viewDidAppear"];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-
-
-
 
 // If you pass 0, it will use the previously saved operation
 - (void)doOperation:(int)theOperation

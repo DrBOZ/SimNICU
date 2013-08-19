@@ -147,6 +147,7 @@
     
 #endif
     
+    [Flurry logEvent:@"AgeCalculators: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

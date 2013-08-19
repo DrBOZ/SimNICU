@@ -41,16 +41,6 @@
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     
-#if APP_SHADING
-    //screen mask covers everything
-    UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height - 49))];
-    UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-    tableBgView.image = tableBgImage;
-    tableBgView.userInteractionEnabled = NO;
-    tableBgView.alpha = 0.5;
-    [self.view addSubview:tableBgView];
-#endif
-    
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
@@ -61,8 +51,6 @@
     // Determining if a patient has been passed into view controller
     if (self.selectedPatient)
     {
-        NSLog(@"UVCUACBackgroundVC: self.selectedPatient = YES");
-        
         // Setting title of view controller
         if ((self.selectedPatient.lastname && self.selectedPatient.firstname) && (![self.selectedPatient.lastname isEqualToString:@"BABY"] && ![self.selectedPatient.firstname isEqualToString:@"New"]))
         {
@@ -78,10 +66,24 @@
             {
                 self.title = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
             }
+            
+            NSDictionary *dictionary =
+            [NSDictionary dictionaryWithObjectsAndKeys:@"Patient selected",
+             @"Log",
+             nil];
+            
+            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
         }
         else if (self.selectedPatient.gestation)
         {
             self.title = [NSString stringWithFormat:@"%@/40 gestation", self.selectedPatient.gestation];
+            
+            NSDictionary *dictionary =
+            [NSDictionary dictionaryWithObjectsAndKeys:@"Patient or gestation selected",
+             @"Log",
+             nil];
+            
+            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
         }
         else if (self.selectedPatient.birthWeight)
         {
@@ -107,11 +109,25 @@
             
             self.title = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
             birthWeightInNavBar = YES;
+            
+            NSDictionary *dictionary =
+            [NSDictionary dictionaryWithObjectsAndKeys:@"Patient or weight selected",
+             @"Log",
+             nil];
+            
+            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
         }
         // Passed in patient does not have a gestation or birth weight, and incomplete name or 'New BABY'
         else
         {
             self.title = @"UAC / UVC";
+            
+            NSDictionary *dictionary =
+            [NSDictionary dictionaryWithObjectsAndKeys:@"No details",
+             @"Log",
+             nil];
+            
+            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
         }
     }
 }

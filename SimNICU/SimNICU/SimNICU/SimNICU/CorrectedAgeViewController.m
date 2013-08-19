@@ -108,13 +108,17 @@
     {
         self.title = @"Age";
     }
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"Age Calculators/Corrected Age" withError:nil];
     
 #endif
     
+    [Flurry logEvent:@"CorrectedAge: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,7 +126,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#warning check this out
 - (void)viewWillDisappear:(BOOL)animated
 {
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound)

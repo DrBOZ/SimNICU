@@ -44,34 +44,11 @@
     self.myTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView];
     
-#if APP_SHADING
-    //screen mask covers everything
-    UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height))];
-    UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-    tableBgView.image = tableBgImage;
-    tableBgView.userInteractionEnabled = NO;
-    [self.view addSubview:tableBgView];
-#endif
-    
     // Setup section array
     webViewSections = [[NSMutableArray alloc] initWithCapacity:2];
     
     NSMutableArray *webViewRows;
     SimNICUWebView *webView;
-    
-    // Section template
-    /*
-     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-     webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
-     webView.header = @" ";
-     webView.resource = @" ";
-     webView.cellIdentifier = @"Cell";
-     webView.heightForRowAtIndexPath = @0.0f;
-     [self formatAndLoadSimNICUWebView:webView];
-     [webViewRows addObject:webView];
-     
-     [webViewSections addObject:webViewRows];
-     */
     
     // section 0
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
@@ -111,6 +88,7 @@
     
 #endif
     
+    [Flurry logEvent:@"HFOV: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

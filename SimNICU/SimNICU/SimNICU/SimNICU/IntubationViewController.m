@@ -173,16 +173,6 @@
         self.pickerView.dataSource = self;
         self.pickerView.showsSelectionIndicator = YES;
         [self.view addSubview:self.pickerView];
-        
-#if APP_SHADING
-        //screen mask covers everything
-        UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height))];
-        UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-        tableBgView.image = tableBgImage;
-        tableBgView.userInteractionEnabled = NO;
-        [self.view addSubview:tableBgView];
-#endif
-        
     }
     else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.3)
     {
@@ -314,6 +304,12 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Intubation" withError:nil];
+    
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -431,12 +427,7 @@
     
     [self setPicker]; // select picker only once view appears
     
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Intubation" withError:nil];
-    
-#endif
-    
+    [Flurry logEvent:@"Intubation: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

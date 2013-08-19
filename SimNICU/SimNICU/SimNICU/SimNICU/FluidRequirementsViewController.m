@@ -228,6 +228,14 @@
         }
     }
      */
+    
+#if GOOGLE_ANALYTICS
+    
+    [[GANTracker sharedTracker] trackPageview:@"Fluid Requirements" withError:nil];
+    
+#endif
+    
+    [Flurry logEvent:@"FluidRequirements: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning
