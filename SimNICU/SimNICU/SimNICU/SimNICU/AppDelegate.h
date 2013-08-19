@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-#define APP_SHADING 0
 #define USE_DIMPLE_BACKGROUND 1
 
 #define BACKGROUND_IPHONE_35_PORTRAIT_PNG @"LightGreyWithDimples35inchRetinaPortrait.png"

@@ -102,13 +102,15 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"PatientDetails/EnterWorkingWeight" withError:nil];
     
 #endif
+    
+    [Flurry logEvent:@"PatientDetailsEnterWorkingWeight: viewDidAppear"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -984,14 +984,17 @@
         // check if a delete row
         if (editingStyle == UITableViewCellEditingStyleDelete)
         {
-            // [self.patientList removeObjectAtIndex:indexPath.row];
             [[self.bayData[indexPath.section -2] patientsInBay] removeObjectAtIndex:indexPath.row];
             
             NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
             [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            
+            [Flurry logEvent:@"EnterWeight: commitEditingStyle: deleteRow"];
         }
         else if (editingStyle == UITableViewCellEditingStyleInsert)
         {
+            [Flurry logEvent:@"EnterWeight: commitEditingStyle: addPatient"];
+            
             [self addPatient];
         }
     }
@@ -1058,6 +1061,8 @@
     
     [[self.bayData[sourceIndexPath.section -2] patientsInBay] removeObjectAtIndex:sourceIndexPath.row];
     [[self.bayData[destinationIndexPath.section -2] patientsInBay] insertObject:patient atIndex:destinationIndexPath.row];
+    
+    [Flurry logEvent:@"EnterWeight: moveRowAtIndexPath"];
 }
 
 # pragma mark - Table view delegate
@@ -1515,6 +1520,8 @@
 
 - (void)addPatient
 {
+    [Flurry logEvent:@"EnterWeight: addPatient"];
+    
     BOOL allowUserToEnterANewPatient = YES;
     
 #ifdef LITE_VERSION

@@ -85,6 +85,7 @@
     
 #endif
     
+    [Flurry logEvent:@"BayEditor: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

@@ -872,8 +872,6 @@
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
 		5CED220017A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
-		5CF73EC517B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */; };
-		5CF73EC617B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */; };
 		5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 		5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 /* End PBXBuildFile section */
@@ -1503,8 +1501,6 @@
 		5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalculatorsInfoViewController.m; sourceTree = "<group>"; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
-		5CF73EC317B8F5DA00096965 /* PatientDetails2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetails2ViewController.h; sourceTree = "<group>"; };
-		5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetails2ViewController.m; sourceTree = "<group>"; };
 		5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeightMethods.h; sourceTree = "<group>"; };
 		5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeightMethods.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2379,8 +2375,6 @@
 			children = (
 				5C940B0A166E3B650044A7D1 /* PatientDetailsViewController.h */,
 				5C940B0B166E3B650044A7D1 /* PatientDetailsViewController.m */,
-				5CF73EC317B8F5DA00096965 /* PatientDetails2ViewController.h */,
-				5CF73EC417B8F5DA00096965 /* PatientDetails2ViewController.m */,
 				5C940B0D166E3B6A0044A7D1 /* Sub Views */,
 			);
 			name = "Patient Details";
@@ -3662,7 +3656,6 @@
 				5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
-				5CF73EC517B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */,
 				5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */,
 				5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
@@ -3819,7 +3812,6 @@
 				5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
-				5CF73EC617B8F5DA00096965 /* PatientDetails2ViewController.m in Sources */,
 				5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */,
 				5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,

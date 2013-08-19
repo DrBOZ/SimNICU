@@ -58,6 +58,13 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [Flurry logEvent:@"PatientDetails: viewDidLoad"];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     if([self.userWantsToAddAPatient isEqualToString:@"YES"])
@@ -107,11 +114,6 @@
             self.navigationItem.rightBarButtonItem = nil;
         }
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)viewDidUnload

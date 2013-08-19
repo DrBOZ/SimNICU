@@ -64,17 +64,22 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if ([self.patientToEdit.lastname isEqualToString:@"BABY"])
+    {
+        self.patientToEdit.lastname = @"";
+        self.patientToEdit.firstname = @"";
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
 #if GOOGLE_ANALYTICS
     
     [[GANTracker sharedTracker] trackPageview:@"PatientDetails/EnterName" withError:nil];
     
 #endif
     
-    if ([self.patientToEdit.lastname isEqualToString:@"BABY"])
-    {
-        self.patientToEdit.lastname = @"";
-        self.patientToEdit.firstname = @"";
-    }
+    [Flurry logEvent:@"PatientDetailsEnterName viewDidAppear"];
 }
 
 - (void)viewDidUnload

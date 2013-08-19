@@ -73,15 +73,6 @@
     self.myTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView];
     
-#if APP_SHADING
-    // screen mask covers everything
-    UIImageView *tableBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -30.0f, 320.0f, (appDelegate.window.bounds.size.height))];
-    UIImage *tableBgImage = [UIImage imageNamed:@"bgOverlay.png"];
-    tableBgView.image = tableBgImage;
-    tableBgView.userInteractionEnabled = NO;
-    [self.view addSubview:tableBgView];
-#endif
-    
     self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
 }
 
