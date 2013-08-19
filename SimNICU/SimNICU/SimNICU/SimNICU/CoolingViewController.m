@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Cooling"];
+    
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                      style:UIBarButtonItemStyleBordered
@@ -53,12 +55,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Cooling" withError:nil];
-    
-#endif
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -66,8 +62,6 @@
     [super viewDidAppear:animated];
     
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
-    
-    [Flurry logEvent:@"Cooling: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

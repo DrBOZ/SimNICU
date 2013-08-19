@@ -52,6 +52,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"Intubation/Drugs"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,18 +93,6 @@
     {
         self.title = NSLocalizedString(@"Weight not entered", nil);
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Intubation/Intubation Drugs" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"IntubationDrugs: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

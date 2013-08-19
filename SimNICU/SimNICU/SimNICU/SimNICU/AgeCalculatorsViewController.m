@@ -121,6 +121,7 @@
 {
     [super viewDidLoad];
 	
+    [CBTrackers logEvent:@"Age Calculators"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,14 +141,6 @@
     [super viewDidAppear:animated];
     
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Age Calculators" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"AgeCalculators: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

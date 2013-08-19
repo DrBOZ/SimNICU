@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Gastroschisis"];
+    
     self.title = @"Gastroschisis";
     
     //delegate
@@ -43,18 +45,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Gastroschisis" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"Gastroschisis: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

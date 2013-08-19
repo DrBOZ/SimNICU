@@ -72,7 +72,7 @@
              @"Log",
              nil];
             
-            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
+            [CBTrackers logEvent:@"UAC / UVC" withParameters:dictionary timed:NO];
         }
         else if (self.selectedPatient.gestation)
         {
@@ -83,7 +83,7 @@
              @"Log",
              nil];
             
-            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
+            [CBTrackers logEvent:@"UAC / UVC" withParameters:dictionary timed:NO];
         }
         else if (self.selectedPatient.birthWeight)
         {
@@ -115,7 +115,7 @@
              @"Log",
              nil];
             
-            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
+            [CBTrackers logEvent:@"UAC / UVC" withParameters:dictionary timed:NO];
         }
         // Passed in patient does not have a gestation or birth weight, and incomplete name or 'New BABY'
         else
@@ -127,20 +127,9 @@
              @"Log",
              nil];
             
-            [Flurry logEvent:@"UVCUAC: viewWillAppear" withParameters:dictionary];
+            [CBTrackers logEvent:@"UAC / UVC" withParameters:dictionary timed:NO];
         }
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"UAC / UVC" withError:nil];
-    
-#endif
-    
 }
 
 - (void)didReceiveMemoryWarning

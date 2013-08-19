@@ -21,6 +21,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Vitamin K"];
+    
     self.title = NSLocalizedString(@"Vitamin K", nil);
     
     //delegate
@@ -45,18 +47,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Vitamin K" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"VitK: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

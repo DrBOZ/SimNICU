@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Blood Products/Platelet Transfusion"];
+
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -44,18 +46,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Blood Products/Platelet Transfusion Criteria" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"PlateletTransfusion: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Pulmonary Haemorrhage"];
+    
     self.title = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
     
     // delegate
@@ -129,18 +131,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Pulmonary Haemorrhage" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"PulmonaryHaemorrhage: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

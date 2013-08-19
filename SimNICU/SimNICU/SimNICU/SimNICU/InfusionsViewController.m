@@ -223,6 +223,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Infusions"];
+    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -306,18 +308,6 @@
         self.insulinStrength = nil;
         self.insulinStrengthDose = nil;
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Infusions" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"Infusions: viewDidAppear"];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

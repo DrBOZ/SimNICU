@@ -21,6 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"Weight Conversion"];
 
     self.title = @"Conversion Table";
     self.view.backgroundColor = [UIColor grayColor];
@@ -66,18 +68,6 @@
     
     self.webView = nil;
     self.swipeGestureRecognizer = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Weight Conversion Table" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"WeightConversion: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

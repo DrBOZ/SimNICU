@@ -31,6 +31,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Resus"];
+    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -93,15 +95,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Resus Drugs" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"Resus: viewDidAppear"];
-    
     if ([self.narcanSelected isEqualToString:@"YES"])
     {
         // move table to narcan information

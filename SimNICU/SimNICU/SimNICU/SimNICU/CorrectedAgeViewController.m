@@ -46,56 +46,43 @@
     BOOL gestationHasBeenEntered;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        self.selectedDate = [NSDate date]; // set default to now
-    
-        // settings button
-        self.navigationItem.rightBarButtonItem = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showInfoScreen)];
-        
-        // back button
-        self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
-        
-        //delegate
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
-        
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.rowHeight = 50.0f;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        NSLog(@"tempImageView2.frame  = (%f, %f, %f, %f)", self.myTableView.frame.origin.x, self.myTableView.frame.origin.y, self.myTableView.frame.size.width, self.myTableView.frame.size.height);
-        NSLog(@"tempImageView2.bounds = (%f, %f, %f, %f)", self.myTableView.bounds.origin.x, self.myTableView.bounds.origin.y, self.myTableView.bounds.size.width, self.myTableView.bounds.size.height);
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-        
-        // swipe gesture recognizer
-        // self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        // [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-        
-        UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
-        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-        [self.myTableView addGestureRecognizer:swipeLeft];
-        
-        UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
-        swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.myTableView addGestureRecognizer:swipeRight];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"Corrected Age"];
+    
+    self.selectedDate = [NSDate date]; // set default to now
+    
+    // settings button
+    self.navigationItem.rightBarButtonItem = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showInfoScreen)];
+    
+    // back button
+    self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+    
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.myTableView addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.myTableView addGestureRecognizer:swipeRight];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -108,17 +95,6 @@
     {
         self.title = @"Age";
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Age Calculators/Corrected Age" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"CorrectedAge: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

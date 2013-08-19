@@ -34,44 +34,38 @@
 @synthesize myTableView = _myTableView;
 @synthesize delegate = _delegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
+    [super viewDidLoad];
+	
+    self.title = @"Add Result";
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+    
+    if (!self.bilirubinLevel || !self.sampleAgeInDays)
     {
-        // Custom initialization
-        
-        self.title = @"Add Result";
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-        
-        if (!self.bilirubinLevel || !self.sampleAgeInDays)
-        {
-            self.navigationItem.leftBarButtonItem.enabled = NO;
-        }
-        
-        self.view.backgroundColor = [UIColor lightGrayColor];
-        
-        //delegate
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
-        
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.rowHeight = 50.0f;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
     }
     
-    return self;
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+    
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -84,22 +78,6 @@
     }];
     
     self.selectedPatient.bilirubinResults = [NSMutableArray arrayWithArray:sortedPreviousBilirubinResults];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Graph/Add Bili" withError:nil];
-    
-#endif
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [Flurry logEvent:@"PhototherapyAddBilirubin: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

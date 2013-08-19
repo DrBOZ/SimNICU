@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Intubation"];
+    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -294,12 +296,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Intubation" withError:nil];
-    
-#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -416,8 +412,6 @@
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
     
     [self setPicker]; // select picker only once view appears
-    
-    [Flurry logEvent:@"Intubation: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

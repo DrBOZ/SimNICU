@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"HFOVViewController viewDidLoad");
+    [CBTrackers logEvent:@"HFOV"];
     
     self.title = @"HFOV";
     
@@ -79,23 +79,9 @@
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"HFOV" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"HFOV: viewDidAppear"];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    NSLog(@"HFOVViewController didReceiveMemoryWarning");
     
     if ([self isViewLoaded] && self.view.window == nil)
     {

@@ -21,47 +21,45 @@
 
 @implementation OxygenationIndexViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"Oxygenation Index"];
+    
+    self.title = @"Oxygenation Index";
+    
+    float fourInchDisplayPadding = 0.0f;
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.window.bounds.size.height == 568)
     {
-        self.title = @"Oxygenation Index";
-        
-        float fourInchDisplayPadding = 0.0f;
-        
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            fourInchDisplayPadding = 40.0f;
-        }
-        
-        //set view background
-        [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-        
-        //tableView
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 44.0f;
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.sectionFooterHeight = 10.0f;
-        self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.scrollEnabled = NO;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        fourInchDisplayPadding = 40.0f;
     }
+    
+    //set view background
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    //tableView
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    self.myTableView.rowHeight = 44.0f;
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.sectionFooterHeight = 10.0f;
+    self.myTableView.sectionHeaderHeight = 10.0f;
+    self.myTableView.scrollEnabled = NO;
+    self.myTableView.separatorColor = [UIColor grayColor];
+    
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    
-    return self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -135,11 +133,6 @@
         }
     }
 
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

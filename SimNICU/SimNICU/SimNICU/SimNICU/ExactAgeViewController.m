@@ -45,29 +45,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Exact Age";
         
-        // Delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 50.0f;  // was 44.0f
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        // self.myTableView.sectionFooterHeight = 10.0f;
-        // self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-        
-        // swipe gesture recognizer
-        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     }
     
     return self;
@@ -76,7 +54,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    [CBTrackers logEvent:@"Exact Age"];
+    
+    self.title = @"Exact Age";
+    
+    // Delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    self.myTableView.rowHeight = 50.0f;  // was 44.0f
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.hidden = NO;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -89,17 +90,6 @@
         [self setAgeInDays];
         [self.myTableView reloadData];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Age Calculators/Exact Age" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"ExactAge: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

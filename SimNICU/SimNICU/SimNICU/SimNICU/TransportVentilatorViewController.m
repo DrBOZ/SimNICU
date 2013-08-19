@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Transport Ventilator"];
+    
     self.title = @"Transport Ventilator";
     
     //delegate
@@ -59,15 +61,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Transport Ventilator" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"TransportVentilator: viewDidAppear"];
-    
     [self.inspiratoryTime becomeFirstResponder];
 }
 

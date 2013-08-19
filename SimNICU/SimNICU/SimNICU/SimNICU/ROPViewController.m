@@ -22,23 +22,11 @@
 
 @implementation ROPViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
-    {
-        //background
-        self.view.backgroundColor = [UIColor blackColor];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"ROP"];
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -52,6 +40,9 @@
     self.myTableView.sectionHeaderHeight = 10.0f;
     self.myTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
@@ -395,18 +386,6 @@
     {
         self.title = @"ROP";
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"ROP" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"ROP: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

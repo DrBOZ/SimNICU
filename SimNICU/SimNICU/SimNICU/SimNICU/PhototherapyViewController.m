@@ -22,92 +22,68 @@
 
 @implementation PhototherapyViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // Custom initialization
-        self.view.backgroundColor = [UIColor blackColor];
-        self.title = NSLocalizedString(@"Phototherapy", nil);
-        
-        // default gestation
-        // self.gestation = [NSNumber numberWithInt:38];
-        
-        // default clinical status
-        // self.clinicalStatus = @"Well";
-        
-        // default neurotoxicity risk
-        // self.neurotoxicityRiskFactors = @"None";
-        
-        // set locale specific defaults
-        NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
-        NSLog(@"Current locale = %@", currentLocale);
-        
-        if (!self.guidelineCountry)
-        {
-            if ([currentLocale isEqualToString:@"en_GB"])
-            {
-                self.guidelineCountry = @"UK";
-                self.bilirubinUnits = @"SI";
-            }
-            else if ([currentLocale isEqualToString:@"en_US"])
-            {
-                self.guidelineCountry = @"US";
-                self.bilirubinUnits = @"US";
-            }
-            else
-            {
-                self.guidelineCountry = @"US";
-                self.bilirubinUnits = @"US";
-            }
-        }
-        
-        //delegate
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        /*
-        // Info button
-        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-        [infoButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-        self.navigationItem.rightBarButtonItem = infoBarButton;
-         */
-        
-        //menu table
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 44.0f;
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        // self.myTableView.sectionFooterHeight = 10.0f;
-        // self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-    }
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-#if GOOGLE_ANALYTICS
+    [CBTrackers logEvent:@"Phototherapy"];
     
-    [[GANTracker sharedTracker] trackPageview:@"Phototherapy" withError:nil];
+    self.title = NSLocalizedString(@"Phototherapy", nil);
     
-#endif
+    // set locale specific defaults
+    NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
+    NSLog(@"Current locale = %@", currentLocale);
+    
+    if (!self.guidelineCountry)
+    {
+        if ([currentLocale isEqualToString:@"en_GB"])
+        {
+            self.guidelineCountry = @"UK";
+            self.bilirubinUnits = @"SI";
+        }
+        else if ([currentLocale isEqualToString:@"en_US"])
+        {
+            self.guidelineCountry = @"US";
+            self.bilirubinUnits = @"US";
+        }
+        else
+        {
+            self.guidelineCountry = @"US";
+            self.bilirubinUnits = @"US";
+        }
+    }
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    /*
+     // Info button
+     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+     infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
+     [infoButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+     self.navigationItem.rightBarButtonItem = infoBarButton;
+     */
+    
+    //menu table
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    self.myTableView.rowHeight = 44.0f;
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    // self.myTableView.sectionFooterHeight = 10.0f;
+    // self.myTableView.sectionHeaderHeight = 10.0f;
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.hidden = NO;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -137,8 +113,6 @@
     [super viewDidAppear:animated];
     
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
-    
-    [Flurry logEvent:@"Phototherapy: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

@@ -34,100 +34,91 @@
     NSInteger oldPage;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        //delegate
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        self.title = @"Image Viewer";
-        
-        self.view.backgroundColor = [UIColor blackColor];
-        // self.view.backgroundColor = [UIColor grayColor];
-        
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
-                                                                                 style:UIBarButtonItemStyleBordered
-                                                                                target:nil
-                                                                                action:nil];
-        
-        
-        // instantiate UIScrollView & UIPageControl
-        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-        {
-            self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 46.0f, 320.0f, 40.0f)];
-            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
-            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
-            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 60.0f)];
-            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 448.0f, 320.0f, 36.0f)];
-        }
-        else // 3.5 inch Retina
-        {
-            self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 40.0f)];
-            self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 50.0f, 320.0f, 274.0f)];
-            self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 310.0f, 320.0f, 36.0f)];
-            self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 340.0f, 320.0f, 60.0f)];
-            self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 370.0f, 320.0f, 36.0f)];
-        }
-        
-        self.viewLabel.adjustsFontSizeToFitWidth = YES;
-        self.viewLabel.font = [UIFont boldSystemFontOfSize:23.0f];
-        self.viewLabel.backgroundColor = [UIColor blackColor];
-        self.viewLabel.textAlignment = UITextAlignmentCenter;
-        self.viewLabel.textColor = [UIColor whiteColor];
-        self.viewLabel.text = @"";
-        [self.view addSubview:self.viewLabel];
-        
-        self.scrollView1.delegate = self;
-        self.scrollView1.showsHorizontalScrollIndicator = NO;
-        self.scrollView1.showsVerticalScrollIndicator = NO;
-        self.scrollView1.scrollEnabled = YES;
-        self.scrollView1.clipsToBounds = YES;
-        self.scrollView1.pagingEnabled = YES;
-        self.scrollView1.decelerationRate = UIScrollViewDecelerationRateFast;
-        self.scrollView1.bounces = YES;
-        self.scrollView1.bouncesZoom = YES;
-        self.scrollView1.userInteractionEnabled = YES;
-        self.scrollView1.canCancelContentTouches = YES;
-        self.scrollView1.delaysContentTouches = YES;
-        self.scrollView1.opaque = YES;
-        self.scrollView1.autoresizesSubviews = YES;
-        self.scrollView1.clearsContextBeforeDrawing = YES;
-        self.scrollView1.multipleTouchEnabled = YES;
-        
-        self.scrollView2.delegate = self;
-        self.scrollView2.showsHorizontalScrollIndicator = NO;
-        self.scrollView2.showsVerticalScrollIndicator = NO;
-        self.scrollView2.scrollEnabled = YES;
-        self.scrollView2.clipsToBounds = YES;
-        self.scrollView2.pagingEnabled = YES;
-        self.scrollView2.decelerationRate = UIScrollViewDecelerationRateFast;
-        self.scrollView2.bounces = YES;
-        self.scrollView2.bouncesZoom = YES;
-        self.scrollView2.userInteractionEnabled = YES;
-        self.scrollView2.canCancelContentTouches = YES;
-        self.scrollView2.delaysContentTouches = YES;
-        self.scrollView2.opaque = YES;
-        self.scrollView2.autoresizesSubviews = YES;
-        self.scrollView2.clearsContextBeforeDrawing = YES;
-        self.scrollView2.multipleTouchEnabled = YES;
-        
-        self.pageControl1.opaque = YES;
-        self.pageControl1.userInteractionEnabled = NO;
-        
-        self.pageControl2.opaque = YES;
-        self.pageControl2.userInteractionEnabled = NO;
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"CrUSS Image Viewer"];
     
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.title = @"Image Viewer";
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    // self.view.backgroundColor = [UIColor grayColor];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
+    
+    
+    // instantiate UIScrollView & UIPageControl
+    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    {
+        self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 46.0f, 320.0f, 40.0f)];
+        self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
+        self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
+        self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 60.0f)];
+        self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 448.0f, 320.0f, 36.0f)];
+    }
+    else // 3.5 inch Retina
+    {
+        self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 40.0f)];
+        self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 50.0f, 320.0f, 274.0f)];
+        self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 310.0f, 320.0f, 36.0f)];
+        self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 340.0f, 320.0f, 60.0f)];
+        self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 370.0f, 320.0f, 36.0f)];
+    }
+    
+    self.viewLabel.adjustsFontSizeToFitWidth = YES;
+    self.viewLabel.font = [UIFont boldSystemFontOfSize:23.0f];
+    self.viewLabel.backgroundColor = [UIColor blackColor];
+    self.viewLabel.textAlignment = UITextAlignmentCenter;
+    self.viewLabel.textColor = [UIColor whiteColor];
+    self.viewLabel.text = @"";
+    [self.view addSubview:self.viewLabel];
+    
+    self.scrollView1.delegate = self;
+    self.scrollView1.showsHorizontalScrollIndicator = NO;
+    self.scrollView1.showsVerticalScrollIndicator = NO;
+    self.scrollView1.scrollEnabled = YES;
+    self.scrollView1.clipsToBounds = YES;
+    self.scrollView1.pagingEnabled = YES;
+    self.scrollView1.decelerationRate = UIScrollViewDecelerationRateFast;
+    self.scrollView1.bounces = YES;
+    self.scrollView1.bouncesZoom = YES;
+    self.scrollView1.userInteractionEnabled = YES;
+    self.scrollView1.canCancelContentTouches = YES;
+    self.scrollView1.delaysContentTouches = YES;
+    self.scrollView1.opaque = YES;
+    self.scrollView1.autoresizesSubviews = YES;
+    self.scrollView1.clearsContextBeforeDrawing = YES;
+    self.scrollView1.multipleTouchEnabled = YES;
+    
+    self.scrollView2.delegate = self;
+    self.scrollView2.showsHorizontalScrollIndicator = NO;
+    self.scrollView2.showsVerticalScrollIndicator = NO;
+    self.scrollView2.scrollEnabled = YES;
+    self.scrollView2.clipsToBounds = YES;
+    self.scrollView2.pagingEnabled = YES;
+    self.scrollView2.decelerationRate = UIScrollViewDecelerationRateFast;
+    self.scrollView2.bounces = YES;
+    self.scrollView2.bouncesZoom = YES;
+    self.scrollView2.userInteractionEnabled = YES;
+    self.scrollView2.canCancelContentTouches = YES;
+    self.scrollView2.delaysContentTouches = YES;
+    self.scrollView2.opaque = YES;
+    self.scrollView2.autoresizesSubviews = YES;
+    self.scrollView2.clearsContextBeforeDrawing = YES;
+    self.scrollView2.multipleTouchEnabled = YES;
+    
+    self.pageControl1.opaque = YES;
+    self.pageControl1.userInteractionEnabled = NO;
+    
+    self.pageControl2.opaque = YES;
+    self.pageControl2.userInteractionEnabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -209,18 +200,6 @@
     [self.view addSubview:self.pageControl1];
     [self.view addSubview:self.scrollView2];
     [self.view addSubview:self.pageControl2];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"CrUSS Radiology" withError:nil];
-    
-#endif
-
 }
 
 - (void)didReceiveMemoryWarning

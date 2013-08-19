@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"BloodProductsViewController viewDidLoad");
+    [CBTrackers logEvent:@"Blood Products"];
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"Back"
@@ -104,14 +104,6 @@
     [super viewDidAppear:animated];
     
     [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Blood Products" withError:nil];
-    
-#endif
-   
-    [Flurry logEvent:@"BloodProducts: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

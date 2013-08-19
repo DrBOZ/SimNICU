@@ -71,6 +71,7 @@
 {
     [super viewDidLoad];
 
+    [CBTrackers logEvent:@"APGAR"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -227,19 +228,6 @@
     self.APGAR10minController = nil;
     self.APGAR15minController = nil;
     self.APGAR20minController = nil;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    NSLog(@"Tracking");
-    
-    [[GANTracker sharedTracker] trackPageview:@"APGAR" withError:nil];
-    
-#endif
-    
 }
 
 - (void)didReceiveMemoryWarning

@@ -26,6 +26,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"CDH"];
+    
     self.title = @"CDH";
     
     //delegate
@@ -48,19 +50,6 @@
     NSMutableArray *webViewRows;
     SimNICUWebView *webView;
     
-    // Section template
-    /*
-    webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
-    webView.header = @" ";
-    webView.resource = @" ";
-    webView.cellIdentifier = @"Cell";
-    webView.heightForRowAtIndexPath = @0.0f;
-    [self formatAndLoadSimNICUWebView:webView];
-    [webViewRows addObject:webView];
-    
-    [webViewSections addObject:webViewRows];
-     */
     // section 0
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
     webView = [[SimNICUWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 160.0f)];
@@ -119,17 +108,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Diaphragmatic Hernia" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"CDH: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

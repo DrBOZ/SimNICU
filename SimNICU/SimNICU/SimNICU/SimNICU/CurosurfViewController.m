@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"CurosurfViewController viewDidLoad");
+    [CBTrackers logEvent:@"Curosurf"];
     
     self.title = @"Curosurf\u00AE";
     
@@ -108,15 +108,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Curosurf" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"Curosurf: viewDidAppear"];
-    
     if ([self.curosurfDoseSelected isEqualToString:@"YES"])
     {
         // move table to Curosurf Dose information
@@ -129,8 +120,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    NSLog(@"CurosurfViewController didReceiveMemoryWarning");
     
     if ([self isViewLoaded] && self.view.window == nil)
     {

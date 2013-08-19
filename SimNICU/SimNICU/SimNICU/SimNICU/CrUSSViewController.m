@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"CrUSSViewController viewDidLoad");
+    [CBTrackers logEvent:@"CrUSS/Indications"];
     
     self.title = @"Cranial Ultrasound";
     
@@ -77,17 +77,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Cranial Ultrasound" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"CrUSS: viewDidAppear"];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer

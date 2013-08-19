@@ -77,6 +77,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"Fluid Requirements"];
 	
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -228,14 +230,6 @@
         }
     }
      */
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Fluid Requirements" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"FluidRequirements: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

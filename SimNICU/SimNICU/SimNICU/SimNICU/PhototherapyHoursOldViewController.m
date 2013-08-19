@@ -34,33 +34,13 @@
 @end
 
 @implementation PhototherapyHoursOldViewController
-#warning check this out
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Sample Age";
         
-        self.view.backgroundColor = [UIColor lightGrayColor];
-        
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 50.0f;  // was 44.0f
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        // self.myTableView.sectionFooterHeight = 10.0f;
-        // self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
     }
     return self;
 }
@@ -68,18 +48,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
     
-#if GOOGLE_ANALYTICS
+    [CBTrackers logEvent:@"Phototherapy/Graph/Add Bili/Hours Old"];
     
-    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Graph/Add Bili/Hours Old" withError:nil];
+    self.title = @"Sample Age";
     
-#endif
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
-    [Flurry logEvent:@"PhototherapyHoursOld: viewDidAppear"];
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    self.myTableView.rowHeight = 50.0f;  // was 44.0f
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    // self.myTableView.sectionFooterHeight = 10.0f;
+    // self.myTableView.sectionHeaderHeight = 10.0f;
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.hidden = NO;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
 }
 
 - (void)viewDidUnload

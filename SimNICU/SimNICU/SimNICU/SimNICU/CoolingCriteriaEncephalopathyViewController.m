@@ -24,6 +24,8 @@
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Cooling/Encephalopathy"];
+    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -44,16 +46,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Cooling/Encephalopathy" withError:nil];
-    
-#endif
-    
 }
 
 - (void)didReceiveMemoryWarning

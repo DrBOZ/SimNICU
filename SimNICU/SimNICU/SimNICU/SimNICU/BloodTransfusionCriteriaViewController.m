@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"BloodTransfusionCriteriaViewController viewDidLoad");
+    [CBTrackers logEvent:@"Blood Products/Blood Transfusion"];
 	
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -107,18 +107,12 @@
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Blood Products/Blood Transfusion Criteria" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"BloodTransfusion: viewDidAppear"];
+    [Flurry endTimedEvent:@"BloodTransfusion" withParameters:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)idReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     

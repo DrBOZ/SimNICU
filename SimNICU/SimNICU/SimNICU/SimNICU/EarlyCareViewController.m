@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"EarlyCareViewController viewDidLoad");
+    [CBTrackers logEvent:@"Early Care"];
     
     self.title = @"Early Care";
     
@@ -44,7 +44,6 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //tableView
-    // self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
@@ -86,9 +85,7 @@
     webView.heightForRowAtIndexPath = @230.0f;
     [self formatAndLoadSimNICUWebView:webView];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
-    
     
     // Section Two
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
@@ -107,9 +104,7 @@
     webView.heightForRowAtIndexPath = @160.0f;
     [self formatAndLoadSimNICUWebView:webView];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
-    
     
     // Section Three
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
@@ -120,7 +115,6 @@
     webView.heightForRowAtIndexPath = @525.0f;
     [self formatAndLoadSimNICUWebView:webView];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     
@@ -133,9 +127,7 @@
     webView.heightForRowAtIndexPath = @345.0f;
     [self formatAndLoadSimNICUWebView:webView];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
-    
     
     // Section Five
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
@@ -146,24 +138,11 @@
     webView.heightForRowAtIndexPath = @160.0f;
     [self formatAndLoadSimNICUWebView:webView];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Early Care" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"EarlyCare: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning

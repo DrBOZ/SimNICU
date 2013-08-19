@@ -26,30 +26,23 @@
     BOOL portraitOrientationDefaultsSet;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    NSLog(@"init");
-    
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // setup Done button
-        self.navigationItem.hidesBackButton = YES;
-        self.navigationItem.leftBarButtonItem = [CBBarButtonItems doneBarButtonWithTarget:self action:@selector(closeModal)];
-        
-        // setup addBilirubin button
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBilirubin)];
-        
-        // instantiate array
-        self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [CBTrackers logEvent:@"Phototherapy/Chart"];
+    
+    // setup Done button
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems doneBarButtonWithTarget:self action:@selector(closeModal)];
+    
+    // setup addBilirubin button
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBilirubin)];
+    
+    // instantiate array
+    self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
+    
+    // ShinobiChart
     self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
     
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
@@ -139,7 +132,6 @@
         self.yAxis.allowPanningOutOfDefaultRange = YES;
         self.yAxis.allowPanningOutOfMaxRange = NO;
     }
-    
     
     // ensure all plots can be seen
     
@@ -259,14 +251,6 @@
     
     // Add the chart to the view controller
     [self.view addSubview:self.chart];
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Phototherapy Chart" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"PhototherapyGraph: viewDidLoad"];
 }
 
 - (void)viewDidAppear:(BOOL)animated

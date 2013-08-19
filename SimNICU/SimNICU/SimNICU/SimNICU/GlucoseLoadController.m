@@ -16,47 +16,28 @@
 
 @implementation GlucoseLoadController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        // Tableview
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
-        
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.rowHeight = 50.0f;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
+	
+    [CBTrackers logEvent:@"Glucose Load"];
     
-#if GOOGLE_ANALYTICS
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    [[GANTracker sharedTracker] trackPageview:@"Glucose Load" withError:nil];
+    // Tableview
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
     
-#endif
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
     
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
 }
 
 - (void)didReceiveMemoryWarning
