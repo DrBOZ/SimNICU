@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    [CBTrackers logEvent:@"Blood Products/Blood Transfusion"];
+    [CBTrackers logEvent:@"Blood Products/Blood Transfusion" withParameters:nil timed:YES];
 	
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -109,7 +109,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [Flurry endTimedEvent:@"BloodTransfusion" withParameters:nil];
+    [Flurry endTimedEvent:@"Blood Products/Blood Transfusion" withParameters:nil];
 }
 
 - (void)idReceiveMemoryWarning
