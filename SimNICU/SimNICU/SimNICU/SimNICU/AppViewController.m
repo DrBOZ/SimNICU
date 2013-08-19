@@ -720,6 +720,10 @@
                              loadingDisplayBackground.hidden = YES;
                              loadingDisplayTextLabel.hidden = YES;
                              
+                             loadingDisplayDetailTextLabel.alpha = 0.4f;
+                             loadingDisplayBackground.alpha = 0.4f;
+                             loadingDisplayTextLabel.alpha = 0.4f;
+                             
                              appViewControllerLoadingForTheFirstTime = NO;
                          }];
         
@@ -1483,13 +1487,6 @@
         self.gestation = nil;
     }
     
-    // reset alpha
-    self.displayDismissButtonView.alpha = 1.0f;
-    self.displayDetailTextLabel.alpha = 1.0f;
-    self.displayAgeTextLabel.alpha = 1.0f;
-    self.displayBackground.alpha = 0.5f;
-    self.displayTextLabel.alpha = 1.0f;
-    
     // add text
     self.displayBackground.hidden = NO;
     self.displayTextLabel.hidden = NO;
@@ -1590,13 +1587,6 @@
             
             self.displayDetailTextLabel.text = [NSString stringWithFormat:@"Estimated weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:estimatedWeightKGAsFloat]]];
         }
-        
-        // reset alpha
-        self.displayDismissButtonView.alpha = 1.0f;
-        self.displayDetailTextLabel.alpha = 1.0f;
-        self.displayAgeTextLabel.alpha = 1.0f;
-        self.displayBackground.alpha = 0.5f;
-        self.displayTextLabel.alpha = 1.0f;
         
         // add text
         self.displayAgeTextLabel.text = @"";
@@ -1710,6 +1700,13 @@
                          self.displayAgeTextLabel.hidden = YES;
                          self.displayBackground.hidden = YES;
                          self.displayTextLabel.hidden = YES;
+                         
+                         // reset alpha
+                         self.displayDismissButtonView.alpha = 1.0f;
+                         self.displayDetailTextLabel.alpha = 1.0f;
+                         self.displayAgeTextLabel.alpha = 1.0f;
+                         self.displayBackground.alpha = 0.5f;
+                         self.displayTextLabel.alpha = 1.0f;
                      }];
     
     self.estimatedWeightUsed = NULL;
@@ -1734,13 +1731,6 @@
 - (void)APGARTabBarController:(APGARTabBarController *)controller didFinishEnteringAPGARValuesForANewPatient:(Patient *)patient
 {
     self.tempPatient = patient;
-    
-    // reset alpha
-    self.displayDismissButtonView.alpha = 100.0f;
-    self.displayDetailTextLabel.alpha = 100.0f;
-    self.displayAgeTextLabel.alpha = 100.0f;
-    self.displayBackground.alpha = 100.0f;
-    self.displayTextLabel.alpha = 100.0f;
     
     // add text
     self.displayTextLabel.text = @"New BABY";
