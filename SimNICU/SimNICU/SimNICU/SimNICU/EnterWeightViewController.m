@@ -1079,6 +1079,12 @@
             path = nil;
         }
     }
+    else if (indexPath.section == 2)
+    {
+        // lose focus on any selected textField
+        [self.weight resignFirstResponder];
+        [self.gestation resignFirstResponder];
+    }
     
     return path;
 }
@@ -1615,9 +1621,15 @@
 
 - (void)patientConfidentialityModeToggle
 {
-    if (!self.confidentialityModeOn) 
+    // lose focus on gestation or weight, if selected
+    [self.gestation resignFirstResponder];
+    [self.weight resignFirstResponder];
+    
+    if (!self.confidentialityModeOn)
     {
-        if (self.editingModeOn) 
+        [Flurry logEvent:@"EnterWeight: close patient list"];
+        
+        if (self.editingModeOn)
         {
             [self setEditing:NO animated:YES];
         }
@@ -1637,6 +1649,8 @@
     }
     else  // ie opening patient list
     {
+        [Flurry logEvent:@"EnterWeight: open patient list"];
+        
         // first check if passcode set
         if ([[KKPasscodeLock sharedLock] isPasscodeRequired]) 
         {            
