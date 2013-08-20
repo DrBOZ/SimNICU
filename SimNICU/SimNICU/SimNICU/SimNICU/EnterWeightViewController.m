@@ -15,26 +15,25 @@
 #import "CBTimeMethods.h"
 #import "AppDelegate.h"
 #import "PatientCell.h"
-#import "GeoFence.h"
 #import "Patient.h"
 #import "Bay.h"
 
-@interface EnterWeightViewController () <CLLocationManagerDelegate>
+@interface EnterWeightViewController ()
 
-@property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic) BOOL userIsStartingToEnterGestationWhenNoWeightEntered;
 @property (nonatomic) BOOL weightOrGestationMessageAlreadyDisplayed;
+@property (nonatomic, strong) NSString *patientListSwipeText;
+@property (nonatomic, strong) NSString *gestationSwipeText;
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UISegmentedControl *centile;
 @property (nonatomic, strong) NSString *selectedCentile;
 @property (nonatomic, strong) UISegmentedControl *sex;
 @property (nonatomic, strong) NSString *selectedSex;
 @property (nonatomic, strong) CoolButton *button;
 @property (nonatomic) BOOL userEditingTextField;
+@property (nonatomic) int patientListMode;
 @property (nonatomic) BOOL editingModeOn;
 @property (nonatomic) int gestationMode;
-@property (nonatomic) int patientListMode;
-@property (nonatomic, strong) NSString *gestationSwipeText;
-@property (nonatomic, strong) NSString *patientListSwipeText;
 
 - (void)selectCentile;
 - (void)selectSex;
@@ -265,6 +264,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -1638,7 +1638,8 @@
         // ie close patient list
         self.confidentialityModeOn = !self.confidentialityModeOn;
         
-        if (!self.confidentialityModeOn) {
+        if (!self.confidentialityModeOn)
+        {
             // enable edit button
             self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = YES;
         }
@@ -1669,7 +1670,9 @@
                     nav.modalPresentationStyle = UIModalPresentationFormSheet;
                     nav.navigationBar.barStyle = UIBarStyleBlack;
                     nav.navigationBar.opaque = NO;
-                } else {
+                }
+                else
+                {
                     nav.navigationBar.tintColor = _navigationController.navigationBar.tintColor;
                     nav.navigationBar.translucent = _navigationController.navigationBar.translucent;
                     nav.navigationBar.opaque = _navigationController.navigationBar.opaque;
@@ -1877,22 +1880,6 @@
                          [self.myTableView reloadData];
                      }];
     
-}
-
-#pragma mark - CLLocationManagerDelegate methods
-
-- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
-{
-    // close patient list
-    
-    // send notification to user saying patient list has closed
-}
-
-- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
-{
-    // create geofence around current position
-    
-    // close patient list if this fence is crossed
 }
 
 # pragma mark - PatientDetailsViewController delegate methods
