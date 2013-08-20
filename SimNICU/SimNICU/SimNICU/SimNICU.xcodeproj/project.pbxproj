@@ -536,6 +536,8 @@
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
 		5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */; };
+		5CBD57E717C3C48D00138C08 /* GeoFence.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD57E617C3C48D00138C08 /* GeoFence.m */; };
+		5CBD57E817C3C48D00138C08 /* GeoFence.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBD57E617C3C48D00138C08 /* GeoFence.m */; };
 		5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */; };
 		5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1448,6 +1450,8 @@
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
 		5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_RoundedIcon@2x.png"; sourceTree = "<group>"; };
+		5CBD57E517C3C48D00138C08 /* GeoFence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFence.h; sourceTree = "<group>"; };
+		5CBD57E617C3C48D00138C08 /* GeoFence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFence.m; sourceTree = "<group>"; };
 		5CCC271816D64A1F00D14080 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD3B0B016CF38D500DE362C /* SimNICU-Lite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SimNICU-Lite-Info.plist"; path = "/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU/SimNICU-Lite-Info.plist"; sourceTree = "<absolute>"; };
@@ -2088,8 +2092,8 @@
 				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
 				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
 				5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */,
-				5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */,
 				5C940CA9166E412E0044A7D1 /* CFNetwork.framework */,
+				5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */,
 				5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */,
 				5C940CA7166E411D0044A7D1 /* CoreMotion.framework */,
 				5C940A63166E37FE0044A7D1 /* Foundation.framework */,
@@ -2364,6 +2368,8 @@
 			children = (
 				5C940B04166E3B420044A7D1 /* EnterWeightViewController.h */,
 				5C940B05166E3B420044A7D1 /* EnterWeightViewController.m */,
+				5CBD57E517C3C48D00138C08 /* GeoFence.h */,
+				5CBD57E617C3C48D00138C08 /* GeoFence.m */,
 				5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */,
 				5C0C9D9E179B26360077B881 /* PatientCell.h */,
 				5C0C9D9F179B26360077B881 /* PatientCell.m */,
@@ -3666,6 +3672,7 @@
 				5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */,
+				5CBD57E717C3C48D00138C08 /* GeoFence.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3823,6 +3830,7 @@
 				5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
+				5CBD57E817C3C48D00138C08 /* GeoFence.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

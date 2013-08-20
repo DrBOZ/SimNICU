@@ -15,10 +15,11 @@
 #import "CBTimeMethods.h"
 #import "AppDelegate.h"
 #import "PatientCell.h"
+#import "GeoFence.h"
 #import "Patient.h"
 #import "Bay.h"
 
-@interface EnterWeightViewController ()
+@interface EnterWeightViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic) BOOL userIsStartingToEnterGestationWhenNoWeightEntered;
@@ -1625,6 +1626,7 @@
     [self.gestation resignFirstResponder];
     [self.weight resignFirstResponder];
     
+    // close patient list
     if (!self.confidentialityModeOn)
     {
         [Flurry logEvent:@"EnterWeight: close patient list"];
@@ -1857,8 +1859,6 @@
 
 -(void)handleTapFrom:(UITapGestureRecognizer *)recognizer
 {
-    NSLog(@"TAAPPP");
-    
     CGFloat animationDuration = 1.0f; // 2.0 initially
     CGFloat animationDelay = 0.25f;  // 0.5 initially
     
@@ -1877,6 +1877,22 @@
                          [self.myTableView reloadData];
                      }];
     
+}
+
+#pragma mark - CLLocationManagerDelegate methods
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    // close patient list
+    
+    // send notification to user saying patient list has closed
+}
+
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
+{
+    // create geofence around current position
+    
+    // close patient list if this fence is crossed
 }
 
 # pragma mark - PatientDetailsViewController delegate methods
