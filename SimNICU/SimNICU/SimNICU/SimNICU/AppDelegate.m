@@ -228,6 +228,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     self.drugDatabase = [[DrugDatabase alloc] init];
     
+    // ensure badges are removed
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     return YES;
 }
 

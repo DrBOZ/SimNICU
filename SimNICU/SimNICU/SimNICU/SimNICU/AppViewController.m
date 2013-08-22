@@ -401,16 +401,8 @@
     double delayInSeconds = 2.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-      
-#ifdef LITE_VERSION
         
         self.title = @"Neonatal Intensive Care";
-        
-#else
-        
-        self.title = @"Neonatal Intensive Care";
-        
-#endif
         
     });
 }
@@ -559,9 +551,17 @@
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
+#if FLUID_BALANCE_PREVIEW_MODE
+    
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Fluid Balance";
+    screen.segueId = @"FluidBalance";
+    [screens addObject:screen];
+    
+#endif
+    
     screen = [[Screen alloc] init];
     screen.menuText = @"Fluid Requirements";
-    screen.detailMenuText = @"";
     screen.segueId = @"FluidRequirements";
     [screens addObject:screen];
     
@@ -582,7 +582,17 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Glucose Load";
+    
+#if GLUCOSE_LOAD_PREVIEW_MODE
+    
+    screen.detailMenuText = @"";
+    
+#else
+    
     screen.detailMenuText = @"Coming soon!";
+    
+#endif
+    
     screen.segueId = @"GlucoseInfusionRate";
     [screens addObject:screen];
     
@@ -1111,6 +1121,11 @@
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
+        else if ([thisScreenType isEqualToString:@"FluidBalance"])
+        {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        
 #pragma mark Fluid Requirements
         
         else if ([thisScreenType isEqual:@"FluidRequirements"])
@@ -1145,13 +1160,18 @@
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
-#pragma mark Glucose Infusion Rate
+#pragma mark Glucose Load
         
         else if ([thisScreenType isEqualToString:@"GlucoseInfusionRate"])
         {
+#if GLUCOSE_LOAD_PREVIEW_MODE
+            
+            GlucoseLoadController *newViewController = [[GlucoseLoadController alloc] init];
+            [self.navigationController pushViewController:newViewController animated:YES];
+            
+#else
             [self.myTableView deselectRowAtIndexPath:indexPath animated:YES];
-            // GlucoseLoadController *newViewController = [[GlucoseLoadController alloc] init];
-            // [self.navigationController pushViewController:newViewController animated:YES];
+#endif
         }
         
 #pragma mark HFOV
@@ -1374,7 +1394,7 @@
         }
         
 #pragma mark Umbilical Lines
-#warning check this out
+
         else if ([thisScreenType isEqualToString:@"UACUVC"])
         {
             UVCUACViewController *newViewController = [[UVCUACViewController alloc] init];

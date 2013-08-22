@@ -10,6 +10,7 @@
 
 @interface GlucoseLoadController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 
 @end
@@ -21,6 +22,8 @@
     [super viewDidLoad];
 	
     [CBTrackers logEvent:@"Glucose Load"];
+    
+    self.title = @"Glucose Load";
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -38,12 +41,21 @@
     
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source

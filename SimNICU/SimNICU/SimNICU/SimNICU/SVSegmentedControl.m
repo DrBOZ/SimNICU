@@ -80,7 +80,7 @@
         self.clipsToBounds = NO;
         
         self.font = [UIFont boldSystemFontOfSize:15];
-        self.textColor = [UIColor grayColor];
+        self.textColor = [UIColor lightGrayColor];
         self.textShadowColor = [UIColor blackColor];
         self.textShadowOffset = CGSizeMake(0, -1);
         

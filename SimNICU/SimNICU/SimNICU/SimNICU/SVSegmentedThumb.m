@@ -205,7 +205,7 @@
 	if(pointSize%2 != 0)
 		posY--;
     
-	self.label.frame = self.secondLabel.frame = CGRectMake(0, posY, newFrame.size.width, self.font.pointSize);
+	self.label.frame = self.secondLabel.frame = CGRectMake(0, posY, newFrame.size.width, self.font.pointSize + 1);
     
     self.layer.shadowOffset = CGSizeMake(0, 0);
     self.layer.shadowRadius = 1;
