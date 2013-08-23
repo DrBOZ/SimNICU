@@ -281,6 +281,11 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -914,7 +919,7 @@
             [self.myTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
             
             // scroll down 
-            [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            // [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
         else 
         {
@@ -1093,15 +1098,14 @@
 // select patient details
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if(indexPath.section == 1)
     {
         if (indexPath.row == 1)
         {
             if (self.patientListMode)
             {
-                /*
+#if HANDOVER_PREVIEW_MODE
+                
                 AdvancedPatientEditorViewController *advancedPatientList = [[AdvancedPatientEditorViewController alloc] init];
                 advancedPatientList.bayData = self.bayData;
                 
@@ -1111,7 +1115,10 @@
                 navController.navigationBar.tintColor = [UIColor blackColor];
                 
                 [self presentModalViewController:navController animated:YES];
-                 */
+                
+#else
+                [tableView deselectRowAtIndexPath:indexPath animated:YES];
+#endif
             }
             else
             {
@@ -1154,6 +1161,8 @@
     }
     else if(indexPath.section > 1)
     {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
         Bay *bay;
         bay = self.bayData[indexPath.section - 2];
         Patient *patient = (Patient *)bay.patientsInBay[indexPath.row];
@@ -2131,6 +2140,7 @@
     
     [self dismissModalViewControllerAnimated:YES];
     
+    // have to reload whole table
     [self.myTableView reloadData];
 }
 

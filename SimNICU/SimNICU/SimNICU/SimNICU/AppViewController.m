@@ -1751,6 +1751,9 @@
     
     enterWeightViewController.weight.text = NULL;
     enterWeightViewController.gestation.text = NULL;
+    
+    // deselect patient
+    [enterWeightViewController.myTableView deselectRowAtIndexPath:[enterWeightViewController.myTableView indexPathForSelectedRow] animated:NO];
 }
 
 #pragma mark APGARTabBarController delegate
