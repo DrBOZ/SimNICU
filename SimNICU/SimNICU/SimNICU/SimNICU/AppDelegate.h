@@ -21,7 +21,7 @@
 
 // testing tools
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 0
+#define DCINTROSPECT_ON 1
 
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0

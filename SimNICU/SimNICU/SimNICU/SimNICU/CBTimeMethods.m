@@ -296,10 +296,25 @@
 + (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
 {
     NSString *formattedDate = nil;
+    
+    // set calendar
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
+    // set unitFlags
     unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit;
-    NSDateComponents *comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
+    
+    // round dates (i.e. pure calendrical operation)
+    
+    // date A
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:dateA];
+    dateA = [gregorian dateFromComponents:comps];
+    
+    // date B
+    comps = [gregorian components:unitFlags fromDate:dateB];
+    dateB = [gregorian dateFromComponents:comps];
+    
+    // between dates
+    comps = [gregorian components:unitFlags fromDate:dateA  toDate:dateB  options:0];
     int compsYears = [comps year];
     int compsMonths = [comps month];
     int compsWeeks = [comps week];

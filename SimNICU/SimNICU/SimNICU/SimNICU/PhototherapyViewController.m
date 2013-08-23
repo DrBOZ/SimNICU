@@ -90,21 +90,12 @@
 {
     if (self.selectedPatient)
     {
-        // Unfortunately set Patient.gestation as NSString. Did not know how to use NSNumber then...
-        
-        // conditional statement here.
-        
         self.gestation = [NSNumber numberWithInteger:[self.selectedPatient.gestation integerValue]];
-        
-        NSLog(@"PhototherapyViewController: viewWillAppear: self.gestation = %@", self.gestation);
         
         if ([self.gestation integerValue] > 38)
         {
             self.gestation = [NSNumber numberWithInteger:38];
         }
-        // self.title = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
-        
-        // NSLog(@"viewWillAppear: self.selectedPatient.birthTimeSet = %@", self.selectedPatient.birthTimeSet);
     }
 }
 

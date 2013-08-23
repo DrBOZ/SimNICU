@@ -497,8 +497,6 @@
 		5C98A6B417875CCA00F246E3 /* DrugCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6B217875CCA00F246E3 /* DrugCategoriesViewController.m */; };
 		5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */; };
 		5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */; };
-		5C9BE6281797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE6271797122F009616CA /* AdvancedPatientTableViewCell.m */; };
-		5C9BE6291797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE6271797122F009616CA /* AdvancedPatientTableViewCell.m */; };
 		5CA3C11617924112002AB53D /* vancomycinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11517924112002AB53D /* vancomycinPharmacology.html */; };
 		5CA3C11717924112002AB53D /* vancomycinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11517924112002AB53D /* vancomycinPharmacology.html */; };
 		5CA3C11917924123002AB53D /* vancomycinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11817924123002AB53D /* vancomycinIndications.html */; };
@@ -532,6 +530,8 @@
 		5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
+		5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
+		5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -1423,8 +1423,6 @@
 		5C98A6B217875CCA00F246E3 /* DrugCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugCategoriesViewController.m; sourceTree = "<group>"; };
 		5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPatientEditorViewController.h; sourceTree = "<group>"; };
 		5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPatientEditorViewController.m; sourceTree = "<group>"; };
-		5C9BE6261797122F009616CA /* AdvancedPatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPatientTableViewCell.h; sourceTree = "<group>"; };
-		5C9BE6271797122F009616CA /* AdvancedPatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPatientTableViewCell.m; sourceTree = "<group>"; };
 		5CA3C11517924112002AB53D /* vancomycinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPharmacology.html; sourceTree = "<group>"; };
 		5CA3C11817924123002AB53D /* vancomycinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinIndications.html; sourceTree = "<group>"; };
 		5CA3C11B1792412F002AB53D /* vancomycinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPresentation.html; sourceTree = "<group>"; };
@@ -1444,6 +1442,8 @@
 		5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		5CA55E4A17C825AF001D32C0 /* ShinobiChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiChartCell.h; sourceTree = "<group>"; };
+		5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiChartCell.m; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -2766,8 +2766,7 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
-				5C9BE6261797122F009616CA /* AdvancedPatientTableViewCell.h */,
-				5C9BE6271797122F009616CA /* AdvancedPatientTableViewCell.m */,
+				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
 			name = "Advanced Patient Editor";
 			sourceTree = "<group>";
@@ -2825,6 +2824,15 @@
 				5CA3C13C179241D8002AB53D /* vancomycinReferences.html */,
 			);
 			name = Vancomycin;
+			sourceTree = "<group>";
+		};
+		5CA55E4917C82541001D32C0 /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5CA55E4A17C825AF001D32C0 /* ShinobiChartCell.h */,
+				5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */,
+			);
+			name = UITableViewCells;
 			sourceTree = "<group>";
 		};
 		5CD3B0B31790702100DA0278 /* Vitamins (Multivitamins) */ = {
@@ -3637,7 +3645,6 @@
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
 				5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
-				5C9BE6281797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
@@ -3666,6 +3673,7 @@
 				5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */,
+				5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3794,7 +3802,6 @@
 				5C679FBF1794CA0100B9A813 /* Bay.m in Sources */,
 				5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
-				5C9BE6291797122F009616CA /* AdvancedPatientTableViewCell.m in Sources */,
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
@@ -3823,6 +3830,7 @@
 				5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
+				5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,15 @@
 
 #import "AdvancedPatientEditorViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
+#import "CBTableViewSectionData.h"
+#import "CBTableViewRowData.h"
 #import "BilirubinResult.h"
+#import "CBTimeMethods.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
+
+#import "ShinobiChartCell.h"
 
 @interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate>
 {
@@ -21,12 +26,16 @@
     BOOL landscapeOrientationDefaultsSet;
     BOOL portraitOrientationDefaultsSet;
     
-    BOOL newPatient;
+    BOOL newPatientDetails;
+    BOOL newBiliChart;
+    
+    NSMutableArray *tableView2Sections;
 }
 
 // general table
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UITableView *myTableView1;
+@property (nonatomic, strong) UITableView *myTableView2;
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
 
@@ -64,15 +73,17 @@
     self.guidelineCountry = @"UK";
     self.bilirubinUnits = @"SI";  // change this later...
     portraitOrientationDefaultsSet = YES;
-    self.gestation = [NSNumber numberWithInt:38];
 	
     self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
     
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // Setup back button
+    // setup back button
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];
+    
+    // setup edit button
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // setup toolbar
     self.navigationController.toolbarHidden = NO;
@@ -88,15 +99,48 @@
     // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
     self.navigationController.toolbar.tintColor = [UIColor grayColor];
     
-    // tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64 - 44)) style:UITableViewStylePlain];
-    self.myTableView.rowHeight = 44.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 10.0f;
-    self.myTableView.sectionHeaderHeight = 10.0f;
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
+    // sections
+    tableView2Sections = [[NSMutableArray alloc] initWithCapacity:12];
+    [tableView2Sections addObject:@"Background"];
+    [tableView2Sections addObject:@"Active Problems"];
+    [tableView2Sections addObject:@"Resolved Problems"];
+    [tableView2Sections addObject:@"Recent Significant Events"];
+    [tableView2Sections addObject:@"Ventilation & Sedation"];
+    [tableView2Sections addObject:@"CXR"];
+    [tableView2Sections addObject:@"Cardiovascular"];
+    [tableView2Sections addObject:@"Lines"];
+    [tableView2Sections addObject:@"Feeds & Fluids"];
+    [tableView2Sections addObject:@"Fluid Balance"];
+    [tableView2Sections addObject:@"Electrolytes"];
+    [tableView2Sections addObject:@"Jaundice"];
+    [tableView2Sections addObject:@"Sepsis"];
+    [tableView2Sections addObject:@"Drugs"];
+    [tableView2Sections addObject:@"ROP"];
+    [tableView2Sections addObject:@"Cranial USS"];
+    [tableView2Sections addObject:@"Parents / Social"];
+    [tableView2Sections addObject:@"Impression"];
+    [tableView2Sections addObject:@"Plan"];
+    [tableView2Sections addObject:@"Jobs"];
+    
+    // tableViews
+    self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 92.0f) style:UITableViewStylePlain];
+    self.myTableView1.rowHeight = 44.0f;
+    self.myTableView1.dataSource = self;
+    self.myTableView1.delegate = self;
+    self.myTableView1.sectionFooterHeight = 10.0f;
+    self.myTableView1.sectionHeaderHeight = 10.0f;
+    self.myTableView1.separatorColor = [UIColor grayColor];
+    self.myTableView1.userInteractionEnabled = NO;
+    [self.view addSubview:self.myTableView1];
+    
+    self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f - 156.0f)) style:UITableViewStylePlain];
+    self.myTableView2.rowHeight = 44.0f;
+    self.myTableView2.dataSource = self;
+    self.myTableView2.delegate = self;
+    self.myTableView2.sectionFooterHeight = 10.0f;
+    self.myTableView2.sectionHeaderHeight = 10.0f;
+    self.myTableView2.separatorColor = [UIColor grayColor];
+    [self.view addSubview:self.myTableView2];
     
     self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
 }
@@ -111,7 +155,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    if  ([tableView isEqual:self.myTableView1])
+    {
+        return 1;
+    }
+    else
+    {
+        return [tableView2Sections count];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -123,13 +174,13 @@
 {
     NSString *returnString = nil;
     
-    if (section == 0)
+    if ([tableView isEqual:self.myTableView1])
     {
         returnString = @"Patient";
     }
-    else if (section == 1)
+    else
     {
-        returnString = @"Serum bilirubin";
+        returnString = tableView2Sections[section];
     }
     
     return returnString;
@@ -137,22 +188,34 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    float height = 22.0f;
-    
-    return height;
+    return 22.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     float height = 55.0f;
     
-    if (indexPath.section == 0)
+    if ([tableView isEqual:self.myTableView1])
     {
         height = 70.0f;
     }
-    else if (indexPath.section == 1)
+    else
     {
-        height = 320.0f;
+        if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
+        {
+            // Different graph sizes for iPhone 4 and iPhone 5
+            if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+            {
+                height = 320.0f;
+            }
+            else
+            {
+                height = 260.0f;
+            }
+        }
     }
     
     return height;
@@ -166,12 +229,18 @@
     
     UITableViewCell *cell;
     
-    if (!newPatient)
+    if ([tableView isEqual:self.myTableView1])
     {
-        if (indexPath.section == 0)
+        CellIdentifier = @"Patient";
+        
+        if (newPatientDetails)
         {
-            CellIdentifier = @"Patient";
+            cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
+            newPatientDetails = NO;
+        }
+        else
+        {
             // need a dequeue cell for cell identifier call
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
@@ -179,56 +248,32 @@
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             }
-            
-            returnCell = cell;
         }
-        else if (indexPath.section == 1)
-        {
-            // phototherapy
-            CellIdentifier = @"Phototherapy";
-            
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-            }
-            
-            returnCell = cell;
-        }
-        else
-        {
-            CellIdentifier = @"Misc";
-            
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                
-            }
-            
-            returnCell = cell;
-        }
+        
+        returnCell = cell;
     }
     else
     {
-        if (indexPath.section == 0)
-        {
-            CellIdentifier = @"Patient";
-        
-            cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-            
-            returnCell = cell;
-        }
-        else if (indexPath.section == 1)
+        if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
         {
             // phototherapy
             CellIdentifier = @"Phototherapy";
             
-            cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-            
-            newPatient = NO;
+            if (newBiliChart)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                
+                newBiliChart = NO;
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
             
             returnCell = cell;
         }
@@ -241,7 +286,7 @@
             if (!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
             returnCell = cell;
@@ -255,14 +300,14 @@
 {
     UITableViewCell *cell;
     
-    // this is wrong...
+    // this is wrong...?
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if ([CellIdentifier isEqualToString:@"Patient"])
     {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryNone;
         
         //displayTextLabel (Patient's name)
         UILabel *displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 22.0f)];
@@ -273,14 +318,13 @@
         displayTextLabel.textAlignment = UITextAlignmentLeft;
         [cell addSubview:displayTextLabel];
         
-        UILabel *tempTestLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 22.0f, 300.0f, 22.0f)];
-        tempTestLabel.textColor = [UIColor grayColor];
-        tempTestLabel.backgroundColor = [UIColor clearColor];
-        tempTestLabel.font = [UIFont systemFontOfSize:14.0f];
-        tempTestLabel.adjustsFontSizeToFitWidth = NO;
-        tempTestLabel.textAlignment = UITextAlignmentLeft;
-        tempTestLabel.text = @"day 14 (2 + 0)";
-        [cell addSubview:tempTestLabel];
+        UILabel *displayAgeTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 23.0f, 300.0f, 22.0f)];
+        displayAgeTextLabel.textColor = [UIColor grayColor];
+        displayAgeTextLabel.backgroundColor = [UIColor clearColor];
+        displayAgeTextLabel.font = [UIFont systemFontOfSize:14.0f];
+        displayAgeTextLabel.adjustsFontSizeToFitWidth = NO;
+        displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
+        [cell addSubview:displayAgeTextLabel];
         
         //displayDetailTextLabel (Gestation, birth weight, corrected gestation and working weight)
         UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 44.0f, 300.0f, 22.0f)];
@@ -292,82 +336,35 @@
         [cell addSubview:displayDetailTextLabel];
         
         // display patient's name
-        displayTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
+        displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
         
-        NSString *detailTextLabelText = @"";
+        // display gestation and corrected gestation, birth weight and working weight
+        displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
         
-        NSString *rawBirthWeight = self.selectedPatient.birthWeight;
-        NSString *formattedBirthWeight;
         
-        NSString *rawWorkingWeight = self.selectedPatient.workingWeight;
-        NSString *formattedWorkingWeight;
-        
-        // format birth weight
-        NSString *UKLocaleRawBirthWeight;
-        UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        UKLocaleRawBirthWeight = [rawBirthWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        float birthWeightKGAsFloat = [UKLocaleRawBirthWeight floatValue];
-        
-        if(birthWeightKGAsFloat < 1.0f)
+        if (self.selectedPatient.birthDate)
         {
-            // convert to grams as use integer
-            int birthWeightGRAMSasInt = birthWeightKGAsFloat * 1000;
-            formattedBirthWeight = [NSString stringWithFormat:@"%i g", birthWeightGRAMSasInt];
-        }
-        else
-        {
-            formattedBirthWeight = [NSString stringWithFormat:@"%@ kg", rawBirthWeight];
-        }
-        
-        // format working weight
-        NSString *UKLocaleRawWorkingWeight;
-        UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        UKLocaleRawWorkingWeight = [rawWorkingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
-        
-        float workingWeightKGAsFloat = [UKLocaleRawWorkingWeight floatValue];
-        
-        if(workingWeightKGAsFloat < 1.0f)
-        {
-            // convert to grams as use integer
-            int workingWeightGRAMSasInt = workingWeightKGAsFloat * 1000;
-            formattedWorkingWeight = [NSString stringWithFormat:@"%i g", workingWeightGRAMSasInt];
-        }
-        else
-        {
-            formattedWorkingWeight = [NSString stringWithFormat:@"%@ kg", rawWorkingWeight];
-        }
-        
-        // all information present (missing this stage
-        if (self.selectedPatient.gestation && self.selectedPatient.birthWeight && self.selectedPatient.correctedGestation && self.selectedPatient.workingWeight)
-        {
-            detailTextLabelText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", self.selectedPatient.gestation, formattedBirthWeight, self.selectedPatient.correctedGestation, formattedWorkingWeight];
+            NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.selectedPatient.birthDate and:[NSDate date]];
             
-            self.workingWeight = self.selectedPatient.workingWeight;
-        }
-        else if (self.selectedPatient.workingWeight && self.selectedPatient.gestation)
-        {
-            detailTextLabelText = [NSString stringWithFormat:@"%@/40 working weight %@", self.selectedPatient.gestation, formattedWorkingWeight];
+            NSString *correctedAge = formattedDates[2];
             
-            self.workingWeight = self.selectedPatient.workingWeight;
+            // display days and corrected age
+            displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]], correctedAge];
         }
-        else if (self.selectedPatient.workingWeight && !self.selectedPatient.gestation)
-        {
-            detailTextLabelText = [NSString stringWithFormat:@"working weight %@", formattedWorkingWeight];
-            
-            self.workingWeight = self.selectedPatient.workingWeight;
-        }
-        else if (self.selectedPatient.gestation && !self.selectedPatient.workingWeight)
-        {
-            // no working weight
-            NSLog(@"NO WORKING WEIGHT - ERROR!!!!!!!!!!!!!!!");
-        }
-        
-        displayDetailTextLabel.text = detailTextLabelText;
     }
     else if ([CellIdentifier isEqualToString:@"Phototherapy"])
     {
         // shinobi chart
+        
+        // set gestation for chart
+        self.gestation = [NSNumber numberWithInt:[self.selectedPatient.gestation intValue]];
+        NSString *plusString = @"";
+        
+        if ([self.gestation integerValue] > 38)
+        {
+            self.gestation = [NSNumber numberWithInteger:38];
+            plusString = @"+";
+        }
         
         // instantiate array
         self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
@@ -375,7 +372,7 @@
         // ShinobiChart
         self.chart = [[ShinobiChart alloc] initWithFrame:cell.bounds];
         
-        self.chart.title = @"Treatment threshold graph for jaundice";
+        self.chart.title = [NSString stringWithFormat:@"Infants born at %i%@ weeks gestation", [self.gestation intValue], plusString];
         
         self.chart.datasource = self;
         self.chart.delegate = self;
@@ -573,10 +570,51 @@
         self.chart.xAxis = self.xAxis;
         self.chart.yAxis = self.yAxis;
         
-        [cell addSubview:self.chart];
+        // [cell addSubview:self.chart];
+        ShinobiChartCell *shinobiCell = [[ShinobiChartCell alloc] initWithFrame:cell.bounds];
+        // [shinobiCell addSubview:self.chart];
+        return shinobiCell;
     }
     
     return cell;
+}
+
+#pragma mark editing
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL result = NO;
+    
+    result = YES;
+    
+    return result;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    [self.myTableView1 setEditing:editing animated:YES];
+    [self.myTableView2 setEditing:editing animated:YES];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCellEditingStyle *editingStyle = nil;
+    
+    if ([tableView isEqual:self.myTableView2])
+    {
+        if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
+        {
+            editingStyle = UITableViewCellEditingStyleNone;
+        }
+        else
+        {
+            editingStyle = UITableViewCellEditingStyleInsert;
+        }
+    }
+    
+    return editingStyle;
 }
 
 #pragma mark - Table view delegate
@@ -591,6 +629,11 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 #pragma mark - methods
 
 - (void)done
@@ -600,7 +643,9 @@
 
 - (void)nextPatient
 {
-    newPatient = YES;  // load new data in tableView
+    // load new data in tableView
+    newPatientDetails = YES;
+    newBiliChart = YES;
     
     // check the number of patients in the current bay
     int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];
@@ -619,9 +664,10 @@
         self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
         self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
         
-        [self.myTableView reloadData];
+        [self.myTableView1 reloadData];
+        [self.myTableView2 reloadData];
         
-        // [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.myTableView1 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
     else
     {
@@ -631,9 +677,10 @@
         self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
         self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
         
-        [self.myTableView reloadData];
+        [self.myTableView1 reloadData];
+        [self.myTableView2 reloadData];
         
-        // [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.myTableView1 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
     
     // if not then check if there are any more bays
@@ -642,8 +689,9 @@
 
 - (void)previousPatient
 {
-    newPatient = YES;  // load new data in tableView
-    
+    // load new data in tableView
+    newPatientDetails = YES;
+    newBiliChart = YES;
     
     // yes, there are more patients in the bay
     selectedPatientInBay -= 1;
@@ -651,9 +699,10 @@
     self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
     self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
     
-    [self.myTableView reloadData];
+    [self.myTableView1 reloadData];
+    [self.myTableView2 reloadData];
     
-    // [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.myTableView1 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 #pragma mark - ShinobiChart datasource
