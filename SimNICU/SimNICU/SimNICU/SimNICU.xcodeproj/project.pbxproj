@@ -111,6 +111,8 @@
 		5C101D3217AE99250095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3117AE99250095E751 /* Default@2x.png */; };
 		5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42817C8CB6000C88EEF /* HandoverSection.m */; };
 		5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42817C8CB6000C88EEF /* HandoverSection.m */; };
+		5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42C17C910BB00C88EEF /* HandoverRow.m */; };
+		5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42C17C910BB00C88EEF /* HandoverRow.m */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -943,6 +945,8 @@
 		5C101D3117AE99250095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5C13B42717C8CB6000C88EEF /* HandoverSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSection.h; sourceTree = "<group>"; };
 		5C13B42817C8CB6000C88EEF /* HandoverSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverSection.m; sourceTree = "<group>"; };
+		5C13B42B17C910BB00C88EEF /* HandoverRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverRow.h; sourceTree = "<group>"; };
+		5C13B42C17C910BB00C88EEF /* HandoverRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverRow.m; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -1645,6 +1649,8 @@
 			children = (
 				5C13B42717C8CB6000C88EEF /* HandoverSection.h */,
 				5C13B42817C8CB6000C88EEF /* HandoverSection.m */,
+				5C13B42B17C910BB00C88EEF /* HandoverRow.h */,
+				5C13B42C17C910BB00C88EEF /* HandoverRow.m */,
 			);
 			name = NSObjects;
 			sourceTree = "<group>";
@@ -3696,6 +3702,7 @@
 				5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
 				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
+				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3855,6 +3862,7 @@
 				5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
 				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
+				5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

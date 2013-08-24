@@ -91,6 +91,8 @@
 
 @property (nonatomic, retain) NSMutableArray *handoverSections;
 
+@property (nonatomic, retain) NSString *background;
+
 + (NSString *)formatWeight:(NSString *)weight;
 
 - (NSString *)returnDisplayTextLabelText;

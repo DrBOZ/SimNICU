@@ -13,13 +13,14 @@
 #import "BilirubinResult.h"
 #import "HandoverSection.h"
 #import "CBTimeMethods.h"
+#import "HandoverRow.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
 
 #import "ShinobiChartCell.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -28,7 +29,11 @@
     BOOL portraitOrientationDefaultsSet;
     
     BOOL newPatientDetails;
+    BOOL newPatientBackground;
+    BOOL newDCTInfo;
     BOOL newBiliChart;
+    
+    BOOL firstButtonPressSinceScroll; // used to line up sections when pressing fast forward
     
     NSMutableArray *tableView2Sections;
 }
@@ -52,6 +57,13 @@
 @property (nonatomic, strong) NSString *bilirubinUnits;
 @property (nonatomic, strong) NSNumber *gestation;
 
+@property (nonatomic, strong) UITextView *backgroundTextView;
+
+@property (nonatomic, strong) UIBarButtonItem *item1;
+@property (nonatomic, strong) UIBarButtonItem *item2;
+@property (nonatomic, strong) UIBarButtonItem *item3;
+@property (nonatomic, strong) UIBarButtonItem *item4;
+
 @end
 
 @implementation AdvancedPatientEditorViewController
@@ -63,6 +75,8 @@
     {
         selectedBay = 0;
         selectedPatientInBay = 0;
+        
+        firstButtonPressSinceScroll = NO;
     }
     return self;
 }
@@ -90,19 +104,27 @@
     self.navigationController.toolbarHidden = NO;
     
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatient)];
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatientButtonPressed)];
+    item1.tag = 1;
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:nil];
-    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextPatient)];
+    item2.tag = 2;
+    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(nextPatientButtonPressed:)];
+    item3.tag = 3;
+    UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextPatientButtonPressed:)];
+    item4.tag = 4;
     
-    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item2, flexibleItem, item3, nil];
+    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item2, flexibleItem, item3, flexibleItem, item4, nil];
     self.toolbarItems = items;
     
     // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
     self.navigationController.toolbar.tintColor = [UIColor grayColor];
     
+    // set the first patient to display
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    
     // sections
-    // tableView2Sections = [[NSMutableArray alloc] initWithCapacity:12];
-    // tableView2Sections = [self loadSectionDataForPatient];
+    tableView2Sections = [[NSMutableArray alloc] initWithCapacity:12];
+    tableView2Sections = [self loadSectionDataForPatientEditing:self.editing]; // don't think I actually need this array
     
     // tableViews
     self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 92.0f) style:UITableViewStylePlain];
@@ -112,7 +134,8 @@
     self.myTableView1.sectionFooterHeight = 10.0f;
     self.myTableView1.sectionHeaderHeight = 10.0f;
     self.myTableView1.separatorColor = [UIColor grayColor];
-    self.myTableView1.userInteractionEnabled = NO;
+    self.myTableView1.bounces = NO;
+    self.myTableView1.userInteractionEnabled = YES;
     [self.view addSubview:self.myTableView1];
     
     self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f - 156.0f)) style:UITableViewStylePlain];
@@ -123,16 +146,6 @@
     self.myTableView2.sectionHeaderHeight = 10.0f;
     self.myTableView2.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView2];
-    
-    // set the first patient to display
-    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
-    
-    // sections
-    tableView2Sections = [[NSMutableArray alloc] initWithCapacity:12];
-    tableView2Sections = [self loadSectionDataForPatientEditing:self.editing];
-    
-    // create first phototherapy chart
-    // self.chart = [self createShinobiChartForPatient:self.selectedPatient];
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,7 +170,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    int rows = nil;
+    
+    if ([tableView isEqual:self.myTableView1])
+    {
+        rows = 1;
+    }
+    else
+    {
+        HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
+        
+        rows = [handoverSection.rows  count];
+    }
+    
+    return rows;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -183,9 +209,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     float height = 55.0f;
     
     if ([tableView isEqual:self.myTableView1])
@@ -194,18 +217,11 @@
     }
     else
     {
-        if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
-        {
-            // Different graph sizes for iPhone 4 and iPhone 5
-            if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-            {
-                height = 320.0f;
-            }
-            else
-            {
-                height = 260.0f;
-            }
-        }
+        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+        
+        HandoverRow *row = section.rows[indexPath.row];
+        
+        height = [row.rowHeight floatValue];
     }
     
     return height;
@@ -240,16 +256,15 @@
     }
     else
     {
-        if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
+        if ([tableView2Sections[indexPath.section] isEqual:@"Background"])
         {
-            // phototherapy
-            CellIdentifier = @"Phototherapy";
+            CellIdentifier = @"Background";
             
-            if (newBiliChart)
+            if (newPatientBackground)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 
-                newBiliChart = NO;
+                newPatientBackground = NO;
             }
             else
             {
@@ -258,6 +273,53 @@
                 if (!cell)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.backgroundTextView.text = self.selectedPatient.background;
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
+        {
+            if (indexPath.row == 0)
+            {
+                // phototherapy
+                CellIdentifier = @"Phototherapy";
+                
+                if (newBiliChart)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    
+                    newBiliChart = NO;
+                }
+                else
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    }
+                }
+            }
+            else if (indexPath.row == 1)
+            {
+                // phototherapy
+                CellIdentifier = @"DCTInfo";
+                
+                if (newDCTInfo)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    
+                    newDCTInfo = NO;
+                }
+                else
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    }
                 }
             }
         }
@@ -279,6 +341,8 @@
     return cell;
 }
 
+#pragma mark -
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 11)
@@ -294,11 +358,10 @@
 {
     UITableViewCell *cell;
     
-    // this is wrong...?
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+#pragma mark Patient
     if ([CellIdentifier isEqualToString:@"Patient"])
     {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -346,20 +409,23 @@
             displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]], correctedAge];
         }
     }
+#pragma mark Background
+    else if ([CellIdentifier isEqualToString:@"Background"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[0];
+        HandoverRow *row = section.rows[0];
+        
+        self.backgroundTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        // self.backgroundTextView.font = [UIFont systemFontOfSize:14.0f];
+        self.backgroundTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.backgroundTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.backgroundTextView];
+    }
+#pragma mark Phototherapy
     else if ([CellIdentifier isEqualToString:@"Phototherapy"])
     {
         // shinobi chart
-        
-        // temp code
-        /*
-        ShinobiChartCell *shinobiTestingCell = [[ShinobiChartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Testing"];
-        shinobiTestingCell.selectedPatient = self.selectedPatient;
-        shinobiTestingCell.gestation = self.gestation;
-        shinobiTestingCell.neurotoxicityRisk = self.neurotoxicityRisk;
-        shinobiTestingCell.guidelineCountry = self.guidelineCountry;
-        
-        [cell addSubview:shinobiTestingCell];
-        */
         
         // set gestation for chart
         self.gestation = [NSNumber numberWithInt:[self.selectedPatient.gestation intValue]];
@@ -436,7 +502,6 @@
             self.yAxis.enableGestureZooming = NO;
             self.yAxis.enableMomentumPanning = NO;
             self.yAxis.enableMomentumZooming = NO;
-            // self.yAxis.style.titleStyle.position = SChartTitlePositionBottomOrLeft;
             self.yAxis.allowPanningOutOfDefaultRange = NO;
             self.yAxis.allowPanningOutOfMaxRange = NO;
         }
@@ -454,7 +519,6 @@
             self.yAxis.enableGestureZooming = YES;
             self.yAxis.enableMomentumPanning = YES;
             self.yAxis.enableMomentumZooming = YES;
-            // self.yAxis.style.titleStyle.position = SChartTitlePositionBottomOrLeft;
             self.yAxis.allowPanningOutOfDefaultRange = YES;
             self.yAxis.allowPanningOutOfMaxRange = NO;
         }
@@ -473,10 +537,6 @@
         
         if (self.selectedPatient)
         {
-            NSLog(@" ");
-            NSLog(@" ");
-            NSLog(@"selectedPatient diagnostic");
-            
             do
             {
                 if ([self.selectedPatient.bilirubinResults count] > 0)
@@ -533,13 +593,6 @@
             
             // after this we have maxBiliResultSI, maxBiliResultUS, yAxisLimitSI, yAxisLimitUS
             
-            NSLog(@"maxBiliResultSI = %i", maxBiliResultSI);
-            NSLog(@"maxBiliResultUS = %i", maxBiliResultUS);
-            NSLog(@" ");
-            NSLog(@"yAxisLimitSI = %i", yAxisLimitSI);
-            NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
-            NSLog(@" ");
-            
             // recreate x-Axis
             SChartNumberRange *newxRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:maxResultInDays]];
             self.xAxis.defaultRange = newxRange;
@@ -577,15 +630,12 @@
          
         self.chart.bounds = cell.bounds;
         [cell addSubview:self.chart];
-        
-        // [cell.contentView addSubview:self.chart];
-        // ShinobiChartCell *shinobiCell = [[ShinobiChartCell alloc] initWithFrame:cell.bounds];
-        // [shinobiCell addSubview:self.chart];
-        // return shinobiCell;
     }
     
     return cell;
 }
+
+#pragma mark -
 
 #pragma mark editing
 
@@ -626,10 +676,21 @@
     return editingStyle;
 }
 
-#pragma mark - Table view delegate
+#pragma mark - UITableView delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSIndexPath *selectedPath = nil;
+    
+    if ([tableView isEqual:self.myTableView1])
+    {
+        [self.backgroundTextView resignFirstResponder];
+    }
+    else
+    {
+        selectedPath = indexPath;
+    }
+    
     return indexPath;
 }
 
@@ -643,6 +704,58 @@
     return YES;
 }
 
+
+
+#pragma mark - UITextView delegate
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    HandoverSection *section;
+    HandoverRow *row;
+    
+    if ([textView isEqual:self.backgroundTextView])
+    {
+        section = self.selectedPatient.handoverSections[0];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.backgroundTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.backgroundTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.backgroundTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.backgroundTextView.contentSize.height + 10.0f));
+        }
+    }
+    
+    self.selectedPatient.background = textView.text;
+}
+
+#pragma mark - UIScrollView delegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    // reset
+    firstButtonPressSinceScroll = YES;
+}
+
 #pragma mark - methods
 
 - (void)done
@@ -650,233 +763,80 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-/*
-- (ShinobiChart *)createShinobiChartForPatient:(Patient *)patient
-{
-    ShinobiChart *newChart;
-    
-    // first check if gestation has been entered
-    self.gestation = [NSNumber numberWithInt:[self.selectedPatient.gestation intValue]];
-    NSString *plusString = @"";
-    
-    if ([self.gestation integerValue] > 38)
-    {
-        self.gestation = [NSNumber numberWithInteger:38];
-        plusString = @"+";
-    }
-    
-    // instantiate array
-    self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
-    
-    // ShinobiChart
-    newChart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
-    
-    newChart.title = [NSString stringWithFormat:@"Infants born at %i%@ weeks gestation", [self.gestation intValue], plusString];
-    
-    newChart.datasource = self;
-    newChart.delegate = self;
-    
-    // Double tap can either reset zoom or zoom in
-    newChart.gestureDoubleTapResetsZoom = NO;
-    
-    // Choose a theme for the chart
-    SChartDarkTheme *darkTheme = [SChartDarkTheme new];
-    
-    // Perform any theme styling here before applying to the chart
-    darkTheme.xAxisStyle.minorTickStyle.showTicks = YES;
-    darkTheme.yAxisStyle.minorTickStyle.showTicks = YES;
-    
-    // Apply theme to chart
-    newChart.theme = darkTheme;
-    
-    // Show the legend
-    newChart.legend.hidden = YES;
-    newChart.legend.placement = SChartLegendPlacementInsidePlotArea;
-    
-    newChart.userInteractionEnabled = NO;
-    
-    newChart.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin |
-    UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin;
-    
-    // Use a number axis for the x axis.
-    SChartNumberRange *xRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:7]];
-    self.xAxis = [[SChartNumberAxis alloc] initWithRange:xRange];
-    self.xAxis.title = @"Days";
-    self.xAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
-    self.xAxis.zoomInLimit = 1;
-    self.xAxis.anchorPoint = 0;
-    self.xAxis.majorTickFrequency = [NSNumber numberWithDouble:1.00];
-    self.xAxis.minorTickFrequency = [NSNumber numberWithDouble:0.25];
-    self.xAxis.enableGesturePanning = NO;
-    self.xAxis.enableGestureZooming = NO;
-    self.xAxis.enableMomentumPanning = NO;
-    self.xAxis.enableMomentumZooming = NO;
-    self.xAxis.allowPanningOutOfDefaultRange = NO;
-    self.xAxis.allowPanningOutOfMaxRange = NO;
-    
-    if ([self.bilirubinUnits isEqualToString:@"SI"])
-    {
-        // Use a number axis for the y axis.
-        SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:550]];
-        self.yAxis = [[SChartNumberAxis alloc] initWithRange:yRange];
-        self.yAxis.title = @"Total Serum Bilirubin (µmol/L)";
-        self.yAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
-        self.yAxis.zoomInLimit = 1;
-        self.yAxis.majorTickFrequency = [NSNumber numberWithInt:50];
-        self.yAxis.minorTickFrequency = [NSNumber numberWithInt:10];
-        self.yAxis.enableGesturePanning = NO;
-        self.yAxis.enableGestureZooming = NO;
-        self.yAxis.enableMomentumPanning = NO;
-        self.yAxis.enableMomentumZooming = NO;
-        // self.yAxis.style.titleStyle.position = SChartTitlePositionBottomOrLeft;
-        self.yAxis.allowPanningOutOfDefaultRange = NO;
-        self.yAxis.allowPanningOutOfMaxRange = NO;
-    }
-    else if ([self.bilirubinUnits isEqualToString:@"US"])
-    {
-        // Use a number axis for the y axis.
-        SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:30]];
-        self.yAxis = [[SChartNumberAxis alloc] initWithRange:yRange];
-        self.yAxis.title = @"Total Serum Bilirubin (mg/dL)";
-        self.yAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
-        self.yAxis.zoomInLimit = 2;
-        self.yAxis.majorTickFrequency = [NSNumber numberWithInt:5];
-        self.yAxis.minorTickFrequency = [NSNumber numberWithInt:1];
-        self.yAxis.enableGesturePanning = YES;
-        self.yAxis.enableGestureZooming = YES;
-        self.yAxis.enableMomentumPanning = YES;
-        self.yAxis.enableMomentumZooming = YES;
-        // self.yAxis.style.titleStyle.position = SChartTitlePositionBottomOrLeft;
-        self.yAxis.allowPanningOutOfDefaultRange = YES;
-        self.yAxis.allowPanningOutOfMaxRange = NO;
-    }
-    
-    // ensure all plots can be seen
-    
-    int maxResultInDays = 7;
-    
-    int yAxisLimitSI = 550;
-    int yAxisLimitUS = 30;
-    
-    int maxBiliResultSI = 0;
-    int maxBiliResultUS = 0;
-    
-    int i = 0;
-    
-    if (self.selectedPatient)
-    {
-        NSLog(@" ");
-        NSLog(@" ");
-        NSLog(@"selectedPatient diagnostic");
-        
-        do
-        {
-            if ([self.selectedPatient.bilirubinResults count] > 0)
-            {
-                // obtain bilirubin result, sample age, and units
-                BilirubinResult *checkResult = [self.selectedPatient.bilirubinResults objectAtIndex:i];
-                
-                // check if there is a 'cord sample'
-                if ([checkResult.sampleAgeInDays doubleValue] <= 0.08)
-                {
-                    self.xAxis.rangePaddingLow = [NSNumber numberWithFloat:0.08f];
-                }
-                
-                // update maxResultInDays
-                if ([checkResult.sampleAgeInDays integerValue] >= maxResultInDays)
-                {
-                    maxResultInDays = [checkResult.sampleAgeInDays integerValue] + 1;
-                }
-                
-                // update maxBiliResult
-                if ([checkResult.bilirubinUnit isEqualToString:@"SI"])
-                {
-                    // yes, bilirubin unit is in mmol/L
-                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultSI)
-                    {
-                        maxBiliResultSI = [checkResult.bilirubinResult integerValue];
-                    }
-                    
-                    // next check if it is greater than of equal to 550...
-                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitSI)
-                    {
-                        // yes it is...
-                        yAxisLimitSI = [checkResult.bilirubinResult integerValue] + 25;
-                    }
-                }
-                else // bilirubin unit is in mg/dL
-                {
-                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultUS)
-                    {
-                        // maxBiliResultUS = [checkResult.bilirubinResult integerValue] + 5;
-                        maxBiliResultUS = [checkResult.bilirubinResult integerValue];
-                    }
-                    
-                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitUS)
-                    {
-                        yAxisLimitUS = [checkResult.bilirubinResult integerValue] + 5;
-                    }
-                }
-            }
-            
-            i = i + 1;
-            
-        } while (i < [self.selectedPatient.bilirubinResults count]);
-        
-        // after this we have maxBiliResultSI, maxBiliResultUS, yAxisLimitSI, yAxisLimitUS
-        
-        NSLog(@"maxBiliResultSI = %i", maxBiliResultSI);
-        NSLog(@"maxBiliResultUS = %i", maxBiliResultUS);
-        NSLog(@" ");
-        NSLog(@"yAxisLimitSI = %i", yAxisLimitSI);
-        NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
-        NSLog(@" ");
-        
-        // recreate x-Axis
-        SChartNumberRange *newxRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:maxResultInDays]];
-        self.xAxis.defaultRange = newxRange;
-        
-        // recreate y-Axis
-        SChartNumberRange *newyRange;
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
-        {
-            NSLog(@"Chart is in SI units");
-            if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
-            {
-                yAxisLimitSI = (maxBiliResultUS * 17.1) + 25;
-            }
-            NSLog(@"new yAxisLimitSI = %i", yAxisLimitSI);
-            
-            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitSI]];
-            self.yAxis.defaultRange = newyRange;
-        }
-        else // chart is in mg/dL
-        {
-            NSLog(@"Chart is in US units");
-            if ((maxBiliResultSI / 17.1) > yAxisLimitUS)
-            {
-                yAxisLimitUS = (maxBiliResultSI / 17.1) + 5;
-            }
-            NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
-            
-            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitUS]];
-            self.yAxis.defaultRange = newyRange;
-        }
-    }
-    
-    newChart.xAxis = self.xAxis;
-    newChart.yAxis = self.yAxis;
-    
-    return newChart;
-}
- */
-
-- (void)nextPatient
+- (void)previousPatientButtonPressed
 {
     // load new data in tableView
     newPatientDetails = YES;
+    newPatientBackground = YES;
+    newDCTInfo = YES;
+    newBiliChart = YES;
+    
+    // check to see if there is another patient in the bay
+    if (selectedPatientInBay == 0)
+    {
+        // no, last patient in bay
+        
+        // decrement bay, unless first bay
+        if (selectedBay == 0)
+        {
+            return;
+        }
+        else
+        {
+            // ensure there are patients in the next bay displayed
+            for (int i = selectedBay - 1; i >= 0; --i)
+            {
+                if ([[self.bayData[i] patientsInBay] count])
+                {
+                    selectedBay = i;
+                    break;
+                }
+                else
+                {
+                    // no patient in the next bay
+                    
+                    if (i == 1)
+                    {
+                        // no more patients, empty first bay
+                        return;
+                    }
+                }
+            }
+        }
+        
+        // set to last patient in new bay
+        selectedPatientInBay = [[self.bayData[selectedBay] patientsInBay] count] - 1;
+    }
+    else
+    {
+        // yes, there are more patients in the bay
+        
+        // decrement patient
+        selectedPatientInBay -= 1;
+    }
+    
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    
+    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
+    
+    [self loadSectionDataForPatientEditing:self.editing];
+    
+    [self.myTableView1 reloadData];
+    [self.myTableView2 reloadData];
+    
+    NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
+    NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
+    firstButtonPressSinceScroll = NO;
+    
+    [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];;
+}
+
+- (void)nextPatientButtonPressed:(UIBarButtonItem *)sender
+{
+    // load new data in tableView
+    newPatientDetails = YES;
+    newPatientBackground = YES;
+    newDCTInfo = YES;
     newBiliChart = YES;
     
     // check the number of patients in the current bay
@@ -887,64 +847,84 @@
     {
         // no, last patient in bay
         
-        // increment bay (need to add code if last bay)
-        selectedBay += 1;
+        // increment bay unless last bay
+        if (selectedBay == [self.bayData count] - 1)
+        {
+            return;
+        }
+        else
+        {
+            // ensure there are are patients in the next bay displayed
+            int numberOfBays = [self.bayData count];
+            
+            for (int i = selectedBay + 1; numberOfBays; i++)
+            {
+                if ([[self.bayData[i] patientsInBay] count])
+                {
+                    selectedBay = i;
+                    break;
+                }
+                else
+                {
+                    // no patients in the next bay
+                    
+                    // if the second to last bay, then no more patients
+                    if (i == numberOfBays - 1)
+                    {
+                        // no more patients, empty bays
+                        return;
+                    }
+                }
+            }
+        }
         
         // reset patient info
         selectedPatientInBay = 0;
-        
-        self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
-        self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
-        
-        [self.myTableView1 reloadData];
-        [self.myTableView2 reloadData];
-        
-        [self.myTableView1 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
     else
     {
         // yes, there are more patients in the bay
+        
+        // increment patient
         selectedPatientInBay += 1;
+    }
+    
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    
+    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
+    
+    [self loadSectionDataForPatientEditing:self.editing];
+    
+    [self.myTableView1 reloadData];
+    [self.myTableView2 reloadData];
+    
+    if (sender.tag == 4)
+    {
+        // do not jump to the top
+        NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
+        NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
+        firstButtonPressSinceScroll = NO;
         
-        self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
-        self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
-        
-        [self.myTableView1 reloadData];
-        [self.myTableView2 reloadData];
-        
-        [self.myTableView1 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    else
+    {
+        // jumps to the top. i.e. in handover
+        [self.myTableView2 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
     
     // if not then check if there are any more bays
     // if there is another bay then increment bays
 }
 
-- (void)previousPatient
-{
-    // load new data in tableView
-    newPatientDetails = YES;
-    newBiliChart = YES;
-    
-    // yes, there are more patients in the bay
-    selectedPatientInBay -= 1;
-    
-    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
-    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
-    
-    [self.myTableView1 reloadData];
-    [self.myTableView2 reloadData];
-    
-    [self.myTableView1 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-}
-
 - (NSMutableArray *)loadSectionDataForPatientEditing:(BOOL)editing
 {
     NSMutableArray *returnArray = nil;
     
-    // logic
-    // if editing, then display the full list of sections
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // if not editing then display the list of displayed section
+    // self.selectedPatient.handoverSections = nil;
     
     // first check to see if any data has alread been added
     if (!self.selectedPatient.handoverSections)
@@ -952,106 +932,259 @@
         // instantiate array
         // this is a bit long winded, but allows user to be able to edit it later - saved in Patientlist.
         self.selectedPatient.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
+        HandoverSection *newSection;
+        HandoverRow *newRow;
         
-        // create default data - this could a for next loop
-        HandoverSection *newSection = [[HandoverSection alloc] init];
+        // Background
+        newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Background";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Active Problems
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Active Problems";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Resolved Problems
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Resolved Problems";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Recent Significant Events
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Recent Significant Evens";
+        newSection.sectionName = @"Recent Significant Events";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Ventilation & Sedation
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Ventilation & Sedation";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // CXR
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"CXR";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Cardiovascular
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cardiovascular";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Lines
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Lines";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Feeds & Fluids
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Feeds & Fluids";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Fluid Balance
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Fluid Balance";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Electrolytes
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Electrolytes";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Jaundice
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jaundice";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        newRow = [[HandoverRow alloc] init];
+        // Different graph sizes for iPhone 4 and iPhone 5
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            newRow.rowHeight = [NSNumber numberWithFloat:320.0f];
+        }
+        else
+        {
+            newRow.rowHeight = [NSNumber numberWithFloat:260.0f];
+        }
+        [newSection.rows addObject:newRow];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Sepsis
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Sepsis";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Drugs
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Drugs";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // ROP
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"ROP";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Cranial USS
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cranial USS";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Parents / Social
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Parents / Social";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Impression
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Impression";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Plan
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Plan";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
         
+        // Jobs
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jobs";
         newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
         [self.selectedPatient.handoverSections addObject:newSection];
     }
     
@@ -1074,15 +1207,19 @@
 {
     int numberOfSeries = 0;
     
-    if ([self.guidelineCountry isEqualToString:@"US"])
+    // check if gestation has been set
+    if (self.selectedPatient.gestation)
     {
-        // could implement a conditional statement if user want UK style for US or risk factor lines...
-        
-        numberOfSeries = 3;
-    }
-    if ([self.guidelineCountry isEqualToString:@"UK"])
-    {
-        numberOfSeries = 3;
+        if ([self.guidelineCountry isEqualToString:@"US"])
+        {
+            // could implement a conditional statement if user want UK style for US or risk factor lines...
+            
+            numberOfSeries = 3;
+        }
+        if ([self.guidelineCountry isEqualToString:@"UK"])
+        {
+            numberOfSeries = 3;
+        }
     }
     
     return numberOfSeries;
@@ -2424,8 +2561,6 @@
 
 - (void)sChartRenderFinished:(ShinobiChart *)chart
 {
-    // NSLog(@"sChartRenderFinished");
-    
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
     {
         self.navigationItem.rightBarButtonItem.enabled = NO;

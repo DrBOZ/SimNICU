@@ -73,6 +73,8 @@
         
         // handover sections
         self.handoverSections = [aDecoder decodeObjectForKey:@"HandoverSections"];
+        
+        self.background = [aDecoder decodeObjectForKey:@"Background"];
     }
     return self;
 }
@@ -132,6 +134,9 @@
     
     // handover sections
     [aCoder encodeObject:self.handoverSections forKey:@"HandoverSections"];
+    
+    // Background
+    [aCoder encodeObject:self.background forKey:@"Background"];
 }
 
 - (NSString *)returnDisplayTextLabelText
