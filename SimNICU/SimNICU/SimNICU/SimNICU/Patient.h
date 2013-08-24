@@ -89,6 +89,8 @@
 // @property (nonatomic, retain) NSNumber *gestationWeeks;
 // @property (nonatomic, retain) NSNumber *gestationDays;
 
+@property (nonatomic, retain) NSMutableArray *handoverSections;
+
 + (NSString *)formatWeight:(NSString *)weight;
 
 - (NSString *)returnDisplayTextLabelText;

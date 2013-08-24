@@ -10,10 +10,6 @@
 
 @implementation BilirubinResult
 
-@synthesize bilirubinResult = _bilirubinResult;
-@synthesize sampleAgeInDays = _sampleAgeInDays;
-@synthesize bilirubinUnit = _bilirubinUnit;
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if((self = [super init]))

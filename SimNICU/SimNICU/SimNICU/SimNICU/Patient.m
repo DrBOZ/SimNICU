@@ -70,6 +70,9 @@
         // bilirubin results
         self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
         self.birthTimeSet = [aDecoder decodeObjectForKey:@"BirthTimeSet"];
+        
+        // handover sections
+        self.handoverSections = [aDecoder decodeObjectForKey:@"HandoverSections"];
     }
     return self;
 }
@@ -126,6 +129,9 @@
     // bilirubin results
     [aCoder encodeObject:self.bilirubinResults forKey:@"BilirubinResults"];
     [aCoder encodeObject:self.birthTimeSet forKey:@"BirthTimeSet"];
+    
+    // handover sections
+    [aCoder encodeObject:self.handoverSections forKey:@"HandoverSections"];
 }
 
 - (NSString *)returnDisplayTextLabelText

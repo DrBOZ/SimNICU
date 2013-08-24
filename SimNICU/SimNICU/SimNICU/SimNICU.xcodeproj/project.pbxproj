@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
+		5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
@@ -107,6 +109,8 @@
 		5C101D2E17AE99020095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2D17AE99020095E751 /* Default.png */; };
 		5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2F17AE991C0095E751 /* Default-568h@2x.png */; };
 		5C101D3217AE99250095E751 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D3117AE99250095E751 /* Default@2x.png */; };
+		5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42817C8CB6000C88EEF /* HandoverSection.m */; };
+		5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42817C8CB6000C88EEF /* HandoverSection.m */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -879,6 +883,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartPhototherapyDataSource.h; sourceTree = "<group>"; };
+		5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartPhototherapyDataSource.m; sourceTree = "<group>"; };
 		5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTimeMethods.h; sourceTree = "<group>"; };
 		5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTimeMethods.m; sourceTree = "<group>"; };
 		5C0C9D9E179B26360077B881 /* PatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientCell.h; sourceTree = "<group>"; };
@@ -935,6 +941,8 @@
 		5C101D2D17AE99020095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5C101D2F17AE991C0095E751 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5C101D3117AE99250095E751 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5C13B42717C8CB6000C88EEF /* HandoverSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSection.h; sourceTree = "<group>"; };
+		5C13B42817C8CB6000C88EEF /* HandoverSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverSection.m; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -1630,6 +1638,15 @@
 				5C0E0666178F94DE00768739 /* amoxicillinReferences.html */,
 			);
 			name = Amoxicillin;
+			sourceTree = "<group>";
+		};
+		5C13B42617C8CB2F00C88EEF /* NSObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5C13B42717C8CB6000C88EEF /* HandoverSection.h */,
+				5C13B42817C8CB6000C88EEF /* HandoverSection.m */,
+			);
+			name = NSObjects;
 			sourceTree = "<group>";
 		};
 		5C169E4F17B579E0003D0166 /* 29-33 */ = {
@@ -2591,6 +2608,8 @@
 				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
 				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
 				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
+				5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */,
+				5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */,
 				5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */,
 				5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */,
 			);
@@ -2766,6 +2785,7 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5C13B42617C8CB2F00C88EEF /* NSObjects */,
 				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
 			name = "Advanced Patient Editor";
@@ -3674,6 +3694,8 @@
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */,
 				5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
+				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
+				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3831,6 +3853,8 @@
 				5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
 				5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
+				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
+				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
