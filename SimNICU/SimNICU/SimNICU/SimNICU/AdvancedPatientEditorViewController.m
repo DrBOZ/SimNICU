@@ -84,7 +84,7 @@
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];
     
     // setup edit button
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // setup toolbar
     self.navigationController.toolbarHidden = NO;
@@ -944,138 +944,124 @@
     // logic
     // if editing, then display the full list of sections
     
-    // if not editing then display the list of displayed sections
-    
-    
-    
-    
-    
+    // if not editing then display the list of displayed section
     
     // first check to see if any data has alread been added
     if (!self.selectedPatient.handoverSections)
     {
         // instantiate array
+        // this is a bit long winded, but allows user to be able to edit it later - saved in Patientlist.
         self.selectedPatient.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         
         // create default data - this could a for next loop
         HandoverSection *newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Background";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Active Problems";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Resolved Problems";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Recent Significant Evens";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Ventilation & Sedation";
-        newSection.sectionToBeDisplayed = @"NO";
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Ventilation & Sedation";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"CXR";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cardiovascular";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Lines";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Feeds & Fluids";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Fluid Balance";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Electrolytes";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jaundice";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Sepsis";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Drugs";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"ROP";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cranial USS";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Parents / Social";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Impression";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Plan";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
         
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jobs";
-        newSection.sectionToBeDisplayed = @"NO";
+        newSection.sectionEditable = @"NO";
         [self.selectedPatient.handoverSections addObject:newSection];
     }
-    else
+    
+    returnArray = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    HandoverSection *section;
+    
+    for (section in self.selectedPatient.handoverSections)
     {
-        returnArray = [[NSMutableArray alloc] initWithCapacity:20];
-        
-        HandoverSection *section;
-        
-        for (section in self.selectedPatient.handoverSections)
-        {
-            if (section.sectionToBeDisplayed)
-            {
-                [returnArray addObject:section.sectionName];
-            }
-        }
+        [returnArray addObject:section.sectionName];
     }
     
     return returnArray;

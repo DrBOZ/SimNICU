@@ -15,7 +15,7 @@
     if((self = [super init]))
     {
         self.sectionName = [aDecoder decodeObjectForKey:@"SectionName"];
-        self.sectionToBeDisplayed = [aDecoder decodeObjectForKey:@"SectionToBeDispayed"];
+        self.sectionEditable = [aDecoder decodeObjectForKey:@"SectionEditable"];
     }
     return self;
 }
@@ -23,7 +23,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.sectionName forKey:@"SectionName"];
-    [aCoder encodeObject:self.sectionToBeDisplayed forKey:@"SectionToBeDispayed"];
+    [aCoder encodeObject:self.sectionEditable forKey:@"SectionEditable"];
 }
 
 @end

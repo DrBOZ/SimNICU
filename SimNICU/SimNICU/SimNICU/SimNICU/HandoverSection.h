@@ -11,6 +11,7 @@
 @interface HandoverSection : NSObject
 
 @property (nonatomic, strong) NSString *sectionName;
-@property (nonatomic) NSString *sectionToBeDisplayed;
+@property (nonatomic) NSString *sectionEditable;
+// @property (nonatomic) UIImage *image;
 
 @end
