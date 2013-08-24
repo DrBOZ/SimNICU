@@ -826,8 +826,16 @@
     
     NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
     NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
-    firstButtonPressSinceScroll = NO;
     
+    if (selectedBay == 0 && selectedPatientInBay == 0)
+    {
+        firstButtonPressSinceScroll = YES; // hack to correct the jump that happens when going to first patient in bay 0
+    }
+    else
+    {
+        firstButtonPressSinceScroll = NO;
+    }
+
     [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];;
 }
 
