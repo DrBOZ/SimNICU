@@ -98,7 +98,7 @@
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];
     
     // setup edit button
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // setup toolbar
     self.navigationController.toolbarHidden = NO;
@@ -373,7 +373,7 @@
         displayTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
         displayTextLabel.adjustsFontSizeToFitWidth = NO;
         displayTextLabel.textAlignment = UITextAlignmentLeft;
-        [cell addSubview:displayTextLabel];
+        [cell.contentView addSubview:displayTextLabel];
         
         UILabel *displayAgeTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 23.0f, 300.0f, 22.0f)];
         displayAgeTextLabel.textColor = [UIColor grayColor];
@@ -381,7 +381,7 @@
         displayAgeTextLabel.font = [UIFont systemFontOfSize:14.0f];
         displayAgeTextLabel.adjustsFontSizeToFitWidth = NO;
         displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
-        [cell addSubview:displayAgeTextLabel];
+        [cell.contentView addSubview:displayAgeTextLabel];
         
         //displayDetailTextLabel (Gestation, birth weight, corrected gestation and working weight)
         UILabel *displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 44.0f, 300.0f, 22.0f)];
@@ -390,7 +390,7 @@
         displayDetailTextLabel.font = [UIFont systemFontOfSize:14.0f];
         displayDetailTextLabel.adjustsFontSizeToFitWidth = NO;
         displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
-        [cell addSubview:displayDetailTextLabel];
+        [cell.contentView addSubview:displayDetailTextLabel];
         
         // display patient's name
         displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
@@ -654,6 +654,7 @@
     
     tableView2Sections = [self loadSectionDataForPatientEditing:editing];
     
+    [self.myTableView1 setEditing:editing animated:YES];
     [self.myTableView2 setEditing:editing animated:YES];
 }
 
@@ -661,7 +662,11 @@
 {
     UITableViewCellEditingStyle *editingStyle = nil;
     
-    if ([tableView isEqual:self.myTableView2])
+    if ([tableView isEqual:self.myTableView1])
+    {
+        editingStyle = UITableViewCellEditingStyleInsert;
+    }
+    else if ([tableView isEqual:self.myTableView2])
     {
         if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
         {
