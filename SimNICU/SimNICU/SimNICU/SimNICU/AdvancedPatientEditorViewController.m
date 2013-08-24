@@ -113,7 +113,7 @@
     UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextPatientButtonPressed:)];
     item4.tag = 4;
     
-    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item2, flexibleItem, item3, flexibleItem, item4, nil];
+    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item3, flexibleItem, item4, nil];
     self.toolbarItems = items;
     
     // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
