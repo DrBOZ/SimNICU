@@ -60,7 +60,6 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView1;
 @property (nonatomic, strong) UITableView *myTableView2;
-@property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
 
 // phototherapy
@@ -110,6 +109,9 @@
 //
 // 5) create a weight shinobi chart
 // 6) add analytics
+//
+// 7) crash if no patient in bay 0
+// 8) use edit data to allow edits
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -117,8 +119,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        selectedBay = 0;
-        selectedPatientInBay = 0;
+        // selectedBay = 0;
+        // selectedPatientInBay = 0;
         
         firstButtonPressSinceScroll = NO;
     }
@@ -133,7 +135,7 @@
     self.bilirubinUnits = @"SI";  // change this later...
     portraitOrientationDefaultsSet = YES;
 	
-    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
+    // self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
     
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -164,7 +166,19 @@
     self.navigationController.toolbar.tintColor = [UIColor grayColor];
     
     // set the first patient to display
-    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    if (!self.selectedPatient)
+    {
+        // need to find first patient, not assume 0,0
+        
+        self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    }
+    else
+    {
+        selectedBay = [self.selectedBayNSNumber intValue];
+        selectedPatientInBay = [self.selectedPatientInBayNSNumber intValue];
+    }
+    
+    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
     
     // sections
     tableView2Sections = [[NSMutableArray alloc] initWithCapacity:12];
@@ -211,7 +225,10 @@
 {
     if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft)
     {
-        [self nextPatientButtonPressed:nil];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
+        item.tag = 4;
+        
+        [self nextPatientButtonPressed:item];
     }
     else if (recognizer.direction == UISwipeGestureRecognizerDirectionRight)
     {
@@ -1324,7 +1341,7 @@
     {
         if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
         {
-            editingStyle = UITableViewCellEditingStyleDelete;
+            editingStyle = UITableViewCellEditingStyleInsert;
         }
         else
         {

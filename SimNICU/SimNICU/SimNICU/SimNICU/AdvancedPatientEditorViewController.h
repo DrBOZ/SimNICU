@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Patient.h"
 
 @interface AdvancedPatientEditorViewController : UIViewController
 
+@property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSMutableArray *bayData;
+@property (nonatomic, strong) NSNumber *selectedBayNSNumber;
+@property (nonatomic, strong) NSNumber *selectedPatientInBayNSNumber;
 
 @end
