@@ -862,6 +862,7 @@
         self.backgroundTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.backgroundTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.backgroundTextView.delegate = self;
+        self.backgroundTextView.tag = 0;
         
         [cell.contentView addSubview:self.backgroundTextView];
     }
@@ -874,6 +875,7 @@
         self.activeProblemsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.activeProblemsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.activeProblemsTextView.delegate = self;
+        self.activeProblemsTextView.tag = 1;
         
         [cell.contentView addSubview:self.activeProblemsTextView];
     }
@@ -886,6 +888,7 @@
         self.resolvedProblemsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.resolvedProblemsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.resolvedProblemsTextView.delegate = self;
+        self.resolvedProblemsTextView.tag = 2;
         
         [cell.contentView addSubview:self.resolvedProblemsTextView];
     }
@@ -898,6 +901,7 @@
         self.recentSignificantEventsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.recentSignificantEventsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.recentSignificantEventsTextView.delegate = self;
+        self.recentSignificantEventsTextView.tag = 3;
         
         [cell.contentView addSubview:self.recentSignificantEventsTextView];
     }
@@ -910,6 +914,7 @@
         self.ventilationAndSedationTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.ventilationAndSedationTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.ventilationAndSedationTextView.delegate = self;
+        self.ventilationAndSedationTextView.tag = 4;
         
         [cell.contentView addSubview:self.ventilationAndSedationTextView];
     }
@@ -922,6 +927,7 @@
         self.cxrTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.cxrTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.cxrTextView.delegate = self;
+        self.cxrTextView.tag = 5;
         
         [cell.contentView addSubview:self.cxrTextView];
     }
@@ -934,6 +940,7 @@
         self.cardiovascularTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.cardiovascularTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.cardiovascularTextView.delegate = self;
+        self.cardiovascularTextView.tag = 6;
         
         [cell.contentView addSubview:self.cardiovascularTextView];
     }
@@ -946,6 +953,7 @@
         self.linesTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.linesTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.linesTextView.delegate = self;
+        self.linesTextView.tag = 7;
         
         [cell.contentView addSubview:self.linesTextView];
     }
@@ -958,6 +966,7 @@
         self.feedsAndFluidsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.feedsAndFluidsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.feedsAndFluidsTextView.delegate = self;
+        self.feedsAndFluidsTextView.tag = 8;
         
         [cell.contentView addSubview:self.feedsAndFluidsTextView];
     }
@@ -970,6 +979,7 @@
         self.fluidBalanceTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.fluidBalanceTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.fluidBalanceTextView.delegate = self;
+        self.fluidBalanceTextView.tag = 9;
         
         [cell.contentView addSubview:self.fluidBalanceTextView];
     }
@@ -982,6 +992,7 @@
         self.electrolytesTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.electrolytesTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.electrolytesTextView.delegate = self;
+        self.electrolytesTextView.tag = 10;
         
         [cell.contentView addSubview:self.electrolytesTextView];
     }
@@ -1197,36 +1208,39 @@
 #pragma mark Jaundice/DCT
     else if ([CellIdentifier isEqualToString:@"DCTInfo"])
     {
-        HandoverSection *section = self.selectedPatient.handoverSections[12];
-        HandoverRow *row = section.rows[0];
+        HandoverSection *section = self.selectedPatient.handoverSections[11];
+        HandoverRow *row = section.rows[1];
         
         self.jaundiceTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.jaundiceTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.jaundiceTextView.delegate = self;
+        self.jaundiceTextView.tag = 11;
         
         [cell.contentView addSubview:self.jaundiceTextView];
     }
 #pragma mark Sepsis
     else if ([CellIdentifier isEqualToString:@"Sepsis"])
     {
-        HandoverSection *section = self.selectedPatient.handoverSections[13];
+        HandoverSection *section = self.selectedPatient.handoverSections[12];
         HandoverRow *row = section.rows[0];
         
         self.sepsisTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.sepsisTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.sepsisTextView.delegate = self;
+        self.sepsisTextView.tag = 12;
         
         [cell.contentView addSubview:self.sepsisTextView];
     }
 #pragma mark Drugs
     else if ([CellIdentifier isEqualToString:@"Drugs"])
     {
-        HandoverSection *section = self.selectedPatient.handoverSections[14];
+        HandoverSection *section = self.selectedPatient.handoverSections[13];
         HandoverRow *row = section.rows[0];
         
         self.drugsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.drugsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.drugsTextView.delegate = self;
+        self.drugsTextView.tag = 13;
         
         [cell.contentView addSubview:self.drugsTextView];
     }
@@ -1239,6 +1253,7 @@
         self.ropTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.ropTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.ropTextView.delegate = self;
+        self.ropTextView.tag = 14;
         
         [cell.contentView addSubview:self.ropTextView];
     }
@@ -1251,6 +1266,7 @@
         self.cranialUSSTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.cranialUSSTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.cranialUSSTextView.delegate = self;
+        self.cranialUSSTextView.tag = 15;
         
         [cell.contentView addSubview:self.cranialUSSTextView];
     }
@@ -1263,6 +1279,7 @@
         self.parentsAndSocialTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.parentsAndSocialTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.parentsAndSocialTextView.delegate = self;
+        self.parentsAndSocialTextView.tag = 16;
         
         [cell.contentView addSubview:self.parentsAndSocialTextView];
     }
@@ -1275,6 +1292,7 @@
         self.impressionTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.impressionTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.impressionTextView.delegate = self;
+        self.impressionTextView.tag = 17;
         
         [cell.contentView addSubview:self.impressionTextView];
     }
@@ -1287,6 +1305,7 @@
         self.planTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.planTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.planTextView.delegate = self;
+        self.planTextView.tag = 18;
         
         [cell.contentView addSubview:self.planTextView];
     }
@@ -1299,6 +1318,7 @@
         self.jobsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
         self.jobsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.jobsTextView.delegate = self;
+        self.jobsTextView.tag = 19;
         
         [cell.contentView addSubview:self.jobsTextView];
     }
@@ -1383,7 +1403,7 @@
     }
     else
     {
-        selectedPath = nil;
+        selectedPath = indexPath;
     }
     
     return indexPath;
@@ -1395,6 +1415,21 @@
 }
 
 #pragma mark - UITextView delegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    int row = 0;
+    
+    // Jaundice cell different
+    if (textView.tag == 11)
+    {
+        row = 1;
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:textView.tag];
+    
+    [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
 
 - (void)textViewDidChange:(UITextView *)textView
 {
@@ -2317,7 +2352,7 @@
         HandoverSection *newSection;
         HandoverRow *newRow;
         
-        // Background
+        // 00 - Background
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Background";
         newSection.sectionEditable = @"NO";
@@ -2329,7 +2364,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Active Problems
+        // 01 - Active Problems
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Active Problems";
         newSection.sectionEditable = @"NO";
@@ -2341,7 +2376,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Resolved Problems
+        // 02 - Resolved Problems
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Resolved Problems";
         newSection.sectionEditable = @"NO";
@@ -2353,7 +2388,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Recent Significant Events
+        // 03 - Recent Significant Events
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Recent Significant Events";
         newSection.sectionEditable = @"NO";
@@ -2365,7 +2400,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Ventilation & Sedation
+        // 04 - Ventilation & Sedation
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Ventilation & Sedation";
         newSection.sectionEditable = @"NO";
@@ -2377,7 +2412,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // CXR
+        // 05 - CXR
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"CXR";
         newSection.sectionEditable = @"NO";
@@ -2389,7 +2424,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Cardiovascular
+        // 06 - Cardiovascular
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cardiovascular";
         newSection.sectionEditable = @"NO";
@@ -2401,7 +2436,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Lines
+        // 07 - Lines
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Lines";
         newSection.sectionEditable = @"NO";
@@ -2413,7 +2448,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Feeds & Fluids
+        // 08 - Feeds & Fluids
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Feeds & Fluids";
         newSection.sectionEditable = @"NO";
@@ -2425,7 +2460,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Fluid Balance
+        // 09 - Fluid Balance
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Fluid Balance";
         newSection.sectionEditable = @"NO";
@@ -2437,7 +2472,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Electrolytes
+        // 10 - Electrolytes
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Electrolytes";
         newSection.sectionEditable = @"NO";
@@ -2449,7 +2484,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Jaundice
+        // 11 - Jaundice
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jaundice";
         newSection.sectionEditable = @"NO";
@@ -2473,7 +2508,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Sepsis
+        // 12 - Sepsis
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Sepsis";
         newSection.sectionEditable = @"NO";
@@ -2485,7 +2520,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Drugs
+        // 13 - Drugs
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Drugs";
         newSection.sectionEditable = @"NO";
@@ -2497,7 +2532,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // ROP
+        // 14 - ROP
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"ROP";
         newSection.sectionEditable = @"NO";
@@ -2509,7 +2544,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Cranial USS
+        // 15 - Cranial USS
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cranial USS";
         newSection.sectionEditable = @"NO";
@@ -2521,7 +2556,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Parents / Social
+        // 16 - Parents / Social
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Parents / Social";
         newSection.sectionEditable = @"NO";
@@ -2533,7 +2568,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Impression
+        // 17 - Impression
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Impression";
         newSection.sectionEditable = @"NO";
@@ -2545,7 +2580,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Plan
+        // 18 - Plan
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Plan";
         newSection.sectionEditable = @"NO";
@@ -2557,7 +2592,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // Jobs
+        // 19 - Jobs
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jobs";
         newSection.sectionEditable = @"NO";
