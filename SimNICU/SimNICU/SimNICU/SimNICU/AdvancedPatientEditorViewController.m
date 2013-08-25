@@ -1318,18 +1318,51 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL result = NO;
+    BOOL userCanEditRowAtIndexPath = NO;
     
-    result = YES;
+    // patient details is always editable
+    if ([tableView isEqual:self.myTableView1])
+    {
+        userCanEditRowAtIndexPath = YES;
+    }
+    // sections may or may not be editable
+    else if ([tableView isEqual:self.myTableView2])
+    {
+        // lookup if cell allows editing
+        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+        
+        userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
+    }
     
-    return result;
+    return userCanEditRowAtIndexPath;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
     
-    tableView2Sections = [self loadSectionDataForPatientEditing:editing];
+    [self.backgroundTextView resignFirstResponder];
+    [self.activeProblemsTextView resignFirstResponder];
+    [self.resolvedProblemsTextView resignFirstResponder];
+    [self.recentSignificantEventsTextView resignFirstResponder];
+    [self.ventilationAndSedationTextView resignFirstResponder];
+    [self.cxrTextView resignFirstResponder];
+    [self.cardiovascularTextView resignFirstResponder];
+    [self.linesTextView resignFirstResponder];
+    [self.fluidBalanceTextView resignFirstResponder];
+    [self.feedsAndFluidsTextView resignFirstResponder];
+    [self.electrolytesTextView resignFirstResponder];
+    [self.jaundiceTextView resignFirstResponder];
+    [self.sepsisTextView resignFirstResponder];
+    [self.drugsTextView resignFirstResponder];
+    [self.ropTextView resignFirstResponder];
+    [self.cranialUSSTextView resignFirstResponder];
+    [self.parentsAndSocialTextView resignFirstResponder];
+    [self.impressionTextView resignFirstResponder];
+    [self.planTextView resignFirstResponder];
+    [self.jobsTextView resignFirstResponder];
+    
+    // tableView2Sections = [self loadSectionDataForPatientEditing:editing];
     
     [self.myTableView1 setEditing:editing animated:YES];
     [self.myTableView2 setEditing:editing animated:YES];
@@ -1337,7 +1370,7 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCellEditingStyle *editingStyle = nil;
+    UITableViewCellEditingStyle *editingStyle = UITableViewCellEditingStyleInsert;
     
     if ([tableView isEqual:self.myTableView1])
     {
@@ -1424,6 +1457,18 @@
 }
 
 #pragma mark - UITextView delegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    BOOL userCanEditTextField = YES;
+    
+    if (self.editing)
+    {
+        userCanEditTextField = NO;
+    }
+    
+    return userCanEditTextField;
+}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -2327,7 +2372,10 @@
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // self.selectedPatient.handoverSections = nil;
+    // temp toggle to reset cell heights and ability to edit
+#if RESET_CELL_INFO
+    self.selectedPatient.handoverSections = nil;
+#endif
     
     /*
     self.selectedPatient.background = nil;
@@ -2496,7 +2544,7 @@
         // 11 - Jaundice
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jaundice";
-        newSection.sectionEditable = @"NO";
+        newSection.sectionEditable = @"YES";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
         
         newRow = [[HandoverRow alloc] init];
