@@ -30,8 +30,26 @@
     
     BOOL newPatientDetails;
     BOOL newPatientBackground;
-    BOOL newDCTInfo;
+    BOOL newActiveProblems;
+    BOOL newResolvedProblems;
+    BOOL newRecentSignificantEvents;
+    BOOL newVentilationAndSedation;
+    BOOL newCXR;
+    BOOL newCardiovascular;
+    BOOL newLines;
+    BOOL newFeedsAndFluids;
+    BOOL newFluidBalance;
+    BOOL newElectrolytes;
     BOOL newBiliChart;
+    BOOL newDCTInfo;
+    BOOL newSepsis;
+    BOOL newDrugs;
+    BOOL newROP;
+    BOOL newCranialUSS;
+    BOOL newParentsAndSocial;
+    BOOL newImpression;
+    BOOL newPlan;
+    BOOL newJobs;
     
     BOOL firstButtonPressSinceScroll; // used to line up sections when pressing fast forward
     
@@ -58,15 +76,38 @@
 @property (nonatomic, strong) NSNumber *gestation;
 
 @property (nonatomic, strong) UITextView *backgroundTextView;
-
-@property (nonatomic, strong) UIBarButtonItem *item1;
-@property (nonatomic, strong) UIBarButtonItem *item2;
-@property (nonatomic, strong) UIBarButtonItem *item3;
-@property (nonatomic, strong) UIBarButtonItem *item4;
+@property (nonatomic, strong) UITextView *activeProblemsTextView;
+@property (nonatomic, strong) UITextView *resolvedProblemsTextView;
+@property (nonatomic, strong) UITextView *recentSignificantEventsTextView;
+@property (nonatomic, strong) UITextView *ventilationAndSedationTextView;
+@property (nonatomic, strong) UITextView *cxrTextView;
+@property (nonatomic, strong) UITextView *cardiovascularTextView;
+@property (nonatomic, strong) UITextView *linesTextView;
+@property (nonatomic, strong) UITextView *feedsAndFluidsTextView;
+@property (nonatomic, strong) UITextView *fluidBalanceTextView;
+@property (nonatomic, strong) UITextView *electrolytesTextView;
+@property (nonatomic, strong) UITextView *jaundiceTextView;
+@property (nonatomic, strong) UITextView *sepsisTextView;
+@property (nonatomic, strong) UITextView *drugsTextView;
+@property (nonatomic, strong) UITextView *ropTextView;
+@property (nonatomic, strong) UITextView *cranialUSSTextView;
+@property (nonatomic, strong) UITextView *parentsAndSocialTextView;
+@property (nonatomic, strong) UITextView *impressionTextView;
+@property (nonatomic, strong) UITextView *planTextView;
+@property (nonatomic, strong) UITextView *jobsTextView;
 
 @end
 
 @implementation AdvancedPatientEditorViewController
+
+// things I need to still do
+//
+// 1) query preferences to set self.guidelineCountry & self.bilirubinUnits
+// 2) change selectedBay & selectedPatientInBay to properties and assign them from EnterWeightVC
+//    when detailDisclosureButton pressed
+// 3) remove 'Handover' cell - should be behind passcode lock
+// 4) add UITableViews to the remaining 19 cells
+// 5) create a weight shinobi chart
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -278,6 +319,186 @@
             
             self.backgroundTextView.text = self.selectedPatient.background;
         }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Active Problems"])
+        {
+            CellIdentifier = @"ActiveProblems";
+            
+            if (newActiveProblems)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Resolved Problems"])
+        {
+            CellIdentifier = @"ResolvedProblems";
+            
+            if (newResolvedProblems)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Recent Significant Events"])
+        {
+            CellIdentifier = @"RecentSignificantEvents";
+            
+            if (newRecentSignificantEvents)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Ventilation & Sedation"])
+        {
+            CellIdentifier = @"VentilationAndSedation";
+            
+            if (newVentilationAndSedation)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"CXR"])
+        {
+            CellIdentifier = @"CXR";
+            
+            if (newCXR)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Cardiovascular"])
+        {
+            CellIdentifier = @"Cardiovascular";
+            
+            if (newCardiovascular)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Lines"])
+        {
+            CellIdentifier = @"Lines";
+            
+            if (newLines)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Feeds & Fluids"])
+        {
+            CellIdentifier = @"FeedsAndFluids";
+            
+            if (newLines)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Fluid Balance"])
+        {
+            CellIdentifier = @"FluidBalance";
+            
+            if (newFluidBalance)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Electrolytes"])
+        {
+            CellIdentifier = @"Electrolytes";
+            
+            if (newElectrolytes)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
         {
             if (indexPath.row == 0)
@@ -320,6 +541,150 @@
                     {
                         cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     }
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Sepsis"])
+        {
+            CellIdentifier = @"Sepsis";
+            
+            if (newSepsis)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Drugs"])
+        {
+            CellIdentifier = @"Drugs";
+            
+            if (newDrugs)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"ROP"])
+        {
+            CellIdentifier = @"ROP";
+            
+            if (newROP)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"CranialUSS"])
+        {
+            CellIdentifier = @"CranialUSS";
+            
+            if (newROP)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Parents / Social"])
+        {
+            CellIdentifier = @"ParentsSocial";
+            
+            if (newParentsAndSocial)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Impression"])
+        {
+            CellIdentifier = @"Impression";
+            
+            if (newImpression)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Plan"])
+        {
+            CellIdentifier = @"Plan";
+            
+            if (newPlan)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+        }
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Jobs"])
+        {
+            CellIdentifier = @"Jobs";
+            
+            if (newJobs)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
         }
@@ -416,13 +781,132 @@
         HandoverRow *row = section.rows[0];
         
         self.backgroundTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
-        // self.backgroundTextView.font = [UIFont systemFontOfSize:14.0f];
         self.backgroundTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.backgroundTextView.delegate = self;
         
         [cell.contentView addSubview:self.backgroundTextView];
     }
-#pragma mark Phototherapy
+#pragma mark Active Problems
+    else if ([CellIdentifier isEqualToString:@"ActiveProblems"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[1];
+        HandoverRow *row = section.rows[0];
+        
+        self.activeProblemsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.activeProblemsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.activeProblemsTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.activeProblemsTextView];
+    }
+#pragma mark Resolved Problems
+    else if ([CellIdentifier isEqualToString:@"ResolvedProblems"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[2];
+        HandoverRow *row = section.rows[0];
+        
+        self.resolvedProblemsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.resolvedProblemsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.resolvedProblemsTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.resolvedProblemsTextView];
+    }
+#pragma mark Recent Significant Events
+    else if ([CellIdentifier isEqualToString:@"RecentSignificantEvents"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[3];
+        HandoverRow *row = section.rows[0];
+        
+        self.recentSignificantEventsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.recentSignificantEventsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.recentSignificantEventsTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.recentSignificantEventsTextView];
+    }
+#pragma mark Ventilation & Sedation
+    else if ([CellIdentifier isEqualToString:@"VentilationAndSedation"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[4];
+        HandoverRow *row = section.rows[0];
+        
+        self.ventilationAndSedationTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.ventilationAndSedationTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.ventilationAndSedationTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.ventilationAndSedationTextView];
+    }
+#pragma mark CXR
+    else if ([CellIdentifier isEqualToString:@"CXR"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[5];
+        HandoverRow *row = section.rows[0];
+        
+        self.cxrTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.cxrTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.cxrTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.cxrTextView];
+    }
+#pragma mark Cardiovascular
+    else if ([CellIdentifier isEqualToString:@"Cardiovascular"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[6];
+        HandoverRow *row = section.rows[0];
+        
+        self.cardiovascularTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.cardiovascularTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.cardiovascularTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.cardiovascularTextView];
+    }
+#pragma mark Lines
+    else if ([CellIdentifier isEqualToString:@"Lines"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[7];
+        HandoverRow *row = section.rows[0];
+        
+        self.linesTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.linesTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.linesTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.linesTextView];
+    }
+#pragma mark Feeds & Fluids
+    else if ([CellIdentifier isEqualToString:@"FeedsAndFluids"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[8];
+        HandoverRow *row = section.rows[0];
+        
+        self.feedsAndFluidsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.feedsAndFluidsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.feedsAndFluidsTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.feedsAndFluidsTextView];
+    }
+#pragma mark Fluid Balance
+    else if ([CellIdentifier isEqualToString:@"FluidBalance"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[9];
+        HandoverRow *row = section.rows[0];
+        
+        self.fluidBalanceTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.fluidBalanceTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.fluidBalanceTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.fluidBalanceTextView];
+    }
+#pragma mark Electrolytes
+    else if ([CellIdentifier isEqualToString:@"Electrolytes"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[10];
+        HandoverRow *row = section.rows[0];
+        
+        self.electrolytesTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.electrolytesTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.electrolytesTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.electrolytesTextView];
+    }
+#pragma mark Jaundice/Phototherapy
     else if ([CellIdentifier isEqualToString:@"Phototherapy"])
     {
         // shinobi chart
@@ -631,6 +1115,114 @@
         self.chart.bounds = cell.bounds;
         [cell addSubview:self.chart];
     }
+#pragma mark Jaundice/DCT
+    else if ([CellIdentifier isEqualToString:@"DCTInfo"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[12];
+        HandoverRow *row = section.rows[0];
+        
+        self.jaundiceTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.jaundiceTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.jaundiceTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.jaundiceTextView];
+    }
+#pragma mark Sepsis
+    else if ([CellIdentifier isEqualToString:@"Sepsis"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[13];
+        HandoverRow *row = section.rows[0];
+        
+        self.sepsisTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.sepsisTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.sepsisTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.sepsisTextView];
+    }
+#pragma mark Drugs
+    else if ([CellIdentifier isEqualToString:@"Drugs"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[14];
+        HandoverRow *row = section.rows[0];
+        
+        self.drugsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.drugsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.drugsTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.drugsTextView];
+    }
+#pragma mark ROP
+    else if ([CellIdentifier isEqualToString:@"ROP"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[14];
+        HandoverRow *row = section.rows[0];
+        
+        self.ropTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.ropTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.ropTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.ropTextView];
+    }
+#pragma mark Cranial USS
+    else if ([CellIdentifier isEqualToString:@"CranialUSS"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[15];
+        HandoverRow *row = section.rows[0];
+        
+        self.cranialUSSTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.cranialUSSTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.cranialUSSTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.cranialUSSTextView];
+    }
+#pragma mark Parents / Social
+    else if ([CellIdentifier isEqualToString:@"ParentsSocial"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[16];
+        HandoverRow *row = section.rows[0];
+        
+        self.parentsAndSocialTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.parentsAndSocialTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.parentsAndSocialTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.parentsAndSocialTextView];
+    }
+#pragma mark Impression
+    else if ([CellIdentifier isEqualToString:@"Impression"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[17];
+        HandoverRow *row = section.rows[0];
+        
+        self.impressionTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.impressionTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.impressionTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.impressionTextView];
+    }
+#pragma mark Plan
+    else if ([CellIdentifier isEqualToString:@"Plan"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[18];
+        HandoverRow *row = section.rows[0];
+        
+        self.planTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.planTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.planTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.planTextView];
+    }
+#pragma mark Jobs
+    else if ([CellIdentifier isEqualToString:@"Jobs"])
+    {
+        HandoverSection *section = self.selectedPatient.handoverSections[19];
+        HandoverRow *row = section.rows[0];
+        
+        self.jobsTextView = [[UITextView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 310.0f, [row.rowHeight floatValue])];
+        self.jobsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.jobsTextView.delegate = self;
+        
+        [cell.contentView addSubview:self.jobsTextView];
+    }
     
     return cell;
 }
@@ -748,9 +1340,174 @@
             
             self.backgroundTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.backgroundTextView.contentSize.height + 10.0f));
         }
+        
+        self.selectedPatient.background = textView.text;
     }
-    
-    self.selectedPatient.background = textView.text;
+    else if ([textView isEqual:self.activeProblemsTextView])
+    {
+        section = self.selectedPatient.handoverSections[1];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.activeProblemsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.activeProblemsTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.activeProblemsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.activeProblemsTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.activeProblems = textView.text;
+    }
+    else if ([textView isEqual:self.resolvedProblemsTextView])
+    {
+        section = self.selectedPatient.handoverSections[2];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.resolvedProblemsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.resolvedProblemsTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.resolvedProblemsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.resolvedProblemsTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.resolvedProblems = textView.text;
+    }
+    else if ([textView isEqual:self.recentSignificantEventsTextView])
+    {
+        section = self.selectedPatient.handoverSections[2];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.recentSignificantEventsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.recentSignificantEventsTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.recentSignificantEventsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.recentSignificantEventsTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.recentSignificantEvents = textView.text;
+    }
+    else if ([textView isEqual:self.cxrTextView])
+    {
+        section = self.selectedPatient.handoverSections[2];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.cxrTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.cxrTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.cxrTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.cxrTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.cxr = textView.text;
+    }
+    else if ([textView isEqual:self.cardiovascularTextView])
+    {
+        section = self.selectedPatient.handoverSections[2];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.cardiovascularTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.cardiovascularTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.cardiovascularTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.cardiovascularTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.cardiovascular = textView.text;
+    }
 }
 
 #pragma mark - UIScrollView delegate
@@ -773,8 +1530,26 @@
     // load new data in tableView
     newPatientDetails = YES;
     newPatientBackground = YES;
-    newDCTInfo = YES;
+    newActiveProblems = YES;
+    newResolvedProblems = YES;
+    newRecentSignificantEvents = YES;
+    newVentilationAndSedation = YES;
+    newCXR = YES;
+    newCardiovascular = YES;
+    newLines = YES;
+    newFeedsAndFluids = YES;
+    newFluidBalance = YES;
+    newElectrolytes = YES;
     newBiliChart = YES;
+    newDCTInfo = YES;
+    newSepsis = YES;
+    newDrugs = YES;
+    newROP = YES;
+    newCranialUSS = YES;
+    newParentsAndSocial = YES;
+    newImpression = YES;
+    newPlan = YES;
+    newJobs = YES;
     
     // check to see if there is another patient in the bay
     if (selectedPatientInBay == 0)
@@ -849,8 +1624,26 @@
     // load new data in tableView
     newPatientDetails = YES;
     newPatientBackground = YES;
-    newDCTInfo = YES;
+    newActiveProblems = YES;
+    newResolvedProblems = YES;
+    newRecentSignificantEvents = YES;
+    newVentilationAndSedation = YES;
+    newCXR = YES;
+    newCardiovascular = YES;
+    newLines = YES;
+    newFeedsAndFluids = YES;
+    newFluidBalance = YES;
+    newElectrolytes = YES;
     newBiliChart = YES;
+    newDCTInfo = YES;
+    newSepsis = YES;
+    newDrugs = YES;
+    newROP = YES;
+    newCranialUSS = YES;
+    newParentsAndSocial = YES;
+    newImpression = YES;
+    newPlan = YES;
+    newJobs = YES;
     
     // check the number of patients in the current bay
     int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];

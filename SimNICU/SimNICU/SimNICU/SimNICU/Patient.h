@@ -92,6 +92,24 @@
 @property (nonatomic, retain) NSMutableArray *handoverSections;
 
 @property (nonatomic, retain) NSString *background;
+@property (nonatomic, retain) NSString *activeProblems;
+@property (nonatomic, retain) NSString *resolvedProblems;
+@property (nonatomic, retain) NSString *recentSignificantEvents;
+@property (nonatomic, retain) NSString *ventilationAndSedation;
+@property (nonatomic, retain) NSString *cxr;
+@property (nonatomic, retain) NSString *cardiovascular;
+@property (nonatomic, retain) NSString *lines;
+@property (nonatomic, retain) NSString *feedsAndFluids;
+@property (nonatomic, retain) NSString *electrolytes;
+@property (nonatomic, retain) NSString *jaundice;
+@property (nonatomic, retain) NSString *sepsis;
+@property (nonatomic, retain) NSString *drugs;
+@property (nonatomic, retain) NSString *rop;
+@property (nonatomic, retain) NSString *cranialUSS;
+@property (nonatomic, retain) NSString *parentsAndSocial;
+@property (nonatomic, retain) NSString *impression;
+@property (nonatomic, retain) NSString *plan;
+@property (nonatomic, retain) NSString *jobs;
 
 + (NSString *)formatWeight:(NSString *)weight;
 
