@@ -1411,7 +1411,7 @@
     }
     else if ([textView isEqual:self.recentSignificantEventsTextView])
     {
-        section = self.selectedPatient.handoverSections[2];
+        section = self.selectedPatient.handoverSections[3];
         row = section.rows[0];
         
         float rowHeight = [row.rowHeight floatValue];
@@ -1442,9 +1442,42 @@
         
         self.selectedPatient.recentSignificantEvents = textView.text;
     }
+    else if ([textView isEqual:self.ventilationAndSedationTextView])
+    {
+        section = self.selectedPatient.handoverSections[4];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.ventilationAndSedationTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.ventilationAndSedationTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.ventilationAndSedationTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.ventilationAndSedationTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.ventilationAndSedation = textView.text;
+    }
     else if ([textView isEqual:self.cxrTextView])
     {
-        section = self.selectedPatient.handoverSections[2];
+        section = self.selectedPatient.handoverSections[5];
         row = section.rows[0];
         
         float rowHeight = [row.rowHeight floatValue];
@@ -1477,7 +1510,7 @@
     }
     else if ([textView isEqual:self.cardiovascularTextView])
     {
-        section = self.selectedPatient.handoverSections[2];
+        section = self.selectedPatient.handoverSections[6];
         row = section.rows[0];
         
         float rowHeight = [row.rowHeight floatValue];
@@ -1507,6 +1540,435 @@
         }
         
         self.selectedPatient.cardiovascular = textView.text;
+    }
+    else if ([textView isEqual:self.linesTextView])
+    {
+        section = self.selectedPatient.handoverSections[7];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.linesTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.linesTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.linesTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.linesTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.lines = textView.text;
+    }
+    else if ([textView isEqual:self.feedsAndFluidsTextView])
+    {
+        section = self.selectedPatient.handoverSections[8];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.feedsAndFluidsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.feedsAndFluidsTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.feedsAndFluidsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.feedsAndFluidsTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.feedsAndFluids = textView.text;
+    }
+    else if ([textView isEqual:self.fluidBalanceTextView])
+    {
+        section = self.selectedPatient.handoverSections[9];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.fluidBalanceTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.fluidBalanceTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.fluidBalanceTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.fluidBalanceTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.feedsAndFluids = textView.text;
+    }
+    else if ([textView isEqual:self.electrolytesTextView])
+    {
+        section = self.selectedPatient.handoverSections[10];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.electrolytesTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.electrolytesTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.electrolytesTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.electrolytesTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.electrolytes = textView.text;
+    }
+    else if ([textView isEqual:self.jaundiceTextView])
+    {
+        section = self.selectedPatient.handoverSections[11];
+        row = section.rows[1];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.jaundiceTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.jaundiceTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.jaundiceTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.jaundiceTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.jaundice = textView.text;
+    }
+    else if ([textView isEqual:self.sepsisTextView])
+    {
+        section = self.selectedPatient.handoverSections[12];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.sepsisTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.sepsisTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.sepsisTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.sepsisTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.sepsis = textView.text;
+    }
+    else if ([textView isEqual:self.drugsTextView])
+    {
+        section = self.selectedPatient.handoverSections[13];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.drugsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.drugsTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.drugsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.drugsTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.drugs = textView.text;
+    }
+    else if ([textView isEqual:self.ropTextView])
+    {
+        section = self.selectedPatient.handoverSections[14];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.ropTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.ropTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.ropTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.ropTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.rop = textView.text;
+    }
+    else if ([textView isEqual:self.cranialUSSTextView])
+    {
+        section = self.selectedPatient.handoverSections[15];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.cranialUSSTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.cranialUSSTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.cranialUSSTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.cranialUSSTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.cranialUSS = textView.text;
+    }
+    else if ([textView isEqual:self.parentsAndSocialTextView])
+    {
+        section = self.selectedPatient.handoverSections[16];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.parentsAndSocialTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.parentsAndSocialTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.parentsAndSocialTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.parentsAndSocialTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.parentsAndSocial = textView.text;
+    }
+    else if ([textView isEqual:self.impressionTextView])
+    {
+        section = self.selectedPatient.handoverSections[17];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.impressionTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.impressionTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.impressionTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.impressionTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.impression = textView.text;
+    }
+    else if ([textView isEqual:self.planTextView])
+    {
+        section = self.selectedPatient.handoverSections[18];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.planTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.planTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.planTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.planTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.plan = textView.text;
+    }
+    else if ([textView isEqual:self.jobsTextView])
+    {
+        section = self.selectedPatient.handoverSections[19];
+        row = section.rows[0];
+        
+        float rowHeight = [row.rowHeight floatValue];
+        float contentHeight = textView.contentSize.height;
+        
+        if ((contentHeight + 5.0f) > rowHeight)
+        {
+            rowHeight += ((contentHeight + 5.0f) - rowHeight);
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.jobsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.jobsTextView.contentSize.height + 10.0f));
+        }
+        else if ((contentHeight + 5.0f) < rowHeight)
+        {
+            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+            
+            self.jobsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.jobsTextView.contentSize.height + 10.0f));
+        }
+        
+        self.selectedPatient.jobs = textView.text;
     }
 }
 
