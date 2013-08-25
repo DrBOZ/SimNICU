@@ -106,8 +106,11 @@
 // 2) change selectedBay & selectedPatientInBay to properties and assign them from EnterWeightVC
 //    when detailDisclosureButton pressed
 // 3) remove 'Handover' cell - should be behind passcode lock
-// 4) add UITableViews to the remaining 19 cells
+// 4) scroll up to view when textview selected
+//
 // 5) create a weight shinobi chart
+// 6) add analytics
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -187,12 +190,33 @@
     self.myTableView2.sectionHeaderHeight = 10.0f;
     self.myTableView2.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView2];
+    
+    // swipe gesture recognizers
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    self.swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.myTableView2 addGestureRecognizer:self.swipeGestureRecognizer];
+    
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    self.swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.myTableView2 addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft)
+    {
+        [self nextPatientButtonPressed:nil];
+    }
+    else if (recognizer.direction == UISwipeGestureRecognizerDirectionRight)
+    {
+        [self previousPatientButtonPressed];
+    }
 }
 
 #pragma mark - Table view data source
@@ -221,7 +245,7 @@
     {
         HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
         
-        rows = [handoverSection.rows  count];
+        rows = [handoverSection.rows count];
     }
     
     return rows;
@@ -336,6 +360,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.activeProblemsTextView.text = self.selectedPatient.activeProblems;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Resolved Problems"])
         {
@@ -354,6 +380,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.resolvedProblemsTextView.text = self.selectedPatient.resolvedProblems;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Recent Significant Events"])
         {
@@ -372,6 +400,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.recentSignificantEventsTextView.text = self.selectedPatient.recentSignificantEvents;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Ventilation & Sedation"])
         {
@@ -390,6 +420,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.ventilationAndSedationTextView.text = self.selectedPatient.ventilationAndSedation;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"CXR"])
         {
@@ -408,6 +440,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.cxrTextView.text = self.selectedPatient.cxr;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Cardiovascular"])
         {
@@ -426,6 +460,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.cardiovascularTextView.text = self.selectedPatient.cardiovascular;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Lines"])
         {
@@ -444,6 +480,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.linesTextView.text = self.selectedPatient.lines;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Feeds & Fluids"])
         {
@@ -462,6 +500,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.feedsAndFluidsTextView.text = self.selectedPatient.feedsAndFluids;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Fluid Balance"])
         {
@@ -480,6 +520,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Electrolytes"])
         {
@@ -498,6 +540,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.electrolytesTextView.text = self.selectedPatient.electrolytes;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Jaundice"])
         {
@@ -542,6 +586,8 @@
                         cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     }
                 }
+                
+                self.jaundiceTextView.text = self.selectedPatient.jaundice;
             }
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Sepsis"])
@@ -561,6 +607,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.sepsisTextView.text = self.selectedPatient.sepsis;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Drugs"])
         {
@@ -579,6 +627,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.drugsTextView.text = self.selectedPatient.drugs;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"ROP"])
         {
@@ -597,12 +647,14 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.ropTextView.text = self.selectedPatient.rop;
         }
-        else if ([tableView2Sections[indexPath.section] isEqual:@"CranialUSS"])
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Cranial USS"])
         {
             CellIdentifier = @"CranialUSS";
             
-            if (newROP)
+            if (newCranialUSS)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             }
@@ -615,6 +667,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.cranialUSSTextView.text = self.selectedPatient.cranialUSS;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Parents / Social"])
         {
@@ -633,6 +687,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.parentsAndSocialTextView.text = self.selectedPatient.parentsAndSocial;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Impression"])
         {
@@ -651,6 +707,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.impressionTextView.text = self.selectedPatient.impression;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Plan"])
         {
@@ -669,6 +727,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.planTextView.text = self.selectedPatient.plan;
         }
         else if ([tableView2Sections[indexPath.section] isEqual:@"Jobs"])
         {
@@ -687,6 +747,8 @@
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
             }
+            
+            self.jobsTextView.text = self.selectedPatient.jobs;
         }
         else
         {
@@ -1282,26 +1344,38 @@
     if ([tableView isEqual:self.myTableView1])
     {
         [self.backgroundTextView resignFirstResponder];
+        [self.activeProblemsTextView resignFirstResponder];
+        [self.resolvedProblemsTextView resignFirstResponder];
+        [self.recentSignificantEventsTextView resignFirstResponder];
+        [self.ventilationAndSedationTextView resignFirstResponder];
+        [self.cxrTextView resignFirstResponder];
+        [self.cardiovascularTextView resignFirstResponder];
+        [self.linesTextView resignFirstResponder];
+        [self.fluidBalanceTextView resignFirstResponder];
+        [self.feedsAndFluidsTextView resignFirstResponder];
+        [self.electrolytesTextView resignFirstResponder];
+        [self.jaundiceTextView resignFirstResponder];
+        [self.sepsisTextView resignFirstResponder];
+        [self.drugsTextView resignFirstResponder];
+        [self.ropTextView resignFirstResponder];
+        [self.cranialUSSTextView resignFirstResponder];
+        [self.parentsAndSocialTextView resignFirstResponder];
+        [self.impressionTextView resignFirstResponder];
+        [self.planTextView resignFirstResponder];
+        [self.jobsTextView resignFirstResponder];
     }
     else
     {
-        selectedPath = indexPath;
+        selectedPath = nil;
     }
     
     return indexPath;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
 }
-
-
 
 #pragma mark - UITextView delegate
 
@@ -1958,7 +2032,10 @@
         }
         else if ((contentHeight + 5.0f) < rowHeight)
         {
-            rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            if (rowHeight > 250.0f)
+            {
+                rowHeight -= (rowHeight - (contentHeight + 5.0f));
+            }
             
             row.rowHeight = [NSNumber numberWithFloat:rowHeight];
             
@@ -2180,9 +2257,6 @@
         // jumps to the top. i.e. in handover
         [self.myTableView2 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
-    
-    // if not then check if there are any more bays
-    // if there is another bay then increment bays
 }
 
 - (NSMutableArray *)loadSectionDataForPatientEditing:(BOOL)editing
@@ -2193,6 +2267,29 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // self.selectedPatient.handoverSections = nil;
+    
+    /*
+    self.selectedPatient.background = nil;
+    self.selectedPatient.activeProblems = nil;
+    self.selectedPatient.resolvedProblems = nil;
+    self.selectedPatient.recentSignificantEvents = nil;
+    self.selectedPatient.ventilationAndSedation = nil;
+    self.selectedPatient.cxr = nil;
+    self.selectedPatient.cardiovascular = nil;
+    self.selectedPatient.lines = nil;
+    self.selectedPatient.feedsAndFluids = nil;
+    self.selectedPatient.fluidBalance = nil;
+    self.selectedPatient.electrolytes = nil;
+    self.selectedPatient.jaundice = nil;
+    self.selectedPatient.sepsis = nil;
+    self.selectedPatient.drugs = nil;
+    self.selectedPatient.rop = nil;
+    self.selectedPatient.cranialUSS = nil;
+    self.selectedPatient.parentsAndSocial = nil;
+    self.selectedPatient.impression = nil;
+    self.selectedPatient.plan = nil;
+    self.selectedPatient.jobs = nil;
+     */
     
     // first check to see if any data has alread been added
     if (!self.selectedPatient.handoverSections)
@@ -2450,7 +2547,7 @@
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowHeight = [NSNumber numberWithFloat:250.0f];
         [newSection.rows addObject:newRow];
         
         [self.selectedPatient.handoverSections addObject:newSection];
