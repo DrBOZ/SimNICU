@@ -700,7 +700,7 @@
         {
             if (self.patientListMode == 1)
             {
-                static NSString *CellIdentifier = @"Handover";
+                static NSString *CellIdentifier = @"Bay Editor";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
                 if(!cell)
@@ -710,8 +710,8 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                cell.textLabel.text = NSLocalizedString(@"Handover", nil);
-                cell.detailTextLabel.text = @"Coming 2014!";
+                cell.textLabel.text = NSLocalizedString(@"Bay Editor", nil);
+                cell.detailTextLabel.text = @"";
                 
                 returnCell = cell;
             }
@@ -742,7 +742,7 @@
         }
         else if (indexPath.row == 2)
         {
-            static NSString *CellIdentifier = @"Bay Editor";
+            static NSString *CellIdentifier = @"Settings";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if(!cell)
@@ -752,7 +752,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = NSLocalizedString(@"Bay Editor", nil);
+            cell.textLabel.text = NSLocalizedString(@"Settings", nil);
             
             returnCell = cell;
         }
@@ -1104,21 +1104,17 @@
         {
             if (self.patientListMode)
             {
-#if HANDOVER_PREVIEW_MODE
+                // Bay Editor
+                BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
+                bayEditorViewController.bayData = self.bayData;
+                bayEditorViewController.delegate = self;
                 
-                AdvancedPatientEditorViewController *advancedPatientList = [[AdvancedPatientEditorViewController alloc] init];
-                advancedPatientList.bayData = self.bayData;
-                
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:advancedPatientList];
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:bayEditorViewController];
                 
                 navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
                 navController.navigationBar.tintColor = [UIColor blackColor];
                 
                 [self presentModalViewController:navController animated:YES];
-                
-#else
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
-#endif
             }
             else
             {
@@ -1135,16 +1131,25 @@
         }
         else if (indexPath.row == 2)
         {
-            BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
-            bayEditorViewController.bayData = self.bayData;
-            bayEditorViewController.delegate = self;
+            // Settings
+#if SETTINGS_PREVIEW_MODE
             
-            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:bayEditorViewController];
+            /*
+             AdvancedPatientEditorViewController *advancedPatientList = [[AdvancedPatientEditorViewController alloc] init];
+             advancedPatientList.bayData = self.bayData;
+             
+             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:advancedPatientList];
+             
+             navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+             navController.navigationBar.tintColor = [UIColor blackColor];
+             
+             [self presentModalViewController:navController animated:YES];
+             */
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
-            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-            navController.navigationBar.tintColor = [UIColor blackColor];
-            
-            [self presentModalViewController:navController animated:YES];
+#else
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+#endif
         }
         else
         {
