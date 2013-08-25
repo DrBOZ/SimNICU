@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "PhototherapyAddBilirubinResultViewController.h"
 #import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "PatientDetailsViewController.h"
@@ -21,7 +22,7 @@
 #import "Patient.h"
 #import "Bay.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -1410,7 +1411,32 @@
     }
     else
     {
-        // do section specific helpful things
+        // Jaundice
+        if (indexPath.section == 11)
+        {
+            if (indexPath.row == 0)
+            {
+                // allow user to enter a bilirubin result for the selected patient
+                PhototherapyAddBilirubinResultViewController *newViewController = [[PhototherapyAddBilirubinResultViewController alloc] init];
+                newViewController.selectedPatient = self.selectedPatient;
+                newViewController.bilirubinUnits = self.bilirubinUnits;
+                newViewController.delegate = self;
+                
+                /*
+                if (self.dateAndTimeOfBirthForThisChart)
+                {
+                    newViewController.dateAndTimeOfBirthForThisChart = self.dateAndTimeOfBirthForThisChart;
+                }
+                 */
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+                
+                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                navController.navigationBar.tintColor = [UIColor blackColor];
+                
+                [self presentModalViewController:navController animated:YES];
+            }
+        }
     }
 }
 
@@ -4250,6 +4276,23 @@
     [self.myTableView1 reloadData];
     [self.myTableView2 reloadData];
     
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - PhototherapyAddBilirubinResult delegate
+
+- (void)phototherapyAddBilirubinResultViewController:(PhototherapyAddBilirubinResultViewController *)controller didFinishAddingNewBilirubinResult:(BilirubinResult *)result forBirthDate:(NSDate *)date
+{
+    
+}
+
+- (void)phototherapyAddBilirubinResultViewControllerDidFinishDeletingBilirubinResults:(PhototherapyAddBilirubinResultViewController *)controller
+{
+    
+}
+
+- (void)phototherapyAddBilirubinResultViewControllerDidCancel:(PhototherapyAddBilirubinResultViewController *)controller
+{
     [self dismissModalViewControllerAnimated:YES];
 }
 

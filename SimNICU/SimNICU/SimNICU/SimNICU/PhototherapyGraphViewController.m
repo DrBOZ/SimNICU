@@ -2360,8 +2360,6 @@
 
 - (void)phototherapyAddBilirubinResultViewControllerDidCancel:(PhototherapyAddBilirubinResultViewController *)controller
 {
-    // NSLog(@"phototherapyAddBilirubinResultViewControllerDidCancel");
-    
     [self dismissModalViewControllerAnimated:YES];
 }
 
