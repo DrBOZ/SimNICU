@@ -1964,8 +1964,6 @@
 
 - (void)patientDetailsViewControllerDidCancel:(PatientDetailsViewController *)controller
 {
-    NSLog(@"patientDetailsViewControllerDidCancel");
-    
     [self dismissModalViewControllerAnimated:YES];
 }
 

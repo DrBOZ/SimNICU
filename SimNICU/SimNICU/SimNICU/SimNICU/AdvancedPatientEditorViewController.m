@@ -7,9 +7,12 @@
 //
 
 #import "AdvancedPatientEditorViewController.h"
+#import "PortraitOnlyNavigationController.h"
+#import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
+// #import "ShinobiChartCell.h"
 #import "BilirubinResult.h"
 #import "HandoverSection.h"
 #import "CBTimeMethods.h"
@@ -18,9 +21,7 @@
 #import "Patient.h"
 #import "Bay.h"
 
-#import "ShinobiChartCell.h"
-
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -102,26 +103,21 @@
 // things I need to still do
 //
 // 1) query preferences to set self.guidelineCountry & self.bilirubinUnits
-// 2) change selectedBay & selectedPatientInBay to properties and assign them from EnterWeightVC
-//    when detailDisclosureButton pressed
-// 3) remove 'Handover' cell - should be behind passcode lock
-// 4) scroll up to view when textview selected
-//
+// 2) fix crash if no patient in bay 0
+// 3) use edit data to allow edits
+// 
+// 4) add analytics
 // 5) create a weight shinobi chart
-// 6) add analytics
+// 6) 
 //
-// 7) crash if no patient in bay 0
-// 8) use edit data to allow edits
-
+// 7) 
+// 8)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        // selectedBay = 0;
-        // selectedPatientInBay = 0;
-        
         firstButtonPressSinceScroll = NO;
     }
     return self;
@@ -787,17 +783,6 @@
 
 #pragma mark -
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 11)
-    {
-        NSLog(@"cell.bounds.origin.x = %f", cell.bounds.origin.x);
-        NSLog(@"cell.bounds.origin.y = %f", cell.bounds.origin.y);
-        NSLog(@"cell.bounds.size.width = %f", cell.bounds.size.width);
-        NSLog(@"cell.bounds.size.height = %f", cell.bounds.size.height);
-    }
-}
-
 - (UITableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
 {
     UITableViewCell *cell;
@@ -805,6 +790,7 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
 #pragma mark Patient
     if ([CellIdentifier isEqualToString:@"Patient"])
     {
@@ -1370,6 +1356,29 @@
     }
     
     return editingStyle;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView isEqual:self.myTableView1])
+    {
+        PatientDetailsViewController *patientDetailsViewController = [[PatientDetailsViewController alloc] init];
+        patientDetailsViewController.delegate = self;
+        
+        patientDetailsViewController.patientToEdit = self.selectedPatient;
+        patientDetailsViewController.patientToEdit.NewBabyAPGARSSaved = NULL;
+        
+        PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
+        
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+        
+        [self presentModalViewController:navController animated:YES];
+    }
+    else
+    {
+        // do section specific helpful things
+    }
 }
 
 #pragma mark - UITableView delegate
@@ -4182,6 +4191,21 @@
             landscapeOrientationDefaultsSet = NO;
         }
     }
+}
+
+#pragma mark - PatientDetailsViewController delegate
+
+- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient
+{
+    [self.myTableView1 reloadData];
+    [self.myTableView2 reloadData];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)patientDetailsViewControllerDidCancel:(PatientDetailsViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
