@@ -4197,6 +4197,8 @@
 
 - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient
 {
+    newPatientDetails = YES;
+    
     [self.myTableView1 reloadData];
     [self.myTableView2 reloadData];
     
