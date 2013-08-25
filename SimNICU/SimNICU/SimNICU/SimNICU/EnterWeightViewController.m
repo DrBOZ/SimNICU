@@ -178,7 +178,7 @@
             {
                 // 4 inch Retina
                 
-                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScrollViewBackground4inchRetina.png"]];
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
                 [tempImageView setFrame:self.myTableView.frame];
                 
                 self.myTableView.backgroundView = tempImageView;
@@ -187,7 +187,7 @@
             {
                 // 3.5 inch Retina
                 
-                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScrollViewBackground35inchRetina.png"]];
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
                 [tempImageView setFrame:self.myTableView.frame];
                 
                 self.myTableView.backgroundView = tempImageView;
@@ -747,12 +747,13 @@
             
             if(!cell)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.textLabel.text = NSLocalizedString(@"Settings", nil);
+            cell.detailTextLabel.text = @"Coming soon!";
             
             returnCell = cell;
         }

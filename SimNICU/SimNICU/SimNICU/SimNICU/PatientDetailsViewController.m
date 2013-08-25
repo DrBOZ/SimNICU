@@ -39,7 +39,7 @@
         if (appDelegate.window.bounds.size.height == 568)
         {
             // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
             [tempImageView setFrame:self.myTableView.frame];
             
             self.myTableView.backgroundView = tempImageView;
@@ -47,7 +47,7 @@
         else
         {
             // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
             [tempImageView setFrame:self.myTableView.frame];
             
             self.myTableView.backgroundView = tempImageView;
@@ -191,8 +191,9 @@
         
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
         
-        headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-        headerLabel.shadowColor = [UIColor whiteColor];
+        headerLabel.textColor = [UIColor whiteColor];
+        // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        headerLabel.shadowColor = [UIColor blackColor];
         headerLabel.shadowOffset = CGSizeMake(0, 1);
         headerLabel.backgroundColor = [UIColor clearColor];
         headerLabel.opaque = YES;

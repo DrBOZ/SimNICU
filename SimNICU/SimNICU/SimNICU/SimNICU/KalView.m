@@ -55,12 +55,14 @@ static const CGFloat kMonthLabelHeight = 17.f;
         if (appDelegate.window.bounds.size.height == 568)
         {
             // 4 inch Retina
-            contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples4inchForKal.png"]];
+            // contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples4inchForKal.png"]];
+            contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
         }
         else
         {
             // 3.5 inch Retina
-            contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples35inchForKal.png"]];
+            // contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples35inchForKal.png"]];
+            contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
         }
         
 #else

@@ -35,7 +35,7 @@
         if (appDelegate.window.bounds.size.height == 568)
         {
             // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
             [tempImageView setFrame:self.myTableView.frame];
             
             self.myTableView.backgroundView = tempImageView;
@@ -43,7 +43,7 @@
         else
         {
             // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
             [tempImageView setFrame:self.myTableView.frame];
             
             self.myTableView.backgroundView = tempImageView;

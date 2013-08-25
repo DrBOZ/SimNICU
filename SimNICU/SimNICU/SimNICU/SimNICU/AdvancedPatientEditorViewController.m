@@ -4205,9 +4205,4 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)patientDetailsViewControllerDidCancel:(PatientDetailsViewController *)controller
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
 @end
