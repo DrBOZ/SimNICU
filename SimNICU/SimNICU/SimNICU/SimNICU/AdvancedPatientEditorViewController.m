@@ -2234,7 +2234,7 @@
         }
         else
         {
-            // ensure there are patients in the next bay displayed
+            // ensure there are patients in any previous bays
             for (int i = selectedBay - 1; i >= 0; --i)
             {
                 if ([[self.bayData[i] patientsInBay] count])
@@ -2246,7 +2246,7 @@
                 {
                     // no patient in the next bay
                     
-                    if (i == 1)
+                    if (i == 0)
                     {
                         // no more patients, empty first bay
                         return;
