@@ -1443,6 +1443,7 @@
             {
                 // Blood Group Info
                 JaundiceViewController *newViewController = [[JaundiceViewController alloc] init];
+                newViewController.selectedPatient = self.selectedPatient;
                 newViewController.delegate = self;
                 
                 PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
@@ -4372,7 +4373,7 @@
     if ((![self.selectedPatient.jaundice isEqualToString:@""]) || !self.selectedPatient.jaundice)
     {
         // add the next text above the current text
-        formattedText = [NSString stringWithFormat:@"Mother\t: %@\nBaby\t: %@\nDCT\t\t: %@\n%@", maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted, self.selectedPatient.jaundice];
+        formattedText = [NSString stringWithFormat:@"Mother\t: %@\nBaby\t: %@\nDCT\t\t: %@\n\n%@", maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted, self.selectedPatient.jaundice];
     }
     else
     {

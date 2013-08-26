@@ -44,7 +44,7 @@
     header = @"Maternal";
     [sectionHeaders addObject:header];
     
-    header = @"Baby";
+    header = @"Infant";
     [sectionHeaders addObject:header];
     
     header = @"Direct Coombs Test";
@@ -61,11 +61,11 @@
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
     
     self.myTableView.separatorColor = [UIColor grayColor];
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.rowHeight = 50.0f;
-    self.myTableView.bounces = YES;
     self.myTableView.scrollEnabled = YES;
+    self.myTableView.dataSource = self;
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.delegate = self;
+    self.myTableView.bounces = YES;
     [self.view addSubview:self.myTableView];
     
     // add TableView background
@@ -98,18 +98,11 @@
 {
     int numberOfRows = 0;
     
-    if (section == 0)
-    {
-        numberOfRows = 3;
-    }
-    else if (section == 1)
-    {
-        numberOfRows = 2;
-    }
-    else if (section == 2)
-    {
-        numberOfRows = 1;
-    }
+    if (section == 0) numberOfRows = 3;
+
+    else if (section == 1) numberOfRows = 2;
+
+    else if (section == 2) numberOfRows = 1;
     
     return numberOfRows;
 }
@@ -122,6 +115,13 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return sectionHeaders[section];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) return 40.0f;
+    
+    else return 30.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,12 +138,14 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
             self.maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
             self.maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.maternalBloodGroup.selectedSegmentIndex = [self selectedPatientValueForUISegmentedControl:self.maternalBloodGroup];
             
             cell.textLabel.text = @"Blood Group";
             cell.accessoryView = self.maternalBloodGroup;
@@ -158,12 +160,14 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.maternalRhesus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
             self.maternalRhesus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
             self.maternalRhesus.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.maternalRhesus.selectedSegmentIndex = [self selectedPatientValueForUISegmentedControl:self.maternalRhesus];
             
             cell.textLabel.text = @"Rhesus D";
             cell.accessoryView = self.maternalRhesus;
@@ -178,12 +182,14 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.maternalAntibodies = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"No", @"Yes", nil]];
             self.maternalAntibodies.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
             self.maternalAntibodies.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.maternalAntibodies.selectedSegmentIndex = [self selectedPatientValueForUISegmentedControl:self.maternalAntibodies];
             
             cell.textLabel.text = @"Antibodies";
             cell.accessoryView = self.maternalAntibodies;
@@ -201,12 +207,14 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.babyBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
             self.babyBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
             self.babyBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.babyBloodGroup.selectedSegmentIndex = [self selectedPatientValueForUISegmentedControl:self.babyBloodGroup];
             
             cell.textLabel.text = @"Blood Group";
             cell.accessoryView = self.babyBloodGroup;
@@ -221,12 +229,14 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.babyRhesus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
             self.babyRhesus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
             self.babyRhesus.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.babyRhesus.selectedSegmentIndex = [self selectedPatientValueForUISegmentedControl:self.babyRhesus];
             
             cell.textLabel.text = @"Rhesus D";
             cell.accessoryView = self.babyRhesus;
@@ -244,12 +254,15 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.dct = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
             self.dct.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
             self.dct.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.dct.selectedSegmentIndex = [self selectedPatientValueForUISegmentedControl:self.dct];
+            
             
             cell.textLabel.text = @"DCT";
             cell.accessoryView = self.dct;
@@ -406,11 +419,112 @@
     [self.delegate jaundiceViewControllerDidCancel:self];
 }
 
+//[self selectedPatientValueForUISegmentedControl:self.dct];
 
-
-
-
-
-
+- (int)selectedPatientValueForUISegmentedControl:(UISegmentedControl *)control
+{
+    int value = -1;
+    
+    // set segmentedControls
+    if (self.selectedPatient)
+    {
+        if ([control isEqual:self.maternalBloodGroup])
+        {
+            NSString *string = self.selectedPatient.maternalBloodGroup;
+            
+            if ([string isEqualToString:@"AB"])
+            {
+                value = 0;
+            }
+            else if ([string isEqualToString:@"A"])
+            {
+                value = 1;
+            }
+            else if ([string isEqualToString:@"B"])
+            {
+                value = 2;
+            }
+            else if ([string isEqualToString:@"O"])
+            {
+                value = 3;
+            }
+        }
+        else if ([control isEqual:self.maternalRhesus])
+        {
+            NSString *string = self.selectedPatient.maternalRhesus;
+            
+            if ([string isEqualToString:@"Neg"])
+            {
+                value = 0;
+            }
+            else if ([string isEqualToString:@"Pos"])
+            {
+                value = 1;
+            }
+        }
+        else if ([control isEqual:self.maternalAntibodies])
+        {
+            NSString *string = self.selectedPatient.maternalAntibodies;
+            
+            if ([string isEqualToString:@"no antibodies"])
+            {
+                value = 0;
+            }
+            else if ([string isEqualToString:@"antibodies present"])
+            {
+                value = 1;
+            }
+        }
+        else if ([control isEqual:self.babyBloodGroup])
+        {
+            NSString *string = self.selectedPatient.babyBloodGroup;
+            
+            if ([string isEqualToString:@"AB"])
+            {
+                value = 0;
+            }
+            else if ([string isEqualToString:@"A"])
+            {
+                value = 1;
+            }
+            else if ([string isEqualToString:@"B"])
+            {
+                value = 2;
+            }
+            else if ([string isEqualToString:@"O"])
+            {
+                value = 3;
+            }
+        }
+        else if ([control isEqual:self.babyRhesus])
+        {
+            NSString *string = self.selectedPatient.babyRhesus;
+            
+            if ([string isEqualToString:@"Neg"])
+            {
+                value = 0;
+            }
+            else if ([string isEqualToString:@"Pos"])
+            {
+                value = 1;
+            }
+        }
+        else if ([control isEqual:self.dct])
+        {
+            NSString *string = self.selectedPatient.dct;
+            
+            if ([string isEqualToString:@"negative"])
+            {
+                value = 0;
+            }
+            else if ([string isEqualToString:@"positive"])
+            {
+                value = 1;
+            }
+        }
+    }
+    
+    return value;
+}
 
 @end
