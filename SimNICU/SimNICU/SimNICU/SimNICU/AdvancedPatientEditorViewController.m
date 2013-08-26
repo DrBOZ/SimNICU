@@ -4314,6 +4314,13 @@
 
 #pragma mark - JaundiceViewController delegate
 
+- (void)jaundiceViewControllerDidFinish:(JaundiceViewController *)controller withResults:(NSMutableArray *)results
+{
+    // set values
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)jaundiceViewControllerDidCancel:(JaundiceViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];

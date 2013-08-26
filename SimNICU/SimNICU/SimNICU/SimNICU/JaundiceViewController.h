@@ -13,6 +13,8 @@
 
 @protocol JaundiceViewControllerDelegate <NSObject>
 
+- (void)jaundiceViewControllerDidFinish:(JaundiceViewController *)controller withResults:(NSMutableArray *)results;
+
 - (void)jaundiceViewControllerDidCancel:(JaundiceViewController *)controller;
 
 @end

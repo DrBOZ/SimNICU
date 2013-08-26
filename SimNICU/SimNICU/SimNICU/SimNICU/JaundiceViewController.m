@@ -16,6 +16,13 @@
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
 
+@property (nonatomic, strong) UISegmentedControl *maternalBloodGroup;
+@property (nonatomic, strong) UISegmentedControl *maternalRhesus;
+@property (nonatomic, strong) UISegmentedControl *maternalAntibodies;
+@property (nonatomic, strong) UISegmentedControl *babyBloodGroup;
+@property (nonatomic, strong) UISegmentedControl *babyRhesus;
+@property (nonatomic, strong) UISegmentedControl *dct;
+
 @end
 
 @implementation JaundiceViewController
@@ -134,12 +141,12 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
-            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
-            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
+            self.maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            self.maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
             
             cell.textLabel.text = @"Blood Group";
-            cell.accessoryView = maternalBloodGroup;
+            cell.accessoryView = self.maternalBloodGroup;
             
             returnCell = cell;
         }
@@ -154,12 +161,12 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UISegmentedControl *maternalRhesus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
-            maternalRhesus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
-            maternalRhesus.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.maternalRhesus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
+            self.maternalRhesus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            self.maternalRhesus.segmentedControlStyle = UISegmentedControlStyleBordered;
             
             cell.textLabel.text = @"Rhesus D";
-            cell.accessoryView = maternalRhesus;
+            cell.accessoryView = self.maternalRhesus;
             
             returnCell = cell;
         }
@@ -174,12 +181,12 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"No", @"Yes", nil]];
-            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
-            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.maternalAntibodies = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"No", @"Yes", nil]];
+            self.maternalAntibodies.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            self.maternalAntibodies.segmentedControlStyle = UISegmentedControlStyleBordered;
             
             cell.textLabel.text = @"Antibodies";
-            cell.accessoryView = maternalBloodGroup;
+            cell.accessoryView = self.maternalAntibodies;
             
             returnCell = cell;
         }
@@ -197,12 +204,12 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
-            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
-            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.babyBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
+            self.babyBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            self.babyBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
             
             cell.textLabel.text = @"Blood Group";
-            cell.accessoryView = maternalBloodGroup;
+            cell.accessoryView = self.babyBloodGroup;
             
             returnCell = cell;
         }
@@ -217,12 +224,12 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UISegmentedControl *babyResus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
-            babyResus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
-            babyResus.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.babyRhesus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
+            self.babyRhesus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            self.babyRhesus.segmentedControlStyle = UISegmentedControlStyleBordered;
             
             cell.textLabel.text = @"Rhesus D";
-            cell.accessoryView = babyResus;
+            cell.accessoryView = self.babyRhesus;
             
             returnCell = cell;
         }
@@ -240,12 +247,12 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
-            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
-            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            self.dct = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
+            self.dct.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            self.dct.segmentedControlStyle = UISegmentedControlStyleBordered;
             
             cell.textLabel.text = @"DCT";
-            cell.accessoryView = maternalBloodGroup;
+            cell.accessoryView = self.dct;
             
             returnCell = cell;
         }
@@ -258,26 +265,128 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *path = nil;
-    
-    return path;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // code
+    return nil;
 }
 
 # pragma mark
 
 - (void)done
 {
+    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:5];
     
+    // Maternal blood group
+    NSString *resultsMaternalBloodGroup = nil;
+    
+    if (self.maternalBloodGroup.selectedSegmentIndex == 0)
+    {
+        resultsMaternalBloodGroup = @"AB";
+    }
+    else if (self.maternalBloodGroup.selectedSegmentIndex == 1)
+    {
+        resultsMaternalBloodGroup = @"A";
+    }
+    else if (self.maternalBloodGroup.selectedSegmentIndex == 2)
+    {
+        resultsMaternalBloodGroup = @"B";
+    }
+    else if (self.maternalBloodGroup.selectedSegmentIndex == 3)
+    {
+        resultsMaternalBloodGroup = @"O";
+    }
+    
+    [results addObject:resultsMaternalBloodGroup];
+    
+    // Maternal Rhesus D status
+    NSString *resultsMaternalRhesus = nil;
+    
+    if (self.maternalRhesus.selectedSegmentIndex == 0)
+    {
+        resultsMaternalRhesus = @"Neg";
+    }
+    else if (self.maternalRhesus.selectedSegmentIndex == 1)
+    {
+        resultsMaternalRhesus = @"Pos";
+    }
+    
+    [results addObject:resultsMaternalRhesus];
+    
+    // Maternal antibodies
+    NSString *resultsMaternalAntibodies = nil;
+    
+    if (self.maternalAntibodies.selectedSegmentIndex == 0)
+    {
+        resultsMaternalAntibodies = @"No";
+    }
+    else if (self.maternalAntibodies.selectedSegmentIndex == 1)
+    {
+        resultsMaternalAntibodies = @"Yes";
+    }
+    
+    [results addObject:resultsMaternalAntibodies];
+    
+    // Baby blood group
+    NSString *resultsBabyBloodGroup = nil;
+    
+    if (self.babyBloodGroup.selectedSegmentIndex == 0)
+    {
+        resultsBabyBloodGroup = @"AB";
+    }
+    else if (self.babyBloodGroup.selectedSegmentIndex == 1)
+    {
+        resultsBabyBloodGroup = @"A";
+    }
+    else if (self.babyBloodGroup.selectedSegmentIndex == 2)
+    {
+        resultsBabyBloodGroup = @"B";
+    }
+    else if (self.babyBloodGroup.selectedSegmentIndex == 3)
+    {
+        resultsBabyBloodGroup = @"O";
+    }
+    
+    [results addObject:resultsBabyBloodGroup];
+    
+    // Baby Rhesus D status
+    NSString *resultsBabyRhesus = nil;
+    
+    if (self.babyRhesus.selectedSegmentIndex == 0)
+    {
+        resultsBabyRhesus = @"Neg";
+    }
+    else if (self.babyRhesus.selectedSegmentIndex == 1)
+    {
+        resultsBabyRhesus = @"Pos";
+    }
+    
+    [results addObject:resultsBabyRhesus];
+    
+    // Direct Coombs Test
+    NSString *resultsDCT = nil;
+    
+    if (self.dct.selectedSegmentIndex == 0)
+    {
+        resultsDCT = @"Neg";
+    }
+    else if (self.dct.selectedSegmentIndex == 1)
+    {
+        resultsDCT = @"Pos";
+    }
+    
+    [results addObject:resultsDCT];
+    
+    [self.delegate jaundiceViewControllerDidFinish:self withResults:results];
 }
 
 - (void)cancel
 {
     [self.delegate jaundiceViewControllerDidCancel:self];
 }
+
+
+
+
+
+
+
 
 @end
