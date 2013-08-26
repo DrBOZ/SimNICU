@@ -112,6 +112,13 @@
 @property (nonatomic, retain) NSString *plan;
 @property (nonatomic, retain) NSString *jobs;
 
+@property (nonatomic, retain) NSString *maternalBloodGroup;
+@property (nonatomic, retain) NSString *maternalRhesus;
+@property (nonatomic, retain) NSString *maternalAntibodies;
+@property (nonatomic, retain) NSString *babyBloodGroup;
+@property (nonatomic, retain) NSString *babyRhesus;
+@property (nonatomic, retain) NSString *dct;
+
 + (NSString *)formatWeight:(NSString *)weight;
 
 - (NSString *)returnDisplayTextLabelText;

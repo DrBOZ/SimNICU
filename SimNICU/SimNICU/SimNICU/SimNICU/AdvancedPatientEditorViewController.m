@@ -4316,7 +4316,8 @@
 
 - (void)jaundiceViewControllerDidFinish:(JaundiceViewController *)controller withResults:(NSMutableArray *)results
 {
-    // set values
+    // set values for selected patient
+    
     
     [self dismissModalViewControllerAnimated:YES];
 }

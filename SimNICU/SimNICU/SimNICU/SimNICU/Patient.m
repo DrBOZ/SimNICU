@@ -95,6 +95,15 @@
         self.impression = [aDecoder decodeObjectForKey:@"Impression"];
         self.plan = [aDecoder decodeObjectForKey:@"Plan"];
         self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
+        
+        // Blood bank info
+        // Blood bank info
+        self.maternalBloodGroup = [aDecoder decodeObjectForKey:@"MaternalBloodGroup"];
+        self.maternalRhesus = [aDecoder decodeObjectForKey:@"MaternalRhesus"];
+        self.maternalAntibodies = [aDecoder decodeObjectForKey:@"MaternalAntibodies"];
+        self.babyBloodGroup = [aDecoder decodeObjectForKey:@"BabyBloodGroup"];
+        self.babyRhesus = [aDecoder decodeObjectForKey:@"BabyRhesus"];
+        self.dct = [aDecoder decodeObjectForKey:@"DCT"];
     }
     return self;
 }
@@ -176,6 +185,14 @@
     [aCoder encodeObject:self.impression forKey:@"Impression"];
     [aCoder encodeObject:self.plan forKey:@"Plan"];
     [aCoder encodeObject:self.jobs forKey:@"Jobs"];
+    
+    // Blood bank info
+    [aCoder encodeObject:self.maternalBloodGroup forKey:@"MaternalBloodGroup"];
+    [aCoder encodeObject:self.maternalRhesus forKey:@"MaternalRhesus"];
+    [aCoder encodeObject:self.maternalAntibodies forKey:@"MaternalAntibodies"];
+    [aCoder encodeObject:self.babyBloodGroup forKey:@"BabyBloodGroup"];
+    [aCoder encodeObject:self.babyRhesus forKey:@"BabyRhesus"];
+    [aCoder encodeObject:self.dct forKey:@"DCT"];
 }
 
 - (NSString *)returnDisplayTextLabelText
