@@ -1529,7 +1529,6 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    // code tidy attempt
     HandoverSection *section;;
     HandoverRow *row;
     
@@ -4317,8 +4316,77 @@
 - (void)jaundiceViewControllerDidFinish:(JaundiceViewController *)controller withResults:(NSMutableArray *)results
 {
     // set values for selected patient
+    self.selectedPatient.maternalBloodGroup = results[0];
+    self.selectedPatient.maternalRhesus = results[1];
+    self.selectedPatient.maternalAntibodies = results[2];
+    self.selectedPatient.babyBloodGroup = results[3];
+    self.selectedPatient.babyRhesus = results[4];
+    self.selectedPatient.dct = results[5];
     
+    // format baby blood group and rhesus status
+    NSString *maternalBloodGroupFormatted;
     
+    if ([self.selectedPatient.maternalBloodGroup isEqualToString:@"?"] || [self.selectedPatient.maternalRhesus isEqualToString:@"?"])
+    {
+        maternalBloodGroupFormatted = @"unknown";
+    }
+    else
+    {
+        if ([self.selectedPatient.maternalAntibodies isEqualToString:@"?"])
+        {
+            maternalBloodGroupFormatted = [NSString stringWithFormat:@"%@ Rh D %@", self.selectedPatient.maternalBloodGroup, self.selectedPatient.maternalRhesus];
+        }
+        else
+        {
+            maternalBloodGroupFormatted = [NSString stringWithFormat:@"%@ Rh D %@ %@", self.selectedPatient.maternalBloodGroup, self.selectedPatient.maternalRhesus, self.selectedPatient.maternalAntibodies];
+        }
+    }
+    
+    // format baby blood group and rhesus status
+    NSString *babyBloodGroupFormatted;
+    
+    if ([self.selectedPatient.babyBloodGroup isEqualToString:@"?"] || [self.selectedPatient.babyRhesus isEqualToString:@"?"])
+    {
+        babyBloodGroupFormatted = @"unknown";
+    }
+    else
+    {
+        babyBloodGroupFormatted = [NSString stringWithFormat:@"%@ Rh D %@", self.selectedPatient.babyBloodGroup, self.selectedPatient.babyRhesus];
+    }
+    
+    // format DCT
+    NSString *dctFormatted;
+    
+    if ([self.selectedPatient.dct isEqualToString:@"?"])
+    {
+        dctFormatted = @"unknown";
+    }
+    else
+    {
+        dctFormatted = self.selectedPatient.dct;
+    }
+    
+    // create formatted string to add to handover sheet
+    NSString *formattedText;
+    // check if jaundice property is empty or set to @""
+    if ((![self.selectedPatient.jaundice isEqualToString:@""]) || !self.selectedPatient.jaundice)
+    {
+        // add the next text above the current text
+        formattedText = [NSString stringWithFormat:@"Mother\t: %@\nBaby\t: %@\nDCT\t\t: %@\n%@", maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted, self.selectedPatient.jaundice];
+    }
+    else
+    {
+        // fill the UITextView with new textman
+        formattedText = [NSString stringWithFormat:@"Mother\t: %@\nBaby\t: %@\nDCT\t\t: %@",maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted];
+    }
+    
+    // set the text in the TextView
+    self.jaundiceTextView.text = formattedText;
+    
+    // adjust the height of the Jaundice TextView
+    [self textViewDidChange:self.jaundiceTextView];
+    
+    // dismiss the JaundiceViewController
     [self dismissModalViewControllerAnimated:YES];
 }
 

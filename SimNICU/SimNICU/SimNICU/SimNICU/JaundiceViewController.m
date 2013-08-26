@@ -293,6 +293,10 @@
     {
         resultsMaternalBloodGroup = @"O";
     }
+    else
+    {
+        resultsMaternalBloodGroup = @"?";
+    }
     
     [results addObject:resultsMaternalBloodGroup];
     
@@ -307,6 +311,10 @@
     {
         resultsMaternalRhesus = @"Pos";
     }
+    else
+    {
+        resultsMaternalRhesus = @"?";
+    }
     
     [results addObject:resultsMaternalRhesus];
     
@@ -315,11 +323,15 @@
     
     if (self.maternalAntibodies.selectedSegmentIndex == 0)
     {
-        resultsMaternalAntibodies = @"No";
+        resultsMaternalAntibodies = @" - no antibodies";
     }
     else if (self.maternalAntibodies.selectedSegmentIndex == 1)
     {
-        resultsMaternalAntibodies = @"Yes";
+        resultsMaternalAntibodies = @" - antibodies present";
+    }
+    else
+    {
+        resultsMaternalAntibodies = @"?";
     }
     
     [results addObject:resultsMaternalAntibodies];
@@ -343,6 +355,10 @@
     {
         resultsBabyBloodGroup = @"O";
     }
+    else
+    {
+        resultsBabyBloodGroup = @"?";
+    }
     
     [results addObject:resultsBabyBloodGroup];
     
@@ -357,6 +373,10 @@
     {
         resultsBabyRhesus = @"Pos";
     }
+    else
+    {
+        resultsBabyRhesus = @"?";
+    }
     
     [results addObject:resultsBabyRhesus];
     
@@ -365,11 +385,15 @@
     
     if (self.dct.selectedSegmentIndex == 0)
     {
-        resultsDCT = @"Neg";
+        resultsDCT = @"negative";
     }
     else if (self.dct.selectedSegmentIndex == 1)
     {
-        resultsDCT = @"Pos";
+        resultsDCT = @"positive";
+    }
+    else
+    {
+        resultsDCT = @"?";
     }
     
     [results addObject:resultsDCT];

@@ -97,7 +97,6 @@
         self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
         
         // Blood bank info
-        // Blood bank info
         self.maternalBloodGroup = [aDecoder decodeObjectForKey:@"MaternalBloodGroup"];
         self.maternalRhesus = [aDecoder decodeObjectForKey:@"MaternalRhesus"];
         self.maternalAntibodies = [aDecoder decodeObjectForKey:@"MaternalAntibodies"];
