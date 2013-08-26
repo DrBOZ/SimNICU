@@ -27,17 +27,20 @@
 {
     [super viewDidLoad];
 	
-    [CBTrackers logEvent:@"Jaundice"];
+    [CBTrackers logEvent:@"Jaundice Data Entry"];
     
     self.title = @"Jaundice";
     
     sectionHeaders = [[NSMutableArray alloc] initWithCapacity:4];
     NSString *header;
     
-    header = @"Maternal Blood Group";
+    header = @"Maternal";
     [sectionHeaders addObject:header];
     
-    header = @"Antibodies";
+    header = @"Baby";
+    [sectionHeaders addObject:header];
+    
+    header = @"Direct Coombs Test";
     [sectionHeaders addObject:header];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
@@ -50,10 +53,10 @@
     // Tableview
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
     
-    self.myTableView.separatorColor = [UIColor clearColor];
+    self.myTableView.separatorColor = [UIColor grayColor];
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
-    self.myTableView.rowHeight = 44.0f;
+    self.myTableView.rowHeight = 50.0f;
     self.myTableView.bounces = YES;
     self.myTableView.scrollEnabled = YES;
     [self.view addSubview:self.myTableView];
@@ -86,7 +89,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    int numberOfRows = 0;
+    
+    if (section == 0)
+    {
+        numberOfRows = 3;
+    }
+    else if (section == 1)
+    {
+        numberOfRows = 2;
+    }
+    else if (section == 2)
+    {
+        numberOfRows = 1;
+    }
+    
+    return numberOfRows;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -96,24 +119,139 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *returnCell = nil;
     
-    if(!cell)
+    if (indexPath.section == 0)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        // cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.backgroundColor = [UIColor clearColor];
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"Maternal Blood Group";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
+            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            
+            cell.textLabel.text = @"Blood Group";
+            cell.accessoryView = maternalBloodGroup;
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 1)
+        {
+            static NSString *CellIdentifier = @"Maternal Rhesus D";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            UISegmentedControl *maternalRhesus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
+            maternalRhesus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            maternalRhesus.segmentedControlStyle = UISegmentedControlStyleBordered;
+            
+            cell.textLabel.text = @"Rhesus D";
+            cell.accessoryView = maternalRhesus;
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 2)
+        {
+            static NSString *CellIdentifier = @"Maternal Antibodies";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"No", @"Yes", nil]];
+            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            
+            cell.textLabel.text = @"Antibodies";
+            cell.accessoryView = maternalBloodGroup;
+            
+            returnCell = cell;
+        }
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"Baby Blood Group";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
+            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            
+            cell.textLabel.text = @"Blood Group";
+            cell.accessoryView = maternalBloodGroup;
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 1)
+        {
+            static NSString *CellIdentifier = @"Baby Rhesus D";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            UISegmentedControl *babyResus = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
+            babyResus.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            babyResus.segmentedControlStyle = UISegmentedControlStyleBordered;
+            
+            cell.textLabel.text = @"Rhesus D";
+            cell.accessoryView = babyResus;
+            
+            returnCell = cell;
+        }
+    }
+    else if (indexPath.section == 2)
+    {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"DCT";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Neg", @"Pos", nil]];
+            maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 150.0f, 44.0f);
+            maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
+            
+            cell.textLabel.text = @"DCT";
+            cell.accessoryView = maternalBloodGroup;
+            
+            returnCell = cell;
+        }
     }
     
-    UISegmentedControl *maternalBloodGroup = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"AB", @"A", @"B", @"O", nil]];
-    maternalBloodGroup.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
-    maternalBloodGroup.segmentedControlStyle = UISegmentedControlStyleBordered;
-    
-    cell.accessoryView = maternalBloodGroup;
-    
-    return cell;
+    return returnCell;
 }
 
 #pragma mark - UITableView delegate
