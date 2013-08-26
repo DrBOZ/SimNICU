@@ -25,15 +25,6 @@
     NSArray *sortedPreviousBilirubinResults;
 }
 
-@synthesize dateAndTimeOfBirthForThisChart = _dateAndTimeOfBirthForThisChart;
-@synthesize bilirubinTextField = _bilirubinTextField;
-@synthesize sampleAgeInDays = _sampleAgeInDays;
-@synthesize selectedPatient = _selectedPatient;
-@synthesize bilirubinLevel = _bilirubinLevel;
-@synthesize bilirubinUnits = _bilirubinUnits;
-@synthesize myTableView = _myTableView;
-@synthesize delegate = _delegate;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

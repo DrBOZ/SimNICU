@@ -800,6 +800,12 @@
 		5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C51790759500DA0278 /* DrugIndication.m */; };
 		5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
 		5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
+		5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4617CB411900426991 /* JaundiceViewController.m */; };
+		5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4617CB411900426991 /* JaundiceViewController.m */; };
+		5CD43A4D17CB4B1100426991 /* Jaundice2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */; };
+		5CD43A4E17CB4B1100426991 /* Jaundice2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */; };
+		5CD43A4F17CB4B1100426991 /* Jaundice2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */; };
+		5CD43A5017CB4B1100426991 /* Jaundice2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */; };
 		5CD541C717B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */; };
 		5CD541C817B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */; };
 		5CD541C917B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
@@ -1469,6 +1475,11 @@
 		5CD3B0C51790759500DA0278 /* DrugIndication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugIndication.m; sourceTree = "<group>"; };
 		5CD3B0C81790773600DA0278 /* DrugRouteOfAdministration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugRouteOfAdministration.h; sourceTree = "<group>"; };
 		5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugRouteOfAdministration.m; sourceTree = "<group>"; };
+		5CD43A4517CB411900426991 /* JaundiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JaundiceViewController.h; sourceTree = "<group>"; };
+		5CD43A4617CB411900426991 /* JaundiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JaundiceViewController.m; sourceTree = "<group>"; };
+		5CD43A4A17CB4B1100426991 /* Jaundice2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jaundice2ViewController.h; sourceTree = "<group>"; };
+		5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jaundice2ViewController.m; sourceTree = "<group>"; };
+		5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Jaundice2ViewController.xib; sourceTree = "<group>"; };
 		5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_30_Normal_Frontal_lobes.png; sourceTree = "<group>"; };
 		5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_30_Normal_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
 		5CD541BF17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_30_Normal_Third_ventricle.png; sourceTree = "<group>"; };
@@ -2791,6 +2802,7 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5CD43A4417CB40E600426991 /* TextInput */,
 				5C13B42617C8CB2F00C88EEF /* NSObjects */,
 				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
@@ -2874,6 +2886,18 @@
 				5C51D8DB17932A5A004A7FF5 /* vitaminsReferences.html */,
 			);
 			name = "Vitamins (Multivitamins)";
+			sourceTree = "<group>";
+		};
+		5CD43A4417CB40E600426991 /* TextInput */ = {
+			isa = PBXGroup;
+			children = (
+				5CD43A4517CB411900426991 /* JaundiceViewController.h */,
+				5CD43A4617CB411900426991 /* JaundiceViewController.m */,
+				5CD43A4A17CB4B1100426991 /* Jaundice2ViewController.h */,
+				5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */,
+				5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */,
+			);
+			name = TextInput;
 			sourceTree = "<group>";
 		};
 		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
@@ -3272,6 +3296,7 @@
 				5CE9EB5A17B9653E0085422F /* tutorial@2x.png in Resources */,
 				5CDA652317C0FC7900AC5266 /* plusButton2@2x.png in Resources */,
 				5CDA652617C0FC8200AC5266 /* plusButton2.png in Resources */,
+				5CD43A4F17CB4B1100426991 /* Jaundice2ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3540,6 +3565,7 @@
 				5CE9EB5B17B9653E0085422F /* tutorial@2x.png in Resources */,
 				5CDA652417C0FC7900AC5266 /* plusButton2@2x.png in Resources */,
 				5CDA652717C0FC8200AC5266 /* plusButton2.png in Resources */,
+				5CD43A5017CB4B1100426991 /* Jaundice2ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3703,6 +3729,8 @@
 				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
+				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
+				5CD43A4D17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3863,6 +3891,8 @@
 				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */,
+				5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */,
+				5CD43A4E17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,5 +11,6 @@
 @interface HandoverRow : NSObject
 
 @property (nonatomic, strong) NSNumber *rowHeight;
+@property (nonatomic, strong) NSString *rowText;
 
 @end

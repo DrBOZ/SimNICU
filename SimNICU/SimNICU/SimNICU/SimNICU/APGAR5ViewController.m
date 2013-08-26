@@ -526,8 +526,7 @@
     if(!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
-        [cell setBackgroundColor:[UIColor clearColor]];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     if (indexPath.section == 0) 

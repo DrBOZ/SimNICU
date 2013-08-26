@@ -11,6 +11,7 @@
 #import "PortraitOnlyNavigationController.h"
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
+#import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 // #import "ShinobiChartCell.h"
@@ -22,7 +23,9 @@
 #import "Patient.h"
 #import "Bay.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate>
+#import "Jaundice2ViewController.h"
+
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -104,12 +107,12 @@
 // things I need to still do
 //
 // 1) query preferences to set self.guidelineCountry & self.bilirubinUnits
-// 2) fix crash if no patient in bay 0
+// 2) 
 // 3) use edit data to allow edits
 // 
 // 4) add analytics
 // 5) create a weight shinobi chart
-// 6) 
+// 6) dateAndTimeForThisChart thing for ShinobiChart
 //
 // 7) 
 // 8)
@@ -1436,6 +1439,19 @@
                 
                 [self presentModalViewController:navController animated:YES];
             }
+            else
+            {
+                // Blood Group Info
+                JaundiceViewController *newViewController = [[JaundiceViewController alloc] init];
+                newViewController.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+                
+                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                navController.navigationBar.tintColor = [UIColor blackColor];
+                
+                [self presentModalViewController:navController animated:YES];
+            }
         }
     }
 }
@@ -1513,7 +1529,8 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    HandoverSection *section;
+    // code tidy attempt
+    HandoverSection *section;;
     HandoverRow *row;
     
     if ([textView isEqual:self.backgroundTextView])
@@ -2430,7 +2447,6 @@
     if (!self.selectedPatient.handoverSections)
     {
         // instantiate array
-        // this is a bit long winded, but allows user to be able to edit it later - saved in Patientlist.
         self.selectedPatient.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         HandoverSection *newSection;
         HandoverRow *newRow;
@@ -4292,6 +4308,13 @@
 }
 
 - (void)phototherapyAddBilirubinResultViewControllerDidCancel:(PhototherapyAddBilirubinResultViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - JaundiceViewController delegate
+
+- (void)jaundiceViewControllerDidCancel:(JaundiceViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
 }
