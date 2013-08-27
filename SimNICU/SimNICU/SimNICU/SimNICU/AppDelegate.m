@@ -280,6 +280,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
     EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)self.revealController.rearViewController;
     
     // close patient list if passcode lock is on and patient list has been left open
@@ -289,14 +293,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
         {
             enterWeightViewController.switchObj.on = NO;
             [enterWeightViewController patientConfidentialityModeToggle];
+            
+            [self.navigationController dismissModalViewControllerAnimated:NO];
         }
     }
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

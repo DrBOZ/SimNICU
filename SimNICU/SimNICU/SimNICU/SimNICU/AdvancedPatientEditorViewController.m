@@ -62,7 +62,6 @@
 }
 
 // general table
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView1;
 @property (nonatomic, strong) UITableView *myTableView2;
 @property (nonatomic, strong) NSString *workingWeight;
@@ -169,7 +168,6 @@
     if (!self.selectedPatient)
     {
         // need to find first patient, not assume 0,0
-        
         self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
     }
     else
@@ -204,36 +202,12 @@
     self.myTableView2.sectionHeaderHeight = 10.0f;
     self.myTableView2.separatorColor = [UIColor grayColor];
     [self.view addSubview:self.myTableView2];
-    
-    // swipe gesture recognizers
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    self.swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.myTableView2 addGestureRecognizer:self.swipeGestureRecognizer];
-    
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    self.swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.myTableView2 addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft)
-    {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
-        item.tag = 4;
-        
-        [self nextPatientButtonPressed:item];
-    }
-    else if (recognizer.direction == UISwipeGestureRecognizerDirectionRight)
-    {
-        [self previousPatientButtonPressed];
-    }
 }
 
 #pragma mark - Table view data source
@@ -504,7 +478,7 @@
         {
             CellIdentifier = @"FeedsAndFluids";
             
-            if (newLines)
+            if (newFeedsAndFluids)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             }
@@ -540,9 +514,9 @@
             
             self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
         }
-        else if ([tableView2Sections[indexPath.section] isEqual:@"Electrolytes"])
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Biochemistry"])
         {
-            CellIdentifier = @"Electrolytes";
+            CellIdentifier = @"Biochemistry";
             
             if (newElectrolytes)
             {
@@ -667,9 +641,9 @@
             
             self.ropTextView.text = self.selectedPatient.rop;
         }
-        else if ([tableView2Sections[indexPath.section] isEqual:@"Cranial USS"])
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Neurology & Cranial USS"])
         {
-            CellIdentifier = @"CranialUSS";
+            CellIdentifier = @"NeurologyAndCranialUSS";
             
             if (newCranialUSS)
             {
@@ -707,9 +681,9 @@
             
             self.parentsAndSocialTextView.text = self.selectedPatient.parentsAndSocial;
         }
-        else if ([tableView2Sections[indexPath.section] isEqual:@"Impression"])
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Examination"])
         {
-            CellIdentifier = @"Impression";
+            CellIdentifier = @"Examination";
             
             if (newImpression)
             {
@@ -727,9 +701,9 @@
             
             self.impressionTextView.text = self.selectedPatient.impression;
         }
-        else if ([tableView2Sections[indexPath.section] isEqual:@"Plan"])
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Summary"])
         {
-            CellIdentifier = @"Plan";
+            CellIdentifier = @"Summary";
             
             if (newPlan)
             {
@@ -747,9 +721,9 @@
             
             self.planTextView.text = self.selectedPatient.plan;
         }
-        else if ([tableView2Sections[indexPath.section] isEqual:@"Jobs"])
+        else if ([tableView2Sections[indexPath.section] isEqual:@"Plan"])
         {
-            CellIdentifier = @"Jobs";
+            CellIdentifier = @"Plan";
             
             if (newJobs)
             {
@@ -805,7 +779,7 @@
         displayTextLabel.textColor = [UIColor blackColor];
         displayTextLabel.backgroundColor = [UIColor clearColor];
         displayTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
-        displayTextLabel.adjustsFontSizeToFitWidth = NO;
+        displayTextLabel.adjustsFontSizeToFitWidth = YES;
         displayTextLabel.textAlignment = UITextAlignmentLeft;
         [cell.contentView addSubview:displayTextLabel];
         
@@ -827,7 +801,20 @@
         [cell.contentView addSubview:displayDetailTextLabel];
         
         // display patient's name
-        displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
+        if (self.selectedPatient.birthDate)
+        {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            
+            formatter.timeStyle = [NSTimeZone localTimeZone];
+            formatter.dateStyle = NSDateFormatterShortStyle;
+            formatter.timeStyle = NSDateFormatterNoStyle;
+            
+            displayTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", [self.selectedPatient returnDisplayTextLabelText], [formatter stringFromDate:self.selectedPatient.birthDate]];
+        }
+        else
+        {
+            displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
+        }
         
         // display gestation and corrected gestation, birth weight and working weight
         displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
@@ -973,8 +960,8 @@
         
         [cell.contentView addSubview:self.fluidBalanceTextView];
     }
-#pragma mark Electrolytes
-    else if ([CellIdentifier isEqualToString:@"Electrolytes"])
+#pragma mark Biochemistry
+    else if ([CellIdentifier isEqualToString:@"Biochemistry"])
     {
         HandoverSection *section = self.selectedPatient.handoverSections[10];
         HandoverRow *row = section.rows[0];
@@ -1248,7 +1235,7 @@
         [cell.contentView addSubview:self.ropTextView];
     }
 #pragma mark Cranial USS
-    else if ([CellIdentifier isEqualToString:@"CranialUSS"])
+    else if ([CellIdentifier isEqualToString:@"NeurologyAndCranialUSS"])
     {
         HandoverSection *section = self.selectedPatient.handoverSections[15];
         HandoverRow *row = section.rows[0];
@@ -1273,8 +1260,8 @@
         
         [cell.contentView addSubview:self.parentsAndSocialTextView];
     }
-#pragma mark Impression
-    else if ([CellIdentifier isEqualToString:@"Impression"])
+#pragma mark Examination
+    else if ([CellIdentifier isEqualToString:@"Examination"])
     {
         HandoverSection *section = self.selectedPatient.handoverSections[17];
         HandoverRow *row = section.rows[0];
@@ -1286,8 +1273,8 @@
         
         [cell.contentView addSubview:self.impressionTextView];
     }
-#pragma mark Plan
-    else if ([CellIdentifier isEqualToString:@"Plan"])
+#pragma mark Summary
+    else if ([CellIdentifier isEqualToString:@"Summary"])
     {
         HandoverSection *section = self.selectedPatient.handoverSections[18];
         HandoverRow *row = section.rows[0];
@@ -1299,8 +1286,8 @@
         
         [cell.contentView addSubview:self.planTextView];
     }
-#pragma mark Jobs
-    else if ([CellIdentifier isEqualToString:@"Jobs"])
+#pragma mark Plan
+    else if ([CellIdentifier isEqualToString:@"Plan"])
     {
         HandoverSection *section = self.selectedPatient.handoverSections[19];
         HandoverRow *row = section.rows[0];
@@ -1861,7 +1848,7 @@
             self.fluidBalanceTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.fluidBalanceTextView.contentSize.height + 10.0f));
         }
         
-        self.selectedPatient.feedsAndFluids = textView.text;
+        self.selectedPatient.fluidBalance = textView.text;
     }
     else if ([textView isEqual:self.electrolytesTextView])
     {
@@ -2571,9 +2558,9 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // 10 - Electrolytes
+        // 10 - Biochemistry
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Electrolytes";
+        newSection.sectionName = @"Biochemistry";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -2643,9 +2630,9 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // 15 - Cranial USS
+        // 15 - Neurology & Cranial USS
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Cranial USS";
+        newSection.sectionName = @"Neurology & Cranial USS";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -2667,9 +2654,9 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // 17 - Impression
+        // 17 - Examination
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Impression";
+        newSection.sectionName = @"Examination";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -2679,21 +2666,21 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
         
-        // 18 - Plan
+        // 18 - Summary
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Summary";
+        newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        [newSection.rows addObject:newRow];
+        
+        [self.selectedPatient.handoverSections addObject:newSection];
+        
+        // 19 - Plan
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Plan";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 19 - Jobs
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Jobs";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
