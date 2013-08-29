@@ -183,9 +183,8 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        
-        [formatter setTimeZone:[NSTimeZone localTimeZone]];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
+        formatter.timeStyle = [NSTimeZone localTimeZone];
+        formatter.dateStyle = NSDateFormatterShortStyle;
         
         self.formattedWorkingWeightDate = [formatter stringFromDate:self.workingWeightDate];
         

@@ -7,11 +7,15 @@
 //
 
 #import "PatientDetailsViewController.h"
+#import "ActionSheetPicker.h"
+#import "NSDate+TCUtils.h"
 #import "AppDelegate.h"
 
 @interface PatientDetailsViewController()
 
+@property (nonatomic, retain) AbstractActionSheetPicker *actionSheetPicker;
 @property (nonatomic, strong) KalViewController *calendar;
+@property (nonatomic, retain) UITextField *birthDateTextField;
 
 - (void)showAndSelectToday;
 
@@ -24,36 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-        
-        // Instantiate TableView
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20 - 44)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 50.0f;
-        self.myTableView.delegate = self;
-        self.myTableView.dataSource = self;
-        
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        else
-        {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        
-        [self.view addSubview:self.myTableView];
     }
     return self;
 }
@@ -61,6 +36,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    // Instantiate TableView
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20 - 44)) style:UITableViewStyleGrouped];
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.delegate = self;
+    self.myTableView.dataSource = self;
+    
+    // set background colour
+    [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
+    
+    [self.view addSubview:self.myTableView];
     
     [Flurry logEvent:@"PatientDetails: viewDidLoad"];
 }
@@ -155,14 +146,9 @@
 {
     int rows = 0;
     
-    if (section == 0) 
-    {
-        rows = 4;
-    }
-    else if(section == 1)
-    {
-        rows = 1;
-    }
+    if (section == 0) rows = 5;
+   
+    else if(section == 1) rows = 1;
     
     return rows;
 }
@@ -226,18 +212,11 @@
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
                 cell.backgroundColor = [UIColor whiteColor];
-
             }
             
             cell.textLabel.text = @"Name";
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-            //
-            //
-            //
-            //
-            // The following could be improved...
             
             if (self.patientToEdit.lastname || self.patientToEdit.firstname) 
             {
@@ -267,7 +246,7 @@
             
             returnCell = cell;
         }
-        else if(indexPath.row == 1) // Date of Birth
+        else if (indexPath.row == 1) // Date of Birth
         {
             if(!cell)
             {
@@ -278,9 +257,9 @@
             
             cell.textLabel.text = @"Date of Birth";
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
             cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
             cell.detailTextLabel.text = @"";
-            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
             
             if (self.patientToEdit.formattedBirthDate)
             {
@@ -289,18 +268,57 @@
             
             returnCell = cell;
         }
-        else if(indexPath.row == 2) // Gestation
+        else if (indexPath.row == 2) // Time of Birth
         {
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Gestation";
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            cell.textLabel.text = @"Time of Birth";
+            
+            self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 206.0f, 30.0f)];
+            self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            self.birthDateTextField.textAlignment = UITextAlignmentLeft;
+            self.birthDateTextField.font = [UIFont boldSystemFontOfSize:17.0f];
+            self.birthDateTextField.userInteractionEnabled = NO;
+            // self.birthDateTextField.delegate = self;
+            
+            cell.accessoryView = self.birthDateTextField;
+            
+            if (self.patientToEdit.birthTimeSet)
+            {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.timeZone = [NSTimeZone localTimeZone];
+                formatter.timeStyle = NSDateFormatterShortStyle;
+                formatter.dateStyle = NSDateFormatterNoStyle;
+                self.birthDateTextField.text =  [formatter stringFromDate:self.patientToEdit.birthDate];
+            }
+            else
+            {
+                self.birthDateTextField.text = @"Can be entered later";
+            }
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 3) // Gestation
+        {
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
+            cell.textLabel.text = @"Gestation";
             
             if (self.patientToEdit.gestation)
             {
@@ -316,19 +334,19 @@
             
             returnCell = cell;
         }
-        else if(indexPath.row == 3) // Birth weight
+        else if(indexPath.row == 4) // Birth weight
         {
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-                [cell setBackgroundColor:[UIColor whiteColor]];
+                cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Birth Weight";
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
-            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+            cell.textLabel.text = @"Birth Weight";
             
             if (self.patientToEdit.birthWeight) 
             {
@@ -447,7 +465,11 @@
             
             [self.navigationController pushViewController:self.calendar animated:YES];
         }
-        else if (indexPath.row == 2) // Gestation
+        else if (indexPath.row == 2) // Time of birth
+        {
+            [self selectABirthTime:self.birthDateTextField];
+        }
+        else if (indexPath.row == 3) // Gestation
         {
             PatientDetailsEnterWeightViewController *weightController = [[PatientDetailsEnterWeightViewController alloc] init];
             weightController.patientToEdit = self.patientToEdit;
@@ -457,7 +479,7 @@
             
             [self.navigationController pushViewController:weightController animated:YES];
         }
-        else if (indexPath.row == 3) // Birth Weight
+        else if (indexPath.row == 4) // Birth Weight
         {
             PatientDetailsEnterWeightViewController *weightController = [[PatientDetailsEnterWeightViewController alloc] init];
             weightController.patientToEdit = self.patientToEdit;
@@ -746,6 +768,28 @@
 - (void)didSelectDate:(KalDate *)date
 {
     NSLog(@"Date selected");
+}
+
+- (void)selectABirthTime:(UIControl *)sender
+{
+    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                           datePickerMode:UIDatePickerModeTime
+                                                             selectedDate:self.patientToEdit.birthDate
+                                                                  minDate:nil
+                                                                  maxDate:nil
+                                                                   target:self
+                                                                   action:@selector(birthTimeWasSelected:element:)
+                                                                   origin:sender];
+    [self.actionSheetPicker showActionSheetPicker];
+}
+
+- (void)birthTimeWasSelected:(NSDate *)selectedDate element:(id)element
+{
+    self.patientToEdit.birthTimeSet = @"YES";
+    self.patientToEdit.birthDate = selectedDate;
+    
+    [self.myTableView reloadData];
+    // [self birthDateWasSelected:selectedDate element:element];
 }
 
 @end
