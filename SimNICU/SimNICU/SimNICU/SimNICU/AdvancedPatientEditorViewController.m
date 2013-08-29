@@ -9,6 +9,7 @@
 #import "PhototherapyAddBilirubinResultViewController.h"
 #import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
+#import "DailySummaryPDFViewController.h"
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "JaundiceViewController.h"
@@ -22,8 +23,6 @@
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
-
-#import "Jaundice2ViewController.h"
 
 @interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate>
 {
@@ -153,14 +152,14 @@
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatientButtonPressed)];
     item1.tag = 1;
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:nil];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(prepareDailySummaryPDFForPatient)];
     item2.tag = 2;
     UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(nextPatientButtonPressed:)];
     item3.tag = 3;
     UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextPatientButtonPressed:)];
     item4.tag = 4;
     
-    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item3, flexibleItem, item4, nil];
+    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item2, flexibleItem, item3, flexibleItem, item4, nil];
     self.toolbarItems = items;
     
     // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
@@ -4405,6 +4404,16 @@
 - (void)jaundiceViewControllerDidCancel:(JaundiceViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - PDF
+
+- (void)prepareDailySummaryPDFForPatient
+{
+    DailySummaryPDFViewController *newViewController = [[DailySummaryPDFViewController alloc] init];
+    newViewController.selectedPatient = self.selectedPatient;
+    
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 @end
