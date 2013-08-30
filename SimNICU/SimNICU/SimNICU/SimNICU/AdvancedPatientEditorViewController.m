@@ -99,6 +99,7 @@
 @property (nonatomic, strong) UITextView *jobsTextView;
 
 @property (nonatomic, strong) UITableViewCell *shinobiCell;
+@property (nonatomic, strong) UIImage *shinobiChartImage;
 
 @end
 
@@ -152,7 +153,7 @@
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatientButtonPressed)];
     item1.tag = 1;
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(prepareDailySummaryPDFForPatient)];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(prepareDailySummaryPDFForPatient)];
     item2.tag = 2;
     UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(nextPatientButtonPressed:)];
     item3.tag = 3;
@@ -986,7 +987,23 @@
     {
         // self.chart.bounds = cell.bounds;
         [cell addSubview:self.chart];
-        // return self.shinobiCell;
+        
+        self.shinobiChartImage = [[UIImage alloc] init];
+        
+        UIGraphicsBeginImageContext(self.chart.bounds.size);
+        
+        [self.chart.layer renderInContext:UIGraphicsGetCurrentContext()];
+        
+        self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        
+        /*
+        UIGraphicsBeginImageContext(self.chart.bounds.size);
+        [self.chart.layer renderInContext:UIGraphicsGetCurrentContext()];
+        self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+         */
     }
 #pragma mark Jaundice/DCT
     else if ([CellIdentifier isEqualToString:@"DCTInfo"])
@@ -4412,6 +4429,19 @@
 {
     DailySummaryPDFViewController *newViewController = [[DailySummaryPDFViewController alloc] init];
     newViewController.selectedPatient = self.selectedPatient;
+    
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 640.0f, 640.0f)];
+    
+    [tempView addSubview:self.chart];
+    
+    UIGraphicsBeginImageContext(tempView.bounds.size);
+    
+    [tempView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    newViewController.phototherapyChart = self.shinobiChartImage;
     
     [self.navigationController pushViewController:newViewController animated:YES];
 }

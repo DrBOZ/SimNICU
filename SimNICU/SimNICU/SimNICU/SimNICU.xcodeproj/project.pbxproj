@@ -128,8 +128,6 @@
 		5C39F0A917CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */; };
 		5C39F0AA17CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */; };
 		5C39F0AC17CFEC4F007B2CF9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39F0AB17CFEC4F007B2CF9 /* CoreText.framework */; };
-		5C39F0AF17CFF3A4007B2CF9 /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C39F0AE17CFF3A4007B2CF9 /* PDFRenderer.m */; };
-		5C39F0B017CFF3A4007B2CF9 /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C39F0AE17CFF3A4007B2CF9 /* PDFRenderer.m */; };
 		5C39F0B217CFFD6D007B2CF9 /* ray-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C39F0B117CFFD6D007B2CF9 /* ray-logo.png */; };
 		5C39F0B317CFFD6D007B2CF9 /* ray-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C39F0B117CFFD6D007B2CF9 /* ray-logo.png */; };
 		5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
@@ -977,8 +975,6 @@
 		5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryPDFViewController.h; sourceTree = "<group>"; };
 		5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryPDFViewController.m; sourceTree = "<group>"; };
 		5C39F0AB17CFEC4F007B2CF9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		5C39F0AD17CFF3A4007B2CF9 /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFRenderer.h; sourceTree = "<group>"; };
-		5C39F0AE17CFF3A4007B2CF9 /* PDFRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFRenderer.m; sourceTree = "<group>"; };
 		5C39F0B117CFFD6D007B2CF9 /* ray-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ray-logo.png"; sourceTree = "<group>"; };
 		5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSDataBase.h; sourceTree = "<group>"; };
 		5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSDataBase.m; sourceTree = "<group>"; };
@@ -2642,8 +2638,6 @@
 				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
 				5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */,
 				5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */,
-				5C39F0AD17CFF3A4007B2CF9 /* PDFRenderer.h */,
-				5C39F0AE17CFF3A4007B2CF9 /* PDFRenderer.m */,
 				5C39F0B117CFFD6D007B2CF9 /* ray-logo.png */,
 				5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */,
 				5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */,
@@ -3754,7 +3748,6 @@
 				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
 				5CD43A4D17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 				5C39F0A917CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
-				5C39F0AF17CFF3A4007B2CF9 /* PDFRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3918,7 +3911,6 @@
 				5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */,
 				5CD43A4E17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 				5C39F0AA17CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
-				5C39F0B017CFF3A4007B2CF9 /* PDFRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

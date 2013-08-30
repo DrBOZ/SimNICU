@@ -7,11 +7,13 @@
 //
 
 #import <CoreText/CoreText.h>
+#import "ShinobiChartCell.h"
 #import <UIKit/UIKit.h>
 #import "Patient.h"
 
 @interface DailySummaryPDFViewController : UIViewController
 
 @property (nonatomic, strong) Patient *selectedPatient;
+@property (nonatomic, strong) UIImage *phototherapyChart;
 
 @end
