@@ -171,7 +171,7 @@
             
 #else
             
-            cell.imageView.image = [UIImage imageNamed:@"tutorial.png"];
+            cell.imageView.image = [UIImage imageNamed:@"intro01.png"];
             // cell.imageView.image = [UIImage imageNamed:@"star.png"];
 #endif
         }
@@ -182,7 +182,7 @@
         }
         else if (indexPath.row == 2)
         {
-            // cell.imageView.image = [UIImage imageNamed:@"safari.png"];
+            cell.imageView.image = [UIImage imageNamed:@"mail01.png"];
         }
         else if (indexPath.row == 3)
         {
@@ -222,6 +222,10 @@
     else if (indexPath.row == 1)
     {
         [[iRate sharedInstance] openRatingsPageInAppStore];
+    }
+    else if (indexPath.row == 2)
+    {
+        [self.delegate aboutSimNICUViewControllerDelegateDidSelectFeedback:self];
     }
     else if (indexPath.row == 3)
     {
@@ -308,23 +312,30 @@
 
 - (void)showIntroScreen
 {
-    KxIntroViewPage *page0 = [KxIntroViewPage introViewPageWithTitle: @"Hello from SampleApp"
-                                                          withDetail: @"Look at this example of using the intro screen! Gradient background, full screen support and more."
-                                                           withImage: [UIImage imageNamed:@"sun"]];
+    KxIntroViewPage *page0 = [KxIntroViewPage introViewPageWithTitle: @"Welcome!"
+                                                          withDetail: @"This brief introduction will show you the basics."
+                                                           withImage: [UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]];
     
-    KxIntroViewPage *page1 = [KxIntroViewPage introViewPageWithTitle: @"What's new"
-                                                          withDetail: @"List of new features\n\n- feature #1\n- feature #2\n- feature #3\n- feature #4\n- feature #5"
-                                                           withImage: [UIImage imageNamed:@"tor"]];
+    KxIntroViewPage *page1 = [KxIntroViewPage introViewPageWithTitle: @"Step One"
+                                                          withDetail: @"Press the button in the top left hand corner."
+                                                           withImage: [UIImage imageNamed:@"screen01b.png"]];
     
-    KxIntroViewPage *page2 = [KxIntroViewPage introViewPageWithTitle: @"Lorem Ipsum passage"
-                                                          withDetail: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!"
-                                                           withImage: nil];
+    KxIntroViewPage *page2 = [KxIntroViewPage introViewPageWithTitle: @"Step Two"
+                                                          withDetail: @"Enter a weight or gestation, then press Done"
+                                                           withImage: [UIImage imageNamed:@"screen02a.png"]];
     
-    page1.detailLabel.textAlignment = NSTextAlignmentLeft;
+    KxIntroViewPage *page3 = [KxIntroViewPage introViewPageWithTitle: @"Step Three"
+                                                          withDetail: @"Select an option from the menu."
+                                                           withImage: [UIImage imageNamed:@"screen01c.png"]];
+    
+    KxIntroViewPage *page4 = [KxIntroViewPage introViewPageWithTitle: @"Done!"
+                                                          withDetail: @""
+                                                           withImage: [UIImage imageNamed:@"screen03a.png"]];
+    
     
     KxIntroViewController *newViewController;
     
-    newViewController = [[KxIntroViewController alloc ] initWithPages:@[ page0, page1, page2 ]];
+    newViewController = [[KxIntroViewController alloc ] initWithPages:@[ page0, page1, page2, page3, page4]];
     
     // sample using header
     if (0)

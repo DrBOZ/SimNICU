@@ -6,13 +6,16 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
+#import "AAMFeedbackTopicsViewController.h"
+#import "AboutSimNICUViewController.h"
+#import "AAMFeedbackViewController.h"
 #import "EnterWeightViewController.h"
 #import <UIKit/UIKit.h>
 #import "GrowthChart.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 
-@interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate, BannerViewContainer, APGARTabBarControllerDelegate>
+@interface AppViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EnterWeightViewControllerDelegate, BannerViewContainer, APGARTabBarControllerDelegate,AboutSimNICUViewControllerDelegate>
 
 @property (nonatomic, strong) Patient *tempPatient;
 @property (nonatomic, strong) NSString *gestation;

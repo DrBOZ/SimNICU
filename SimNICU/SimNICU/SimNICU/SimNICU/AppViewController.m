@@ -1545,7 +1545,8 @@
     navController.navigationBar.tintColor = [UIColor blackColor];
     navController.topViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     
-    [self.navigationController presentModalViewController:navController animated:YES];
+    // [self.navigationController presentModalViewController:navController animated:YES];
+    [self presentModalViewController:navController animated:YES];
 }
 
 # pragma mark - enterWeightViewController delegate methods
@@ -1842,6 +1843,29 @@
     self.displayAgeTextLabel.hidden = NO;
     self.displayBackground.hidden = NO;
     self.displayTextLabel.hidden = NO;
+}
+
+#pragma mark - AboutSimNICUViewController delegate
+
+- (void)aboutSimNICUViewControllerDelegateDidSelectFeedback:(AboutSimNICUViewController *)controller
+{
+    // [self dismissModalViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self sendFeedback];
+    }];
+    
+}
+
+- (void)sendFeedback
+{
+    AAMFeedbackViewController *newViewController = [[AAMFeedbackViewController alloc] init];
+    newViewController.toRecipients = [NSArray arrayWithObject:@"conrad.bosman@nhs.net"];
+    newViewController.ccRecipients = nil;
+    newViewController.bccRecipients = nil;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+    
+    [self presentModalViewController:navController animated:YES];
 }
 
 @end

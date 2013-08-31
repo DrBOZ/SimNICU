@@ -11,7 +11,9 @@
 #import "AboutSimNICUViewController.h"
 #import "DisclaimerViewController.h"
 #import "InfoTabBarController.h"
+#import "AppViewController.h"
 #import "AppDelegate.h"
+#import "ZUUIRevealController.h"
 
 @interface InfoTabBarController ()
 
@@ -27,6 +29,14 @@
         self.title = @"Information";
         
         AboutSimNICUViewController *firstViewController = [[AboutSimNICUViewController alloc] init];
+        
+        // delegate
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        UINavigationController *navController = (UINavigationController *)appDelegate.revealController.frontViewController;
+        
+        firstViewController.delegate = (AppViewController *)[navController topViewController];
+        
         InstructionsViewController *secondViewController = [[InstructionsViewController alloc] init];
         DisclaimerViewController *fourthViewController = [[DisclaimerViewController alloc] init];
         
