@@ -89,21 +89,22 @@
         }
     }
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [viewController presentViewController:self animated:NO completion:nil];    
+    [viewController presentViewController:self animated:YES completion:nil];
 }
 
 #pragma mark - KxIntroViewDelegate
 
 - (void)introView:(KxIntroView *)view didComplete:(BOOL)finished
 {
-    if (self.presentingViewController) {
-        
+    if (self.presentingViewController)
+    {
         [self dismissViewControllerAnimated:!finished completion:NO];
-        
-    } else if (self.view.superview) {
-        
-        if (!finished) {
-        
+        // [self dismissViewControllerAnimated:YES completion:NO];
+    }
+    else if (self.view.superview)
+    {
+        if (!finished)
+        {
             [UIView animateWithDuration:0.2
                              animations:^
             {
@@ -113,14 +114,15 @@
             {
                 [self.view removeFromSuperview];
             }];
-            
-        } else {
-            
+        }
+        else
+        {
             [self.view removeFromSuperview];
         }
     }
     
-    if (_needRestoreStatusBar) {
+    if (_needRestoreStatusBar)
+    {
         UIApplication *app = [UIApplication sharedApplication];
         [app setStatusBarHidden:NO withAnimation:YES];
     }

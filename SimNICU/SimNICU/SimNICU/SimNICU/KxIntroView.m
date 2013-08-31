@@ -101,7 +101,9 @@ static float addDegrees(float delta, float deg)
         
         _pages = pages;
         
-        self.backgroundColor = [UIColor colorWithRed:47/255.f green:112/255.f blue:225/255.f alpha:1.f];
+        // self.backgroundColor = [UIColor colorWithRed:47/255.f green:112/255.f blue:225/255.f alpha:1.f];
+        
+        self.backgroundColor = [UIColor colorWithRed:54/255.f green:91/255.f blue:115/255.f alpha:1.f];
         self.opaque = YES;
         
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
