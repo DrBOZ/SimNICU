@@ -232,6 +232,25 @@
 		5C552AA617901D1000577BE0 /* DrugDosePatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */; };
 		5C552AA91790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */; };
 		5C552AAA1790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */; };
+		5C5A116717D2393F00CE96E5 /* KxIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116217D2393F00CE96E5 /* KxIntroView.m */; };
+		5C5A116817D2393F00CE96E5 /* KxIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */; };
+		5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */; };
+		5C5A117317D240BE00CE96E5 /* sun@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116B17D240BE00CE96E5 /* sun@2x~ipad.png */; };
+		5C5A117417D240BE00CE96E5 /* sun@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116B17D240BE00CE96E5 /* sun@2x~ipad.png */; };
+		5C5A117517D240BE00CE96E5 /* sun~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116C17D240BE00CE96E5 /* sun~ipad.png */; };
+		5C5A117617D240BE00CE96E5 /* sun~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116C17D240BE00CE96E5 /* sun~ipad.png */; };
+		5C5A117717D240BE00CE96E5 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116D17D240BE00CE96E5 /* sun@2x.png */; };
+		5C5A117817D240BE00CE96E5 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116D17D240BE00CE96E5 /* sun@2x.png */; };
+		5C5A117917D240BE00CE96E5 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116E17D240BE00CE96E5 /* sun.png */; };
+		5C5A117A17D240BE00CE96E5 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116E17D240BE00CE96E5 /* sun.png */; };
+		5C5A117B17D240BE00CE96E5 /* tor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116F17D240BE00CE96E5 /* tor.png */; };
+		5C5A117C17D240BE00CE96E5 /* tor.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A116F17D240BE00CE96E5 /* tor.png */; };
+		5C5A117D17D240BE00CE96E5 /* tor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A117017D240BE00CE96E5 /* tor@2x.png */; };
+		5C5A117E17D240BE00CE96E5 /* tor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A117017D240BE00CE96E5 /* tor@2x.png */; };
+		5C5A117F17D240BE00CE96E5 /* tor~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A117117D240BE00CE96E5 /* tor~ipad.png */; };
+		5C5A118017D240BE00CE96E5 /* tor~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A117117D240BE00CE96E5 /* tor~ipad.png */; };
+		5C5A118117D240BE00CE96E5 /* tor@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A117217D240BE00CE96E5 /* tor@2x~ipad.png */; };
+		5C5A118217D240BE00CE96E5 /* tor@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C5A117217D240BE00CE96E5 /* tor@2x~ipad.png */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -1060,6 +1079,20 @@
 		5C552AA417901D1000577BE0 /* DrugDosePatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientViewController.m; sourceTree = "<group>"; };
 		5C552AA71790267800577BE0 /* DrugDosePatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDosePatientTableViewCell.h; sourceTree = "<group>"; };
 		5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientTableViewCell.m; sourceTree = "<group>"; };
+		5C5A116117D2393F00CE96E5 /* KxIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroView.h; sourceTree = "<group>"; };
+		5C5A116217D2393F00CE96E5 /* KxIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroView.m; sourceTree = "<group>"; };
+		5C5A116317D2393F00CE96E5 /* KxIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroViewController.h; sourceTree = "<group>"; };
+		5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroViewController.m; sourceTree = "<group>"; };
+		5C5A116517D2393F00CE96E5 /* KxIntroViewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroViewPage.h; sourceTree = "<group>"; };
+		5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroViewPage.m; sourceTree = "<group>"; };
+		5C5A116B17D240BE00CE96E5 /* sun@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun@2x~ipad.png"; sourceTree = "<group>"; };
+		5C5A116C17D240BE00CE96E5 /* sun~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun~ipad.png"; sourceTree = "<group>"; };
+		5C5A116D17D240BE00CE96E5 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sun@2x.png"; sourceTree = "<group>"; };
+		5C5A116E17D240BE00CE96E5 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sun.png; sourceTree = "<group>"; };
+		5C5A116F17D240BE00CE96E5 /* tor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tor.png; sourceTree = "<group>"; };
+		5C5A117017D240BE00CE96E5 /* tor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tor@2x.png"; sourceTree = "<group>"; };
+		5C5A117117D240BE00CE96E5 /* tor~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tor~ipad.png"; sourceTree = "<group>"; };
+		5C5A117217D240BE00CE96E5 /* tor@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tor@2x~ipad.png"; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -1938,6 +1971,34 @@
 			name = Screen_Drugs;
 			sourceTree = "<group>";
 		};
+		5C5A116017D2391800CE96E5 /* kxintro */ = {
+			isa = PBXGroup;
+			children = (
+				5C5A116317D2393F00CE96E5 /* KxIntroViewController.h */,
+				5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */,
+				5C5A116117D2393F00CE96E5 /* KxIntroView.h */,
+				5C5A116217D2393F00CE96E5 /* KxIntroView.m */,
+				5C5A116517D2393F00CE96E5 /* KxIntroViewPage.h */,
+				5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */,
+			);
+			name = kxintro;
+			sourceTree = "<group>";
+		};
+		5C5A116A17D240AB00CE96E5 /* Intro Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5C5A116B17D240BE00CE96E5 /* sun@2x~ipad.png */,
+				5C5A116C17D240BE00CE96E5 /* sun~ipad.png */,
+				5C5A116D17D240BE00CE96E5 /* sun@2x.png */,
+				5C5A116E17D240BE00CE96E5 /* sun.png */,
+				5C5A116F17D240BE00CE96E5 /* tor.png */,
+				5C5A117017D240BE00CE96E5 /* tor@2x.png */,
+				5C5A117117D240BE00CE96E5 /* tor~ipad.png */,
+				5C5A117217D240BE00CE96E5 /* tor@2x~ipad.png */,
+			);
+			name = "Intro Screen";
+			sourceTree = "<group>";
+		};
 		5C63B12516B9CDA700B31431 /* Screen_APGAR */ = {
 			isa = PBXGroup;
 			children = (
@@ -2263,6 +2324,7 @@
 				5C940AD2166E392D0044A7D1 /* iRate */,
 				5C940AAE166E38F60044A7D1 /* Kal */,
 				5C940A9F166E38D10044A7D1 /* KKPasscodeLock */,
+				5C5A116017D2391800CE96E5 /* kxintro */,
 				5C940ADC166E39720044A7D1 /* Shinobi */,
 				5C940A98166E38B90044A7D1 /* SVSegmentedControl */,
 				5C940ADA166E39600044A7D1 /* TestFlight */,
@@ -2646,6 +2708,7 @@
 		5C940C2D166E3DF10044A7D1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5C5A116A17D240AB00CE96E5 /* Intro Screen */,
 				5C940C44166E3E340044A7D1 /* App */,
 				5C940C46166E3E470044A7D1 /* APGAR */,
 				5C940C45166E3E3F0044A7D1 /* Calculator */,
@@ -3386,6 +3449,14 @@
 				5C0B9B8C17D2022B000B9E34 /* trackball.pxm in Resources */,
 				5C0B9B8D17D2022B000B9E34 /* trackball@2x.png in Resources */,
 				5C0B9B8E17D2022B000B9E34 /* trackball@2x.pxm in Resources */,
+				5C5A117317D240BE00CE96E5 /* sun@2x~ipad.png in Resources */,
+				5C5A117517D240BE00CE96E5 /* sun~ipad.png in Resources */,
+				5C5A117717D240BE00CE96E5 /* sun@2x.png in Resources */,
+				5C5A117917D240BE00CE96E5 /* sun.png in Resources */,
+				5C5A117B17D240BE00CE96E5 /* tor.png in Resources */,
+				5C5A117D17D240BE00CE96E5 /* tor@2x.png in Resources */,
+				5C5A117F17D240BE00CE96E5 /* tor~ipad.png in Resources */,
+				5C5A118117D240BE00CE96E5 /* tor@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3656,6 +3727,14 @@
 				5CDA652717C0FC8200AC5266 /* plusButton2.png in Resources */,
 				5CD43A5017CB4B1100426991 /* Jaundice2ViewController.xib in Resources */,
 				5C39F0B317CFFD6D007B2CF9 /* ray-logo.png in Resources */,
+				5C5A117417D240BE00CE96E5 /* sun@2x~ipad.png in Resources */,
+				5C5A117617D240BE00CE96E5 /* sun~ipad.png in Resources */,
+				5C5A117817D240BE00CE96E5 /* sun@2x.png in Resources */,
+				5C5A117A17D240BE00CE96E5 /* sun.png in Resources */,
+				5C5A117C17D240BE00CE96E5 /* tor.png in Resources */,
+				5C5A117E17D240BE00CE96E5 /* tor@2x.png in Resources */,
+				5C5A118017D240BE00CE96E5 /* tor~ipad.png in Resources */,
+				5C5A118217D240BE00CE96E5 /* tor@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3824,6 +3903,9 @@
 				5C39F0A917CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
 				5C0B9B9117D2023C000B9E34 /* UDBarTrackballItem.m in Sources */,
 				5C0B9B9417D20438000B9E34 /* UDInputAccessoryView.m in Sources */,
+				5C5A116717D2393F00CE96E5 /* KxIntroView.m in Sources */,
+				5C5A116817D2393F00CE96E5 /* KxIntroViewController.m in Sources */,
+				5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4150,7 +4232,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				SDKROOT = iphoneos;
@@ -4173,7 +4255,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

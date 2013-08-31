@@ -7,9 +7,13 @@
 //
 
 #import "AboutSimNICUViewController.h"
+#import "KxIntroViewController.h"
+#import "AppViewController.h"
 #import "CBDisplayMethods.h"
+#import "KxIntroViewPage.h"
 #import "UnderlineLabel.h"
 #import "AppDelegate.h"
+#import "KxIntroView.h"
 #import "iRate.h"
 
 @interface AboutSimNICUViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -67,9 +71,9 @@
     
 #else
     
-    // [aboutMenuItems addObject:@"Quick Tutorial"];
-    // [aboutMenuItems addObject:@"FAQ"];
+    [aboutMenuItems addObject:@"Intro screen"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
+    [aboutMenuItems addObject:@"Feedback / Requests"];
     [aboutMenuItems addObject:@"Developer Information"];
     
 #endif
@@ -167,16 +171,20 @@
             
 #else
             
-            // cell.imageView.image = [UIImage imageNamed:@"tutorial.png"];
-            cell.imageView.image = [UIImage imageNamed:@"star.png"];
+            cell.imageView.image = [UIImage imageNamed:@"tutorial.png"];
+            // cell.imageView.image = [UIImage imageNamed:@"star.png"];
 #endif
         }
         else if (indexPath.row == 1)
         {
             // cell.imageView.image = [UIImage imageNamed:@"star.png"];
-            cell.imageView.image = [UIImage imageNamed:@"safari.png"];
+            cell.imageView.image = [UIImage imageNamed:@"star.png"];
         }
         else if (indexPath.row == 2)
+        {
+            // cell.imageView.image = [UIImage imageNamed:@"safari.png"];
+        }
+        else if (indexPath.row == 3)
         {
             cell.imageView.image = [UIImage imageNamed:@"safari.png"];
         }
@@ -209,9 +217,13 @@
     
     if (indexPath.row == 0)
     {
-        [[iRate sharedInstance] openRatingsPageInAppStore];
+        [self showIntroScreen];
     }
     else if (indexPath.row == 1)
+    {
+        [[iRate sharedInstance] openRatingsPageInAppStore];
+    }
+    else if (indexPath.row == 3)
     {
 #ifdef LITE_VERSION
         
@@ -292,6 +304,56 @@
     [footerView addSubview:tableFooterLabel];
     
     return footerView;
+}
+
+- (void)showIntroScreen
+{
+    KxIntroViewPage *page0 = [KxIntroViewPage introViewPageWithTitle: @"Hello from SampleApp"
+                                                          withDetail: @"Look at this example of using the intro screen! Gradient background, full screen support and more."
+                                                           withImage: [UIImage imageNamed:@"sun"]];
+    
+    KxIntroViewPage *page1 = [KxIntroViewPage introViewPageWithTitle: @"What's new"
+                                                          withDetail: @"List of new features\n\n- feature #1\n- feature #2\n- feature #3\n- feature #4\n- feature #5"
+                                                           withImage: [UIImage imageNamed:@"tor"]];
+    
+    KxIntroViewPage *page2 = [KxIntroViewPage introViewPageWithTitle: @"Lorem Ipsum passage"
+                                                          withDetail: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!"
+                                                           withImage: nil];
+    
+    page1.detailLabel.textAlignment = NSTextAlignmentLeft;
+    
+    KxIntroViewController *newViewController;
+    
+    newViewController = [[KxIntroViewController alloc ] initWithPages:@[ page0, page1, page2 ]];
+    
+    // sample using header
+    if (0)
+    {
+        const BOOL isPhone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+        
+        UIFont *font = [UIFont boldSystemFontOfSize:isPhone ? 22 : 26];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, isPhone ? 10 : 25, 0, font.lineHeight)];
+        label.text = @"Sample App";
+        label.font = font;
+        label.textColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.opaque = NO;
+        label.backgroundColor = [UIColor clearColor];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        
+        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, font.lineHeight + (isPhone ? 10 : 25))];
+        header.backgroundColor = [UIColor clearColor];
+        header.opaque = NO;
+        [header addSubview:label];
+        
+        newViewController.introView.introHeader = header;
+    }
+    
+    newViewController.introView.animatePageChanges = YES;
+    newViewController.introView.gradientBackground = YES;
+    
+    //[vc presentInView:self.window.rootViewController.view];
+    [newViewController presentInViewController:self fullScreenLayout:NO];
 }
 
 @end

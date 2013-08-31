@@ -7,7 +7,9 @@
 //
 
 #import "EnterWeightViewController.h"
+#import "KxIntroViewController.h"
 #import "AppViewController.h"
+#import "KxIntroViewPage.h"
 #import "KKPasscodeLock.h"
 #import "DCIntrospect.h"
 #import "AppDelegate.h"

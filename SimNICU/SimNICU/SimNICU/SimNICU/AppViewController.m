@@ -8,9 +8,12 @@
 
 #import "PortraitOnlyNavigationController.h"
 #import "EnterWeightViewController.h"
+#import "KxIntroViewController.h"
 #import "ZUUIRevealController.h"
 #import "AppViewController.h"
+#import "KxIntroViewPage.h"
 #import "CBTimeMethods.h"
+#import "KxIntroView.h"
 #import "AppDelegate.h"
 #import "RoundImage.h"
 #import "Patient.h"
@@ -742,6 +745,12 @@
                              loadingDisplayTextLabel.alpha = 0.4f;
                              
                              appViewControllerLoadingForTheFirstTime = NO;
+                             
+#if INTRO_SCREEN
+                             
+                             [self showIntroScreen];
+                             
+#endif
                          }];
         
 #endif
@@ -1467,6 +1476,56 @@
 }
 
 #pragma mark -
+
+- (void)showIntroScreen
+{
+    KxIntroViewPage *page0 = [KxIntroViewPage introViewPageWithTitle: @"Welcome!"
+                                                          withDetail: @"This brief introduction will show the basics of how to use this App."
+                                                           withImage: [UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]];
+    
+    KxIntroViewPage *page1 = [KxIntroViewPage introViewPageWithTitle: @"What's new"
+                                                          withDetail: @"List of new features\n\n- feature #1\n- feature #2\n- feature #3\n- feature #4\n- feature #5"
+                                                           withImage: [UIImage imageNamed:@"tor"]];
+    
+    KxIntroViewPage *page2 = [KxIntroViewPage introViewPageWithTitle: @"Lorem Ipsum passage"
+                                                          withDetail: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum!"
+                                                           withImage: nil];
+    
+    page1.detailLabel.textAlignment = NSTextAlignmentLeft;
+    
+    KxIntroViewController *newViewController;
+    
+    newViewController = [[KxIntroViewController alloc ] initWithPages:@[ page0, page1, page2 ]];
+    
+    // sample using header
+    if (0)
+    {
+        const BOOL isPhone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+        
+        UIFont *font = [UIFont boldSystemFontOfSize:isPhone ? 22 : 26];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, isPhone ? 10 : 25, 0, font.lineHeight)];
+        label.text = @"Sample App";
+        label.font = font;
+        label.textColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.opaque = NO;
+        label.backgroundColor = [UIColor clearColor];
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        
+        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, font.lineHeight + (isPhone ? 10 : 25))];
+        header.backgroundColor = [UIColor clearColor];
+        header.opaque = NO;
+        [header addSubview:label];
+        
+        newViewController.introView.introHeader = header;
+    }
+    
+    newViewController.introView.animatePageChanges = YES;
+    newViewController.introView.gradientBackground = YES;
+    
+    //[vc presentInView:self.window.rootViewController.view];
+    [newViewController presentInViewController:self fullScreenLayout:NO];
+}
 
 - (void)showAboutScreen
 {

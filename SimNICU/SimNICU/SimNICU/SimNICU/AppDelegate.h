@@ -27,6 +27,9 @@
 #define DCINTROSPECT_ON 0
 #define RESET_CELL_INFO 1
 
+// Intro screen
+#define INTRO_SCREEN 1
+
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0
 

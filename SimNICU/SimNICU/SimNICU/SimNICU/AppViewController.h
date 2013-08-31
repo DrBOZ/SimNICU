@@ -19,4 +19,6 @@
 @property (nonatomic, strong) NSString *weight;
 @property (nonatomic) float *calculationWeight;
 
+- (void)showIntroScreen;
+
 @end
