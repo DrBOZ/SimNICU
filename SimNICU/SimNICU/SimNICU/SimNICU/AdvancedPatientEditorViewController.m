@@ -4430,6 +4430,7 @@
     DailySummaryPDFViewController *newViewController = [[DailySummaryPDFViewController alloc] init];
     newViewController.selectedPatient = self.selectedPatient;
     
+    /*
     UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 640.0f, 640.0f)];
     
     [tempView addSubview:self.chart];
@@ -4442,6 +4443,7 @@
     UIGraphicsEndImageContext();
     
     newViewController.phototherapyChart = self.shinobiChartImage;
+     */
     
     [self.navigationController pushViewController:newViewController animated:YES];
 }

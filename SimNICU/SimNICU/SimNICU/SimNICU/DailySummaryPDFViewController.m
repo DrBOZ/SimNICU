@@ -69,7 +69,7 @@
     // draw image - this works
     // UIImage *icon = [UIImage imageNamed:@"ray-logo.png"];
     // [self.phototherapyChart drawInRect:CGRectMake(320.0f - ((self.phototherapyChart.size.width / 2) / 2), 400.0f, (self.phototherapyChart.size.width / 2), (self.phototherapyChart.size.height / 2))];
-    [self.phototherapyChart drawInRect:CGRectMake(10.0f, 400.0f, (self.phototherapyChart.size.width / 2), (self.phototherapyChart.size.height / 2))];
+    // [self.phototherapyChart drawInRect:CGRectMake(10.0f, 400.0f, (self.phototherapyChart.size.width / 2), (self.phototherapyChart.size.height / 2))];
     
     // draw text
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -113,14 +113,8 @@
     // Close the PDF context and write the contents out.
     UIGraphicsEndPDFContext();
     
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
-    
-    NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView setScalesPageToFit:YES];
-    [webView loadRequest:request];
-    
-    [self.view addSubview:webView];
+    // display PDF
+    [self displayPDF];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,6 +150,19 @@
     CGContextSetStrokeColorWithColor(currentContext, borderColor.CGColor);
     CGContextSetLineWidth(currentContext, kBorderWidth);
     CGContextStrokeRect(currentContext, rectFrame);
+}
+
+- (void)displayPDF
+{
+    // create webView to display PDF
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
+    
+    NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView setScalesPageToFit:YES];
+    [webView loadRequest:request];
+    
+    [self.view addSubview:webView];
 }
 
 - (void)print
