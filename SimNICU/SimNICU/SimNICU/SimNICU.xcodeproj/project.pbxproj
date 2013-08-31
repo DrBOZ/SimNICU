@@ -9,10 +9,20 @@
 /* Begin PBXBuildFile section */
 		5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
-		5C0B9B6C17D1FE3B000B9E34 /* RKRichTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B9B6B17D1FE3B000B9E34 /* RKRichTextView.m */; };
-		5C0B9B7117D1FE58000B9E34 /* RKRichTextViewListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B9B6E17D1FE58000B9E34 /* RKRichTextViewListener.m */; };
-		5C0B9B7217D1FE58000B9E34 /* RKRichTextView.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B6F17D1FE58000B9E34 /* RKRichTextView.html */; };
-		5C0B9B7317D1FE58000B9E34 /* RKRichTextViewToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7017D1FE58000B9E34 /* RKRichTextViewToolbar.xib */; };
+		5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */; };
+		5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7817D2022B000B9E34 /* trackball blue highlighted.pxm */; };
+		5C0B9B8517D2022B000B9E34 /* trackball blue highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7917D2022B000B9E34 /* trackball blue highlighted@2x.png */; };
+		5C0B9B8617D2022B000B9E34 /* trackball blue highlighted@2x.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7A17D2022B000B9E34 /* trackball blue highlighted@2x.pxm */; };
+		5C0B9B8717D2022B000B9E34 /* trackball highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7B17D2022B000B9E34 /* trackball highlighted.png */; };
+		5C0B9B8817D2022B000B9E34 /* trackball highlighted.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7C17D2022B000B9E34 /* trackball highlighted.pxm */; };
+		5C0B9B8917D2022B000B9E34 /* trackball highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7D17D2022B000B9E34 /* trackball highlighted@2x.png */; };
+		5C0B9B8A17D2022B000B9E34 /* trackball highlighted@2x.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7E17D2022B000B9E34 /* trackball highlighted@2x.pxm */; };
+		5C0B9B8B17D2022B000B9E34 /* trackball.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7F17D2022B000B9E34 /* trackball.png */; };
+		5C0B9B8C17D2022B000B9E34 /* trackball.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B8017D2022B000B9E34 /* trackball.pxm */; };
+		5C0B9B8D17D2022B000B9E34 /* trackball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B8117D2022B000B9E34 /* trackball@2x.png */; };
+		5C0B9B8E17D2022B000B9E34 /* trackball@2x.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B8217D2022B000B9E34 /* trackball@2x.pxm */; };
+		5C0B9B9117D2023C000B9E34 /* UDBarTrackballItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */; };
+		5C0B9B9417D20438000B9E34 /* UDInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */; };
 		5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
@@ -902,12 +912,22 @@
 /* Begin PBXFileReference section */
 		5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartPhototherapyDataSource.h; sourceTree = "<group>"; };
 		5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartPhototherapyDataSource.m; sourceTree = "<group>"; };
-		5C0B9B6A17D1FE3B000B9E34 /* RKRichTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKRichTextView.h; sourceTree = "<group>"; };
-		5C0B9B6B17D1FE3B000B9E34 /* RKRichTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKRichTextView.m; sourceTree = "<group>"; };
-		5C0B9B6D17D1FE58000B9E34 /* RKRichTextViewListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKRichTextViewListener.h; sourceTree = "<group>"; };
-		5C0B9B6E17D1FE58000B9E34 /* RKRichTextViewListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKRichTextViewListener.m; sourceTree = "<group>"; };
-		5C0B9B6F17D1FE58000B9E34 /* RKRichTextView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RKRichTextView.html; sourceTree = "<group>"; };
-		5C0B9B7017D1FE58000B9E34 /* RKRichTextViewToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKRichTextViewToolbar.xib; sourceTree = "<group>"; };
+		5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted.png"; sourceTree = "<group>"; };
+		5C0B9B7817D2022B000B9E34 /* trackball blue highlighted.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "trackball blue highlighted.pxm"; sourceTree = "<group>"; };
+		5C0B9B7917D2022B000B9E34 /* trackball blue highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted@2x.png"; sourceTree = "<group>"; };
+		5C0B9B7A17D2022B000B9E34 /* trackball blue highlighted@2x.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "trackball blue highlighted@2x.pxm"; sourceTree = "<group>"; };
+		5C0B9B7B17D2022B000B9E34 /* trackball highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball highlighted.png"; sourceTree = "<group>"; };
+		5C0B9B7C17D2022B000B9E34 /* trackball highlighted.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "trackball highlighted.pxm"; sourceTree = "<group>"; };
+		5C0B9B7D17D2022B000B9E34 /* trackball highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball highlighted@2x.png"; sourceTree = "<group>"; };
+		5C0B9B7E17D2022B000B9E34 /* trackball highlighted@2x.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "trackball highlighted@2x.pxm"; sourceTree = "<group>"; };
+		5C0B9B7F17D2022B000B9E34 /* trackball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackball.png; sourceTree = "<group>"; };
+		5C0B9B8017D2022B000B9E34 /* trackball.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = trackball.pxm; sourceTree = "<group>"; };
+		5C0B9B8117D2022B000B9E34 /* trackball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball@2x.png"; sourceTree = "<group>"; };
+		5C0B9B8217D2022B000B9E34 /* trackball@2x.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "trackball@2x.pxm"; sourceTree = "<group>"; };
+		5C0B9B8F17D2023C000B9E34 /* UDBarTrackballItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDBarTrackballItem.h; sourceTree = "<group>"; };
+		5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDBarTrackballItem.m; sourceTree = "<group>"; };
+		5C0B9B9217D20438000B9E34 /* UDInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDInputAccessoryView.h; sourceTree = "<group>"; };
+		5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDInputAccessoryView.m; sourceTree = "<group>"; };
 		5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTimeMethods.h; sourceTree = "<group>"; };
 		5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTimeMethods.m; sourceTree = "<group>"; };
 		5C0C9D9E179B26360077B881 /* PatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientCell.h; sourceTree = "<group>"; };
@@ -1618,17 +1638,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C0B9B6917D1FD3F000B9E34 /* RKRichTextView */ = {
+		5C0B9B7517D201F3000B9E34 /* UDBarTrackballItem */ = {
 			isa = PBXGroup;
 			children = (
-				5C0B9B6A17D1FE3B000B9E34 /* RKRichTextView.h */,
-				5C0B9B6B17D1FE3B000B9E34 /* RKRichTextView.m */,
-				5C0B9B6D17D1FE58000B9E34 /* RKRichTextViewListener.h */,
-				5C0B9B6E17D1FE58000B9E34 /* RKRichTextViewListener.m */,
-				5C0B9B6F17D1FE58000B9E34 /* RKRichTextView.html */,
-				5C0B9B7017D1FE58000B9E34 /* RKRichTextViewToolbar.xib */,
+				5C0B9B8F17D2023C000B9E34 /* UDBarTrackballItem.h */,
+				5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */,
+				5C0B9B9217D20438000B9E34 /* UDInputAccessoryView.h */,
+				5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */,
+				5C0B9B7617D2021D000B9E34 /* Images */,
 			);
-			name = RKRichTextView;
+			name = UDBarTrackballItem;
+			sourceTree = "<group>";
+		};
+		5C0B9B7617D2021D000B9E34 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */,
+				5C0B9B7817D2022B000B9E34 /* trackball blue highlighted.pxm */,
+				5C0B9B7917D2022B000B9E34 /* trackball blue highlighted@2x.png */,
+				5C0B9B7A17D2022B000B9E34 /* trackball blue highlighted@2x.pxm */,
+				5C0B9B7B17D2022B000B9E34 /* trackball highlighted.png */,
+				5C0B9B7C17D2022B000B9E34 /* trackball highlighted.pxm */,
+				5C0B9B7D17D2022B000B9E34 /* trackball highlighted@2x.png */,
+				5C0B9B7E17D2022B000B9E34 /* trackball highlighted@2x.pxm */,
+				5C0B9B7F17D2022B000B9E34 /* trackball.png */,
+				5C0B9B8017D2022B000B9E34 /* trackball.pxm */,
+				5C0B9B8117D2022B000B9E34 /* trackball@2x.png */,
+				5C0B9B8217D2022B000B9E34 /* trackball@2x.pxm */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		5C0E05FA178F518C00768739 /* Adrenaline */ = {
@@ -2217,7 +2255,6 @@
 		5C940A82166E38320044A7D1 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				5C0B9B6917D1FD3F000B9E34 /* RKRichTextView */,
 				5C940A83166E384A0044A7D1 /* DAAnisotropicImage */,
 				5C940ADB166E39690044A7D1 /* DCIntrospect */,
 				5C940AD8166E394F0044A7D1 /* CoolButton */,
@@ -2229,6 +2266,7 @@
 				5C940ADC166E39720044A7D1 /* Shinobi */,
 				5C940A98166E38B90044A7D1 /* SVSegmentedControl */,
 				5C940ADA166E39600044A7D1 /* TestFlight */,
+				5C0B9B7517D201F3000B9E34 /* UDBarTrackballItem */,
 				5C940A94166E38A00044A7D1 /* ZUUIRevealController */,
 			);
 			name = "3rd Party";
@@ -3336,8 +3374,18 @@
 				5CDA652617C0FC8200AC5266 /* plusButton2.png in Resources */,
 				5CD43A4F17CB4B1100426991 /* Jaundice2ViewController.xib in Resources */,
 				5C39F0B217CFFD6D007B2CF9 /* ray-logo.png in Resources */,
-				5C0B9B7217D1FE58000B9E34 /* RKRichTextView.html in Resources */,
-				5C0B9B7317D1FE58000B9E34 /* RKRichTextViewToolbar.xib in Resources */,
+				5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */,
+				5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */,
+				5C0B9B8517D2022B000B9E34 /* trackball blue highlighted@2x.png in Resources */,
+				5C0B9B8617D2022B000B9E34 /* trackball blue highlighted@2x.pxm in Resources */,
+				5C0B9B8717D2022B000B9E34 /* trackball highlighted.png in Resources */,
+				5C0B9B8817D2022B000B9E34 /* trackball highlighted.pxm in Resources */,
+				5C0B9B8917D2022B000B9E34 /* trackball highlighted@2x.png in Resources */,
+				5C0B9B8A17D2022B000B9E34 /* trackball highlighted@2x.pxm in Resources */,
+				5C0B9B8B17D2022B000B9E34 /* trackball.png in Resources */,
+				5C0B9B8C17D2022B000B9E34 /* trackball.pxm in Resources */,
+				5C0B9B8D17D2022B000B9E34 /* trackball@2x.png in Resources */,
+				5C0B9B8E17D2022B000B9E34 /* trackball@2x.pxm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3774,8 +3822,8 @@
 				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
 				5CD43A4D17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 				5C39F0A917CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
-				5C0B9B6C17D1FE3B000B9E34 /* RKRichTextView.m in Sources */,
-				5C0B9B7117D1FE58000B9E34 /* RKRichTextViewListener.m in Sources */,
+				5C0B9B9117D2023C000B9E34 /* UDBarTrackballItem.m in Sources */,
+				5C0B9B9417D20438000B9E34 /* UDInputAccessoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

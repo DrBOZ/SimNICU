@@ -14,6 +14,7 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
+#import "UDBarTrackballItem.h"
 #import "CBTableViewRowData.h"
 // #import "ShinobiChartCell.h"
 #import "BilirubinResult.h"
@@ -23,6 +24,8 @@
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
+
+#import "UDInputAccessoryView.h"
 
 @interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate>
 {
@@ -849,6 +852,7 @@
         self.backgroundTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.backgroundTextView.delegate = self;
         self.backgroundTextView.tag = 0;
+        [self addTrackBallForUITextView:self.backgroundTextView];
         
         [cell.contentView addSubview:self.backgroundTextView];
     }
@@ -862,6 +866,7 @@
         self.activeProblemsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.activeProblemsTextView.delegate = self;
         self.activeProblemsTextView.tag = 1;
+        [self addTrackBallForUITextView:self.activeProblemsTextView];
         
         [cell.contentView addSubview:self.activeProblemsTextView];
     }
@@ -875,6 +880,7 @@
         self.resolvedProblemsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.resolvedProblemsTextView.delegate = self;
         self.resolvedProblemsTextView.tag = 2;
+        [self addTrackBallForUITextView:self.resolvedProblemsTextView];
         
         [cell.contentView addSubview:self.resolvedProblemsTextView];
     }
@@ -888,6 +894,7 @@
         self.recentSignificantEventsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.recentSignificantEventsTextView.delegate = self;
         self.recentSignificantEventsTextView.tag = 3;
+        [self addTrackBallForUITextView:self.recentSignificantEventsTextView];
         
         [cell.contentView addSubview:self.recentSignificantEventsTextView];
     }
@@ -901,6 +908,7 @@
         self.ventilationAndSedationTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.ventilationAndSedationTextView.delegate = self;
         self.ventilationAndSedationTextView.tag = 4;
+        [self addTrackBallForUITextView:self.ventilationAndSedationTextView];
         
         [cell.contentView addSubview:self.ventilationAndSedationTextView];
     }
@@ -914,6 +922,7 @@
         self.cxrTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.cxrTextView.delegate = self;
         self.cxrTextView.tag = 5;
+        [self addTrackBallForUITextView:self.cxrTextView];
         
         [cell.contentView addSubview:self.cxrTextView];
     }
@@ -927,6 +936,7 @@
         self.cardiovascularTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.cardiovascularTextView.delegate = self;
         self.cardiovascularTextView.tag = 6;
+        [self addTrackBallForUITextView:self.cardiovascularTextView];
         
         [cell.contentView addSubview:self.cardiovascularTextView];
     }
@@ -940,6 +950,7 @@
         self.linesTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.linesTextView.delegate = self;
         self.linesTextView.tag = 7;
+        [self addTrackBallForUITextView:self.linesTextView];
         
         [cell.contentView addSubview:self.linesTextView];
     }
@@ -953,6 +964,7 @@
         self.feedsAndFluidsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.feedsAndFluidsTextView.delegate = self;
         self.feedsAndFluidsTextView.tag = 8;
+        [self addTrackBallForUITextView:self.feedsAndFluidsTextView];
         
         [cell.contentView addSubview:self.feedsAndFluidsTextView];
     }
@@ -966,6 +978,7 @@
         self.fluidBalanceTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.fluidBalanceTextView.delegate = self;
         self.fluidBalanceTextView.tag = 9;
+        [self addTrackBallForUITextView:self.fluidBalanceTextView];
         
         [cell.contentView addSubview:self.fluidBalanceTextView];
     }
@@ -979,6 +992,7 @@
         self.electrolytesTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.electrolytesTextView.delegate = self;
         self.electrolytesTextView.tag = 10;
+        [self addTrackBallForUITextView:self.electrolytesTextView];
         
         [cell.contentView addSubview:self.electrolytesTextView];
     }
@@ -1015,6 +1029,7 @@
         self.jaundiceTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.jaundiceTextView.delegate = self;
         self.jaundiceTextView.tag = 11;
+        [self addTrackBallForUITextView:self.jaundiceTextView];
         
         [cell.contentView addSubview:self.jaundiceTextView];
     }
@@ -1028,6 +1043,7 @@
         self.sepsisTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.sepsisTextView.delegate = self;
         self.sepsisTextView.tag = 12;
+        [self addTrackBallForUITextView:self.sepsisTextView];
         
         [cell.contentView addSubview:self.sepsisTextView];
     }
@@ -1041,6 +1057,7 @@
         self.drugsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.drugsTextView.delegate = self;
         self.drugsTextView.tag = 13;
+        [self addTrackBallForUITextView:self.drugsTextView];
         
         [cell.contentView addSubview:self.drugsTextView];
     }
@@ -1054,6 +1071,7 @@
         self.ropTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.ropTextView.delegate = self;
         self.ropTextView.tag = 14;
+        [self addTrackBallForUITextView:self.ropTextView];
         
         [cell.contentView addSubview:self.ropTextView];
     }
@@ -1067,6 +1085,7 @@
         self.cranialUSSTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.cranialUSSTextView.delegate = self;
         self.cranialUSSTextView.tag = 15;
+        [self addTrackBallForUITextView:self.cranialUSSTextView];
         
         [cell.contentView addSubview:self.cranialUSSTextView];
     }
@@ -1080,6 +1099,7 @@
         self.parentsAndSocialTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.parentsAndSocialTextView.delegate = self;
         self.parentsAndSocialTextView.tag = 16;
+        [self addTrackBallForUITextView:self.parentsAndSocialTextView];
         
         [cell.contentView addSubview:self.parentsAndSocialTextView];
     }
@@ -1093,6 +1113,7 @@
         self.impressionTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.impressionTextView.delegate = self;
         self.impressionTextView.tag = 17;
+        [self addTrackBallForUITextView:self.impressionTextView];
         
         [cell.contentView addSubview:self.impressionTextView];
     }
@@ -1106,6 +1127,7 @@
         self.planTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.planTextView.delegate = self;
         self.planTextView.tag = 18;
+        [self addTrackBallForUITextView:self.planTextView];
         
         [cell.contentView addSubview:self.planTextView];
     }
@@ -1119,6 +1141,7 @@
         self.jobsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
         self.jobsTextView.delegate = self;
         self.jobsTextView.tag = 19;
+        [self addTrackBallForUITextView:self.jobsTextView];
         
         [cell.contentView addSubview:self.jobsTextView];
     }
@@ -2725,7 +2748,7 @@
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:250.0f];
+        newRow.rowHeight = [NSNumber numberWithFloat:346.0f];
         [newSection.rows addObject:newRow];
         
         [self.selectedPatient.handoverSections addObject:newSection];
@@ -2741,6 +2764,17 @@
     }
     
     return returnArray;
+}
+
+- (void)addTrackBallForUITextView:(UITextView *)textView
+{
+    
+#if UDBARTRACKBALL
+    
+    [textView setInputAccessoryView:[self trackballAccessoryViewForUITextView:textView]];
+    
+#endif
+    
 }
 
 #pragma mark - ShinobiChart datasource
@@ -4446,6 +4480,25 @@
      */
     
     [self.navigationController pushViewController:newViewController animated:YES];
+}
+
+- (UIView *)trackballAccessoryViewForUITextView:(UITextView *)textView
+{
+    // Use this simple toolbar if you don't want to use the special input accessory view.
+    // UIToolbar *trackballToolbar = [[UIToolbar alloc] init];
+    // [trackballToolbar sizeToFit];
+    // [trackballToolbar setTintColor:[UIColor colorWithRed:145/255. green:153/255. blue:164/255. alpha:1]];
+    
+    // Special input accessory view; allows smaller height in landscape orientation
+    UIToolbar *trackballToolbar = [[UDInputAccessoryView alloc] init];
+    
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    UDBarTrackballItem *trackball = [[UDBarTrackballItem alloc] initForTextView:textView];
+    
+    [trackballToolbar setItems:@[spacer, trackball, spacer] animated:YES];
+    
+    return trackballToolbar;
 }
 
 @end

@@ -25,17 +25,20 @@
 // testing tools
 #define IRATE_PREVIEW_MODE 0
 #define DCINTROSPECT_ON 0
-#define RESET_CELL_INFO 0
+#define RESET_CELL_INFO 1
 
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0
 
+// Tools
+#define UDBARTRACKBALL 1
+
 // Features in development
 #define FEEDS_AND_FLUIDS_PREVIEW_MODE 0
-#define FLUID_BALANCE_PREVIEW_MODE 0
-#define GLUCOSE_LOAD_PREVIEW_MODE 0
 #define POSTNATAL_WARD_PREVIEW_MODE 0
+#define FLUID_BALANCE_PREVIEW_MODE 0
 #define HYPOGLYCAEMIA_PREVIEW_MODE 0
+#define GLUCOSE_LOAD_PREVIEW_MODE 0
 #define CALCULATOR_PREVIEW_MODE 0
 #define SETTINGS_PREVIEW_MODE 0
 #define CRUSS_PREVIEW_MODE 0
