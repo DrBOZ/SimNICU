@@ -47,6 +47,8 @@
     
     UIFont *font;
     UIFont *headerFont;
+    
+    int page;
 }
 
 - (id)init
@@ -119,6 +121,9 @@
     font = [UIFont systemFontOfSize:12.0];
     headerFont = [UIFont boldSystemFontOfSize:12.0f];
     
+    // set page number
+    page = 1;
+    
     normalSeparator = 2.0f;
     headingSeparator = 10.0f;
     
@@ -157,7 +162,6 @@
     
     for (section in self.selectedPatient.handoverSections)
     {
-        
 #pragma mark Background
         if ([section.sectionName isEqual:@"Background"] && ([self.selectedPatient.background length] > 0))
         {
@@ -260,6 +264,7 @@
             // text
             [self drawText:self.selectedPatient.electrolytes withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
+#pragma mark Jaundice
         else if ([section.sectionName isEqual:@"Jaundice"])
         {
             // header
@@ -275,6 +280,7 @@
                 [self drawText:self.selectedPatient.dct withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
             }
         }
+#pragma mark Sepsis
         else if ([section.sectionName isEqual:@"Sepsis"] && ([self.selectedPatient.sepsis length] > 0))
         {
             // header
@@ -283,6 +289,7 @@
             // text
             [self drawText:self.selectedPatient.sepsis withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
+#pragma mark Drugs
         else if ([section.sectionName isEqual:@"Drugs"] && ([self.selectedPatient.drugs length] > 0))
         {
             // header
@@ -291,6 +298,7 @@
             // text
             [self drawText:self.selectedPatient.drugs withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
+#pragma mark ROP
         else if ([section.sectionName isEqual:@"ROP"] && ([self.selectedPatient.rop length] > 0))
         {
             // header
@@ -299,6 +307,7 @@
             // text
             [self drawText:self.selectedPatient.rop withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
+#pragma mark Neurology & Cranial USS
         else if ([section.sectionName isEqual:@"Neurology & Cranial USS"] && ([self.selectedPatient.cranialUSS length] > 0))
         {
             // header
@@ -307,6 +316,7 @@
             // text
             [self drawText:self.selectedPatient.cranialUSS withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
+#pragma mark Parents & Social
         else if ([section.sectionName isEqual:@"Parents & Social"] && ([self.selectedPatient.parentsAndSocial length] > 0))
         {
             // header
@@ -315,9 +325,34 @@
             // text
             [self drawText:self.selectedPatient.parentsAndSocial withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
+#pragma mark Examination
+        else if ([section.sectionName isEqual:@"Examination"] && ([self.selectedPatient.impression length] > 0))
+        {
+            // header
+            [self drawText:@"Examination" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+            
+            // text
+            [self drawText:self.selectedPatient.impression withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+        }
+#pragma mark Summary
+        else if ([section.sectionName isEqual:@"Summary"] && ([self.selectedPatient.plan length] > 0))
+        {
+            // header
+            [self drawText:@"Summary" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+            
+            // text
+            [self drawText:self.selectedPatient.plan withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+        }
+#pragma mark Plan
+        else if ([section.sectionName isEqual:@"Plan"] && ([self.selectedPatient.jobs length] > 0))
+        {
+            // header
+            [self drawText:@"Plan" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+            
+            // text
+            [self drawText:self.selectedPatient.jobs withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+        }
     }
-
-
 
     // Close the PDF context and write the contents out.
     UIGraphicsEndPDFContext();
@@ -339,19 +374,51 @@
                                constrainedToSize:printableArea
                                    lineBreakMode:UILineBreakModeWordWrap];
     
-    // check that there is available space on the left hand side of the page
+    // check that there is available vertical space on the page
     if ((verticalPointToPrint >= (kA4Height - kBorderInset - kMarginInsetBottom - stringSize.height)) || (([textFont isEqual:headerFont]) && verticalPointToPrint >= (kA4Height - kBorderInset - kMarginInsetBottom - stringSize.height - 60.0f)))
     {
-        // start printing on the right
-        y = rightSidePointToPrint + headingSeparator;
-        verticalPointToPrint = y;
-        horizontalPointToPrint = kRightPrintingAdjustment;
-        
-        printableArea = CGSizeMake((kA4Width / 2) - (kBorderInset) - (kMarginInsetRight + (kMarginInsetLeft / 2)), kA4Height - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
-        
-        stringSize = [textToDraw sizeWithFont:textFont
-                            constrainedToSize:printableArea
-                                lineBreakMode:UILineBreakModeWordWrap];
+        // check if already printing on the right
+        if (horizontalPointToPrint == kRightPrintingAdjustment)
+        {
+            // Mark the beginning of a new page.
+            UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, kA4Width, kA4Height), nil);
+            
+            // reset counters for 2nd page
+            y = 50.0f;
+            verticalPointToPrint = y;
+            horizontalPointToPrint = kLeftPrintingAdjustment;
+            
+            // left hand side of page
+            printableArea = CGSizeMake((kA4Width / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), kA4Height - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            
+            stringSize = [textToDraw sizeWithFont:textFont
+                                       constrainedToSize:printableArea
+                                           lineBreakMode:UILineBreakModeWordWrap];
+            
+            // increment page
+            page ++;
+        }
+        else
+        {
+            // if not then start printing on the right
+            
+            // first check which page
+            // check if on first page or subsequent pages
+            if (page == 1)
+            {
+                // set print position to match Background information
+                y = rightSidePointToPrint + headingSeparator;
+            }
+            
+            verticalPointToPrint = y;
+            horizontalPointToPrint = kRightPrintingAdjustment;
+            
+            printableArea = CGSizeMake((kA4Width / 2) - (kBorderInset) - (kMarginInsetRight + (kMarginInsetLeft / 2)), kA4Height - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            
+            stringSize = [textToDraw sizeWithFont:textFont
+                                constrainedToSize:printableArea
+                                    lineBreakMode:UILineBreakModeWordWrap];
+        }
     }
     
     // create a rectangle to display text based on the text size
