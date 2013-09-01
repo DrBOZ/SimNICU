@@ -135,7 +135,6 @@
 		5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
 		5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
-		5C31BEC217D3031F0067BA5C /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */; };
 		5C31BEC317D303200067BA5C /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
@@ -1625,7 +1624,6 @@
 				5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */,
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
 				5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
-				5C31BEC217D3031F0067BA5C /* libisimulate-4.x.a in Frameworks */,
 				5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */,
 				5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */,
 				5C940CAC166E413A0044A7D1 /* AudioToolbox.framework in Frameworks */,
@@ -4259,7 +4257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				SDKROOT = iphoneos;
@@ -4284,7 +4282,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4308,7 +4306,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
@@ -4334,7 +4332,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "99A606B1-3D46-4B36-B8DA-92C81491D52C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99A606B1-3D46-4B36-B8DA-92C81491D52C";
