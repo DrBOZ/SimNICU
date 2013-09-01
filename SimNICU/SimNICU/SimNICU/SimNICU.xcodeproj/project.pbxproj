@@ -292,6 +292,8 @@
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
 		5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
+		5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */; };
+		5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */; };
 		5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
@@ -1142,6 +1144,7 @@
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
 		5C8606D0178ADD3E00428ED4 /* DrugSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSection.m; sourceTree = "<group>"; };
+		5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sherwood-forest-hospitals-logo.jpg"; sourceTree = "<group>"; };
 		5C8B20631791125000579522 /* DrugDoseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDoseTableViewCell.h; sourceTree = "<group>"; };
 		5C8B20641791125000579522 /* DrugDoseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseTableViewCell.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
@@ -2194,6 +2197,14 @@
 			name = Screen_GlucoseLoad;
 			sourceTree = "<group>";
 		};
+		5C88E74917D3BCCA00DAB98D /* Hospital Logo */ = {
+			isa = PBXGroup;
+			children = (
+				5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */,
+			);
+			name = "Hospital Logo";
+			sourceTree = "<group>";
+		};
 		5C930AF617B0E81600CBE616 /* General Information */ = {
 			isa = PBXGroup;
 			children = (
@@ -2727,6 +2738,7 @@
 		5C940C2D166E3DF10044A7D1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5C88E74917D3BCCA00DAB98D /* Hospital Logo */,
 				5C5A116A17D240AB00CE96E5 /* Intro Screen */,
 				5C940C44166E3E340044A7D1 /* App */,
 				5C940C46166E3E470044A7D1 /* APGAR */,
@@ -3478,6 +3490,7 @@
 				5C5A11B017D29F7C00CE96E5 /* mail01.png in Resources */,
 				5C5A11B417D2A26400CE96E5 /* intro01.png in Resources */,
 				5C5A11B617D2A26400CE96E5 /* intro01@2x.png in Resources */,
+				5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3755,6 +3768,7 @@
 				5C5A11B117D29F7C00CE96E5 /* mail01.png in Resources */,
 				5C5A11B517D2A26400CE96E5 /* intro01.png in Resources */,
 				5C5A11B717D2A26400CE96E5 /* intro01@2x.png in Resources */,
+				5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,7 +48,7 @@
     BOOL newFluidBalance;
     BOOL newElectrolytes;
     BOOL newBiliChart;
-    BOOL newDCTInfo;
+    BOOL newJaundice;
     BOOL newSepsis;
     BOOL newDrugs;
     BOOL newROP;
@@ -118,8 +118,20 @@
 // 5) create a weight shinobi chart
 // 6) dateAndTimeForThisChart thing for ShinobiChart
 //
-// 7) 
-// 8)
+// 7) Add hospital logo and details to PDF
+// 8) Adjust margins to actual hospital paper
+// 9) Allow user to adjust margins for different paper sizes and custom size
+//10) Add Time and Date
+//11) Add weight chart
+//12) Add phototherapy chart
+//13) Add signature box
+//14) Add settings VC
+//15) Sort Headings and Text as one object to calculate sizes *****
+//16) Add option to calcualate first day as day 0, day 1 or mixture
+//17) Add biochemistry edit
+//18) change names of patient properties to match UITextFields
+//19) Add lines for Ward round information
+//20) 'Plan' cell height should not reduce
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -572,13 +584,13 @@
             else if (indexPath.row == 1)
             {
                 // phototherapy
-                CellIdentifier = @"DCTInfo";
+                CellIdentifier = @"Jaundice";
                 
-                if (newDCTInfo)
+                if (newJaundice)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     
-                    newDCTInfo = NO;
+                    newJaundice = NO;
                 }
                 else
                 {
@@ -1020,7 +1032,7 @@
          */
     }
 #pragma mark Jaundice/DCT
-    else if ([CellIdentifier isEqualToString:@"DCTInfo"])
+    else if ([CellIdentifier isEqualToString:@"Jaundice"])
     {
         HandoverSection *section = self.selectedPatient.handoverSections[11];
         HandoverRow *row = section.rows[1];
@@ -2062,7 +2074,7 @@
     newFluidBalance = YES;
     newElectrolytes = YES;
     newBiliChart = YES;
-    newDCTInfo = YES;
+    newJaundice = YES;
     newSepsis = YES;
     newDrugs = YES;
     newROP = YES;
@@ -2158,7 +2170,7 @@
     newFluidBalance = YES;
     newElectrolytes = YES;
     newBiliChart = YES;
-    newDCTInfo = YES;
+    newJaundice = YES;
     newSepsis = YES;
     newDrugs = YES;
     newROP = YES;

@@ -10,8 +10,24 @@
 #import "HandoverSection.h"
 #import "HandoverRow.h"
 
-#define kA4Width 612.0f
-#define kA4Height 792.0f
+#define kA0Width 2384.0f
+#define kA0Height 3371.0f
+
+#define kA1Width 1685.0f
+#define kA1Height 2384.0f
+
+#define kA2Width 1190.0f
+#define kA2Height 1684.0f
+
+#define kA3Width 842.0f
+#define kA3Height 1190.0f
+
+#define kA4Width 595.0f
+#define kA4Height 842.0f
+
+#define kLetterWidth 612.0f
+#define kLetterHeight 792.0f
+
 #define kBorderWidth 5.0f
 #define kBorderInset 10.0f
 #define kMarginInsetLeft 70.0f
@@ -32,6 +48,9 @@
 
 @implementation DailySummaryPDFViewController
 {
+    float pageWidth;
+    float pageHeight;
+    
     CGSize printableArea;
     
     float topInset;
@@ -86,6 +105,10 @@
         self.toolbarItems = items;
     }
     
+    // Default page size is A4
+    pageWidth = kA4Width;
+    pageHeight = kA4Height;
+    
     // create file name
     NSString *fileName = @"dailySummary.pdf";
     
@@ -98,13 +121,19 @@
     UIGraphicsBeginPDFContextToFile(self.fileNamePath, CGRectZero, nil);
     
     // Mark the beginning of a new page.
-    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, kA4Width, kA4Height), nil);
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, pageWidth, pageHeight), nil);
     
     // create summary
     
-    // [self drawLine];  this works
+    // Draw a line at the top
+    [self drawLineAboveDailySummaryText];
     
-    // [self drawBorder]; this works
+    // Draw border
+    [self drawBorder];
+    
+    // Draw logo
+    UIImage *logo = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
+    [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), (logo.size.width / 2), (logo.size.height / 2))];
     
     // draw image - this works
     // UIImage *icon = [UIImage imageNamed:@"ray-logo.png"];
@@ -132,7 +161,7 @@
     horizontalPointToPrint = kLeftPrintingAdjustment;
     
     // left hand side of page
-    printableArea = CGSizeMake((kA4Width / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), kA4Height - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+    printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
     
 #pragma mark - Daily Summary
     
@@ -160,7 +189,7 @@
     HandoverSection *section;
     // HandoverRow *row;
     
-    for (section in self.selectedPatient.handoverSections)
+    for (section in self.selectedPatient.handoverSections) // longwinded but may be useful later...
     {
 #pragma mark Background
         if ([section.sectionName isEqual:@"Background"] && ([self.selectedPatient.background length] > 0))
@@ -265,20 +294,12 @@
             [self drawText:self.selectedPatient.electrolytes withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
 #pragma mark Jaundice
-        else if ([section.sectionName isEqual:@"Jaundice"])
+        else if ([section.sectionName isEqual:@"Jaundice"] && ([self.selectedPatient.jaundice length] > 0))
         {
             // header
             [self drawText:@"Jaundice" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
             
-            NSString *phototherapyChartFiller = @"\n\n\n\n\n\n\n\n\n\n\n";
-            
-            // text
-            [self drawText:phototherapyChartFiller withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
-            
-            if ([self.selectedPatient.dct length] > 0)
-            {
-                [self drawText:self.selectedPatient.dct withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
-            }
+            [self drawText:self.selectedPatient.jaundice withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
 #pragma mark Sepsis
         else if ([section.sectionName isEqual:@"Sepsis"] && ([self.selectedPatient.sepsis length] > 0))
@@ -353,6 +374,9 @@
             [self drawText:self.selectedPatient.jobs withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
         }
     }
+    
+    // draw signature line & draw my name, status and GMC number
+    [self drawLineForSignature];
 
     // Close the PDF context and write the contents out.
     UIGraphicsEndPDFContext();
@@ -375,13 +399,16 @@
                                    lineBreakMode:UILineBreakModeWordWrap];
     
     // check that there is available vertical space on the page
-    if ((verticalPointToPrint >= (kA4Height - kBorderInset - kMarginInsetBottom - stringSize.height)) || (([textFont isEqual:headerFont]) && verticalPointToPrint >= (kA4Height - kBorderInset - kMarginInsetBottom - stringSize.height - 60.0f)))
+    if ((verticalPointToPrint >= (pageHeight - kBorderInset - kMarginInsetBottom - stringSize.height)) || (([textFont isEqual:headerFont]) && verticalPointToPrint >= (pageHeight - kBorderInset - kMarginInsetBottom - stringSize.height - 60.0f)))
     {
         // check if already printing on the right
         if (horizontalPointToPrint == kRightPrintingAdjustment)
         {
             // Mark the beginning of a new page.
-            UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, kA4Width, kA4Height), nil);
+            UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, pageWidth, pageHeight), nil);
+            
+            // Draw border
+            [self drawBorder];
             
             // reset counters for 2nd page
             y = 50.0f;
@@ -389,7 +416,7 @@
             horizontalPointToPrint = kLeftPrintingAdjustment;
             
             // left hand side of page
-            printableArea = CGSizeMake((kA4Width / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), kA4Height - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
             
             stringSize = [textToDraw sizeWithFont:textFont
                                        constrainedToSize:printableArea
@@ -413,7 +440,7 @@
             verticalPointToPrint = y;
             horizontalPointToPrint = kRightPrintingAdjustment;
             
-            printableArea = CGSizeMake((kA4Width / 2) - (kBorderInset) - (kMarginInsetRight + (kMarginInsetLeft / 2)), kA4Height - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetRight), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
             
             stringSize = [textToDraw sizeWithFont:textFont
                                 constrainedToSize:printableArea
@@ -426,11 +453,11 @@
     
     if (horizontalPointToPrint == kLeftPrintingAdjustment)
     {
-        renderingRect = CGRectMake(leftInset, topInset + y, (kA4Width / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), stringSize.height);
+        renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), stringSize.height);
     }
     else
     {
-        renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (kA4Width / 2) - kBorderInset - kMarginInsetRight, stringSize.height);
+        renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, stringSize.height);
     }
     
     // draw text
@@ -443,16 +470,16 @@
     verticalPointToPrint = y + stringSize.height;
 }
 
-- (void)drawLine
+- (void)drawLineAboveDailySummaryText
 {
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
     CGContextSetLineWidth(currentContext, kLineWidth);
     
-    CGContextSetStrokeColorWithColor(currentContext, [UIColor blueColor].CGColor);
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor grayColor].CGColor);
     
     CGPoint startPoint = CGPointMake(kMarginInsetLeft + kBorderInset, kMarginInsetTop + kBorderInset + 40.0);
-    CGPoint endPoint = CGPointMake(kA4Width - (kMarginInsetLeft + kMarginInsetRight) - (2 * kBorderInset), kMarginInsetTop + kBorderInset + 40.0);
+    CGPoint endPoint = CGPointMake(pageWidth - (kMarginInsetLeft) - (kBorderInset), kMarginInsetTop + kBorderInset + 40.0);
     
     CGContextBeginPath(currentContext);
     CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
@@ -462,11 +489,45 @@
     CGContextDrawPath(currentContext, kCGPathFillStroke);
 }
 
+- (void)drawLineForSignature
+{
+    // draw line
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    
+    CGContextSetLineWidth(currentContext, (kLineWidth / 2));
+    
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor blackColor].CGColor);
+    
+    CGPoint startPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset - 100.0f, pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
+    CGPoint endPoint = CGPointMake(pageWidth - (kMarginInsetLeft) - (kBorderInset), pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
+    
+    CGContextBeginPath(currentContext);
+    CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
+    CGContextAddLineToPoint(currentContext, endPoint.x, endPoint.y);
+    
+    CGContextClosePath(currentContext);
+    CGContextDrawPath(currentContext, kCGPathFillStroke);
+    
+    // draw signature
+    // create a rectangle to display text based on the text size
+    CGRect renderingRect;
+    
+    renderingRect = CGRectMake(pageWidth - kMarginInsetLeft - kBorderInset - 100.0f, pageHeight - kBorderInset - kMarginInsetBottom - 40.0f, 150.0f, 80.0f);
+    
+    // draw text
+    [@"Dr Conrad Bosman\nST 8 Paediatrics & Neonates\n\nGMC number 4211792" drawInRect:renderingRect
+                                                                              withFont:[UIFont systemFontOfSize:10.0f]
+                                                                         lineBreakMode:UILineBreakModeWordWrap
+                                                                             alignment:UITextAlignmentLeft];
+}
+
 - (void)drawBorder
 {
     CGContextRef    currentContext = UIGraphicsGetCurrentContext();
-    UIColor *borderColor = [UIColor brownColor];
-    CGRect rectFrame = CGRectMake(kBorderInset, kBorderInset, kA4Width-kBorderInset*2, kA4Height-kBorderInset*2);
+    // UIColor *borderColor = [UIColor blackColor];
+    // UIColor *borderColor = [UIColor colorWithRed:0/255 green:72/255 blue:160/255 alpha:1.0f];
+    UIColor *borderColor = [UIColor grayColor];
+    CGRect rectFrame = CGRectMake(kBorderInset, kBorderInset, pageWidth-kBorderInset*2, pageHeight-kBorderInset*2);
     CGContextSetStrokeColorWithColor(currentContext, borderColor.CGColor);
     CGContextSetLineWidth(currentContext, kBorderWidth);
     CGContextStrokeRect(currentContext, rectFrame);
