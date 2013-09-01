@@ -1488,7 +1488,7 @@
                                                            withImage: [UIImage imageNamed:@"screen01b.png"]];
     
     KxIntroViewPage *page2 = [KxIntroViewPage introViewPageWithTitle: @"Step Two"
-                                                          withDetail: @"Enter a weight or gestation, then press Done"
+                                                          withDetail: @"Enter a weight or gestation, then press Done."
                                                            withImage: [UIImage imageNamed:@"screen02a.png"]];
     
     KxIntroViewPage *page3 = [KxIntroViewPage introViewPageWithTitle: @"Step Three"
