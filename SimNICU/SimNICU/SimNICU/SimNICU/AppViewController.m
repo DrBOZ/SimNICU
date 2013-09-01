@@ -1849,12 +1849,9 @@
 
 - (void)aboutSimNICUViewControllerDelegateDidSelectFeedback:(AboutSimNICUViewController *)controller
 {
-    // [self dismissModalViewControllerAnimated:YES];
-    
     [self dismissViewControllerAnimated:YES completion:^{
         [self sendFeedback];
     }];
-    
 }
 
 - (void)sendFeedback
@@ -1866,6 +1863,13 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
     
     [self presentModalViewController:navController animated:YES];
+}
+
+- (void)aboutSimNICUViewControllerDelegateDidSelectIntroScreen:(AboutSimNICUViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self showIntroScreen];
+    }];
 }
 
 @end

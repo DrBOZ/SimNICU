@@ -302,7 +302,7 @@
     [picker setCcRecipients:self.ccRecipients];  
     [picker setBccRecipients:self.bccRecipients];
     
-    [picker setSubject:@"Neonatal Intensive Care App"];
+    [picker setSubject:[self _feedbackSubject]];
     [picker setMessageBody:[self _feedbackBody] isHTML:NO];
     [self presentModalViewController:picker animated:YES];
 }
@@ -365,7 +365,7 @@
 
 - (NSString*)_feedbackSubject
 {
-    return [NSString stringWithFormat:@"%@: %@", [self _appName],[self _selectedTopicToSend], nil];
+    return [NSString stringWithFormat:@"%@: %@", @"Neonatal Intensive Care",[self _selectedTopicToSend], nil];
 }
    
 - (NSString*)_feedbackBody

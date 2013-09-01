@@ -12,6 +12,8 @@
 
 - (void)aboutSimNICUViewControllerDelegateDidSelectFeedback:(AboutSimNICUViewController *)controller;
 
+- (void)aboutSimNICUViewControllerDelegateDidSelectIntroScreen:(AboutSimNICUViewController *)controller;
+
 @end
 
 @interface AboutSimNICUViewController : UIViewController

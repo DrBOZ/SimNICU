@@ -135,6 +135,8 @@
 		5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
 		5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
+		5C31BEC217D3031F0067BA5C /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */; };
+		5C31BEC317D303200067BA5C /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */; };
 		5C3448971671385B0076FA08 /* bg_calc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3448961671385B0076FA08 /* bg_calc.png */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
@@ -901,7 +903,6 @@
 		5CDBACB5179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */; };
 		5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */; };
 		5CDBACB7179C145800D1A03D /* PatientListWarningImms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */; };
-		5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1018,6 +1019,7 @@
 		5C1FC127179EB32E00E345C4 /* CBDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePicker.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
 		5C316CFA17C2BF830096B8D3 /* CBTrackers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTrackers.m; sourceTree = "<group>"; };
+		5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libisimulate-4.x.a"; path = "libisimulate-4.x-1.5-20100925/libisimulate-4.x.a"; sourceTree = "<group>"; };
 		5C3448961671385B0076FA08 /* bg_calc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_calc.png; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
@@ -1623,6 +1625,7 @@
 				5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */,
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
 				5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
+				5C31BEC217D3031F0067BA5C /* libisimulate-4.x.a in Frameworks */,
 				5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */,
 				5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */,
 				5C940CAC166E413A0044A7D1 /* AudioToolbox.framework in Frameworks */,
@@ -1635,7 +1638,6 @@
 				5CCC272416D66F0000D14080 /* iAd.framework in Frameworks */,
 				5C940CA6166E41050044A7D1 /* MobileCoreServices.framework in Frameworks */,
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
-				5CE04B6616D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 				5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */,
 				5C940CA0166E40D50044A7D1 /* Security.framework in Frameworks */,
 				5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */,
@@ -1673,6 +1675,7 @@
 				5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */,
 				5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */,
 				5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
+				5C31BEC317D303200067BA5C /* libisimulate-4.x.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2240,7 +2243,6 @@
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
-				5C5A11AA17D274B700CE96E5 /* MessageUI.framework */,
 				5C940AF8166E3AB60044A7D1 /* Config */,
 				5C940A67166E37FE0044A7D1 /* ScreenControllers */,
 				5C940C2D166E3DF10044A7D1 /* Images */,
@@ -2267,6 +2269,7 @@
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
 				5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */,
+				5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */,
 				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
 				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
 				5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */,
@@ -2277,6 +2280,7 @@
 				5C39F0AB17CFEC4F007B2CF9 /* CoreText.framework */,
 				5C940A63166E37FE0044A7D1 /* Foundation.framework */,
 				5CCC271816D64A1F00D14080 /* iAd.framework */,
+				5C5A11AA17D274B700CE96E5 /* MessageUI.framework */,
 				5C940CA5166E41040044A7D1 /* MobileCoreServices.framework */,
 				5C940CA3166E40F30044A7D1 /* OpenGLES.framework */,
 				5CE04B6516D04AFB0002BBD7 /* Parse.framework */,
@@ -4255,6 +4259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				SDKROOT = iphoneos;
@@ -4279,6 +4284,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4300,7 +4306,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1407A94A-9425-4CA2-A3B1-4A7EBA5A3B08";
@@ -4324,7 +4332,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "99A606B1-3D46-4B36-B8DA-92C81491D52C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "99A606B1-3D46-4B36-B8DA-92C81491D52C";
@@ -4354,6 +4364,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
@@ -4382,6 +4393,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/SimNICU\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";

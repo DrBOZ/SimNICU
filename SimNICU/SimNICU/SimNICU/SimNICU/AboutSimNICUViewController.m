@@ -74,7 +74,7 @@
     [aboutMenuItems addObject:@"Intro screen"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
     [aboutMenuItems addObject:@"Feedback / Requests"];
-    [aboutMenuItems addObject:@"Developer Information"];
+    // [aboutMenuItems addObject:@"Developer Information"];
     
 #endif
     
@@ -312,6 +312,9 @@
 
 - (void)showIntroScreen
 {
+    [self.delegate aboutSimNICUViewControllerDelegateDidSelectIntroScreen:self];
+    
+    /*
     KxIntroViewPage *page0 = [KxIntroViewPage introViewPageWithTitle: @"Welcome!"
                                                           withDetail: @"This brief introduction will show you the basics."
                                                            withImage: [UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]];
@@ -365,6 +368,7 @@
     
     //[vc presentInView:self.window.rootViewController.view];
     [newViewController presentInViewController:self fullScreenLayout:NO];
+    */
 }
 
 @end
