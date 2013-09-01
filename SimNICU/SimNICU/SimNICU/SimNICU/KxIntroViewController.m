@@ -39,51 +39,56 @@
 @property (readwrite, nonatomic, strong) KxIntroView *introView;
 @end
 
-@implementation KxIntroViewController {
-    
+@implementation KxIntroViewController
+{
     NSArray *_pages;
     BOOL    _needRestoreStatusBar;
 }
 
 - (KxIntroView *) introView
 {
-    if (!_introView) {
-        
+    if (!_introView)
+    {
         _introView = [[KxIntroView alloc] initWithPages:_pages];
         _introView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         _introView.delegate = self;        
     }
+    
     return _introView;
 }
 
 - (id)initWithPages: (NSArray *) pages
 {
     self = [super initWithNibName:nil bundle:nil];
-    if (self) {        
+    
+    if (self)
+    {
         _pages = pages;
     }
+    
     return self;
 }
 
-- (void) loadView
+- (void)loadView
 {
     self.view = self.introView;
 }
 
-- (void) presentInView: (UIView *) view
+- (void)presentInView:(UIView *)view
 {
     self.view.frame = view.bounds;
     [view addSubview:self.view];
 }
 
-- (void) presentInViewController: (UIViewController *) viewController
-                fullScreenLayout: (BOOL) fullScreenLayout
+- (void) presentInViewController:(UIViewController *)viewController
+                fullScreenLayout:(BOOL)fullScreenLayout
 {    
-    if (fullScreenLayout) {
-        
+    if (fullScreenLayout)
+    {
         self.wantsFullScreenLayout = YES;
         UIApplication *app = [UIApplication sharedApplication];
-        if (!app.statusBarHidden) {
+        if (!app.statusBarHidden)
+        {
             _needRestoreStatusBar = YES;
             [app setStatusBarHidden:YES withAnimation:NO];
         }
@@ -98,8 +103,8 @@
 {
     if (self.presentingViewController)
     {
-        [self dismissViewControllerAnimated:!finished completion:NO];
-        // [self dismissViewControllerAnimated:YES completion:NO];
+        // [self dismissViewControllerAnimated:!finished completion:NO];
+        [self dismissViewControllerAnimated:YES completion:NO];
     }
     else if (self.view.superview)
     {

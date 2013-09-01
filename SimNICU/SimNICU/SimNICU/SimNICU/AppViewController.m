@@ -1530,7 +1530,6 @@
     newViewController.introView.animatePageChanges = YES;
     newViewController.introView.gradientBackground = YES;
     
-    //[vc presentInView:self.window.rootViewController.view];
     [newViewController presentInViewController:self fullScreenLayout:NO];
 }
 

@@ -52,24 +52,25 @@ static float addDegrees(float delta, float deg)
     UIView *_tailView;
 }
 
-- (void) setBackgroundView:(UIView *)backgroundView
+- (void)setBackgroundView:(UIView *)backgroundView
 {
-    if (_backgroundView != backgroundView) {
-        
+    if (_backgroundView != backgroundView)
+    {
         if (_backgroundView)
             [_backgroundView removeFromSuperview];
         _backgroundView = backgroundView;
-        if (_backgroundView) {
+        if (_backgroundView)
+        {
             [self insertSubview:_backgroundView atIndex:0];
             self.backgroundColor = [UIColor clearColor];
         }
     }
 }
 
-- (void) setIntroHeader:(UIView *)introHeader
+- (void)setIntroHeader:(UIView *)introHeader
 {
-    if (_introHeader != introHeader) {
-        
+    if (_introHeader != introHeader)
+    {
         if (_introHeader)
             [_introHeader removeFromSuperview];
         _introHeader = introHeader;
@@ -78,10 +79,10 @@ static float addDegrees(float delta, float deg)
     }
 }
 
-- (void) setIntroFooter:(UIView *)introFooter
+- (void)setIntroFooter:(UIView *)introFooter
 {
-    if (_introFooter != introFooter) {
-        
+    if (_introFooter != introFooter)
+    {
         if (_introFooter)
             [_introFooter removeFromSuperview];
         _introFooter = introFooter;
@@ -90,7 +91,7 @@ static float addDegrees(float delta, float deg)
     }
 }
 
-- (id)initWithPages: (NSArray *) pages
+- (id)initWithPages:(NSArray *)pages
 {
     NSAssert(pages.count, @"empty pages");
     
@@ -100,8 +101,6 @@ static float addDegrees(float delta, float deg)
         const BOOL isPhone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
         
         _pages = pages;
-        
-        // self.backgroundColor = [UIColor colorWithRed:47/255.f green:112/255.f blue:225/255.f alpha:1.f];
         
         self.backgroundColor = [UIColor colorWithRed:54/255.f green:91/255.f blue:115/255.f alpha:1.f];
         self.opaque = YES;
@@ -213,28 +212,32 @@ static float addDegrees(float delta, float deg)
     [self fireComplete:NO];
 }
 
-- (void) fireComplete: (BOOL) finished
+- (void)fireComplete:(BOOL)finished
 {    
     __strong id <KxIntroViewDelegate> delegate = self.delegate;
-    if (delegate && [delegate respondsToSelector:@selector(introView:didComplete:)]) {
+    if (delegate && [delegate respondsToSelector:@selector(introView:didComplete:)])
+    {
         [delegate introView:self didComplete:finished];
     }
 }
 
-- (void) didChangePageAtIndex: (NSInteger)index
+- (void)didChangePageAtIndex:(NSInteger)index
 {
-    if (_animatePageChanges) {
-        
+    if (_animatePageChanges)
+    {
         NSArray *pages = _pages;
         [UIView animateWithDuration:0.2
                          animations:^
          {
              NSUInteger n = 0;
-             for (UIView *page in pages) {
-                 
-                 if (n++ == index) {
+             for (UIView *page in pages)
+             {
+                 if (n++ == index)
+                 {
                      page.alpha = 1.f;
-                 } else  if (page.alpha > 0.f) {
+                 }
+                 else if (page.alpha > 0.f)
+                 {
                      page.alpha = 0.f;
                  }
              }
@@ -242,7 +245,7 @@ static float addDegrees(float delta, float deg)
     }
 }
 
-- (void) pageChanged: (id) sender
+- (void)pageChanged:(id)sender
 {    
     const NSUInteger currentPage = _pageControl.currentPage;
     [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width * currentPage, 0)
@@ -255,7 +258,8 @@ static float addDegrees(float delta, float deg)
     CGSize size = self.bounds.size;
     CGRect frame = CGRectMake(0, 0, size.width, size.height);
     
-    if (!_backgroundView) {
+    if (!_backgroundView)
+    {
         _backgroundView = [[UIView alloc] initWithFrame:frame];
         [self insertSubview:_backgroundView atIndex:0];
     }
@@ -320,12 +324,12 @@ static float addDegrees(float delta, float deg)
 {
     const NSUInteger currentPage =  scrollView.contentOffset.x / scrollView.frame.size.width;
     
-    if (currentPage == _pageControl.numberOfPages) {
-        
+    if (currentPage == _pageControl.numberOfPages)
+    {
         [self fireComplete:YES];
-        
-    } else {
-        
+    }
+    else
+    {
         _pageControl.currentPage = currentPage;
         [self didChangePageAtIndex:currentPage];
     }
@@ -333,12 +337,14 @@ static float addDegrees(float delta, float deg)
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (_pageControl.currentPage == (_pageControl.numberOfPages - 1)) {
-    
+    /*
+    if (_pageControl.currentPage == (_pageControl.numberOfPages - 1))
+    {
         const float W = _scrollView.frame.size.width;
         const float alpha = (W * _pages.count - _scrollView.contentOffset.x) / W;
         self.alpha = alpha;
     }
+     */
 }
 
 @end
