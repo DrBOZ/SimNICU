@@ -1245,25 +1245,6 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    PatientDetailsViewController *patientDetailsViewController = [[PatientDetailsViewController alloc] init];
-    
-    patientDetailsViewController.delegate = self;
-    
-    Bay *bay;
-    bay = self.bayData[indexPath.section - 2];
-    Patient *patient = (Patient *)bay.patientsInBay[indexPath.row];
-    
-    patient.NewBabyAPGARSSaved = NULL;
-    
-    patientDetailsViewController.patientToEdit = patient;
-    
-    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
-    
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navController.navigationBar.tintColor = [UIColor blackColor];
-     */
-    
     Bay *bay = self.bayData[indexPath.section - 2];
     Patient *patient = bay.patientsInBay[indexPath.row];
     
@@ -1271,12 +1252,18 @@
     // newViewController.delegate = self;
     newViewController.bayData = self.bayData;
     newViewController.selectedPatient = patient;
-    newViewController.selectedBayNSNumber = [NSNumber numberWithInt:indexPath.section -2];
+    newViewController.selectedBayNSNumber = [NSNumber numberWithInt:indexPath.section - 2];
     newViewController.selectedPatientInBayNSNumber = [NSNumber numberWithInt:indexPath.row];
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     navController.navigationBar.tintColor = [UIColor blackColor];
+    
+    /*
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    navController.navigationBar.tintColor = [UIColor blackColor];
+     */
     
     [self presentModalViewController:navController animated:YES];
 }

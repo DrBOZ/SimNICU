@@ -38,7 +38,6 @@
 // Tell the system what we support
 - (NSUInteger)supportedInterfaceOrientations
 {
-    // NSLog(@"PortraitOnlyNavigationController: supportedInterfaceOrientations");
     return UIInterfaceOrientationMaskPortrait;
 }
 

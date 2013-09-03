@@ -97,6 +97,29 @@
     [viewController presentViewController:self animated:YES completion:nil];
 }
 
+// Tell the system what we support
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+// Tell the system It should autorotate
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
+
+// Tell the system which initial orientation we want to have
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
 #pragma mark - KxIntroViewDelegate
 
 - (void)introView:(KxIntroView *)view didComplete:(BOOL)finished

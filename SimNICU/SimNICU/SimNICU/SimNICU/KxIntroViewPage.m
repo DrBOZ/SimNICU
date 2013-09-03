@@ -70,7 +70,6 @@
         _titleLabel.numberOfLines = 0;
         _titleLabel.opaque = NO;
         _titleLabel.backgroundColor = [UIColor clearColor];
-        //_titleLabel.backgroundColor = [UIColor grayColor];
         [self addSubview:_titleLabel];
     }
     return _titleLabel;
@@ -89,7 +88,6 @@
         _detailLabel.numberOfLines = 0;
         _detailLabel.opaque = NO;
         _detailLabel.backgroundColor = [UIColor clearColor];
-        //_detailLabel.backgroundColor = [UIColor grayColor];        
         [self addSubview:_detailLabel];        
     }
     return _detailLabel;
@@ -104,7 +102,6 @@
         _imageView.clipsToBounds = YES;
         _imageView.opaque = YES;
         _imageView.backgroundColor = [UIColor clearColor];
-        //_imageView.backgroundColor = [UIColor greenColor];               
         [self addSubview:_imageView];
     }
     return _imageView;

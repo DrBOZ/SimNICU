@@ -795,7 +795,8 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationPortrait;
+    // return UIInterfaceOrientationPortrait;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL) shouldAutorotate
@@ -1503,30 +1504,6 @@
     KxIntroViewController *newViewController;
     
     newViewController = [[KxIntroViewController alloc ] initWithPages:@[ page0, page1, page2, page3, page4]];
-    
-    // sample using header
-    if (0)
-    {
-        const BOOL isPhone = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
-        
-        UIFont *font = [UIFont boldSystemFontOfSize:isPhone ? 22 : 26];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, isPhone ? 10 : 25, 0, font.lineHeight)];
-        label.text = @"Sample App";
-        label.font = font;
-        label.textColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.opaque = NO;
-        label.backgroundColor = [UIColor clearColor];
-        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        
-        UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, font.lineHeight + (isPhone ? 10 : 25))];
-        header.backgroundColor = [UIColor clearColor];
-        header.opaque = NO;
-        [header addSubview:label];
-        
-        newViewController.introView.introHeader = header;
-    }
-    
     newViewController.introView.animatePageChanges = YES;
     newViewController.introView.gradientBackground = YES;
     
@@ -1535,8 +1512,6 @@
 
 - (void)showAboutScreen
 {
-    // AboutSimNICUViewController2 *newViewController = [[AboutSimNICUViewController2 alloc] init];
-    
     InfoTabBarController *newViewController = [[InfoTabBarController alloc] init];
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
@@ -1827,7 +1802,7 @@
     [enterWeightViewController.myTableView deselectRowAtIndexPath:[enterWeightViewController.myTableView indexPathForSelectedRow] animated:NO];
 }
 
-#pragma mark APGARTabBarController delegate
+#pragma mark - APGARTabBarController delegate
 
 - (void)APGARTabBarController:(APGARTabBarController *)controller didFinishEnteringAPGARValuesForANewPatient:(Patient *)patient
 {

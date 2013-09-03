@@ -127,10 +127,6 @@ static float addDegrees(float delta, float deg)
         [_closeButton setTitle:NSLocalizedString(@"Close", nil) forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closeIntro) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_closeButton];
-        
-        //_scrollView.backgroundColor = [UIColor redColor];
-        //_closeButton.backgroundColor = [UIColor yellowColor];
-        //_pageControl.backgroundColor = [UIColor greenColor];
     }
     return self;
 }
@@ -219,6 +215,26 @@ static float addDegrees(float delta, float deg)
     {
         [delegate introView:self didComplete:finished];
     }
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation = UIInterfaceOrientationPortrait);
 }
 
 - (void)didChangePageAtIndex:(NSInteger)index
