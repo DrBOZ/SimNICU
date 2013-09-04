@@ -131,6 +131,12 @@
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
 		5C195CE617A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
+		5C1A0BD617D6D85600C41623 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */; };
+		5C1A0BD717D6D85600C41623 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */; };
+		5C1A0BDB17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */; };
+		5C1A0BDC17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */; };
+		5C1A0BDF17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */; };
+		5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */; };
 		5C1FC128179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
@@ -1016,6 +1022,12 @@
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
 		5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeCorrectToAgeSettingsViewController.m; sourceTree = "<group>"; };
+		5C1A0BD417D6D85600C41623 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFGenerationTableViewController.h; sourceTree = "<group>"; };
+		5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFGenerationTableViewController.m; sourceTree = "<group>"; };
+		5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryEditorSettingsTableViewController.h; sourceTree = "<group>"; };
+		5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsTableViewController.m; sourceTree = "<group>"; };
 		5C1FC126179EB32E00E345C4 /* CBDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePicker.h; sourceTree = "<group>"; };
 		5C1FC127179EB32E00E345C4 /* CBDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePicker.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
@@ -1789,6 +1801,17 @@
 				5CA0BE3117B69D8E00BDF842 /* Normal */,
 			);
 			name = "29-33";
+			sourceTree = "<group>";
+		};
+		5C1A0BD817D6F0F100C41623 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
+				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
+				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
+				5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
@@ -2973,6 +2996,9 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5C1A0BD417D6D85600C41623 /* SettingsTableViewController.h */,
+				5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */,
+				5C1A0BD817D6F0F100C41623 /* Settings */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5CD43A4417CB40E600426991 /* TextInput */,
@@ -3942,6 +3968,9 @@
 				5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */,
 				5C5A11A617D2727C00CE96E5 /* AAMFeedbackTopicsViewController.m in Sources */,
 				5C5A11A817D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */,
+				5C1A0BD617D6D85600C41623 /* SettingsTableViewController.m in Sources */,
+				5C1A0BDB17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */,
+				5C1A0BDF17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4107,6 +4136,9 @@
 				5C39F0AA17CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
 				5C5A11A717D2727C00CE96E5 /* AAMFeedbackTopicsViewController.m in Sources */,
 				5C5A11A917D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */,
+				5C1A0BD717D6D85600C41623 /* SettingsTableViewController.m in Sources */,
+				5C1A0BDC17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */,
+				5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,7 @@
 #define HYPOGLYCAEMIA_PREVIEW_MODE 0
 #define GLUCOSE_LOAD_PREVIEW_MODE 0
 #define CALCULATOR_PREVIEW_MODE 0
-#define SETTINGS_PREVIEW_MODE 0
+#define SETTINGS_PREVIEW_MODE 1
 #define CRUSS_PREVIEW_MODE 0
 #define DRUGS_PREVIEW_MODE 0
 
@@ -73,6 +73,10 @@
 @property (nonatomic, strong) NSIndexPath *lastDrugPath;
 @property (nonatomic, retain) ADBannerView *bannerView;
 @property (strong, nonatomic) UIWindow *window;
+
+// Jobs
+// 1) Convert UIViewControllers to UITableViewControllers?
+// 2) Now I have started changing over, set standard cell height?
 
 @end
 

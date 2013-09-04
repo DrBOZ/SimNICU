@@ -36,7 +36,6 @@
 @property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationBarItem;
 @property (nonatomic, unsafe_unretained) id <EnterWeightViewControllerDelegate> delegate;
 @property (nonatomic, strong) UINavigationBar *enterWeightViewControllerNavigationBar;
-@property (nonatomic, strong) UINavigationController *navigationController;
 @property (nonatomic, strong) NSMutableArray *patientList;
 @property (nonatomic) BOOL allowUserToAccessPatientList;
 @property (nonatomic, strong) Preferences *preferences;

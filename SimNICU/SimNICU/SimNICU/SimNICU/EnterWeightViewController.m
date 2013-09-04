@@ -8,6 +8,7 @@
 
 #import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
+#import "SettingsTableViewController.h"
 #import "EnterWeightViewController.h"
 #import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
@@ -264,7 +265,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -753,7 +753,13 @@
             }
             
             cell.textLabel.text = NSLocalizedString(@"Settings", nil);
-            cell.detailTextLabel.text = @"Coming soon!";
+            
+#if SETTINGS_PREVIEW_MODE
+            
+#else
+            cell.detailTextLabel.text = NSLocalisedString(@"Coming Soon!");
+            
+#endif
             
             returnCell = cell;
         }
@@ -1135,19 +1141,14 @@
             // Settings
 #if SETTINGS_PREVIEW_MODE
             
-            /*
-             AdvancedPatientEditorViewController *advancedPatientList = [[AdvancedPatientEditorViewController alloc] init];
-             advancedPatientList.bayData = self.bayData;
-             
-             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:advancedPatientList];
-             
-             navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-             navController.navigationBar.tintColor = [UIColor blackColor];
-             
-             [self presentModalViewController:navController animated:YES];
-             */
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+            
+            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+            navController.navigationBar.tintColor = [UIColor blackColor];
+            
+            [self presentModalViewController:navController animated:YES];
 #else
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
 #endif
@@ -1680,20 +1681,6 @@
             dispatch_async(dispatch_get_main_queue(),^
             {
                 PortraitOnlyNavigationController *nav = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-                
-                if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-                {
-                    nav.modalPresentationStyle = UIModalPresentationFormSheet;
-                    nav.navigationBar.barStyle = UIBarStyleBlack;
-                    nav.navigationBar.opaque = NO;
-                }
-                else
-                {
-                    nav.navigationBar.tintColor = _navigationController.navigationBar.tintColor;
-                    nav.navigationBar.translucent = _navigationController.navigationBar.translucent;
-                    nav.navigationBar.opaque = _navigationController.navigationBar.opaque;
-                    nav.navigationBar.barStyle = _navigationController.navigationBar.barStyle;    
-                }
                 
                 nav.navigationBar.barStyle = UIBarStyleBlackOpaque;
                 nav.navigationBar.tintColor = [UIColor blackColor];
