@@ -13,6 +13,7 @@
 #import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ROPViewController.h"
+#import "CBBarButtonItems.h"
 #import "CBTimeMethods.h"
 #import "AppDelegate.h"
 #import "PatientCell.h"
@@ -156,12 +157,22 @@
         self.enterWeightViewControllerNavigationBar.delegate = self;
         [self.view addSubview:self.enterWeightViewControllerNavigationBar];
         
-        self.enterWeightViewControllerNavigationBarItem = [[UINavigationItem alloc] initWithTitle:@"Enter Weight"];
+        // Edit button
+        self.enterWeightViewControllerNavigationItem = [[UINavigationItem alloc] init];
+        self.enterWeightViewControllerNavigationItem.leftBarButtonItem = self.editButtonItem;
+        self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
         
-        [self.enterWeightViewControllerNavigationBar pushNavigationItem:self.enterWeightViewControllerNavigationBarItem animated:YES];
+        // Settings button
+        UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        UIBarButtonItem *settingsButton = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showSettings)];
         
-        self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem = self.editButtonItem;
-        self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
+        // create array
+        NSArray *items = [NSArray arrayWithObjects:flexibleItem, settingsButton, flexibleItem, flexibleItem, nil];
+        
+        self.enterWeightViewControllerNavigationItem.rightBarButtonItems = items;
+        
+        // push to navigation bar
+        [self.enterWeightViewControllerNavigationBar pushNavigationItem:self.enterWeightViewControllerNavigationItem animated:NO];
         
         // Tableview
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped]; // 4 inch Retina
@@ -1141,14 +1152,8 @@
             // Settings
 #if SETTINGS_PREVIEW_MODE
             
-            SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self showSettings];
             
-            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
-            
-            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-            navController.navigationBar.tintColor = [UIColor blackColor];
-            
-            [self presentModalViewController:navController animated:YES];
 #else
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
 #endif
@@ -1658,10 +1663,10 @@
         if (!self.confidentialityModeOn)
         {
             // enable edit button
-            self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = YES;
+            self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = YES;
         }
         else {
-            self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
+            self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
         }
         
         // reload patient sections
@@ -1697,11 +1702,11 @@
                 if (!self.confidentialityModeOn)
                 {
                     // enable edit button
-                    self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = YES;
+                    self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = YES;
                 }
                 else
                 {
-                    self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
+                    self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
                 }
                 
                 // reload patient sections
@@ -1736,11 +1741,11 @@
             if (!self.confidentialityModeOn)
             {
                 // enable edit button
-                self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = YES;
+                self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = YES;
             }
             else
             {
-                self.enterWeightViewControllerNavigationBarItem.leftBarButtonItem.enabled = NO;
+                self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
             }
             
             // reload patient sections
@@ -1883,6 +1888,18 @@
                          [self.myTableView reloadData];
                      }];
     
+}
+
+- (void)showSettings
+{
+    SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+    
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    
+    [self presentModalViewController:navController animated:YES];
 }
 
 # pragma mark - PatientDetailsViewController delegate methods

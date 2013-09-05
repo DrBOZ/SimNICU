@@ -18,9 +18,9 @@
 // @"LightGrayBackground35inchRetina.png"
 // @"LightGrayBackground4inchRetina.png"
 
-#define GOOGLE_ANALYTICS 0
+#define GOOGLE_ANALYTICS 0                                  // turn on for release
 #define FLURRY_LIVE 0
-#define IRATE_SET 0
+#define IRATE_SET 0                                         // turn on for release
 
 // testing tools
 #define IRATE_PREVIEW_MODE 0
@@ -28,7 +28,7 @@
 #define RESET_CELL_INFO 0
 
 // Intro screen
-#define INTRO_SCREEN 1
+#define INTRO_SCREEN 0                                      // turn on for release
 
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0
@@ -42,10 +42,12 @@
 #define FLUID_BALANCE_PREVIEW_MODE 0
 #define HYPOGLYCAEMIA_PREVIEW_MODE 0
 #define GLUCOSE_LOAD_PREVIEW_MODE 0
+#define LOCALISATION_PREVIEW_MODE 1
 #define CALCULATOR_PREVIEW_MODE 0
 #define SETTINGS_PREVIEW_MODE 1
 #define CRUSS_PREVIEW_MODE 0
 #define DRUGS_PREVIEW_MODE 0
+#define SYNC_PREVIEW_MODE 1
 
 #import "ZUUIRevealController.h"
 #import "DrugDatabase.h"

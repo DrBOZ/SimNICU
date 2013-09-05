@@ -96,6 +96,8 @@
     
     [tableData addObject:sectionData];
     
+#if SYNCRONISATION_PREVIEW_MODE
+    
     // section 1
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"Syncronisation";
@@ -113,6 +115,10 @@
     
     [tableData addObject:sectionData];
     
+#endif
+    
+#if LOCALISATION_PREVIEW_MODE
+    
     // section 3
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"Localisation";
@@ -129,6 +135,8 @@
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
+    
+#endif
     
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.tableView];

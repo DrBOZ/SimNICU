@@ -33,7 +33,7 @@
 
 @interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, patientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, OxygenationIndexViewControllerDelegate, IntubationViewControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, PhototherapyViewControllerDelegate, BayEditorViewControllerDelegate, CorrectedAgeViewControllerDelegate>
 
-@property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationBarItem;
+@property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationItem;
 @property (nonatomic, unsafe_unretained) id <EnterWeightViewControllerDelegate> delegate;
 @property (nonatomic, strong) UINavigationBar *enterWeightViewControllerNavigationBar;
 @property (nonatomic, strong) NSMutableArray *patientList;
