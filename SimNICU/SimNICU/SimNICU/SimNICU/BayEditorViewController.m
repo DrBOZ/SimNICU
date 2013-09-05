@@ -32,9 +32,6 @@
         // Setup Add button
         self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
         
-        // Setup Back button
-        self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];
-        
         // Instantiate TableView
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20 - 44)) style:UITableViewStyleGrouped];
         self.myTableView.rowHeight = 50.0f;
@@ -94,6 +91,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound)
+    {
+        [self done];
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
 - (void)done
 {
     // Ensure that there is at least one bay
@@ -108,6 +115,8 @@
     }
     
     [self.delegate bayEditorViewControllerDidFinishEditingBays:self];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)add

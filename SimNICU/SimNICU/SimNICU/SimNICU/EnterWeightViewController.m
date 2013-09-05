@@ -33,7 +33,6 @@
 @property (nonatomic, strong) NSString *selectedSex;
 @property (nonatomic, strong) CoolButton *button;
 @property (nonatomic) BOOL userEditingTextField;
-@property (nonatomic) int patientListMode;
 @property (nonatomic) BOOL editingModeOn;
 @property (nonatomic) int gestationMode;
 
@@ -221,10 +220,6 @@
         {
             self.gestationSwipeText = @"swipe left";
         }
-        if (![self.preferences.userKnowsHowToSwipePatientList isEqualToString:@"YES"])
-        {
-            self.patientListSwipeText = @"swipe left";
-        }
     }
     
     return self;
@@ -349,16 +344,7 @@
     }
     else if(section == 1) // patient list UISwitch and Passcode lock
     {
-        // Implementing Advanced settings for Patient List
-        
-        if (self.patientListMode == 1)
-        {
-            rows = 4;                      // Advanced settings: Advanced Patient List & Bay editor
-        }
-        else
-        {
-            rows = 2;
-        }
+        rows = 2;
     }
     else
     {
@@ -428,19 +414,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height = 50.0f;
-    
-    /*
-    if (!self.confidentialityModeOn)
-    {
-        if (!(indexPath.section == 0 || indexPath.section == 1))
-        {
-            height = 60.0f;
-        }
-    }
-     */
-    
-    return height;
+    return 50.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -697,84 +671,9 @@
                 cell.detailTextLabel.text = nil;
             }
             
-            UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePatientListSwipeLeft:)];
-            swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-            [cell addGestureRecognizer:swipeLeft];
-            
-            UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handlePatientListSwipeRight:)];
-            swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-            [cell addGestureRecognizer:swipeRight];
-            
             returnCell = cell;
         }
         else if (indexPath.row == 1)
-        {
-            if (self.patientListMode == 1)
-            {
-                static NSString *CellIdentifier = @"Bay Editor";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                
-                if(!cell)
-                {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.backgroundColor = [UIColor whiteColor];
-                }
-                
-                cell.textLabel.text = NSLocalizedString(@"Bay Editor", nil);
-                cell.detailTextLabel.text = @"";
-                
-                returnCell = cell;
-            }
-            else
-            {
-                static NSString *CellIdentifier = @"Password row";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                
-                if(!cell)
-                {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.backgroundColor = [UIColor whiteColor];
-                }
-                
-                cell.textLabel.text = NSLocalizedString(@"Passcode Lock", nil);
-                
-                if ([[KKPasscodeLock sharedLock] isPasscodeRequired])
-                {
-                    cell.detailTextLabel.text = NSLocalizedString(@"On", "");
-                } else
-                {
-                    cell.detailTextLabel.text = NSLocalizedString(@"Off", "");
-                }
-                
-                returnCell = cell;
-            }
-        }
-        else if (indexPath.row == 2)
-        {
-            static NSString *CellIdentifier = @"Settings";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if(!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                cell.backgroundColor = [UIColor whiteColor];
-            }
-            
-            cell.textLabel.text = NSLocalizedString(@"Settings", nil);
-            
-#if SETTINGS_PREVIEW_MODE
-            
-#else
-            cell.detailTextLabel.text = NSLocalisedString(@"Coming Soon!");
-            
-#endif
-            
-            returnCell = cell;
-        }
-        else if (indexPath.row == 3)
         {
             static NSString *CellIdentifier = @"Password row";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -1120,6 +1019,17 @@
     {
         if (indexPath.row == 1)
         {
+            KKPasscodeSettingsViewController *controller = [[KKPasscodeSettingsViewController alloc] init];
+            controller.delegate = self;
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
+            
+            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+            navController.navigationBar.tintColor = [UIColor blackColor];
+            
+            [self presentModalViewController:navController animated:YES];
+            
+            /*
             if (self.patientListMode)
             {
                 // Bay Editor
@@ -1134,18 +1044,8 @@
                 
                 [self presentModalViewController:navController animated:YES];
             }
-            else
-            {
-                KKPasscodeSettingsViewController *controller = [[KKPasscodeSettingsViewController alloc] init];
-                controller.delegate = self;
-                
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
-                
-                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-                navController.navigationBar.tintColor = [UIColor blackColor];
-                
-                [self presentModalViewController:navController animated:YES];
-            }
+             */
+            
         }
         else if (indexPath.row == 2)
         {
@@ -1845,6 +1745,7 @@
     
 }
 
+/*
 - (void)handlePatientListSwipeLeft:(UISwipeGestureRecognizer *)recognizer
 {
     if (self.patientListMode == 0)
@@ -1855,7 +1756,9 @@
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
+ */
 
+/*
 - (void)handlePatientListSwipeRight:(UISwipeGestureRecognizer *)recognizer
 {
     if (self.patientListMode == 1)
@@ -1867,6 +1770,7 @@
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationRight];
     }
 }
+ */
 
 -(void)handleTapFrom:(UITapGestureRecognizer *)recognizer
 {
@@ -2147,7 +2051,7 @@
         [self.bayData addObject:bay];
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    // [self dismissModalViewControllerAnimated:YES];
     
     // have to reload whole table
     [self.myTableView reloadData];

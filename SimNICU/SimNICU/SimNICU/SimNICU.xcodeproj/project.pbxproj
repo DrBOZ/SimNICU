@@ -1806,6 +1806,8 @@
 		5C1A0BD817D6F0F100C41623 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5C679FC11795B83900B9A813 /* BayEditorViewController.h */,
+				5C679FC21795B83900B9A813 /* BayEditorViewController.m */,
 				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
 				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
 				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
@@ -2176,15 +2178,6 @@
 				5C66527A17BE9AE9005F8171 /* Flurry.h */,
 			);
 			name = Flurry;
-			sourceTree = "<group>";
-		};
-		5C679FC01795B7E500B9A813 /* Bay Editor */ = {
-			isa = PBXGroup;
-			children = (
-				5C679FC11795B83900B9A813 /* BayEditorViewController.h */,
-				5C679FC21795B83900B9A813 /* BayEditorViewController.m */,
-			);
-			name = "Bay Editor";
 			sourceTree = "<group>";
 		};
 		5C756C81179851A3002F983E /* Screen_Age Calculators */ = {
@@ -2589,9 +2582,11 @@
 				5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */,
 				5C0C9D9E179B26360077B881 /* PatientCell.h */,
 				5C0C9D9F179B26360077B881 /* PatientCell.m */,
+				5C1A0BD417D6D85600C41623 /* SettingsTableViewController.h */,
+				5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */,
+				5C1A0BD817D6F0F100C41623 /* Settings */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
 				5C9BE62117970F31009616CA /* Advanced Patient Editor */,
-				5C679FC01795B7E500B9A813 /* Bay Editor */,
 			);
 			name = "Rear View";
 			sourceTree = "<group>";
@@ -2996,9 +2991,6 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
-				5C1A0BD417D6D85600C41623 /* SettingsTableViewController.h */,
-				5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */,
-				5C1A0BD817D6F0F100C41623 /* Settings */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5CD43A4417CB40E600426991 /* TextInput */,
