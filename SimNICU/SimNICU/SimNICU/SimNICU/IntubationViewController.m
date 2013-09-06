@@ -300,8 +300,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // NSLog(@"IntubationViewController viewWillAppear: self.weight = %@", self.weight);
-    
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"Back"
                                       style:UIBarButtonItemStyleBordered
@@ -313,7 +311,15 @@
     {
         if (self.selectedPatient.gestation)
         {
-            self.title = [NSString stringWithFormat:@"%@/40 now %@", self.selectedPatient.gestation, [CBTimeMethods calculateCurrentGestation:self.selectedPatient]];
+            // check if birthDate has been entered
+            if (self.selectedPatient.birthDate)
+            {
+                self.title = [NSString stringWithFormat:@"%@/40 now %@", self.selectedPatient.gestation, [CBTimeMethods calculateCurrentGestation:self.selectedPatient]];
+            }
+            else
+            {
+                self.title = [NSString stringWithFormat:@"%@/40", self.selectedPatient.gestation];
+            }
             
             self.suggestionBasedOn.text = @"Suggestion based on gestation";
         }
@@ -594,8 +600,19 @@
         {
             if (self.selectedPatient.gestation)
             {
-                // work out on corrected gestation
-                NSString *correctedGestation = [CBTimeMethods calculateCurrentGestation:self.selectedPatient];
+                NSString *correctedGestation;
+                
+                // check if birthDate has been set
+                if (self.selectedPatient.birthDate)
+                {
+                    // work out on corrected gestation
+                    correctedGestation = [CBTimeMethods calculateCurrentGestation:self.selectedPatient];
+                }
+                else
+                {
+                    // assuming baby has not been born yet - just use entered gestation
+                    correctedGestation = self.selectedPatient.gestation;
+                }
                 
                 int value = [correctedGestation intValue];
                 
