@@ -10,6 +10,7 @@
 #import "PortraitOnlyNavigationController.h"
 #import "SettingsTableViewController.h"
 #import "EnterWeightViewController.h"
+#import "SyncTableViewController.h"
 #import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ROPViewController.h"
@@ -168,14 +169,20 @@
         UIBarButtonItem *settingsButton = [CBBarButtonItems customBarButtonWithImageFile:@"settings.png"
                                                                                   target:self
                                                                                   action:@selector(showSettings)];
+    
+        // create array
+        
+#if SYNC_PREVIEW_MODE
         
         // Sync button
         UIBarButtonItem *syncButton = [CBBarButtonItems customBarButtonWithImageFile:@"sync.png"
                                                                               target:self
-                                                                              action:nil];
+                                                                              action:@selector(showSync)];
         
-        // create array
         NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, syncButton, flexibleItem, nil];
+#else
+        NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, flexibleItem, flexibleItem, nil];
+#endif
         
         self.enterWeightViewControllerNavigationItem.rightBarButtonItems = items;
         
@@ -1806,6 +1813,18 @@
 - (void)showSettings
 {
     SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+    
+    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    
+    [self presentModalViewController:navController animated:YES];
+}
+
+- (void)showSync
+{
+    SyncTableViewController *newViewController = [[SyncTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     

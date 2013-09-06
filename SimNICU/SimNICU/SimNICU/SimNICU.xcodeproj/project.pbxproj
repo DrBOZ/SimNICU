@@ -592,6 +592,13 @@
 		5CB46B6317D9D82F003365F6 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6017D9D82F003365F6 /* sync.png */; };
 		5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6117D9D82F003365F6 /* sync@2x.png */; };
 		5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6117D9D82F003365F6 /* sync@2x.png */; };
+		5CB46B6A17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
+		5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
+		5CB46B6D17DA1194003365F6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB46B6C17DA1194003365F6 /* GameKit.framework */; };
+		5CB46B7117DA124E003365F6 /* SyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7017DA124E003365F6 /* SyncServer.m */; };
+		5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7017DA124E003365F6 /* SyncServer.m */; };
+		5CB46B7517DA125E003365F6 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7417DA125E003365F6 /* SyncClient.m */; };
+		5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7417DA125E003365F6 /* SyncClient.m */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -601,7 +608,7 @@
 		5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CCC272216D66A8B00D14080 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6C16D04B3F0002BBD7 /* CoreLocation.framework */; };
 		5CCC272316D66AC500D14080 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		5CCC272416D66F0000D14080 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCC271816D64A1F00D14080 /* iAd.framework */; };
+		5CCC272416D66F0000D14080 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCC271816D64A1F00D14080 /* iAd.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CCC272516D66F0D00D14080 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CCC271816D64A1F00D14080 /* iAd.framework */; };
 		5CD3AFA816CF38D500DE362C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A6D166E37FE0044A7D1 /* main.m */; };
 		5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940A71166E37FE0044A7D1 /* AppDelegate.m */; };
@@ -1563,6 +1570,13 @@
 		5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiChartCell.m; sourceTree = "<group>"; };
 		5CB46B6017D9D82F003365F6 /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
 		5CB46B6117D9D82F003365F6 /* sync@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync@2x.png"; sourceTree = "<group>"; };
+		5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTableViewController.h; sourceTree = "<group>"; };
+		5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTableViewController.m; sourceTree = "<group>"; };
+		5CB46B6C17DA1194003365F6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		5CB46B6F17DA124E003365F6 /* SyncServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncServer.h; sourceTree = "<group>"; };
+		5CB46B7017DA124E003365F6 /* SyncServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncServer.m; sourceTree = "<group>"; };
+		5CB46B7317DA125E003365F6 /* SyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncClient.h; sourceTree = "<group>"; };
+		5CB46B7417DA125E003365F6 /* SyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncClient.m; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -1638,7 +1652,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */,
 				5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */,
 				5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */,
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
@@ -1654,7 +1667,9 @@
 				5C940CA8166E411D0044A7D1 /* CoreMotion.framework in Frameworks */,
 				5C39F0AC17CFEC4F007B2CF9 /* CoreText.framework in Frameworks */,
 				5C940A64166E37FE0044A7D1 /* Foundation.framework in Frameworks */,
+				5CB46B6D17DA1194003365F6 /* GameKit.framework in Frameworks */,
 				5CCC272416D66F0000D14080 /* iAd.framework in Frameworks */,
+				5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */,
 				5C940CA6166E41050044A7D1 /* MobileCoreServices.framework in Frameworks */,
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
 				5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */,
@@ -1812,12 +1827,9 @@
 		5C1A0BD817D6F0F100C41623 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				5C679FC11795B83900B9A813 /* BayEditorViewController.h */,
-				5C679FC21795B83900B9A813 /* BayEditorViewController.m */,
-				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
-				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
-				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
-				5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */,
+				5C1A0BD417D6D85600C41623 /* SettingsTableViewController.h */,
+				5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */,
+				5CB46B6717D9FC13003365F6 /* Options */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2310,6 +2322,7 @@
 				5C940CA7166E411D0044A7D1 /* CoreMotion.framework */,
 				5C39F0AB17CFEC4F007B2CF9 /* CoreText.framework */,
 				5C940A63166E37FE0044A7D1 /* Foundation.framework */,
+				5CB46B6C17DA1194003365F6 /* GameKit.framework */,
 				5CCC271816D64A1F00D14080 /* iAd.framework */,
 				5C5A11AA17D274B700CE96E5 /* MessageUI.framework */,
 				5C940CA5166E41040044A7D1 /* MobileCoreServices.framework */,
@@ -2588,11 +2601,9 @@
 				5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */,
 				5C0C9D9E179B26360077B881 /* PatientCell.h */,
 				5C0C9D9F179B26360077B881 /* PatientCell.m */,
-				5C1A0BD417D6D85600C41623 /* SettingsTableViewController.h */,
-				5C1A0BD517D6D85600C41623 /* SettingsTableViewController.m */,
+				5CB46B6617D9FBED003365F6 /* Sync */,
 				5C1A0BD817D6F0F100C41623 /* Settings */,
-				5C940B09166E3B540044A7D1 /* Patient Details */,
-				5C9BE62117970F31009616CA /* Advanced Patient Editor */,
+				5C9BE62117970F31009616CA /* Daily Summary */,
 			);
 			name = "Rear View";
 			sourceTree = "<group>";
@@ -2994,18 +3005,19 @@
 			name = SimNICU;
 			sourceTree = "<group>";
 		};
-		5C9BE62117970F31009616CA /* Advanced Patient Editor */ = {
+		5C9BE62117970F31009616CA /* Daily Summary */ = {
 			isa = PBXGroup;
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
+				5C940B09166E3B540044A7D1 /* Patient Details */,
 				5CD43A4417CB40E600426991 /* TextInput */,
 				5C13B42617C8CB2F00C88EEF /* NSObjects */,
 				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
-			name = "Advanced Patient Editor";
+			name = "Daily Summary";
 			sourceTree = "<group>";
 		};
 		5CA0BE3117B69D8E00BDF842 /* Normal */ = {
@@ -3070,6 +3082,40 @@
 				5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */,
 			);
 			name = UITableViewCells;
+			sourceTree = "<group>";
+		};
+		5CB46B6617D9FBED003365F6 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */,
+				5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */,
+				5CB46B6E17DA1201003365F6 /* Networking */,
+			);
+			name = Sync;
+			sourceTree = "<group>";
+		};
+		5CB46B6717D9FC13003365F6 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				5C679FC11795B83900B9A813 /* BayEditorViewController.h */,
+				5C679FC21795B83900B9A813 /* BayEditorViewController.m */,
+				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
+				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
+				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
+				5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */,
+			);
+			name = Options;
+			sourceTree = "<group>";
+		};
+		5CB46B6E17DA1201003365F6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5CB46B6F17DA124E003365F6 /* SyncServer.h */,
+				5CB46B7017DA124E003365F6 /* SyncServer.m */,
+				5CB46B7317DA125E003365F6 /* SyncClient.h */,
+				5CB46B7417DA125E003365F6 /* SyncClient.m */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		5CD3B0B31790702100DA0278 /* Vitamins (Multivitamins) */ = {
@@ -3975,6 +4021,9 @@
 				5C1A0BD617D6D85600C41623 /* SettingsTableViewController.m in Sources */,
 				5C1A0BDB17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */,
 				5C1A0BDF17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */,
+				5CB46B6A17DA02A6003365F6 /* SyncTableViewController.m in Sources */,
+				5CB46B7117DA124E003365F6 /* SyncServer.m in Sources */,
+				5CB46B7517DA125E003365F6 /* SyncClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4143,6 +4192,9 @@
 				5C1A0BD717D6D85600C41623 /* SettingsTableViewController.m in Sources */,
 				5C1A0BDC17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */,
 				5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */,
+				5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */,
+				5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */,
+				5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
