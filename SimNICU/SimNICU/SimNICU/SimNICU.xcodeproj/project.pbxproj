@@ -599,6 +599,12 @@
 		5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7017DA124E003365F6 /* SyncServer.m */; };
 		5CB46B7517DA125E003365F6 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7417DA125E003365F6 /* SyncClient.m */; };
 		5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7417DA125E003365F6 /* SyncClient.m */; };
+		5CB46B8117DA4062003365F6 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8017DA4062003365F6 /* ConnectionViewController.m */; };
+		5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8017DA4062003365F6 /* ConnectionViewController.m */; };
+		5CB46B8617DA439D003365F6 /* TempConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */; };
+		5CB46B8717DA439D003365F6 /* TempConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */; };
+		5CB46B8817DA439D003365F6 /* TempConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */; };
+		5CB46B8917DA439D003365F6 /* TempConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -1577,6 +1583,11 @@
 		5CB46B7017DA124E003365F6 /* SyncServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncServer.m; sourceTree = "<group>"; };
 		5CB46B7317DA125E003365F6 /* SyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncClient.h; sourceTree = "<group>"; };
 		5CB46B7417DA125E003365F6 /* SyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncClient.m; sourceTree = "<group>"; };
+		5CB46B7F17DA4062003365F6 /* ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionViewController.h; sourceTree = "<group>"; };
+		5CB46B8017DA4062003365F6 /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
+		5CB46B8317DA439C003365F6 /* TempConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempConnectionViewController.h; sourceTree = "<group>"; };
+		5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempConnectionViewController.m; sourceTree = "<group>"; };
+		5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TempConnectionViewController.xib; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -3089,6 +3100,11 @@
 			children = (
 				5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */,
 				5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */,
+				5CB46B7F17DA4062003365F6 /* ConnectionViewController.h */,
+				5CB46B8017DA4062003365F6 /* ConnectionViewController.m */,
+				5CB46B8317DA439C003365F6 /* TempConnectionViewController.h */,
+				5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */,
+				5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */,
 				5CB46B6E17DA1201003365F6 /* Networking */,
 			);
 			name = Sync;
@@ -3565,6 +3581,7 @@
 				5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 				5CB46B6217D9D82F003365F6 /* sync.png in Resources */,
 				5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */,
+				5CB46B8817DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3845,6 +3862,7 @@
 				5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 				5CB46B6317D9D82F003365F6 /* sync.png in Resources */,
 				5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */,
+				5CB46B8917DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4024,6 +4042,8 @@
 				5CB46B6A17DA02A6003365F6 /* SyncTableViewController.m in Sources */,
 				5CB46B7117DA124E003365F6 /* SyncServer.m in Sources */,
 				5CB46B7517DA125E003365F6 /* SyncClient.m in Sources */,
+				5CB46B8117DA4062003365F6 /* ConnectionViewController.m in Sources */,
+				5CB46B8617DA439D003365F6 /* TempConnectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4195,6 +4215,8 @@
 				5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */,
 				5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */,
 				5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */,
+				5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */,
+				5CB46B8717DA439D003365F6 /* TempConnectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

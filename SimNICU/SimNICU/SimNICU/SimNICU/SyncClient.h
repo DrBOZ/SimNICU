@@ -9,8 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
+@class SyncClient;
+
+@protocol SyncClientDelegate <NSObject>
+
+- (void)syncClient:(SyncClient *)client serverBecameAvailable:(NSString *)peerID;
+- (void)syncClient:(SyncClient *)client serverBecameUnavailable:(NSString *)peerID;
+
+@end
+
 @interface SyncClient : NSObject <GKSessionDelegate>
 
+@property (nonatomic, weak) id <SyncClientDelegate> delegate;
 @property (nonatomic, strong, readonly) NSArray *availableServers;
 @property (nonatomic, strong, readonly) GKSession *session;
 

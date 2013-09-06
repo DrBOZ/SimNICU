@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "ConnectionViewController.h"
 #import "SyncTableViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
@@ -167,10 +168,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1)
+    if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
+            ConnectionViewController *newViewController = [[ConnectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
+        }
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0)
+        {
+            /*
             if (!_Server)
             {
                 _Server = [[SyncServer alloc] init];
@@ -186,13 +197,16 @@
                 
                 [self.tableView reloadData];
             }
+             */
         }
         else if (indexPath.row == 1)
         {
+            /*
             if (!_Client)
             {
                 _Client = [[SyncClient alloc] init];
                 [_Client startSearchingForServersWithSessionID:SESSION_ID];
+                _Client.delegate = self;
             }
             
             CBTableViewSectionData *sectionData;
@@ -203,6 +217,7 @@
             rowData.detailText = @"Client";
             
             [self.tableView reloadData];
+             */
         }
     }
     else

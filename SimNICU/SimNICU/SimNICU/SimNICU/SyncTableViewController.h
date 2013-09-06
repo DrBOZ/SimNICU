@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SyncClient.h"
 
 @interface SyncTableViewController : UITableViewController
 
