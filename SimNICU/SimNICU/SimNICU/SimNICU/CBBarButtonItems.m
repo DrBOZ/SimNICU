@@ -48,11 +48,18 @@
 
 + (UIBarButtonItem *)settingsBarButtonWithTarget:(id)target action:(SEL)action
 {
-    // standard settings button
-    // UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showInfoScreen)];
-    
+    return [CBBarButtonItems customBarButtonWithImageFile:@"settings.png" target:target action:action];
+}
+
++ (UIBarButtonItem *)syncBarButtonWithTarget:(id)target action:(SEL)action
+{
+    return [CBBarButtonItems customBarButtonWithImageFile:@"sync.png" target:target action:action];
+}
+
++ (UIBarButtonItem *)customBarButtonWithImageFile:(NSString *)imageFile target:(id)target action:(SEL)action
+{
     // setup image
-    UIImage *image = [UIImage imageNamed:@"settings.png"];
+    UIImage *image = [UIImage imageNamed:imageFile];
     
     // setup button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -65,9 +72,9 @@
     UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
     [buttonView addSubview:button];
     
-    UIBarButtonItem *settingsBarButton = [[UIBarButtonItem alloc] initWithCustomView:buttonView];
+    UIBarButtonItem *customBarButton = [[UIBarButtonItem alloc] initWithCustomView:buttonView];
     
-    return settingsBarButton;
+    return customBarButton;
 }
 
 // How to make a custom BarButtonItem...

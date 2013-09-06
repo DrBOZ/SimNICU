@@ -161,12 +161,21 @@
         self.enterWeightViewControllerNavigationItem.leftBarButtonItem = self.editButtonItem;
         self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
         
-        // Settings button
+        // Flexible space to align custom buttons
         UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        UIBarButtonItem *settingsButton = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showSettings)];
+        
+        // Settings button
+        UIBarButtonItem *settingsButton = [CBBarButtonItems customBarButtonWithImageFile:@"settings.png"
+                                                                                  target:self
+                                                                                  action:@selector(showSettings)];
+        
+        // Sync button
+        UIBarButtonItem *syncButton = [CBBarButtonItems customBarButtonWithImageFile:@"sync.png"
+                                                                              target:self
+                                                                              action:nil];
         
         // create array
-        NSArray *items = [NSArray arrayWithObjects:flexibleItem, settingsButton, flexibleItem, flexibleItem, nil];
+        NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, syncButton, flexibleItem, nil];
         
         self.enterWeightViewControllerNavigationItem.rightBarButtonItems = items;
         

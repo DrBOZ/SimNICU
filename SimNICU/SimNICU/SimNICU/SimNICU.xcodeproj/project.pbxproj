@@ -588,6 +588,10 @@
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
 		5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
 		5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
+		5CB46B6217D9D82F003365F6 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6017D9D82F003365F6 /* sync.png */; };
+		5CB46B6317D9D82F003365F6 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6017D9D82F003365F6 /* sync.png */; };
+		5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6117D9D82F003365F6 /* sync@2x.png */; };
+		5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6117D9D82F003365F6 /* sync@2x.png */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -1557,6 +1561,8 @@
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CA55E4A17C825AF001D32C0 /* ShinobiChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiChartCell.h; sourceTree = "<group>"; };
 		5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiChartCell.m; sourceTree = "<group>"; };
+		5CB46B6017D9D82F003365F6 /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
+		5CB46B6117D9D82F003365F6 /* sync@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync@2x.png"; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -2853,6 +2859,8 @@
 				5C940C57166E3FDE0044A7D1 /* dismiss2.png */,
 				5C7FD71E17A6416700FF39E1 /* settings.png */,
 				5C7FD71F17A6416700FF39E1 /* settings@2x.png */,
+				5CB46B6017D9D82F003365F6 /* sync.png */,
+				5CB46B6117D9D82F003365F6 /* sync@2x.png */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -3509,6 +3517,8 @@
 				5C5A11B417D2A26400CE96E5 /* intro01.png in Resources */,
 				5C5A11B617D2A26400CE96E5 /* intro01@2x.png in Resources */,
 				5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
+				5CB46B6217D9D82F003365F6 /* sync.png in Resources */,
+				5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3787,6 +3797,8 @@
 				5C5A11B517D2A26400CE96E5 /* intro01.png in Resources */,
 				5C5A11B717D2A26400CE96E5 /* intro01@2x.png in Resources */,
 				5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
+				5CB46B6317D9D82F003365F6 /* sync.png in Resources */,
+				5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@
 + (UIBarButtonItem *)doneBarButtonWithTarget:(id)target action:(SEL)action;
 + (UIBarButtonItem *)infoBarButtonWithTarget:(id)target action:(SEL)action;
 + (UIBarButtonItem *)settingsBarButtonWithTarget:(id)target action:(SEL)action;
-
++ (UIBarButtonItem *)syncBarButtonWithTarget:(id)target action:(SEL)action;
++ (UIBarButtonItem *)customBarButtonWithImageFile:(NSString *)imageFile target:(id)target action:(SEL)action;
 
 @end
