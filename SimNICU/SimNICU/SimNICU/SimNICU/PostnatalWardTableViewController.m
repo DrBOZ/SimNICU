@@ -47,12 +47,6 @@
     
     //tableView
     self.tableView.rowHeight = 50.0f;
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.sectionFooterHeight = 0.0f;
-    self.tableView.sectionHeaderHeight = 0.0f;
-    self.tableView.backgroundColor = [UIColor whiteColor];
-    self.tableView.separatorColor = [UIColor grayColor];
     
     // searchBar
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
@@ -237,12 +231,11 @@
     
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         cell.backgroundColor = [UIColor whiteColor];
     }
     
-    // Drug *drug;
     NSString *problem;
     
     if (tableView == self.tableView)
@@ -252,12 +245,11 @@
         problem = [postnatalWardSection.problems objectAtIndex:indexPath.row];
         cell.textLabel.text = problem;
     }
+    
     if(tableView == self.searchDisplayController.searchResultsTableView)
     {
-        //drug = [searchData objectAtIndex:indexPath.row];
         problem = [searchData objectAtIndex:indexPath.row];
-        
-        // cell.textLabel.text = drug.name;
+
         cell.textLabel.text = problem;
     }
     
