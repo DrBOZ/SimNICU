@@ -13,12 +13,15 @@
 "Apnoea" = "Apnoea";
 "Atracurium" = "Atracurium";
 "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium" = "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium";
+"Blood in the Nappy" = "Blood in the Nappy";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
 "Dinoprostone" = "Dinoprostone";
 "Dobutamine" = "Dobutamine";
 "DOBUTAMINE" = "DOBUTAMINE";
 "Done" = "Done";
 "Dopamine" = "Dopamine";
+"Down's Syndrome" = "Down's Syndrome";
+"Edward's Syndrome" = "Edward's Syndrome";
 "Forename" = "Forename";
 "Frusemide" = "Frusemide";
 "Guidelines" = "Guidelines";
@@ -26,6 +29,7 @@
 "Hyperglycaemia" = "Hyperglycaemia";
 "hyperkalaemia" = "hyperkalaemia";
 "Hypocalcaemia" = "Hypocalcemia";
+"Hypoglycaemia" = "Hypoglycaemia";
 "if required" = "if required";
 "Insulin" = "Insulin";
 "Intubation drugs" = "Intubation drugs";
@@ -38,6 +42,7 @@
 "Pancuronium" = "Pancuronium";
 "Paracetamol" = "Paracetamol";
 "Passcode Lock" = "Passcode Lock";
+"Patau's Syndrome" = "Patau's Syndrome";
 "Patient list" = "Patient list";
 "Phototherapy" = "Phototherapy";
 
@@ -49,6 +54,7 @@
 "Rocuronium" = "Rocuronium";
 "Serum bilirubin units" = "Serum bilirubin units";
 "Surname" = "Surname";
+"Tachypnoea" = "Tachypnoea";
 "Today" = "Today";
 
 "The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1" = "The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1";

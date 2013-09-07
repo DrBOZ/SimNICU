@@ -49,6 +49,7 @@
 #import "PhototherapyViewController.h"
 #import "PhototherapyGraphViewController.h"
 #import "PlasticBagViewController.h"
+#import "PostnatalWardTableViewController.h"
 #import "PulmonaryHaemorrhageViewController.h"
 #import "ResusViewController.h"
 #import "ROPViewController.h"
@@ -655,7 +656,7 @@
 #if POSTNATAL_WARD_PREVIEW_MODE
     
     screen = [[Screen alloc] init];
-    screen.menuText = @"Postnatal Ward";
+    screen.menuText = @"Postnatal Ward Problems";
     screen.segueId = @"PostnatalWard";
     [screens addObject:screen];
     
@@ -1333,6 +1334,15 @@
             }
             
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark Postnatal Ward
+        
+        else if ([thisScreenType isEqualToString:@"PostnatalWard"])
+        {
+            PostnatalWardTableViewController *newViewController = [[PostnatalWardTableViewController alloc] initWithStyle:UITableViewStylePlain];
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
