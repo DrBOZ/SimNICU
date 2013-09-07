@@ -11,6 +11,8 @@
 @interface ConnectionViewController ()
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
+@property (nonatomic, strong) UIButton *hostButton;
+@property (nonatomic, strong) UIButton *joinButton;
 
 @end
 
@@ -34,21 +36,27 @@
     
     self.title = @"Connection";
     
-    UIButton *hostButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    hostButton.frame = CGRectMake(10.0f, 10.0f, 145.0f, 44.0f);
-    // hostButton.backgroundColor = [UIColor clearColor];
-    hostButton.titleLabel.text = @"Host";
-    hostButton.titleLabel.textColor = [UIColor blackColor];
-    hostButton.titleLabel.backgroundColor = [UIColor whiteColor];
+    self.hostButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.hostButton.frame = CGRectMake(10.0f, 44.0f, 145.0f, 44.0f);
+    [self.hostButton setTitle:@"Host" forState:UIControlStateNormal];
+    // self.hostButton.titleLabel.textColor = [UIColor blackColor];
+    // self.hostButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     
-    UIButton *joinButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    joinButton.frame = CGRectMake(165.0f, 10.0f, 145.0f, 44.0f);
-    joinButton.backgroundColor = [UIColor clearColor];
-    joinButton.titleLabel.text = @"Join";
-    joinButton.titleLabel.textColor = [UIColor blackColor];
+    self.joinButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.joinButton.frame = CGRectMake(165.0f, 44.0f, 145.0f, 44.0f);
+    [self.joinButton setTitle:@"Join" forState:UIControlStateNormal];
+    // self.joinButton.backgroundColor = [UIColor clearColor];
+    // self.joinButton.titleLabel.text = @"Join";
     
-    [self.view addSubview:hostButton];
-    [self.view addSubview:joinButton];
+    // self.hostButton.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    // self.joinButton.titleLabel.textColor = [UIColor blackColor];
+    
+    [self.view addSubview:self.hostButton];
+    [self.view addSubview:self.joinButton];
+    
+    
+    // info button
+    self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:nil];
     
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.tableView];
