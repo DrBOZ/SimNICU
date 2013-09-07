@@ -27,7 +27,7 @@
 
 #import "UDInputAccessoryView.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, patientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -2055,7 +2055,7 @@
 
 - (void)done
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate AdvancedPatientEditorViewControllerDidFinish:self];
 }
 
 - (void)previousPatientButtonPressed

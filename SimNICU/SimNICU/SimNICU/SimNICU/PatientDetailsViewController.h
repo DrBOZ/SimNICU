@@ -15,7 +15,7 @@
 @class PatientDetailsViewController;
 @class Patient;
 
-@protocol patientDetailsViewControllerDelegate <NSObject>
+@protocol PatientDetailsViewControllerDelegate <NSObject>
 
 @optional
 
@@ -29,7 +29,7 @@
 
 @interface PatientDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, PatientDetailsEnterNameViewControllerDelegate, PatientDetailsEnterWeightViewControllerDelegate, KalViewControllerDelegate, PatientDetailsEnterWorkingWeightViewControllerDelegate>
 
-@property (nonatomic, unsafe_unretained) id <patientDetailsViewControllerDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <PatientDetailsViewControllerDelegate> delegate;
 @property (nonatomic, strong) UINavigationItem *myNavigationItem;
 @property (nonatomic, strong) NSString *userWantsToAddAPatient;
 @property (nonatomic, strong) NSString *patientFirstname;

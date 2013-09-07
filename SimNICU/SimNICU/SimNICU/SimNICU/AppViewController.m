@@ -544,7 +544,7 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Drugs";
-    screen.detailMenuText = @"Currently working on!";
+    screen.detailMenuText = @"Under Construction!";
     screen.segueId = @"Drugs";
     [screens addObject:screen];
     

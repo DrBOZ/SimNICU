@@ -6,12 +6,10 @@
 //  Copyright (c) 2012 SimNICU. All rights reserved.
 //
 
-#import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "SettingsTableViewController.h"
 #import "EnterWeightViewController.h"
 #import "SyncTableViewController.h"
-#import "BayEditorViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ROPViewController.h"
 #import "CBBarButtonItems.h"
@@ -1171,7 +1169,7 @@
     Patient *patient = bay.patientsInBay[indexPath.row];
     
     AdvancedPatientEditorViewController *newViewController = [[AdvancedPatientEditorViewController alloc] init];
-    // newViewController.delegate = self;
+    newViewController.delegate = self;
     newViewController.bayData = self.bayData;
     newViewController.selectedPatient = patient;
     newViewController.selectedBayNSNumber = [NSNumber numberWithInt:indexPath.section - 2];
@@ -2091,5 +2089,16 @@
 {
     self.preferences.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
 }
+
+#pragma mark - AdvancedPatientEditorViewControllerDelegate
+
+- (void)AdvancedPatientEditorViewControllerDidFinish:(AdvancedPatientEditorViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    [self.myTableView reloadData];
+}
+
+
 
 @end

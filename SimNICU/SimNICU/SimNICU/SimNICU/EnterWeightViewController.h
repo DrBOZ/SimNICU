@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 SimNICU. All rights reserved.
 //
 
+#import "AdvancedPatientEditorViewController.h"
 #import "KKPasscodeSettingsViewController.h"
 #import "OxygenationIndexViewController.h"
 #import "PatientDetailsViewController.h"
@@ -31,7 +32,7 @@
 
 @end
 
-@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, patientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, OxygenationIndexViewControllerDelegate, IntubationViewControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, PhototherapyViewControllerDelegate, BayEditorViewControllerDelegate, CorrectedAgeViewControllerDelegate>
+@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, PatientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, OxygenationIndexViewControllerDelegate, IntubationViewControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, PhototherapyViewControllerDelegate, BayEditorViewControllerDelegate, CorrectedAgeViewControllerDelegate, AdvancedPatientEditorViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationItem;
 @property (nonatomic, unsafe_unretained) id <EnterWeightViewControllerDelegate> delegate;
