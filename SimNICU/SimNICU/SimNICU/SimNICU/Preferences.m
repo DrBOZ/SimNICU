@@ -14,7 +14,11 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    if((self = [super init]))
+    // if((self = [super init]))
+    //
+    // above used before class was made into a singleton
+    
+    if((self = [Preferences sharedPreferences]))
     {
         self.bilirubinUnits = [aDecoder decodeObjectForKey:@"BilirubinUnits"];
         self.guidelineCountry = [aDecoder decodeObjectForKey:@"GuidelineCountry"];
@@ -32,6 +36,10 @@
         if (!self.paperSize)
         {
             self.paperSize = @"A4";
+        }
+        if (!self.correctAgeForPrematurityUntilYears)
+        {
+            self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
         }
     }
     return self;
@@ -52,12 +60,13 @@
     [aCoder encodeObject:self.paperSize forKey:@"paperSize"];
 }
 
-+ (id)sharedPreferences
+// Singleton method
++ (Preferences *)sharedPreferences
 {
     static Preferences *sharedPreferences = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedPreferences = [[self alloc] initWithCoder:nil];
+        sharedPreferences = [[self alloc] init];
     });
     return sharedPreferences;
 }

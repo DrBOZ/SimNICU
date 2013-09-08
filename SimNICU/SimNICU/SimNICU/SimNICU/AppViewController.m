@@ -931,7 +931,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Preferences *preferences = [Preferences sharedPreferences];
     
     // Special 'Emergency'
     if (indexPath.section == 0)
@@ -966,13 +966,6 @@
                 newViewController.gestation = self.gestation;
                 newViewController.weight = self.weight;
             }
-            
-            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
-            
-            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
-            
-            newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
-            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1230,13 +1223,6 @@
                 newViewController.weight = self.weight;
             }
             
-            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
-            
-            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
-            
-            newViewController.roundUp = enterWeightViewController.preferences.ETTRoundUp;
-            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
-            
             [self.navigationController pushViewController:newViewController animated:YES];
         }
         
@@ -1275,7 +1261,7 @@
             
             EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
             
-            newViewController.OIPaO2UnitsIndex = enterWeightViewController.preferences.OIUnits;
+            newViewController.OIPaO2UnitsIndex = preferences.OIUnits;
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
             [self.navigationController pushViewController:newViewController animated:YES];
@@ -1323,14 +1309,14 @@
             ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
             EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
             
-            if (enterWeightViewController.preferences.guidelineCountry)
+            if (preferences.guidelineCountry)
             {
-                newViewController.guidelineCountry = enterWeightViewController.preferences.guidelineCountry;
+                newViewController.guidelineCountry = preferences.guidelineCountry;
             }
             
-            if (enterWeightViewController.preferences.bilirubinUnits)
+            if (preferences.bilirubinUnits)
             {
-                newViewController.bilirubinUnits = enterWeightViewController.preferences.bilirubinUnits;
+                newViewController.bilirubinUnits = preferences.bilirubinUnits;
             }
             
             newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;

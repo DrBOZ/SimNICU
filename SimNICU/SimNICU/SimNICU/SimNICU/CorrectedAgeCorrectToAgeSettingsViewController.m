@@ -22,6 +22,7 @@
 
 @implementation CorrectedAgeCorrectToAgeSettingsViewController
 
+#warning move this to viewDidLoad
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -106,6 +107,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCell *returnCell = nil;
     
     if (indexPath.row == 0)
@@ -122,7 +125,7 @@
         
         self.oneYear.textLabel.text = @"1 year";
         
-        if ([self.correctAgeForPrematurityUntilYears intValue] == 1)
+        if ([preferences.correctAgeForPrematurityUntilYears intValue] == 1)
         {
             self.oneYear.accessoryType = UITableViewCellAccessoryCheckmark;
             self.oneYear.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -149,7 +152,7 @@
         
         self.twoYears.textLabel.text = @"2 years";
         
-        if ([self.correctAgeForPrematurityUntilYears intValue] == 2)
+        if ([preferences.correctAgeForPrematurityUntilYears intValue] == 2)
         {
             self.twoYears.accessoryType = UITableViewCellAccessoryCheckmark;
             self.twoYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -176,7 +179,7 @@
         
         self.threeYears.textLabel.text = @"3 years";
         
-        if ([self.correctAgeForPrematurityUntilYears intValue] == 3)
+        if ([preferences.correctAgeForPrematurityUntilYears intValue] == 3)
         {
             self.threeYears.accessoryType = UITableViewCellAccessoryCheckmark;
             self.threeYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -203,7 +206,7 @@
         
         self.fourYears.textLabel.text = @"4 years";
         
-        if ([self.correctAgeForPrematurityUntilYears intValue] == 4)
+        if ([preferences.correctAgeForPrematurityUntilYears intValue] == 4)
         {
             self.fourYears.accessoryType = UITableViewCellAccessoryCheckmark;
             self.fourYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -230,7 +233,7 @@
         
         self.fiveYears.textLabel.text = @"5 years";
         
-        if ([self.correctAgeForPrematurityUntilYears intValue] == 5)
+        if ([preferences.correctAgeForPrematurityUntilYears intValue] == 5)
         {
             self.fiveYears.accessoryType = UITableViewCellAccessoryCheckmark;
             self.fiveYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -251,9 +254,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if (indexPath.row == 0)
     {
-        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:1];
+        preferences.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:1];
         
         // set checkmarks
         self.oneYear.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -273,7 +278,7 @@
     }
     else if (indexPath.row == 1)
     {
-        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
+        preferences.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
         
         // set checkmarks
         self.oneYear.accessoryType = UITableViewCellAccessoryNone;
@@ -293,7 +298,7 @@
     }
     else if (indexPath.row == 2)
     {
-        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:3];
+        preferences.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:3];
         
         // set checkmarks
         self.oneYear.accessoryType = UITableViewCellAccessoryNone;
@@ -313,7 +318,7 @@
     }
     else if (indexPath.row == 3)
     {
-        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:4];
+        preferences.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:4];
         
         // set checkmarks
         self.oneYear.accessoryType = UITableViewCellAccessoryNone;
@@ -333,7 +338,7 @@
     }
     else if (indexPath.row == 4)
     {
-        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:5];
+        preferences.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:5];
         
         // set check marks
         self.oneYear.accessoryType = UITableViewCellAccessoryNone;
@@ -352,7 +357,7 @@
         self.fiveYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
     }
     
-    [self.delegate correctedAgeCorrectToAgeSettingsViewController:self didFinishSelectingCorrectionUntilAge:self.correctAgeForPrematurityUntilYears];
+    [self.delegate correctedAgeCorrectToAgeSettingsViewController:self didFinishSelectingCorrectionUntilAge:preferences.correctAgeForPrematurityUntilYears];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -365,144 +370,3 @@
 }
 
 @end
-
-/*
-
-
-@interface PhototherapyGuidelineCountryViewController ()
-
-
-@property UITableViewCell *cellUS;
-@property UITableViewCell *cellUK;
-
-@end
-
-@implementation PhototherapyGuidelineCountryViewController
-
-
-
-
-
-
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    float height = 22.0f;
-    
-    float fourInchDisplayPadding = 0.0f;
-    
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    if (appDelegate.window.bounds.size.height == 568)
-    {
-        fourInchDisplayPadding = 22.0f;
-    }
-    
-    height = 66.0f + fourInchDisplayPadding;
-    
-    return height;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return NSLocalizedString(@"Guideline Country", nil); // needs adding to string file
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    float footer = 0.0f;
-    
-    if (section == 0)
-    {
-        // footer = 66.0f;
-        footer = 200.0f;
-    }
-    
-    return footer;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    NSString *footer = nil;
-    
-    // footer = NSLocalizedString(@"The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1", nil);
-    
-    return footer;
-}
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44.0f;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *returnCell = nil;
-    
-    if (indexPath.row == 0)
-    {
-        static NSString *CellIdentifier = @"US";
-        self.cellUS = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (!self.cellUS)
-        {
-            self.cellUS = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            self.cellUS.selectionStyle = UITableViewCellSelectionStyleBlue;
-            self.cellUS.backgroundColor = [UIColor whiteColor];
-        }
-        
-        self.cellUS.textLabel.text = @"United States";
-        self.cellUS.detailTextLabel.text = @"AAP 2004 Guidelines";
-        
-        if ([self.guidelineCountry isEqualToString:@"US"])
-        {
-            self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
-            self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-        }
-        else
-        {
-            self.cellUS.accessoryType = UITableViewCellAccessoryNone;
-            self.cellUS.textLabel.textColor = [UIColor blackColor];
-        }
-        
-        returnCell = self.cellUS;
-    }
-    else
-    {
-        static NSString *CellIdentifier = @"UK";
-        self.cellUK = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (!self.cellUK)
-        {
-            self.cellUK = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            self.cellUK.selectionStyle = UITableViewCellSelectionStyleBlue;
-            self.cellUK.backgroundColor = [UIColor whiteColor];
-        }
-        
-        self.cellUK.textLabel.text = @"United Kingdom";
-        self.cellUK.detailTextLabel.text = @"NICE Guidelines";
-        
-        if ([self.guidelineCountry isEqualToString:@"UK"])
-        {
-            self.cellUK.accessoryType = UITableViewCellAccessoryCheckmark;
-            self.cellUK.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-        }
-        else
-        {
-            self.cellUK.accessoryType = UITableViewCellAccessoryNone;
-            self.cellUK.textLabel.textColor = [UIColor blackColor];
-        }
-        
-        returnCell = self.cellUK;
-    }
-    
-    return returnCell;
-}
-
-
-
-
-@end
-*/

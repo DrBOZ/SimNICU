@@ -14,6 +14,7 @@
     #import "CBDisplayMethods.h"
     #import "CBBarButtonItems.h"
     #import "AppDelegate.h"
+    #import "Preferences.h"
     #import "CBTrackers.h"
     #import "Flurry.h"
 #endif

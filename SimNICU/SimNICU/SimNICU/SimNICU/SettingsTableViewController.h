@@ -11,6 +11,4 @@
 
 @interface SettingsTableViewController : UITableViewController
 
-@property (nonatomic, strong) Preferences *preferences;
-
 @end

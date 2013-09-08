@@ -25,8 +25,9 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        
     }
     return self;
 }
@@ -50,7 +51,6 @@
     
     rowData = [[CBTableViewRowData alloc] init];
     rowData.text = @"Paper Size";
-    rowData.detailText = @"A4";
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
@@ -129,8 +129,10 @@
     
     if (indexPath.row == 0)
     {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
         cell.textLabel.text = @"Paper Size";
-        cell.detailTextLabel.text = self.paperSize;
+        cell.detailTextLabel.text = preferences.paperSize;
     }
     else
     {
@@ -152,7 +154,6 @@
     {
         // paperSize
         PaperSizeTableViewController *newViewController = [[PaperSizeTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        newViewController.paperSize = self.paperSize;
         newViewController.delegate = self;
         [self.navigationController pushViewController:newViewController animated:YES];
     }
@@ -166,8 +167,6 @@
 
 - (void)paperSizeTableViewController:(PaperSizeTableViewController *)controller didSelectPaperSize:(NSString *)paperSize
 {
-    self.paperSize = paperSize;
-    
     [self.tableView reloadData];
 }
 

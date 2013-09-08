@@ -45,6 +45,7 @@
     UIView *tapView;
 }
 
+/*
 - (Preferences *)preferences
 {
     if (!_preferences) 
@@ -54,6 +55,7 @@
     
     return _preferences;
 }
+ */
 
 - (NSMutableArray *)bayData
 {
@@ -125,7 +127,9 @@
         NSData *data = [[NSData alloc] initWithContentsOfFile:path];
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         self.patientList = [unarchiver decodeObjectForKey:@"PatientList"];
-        self.preferences = [unarchiver decodeObjectForKey:@"Preferences"];
+        
+        Preferences *preferences = [Preferences sharedPreferences];
+        preferences = [unarchiver decodeObjectForKey:@"Preferences"];
         self.bayData = [unarchiver decodeObjectForKey:@"BayData"];
         
         [unarchiver finishDecoding];
@@ -230,7 +234,9 @@
         self.selectedSex = @"Unknown";
         self.selectedCentile = @"50th";
         
-        if (![self.preferences.userKnowsHowToSwipeGestation isEqualToString:@"YES"])
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        if (![preferences.userKnowsHowToSwipeGestation isEqualToString:@"YES"])
         {
             self.gestationSwipeText = @"swipe left";
         }
@@ -262,10 +268,12 @@
 
 - (void)savePatientList
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     NSMutableData *data = [[NSMutableData alloc] init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:self.patientList forKey:@"PatientList"];
-    [archiver encodeObject:self.preferences forKey:@"Preferences"];
+    [archiver encodeObject:preferences forKey:@"Preferences"];
     [archiver encodeObject:self.bayData forKey:@"BayData"];
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
@@ -509,13 +517,15 @@
             
             cell.textLabel.text = @"Gestation";
             
-            if (![self.preferences.userKnowsHowToSwipeGestation isEqualToString:@"YES"])
+            Preferences *preferences = [Preferences sharedPreferences];
+            
+            if ([preferences.userKnowsHowToSwipeGestation isEqualToString:@"YES"])
             {
-                cell.detailTextLabel.text = self.gestationSwipeText;
+                cell.detailTextLabel.text = nil;
             }
             else
             {
-                cell.detailTextLabel.text = nil;
+                cell.detailTextLabel.text = self.gestationSwipeText;
             }
             
             returnCell = cell;
@@ -676,7 +686,9 @@
             
             cell.textLabel.text = NSLocalizedString(@"Patient List", nil);
             
-            if (![self.preferences.userKnowsHowToSwipePatientList isEqualToString:@"YES"])
+            Preferences *preferences = [Preferences sharedPreferences];
+            
+            if (![preferences.userKnowsHowToSwipePatientList isEqualToString:@"YES"])
             {
                 cell.detailTextLabel.text = self.patientListSwipeText;
             }
@@ -1738,6 +1750,8 @@
 
 - (void)handleGestationSwipeRight:(UISwipeGestureRecognizer *)recogniser
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if (self.gestationMode == 2)
     {
         self.gestationMode = 1;
@@ -1750,41 +1764,13 @@
     {
         self.gestationMode = 0;
         self.gestationSwipeText = nil;
-        self.preferences.userKnowsHowToSwipeGestation = @"YES";
+        preferences.userKnowsHowToSwipeGestation = @"YES";
         
         self.selectedSex = @"Unknown";
         
         [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationRight];
     }
-    
 }
-
-/*
-- (void)handlePatientListSwipeLeft:(UISwipeGestureRecognizer *)recognizer
-{
-    if (self.patientListMode == 0)
-    {
-        self.patientListMode = 1;
-        self.patientListSwipeText = @"swipe right";
-        
-        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationLeft];
-    }
-}
- */
-
-/*
-- (void)handlePatientListSwipeRight:(UISwipeGestureRecognizer *)recognizer
-{
-    if (self.patientListMode == 1)
-    {
-        self.patientListMode = 0;
-        self.patientListSwipeText = nil;
-        self.preferences.userKnowsHowToSwipePatientList = @"YES";
-        
-        [self.myTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationRight];
-    }
-}
- */
 
 -(void)handleTapFrom:(UITapGestureRecognizer *)recognizer
 {
@@ -1811,7 +1797,6 @@
 - (void)showSettings
 {
     SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    newViewController.preferences = self.preferences;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
@@ -1996,32 +1981,28 @@
 
 - (void)oxygenationIndexViewController:(OxygenationIndexViewController *)controller didChangePaO2Units:(int)index
 {
-    self.preferences.OIUnits = [NSString stringWithFormat:@"%i", index];
+#warning delete
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.OIUnits = [NSString stringWithFormat:@"%i", index];
 }
 
 #pragma mark - PhototherapyViewController delegate
 
 - (void)phototherapyViewController:(PhototherapyViewController *)controller didChangeGuidelineCountry:(NSString *)guidelineCountry
 {
-    // NSLog(@"EnterWeightViewController: phototherapyViewController didChangeGuidelineCountry");
+#warning delete
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    self.preferences.guidelineCountry = guidelineCountry;
+    preferences.guidelineCountry = guidelineCountry;
 }
 
 - (void)phototherapyViewController:(PhototherapyViewController *)controller didChangeBilirubinUnit:(NSString *)bilirubinUnit
 {
-    // NSLog(@"EnterWeightViewController: phototherapyViewController didChangeBilirubinUnit");
+#warning delete
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    self.preferences.bilirubinUnits = bilirubinUnit;
-}
-
-#pragma mark - IntubationViewController delegate
-
-- (void)intubationViewController:(IntubationViewController *)controller didChangeETTRoundUp:(BOOL)selected
-{
-    self.preferences.ETTRoundUp = [NSString stringWithFormat:@"%i", selected];
-    
-    NSLog(@"In EnterWeightViewController. selected = %i", selected);
+    preferences.bilirubinUnits = bilirubinUnit;
 }
 
 #pragma mark - KKPasscodeViewController delegate
@@ -2084,13 +2065,6 @@
     [self.myTableView reloadData];
 }
 
-#pragma mark - CorrectedAgeViewController delegate
-
-- (void)correctedAgeViewController:(CorrectedAgeViewController *)controller didChangePreferencesForCorrectAgeForPrematurityUntilYears:(NSNumber *)correctAgeForPrematurityUntilYears
-{
-    self.preferences.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
-}
-
 #pragma mark - AdvancedPatientEditorViewControllerDelegate
 
 - (void)AdvancedPatientEditorViewControllerDidFinish:(AdvancedPatientEditorViewController *)controller
@@ -2099,7 +2073,5 @@
     
     [self.myTableView reloadData];
 }
-
-
 
 @end

@@ -238,7 +238,6 @@
         else if (indexPath.row == 2)
         {
             PDFGenerationTableViewController *newViewController = [[PDFGenerationTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            newViewController.paperSize = self.preferences.paperSize;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }

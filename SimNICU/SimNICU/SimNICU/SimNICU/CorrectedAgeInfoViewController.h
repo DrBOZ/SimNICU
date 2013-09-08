@@ -19,6 +19,5 @@
 @interface CorrectedAgeInfoViewController : UIViewController
 
 @property (nonatomic, unsafe_unretained) id <CorrectedAgeInfoViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSNumber *correctAgeForPrematurityUntilYears;
 
 @end

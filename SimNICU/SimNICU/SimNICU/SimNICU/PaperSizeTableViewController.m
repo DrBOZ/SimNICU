@@ -76,6 +76,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCell *returnCell = nil;
     
     if (indexPath.row == 0)
@@ -93,7 +95,7 @@
         self.cellUS.textLabel.text = @"Letter";
         self.cellUS.detailTextLabel.text = @"";
         
-        if ([self.paperSize isEqualToString:@"Letter"])
+        if ([preferences.paperSize isEqualToString:@"Letter"])
         {
             self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
             self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -121,7 +123,7 @@
         self.cellUK.textLabel.text = @"A4";
         self.cellUK.detailTextLabel.text = @"";
         
-        if ([self.paperSize isEqualToString:@"A4"])
+        if ([preferences.paperSize isEqualToString:@"A4"])
         {
             self.cellUK.accessoryType = UITableViewCellAccessoryCheckmark;
             self.cellUK.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -142,9 +144,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if (indexPath.row == 0)
     {
-        self.paperSize = @"Letter";
+        preferences.paperSize = @"Letter";
         
         self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
         self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -154,7 +158,7 @@
     }
     else
     {
-        self.paperSize = @"A4";
+        preferences.paperSize = @"A4";
         
         self.cellUK.accessoryType = UITableViewCellAccessoryCheckmark;
         self.cellUK.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -163,7 +167,7 @@
         self.cellUS.textLabel.textColor = [UIColor blackColor];
     }
     
-    [self.delegate paperSizeTableViewController:self didSelectPaperSize:self.paperSize];
+    [self.delegate paperSizeTableViewController:self didSelectPaperSize:nil];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

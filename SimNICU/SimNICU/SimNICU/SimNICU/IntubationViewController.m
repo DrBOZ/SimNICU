@@ -405,7 +405,9 @@
         }
     }
     
-    if ([self.roundUp isEqualToString:@"1"]) 
+    Preferences *preferences = [Preferences sharedPreferences];
+
+    if ([preferences.ETTRoundUp isEqualToString:@"1"])
     {
         self.roundedSwitch.on = YES;
     }
@@ -945,9 +947,9 @@
 
 - (void)changeRoundUp
 {
-    NSLog(@"self.roundedSwitch.on = %i", self.roundedSwitch.on);
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    [self.delegate intubationViewController:self didChangeETTRoundUp:self.roundedSwitch.on];
+    preferences.ETTRoundUp = [NSString stringWithFormat:@"%i", self.roundedSwitch.on];
     
     [self setPicker];
 }

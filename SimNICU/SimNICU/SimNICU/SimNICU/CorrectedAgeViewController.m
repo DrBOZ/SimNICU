@@ -523,18 +523,19 @@
                         else
                         {
                             // code here to check if age is greater than corrected limit
+                            Preferences *preferences = [Preferences sharedPreferences];
                             
-                            if (self.correctAgeForPrematurityUntilYears)
+                            if (preferences.correctAgeForPrematurityUntilYears)
                             {
                                 // find out age in years
                                 // NB. this is a calendrical operation
                                 int patientAgeInYears = [CBTimeMethods getYearsDifferenceBetween:self.dateOfBirth and:self.selectedDate];
                                 
-                                if (patientAgeInYears >= [self.correctAgeForPrematurityUntilYears intValue])
+                                if (patientAgeInYears >= [preferences.correctAgeForPrematurityUntilYears intValue])
                                 {
                                     cell.label5.text = @"";
                                     cell.label4.text = @"";
-                                    cell.label3.text = [NSString stringWithFormat:@"Patient is over %d years old", [self.correctAgeForPrematurityUntilYears intValue]];
+                                    cell.label3.text = [NSString stringWithFormat:@"Patient is over %d years old", [preferences.correctAgeForPrematurityUntilYears intValue]];
                                     cell.label2.text = @"";
                                     cell.label1.text = @"No need to correct for prematurity";
                                 }
@@ -1013,7 +1014,6 @@
 - (void)showInfoScreen
 {
     CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
-    newViewController.correctAgeForPrematurityUntilYears = self.correctAgeForPrematurityUntilYears;
     newViewController.delegate = self;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
@@ -1028,10 +1028,6 @@
 
 - (void)correctedAgeInfoViewController:(CorrectedAgeInfoViewController *)controller didChangeCorrectAgeForPrematurityUntilYears:(NSNumber *)correctAgeForPrematurityUntilYears
 {
-    self.correctAgeForPrematurityUntilYears = correctAgeForPrematurityUntilYears;
-    
-    [self.delegate correctedAgeViewController:self didChangePreferencesForCorrectAgeForPrematurityUntilYears:correctAgeForPrematurityUntilYears];
-    
     [self.myTableView reloadData];
 }
 

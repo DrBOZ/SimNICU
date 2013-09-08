@@ -19,6 +19,5 @@
 @interface PaperSizeTableViewController : UITableViewController
 
 @property (nonatomic, weak) id <PaperSizeTableViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSString *paperSize;
 
 @end
