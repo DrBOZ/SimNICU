@@ -7,10 +7,11 @@
 //
 
 #import "PDFGenerationTableViewController.h"
+#import "PaperSizeTableViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
-@interface PDFGenerationTableViewController ()
+@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 
@@ -126,11 +127,19 @@
         cell.backgroundColor = [UIColor whiteColor];
     }
     
-    CBTableViewSectionData *sectionData = tableData[indexPath.section];
-    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
-    
-    cell.textLabel.text = rowData.text;
-    cell.detailTextLabel.text = rowData.detailText;
+    if (indexPath.row == 0)
+    {
+        cell.textLabel.text = @"Paper Size";
+        cell.detailTextLabel.text = self.paperSize;
+    }
+    else
+    {
+        CBTableViewSectionData *sectionData = tableData[indexPath.section];
+        CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
+        
+        cell.textLabel.text = rowData.text;
+        cell.detailTextLabel.text = rowData.detailText;
+    }
     
     return cell;
 }
@@ -139,7 +148,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0)
+    {
+        // paperSize
+        PaperSizeTableViewController *newViewController = [[PaperSizeTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        newViewController.paperSize = self.paperSize;
+        newViewController.delegate = self;
+        [self.navigationController pushViewController:newViewController animated:YES];
+    }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
+#pragma mark - PaperSizeTableViewControllerDelegate
+
+- (void)paperSizeTableViewController:(PaperSizeTableViewController *)controller didSelectPaperSize:(NSString *)paperSize
+{
+    self.paperSize = paperSize;
+    
+    [self.tableView reloadData];
 }
 
 @end

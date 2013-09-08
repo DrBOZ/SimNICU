@@ -26,6 +26,13 @@
         self.userKnowsHowToSwipeGestation = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipeGestation"];
         self.userKnowsHowToSwipePatientList = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipePatientList"];
         self.correctAgeForPrematurityUntilYears = [aDecoder decodeObjectForKey:@"correctAgeForPrematurityUntilYears"];
+        self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
+        
+        // set defaults
+        if (!self.paperSize)
+        {
+            self.paperSize = @"A4";
+        }
     }
     return self;
 }
@@ -42,6 +49,17 @@
     [aCoder encodeObject:self.userKnowsHowToSwipeGestation forKey:@"userKnowsHowToSwipeGestation"];
     [aCoder encodeObject:self.userKnowsHowToSwipePatientList forKey:@"userKnowsHowToSwipePatientList"];
     [aCoder encodeObject:self.correctAgeForPrematurityUntilYears forKey:@"correctAgeForPrematurityUntilYears"];
+    [aCoder encodeObject:self.paperSize forKey:@"paperSize"];
+}
+
++ (id)sharedPreferences
+{
+    static Preferences *sharedPreferences = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedPreferences = [[self alloc] initWithCoder:nil];
+    });
+    return sharedPreferences;
 }
 
 @end

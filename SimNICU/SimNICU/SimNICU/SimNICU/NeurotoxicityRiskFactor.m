@@ -10,9 +10,6 @@
 
 @implementation NeurotoxicityRiskFactor
 
-@synthesize checked = _checked;
-@synthesize text = _text;
-
 - (id)init
 {
     self = [super init];

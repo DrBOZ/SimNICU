@@ -12,18 +12,13 @@
 @interface PhototherapyGuidelineCountryViewController ()
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property UITableView *myTableView;
-@property UITableViewCell *cellUS;
-@property UITableViewCell *cellUK;
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UITableViewCell *cellUS;
+@property (nonatomic, strong) UITableViewCell *cellUK;
 
 @end
 
 @implementation PhototherapyGuidelineCountryViewController
-
-@synthesize guidelineCountry = _guidelineCountry;
-@synthesize delegate = _delegate;
-@synthesize cellUS = _cellUS;
-@synthesize cellUK = _cellUK;
 
 - (void)viewDidLoad
 {
@@ -31,7 +26,7 @@
 	
     [CBTrackers logEvent:@"Phototherapy/Guideline"];
     
-    self.title = NSLocalizedString(@"Guidelines", nil);  // needs add to localization string file
+    self.title = NSLocalizedString(@"Guidelines", nil);  // need to add to localization string file
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -55,18 +50,6 @@
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Phototherapy/Guideline Selector" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"PhototherapyGuidelineCountry: viewDidAppear"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,7 +114,6 @@
     
     if (section == 0)
     {
-        // footer = 66.0f;
         footer = 200.0f;
     }
     
@@ -147,10 +129,12 @@
     return footer;
 }
 
+/*
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44.0f;
 }
+ */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -241,8 +225,6 @@
         self.cellUS.accessoryType = UITableViewCellAccessoryNone;
         self.cellUS.textLabel.textColor = [UIColor blackColor];
     }
-    
-    // [self.myTableView reloadData];
     
     [self.delegate phototherapyGuidelineCountryViewController:self didFinishSelectingGuidelineCountry:self.guidelineCountry];
     

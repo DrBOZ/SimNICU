@@ -12,7 +12,7 @@
 
 @interface PhototherapyNeurotoxicityRiskViewController ()
 
-@property UITableView *myTableView;
+@property (nonatomic, strong) UITableView *myTableView;
 
 @end
 
@@ -20,19 +20,6 @@
 {
     NSMutableArray *riskFactors;
 }
-
-@synthesize neurotoxicityRiskFactors = _neurotoxicityRiskFactors;
-@synthesize myTableView = _myTableView;
-@synthesize delegate = _delegate;
-
-@synthesize neuroRiskAcidosis = _neuroRiskAcidosis;
-@synthesize neuroRiskAsphyxia = _neuroRiskAsphyxia;
-@synthesize neuroRiskAlbuminLessThanThreeGramsPerDeciLitre = _neuroRiskAlbuminLessThanThreeGramsPerDeciLitre;
-@synthesize neuroRiskG6PDPresent = _neuroRiskG6PDPresent;
-@synthesize neuroRiskIsoimmunineHaemolyticDiseasePresent = _neuroRiskIsoimmunineHaemolyticDiseasePresent;
-@synthesize neuroRiskSepsis = _neuroRiskSepsis;
-@synthesize neuroRiskSignificantLethargy = _neuroRiskSignificantLethargy;
-@synthesize neuroRiskTemperatureInstability = _neuroRiskTemperatureInstability;
 
 - (void)viewDidLoad
 {

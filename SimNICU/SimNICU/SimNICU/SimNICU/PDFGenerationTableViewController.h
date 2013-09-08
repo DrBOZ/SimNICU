@@ -10,4 +10,6 @@
 
 @interface PDFGenerationTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSString *paperSize;
+
 @end

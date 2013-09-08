@@ -12,9 +12,9 @@
 @interface PhototherapyUnitsViewController ()
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property UITableView *myTableView;
-@property UITableViewCell *cellUS;
-@property UITableViewCell *cellSI;
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UITableViewCell *cellUS;
+@property (nonatomic, strong) UITableViewCell *cellSI;
 
 @end
 

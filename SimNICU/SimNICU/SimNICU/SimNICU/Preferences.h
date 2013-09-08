@@ -36,4 +36,9 @@
 // Corrected age calculator
 @property (nonatomic, retain) NSNumber *correctAgeForPrematurityUntilYears;
 
+// PDF settings
+@property (nonatomic, retain) NSString *paperSize;
+
++ (id)sharedPreferences;
+
 @end

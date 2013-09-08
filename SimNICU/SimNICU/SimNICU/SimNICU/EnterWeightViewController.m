@@ -1811,6 +1811,7 @@
 - (void)showSettings
 {
     SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    newViewController.preferences = self.preferences;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     

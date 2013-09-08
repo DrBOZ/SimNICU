@@ -11,9 +11,9 @@
 
 @interface PhototherapyClinicalStatusViewController ()
 
-@property UITableView *myTableView;
-@property UITableViewCell *wellCell;
-@property UITableViewCell *unwellCell;
+@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UITableViewCell *wellCell;
+@property (nonatomic, strong) UITableViewCell *unwellCell;
 
 @end
 

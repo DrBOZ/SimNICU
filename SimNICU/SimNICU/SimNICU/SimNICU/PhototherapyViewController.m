@@ -250,7 +250,6 @@
     {
         if ([self.guidelineCountry isEqualToString:@"US"])
         {
-            // footer = [NSString stringWithFormat:@"%@\n%@\n%@", NSLocalizedString(@"Green Line - Low Risk", nil), NSLocalizedString(@"Amber Line - Medium Risk", nil), NSLocalizedString(@"Red Line - High Risk", nil)];
             footer = [NSString stringWithFormat:@"%@\n%@", NSLocalizedString(@"Red Line - Exchange Transfusion", nil), NSLocalizedString(@"Blue Line - Phototherapy", nil)];
         }
         else if ([self.guidelineCountry isEqualToString:@"UK"])
