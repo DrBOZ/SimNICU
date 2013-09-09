@@ -41,8 +41,11 @@
 
 @interface DailySummaryPDFViewController ()
 
-@property (nonatomic, strong) NSString *fileNamePath;
 @property (nonatomic, strong) UIPrintInteractionController *printController;
+@property (nonatomic, strong) NSString *fileNamePath;
+
+- (void)drawSignature;
+- (void)drawBorder;
 
 @end
 
@@ -90,20 +93,31 @@
     // set title
     self.title = @"Daily Summary";
     
+    // setup Print Controller
     Class printControllerClass = NSClassFromString(@"UIPrintInteractionController");
+    self.printController = [printControllerClass sharedPrintController];
+    
+    // setup toolbar
+    UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *itemRewind = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatientButtonPressed)];
+    itemRewind.tag = 2;
+    UIBarButtonItem *itemFastForward = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextPatientButtonPressed:)];
+    itemFastForward.tag = 3;
+    UIBarButtonItem *itemPrint = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(print)];
+    itemPrint.tag = 1;
+    
+    NSArray *items;
     
     if (printControllerClass)
     {
-        self.printController = [printControllerClass sharedPrintController];
-        
-        UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        
-        UIBarButtonItem *itemPrint = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(print)];
-        itemPrint.tag = 1;
-        
-        NSArray *items = [NSArray arrayWithObjects:flexibleItem, itemPrint, flexibleItem, nil];
-        self.toolbarItems = items;
+        items = [NSArray arrayWithObjects:itemRewind, flexibleItem, itemPrint, flexibleItem, itemFastForward, nil];
     }
+    else
+    {
+        items = [NSArray arrayWithObjects:itemRewind, flexibleItem, flexibleItem, flexibleItem, itemFastForward, nil];
+    }
+    
+    self.toolbarItems = items;
     
     // Get page size
     Preferences *preferences = [Preferences sharedPreferences];
@@ -381,7 +395,7 @@
     }
     
     // draw signature line & draw my name, status and GMC number
-    [self drawLineForSignature];
+    [self drawSignature];
 
     // Close the PDF context and write the contents out.
     UIGraphicsEndPDFContext();
@@ -494,7 +508,7 @@
     CGContextDrawPath(currentContext, kCGPathFillStroke);
 }
 
-- (void)drawLineForSignature
+- (void)drawSignature
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
@@ -568,6 +582,209 @@
 - (void)deleteFile
 {
     [[NSFileManager defaultManager] removeItemAtPath:self.fileNamePath error:nil];
+}
+
+- (void)previousPatientButtonPressed
+{
+    /*
+    // load new data in tableView
+    newPatientDetails = YES;
+    newPatientBackground = YES;
+    newActiveProblems = YES;
+    newResolvedProblems = YES;
+    newRecentSignificantEvents = YES;
+    newVentilationAndSedation = YES;
+    newCXR = YES;
+    newCardiovascular = YES;
+    newLines = YES;
+    newFeedsAndFluids = YES;
+    newFluidBalance = YES;
+    newElectrolytes = YES;
+    newBiliChart = YES;
+    newJaundice = YES;
+    newSepsis = YES;
+    newDrugs = YES;
+    newROP = YES;
+    newCranialUSS = YES;
+    newParentsAndSocial = YES;
+    newImpression = YES;
+    newPlan = YES;
+    newJobs = YES;
+    
+    // check to see if there is another patient in the bay
+    if (selectedPatientInBay == 0)
+    {
+        // no, last patient in bay
+        
+        // decrement bay, unless first bay
+        if (selectedBay == 0)
+        {
+            return;
+        }
+        else
+        {
+            // ensure there are patients in any previous bays
+            for (int i = selectedBay - 1; i >= 0; --i)
+            {
+                if ([[self.bayData[i] patientsInBay] count])
+                {
+                    selectedBay = i;
+                    break;
+                }
+                else
+                {
+                    // no patient in the next bay
+                    
+                    if (i == 0)
+                    {
+                        // no more patients, empty first bay
+                        return;
+                    }
+                }
+            }
+        }
+        
+        // set to last patient in new bay
+        selectedPatientInBay = [[self.bayData[selectedBay] patientsInBay] count] - 1;
+    }
+    else
+    {
+        // yes, there are more patients in the bay
+        
+        // decrement patient
+        selectedPatientInBay -= 1;
+    }
+    
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    
+    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
+    
+    [self loadSectionDataForPatientEditing:self.editing];
+    
+    [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+    
+    [self.myTableView1 reloadData];
+    [self.myTableView2 reloadData];
+    
+    NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
+    NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
+    
+    if (selectedBay == 0 && selectedPatientInBay == 0)
+    {
+        firstButtonPressSinceScroll = YES; // hack to correct the jump that happens when going to first patient in bay 0
+    }
+    else
+    {
+        firstButtonPressSinceScroll = NO;
+    }
+    
+    [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
+     */
+}
+
+- (void)nextPatientButtonPressed:(UIBarButtonItem *)sender
+{
+    /*
+    // load new data in tableView
+    newPatientDetails = YES;
+    newPatientBackground = YES;
+    newActiveProblems = YES;
+    newResolvedProblems = YES;
+    newRecentSignificantEvents = YES;
+    newVentilationAndSedation = YES;
+    newCXR = YES;
+    newCardiovascular = YES;
+    newLines = YES;
+    newFeedsAndFluids = YES;
+    newFluidBalance = YES;
+    newElectrolytes = YES;
+    newBiliChart = YES;
+    newJaundice = YES;
+    newSepsis = YES;
+    newDrugs = YES;
+    newROP = YES;
+    newCranialUSS = YES;
+    newParentsAndSocial = YES;
+    newImpression = YES;
+    newPlan = YES;
+    newJobs = YES;
+    
+    // check the number of patients in the current bay
+    int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];
+    
+    // check to see if there is another patient in the bay
+    if (selectedPatientInBay == (numberOfPatientsInCurrentBay - 1))
+    {
+        // no, last patient in bay
+        
+        // increment bay unless last bay
+        if (selectedBay == [self.bayData count] - 1)
+        {
+            return;
+        }
+        else
+        {
+            // ensure there are are patients in the next bay displayed
+            int numberOfBays = [self.bayData count];
+            
+            for (int i = selectedBay + 1; numberOfBays; i++)
+            {
+                if ([[self.bayData[i] patientsInBay] count])
+                {
+                    selectedBay = i;
+                    break;
+                }
+                else
+                {
+                    // no patients in the next bay
+                    
+                    // if the second to last bay, then no more patients
+                    if (i == numberOfBays - 1)
+                    {
+                        // no more patients, empty bays
+                        return;
+                    }
+                }
+            }
+        }
+        
+        // reset patient info
+        selectedPatientInBay = 0;
+    }
+    else
+    {
+        // yes, there are more patients in the bay
+        
+        // increment patient
+        selectedPatientInBay += 1;
+    }
+    
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    
+    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
+    
+    [self loadSectionDataForPatientEditing:self.editing];
+    
+    [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+    
+    [self.myTableView1 reloadData];
+    [self.myTableView2 reloadData];
+    
+    if (sender.tag == 4)
+    {
+        // do not jump to the top
+        NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
+        NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
+        firstButtonPressSinceScroll = NO;
+        
+        [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    else
+    {
+        // jumps to the top. i.e. in handover
+        [self.myTableView2 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+     */
 }
 
 @end

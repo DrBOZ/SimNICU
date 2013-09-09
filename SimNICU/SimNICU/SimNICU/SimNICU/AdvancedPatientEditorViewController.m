@@ -124,7 +124,7 @@
 //10) Add Time and Date
 //11) Add weight chart
 //12) Add phototherapy chart
-//13) Add signature box
+//13)
 //14) Add settings VC
 //15) Sort Headings and Text as one object to calculate sizes *****
 //16) Add option to calcualate first day as day 0, day 1 or mixture
@@ -1375,7 +1375,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    HandoverSection *section;;
+    HandoverSection *section;
     HandoverRow *row;
     
     if ([textView isEqual:self.backgroundTextView])
@@ -2151,7 +2151,7 @@
         firstButtonPressSinceScroll = NO;
     }
 
-    [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];;
+    [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (void)nextPatientButtonPressed:(UIBarButtonItem *)sender
