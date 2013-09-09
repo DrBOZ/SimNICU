@@ -1965,28 +1965,6 @@
     }
 }
 
-/*
-#pragma mark - PhototherapyViewController delegate
-
-- (void)phototherapyViewController:(PhototherapyViewController *)controller didChangeGuidelineCountry:(NSString *)guidelineCountry
-{
-#warning delete
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    preferences.guidelineCountry = guidelineCountry;
-}
- */
-
-/*
-- (void)phototherapyViewController:(PhototherapyViewController *)controller didChangeBilirubinUnit:(NSString *)bilirubinUnit
-{
-#warning delete
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    preferences.bilirubinUnits = bilirubinUnit;
-}
- */
-
 #pragma mark - KKPasscodeViewController delegate
 
 - (void)didPasscodeEnteredCorrectly:(KKPasscodeViewController *)viewController

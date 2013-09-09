@@ -11,9 +11,10 @@
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
-@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate>
+@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
+@property (nonatomic, strong) UITextView *signatureTextView;
 
 @end
 
@@ -61,9 +62,11 @@
     rowData.text = @"Unit Address";
     [sectionData.rowData addObject:rowData];
     
+    /*
     rowData = [[CBTableViewRowData alloc] init];
     rowData.text = @"Signature";
     [sectionData.rowData addObject:rowData];
+     */
     
     [tableData addObject:sectionData];
     
@@ -85,16 +88,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [tableData count];
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int rows = nil;
     
-    CBTableViewSectionData *sectionData = tableData[section];
-    
-    rows = [sectionData.rowData count];
+    if (section == 0)
+    {
+        CBTableViewSectionData *sectionData = tableData[section];
+        
+        rows = [sectionData.rowData count];
+    }
+    else
+    {
+        rows = 1;
+    }
     
     return rows;
 }
@@ -108,14 +118,35 @@
 {
     NSString *header = nil;
     
-    CBTableViewSectionData *sectionData = tableData[section];
-    header = sectionData.titleForHeader;
+    if (section == 0)
+    {
+        CBTableViewSectionData *sectionData = tableData[section];
+        header = sectionData.titleForHeader;
+    }
+    else
+    {
+        header = @"Signature";
+    }
     
     return header;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    float height = 44.0f;
+    
+    if (indexPath.section == 1)
+    {
+        height = 110.0f;
+    }
+    
+    return height;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -127,20 +158,38 @@
         cell.backgroundColor = [UIColor whiteColor];
     }
     
-    if (indexPath.row == 0)
+    if (indexPath.section == 0)
     {
-        Preferences *preferences = [Preferences sharedPreferences];
-        
-        cell.textLabel.text = @"Paper Size";
-        cell.detailTextLabel.text = preferences.paperSize;
+        if (indexPath.row == 0)
+        {
+            cell.textLabel.text = @"Paper Size";
+            cell.detailTextLabel.text = preferences.paperSize;
+        }
+        else
+        {
+            CBTableViewSectionData *sectionData = tableData[indexPath.section];
+            CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
+            
+            cell.textLabel.text = rowData.text;
+            cell.detailTextLabel.text = rowData.detailText;
+        }
     }
-    else
+    else if (indexPath.section == 1)
     {
-        CBTableViewSectionData *sectionData = tableData[indexPath.section];
-        CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
+        // create signature cell
+        cell.textLabel.text = nil;;
+        cell.detailTextLabel.text = nil;
+        cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.textLabel.text = rowData.text;
-        cell.detailTextLabel.text = rowData.detailText;
+        self.signatureTextView = [[UITextView alloc] init];
+        self.signatureTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 100.0f);
+        self.signatureTextView.font = [UIFont systemFontOfSize:16.0f];
+        self.signatureTextView.scrollEnabled = NO;
+        self.signatureTextView.delegate = self;
+        
+        self.signatureTextView.text = preferences.signature;
+        
+        [cell.contentView addSubview:self.signatureTextView];
     }
     
     return cell;
@@ -161,6 +210,24 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+}
+
+#pragma mark - UITextView delegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    BOOL allowUserToEnterText = YES;
+    
+    // develop a way to limit the textView to 4 lines...
+    
+    return allowUserToEnterText;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.signature = textView.text;
 }
 
 #pragma mark - PaperSizeTableViewControllerDelegate

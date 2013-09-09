@@ -31,12 +31,15 @@
         self.userKnowsHowToSwipePatientList = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipePatientList"];
         self.correctAgeForPrematurityUntilYears = [aDecoder decodeObjectForKey:@"correctAgeForPrematurityUntilYears"];
         self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
+        self.signature = [aDecoder decodeObjectForKey:@"signature"];
         
-        // set defaults
+        // set default paper size
         if (!self.paperSize)
         {
             self.paperSize = @"A4";
         }
+        
+        // set default correction age
         if (!self.correctAgeForPrematurityUntilYears)
         {
             self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
@@ -58,6 +61,7 @@
     [aCoder encodeObject:self.userKnowsHowToSwipePatientList forKey:@"userKnowsHowToSwipePatientList"];
     [aCoder encodeObject:self.correctAgeForPrematurityUntilYears forKey:@"correctAgeForPrematurityUntilYears"];
     [aCoder encodeObject:self.paperSize forKey:@"paperSize"];
+    [aCoder encodeObject:self.signature forKey:@"signature"];
 }
 
 // Singleton method

@@ -105,9 +105,19 @@
         self.toolbarItems = items;
     }
     
-    // Default page size is A4
-    pageWidth = kA4Width;
-    pageHeight = kA4Height;
+    // Get page size
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.paperSize isEqualToString:@"A4"])
+    {
+        pageWidth = kA4Width;
+        pageHeight = kA4Height;
+    }
+    else
+    {
+        pageWidth = kLetterWidth;
+        pageHeight = kLetterHeight;
+    }
     
     // create file name
     NSString *fileName = @"dailySummary.pdf";
@@ -117,7 +127,7 @@
     NSString *path = arrayPaths[0];
     self.fileNamePath = [path stringByAppendingPathComponent:fileName];
     
-    // Create the PDF context using the default page size of 612 x 792.
+    // Create the PDF context using page size
     UIGraphicsBeginPDFContextToFile(self.fileNamePath, CGRectZero, nil);
     
     // Mark the beginning of a new page.
@@ -134,11 +144,6 @@
     // Draw logo
     UIImage *logo = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
     [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), (logo.size.width / 2), (logo.size.height / 2))];
-    
-    // draw image - this works
-    // UIImage *icon = [UIImage imageNamed:@"ray-logo.png"];
-    // [self.phototherapyChart drawInRect:CGRectMake(320.0f - ((self.phototherapyChart.size.width / 2) / 2), 400.0f, (self.phototherapyChart.size.width / 2), (self.phototherapyChart.size.height / 2))];
-    // [self.phototherapyChart drawInRect:CGRectMake(10.0f, 400.0f, (self.phototherapyChart.size.width / 2), (self.phototherapyChart.size.height / 2))];
     
     // draw text
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -491,6 +496,8 @@
 
 - (void)drawLineForSignature
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     // draw line
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
@@ -515,10 +522,9 @@
     renderingRect = CGRectMake(pageWidth - kMarginInsetLeft - kBorderInset - 100.0f, pageHeight - kBorderInset - kMarginInsetBottom - 40.0f, 150.0f, 80.0f);
     
     // draw text
-    [@"Dr Conrad Bosman\nST 8 Paediatrics & Neonates\n\nGMC number 4211792" drawInRect:renderingRect
-                                                                              withFont:[UIFont systemFontOfSize:10.0f]
-                                                                         lineBreakMode:UILineBreakModeWordWrap
-                                                                             alignment:UITextAlignmentLeft];
+    // [@"Dr Conrad Bosman\nST 8 Paediatrics & Neonates\n\nGMC number 4211792" drawInRect:renderingRect withFont:[UIFont systemFontOfSize:10.0f] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    
+    [preferences.signature drawInRect:renderingRect withFont:[UIFont systemFontOfSize:10.0f] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
 }
 
 - (void)drawBorder
