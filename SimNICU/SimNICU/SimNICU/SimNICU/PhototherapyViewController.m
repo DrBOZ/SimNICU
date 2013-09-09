@@ -30,40 +30,33 @@
     
     self.title = NSLocalizedString(@"Phototherapy", nil);
     
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     // set locale specific defaults
     NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
     NSLog(@"Current locale = %@", currentLocale);
     
-    if (!self.guidelineCountry)
+    if (!preferences.guidelineCountry)
     {
         if ([currentLocale isEqualToString:@"en_GB"])
         {
-            self.guidelineCountry = @"UK";
-            self.bilirubinUnits = @"SI";
+            preferences.guidelineCountry = @"UK";
+            preferences.bilirubinUnits = @"SI";
         }
         else if ([currentLocale isEqualToString:@"en_US"])
         {
-            self.guidelineCountry = @"US";
-            self.bilirubinUnits = @"US";
+            preferences.guidelineCountry = @"US";
+            preferences.bilirubinUnits = @"US";
         }
         else
         {
-            self.guidelineCountry = @"US";
-            self.bilirubinUnits = @"US";
+            preferences.guidelineCountry = @"US";
+            preferences.bilirubinUnits = @"US";
         }
     }
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    /*
-     // Info button
-     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-     infoButton.frame = CGRectMake(270.0f, 10.0f, 30.0f, 30.0f);
-     [infoButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-     UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-     self.navigationItem.rightBarButtonItem = infoBarButton;
-     */
     
     //menu table
     self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
@@ -132,9 +125,9 @@
     
     self.myTableView = nil;
     self.gestationLocked = nil;
-    self.guidelineCountry = nil;
+    // self.guidelineCountry = nil;
     self.selectedPatient = nil;
-    self.bilirubinUnits = nil;
+    // self.bilirubinUnits = nil;
     self.gestation = nil;
     self.swipeGestureRecognizer = nil;
 }
@@ -153,6 +146,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     int rows = 0;
     
     if (section == 0)
@@ -164,11 +159,11 @@
             extraRows = 1;
         }
         
-        if ([self.guidelineCountry isEqualToString:@"UK"])
+        if ([preferences.guidelineCountry isEqualToString:@"UK"])
         {
             rows = 2 + extraRows;
         }
-        else if ([self.guidelineCountry isEqualToString:@"US"])
+        else if ([preferences.guidelineCountry isEqualToString:@"US"])
         {
             rows = 4 + extraRows;
         }
@@ -224,16 +219,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     float footer = 0.0f;
     
     if (section == 0)
     {
-        if ([self.guidelineCountry isEqualToString:@"US"])
+        if ([preferences.guidelineCountry isEqualToString:@"US"])
         {
-            // footer = 88.0f;
             footer = 66.0f;
         }
-        else if ([self.guidelineCountry isEqualToString:@"UK"])
+        else if ([preferences.guidelineCountry isEqualToString:@"UK"])
         {
             footer = 66.0f;
         }
@@ -244,15 +240,17 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     NSString *footer = nil;
     
     if (section == 0)
     {
-        if ([self.guidelineCountry isEqualToString:@"US"])
+        if ([preferences.guidelineCountry isEqualToString:@"US"])
         {
             footer = [NSString stringWithFormat:@"%@\n%@", NSLocalizedString(@"Red Line - Exchange Transfusion", nil), NSLocalizedString(@"Blue Line - Phototherapy", nil)];
         }
-        else if ([self.guidelineCountry isEqualToString:@"UK"])
+        else if ([preferences.guidelineCountry isEqualToString:@"UK"])
         {
             footer = [NSString stringWithFormat:@"%@\n%@", NSLocalizedString(@"Red Line - Exchange Transfusion", nil), NSLocalizedString(@"Blue Line - Phototherapy", nil)];
         }
@@ -268,6 +266,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCell *returnCell = nil;
     
     int extraRowsInSectionOne = 0;
@@ -324,7 +324,7 @@
             
             if (self.gestation)
             {
-                if ([self.guidelineCountry isEqualToString:@"UK"])
+                if ([preferences.guidelineCountry isEqualToString:@"UK"])
                 {
                     if ([self.gestation integerValue] >= 38)
                     {
@@ -335,7 +335,7 @@
                         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@/40 at birth", self.gestation];
                     }
                 }
-                else if ([self.guidelineCountry isEqualToString:@"US"])
+                else if ([preferences.guidelineCountry isEqualToString:@"US"])
                 {
                     if ([self.gestation integerValue] < 35)
                     {
@@ -362,7 +362,7 @@
         {
             // if guidelineCountry = UK then
             
-            if ([self.guidelineCountry isEqualToString:@"UK"])
+            if ([preferences.guidelineCountry isEqualToString:@"UK"])
             {
                 static NSString *CellIdentifier = @"treatmentThresholdChart";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -389,7 +389,7 @@
                 
                 returnCell = cell;
             }
-            else if ([self.guidelineCountry isEqualToString:@"US"])
+            else if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
                 static NSString *CellIdentifier = @"clinicalStatus";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -429,7 +429,7 @@
                 cell.textLabel.text = @"Risk Factors";
             }
             
-            if ([self.guidelineCountry isEqualToString:@"US"])
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
                 if (self.neurotoxicityRiskFactors)
                 {
@@ -487,11 +487,11 @@
                 cell.textLabel.text = @"Country";
             }
             
-            if ([self.guidelineCountry isEqualToString:@"US"])
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
                 cell.detailTextLabel.text = @"United States";
             }
-            else if ([self.guidelineCountry isEqualToString:@"UK"])
+            else if ([preferences.guidelineCountry isEqualToString:@"UK"])
             {
                 cell.detailTextLabel.text = @"United Kingdom";
             }
@@ -516,11 +516,11 @@
                 cell.textLabel.text = @"Serum bilirubin";
             }
             
-            if ([self.bilirubinUnits isEqualToString:@"SI"])
+            if ([preferences.bilirubinUnits isEqualToString:@"SI"])
             {
                 cell.detailTextLabel.text = @"µmol/L";
             }
-            else if ([self.bilirubinUnits isEqualToString:@"US"])
+            else if ([preferences.bilirubinUnits isEqualToString:@"US"])
             {
                 cell.detailTextLabel.text = @"mg/dL";
             }
@@ -591,6 +591,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Preferences *preferences = [Preferences sharedPreferences];
     
     int extraRowsInSectionOne = 0;
     
@@ -604,7 +605,7 @@
         if (indexPath.row == (0 + extraRowsInSectionOne))
         {
             PhototherapyGestationViewController *newViewController = [[PhototherapyGestationViewController alloc] init];
-            newViewController.guidelineCountry = self.guidelineCountry;
+            // newViewController.guidelineCountry = self.guidelineCountry;
             newViewController.gestation = self.gestation;
             newViewController.delegate = self;
             
@@ -612,13 +613,13 @@
         }
         else if (indexPath.row == (1 + extraRowsInSectionOne))
         {
-            if ([self.guidelineCountry isEqualToString:@"UK"])
+            if ([preferences.guidelineCountry isEqualToString:@"UK"])
             {
                 if (self.gestation)
                 {
                     PhototherapyGraphViewController *newViewController = [[PhototherapyGraphViewController alloc] init];
-                    newViewController.guidelineCountry = self.guidelineCountry;
-                    newViewController.bilirubinUnits = self.bilirubinUnits;
+                    // newViewController.guidelineCountry = preferences.guidelineCountry;
+                    // newViewController.bilirubinUnits = preferences.bilirubinUnits;
                     newViewController.gestation = self.gestation;
                     
                     if (self.selectedPatient)
@@ -643,7 +644,7 @@
                     [alertView show];
                 }
             }
-            else if ([self.guidelineCountry isEqualToString:@"US"])
+            else if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
                 PhototherapyClinicalStatusViewController *newViewController = [[PhototherapyClinicalStatusViewController alloc] init];
                 newViewController.clinicalStatus = self.clinicalStatus;
@@ -682,8 +683,8 @@
             else
             {
                 PhototherapyGraphViewController *newViewController = [[PhototherapyGraphViewController alloc] init];
-                newViewController.guidelineCountry = self.guidelineCountry;
-                newViewController.bilirubinUnits = self.bilirubinUnits;
+                // newViewController.guidelineCountry = preferences.guidelineCountry;
+                // newViewController.bilirubinUnits = preferences.bilirubinUnits;
                 newViewController.gestation = self.gestation;
                 
                 if (self.selectedPatient)
@@ -743,19 +744,19 @@
     {
         if (indexPath.row == 0)
         {
-            // NSLog(@"Guideline Country selection");
+            // Guideline country selection
             PhototherapyGuidelineCountryViewController *newViewController = [[PhototherapyGuidelineCountryViewController alloc] init];
-            newViewController.guidelineCountry = self.guidelineCountry;
+            // newViewController.guidelineCountry = self.guidelineCountry;
             newViewController.delegate = self;
             
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
         }
         else
         {
-            // NSLog(@"units selection");
+            // Units selection
             PhototherapyUnitsViewController *newViewController = [[PhototherapyUnitsViewController alloc] init];
-            newViewController.guidelineCountry = self.guidelineCountry;
-            newViewController.bilirubinUnits = self.bilirubinUnits;
+            // newViewController.guidelineCountry = self.guidelineCountry;
+            // newViewController.bilirubinUnits = self.bilirubinUnits;
             newViewController.delegate = self;
             
             [appDelegate.navigationController pushViewController:newViewController animated:YES];
@@ -796,27 +797,32 @@
 
 - (void)phototherapyGuidelineCountryViewController:(PhototherapyGuidelineCountryViewController *)controller didFinishSelectingGuidelineCountry:(NSString *)guidelineCountry
 {
-    self.guidelineCountry = guidelineCountry;
+    // access singleton
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    [self.delegate phototherapyViewController:self didChangeGuidelineCountry:guidelineCountry];
+    // self.guidelineCountry = guidelineCountry;
     
-    if ([self.guidelineCountry isEqualToString:@"UK"])
+    // [self.delegate phototherapyViewController:self didChangeGuidelineCountry:guidelineCountry];
+    
+    // change bilirubin units depending on which country guideline selected
+    if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
-        if ([self.bilirubinUnits isEqualToString:@"US"])
+        if ([preferences.bilirubinUnits isEqualToString:@"US"])
         {
-            self.bilirubinUnits = @"SI";
-            [self.delegate phototherapyViewController:self didChangeBilirubinUnit:@"SI"];
+            preferences.bilirubinUnits = @"SI";
+            // [self.delegate phototherapyViewController:self didChangeBilirubinUnit:@"SI"];
         }
     }
-    else if ([self.guidelineCountry isEqualToString:@"US"])
+    else if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
-            self.bilirubinUnits = @"US";
-            [self.delegate phototherapyViewController:self didChangeBilirubinUnit:@"US"];
+            preferences.bilirubinUnits = @"US";
+            // [self.delegate phototherapyViewController:self didChangeBilirubinUnit:@"US"];
         }
     }
     
+    // reload table to show new values
     [self.myTableView reloadData];
 }
 
@@ -824,10 +830,11 @@
 
 - (void)phototherapyUnitsViewController:(PhototherapyUnitsViewController *)controller didFinishSelectingUnits:(NSString *)units
 {
-    self.bilirubinUnits = units;
+    // self.bilirubinUnits = units;
     
-    [self.delegate phototherapyViewController:self didChangeBilirubinUnit:units];
+    // [self.delegate phototherapyViewController:self didChangeBilirubinUnit:units];
     
+    // simply reload table to update any changes to the units
     [self.myTableView reloadData];
 }
 

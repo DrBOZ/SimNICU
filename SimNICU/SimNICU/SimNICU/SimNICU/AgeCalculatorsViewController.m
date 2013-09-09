@@ -221,6 +221,7 @@
         
         newViewController.typeOfAgeCalculator = calculator.text;
         newViewController.selectedPatient = self.selectedPatient;
+        
         [self.navigationController pushViewController:newViewController animated:YES];
     }
     else if ([calculator.text isEqualToString:@"Corrected age"])

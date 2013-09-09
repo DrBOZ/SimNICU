@@ -22,58 +22,38 @@
 
 @implementation CorrectedAgeCorrectToAgeSettingsViewController
 
-#warning move this to viewDidLoad
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // Custom initialization
-        self.view.backgroundColor = [UIColor blackColor];
-        
-        self.title = NSLocalizedString(@"Correct to age", nil);  // needs add to localization string file
-        
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        //menu table
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 50.0f;
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.sectionFooterHeight = 10.0f;
-        self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-        
-        // swipe gesture recognizer
-        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
+	
+    self.view.backgroundColor = [UIColor blackColor];
     
-#if GOOGLE_ANALYTICS
+    [CBTrackers logEvent:@"Age/CorrectedAge/Settings/AgeSelector"];
     
-    [[GANTracker sharedTracker] trackPageview:@"Age/CorrectedAge/Settings/AgeSelector" withError:nil];
+    self.title = NSLocalizedString(@"Correct to age", nil);  // needs add to localization string file
     
-#endif
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    //menu table
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    self.myTableView.rowHeight = 50.0f;
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.sectionFooterHeight = 10.0f;
+    self.myTableView.sectionHeaderHeight = 10.0f;
+    self.myTableView.separatorColor = [UIColor grayColor];
+    self.myTableView.hidden = NO;
+    self.myTableView.bounces = YES;
+    self.myTableView.scrollEnabled = YES;
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -357,16 +337,9 @@
         self.fiveYears.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
     }
     
-    [self.delegate correctedAgeCorrectToAgeSettingsViewController:self didFinishSelectingCorrectionUntilAge:preferences.correctAgeForPrematurityUntilYears];
+    [self.delegate correctedAgeCorrectToAgeSettingsViewControllerDidSelectNewAge:self];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-#pragma mark
-
-- (void)popViewController:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

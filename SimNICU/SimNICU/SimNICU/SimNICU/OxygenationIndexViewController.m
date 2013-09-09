@@ -77,14 +77,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Oxygenation Index" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"OxygenationIndex: viewDidAppear"];
+    Preferences *preferences = [Preferences sharedPreferences];
     
     [self.meanAirwayPressure becomeFirstResponder];
     
@@ -93,10 +86,10 @@
     
     NSLog(@"Language = %@", language);
     NSLog(@"Region = %@", region);
-    
-    if (self.OIPaO2UnitsIndex) 
+
+    if (preferences.OIUnits)
     {
-        switch ([self.OIPaO2UnitsIndex intValue]) 
+        switch ([preferences.OIUnits intValue])
         {
             case 0:
                 self.units.selectedSegmentIndex = 0;
@@ -543,8 +536,6 @@
 
 - (void)changeUnits
 {
-    // NSLog(@"Changing units");
-    
     NSString *UKLocalePaO2;
     UKLocalePaO2 = [self.PaO2.text stringByReplacingOccurrencesOfString:@"," withString:@"."];
     UKLocalePaO2 = [self.PaO2.text stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
@@ -589,7 +580,10 @@
             break;
     }
     
-    [self.delegate oxygenationIndexViewController:self didChangePaO2Units:self.units.selectedSegmentIndex];
+    // change preferences
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.OIUnits = [NSString stringWithFormat:@"%i", self.units.selectedSegmentIndex];
 }
 
 @end

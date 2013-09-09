@@ -17,10 +17,10 @@
 @property (nonatomic, strong) NSDate *dateAndTimeOfBirthForThisChart;
 @property (nonatomic, strong) NSMutableArray *bilirubinLevelsToPlot;
 @property (nonatomic, strong) NSString *neurotoxicityRisk;
-@property (nonatomic, strong) NSString *guidelineCountry;
+// @property (nonatomic, strong) NSString *guidelineCountry;
 @property (nonatomic, strong) NSNumber *sampleAgeInDays;
 @property (nonatomic, strong) NSNumber *bilirubinLevel;
-@property (nonatomic, strong) NSString *bilirubinUnits;
+// @property (nonatomic, strong) NSString *bilirubinUnits;
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSNumber *gestation;
 

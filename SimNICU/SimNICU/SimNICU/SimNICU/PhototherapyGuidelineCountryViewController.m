@@ -122,22 +122,13 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    NSString *footer = nil;
-    
-    // footer = NSLocalizedString(@"The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1", nil);
-    
-    return footer;
+    return nil;
 }
-
-/*
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44.0f;
-}
- */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCell *returnCell = nil;
     
     if (indexPath.row == 0)
@@ -155,7 +146,7 @@
         self.cellUS.textLabel.text = @"United States";
         self.cellUS.detailTextLabel.text = @"AAP 2004 Guidelines";
         
-        if ([self.guidelineCountry isEqualToString:@"US"])
+        if ([preferences.guidelineCountry isEqualToString:@"US"])
         {
             self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
             self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -183,7 +174,7 @@
         self.cellUK.textLabel.text = @"United Kingdom";
         self.cellUK.detailTextLabel.text = @"NICE Guidelines";
         
-        if ([self.guidelineCountry isEqualToString:@"UK"])
+        if ([preferences.guidelineCountry isEqualToString:@"UK"])
         {
             self.cellUK.accessoryType = UITableViewCellAccessoryCheckmark;
             self.cellUK.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -205,9 +196,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if (indexPath.row == 0)
     {
-        self.guidelineCountry = @"US";
+        preferences.guidelineCountry = @"US";
         
         self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
         self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -217,7 +210,7 @@
     }
     else
     {
-        self.guidelineCountry = @"UK";
+        preferences.guidelineCountry = @"UK";
         
         self.cellUK.accessoryType = UITableViewCellAccessoryCheckmark;
         self.cellUK.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -226,7 +219,7 @@
         self.cellUS.textLabel.textColor = [UIColor blackColor];
     }
     
-    [self.delegate phototherapyGuidelineCountryViewController:self didFinishSelectingGuidelineCountry:self.guidelineCountry];
+    [self.delegate phototherapyGuidelineCountryViewController:self didFinishSelectingGuidelineCountry:preferences.guidelineCountry];
     
     // [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(popViewController:) userInfo:nil repeats:NO];
     

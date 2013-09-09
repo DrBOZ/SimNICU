@@ -19,7 +19,7 @@
 @interface PhototherapyUnitsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, unsafe_unretained) id <PhototherapyUnitsViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSString *guidelineCountry;
-@property (nonatomic, strong) NSString *bilirubinUnits;
+// @property (nonatomic, strong) NSString *guidelineCountry;
+// @property (nonatomic, strong) NSString *bilirubinUnits;
 
 @end

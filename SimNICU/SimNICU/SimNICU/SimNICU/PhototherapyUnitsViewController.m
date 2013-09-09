@@ -20,13 +20,6 @@
 
 @implementation PhototherapyUnitsViewController
 
-@synthesize guidelineCountry = _guidelineCountry;
-@synthesize bilirubinUnits = _bilirubinUnits;
-@synthesize myTableView = _myTableView;
-@synthesize delegate = _delegate;
-@synthesize cellUS = _cellUS;
-@synthesize cellSI = _cellSI;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -130,13 +123,15 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     NSString *footer = nil;
     
-    if ([self.guidelineCountry isEqualToString:@"US"])
+    if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         footer = NSLocalizedString(@"The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1", nil);
     }
-    else if ([self.guidelineCountry isEqualToString:@"UK"])
+    else if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         footer = NSLocalizedString(@"The default unit of measure for total bilirubin is µmol/L.\n\nPlease select mg/dL if your bilirubin values are captured in US units.\n\nBilirubin conversion from US to SI units is 17.1", nil);
     }
@@ -151,6 +146,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCell *returnCell = nil;
     
     if (indexPath.row == 0)
@@ -169,7 +166,7 @@
         self.cellUS.textLabel.text = @"mg/dL";
         self.cellUS.detailTextLabel.text = @"United States";
         
-        if ([self.bilirubinUnits isEqualToString:@"US"])
+        if ([preferences.bilirubinUnits isEqualToString:@"US"])
         {
             self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
             self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -197,7 +194,7 @@
         self.cellSI.textLabel.text = @"µmol/L";
         self.cellSI.detailTextLabel.text = @"International System (SI)";
         
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             self.cellSI.accessoryType = UITableViewCellAccessoryCheckmark;
             self.cellSI.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -218,14 +215,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    // self.gestation = [NSNumber numberWithInt:(indexPath.row + 23)];
     if (indexPath.row == 0)
     {
-        self.bilirubinUnits = @"US";
+        preferences.bilirubinUnits = @"US";
         
         self.cellUS.accessoryType = UITableViewCellAccessoryCheckmark;
         self.cellUS.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -235,7 +229,7 @@
     }
     else
     {
-        self.bilirubinUnits = @"SI";
+        preferences.bilirubinUnits = @"SI";
         
         self.cellSI.accessoryType = UITableViewCellAccessoryCheckmark;
         self.cellSI.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
@@ -243,12 +237,12 @@
         self.cellUS.accessoryType = UITableViewCellAccessoryNone;
         self.cellUS.textLabel.textColor = [UIColor blackColor];
     }
-    
-    // [self.myTableView reloadData];
 
-    [self.delegate phototherapyUnitsViewController:self didFinishSelectingUnits:self.bilirubinUnits];
+    [self.delegate phototherapyUnitsViewController:self didFinishSelectingUnits:preferences.bilirubinUnits];
     
     // [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(popViewController:) userInfo:nil repeats:NO];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark

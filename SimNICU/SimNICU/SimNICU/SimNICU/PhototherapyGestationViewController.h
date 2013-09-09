@@ -19,7 +19,7 @@
 @interface PhototherapyGestationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, unsafe_unretained) id <PhototherapyGestationViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSString *guidelineCountry;
+// @property (nonatomic, strong) NSString *guidelineCountry;
 @property (nonatomic, strong) NSNumber *gestation;
 
 @end

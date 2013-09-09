@@ -45,18 +45,6 @@
     UIView *tapView;
 }
 
-/*
-- (Preferences *)preferences
-{
-    if (!_preferences) 
-    {
-        _preferences = [[Preferences alloc] init];
-    }
-    
-    return _preferences;
-}
- */
-
 - (NSMutableArray *)bayData
 {
     if (!_bayData)
@@ -1977,16 +1965,7 @@
     }
 }
 
-#pragma mark - OxygenationIndexViewController delegate
-
-- (void)oxygenationIndexViewController:(OxygenationIndexViewController *)controller didChangePaO2Units:(int)index
-{
-#warning delete
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    preferences.OIUnits = [NSString stringWithFormat:@"%i", index];
-}
-
+/*
 #pragma mark - PhototherapyViewController delegate
 
 - (void)phototherapyViewController:(PhototherapyViewController *)controller didChangeGuidelineCountry:(NSString *)guidelineCountry
@@ -1996,7 +1975,9 @@
     
     preferences.guidelineCountry = guidelineCountry;
 }
+ */
 
+/*
 - (void)phototherapyViewController:(PhototherapyViewController *)controller didChangeBilirubinUnit:(NSString *)bilirubinUnit
 {
 #warning delete
@@ -2004,6 +1985,7 @@
     
     preferences.bilirubinUnits = bilirubinUnit;
 }
+ */
 
 #pragma mark - KKPasscodeViewController delegate
 

@@ -34,6 +34,8 @@
     
     [CBTrackers logEvent:@"Phototherapy/Chart"];
     
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     // setup Done button
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems doneBarButtonWithTarget:self action:@selector(closeModal)];
@@ -98,7 +100,7 @@
     self.xAxis.allowPanningOutOfMaxRange = NO;
     
     
-    if ([self.bilirubinUnits isEqualToString:@"SI"])
+    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
     {
         // Use a number axis for the y axis.
         SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:550]];
@@ -116,7 +118,7 @@
         self.yAxis.allowPanningOutOfDefaultRange = YES;
         self.yAxis.allowPanningOutOfMaxRange = NO;
     }
-    else if ([self.bilirubinUnits isEqualToString:@"US"])
+    else if ([preferences.bilirubinUnits isEqualToString:@"US"])
     {
         // Use a number axis for the y axis.
         SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:30]];
@@ -222,7 +224,7 @@
         
         // recreate y-Axis
         SChartNumberRange *newyRange;
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             NSLog(@"Chart is in SI units");
             if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
@@ -301,15 +303,17 @@
 // Returns the number of series in the specified chart
 - (int)numberOfSeriesInSChart:(ShinobiChart *)chart
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     int numberOfSeries = 0;
     
-    if ([self.guidelineCountry isEqualToString:@"US"])
+    if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         // could implement a conditional statement if user want UK style for US or risk factor lines...
         
         numberOfSeries = 3;
     }
-    if ([self.guidelineCountry isEqualToString:@"UK"])
+    if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         numberOfSeries = 3;
     }
@@ -322,7 +326,9 @@
 {
     SChartSeries *series = nil;
     
-    if ([self.guidelineCountry isEqualToString:@"US"])
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         // UK style
         if (self)
@@ -405,7 +411,7 @@
             }
         }
     }
-    else if ([self.guidelineCountry isEqualToString:@"UK"])
+    else if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         if (index == 0)
         {
@@ -448,7 +454,9 @@
 {
     int points = 0;
     
-    if ([self.guidelineCountry isEqualToString:@"US"])
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         if (self) // change this later to give user an option...re exchange/photo vs risk factor lines
         {
@@ -588,7 +596,7 @@
             }
         }
     }
-    else if ([self.guidelineCountry isEqualToString:@"UK"])
+    else if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         if(seriesIndex == 0) // Exchange transfusion
         {
@@ -629,7 +637,10 @@
     //Construct a data point to return
     SChartDataPoint *datapoint = [[SChartDataPoint alloc] init];
     
-    if ([self.guidelineCountry isEqualToString:@"US"])
+    // access preferences singleton
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         if (seriesIndex == 0) // Exchange transfusion
         {
@@ -647,7 +658,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(16.0 * 17.1)];
                     }
@@ -661,7 +672,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(19.0 * 17.1)];
                     }
@@ -674,7 +685,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(20.5 * 17.1)];
                     }
@@ -687,7 +698,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(22.0 * 17.1)];
                     }
@@ -700,7 +711,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(24.0 * 17.1)];
                     }
@@ -713,7 +724,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(25.0 * 17.1)];
                     }
@@ -726,7 +737,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:7.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(25.0 * 17.1)];
                     }
@@ -751,7 +762,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(13.8 * 17.1)];
                     }
@@ -765,7 +776,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(16.6 * 17.1)];
                     }
@@ -778,7 +789,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(20.0 * 17.1)];
                     }
@@ -791,7 +802,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(22.0 * 17.1)];
                     }
@@ -804,7 +815,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(22.5 * 17.1)];
                     }
@@ -817,7 +828,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:7.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(22.5 * 17.1)];
                     }
@@ -842,7 +853,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(12.0 * 17.1)];
                     }
@@ -856,7 +867,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(15.0 * 17.1)];
                     }
@@ -869,7 +880,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(18.0 * 17.1)];
                     }
@@ -882,7 +893,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(18.5 * 17.1)];
                     }
@@ -895,7 +906,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(19.0 * 17.1)];
                     }
@@ -908,7 +919,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:7.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(19.0 * 17.1)];
                     }
@@ -936,7 +947,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(6.6 * 17.1)];
                     }
@@ -949,7 +960,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(11.6 * 17.1)];
                     }
@@ -962,7 +973,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(13.5 * 17.1)];
                     }
@@ -975,7 +986,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(15.2 * 17.1)];
                     }
@@ -988,7 +999,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(17.7 * 17.1)];
                     }
@@ -1001,7 +1012,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(19.9 * 17.1)];
                     }
@@ -1014,7 +1025,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:5.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(21.0 * 17.1)];
                     }
@@ -1027,7 +1038,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:7.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(21.0 * 17.1)];
                     }
@@ -1057,7 +1068,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(5.0 * 17.1)];
                     }
@@ -1070,7 +1081,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(7.8 * 17.1)];
                     }
@@ -1083,7 +1094,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(9.6 * 17.1)];
                     }
@@ -1096,7 +1107,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(11.6 * 17.1)];
                     }
@@ -1109,7 +1120,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(13.0 * 17.1)];
                     }
@@ -1122,7 +1133,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(15.2 * 17.1)];
                     }
@@ -1135,7 +1146,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(16.4 * 17.1)];
                     }
@@ -1148,7 +1159,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(17.3 * 17.1)];
                     }
@@ -1161,7 +1172,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(18.0 * 17.1)];
                     }
@@ -1174,7 +1185,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:7.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(18.0 * 17.1)];
                     }
@@ -1204,7 +1215,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(3.7 * 17.1)];
                     }
@@ -1217,7 +1228,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(6.0 * 17.1)];
                     }
@@ -1230,7 +1241,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(7.8 * 17.1)];
                     }
@@ -1243,7 +1254,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(9.5 * 17.1)];
                     }
@@ -1256,7 +1267,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(11.1 * 17.1)];
                     }
@@ -1269,7 +1280,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:2.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(12.5 * 17.1)];
                     }
@@ -1282,7 +1293,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(13.5 * 17.1)];
                     }
@@ -1295,7 +1306,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.5];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(14.0 * 17.1)];
                     }
@@ -1308,7 +1319,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(14.5 * 17.1)];
                     }
@@ -1321,7 +1332,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:5.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(15.0 * 17.1)];
                     }
@@ -1334,7 +1345,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:7.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(15.0 * 17.1)];
                     }
@@ -1362,7 +1373,7 @@
             
             datapoint.xValue = resultToPlot.sampleAgeInDays;
             
-            if ([self.bilirubinUnits isEqualToString:@"SI"])
+            if ([preferences.bilirubinUnits isEqualToString:@"SI"])
             {
                 if ([resultToPlot.bilirubinUnit isEqualToString:@"SI"])
                 {
@@ -1377,7 +1388,7 @@
                     datapoint.yValue = convertedBilirubinResult;
                 }
             }
-            else if ([self.bilirubinUnits isEqualToString:@"US"])
+            else if ([preferences.bilirubinUnits isEqualToString:@"US"])
             {
                 if ([resultToPlot.bilirubinUnit isEqualToString:@"US"])
                 {
@@ -1394,7 +1405,7 @@
             }
         }
     }
-    else if ([self.guidelineCountry isEqualToString:@"UK"])
+    else if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         if (seriesIndex == 0) // Exchange transfusion
         {
@@ -1404,7 +1415,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:100];
                     }
@@ -1417,7 +1428,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:80];
                     }
@@ -1433,7 +1444,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.75];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:450];
                     }
@@ -1446,7 +1457,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.00];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:([self.gestation doubleValue] * 10)];
                     }
@@ -1462,7 +1473,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:14.00];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:450];
                     }
@@ -1476,7 +1487,7 @@
                     // day 14
                     datapoint.xValue = [NSNumber numberWithDouble:14.00];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:([self.gestation doubleValue] * 10)];
                     }
@@ -1496,7 +1507,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:100];
                     }
@@ -1509,7 +1520,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:40];
                     }
@@ -1525,7 +1536,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:1.0];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:200];
                     }
@@ -1538,7 +1549,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:3.00];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(([self.gestation doubleValue] * 10) - 100)];
                     }
@@ -1554,7 +1565,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:4];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:350];
                     }
@@ -1567,7 +1578,7 @@
                 {
                     datapoint.xValue = [NSNumber numberWithDouble:14.00];
                     
-                    if ([self.bilirubinUnits isEqualToString:@"SI"])
+                    if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                     {
                         datapoint.yValue = [NSNumber numberWithDouble:(([self.gestation doubleValue] * 10) - 100)];
                     }
@@ -1581,7 +1592,7 @@
             {
                 datapoint.xValue = [NSNumber numberWithDouble:14];
                 
-                if ([self.bilirubinUnits isEqualToString:@"SI"])
+                if ([preferences.bilirubinUnits isEqualToString:@"SI"])
                 {
                     datapoint.yValue = [NSNumber numberWithDouble:350];
                 }
@@ -1610,7 +1621,7 @@
             
             datapoint.xValue = resultToPlot.sampleAgeInDays;
             
-            if ([self.bilirubinUnits isEqualToString:@"SI"])
+            if ([preferences.bilirubinUnits isEqualToString:@"SI"])
             {
                 if ([resultToPlot.bilirubinUnit isEqualToString:@"SI"])
                 {
@@ -1625,7 +1636,7 @@
                     datapoint.yValue = convertedBilirubinResult;
                 }
             }
-            else if ([self.bilirubinUnits isEqualToString:@"US"])
+            else if ([preferences.bilirubinUnits isEqualToString:@"US"])
             {
                 if ([resultToPlot.bilirubinUnit isEqualToString:@"US"])
                 {
@@ -1654,7 +1665,7 @@
 
 - (void)sChartRenderFinished:(ShinobiChart *)chart
 {
-    // NSLog(@"sChartRenderFinished");
+    Preferences *preferences = [Preferences sharedPreferences];
     
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
     {
@@ -1662,7 +1673,7 @@
         
         if (!landscapeOrientationDefaultsSet)
         {
-            if ([self.guidelineCountry isEqualToString:@"US"])
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
                 if ([self.neurotoxicityRisk isEqualToString:@"Lower"])
                 {
@@ -1681,7 +1692,7 @@
                 self.xAxis.defaultRange = xRange;
                 self.xAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
             }
-            else if ([self.guidelineCountry isEqualToString:@"UK"])
+            else if ([preferences.guidelineCountry isEqualToString:@"UK"])
             {
                 if ([self.gestation isEqualToNumber:[NSNumber numberWithInt:38]])
                 {
@@ -1768,7 +1779,7 @@
         
         if (!portraitOrientationDefaultsSet)
         {
-            if ([self.guidelineCountry isEqualToString:@"US"]) // setting view controller title
+            if ([preferences.guidelineCountry isEqualToString:@"US"]) // setting view controller title
             {
                 if ([self.neurotoxicityRisk isEqualToString:@"Lower"])
                 {
@@ -1873,9 +1884,11 @@
 // add bilirubin
 - (void)addBilirubin
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     PhototherapyAddBilirubinResultViewController *newViewController = [[PhototherapyAddBilirubinResultViewController alloc] init];
     newViewController.selectedPatient = self.selectedPatient;
-    newViewController.bilirubinUnits = self.bilirubinUnits;
+    newViewController.bilirubinUnits = preferences.bilirubinUnits;
     newViewController.delegate = self;
     
     if (self.dateAndTimeOfBirthForThisChart)
@@ -1895,6 +1908,8 @@
 
 - (void)phototherapyAddBilirubinResultViewController:(PhototherapyAddBilirubinResultViewController *)controller didFinishAddingNewBilirubinResult:(BilirubinResult *)result forBirthDate:(NSDate *)date
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if (self.selectedPatient)
     {
         if (!self.selectedPatient.bilirubinResults)
@@ -2002,7 +2017,7 @@
         
         // recreate y-Axis
         SChartNumberRange *newyRange;
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             NSLog(@"Chart is in SI units");
             if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
@@ -2102,7 +2117,7 @@
         
         // recreate y-Axis
         SChartNumberRange *newyRange;
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             NSLog(@"Chart is in SI units");
             if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
@@ -2137,6 +2152,9 @@
 
 - (void)phototherapyAddBilirubinResultViewControllerDidFinishDeletingBilirubinResults:(PhototherapyAddBilirubinResultViewController *)controller
 {
+    // access singleton
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     //
     // ensure all plots can be seen
     
@@ -2225,7 +2243,7 @@
         
         // recreate y-Axis
         SChartNumberRange *newyRange;
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             NSLog(@"Chart is in SI units");
             if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
@@ -2325,7 +2343,7 @@
         
         // recreate y-Axis
         SChartNumberRange *newyRange;
-        if ([self.bilirubinUnits isEqualToString:@"SI"])
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             NSLog(@"Chart is in SI units");
             if ((maxBiliResultUS * 17.1) > yAxisLimitSI)

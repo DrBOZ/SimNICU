@@ -535,7 +535,13 @@
                                 {
                                     cell.label5.text = @"";
                                     cell.label4.text = @"";
-                                    cell.label3.text = [NSString stringWithFormat:@"Patient is over %d years old", [preferences.correctAgeForPrematurityUntilYears intValue]];
+                                    
+                                    NSString *string;
+                                    
+                                    if ([preferences.correctAgeForPrematurityUntilYears intValue] == 1) string = @"year";
+                                    else string = @"years";
+                                    
+                                    cell.label3.text = [NSString stringWithFormat:@"Patient is over %d %@ old", [preferences.correctAgeForPrematurityUntilYears intValue], string];
                                     cell.label2.text = @"";
                                     cell.label1.text = @"No need to correct for prematurity";
                                 }
@@ -1024,11 +1030,13 @@
     [self.navigationController presentModalViewController:navController animated:YES];
 }
 
-#pragma mark - CorrectedAgeViewController delegate
+#pragma mark - CorrectedAgeInfoViewController delegate
 
 - (void)correctedAgeInfoViewController:(CorrectedAgeInfoViewController *)controller didChangeCorrectAgeForPrematurityUntilYears:(NSNumber *)correctAgeForPrematurityUntilYears
 {
     [self.myTableView reloadData];
+    
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 @end

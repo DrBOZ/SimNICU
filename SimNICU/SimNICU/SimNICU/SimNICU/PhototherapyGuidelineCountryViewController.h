@@ -19,6 +19,6 @@
 @interface PhototherapyGuidelineCountryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, unsafe_unretained) id <PhototherapyGuidelineCountryViewControllerDelegate> delegate;
-@property (nonatomic, strong) NSString *guidelineCountry;
+// @property (nonatomic, strong) NSString *guidelineCountry;
 
 @end

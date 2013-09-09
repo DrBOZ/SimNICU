@@ -931,8 +931,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Preferences *preferences = [Preferences sharedPreferences];
-    
     // Special 'Emergency'
     if (indexPath.section == 0)
     {
@@ -1257,13 +1255,6 @@
             
             OxygenationIndexViewController *newViewController = [[OxygenationIndexViewController alloc] init];
             
-            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
-            
-            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
-            
-            newViewController.OIPaO2UnitsIndex = preferences.OIUnits;
-            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
-            
             [self.navigationController pushViewController:newViewController animated:YES];
             
 #endif
@@ -1305,21 +1296,6 @@
                 
                 newViewController.gestationLocked = @"YES";
             }
-            
-            ZUUIRevealController *revealController = (ZUUIRevealController *)self.navigationController.parentViewController;
-            EnterWeightViewController *enterWeightViewController = (EnterWeightViewController *)revealController.rearViewController;
-            
-            if (preferences.guidelineCountry)
-            {
-                newViewController.guidelineCountry = preferences.guidelineCountry;
-            }
-            
-            if (preferences.bilirubinUnits)
-            {
-                newViewController.bilirubinUnits = preferences.bilirubinUnits;
-            }
-            
-            newViewController.delegate = (EnterWeightViewController *)enterWeightViewController;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }

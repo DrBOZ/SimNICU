@@ -32,21 +32,20 @@
 
 @end
 
-@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, PatientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, OxygenationIndexViewControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, PhototherapyViewControllerDelegate, BayEditorViewControllerDelegate, AdvancedPatientEditorViewControllerDelegate>
+@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, PatientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, BayEditorViewControllerDelegate, AdvancedPatientEditorViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationItem;
 @property (nonatomic, unsafe_unretained) id <EnterWeightViewControllerDelegate> delegate;
 @property (nonatomic, strong) UINavigationBar *enterWeightViewControllerNavigationBar;
 @property (nonatomic, strong) NSMutableArray *patientList;
 @property (nonatomic) BOOL allowUserToAccessPatientList;
-// @property (nonatomic, strong) Preferences *preferences;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *bayData;
+@property (nonatomic, strong) UITextField *gestation;
 @property (nonatomic, strong) NSString *eraseData;
 @property (nonatomic, strong) UISwitch *switchObj;
 @property (nonatomic) BOOL confidentialityModeOn;
 @property (nonatomic, strong) UITextField *weight;
-@property (nonatomic, strong) UITextField *gestation;
 
 - (void)savePatientList;
 - (void)patientConfidentialityModeToggle;

@@ -20,13 +20,6 @@
 
 @implementation PhototherapyGestationViewController
 
-@synthesize USPretermGestation = _USPretermGestation;
-@synthesize guidelineCountry = _guidelineCountry;
-@synthesize USTermGestation = _USTermGestation;
-@synthesize myTableView = _myTableView;
-@synthesize gestation = _gestation;
-@synthesize delegate = _delegate;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -61,7 +54,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if ([self.guidelineCountry isEqualToString:@"UK"])
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         if (self.gestation)
         {
@@ -117,13 +112,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     int rows = 0;
     
-    if ([self.guidelineCountry isEqualToString:@"UK"])
+    if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         rows = 16;
     }
-    else if ([self.guidelineCountry isEqualToString:@"US"])
+    else if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         rows = 2;
     }
@@ -162,9 +159,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCell *returnCell = nil;
     
-    if ([self.guidelineCountry isEqualToString:@"UK"])
+    if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         static NSString *CellIdentifier = @"UK";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -205,7 +204,7 @@
         
         returnCell = cell;
     }
-    else if ([self.guidelineCountry isEqualToString:@"US"])
+    else if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         if (indexPath.row == 0)
         {
@@ -280,7 +279,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.guidelineCountry isEqualToString:@"UK"])
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         NSIndexPath *oldCellPath = [NSIndexPath indexPathForRow:([self.gestation integerValue] - 23) inSection:0];
         
@@ -299,7 +300,7 @@
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-    else if ([self.guidelineCountry isEqualToString:@"US"])
+    else if ([preferences.guidelineCountry isEqualToString:@"US"])
     {
         if (indexPath.row == 0)
         {

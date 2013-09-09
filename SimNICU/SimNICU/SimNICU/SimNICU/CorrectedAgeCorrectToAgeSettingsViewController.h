@@ -12,7 +12,7 @@
 
 @protocol CorrectedAgeCorrectToAgeSettingsViewControllerDelegate <NSObject>
 
-- (void)correctedAgeCorrectToAgeSettingsViewController:(CorrectedAgeCorrectToAgeSettingsViewController *)controller didFinishSelectingCorrectionUntilAge:(NSNumber *)correctAgeForPrematurityUntilYears;
+- (void)correctedAgeCorrectToAgeSettingsViewControllerDidSelectNewAge:(CorrectedAgeCorrectToAgeSettingsViewController *)controller;
 
 @end
 
