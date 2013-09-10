@@ -150,7 +150,26 @@
     
     // create summary
     
+    // display patient's name & birthDate
     
+    NSString *nameAndBirthDateText;
+    
+    if (self.selectedPatient.birthDate)
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        
+        formatter.timeStyle = [NSTimeZone localTimeZone];
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        
+        nameAndBirthDateText = [NSString stringWithFormat:@"%@ (%@)", [self.selectedPatient returnDisplayTextLabelText], [formatter stringFromDate:self.selectedPatient.birthDate]];
+    }
+    else
+    {
+        nameAndBirthDateText = [self.selectedPatient returnDisplayTextLabelText];
+    }
+    
+    [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] onLeftSideOfPageAtVerticalPosition:0.0f];
     
     // Draw a line at the top
     [self drawLineAboveDailySummaryText];
@@ -160,11 +179,6 @@
     
     // Draw logo
     [self drawLogo];
-    
-    /*
-    UIImage *logo = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
-    [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), (logo.size.width / 2), (logo.size.height / 2))];
-     */
     
     // draw text
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -412,8 +426,19 @@
             // header
             [self drawText:@"Examination" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
             
+            printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetRight), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            
+            CGSize stringSize = [self.selectedPatient.impression sizeWithFont:font constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
+            
+            float examinationTextHeight = stringSize.height;
+            
             // text
             [self drawText:self.selectedPatient.impression withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            
+            // draw image of baby
+            UIImage *preemie = [UIImage imageNamed:@"preemie.png"];
+            [preemie drawInRect:CGRectMake(pageWidth - (preemie.size.width / 2) - 40.0f, verticalPointToPrint + normalSeparator - examinationTextHeight, (preemie.size.width / 2), (preemie.size.height / 2))];
+            
         }
 #pragma mark Summary
         else if ([section.sectionName isEqual:@"Summary"] && ([self.selectedPatient.plan length] > 0))
@@ -469,6 +494,9 @@
             
             // Draw Logo
             [self drawLogo];
+            
+            // Draw Line
+            [self drawLineAboveDailySummaryText];
             
             // Draw border
             [self drawBorder];

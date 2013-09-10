@@ -822,7 +822,7 @@
         displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
         [cell.contentView addSubview:displayDetailTextLabel];
         
-        // display patient's name
+        // display patient's name & birthDate
         if (self.selectedPatient.birthDate)
         {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
