@@ -169,7 +169,7 @@
         nameAndBirthDateText = [self.selectedPatient returnDisplayTextLabelText];
     }
     
-    [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] onLeftSideOfPageAtVerticalPosition:0.0f];
+    [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] onLeftSideOfPageAtVerticalPosition:10.0f];
     
     // Draw a line at the top
     [self drawLineAboveDailySummaryText];
