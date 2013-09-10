@@ -157,6 +157,8 @@
 		5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
 		5C3C920717DED47600DAC972 /* preemie.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C920617DED47600DAC972 /* preemie.png */; };
 		5C3C920817DED47600DAC972 /* preemie.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C920617DED47600DAC972 /* preemie.png */; };
+		5C3C920A17DEE65200DAC972 /* preemie2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C920917DEE65200DAC972 /* preemie2.png */; };
+		5C3C920B17DEE65200DAC972 /* preemie2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3C920917DEE65200DAC972 /* preemie2.png */; };
 		5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
 		5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
 		5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */; };
@@ -1074,6 +1076,7 @@
 		5C3C02BB17DAA80200E4297A /* PostnatalWardSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardSection.h; sourceTree = "<group>"; };
 		5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardSection.m; sourceTree = "<group>"; };
 		5C3C920617DED47600DAC972 /* preemie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preemie.png; sourceTree = "<group>"; };
+		5C3C920917DEE65200DAC972 /* preemie2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preemie2.png; sourceTree = "<group>"; };
 		5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSDataBase.h; sourceTree = "<group>"; };
 		5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSDataBase.m; sourceTree = "<group>"; };
 		5C427FE317B63A0C00F8CED6 /* CrUSSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSImage.h; sourceTree = "<group>"; };
@@ -2821,6 +2824,7 @@
 			isa = PBXGroup;
 			children = (
 				5C3C920617DED47600DAC972 /* preemie.png */,
+				5C3C920917DEE65200DAC972 /* preemie2.png */,
 				5C88E74917D3BCCA00DAB98D /* Hospital Logo */,
 				5C5A116A17D240AB00CE96E5 /* Intro Screen */,
 				5C940C44166E3E340044A7D1 /* App */,
@@ -3621,6 +3625,7 @@
 				5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */,
 				5CB46B8817DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
 				5C3C920717DED47600DAC972 /* preemie.png in Resources */,
+				5C3C920A17DEE65200DAC972 /* preemie2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3903,6 +3908,7 @@
 				5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */,
 				5CB46B8917DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
 				5C3C920817DED47600DAC972 /* preemie.png in Resources */,
+				5C3C920B17DEE65200DAC972 /* preemie2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

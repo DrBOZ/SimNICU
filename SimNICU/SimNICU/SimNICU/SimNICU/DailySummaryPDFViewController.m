@@ -436,7 +436,7 @@
             [self drawText:self.selectedPatient.impression withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
             
             // draw image of baby
-            UIImage *preemie = [UIImage imageNamed:@"preemie.png"];
+            UIImage *preemie = [UIImage imageNamed:@"preemie2.png"];
             [preemie drawInRect:CGRectMake(pageWidth - (preemie.size.width / 2) - 40.0f, verticalPointToPrint + normalSeparator - examinationTextHeight, (preemie.size.width / 2), (preemie.size.height / 2))];
             
         }
