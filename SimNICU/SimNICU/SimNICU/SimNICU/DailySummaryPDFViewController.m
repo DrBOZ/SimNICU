@@ -426,19 +426,8 @@
             // header
             [self drawText:@"Examination" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
             
-            printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetRight), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
-            
-            CGSize stringSize = [self.selectedPatient.impression sizeWithFont:font constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
-            
-            float examinationTextHeight = stringSize.height;
-            
             // text
             [self drawText:self.selectedPatient.impression withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
-            
-            // draw image of baby
-            UIImage *preemie = [UIImage imageNamed:@"preemie2.png"];
-            [preemie drawInRect:CGRectMake(pageWidth - (preemie.size.width / 2) - 40.0f, verticalPointToPrint + normalSeparator - examinationTextHeight, (preemie.size.width / 2), (preemie.size.height / 2))];
-            
         }
 #pragma mark Summary
         else if ([section.sectionName isEqual:@"Summary"] && ([self.selectedPatient.plan length] > 0))
