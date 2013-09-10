@@ -177,9 +177,10 @@
     else if (indexPath.section == 1)
     {
         // create signature cell
-        cell.textLabel.text = nil;;
-        cell.detailTextLabel.text = nil;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.detailTextLabel.text = nil;
+        cell.textLabel.text = nil;
         
         self.signatureTextView = [[UITextView alloc] init];
         self.signatureTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 100.0f);
@@ -197,30 +198,77 @@
 
 #pragma mark - Table view delegate
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSIndexPath *path = indexPath;
+    
+    if (indexPath.section == 1)
+    {
+        path = nil;
+    }
+    
+    return path;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
+    if (indexPath.section == 0)
     {
-        // paperSize
-        PaperSizeTableViewController *newViewController = [[PaperSizeTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        newViewController.delegate = self;
-        [self.navigationController pushViewController:newViewController animated:YES];
+        if (indexPath.row == 0)
+        {
+            // paperSize
+            PaperSizeTableViewController *newViewController = [[PaperSizeTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            newViewController.delegate = self;
+            [self.navigationController pushViewController:newViewController animated:YES];
+        }
+        else
+        {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
     }
     else
-    {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
 }
 
 #pragma mark - UITextView delegate
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    BOOL allowUserToEnterText = YES;
+    // create string with new text
+    NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
     
-    // develop a way to limit the textView to 4 lines...
+    // work out the size of the old text
+    CGSize oldSize = [textView.text sizeWithFont:textView.font constrainedToSize:CGSizeMake(textView.frame.size.width, textView.frame.size.height) lineBreakMode:UILineBreakModeWordWrap];
     
-    return allowUserToEnterText;
+    // create a larger text size to compare any word wrap
+    CGSize tallerSize = CGSizeMake(textView.frame.size.width - 20.0f, textView.frame.size.height * 2);
+    
+    // work out the size of the new text in the larger rect
+    CGSize newSize = [newText sizeWithFont:textView.font constrainedToSize:tallerSize lineBreakMode:UILineBreakModeWordWrap];
+    
+    // 84.0f is the max height of the UITextView I am using
+    if (newSize.height > 84.0f)
+    {
+        return NO;
+    }
+    else
+    {
+        // size doesn't increase if the user enters a carriage return,(but it does still word wrap), so check for this
+        if (oldSize.height == 84.0f && [text isEqualToString:@"\n"])
+        {
+            return NO;
+        }
+        else
+        {
+            // this is to prevent word wrapping
+            if (!([text isEqualToString:@"\n"]) && (newSize.height > oldSize.height)) // ie a character
+            {
+                return NO;
+            }
+            else
+                return YES;
+        }
+    }
 }
 
 - (void)textViewDidChange:(UITextView *)textView

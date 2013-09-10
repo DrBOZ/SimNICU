@@ -13,7 +13,8 @@
 
 @interface DailySummaryPDFViewController : UIViewController
 
-@property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) UIImage *phototherapyChart;
+@property (nonatomic, strong) Patient *selectedPatient;
+@property (nonatomic, strong) NSMutableArray *bayData;
 
 @end

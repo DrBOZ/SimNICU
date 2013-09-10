@@ -511,6 +511,7 @@
 - (void)drawSignature
 {
     Preferences *preferences = [Preferences sharedPreferences];
+    float signatureStartPoint = 165.0f;
     
     // draw line
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -519,8 +520,8 @@
     
     CGContextSetStrokeColorWithColor(currentContext, [UIColor blackColor].CGColor);
     
-    CGPoint startPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset - 100.0f, pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
-    CGPoint endPoint = CGPointMake(pageWidth - (kMarginInsetLeft) - (kBorderInset), pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
+    CGPoint startPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset - signatureStartPoint, pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
+    CGPoint endPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset, pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
     
     CGContextBeginPath(currentContext);
     CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
@@ -530,14 +531,9 @@
     CGContextDrawPath(currentContext, kCGPathFillStroke);
     
     // draw signature
-    // create a rectangle to display text based on the text size
-    CGRect renderingRect;
-    
-    renderingRect = CGRectMake(pageWidth - kMarginInsetLeft - kBorderInset - 100.0f, pageHeight - kBorderInset - kMarginInsetBottom - 40.0f, 150.0f, 80.0f);
+    CGRect renderingRect = CGRectMake(pageWidth - kMarginInsetLeft - kBorderInset - signatureStartPoint, pageHeight - kBorderInset - kMarginInsetBottom - 40.0f, signatureStartPoint, 84.0f);
     
     // draw text
-    // [@"Dr Conrad Bosman\nST 8 Paediatrics & Neonates\n\nGMC number 4211792" drawInRect:renderingRect withFont:[UIFont systemFontOfSize:10.0f] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
-    
     [preferences.signature drawInRect:renderingRect withFont:[UIFont systemFontOfSize:10.0f] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
 }
 
@@ -547,7 +543,7 @@
     // UIColor *borderColor = [UIColor blackColor];
     // UIColor *borderColor = [UIColor colorWithRed:0/255 green:72/255 blue:160/255 alpha:1.0f];
     UIColor *borderColor = [UIColor grayColor];
-    CGRect rectFrame = CGRectMake(kBorderInset, kBorderInset, pageWidth-kBorderInset*2, pageHeight-kBorderInset*2);
+    CGRect rectFrame = CGRectMake(kBorderInset, kBorderInset, pageWidth-kBorderInset * 2, pageHeight-kBorderInset * 2);
     CGContextSetStrokeColorWithColor(currentContext, borderColor.CGColor);
     CGContextSetLineWidth(currentContext, kBorderWidth);
     CGContextStrokeRect(currentContext, rectFrame);
@@ -586,205 +582,14 @@
 
 - (void)previousPatientButtonPressed
 {
-    /*
-    // load new data in tableView
-    newPatientDetails = YES;
-    newPatientBackground = YES;
-    newActiveProblems = YES;
-    newResolvedProblems = YES;
-    newRecentSignificantEvents = YES;
-    newVentilationAndSedation = YES;
-    newCXR = YES;
-    newCardiovascular = YES;
-    newLines = YES;
-    newFeedsAndFluids = YES;
-    newFluidBalance = YES;
-    newElectrolytes = YES;
-    newBiliChart = YES;
-    newJaundice = YES;
-    newSepsis = YES;
-    newDrugs = YES;
-    newROP = YES;
-    newCranialUSS = YES;
-    newParentsAndSocial = YES;
-    newImpression = YES;
-    newPlan = YES;
-    newJobs = YES;
+    // get previous patient details
     
-    // check to see if there is another patient in the bay
-    if (selectedPatientInBay == 0)
-    {
-        // no, last patient in bay
-        
-        // decrement bay, unless first bay
-        if (selectedBay == 0)
-        {
-            return;
-        }
-        else
-        {
-            // ensure there are patients in any previous bays
-            for (int i = selectedBay - 1; i >= 0; --i)
-            {
-                if ([[self.bayData[i] patientsInBay] count])
-                {
-                    selectedBay = i;
-                    break;
-                }
-                else
-                {
-                    // no patient in the next bay
-                    
-                    if (i == 0)
-                    {
-                        // no more patients, empty first bay
-                        return;
-                    }
-                }
-            }
-        }
-        
-        // set to last patient in new bay
-        selectedPatientInBay = [[self.bayData[selectedBay] patientsInBay] count] - 1;
-    }
-    else
-    {
-        // yes, there are more patients in the bay
-        
-        // decrement patient
-        selectedPatientInBay -= 1;
-    }
-    
-    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
-    
-    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
-    
-    [self loadSectionDataForPatientEditing:self.editing];
-    
-    [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
-    
-    [self.myTableView1 reloadData];
-    [self.myTableView2 reloadData];
-    
-    NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
-    NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
-    
-    if (selectedBay == 0 && selectedPatientInBay == 0)
-    {
-        firstButtonPressSinceScroll = YES; // hack to correct the jump that happens when going to first patient in bay 0
-    }
-    else
-    {
-        firstButtonPressSinceScroll = NO;
-    }
-    
-    [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
-     */
+    // update AdvancedPatientEditor
 }
 
 - (void)nextPatientButtonPressed:(UIBarButtonItem *)sender
 {
-    /*
-    // load new data in tableView
-    newPatientDetails = YES;
-    newPatientBackground = YES;
-    newActiveProblems = YES;
-    newResolvedProblems = YES;
-    newRecentSignificantEvents = YES;
-    newVentilationAndSedation = YES;
-    newCXR = YES;
-    newCardiovascular = YES;
-    newLines = YES;
-    newFeedsAndFluids = YES;
-    newFluidBalance = YES;
-    newElectrolytes = YES;
-    newBiliChart = YES;
-    newJaundice = YES;
-    newSepsis = YES;
-    newDrugs = YES;
-    newROP = YES;
-    newCranialUSS = YES;
-    newParentsAndSocial = YES;
-    newImpression = YES;
-    newPlan = YES;
-    newJobs = YES;
     
-    // check the number of patients in the current bay
-    int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];
-    
-    // check to see if there is another patient in the bay
-    if (selectedPatientInBay == (numberOfPatientsInCurrentBay - 1))
-    {
-        // no, last patient in bay
-        
-        // increment bay unless last bay
-        if (selectedBay == [self.bayData count] - 1)
-        {
-            return;
-        }
-        else
-        {
-            // ensure there are are patients in the next bay displayed
-            int numberOfBays = [self.bayData count];
-            
-            for (int i = selectedBay + 1; numberOfBays; i++)
-            {
-                if ([[self.bayData[i] patientsInBay] count])
-                {
-                    selectedBay = i;
-                    break;
-                }
-                else
-                {
-                    // no patients in the next bay
-                    
-                    // if the second to last bay, then no more patients
-                    if (i == numberOfBays - 1)
-                    {
-                        // no more patients, empty bays
-                        return;
-                    }
-                }
-            }
-        }
-        
-        // reset patient info
-        selectedPatientInBay = 0;
-    }
-    else
-    {
-        // yes, there are more patients in the bay
-        
-        // increment patient
-        selectedPatientInBay += 1;
-    }
-    
-    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
-    
-    self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
-    
-    [self loadSectionDataForPatientEditing:self.editing];
-    
-    [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
-    
-    [self.myTableView1 reloadData];
-    [self.myTableView2 reloadData];
-    
-    if (sender.tag == 4)
-    {
-        // do not jump to the top
-        NSArray *indexPaths = [self.myTableView2 indexPathsForVisibleRows];
-        NSIndexPath *indexPathForLastRow = indexPaths[firstButtonPressSinceScroll];
-        firstButtonPressSinceScroll = NO;
-        
-        [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
-    else
-    {
-        // jumps to the top. i.e. in handover
-        [self.myTableView2 scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
-     */
 }
 
 @end

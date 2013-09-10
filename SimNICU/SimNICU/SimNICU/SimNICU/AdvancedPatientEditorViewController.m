@@ -4488,6 +4488,7 @@
 {
     DailySummaryPDFViewController *newViewController = [[DailySummaryPDFViewController alloc] init];
     newViewController.selectedPatient = self.selectedPatient;
+    newViewController.bayData = self.bayData;
     
     /*
     UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 640.0f, 640.0f)];
