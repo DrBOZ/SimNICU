@@ -207,7 +207,12 @@
     
 #pragma mark Gestation
     
-    [self drawText:@"26+4/40 now 34+3" withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+    // get gestation data
+    NSString *gestationText = nil;
+    
+    gestationText = [self.selectedPatient returnGestationAndCorrectedGestationOnly];
+    
+    [self drawText:gestationText withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
      
 #pragma mark Weights
     // textToDraw = @"BW 1.55 kg  LW 1.56 CW 1.65 kg (gain of 100g) WW 1.55 kg";

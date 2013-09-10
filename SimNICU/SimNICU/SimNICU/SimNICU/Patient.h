@@ -124,6 +124,7 @@
 - (NSString *)returnDisplayTextLabelText;
 - (NSString *)returnTwoLineDetailDisplayLabelText;
 - (NSString *)returnDaysAndCorrectedGestationalAge;
+- (NSString *)returnGestationAndCorrectedGestationOnly;
 
 - (BOOL)meetsCriteriaForROPScreening;
 

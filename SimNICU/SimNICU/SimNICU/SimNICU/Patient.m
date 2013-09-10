@@ -272,6 +272,63 @@
     return detailDisplayText;
 }
 
+- (NSString *)returnGestationAndCorrectedGestationOnly
+{
+    NSString *detailDisplayText;
+    
+    if ([self.lastname isEqualToString:@""])                                                        // Nil of names entered
+    {
+        self.lastname = @"BABY";
+        self.firstname = @"New";
+    }
+    else if ([self.firstname isEqualToString:@""]) self.firstname = @"Baby";                        // Surname only
+    
+    if ([self.firstname isEqualToString:@"add"] && [self.lastname isEqualToString:@"new patient"])  // New patient
+    {
+        detailDisplayText = @"";
+    }
+    else if (!self.birthWeight && !self.gestation)                                                  // Name only
+    {
+        detailDisplayText = @"";
+    }
+    else if (self.birthWeight && !self.gestation)                                                   // Birth weight (or ww) but no gestation
+    {
+        if (self.workingWeight)
+        {
+            NSString *formattedWorkingWeight = [Patient formatWeight:self.workingWeight];
+            detailDisplayText = [NSString stringWithFormat:@"Working weight %@", formattedWorkingWeight];
+        }
+        else
+        {
+            NSString *formattedBirthWeight = [Patient formatWeight:self.birthWeight];
+            detailDisplayText = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
+        }
+    }
+    else if (self.gestation && !self.birthWeight)                                                   // Gestation but no birth weight
+    {
+        NSString *estimatedWeight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:self.gestation];
+        
+        NSString *formattedEstimatedWeight = [Patient formatWeight:estimatedWeight];
+        
+        detailDisplayText = [NSString stringWithFormat:@"%@/40 estimated weight %@", self.gestation, formattedEstimatedWeight];
+        // detailDisplayText = [NSString stringWithFormat:@"%@/40 gestation - no weight", self.gestation];
+    }
+    else if (self.gestation && self.birthWeight)                                                    // Gestation and birth weight
+    {
+        if (self.workingWeight && self.birthDate)                                                   // + Working Weight
+        {
+            detailDisplayText = [NSString stringWithFormat:@"%@ now %@", [self gestation], [CBTimeMethods calculateCurrentGestation:self]];
+            self.correctedGestation = [CBTimeMethods calculateCurrentGestation:self];
+        }
+        else                                                                                        // - Working Weight
+        {
+            detailDisplayText = [NSString stringWithFormat:@"%@/40 gestation", [self gestation]];
+        }
+    }
+    
+    return detailDisplayText;
+}
+
 - (NSString *)returnDaysAndCorrectedGestationalAge;
 {
     NSString *daysAndCorrectedGestationalAge = nil;
