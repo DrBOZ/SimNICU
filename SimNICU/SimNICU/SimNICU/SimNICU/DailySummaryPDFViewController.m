@@ -150,6 +150,8 @@
     
     // create summary
     
+    
+    
     // Draw a line at the top
     [self drawLineAboveDailySummaryText];
     
@@ -157,8 +159,12 @@
     [self drawBorder];
     
     // Draw logo
+    [self drawLogo];
+    
+    /*
     UIImage *logo = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
     [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), (logo.size.width / 2), (logo.size.height / 2))];
+     */
     
     // draw text
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -218,7 +224,24 @@
     // textToDraw = @"BW 1.55 kg  LW 1.56 CW 1.65 kg (gain of 100g) WW 1.55 kg";
     // textToDraw = @"BW\t1.55 kg\nLW\t1.56 kg\nCW\t1.65 kg (gain of 100g)\nWW\t1.55 kg";
     
-    [self drawText:@"BW\t1.55 kg\nLW\t1.56 kg\nCW\t1.65 kg (gain of 100g)\nWW\t1.55 kg"
+    NSString *birthWeightText = nil;
+    NSString *workingWeightText = nil;
+    
+    if (self.selectedPatient.birthWeight)
+    {
+        birthWeightText = [Patient formatWeight:self.selectedPatient.birthWeight];
+    }
+    
+    if (self.selectedPatient.workingWeight)
+    {
+        workingWeightText = [Patient formatWeight:self.selectedPatient.workingWeight];
+    }
+    
+    // @"BW\t1.55 kg\nLW\t1.56 kg\nCW\t1.65 kg (gain of 100g)\nWW\t1.55 kg"
+    
+    NSString *text = [NSString stringWithFormat:@"BW\t%@\nWW\t%@", birthWeightText, workingWeightText];
+    
+    [self drawText:text
           withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
     
     // need to loop through the sections to deterine printing height and when to start printing on the right hand side of the paper
@@ -444,6 +467,9 @@
             // Mark the beginning of a new page.
             UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, pageWidth, pageHeight), nil);
             
+            // Draw Logo
+            [self drawLogo];
+            
             // Draw border
             [self drawBorder];
             
@@ -565,6 +591,12 @@
     CGContextSetStrokeColorWithColor(currentContext, borderColor.CGColor);
     CGContextSetLineWidth(currentContext, kBorderWidth);
     CGContextStrokeRect(currentContext, rectFrame);
+}
+
+- (void)drawLogo
+{
+    UIImage *logo = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
+    [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), (logo.size.width / 2), (logo.size.height / 2))];
 }
 
 - (void)displayPDF
