@@ -838,10 +838,7 @@
             displayTextLabel.text = [self.selectedPatient returnDisplayTextLabelText];
         }
         
-        // display gestation and corrected gestation, birth weight and working weight
-        displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
-        
-        
+        // display day of life and (corrected weeks + days)
         if (self.selectedPatient.birthDate)
         {
             NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.selectedPatient.birthDate and:[NSDate date]];
@@ -851,6 +848,9 @@
             // display days and corrected age
             displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]], correctedAge];
         }
+        
+        // display gestation and corrected gestation, birth weight and working weight
+        displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
     }
 #pragma mark Background
     else if ([CellIdentifier isEqualToString:@"Background"])

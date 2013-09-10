@@ -8,6 +8,7 @@
 
 #import "DailySummaryPDFViewController.h"
 #import "HandoverSection.h"
+#import "CBTimeMethods.h"
 #import "HandoverRow.h"
 
 #define kA0Width 2384.0f
@@ -189,7 +190,19 @@
     
 #pragma mark Day
     
-    [self drawText:@"day 14"
+    NSString *dayText = nil;
+    
+    if (self.selectedPatient.birthDate)
+    {
+        NSMutableArray *formattedDates = [CBTimeMethods getFormattedYearsMonthsWeeksDaysDifferenceBetween:self.selectedPatient.birthDate and:[NSDate date]];
+        
+        NSString *correctedAge = formattedDates[2];
+        
+        // display days and corrected age
+        dayText = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]], correctedAge];
+    }
+    
+    [self drawText:dayText
           withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
     
 #pragma mark Gestation
