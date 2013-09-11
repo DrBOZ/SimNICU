@@ -487,6 +487,157 @@
 
 }
 
+- (void)drawHeaderText:(NSString *)theHeaderText withFont:(UIFont *)theHeaderFont andBodyText:(NSString *)theBodyText withFont:(UIFont *)theBodyFont onLeftSideOfPageAtVerticalPosition:(float)y
+{
+    // get the size of both the header text and the body text
+    CGSize theHeaderTextSize = [theHeaderText sizeWithFont:theHeaderFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
+    CGSize theBodyTextSize = [theBodyText sizeWithFont:theBodyFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
+    
+    float combinedTextHeight = theHeaderTextSize.height + theBodyTextSize.height;
+    
+    // check that there is available vertical space on the page
+    if (verticalPointToPrint >= (pageHeight - kBorderInset - kMarginInsetBottom - combinedTextHeight))
+    {
+        // No, there is not enought space...
+        
+        // so check if already printing on the right
+        if (horizontalPointToPrint == kRightPrintingAdjustment)
+        {
+            // Yes, so start a new page...
+            
+            // Mark the beginning of the new page.
+            UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, pageWidth, pageHeight), nil);
+            
+            // Draw Logo
+            [self drawLogo];
+            
+            // Draw Patient name +/- birthDate
+            NSString *nameAndBirthDateText;
+            
+            if (self.selectedPatient.birthDate)
+            {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                
+                formatter.timeStyle = [NSTimeZone localTimeZone];
+                formatter.dateStyle = NSDateFormatterShortStyle;
+                formatter.timeStyle = NSDateFormatterNoStyle;
+                
+                nameAndBirthDateText = [NSString stringWithFormat:@"%@ (%@)", [self.selectedPatient returnDisplayTextLabelText], [formatter stringFromDate:self.selectedPatient.birthDate]];
+            }
+            else
+            {
+                nameAndBirthDateText = [self.selectedPatient returnDisplayTextLabelText];
+            }
+            
+            [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] atVerticalPosition:10.0f];
+            
+            // Draw Line
+            [self drawLineAboveDailySummaryText];
+            
+            // Draw border
+            [self drawBorder];
+            
+            // reset counters for 2nd page
+            y = 50.0f;
+            verticalPointToPrint = y;
+            horizontalPointToPrint = kLeftPrintingAdjustment;
+            
+            // reset printable area as printhead to left hand side of page
+            printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            
+            /*
+            stringSize = [textToDraw sizeWithFont:textFont
+                                constrainedToSize:printableArea
+                                    lineBreakMode:UILineBreakModeWordWrap];
+             */
+            
+            // get the size of both the header text and the body text
+            theHeaderTextSize = [theHeaderText sizeWithFont:theHeaderFont
+                                          constrainedToSize:printableArea
+                                              lineBreakMode:UILineBreakModeWordWrap];
+            
+            theBodyTextSize = [theBodyText sizeWithFont:theBodyFont
+                                      constrainedToSize:printableArea
+                                          lineBreakMode:UILineBreakModeWordWrap];
+            
+            combinedTextHeight = theHeaderTextSize.height + theBodyTextSize.height;
+            
+            // set flag to produce lines to write on
+            displayLinesToWriteOn = YES;
+            
+            // increment page
+            page = 2;
+        }
+        else
+        {
+            // if not then start printing on the right
+            
+            // first check which page
+            // check if on first page or subsequent pages
+            if (page == 1)
+            {
+                // set print position to match Background information
+                y = rightSidePointToPrint + headingSeparator;
+            }
+            
+            verticalPointToPrint = y;
+            horizontalPointToPrint = kRightPrintingAdjustment;
+            
+            printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetRight), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
+            
+            /*
+            stringSize = [textToDraw sizeWithFont:textFont
+                                constrainedToSize:printableArea
+                                    lineBreakMode:UILineBreakModeWordWrap];
+             */
+            
+            // get the size of both the header text and the body text with new printable area
+            theHeaderTextSize = [theHeaderText sizeWithFont:theHeaderFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
+            theBodyTextSize = [theBodyText sizeWithFont:theBodyFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
+        }
+    }
+    
+    // create a rectangle to display Header text based on the text size
+    CGRect renderingRect;
+    
+    if (horizontalPointToPrint == kLeftPrintingAdjustment)
+    {
+        renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), theHeaderTextSize.height);
+    }
+    else
+    {
+        renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, theHeaderTextSize.height);
+    }
+    
+    // draw text
+    [theHeaderText drawInRect:renderingRect
+                  withFont:theHeaderFont
+             lineBreakMode:UILineBreakModeWordWrap
+                 alignment:UITextAlignmentLeft];
+    
+    // update next print point
+    verticalPointToPrint = y + theHeaderTextSize.height + normalSeparator;
+    
+    // create a rectangle to display body text based on the text size
+    if (horizontalPointToPrint == kLeftPrintingAdjustment)
+    {
+        renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), theBodyTextSize.height);
+    }
+    else
+    {
+        renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, theBodyTextSize.height);
+    }
+    
+    // draw text
+    [theBodyText drawInRect:renderingRect
+                  withFont:theBodyFont
+             lineBreakMode:UILineBreakModeWordWrap
+                 alignment:UITextAlignmentLeft];
+    
+    // update next print point
+    verticalPointToPrint = y + theBodyTextSize.height;
+}
+
 - (void)drawText:(NSString *)textToDraw withFont:(UIFont *)textFont onLeftSideOfPageAtVerticalPosition:(float)y
 {
     // get the size of the text
