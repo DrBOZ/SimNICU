@@ -272,181 +272,162 @@
             // set rightSidePointToPrint
             rightSidePointToPrint = verticalPointToPrint;
             
-            // header
-            [self drawText:@"Background" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.background withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Background"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.background
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Active Problems
         else if ([section.sectionName isEqual:@"Active Problems"] && ([self.selectedPatient.activeProblems length] > 0))
         {
-            // header
-            [self drawText:@"Active Problems" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.activeProblems withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Active Problems"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.activeProblems
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Resolved Problems
         else if ([section.sectionName isEqual:@"Resolved Problems"] && ([self.selectedPatient.resolvedProblems length] > 0))
         {
-            // header
-            [self drawText:@"Resolved Problems" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.resolvedProblems withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Resolved Problems"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.resolvedProblems
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Recent Significant Events
         else if ([section.sectionName isEqual:@"Recent Significant Events"] && ([self.selectedPatient.recentSignificantEvents length] > 0))
         {
-            // header
-            [self drawText:@"Recent Significant Events" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.recentSignificantEvents withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Recent Significant Events"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.recentSignificantEvents
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Recent Ventilation & Sedation
         else if ([section.sectionName isEqual:@"Ventilation & Sedation"] && ([self.selectedPatient.ventilationAndSedation length] > 0))
         {
-            // header
-            [self drawText:@"Ventilation & Sedation" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.ventilationAndSedation withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Ventilation & Sedation"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.ventilationAndSedation
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Recent CXR
         else if ([section.sectionName isEqual:@"CXR"] && ([self.selectedPatient.cxr length] > 0))
         {
-            // header
-            [self drawText:@"CXR" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.cxr withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"CXR"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.cxr
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Cardiovascular
         else if ([section.sectionName isEqual:@"Cardiovascular"] && ([self.selectedPatient.cardiovascular length] > 0))
         {
-            // header
-            [self drawText:@"Cardiovascular" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.cardiovascular withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Cardiovascular"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.cardiovascular
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Lines
         else if ([section.sectionName isEqual:@"Lines"] && ([self.selectedPatient.lines length] > 0))
         {
-            // header
-            [self drawText:@"Lines" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-        
-            // text
-            [self drawText:self.selectedPatient.lines withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Lines"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.lines
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Feeds & Fluids
         else if ([section.sectionName isEqual:@"Feeds & Fluids"] && ([self.selectedPatient.feedsAndFluids length] > 0))
         {
-            // header
-            [self drawText:@"Feeds & Fluids" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.feedsAndFluids withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Feeds & Fluids"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.feedsAndFluids
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Fluid Balance
         else if ([section.sectionName isEqual:@"Fluid Balance"] && ([self.selectedPatient.fluidBalance length] > 0))
         {
-            // header
-            [self drawText:@"Fluid Balance" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.fluidBalance withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Fluid Balance"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.fluidBalance
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Biochemistry
         else if ([section.sectionName isEqual:@"Biochemistry"] && ([self.selectedPatient.electrolytes length] > 0))
         {
-            // header
-            [self drawText:@"Biochemistry" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.electrolytes withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Biochemistry"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.electrolytes
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Jaundice
         else if ([section.sectionName isEqual:@"Jaundice"] && ([self.selectedPatient.jaundice length] > 0))
         {
-            // header
-            [self drawText:@"Jaundice" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            [self drawText:self.selectedPatient.jaundice withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Jaundice"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.jaundice
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Sepsis
         else if ([section.sectionName isEqual:@"Sepsis"] && ([self.selectedPatient.sepsis length] > 0))
         {
-            // header
-            [self drawText:@"Sepsis" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.sepsis withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Sepsis"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.sepsis
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Drugs
         else if ([section.sectionName isEqual:@"Drugs"] && ([self.selectedPatient.drugs length] > 0))
         {
-            // header
-            [self drawText:@"Drugs" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.drugs withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Drugs"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.drugs
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark ROP
         else if ([section.sectionName isEqual:@"ROP"] && ([self.selectedPatient.rop length] > 0))
         {
-            // header
-            [self drawText:@"ROP" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.rop withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"ROP"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.rop
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Neurology & Cranial USS
         else if ([section.sectionName isEqual:@"Neurology & Cranial USS"] && ([self.selectedPatient.cranialUSS length] > 0))
         {
-            // header
-            [self drawText:@"Neurology & Cranial USS" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.cranialUSS withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Neurology & Cranial USS"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.cranialUSS
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Parents & Social
         else if ([section.sectionName isEqual:@"Parents & Social"] && ([self.selectedPatient.parentsAndSocial length] > 0))
         {
-            // header
-            [self drawText:@"Parents & Social" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.parentsAndSocial withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Parents & Social"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.parentsAndSocial
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Examination
         else if ([section.sectionName isEqual:@"Examination"] && ([self.selectedPatient.impression length] > 0))
         {
-            // header
-            [self drawText:@"Examination" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.impression withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Examination"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.impression
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Summary
         else if ([section.sectionName isEqual:@"Summary"] && ([self.selectedPatient.plan length] > 0))
         {
-            // header
-            [self drawText:@"Summary" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.plan withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Summary"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.plan
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Plan
         else if ([section.sectionName isEqual:@"Plan"] && ([self.selectedPatient.jobs length] > 0))
         {
-            // header
-            [self drawText:@"Plan" withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
-            
-            // text
-            [self drawText:self.selectedPatient.jobs withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + normalSeparator];
+            [self drawHeaderText:@"Plan"
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.jobs
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
     }
     
@@ -493,10 +474,10 @@
     CGSize theHeaderTextSize = [theHeaderText sizeWithFont:theHeaderFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
     CGSize theBodyTextSize = [theBodyText sizeWithFont:theBodyFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
     
-    float combinedTextHeight = theHeaderTextSize.height + theBodyTextSize.height;
+    float combinedTextHeight = theHeaderTextSize.height + normalSeparator + theBodyTextSize.height;
     
     // check that there is available vertical space on the page
-    if (verticalPointToPrint >= (pageHeight - kBorderInset - kMarginInsetBottom - combinedTextHeight))
+    if (topInset + y >= (pageHeight - kBorderInset - kMarginInsetBottom - combinedTextHeight))
     {
         // No, there is not enought space...
         
@@ -615,8 +596,8 @@
              lineBreakMode:UILineBreakModeWordWrap
                  alignment:UITextAlignmentLeft];
     
-    // update next print point
-    verticalPointToPrint = y + theHeaderTextSize.height + normalSeparator;
+    // increment print head vertical position
+    y = y + theHeaderTextSize.height + normalSeparator;
     
     // create a rectangle to display body text based on the text size
     if (horizontalPointToPrint == kLeftPrintingAdjustment)
