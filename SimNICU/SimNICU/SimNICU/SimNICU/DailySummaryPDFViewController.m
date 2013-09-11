@@ -72,6 +72,8 @@
     UIFont *headerFont;
     
     int page;
+    
+    BOOL displayLinesToWriteOn;
 }
 
 - (id)init
@@ -151,7 +153,6 @@
     // create summary
     
     // display patient's name & birthDate
-    
     NSString *nameAndBirthDateText;
     
     if (self.selectedPatient.birthDate)
@@ -169,7 +170,7 @@
         nameAndBirthDateText = [self.selectedPatient returnDisplayTextLabelText];
     }
     
-    [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] onLeftSideOfPageAtVerticalPosition:10.0f];
+    [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] atVerticalPosition:10.0f];
     
     // Draw a line at the top
     [self drawLineAboveDailySummaryText];
@@ -449,6 +450,13 @@
         }
     }
     
+    // Print lines
+    if (displayLinesToWriteOn)
+    {
+        // draw lines starting at y
+        [self drawLinesStartingAtVerticalPosition:verticalPointToPrint];
+    }
+    
     // draw signature line & draw my name, status and GMC number
     [self drawSignature];
 
@@ -463,6 +471,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)drawText:(NSString *)textToDraw withFont:(UIFont *)textFont atVerticalPosition:(float)y
+{
+    // create a rectangle to display text based on the page size
+    CGRect renderingRect = CGRectMake(leftInset, topInset + y, pageWidth - (kBorderInset * 2) - (kMarginInsetLeft + kMarginInsetRight), 22.0f);
+    
+    // draw text
+    [textToDraw drawInRect:renderingRect
+                  withFont:textFont
+             lineBreakMode:UILineBreakModeWordWrap
+                 alignment:UITextAlignmentLeft];
+    
+
 }
 
 - (void)drawText:(NSString *)textToDraw withFont:(UIFont *)textFont onLeftSideOfPageAtVerticalPosition:(float)y
@@ -484,6 +506,26 @@
             // Draw Logo
             [self drawLogo];
             
+            // Draw Patient name +/- birthDate
+            NSString *nameAndBirthDateText;
+            
+            if (self.selectedPatient.birthDate)
+            {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                
+                formatter.timeStyle = [NSTimeZone localTimeZone];
+                formatter.dateStyle = NSDateFormatterShortStyle;
+                formatter.timeStyle = NSDateFormatterNoStyle;
+                
+                nameAndBirthDateText = [NSString stringWithFormat:@"%@ (%@)", [self.selectedPatient returnDisplayTextLabelText], [formatter stringFromDate:self.selectedPatient.birthDate]];
+            }
+            else
+            {
+                nameAndBirthDateText = [self.selectedPatient returnDisplayTextLabelText];
+            }
+            
+            [self drawText:nameAndBirthDateText withFont:[UIFont boldSystemFontOfSize:15.0f] atVerticalPosition:10.0f];
+            
             // Draw Line
             [self drawLineAboveDailySummaryText];
             
@@ -502,8 +544,11 @@
                                        constrainedToSize:printableArea
                                            lineBreakMode:UILineBreakModeWordWrap];
             
+            // set flag to produce lines to write on
+            displayLinesToWriteOn = YES;
+            
             // increment page
-            page ++;
+            page = 2;
         }
         else
         {
@@ -567,6 +612,28 @@
     
     CGContextClosePath(currentContext);
     CGContextDrawPath(currentContext, kCGPathFillStroke);
+}
+
+- (void)drawLinesStartingAtVerticalPosition:(float)y
+{
+    for (int x = y; x < pageHeight; x = x + 22.0f)
+    {
+        CGContextRef currentContext = UIGraphicsGetCurrentContext();
+        
+        CGContextSetLineWidth(currentContext, kLineWidth);
+        
+        CGContextSetStrokeColorWithColor(currentContext, [UIColor grayColor].CGColor);
+        
+        CGPoint startPoint = CGPointMake(kMarginInsetLeft + kBorderInset, x);
+        CGPoint endPoint = CGPointMake(pageWidth - (kMarginInsetLeft) - (kBorderInset), x);
+        
+        CGContextBeginPath(currentContext);
+        CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
+        CGContextAddLineToPoint(currentContext, endPoint.x, endPoint.y);
+        
+        CGContextClosePath(currentContext);
+        CGContextDrawPath(currentContext, kCGPathFillStroke);
+    }
 }
 
 - (void)drawSignature

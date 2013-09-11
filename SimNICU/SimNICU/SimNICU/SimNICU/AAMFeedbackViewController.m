@@ -46,18 +46,18 @@
     {
         self.topics = [[NSArray alloc]initWithObjects:
                        @"Question",
-                       @"Request",
+                       @"Suggestion",
                        @"Bug Report",
-                       @"Media",
-                       @"Business",
+                       @"I can help translate",
+                       @"I want to be a beta tester",
                        @"Other", nil];
         
         self.topicsToSend = [[NSArray alloc]initWithObjects:
                              @"Question",
-                             @"Request",
+                             @"Suggestion",
                              @"Bug Report",
-                             @"Media",
-                             @"Business",
+                             @"Translation",
+                             @"Beta Tester",
                              @"Other", nil];
     }
     

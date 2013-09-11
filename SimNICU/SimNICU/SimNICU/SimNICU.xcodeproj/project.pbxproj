@@ -2351,8 +2351,8 @@
 		5C940A60166E37FE0044A7D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
+				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
 				5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */,
 				5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */,
