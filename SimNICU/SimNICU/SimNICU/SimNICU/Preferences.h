@@ -10,7 +10,8 @@
 
 @interface Preferences : NSObject <NSCoding>
 
-// alphabetical order
+// locale
+@property (nonatomic, retain) NSString *locale;
 
 // Infusions
 @property (nonatomic, retain) NSNumber *defaultInfusionFluidVolumeMillilitres;

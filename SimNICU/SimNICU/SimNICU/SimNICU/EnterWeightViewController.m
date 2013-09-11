@@ -114,10 +114,12 @@
     {
         NSData *data = [[NSData alloc] initWithContentsOfFile:path];
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        
         self.patientList = [unarchiver decodeObjectForKey:@"PatientList"];
         
         Preferences *preferences = [Preferences sharedPreferences];
         preferences = [unarchiver decodeObjectForKey:@"Preferences"];
+        
         self.bayData = [unarchiver decodeObjectForKey:@"BayData"];
         
         [unarchiver finishDecoding];

@@ -216,7 +216,7 @@
     self.myTableView1.userInteractionEnabled = YES;
     [self.view addSubview:self.myTableView1];
     
-    self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f - 156.0f)) style:UITableViewStylePlain];
+    self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f)) style:UITableViewStylePlain];
     self.myTableView2.rowHeight = 44.0f;
     self.myTableView2.dataSource = self;
     self.myTableView2.delegate = self;

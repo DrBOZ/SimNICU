@@ -616,7 +616,12 @@
 
 - (void)drawLinesStartingAtVerticalPosition:(float)y
 {
-    for (int x = y; x < pageHeight; x = x + 22.0f)
+    // settings
+    float heightToStopDrawingLines = pageHeight - 180.0f;
+    float verticalLineSpacing = 22.0f;
+    
+    // draw lines
+    for (int x = y; x < heightToStopDrawingLines; x = x + verticalLineSpacing)
     {
         CGContextRef currentContext = UIGraphicsGetCurrentContext();
         
@@ -685,8 +690,11 @@
 
 - (void)displayPDF
 {
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     // create webView to display PDF
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 480.0f)];
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
     
     NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

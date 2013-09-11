@@ -10,8 +10,6 @@
 
 @implementation Preferences
 
-// in order they were added to project for compatibility
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     // if((self = [super init]))
@@ -33,16 +31,47 @@
         self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
         self.signature = [aDecoder decodeObjectForKey:@"signature"];
         
+        // find user's current locale
+        NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
+        self.locale = currentLocale;
+        
         // set default paper size
         if (!self.paperSize)
         {
-            self.paperSize = @"A4";
+            if ([currentLocale isEqualToString:@"en_GB"])
+            {
+                self.paperSize = @"A4";
+            }
+            else
+            {
+                self.paperSize = @"Letter";
+            }
         }
         
         // set default correction age
         if (!self.correctAgeForPrematurityUntilYears)
         {
             self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
+        }
+        
+        // set phototherapy defaults
+        if (!self.guidelineCountry)
+        {
+            if ([currentLocale isEqualToString:@"en_GB"])
+            {
+                self.guidelineCountry = @"UK";
+                self.bilirubinUnits = @"SI";
+            }
+            else if ([currentLocale isEqualToString:@"en_US"])
+            {
+                self.guidelineCountry = @"US";
+                self.bilirubinUnits = @"US";
+            }
+            else
+            {
+                self.guidelineCountry = @"US";
+                self.bilirubinUnits = @"US";
+            }
         }
     }
     return self;

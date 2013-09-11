@@ -79,6 +79,7 @@
 // Jobs
 // 1) Convert UIViewControllers to UITableViewControllers?
 // 2) Now I have started changing over, set standard cell height?
+// 3) Fix Shinobi chart - crashes when loaded in the Simulator
 
 @end
 

@@ -30,6 +30,8 @@
     
     self.title = NSLocalizedString(@"Phototherapy", nil);
     
+    // I have moved this to the Preferences class
+    /*
     Preferences *preferences = [Preferences sharedPreferences];
     
     // set locale specific defaults
@@ -54,6 +56,7 @@
             preferences.bilirubinUnits = @"US";
         }
     }
+     */
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
