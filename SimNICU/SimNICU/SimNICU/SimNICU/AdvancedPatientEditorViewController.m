@@ -119,18 +119,18 @@
 // 6) dateAndTimeForThisChart thing for ShinobiChart
 //
 // 7) Add hospital logo and details to PDF
-// 8) Adjust margins to actual hospital paper
-// 9) Allow user to adjust margins for different paper sizes and custom size
+// 8) 
+// 9) 
 //10) Add Time and Date
 //11) Add weight chart
 //12) Add phototherapy chart
 //13)
-//14) Add settings VC
+//14) 
 //15) Sort Headings and Text as one object to calculate sizes *****
 //16) Add option to calcualate first day as day 0, day 1 or mixture
 //17) Add biochemistry edit
 //18) change names of patient properties to match UITextFields
-//19) Add lines for Ward round information
+//19) 
 //20) 'Plan' cell height should not reduce
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
