@@ -2026,7 +2026,7 @@
         }
         else if ((contentHeight + 5.0f) < rowHeight)
         {
-            if (rowHeight > 250.0f)
+            if (rowHeight > 260.0f)
             {
                 rowHeight -= (rowHeight - (contentHeight + 5.0f));
             }
@@ -2039,7 +2039,8 @@
             self.jobsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.jobsTextView.contentSize.height + 10.0f));
         }
         
-        self.selectedPatient.jobs = textView.text;
+        // self.selectedPatient.jobs = textView.text;
+        self.selectedPatient.jobs = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n", textView.text];
     }
 }
 

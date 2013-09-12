@@ -46,8 +46,8 @@
 #define CALCULATOR_PREVIEW_MODE 0
 #define SETTINGS_PREVIEW_MODE 1
 #define CRUSS_PREVIEW_MODE 0
-#define DRUGS_PREVIEW_MODE 1
-#define SYNC_PREVIEW_MODE 1
+#define DRUGS_PREVIEW_MODE 0
+#define SYNC_PREVIEW_MODE 0
 
 #import "ZUUIRevealController.h"
 #import "DrugDatabase.h"

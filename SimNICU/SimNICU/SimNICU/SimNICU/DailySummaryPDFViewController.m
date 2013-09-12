@@ -435,7 +435,7 @@
     if (displayLinesToWriteOn)
     {
         // draw lines starting at y
-        [self drawLinesStartingAtVerticalPosition:verticalPointToPrint + topInset + headingSeparator + 50.0f];
+        [self drawLinesStartingAtVerticalPosition:verticalPointToPrint + topInset + headingSeparator];
     }
     
     // draw signature line & draw my name, status and GMC number
@@ -477,7 +477,7 @@
     float combinedTextHeight = theHeaderTextSize.height + normalSeparator + theBodyTextSize.height;
     
     // check that there is available vertical space on the page
-    if (topInset + y >= (pageHeight - kBorderInset - kMarginInsetBottom - combinedTextHeight - 50.0f))
+    if (topInset + y >= (pageHeight - kBorderInset - kMarginInsetBottom - combinedTextHeight))
     {
         // No, there is not enought space...
         
