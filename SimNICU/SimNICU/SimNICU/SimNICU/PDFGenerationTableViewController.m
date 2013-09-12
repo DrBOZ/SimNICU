@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITextView *signatureTextView;
+@property (nonatomic, strong) UISwitch *borderSwitch;
 
 @end
 
@@ -55,18 +56,12 @@
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = @"Border";
+    [sectionData.rowData addObject:rowData];
+    
+    rowData = [[CBTableViewRowData alloc] init];
     rowData.text = @"Hospital Logo";
     [sectionData.rowData addObject:rowData];
-    
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Unit Address";
-    [sectionData.rowData addObject:rowData];
-    
-    /*
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Signature";
-    [sectionData.rowData addObject:rowData];
-     */
     
     [tableData addObject:sectionData];
     
@@ -165,6 +160,16 @@
             cell.textLabel.text = @"Paper Size";
             cell.detailTextLabel.text = preferences.paperSize;
         }
+        else if (indexPath.row == 1)
+        {
+            cell.textLabel.text = @"Border";
+            
+            self.borderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+            [self.borderSwitch addTarget:self action:@selector(borderSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+            self.borderSwitch.on = [preferences.border intValue];
+            cell.accessoryView = self.borderSwitch;
+            cell.detailTextLabel.text = nil;
+        }
         else
         {
             CBTableViewSectionData *sectionData = tableData[indexPath.section];
@@ -194,6 +199,13 @@
     }
     
     return cell;
+}
+
+- (void)borderSwitchChangedValue
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.border = [NSNumber numberWithInt:self.borderSwitch.on];
 }
 
 #pragma mark - Table view delegate

@@ -815,14 +815,19 @@
 
 - (void)drawBorder
 {
-    CGContextRef    currentContext = UIGraphicsGetCurrentContext();
-    // UIColor *borderColor = [UIColor blackColor];
-    // UIColor *borderColor = [UIColor colorWithRed:0/255 green:72/255 blue:160/255 alpha:1.0f];
-    UIColor *borderColor = [UIColor grayColor];
-    CGRect rectFrame = CGRectMake(kBorderInset, kBorderInset, pageWidth-kBorderInset * 2, pageHeight-kBorderInset * 2);
-    CGContextSetStrokeColorWithColor(currentContext, borderColor.CGColor);
-    CGContextSetLineWidth(currentContext, kBorderWidth);
-    CGContextStrokeRect(currentContext, rectFrame);
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if (preferences.border == [NSNumber numberWithInt:1])
+    {
+        CGContextRef    currentContext = UIGraphicsGetCurrentContext();
+        // UIColor *borderColor = [UIColor blackColor];
+        // UIColor *borderColor = [UIColor colorWithRed:0/255 green:72/255 blue:160/255 alpha:1.0f];
+        UIColor *borderColor = [UIColor grayColor];
+        CGRect rectFrame = CGRectMake(kBorderInset, kBorderInset, pageWidth-kBorderInset * 2, pageHeight-kBorderInset * 2);
+        CGContextSetStrokeColorWithColor(currentContext, borderColor.CGColor);
+        CGContextSetLineWidth(currentContext, kBorderWidth);
+        CGContextStrokeRect(currentContext, rectFrame);
+    }
 }
 
 - (void)drawLogo

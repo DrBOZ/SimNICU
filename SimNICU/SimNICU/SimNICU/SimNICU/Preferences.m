@@ -30,6 +30,7 @@
         self.correctAgeForPrematurityUntilYears = [aDecoder decodeObjectForKey:@"correctAgeForPrematurityUntilYears"];
         self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
         self.signature = [aDecoder decodeObjectForKey:@"signature"];
+        self.border = [aDecoder decodeObjectForKey:@"border"];
         
         // find user's current locale
         NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
@@ -46,6 +47,11 @@
             {
                 self.paperSize = @"Letter";
             }
+        }
+        
+        if (!self.border)
+        {
+            self.border = [NSNumber numberWithInt:1];
         }
         
         // set default correction age
@@ -79,18 +85,32 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.bilirubinUnits forKey:@"BilirubinUnits"];
-    [aCoder encodeObject:self.guidelineCountry forKey:@"GuidelineCountry"];
-    [aCoder encodeObject:self.ETTRoundUp forKey:@"ETTRoundUp"];
-    [aCoder encodeObject:self.OIUnits forKey:@"OIUnits"];
-    [aCoder encodeObject:self.ROPGestationScreeningThreshold forKey:@"ROPGestationScreeningThreshold"];
-    [aCoder encodeObject:self.ROPBirthWeightScreeningThreshold forKey:@"ROPBirthWeightScreeningThreshold"];
-    [aCoder encodeObject:self.defaultInfusionFluidVolumeMillilitres forKey:@"defaultInfusionFluidVolumeMillilitres"];
-    [aCoder encodeObject:self.userKnowsHowToSwipeGestation forKey:@"userKnowsHowToSwipeGestation"];
-    [aCoder encodeObject:self.userKnowsHowToSwipePatientList forKey:@"userKnowsHowToSwipePatientList"];
-    [aCoder encodeObject:self.correctAgeForPrematurityUntilYears forKey:@"correctAgeForPrematurityUntilYears"];
-    [aCoder encodeObject:self.paperSize forKey:@"paperSize"];
-    [aCoder encodeObject:self.signature forKey:@"signature"];
+    [aCoder encodeObject:self.bilirubinUnits
+                  forKey:@"BilirubinUnits"];
+    [aCoder encodeObject:self.guidelineCountry
+                  forKey:@"GuidelineCountry"];
+    [aCoder encodeObject:self.ETTRoundUp
+                  forKey:@"ETTRoundUp"];
+    [aCoder encodeObject:self.OIUnits
+                  forKey:@"OIUnits"];
+    [aCoder encodeObject:self.ROPGestationScreeningThreshold
+                  forKey:@"ROPGestationScreeningThreshold"];
+    [aCoder encodeObject:self.ROPBirthWeightScreeningThreshold
+                  forKey:@"ROPBirthWeightScreeningThreshold"];
+    [aCoder encodeObject:self.defaultInfusionFluidVolumeMillilitres
+                  forKey:@"defaultInfusionFluidVolumeMillilitres"];
+    [aCoder encodeObject:self.userKnowsHowToSwipeGestation
+                  forKey:@"userKnowsHowToSwipeGestation"];
+    [aCoder encodeObject:self.userKnowsHowToSwipePatientList
+                  forKey:@"userKnowsHowToSwipePatientList"];
+    [aCoder encodeObject:self.correctAgeForPrematurityUntilYears
+                  forKey:@"correctAgeForPrematurityUntilYears"];
+    [aCoder encodeObject:self.paperSize
+                  forKey:@"paperSize"];
+    [aCoder encodeObject:self.signature
+                  forKey:@"signature"];
+    [aCoder encodeObject:self.border
+                  forKey:@"border"];
 }
 
 // Singleton method

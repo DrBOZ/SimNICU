@@ -40,6 +40,7 @@
 // PDF settings
 @property (nonatomic, retain) NSString *paperSize;
 @property (nonatomic, retain) NSString *signature;
+@property (nonatomic, retain) NSNumber *border;
 
 // returns singleton object
 + (id)sharedPreferences;
