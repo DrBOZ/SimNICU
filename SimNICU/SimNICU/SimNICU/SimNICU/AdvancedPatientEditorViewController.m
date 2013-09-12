@@ -27,7 +27,7 @@
 
 #import "UDInputAccessoryView.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -4483,6 +4483,18 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+#pragma mark - DailySummaryPDFViewController delegate
+
+- (void)DailySummaryPDFViewControllerSelectedPreviousPatient:(DailySummaryPDFViewController *)controller
+{
+    [self previousPatientButtonPressed];
+}
+
+- (void)DailySummaryPDFViewControllerSelectedNextPatient:(DailySummaryPDFViewController *)controller
+{
+    [self nextPatientButtonPressed:nil];
+}
+
 #pragma mark - PDF
 
 - (void)prepareDailySummaryPDFForPatient
@@ -4490,6 +4502,9 @@
     DailySummaryPDFViewController *newViewController = [[DailySummaryPDFViewController alloc] init];
     newViewController.selectedPatient = self.selectedPatient;
     newViewController.bayData = self.bayData;
+    newViewController.delegate = self;
+    newViewController.selectedBayNSNumber = [NSNumber numberWithInt:selectedBay];
+    newViewController.selectedPatientInBayNSNumber = [NSNumber numberWithInt:selectedPatientInBay];
     
     /*
     UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 640.0f, 640.0f)];

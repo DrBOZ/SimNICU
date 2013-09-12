@@ -10,6 +10,7 @@
 #import "HandoverSection.h"
 #import "CBTimeMethods.h"
 #import "HandoverRow.h"
+#import "Bay.h"
 
 #define kA0Width 2384.0f
 #define kA0Height 3371.0f
@@ -74,6 +75,9 @@
     int page;
     
     BOOL displayLinesToWriteOn;
+    
+    int selectedBay;
+    int selectedPatientInBay;
 }
 
 - (id)init
@@ -95,6 +99,9 @@
     
     // set title
     self.title = @"Daily Summary";
+    
+    selectedPatientInBay = [self.selectedPatientInBayNSNumber intValue];
+    selectedBay = [self.selectedBayNSNumber intValue];
     
     // setup Print Controller
     Class printControllerClass = NSClassFromString(@"UIPrintInteractionController");
@@ -856,14 +863,121 @@
 
 - (void)previousPatientButtonPressed
 {
-    // get previous patient details
-    
     // update AdvancedPatientEditor
+    [self.delegate DailySummaryPDFViewControllerSelectedPreviousPatient:self];
+    
+    
+    
+    // check to see if there is another patient in the bay
+    if (selectedPatientInBay == 0)
+    {
+        // no, last patient in bay
+        
+        // decrement bay, unless first bay
+        if (selectedBay == 0)
+        {
+            return;
+        }
+        else
+        {
+            // ensure there are patients in any previous bays
+            for (int i = selectedBay - 1; i >= 0; --i)
+            {
+                if ([[self.bayData[i] patientsInBay] count])
+                {
+                    selectedBay = i;
+                    break;
+                }
+                else
+                {
+                    // no patient in the next bay
+                    
+                    if (i == 0)
+                    {
+                        // no more patients, empty first bay
+                        return;
+                    }
+                }
+            }
+        }
+        
+        // set to last patient in new bay
+        selectedPatientInBay = [[self.bayData[selectedBay] patientsInBay] count] - 1;
+    }
+    else
+    {
+        // yes, there are more patients in the bay
+        
+        // decrement patient
+        selectedPatientInBay -= 1;
+    }
+    
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    self.selectedBayNSNumber = [NSNumber numberWithInt:selectedBay];
+    self.selectedPatientInBayNSNumber = [NSNumber numberWithInt:selectedPatientInBay];
+    
+    [self viewDidLoad];
 }
 
 - (void)nextPatientButtonPressed:(UIBarButtonItem *)sender
 {
+    [self.delegate DailySummaryPDFViewControllerSelectedNextPatient:self];
     
+    // check the number of patients in the current bay
+    int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];
+    
+    // check to see if there is another patient in the bay
+    if (selectedPatientInBay == (numberOfPatientsInCurrentBay - 1))
+    {
+        // no, last patient in bay
+        
+        // increment bay unless last bay
+        if (selectedBay == [self.bayData count] - 1)
+        {
+            return;
+        }
+        else
+        {
+            // ensure there are are patients in the next bay displayed
+            int numberOfBays = [self.bayData count];
+            
+            for (int i = selectedBay + 1; numberOfBays; i++)
+            {
+                if ([[self.bayData[i] patientsInBay] count])
+                {
+                    selectedBay = i;
+                    break;
+                }
+                else
+                {
+                    // no patients in the next bay
+                    
+                    // if the second to last bay, then no more patients
+                    if (i == numberOfBays - 1)
+                    {
+                        // no more patients, empty bays
+                        return;
+                    }
+                }
+            }
+        }
+        
+        // reset patient info
+        selectedPatientInBay = 0;
+    }
+    else
+    {
+        // yes, there are more patients in the bay
+        
+        // increment patient
+        selectedPatientInBay += 1;
+    }
+    
+    self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
+    self.selectedBayNSNumber = [NSNumber numberWithInt:selectedBay];
+    self.selectedPatientInBayNSNumber = [NSNumber numberWithInt:selectedPatientInBay];
+    
+    [self viewDidLoad];
 }
 
 @end
