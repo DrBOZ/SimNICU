@@ -431,9 +431,13 @@
 #pragma mark Plan
         else if ([section.sectionName isEqual:@"Plan"] && ([self.selectedPatient.jobs length] > 0))
         {
+            NSString *planWithAddedCarriageReturns;
+            
+            planWithAddedCarriageReturns = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n", self.selectedPatient.jobs];
+            
             [self drawHeaderText:@"Plan"
                         withFont:headerFont
-                     andBodyText:self.selectedPatient.jobs
+                     andBodyText:planWithAddedCarriageReturns
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
     }
@@ -912,9 +916,16 @@
         selectedPatientInBay -= 1;
     }
     
+    // new patient
     self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
     self.selectedBayNSNumber = [NSNumber numberWithInt:selectedBay];
     self.selectedPatientInBayNSNumber = [NSNumber numberWithInt:selectedPatientInBay];
+    
+    // reset page
+    page = 1;
+    
+    // reset printed lines
+    displayLinesToWriteOn = NO;
     
     [self viewDidLoad];
 }
@@ -973,9 +984,16 @@
         selectedPatientInBay += 1;
     }
     
+    // new patient
     self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
     self.selectedBayNSNumber = [NSNumber numberWithInt:selectedBay];
     self.selectedPatientInBayNSNumber = [NSNumber numberWithInt:selectedPatientInBay];
+    
+    // reset page
+    page = 1;
+    
+    // reset printed lines
+    displayLinesToWriteOn = NO;
     
     [self viewDidLoad];
 }

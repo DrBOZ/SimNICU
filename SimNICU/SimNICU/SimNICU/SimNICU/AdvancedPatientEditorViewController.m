@@ -305,6 +305,20 @@
     return height;
 }
 
+/*
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    float height = 0.0f;
+    
+    if (section == 19)
+    {
+        height = 160.0f;
+    }
+    
+    return height;
+}
+ */
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier;
@@ -2026,7 +2040,7 @@
         }
         else if ((contentHeight + 5.0f) < rowHeight)
         {
-            if (rowHeight > 260.0f)
+            if (rowHeight > 351.0f) // ie 346 + 5
             {
                 rowHeight -= (rowHeight - (contentHeight + 5.0f));
             }
@@ -2039,8 +2053,7 @@
             self.jobsTextView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (self.jobsTextView.contentSize.height + 10.0f));
         }
         
-        // self.selectedPatient.jobs = textView.text;
-        self.selectedPatient.jobs = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n", textView.text];
+        self.selectedPatient.jobs = textView.text;
     }
 }
 
