@@ -48,6 +48,7 @@
     CBTableViewSectionData *sectionData;
     CBTableViewRowData *rowData;
     
+    /*
     // section 0
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"General";
@@ -70,8 +71,9 @@
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
+     */
     
-    // section 1
+    // section 0
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"Patient List";
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
@@ -80,19 +82,26 @@
     rowData.text = @"Bay Editor";
     [sectionData.rowData addObject:rowData];
     
+    [tableData addObject:sectionData];
+    
+    // section 1
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = @"Daily Summary";
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
+    
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Daily Summary Editor";
+    rowData.text = @"Headings";
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"PDF Generation";
+    rowData.text = @"PDF Options";
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
     
 #if SYNCRONISATION_PREVIEW_MODE
     
-    // section 1
+    // section 2
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"Syncronisation";
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
@@ -113,7 +122,7 @@
     
 #if LOCALISATION_PREVIEW_MODE
     
-    // section 3
+    // section 4
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"Localisation";
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
@@ -220,22 +229,22 @@
     
     if (indexPath.section == 0)
     {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
+        
+        // Bay Editor
+        BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
+        bayEditorViewController.bayData = controller.bayData;
+        bayEditorViewController.delegate = controller;
+        
+        [self.navigationController pushViewController:bayEditorViewController animated:YES];
     }
     else if (indexPath.section == 1)
     {
         if (indexPath.row == 0)
         {
-             EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
-            
-            // Bay Editor
-            BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
-            bayEditorViewController.bayData = controller.bayData;
-            bayEditorViewController.delegate = controller;
-            
-            [self.navigationController pushViewController:bayEditorViewController animated:YES];
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
-        else if (indexPath.row == 2)
+        else if (indexPath.row == 1)
         {
             PDFGenerationTableViewController *newViewController = [[PDFGenerationTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             

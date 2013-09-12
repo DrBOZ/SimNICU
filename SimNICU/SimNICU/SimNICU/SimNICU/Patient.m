@@ -6,8 +6,10 @@
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
 //
 
+#import "HandoverSection.h"
 #import "CBTimeMethods.h"
 #import "GrowthChart.h"
+#import "HandoverRow.h"
 #import "Patient.h"
 
 @interface Patient ()
@@ -18,6 +20,9 @@
  
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     if((self = [super init]))
     {
         // Demographics
@@ -71,9 +76,6 @@
         self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
         self.birthTimeSet = [aDecoder decodeObjectForKey:@"BirthTimeSet"];
         
-        // handover sections
-        self.handoverSections = [aDecoder decodeObjectForKey:@"HandoverSections"];
-        
         // UITextViews
         self.background = [aDecoder decodeObjectForKey:@"Background"];
         self.activeProblems = [aDecoder decodeObjectForKey:@"ActiveProblems"];
@@ -95,6 +97,294 @@
         self.impression = [aDecoder decodeObjectForKey:@"Impression"];
         self.plan = [aDecoder decodeObjectForKey:@"Plan"];
         self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
+        
+        // handover sections
+        self.handoverSections = [aDecoder decodeObjectForKey:@"HandoverSections"];
+        
+        // reset code
+#if RESET_CELL_INFO
+        self.handoverSections = nil;
+#endif
+        
+        // set default sections here
+        if (!self.handoverSections)
+        {
+            self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
+            HandoverSection *newSection;
+            HandoverRow *newRow;
+            
+            // 00 - Background
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Background";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.background;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 01 - Active Problems
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Active Problems";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.activeProblems;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 02 - Resolved Problems
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Resolved Problems";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.resolvedProblems;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 03 - Recent Significant Events
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Recent Significant Events";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.recentSignificantEvents;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 04 - Ventilation & Sedation
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Ventilation & Sedation";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.ventilationAndSedation;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 05 - CXR
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"CXR";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.cxr;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 06 - Cardiovascular
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Cardiovascular";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.cardiovascular;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 07 - Lines
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Lines";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.lines;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 08 - Feeds & Fluids
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Feeds & Fluids";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.feedsAndFluids;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 09 - Fluid Balance
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Fluid Balance";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.fluidBalance;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 10 - Biochemistry
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Biochemistry";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.electrolytes;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 11 - Jaundice
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Jaundice";
+            newSection.sectionEditable = @"YES";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            newRow = [[HandoverRow alloc] init];
+            // Different graph sizes for iPhone 4 and iPhone 5
+            if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+            {
+                newRow.rowHeight = [NSNumber numberWithFloat:320.0f];
+            }
+            else
+            {
+                newRow.rowHeight = [NSNumber numberWithFloat:260.0f];
+            }
+            [newSection.rows addObject:newRow];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.jaundice;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 12 - Sepsis
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Sepsis";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.sepsis;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 13 - Drugs
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Drugs";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.drugs;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 14 - ROP
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"ROP";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.rop;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 15 - Neurology & Cranial USS
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Neurology & Cranial USS";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.cranialUSS;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 16 - Parents / Social
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Parents / Social";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.parentsAndSocial;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 17 - Examination
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Examination";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.impression;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 18 - Summary
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Summary";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+            newRow.rowText = self.plan;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+            
+            // 19 - Plan
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Plan";
+            newSection.sectionEditable = @"NO";
+            newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            newRow = [[HandoverRow alloc] init];
+            newRow.rowHeight = [NSNumber numberWithFloat:346.0f];
+            newRow.rowText = self.jobs;
+            [newSection.rows addObject:newRow];
+            
+            [self.handoverSections addObject:newSection];
+        }
         
         // Blood bank info
         self.maternalBloodGroup = [aDecoder decodeObjectForKey:@"MaternalBloodGroup"];
@@ -160,9 +450,6 @@
     [aCoder encodeObject:self.bilirubinResults forKey:@"BilirubinResults"];
     [aCoder encodeObject:self.birthTimeSet forKey:@"BirthTimeSet"];
     
-    // handover sections
-    [aCoder encodeObject:self.handoverSections forKey:@"HandoverSections"];
-    
     // UITextViews
     [aCoder encodeObject:self.background forKey:@"Background"];
     [aCoder encodeObject:self.activeProblems forKey:@"ActiveProblems"];
@@ -184,6 +471,9 @@
     [aCoder encodeObject:self.impression forKey:@"Impression"];
     [aCoder encodeObject:self.plan forKey:@"Plan"];
     [aCoder encodeObject:self.jobs forKey:@"Jobs"];
+    
+    // handover sections
+    [aCoder encodeObject:self.handoverSections forKey:@"HandoverSections"];
     
     // Blood bank info
     [aCoder encodeObject:self.maternalBloodGroup forKey:@"MaternalBloodGroup"];

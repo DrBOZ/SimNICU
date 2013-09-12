@@ -6,6 +6,6 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-@interface PortraitOnlyNavigationController : UINavigationController
+@interface PortraitOnlyNavigationController : UINavigationController <UIImagePickerControllerDelegate>
 
 @end

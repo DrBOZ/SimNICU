@@ -24,7 +24,7 @@
 
 // testing tools
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 0
+#define DCINTROSPECT_ON 1
 #define RESET_CELL_INFO 0
 
 // Intro screen

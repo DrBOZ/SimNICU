@@ -11,11 +11,12 @@
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
-@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate>
+@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITextView *signatureTextView;
 @property (nonatomic, strong) UISwitch *borderSwitch;
+@property (nonatomic, strong) UIImageView *logoImageView;
 
 @end
 
@@ -59,10 +60,6 @@
     rowData.text = @"Border";
     [sectionData.rowData addObject:rowData];
     
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Hospital Logo";
-    [sectionData.rowData addObject:rowData];
-    
     [tableData addObject:sectionData];
     
     // add TableView background
@@ -83,7 +80,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -118,7 +115,11 @@
         CBTableViewSectionData *sectionData = tableData[section];
         header = sectionData.titleForHeader;
     }
-    else
+    else if (section == 1)
+    {
+        header = @"Hospital Logo";
+    }
+    else if (section == 2)
     {
         header = @"Signature";
     }
@@ -131,6 +132,10 @@
     float height = 44.0f;
     
     if (indexPath.section == 1)
+    {
+        height = 110.0f;
+    }
+    else if (indexPath.section == 2)
     {
         height = 110.0f;
     }
@@ -181,6 +186,25 @@
     }
     else if (indexPath.section == 1)
     {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        cell.textLabel.text = nil;
+        cell.detailTextLabel.text = nil;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        
+        if (!self.logoImageView)
+        {
+            self.logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 260.0f, 100.0f)];
+        }
+        
+        self.logoImageView.image = preferences.image;
+        
+        [cell.contentView addSubview:self.logoImageView];
+        
+    }
+    else if (indexPath.section == 2)
+    {
         // create signature cell
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -212,9 +236,18 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.signatureTextView resignFirstResponder];
+    
     NSIndexPath *path = indexPath;
     
-    if (indexPath.section == 1)
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 1)
+        {
+            path = nil;
+        }
+    }
+    else if (indexPath.section == 2)
     {
         path = nil;
     }
@@ -233,10 +266,10 @@
             newViewController.delegate = self;
             [self.navigationController pushViewController:newViewController animated:YES];
         }
-        else
-        {
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        }
+    }
+    else if (indexPath.section == 1)
+    {
+        [self getLogo];
     }
     else
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -295,6 +328,38 @@
 - (void)paperSizeTableViewController:(PaperSizeTableViewController *)controller didSelectPaperSize:(NSString *)paperSize
 {
     [self.tableView reloadData];
+}
+
+-(void)getLogo
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    
+    picker.delegate = self;
+    
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentModalViewController:picker animated:YES];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    self.logoImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.logoImageView.frame = CGRectMake(5.0f, 5.0f, 260.0f, 100.0f);
+    self.logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    preferences.image = self.logoImageView.image;
+    
+    [self.tableView reloadData];
+    
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

@@ -31,6 +31,7 @@
         self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
         self.signature = [aDecoder decodeObjectForKey:@"signature"];
         self.border = [aDecoder decodeObjectForKey:@"border"];
+        self.image = [aDecoder decodeObjectForKey:@"image"];
         
         // find user's current locale
         NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
@@ -79,7 +80,15 @@
                 self.bilirubinUnits = @"US";
             }
         }
+        
+        // default logo
+        if (!self.image)
+        {
+            self.image = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
+        }
+
     }
+
     return self;
 }
 
@@ -111,6 +120,8 @@
                   forKey:@"signature"];
     [aCoder encodeObject:self.border
                   forKey:@"border"];
+    [aCoder encodeObject:self.image
+                  forKey:@"image"];
 }
 
 // Singleton method

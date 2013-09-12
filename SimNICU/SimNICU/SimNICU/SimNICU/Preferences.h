@@ -41,6 +41,7 @@
 @property (nonatomic, retain) NSString *paperSize;
 @property (nonatomic, retain) NSString *signature;
 @property (nonatomic, retain) NSNumber *border;
+@property (nonatomic, retain) UIImage *image;
 
 // returns singleton object
 + (id)sharedPreferences;

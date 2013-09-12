@@ -15,6 +15,7 @@
     if((self = [super init]))
     {
         self.rowHeight = [aDecoder decodeObjectForKey:@"RowHeight"];
+        self.rowText = [aDecoder decodeObjectForKey:@"RowText"];
     }
     return self;
 }
@@ -22,6 +23,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.rowHeight forKey:@"RowHeight"];
+    [aCoder encodeObject:self.rowText forKey:@"RowText"];
 }
 
 @end

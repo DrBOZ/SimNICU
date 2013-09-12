@@ -17,6 +17,8 @@
         self.sectionName = [aDecoder decodeObjectForKey:@"SectionName"];
         self.sectionEditable = [aDecoder decodeObjectForKey:@"SectionEditable"];
         self.rows = [aDecoder decodeObjectForKey:@"SectionRows"];
+        
+        
     }
     return self;
 }
