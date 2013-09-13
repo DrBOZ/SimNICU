@@ -1,5 +1,5 @@
-SimNICU
-=======
+Neonatal Intensive Care
+=======================
 
 Rated 'What's Hot' in the UK & six other countries!
 Top 100 highest ranking Medical App in 72 countries!
