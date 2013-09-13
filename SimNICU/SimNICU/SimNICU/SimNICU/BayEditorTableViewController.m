@@ -298,7 +298,7 @@
 {
     NSIndexPath *path = [NSIndexPath indexPathForRow:textField.tag inSection:0];
     
-    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -318,5 +318,15 @@
         [self.tableView reloadData];
 	}
 }
+
+/*
+ Jobs:
+ 
+ 1) When selecting a bay to rename I could make the animation slicker by checking the tag number of the UITextField and then deciding with the animation is to top or middle.
+ 2) The large empty footer is not nice.
+ 3) Something like this would be very useful as a Unit overview, with numbers of babies and levels of care.
+ 
+ I have done a good job with this VC - it is pretty slick
+ */
 
 @end
