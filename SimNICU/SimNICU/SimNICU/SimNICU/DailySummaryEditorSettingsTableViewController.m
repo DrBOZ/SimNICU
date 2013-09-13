@@ -49,10 +49,12 @@
     rowData.text = @"Trackball";
     [sectionData.rowData addObject:rowData];
     
+    /*
     rowData = [[CBTableViewRowData alloc] init];
     rowData.text = @"Landscape allowed";
     rowData.detailText = @"This should not be an option!";
     [sectionData.rowData addObject:rowData];
+     */
     
     [tableData addObject:sectionData];
     
@@ -103,6 +105,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     CBTableViewSectionData *sectionData = tableData[indexPath.section];
     CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
     
@@ -122,11 +126,16 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
+            // lazy instantiation
             if (!self.autocorrection)
             {
                 self.autocorrection = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
             }
             
+            // set value for switch
+            self.autocorrection.on = [preferences.autocorrection intValue];
+            
+            // add to cell
             cell.accessoryView = self.autocorrection;
             
             returnCell = cell;
@@ -143,11 +152,16 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
+            // lazy instantiation
             if (!self.trackball)
             {
                 self.trackball = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
             }
             
+            // set value for switch
+            self.trackball.on = [preferences.trackball intValue];
+            
+            // add to cell
             cell.accessoryView = self.trackball;
             
             returnCell = cell;
@@ -190,6 +204,20 @@
     returnCell.detailTextLabel.text = rowData.detailText;
     
     return returnCell;
+}
+
+- (void)autocorrectionSwitchChangedValue
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.autocorrection = [NSNumber numberWithInt:self.autocorrection.on];
+}
+
+- (void)trackballSwitchChangedValue
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.trackball = [NSNumber numberWithInt:self.trackball.on];
 }
 
 #pragma mark - Table view delegate

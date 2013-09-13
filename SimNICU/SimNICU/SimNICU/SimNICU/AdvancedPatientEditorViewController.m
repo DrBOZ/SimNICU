@@ -110,7 +110,7 @@
 
 // things I need to still do
 //
-// 1)
+// 1) Add option to calcualate first day as day 0, day 1 or mixture
 // 2) 
 // 3) use edit data to allow edits
 // 
@@ -118,7 +118,7 @@
 // 5) create a weight shinobi chart
 // 6) dateAndTimeForThisChart thing for ShinobiChart
 //
-// 7) Add hospital logo and details to PDF
+// 7)
 // 8) 
 // 9) 
 //10) Add Time and Date
@@ -126,8 +126,8 @@
 //12) Add phototherapy chart
 //13)
 //14) 
-//15) Sort Headings and Text as one object to calculate sizes *****
-//16) Add option to calcualate first day as day 0, day 1 or mixture
+//15) 
+//16) 
 //17) Add biochemistry edit
 //18) change names of patient properties to match UITextFields
 //19) 
@@ -1110,6 +1110,8 @@
 
 - (UITextView *)setupTextView:(UITextView *)textView
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     // get textView height
     HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
     HandoverRow *row;
@@ -1126,7 +1128,6 @@
     textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
     
     // set values
-    textView.autocorrectionType = UITextAutocorrectionTypeNo;
     textView.font = [UIFont systemFontOfSize:14.0f];
     textView.textColor = [UIColor grayColor];
     textView.scrollEnabled = NO;
@@ -1134,8 +1135,21 @@
     // set delegate
     textView.delegate = self;
     
+    // autocorrection option
+    if ([preferences.autocorrection intValue] == 1)
+    {
+        textView.autocorrectionType = UITextAutocorrectionTypeYes;
+    }
+    else
+    {
+        textView.autocorrectionType = UITextAutocorrectionTypeNo;
+    }
+    
     // set trackball
-    [self addTrackBallForUITextView:textView];
+    if ([preferences.trackball intValue] == 1)
+    {
+        [self addTrackBallForUITextView:textView];
+    }
     
     return textView;
 }

@@ -1,21 +1,29 @@
 //
 //  Preferences.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 11/08/2012.
-//  Copyright (c) 2012 SimNICU Project. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #import "Preferences.h"
 
 @implementation Preferences
 
+// Class Singleton method
++ (Preferences *)sharedPreferences
+{
+    static Preferences *sharedPreferences = nil;
+    static dispatch_once_t onceToken;            // uses Grand Central Dispatch, ie threadsafe
+    dispatch_once(&onceToken, ^{
+        sharedPreferences = [[self alloc] init];
+    });
+    return sharedPreferences;
+}
+
+// Instance methods
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    // if((self = [super init]))
-    //
-    // above used before class was made into a singleton
-    
     if((self = [Preferences sharedPreferences]))
     {
         self.bilirubinUnits = [aDecoder decodeObjectForKey:@"BilirubinUnits"];
@@ -32,62 +40,11 @@
         self.signature = [aDecoder decodeObjectForKey:@"signature"];
         self.border = [aDecoder decodeObjectForKey:@"border"];
         self.image = [aDecoder decodeObjectForKey:@"image"];
-        
-        // find user's current locale
-        NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
-        self.locale = currentLocale;
-        
-        // set default paper size
-        if (!self.paperSize)
-        {
-            if ([currentLocale isEqualToString:@"en_GB"])
-            {
-                self.paperSize = @"A4";
-            }
-            else
-            {
-                self.paperSize = @"Letter";
-            }
-        }
-        
-        if (!self.border)
-        {
-            self.border = [NSNumber numberWithInt:1];
-        }
-        
-        // set default correction age
-        if (!self.correctAgeForPrematurityUntilYears)
-        {
-            self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
-        }
-        
-        // set phototherapy defaults
-        if (!self.guidelineCountry)
-        {
-            if ([currentLocale isEqualToString:@"en_GB"])
-            {
-                self.guidelineCountry = @"UK";
-                self.bilirubinUnits = @"SI";
-            }
-            else if ([currentLocale isEqualToString:@"en_US"])
-            {
-                self.guidelineCountry = @"US";
-                self.bilirubinUnits = @"US";
-            }
-            else
-            {
-                self.guidelineCountry = @"US";
-                self.bilirubinUnits = @"US";
-            }
-        }
-        
-        // default logo
-        if (!self.image)
-        {
-            self.image = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
-        }
-
+        self.autocorrection = [aDecoder decodeObjectForKey:@"autocorrection"];
+        self.trackball = [aDecoder decodeObjectForKey:@"trackball"];
     }
+    
+    [self setDefaults];
 
     return self;
 }
@@ -122,17 +79,73 @@
                   forKey:@"border"];
     [aCoder encodeObject:self.image
                   forKey:@"image"];
+    [aCoder encodeObject:self.autocorrection
+                  forKey:@"autocorrection"];
+    [aCoder encodeObject:self.trackball
+                  forKey:@"trackball"];
 }
 
-// Singleton method
-+ (Preferences *)sharedPreferences
+- (void)setDefaults
 {
-    static Preferences *sharedPreferences = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedPreferences = [[self alloc] init];
-    });
-    return sharedPreferences;
+    // find user's current locale
+    NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
+    self.locale = currentLocale;
+    
+    // set default paper size
+    if (!self.paperSize)
+    {
+        if ([currentLocale isEqualToString:@"en_GB"])
+        {
+            self.paperSize = @"A4";
+        }
+        else
+        {
+            self.paperSize = @"Letter";
+        }
+    }
+    
+    if (!self.border)
+    {
+        self.border = [NSNumber numberWithInt:1];
+    }
+    
+    // set default correction age
+    if (!self.correctAgeForPrematurityUntilYears)
+    {
+        self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
+    }
+    
+    // set phototherapy defaults
+    if (!self.guidelineCountry)
+    {
+        if ([currentLocale isEqualToString:@"en_GB"])
+        {
+            self.guidelineCountry = @"UK";
+            self.bilirubinUnits = @"SI";
+        }
+        else if ([currentLocale isEqualToString:@"en_US"])
+        {
+            self.guidelineCountry = @"US";
+            self.bilirubinUnits = @"US";
+        }
+        else
+        {
+            self.guidelineCountry = @"US";
+            self.bilirubinUnits = @"US";
+        }
+    }
+    
+    // default logo
+    if (!self.image)
+    {
+        self.image = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
+    }
+    
+    // default trackball
+    if (!self.trackball)
+    {
+        self.trackball = [NSNumber numberWithInt:1];
+    }
 }
 
 @end

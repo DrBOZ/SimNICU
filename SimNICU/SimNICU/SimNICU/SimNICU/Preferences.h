@@ -1,6 +1,6 @@
 //
 //  Preferences.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 11/08/2012.
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
@@ -36,6 +36,10 @@
 
 // Corrected age calculator
 @property (nonatomic, retain) NSNumber *correctAgeForPrematurityUntilYears;
+
+// Daily Summary Editor
+@property (nonatomic, retain) NSNumber *autocorrection;
+@property (nonatomic, retain) NSNumber *trackball;
 
 // PDF settings
 @property (nonatomic, retain) NSString *paperSize;
