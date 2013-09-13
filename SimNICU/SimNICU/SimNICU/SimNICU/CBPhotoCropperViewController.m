@@ -71,7 +71,7 @@
     [self.view addSubview:self.scrollView];
 	
     // Control buttons
-    UIBarButtonItem *imageButton = [CBBarButtonItems customBarButtonWithImageFile:@"sync"
+    UIBarButtonItem *imageButton = [CBBarButtonItems customBarButtonWithImageFile:@"crop.png"
                                                                            target:self
                                                                            action:@selector(saveAndClose:)];
     
