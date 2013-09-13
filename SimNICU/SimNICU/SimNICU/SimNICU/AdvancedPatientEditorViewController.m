@@ -900,6 +900,17 @@
         
         // display gestation and corrected gestation, birth weight and working weight
         displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
+        
+        // add fingerprint button
+        self.fingerprintButton = [[UIButton alloc] init];
+        self.fingerprintButton.frame = CGRectMake(320.0f - 40.0f, 15.0f, 30.0f, 37.8f);
+        [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateNormal];
+        [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateHighlighted];
+        [self.fingerprintButton addTarget:self action:@selector(fingerprintTouched) forControlEvents:UIControlEventTouchDown];
+        self.fingerprintButton.alpha = 0.0f;
+        self.fingerprintButton.hidden = YES;
+        
+        [cell.contentView addSubview:self.fingerprintButton];
     }
 #pragma mark Background
     else if ([CellIdentifier isEqualToString:@"Background"])
@@ -1150,6 +1161,11 @@
     {
         [self addTrackBallForUITextView:textView];
     }
+    else
+    {
+        // remove trackball
+        [self removeTrackBallForUITextView:textView];
+    }
     
     return textView;
 }
@@ -1336,6 +1352,75 @@
     return indexPath;
 }
 
+- (void)fingerprintTouched
+{
+    [self.backgroundTextView resignFirstResponder];
+    [self.activeProblemsTextView resignFirstResponder];
+    [self.resolvedProblemsTextView resignFirstResponder];
+    [self.recentSignificantEventsTextView resignFirstResponder];
+    [self.ventilationAndSedationTextView resignFirstResponder];
+    [self.cxrTextView resignFirstResponder];
+    [self.cardiovascularTextView resignFirstResponder];
+    [self.linesTextView resignFirstResponder];
+    [self.fluidBalanceTextView resignFirstResponder];
+    [self.feedsAndFluidsTextView resignFirstResponder];
+    [self.electrolytesTextView resignFirstResponder];
+    [self.jaundiceTextView resignFirstResponder];
+    [self.sepsisTextView resignFirstResponder];
+    [self.drugsTextView resignFirstResponder];
+    [self.ropTextView resignFirstResponder];
+    [self.cranialUSSTextView resignFirstResponder];
+    [self.parentsAndSocialTextView resignFirstResponder];
+    [self.impressionTextView resignFirstResponder];
+    [self.planTextView resignFirstResponder];
+    [self.jobsTextView resignFirstResponder];
+    
+    if (self.fingerprintButton.hidden == NO)
+    {
+        self.fingerprintButton.hidden = YES;
+    }
+}
+
+- (void)animateFingerprintIn
+{
+    self.fingerprintButton.hidden = NO;
+    
+    CGFloat animationDuration = 0.5f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         
+                         self.fingerprintButton.alpha = 1.0f;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+
+- (void)animateFingerprintOut
+{
+    CGFloat animationDuration = 0.5f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         
+                         self.fingerprintButton.alpha = 0.0f;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         self.fingerprintButton.hidden = YES;
+                         
+                     }];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
@@ -1368,6 +1453,15 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:textView.tag];
     
     [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    // animate the fingerprint in
+    [self animateFingerprintIn];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    // animate the fingerprint off
+    [self animateFingerprintOut];
 }
 
 - (void)formatHeightOfTextView:(UITextView *)textView
@@ -2974,6 +3068,17 @@
     
     [textView setInputAccessoryView:[self trackballAccessoryViewForUITextView:textView]];
     
+#endif
+    
+}
+
+- (void)removeTrackBallForUITextView:(UITextView *)textView
+{
+    
+#if UDBARTRACKBALL
+    
+    NSLog(@"HERE");
+
 #endif
     
 }

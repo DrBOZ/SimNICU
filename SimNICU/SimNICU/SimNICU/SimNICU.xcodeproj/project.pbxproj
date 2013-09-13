@@ -274,6 +274,10 @@
 		5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */; };
 		5C679FBE1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
 		5C679FBF1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
+		5C6842A617E3BF1E00C172EB /* FingerprintGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */; };
+		5C6842A717E3BF1E00C172EB /* FingerprintGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */; };
+		5C6842A817E3BF1E00C172EB /* FingerprintGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6842A517E3BF1D00C172EB /* FingerprintGray.png */; };
+		5C6842A917E3BF1E00C172EB /* FingerprintGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6842A517E3BF1D00C172EB /* FingerprintGray.png */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
@@ -1181,6 +1185,8 @@
 		5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		5C679FBC1794CA0100B9A813 /* Bay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bay.h; sourceTree = "<group>"; };
 		5C679FBD1794CA0100B9A813 /* Bay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bay.m; sourceTree = "<group>"; };
+		5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FingerprintGray@2x.png"; sourceTree = "<group>"; };
+		5C6842A517E3BF1D00C172EB /* FingerprintGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FingerprintGray.png; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDisplayMethods.h; sourceTree = "<group>"; };
@@ -3116,6 +3122,8 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */,
+				5C6842A517E3BF1D00C172EB /* FingerprintGray.png */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
@@ -3690,6 +3698,8 @@
 				5C8AE92B17E2A5E30002BC04 /* selectionGridRectangleOn.png in Resources */,
 				5C8AE92F17E2B6A10002BC04 /* crop@2x.png in Resources */,
 				5C8AE93117E2B6A10002BC04 /* crop.png in Resources */,
+				5C6842A617E3BF1E00C172EB /* FingerprintGray@2x.png in Resources */,
+				5C6842A817E3BF1E00C172EB /* FingerprintGray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3983,6 +3993,8 @@
 				5C8AE92C17E2A5E30002BC04 /* selectionGridRectangleOn.png in Resources */,
 				5C8AE93017E2B6A10002BC04 /* crop@2x.png in Resources */,
 				5C8AE93217E2B6A10002BC04 /* crop.png in Resources */,
+				5C6842A717E3BF1E00C172EB /* FingerprintGray@2x.png in Resources */,
+				5C6842A917E3BF1E00C172EB /* FingerprintGray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

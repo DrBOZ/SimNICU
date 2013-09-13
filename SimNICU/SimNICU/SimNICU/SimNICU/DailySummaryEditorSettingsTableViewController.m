@@ -130,13 +130,15 @@
             if (!self.autocorrection)
             {
                 self.autocorrection = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+                
+                [self.autocorrection addTarget:self action:@selector(autocorrectionSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                // add to cell
+                
+                // message to self - logic error with this lazy instantiation...
             }
             
             // set value for switch
             self.autocorrection.on = [preferences.autocorrection intValue];
-            
-            // add to cell
-            cell.accessoryView = self.autocorrection;
             
             returnCell = cell;
         }
