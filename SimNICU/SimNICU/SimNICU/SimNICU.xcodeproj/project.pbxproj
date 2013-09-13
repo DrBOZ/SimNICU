@@ -306,6 +306,28 @@
 		5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
 		5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */; };
 		5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */; };
+		5C8AE8FE17E22CE30002BC04 /* photo_cropper_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8F817E22CE10002BC04 /* photo_cropper_bg.png */; };
+		5C8AE8FF17E22CE30002BC04 /* photo_cropper_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8F817E22CE10002BC04 /* photo_cropper_bg.png */; };
+		5C8AE90017E22CE30002BC04 /* photo_cropper_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8F917E22CE20002BC04 /* photo_cropper_bg@2x.png */; };
+		5C8AE90117E22CE30002BC04 /* photo_cropper_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8F917E22CE20002BC04 /* photo_cropper_bg@2x.png */; };
+		5C8AE90217E22CE30002BC04 /* photo_cropper_rect.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FA17E22CE20002BC04 /* photo_cropper_rect.png */; };
+		5C8AE90317E22CE30002BC04 /* photo_cropper_rect.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FA17E22CE20002BC04 /* photo_cropper_rect.png */; };
+		5C8AE90417E22CE30002BC04 /* photo_cropper_rect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FB17E22CE20002BC04 /* photo_cropper_rect@2x.png */; };
+		5C8AE90517E22CE30002BC04 /* photo_cropper_rect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FB17E22CE20002BC04 /* photo_cropper_rect@2x.png */; };
+		5C8AE90617E22CE30002BC04 /* photo_cropper_rect_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FC17E22CE20002BC04 /* photo_cropper_rect_on.png */; };
+		5C8AE90717E22CE30002BC04 /* photo_cropper_rect_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FC17E22CE20002BC04 /* photo_cropper_rect_on.png */; };
+		5C8AE90817E22CE30002BC04 /* photo_cropper_rect_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FD17E22CE30002BC04 /* photo_cropper_rect_on@2x.png */; };
+		5C8AE90917E22CE30002BC04 /* photo_cropper_rect_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8FD17E22CE30002BC04 /* photo_cropper_rect_on@2x.png */; };
+		5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8AE90C17E241A50002BC04 /* CBPhotoCropperViewController.m */; };
+		5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8AE90C17E241A50002BC04 /* CBPhotoCropperViewController.m */; };
+		5C8AE91F17E29A3D0002BC04 /* selectionGridRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE91E17E29A3D0002BC04 /* selectionGridRectangle.png */; };
+		5C8AE92017E29A3D0002BC04 /* selectionGridRectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE91E17E29A3D0002BC04 /* selectionGridRectangle.png */; };
+		5C8AE92517E29A830002BC04 /* selectionGridRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92417E29A800002BC04 /* selectionGridRectangle@2x.png */; };
+		5C8AE92617E29A830002BC04 /* selectionGridRectangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92417E29A800002BC04 /* selectionGridRectangle@2x.png */; };
+		5C8AE92817E2A5DB0002BC04 /* selectionGridRectangleOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92717E2A5DA0002BC04 /* selectionGridRectangleOn@2x.png */; };
+		5C8AE92917E2A5DB0002BC04 /* selectionGridRectangleOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92717E2A5DA0002BC04 /* selectionGridRectangleOn@2x.png */; };
+		5C8AE92B17E2A5E30002BC04 /* selectionGridRectangleOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92A17E2A5E20002BC04 /* selectionGridRectangleOn.png */; };
+		5C8AE92C17E2A5E30002BC04 /* selectionGridRectangleOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92A17E2A5E20002BC04 /* selectionGridRectangleOn.png */; };
 		5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
@@ -1186,6 +1208,18 @@
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
 		5C8606D0178ADD3E00428ED4 /* DrugSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSection.m; sourceTree = "<group>"; };
 		5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sherwood-forest-hospitals-logo.jpg"; sourceTree = "<group>"; };
+		5C8AE8F817E22CE10002BC04 /* photo_cropper_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_cropper_bg.png; sourceTree = "<group>"; };
+		5C8AE8F917E22CE20002BC04 /* photo_cropper_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_cropper_bg@2x.png"; sourceTree = "<group>"; };
+		5C8AE8FA17E22CE20002BC04 /* photo_cropper_rect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_cropper_rect.png; sourceTree = "<group>"; };
+		5C8AE8FB17E22CE20002BC04 /* photo_cropper_rect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_cropper_rect@2x.png"; sourceTree = "<group>"; };
+		5C8AE8FC17E22CE20002BC04 /* photo_cropper_rect_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_cropper_rect_on.png; sourceTree = "<group>"; };
+		5C8AE8FD17E22CE30002BC04 /* photo_cropper_rect_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_cropper_rect_on@2x.png"; sourceTree = "<group>"; };
+		5C8AE90B17E241A40002BC04 /* CBPhotoCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPhotoCropperViewController.h; sourceTree = "<group>"; };
+		5C8AE90C17E241A50002BC04 /* CBPhotoCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBPhotoCropperViewController.m; sourceTree = "<group>"; };
+		5C8AE91E17E29A3D0002BC04 /* selectionGridRectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectionGridRectangle.png; sourceTree = "<group>"; };
+		5C8AE92417E29A800002BC04 /* selectionGridRectangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectionGridRectangle@2x.png"; sourceTree = "<group>"; };
+		5C8AE92717E2A5DA0002BC04 /* selectionGridRectangleOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selectionGridRectangleOn@2x.png"; sourceTree = "<group>"; };
+		5C8AE92A17E2A5E20002BC04 /* selectionGridRectangleOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectionGridRectangleOn.png; sourceTree = "<group>"; };
 		5C8B20631791125000579522 /* DrugDoseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDoseTableViewCell.h; sourceTree = "<group>"; };
 		5C8B20641791125000579522 /* DrugDoseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseTableViewCell.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
@@ -1860,8 +1894,14 @@
 		5C2B164617DC0F400038B4A8 /* PDF Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */,
+				5C8AE91E17E29A3D0002BC04 /* selectionGridRectangle.png */,
+				5C8AE92417E29A800002BC04 /* selectionGridRectangle@2x.png */,
+				5C8AE92A17E2A5E20002BC04 /* selectionGridRectangleOn.png */,
+				5C8AE92717E2A5DA0002BC04 /* selectionGridRectangleOn@2x.png */,
 				5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */,
 				5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */,
+				5C8AE8F017E22A2D0002BC04 /* CBPhotoCropper */,
 			);
 			name = "PDF Settings";
 			sourceTree = "<group>";
@@ -2277,9 +2317,23 @@
 		5C88E74917D3BCCA00DAB98D /* Hospital Logo */ = {
 			isa = PBXGroup;
 			children = (
-				5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */,
 			);
 			name = "Hospital Logo";
+			sourceTree = "<group>";
+		};
+		5C8AE8F017E22A2D0002BC04 /* CBPhotoCropper */ = {
+			isa = PBXGroup;
+			children = (
+				5C8AE90B17E241A40002BC04 /* CBPhotoCropperViewController.h */,
+				5C8AE90C17E241A50002BC04 /* CBPhotoCropperViewController.m */,
+				5C8AE8F817E22CE10002BC04 /* photo_cropper_bg.png */,
+				5C8AE8F917E22CE20002BC04 /* photo_cropper_bg@2x.png */,
+				5C8AE8FA17E22CE20002BC04 /* photo_cropper_rect.png */,
+				5C8AE8FB17E22CE20002BC04 /* photo_cropper_rect@2x.png */,
+				5C8AE8FC17E22CE20002BC04 /* photo_cropper_rect_on.png */,
+				5C8AE8FD17E22CE30002BC04 /* photo_cropper_rect_on@2x.png */,
+			);
+			name = CBPhotoCropper;
 			sourceTree = "<group>";
 		};
 		5C930AF617B0E81600CBE616 /* General Information */ = {
@@ -3616,6 +3670,16 @@
 				5CB46B6217D9D82F003365F6 /* sync.png in Resources */,
 				5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */,
 				5CB46B8817DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
+				5C8AE8FE17E22CE30002BC04 /* photo_cropper_bg.png in Resources */,
+				5C8AE90017E22CE30002BC04 /* photo_cropper_bg@2x.png in Resources */,
+				5C8AE90217E22CE30002BC04 /* photo_cropper_rect.png in Resources */,
+				5C8AE90417E22CE30002BC04 /* photo_cropper_rect@2x.png in Resources */,
+				5C8AE90617E22CE30002BC04 /* photo_cropper_rect_on.png in Resources */,
+				5C8AE90817E22CE30002BC04 /* photo_cropper_rect_on@2x.png in Resources */,
+				5C8AE91F17E29A3D0002BC04 /* selectionGridRectangle.png in Resources */,
+				5C8AE92517E29A830002BC04 /* selectionGridRectangle@2x.png in Resources */,
+				5C8AE92817E2A5DB0002BC04 /* selectionGridRectangleOn@2x.png in Resources */,
+				5C8AE92B17E2A5E30002BC04 /* selectionGridRectangleOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3897,6 +3961,16 @@
 				5CB46B6317D9D82F003365F6 /* sync.png in Resources */,
 				5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */,
 				5CB46B8917DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
+				5C8AE8FF17E22CE30002BC04 /* photo_cropper_bg.png in Resources */,
+				5C8AE90117E22CE30002BC04 /* photo_cropper_bg@2x.png in Resources */,
+				5C8AE90317E22CE30002BC04 /* photo_cropper_rect.png in Resources */,
+				5C8AE90517E22CE30002BC04 /* photo_cropper_rect@2x.png in Resources */,
+				5C8AE90717E22CE30002BC04 /* photo_cropper_rect_on.png in Resources */,
+				5C8AE90917E22CE30002BC04 /* photo_cropper_rect_on@2x.png in Resources */,
+				5C8AE92017E29A3D0002BC04 /* selectionGridRectangle.png in Resources */,
+				5C8AE92617E29A830002BC04 /* selectionGridRectangle@2x.png in Resources */,
+				5C8AE92917E2A5DB0002BC04 /* selectionGridRectangleOn@2x.png in Resources */,
+				5C8AE92C17E2A5E30002BC04 /* selectionGridRectangleOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4081,6 +4155,7 @@
 				5C3C02B917DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */,
 				5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
+				5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4257,6 +4332,7 @@
 				5C3C02BA17DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */,
 				5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
+				5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

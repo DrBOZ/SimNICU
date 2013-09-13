@@ -7,11 +7,12 @@
 //
 
 #import "PDFGenerationTableViewController.h"
+#import "CBPhotoCropperViewController.h"
 #import "PaperSizeTableViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
-@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, CBPhotoCropperDelegate>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITextView *signatureTextView;
@@ -147,26 +148,41 @@
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if(!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.backgroundColor = [UIColor whiteColor];
-    }
+    UITableViewCell *returnCell = nil;
     
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
         {
+            static NSString *CellIdentifier = @"Paper Size";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
             cell.textLabel.text = @"Paper Size";
             cell.detailTextLabel.text = preferences.paperSize;
+            
+            returnCell = cell;
         }
         else if (indexPath.row == 1)
         {
+            static NSString *CellIdentifier = @"Border";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
             cell.textLabel.text = @"Border";
             
             self.borderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
@@ -174,37 +190,78 @@
             self.borderSwitch.on = [preferences.border intValue];
             cell.accessoryView = self.borderSwitch;
             cell.detailTextLabel.text = nil;
+            
+            returnCell = cell;
         }
         else
         {
+            static NSString *CellIdentifier = @"Misc";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
             CBTableViewSectionData *sectionData = tableData[indexPath.section];
             CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
             
             cell.textLabel.text = rowData.text;
             cell.detailTextLabel.text = rowData.detailText;
+            
+            returnCell = cell;
         }
     }
     else if (indexPath.section == 1)
     {
+        static NSString *CellIdentifier = @"Logo";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        
+        // Hospital Logo
+        
+        // Preferences singleton
         Preferences *preferences = [Preferences sharedPreferences];
         
         cell.textLabel.text = nil;
         cell.detailTextLabel.text = nil;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if (!self.logoImageView)
         {
-            self.logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5.0f, 5.0f, 260.0f, 100.0f)];
+            self.logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0f, 25.0f, 250.0f, 54.0f)];
         }
         
         self.logoImageView.image = preferences.image;
         
         [cell.contentView addSubview:self.logoImageView];
         
+        returnCell = cell;
     }
     else if (indexPath.section == 2)
     {
+        static NSString *CellIdentifier = @"Name & Designation";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.backgroundColor = [UIColor whiteColor];
+        }
+        
         // create signature cell
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -220,9 +277,11 @@
         self.signatureTextView.text = preferences.signature;
         
         [cell.contentView addSubview:self.signatureTextView];
+        
+        returnCell = cell;
     }
     
-    return cell;
+    return returnCell;
 }
 
 - (void)borderSwitchChangedValue
@@ -257,6 +316,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0)
@@ -264,12 +325,17 @@
             // paperSize
             PaperSizeTableViewController *newViewController = [[PaperSizeTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             newViewController.delegate = self;
+    
             [self.navigationController pushViewController:newViewController animated:YES];
         }
     }
     else if (indexPath.section == 1)
     {
-        [self getLogo];
+        CBPhotoCropperViewController *newViewController = [[CBPhotoCropperViewController alloc] init];
+        newViewController.delegate = self;
+        newViewController.photo = preferences.image;
+        
+        [self.navigationController pushViewController:newViewController animated:YES];
     }
     else
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -330,36 +396,22 @@
     [self.tableView reloadData];
 }
 
--(void)getLogo
+#pragma mark - CBPhotoCropper delegate
+
+- (void)photoCropperDidCancel:(CBPhotoCropperViewController *)photoCropper
 {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     
-    picker.delegate = self;
-    
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentModalViewController:picker animated:YES];
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)photoCropper:(CBPhotoCropperViewController *)photoCropper didCropPhoto:(UIImage *)photo
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    self.logoImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    self.logoImageView.frame = CGRectMake(5.0f, 5.0f, 260.0f, 100.0f);
-    self.logoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    
-    preferences.image = self.logoImageView.image;
+    preferences.image = photo;
     
     [self.tableView reloadData];
     
-    
-    [self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

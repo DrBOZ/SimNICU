@@ -832,12 +832,12 @@
 
 - (void)drawLogo
 {
+    // get logo from Preferences singleton
     Preferences *preferences = [Preferences sharedPreferences];
     UIImage *logo = preferences.image;
-    // UIImage *logo = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
     
-    // [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), (logo.size.width / 2), (logo.size.height / 2))];
-    [logo drawInRect:CGRectMake(pageWidth - (logo.size.width / 2) - 40.0f, (kBorderInset + 20.0f), 360.0f, 100.0f)];
+    // draw logo
+    [logo drawInRect:CGRectMake(pageWidth - 225.0f - 30.0f, kBorderInset + 5, 225.0f, 48.75f)];
 }
 
 - (void)displayPDF

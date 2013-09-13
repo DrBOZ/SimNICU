@@ -1788,7 +1788,7 @@
 {
     SettingsTableViewController *newViewController = [[SettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
-    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
     
     navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     navController.navigationBar.tintColor = [UIColor blackColor];

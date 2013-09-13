@@ -90,11 +90,11 @@
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Headings";
+    rowData.text = @"Editor";
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"PDF Options";
+    rowData.text = @"PDF";
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
