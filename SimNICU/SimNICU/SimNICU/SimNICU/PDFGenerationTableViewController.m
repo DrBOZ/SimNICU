@@ -1,6 +1,6 @@
 //
 //  PDFGenerationTableViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 04/09/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
@@ -24,16 +24,6 @@
 @implementation PDFGenerationTableViewController
 {
     NSMutableArray *tableData;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self)
-    {
-        
-    }
-    return self;
 }
 
 - (void)viewDidLoad
@@ -75,6 +65,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

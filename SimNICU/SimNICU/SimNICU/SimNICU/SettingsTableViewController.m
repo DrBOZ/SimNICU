@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "DailySummaryEditorSettingsTableViewController.h"
 #import "PDFGenerationTableViewController.h"
 #import "SettingsTableViewController.h"
 #import "EnterWeightViewController.h"
-#import "BayEditorViewController.h"
+// #import "BayEditorViewController.h"
+#import "BayEditorTableViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
@@ -157,7 +159,7 @@
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)done
@@ -232,17 +234,19 @@
         EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
         
         // Bay Editor
-        BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
-        bayEditorViewController.bayData = controller.bayData;
-        bayEditorViewController.delegate = controller;
+        BayEditorTableViewController *bayEditorTableViewController = [[BayEditorTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        bayEditorTableViewController.bayData = controller.bayData;
+        bayEditorTableViewController.delegate = controller;
         
-        [self.navigationController pushViewController:bayEditorViewController animated:YES];
+        [self.navigationController pushViewController:bayEditorTableViewController animated:YES];
     }
     else if (indexPath.section == 1)
     {
         if (indexPath.row == 0)
         {
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            DailySummaryEditorSettingsTableViewController *newViewController = [[DailySummaryEditorSettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
         }
         else if (indexPath.row == 1)
         {

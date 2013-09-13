@@ -1,88 +1,49 @@
 //
-//  BayEditorViewController.m
-//  SimNICU
+//  BayEditorTableViewController.m
+//  Neonatal Intensive Care
 //
-//  Created by Conrad Bosman on 16/07/2013.
+//  Created by Conrad Bosman on 13/09/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "BayEditorViewController.h"
+#import "BayEditorTableViewController.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
 
-@interface BayEditorViewController () <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>
+@interface BayEditorTableViewController () <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) UIGestureRecognizer *swipeGestureRecognizer;
+
+- (void)add;
+- (void)done;
 
 @end
 
-@implementation BayEditorViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        self.title = @"Bay Editor";
-        
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        // Setup Add button
-        self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
-        
-        // Instantiate TableView
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20 - 44)) style:UITableViewStyleGrouped];
-        self.myTableView.rowHeight = 50.0f;
-        self.myTableView.delegate = self;
-        self.myTableView.dataSource = self;
-        
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
-        {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        else
-        {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
-        }
-        
-        [self.view addSubview:self.myTableView];
-    }
-    
-    return self;
-}
+@implementation BayEditorTableViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    self.title = @"Bay Editor";
+    
+    [CBTrackers logEvent:@"Bay Editor"];
+    
+    // Setup Add button
+    self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.tableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.myTableView setEditing:YES animated:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-#if GOOGLE_ANALYTICS
-    
-    [[GANTracker sharedTracker] trackPageview:@"Bay Editor" withError:nil];
-    
-#endif
-    
-    [Flurry logEvent:@"BayEditor: viewDidAppear"];
+    [self.tableView setEditing:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,6 +62,11 @@
     [super viewWillDisappear:animated];
 }
 
+-(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)done
 {
     // Ensure that there is at least one bay
@@ -114,7 +80,7 @@
         [self.bayData addObject:bay];
     }
     
-    [self.delegate bayEditorViewControllerDidFinishEditingBays:self];
+    [self.delegate bayEditorTableViewControllerDidFinishEditingBays:self];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -129,7 +95,11 @@
         
         [self.bayData addObject:bay];
         
-        [self.myTableView reloadData];
+        // set indexPaths
+        NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:([self.bayData count] - 1) inSection:0]];
+        
+        // insert row
+        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else
     {
@@ -142,7 +112,7 @@
     }
 }
 
-# pragma mark - Table view data source
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -166,12 +136,12 @@
     
     if(!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
         
         UITextField *textField = [[UITextField alloc] init];
-        textField.frame = CGRectMake(10.0f, 10.0f, 220.0f, 33.0f);
+        textField.frame = CGRectMake(10.0f, 5.0f, 220.0f, 33.0f);
         textField.font = [UIFont boldSystemFontOfSize:17.0f];
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         textField.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -179,7 +149,7 @@
         textField.adjustsFontSizeToFitWidth = YES;
         textField.tag = indexPath.row;
         textField.delegate = self;
-        textField.text = [self.bayData[indexPath.row] bayName];
+        textField.text = [self.bayData[indexPath.row] bayName];   // note this the TextField's text
         
         [cell.contentView addSubview:textField];
     }
@@ -189,8 +159,6 @@
     
     return cell;
 }
-
-# pragma mark Editing
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -225,7 +193,7 @@
             [self.bayData removeObjectAtIndex:indexPath.row];
             
             NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-            [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
         }
     }
     else
@@ -266,7 +234,7 @@
         [self.bayData removeObjectAtIndex:indexPath.row];
         
         NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-        [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -296,14 +264,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *path = nil;
-    
-    return path;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // nil
+    return nil;
 }
 
 #pragma mark - UITextField delegate
@@ -337,7 +298,7 @@
 {
     NSIndexPath *path = [NSIndexPath indexPathForRow:textField.tag inSection:0];
     
-    [self.myTableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -354,7 +315,7 @@
 	if (buttonIndex == 0) // Delete last bay and all remaining patients
     {
 		[self.bayData removeAllObjects];
-        [self.myTableView reloadData];
+        [self.tableView reloadData];
 	}
 }
 

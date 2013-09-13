@@ -274,8 +274,6 @@
 		5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */; };
 		5C679FBE1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
 		5C679FBF1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
-		5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FC21795B83900B9A813 /* BayEditorViewController.m */; };
-		5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FC21795B83900B9A813 /* BayEditorViewController.m */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
 		5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
@@ -332,6 +330,8 @@
 		5C8AE93017E2B6A10002BC04 /* crop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92D17E2B6A00002BC04 /* crop@2x.png */; };
 		5C8AE93117E2B6A10002BC04 /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92E17E2B6A00002BC04 /* crop.png */; };
 		5C8AE93217E2B6A10002BC04 /* crop.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE92E17E2B6A00002BC04 /* crop.png */; };
+		5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */; };
+		5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */; };
 		5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
@@ -1181,8 +1181,6 @@
 		5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		5C679FBC1794CA0100B9A813 /* Bay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bay.h; sourceTree = "<group>"; };
 		5C679FBD1794CA0100B9A813 /* Bay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bay.m; sourceTree = "<group>"; };
-		5C679FC11795B83900B9A813 /* BayEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BayEditorViewController.h; sourceTree = "<group>"; };
-		5C679FC21795B83900B9A813 /* BayEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BayEditorViewController.m; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
 		5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDisplayMethods.h; sourceTree = "<group>"; };
@@ -1226,6 +1224,8 @@
 		5C8AE92A17E2A5E20002BC04 /* selectionGridRectangleOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectionGridRectangleOn.png; sourceTree = "<group>"; };
 		5C8AE92D17E2B6A00002BC04 /* crop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crop@2x.png"; sourceTree = "<group>"; };
 		5C8AE92E17E2B6A00002BC04 /* crop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crop.png; sourceTree = "<group>"; };
+		5C8AE93317E2C6A30002BC04 /* BayEditorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BayEditorTableViewController.h; sourceTree = "<group>"; };
+		5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BayEditorTableViewController.m; sourceTree = "<group>"; };
 		5C8B20631791125000579522 /* DrugDoseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDoseTableViewCell.h; sourceTree = "<group>"; };
 		5C8B20641791125000579522 /* DrugDoseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseTableViewCell.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
@@ -3208,8 +3208,8 @@
 		5CB46B6717D9FC13003365F6 /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				5C679FC11795B83900B9A813 /* BayEditorViewController.h */,
-				5C679FC21795B83900B9A813 /* BayEditorViewController.m */,
+				5C8AE93317E2C6A30002BC04 /* BayEditorTableViewController.h */,
+				5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */,
 				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
 				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
 				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
@@ -4112,7 +4112,6 @@
 				5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
-				5C679FC31795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
@@ -4168,6 +4167,7 @@
 				5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
+				5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4294,7 +4294,6 @@
 				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBF1794CA0100B9A813 /* Bay.m in Sources */,
-				5C679FC41795B83A00B9A813 /* BayEditorViewController.m in Sources */,
 				5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
@@ -4345,6 +4344,7 @@
 				5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
+				5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

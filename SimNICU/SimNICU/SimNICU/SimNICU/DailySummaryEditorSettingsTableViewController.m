@@ -1,6 +1,6 @@
 //
 //  DailySummaryEditorSettingsTableViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 04/09/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
@@ -14,6 +14,9 @@
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 
+@property (nonatomic, strong) UISwitch *autocorrection;
+@property (nonatomic, strong) UISwitch *trackball;
+
 @end
 
 @implementation DailySummaryEditorSettingsTableViewController
@@ -21,22 +24,13 @@
     NSMutableArray *tableData;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    [CBTrackers logEvent:@"Settings/PDF Generation"];
+    [CBTrackers logEvent:@"Settings/Daily Summary Editor"];
     
-    self.title = @"PDF Settings";
+    self.title = @"Daily Summary Editor";
     
     tableData = [[NSMutableArray alloc] initWithCapacity:3];
     CBTableViewSectionData *sectionData;
@@ -44,23 +38,20 @@
     
     // section 0
     sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"General";
+    sectionData.titleForHeader = @"Text Entry";
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Paper Size";
+    rowData.text = @"Autocorrection";
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Hospital Logo";
+    rowData.text = @"Trackball";
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Unit Address";
-    [sectionData.rowData addObject:rowData];
-    
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Signature";
+    rowData.text = @"Landscape allowed";
+    rowData.detailText = @"This should not be an option!";
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
@@ -83,74 +74,134 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return [tableData count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    CBTableViewSectionData *sectionData = tableData[section];
+    
+    return [sectionData.rowData count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44.0f;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *header = nil;
+    
+    if (section == 0)
+    {
+        header = @"Text Entry";
+    }
+    
+    return header;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CBTableViewSectionData *sectionData = tableData[indexPath.section];
+    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
     
-    // Configure the cell...
+    UITableViewCell *returnCell = nil;
     
-    return cell;
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"Switch";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            if (!self.autocorrection)
+            {
+                self.autocorrection = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+            }
+            
+            cell.accessoryView = self.autocorrection;
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 1)
+        {
+            static NSString *CellIdentifier = @"Switch";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            if (!self.trackball)
+            {
+                self.trackball = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+            }
+            
+            cell.accessoryView = self.trackball;
+            
+            returnCell = cell;
+        }
+        else if (indexPath.row == 2)
+        {
+            static NSString *CellIdentifier = @"Landscape";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+            
+            cell.accessoryView = nil;
+            
+            returnCell = cell;
+        }
+    }
+    else
+    {
+        static NSString *CellIdentifier = @"Misc";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        cell.accessoryView = nil;
+        
+        returnCell = cell;
+    }
+    
+    returnCell.textLabel.text = rowData.text;
+    returnCell.detailTextLabel.text = rowData.detailText;
+    
+    return returnCell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

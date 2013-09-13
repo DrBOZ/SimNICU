@@ -10,10 +10,10 @@
 #import "KKPasscodeSettingsViewController.h"
 #import "OxygenationIndexViewController.h"
 #import "PatientDetailsViewController.h"
+#import "BayEditorTableViewController.h"
 #import "PhototherapyViewController.h"
 #import "CorrectedAgeViewController.h"
 #import "IntubationViewController.h"
-#import "BayEditorViewController.h"
 #import "APGARTabBarController.h"
 #import "ZUUIRevealController.h"
 #import "KKPasscodeLock.h" 
@@ -32,7 +32,7 @@
 
 @end
 
-@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, PatientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, BayEditorViewControllerDelegate, AdvancedPatientEditorViewControllerDelegate>
+@interface EnterWeightViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UINavigationBarDelegate, PatientDetailsViewControllerDelegate, ZUUIRevealControllerDelegate, KKPasscodeSettingsViewControllerDelegate, KKPasscodeViewControllerDelegate, APGARTabBarControllerDelegate, BayEditorTableViewControllerDelegate, AdvancedPatientEditorViewControllerDelegate>
 
 @property (nonatomic, strong) UINavigationItem *enterWeightViewControllerNavigationItem;
 @property (nonatomic, unsafe_unretained) id <EnterWeightViewControllerDelegate> delegate;

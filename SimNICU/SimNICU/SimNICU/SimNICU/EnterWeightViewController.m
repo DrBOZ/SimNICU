@@ -2006,9 +2006,9 @@
     [self.myTableView reloadData];
 }
 
-#pragma mark - BayEditorViewController delegate
+#pragma mark - BayEditorTableViewController delegate
 
-- (void)bayEditorViewControllerDidFinishEditingBays:(BayEditorViewController *)controller
+- (void)bayEditorTableViewControllerDidFinishEditingBays:(BayEditorTableViewController *)controller
 {
     // Ensure that there is at least one bay
     if ([self.bayData count] == 0)
