@@ -1453,12 +1453,20 @@
     
     // animate the fingerprint in
     [self animateFingerprintIn];
+    
+    // change right bar button
+    // self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:nil];
+    [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self action:nil] animated:YES];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     // animate the fingerprint off
     [self animateFingerprintOut];
+    
+    // change right bar button back
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem setRightBarButtonItem:self.editButtonItem animated:YES];
 }
 
 - (void)formatHeightOfTextView:(UITextView *)textView
