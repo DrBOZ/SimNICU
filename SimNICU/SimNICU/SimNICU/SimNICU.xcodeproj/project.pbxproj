@@ -175,6 +175,10 @@
 		5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */; };
 		5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
 		5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
+		5C4DC70417E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC70317E5076E00412C72 /* blankButtonLongHighlighted@2x.png */; };
+		5C4DC70517E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC70317E5076E00412C72 /* blankButtonLongHighlighted@2x.png */; };
+		5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
+		5C4DC70917E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
 		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
@@ -280,6 +284,8 @@
 		5C6842A917E3BF1E00C172EB /* FingerprintGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6842A517E3BF1D00C172EB /* FingerprintGray.png */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
+		5C6DD5FB17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */; };
+		5C6DD5FC17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */; };
 		5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
 		5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
 		5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FFA2F166F18F500F9C4B6 /* InfusionDrug.m */; };
@@ -969,6 +975,8 @@
 		5CDBACB5179C145800D1A03D /* PatientListWarningImms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */; };
 		5CDBACB6179C145800D1A03D /* PatientListWarningImms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */; };
 		5CDBACB7179C145800D1A03D /* PatientListWarningImms.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */; };
+		5CE024A917E4FDD000238693 /* blankButtonLong2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE024A817E4FDD000238693 /* blankButtonLong2@2x.png */; };
+		5CE024AA17E4FDD000238693 /* blankButtonLong2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE024A817E4FDD000238693 /* blankButtonLong2@2x.png */; };
 		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1124,6 +1132,9 @@
 		5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidRequirementsViewController.m; sourceTree = "<group>"; };
 		5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTableViewController.h; sourceTree = "<group>"; };
 		5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTableViewController.m; sourceTree = "<group>"; };
+		5C4DC70317E5076E00412C72 /* blankButtonLongHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blankButtonLongHighlighted@2x.png"; sourceTree = "<group>"; };
+		5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarCustomTextItem.h; sourceTree = "<group>"; };
+		5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarCustomTextItem.m; sourceTree = "<group>"; };
 		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
 		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
 		5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPresentation.html; sourceTree = "<group>"; };
@@ -1195,6 +1206,7 @@
 		5C6842A517E3BF1D00C172EB /* FingerprintGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FingerprintGray.png; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
+		5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blankButtonLong@2x.png"; sourceTree = "<group>"; };
 		5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDisplayMethods.h; sourceTree = "<group>"; };
 		5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDisplayMethods.m; sourceTree = "<group>"; };
 		5C6FFA2E166F18F500F9C4B6 /* InfusionDrug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfusionDrug.h; sourceTree = "<group>"; };
@@ -1702,6 +1714,7 @@
 		5CDBACAE179C0F9300D1A03D /* PatientListWarningROP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PatientListWarningROP@2x.png"; sourceTree = "<group>"; };
 		5CDBACB2179C145800D1A03D /* PatientListWarningImms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PatientListWarningImms@2x.png"; sourceTree = "<group>"; };
 		5CDBACB3179C145800D1A03D /* PatientListWarningImms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PatientListWarningImms.png; sourceTree = "<group>"; };
+		5CE024A817E4FDD000238693 /* blankButtonLong2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blankButtonLong2@2x.png"; sourceTree = "<group>"; };
 		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5CE04B6816D04B1D0002BBD7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -1800,6 +1813,8 @@
 			children = (
 				5C0B9B8F17D2023C000B9E34 /* UDBarTrackballItem.h */,
 				5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */,
+				5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */,
+				5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */,
 				5C0B9B9217D20438000B9E34 /* UDInputAccessoryView.h */,
 				5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */,
 				5C0B9B7617D2021D000B9E34 /* Images */,
@@ -1810,6 +1825,9 @@
 		5C0B9B7617D2021D000B9E34 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */,
+				5CE024A817E4FDD000238693 /* blankButtonLong2@2x.png */,
+				5C4DC70317E5076E00412C72 /* blankButtonLongHighlighted@2x.png */,
 				5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */,
 				5C0B9B7817D2022B000B9E34 /* trackball blue highlighted.pxm */,
 				5C0B9B7917D2022B000B9E34 /* trackball blue highlighted@2x.png */,
@@ -3716,6 +3734,9 @@
 				5C6842A817E3BF1E00C172EB /* FingerprintGray.png in Resources */,
 				5C88571B17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png in Resources */,
 				5C88571E17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png in Resources */,
+				5C6DD5FB17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */,
+				5CE024A917E4FDD000238693 /* blankButtonLong2@2x.png in Resources */,
+				5C4DC70417E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4013,6 +4034,9 @@
 				5C6842A917E3BF1E00C172EB /* FingerprintGray.png in Resources */,
 				5C88571C17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png in Resources */,
 				5C88571F17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png in Resources */,
+				5C6DD5FC17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */,
+				5CE024AA17E4FDD000238693 /* blankButtonLong2@2x.png in Resources */,
+				5C4DC70517E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4199,6 +4223,7 @@
 				5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */,
 				5C88570C17E443FB00446E5F /* CBTableViewController.m in Sources */,
+				5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4377,6 +4402,7 @@
 				5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */,
 				5C88570D17E443FB00446E5F /* CBTableViewController.m in Sources */,
+				5C4DC70917E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

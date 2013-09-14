@@ -10,7 +10,7 @@
 
 @implementation UDInputAccessoryView
 
-- (void) layoutSubviews
+- (void)layoutSubviews
 {
     [super layoutSubviews];
   

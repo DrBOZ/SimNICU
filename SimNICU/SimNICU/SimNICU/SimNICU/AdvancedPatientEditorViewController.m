@@ -25,6 +25,8 @@
 #import "Patient.h"
 #import "Bay.h"
 
+#import "CBBarCustomTextItem.h"
+
 #import "UDInputAccessoryView.h"
 
 @interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate>
@@ -4807,13 +4809,23 @@
     // [trackballToolbar setTintColor:[UIColor colorWithRed:145/255. green:153/255. blue:164/255. alpha:1]];
     
     // Special input accessory view; allows smaller height in landscape orientation
+    
     UIToolbar *trackballToolbar = [[UDInputAccessoryView alloc] init];
     
+    /*
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+     */
     
+    // create trackball
     UDBarTrackballItem *trackball = [[UDBarTrackballItem alloc] initForTextView:textView];
     
-    [trackballToolbar setItems:@[spacer, trackball, spacer] animated:YES];
+    // create left custom text button
+    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"ml/kg/day" insertingTextViewText:@" ml/kg/day"];
+    
+    // create right custom text button
+    CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom" insertingTextViewText:@""];
+    
+    [trackballToolbar setItems:@[customText1, trackball, customText2] animated:YES];
     
     return trackballToolbar;
 }

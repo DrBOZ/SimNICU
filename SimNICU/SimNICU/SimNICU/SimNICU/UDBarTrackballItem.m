@@ -80,7 +80,8 @@
     self.endCaretOrigin = selection.end;
 }
 
-- (void)track:(UITouch *)touch {
+- (void)track:(UITouch *)touch
+{
     // Calculate movement delta
     CGPoint touchPos = [touch locationInView:self.textView];
     CGSize movement = CGSizeMake(touchPos.x - self.touchOrigin.x, touchPos.y - self.touchOrigin.y);
@@ -124,13 +125,15 @@
 
 #pragma mark - Menu
 
-- (void)showMenu {
+- (void)showMenu
+{
     UIMenuController *menuController = [UIMenuController sharedMenuController];
     [menuController setTargetRect:[self selectionRect] inView:self.textView];
     [menuController setMenuVisible:YES animated:YES];
 }
 
-- (CGRect)selectionRect {
+- (CGRect)selectionRect
+{
     UITextRange *range = [self.textView selectedTextRange];
     CGRect startRect = [self.textView caretRectForPosition:range.start];
     CGRect endRect = [self.textView caretRectForPosition:range.end];
