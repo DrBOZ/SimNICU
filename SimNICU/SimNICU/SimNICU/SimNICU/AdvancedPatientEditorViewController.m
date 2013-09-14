@@ -906,7 +906,7 @@
         self.fingerprintButton.frame = CGRectMake(320.0f - 40.0f, 15.0f, 30.0f, 37.8f);
         [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateNormal];
         [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateHighlighted];
-        [self.fingerprintButton addTarget:self action:@selector(fingerprintTouched) forControlEvents:UIControlEventTouchDown];
+        self.fingerprintButton.userInteractionEnabled = NO;
         self.fingerprintButton.alpha = 0.0f;
         self.fingerprintButton.hidden = YES;
         
@@ -1398,7 +1398,7 @@
 
 - (void)animateFingerprintOut
 {
-    CGFloat animationDuration = 0.5f;
+    CGFloat animationDuration = 0.25f;
     CGFloat animationDelay = 0.0f;
     
     [UIView animateWithDuration:animationDuration
