@@ -1161,11 +1161,6 @@
     {
         [self addTrackBallForUITextView:textView];
     }
-    else
-    {
-        // remove trackball
-        [self removeTrackBallForUITextView:textView];
-    }
     
     return textView;
 }
@@ -3068,17 +3063,6 @@
     
     [textView setInputAccessoryView:[self trackballAccessoryViewForUITextView:textView]];
     
-#endif
-    
-}
-
-- (void)removeTrackBallForUITextView:(UITextView *)textView
-{
-    
-#if UDBARTRACKBALL
-    
-    NSLog(@"HERE");
-
 #endif
     
 }

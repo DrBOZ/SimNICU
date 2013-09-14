@@ -16,7 +16,7 @@
 
 @end
 
-@interface PaperSizeTableViewController : UITableViewController
+@interface PaperSizeTableViewController : CBTableViewController
 
 @property (nonatomic, weak) id <PaperSizeTableViewControllerDelegate> delegate;
 

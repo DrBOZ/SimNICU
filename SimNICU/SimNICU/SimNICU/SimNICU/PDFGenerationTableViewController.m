@@ -14,7 +14,6 @@
 
 @interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, CBPhotoCropperDelegate>
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITextView *signatureTextView;
 @property (nonatomic, strong) UISwitch *borderSwitch;
 @property (nonatomic, strong) UIImageView *logoImageView;
@@ -52,24 +51,12 @@
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
-    
-    // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
@@ -180,8 +167,12 @@
             
             cell.textLabel.text = @"Border";
             
-            self.borderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
-            [self.borderSwitch addTarget:self action:@selector(borderSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+            if (!self.borderSwitch)
+            {
+                self.borderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+                [self.borderSwitch addTarget:self action:@selector(borderSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+            }
+            
             self.borderSwitch.on = [preferences.border intValue];
             cell.accessoryView = self.borderSwitch;
             cell.detailTextLabel.text = nil;

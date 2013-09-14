@@ -11,7 +11,6 @@
 
 @interface PaperSizeTableViewController ()
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableViewCell *cellUS;
 @property (nonatomic, strong) UITableViewCell *cellUK;
 
@@ -37,24 +36,12 @@
     [CBTrackers logEvent:@"Settings/PDF/Paper Size"];
     
     self.title = @"Paper Size";
-    
-    // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

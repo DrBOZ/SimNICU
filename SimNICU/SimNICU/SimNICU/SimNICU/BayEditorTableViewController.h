@@ -18,7 +18,7 @@
 
 @end
 
-@interface BayEditorTableViewController : UITableViewController
+@interface BayEditorTableViewController : CBTableViewController
 
 @property (nonatomic, unsafe_unretained) id <BayEditorTableViewControllerDelegate> delegate;
 @property (nonatomic, strong) NSMutableArray *bayData;

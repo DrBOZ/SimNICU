@@ -12,8 +12,6 @@
 
 @interface DailySummaryEditorSettingsTableViewController ()
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-
 @property (nonatomic, strong) UISwitch *autocorrection;
 @property (nonatomic, strong) UISwitch *trackball;
 
@@ -22,6 +20,17 @@
 @implementation DailySummaryEditorSettingsTableViewController
 {
     NSMutableArray *tableData;
+}
+
+- (UISwitch *)trackball
+{
+    if (!_trackball)
+    {
+        _trackball = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+        [_trackball addTarget:self action:@selector(trackballSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+    }
+    
+    return _trackball;
 }
 
 - (void)viewDidLoad
@@ -57,13 +66,6 @@
      */
     
     [tableData addObject:sectionData];
-    
-    // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -132,13 +134,13 @@
                 self.autocorrection = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
                 
                 [self.autocorrection addTarget:self action:@selector(autocorrectionSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
-                // add to cell
-                
-                // message to self - logic error with this lazy instantiation...
             }
             
             // set value for switch
             self.autocorrection.on = [preferences.autocorrection intValue];
+            
+            // add to cell
+            cell.accessoryView = self.autocorrection;
             
             returnCell = cell;
         }
@@ -158,6 +160,8 @@
             if (!self.trackball)
             {
                 self.trackball = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+                
+                [self.trackball addTarget:self action:@selector(trackballSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
             }
             
             // set value for switch

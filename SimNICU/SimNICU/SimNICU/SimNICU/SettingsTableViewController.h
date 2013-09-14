@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Preferences.h"
 
-@interface SettingsTableViewController : UITableViewController
+@interface SettingsTableViewController : CBTableViewController
 
 @end

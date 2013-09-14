@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DailySummaryEditorSettingsTableViewController : UITableViewController
+@interface DailySummaryEditorSettingsTableViewController : CBTableViewController
 
 @end

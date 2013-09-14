@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PDFGenerationTableViewController : UITableViewController
+@interface PDFGenerationTableViewController : CBTableViewController
 
 @end

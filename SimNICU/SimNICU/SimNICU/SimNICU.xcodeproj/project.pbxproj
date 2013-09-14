@@ -306,6 +306,12 @@
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
 		5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
+		5C88570C17E443FB00446E5F /* CBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88570B17E443FB00446E5F /* CBTableViewController.m */; };
+		5C88570D17E443FB00446E5F /* CBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88570B17E443FB00446E5F /* CBTableViewController.m */; };
+		5C88571B17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C88571A17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png */; };
+		5C88571C17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C88571A17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png */; };
+		5C88571E17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C88571D17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png */; };
+		5C88571F17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C88571D17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png */; };
 		5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */; };
 		5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */; };
 		5C8AE8FE17E22CE30002BC04 /* photo_cropper_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8AE8F817E22CE10002BC04 /* photo_cropper_bg.png */; };
@@ -1215,6 +1221,10 @@
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
 		5C8606D0178ADD3E00428ED4 /* DrugSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSection.m; sourceTree = "<group>"; };
+		5C88570A17E443FB00446E5F /* CBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewController.h; sourceTree = "<group>"; };
+		5C88570B17E443FB00446E5F /* CBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewController.m; sourceTree = "<group>"; };
+		5C88571A17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LightGreyWithDimples35inchRetinaLandscape.png; sourceTree = "<group>"; };
+		5C88571D17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LightGreyWithDimples4inchRetinaLandscape.png; sourceTree = "<group>"; };
 		5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sherwood-forest-hospitals-logo.jpg"; sourceTree = "<group>"; };
 		5C8AE8F817E22CE10002BC04 /* photo_cropper_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_cropper_bg.png; sourceTree = "<group>"; };
 		5C8AE8F917E22CE20002BC04 /* photo_cropper_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_cropper_bg@2x.png"; sourceTree = "<group>"; };
@@ -2921,22 +2931,24 @@
 				5C940C3A166E3E230044A7D1 /* Screen.m */,
 				5C940C3B166E3E230044A7D1 /* GrowthChart.h */,
 				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
-				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
-				5C316CFA17C2BF830096B8D3 /* CBTrackers.m */,
-				5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */,
-				5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */,
-				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
-				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
+				5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */,
+				5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */,
 				5C1FC126179EB32E00E345C4 /* CBDatePicker.h */,
 				5C1FC127179EB32E00E345C4 /* CBDatePicker.m */,
 				5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */,
 				5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */,
-				5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */,
-				5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */,
+				5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */,
+				5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */,
+				5C88570A17E443FB00446E5F /* CBTableViewController.h */,
+				5C88570B17E443FB00446E5F /* CBTableViewController.m */,
 				5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */,
 				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
 				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
 				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
+				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
+				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
+				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
+				5C316CFA17C2BF830096B8D3 /* CBTrackers.m */,
 				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
 				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
 				5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */,
@@ -2976,7 +2988,9 @@
 				5C940C50166E3FDE0044A7D1 /* LightGrayBackground4inchRetina.png */,
 				5C940C51166E3FDE0044A7D1 /* LightGrayBackground35inchRetina.png */,
 				5C940C52166E3FDE0044A7D1 /* LightGreyWithDimples4inchRetinaPortrait.png */,
+				5C88571D17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png */,
 				5C940C53166E3FDE0044A7D1 /* LightGreyWithDimples35inchRetinaPortrait.png */,
+				5C88571A17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png */,
 				5C940C54166E3FDE0044A7D1 /* LightGreyWithDimples35inchForKal.png */,
 				5C940C55166E3FDE0044A7D1 /* LightGreyWithDimples4inchForKal.png */,
 				5C940C57166E3FDE0044A7D1 /* dismiss2.png */,
@@ -3700,6 +3714,8 @@
 				5C8AE93117E2B6A10002BC04 /* crop.png in Resources */,
 				5C6842A617E3BF1E00C172EB /* FingerprintGray@2x.png in Resources */,
 				5C6842A817E3BF1E00C172EB /* FingerprintGray.png in Resources */,
+				5C88571B17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png in Resources */,
+				5C88571E17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3995,6 +4011,8 @@
 				5C8AE93217E2B6A10002BC04 /* crop.png in Resources */,
 				5C6842A717E3BF1E00C172EB /* FingerprintGray@2x.png in Resources */,
 				5C6842A917E3BF1E00C172EB /* FingerprintGray.png in Resources */,
+				5C88571C17E45F0A00446E5F /* LightGreyWithDimples35inchRetinaLandscape.png in Resources */,
+				5C88571F17E45F1600446E5F /* LightGreyWithDimples4inchRetinaLandscape.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4180,6 +4198,7 @@
 				5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */,
+				5C88570C17E443FB00446E5F /* CBTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4357,6 +4376,7 @@
 				5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */,
+				5C88570D17E443FB00446E5F /* CBTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

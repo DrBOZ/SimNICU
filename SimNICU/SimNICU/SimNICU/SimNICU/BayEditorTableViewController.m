@@ -11,9 +11,7 @@
 #import "Patient.h"
 #import "Bay.h"
 
-@interface BayEditorTableViewController () <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextFieldDelegate>
-
-@property (nonatomic, strong) UIGestureRecognizer *swipeGestureRecognizer;
+@interface BayEditorTableViewController () <UIActionSheetDelegate, UITextFieldDelegate>
 
 - (void)add;
 - (void)done;
@@ -32,13 +30,6 @@
     
     // Setup Add button
     self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
-    
-    // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,10 +53,12 @@
     [super viewWillDisappear:animated];
 }
 
+/*
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+ */
 
 - (void)done
 {

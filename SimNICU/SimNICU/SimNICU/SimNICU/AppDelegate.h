@@ -9,7 +9,9 @@
 #define USE_DIMPLE_BACKGROUND 1
 
 #define BACKGROUND_IPHONE_35_PORTRAIT_PNG @"LightGreyWithDimples35inchRetinaPortrait.png"
+#define BACKGROUND_IPHONE_35_LANDSCAPE_PNG @"LightGreyWithDimples35inchRetinaLandscape.png"
 #define BACKGROUND_IPHONE_4_PORTRAIT_PNG @"LightGreyWithDimples4inchRetinaPortrait.png"
+#define BACKGROUND_IPHONE_4_LANDSCAPE_PNG @"LightGreyWithDimples4inchRetinaLandscape.png"
 
 #define SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG @"ScrollViewBackground35inchRetina.png"
 #define SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG @"ScrollViewBackground4inchRetina.png"

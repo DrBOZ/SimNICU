@@ -10,29 +10,17 @@
 #import "PDFGenerationTableViewController.h"
 #import "SettingsTableViewController.h"
 #import "EnterWeightViewController.h"
-// #import "BayEditorViewController.h"
 #import "BayEditorTableViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
 @interface SettingsTableViewController ()
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-
 @end
 
 @implementation SettingsTableViewController
 {
     NSMutableArray *tableData;
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
@@ -143,23 +131,12 @@
     
 #endif
     
-    // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)done
