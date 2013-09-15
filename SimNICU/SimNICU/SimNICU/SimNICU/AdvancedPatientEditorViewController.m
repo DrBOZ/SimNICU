@@ -14,6 +14,8 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
+#import "UDInputAccessoryView.h"
+#import "CBBarCustomTextItem.h"
 #import "UDBarTrackballItem.h"
 #import "CBTableViewRowData.h"
 // #import "ShinobiChartCell.h"
@@ -25,11 +27,11 @@
 #import "Patient.h"
 #import "Bay.h"
 
-#import "CBBarCustomTextItem.h"
+#import "UAModalPanel.h"
+#import "UATitledModalPanel.h" //
+#import "UAExampleModalPanel.h"
 
-#import "UDInputAccessoryView.h"
-
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -105,6 +107,8 @@
 
 @property (nonatomic, strong) UITableViewCell *shinobiCell;
 @property (nonatomic, strong) UIImage *shinobiChartImage;
+
+@property (nonatomic, strong) UAModalPanel *modalPanel;
 
 @end
 
@@ -1349,75 +1353,6 @@
     return indexPath;
 }
 
-- (void)fingerprintTouched
-{
-    [self.backgroundTextView resignFirstResponder];
-    [self.activeProblemsTextView resignFirstResponder];
-    [self.resolvedProblemsTextView resignFirstResponder];
-    [self.recentSignificantEventsTextView resignFirstResponder];
-    [self.ventilationAndSedationTextView resignFirstResponder];
-    [self.cxrTextView resignFirstResponder];
-    [self.cardiovascularTextView resignFirstResponder];
-    [self.linesTextView resignFirstResponder];
-    [self.fluidBalanceTextView resignFirstResponder];
-    [self.feedsAndFluidsTextView resignFirstResponder];
-    [self.electrolytesTextView resignFirstResponder];
-    [self.jaundiceTextView resignFirstResponder];
-    [self.sepsisTextView resignFirstResponder];
-    [self.drugsTextView resignFirstResponder];
-    [self.ropTextView resignFirstResponder];
-    [self.cranialUSSTextView resignFirstResponder];
-    [self.parentsAndSocialTextView resignFirstResponder];
-    [self.impressionTextView resignFirstResponder];
-    [self.planTextView resignFirstResponder];
-    [self.jobsTextView resignFirstResponder];
-    
-    if (self.fingerprintButton.hidden == NO)
-    {
-        self.fingerprintButton.hidden = YES;
-    }
-}
-
-- (void)animateFingerprintIn
-{
-    self.fingerprintButton.hidden = NO;
-    
-    CGFloat animationDuration = 0.5f;
-    CGFloat animationDelay = 0.0f;
-    
-    [UIView animateWithDuration:animationDuration
-                          delay:animationDelay
-                        options: UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         
-                         self.fingerprintButton.alpha = 1.0f;
-                         
-                     }
-                     completion:^(BOOL finished){
-                         
-                     }];
-}
-
-- (void)animateFingerprintOut
-{
-    CGFloat animationDuration = 0.25f;
-    CGFloat animationDelay = 0.0f;
-    
-    [UIView animateWithDuration:animationDuration
-                          delay:animationDelay
-                        options: UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         
-                         self.fingerprintButton.alpha = 0.0f;
-                         
-                     }
-                     completion:^(BOOL finished){
-                         
-                         self.fingerprintButton.hidden = YES;
-                         
-                     }];
-}
-
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
@@ -1456,7 +1391,7 @@
     
     // change right bar button
     // self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:nil];
-    [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self action:nil] animated:YES];
+    [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showModalPanel:)] animated:YES];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
@@ -3075,6 +3010,92 @@
     
 #endif
     
+}
+
+- (void)fingerprintTouched
+{
+    [self.backgroundTextView resignFirstResponder];
+    [self.activeProblemsTextView resignFirstResponder];
+    [self.resolvedProblemsTextView resignFirstResponder];
+    [self.recentSignificantEventsTextView resignFirstResponder];
+    [self.ventilationAndSedationTextView resignFirstResponder];
+    [self.cxrTextView resignFirstResponder];
+    [self.cardiovascularTextView resignFirstResponder];
+    [self.linesTextView resignFirstResponder];
+    [self.fluidBalanceTextView resignFirstResponder];
+    [self.feedsAndFluidsTextView resignFirstResponder];
+    [self.electrolytesTextView resignFirstResponder];
+    [self.jaundiceTextView resignFirstResponder];
+    [self.sepsisTextView resignFirstResponder];
+    [self.drugsTextView resignFirstResponder];
+    [self.ropTextView resignFirstResponder];
+    [self.cranialUSSTextView resignFirstResponder];
+    [self.parentsAndSocialTextView resignFirstResponder];
+    [self.impressionTextView resignFirstResponder];
+    [self.planTextView resignFirstResponder];
+    [self.jobsTextView resignFirstResponder];
+    
+    if (self.fingerprintButton.hidden == NO)
+    {
+        self.fingerprintButton.hidden = YES;
+    }
+}
+
+- (void)animateFingerprintIn
+{
+    self.fingerprintButton.hidden = NO;
+    
+    CGFloat animationDuration = 0.5f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         
+                         self.fingerprintButton.alpha = 0.5f;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+
+- (void)animateFingerprintOut
+{
+    CGFloat animationDuration = 0.25f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         
+                         self.fingerprintButton.alpha = 0.0f;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         self.fingerprintButton.hidden = YES;
+                         
+                     }];
+}
+
+- (IBAction)showModalPanel:(id)sender
+{
+    if (!self.modalPanel)
+    {
+        self.modalPanel = [[UAExampleModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f)];
+        self.modalPanel.delegate = self;
+        
+        [self.view addSubview:self.modalPanel];
+        [self.modalPanel showFromPoint:[sender center]];
+    }
+}
+
+- (void)willCloseModalPanel:(UAModalPanel *)modalPanel
+{
+    self.modalPanel = nil;
 }
 
 #pragma mark - ShinobiChart datasource

@@ -179,6 +179,32 @@
 		5C4DC70517E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC70317E5076E00412C72 /* blankButtonLongHighlighted@2x.png */; };
 		5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
 		5C4DC70917E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
+		5C4DC72517E5340C00412C72 /* UIView+JMNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71117E5340C00412C72 /* UIView+JMNoise.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5C4DC72617E5340C00412C72 /* UIView+JMNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71117E5340C00412C72 /* UIView+JMNoise.m */; };
+		5C4DC72717E5340C00412C72 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71317E5340C00412C72 /* close.png */; };
+		5C4DC72817E5340C00412C72 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71317E5340C00412C72 /* close.png */; };
+		5C4DC72917E5340C00412C72 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71417E5340C00412C72 /* close@2x.png */; };
+		5C4DC72A17E5340C00412C72 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71417E5340C00412C72 /* close@2x.png */; };
+		5C4DC72B17E5340C00412C72 /* modalButton-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71517E5340C00412C72 /* modalButton-selected.png */; };
+		5C4DC72C17E5340C00412C72 /* modalButton-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71517E5340C00412C72 /* modalButton-selected.png */; };
+		5C4DC72D17E5340C00412C72 /* modalButton-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71617E5340C00412C72 /* modalButton-selected@2x.png */; };
+		5C4DC72E17E5340C00412C72 /* modalButton-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71617E5340C00412C72 /* modalButton-selected@2x.png */; };
+		5C4DC72F17E5340C00412C72 /* modalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71717E5340C00412C72 /* modalButton.png */; };
+		5C4DC73017E5340C00412C72 /* modalButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71717E5340C00412C72 /* modalButton.png */; };
+		5C4DC73117E5340C00412C72 /* modalButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71817E5340C00412C72 /* modalButton@2x.png */; };
+		5C4DC73217E5340C00412C72 /* modalButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC71817E5340C00412C72 /* modalButton@2x.png */; };
+		5C4DC73317E5340C00412C72 /* UAModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71B17E5340C00412C72 /* UAModalPanel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5C4DC73417E5340C00412C72 /* UAModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71B17E5340C00412C72 /* UAModalPanel.m */; };
+		5C4DC73517E5340C00412C72 /* UATitledModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71D17E5340C00412C72 /* UATitledModalPanel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5C4DC73617E5340C00412C72 /* UATitledModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71D17E5340C00412C72 /* UATitledModalPanel.m */; };
+		5C4DC73717E5340C00412C72 /* UAGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72017E5340C00412C72 /* UAGradientBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5C4DC73817E5340C00412C72 /* UAGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72017E5340C00412C72 /* UAGradientBackground.m */; };
+		5C4DC73917E5340C00412C72 /* UANoisyGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72217E5340C00412C72 /* UANoisyGradientBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5C4DC73A17E5340C00412C72 /* UANoisyGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72217E5340C00412C72 /* UANoisyGradientBackground.m */; };
+		5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72417E5340C00412C72 /* UARoundedRectView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5C4DC73C17E5340C00412C72 /* UARoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72417E5340C00412C72 /* UARoundedRectView.m */; };
+		5C4DC73F17E5349C00412C72 /* UAExampleModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */; };
+		5C4DC74017E5349C00412C72 /* UAExampleModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */; };
 		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
@@ -1135,6 +1161,26 @@
 		5C4DC70317E5076E00412C72 /* blankButtonLongHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blankButtonLongHighlighted@2x.png"; sourceTree = "<group>"; };
 		5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarCustomTextItem.h; sourceTree = "<group>"; };
 		5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarCustomTextItem.m; sourceTree = "<group>"; };
+		5C4DC71017E5340C00412C72 /* UIView+JMNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JMNoise.h"; sourceTree = "<group>"; };
+		5C4DC71117E5340C00412C72 /* UIView+JMNoise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JMNoise.m"; sourceTree = "<group>"; };
+		5C4DC71317E5340C00412C72 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		5C4DC71417E5340C00412C72 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		5C4DC71517E5340C00412C72 /* modalButton-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "modalButton-selected.png"; sourceTree = "<group>"; };
+		5C4DC71617E5340C00412C72 /* modalButton-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "modalButton-selected@2x.png"; sourceTree = "<group>"; };
+		5C4DC71717E5340C00412C72 /* modalButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modalButton.png; sourceTree = "<group>"; };
+		5C4DC71817E5340C00412C72 /* modalButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "modalButton@2x.png"; sourceTree = "<group>"; };
+		5C4DC71A17E5340C00412C72 /* UAModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAModalPanel.h; sourceTree = "<group>"; };
+		5C4DC71B17E5340C00412C72 /* UAModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAModalPanel.m; sourceTree = "<group>"; };
+		5C4DC71C17E5340C00412C72 /* UATitledModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UATitledModalPanel.h; sourceTree = "<group>"; };
+		5C4DC71D17E5340C00412C72 /* UATitledModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UATitledModalPanel.m; sourceTree = "<group>"; };
+		5C4DC71F17E5340C00412C72 /* UAGradientBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAGradientBackground.h; sourceTree = "<group>"; };
+		5C4DC72017E5340C00412C72 /* UAGradientBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAGradientBackground.m; sourceTree = "<group>"; };
+		5C4DC72117E5340C00412C72 /* UANoisyGradientBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UANoisyGradientBackground.h; sourceTree = "<group>"; };
+		5C4DC72217E5340C00412C72 /* UANoisyGradientBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UANoisyGradientBackground.m; sourceTree = "<group>"; };
+		5C4DC72317E5340C00412C72 /* UARoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UARoundedRectView.h; sourceTree = "<group>"; };
+		5C4DC72417E5340C00412C72 /* UARoundedRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UARoundedRectView.m; sourceTree = "<group>"; };
+		5C4DC73D17E5349B00412C72 /* UAExampleModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAExampleModalPanel.h; sourceTree = "<group>"; };
+		5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAExampleModalPanel.m; sourceTree = "<group>"; };
 		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
 		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
 		5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPresentation.html; sourceTree = "<group>"; };
@@ -2071,6 +2117,63 @@
 				5CDA652217C0FC7900AC5266 /* plusButton2@2x.png */,
 			);
 			name = Screen_FeedsAndFluids;
+			sourceTree = "<group>";
+		};
+		5C4DC70E17E5340C00412C72 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DC70F17E5340C00412C72 /* Categories */,
+				5C4DC71217E5340C00412C72 /* Images */,
+				5C4DC71917E5340C00412C72 /* Panels */,
+				5C4DC71E17E5340C00412C72 /* Views */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		5C4DC70F17E5340C00412C72 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DC71017E5340C00412C72 /* UIView+JMNoise.h */,
+				5C4DC71117E5340C00412C72 /* UIView+JMNoise.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		5C4DC71217E5340C00412C72 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DC71317E5340C00412C72 /* close.png */,
+				5C4DC71417E5340C00412C72 /* close@2x.png */,
+				5C4DC71517E5340C00412C72 /* modalButton-selected.png */,
+				5C4DC71617E5340C00412C72 /* modalButton-selected@2x.png */,
+				5C4DC71717E5340C00412C72 /* modalButton.png */,
+				5C4DC71817E5340C00412C72 /* modalButton@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		5C4DC71917E5340C00412C72 /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DC71A17E5340C00412C72 /* UAModalPanel.h */,
+				5C4DC71B17E5340C00412C72 /* UAModalPanel.m */,
+				5C4DC71C17E5340C00412C72 /* UATitledModalPanel.h */,
+				5C4DC71D17E5340C00412C72 /* UATitledModalPanel.m */,
+			);
+			path = Panels;
+			sourceTree = "<group>";
+		};
+		5C4DC71E17E5340C00412C72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DC71F17E5340C00412C72 /* UAGradientBackground.h */,
+				5C4DC72017E5340C00412C72 /* UAGradientBackground.m */,
+				5C4DC72117E5340C00412C72 /* UANoisyGradientBackground.h */,
+				5C4DC72217E5340C00412C72 /* UANoisyGradientBackground.m */,
+				5C4DC72317E5340C00412C72 /* UARoundedRectView.h */,
+				5C4DC72417E5340C00412C72 /* UARoundedRectView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5C4E30DC16BECF5000ACB898 /* Screen_TransportVentilator */ = {
@@ -3154,6 +3257,9 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5C4DC73D17E5349B00412C72 /* UAExampleModalPanel.h */,
+				5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */,
+				5C4DC70E17E5340C00412C72 /* Panel */,
 				5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */,
 				5C6842A517E3BF1D00C172EB /* FingerprintGray.png */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
@@ -3737,6 +3843,12 @@
 				5C6DD5FB17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */,
 				5CE024A917E4FDD000238693 /* blankButtonLong2@2x.png in Resources */,
 				5C4DC70417E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */,
+				5C4DC72717E5340C00412C72 /* close.png in Resources */,
+				5C4DC72917E5340C00412C72 /* close@2x.png in Resources */,
+				5C4DC72B17E5340C00412C72 /* modalButton-selected.png in Resources */,
+				5C4DC72D17E5340C00412C72 /* modalButton-selected@2x.png in Resources */,
+				5C4DC72F17E5340C00412C72 /* modalButton.png in Resources */,
+				5C4DC73117E5340C00412C72 /* modalButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4037,6 +4149,12 @@
 				5C6DD5FC17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */,
 				5CE024AA17E4FDD000238693 /* blankButtonLong2@2x.png in Resources */,
 				5C4DC70517E5076E00412C72 /* blankButtonLongHighlighted@2x.png in Resources */,
+				5C4DC72817E5340C00412C72 /* close.png in Resources */,
+				5C4DC72A17E5340C00412C72 /* close@2x.png in Resources */,
+				5C4DC72C17E5340C00412C72 /* modalButton-selected.png in Resources */,
+				5C4DC72E17E5340C00412C72 /* modalButton-selected@2x.png in Resources */,
+				5C4DC73017E5340C00412C72 /* modalButton.png in Resources */,
+				5C4DC73217E5340C00412C72 /* modalButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4224,6 +4342,13 @@
 				5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */,
 				5C88570C17E443FB00446E5F /* CBTableViewController.m in Sources */,
 				5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
+				5C4DC72517E5340C00412C72 /* UIView+JMNoise.m in Sources */,
+				5C4DC73317E5340C00412C72 /* UAModalPanel.m in Sources */,
+				5C4DC73517E5340C00412C72 /* UATitledModalPanel.m in Sources */,
+				5C4DC73717E5340C00412C72 /* UAGradientBackground.m in Sources */,
+				5C4DC73917E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
+				5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */,
+				5C4DC73F17E5349C00412C72 /* UAExampleModalPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4403,6 +4528,13 @@
 				5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */,
 				5C88570D17E443FB00446E5F /* CBTableViewController.m in Sources */,
 				5C4DC70917E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
+				5C4DC72617E5340C00412C72 /* UIView+JMNoise.m in Sources */,
+				5C4DC73417E5340C00412C72 /* UAModalPanel.m in Sources */,
+				5C4DC73617E5340C00412C72 /* UATitledModalPanel.m in Sources */,
+				5C4DC73817E5340C00412C72 /* UAGradientBackground.m in Sources */,
+				5C4DC73A17E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
+				5C4DC73C17E5340C00412C72 /* UARoundedRectView.m in Sources */,
+				5C4DC74017E5349C00412C72 /* UAExampleModalPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
