@@ -203,8 +203,14 @@
 		5C4DC73A17E5340C00412C72 /* UANoisyGradientBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72217E5340C00412C72 /* UANoisyGradientBackground.m */; };
 		5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72417E5340C00412C72 /* UARoundedRectView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5C4DC73C17E5340C00412C72 /* UARoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC72417E5340C00412C72 /* UARoundedRectView.m */; };
-		5C4DC73F17E5349C00412C72 /* UAExampleModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */; };
-		5C4DC74017E5349C00412C72 /* UAExampleModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */; };
+		5C4DC74317E549ED00412C72 /* UAExampleModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */; };
+		5C4DC74417E549ED00412C72 /* UAExampleModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */; };
+		5C4DC74617E54B4900412C72 /* UAExampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC74517E54B4800412C72 /* UAExampleView.xib */; };
+		5C4DC74717E54B4900412C72 /* UAExampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC74517E54B4800412C72 /* UAExampleView.xib */; };
+		5C4DC75217E562F200412C72 /* DictationCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75117E562F100412C72 /* DictationCommands.m */; };
+		5C4DC75317E562F200412C72 /* DictationCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75117E562F100412C72 /* DictationCommands.m */; };
+		5C4DC75617E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */; };
+		5C4DC75717E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */; };
 		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
@@ -1179,8 +1185,13 @@
 		5C4DC72217E5340C00412C72 /* UANoisyGradientBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UANoisyGradientBackground.m; sourceTree = "<group>"; };
 		5C4DC72317E5340C00412C72 /* UARoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UARoundedRectView.h; sourceTree = "<group>"; };
 		5C4DC72417E5340C00412C72 /* UARoundedRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UARoundedRectView.m; sourceTree = "<group>"; };
-		5C4DC73D17E5349B00412C72 /* UAExampleModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAExampleModalPanel.h; sourceTree = "<group>"; };
-		5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAExampleModalPanel.m; sourceTree = "<group>"; };
+		5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAExampleModalPanel.m; sourceTree = "<group>"; };
+		5C4DC74217E549EC00412C72 /* UAExampleModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAExampleModalPanel.h; sourceTree = "<group>"; };
+		5C4DC74517E54B4800412C72 /* UAExampleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAExampleView.xib; sourceTree = "<group>"; };
+		5C4DC75017E562F000412C72 /* DictationCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictationCommands.h; sourceTree = "<group>"; };
+		5C4DC75117E562F100412C72 /* DictationCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictationCommands.m; sourceTree = "<group>"; };
+		5C4DC75417E56B8500412C72 /* CBBarCustomTableViewTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarCustomTableViewTextItem.h; sourceTree = "<group>"; };
+		5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarCustomTableViewTextItem.m; sourceTree = "<group>"; };
 		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
 		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
 		5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPresentation.html; sourceTree = "<group>"; };
@@ -1859,8 +1870,6 @@
 			children = (
 				5C0B9B8F17D2023C000B9E34 /* UDBarTrackballItem.h */,
 				5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */,
-				5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */,
-				5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */,
 				5C0B9B9217D20438000B9E34 /* UDInputAccessoryView.h */,
 				5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */,
 				5C0B9B7617D2021D000B9E34 /* Images */,
@@ -3054,6 +3063,10 @@
 				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
 				5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */,
 				5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */,
+				5C4DC75417E56B8500412C72 /* CBBarCustomTableViewTextItem.h */,
+				5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */,
+				5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */,
+				5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */,
 				5C1FC126179EB32E00E345C4 /* CBDatePicker.h */,
 				5C1FC127179EB32E00E345C4 /* CBDatePicker.m */,
 				5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */,
@@ -3257,8 +3270,11 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
-				5C4DC73D17E5349B00412C72 /* UAExampleModalPanel.h */,
-				5C4DC73E17E5349C00412C72 /* UAExampleModalPanel.m */,
+				5C4DC74217E549EC00412C72 /* UAExampleModalPanel.h */,
+				5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */,
+				5C4DC75017E562F000412C72 /* DictationCommands.h */,
+				5C4DC75117E562F100412C72 /* DictationCommands.m */,
+				5C4DC74517E54B4800412C72 /* UAExampleView.xib */,
 				5C4DC70E17E5340C00412C72 /* Panel */,
 				5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */,
 				5C6842A517E3BF1D00C172EB /* FingerprintGray.png */,
@@ -3849,6 +3865,7 @@
 				5C4DC72D17E5340C00412C72 /* modalButton-selected@2x.png in Resources */,
 				5C4DC72F17E5340C00412C72 /* modalButton.png in Resources */,
 				5C4DC73117E5340C00412C72 /* modalButton@2x.png in Resources */,
+				5C4DC74617E54B4900412C72 /* UAExampleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4155,6 +4172,7 @@
 				5C4DC72E17E5340C00412C72 /* modalButton-selected@2x.png in Resources */,
 				5C4DC73017E5340C00412C72 /* modalButton.png in Resources */,
 				5C4DC73217E5340C00412C72 /* modalButton@2x.png in Resources */,
+				5C4DC74717E54B4900412C72 /* UAExampleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4348,7 +4366,9 @@
 				5C4DC73717E5340C00412C72 /* UAGradientBackground.m in Sources */,
 				5C4DC73917E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
 				5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */,
-				5C4DC73F17E5349C00412C72 /* UAExampleModalPanel.m in Sources */,
+				5C4DC74317E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
+				5C4DC75217E562F200412C72 /* DictationCommands.m in Sources */,
+				5C4DC75617E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4534,7 +4554,9 @@
 				5C4DC73817E5340C00412C72 /* UAGradientBackground.m in Sources */,
 				5C4DC73A17E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
 				5C4DC73C17E5340C00412C72 /* UARoundedRectView.m in Sources */,
-				5C4DC74017E5349C00412C72 /* UAExampleModalPanel.m in Sources */,
+				5C4DC74417E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
+				5C4DC75317E562F200412C72 /* DictationCommands.m in Sources */,
+				5C4DC75717E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

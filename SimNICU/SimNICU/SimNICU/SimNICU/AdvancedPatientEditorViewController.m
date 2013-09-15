@@ -18,6 +18,7 @@
 #import "CBBarCustomTextItem.h"
 #import "UDBarTrackballItem.h"
 #import "CBTableViewRowData.h"
+#import "DictationCommands.h"
 // #import "ShinobiChartCell.h"
 #import "BilirubinResult.h"
 #import "HandoverSection.h"
@@ -27,11 +28,12 @@
 #import "Patient.h"
 #import "Bay.h"
 
-#import "UAModalPanel.h"
-#import "UATitledModalPanel.h" //
-#import "UAExampleModalPanel.h"
+#import "UAExampleModalPanel.h" // rename this later
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate>
+#import "CBBarCustomTableViewTextItem.h"
+
+
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -108,7 +110,7 @@
 @property (nonatomic, strong) UITableViewCell *shinobiCell;
 @property (nonatomic, strong) UIImage *shinobiChartImage;
 
-@property (nonatomic, strong) UAModalPanel *modalPanel;
+@property (nonatomic, strong) UAExampleModalPanel *modalPanel;
 
 @end
 
@@ -1390,7 +1392,6 @@
     [self animateFingerprintIn];
     
     // change right bar button
-    // self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:nil];
     [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showModalPanel:)] animated:YES];
 }
 
@@ -3083,17 +3084,27 @@
 
 - (IBAction)showModalPanel:(id)sender
 {
+    // this is called from the info box
+    
     if (!self.modalPanel)
     {
-        self.modalPanel = [[UAExampleModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f)];
+        self.modalPanel = [[UAExampleModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands]];
         self.modalPanel.delegate = self;
+        self.modalPanel.whoCreatedMe = @"InfoBox";
         
         [self.view addSubview:self.modalPanel];
         [self.modalPanel showFromPoint:[sender center]];
     }
+    else
+    {
+        if ([self.modalPanel.whoCreatedMe isEqualToString:@"InfoBox"])
+        {
+            [self.modalPanel closePressed:nil];
+        }
+    }
 }
 
-- (void)willCloseModalPanel:(UAModalPanel *)modalPanel
+- (void)willCloseModalPanel:(UAExampleModalPanel *)modalPanel
 {
     self.modalPanel = nil;
 }
@@ -4686,6 +4697,8 @@
     [self.myTableView2 reloadData];
     
     [self dismissModalViewControllerAnimated:YES];
+    
+    self.editing = NO;
 }
 
 #pragma mark - PhototherapyAddBilirubinResult delegate
@@ -4853,10 +4866,36 @@
     
     // create right custom text button
     CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom" insertingTextViewText:@""];
+    customText2.delegate = self;
     
     [trackballToolbar setItems:@[customText1, trackball, customText2] animated:YES];
     
     return trackballToolbar;
+}
+
+#pragma mark - CBBarCustomTextItem delegate
+
+- (void)CBBarButtonTextItem:(id)sender wasPressedInTextView:(UITextView *)textView
+{
+    if (!self.modalPanel)
+    {
+        self.modalPanel = [[UAExampleModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:[DictationCommands returnListOfAppleDictationCommands]];
+        self.modalPanel.delegate = self;
+        self.modalPanel.whoCreatedMe = @"CustomButton";
+        
+        // change array to preferences.customTextArray;
+        
+        [self.view addSubview:self.modalPanel];
+        [self.modalPanel showFromPoint:CGPointMake(300.0f, 300.0f)];
+    }
+    else
+    {
+        if ([self.modalPanel.whoCreatedMe isEqualToString:@"CustomButton"])
+        {
+            // close modal
+            [self.modalPanel closePressed:nil];
+        }
+    }
 }
 
 @end

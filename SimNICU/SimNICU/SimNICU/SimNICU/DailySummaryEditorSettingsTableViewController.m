@@ -55,15 +55,8 @@
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Trackball";
+    rowData.text = @"Tool Bar";
     [sectionData.rowData addObject:rowData];
-    
-    /*
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Landscape allowed";
-    rowData.detailText = @"This should not be an option!";
-    [sectionData.rowData addObject:rowData];
-     */
     
     [tableData addObject:sectionData];
 }

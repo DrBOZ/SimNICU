@@ -88,4 +88,6 @@ typedef void (^UAModalDisplayPanelAnimationComplete)(BOOL finished);
 - (CGRect)closeButtonFrame;
 - (CGRect)contentViewFrame;
 
+- (void)closePressed:(id)sender;
+
 @end

@@ -26,7 +26,8 @@
 @synthesize onClosePressed, onActionPressed;
 
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+{
 	self = [super initWithFrame:frame];
 	if (self != nil) {
 		delegate = nil;
@@ -165,8 +166,10 @@
 	return actionButton;
 }
 
-- (UIView *)contentView {
-	if (!contentView) {
+- (UIView *)contentView
+{
+	if (!contentView)
+    {
 		self.contentView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 		self.contentView.autoresizesSubviews = YES;
@@ -233,7 +236,8 @@
 	UADebugLog(@"contentView frame: %@", NSStringFromCGRect(self.contentView.frame));
 }
 
-- (void)closePressed:(id)sender {
+- (void)closePressed:(id)sender
+{
 	
 	// Using Delegates
 	if ([delegate respondsToSelector:@selector(shouldCloseModalPanel:)]) {

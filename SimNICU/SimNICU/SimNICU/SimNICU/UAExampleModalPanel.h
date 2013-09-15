@@ -7,18 +7,20 @@
 //
 
 #import "UATitledModalPanel.h"
-#import "UAModalPanel.h"
 
-// @interface UAExampleModalPanel : UATitledModalPanel <UITableViewDataSource>
-@interface UAExampleModalPanel : UAModalPanel <UITableViewDataSource>
+@interface UAExampleModalPanel : UATitledModalPanel <UITableViewDataSource>
 {
-	UIView			*v;
+	UIView			*view;
 	IBOutlet UIView	*viewLoadedFromXib;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *viewLoadedFromXib;
+@property (nonatomic, strong) NSString *whoCreatedMe;
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title;
+- (id)initWithFrame:(CGRect)frame
+              title:(NSString *)title
+              array:(NSArray *)array;
+
 - (IBAction)buttonPressed:(id)sender;
 
 @end

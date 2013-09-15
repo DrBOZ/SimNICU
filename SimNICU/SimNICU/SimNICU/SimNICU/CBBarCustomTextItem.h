@@ -8,21 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-/*
-@class CBBarButtonTextItem;
+
+@class CBBarCustomTextItem;
 
 @protocol CBBarButtonTextItemDelegate <NSObject>
 
 @optional
+
+- (void)CBBarButtonTextItem:(id)sender wasPressedInTextView:(UITextView *)textView;
 
 - (void)CBBarButtonTextItemDidChangeTextInTextView:(UITextView *)textView;
 
 - (void)CBBarButtonTextItemInsertString:(NSString *)insertingString intoTextView:(UITextView *)textView;
 
 @end
- */
+
+// Should rename this class to CBBarCustomButtonItem!
 
 @interface CBBarCustomTextItem : UIBarButtonItem
+
+@property (nonatomic, unsafe_unretained) id <CBBarButtonTextItemDelegate> delegate;
 
 - (id)initForTextView:(UITextView *)textView withButtonText:(NSString *)buttonText insertingTextViewText:(NSString *)textViewText;
 

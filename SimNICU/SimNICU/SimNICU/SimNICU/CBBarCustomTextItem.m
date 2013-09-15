@@ -22,29 +22,29 @@
     self.textView = textView;
     self.textViewText = textViewText;
     
-    UIButton *trackballButton = [[UIButton alloc] init];
+    UIButton *customButton = [[UIButton alloc] init];
     
-    [trackballButton setImage:[UIImage imageNamed:@"blankButtonLong2@2x.png"] forState:UIControlStateNormal];
-    [trackballButton setImage:[UIImage imageNamed:@"blankButtonLongHighlighted@2x.png"] forState:UIControlStateHighlighted];
+    [customButton setImage:[UIImage imageNamed:@"blankButtonLong2@2x.png"] forState:UIControlStateNormal];
+    [customButton setImage:[UIImage imageNamed:@"blankButtonLongHighlighted@2x.png"] forState:UIControlStateHighlighted];
     
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 119.0f, 23.0f)];
-    textLabel.backgroundColor = [UIColor clearColor];
-    textLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-    textLabel.textAlignment = UITextAlignmentCenter;
-    textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    textLabel.shadowColor = [UIColor whiteColor];
-    textLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    textLabel.numberOfLines = 1;
-    textLabel.text = buttonText;
+    UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 119.0f, 23.0f)];
+    buttonLabel.backgroundColor = [UIColor clearColor];
+    buttonLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    buttonLabel.textAlignment = UITextAlignmentCenter;
+    buttonLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+    buttonLabel.shadowColor = [UIColor whiteColor];
+    buttonLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    buttonLabel.numberOfLines = 1;
+    buttonLabel.text = buttonText;
     
-    [trackballButton addSubview:textLabel];
+    [customButton addSubview:buttonLabel];
     
-    [trackballButton setFrame:CGRectMake(0.0f, 0.0f, 119.0f, 44.0f)];
+    [customButton setFrame:CGRectMake(0.0f, 0.0f, 119.0f, 44.0f)];
     
-    [trackballButton addTarget:self action:@selector(touchDownAction:withEvent:) forControlEvents:UIControlEventTouchDown];
-    [trackballButton addTarget:self action:@selector(touchUpAction:withEvent:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
+    [customButton addTarget:self action:@selector(touchDownAction:withEvent:) forControlEvents:UIControlEventTouchDown];
+    [customButton addTarget:self action:@selector(touchUpAction:withEvent:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
     
-    self = [super initWithCustomView:trackballButton];
+    self = [super initWithCustomView:customButton];
     
     return self;
 }
@@ -55,6 +55,12 @@
 {
     // insert text into textView
     [self insertString:self.textViewText intoTextView:self.textView];
+    
+    // inform delegate
+    if (self.delegate)
+    {
+        [self.delegate CBBarButtonTextItem:self wasPressedInTextView:self.textView];
+    }
 }
 
 - (void)touchUpAction:(id)sender withEvent:(UIEvent *)event
