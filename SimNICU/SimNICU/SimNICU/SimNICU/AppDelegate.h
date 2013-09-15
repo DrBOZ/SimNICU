@@ -80,8 +80,15 @@
 
 // Jobs
 // 1) Convert UIViewControllers to UITableViewControllers?
-// 2) Now I have started changing over, set standard cell height?
+// 2) Now I have started changing over, set standard cell height for all UITableViews?
 // 3) Fix Shinobi chart - crashes when loaded in the Simulator
+// 4) Add a clear button to Daily Summary Editor
+// 5) Convert the Daily Summary headings from a NSString to an NSArray or even NSDictionary
+//    to enable the saving of a date with the NSString.  This will allow converting the text to red
+//    if it is out of date.
+// 6) Press and hold on ml/kg/day button toggles between mmol/kg/day
+// 7) patient.
+
 
 @end
 

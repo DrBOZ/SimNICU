@@ -21,6 +21,19 @@
     return sharedPreferences;
 }
 
+- (id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        [self setDefaults];
+    }
+    
+    return self;
+}
+
+
 // Instance methods
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -133,12 +146,6 @@
             self.guidelineCountry = @"US";
             self.bilirubinUnits = @"US";
         }
-    }
-    
-    // default logo
-    if (!self.image)
-    {
-        self.image = [UIImage imageNamed:@"sherwood-forest-hospitals-logo.jpg"];
     }
     
     // default trackball
