@@ -82,8 +82,6 @@
 
 @property (nonatomic, strong) NSMutableArray *bilirubinLevelsToPlot;
 @property (nonatomic, strong) NSString *neurotoxicityRisk;
-// @property (nonatomic, strong) NSString *guidelineCountry;
-// @property (nonatomic, strong) NSString *bilirubinUnits;
 @property (nonatomic, strong) NSNumber *gestation;
 
 @property (nonatomic, strong) UITextView *backgroundTextView;
@@ -111,6 +109,8 @@
 @property (nonatomic, strong) UIImage *shinobiChartImage;
 
 @property (nonatomic, strong) UAExampleModalPanel *modalPanel;
+
+@property (nonatomic, strong) UIButton *fingerprintButton;
 
 @end
 

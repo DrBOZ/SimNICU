@@ -662,6 +662,12 @@
 		5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
 		5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0317E6A910001823A3 /* SettingsModel.m */; };
 		5CAE2E0517E6A910001823A3 /* SettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0317E6A910001823A3 /* SettingsModel.m */; };
+		5CAE2E0D17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */; };
+		5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */; };
+		5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
+		5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
+		5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */; };
+		5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */; };
 		5CB46B6217D9D82F003365F6 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6017D9D82F003365F6 /* sync.png */; };
 		5CB46B6317D9D82F003365F6 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6017D9D82F003365F6 /* sync.png */; };
 		5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B6117D9D82F003365F6 /* sync@2x.png */; };
@@ -1703,6 +1709,12 @@
 		5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiChartCell.m; sourceTree = "<group>"; };
 		5CAE2E0217E6A910001823A3 /* SettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModel.h; sourceTree = "<group>"; };
 		5CAE2E0317E6A910001823A3 /* SettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModel.m; sourceTree = "<group>"; };
+		5CAE2E0B17E6BD31001823A3 /* DailySummaryEditorSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryEditorSettingsModel.h; sourceTree = "<group>"; };
+		5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsModel.m; sourceTree = "<group>"; };
+		5CAE2E1017E6C25C001823A3 /* CustomTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextTableViewController.h; sourceTree = "<group>"; };
+		5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextTableViewController.m; sourceTree = "<group>"; };
+		5CAE2E1417E6CDE4001823A3 /* HandoverSectionCustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSectionCustomText.h; sourceTree = "<group>"; };
+		5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverSectionCustomText.m; sourceTree = "<group>"; };
 		5CB46B6017D9D82F003365F6 /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
 		5CB46B6117D9D82F003365F6 /* sync@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync@2x.png"; sourceTree = "<group>"; };
 		5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTableViewController.h; sourceTree = "<group>"; };
@@ -1946,17 +1958,6 @@
 				5C0E0666178F94DE00768739 /* amoxicillinReferences.html */,
 			);
 			name = Amoxicillin;
-			sourceTree = "<group>";
-		};
-		5C13B42617C8CB2F00C88EEF /* NSObjects */ = {
-			isa = PBXGroup;
-			children = (
-				5C13B42717C8CB6000C88EEF /* HandoverSection.h */,
-				5C13B42817C8CB6000C88EEF /* HandoverSection.m */,
-				5C13B42B17C910BB00C88EEF /* HandoverRow.h */,
-				5C13B42C17C910BB00C88EEF /* HandoverRow.m */,
-			);
-			name = NSObjects;
 			sourceTree = "<group>";
 		};
 		5C169E4F17B579E0003D0166 /* 29-33 */ = {
@@ -3030,6 +3031,12 @@
 				5C679FBD1794CA0100B9A813 /* Bay.m */,
 				5C756CA317989E15002F983E /* Calculator.h */,
 				5C756CA417989E15002F983E /* Calculator.m */,
+				5C13B42717C8CB6000C88EEF /* HandoverSection.h */,
+				5C13B42817C8CB6000C88EEF /* HandoverSection.m */,
+				5CAE2E1417E6CDE4001823A3 /* HandoverSectionCustomText.h */,
+				5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */,
+				5C13B42B17C910BB00C88EEF /* HandoverRow.h */,
+				5C13B42C17C910BB00C88EEF /* HandoverRow.m */,
 				5C940C2F166E3E230044A7D1 /* Patient.h */,
 				5C940C30166E3E230044A7D1 /* Patient.m */,
 				5C940C31166E3E230044A7D1 /* Preferences.h */,
@@ -3265,7 +3272,6 @@
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
 				5CD43A4417CB40E600426991 /* TextInput */,
-				5C13B42617C8CB2F00C88EEF /* NSObjects */,
 				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
 			name = "Daily Summary";
@@ -3350,6 +3356,15 @@
 			name = CBPhotoCropper;
 			sourceTree = "<group>";
 		};
+		5CAE2E0F17E6C215001823A3 /* CustomText */ = {
+			isa = PBXGroup;
+			children = (
+				5CAE2E1017E6C25C001823A3 /* CustomTextTableViewController.h */,
+				5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */,
+			);
+			name = CustomText;
+			sourceTree = "<group>";
+		};
 		5CB46B6617D9FBED003365F6 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
@@ -3372,6 +3387,9 @@
 				5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */,
 				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
 				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
+				5CAE2E0B17E6BD31001823A3 /* DailySummaryEditorSettingsModel.h */,
+				5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */,
+				5CAE2E0F17E6C215001823A3 /* CustomText */,
 				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
 				5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */,
 				5C2B164617DC0F400038B4A8 /* PDF Settings */,
@@ -4360,6 +4378,9 @@
 				5C4DC75217E562F200412C72 /* DictationCommands.m in Sources */,
 				5C4DC75617E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */,
 				5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */,
+				5CAE2E0D17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
+				5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
+				5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4549,6 +4570,9 @@
 				5C4DC75317E562F200412C72 /* DictationCommands.m in Sources */,
 				5C4DC75717E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */,
 				5CAE2E0517E6A910001823A3 /* SettingsModel.m in Sources */,
+				5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
+				5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
+				5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

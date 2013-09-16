@@ -6,7 +6,9 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
+#import "HandoverSection.h"
 #import "Preferences.h"
+#import "HandoverRow.h"
 
 @implementation Preferences
 
@@ -55,6 +57,7 @@
         self.image = [aDecoder decodeObjectForKey:@"image"];
         self.autocorrection = [aDecoder decodeObjectForKey:@"autocorrection"];
         self.trackball = [aDecoder decodeObjectForKey:@"trackball"];
+        self.handoverSections = [aDecoder decodeObjectForKey:@"handoverSections"];
     }
     
     [self setDefaults];
@@ -96,6 +99,8 @@
                   forKey:@"autocorrection"];
     [aCoder encodeObject:self.trackball
                   forKey:@"trackball"];
+    [aCoder encodeObject:self.handoverSections
+                  forKey:@"handoverSections"];
 }
 
 - (void)setDefaults
@@ -152,6 +157,135 @@
     if (!self.trackball)
     {
         self.trackball = [NSNumber numberWithInt:1];
+    }
+    
+    if (!self.handoverSections)
+    {
+        // create array - note this is similar but difference to the patient handover Sections
+        // which includes individual patient rowHeight data for information contained in the sections
+        
+        self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
+        HandoverSection *newSection;
+        
+        // 00 - Background
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Background";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 01 - Active Problems
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Active Problems";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 02 - Resolved Problems
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Resolved Problems";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 03 - Recent Significant Events
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Recent Significant Events";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 04 - Ventilation & Sedation
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Ventilation & Sedation";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 05 - CXR
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"CXR";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 06 - Cardiovascular
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Cardiovascular";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 07 - Lines
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Lines";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 08 - Feeds & Fluids
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Feeds & Fluids";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 09 - Fluid Balance
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Fluid Balance";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 10 - Biochemistry
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Biochemistry";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 11 - Jaundice
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Jaundice";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 12 - Sepsis
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Sepsis";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 13 - Drugs
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Drugs";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 14 - ROP
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"ROP";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 15 - Neurology & Cranial USS
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Neurology & Cranial USS";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 16 - Parents / Social
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Parents / Social";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 17 - Examination
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Examination";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 18 - Summary
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Summary";
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 19 - Plan
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Plan";
+        
+        [self.handoverSections addObject:newSection];
     }
 }
 

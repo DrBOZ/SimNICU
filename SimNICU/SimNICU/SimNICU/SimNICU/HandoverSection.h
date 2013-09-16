@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *sectionName;
 @property (nonatomic, strong) NSString *sectionEditable;
 @property (nonatomic, strong) NSMutableArray *rows;
+@property (nonatomic, strong) NSMutableArray *customText;
 // @property (nonatomic) UIImage *image;
 
 @end

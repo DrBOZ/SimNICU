@@ -26,6 +26,5 @@
 @property (nonatomic, strong) NSMutableArray *bayData;
 @property (nonatomic, strong) NSNumber *selectedBayNSNumber;
 @property (nonatomic, strong) NSNumber *selectedPatientInBayNSNumber;
-@property (nonatomic, strong) UIButton *fingerprintButton;
 
 @end

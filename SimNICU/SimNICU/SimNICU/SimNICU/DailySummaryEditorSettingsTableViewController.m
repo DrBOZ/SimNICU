@@ -7,6 +7,8 @@
 //
 
 #import "DailySummaryEditorSettingsTableViewController.h"
+#import "DailySummaryEditorSettingsModel.h"
+#import "CustomTextTableViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
@@ -19,7 +21,7 @@
 
 @implementation DailySummaryEditorSettingsTableViewController
 {
-    NSMutableArray *tableData;
+    NSArray *tableData;
 }
 
 - (UISwitch *)trackball
@@ -41,24 +43,7 @@
     
     self.title = @"Daily Summary Editor";
     
-    tableData = [[NSMutableArray alloc] initWithCapacity:3];
-    CBTableViewSectionData *sectionData;
-    CBTableViewRowData *rowData;
-    
-    // section 0
-    sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Text Entry";
-    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Autocorrection";
-    [sectionData.rowData addObject:rowData];
-    
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Tool Bar";
-    [sectionData.rowData addObject:rowData];
-    
-    [tableData addObject:sectionData];
+    tableData = [DailySummaryEditorSettingsModel getArrayForTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,14 +73,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *header = nil;
+    CBTableViewSectionData *sectionData = tableData[section];
     
-    if (section == 0)
-    {
-        header = @"Text Entry";
-    }
-    
-    return header;
+    return sectionData.titleForHeader;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -184,14 +164,14 @@
     }
     else
     {
-        static NSString *CellIdentifier = @"Misc";
+        static NSString *CellIdentifier = @"Custom Text";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
         
         cell.accessoryView = nil;
@@ -223,12 +203,23 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    NSIndexPath *path = indexPath;
+    
+    if (indexPath.section == 0)
+    {
+        path = nil;
+    }
+    
+    return path;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    CustomTextTableViewController *vc = [[CustomTextTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    // set title
+    
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
