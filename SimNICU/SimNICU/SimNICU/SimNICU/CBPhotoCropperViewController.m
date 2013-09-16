@@ -35,7 +35,6 @@
     self.infoMessageTitle = @"In order to crop the photo";
     self.infoMessageBody = @"Use two of your fingers to zoom in and out the photo and drag the"
     @" green window to crop any part of the photo you would like to use.";
-    self.photoCropperTitle = @"Crop Photo";
     
     // sets the background to a nice pattern effect
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"photo_cropper_bg"]];
@@ -87,10 +86,12 @@
      
     self.navigationItem.rightBarButtonItems = items;
     
+    /*
     if (!_showsInfoButton)
     {
-        [self.infoButton setHidden:YES];
+        [self.infoButton setHidden:YES];         no used, delete later
     }
+     */
     
     // add cropping rectangle
     self.cropRectangleButton = [[UIButton alloc] init];
@@ -157,19 +158,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - private methods
+
 - (void)infoButtonTapped:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.infoMessageTitle
-                                                 message:self.infoMessageBody
-                                                delegate:nil
-                                       cancelButtonTitle:@"OK"
-                                       otherButtonTitles:nil];
+                                                    message:self.infoMessageBody
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
     
     [alert show];
 }
-
-
-#pragma mark - private methods
 
 - (void)selectPhoto
 {
@@ -194,7 +194,10 @@
     // add to scrollView after setting frame
     CGFloat w = self.photo.size.width;
     CGFloat h = self.photo.size.height;
+    
+    // place in top left hand corner
     CGRect imageViewFrame = CGRectMake(0.0f, 0.0f, roundf(w / 2.0f), roundf(h / 2.0f));
+    
     self.scrollView.contentSize = imageViewFrame.size;
     
     UIImageView *iv = [[UIImageView alloc] initWithFrame:imageViewFrame];
@@ -289,13 +292,6 @@
     return self.imageView;
 }
 
-/*
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
-{
-    NSLog(@"");
-}
- */
-
 #pragma mark - UIImagePickerController delegate
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -311,5 +307,11 @@
     
     [self dismissModalViewControllerAnimated:YES];
 }
+
+/*
+ Jobs:
+ 
+ 1) Improve to place image in the centre of the screen
+ */
 
 @end

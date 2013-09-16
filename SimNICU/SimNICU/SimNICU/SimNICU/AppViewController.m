@@ -502,7 +502,6 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Calculator";
-    screen.detailMenuText = @"Almost finished!";
     screen.segueId = @"Calculator";
     [screens addObject:screen];
     
@@ -522,11 +521,13 @@
     screen.menuText = @"Cranial Ultrasound";
     screen.segueId = @"CrUSS";
     
+    /*
 #if CRUSS_PREVIEW_MODE
     
     screen.detailMenuText = @"New Image Viewer!";
     
 #endif
+     */
     
     [screens addObject:screen];
     
@@ -544,7 +545,6 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Drugs";
-    screen.detailMenuText = @"Under Construction!";
     screen.segueId = @"Drugs";
     [screens addObject:screen];
     
@@ -573,7 +573,6 @@
     
     screen = [[Screen alloc] init];
     screen.menuText = @"Feeds & Fluids";
-    screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"FeedsAndFluids";
     [screens addObject:screen];
     
@@ -1444,6 +1443,10 @@
 
 #endif
             
+        }
+        else
+        {
+            [self.myTableView deselectRowAtIndexPath:indexPath animated:YES];
         }
     }
 }

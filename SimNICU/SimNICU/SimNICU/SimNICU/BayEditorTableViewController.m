@@ -26,7 +26,7 @@
 
     self.title = @"Bay Editor";
     
-    [CBTrackers logEvent:@"Bay Editor"];
+    [CBTrackers logEvent:@"Bay Editor"];  // could add in to return number of patients...
     
     // Setup Add button
     self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
@@ -52,13 +52,6 @@
     
     [super viewWillDisappear:animated];
 }
-
-/*
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
- */
 
 - (void)done
 {
@@ -318,6 +311,7 @@
  1) When selecting a bay to rename I could make the animation slicker by checking the tag number of the UITextField and then deciding with the animation is to top or middle.
  2) The large empty footer is not nice.
  3) Something like this would be very useful as a Unit overview, with numbers of babies and levels of care.
+ 4) Tracker to return number of patients
  
  I have done a good job with this VC - it is pretty slick
  */

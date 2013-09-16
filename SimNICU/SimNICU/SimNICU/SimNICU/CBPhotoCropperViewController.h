@@ -37,7 +37,6 @@ typedef enum CBPhotoCropperUIMode_ {
 @property (nonatomic, unsafe_unretained) id <CBPhotoCropperDelegate> delegate;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton *infoButton;
-@property (nonatomic, strong) NSString *photoCropperTitle;
 @property (nonatomic, strong) NSString *infoMessageTitle;
 @property (nonatomic, strong) NSString *infoMessageBody;
 @property (nonatomic, strong) UIImageView *imageView;
