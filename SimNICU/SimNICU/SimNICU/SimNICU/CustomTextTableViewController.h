@@ -10,4 +10,6 @@
 
 @interface CustomTextTableViewController : CBTableViewController
 
+@property (nonatomic) int section;
+
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Urban Apps. All rights reserved.
 //
 
+#import "HandoverSectionCustomText.h"
 #import "UAExampleModalPanel.h"
 #import "CBTableViewRowData.h"
 
@@ -18,7 +19,7 @@
 
 @synthesize viewLoadedFromXib;
 
-- (id)initWithFrame:(CGRect)frame title:(NSString *)title array:(NSArray *)array
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title array:(NSArray *)array forTextView:(UITextView *)textView
 {
 	if ((self = [super initWithFrame:frame]))
     {
@@ -40,20 +41,22 @@
         // set array
         tableRows = array;
         
+        // set textView
+        self.textView = textView;
         
-
+        // set bounce off
+        self.shouldBounce = NO;
 		
 		UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero];
         tableView.rowHeight = 30.0f;
         tableView.backgroundColor = [UIColor clearColor];
         tableView.separatorColor = [UIColor clearColor];
-		[tableView setDataSource:self];
-		
+        tableView.dataSource = self;
+        tableView.delegate = self;
         
         view = tableView;
         
 		[self.contentView addSubview:view];
-		
 	}	
 	return self;
 }
@@ -65,7 +68,8 @@
 	[view setFrame:self.contentView.bounds];
 }
 
-#pragma mark - TableView
+#pragma mark - UITableView data source
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return [tableRows count];
@@ -76,25 +80,60 @@
 	NSString *cellIdentifier = @"UAModalPanelCell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-	if (cell == nil)
+    if ([self.whoCreatedMe isEqualToString:@"CustomButton"])
     {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	}
-	
-	[cell.textLabel setText:[NSString stringWithFormat:@"Row %d", indexPath.row]];
-    CBTableViewRowData *rowData = tableRows[indexPath.row];
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        }
+        
+        HandoverSectionCustomText *customText = tableRows[indexPath.row];
+        
+        cell.textLabel.text = customText.customTextReferenceName;
+    }
+    else
+    {
+        // if dictation commands
+        if (!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        CBTableViewRowData *rowData = tableRows[indexPath.row];
+        
+        cell.textLabel.text = rowData.text;
+        cell.detailTextLabel.text = rowData.detailText;
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:[rowData.detailTextFontSize floatValue]];
+    }
     
-    cell.textLabel.text = rowData.text;
-    cell.detailTextLabel.text = rowData.detailText;
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:[rowData.detailTextFontSize floatValue]];
-	
 	return cell;
 }
 
+#pragma mark - UITableView delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // obtain relevant text
+    HandoverSectionCustomText *customText = tableRows[indexPath.row];
+    
+    // copy relevant text into clipboard
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = customText.customText;
+
+    // tell delegate to paste into textView
+    [self.delegate CBModalPanelUserDidSelectCustomTextToPaste:self inTextView:self.textView];
+}
+
 #pragma mark - Actions
+
 - (IBAction)buttonPressed:(id)sender {
 	// The button was pressed. Lets do something with it.
 	

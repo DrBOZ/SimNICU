@@ -216,8 +216,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CustomTextTableViewController *vc = [[CustomTextTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    // set title
-    
+    vc.section = indexPath.row;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

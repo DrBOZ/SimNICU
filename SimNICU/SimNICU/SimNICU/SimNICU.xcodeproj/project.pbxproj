@@ -209,8 +209,6 @@
 		5C4DC74717E54B4900412C72 /* UAExampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C4DC74517E54B4800412C72 /* UAExampleView.xib */; };
 		5C4DC75217E562F200412C72 /* DictationCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75117E562F100412C72 /* DictationCommands.m */; };
 		5C4DC75317E562F200412C72 /* DictationCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75117E562F100412C72 /* DictationCommands.m */; };
-		5C4DC75617E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */; };
-		5C4DC75717E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */; };
 		5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */; };
 		5C51D8CA17932A0E004A7FF5 /* vitaminsIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */; };
@@ -316,6 +314,8 @@
 		5C6842A917E3BF1E00C172EB /* FingerprintGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6842A517E3BF1D00C172EB /* FingerprintGray.png */; };
 		5C6982D71672CA1900590AFF /* SimNICU_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D51672CA1900590AFF /* SimNICU_round.png */; };
 		5C6982D81672CA1900590AFF /* SimNICU_round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */; };
+		5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B6E4E17E78D31003600DD /* CustomTextModel.m */; };
+		5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B6E4E17E78D31003600DD /* CustomTextModel.m */; };
 		5C6DD5FB17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */; };
 		5C6DD5FC17E4FA2700C5343A /* blankButtonLong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */; };
 		5C6FF683179E6D55004E35C5 /* CBDisplayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */; };
@@ -1190,8 +1190,6 @@
 		5C4DC74517E54B4800412C72 /* UAExampleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UAExampleView.xib; sourceTree = "<group>"; };
 		5C4DC75017E562F000412C72 /* DictationCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictationCommands.h; sourceTree = "<group>"; };
 		5C4DC75117E562F100412C72 /* DictationCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictationCommands.m; sourceTree = "<group>"; };
-		5C4DC75417E56B8500412C72 /* CBBarCustomTableViewTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarCustomTableViewTextItem.h; sourceTree = "<group>"; };
-		5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarCustomTableViewTextItem.m; sourceTree = "<group>"; };
 		5C51D8C6179329FC004A7FF5 /* vitaminsPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPharmacology.html; sourceTree = "<group>"; };
 		5C51D8C917932A0E004A7FF5 /* vitaminsIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsIndications.html; sourceTree = "<group>"; };
 		5C51D8CC17932A1B004A7FF5 /* vitaminsPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vitaminsPresentation.html; sourceTree = "<group>"; };
@@ -1263,6 +1261,8 @@
 		5C6842A517E3BF1D00C172EB /* FingerprintGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FingerprintGray.png; sourceTree = "<group>"; };
 		5C6982D51672CA1900590AFF /* SimNICU_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_round.png; sourceTree = "<group>"; };
 		5C6982D61672CA1900590AFF /* SimNICU_round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_round@2x.png"; sourceTree = "<group>"; };
+		5C6B6E4D17E78D31003600DD /* CustomTextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextModel.h; sourceTree = "<group>"; };
+		5C6B6E4E17E78D31003600DD /* CustomTextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextModel.m; sourceTree = "<group>"; };
 		5C6DD5FA17E4FA2700C5343A /* blankButtonLong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blankButtonLong@2x.png"; sourceTree = "<group>"; };
 		5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDisplayMethods.h; sourceTree = "<group>"; };
 		5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDisplayMethods.m; sourceTree = "<group>"; };
@@ -3053,8 +3053,6 @@
 				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
 				5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */,
 				5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */,
-				5C4DC75417E56B8500412C72 /* CBBarCustomTableViewTextItem.h */,
-				5C4DC75517E56B8500412C72 /* CBBarCustomTableViewTextItem.m */,
 				5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */,
 				5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */,
 				5C1FC126179EB32E00E345C4 /* CBDatePicker.h */,
@@ -3361,6 +3359,8 @@
 			children = (
 				5CAE2E1017E6C25C001823A3 /* CustomTextTableViewController.h */,
 				5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */,
+				5C6B6E4D17E78D31003600DD /* CustomTextModel.h */,
+				5C6B6E4E17E78D31003600DD /* CustomTextModel.m */,
 			);
 			name = CustomText;
 			sourceTree = "<group>";
@@ -4376,11 +4376,11 @@
 				5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */,
 				5C4DC74317E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
 				5C4DC75217E562F200412C72 /* DictationCommands.m in Sources */,
-				5C4DC75617E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */,
 				5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */,
 				5CAE2E0D17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
 				5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
 				5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
+				5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4568,11 +4568,11 @@
 				5C4DC73C17E5340C00412C72 /* UARoundedRectView.m in Sources */,
 				5C4DC74417E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
 				5C4DC75317E562F200412C72 /* DictationCommands.m in Sources */,
-				5C4DC75717E56B8600412C72 /* CBBarCustomTableViewTextItem.m in Sources */,
 				5CAE2E0517E6A910001823A3 /* SettingsModel.m in Sources */,
 				5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
 				5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
 				5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
+				5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

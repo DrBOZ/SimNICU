@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
+#import "HandoverSectionCustomText.h"
 #import "HandoverSection.h"
 #import "Preferences.h"
 #import "HandoverRow.h"
@@ -159,6 +160,12 @@
         self.trackball = [NSNumber numberWithInt:1];
     }
     
+#if RESET_PREFERENCES_HANDOVER_SECTIONS
+    
+    self.HandoverSections = nil;
+    
+#endif
+    
     if (!self.handoverSections)
     {
         // create array - note this is similar but difference to the patient handover Sections
@@ -166,94 +173,354 @@
         
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         HandoverSection *newSection;
+        HandoverSectionCustomText *customText;
+        
+        /*
+        newSection.customText = [[NSMutableArray alloc] initWithCapacity:2]; 
+         
+        // custom text template
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"";
+            customText.customText = @"";
+            
+            [newSection.customText addObject:customText];
+        }
+         */
         
         // 00 - Background
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Background";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Background";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 01 - Active Problems
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Active Problems";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Active Problems";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 02 - Resolved Problems
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Resolved Problems";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Resolved Problems";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 03 - Recent Significant Events
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Recent Significant Events";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Recent Significant Events";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 04 - Ventilation & Sedation
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Ventilation & Sedation";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Ventilation & Sedation";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // Breathing in air
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Breathing in air";
+                customText.customText = @"Breathing in air";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Breathing in _ L/min n/c oxygen
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Breathing in _ L/min n/c oxygen";
+                customText.customText = @"Breathing in _ L/min nasal cannulae oxygen";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Breathing in _ % headbox oxygen
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Breathing in _ % headbox oxygen";
+                customText.customText = @"Breathing in _ % headbox oxygen";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // No events
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"No events";
+                customText.customText = @"No events";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Detailed respiratory exam
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Detailed respiratory exam";
+                customText.customText = @"";
+                
+                [newSection.customText addObject:customText];
+            }
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 05 - CXR
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"CXR";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"CXR";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 06 - Cardiovascular
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Cardiovascular";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Cardiovascular";
         
-        [self.handoverSections addObject:newSection];
-        
+            [self.handoverSections addObject:newSection];
+        }
+            
         // 07 - Lines
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Lines";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Lines";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
-        [self.handoverSections addObject:newSection];
+            // No lines
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"No intravenous lines";
+                customText.customText = @"No intravenous lines";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // 24G
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"24G";
+                customText.customText = @"24G ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // dorsum
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"dorsum";
+                customText.customText = @"dorsum ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // left
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"left";
+                customText.customText = @"left ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // right
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"right";
+                customText.customText = @"right ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // hand
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"hand";
+                customText.customText = @"hand";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // foot
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"foot";
+                customText.customText = @"foot";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // antecubital fossa
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"antecubital fossa";
+                customText.customText = @"antecubital fossa";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            [self.handoverSections addObject:newSection];
+        }
         
         // 08 - Feeds & Fluids
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Feeds & Fluids";
-        
-        [self.handoverSections addObject:newSection];
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Feeds & Fluids";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:5];
+            
+            // Nil by mouth
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Nil by mouth";
+                customText.customText = @"Nil by mouth";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Fully enterally fed
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Fully enterally fed";
+                customText.customText = @"Fully enterally fed";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Minimal milky aspirates
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Minimal milky aspirates";
+                customText.customText = @"Minimal milky aspirates";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            [self.handoverSections addObject:newSection];
+        }
         
         // 09 - Fluid Balance
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Fluid Balance";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Fluid Balance";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 10 - Biochemistry
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Biochemistry";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Biochemistry";
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
         // 11 - Jaundice
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Jaundice";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Jaundice";
         
-        [self.handoverSections addObject:newSection];
-        
+            [self.handoverSections addObject:newSection];
+        }
+            
         // 12 - Sepsis
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Sepsis";
+        newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        // No sepsis concerns
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"No sepsis concerns";
+            customText.customText = @"No sepsis concerns";
+            
+            [newSection.customText addObject:customText];
+        }
         
         [self.handoverSections addObject:newSection];
         
         // 13 - Drugs
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Drugs";
+        newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        // Abidec
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Abidec";
+            customText.customText = @"Abidec";
+            
+            [newSection.customText addObject:customText];
+        }
+        
+        // Benzylpenicillin
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Benzylpenicillin";
+            customText.customText = @"Benzylpenicillin";
+            
+            [newSection.customText addObject:customText];
+        }
+        
+        // Caffeine
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Caffeine";
+            customText.customText = @"Caffeine";
+            
+            [newSection.customText addObject:customText];
+        }
+        
+        // Gaviscon
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Gaviscon";
+            customText.customText = @"Gaviscon";
+            
+            [newSection.customText addObject:customText];
+        }
+        
+        // Gentamicin
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Gentamicin";
+            customText.customText = @"Gentamicin";
+            
+            [newSection.customText addObject:customText];
+        }
+        
+        // Vitamins
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Vitamins";
+            customText.customText = @"Vitamins";
+            
+            [newSection.customText addObject:customText];
+        }
         
         [self.handoverSections addObject:newSection];
         
         // 14 - ROP
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"ROP";
+        newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+        
+        // Screening not indicated
+        {
+            customText = [[HandoverSectionCustomText alloc] init];
+            customText.customTextReferenceName = @"Screening not indicated";
+            customText.customText = @"Screening not indicated";
+            
+            [newSection.customText addObject:customText];
+        }
         
         [self.handoverSections addObject:newSection];
         
@@ -264,16 +531,58 @@
         [self.handoverSections addObject:newSection];
         
         // 16 - Parents / Social
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Parents / Social";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Parents / Social";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
         
-        [self.handoverSections addObject:newSection];
+            {
+                // custom text 01
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"No concerns";
+                customText.customText = @"No concerns";
+                
+                [newSection.customText addObject:customText];
+            }
         
-        // 17 - Examination
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Examination";
+            [self.handoverSections addObject:newSection];
+        } 
         
-        [self.handoverSections addObject:newSection];
+         // 17 - Examination
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Examination";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
+        
+            // custom text 01
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Normal exam";
+                customText.customText = @"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discoloration";
+        
+                [newSection.customText addObject:customText];
+            }
+        
+            // custom text 02
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Oscillated exam";
+                customText.customText = @"Add Text";
+            
+                [newSection.customText addObject:customText];
+            }
+            
+            // Dysmorphic exam
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Dysmorphic exam";
+                customText.customText = @"Tone: abnormal";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            [self.handoverSections addObject:newSection];
+        }
         
         // 18 - Summary
         newSection = [[HandoverSection alloc] init];
