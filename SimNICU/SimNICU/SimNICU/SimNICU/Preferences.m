@@ -192,6 +192,43 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Background";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // Spontaneous preterm labour
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Spontaneous preterm labour";
+                customText.customText = @"Spontaneous preterm labour";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Maternal gestational diabetes
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Maternal gestational diabetes";
+                customText.customText = @"Maternal gestational diabetes";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Maternal insulin dependant diabetes
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Maternal insulin dependant diabetes";
+                customText.customText = @"Maternal insulin dependant diabetes";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Prolonged rupture of membranes
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Prolonged rupture of membranes";
+                customText.customText = @"Prolonged rupture of membranes";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
@@ -200,6 +237,43 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Active Problems";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // Prematurity
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Prematurity";
+                customText.customText = @"Prematurity";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Respiratory distress syndrome
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Respiratory distress syndrome";
+                customText.customText = @"Respiratory distress syndrome";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Surfactant deficient lung disease
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Surfactant deficient lung disease";
+                customText.customText = @"Surfactant deficient lung disease";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Breech delivery
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Breech delivery";
+                customText.customText = @"Breech delivery";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
@@ -382,6 +456,15 @@
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"Nil by mouth";
                 customText.customText = @"Nil by mouth";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // 10% Dextrose
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"10% Dextrose";
+                customText.customText = @"10% Dextrose";
                 
                 [newSection.customText addObject:customText];
             }

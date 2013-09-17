@@ -35,6 +35,11 @@
     
     tableData = [CustomTextModel getArrayOfCustomTextForHandoverSection:self.section];
     
+    // Setup Add button
+    self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
+    
+    [CBTrackers logEvent:@"Custom Text"];
+    
     /*
     Preferences *preferences = [Preferences sharedPreferences];
     
@@ -44,10 +49,35 @@
      */
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView setEditing:YES animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound)
+    {
+        [self done];
+    }
+    
+    [super viewWillDisappear:animated];
+}
+
+- (void)done
+{
+    // do something...
+}
+
+- (void)add
+{
+    // do something...
 }
 
 #pragma mark - Table view data source
@@ -70,6 +100,7 @@
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     
     HandoverSectionCustomText *customText = tableData[indexPath.row];
@@ -77,6 +108,16 @@
     cell.textLabel.text = customText.customTextReferenceName;
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark - Table view delegate
