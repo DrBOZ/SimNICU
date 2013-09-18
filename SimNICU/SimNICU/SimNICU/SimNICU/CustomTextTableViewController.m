@@ -33,25 +33,35 @@
 {
     [super viewDidLoad];
     
+    // get table data
     tableData = [CustomTextModel getArrayOfCustomTextForHandoverSection:self.section];
     
-    // Setup Add button
-    self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
-    
+    // set trackers
     [CBTrackers logEvent:@"Custom Text"];
     
-    /*
-    Preferences *preferences = [Preferences sharedPreferences];
+    // Flexible space to the two buttons
+    UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
-    HandoverSection *handoverSection = preferences.handoverSections[self.section];
+    // Setup Add button
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add)];
     
-    tableData = handoverSection.customText;
-     */
+    // Setup array
+    NSArray *items = [NSArray arrayWithObjects:addButton, flexibleItem, self.editButtonItem, flexibleItem, nil];
+    
+    // set right bar button items
+    self.navigationItem.rightBarButtonItems = items;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    [self.tableView setEditing:editing animated:animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView setEditing:YES animated:YES];
+    // [self.tableView setEditing:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
