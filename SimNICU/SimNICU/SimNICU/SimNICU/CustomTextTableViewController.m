@@ -170,15 +170,17 @@
 // reorder data source after move
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    /*
-    Bay *bay = self.bayData[sourceIndexPath.row];
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    // remove bay at old location
-    [self.bayData removeObjectAtIndex:sourceIndexPath.row];
+    HandoverSection *handoverSection = preferences.handoverSections[self.section];
     
-    // add bay at new location
-    [self.bayData insertObject:bay atIndex:destinationIndexPath.row];
-     */
+    HandoverSectionCustomText *ct = handoverSection.customText[sourceIndexPath.row];
+    
+    // remove text from old location
+    [handoverSection.customText removeObjectAtIndex:sourceIndexPath.row];
+    
+    // add text at new location
+    [handoverSection.customText insertObject:ct atIndex:destinationIndexPath.row];
 }
 
 #pragma mark - Table view delegate
