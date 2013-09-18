@@ -82,12 +82,27 @@
 
 - (void)done
 {
-    // do something...
+    // do nothing
 }
 
 - (void)add
 {
-    // do something...
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    HandoverSection *handoverSection = preferences.handoverSections[self.section];
+    
+    // create new custom text
+    HandoverSectionCustomText *newCustomText = [[HandoverSectionCustomText alloc] init];
+    newCustomText.customTextReferenceName = @"New custom text";
+    newCustomText.customText = @"Enter custom text...";
+
+    // create path to new customText
+    NSArray *indexPaths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:[handoverSection.customText count] inSection:self.section], nil];
+    
+    // add to array
+    [handoverSection.customText addObject:newCustomText];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table view data source
