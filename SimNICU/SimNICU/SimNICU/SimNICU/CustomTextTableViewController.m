@@ -99,7 +99,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [tableData count];
+    // singleton object
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    // get the handover section to display custom text
+    HandoverSection *handoverSection = preferences.handoverSections[self.section];
+    
+    // return number of custom text objects in handoverSection
+    return [handoverSection.customText count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,7 +120,13 @@
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     
-    HandoverSectionCustomText *customText = tableData[indexPath.row];
+    // singleton object
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    // get the handover section to display custom text
+    HandoverSection *handoverSection = preferences.handoverSections[self.section];
+    
+    HandoverSectionCustomText *customText = handoverSection.customText[indexPath.row];
     
     cell.textLabel.text = customText.customTextReferenceName;
     
@@ -128,6 +141,44 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    HandoverSection *handoverSection = preferences.handoverSections[self.section];
+    
+    // delete from singleton
+    [handoverSection.customText removeObjectAtIndex:indexPath.row];
+    
+    // remove from tableView
+    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    return proposedDestinationIndexPath;
+}
+
+// reorder data source after move
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    /*
+    Bay *bay = self.bayData[sourceIndexPath.row];
+    
+    // remove bay at old location
+    [self.bayData removeObjectAtIndex:sourceIndexPath.row];
+    
+    // add bay at new location
+    [self.bayData insertObject:bay atIndex:destinationIndexPath.row];
+     */
 }
 
 #pragma mark - Table view delegate
