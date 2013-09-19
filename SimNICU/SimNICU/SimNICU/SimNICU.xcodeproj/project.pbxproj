@@ -1034,6 +1034,8 @@
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
 		5CED220017A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
+		5CF4B79817EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */; };
+		5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */; };
 		5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 		5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 /* End PBXBuildFile section */
@@ -1796,6 +1798,8 @@
 		5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalculatorsInfoViewController.m; sourceTree = "<group>"; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
+		5CF4B79617EB6F9A009AB1F8 /* CustomTextEditorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextEditorTableViewController.h; sourceTree = "<group>"; };
+		5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextEditorTableViewController.m; sourceTree = "<group>"; };
 		5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeightMethods.h; sourceTree = "<group>"; };
 		5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeightMethods.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3361,6 +3365,8 @@
 				5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */,
 				5C6B6E4D17E78D31003600DD /* CustomTextModel.h */,
 				5C6B6E4E17E78D31003600DD /* CustomTextModel.m */,
+				5CF4B79617EB6F9A009AB1F8 /* CustomTextEditorTableViewController.h */,
+				5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */,
 			);
 			name = CustomText;
 			sourceTree = "<group>";
@@ -4381,6 +4387,7 @@
 				5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
 				5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 				5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */,
+				5CF4B79817EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4573,6 +4580,7 @@
 				5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
 				5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 				5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */,
+				5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

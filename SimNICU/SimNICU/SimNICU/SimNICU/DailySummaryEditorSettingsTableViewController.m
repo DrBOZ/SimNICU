@@ -21,7 +21,7 @@
 
 @implementation DailySummaryEditorSettingsTableViewController
 {
-    NSArray *tableData;
+    NSMutableArray *tableData;
 }
 
 - (UISwitch *)trackball
@@ -63,7 +63,20 @@
 {
     CBTableViewSectionData *sectionData = tableData[section];
     
-    return [sectionData.rowData count];
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if (section == 0)
+    {
+        return [sectionData.rowData count];
+    }
+    if ([preferences.trackball intValue] == 1)
+    {
+        return [sectionData.rowData count];
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -75,7 +88,20 @@
 {
     CBTableViewSectionData *sectionData = tableData[section];
     
-    return sectionData.titleForHeader;
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if (section == 0)
+    {
+        return sectionData.titleForHeader;;
+    }
+    if ([preferences.trackball intValue] == 1)
+    {
+        return sectionData.titleForHeader;;
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -197,6 +223,9 @@
     Preferences *preferences = [Preferences sharedPreferences];
     
     preferences.trackball = [NSNumber numberWithInt:self.trackball.on];
+    
+    // reload patient sections
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table view delegate

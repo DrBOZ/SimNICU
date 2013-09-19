@@ -6,35 +6,27 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "HandoverSectionCustomText.h"
+#import "CustomTextEditorTableViewController.h"
 #import "CustomTextTableViewController.h"
-#import "CustomTextModel.h"
+#import "HandoverSectionCustomText.h"
+// #import "CustomTextModel.h"
 #import "HandoverSection.h"
 
 @interface CustomTextTableViewController ()
 {
-    NSArray *tableData;
+    // NSArray *tableData;
 }
 
 @end
 
 @implementation CustomTextTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // get table data
-    tableData = [CustomTextModel getArrayOfCustomTextForHandoverSection:self.section];
+    // tableData = [CustomTextModel getArrayOfCustomTextForHandoverSection:self.section];
     
     // set trackers
     [CBTrackers logEvent:@"Custom Text"];
@@ -57,11 +49,6 @@
     [super setEditing:editing animated:animated];
     
     [self.tableView setEditing:editing animated:animated];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    // [self.tableView setEditing:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -132,6 +119,7 @@
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     
@@ -202,7 +190,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    CustomTextEditorTableViewController *newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    newViewController.section = self.section;
+    newViewController.row = indexPath.row;
+    
+    [self.navigationController pushViewController:newViewController animated:YES];
 }
 
 @end

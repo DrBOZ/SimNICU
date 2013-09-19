@@ -10,6 +10,6 @@
 
 @interface DailySummaryEditorSettingsModel : NSObject
 
-+ (NSArray *)getArrayForTableView;
++ (NSMutableArray *)getArrayForTableView;
 
 @end

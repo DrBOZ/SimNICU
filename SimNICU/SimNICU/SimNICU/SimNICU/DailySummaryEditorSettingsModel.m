@@ -13,8 +13,10 @@
 
 @implementation DailySummaryEditorSettingsModel
 
-+ (NSArray *)getArrayForTableView
++ (NSMutableArray *)getArrayForTableView
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     NSMutableArray *tableData = [[NSMutableArray alloc] initWithCapacity:3];
     CBTableViewSectionData *sectionData;
     CBTableViewRowData *rowData;
@@ -34,22 +36,25 @@
     
     [tableData addObject:sectionData];
     
-    // section 1
-    sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Custom Text";
-    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:20];
-    
-    Preferences *preferences = [Preferences sharedPreferences];
-    HandoverSection *section;
-    
-    for (section in preferences.handoverSections)
+    if ([preferences.trackball intValue] == 1)
     {
-        rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = section.sectionName;
-        [sectionData.rowData addObject:rowData];
+        // section 1
+        sectionData = [[CBTableViewSectionData alloc] init];
+        sectionData.titleForHeader = @"Custom Text";
+        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:20];
+        
+        Preferences *preferences = [Preferences sharedPreferences];
+        HandoverSection *section;
+        
+        for (section in preferences.handoverSections)
+        {
+            rowData = [[CBTableViewRowData alloc] init];
+            rowData.text = section.sectionName;
+            [sectionData.rowData addObject:rowData];
+        }
+        
+        [tableData addObject:sectionData];
     }
-    
-    [tableData addObject:sectionData];
     
     return tableData;
 }

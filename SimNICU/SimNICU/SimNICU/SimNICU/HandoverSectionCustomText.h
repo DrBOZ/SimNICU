@@ -11,6 +11,8 @@
 @interface HandoverSectionCustomText : NSObject
 
 @property (nonatomic, strong) NSString *customTextReferenceName;
+@property (nonatomic, strong) NSNumber *customTextHeight;
+@property (nonatomic, strong) NSNumber *customTextHeightLandscape;
 @property (nonatomic, strong) NSString *customText;
 
 @end

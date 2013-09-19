@@ -21,11 +21,20 @@
     [super viewDidLoad];
 
     // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
+    // [CBDisplayMethods setBackgroundForTableView:self.tableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
     [self.tableView addGestureRecognizer:self.swipeGestureRecognizer];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.tableView];
+    
+    // deselect row
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
