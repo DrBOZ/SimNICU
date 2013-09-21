@@ -3012,6 +3012,8 @@
 		5C940C2D166E3DF10044A7D1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */,
+				5C6842A517E3BF1D00C172EB /* FingerprintGray.png */,
 				5CAE2E0A17E6B3B1001823A3 /* CBPhotoCropper */,
 				5C88E74917D3BCCA00DAB98D /* Hospital Logo */,
 				5C5A116A17D240AB00CE96E5 /* Intro Screen */,
@@ -3268,8 +3270,6 @@
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
 				5C4DC74517E54B4800412C72 /* UAExampleView.xib */,
 				5C4DC70E17E5340C00412C72 /* Panel */,
-				5C6842A417E3BF1D00C172EB /* FingerprintGray@2x.png */,
-				5C6842A517E3BF1D00C172EB /* FingerprintGray.png */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,

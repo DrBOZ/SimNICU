@@ -96,6 +96,9 @@
 // 6) Press and hold on ml/kg/day button toggles between mmol/kg/day
 // 7) patient.
 
+// 8) Finish dictation commands
+// 9) Finish custom text commands
+
 
 @end
 
