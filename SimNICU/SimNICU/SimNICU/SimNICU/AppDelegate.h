@@ -52,11 +52,11 @@
 
 // Rear VC
 #define SETTINGS_PREVIEW_MODE 1
-#define SYNC_PREVIEW_MODE 1
+#define SYNC_PREVIEW_MODE 0
 
 // Settings
-#define LOCALISATION_PREVIEW_MODE 1
-#define GROWTH_CHART_PREVIEW_MODE 1
+#define LOCALISATION_PREVIEW_MODE 0
+#define GROWTH_CHART_PREVIEW_MODE 0
 
 #import "ZUUIRevealController.h"
 #import "DrugDatabase.h"
@@ -98,6 +98,7 @@
 
 // 8) Finish dictation commands
 // 9) Finish custom text commands
+//10) Custom text subviews is too difficult currently
 
 
 @end

@@ -1987,8 +1987,6 @@
 			children = (
 				5C4DC74217E549EC00412C72 /* UAExampleModalPanel.h */,
 				5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */,
-				5C23A24117EDD99B00299D3E /* CBModalPanel.h */,
-				5C23A24217EDD99B00299D3E /* CBModalPanel.m */,
 				5C4DC74517E54B4800412C72 /* UAExampleView.xib */,
 				5C4DC70E17E5340C00412C72 /* UAModalPanelItems */,
 			);
@@ -3079,6 +3077,8 @@
 				5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */,
 				5C6FF681179E6D55004E35C5 /* CBDisplayMethods.h */,
 				5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */,
+				5C23A24117EDD99B00299D3E /* CBModalPanel.h */,
+				5C23A24217EDD99B00299D3E /* CBModalPanel.m */,
 				5C88570A17E443FB00446E5F /* CBTableViewController.h */,
 				5C88570B17E443FB00446E5F /* CBTableViewController.m */,
 				5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */,
