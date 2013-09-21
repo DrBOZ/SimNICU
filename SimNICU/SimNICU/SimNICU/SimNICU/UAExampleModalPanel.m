@@ -82,6 +82,7 @@
     
     if ([self.whoCreatedMe isEqualToString:@"CustomButton"])
     {
+        // Custom Text
         if (!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
@@ -96,7 +97,7 @@
     }
     else
     {
-        // if dictation commands
+        // Dictation commands
         if (!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];

@@ -153,6 +153,8 @@
 		5C23A23B17EDD1A300299D3E /* SDSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22E17EDD1A300299D3E /* SDSubCell.m */; };
 		5C23A23C17EDD1A300299D3E /* SDSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22F17EDD1A300299D3E /* SDSubCell.xib */; };
 		5C23A23D17EDD1A300299D3E /* SDSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22F17EDD1A300299D3E /* SDSubCell.xib */; };
+		5C23A24317EDD99B00299D3E /* CBModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A24217EDD99B00299D3E /* CBModalPanel.m */; };
+		5C23A24417EDD99B00299D3E /* CBModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A24217EDD99B00299D3E /* CBModalPanel.m */; };
 		5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
@@ -963,10 +965,6 @@
 		5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
 		5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4617CB411900426991 /* JaundiceViewController.m */; };
 		5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4617CB411900426991 /* JaundiceViewController.m */; };
-		5CD43A4D17CB4B1100426991 /* Jaundice2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */; };
-		5CD43A4E17CB4B1100426991 /* Jaundice2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */; };
-		5CD43A4F17CB4B1100426991 /* Jaundice2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */; };
-		5CD43A5017CB4B1100426991 /* Jaundice2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */; };
 		5CD541C717B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */; };
 		5CD541C817B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */; };
 		5CD541C917B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */; };
@@ -1156,6 +1154,8 @@
 		5C23A22D17EDD1A300299D3E /* SDSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSubCell.h; sourceTree = "<group>"; };
 		5C23A22E17EDD1A300299D3E /* SDSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSubCell.m; sourceTree = "<group>"; };
 		5C23A22F17EDD1A300299D3E /* SDSubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDSubCell.xib; sourceTree = "<group>"; };
+		5C23A24117EDD99B00299D3E /* CBModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBModalPanel.h; sourceTree = "<group>"; };
+		5C23A24217EDD99B00299D3E /* CBModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBModalPanel.m; sourceTree = "<group>"; };
 		5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperSizeTableViewController.h; sourceTree = "<group>"; };
 		5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperSizeTableViewController.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
@@ -1771,9 +1771,6 @@
 		5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugRouteOfAdministration.m; sourceTree = "<group>"; };
 		5CD43A4517CB411900426991 /* JaundiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JaundiceViewController.h; sourceTree = "<group>"; };
 		5CD43A4617CB411900426991 /* JaundiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JaundiceViewController.m; sourceTree = "<group>"; };
-		5CD43A4A17CB4B1100426991 /* Jaundice2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jaundice2ViewController.h; sourceTree = "<group>"; };
-		5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jaundice2ViewController.m; sourceTree = "<group>"; };
-		5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Jaundice2ViewController.xib; sourceTree = "<group>"; };
 		5CD541BD17B6A3B900FCAE5C /* 01_30_Normal_Frontal_lobes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01_30_Normal_Frontal_lobes.png; sourceTree = "<group>"; };
 		5CD541BE17B6A3B900FCAE5C /* 02_30_Normal_Anterior_horns_of_lateral_ventricles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02_30_Normal_Anterior_horns_of_lateral_ventricles.png; sourceTree = "<group>"; };
 		5CD541BF17B6A3B900FCAE5C /* 03_30_Normal_Third_ventricle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03_30_Normal_Third_ventricle.png; sourceTree = "<group>"; };
@@ -2028,6 +2025,19 @@
 			path = SDNestedTable;
 			sourceTree = "<group>";
 		};
+		5C23A24017EDD65400299D3E /* UAModalPanel */ = {
+			isa = PBXGroup;
+			children = (
+				5C4DC74217E549EC00412C72 /* UAExampleModalPanel.h */,
+				5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */,
+				5C23A24117EDD99B00299D3E /* CBModalPanel.h */,
+				5C23A24217EDD99B00299D3E /* CBModalPanel.m */,
+				5C4DC74517E54B4800412C72 /* UAExampleView.xib */,
+				5C4DC70E17E5340C00412C72 /* UAModalPanelItems */,
+			);
+			name = UAModalPanel;
+			sourceTree = "<group>";
+		};
 		5C2B164617DC0F400038B4A8 /* PDF Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2166,7 +2176,7 @@
 			name = Screen_FeedsAndFluids;
 			sourceTree = "<group>";
 		};
-		5C4DC70E17E5340C00412C72 /* Panel */ = {
+		5C4DC70E17E5340C00412C72 /* UAModalPanelItems */ = {
 			isa = PBXGroup;
 			children = (
 				5C4DC70F17E5340C00412C72 /* Categories */,
@@ -2174,6 +2184,7 @@
 				5C4DC71917E5340C00412C72 /* Panels */,
 				5C4DC71E17E5340C00412C72 /* Views */,
 			);
+			name = UAModalPanelItems;
 			path = Panel;
 			sourceTree = "<group>";
 		};
@@ -2672,9 +2683,11 @@
 				5C940AAE166E38F60044A7D1 /* Kal */,
 				5C940A9F166E38D10044A7D1 /* KKPasscodeLock */,
 				5C5A116017D2391800CE96E5 /* kxintro */,
+				5C23A22417EDD1A300299D3E /* SDNestedTable */,
 				5C940ADC166E39720044A7D1 /* Shinobi */,
 				5C940A98166E38B90044A7D1 /* SVSegmentedControl */,
 				5C940ADA166E39600044A7D1 /* TestFlight */,
+				5C23A24017EDD65400299D3E /* UAModalPanel */,
 				5C0B9B7517D201F3000B9E34 /* UDBarTrackballItem */,
 				5C940A94166E38A00044A7D1 /* ZUUIRevealController */,
 			);
@@ -3307,17 +3320,12 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
-				5C4DC74217E549EC00412C72 /* UAExampleModalPanel.h */,
-				5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */,
-				5C23A22417EDD1A300299D3E /* SDNestedTable */,
 				5C4DC75017E562F000412C72 /* DictationCommands.h */,
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
-				5C4DC74517E54B4800412C72 /* UAExampleView.xib */,
-				5C4DC70E17E5340C00412C72 /* Panel */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
-				5CD43A4417CB40E600426991 /* TextInput */,
+				5CD43A4417CB40E600426991 /* AdvancedDataInput */,
 				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
 			name = "Daily Summary";
@@ -3473,16 +3481,13 @@
 			name = "Vitamins (Multivitamins)";
 			sourceTree = "<group>";
 		};
-		5CD43A4417CB40E600426991 /* TextInput */ = {
+		5CD43A4417CB40E600426991 /* AdvancedDataInput */ = {
 			isa = PBXGroup;
 			children = (
 				5CD43A4517CB411900426991 /* JaundiceViewController.h */,
 				5CD43A4617CB411900426991 /* JaundiceViewController.m */,
-				5CD43A4A17CB4B1100426991 /* Jaundice2ViewController.h */,
-				5CD43A4B17CB4B1100426991 /* Jaundice2ViewController.m */,
-				5CD43A4C17CB4B1100426991 /* Jaundice2ViewController.xib */,
 			);
-			name = TextInput;
+			name = AdvancedDataInput;
 			sourceTree = "<group>";
 		};
 		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
@@ -3881,7 +3886,6 @@
 				5CE9EB5A17B9653E0085422F /* tutorial@2x.png in Resources */,
 				5CDA652317C0FC7900AC5266 /* plusButton2@2x.png in Resources */,
 				5CDA652617C0FC8200AC5266 /* plusButton2.png in Resources */,
-				5CD43A4F17CB4B1100426991 /* Jaundice2ViewController.xib in Resources */,
 				5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */,
 				5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */,
 				5C0B9B8517D2022B000B9E34 /* trackball blue highlighted@2x.png in Resources */,
@@ -4199,7 +4203,6 @@
 				5CE9EB5B17B9653E0085422F /* tutorial@2x.png in Resources */,
 				5CDA652417C0FC7900AC5266 /* plusButton2@2x.png in Resources */,
 				5CDA652717C0FC8200AC5266 /* plusButton2.png in Resources */,
-				5CD43A5017CB4B1100426991 /* Jaundice2ViewController.xib in Resources */,
 				5C5A119717D25F6800CE96E5 /* screen01b.png in Resources */,
 				5C5A119A17D2615800CE96E5 /* screen02a.png in Resources */,
 				5C5A119D17D2637C00CE96E5 /* screen01c.png in Resources */,
@@ -4400,7 +4403,6 @@
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
 				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
-				5CD43A4D17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 				5C39F0A917CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
 				5C0B9B9117D2023C000B9E34 /* UDBarTrackballItem.m in Sources */,
 				5C0B9B9417D20438000B9E34 /* UDInputAccessoryView.m in Sources */,
@@ -4442,6 +4444,7 @@
 				5C23A23617EDD1A300299D3E /* SDNestedTableViewController.m in Sources */,
 				5C23A23817EDD1A300299D3E /* SDSelectableCell.m in Sources */,
 				5C23A23A17EDD1A300299D3E /* SDSubCell.m in Sources */,
+				5C23A24317EDD99B00299D3E /* CBModalPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4602,7 +4605,6 @@
 				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */,
 				5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */,
-				5CD43A4E17CB4B1100426991 /* Jaundice2ViewController.m in Sources */,
 				5C39F0AA17CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
 				5C5A11A717D2727C00CE96E5 /* AAMFeedbackTopicsViewController.m in Sources */,
 				5C5A11A917D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */,
@@ -4639,6 +4641,7 @@
 				5C23A23717EDD1A300299D3E /* SDNestedTableViewController.m in Sources */,
 				5C23A23917EDD1A300299D3E /* SDSelectableCell.m in Sources */,
 				5C23A23B17EDD1A300299D3E /* SDSubCell.m in Sources */,
+				5C23A24417EDD99B00299D3E /* CBModalPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,15 +23,13 @@
 #import "BilirubinResult.h"
 #import "HandoverSection.h"
 #import "CBTimeMethods.h"
+#import "CBModalPanel.h"
 #import "HandoverRow.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
 
-#import "UAExampleModalPanel.h" // rename this later
-
 // #import "CBBarCustomTableViewTextItem.h"
-
 
 @interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
 {
@@ -108,7 +106,7 @@
 @property (nonatomic, strong) UITableViewCell *shinobiCell;
 @property (nonatomic, strong) UIImage *shinobiChartImage;
 
-@property (nonatomic, strong) UAExampleModalPanel *modalPanel;
+@property (nonatomic, strong) CBModalPanel *modalPanel;
 
 @property (nonatomic, strong) UIButton *fingerprintButton;
 
@@ -2419,7 +2417,7 @@
     
     if (!self.modalPanel)
     {
-        self.modalPanel = [[UAExampleModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+        self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
         self.modalPanel.delegate = self;
         self.modalPanel.whoCreatedMe = @"InfoBox";
         
@@ -2435,7 +2433,7 @@
     }
 }
 
-- (void)willCloseModalPanel:(UAExampleModalPanel *)modalPanel
+- (void)willCloseModalPanel:(CBModalPanel *)modalPanel
 {
     self.modalPanel = nil;
 }
@@ -4216,7 +4214,7 @@
         HandoverSection *section = preferences.handoverSections[textView.tag];
         
         // setup modal
-        self.modalPanel = [[UAExampleModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
+        self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
         self.modalPanel.delegate = self;
         self.modalPanel.whoCreatedMe = @"CustomButton";
         
@@ -4238,7 +4236,7 @@
 
 #pragma mark - CBModalPanel delegate
 
-- (void)CBModalPanelUserDidSelectCustomTextToPaste:(UAExampleModalPanel *)modalPanel inTextView:(UITextView *)textView
+- (void)CBModalPanelUserDidSelectCustomTextToPaste:(CBModalPanel *)modalPanel inTextView:(UITextView *)textView
 {
     // paste text
     [textView paste:nil];

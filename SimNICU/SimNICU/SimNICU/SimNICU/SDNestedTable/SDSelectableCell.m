@@ -76,7 +76,8 @@
     [checkBox addSubview:onCheckBox];
     checkBox.alpha = 1.0;
     itemText.alpha = 1.0;
-    self.backgroundView.backgroundColor = UIColorFromRGBWithAlpha(0x0d2e4d, 1.0);
+    // self.backgroundView.backgroundColor = UIColorFromRGBWithAlpha(0x0d2e4d, 1.0);
+    self.backgroundView.backgroundColor = [UIColor blueColor];
     self.backgroundView.alpha = 0.7;
 }
 
@@ -96,7 +97,8 @@
     [checkBox addSubview:onCheckBox];
     checkBox.alpha = 0.45;
     itemText.alpha = 0.7;
-    self.backgroundView.backgroundColor = UIColorFromRGBWithAlpha(0x081c2f, 1.0);
+    // self.backgroundView.backgroundColor = UIColorFromRGBWithAlpha(0x081c2f, 1.0);
+    self.backgroundView.backgroundColor = [UIColor blueColor];
     self.backgroundView.alpha = 0.7;
 }
 
