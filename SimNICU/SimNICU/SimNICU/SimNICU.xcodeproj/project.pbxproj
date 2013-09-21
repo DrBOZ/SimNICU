@@ -139,6 +139,20 @@
 		5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */; };
 		5C1FC128179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
+		5C23A23017EDD1A300299D3E /* SDGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22617EDD1A300299D3E /* SDGroupCell.m */; };
+		5C23A23117EDD1A300299D3E /* SDGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22617EDD1A300299D3E /* SDGroupCell.m */; };
+		5C23A23217EDD1A300299D3E /* SDGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22717EDD1A300299D3E /* SDGroupCell.xib */; };
+		5C23A23317EDD1A300299D3E /* SDGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22717EDD1A300299D3E /* SDGroupCell.xib */; };
+		5C23A23417EDD1A300299D3E /* SDNestedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22817EDD1A300299D3E /* SDNestedTableView.xib */; };
+		5C23A23517EDD1A300299D3E /* SDNestedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22817EDD1A300299D3E /* SDNestedTableView.xib */; };
+		5C23A23617EDD1A300299D3E /* SDNestedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22A17EDD1A300299D3E /* SDNestedTableViewController.m */; };
+		5C23A23717EDD1A300299D3E /* SDNestedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22A17EDD1A300299D3E /* SDNestedTableViewController.m */; };
+		5C23A23817EDD1A300299D3E /* SDSelectableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22C17EDD1A300299D3E /* SDSelectableCell.m */; };
+		5C23A23917EDD1A300299D3E /* SDSelectableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22C17EDD1A300299D3E /* SDSelectableCell.m */; };
+		5C23A23A17EDD1A300299D3E /* SDSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22E17EDD1A300299D3E /* SDSubCell.m */; };
+		5C23A23B17EDD1A300299D3E /* SDSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A22E17EDD1A300299D3E /* SDSubCell.m */; };
+		5C23A23C17EDD1A300299D3E /* SDSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22F17EDD1A300299D3E /* SDSubCell.xib */; };
+		5C23A23D17EDD1A300299D3E /* SDSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C23A22F17EDD1A300299D3E /* SDSubCell.xib */; };
 		5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
@@ -1131,6 +1145,17 @@
 		5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsTableViewController.m; sourceTree = "<group>"; };
 		5C1FC126179EB32E00E345C4 /* CBDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePicker.h; sourceTree = "<group>"; };
 		5C1FC127179EB32E00E345C4 /* CBDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePicker.m; sourceTree = "<group>"; };
+		5C23A22517EDD1A300299D3E /* SDGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDGroupCell.h; sourceTree = "<group>"; };
+		5C23A22617EDD1A300299D3E /* SDGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDGroupCell.m; sourceTree = "<group>"; };
+		5C23A22717EDD1A300299D3E /* SDGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDGroupCell.xib; sourceTree = "<group>"; };
+		5C23A22817EDD1A300299D3E /* SDNestedTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDNestedTableView.xib; sourceTree = "<group>"; };
+		5C23A22917EDD1A300299D3E /* SDNestedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDNestedTableViewController.h; sourceTree = "<group>"; };
+		5C23A22A17EDD1A300299D3E /* SDNestedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDNestedTableViewController.m; sourceTree = "<group>"; };
+		5C23A22B17EDD1A300299D3E /* SDSelectableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSelectableCell.h; sourceTree = "<group>"; };
+		5C23A22C17EDD1A300299D3E /* SDSelectableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSelectableCell.m; sourceTree = "<group>"; };
+		5C23A22D17EDD1A300299D3E /* SDSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSubCell.h; sourceTree = "<group>"; };
+		5C23A22E17EDD1A300299D3E /* SDSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSubCell.m; sourceTree = "<group>"; };
+		5C23A22F17EDD1A300299D3E /* SDSubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDSubCell.xib; sourceTree = "<group>"; };
 		5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperSizeTableViewController.h; sourceTree = "<group>"; };
 		5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperSizeTableViewController.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
@@ -1983,6 +2008,24 @@
 				5CB46B6717D9FC13003365F6 /* Options */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		5C23A22417EDD1A300299D3E /* SDNestedTable */ = {
+			isa = PBXGroup;
+			children = (
+				5C23A22517EDD1A300299D3E /* SDGroupCell.h */,
+				5C23A22617EDD1A300299D3E /* SDGroupCell.m */,
+				5C23A22717EDD1A300299D3E /* SDGroupCell.xib */,
+				5C23A22817EDD1A300299D3E /* SDNestedTableView.xib */,
+				5C23A22917EDD1A300299D3E /* SDNestedTableViewController.h */,
+				5C23A22A17EDD1A300299D3E /* SDNestedTableViewController.m */,
+				5C23A22B17EDD1A300299D3E /* SDSelectableCell.h */,
+				5C23A22C17EDD1A300299D3E /* SDSelectableCell.m */,
+				5C23A22D17EDD1A300299D3E /* SDSubCell.h */,
+				5C23A22E17EDD1A300299D3E /* SDSubCell.m */,
+				5C23A22F17EDD1A300299D3E /* SDSubCell.xib */,
+			);
+			path = SDNestedTable;
 			sourceTree = "<group>";
 		};
 		5C2B164617DC0F400038B4A8 /* PDF Settings */ = {
@@ -3266,6 +3309,7 @@
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
 				5C4DC74217E549EC00412C72 /* UAExampleModalPanel.h */,
 				5C4DC74117E549EB00412C72 /* UAExampleModalPanel.m */,
+				5C23A22417EDD1A300299D3E /* SDNestedTable */,
 				5C4DC75017E562F000412C72 /* DictationCommands.h */,
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
 				5C4DC74517E54B4800412C72 /* UAExampleView.xib */,
@@ -3884,6 +3928,9 @@
 				5C4DC72F17E5340C00412C72 /* modalButton.png in Resources */,
 				5C4DC73117E5340C00412C72 /* modalButton@2x.png in Resources */,
 				5C4DC74617E54B4900412C72 /* UAExampleView.xib in Resources */,
+				5C23A23217EDD1A300299D3E /* SDGroupCell.xib in Resources */,
+				5C23A23417EDD1A300299D3E /* SDNestedTableView.xib in Resources */,
+				5C23A23C17EDD1A300299D3E /* SDSubCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4187,6 +4234,9 @@
 				5C4DC73017E5340C00412C72 /* modalButton.png in Resources */,
 				5C4DC73217E5340C00412C72 /* modalButton@2x.png in Resources */,
 				5C4DC74717E54B4900412C72 /* UAExampleView.xib in Resources */,
+				5C23A23317EDD1A300299D3E /* SDGroupCell.xib in Resources */,
+				5C23A23517EDD1A300299D3E /* SDNestedTableView.xib in Resources */,
+				5C23A23D17EDD1A300299D3E /* SDSubCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4388,6 +4438,10 @@
 				5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 				5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */,
 				5CF4B79817EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
+				5C23A23017EDD1A300299D3E /* SDGroupCell.m in Sources */,
+				5C23A23617EDD1A300299D3E /* SDNestedTableViewController.m in Sources */,
+				5C23A23817EDD1A300299D3E /* SDSelectableCell.m in Sources */,
+				5C23A23A17EDD1A300299D3E /* SDSubCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4581,6 +4635,10 @@
 				5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 				5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */,
 				5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
+				5C23A23117EDD1A300299D3E /* SDGroupCell.m in Sources */,
+				5C23A23717EDD1A300299D3E /* SDNestedTableViewController.m in Sources */,
+				5C23A23917EDD1A300299D3E /* SDSelectableCell.m in Sources */,
+				5C23A23B17EDD1A300299D3E /* SDSubCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
