@@ -37,6 +37,8 @@
     buttonLabel.numberOfLines = 1;
     buttonLabel.text = buttonText;
     
+    self.buttonText = buttonText;  // allows me to identify buttonItem later
+    
     [customButton addSubview:buttonLabel];
     
     [customButton setFrame:CGRectMake(0.0f, 0.0f, 119.0f, 44.0f)];
@@ -53,8 +55,9 @@
 
 - (void)touchDownAction:(id)sender withEvent:(UIEvent *)event
 {
+    // old code
     // insert text into textView
-    [self insertString:self.textViewText intoTextView:self.textView];
+    // [self insertString:self.textViewText intoTextView:self.textView];
     
     // inform delegate
     if (self.delegate)

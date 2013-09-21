@@ -908,6 +908,7 @@
         displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];
         
         // add fingerprint button
+        /*
         self.fingerprintButton = [[UIButton alloc] init];
         self.fingerprintButton.frame = CGRectMake(320.0f - 40.0f, 15.0f, 30.0f, 37.8f);
         [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateNormal];
@@ -917,6 +918,7 @@
         self.fingerprintButton.hidden = YES;
         
         [cell.contentView addSubview:self.fingerprintButton];
+         */
     }
 #pragma mark Background
     else if ([CellIdentifier isEqualToString:@"Background"])
@@ -1387,7 +1389,17 @@
     [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     
     // animate the fingerprint in
-    [self animateFingerprintIn];
+    // [self animateFingerprintIn];
+    
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // instead, check if user is using the 3.5 inch screen or 4 inch screen shit
+    if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
+    {
+        // animate patient details off to make room
+        [self animatePatientDetailsOff];
+    }
     
     // change right bar button
     [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showModalPanel:)] animated:YES];
@@ -1396,7 +1408,15 @@
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     // animate the fingerprint off
-    [self animateFingerprintOut];
+    // [self animateFingerprintOut];
+    
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
+    {
+        [self animatePatientDetailsOn];
+    }
     
     // change right bar button back
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -2407,6 +2427,60 @@
                      completion:^(BOOL finished){
                          
                          self.fingerprintButton.hidden = YES;
+                         
+                     }];
+}
+
+- (void)animatePatientDetailsOff
+{
+    CGFloat y = self.myTableView1.frame.origin.y - self.myTableView1.frame.size.height;
+    CGFloat y2 = self.myTableView2.frame.origin.y - self.myTableView1.frame.size.height;
+    
+    CGRect patientDetailsEndingFrame = CGRectMake(self.myTableView1.frame.origin.x, y, self.myTableView1.frame.size.width, self.myTableView1.frame.size.height);
+    
+    CGRect dailySummaryEndingFrame = CGRectMake(self.myTableView2.frame.origin.x, y2, self.myTableView2.frame.size.width, self.myTableView2.frame.size.height);
+    
+    CGFloat animationDuration = 0.25f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         
+                         self.myTableView1.frame = patientDetailsEndingFrame;
+                         self.myTableView2.frame = dailySummaryEndingFrame;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+
+- (void)animatePatientDetailsOn
+{
+    CGFloat y = 0.0f;
+    CGFloat y2 = self.myTableView2.frame.origin.y + self.myTableView1.frame.size.height;
+    
+    CGRect patientDetailsEndingFrame = CGRectMake(self.myTableView1.frame.origin.x, y, self.myTableView1.frame.size.width, self.myTableView1.frame.size.height);
+    
+    CGRect dailySummaryEndingFrame = CGRectMake(self.myTableView2.frame.origin.x, y2, self.myTableView2.frame.size.width, self.myTableView2.frame.size.height);
+    
+    CGFloat animationDuration = 0.25f;
+    CGFloat animationDelay = 0.0f;
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:animationDelay
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         
+                         self.myTableView1.frame = patientDetailsEndingFrame;
+                         self.myTableView2.frame = dailySummaryEndingFrame;
+                         
+                     }
+                     completion:^(BOOL finished){
+                         
+                         
                          
                      }];
 }
@@ -4191,7 +4265,8 @@
     UDBarTrackballItem *trackball = [[UDBarTrackballItem alloc] initForTextView:textView];
     
     // create left custom text button
-    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"ml/kg/day" insertingTextViewText:@" ml/kg/day"];
+    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"done" insertingTextViewText:@""];
+    customText1.delegate = self;
     
     // create right custom text button
     CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom" insertingTextViewText:@""];
@@ -4204,32 +4279,40 @@
 
 #pragma mark - CBBarCustomTextItem delegate
 
-- (void)CBBarButtonTextItem:(id)sender wasPressedInTextView:(UITextView *)textView
+- (void)CBBarButtonTextItem:(CBBarCustomTextItem *)sender wasPressedInTextView:(UITextView *)textView
 {
-    if (!self.modalPanel)
+    // work out which button was pressed
+    if ([sender.buttonText isEqualToString:@"done"])
     {
-        // get array
-        Preferences *preferences = [Preferences sharedPreferences];
-        
-        HandoverSection *section = preferences.handoverSections[textView.tag];
-        
-        // setup modal
-        self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
-        self.modalPanel.delegate = self;
-        self.modalPanel.whoCreatedMe = @"CustomButton";
-        
-        // add modal
-        [self.view addSubview:self.modalPanel];
-        
-        // show from button
-        [self.modalPanel showFromPoint:CGPointMake(300.0f, 300.0f)];
+        [textView resignFirstResponder];
     }
-    else
+    else if ([sender.buttonText isEqualToString:@"custom"])
     {
-        if ([self.modalPanel.whoCreatedMe isEqualToString:@"CustomButton"])
+        if (!self.modalPanel)
         {
-            // close modal
-            [self.modalPanel closePressed:nil];
+            // get array
+            Preferences *preferences = [Preferences sharedPreferences];
+            
+            HandoverSection *section = preferences.handoverSections[textView.tag];
+            
+            // setup modal
+            self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
+            self.modalPanel.delegate = self;
+            self.modalPanel.whoCreatedMe = @"CustomButton";
+            
+            // add modal
+            [self.view addSubview:self.modalPanel];
+            
+            // show from button
+            [self.modalPanel showFromPoint:CGPointMake(300.0f, 300.0f)];
+        }
+        else
+        {
+            if ([self.modalPanel.whoCreatedMe isEqualToString:@"CustomButton"])
+            {
+                // close modal
+                [self.modalPanel closePressed:nil];
+            }
         }
     }
 }

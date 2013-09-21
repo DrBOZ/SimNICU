@@ -15,7 +15,7 @@
 
 @optional
 
-- (void)CBBarButtonTextItem:(id)sender wasPressedInTextView:(UITextView *)textView;
+- (void)CBBarButtonTextItem:(CBBarCustomTextItem *)sender wasPressedInTextView:(UITextView *)textView;
 
 - (void)CBBarButtonTextItemDidChangeTextInTextView:(UITextView *)textView;
 
@@ -28,6 +28,7 @@
 @interface CBBarCustomTextItem : UIBarButtonItem
 
 @property (nonatomic, unsafe_unretained) id <CBBarButtonTextItemDelegate> delegate;
+@property (nonatomic, strong) NSString *buttonText;
 
 - (id)initForTextView:(UITextView *)textView withButtonText:(NSString *)buttonText insertingTextViewText:(NSString *)textViewText;
 

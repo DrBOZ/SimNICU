@@ -110,7 +110,8 @@
 
 - (UIView *)roundedRect
 {
-	if (!roundedRect) {
+	if (!roundedRect)
+    {
 		self.roundedRect = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		self.roundedRect.layer.masksToBounds = YES;
 		self.roundedRect.backgroundColor = self.contentColor;
@@ -283,6 +284,7 @@
 - (void)showAnimationPart2Finished {};	//subclasses override
 - (void)showAnimationPart3Finished {};	//subclasses override
 - (void)showAnimationFinished {};		//subclasses override
+
 - (void)show {
 	
 	if ([delegate respondsToSelector:@selector(willShowModalPanel:)])
@@ -341,7 +343,8 @@
 					})];
 
 }
-- (void)showFromPoint:(CGPoint)point {
+- (void)showFromPoint:(CGPoint)point
+{
 	startEndPoint = point;
 	self.contentContainer.center = point;
 	[self show];
