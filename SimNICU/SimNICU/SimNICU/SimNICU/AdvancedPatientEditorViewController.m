@@ -1394,7 +1394,7 @@
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // instead, check if user is using the 3.5 inch screen or 4 inch screen shit
+    // instead, check if user is using the 3.5 inch screen or 4 inch screen
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
     {
         // animate patient details off to make room
@@ -2485,13 +2485,25 @@
                      }];
 }
 
-- (IBAction)showModalPanel:(id)sender
+- (void)showModalPanel:(id)sender
 {
     // this is called from the info box
     
     if (!self.modalPanel)
     {
-        self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+        // delegate
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        // instead, check if user is using the 3.5 inch screen or 4 inch screen
+        if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
+        {
+            self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 170.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+        }
+        else
+        {
+            self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+        }
+        
         self.modalPanel.delegate = self;
         self.modalPanel.whoCreatedMe = @"InfoBox";
         
@@ -4272,7 +4284,7 @@
     CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom" insertingTextViewText:@""];
     customText2.delegate = self;
     
-    [trackballToolbar setItems:@[customText1, trackball, customText2] animated:YES];
+    [trackballToolbar setItems:@[customText2, trackball, customText1] animated:YES];
     
     return trackballToolbar;
 }
@@ -4284,6 +4296,10 @@
     // work out which button was pressed
     if ([sender.buttonText isEqualToString:@"done"])
     {
+        // close modal
+        [self.modalPanel closePressed:nil];
+        
+        // close keyboard
         [textView resignFirstResponder];
     }
     else if ([sender.buttonText isEqualToString:@"custom"])
@@ -4296,15 +4312,28 @@
             HandoverSection *section = preferences.handoverSections[textView.tag];
             
             // setup modal
-            self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
+            
+            // delegate
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            // instead, check if user is using the 3.5 inch screen or 4 inch screen
+            if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
+            {
+                self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 170.0f) title:@"Custom text" array:section.customText forTextView:textView];
+            }
+            else
+            {
+                self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
+            }
+            
             self.modalPanel.delegate = self;
             self.modalPanel.whoCreatedMe = @"CustomButton";
             
             // add modal
             [self.view addSubview:self.modalPanel];
             
-            // show from button
-            [self.modalPanel showFromPoint:CGPointMake(300.0f, 300.0f)];
+            // show from button shit
+            [self.modalPanel showFromPoint:CGPointMake(20.0f, 300.0f)];
         }
         else
         {

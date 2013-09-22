@@ -188,6 +188,7 @@
         }
          */
         
+#pragma mark Background
         // 00 - Background
         {
             newSection = [[HandoverSection alloc] init];
@@ -233,6 +234,7 @@
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Active Problems
         // 01 - Active Problems
         {
             newSection = [[HandoverSection alloc] init];
@@ -336,6 +338,15 @@
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = NSLocalizedString(@"Pulmonary haemorrhage", nil);
                 customText.customText = NSLocalizedString(@"Pulmonary haemorrhage", nil);
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
                 
                 [newSection.customText addObject:customText];
             }
@@ -443,22 +454,36 @@
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark CXR
         // 05 - CXR
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"CXR";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Cardiovascular
         // 06 - Cardiovascular
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Cardiovascular";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
         
             [self.handoverSections addObject:newSection];
         }
-            
+        
+#pragma mark Lines
         // 07 - Lines
         {
             newSection = [[HandoverSection alloc] init];
@@ -514,7 +539,7 @@
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"hand";
-                customText.customText = @"hand";
+                customText.customText = @"hand ";
                 
                 [newSection.customText addObject:customText];
             }
@@ -523,7 +548,7 @@
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"foot";
-                customText.customText = @"foot";
+                customText.customText = @"foot ";
                 
                 [newSection.customText addObject:customText];
             }
@@ -537,9 +562,28 @@
                 [newSection.customText addObject:customText];
             }
             
+            // day 0
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[day 0]";
+                customText.customText = @"[day 0]";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Feeds & Fluids
         // 08 - Feeds & Fluids
         {
             newSection = [[HandoverSection alloc] init];
@@ -693,27 +737,51 @@
             
             [self.handoverSections addObject:newSection];
         }
-        
+       
+#pragma mark Fluid Balance
         // 09 - Fluid Balance
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Fluid Balance";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
         
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Biochemistry
         // 10 - Biochemistry
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Biochemistry";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Jaundice
         // 11 - Jaundice
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Jaundice";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
@@ -769,6 +837,15 @@
                 
                 [newSection.customText addObject:customText];
             }
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
@@ -782,36 +859,36 @@
         
             // Abidec
             {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Abidec";
-            customText.customText = @"Abidec";
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Abidec";
+                customText.customText = @"Abidec ";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
             // Amoxicillin
             {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Amoxicillin";
-            customText.customText = @"Amoxicillin";
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Amoxicillin";
+                customText.customText = @"Amoxicillin ";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
             // Benzylpenicillin
             {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Benzylpenicillin";
-            customText.customText = @"Benzylpenicillin";
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Benzylpenicillin";
+                customText.customText = @"Benzylpenicillin ";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
             // Breast milk fortifier
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Breast milk fortifier";
-            customText.customText = @"Breast milk fortifier";
+            customText.customText = @"Breast milk fortifier ";
             
             [newSection.customText addObject:customText];
         }
@@ -820,7 +897,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Caffeine";
-            customText.customText = @"Caffeine";
+            customText.customText = @"Caffeine ";
             
             [newSection.customText addObject:customText];
         }
@@ -829,7 +906,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Cefotaxime";
-            customText.customText = @"Cefotaxime";
+            customText.customText = @"Cefotaxime ";
             
             [newSection.customText addObject:customText];
         }
@@ -838,7 +915,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Flucloxacillin";
-            customText.customText = @"Flucloxacillin";
+            customText.customText = @"Flucloxacillin ";
             
             [newSection.customText addObject:customText];
         }
@@ -847,7 +924,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Folic acid";
-            customText.customText = @"Folic acid";
+            customText.customText = @"Folic acid ";
             
             [newSection.customText addObject:customText];
         }
@@ -856,7 +933,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Gaviscon";
-            customText.customText = @"Gaviscon";
+            customText.customText = @"Gaviscon ";
             
             [newSection.customText addObject:customText];
         }
@@ -865,7 +942,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Gentamicin";
-            customText.customText = @"Gentamicin";
+            customText.customText = @"Gentamicin ";
             
             [newSection.customText addObject:customText];
         }
@@ -874,7 +951,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Sytron";
-            customText.customText = @"Sytron";
+            customText.customText = @"Sytron ";
             
             [newSection.customText addObject:customText];
         }
@@ -883,7 +960,7 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Vancomycin";
-            customText.customText = @"Vancomycin";
+            customText.customText = @"Vancomycin ";
             
             [newSection.customText addObject:customText];
         }
@@ -892,138 +969,170 @@
             {
             customText = [[HandoverSectionCustomText alloc] init];
             customText.customTextReferenceName = @"Vitamins";
-            customText.customText = @"Vitamins";
+            customText.customText = @"Vitamins ";
             
             [newSection.customText addObject:customText];
         }
+            
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
         
 #pragma mark Retinopathy of Prematurity
         // 14 - ROP
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Retinopathy of prematurity";
-        newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
-        
-        // Screening not indicated
         {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Screening not indicated";
-            customText.customText = @"Screening not indicated";
-            
-            [newSection.customText addObject:customText];
-        }
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Retinopathy of prematurity";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
-        // In ROP book
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"In ROP book";
-            customText.customText = @"In ROP book";
+            // Screening not indicated
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Screening not indicated";
+                customText.customText = @"Screening not indicated";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
-        // Bilateral
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Bilateral";
-            customText.customText = @"Bilateral ";
+            // In ROP book
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"In ROP book";
+                customText.customText = @"In ROP book";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
-        // grade 1
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"grade 1";
-            customText.customText = @"grade 1 ";
+            // Bilateral
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Bilateral";
+                customText.customText = @"Bilateral ";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
-        // ROP
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"ROP";
-            customText.customText = @"ROP";
+            // grade 1
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"grade 1";
+                customText.customText = @"grade 1 ";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
-        // Lazer therapy
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Lazer therapy";
-            customText.customText = @"Lazer therapy";
+            // ROP
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"ROP";
+                customText.customText = @"ROP ";
             
-            [newSection.customText addObject:customText];
-        }
+                [newSection.customText addObject:customText];
+            }
         
-        [self.handoverSections addObject:newSection];
+            // Lazer therapy
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Lazer therapy";
+                customText.customText = @"Lazer therapy ";
+            
+                [newSection.customText addObject:customText];
+            }
+        
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+            
+                [newSection.customText addObject:customText];
+            }
+            
+            [self.handoverSections addObject:newSection];
+        }
         
 #pragma mark Neurology & Cranial USS
         // 15 - Neurology & Cranial USS
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Neurology & Cranial USS";
-        newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
-        
-        // Cranial USS ordered
         {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Cranial USS ordered";
-            customText.customText = @"Cranial USS ordered";
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Neurology & Cranial USS";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+        
+            // Cranial USS ordered
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Cranial USS ordered";
+                customText.customText = @"Cranial USS ordered";
             
-            [newSection.customText addObject:customText];
+                [newSection.customText addObject:customText];
+            }
+        
+            // Unilateral
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Unilateral_";
+                customText.customText = @"Unilateral ";
+            
+                [newSection.customText addObject:customText];
+            }
+        
+            // Bilateral
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Bilateral_";
+                customText.customText = @"Bilateral ";
+            
+                [newSection.customText addObject:customText];
+            }
+        
+            // Grade
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"grade_";
+                customText.customText = @"grade ";
+                
+                [newSection.customText addObject:customText];
+            }
+        
+            // germinal matrix haemorrhage
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"germinal matrix haemorrhage";  // need to localise
+                customText.customText = @"germinal matrix haemorrhage";
+            
+                [newSection.customText addObject:customText];
+            }
+        
+            // periventricular leucomalacia
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"periventricular leucomalacia";
+                customText.customText = @"periventricular leucomalacia";
+            
+                [newSection.customText addObject:customText];
+            }
+        
+            // current date
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"[current date]";
+                customText.customText = @"[current date]";
+            
+                [newSection.customText addObject:customText];
+            }
+        
+            [self.handoverSections addObject:newSection];
         }
         
-        // Unilateral
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Unilateral_";
-            customText.customText = @"Unilateral ";
-            
-            [newSection.customText addObject:customText];
-        }
-        
-        // Bilateral
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"Bilateral_";
-            customText.customText = @"Bilateral ";
-            
-            [newSection.customText addObject:customText];
-        }
-        
-        // Grade
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"grade_";
-            customText.customText = @"grade ";
-            
-            [newSection.customText addObject:customText];
-        }
-        
-        // germinal matrix haemorrhage
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"germinal matrix haemorrhage";  // need to localise
-            customText.customText = @"germinal matrix haemorrhage";
-            
-            [newSection.customText addObject:customText];
-        }
-        
-        // periventricular leucomalacia
-        {
-            customText = [[HandoverSectionCustomText alloc] init];
-            customText.customTextReferenceName = @"periventricular leucomalacia";
-            customText.customText = @"periventricular leucomalacia";
-            
-            [newSection.customText addObject:customText];
-        }
-        
-        [self.handoverSections addObject:newSection];
-        
+#pragma mark Parents / Social
         // 16 - Parents / Social
         {
             newSection = [[HandoverSection alloc] init];
@@ -1097,17 +1206,25 @@
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Summary
         // 18 - Summary
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Summary";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Summary";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
         
+#pragma mark Plan
         // 19 - Plan
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Plan";
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Plan";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
         
-        [self.handoverSections addObject:newSection];
+            [self.handoverSections addObject:newSection];
+        }
     }
 }
 

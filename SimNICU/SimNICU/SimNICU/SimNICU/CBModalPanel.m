@@ -120,12 +120,29 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    // setup clipboard
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    
     // obtain relevant text
     HandoverSectionCustomText *customText = tableRows[indexPath.row];
     
-    // copy relevant text into clipboard
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = customText.customText;
+    // check for special text
+    // [date text]
+    if ([customText.customText isEqualToString:@"[current date]"])
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeZone = [NSTimeZone localTimeZone];
+        
+        NSString *formattedCurrentDate = [NSString stringWithFormat:@"(%@)", [formatter stringFromDate:[NSDate date]]];
+        
+        pasteboard.string = formattedCurrentDate;
+    }
+    else
+    {
+        // copy text into clipboard
+        pasteboard.string = customText.customText;
+    }
     
     // tell delegate to paste into textView
     [self.delegate CBModalPanelUserDidSelectCustomTextToPaste:self inTextView:self.textView];

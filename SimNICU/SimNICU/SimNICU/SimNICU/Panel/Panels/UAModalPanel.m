@@ -13,7 +13,7 @@
 #import "UARoundedRectView.h"
 
 #define DEFAULT_MARGIN				20.0f
-#define DEFAULT_BACKGROUND_COLOR	[UIColor colorWithWhite:0.0 alpha:0.8]
+#define DEFAULT_BACKGROUND_COLOR	[UIColor colorWithWhite:0.0 alpha:0.7] // was 0.8
 #define DEFAULT_CORNER_RADIUS		4.0f
 #define DEFAULT_BORDER_WIDTH		1.5f
 #define DEFAULT_BORDER_COLOR		[UIColor whiteColor]
@@ -29,7 +29,8 @@
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
-	if (self != nil) {
+	if (self != nil)
+    {
 		delegate = nil;
 		roundedRect = nil;
 		closeButton = nil;
@@ -64,7 +65,8 @@
 	return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
 	self.roundedRect = nil;
 	self.closeButton = nil;
 	self.actionButton = nil;
@@ -100,7 +102,8 @@
 	
 	self.roundedRect.layer.borderColor = [borderColor CGColor];
 }
-- (void)setContentColor:(UIColor *)newColor {
+- (void)setContentColor:(UIColor *)newColor
+{
 	[newColor retain];
 	[contentColor release];
 	contentColor = newColor;
@@ -133,10 +136,12 @@
 		self.closeButton.layer.shadowColor = [[UIColor blackColor] CGColor];
 		self.closeButton.layer.shadowOffset = CGSizeMake(0,4);
 		self.closeButton.layer.shadowOpacity = 0.3;
+        self.closeButton.hidden = YES;
 		
 		[closeButton addTarget:self action:@selector(closePressed:) forControlEvents:UIControlEventTouchUpInside];		
 		[self.contentContainer insertSubview:closeButton aboveSubview:self.contentView];
 	}
+    
 	return closeButton;
 }
 
@@ -285,8 +290,8 @@
 - (void)showAnimationPart3Finished {};	//subclasses override
 - (void)showAnimationFinished {};		//subclasses override
 
-- (void)show {
-	
+- (void)show
+{
 	if ([delegate respondsToSelector:@selector(willShowModalPanel:)])
 		[delegate willShowModalPanel:self];
 	
