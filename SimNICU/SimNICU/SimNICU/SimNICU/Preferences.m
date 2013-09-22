@@ -195,11 +195,74 @@
             newSection.sectionName = @"Background";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
+            // Transfer from 
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Transfer from";
+                customText.customText = @"Transfer from ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             // Spontaneous preterm labour
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"Spontaneous preterm labour";
                 customText.customText = @"Spontaneous preterm labour";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Maternal antepartum haemorrhage
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = NSLocalizedString(@"Maternal antepartum haemorrhage", nil);
+                customText.customText = NSLocalizedString(@"Maternal antepartum haemorrhage", nil);
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Prolonged rupture of membranes
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Prolonged rupture of membranes";
+                customText.customText = @"Prolonged rupture of membranes";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Normal delivery
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Normal delivery";
+                customText.customText = @"Normal delivery";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Em LSCS
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Em LSCS";
+                customText.customText = @"Em LSCS";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Poor condition at birth
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Poor condition at birth";
+                customText.customText = @"Poor condition at birth";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Maternal group B Strep
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Maternal group B Strep";
+                customText.customText = @"Maternal group B Strep";
                 
                 [newSection.customText addObject:customText];
             }
@@ -213,20 +276,29 @@
                 [newSection.customText addObject:customText];
             }
             
+            // Maternal pyrexia
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Maternal pyrexia";
+                customText.customText = @"Maternal pyrexia";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Chorioamnionitis
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Chorioamnionitis";
+                customText.customText = @"Chorioamnionitis";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             // Maternal insulin dependant diabetes
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"Maternal insulin dependant diabetes";
                 customText.customText = @"Maternal insulin dependant diabetes";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // Prolonged rupture of membranes
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"Prolonged rupture of membranes";
-                customText.customText = @"Prolonged rupture of membranes";
                 
                 [newSection.customText addObject:customText];
             }
@@ -268,11 +340,56 @@
                 [newSection.customText addObject:customText];
             }
             
+            // Pneumothorax
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Pneumothorax";
+                customText.customText = @"Pneumothorax";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             // Suspected sepsis
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"Suspected sepsis";
                 customText.customText = @"Suspected sepsis";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Establishing enteral feeds
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Establishing enteral feeds";
+                customText.customText = @"Establishing enteral feeds";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Bilious aspirates
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Bilious aspirates";
+                customText.customText = @"Bilious aspirates";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Abdominal concerns
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Abdominal concerns";
+                customText.customText = @"Abdominal concerns";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Hypoxic ischaemic encephalopathy
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = NSLocalizedString(@"Hypoxic ischaemic encephalopathy", nil);
+                customText.customText = NSLocalizedString(@"Hypoxic ischaemic encephalopathy", nil);
                 
                 [newSection.customText addObject:customText];
             }
@@ -310,6 +427,33 @@
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"Suspected sepsis";
                 customText.customText = @"Suspected sepsis";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Pneumothorax
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Pneumothorax";
+                customText.customText = @"Pneumothorax";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Bilious aspirates
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Bilious aspirates";
+                customText.customText = @"Bilious aspirates";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Abdominal concerns
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Abdominal concerns";
+                customText.customText = @"Abdominal concerns";
                 
                 [newSection.customText addObject:customText];
             }
@@ -1031,7 +1175,115 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Fluid Balance";
-            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // Last 24 hours
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Last 24 hours";
+                customText.customText = @"Last 24 hours ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // INPUT
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"INPUT";
+                customText.customText = @"INPUT\n";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Vamin
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Vamin";
+                customText.customText = @"Vamin\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Lipid
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Lipd";
+                customText.customText = @"Lipid\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // 10% Dextrose
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"10% Dextrose";
+                customText.customText = @"10% Dextrose\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Milk
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Milk";
+                customText.customText = @"Milk\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // OUTPUT
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"OUTPUT";
+                customText.customText = @"OUTPUT\n";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Aspirates
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Aspirates";
+                customText.customText = @"Aspirates\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Ileostomy
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Ileostomy";
+                customText.customText = @"Ileostomy\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Jejunostomy
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Jejunostomy";
+                customText.customText = @"Jejunostomy\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Urine
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Urine";
+                customText.customText = @"Urine\t";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // ml/kg/hour
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"ml/kg/hour";
+                customText.customText = @" ml/kg/hour ";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
@@ -1117,11 +1369,29 @@
                 [newSection.customText addObject:customText];
             }
             
+            // pending
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"pending";
+                customText.customText = @"pending ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // no growth
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"no growth";
+                customText.customText = @"no growth ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             // [CSF results]
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"[CSF results]";
-                customText.customText = @"CSF \nClear and colourless\nNo organisms seen\nRC  WC  Polys  Lymphs \nProtein  Glucose(CSF)  Glucose(serum) ";
+                customText.customText = @"CSF \nClear and colourless\nNo organisms seen\nRC  WC  Polys  Lymphs \nProtein \nGlucose    Blood glucose ";
                 
                 [newSection.customText addObject:customText];
             }

@@ -29,8 +29,9 @@
 "Heparin" = "Heparin";
 "Hyperglycaemia" = "Hyperglycemia";
 "hyperkalaemia" = "hyperkalemia";
-"Hypoglycaemia" = "Hypoglycemia";
 "Hypocalcaemia" = "Hypocalcemia";
+"Hypoglycaemia" = "Hypoglycemia";
+"Hypoxic ischaemic encephalopathy" = "Hypoxic ischemic encephalopathy";
 "if required" = "if required";
 "Insulin" = "Insulin";
 "Intubation drugs" = "Intubation drugs";
@@ -38,6 +39,7 @@
 "kilograms" = "kilograms";
 "Lidocaine" = "Lidocaine";
 "Like SimNICU?" = "Like SimNICU?";
+"Maternal antepartum haemorrhage" = "Maternal antepartum hemorrhage";
 "Midazolam" = "Midazolam";
 "Morphine" = "Morphine";
 "Pancuronium" = "Pancuronium";

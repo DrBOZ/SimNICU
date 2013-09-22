@@ -49,7 +49,7 @@
     [tableRows addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = [NSString stringWithFormat:@"\"%@\"", NSLocalizedString(@"full stop", @"grammer")];
+    rowData.text = @"\"dot\"";
     rowData.detailText = @".";
     rowData.detailTextFontSize = [NSNumber numberWithFloat:largeText];
     

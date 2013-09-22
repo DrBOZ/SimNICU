@@ -93,7 +93,7 @@
 // 5) Convert the Daily Summary headings from a NSString to an NSArray or even NSDictionary
 //    to enable the saving of a date with the NSString.  This will allow converting the text to red
 //    if it is out of date.
-// 6) Press and hold on ml/kg/day button toggles between mmol/kg/day
+// 6) 
 // 7) patient.
 
 // 8) Finish dictation commands
