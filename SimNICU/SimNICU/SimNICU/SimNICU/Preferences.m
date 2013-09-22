@@ -459,13 +459,58 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"CXR";
-            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Normal appearances
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"Normal appearances";
                 customText.customText = @"Normal appearances";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Ground glass appearances
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Ground glass appearances";
+                customText.customText = @"Ground glass appearances";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Fluid in the horizontal fissure
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Fluid in the horizontal fissure";
+                customText.customText = @"Fluid in the horizontal fissure";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // No consolidation
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"No consolidation";
+                customText.customText = @"No consolidation";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // No pneumothorax
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"No pneumothorax";
+                customText.customText = @"No pneumothorax";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Nasogastric tube in the stomach
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Nasogastric tube in the stomach";
+                customText.customText = @"Nasogastric tube in the stomach";
                 
                 [newSection.customText addObject:customText];
             }
@@ -488,6 +533,195 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Cardiovascular";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // Stable
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Stable";
+                customText.customText = @"Stable";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Hypotensive
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Hypotensive";
+                customText.customText = @"Hypotensive ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Mean BP
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Mean BP";
+                customText.customText = @"Mean BP ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Arterial
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"arterial";
+                customText.customText = @" arterial ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Cuff
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"cuff";
+                customText.customText = @" cuff";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Fluid bolus
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Fluid bolus";
+                customText.customText = @"Fluid bolus ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // ml/kg
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"ml/kg";
+                customText.customText = @" ml/kg ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Dobutamine @
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Dobutamine @";
+                customText.customText = @"Dobutamine @ ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Adrenaline @
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Adrenaline @";
+                customText.customText = @"Adrenaline @ ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // micrograms/kg/min
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"micrograms/kg/min";
+                customText.customText = @" micrograms/kg/min";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Hydrocortisone
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Hydrocortisone";
+                customText.customText = @"Hydrocortisone";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Hb
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Hb";
+                customText.customText = @"Hb ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // WCC
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"WCC";
+                customText.customText = @" WCC ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // aNC
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"aNC";
+                customText.customText = @" aNC ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Plats
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Plats";
+                customText.customText = @" Plats ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // PT
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"PT";
+                customText.customText = @"PT ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // APTT
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"APTT";
+                customText.customText = @" APTT ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // TT
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"TT";
+                customText.customText = @"TT ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Fibrinogen
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Fibrinogen";
+                customText.customText = @"Fibrinogen ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // High
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"High";
+                customText.customText = @"High ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Low
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Low";
+                customText.customText = @"Low ";
+                
+                [newSection.customText addObject:customText];
+            }
         
             [self.handoverSections addObject:newSection];
         }
