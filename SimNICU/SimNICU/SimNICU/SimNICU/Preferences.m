@@ -691,7 +691,7 @@
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"TT";
-                customText.customText = @"TT ";
+                customText.customText = @" TT ";
                 
                 [newSection.customText addObject:customText];
             }

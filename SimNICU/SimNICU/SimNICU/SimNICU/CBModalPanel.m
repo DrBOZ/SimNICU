@@ -128,7 +128,8 @@
     HandoverSectionCustomText *customText = tableRows[indexPath.row];
     
     // check for special text
-    // [date text]
+    
+#pragma mark [current date]
     if ([customText.customText isEqualToString:@"[current date]"])
     {
         // paste formatted date
