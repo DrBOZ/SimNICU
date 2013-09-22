@@ -461,6 +461,15 @@
             newSection.sectionName = @"CXR";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
+            // Normal appearances
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Normal appearances";
+                customText.customText = @"Normal appearances";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             // current date
             {
                 customText = [[HandoverSectionCustomText alloc] init];
@@ -489,12 +498,39 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Lines";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
-        
-            // No lines
+            
+            // UVC
             {
                 customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"No intravenous lines";
-                customText.customText = @"No intravenous lines";
+                customText.customTextReferenceName = @"UVC";
+                customText.customText = @"UVC ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // UAC
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"UAC";
+                customText.customText = @"UAC ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Broviac line
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Broviac line";
+                customText.customText = @"Broviac line ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // Long line
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"Long line";
+                customText.customText = @"Long line ";
                 
                 [newSection.customText addObject:customText];
             }
@@ -557,7 +593,25 @@
             {
                 customText = [[HandoverSectionCustomText alloc] init];
                 customText.customTextReferenceName = @"antecubital fossa";
-                customText.customText = @"antecubital fossa";
+                customText.customText = @"antecubital fossa ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // long saphenous
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"long saphenous";
+                customText.customText = @"long saphenous ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
+            // No lines
+            {
+                customText = [[HandoverSectionCustomText alloc] init];
+                customText.customTextReferenceName = @"No intravenous lines";
+                customText.customText = @"No intravenous lines";
                 
                 [newSection.customText addObject:customText];
             }

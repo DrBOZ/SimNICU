@@ -15,13 +15,15 @@
 
 @synthesize titleBarHeight, titleBar, headerLabel;
 
-- (void)dealloc {
+- (void)dealloc
+{
     self.titleBar = nil;
 	self.headerLabel = nil;
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -53,7 +55,8 @@
 
 
 
-- (CGRect)titleBarFrame { 
+- (CGRect)titleBarFrame
+{
 	CGRect frame = [self.roundedRect bounds];
 	return CGRectMake(frame.origin.x,
 					  frame.origin.y + self.roundedRect.layer.borderWidth,
@@ -63,7 +66,8 @@
 
 
 // overriding the subclass to make room for the title bar
-- (CGRect)contentViewFrame {
+- (CGRect)contentViewFrame
+{
 	CGRect titleBarFrame = [self titleBarFrame];
 	CGRect roundedRectFrame = [self roundedRectFrame];
 	CGFloat y = titleBarFrame.origin.y + titleBarFrame.size.height;
@@ -75,22 +79,24 @@
 }
 
 
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
 	[super layoutSubviews];
 	
 	self.titleBar.frame = [self titleBarFrame];
 	self.headerLabel.frame = self.titleBar.bounds;
 }
 
-
 // Overrides
 
-- (void)showAnimationStarting {
+- (void)showAnimationStarting
+{
 	self.contentView.alpha = 0.0;
 	self.titleBar.alpha = 0.0;
 }
 
-- (void)showAnimationFinished {
+- (void)showAnimationFinished
+{
 	UADebugLog(@"Fading in content for modalPanel: %@", self);
 	[UIView animateWithDuration:0.2
 						  delay:0.0
@@ -101,6 +107,5 @@
 					 }
 					 completion:nil];
 }
-
 
 @end

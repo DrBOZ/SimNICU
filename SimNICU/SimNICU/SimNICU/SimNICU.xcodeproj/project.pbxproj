@@ -139,6 +139,8 @@
 		5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */; };
 		5C1FC128179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
 		5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1FC127179EB32E00E345C4 /* CBDatePicker.m */; };
+		5C21A17117EF149A00BA5C3A /* CBStringMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21A17017EF149A00BA5C3A /* CBStringMethods.m */; };
+		5C21A17217EF149A00BA5C3A /* CBStringMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21A17017EF149A00BA5C3A /* CBStringMethods.m */; };
 		5C23A24317EDD99B00299D3E /* CBModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A24217EDD99B00299D3E /* CBModalPanel.m */; };
 		5C23A24417EDD99B00299D3E /* CBModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A24217EDD99B00299D3E /* CBModalPanel.m */; };
 		5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
@@ -1129,6 +1131,8 @@
 		5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsTableViewController.m; sourceTree = "<group>"; };
 		5C1FC126179EB32E00E345C4 /* CBDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePicker.h; sourceTree = "<group>"; };
 		5C1FC127179EB32E00E345C4 /* CBDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePicker.m; sourceTree = "<group>"; };
+		5C21A16F17EF149A00BA5C3A /* CBStringMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBStringMethods.h; sourceTree = "<group>"; };
+		5C21A17017EF149A00BA5C3A /* CBStringMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBStringMethods.m; sourceTree = "<group>"; };
 		5C23A24117EDD99B00299D3E /* CBModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBModalPanel.h; sourceTree = "<group>"; };
 		5C23A24217EDD99B00299D3E /* CBModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBModalPanel.m; sourceTree = "<group>"; };
 		5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperSizeTableViewController.h; sourceTree = "<group>"; };
@@ -3079,6 +3083,8 @@
 				5C6FF682179E6D55004E35C5 /* CBDisplayMethods.m */,
 				5C23A24117EDD99B00299D3E /* CBModalPanel.h */,
 				5C23A24217EDD99B00299D3E /* CBModalPanel.m */,
+				5C21A16F17EF149A00BA5C3A /* CBStringMethods.h */,
+				5C21A17017EF149A00BA5C3A /* CBStringMethods.m */,
 				5C88570A17E443FB00446E5F /* CBTableViewController.h */,
 				5C88570B17E443FB00446E5F /* CBTableViewController.m */,
 				5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */,
@@ -4391,6 +4397,7 @@
 				5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */,
 				5CF4B79817EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
 				5C23A24317EDD99B00299D3E /* CBModalPanel.m in Sources */,
+				5C21A17117EF149A00BA5C3A /* CBStringMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4584,6 +4591,7 @@
 				5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */,
 				5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
 				5C23A24417EDD99B00299D3E /* CBModalPanel.m in Sources */,
+				5C21A17217EF149A00BA5C3A /* CBStringMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

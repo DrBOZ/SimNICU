@@ -8,6 +8,7 @@
 
 #import "HandoverSectionCustomText.h"
 #import "CBTableViewRowData.h"
+#import "CBStringMethods.h"
 #import "CBModalPanel.h"
 
 #define BLACK_BAR_COMPONENTS				{ 0.22, 0.22, 0.22, 1.0, 0.07, 0.07, 0.07, 1.0 }
@@ -130,13 +131,8 @@
     // [date text]
     if ([customText.customText isEqualToString:@"[current date]"])
     {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeZone = [NSTimeZone localTimeZone];
-        
-        NSString *formattedCurrentDate = [NSString stringWithFormat:@"(%@)", [formatter stringFromDate:[NSDate date]]];
-        
-        pasteboard.string = formattedCurrentDate;
+        // paste formatted date
+        pasteboard.string = [CBStringMethods dayAndMonthInParenthesesForDate:[NSDate date] andLocale:[NSLocale currentLocale]];
     }
     else
     {

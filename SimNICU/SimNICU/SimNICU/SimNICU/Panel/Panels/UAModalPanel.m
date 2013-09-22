@@ -355,7 +355,8 @@
 	[self show];
 }
 
-- (void)hide {	
+- (void)hide
+{
 	// Hide the view right away
 	if ([delegate respondsToSelector:@selector(willCloseModalPanel:)])
 		[delegate willCloseModalPanel:self];
@@ -377,7 +378,8 @@
 }
 
 
-- (void)hideWithOnComplete:(UAModalDisplayPanelAnimationComplete)onComplete {	
+- (void)hideWithOnComplete:(UAModalDisplayPanelAnimationComplete)onComplete
+{
 	// Hide the view right away
     [UIView animateWithDuration:0.3
 					 animations:^{
