@@ -583,14 +583,10 @@
     screen.segueId = @"Gastroschisis";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
-    screen.menuText = @"Glucose Load";
-    
 #if GLUCOSE_LOAD_PREVIEW_MODE
     
-    screen.detailMenuText = @"";
-    
-#else
+    screen = [[Screen alloc] init];
+    screen.menuText = @"Glucose Load";
     
     screen.detailMenuText = @"Coming soon!";
     
