@@ -28,6 +28,7 @@
 #import "APGAR10ViewController.h"
 #import "APGAR15ViewController.h"
 #import "APGAR20ViewController.h"
+// #import "BloodProductsTableViewController.h"
 #import "BloodProductsViewController.h"
 #import "CalculatorViewController.h"
 #import "CoolingViewController.h"
@@ -274,7 +275,7 @@
     // both the UITableView and the non-scrolling HeaderView (containing the image)
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 20.0f + 44.0f, 320.0f, (appDelegate.window.bounds.size.height))];
+        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 22.0f + 44.0f, 320.0f, (appDelegate.window.bounds.size.height))];
     }
     else
     {
@@ -282,7 +283,15 @@
     }
     
     // background set to black
-    self.view.backgroundColor = [UIColor blackColor];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // self.view.backgroundColor = [UIColor whiteColor];
+        self.view.tintColor = [UIColor whiteColor];
+    }
+    else
+    {
+        self.view.backgroundColor = [UIColor blackColor];
+    }
     
     // info button
     self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showAboutScreen)];
@@ -1016,6 +1025,7 @@
         else if ([thisScreenType isEqualToString:@"BloodProducts"])
         {
             BloodProductsViewController *newViewController = [[BloodProductsViewController alloc] init];
+            // BloodProductsTableViewController *newViewController = [[BloodProductsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             newViewController.workingWeight = self.weight;
             
             [self.navigationController pushViewController:newViewController animated:YES];
