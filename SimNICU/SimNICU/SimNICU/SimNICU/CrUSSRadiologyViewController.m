@@ -15,7 +15,7 @@
 #import "CrUSSDataBase.h"
 #import "CrUSSImage.h"
 
-@interface CrUSSRadiologyViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface CrUSSRadiologyViewController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIPageControl *pageControl1;
 @property (nonatomic, strong) UIPageControl *pageControl2;
@@ -24,7 +24,6 @@
 @property (nonatomic, strong) NSMutableArray *pageViews2;
 @property (nonatomic, strong) UIScrollView *scrollView1;
 @property (nonatomic, strong) UIScrollView *scrollView2;
-// @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UILabel *viewLabel;
 
 @end

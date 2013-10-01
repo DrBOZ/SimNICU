@@ -7,7 +7,6 @@
 //
 
 #import <CoreText/CoreText.h>
-#import "ShinobiChartCell.h"
 #import <UIKit/UIKit.h>
 #import "Patient.h"
 

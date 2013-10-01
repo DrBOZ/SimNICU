@@ -662,8 +662,6 @@
 		5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
-		5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
-		5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */; };
 		5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0317E6A910001823A3 /* SettingsModel.m */; };
 		5CAE2E0517E6A910001823A3 /* SettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0317E6A910001823A3 /* SettingsModel.m */; };
 		5CAE2E0D17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */; };
@@ -1707,8 +1705,6 @@
 		5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
-		5CA55E4A17C825AF001D32C0 /* ShinobiChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShinobiChartCell.h; sourceTree = "<group>"; };
-		5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShinobiChartCell.m; sourceTree = "<group>"; };
 		5CAE2E0217E6A910001823A3 /* SettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModel.h; sourceTree = "<group>"; };
 		5CAE2E0317E6A910001823A3 /* SettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModel.m; sourceTree = "<group>"; };
 		5CAE2E0B17E6BD31001823A3 /* DailySummaryEditorSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryEditorSettingsModel.h; sourceTree = "<group>"; };
@@ -3281,7 +3277,6 @@
 				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
 				5CD43A4417CB40E600426991 /* AdvancedDataInput */,
-				5CA55E4917C82541001D32C0 /* UITableViewCells */,
 			);
 			name = "Daily Summary";
 			sourceTree = "<group>";
@@ -3339,15 +3334,6 @@
 				5CA3C13C179241D8002AB53D /* vancomycinReferences.html */,
 			);
 			name = Vancomycin;
-			sourceTree = "<group>";
-		};
-		5CA55E4917C82541001D32C0 /* UITableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				5CA55E4A17C825AF001D32C0 /* ShinobiChartCell.h */,
-				5CA55E4B17C825B0001D32C0 /* ShinobiChartCell.m */,
-			);
-			name = UITableViewCells;
 			sourceTree = "<group>";
 		};
 		5CAE2E0A17E6B3B1001823A3 /* CBPhotoCropper */ = {
@@ -4342,7 +4328,6 @@
 				5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */,
-				5CA55E4C17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
 				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
@@ -4540,7 +4525,6 @@
 				5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
-				5CA55E4D17C825B0001D32C0 /* ShinobiChartCell.m in Sources */,
 				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */,
