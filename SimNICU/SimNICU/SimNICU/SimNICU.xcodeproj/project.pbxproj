@@ -685,10 +685,6 @@
 		5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7417DA125E003365F6 /* SyncClient.m */; };
 		5CB46B8117DA4062003365F6 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8017DA4062003365F6 /* ConnectionViewController.m */; };
 		5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8017DA4062003365F6 /* ConnectionViewController.m */; };
-		5CB46B8617DA439D003365F6 /* TempConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */; };
-		5CB46B8717DA439D003365F6 /* TempConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */; };
-		5CB46B8817DA439D003365F6 /* TempConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */; };
-		5CB46B8917DA439D003365F6 /* TempConnectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -1732,9 +1728,6 @@
 		5CB46B7417DA125E003365F6 /* SyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncClient.m; sourceTree = "<group>"; };
 		5CB46B7F17DA4062003365F6 /* ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionViewController.h; sourceTree = "<group>"; };
 		5CB46B8017DA4062003365F6 /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
-		5CB46B8317DA439C003365F6 /* TempConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempConnectionViewController.h; sourceTree = "<group>"; };
-		5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempConnectionViewController.m; sourceTree = "<group>"; };
-		5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TempConnectionViewController.xib; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -3392,9 +3385,6 @@
 				5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */,
 				5CB46B7F17DA4062003365F6 /* ConnectionViewController.h */,
 				5CB46B8017DA4062003365F6 /* ConnectionViewController.m */,
-				5CB46B8317DA439C003365F6 /* TempConnectionViewController.h */,
-				5CB46B8417DA439C003365F6 /* TempConnectionViewController.m */,
-				5CB46B8517DA439C003365F6 /* TempConnectionViewController.xib */,
 				5CB46B6E17DA1201003365F6 /* Networking */,
 			);
 			name = Sync;
@@ -3871,7 +3861,6 @@
 				5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 				5CB46B6217D9D82F003365F6 /* sync.png in Resources */,
 				5CB46B6417D9D82F003365F6 /* sync@2x.png in Resources */,
-				5CB46B8817DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
 				5C8AE8FE17E22CE30002BC04 /* photo_cropper_bg.png in Resources */,
 				5C8AE90017E22CE30002BC04 /* photo_cropper_bg@2x.png in Resources */,
 				5C8AE91F17E29A3D0002BC04 /* selectionGridRectangle.png in Resources */,
@@ -4173,7 +4162,6 @@
 				5C88E74C17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 				5CB46B6317D9D82F003365F6 /* sync.png in Resources */,
 				5CB46B6517D9D82F003365F6 /* sync@2x.png in Resources */,
-				5CB46B8917DA439D003365F6 /* TempConnectionViewController.xib in Resources */,
 				5C8AE8FF17E22CE30002BC04 /* photo_cropper_bg.png in Resources */,
 				5C8AE90117E22CE30002BC04 /* photo_cropper_bg@2x.png in Resources */,
 				5C8AE92017E29A3D0002BC04 /* selectionGridRectangle.png in Resources */,
@@ -4374,7 +4362,6 @@
 				5CB46B7117DA124E003365F6 /* SyncServer.m in Sources */,
 				5CB46B7517DA125E003365F6 /* SyncClient.m in Sources */,
 				5CB46B8117DA4062003365F6 /* ConnectionViewController.m in Sources */,
-				5CB46B8617DA439D003365F6 /* TempConnectionViewController.m in Sources */,
 				5C3C02B917DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */,
 				5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
@@ -4568,7 +4555,6 @@
 				5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */,
 				5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */,
 				5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */,
-				5CB46B8717DA439D003365F6 /* TempConnectionViewController.m in Sources */,
 				5C3C02BA17DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */,
 				5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
