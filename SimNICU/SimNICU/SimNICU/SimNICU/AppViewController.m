@@ -272,7 +272,14 @@
     
     // self.contentView is a UIView that covers the entire window and contains
     // both the UITableView and the non-scrolling HeaderView (containing the image)
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 20.0f + 44.0f, 320.0f, (appDelegate.window.bounds.size.height))];
+    }
+    else
+    {
+        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
+    }
     
     // background set to black
     self.view.backgroundColor = [UIColor blackColor];

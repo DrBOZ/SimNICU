@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A785084B-8CFF-42B5-9217-57773D768245</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SimNICU</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</key>
+		<string>https://github.com/DrBOZ/SimNICU.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SimNICU/SimNICU/SimNICU/SimNICU.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/DrBOZ/SimNICU.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>feature_ios7</string>
+		</dict>
+	</array>
+</dict>
+</plist>
