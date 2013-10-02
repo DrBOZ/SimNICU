@@ -34,6 +34,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     [self.tableView setEditing:YES animated:YES];
 }
 

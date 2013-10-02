@@ -177,8 +177,21 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     // navigationController - (Front Screen)
     self.navigationController = [[UINavigationController alloc] init];
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // sets the color of navigation bar
+        self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+        self.navigationController.view.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        // iOS 6 colourings
+        self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    }
+    
     self.navigationController.delegate = self;
     
     // AppViewController

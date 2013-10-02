@@ -43,6 +43,7 @@
 @implementation EnterWeightViewController
 {
     UIView *tapView;
+    CGFloat iOS7Adjustment;
 }
 
 - (NSMutableArray *)bayData
@@ -137,7 +138,19 @@
     {
         [self loadPatientList];
         
-        self.view.backgroundColor = [UIColor blackColor];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // sets the color of navigation bar
+            // self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
+            // self.navigationController.view.tintColor = [UIColor redColor];
+            iOS7Adjustment = 20.0f + 44.0f;
+        }
+        else
+        {
+            // iOS 6 colourings
+            self.view.backgroundColor = [UIColor blackColor];
+        }
         
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -182,7 +195,7 @@
         [self.enterWeightViewControllerNavigationBar pushNavigationItem:self.enterWeightViewControllerNavigationItem animated:NO];
         
         // Tableview
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped]; // 4 inch Retina
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped]; // 4 inch Retina
         self.myTableView.rowHeight = 50;
         self.myTableView.dataSource = self;
         self.myTableView.delegate = self;
@@ -191,7 +204,12 @@
         self.myTableView.separatorColor = [UIColor grayColor];
         
         // set background colour
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 6.0)
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView.frame = CGRectMake(0.0f, 0.0f, 273.0f, (appDelegate.window.bounds.size.height));
+        }
+        else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 6.0)
         {
             if (appDelegate.window.bounds.size.height == 568)
             {

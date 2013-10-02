@@ -232,9 +232,15 @@
 {
     [super viewDidLoad];
     
+    // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         iOS7Adjustment = 20.0f + 44.0f;
+    }
+    else
+    {
+        // set the background color to black
+        self.view.backgroundColor = [UIColor blackColor];
     }
     
     if ([self.infoPassedThrough isEqualToString:@"Cleared"])
@@ -281,17 +287,6 @@
     // self.contentView is a UIView that covers the entire window and contains
     // both the UITableView and the non-scrolling HeaderView (containing the image)
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f + iOS7Adjustment, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
-    
-    // set background colour
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        // self.view.backgroundColor = [UIColor whiteColor];
-        self.view.tintColor = [UIColor whiteColor];
-    }
-    else
-    {
-        self.view.backgroundColor = [UIColor blackColor];
-    }
     
     // info button
     self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showAboutScreen)];
