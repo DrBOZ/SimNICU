@@ -1,6 +1,6 @@
 //
 //  APGAR1ViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 29/08/2012.
 //  Copyright (c) 2012 SimNICU. All rights reserved.
@@ -8,6 +8,7 @@
 
 #import "APGAR1ViewController.h"
 #import "SVSegmentedControl.h"
+#import "APGARVCFormats.h"
 #import "AppDelegate.h"
 
 @interface APGAR1ViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -159,6 +160,19 @@
 {
     UIView *view = nil;
     
+    // for later...
+    /*
+     1) I need to return a UIView
+     2) I know the section
+     3) I can work out the systemVersion
+     4) I can work out the screen size
+     5) Therefore I know the frames for 'headerLabel' and 'scoreVariable'
+     6) and I know the headerLabel.text string
+     7) based on section, I just need to pass in the property to be instantiated and formatted
+     8) I need to know which VC also, so as to assign the APGARscore at x min
+    */
+    
+    
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -167,61 +181,76 @@
         // Create Custom headerView 'Colour"
         UIView *headerView;
         
-        if (appDelegate.window.bounds.size.height == 568)
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // 4 inch Retina
-            
-            headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
-            
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 30.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            headerLabel.text = @"Colour";
-            
-            [headerView addSubview:headerLabel];
-            
-            // Create label to display value for 'Colour'
-            self.scoreColour = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 30.0f)];
-            
-            self.scoreColour.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreColour.shadowColor = [UIColor whiteColor];
-            self.scoreColour.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreColour.backgroundColor = [UIColor clearColor];
-            self.scoreColour.opaque = YES;
-            self.scoreColour.font = [UIFont boldSystemFontOfSize:18.0f];
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                // 4 inch Retina
+                
+                headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+                
+                UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 30.0f)];
+                [APGARVCFormats formatLabel:headerLabel];
+                headerLabel.text = @"Colour";
+                
+                [headerView addSubview:headerLabel];
+                
+                // Create label to display value for 'Colour'
+                self.scoreColour = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 30.0f)];
+                [APGARVCFormats formatLabel:self.scoreColour];
+            }
+            else
+            {
+                // 3.5 inch Retina
+                
+                headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+                
+                UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 30.0f)];
+                [APGARVCFormats formatLabel:headerLabel];
+                headerLabel.text = @"Colour";
+                
+                [headerView addSubview:headerLabel];
+                
+                // Create label to display value for 'Colour'
+                self.scoreColour = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 30.0f)];
+                [APGARVCFormats formatLabel:self.scoreColour];
+            }
         }
         else
         {
-            // 3.5 inch Retina
-            
-            headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
-            
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 30.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            headerLabel.text = @"Colour";
-            
-            [headerView addSubview:headerLabel];
-            
-            // Create label to display value for 'Colour'
-            self.scoreColour = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 30.0f)];
-            
-            self.scoreColour.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreColour.shadowColor = [UIColor whiteColor];
-            self.scoreColour.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreColour.backgroundColor = [UIColor clearColor];
-            self.scoreColour.opaque = YES;
-            self.scoreColour.font = [UIFont boldSystemFontOfSize:18.0f];
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                // 4 inch Retina
+                
+                headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+                
+                UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 30.0f)];
+                [APGARVCFormats formatLabel:headerLabel];
+                headerLabel.text = @"Colour";
+                
+                [headerView addSubview:headerLabel];
+                
+                // Create label to display value for 'Colour'
+                self.scoreColour = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 30.0f)];
+                [APGARVCFormats formatLabel:self.scoreColour];
+            }
+            else
+            {
+                // 3.5 inch Retina
+                
+                headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
+                
+                UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 30.0f)];
+                [APGARVCFormats formatLabel:headerLabel];
+                headerLabel.text = @"Colour";
+                
+                [headerView addSubview:headerLabel];
+                
+                // Create label to display value for 'Colour'
+                self.scoreColour = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 30.0f)];
+                [APGARVCFormats formatLabel:self.scoreColour];
+            }
         }
         
         if (self.patient.APGAR1minColour) 
@@ -244,26 +273,13 @@
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 15.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 15.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Heart Rate";
             
             [headerView addSubview:headerLabel];
             
             self.scoreHeartRate = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 15.0f)];
-            
-            self.scoreHeartRate.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreHeartRate.shadowColor = [UIColor whiteColor];
-            self.scoreHeartRate.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreHeartRate.backgroundColor = [UIColor clearColor];
-            self.scoreHeartRate.opaque = YES;
-            self.scoreHeartRate.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreHeartRate];
         }
         else
         {
@@ -272,26 +288,13 @@
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 15.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 15.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Heart Rate";
             
             [headerView addSubview:headerLabel];
             
             self.scoreHeartRate = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 15.0f)];
-            
-            self.scoreHeartRate.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreHeartRate.shadowColor = [UIColor whiteColor];
-            self.scoreHeartRate.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreHeartRate.backgroundColor = [UIColor clearColor];
-            self.scoreHeartRate.opaque = YES;
-            self.scoreHeartRate.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreHeartRate];
         }
         
         if (self.patient.APGAR1minHeartRate) 
@@ -314,26 +317,13 @@
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 17.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 17.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Respiratory Effort";
             
             [headerView addSubview:headerLabel];
             
             self.scoreRespiratoryEffort = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 17.0f)];
-            
-            self.scoreRespiratoryEffort.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreRespiratoryEffort.shadowColor = [UIColor whiteColor];
-            self.scoreRespiratoryEffort.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreRespiratoryEffort.backgroundColor = [UIColor clearColor];
-            self.scoreRespiratoryEffort.opaque = YES;
-            self.scoreRespiratoryEffort.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreRespiratoryEffort];
         }
         else
         {
@@ -342,26 +332,13 @@
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 17.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 17.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Respiratory Effort";
             
             [headerView addSubview:headerLabel];
             
             self.scoreRespiratoryEffort = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 17.0f)];
-            
-            self.scoreRespiratoryEffort.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreRespiratoryEffort.shadowColor = [UIColor whiteColor];
-            self.scoreRespiratoryEffort.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreRespiratoryEffort.backgroundColor = [UIColor clearColor];
-            self.scoreRespiratoryEffort.opaque = YES;
-            self.scoreRespiratoryEffort.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreRespiratoryEffort];
         }
         
         if (self.patient.APGAR1minRespiratoryEffort) 
@@ -384,26 +361,13 @@
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 15.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 15.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Tone";
             
             [headerView addSubview:headerLabel];
             
             self.scoreTone = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 15.0f)];
-            
-            self.scoreTone.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreTone.shadowColor = [UIColor whiteColor];
-            self.scoreTone.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreTone.backgroundColor = [UIColor clearColor];
-            self.scoreTone.opaque = YES;
-            self.scoreTone.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreTone];
         }
         else
         {
@@ -412,26 +376,13 @@
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 15.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 15.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0, 1);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Tone";
             
             [headerView addSubview:headerLabel];
             
             self.scoreTone = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 15.0f)];
-            
-            self.scoreTone.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreTone.shadowColor = [UIColor whiteColor];
-            self.scoreTone.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreTone.backgroundColor = [UIColor clearColor];
-            self.scoreTone.opaque = YES;
-            self.scoreTone.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreTone];
         }
         
         if (self.patient.APGAR1minTone) 
@@ -450,58 +401,30 @@
         if (appDelegate.window.bounds.size.height == 568)
         {
             // 4 inch Retina
-            
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 15.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 300.0f, 15.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Reflexes";
             
             [headerView addSubview:headerLabel];
             
             self.scoreReflexes = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 15.0f, 10.0f, 15.0f)];
-            
-            self.scoreReflexes.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreReflexes.shadowColor = [UIColor whiteColor];
-            self.scoreReflexes.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreReflexes.backgroundColor = [UIColor clearColor];
-            self.scoreReflexes.opaque = YES;
-            self.scoreReflexes.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreReflexes];
         }
         else
         {
             // 3.5 inch Retina
-            
             headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 15.0f)];
             
             UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 300.0f, 15.0f)];
-            
-            headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor whiteColor];
-            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            headerLabel.backgroundColor = [UIColor clearColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
-            
+            [APGARVCFormats formatLabel:headerLabel];
             headerLabel.text = @"Reflexes";
             
             [headerView addSubview:headerLabel];
             
             self.scoreReflexes = [[UILabel alloc] initWithFrame:CGRectMake(290.0f, 0.0f, 10.0f, 15.0f)];
-            
-            self.scoreReflexes.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            self.scoreReflexes.shadowColor = [UIColor whiteColor];
-            self.scoreReflexes.shadowOffset = CGSizeMake(0.0f, 1.0f);
-            self.scoreReflexes.backgroundColor = [UIColor clearColor];
-            self.scoreReflexes.opaque = YES;
-            self.scoreReflexes.font = [UIFont boldSystemFontOfSize:18.0f];
+            [APGARVCFormats formatLabel:self.scoreReflexes];
         }
         
         if (self.patient.APGAR1minReflexes) 

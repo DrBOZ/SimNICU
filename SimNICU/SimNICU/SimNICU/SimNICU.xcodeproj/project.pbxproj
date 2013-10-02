@@ -275,6 +275,8 @@
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
+		5C65858317FCBF3300454277 /* APGARVCFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C65858217FCBF3300454277 /* APGARVCFormats.m */; };
+		5C65858417FCBF3300454277 /* APGARVCFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C65858217FCBF3300454277 /* APGARVCFormats.m */; };
 		5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */; };
 		5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */; };
 		5C679FBE1794CA0100B9A813 /* Bay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C679FBD1794CA0100B9A813 /* Bay.m */; };
@@ -956,6 +958,8 @@
 		5C63B13816B9FD1200B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
 		5C63B13A16B9FD1600B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
 		5C63B13B16B9FD1700B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
+		5C65858117FCBF3300454277 /* APGARVCFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGARVCFormats.h; sourceTree = "<group>"; };
+		5C65858217FCBF3300454277 /* APGARVCFormats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APGARVCFormats.m; sourceTree = "<group>"; };
 		5C66527A17BE9AE9005F8171 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		5C679FBC1794CA0100B9A813 /* Bay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bay.h; sourceTree = "<group>"; };
@@ -1873,6 +1877,8 @@
 				5C940B5D166E3C2E0044A7D1 /* APGAR15ViewController.m */,
 				5C940B5E166E3C2E0044A7D1 /* APGAR20ViewController.h */,
 				5C940B5F166E3C2E0044A7D1 /* APGAR20ViewController.m */,
+				5C65858117FCBF3300454277 /* APGARVCFormats.h */,
+				5C65858217FCBF3300454277 /* APGARVCFormats.m */,
 			);
 			name = Screen_APGAR;
 			sourceTree = "<group>";
@@ -3370,6 +3376,7 @@
 				5C940AE7166E39A10044A7D1 /* DCStatusBarOverlay.m in Sources */,
 				5C940AE8166E39A10044A7D1 /* DCFrameView.m in Sources */,
 				5C940AE9166E39A10044A7D1 /* DCCrossHairView.m in Sources */,
+				5C65858317FCBF3300454277 /* APGARVCFormats.m in Sources */,
 				5C940AEC166E39B30044A7D1 /* CoolButton.m in Sources */,
 				5C940AFC166E3AFE0044A7D1 /* PortraitOnlyNavigationController.m in Sources */,
 				5C940B01166E3B110044A7D1 /* AppViewController.m in Sources */,
@@ -3673,6 +3680,7 @@
 				5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */,
 				5C6FF684179E6D55004E35C5 /* CBDisplayMethods.m in Sources */,
 				5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */,
+				5C65858417FCBF3300454277 /* APGARVCFormats.m in Sources */,
 				5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
 				5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */,
 				5CED220017A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */,

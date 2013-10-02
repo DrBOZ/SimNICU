@@ -661,7 +661,16 @@
                 
                 self.sex = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Male", @"Female", @"Unknown", nil]];
                 self.sex.frame = CGRectMake(1.0, 1.0, 240, 40);
-                self.sex.tintColor = [UIColor grayColor];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.sex.tintColor = [UIColor redColor];
+                }
+                else
+                {
+                    self.sex.tintColor = [UIColor grayColor];
+                }
                 
                 self.sex.segmentedControlStyle = UISegmentedControlStyleBar;
                 self.sex.selectedSegmentIndex = 2;
@@ -753,11 +762,30 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
+                /*
                 self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0, 1.0, 120, 30)];
                 [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
                 [self.button setSelected:NO];
                 [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
                 [self.button setButtonColor:[UIColor darkGrayColor]];
+                 */
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    self.button.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
+                    [self.button setTitle:@"Done" forState:UIControlStateNormal];
+                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
+                }
+                else
+                {
+                    self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
+                    [self.button setSelected:NO];
+                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
+                    [self.button setButtonColor:[UIColor darkGrayColor]];
+                }
                 
                 cell.accessoryView = self.button;
                 cell.textLabel.text = @"";
