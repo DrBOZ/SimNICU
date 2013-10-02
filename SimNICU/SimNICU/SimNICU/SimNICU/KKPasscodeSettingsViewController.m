@@ -130,13 +130,12 @@
         _eraseDataSwitch.on = _eraseDataOn;
     }
     
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     self.myTableView.backgroundColor = [UIColor clearColor];
     
-    
 #if USE_DIMPLE_BACKGROUND
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)

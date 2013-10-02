@@ -45,11 +45,11 @@ static const CGFloat kMonthLabelHeight = 17.f;
         UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
 
         contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
 #if USE_DIMPLE_BACKGROUND
+        
+        //delegate
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         // set background colour
         if (appDelegate.window.bounds.size.height == 568)

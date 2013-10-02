@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-#define USE_DIMPLE_BACKGROUND 1
+#define USE_DIMPLE_BACKGROUND 0
 
 #define BACKGROUND_IPHONE_35_PORTRAIT_PNG @"LightGreyWithDimples35inchRetinaPortrait.png"
 #define BACKGROUND_IPHONE_35_LANDSCAPE_PNG @"LightGreyWithDimples35inchRetinaLandscape.png"

@@ -107,10 +107,11 @@
 
 + (void)setSecondaryBackgroundForTableView:(UITableView *)myTableView
 {
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
 #if USE_DIMPLE_BACKGROUND
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)

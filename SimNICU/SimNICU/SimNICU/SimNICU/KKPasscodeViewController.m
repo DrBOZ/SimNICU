@@ -47,9 +47,6 @@
 - (void)loadView
 {
 	[super loadView];
-    
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 	
@@ -61,6 +58,9 @@
 	_enterPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
 #if USE_DIMPLE_BACKGROUND
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // set background colour
     if (appDelegate.window.bounds.size.height == 568)
