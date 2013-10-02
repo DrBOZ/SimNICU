@@ -275,7 +275,7 @@
     // both the UITableView and the non-scrolling HeaderView (containing the image)
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 22.0f + 44.0f, 320.0f, (appDelegate.window.bounds.size.height))];
+        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 20.0f + 44.0f, 320.0f, (appDelegate.window.bounds.size.height))];
     }
     else
     {
@@ -300,7 +300,14 @@
     self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
     
     // UITableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - 20.0f - 44.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
+    }
     self.myTableView.rowHeight = 50.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -327,69 +334,128 @@
     self.tableBgView.userInteractionEnabled = NO;
     [self.contentView addSubview:self.tableBgView];
     
-    // header holds image and settings view..
-    self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
-    
-    // IMAGE
-    UIImage *image;
-    if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // Retina display iPhone
-        image = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
+        // header holds image and settings view..
+        self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 150.0f)];
+        
+        // IMAGE
+        UIImage *image = [UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"];
+        
+        self.appImageView = [[UIImageView alloc] initWithImage:image];
+        self.appImageView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 150.0f);
+        self.appImageView.contentMode = UIViewContentModeScaleToFill;
+        [self.myHeaderView addSubview:self.appImageView];
+        
+        // display background
+        self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 65.0f)];
+        self.displayBackground.backgroundColor = [UIColor blackColor];
+        self.displayBackground.alpha = .5;
+        self.displayBackground.hidden = YES;
+        [self.myHeaderView addSubview:self.displayBackground];
+        
+        // dismiss button image & view
+        self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
+        self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2.png"];
+        self.displayDismissButtonView.userInteractionEnabled = YES;
+        self.displayDismissButtonView.hidden = YES;
+        [self.myHeaderView addSubview:self.displayDismissButtonView];
+        
+        // displayTextLabel (Patient's name)
+        self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
+        self.displayTextLabel.textColor = [UIColor whiteColor];
+        self.displayTextLabel.backgroundColor = [UIColor clearColor];
+        self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+        self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
+        self.displayTextLabel.textAlignment = UITextAlignmentLeft;
+        self.displayTextLabel.hidden = YES;
+        [self.myHeaderView addSubview:self.displayTextLabel];
+        
+        // displayAgeTextLabel (Age in days)
+        self.displayAgeTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 58.0f, 227.0f, 30.0f)];
+        self.displayAgeTextLabel.textColor = [UIColor whiteColor];
+        self.displayAgeTextLabel.backgroundColor = [UIColor clearColor];
+        self.displayAgeTextLabel.font = [UIFont systemFontOfSize:15.0f];
+        self.displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
+        self.displayAgeTextLabel.hidden = YES;
+        [self.myHeaderView addSubview:self.displayAgeTextLabel];
+        
+        // displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
+        self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 76.0f, 230.0f, 30.0f)];
+        self.displayDetailTextLabel.textColor = [UIColor whiteColor];
+        self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
+        self.displayDetailTextLabel.font = [UIFont systemFontOfSize:15.0f];
+        self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+        self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
+        self.displayDetailTextLabel.hidden = YES;
+        [self.myHeaderView addSubview:self.displayDetailTextLabel];
     }
     else
     {
-        // non Retina display iPhone/iPod Touch
-        image = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
+        // header holds image and settings view..
+        self.myHeaderView = [[UIView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 150.0f)];
+        
+        // IMAGE
+        UIImage *image;
+        if([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
+        {
+            // Retina display iPhone
+            image = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto640x300.jpg"]:12:12];
+        }
+        else
+        {
+            // non Retina display iPhone/iPod Touch
+            image = [RoundImage makeRoundCornerImage:[UIImage imageNamed:@"SimNICU_MainPhoto320x150.jpg"]:6:6];
+        }
+        
+        self.appImageView = [[UIImageView alloc] initWithImage:image];
+        self.appImageView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 150.0f);
+        self.appImageView.contentMode = UIViewContentModeScaleToFill;
+        [self.myHeaderView addSubview:self.appImageView];
+        
+        // display background
+        self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 65.0f)];
+        self.displayBackground.backgroundColor = [UIColor blackColor];
+        self.displayBackground.alpha = .5;
+        self.displayBackground.hidden = YES;
+        [self.myHeaderView addSubview:self.displayBackground];
+        
+        // dismiss button image & view
+        self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
+        self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2.png"];
+        self.displayDismissButtonView.userInteractionEnabled = YES;
+        self.displayDismissButtonView.hidden = YES;
+        [self.myHeaderView addSubview:self.displayDismissButtonView];
+        
+        // displayTextLabel (Patient's name)
+        self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
+        self.displayTextLabel.textColor = [UIColor whiteColor];
+        self.displayTextLabel.backgroundColor = [UIColor clearColor];
+        self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+        self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
+        self.displayTextLabel.textAlignment = UITextAlignmentLeft;
+        self.displayTextLabel.hidden = YES;
+        [self.myHeaderView addSubview:self.displayTextLabel];
+        
+        // displayAgeTextLabel (Age in days)
+        self.displayAgeTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 58.0f, 227.0f, 30.0f)];
+        self.displayAgeTextLabel.textColor = [UIColor whiteColor];
+        self.displayAgeTextLabel.backgroundColor = [UIColor clearColor];
+        self.displayAgeTextLabel.font = [UIFont systemFontOfSize:15.0f];
+        self.displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
+        self.displayAgeTextLabel.hidden = YES;
+        [self.myHeaderView addSubview:self.displayAgeTextLabel];
+        
+        // displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
+        self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 76.0f, 230.0f, 30.0f)];
+        self.displayDetailTextLabel.textColor = [UIColor whiteColor];
+        self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
+        self.displayDetailTextLabel.font = [UIFont systemFontOfSize:15.0f];
+        self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+        self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
+        self.displayDetailTextLabel.hidden = YES;
+        [self.myHeaderView addSubview:self.displayDetailTextLabel];
     }
-    
-    self.appImageView = [[UIImageView alloc] initWithImage:image];
-    self.appImageView.frame = CGRectMake(0.0f, 0.0f, 300.0f, 150.0f);
-    self.appImageView.contentMode = UIViewContentModeScaleToFill;
-    [self.myHeaderView addSubview:self.appImageView];
-    
-    // display background
-    self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 65.0f)];
-    self.displayBackground.backgroundColor = [UIColor blackColor];
-    self.displayBackground.alpha = .5;
-    self.displayBackground.hidden = YES;
-    [self.myHeaderView addSubview:self.displayBackground];
-    
-    // dismiss button image & view
-    self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
-    self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2.png"];
-    self.displayDismissButtonView.userInteractionEnabled = YES;
-    self.displayDismissButtonView.hidden = YES;
-    [self.myHeaderView addSubview:self.displayDismissButtonView];
-    
-    // displayTextLabel (Patient's name)
-    self.displayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
-    self.displayTextLabel.textColor = [UIColor whiteColor];
-    self.displayTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-    self.displayTextLabel.adjustsFontSizeToFitWidth = YES;
-    self.displayTextLabel.textAlignment = UITextAlignmentLeft;
-    self.displayTextLabel.hidden = YES;
-    [self.myHeaderView addSubview:self.displayTextLabel];
-    
-    // displayAgeTextLabel (Age in days)
-    self.displayAgeTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 58.0f, 227.0f, 30.0f)];
-    self.displayAgeTextLabel.textColor = [UIColor whiteColor];
-    self.displayAgeTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayAgeTextLabel.font = [UIFont systemFontOfSize:15.0f];
-    self.displayAgeTextLabel.textAlignment = UITextAlignmentLeft;
-    self.displayAgeTextLabel.hidden = YES;
-    [self.myHeaderView addSubview:self.displayAgeTextLabel];
-    
-    // displayDetailTextLabel (Gestation, birth weight, corrected gestation, working weight)
-    self.displayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 76.0f, 230.0f, 30.0f)];
-    self.displayDetailTextLabel.textColor = [UIColor whiteColor];
-    self.displayDetailTextLabel.backgroundColor = [UIColor clearColor];
-    self.displayDetailTextLabel.font = [UIFont systemFontOfSize:15.0f];
-    self.displayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-    self.displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
-    self.displayDetailTextLabel.hidden = YES;
-    [self.myHeaderView addSubview:self.displayDetailTextLabel];
     
     [self.contentView addSubview:self.myHeaderView];
     
