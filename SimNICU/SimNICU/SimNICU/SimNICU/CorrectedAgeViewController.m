@@ -54,8 +54,17 @@
     
     self.selectedDate = [NSDate date]; // set default to now
     
-    // settings button
-    self.navigationItem.rightBarButtonItem = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showInfoScreen)];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // settings button
+        self.navigationItem.rightBarButtonItem = [CBBarButtonItems customBarButtonWithTitle:@"Settings" target:self action:@selector(showInfoScreen)];
+    }
+    else
+    {
+        // settings button
+        self.navigationItem.rightBarButtonItem = [CBBarButtonItems settingsBarButtonWithTarget:self action:@selector(showInfoScreen)];
+    }
     
     // back button
     self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
@@ -1031,8 +1040,17 @@
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
-    navController.navigationBar.tintColor = [UIColor blackColor];
-    navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        navController.navigationBar.tintColor = [UIColor blackColor];
+        navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    }
     
     [self.navigationController presentModalViewController:navController animated:YES];
 }

@@ -209,23 +209,54 @@
         NSString *buttonTitle = [buttonDetails objectForKey:@"buttonTitle"];
       //NSInteger buttonValue = [[buttonDetails objectForKey:@"buttonValue"] intValue];
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:buttonTitle style:UIBarButtonItemStyleBordered target:self action:@selector(customButtonPressed:)];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            button.tintColor = [UIColor redColor];
+        }
+        
         button.tag = index;
         [barItems addObject:button];
         [button release];
         index++;
     }
-    if (NO == self.hideCancel) {
+    if (NO == self.hideCancel)
+    {
         UIBarButtonItem *cancelBtn = [self createButtonWithType:UIBarButtonSystemItemCancel target:self action:@selector(actionPickerCancel:)];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            cancelBtn.tintColor = [UIColor redColor];
+        }
+        
         [barItems addObject:cancelBtn];
     }
     UIBarButtonItem *flexSpace = [self createButtonWithType:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [barItems addObject:flexSpace];
-    if (title){
-        UIBarButtonItem *labelButton = [self createToolbarLabelWithTitle:title];
-        [barItems addObject:labelButton];    
-        [barItems addObject:flexSpace];
+    if (title)
+    {
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // do nothing
+        }
+        else
+        {
+            UIBarButtonItem *labelButton = [self createToolbarLabelWithTitle:title];
+            [barItems addObject:labelButton];
+            [barItems addObject:flexSpace];
+        }
     }
     UIBarButtonItem *doneButton = [self createButtonWithType:UIBarButtonSystemItemDone target:self action:@selector(actionPickerDone:)];
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        doneButton.tintColor = [UIColor redColor];
+    }
+    
     [barItems addObject:doneButton];
     [pickerToolbar setItems:barItems animated:YES];
     [barItems release];

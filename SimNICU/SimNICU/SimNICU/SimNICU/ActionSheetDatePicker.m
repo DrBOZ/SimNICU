@@ -68,7 +68,8 @@
 - (id)initWithTitle:(NSString *)title datePickerMode:(UIDatePickerMode)datePickerMode selectedDate:(NSDate *)selectedDate minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate target:(id)target action:(SEL)action origin:(id)origin
 {
     self = [super initWithTarget:target successAction:action cancelAction:nil origin:origin];
-    if (self) {
+    if (self)
+    {
         self.title = title;
         self.datePickerMode = datePickerMode;
         self.selectedDate = selectedDate;

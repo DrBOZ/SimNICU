@@ -249,8 +249,19 @@
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
-    navController.navigationBar.tintColor = [UIColor blackColor];
-    navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+        // navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        // navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    }
+    else
+    {
+        navController.navigationBar.tintColor = [UIColor blackColor];
+        navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    }
     
     [self.navigationController presentModalViewController:navController animated:YES];
 }
