@@ -687,11 +687,22 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-                [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-                [self.button setSelected:NO];
-                [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-                [self.button setButtonColor:[UIColor darkGrayColor]];
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    self.button.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
+                    [self.button setTitle:@"Done" forState:UIControlStateNormal];
+                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
+                }
+                else
+                {
+                    self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
+                    [self.button setSelected:NO];
+                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
+                    [self.button setButtonColor:[UIColor darkGrayColor]];
+                }
                 
                 cell.accessoryView = self.button;
                 cell.textLabel.text = @"";
@@ -1172,28 +1183,19 @@
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
             
-            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-            navController.navigationBar.tintColor = [UIColor blackColor];
-            
-            [self presentModalViewController:navController animated:YES];
-            
-            /*
-            if (self.patientListMode)
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                // Bay Editor
-                BayEditorViewController *bayEditorViewController = [[BayEditorViewController alloc] init];
-                bayEditorViewController.bayData = self.bayData;
-                bayEditorViewController.delegate = self;
-                
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:bayEditorViewController];
-                
+                navController.navigationBar.barTintColor = [UIColor grayColor];
+                navController.navigationBar.tintColor = [UIColor redColor];
+            }
+            else
+            {
                 navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
                 navController.navigationBar.tintColor = [UIColor blackColor];
-                
-                [self presentModalViewController:navController animated:YES];
             }
-             */
             
+            [self presentModalViewController:navController animated:YES];
         }
         else if (indexPath.row == 2)
         {
@@ -1310,14 +1312,19 @@
     newViewController.selectedPatientInBayNSNumber = [NSNumber numberWithInt:indexPath.row];
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navController.navigationBar.tintColor = [UIColor blackColor];
+    // UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];   allows orientation change
     
-    /*
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navController.navigationBar.tintColor = [UIColor blackColor];
-     */
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+    }
     
     [self presentModalViewController:navController animated:YES];
 }

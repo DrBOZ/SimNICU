@@ -286,7 +286,7 @@
     
     // self.contentView is a UIView that covers the entire window and contains
     // both the UITableView and the non-scrolling HeaderView (containing the image)
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f + iOS7Adjustment, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f + iOS7Adjustment, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height - iOS7Adjustment))];
     
     // info button
     self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showAboutScreen)];
@@ -295,7 +295,15 @@
     self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
     
     // UITableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - iOS7Adjustment, 300.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - iOS7Adjustment, 300.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - iOS7Adjustment, 300.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
+    }
     self.myTableView.rowHeight = 50.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -1558,10 +1566,18 @@
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
-    navController.navigationBar.tintColor = [UIColor blackColor];
-    navController.topViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        navController.navigationBar.tintColor = [UIColor blackColor];
+        navController.topViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    }
     
-    // [self.navigationController presentModalViewController:navController animated:YES];
     [self presentModalViewController:navController animated:YES];
 }
 

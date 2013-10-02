@@ -54,7 +54,7 @@
 		self.contentContainer.autoresizesSubviews = YES;
 		[self addSubview:self.contentContainer];
 		
-		[self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.5]]; // Fixed value, the bacground mask.
+		[self setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.5]]; // Fixed value, the background mask.
 				
 		[self.contentView setBackgroundColor:[UIColor clearColor]];
 		self.delegate = nil;
@@ -186,11 +186,21 @@
 
 - (CGRect)roundedRectFrame
 {
-
-	return CGRectMake(self.margin.left + self.frame.origin.x,
-					  self.margin.top + self.frame.origin.y,
-					  self.frame.size.width - self.margin.left - self.margin.right,
-					  self.frame.size.height - self.margin.top - self.margin.bottom);
+	// iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        return CGRectMake(self.margin.left + self.frame.origin.x,
+                          self.margin.top + self.frame.origin.y - 128.0f,
+                          self.frame.size.width - self.margin.left - self.margin.right,
+                          self.frame.size.height - self.margin.top - self.margin.bottom);
+    }
+    else
+    {
+        return CGRectMake(self.margin.left + self.frame.origin.x,
+                          self.margin.top + self.frame.origin.y,
+                          self.frame.size.width - self.margin.left - self.margin.right,
+                          self.frame.size.height - self.margin.top - self.margin.bottom);
+    }
 }
 
 - (CGRect)closeButtonFrame
@@ -221,16 +231,32 @@
 					  self.actionButton.frame.size.height);
 }
 
-- (CGRect)contentViewFrame {
-	CGRect roundedRectFrame = [self roundedRectFrame];
-	return CGRectMake(self.padding.left + roundedRectFrame.origin.x,
-					  self.padding.top + roundedRectFrame.origin.y,
-					  roundedRectFrame.size.width - self.padding.left - self.padding.right,
-					  roundedRectFrame.size.height - self.padding.top - self.padding.bottom);
+- (CGRect)contentViewFrame
+{
+	CGRect rect;
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        rect = CGRectMake(self.margin.left + self.frame.origin.x,
+                          self.margin.top + self.frame.origin.y - 128.0f,
+                          self.frame.size.width - self.margin.left - self.margin.right,
+                          self.frame.size.height - self.margin.top - self.margin.bottom);
+    }
+    else
+    {
+        rect = CGRectMake(self.margin.left + self.frame.origin.x,
+                          self.margin.top + self.frame.origin.y - 128.0f,
+                          self.frame.size.width - self.margin.left - self.margin.right,
+                          self.frame.size.height - self.margin.top - self.margin.bottom);
+    }
+    
+    return rect;
 }
 
 
-- (void)layoutSubviews {
+- (void)layoutSubviews
+{
 	[super layoutSubviews];
 	
 	self.roundedRect.frame	= [self roundedRectFrame];
@@ -240,6 +266,9 @@
 	
 	UADebugLog(@"roundedRect frame: %@", NSStringFromCGRect(self.roundedRect.frame));
 	UADebugLog(@"contentView frame: %@", NSStringFromCGRect(self.contentView.frame));
+    
+    NSLog(@"roundedRect frame: %@", NSStringFromCGRect(self.roundedRect.frame));
+	NSLog(@"contentView frame: %@", NSStringFromCGRect(self.contentView.frame));
 }
 
 - (void)closePressed:(id)sender

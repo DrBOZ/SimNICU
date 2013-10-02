@@ -37,6 +37,13 @@
                                   message:@"The following is for infants born less than 28 weeks gestation."
                                   delegate:nil cancelButtonTitle:@"OK"
                                   otherButtonTitles:nil];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            alertView.tintColor = [UIColor redColor];
+        }
+        
         [alertView show];
     }
     

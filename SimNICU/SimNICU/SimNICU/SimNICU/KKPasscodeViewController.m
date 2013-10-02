@@ -126,29 +126,36 @@
 	_confirmPasscodeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	_confirmPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-#if USE_DIMPLE_BACKGROUND
-    
-    // set background colour
-    if (appDelegate.window.bounds.size.height == 568)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // 4 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-        [tempImageView setFrame:_confirmPasscodeTableView.frame];
-        
-        _confirmPasscodeTableView.backgroundView = tempImageView;
+        // no images
     }
     else
     {
-        // 3.5 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-        [tempImageView setFrame:_confirmPasscodeTableView.frame];
+#if USE_DIMPLE_BACKGROUND
         
-        _confirmPasscodeTableView.backgroundView = tempImageView;
-    }
-    
-#else
-    // code
+        // set background colour
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            // 4 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            [tempImageView setFrame:_confirmPasscodeTableView.frame];
+            
+            _confirmPasscodeTableView.backgroundView = tempImageView;
+        }
+        else
+        {
+            // 3.5 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            [tempImageView setFrame:_confirmPasscodeTableView.frame];
+            
+            _confirmPasscodeTableView.backgroundView = tempImageView;
+        }
+        
 #endif
+
+    }
     
 	[self.view addSubview:_confirmPasscodeTableView];
     

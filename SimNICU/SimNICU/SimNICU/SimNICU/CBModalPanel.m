@@ -47,9 +47,9 @@
         self.shouldBounce = NO;
 		
 		UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero];
-        tableView.rowHeight = 30.0f;
         tableView.backgroundColor = [UIColor clearColor];
         tableView.separatorColor = [UIColor clearColor];
+        tableView.rowHeight = 30.0f;
         tableView.dataSource = self;
         tableView.delegate = self;
         
@@ -64,7 +64,17 @@
 {
 	[super layoutSubviews];
 	
-	[view setFrame:self.contentView.bounds];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        CGRect rect = CGRectMake(self.contentView.bounds.origin.x, self.contentView.bounds.origin.y - 64.0f, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
+        
+        [view setFrame:rect];
+    }
+    else
+    {
+        [view setFrame:self.contentView.bounds];
+    }
 }
 
 #pragma mark - UITableView data source
@@ -88,6 +98,12 @@
             cell.textLabel.textColor = [UIColor whiteColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                cell.backgroundColor = [UIColor clearColor];
+            }
         }
         
         HandoverSectionCustomText *customText = tableRows[indexPath.row];
@@ -103,6 +119,12 @@
             cell.textLabel.textColor = [UIColor whiteColor];
             cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                cell.backgroundColor = [UIColor clearColor];
+            }
         }
         
         CBTableViewRowData *rowData = tableRows[indexPath.row];

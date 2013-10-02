@@ -39,14 +39,21 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        // Custom initialization
-        self.view.backgroundColor = [UIColor blackColor];
-        
         //delegate
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         //menu table
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+            
+            self.view.backgroundColor = [UIColor blackColor];
+        }
         self.myTableView.rowHeight = 44.0f;
         self.myTableView.dataSource = self;
         self.myTableView.delegate = self;
@@ -56,6 +63,10 @@
         self.myTableView.scrollEnabled = YES;
         [self.view addSubview:self.myTableView];
         
+        // add TableView background
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        
+        /*
 #if USE_DIMPLE_BACKGROUND
         
         // set background colour
@@ -79,6 +90,7 @@
 #else
         self.myTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 #endif
+         */
         
     }
     return self;
@@ -130,8 +142,17 @@
         _eraseDataSwitch.on = _eraseDataOn;
     }
     
-    self.myTableView.backgroundColor = [UIColor clearColor];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // do nothing
+    }
+    else
+    {
+        self.myTableView.backgroundColor = [UIColor clearColor];
+    }
     
+    /*
 #if USE_DIMPLE_BACKGROUND
     
     //delegate
@@ -158,6 +179,7 @@
 #else
     // self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 #endif
+     */
     
 }
 
@@ -192,7 +214,8 @@
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if (buttonIndex == 0) {
+	if (buttonIndex == 0)
+    {
 		_eraseDataOn = YES;
 		[KKKeychain setString:@"YES" forKey:@"erase_data_on"];
 	} else {

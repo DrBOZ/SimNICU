@@ -846,8 +846,16 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // create webView to display PDF
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
-    
+    // iOS 7 specifics
+    UIWebView *webView;
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f))];
+    }
+    else
+    {
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
+    }
     NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView setScalesPageToFit:YES];
