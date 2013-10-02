@@ -55,10 +55,115 @@
     }
     
     // check which version of iOS user is using
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        NSLog(@"IntubationViewController iOS 5.0+ pathway");
+        float roundedSwitchHeight = 160.0f;
+        float pickerHeight = 180.0f;
         
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            roundedSwitchHeight = 240.0f;
+            pickerHeight = 216.0f;
+        }
+        
+        //menu table
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        self.myTableView.separatorColor = [UIColor grayColor];
+        self.myTableView.sectionFooterHeight = 10.0f;
+        self.myTableView.sectionHeaderHeight = 10.0f;
+        self.myTableView.rowHeight = 44.0f;
+        self.myTableView.dataSource = self;
+        self.myTableView.scrollEnabled = NO;
+        self.myTableView.delegate = self;
+        self.myTableView.bounces = NO;
+        self.myTableView.hidden = NO;
+        [self.view addSubview:self.myTableView];
+        
+        // add TableView background
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        
+        // rounded Switch
+        self.roundedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(230.0f, roundedSwitchHeight, 80.0f, 44.0f)];
+        [self.roundedSwitch addTarget:self action:@selector(changeRoundUp) forControlEvents:UIControlEventValueChanged];
+        [self.view addSubview:self.roundedSwitch];
+        
+        UILabel *roundingLabel = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, roundedSwitchHeight, 100.0f, 30.0f)];
+        roundingLabel.text = @"Round up";
+        
+        [self formatLabelForiOS7:roundingLabel];
+        
+        [self.view addSubview:roundingLabel];
+        
+        self.suggestionBasedOn = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 64.0f - 60.0f), 286.0f, 30.0f)];
+        self.suggestionBasedOn.text = @"";
+        
+        [self formatLabelForiOS7:self.suggestionBasedOn];
+        
+        /*
+        self.suggestionBasedOn.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];  //iOS 6.0
+        self.suggestionBasedOn.backgroundColor = [UIColor clearColor];
+        self.suggestionBasedOn.shadowColor = [UIColor whiteColor];
+        self.suggestionBasedOn.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        self.suggestionBasedOn.font = [UIFont boldSystemFontOfSize:16.0f];
+         */
+        [self.view addSubview:self.suggestionBasedOn];
+        
+        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)]; // 205
+        weight.text = @"Weight";
+        
+        // format label
+        [self formatLabelForiOS7:weight];
+        
+        // add to view
+        [self.view addSubview:weight];
+        
+        UILabel *gest = [[UILabel alloc] initWithFrame:CGRectMake(83.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        gest.text = @"Gest";
+        [self formatLabelForiOS7:gest];
+        [self.view addSubview:gest];
+        
+        UILabel *ETTsize = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        ETTsize.text = @"Size";
+        [self formatLabelForiOS7:ETTsize];
+        [self.view addSubview:ETTsize];
+        
+        UILabel *oral = [[UILabel alloc] initWithFrame:CGRectMake(205.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        oral.text = @"Oral";
+        [self formatLabelForiOS7:oral];
+        [self.view addSubview:oral];
+        
+        UILabel *cut = [[UILabel alloc] initWithFrame:CGRectMake(262.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        
+        if (self.displayLengthToCutETT) {
+            cut.text = @"Cut";
+        }
+        else {
+            cut.text = @"Nasal";
+        }
+        
+        [self formatLabelForiOS7:cut];
+        [self.view addSubview:cut];
+        
+        //intubation array
+        self.intubationArray = [[NSMutableArray alloc] initWithCapacity:7];
+        [self.intubationArray addObject:@"500     24     2.5     6.0    8.0"];
+        [self.intubationArray addObject:@"1000   27     2.5     6.5    8.5"];
+        [self.intubationArray addObject:@"1500   30  2.5/3.0  7.0    9.0"];
+        [self.intubationArray addObject:@"2000   33     3.0     7.5    9.5"];
+        [self.intubationArray addObject:@"2500   36     3.0     8.0    10.0"];
+        [self.intubationArray addObject:@"3000   38     3.5     9.0    11.0"];
+        [self.intubationArray addObject:@"3500   40     3.5     10.0  12.0"];
+        
+        //picker view
+        self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0f, (appDelegate.window.bounds.size.height - pickerHeight), 320.0f, pickerHeight)];
+        self.pickerView.delegate = self;
+        self.pickerView.dataSource = self;
+        self.pickerView.showsSelectionIndicator = YES;
+        [self.view addSubview:self.pickerView];
+    }
+    else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
+    {
         float roundedSwitchHeight = 160.0f;
         float pickerHeight = 180.0f;
         
@@ -69,7 +174,7 @@
         }
         
         //menu table
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
         self.myTableView.separatorColor = [UIColor grayColor];
         self.myTableView.sectionFooterHeight = 10.0f;
         self.myTableView.sectionHeaderHeight = 10.0f;
@@ -181,8 +286,7 @@
         NSLog(@"IntubationViewController iOS 3.0+ pathway");
         
         //menu table
-        // self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 236.0f) style:UITableViewStyleGrouped];
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
         
         self.myTableView.rowHeight = 44.0f;
         self.myTableView.dataSource = self;
@@ -952,6 +1056,25 @@
     preferences.ETTRoundUp = [NSString stringWithFormat:@"%i", self.roundedSwitch.on];
     
     [self setPicker];
+}
+
+- (UILabel *)formatLabelForiOS7:(UILabel *)label
+{
+    // text colour
+    label.textColor = [UIColor grayColor];
+    // label.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];  //iOS 6.0
+    
+    // background colour
+    // label.backgroundColor = [UIColor clearColor];
+    
+    // shadow
+    label.shadowColor = [UIColor whiteColor];
+    label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    
+    // font size
+    // label.font = [UIFont boldSystemFontOfSize:16.0f];
+    
+    return label;
 }
 
 @end

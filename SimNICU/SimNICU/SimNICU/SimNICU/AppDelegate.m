@@ -19,6 +19,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 @interface AppDelegate()
 
+@property (nonatomic, strong) UINavigationController *rearViewNavController;
+
 @end
 
 @implementation AppDelegate
@@ -184,6 +186,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
         // sets the color of navigation bar
         self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
         self.navigationController.view.tintColor = [UIColor redColor];
+        
+        self.rearViewNavController.navigationBar.barTintColor = [UIColor grayColor];
+        self.rearViewNavController.view.tintColor = [UIColor redColor];
     }
     else
     {
@@ -206,6 +211,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     // ZUUIRevealController
     self.revealController = [[ZUUIRevealController alloc] initWithFrontViewController:self.navigationController rearViewController:enterWeightViewController];
+    
     self.revealController.delegate = enterWeightViewController;
     
     // set rootViewController

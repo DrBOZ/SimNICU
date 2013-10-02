@@ -77,6 +77,16 @@
     return customBarButton;
 }
 
++ (UIBarButtonItem *)customBarButtonWithTitle:(NSString *)title target:(id)target action:(SEL)action
+{
+    // setup button
+    UIBarButtonItem *customButton = [[UIBarButtonItem alloc] initWithTitle:title
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:target
+                                                                  action:action];
+    return customButton;
+}
+
 // How to make a custom BarButtonItem...
 /*
  UIView *roundIconView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 48.0f, 48.0f)];

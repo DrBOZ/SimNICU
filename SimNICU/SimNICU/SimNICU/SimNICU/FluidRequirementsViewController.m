@@ -83,7 +83,15 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.MLperHOURTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.MLperHOURTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.MLperHOURTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    }
     self.MLperHOURTableView.separatorColor = [UIColor grayColor];
     self.MLperHOURTableView.sectionFooterHeight = 15.0f;
     self.MLperHOURTableView.scrollEnabled = YES;
@@ -441,18 +449,8 @@
                 [self.totalFluidSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                 self.totalFluidSlider.continuous = YES;
                 
-                // if accelerometer add anisotropic images to sliders
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
-                {
-                    UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                    UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                    [self.totalFluidSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
-                    [self.totalFluidSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
-                    
-                    UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
-                    [self.totalFluidSlider setThumbImage:initialImage forState:UIControlStateNormal];
-                    [self.totalFluidSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
-                }
+                // format slider appearance
+                [self formatSliderAppearance:self.totalFluidSlider];
                 
                 [cell addSubview:self.totalFluidSlider];
                 
@@ -561,19 +559,8 @@
                     [self.totalSodiumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                     self.totalSodiumSlider.continuous = YES;
                     
-                    // if accelerometer add anisotropic images to sliders
-                    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
-                    {
-                        UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                        UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                        
-                        [self.totalSodiumSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
-                        [self.totalSodiumSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
-                        
-                        UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
-                        [self.totalSodiumSlider setThumbImage:initialImage forState:UIControlStateNormal];
-                        [self.totalSodiumSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
-                    }
+                    // format slider appearance
+                    [self formatSliderAppearance:self.totalSodiumSlider];
                     
                     [cell addSubview:self.totalSodiumSlider];
                     
@@ -677,19 +664,8 @@
                     [self.totalPotassiumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                     self.totalPotassiumSlider.continuous = YES;
                     
-                    // if accelerometer add anisotropic images to sliders
-                    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
-                    {
-                        UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                        UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                        
-                        [self.totalPotassiumSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
-                        [self.totalPotassiumSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
-                        
-                        UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
-                        [self.totalPotassiumSlider setThumbImage:initialImage forState:UIControlStateNormal];
-                        [self.totalPotassiumSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
-                    }
+                    // format slider appearance
+                    [self formatSliderAppearance:self.totalPotassiumSlider];
                     
                     [cell addSubview:self.totalPotassiumSlider];
                     
@@ -792,19 +768,8 @@
                     [self.totalCalciumSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                     self.totalCalciumSlider.continuous = YES;
                     
-                    // if accelerometer add anisotropic images to sliders
-                    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
-                    {
-                        UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                        UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
-                        
-                        [self.totalCalciumSlider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
-                        [self.totalCalciumSlider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
-                        
-                        UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
-                        [self.totalCalciumSlider setThumbImage:initialImage forState:UIControlStateNormal];
-                        [self.totalCalciumSlider setThumbImage:initialImage forState:UIControlStateHighlighted];
-                    }
+                    // format slider appearance
+                    [self formatSliderAppearance:self.totalCalciumSlider];
                     
                     [cell addSubview:self.totalCalciumSlider];
                     
@@ -1072,6 +1037,31 @@
     // mmol/500ml
     caMMOLPerBag = (500 / mlPerDay) * caMMOLPerDay;
     self.totalCalciumMMOLPERBAG.text = [NSString stringWithFormat:@"(%@", [self formatResultWithDouble:caMMOLPerBag maximumFractionDigits:1]];
+}
+
+#pragma mark - formatting methods
+
+- (UISlider *)formatSliderAppearance:(UISlider *)slider
+{
+    // if iOS 7 then return default slider
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // do nothing
+    }
+    // if  iOS 5 or 6, then add anisotropic images to sliders
+    else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
+    {
+        UIImage *stretchableFillImage = [[UIImage imageNamed:@"slider-fill"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
+        UIImage *stretchableTrackImage = [[UIImage imageNamed:@"slider-track"] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0f, 6.0f, 0.0f, 6.0f)];
+        [slider setMinimumTrackImage:stretchableFillImage forState:UIControlStateNormal];
+        [slider setMaximumTrackImage:stretchableTrackImage forState:UIControlStateNormal];
+        
+        UIImage *initialImage = [DAAnisotropicImage imageFromAccelerometerData:nil];
+        [slider setThumbImage:initialImage forState:UIControlStateNormal];
+        [slider setThumbImage:initialImage forState:UIControlStateHighlighted];
+    }
+    
+    return slider;
 }
 
 @end

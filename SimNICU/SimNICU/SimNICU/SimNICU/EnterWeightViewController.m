@@ -141,10 +141,8 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // sets the color of navigation bar
-            // self.navigationController.navigationBar.barTintColor = [UIColor grayColor];
-            // self.navigationController.view.tintColor = [UIColor redColor];
             iOS7Adjustment = 20.0f + 44.0f;
+            self.view.tintColor = [UIColor redColor];
         }
         else
         {
@@ -155,47 +153,15 @@
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        // Custom initialization
-        self.enterWeightViewControllerNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
-        self.enterWeightViewControllerNavigationBar.barStyle = UIBarStyleBlackOpaque;
-        self.enterWeightViewControllerNavigationBar.tintColor = [UIColor blackColor];
-        self.enterWeightViewControllerNavigationBar.delegate = self;
-        [self.view addSubview:self.enterWeightViewControllerNavigationBar];
-        
-        // Edit button
-        self.enterWeightViewControllerNavigationItem = [[UINavigationItem alloc] init];
-        self.enterWeightViewControllerNavigationItem.leftBarButtonItem = self.editButtonItem;
-        self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
-        
-        // Flexible space to align custom buttons
-        UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-        
-        // Settings button
-        UIBarButtonItem *settingsButton = [CBBarButtonItems customBarButtonWithImageFile:@"settings.png"
-                                                                                  target:self
-                                                                                  action:@selector(showSettings)];
-    
-        // create array
-        
-#if SYNC_PREVIEW_MODE
-        
-        // Sync button
-        UIBarButtonItem *syncButton = [CBBarButtonItems customBarButtonWithImageFile:@"sync.png"
-                                                                              target:self
-                                                                              action:@selector(showSync)];
-        
-        NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, syncButton, flexibleItem, nil];
-#else
-        NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, flexibleItem, flexibleItem, nil];
-#endif
-        
-        self.enterWeightViewControllerNavigationItem.rightBarButtonItems = items;
-        
-        // push to navigation bar
-        [self.enterWeightViewControllerNavigationBar pushNavigationItem:self.enterWeightViewControllerNavigationItem animated:NO];
-        
-        // Tableview
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped]; // 4 inch Retina
+        // setup Tableview
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 273.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        }
         self.myTableView.rowHeight = 50;
         self.myTableView.dataSource = self;
         self.myTableView.delegate = self;
@@ -207,7 +173,7 @@
         
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            self.myTableView.frame = CGRectMake(0.0f, 0.0f, 273.0f, (appDelegate.window.bounds.size.height));
+            // no colour
         }
         else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 6.0)
         {
@@ -236,6 +202,119 @@
         }
         
         [self.view addSubview:self.myTableView];
+        
+        // Custom initialization
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.enterWeightViewControllerNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 64.0f)];
+            // self.enterWeightViewControllerNavigationBar.barStyle = UIBarStyleBlackOpaque;
+            self.enterWeightViewControllerNavigationBar.barTintColor = [UIColor grayColor];
+            self.enterWeightViewControllerNavigationBar.tintColor = [UIColor redColor];
+        }
+        else
+        {
+            self.enterWeightViewControllerNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+            self.enterWeightViewControllerNavigationBar.barStyle = UIBarStyleBlackOpaque;
+            self.enterWeightViewControllerNavigationBar.tintColor = [UIColor blackColor];
+        }
+        self.enterWeightViewControllerNavigationBar.delegate = self;
+        [self.view addSubview:self.enterWeightViewControllerNavigationBar];
+        
+        // Edit button
+        self.enterWeightViewControllerNavigationItem = [[UINavigationItem alloc] init];
+        self.enterWeightViewControllerNavigationItem.leftBarButtonItem = self.editButtonItem;
+        self.enterWeightViewControllerNavigationItem.leftBarButtonItem.enabled = NO;
+        
+        // Flexible space to align custom buttons
+        UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        
+        // iOS 7 specifics
+        
+        UIBarButtonItem *settingsButton;
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            settingsButton = [CBBarButtonItems customBarButtonWithTitle:@"Settings" target:self action:@selector(showSettings)];
+        }
+        else
+        {
+            // Settings button
+            settingsButton = [CBBarButtonItems customBarButtonWithImageFile:@"settings.png"
+                                                                     target:self
+                                                                     action:@selector(showSettings)];
+        }
+    
+        // create array
+        
+#if SYNC_PREVIEW_MODE
+        
+        // Sync button
+        UIBarButtonItem *syncButton = [CBBarButtonItems customBarButtonWithImageFile:@"sync.png"
+                                                                              target:self
+                                                                              action:@selector(showSync)];
+        
+        NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, syncButton, flexibleItem, nil];
+#else
+        NSArray *items = [NSArray arrayWithObjects:flexibleItem, flexibleItem, settingsButton, flexibleItem, flexibleItem, flexibleItem, nil];
+#endif
+        
+        self.enterWeightViewControllerNavigationItem.rightBarButtonItems = items;
+        
+        // push to navigation bar
+        [self.enterWeightViewControllerNavigationBar pushNavigationItem:self.enterWeightViewControllerNavigationItem animated:NO];
+        
+        /*
+        // Tableview
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 273.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        }
+        self.myTableView.rowHeight = 50;
+        self.myTableView.dataSource = self;
+        self.myTableView.delegate = self;
+        
+        // self.myTableView.backgroundView.opaque = YES;
+        self.myTableView.separatorColor = [UIColor grayColor];
+        
+        // set background colour
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // no colour
+        }
+        else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 6.0)
+        {
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                // 4 inch Retina
+                
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+                [tempImageView setFrame:self.myTableView.frame];
+                
+                self.myTableView.backgroundView = tempImageView;
+            }
+            else
+            {
+                // 3.5 inch Retina
+                
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+                [tempImageView setFrame:self.myTableView.frame];
+                
+                self.myTableView.backgroundView = tempImageView;
+            }
+        }
+        else
+        {
+            self.myTableView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
+        }
+        
+        [self.view addSubview:self.myTableView];
+         */
         
         self.confidentialityModeOn = YES;
         self.gestationMode = 0;
@@ -417,19 +496,27 @@
         {
             UIView *headerView;
             
-            headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 270, 30)];
+            headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 270.0f, 30.0f)];
             
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 250, 30)];
+            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 250.0f, 30.0f)];
             
-            headerLabel.textColor = [UIColor whiteColor];
-            // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            headerLabel.shadowColor = [UIColor blackColor];
-            headerLabel.shadowOffset = CGSizeMake(0, 1);
-            headerLabel.backgroundColor = [self.myTableView backgroundColor];
-            headerLabel.opaque = YES;
-            headerLabel.font = [UIFont boldSystemFontOfSize:18];
-            headerLabel.textAlignment = UITextAlignmentLeft;
-            headerLabel.adjustsFontSizeToFitWidth = YES;
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                
+            }
+            else
+            {
+                headerLabel.textColor = [UIColor whiteColor];
+                // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+                headerLabel.shadowColor = [UIColor blackColor];
+                headerLabel.shadowOffset = CGSizeMake(0, 1);
+                headerLabel.backgroundColor = [self.myTableView backgroundColor];
+                headerLabel.opaque = YES;
+                headerLabel.font = [UIFont boldSystemFontOfSize:18];
+                headerLabel.textAlignment = UITextAlignmentLeft;
+                headerLabel.adjustsFontSizeToFitWidth = YES;
+            }
             
             headerLabel.text = [self.bayData[section - 2] bayName];
             
@@ -687,6 +774,12 @@
             }
             
             self.switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.switchObj.onTintColor = [UIColor redColor];
+            }
             
             self.switchObj.on = !self.confidentialityModeOn;
             [self.switchObj addTarget:self action:@selector(patientConfidentialityModeToggle) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
@@ -1808,8 +1901,17 @@
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
     
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navController.navigationBar.tintColor = [UIColor blackColor];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+    }
     
     [self presentModalViewController:navController animated:YES];
 }

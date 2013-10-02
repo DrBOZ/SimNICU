@@ -660,11 +660,10 @@
     screen.menuText = @"Glucose Load";
     
     screen.detailMenuText = @"Coming soon!";
-    
-#endif
-    
     screen.segueId = @"GlucoseInfusionRate";
     [screens addObject:screen];
+    
+#endif
     
     screen = [[Screen alloc] init];
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
