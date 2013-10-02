@@ -98,6 +98,8 @@
     UILabel *loadingDisplayBackground;
     UILabel *loadingDisplayTextLabel;
     UILabel *loadingDisplayDetailTextLabel;
+    
+    CGFloat iOS7Adjustment;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -230,6 +232,11 @@
 {
     [super viewDidLoad];
     
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        iOS7Adjustment = 20.0f + 44.0f;
+    }
+    
     if ([self.infoPassedThrough isEqualToString:@"Cleared"])
     {
         self.infoPassedThrough = nil;
@@ -273,16 +280,9 @@
     
     // self.contentView is a UIView that covers the entire window and contains
     // both the UITableView and the non-scrolling HeaderView (containing the image)
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 20.0f + 44.0f, 320.0f, (appDelegate.window.bounds.size.height))];
-    }
-    else
-    {
-        self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
-    }
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f + iOS7Adjustment, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height))];
     
-    // background set to black
+    // set background colour
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         // self.view.backgroundColor = [UIColor whiteColor];
@@ -300,14 +300,7 @@
     self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
     
     // UITableView
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - 20.0f - 44.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
-    }
-    else
-    {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 300.0f, (appDelegate.window.bounds.size.height - 230)) style:UITableViewStylePlain];
-    }
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - iOS7Adjustment, 300.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
     self.myTableView.rowHeight = 50.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -331,6 +324,7 @@
         self.tableBgView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50));
         self.tableBgView.image = [UIImage imageNamed:@"bgApplication.png"];
     }
+    
     self.tableBgView.userInteractionEnabled = NO;
     [self.contentView addSubview:self.tableBgView];
     
