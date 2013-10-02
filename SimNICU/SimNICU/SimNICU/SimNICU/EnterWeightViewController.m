@@ -44,6 +44,7 @@
 {
     UIView *tapView;
     CGFloat iOS7Adjustment;
+    CGFloat tableWidth;
 }
 
 - (NSMutableArray *)bayData
@@ -142,12 +143,14 @@
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
             iOS7Adjustment = 20.0f + 44.0f;
+            tableWidth = 268.0f;
             self.view.tintColor = [UIColor redColor];
         }
         else
         {
             // iOS 6 colourings
             self.view.backgroundColor = [UIColor blackColor];
+            tableWidth = 273.0f;
         }
         
         //delegate
@@ -156,11 +159,11 @@
         // setup Tableview
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 273.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableWidth, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
         }
         else
         {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, tableWidth, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
         }
         self.myTableView.rowHeight = 50;
         self.myTableView.dataSource = self;
@@ -473,17 +476,35 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    CGFloat result = 0.0f;
+    CGFloat height = 0.0f;
     
-    if (!self.confidentialityModeOn)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        if(!(section == 0 || section == 1))
+        if (section == 0)
         {
-            result = 30.0f;
+            height = 80.0f;
+        }
+        else if (!self.confidentialityModeOn)
+        {
+            if(!(section == 0 || section == 1))
+            {
+                height = 30.0f;
+            }
+        }
+    }
+    else
+    {
+        if (!self.confidentialityModeOn)
+        {
+            if(!(section == 0 || section == 1))
+            {
+                height = 30.0f;
+            }
         }
     }
     
-    return result;
+    return height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -503,7 +524,7 @@
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                
+                // do nothing
             }
             else
             {
