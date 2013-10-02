@@ -93,6 +93,41 @@
     NSString *lidocaineStrengthDose;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [CBTrackers logEvent:@"Infusions"];
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    //tableView
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    }
+    self.myTableView.rowHeight = 44.0f;
+    self.myTableView.dataSource = self;
+    self.myTableView.delegate = self;
+    self.myTableView.sectionFooterHeight = 10.0f;
+    self.myTableView.sectionHeaderHeight = 10.0f;
+    self.myTableView.separatorColor = [UIColor grayColor];
+    [self.view addSubview:self.myTableView];
+    
+    // add TableView background
+    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    
+    // swipe gesture recognizer
+    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     if (self.workingWeight)
@@ -104,7 +139,7 @@
         UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
         
         float workingWeightKGAsFloat = [UKLocaleWorkingWeight floatValue];
-         
+        
         if (workingWeightKGAsFloat < 1.0f)
         {
             // present weight as grams
@@ -217,33 +252,6 @@
     {
         // normal slider
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    [CBTrackers logEvent:@"Infusions"];
-    
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
-    self.myTableView.rowHeight = 44.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 10.0f;
-    self.myTableView.sectionHeaderHeight = 10.0f;
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
-    
-    // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
