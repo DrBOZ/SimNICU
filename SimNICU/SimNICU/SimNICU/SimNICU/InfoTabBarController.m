@@ -28,6 +28,8 @@
     {
         self.title = @"Information";
         
+        self.view.tintColor = [UIColor redColor];
+        
         AboutSimNICUViewController *firstViewController = [[AboutSimNICUViewController alloc] init];
         
         // delegate
