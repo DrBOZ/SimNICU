@@ -143,6 +143,8 @@
 		5C21A17217EF149A00BA5C3A /* CBStringMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C21A17017EF149A00BA5C3A /* CBStringMethods.m */; };
 		5C23A24317EDD99B00299D3E /* CBModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A24217EDD99B00299D3E /* CBModalPanel.m */; };
 		5C23A24417EDD99B00299D3E /* CBModalPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C23A24217EDD99B00299D3E /* CBModalPanel.m */; };
+		5C28EAB817FD6691009DDF17 /* ScreenHack01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C28EAB717FD6691009DDF17 /* ScreenHack01.png */; };
+		5C28EAB917FD6691009DDF17 /* ScreenHack01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C28EAB717FD6691009DDF17 /* ScreenHack01.png */; };
 		5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
@@ -851,6 +853,7 @@
 		5C21A17017EF149A00BA5C3A /* CBStringMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBStringMethods.m; sourceTree = "<group>"; };
 		5C23A24117EDD99B00299D3E /* CBModalPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBModalPanel.h; sourceTree = "<group>"; };
 		5C23A24217EDD99B00299D3E /* CBModalPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBModalPanel.m; sourceTree = "<group>"; };
+		5C28EAB717FD6691009DDF17 /* ScreenHack01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenHack01.png; sourceTree = "<group>"; };
 		5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperSizeTableViewController.h; sourceTree = "<group>"; };
 		5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperSizeTableViewController.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
@@ -2742,6 +2745,7 @@
 				5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */,
 				5CA3CC1F17B7999F002E96DC /* Default@2x.png */,
 				5CA3CC1D17B79996002E96DC /* Default.png */,
+				5C28EAB717FD6691009DDF17 /* ScreenHack01.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -3150,6 +3154,7 @@
 				5C51D8D317932A34004A7FF5 /* vitaminsAdministration.html in Resources */,
 				5C51D8D617932A3F004A7FF5 /* vitaminsContraindications.html in Resources */,
 				5C51D8D917932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */,
+				5C28EAB817FD6691009DDF17 /* ScreenHack01.png in Resources */,
 				5C51D8DC17932A5B004A7FF5 /* vitaminsReferences.html in Resources */,
 				5C51D8E017932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */,
 				5C51D8E317932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */,
@@ -3335,6 +3340,7 @@
 				5C51D8FC17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
 				5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
+				5C28EAB917FD6691009DDF17 /* ScreenHack01.png in Resources */,
 				5C101D2E17AE99020095E751 /* Default.png in Resources */,
 				5C101D3017AE991C0095E751 /* Default-568h@2x.png in Resources */,
 				5C101D3217AE99250095E751 /* Default@2x.png in Resources */,

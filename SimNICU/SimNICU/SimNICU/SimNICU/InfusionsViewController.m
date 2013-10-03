@@ -628,50 +628,68 @@
                 self.morphineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.morphineRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                // segmented control
-                SVSegmentedControl *morphineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                
-                [morphineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                morphineStrength.crossFadeLabelsOnDrag = YES;
-                morphineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                morphineStrength.tag = 0;
-                
-                if ([self.morphineStrength isEqualToString:@"Single"])
-                {
-                    morphineStrength.selectedIndex = 0;
-                }
-                else if ([self.morphineStrength isEqualToString:@"Double"])
-                {
-                    morphineStrength.selectedIndex = 1;
-                }
-                else if ([self.morphineStrength isEqualToString:@"Quad"])
-                {
-                    morphineStrength.selectedIndex = 2;
-                }
-                
-                morphineStrength.center = CGPointMake(160.0f, 150.0f);
-                
-                /*
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    morphineStrength.hidden = YES;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *morphineStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", Nil]];
                     
-                    UISegmentedControl *morphineStrength2 = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", Nil]];
-                    morphineStrength2.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
-                    morphineStrength2.tintColor = [UIColor redColor];
+                    // set properties
+                    morphineStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    morphineStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    morphineStrengthUISegmentedControl.tintColor = [UIColor redColor];
                     
-                    morphineStrength2.center = CGPointMake(160.0f, 150.0f);
+                    // set target
+                    [morphineStrengthUISegmentedControl addTarget:self action:@selector(changeSegementedControl:) forControlEvents:UIControlEventValueChanged];
                     
-                    morphineStrength2.selectedSegmentIndex = morphineStrength.selectedIndex;
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        morphineStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        morphineStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Quad"])
+                    {
+                        morphineStrengthUISegmentedControl.selectedSegmentIndex = 2;
+                    }
                     
-                    [morphineStrength2 addTarget:self action:@selector(changeSegementedControl:) forControlEvents:UIControlEventValueChanged];
-                    
-                    [cell addSubview:morphineStrength2];
+                    // add to cell
+                    [cell addSubview:morphineStrengthUISegmentedControl];
                 }
-                 */
-                
-                [cell addSubview:morphineStrength];
+                else
+                {
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *morphineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                    
+                    // set properties
+                    morphineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    morphineStrength.center = CGPointMake(160.0f, 150.0f);
+                    morphineStrength.crossFadeLabelsOnDrag = YES;
+                    morphineStrength.tag = 0;
+                    
+                    // set target
+                    [morphineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        morphineStrength.selectedIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        morphineStrength.selectedIndex = 1;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Quad"])
+                    {
+                        morphineStrength.selectedIndex = 2;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:morphineStrength];
+                }
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.morphineDoseLabel];

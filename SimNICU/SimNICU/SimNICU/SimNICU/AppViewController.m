@@ -331,6 +331,14 @@
     self.tableBgView.userInteractionEnabled = NO;
     [self.contentView addSubview:self.tableBgView];
     
+    // screen hack for iOS 7 to prevent options scrolling behind headers
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        UIImageView *screenHack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScreenHack01.png"]];
+        screenHack.frame = CGRectMake(5.0f, 214.0f - 64.0f, 311.0f, 11.0f);
+        [self.contentView addSubview:screenHack];
+    }
+    
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         // header holds image and settings view..
