@@ -37,8 +37,15 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f))
-                                                    style:UITableViewStyleGrouped];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+    }
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -50,9 +57,6 @@
     
     // add TableView background
     [CBDisplayMethods setBackgroundForTableView:self.myTableView];
-    
-    self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
-    self.rate.keyboardType = UIKeyboardTypeDecimalPad;
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
@@ -162,7 +166,17 @@
             self.inspiratoryTime.delegate = self;
             self.inspiratoryTime.tag = 10;
             self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
-            self.inspiratoryTime.keyboardAppearance = UIKeyboardAppearanceAlert;
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.inspiratoryTime.keyboardAppearance = UIKeyboardAppearanceDefault;
+            }
+            else
+            {
+                self.inspiratoryTime.keyboardAppearance = UIKeyboardAppearanceAlert;
+            }
+            
             self.inspiratoryTime.textAlignment = UITextAlignmentLeft;
             
             cell.accessoryView = self.inspiratoryTime;
@@ -191,7 +205,17 @@
             self.rate.delegate = self;
             self.rate.tag = 20;
             self.rate.keyboardType = UIKeyboardTypeDecimalPad;
-            self.rate.keyboardAppearance = UIKeyboardAppearanceAlert;
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.rate.keyboardAppearance = UIKeyboardAppearanceDefault;
+            }
+            else
+            {
+                self.rate.keyboardAppearance = UIKeyboardAppearanceAlert;
+            }
+            
             self.rate.textAlignment = UITextAlignmentLeft;
             
             cell.accessoryView = self.rate;

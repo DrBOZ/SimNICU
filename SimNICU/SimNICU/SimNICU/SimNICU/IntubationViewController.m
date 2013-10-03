@@ -26,17 +26,6 @@
 
 @implementation IntubationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // code
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -95,7 +84,7 @@
         
         [self.view addSubview:roundingLabel];
         
-        self.suggestionBasedOn = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 64.0f - 60.0f), 286.0f, 30.0f)];
+        self.suggestionBasedOn = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 60.0f), 286.0f, 30.0f)];
         self.suggestionBasedOn.text = @"";
         
         [self formatLabelForiOS7:self.suggestionBasedOn];
@@ -128,12 +117,12 @@
         [self formatLabelForiOS7:ETTsize];
         [self.view addSubview:ETTsize];
         
-        UILabel *oral = [[UILabel alloc] initWithFrame:CGRectMake(205.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        UILabel *oral = [[UILabel alloc] initWithFrame:CGRectMake(215.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
         oral.text = @"Oral";
         [self formatLabelForiOS7:oral];
         [self.view addSubview:oral];
         
-        UILabel *cut = [[UILabel alloc] initWithFrame:CGRectMake(262.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        UILabel *cut = [[UILabel alloc] initWithFrame:CGRectMake(275.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
         
         if (self.displayLengthToCutETT) {
             cut.text = @"Cut";

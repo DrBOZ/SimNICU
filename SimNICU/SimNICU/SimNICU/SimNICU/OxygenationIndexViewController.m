@@ -205,32 +205,35 @@
         static NSString *CellIdentifier = @"MAP";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
         self.meanAirwayPressure = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 107.0f, 31.0f)];
-        self.meanAirwayPressure.borderStyle = UITextBorderStyleRoundedRect;
-        self.meanAirwayPressure.placeholder = @"cm H2O";
         self.meanAirwayPressure.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
         self.meanAirwayPressure.clearButtonMode = UITextFieldViewModeAlways;
+        self.meanAirwayPressure.borderStyle = UITextBorderStyleRoundedRect;
+        self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
+        self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
+        self.meanAirwayPressure.textAlignment = UITextAlignmentLeft;
+        self.meanAirwayPressure.placeholder = @"cm H2O";
         self.meanAirwayPressure.delegate = self;
         self.meanAirwayPressure.tag = 10;
-        self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
-        self.meanAirwayPressure.keyboardAppearance = UIKeyboardAppearanceAlert;
-        self.meanAirwayPressure.textAlignment = UITextAlignmentLeft;
         
-        /*
-        [self.meanAirwayPressure setKeyboardType:UIKeyboardTypeDecimalPad];
-        [self.meanAirwayPressure setKeyboardAppearance:UIKeyboardAppearanceAlert];
-         */
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.meanAirwayPressure.keyboardAppearance = UIKeyboardAppearanceDefault;
+        }
+        else
+        {
+            self.meanAirwayPressure.keyboardAppearance = UIKeyboardAppearanceAlert;
+        }
         
-        cell.accessoryView = self.meanAirwayPressure;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.accessoryView = self.meanAirwayPressure;
         cell.textLabel.text = @"MAP:";
         
         returnCell = cell;
@@ -240,27 +243,35 @@
         static NSString *CellIdentifier = @"FiO2";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
         self.inspiredOxygen = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 107.0f, 31.0f)];
-        self.inspiredOxygen.borderStyle = UITextBorderStyleRoundedRect;
-        self.inspiredOxygen.placeholder = @"%";
         self.inspiredOxygen.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
         self.inspiredOxygen.clearButtonMode = UITextFieldViewModeAlways;
+        self.inspiredOxygen.borderStyle = UITextBorderStyleRoundedRect;
+        self.inspiredOxygen.keyboardType = UIKeyboardTypeDecimalPad;
+        self.inspiredOxygen.font = [UIFont systemFontOfSize:17.0f];
+        self.inspiredOxygen.textAlignment = UITextAlignmentLeft;
+        self.inspiredOxygen.placeholder = @"%";
         self.inspiredOxygen.delegate = self;
         self.inspiredOxygen.tag = 20;
-        [self.inspiredOxygen setKeyboardType:UIKeyboardTypeDecimalPad];
-        [self.inspiredOxygen setKeyboardAppearance:UIKeyboardAppearanceAlert];
         
-        self.inspiredOxygen.textAlignment = UITextAlignmentLeft;
-        cell.accessoryView = self.inspiredOxygen;
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.inspiredOxygen.keyboardAppearance = UIKeyboardAppearanceDefault;
+        }
+        else
+        {
+            self.inspiredOxygen.keyboardAppearance = UIKeyboardAppearanceAlert;
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.accessoryView = self.inspiredOxygen;
         cell.textLabel.text = @"FiO2:";
         
         returnCell = cell;
@@ -270,33 +281,42 @@
         static NSString *CellIdentifier = @"PaO2";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
         self.PaO2 = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 107.0f, 31.0f)];
-        self.PaO2.borderStyle = UITextBorderStyleRoundedRect;
-        self.PaO2.placeholder = @"kPa";
         self.PaO2.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.meanAirwayPressure.font = [UIFont systemFontOfSize:17.0f];
         self.PaO2.clearButtonMode = UITextFieldViewModeAlways;
+        self.PaO2.borderStyle = UITextBorderStyleRoundedRect;
+        [self.PaO2 setKeyboardType:UIKeyboardTypeDecimalPad];
+        self.PaO2.textAlignment = UITextAlignmentLeft;
+        self.PaO2.placeholder = @"kPa";
         self.PaO2.delegate = self;
         self.PaO2.tag = 30;
         
-        [self.PaO2 setKeyboardType:UIKeyboardTypeDecimalPad];
-        [self.PaO2 setKeyboardAppearance:UIKeyboardAppearanceAlert];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.PaO2.keyboardAppearance = UIKeyboardAppearanceDefault;
+        }
+        else
+        {
+            self.PaO2.keyboardAppearance = UIKeyboardAppearanceAlert;
+        }
         
-        self.PaO2.textAlignment = UITextAlignmentLeft;
-        cell.accessoryView = self.PaO2;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.accessoryView = self.PaO2;
         cell.textLabel.text = @"PaO2:";
         
         self.units = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"mmHg", @"kPa", nil]];
-        self.units.frame = CGRectMake(80.0f, 7.0f, 108.0f, 30.0f);
         self.units.segmentedControlStyle = UISegmentedControlStyleBar;
+        self.units.frame = CGRectMake(80.0f, 7.0f, 108.0f, 30.0f);
+        
+        // set target
         [self.units addTarget:self action:@selector(changeUnits) forControlEvents:UIControlEventValueChanged];
         
         [cell addSubview:self.units];
@@ -308,7 +328,7 @@
         static NSString *CellIdentifier = @"OI";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if (cell == nil)
+        if (!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -317,16 +337,16 @@
         }
         
         self.oxygenationIndex = [[UILabel alloc] initWithFrame:CGRectMake(162.0f, 11.0f, 132.0f, 21.0f)];
-        self.oxygenationIndex.font = [UIFont boldSystemFontOfSize:17.0f];
-        self.oxygenationIndex.textColor = [UIColor lightGrayColor];
         self.oxygenationIndex.highlightedTextColor = [UIColor whiteColor];
-        self.oxygenationIndex.textAlignment = UITextAlignmentCenter;
-        self.oxygenationIndex.text = @"Calculate";
+        self.oxygenationIndex.font = [UIFont boldSystemFontOfSize:17.0f];
         self.oxygenationIndex.backgroundColor = [UIColor clearColor];
-        cell.accessoryView = self.oxygenationIndex;
+        self.oxygenationIndex.textAlignment = UITextAlignmentCenter;
+        self.oxygenationIndex.textColor = [UIColor lightGrayColor];
+        self.oxygenationIndex.text = @"Calculate";
         
-        cell.textLabel.text = @"OI:";
         cell.textLabel.highlightedTextColor = [UIColor blackColor];
+        cell.accessoryView = self.oxygenationIndex;
+        cell.textLabel.text = @"OI:";
         
         returnCell = cell;
     }

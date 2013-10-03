@@ -632,12 +632,13 @@
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
                     // Use a standard UISegmentedControl for iOS 7
-                    UISegmentedControl *morphineStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", Nil]];
+                    UISegmentedControl *morphineStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
                     
                     // set properties
                     morphineStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
                     morphineStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
                     morphineStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    morphineStrengthUISegmentedControl.tag = 0;
                     
                     // set target
                     [morphineStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
@@ -812,28 +813,69 @@
                 self.dopamineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.dopamineRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                SVSegmentedControl *dopamineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                [dopamineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                dopamineStrength.crossFadeLabelsOnDrag = YES;
-                dopamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                dopamineStrength.tag = 1;
-                
-                if ([self.dopamineStrength isEqualToString:@"Single"])
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    dopamineStrength.selectedIndex = 0;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *dopamineStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                    
+                    // set properties
+                    dopamineStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    dopamineStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    dopamineStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    dopamineStrengthUISegmentedControl.tag = 1;
+                    
+                    // set target
+                    [dopamineStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.dopamineStrength isEqualToString:@"Single"])
+                    {
+                        dopamineStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.dopamineStrength isEqualToString:@"Double"])
+                    {
+                        dopamineStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    else if ([self.dopamineStrength isEqualToString:@"Quad"])
+                    {
+                        dopamineStrengthUISegmentedControl.selectedSegmentIndex = 2;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:dopamineStrengthUISegmentedControl];
                 }
-                else if ([self.dopamineStrength isEqualToString:@"Double"])
+                else
                 {
-                    dopamineStrength.selectedIndex = 1;
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *dopamineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                    
+                    // set properties
+                    dopamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    dopamineStrength.center = CGPointMake(160, 150);
+                    dopamineStrength.crossFadeLabelsOnDrag = YES;
+                    dopamineStrength.tag = 1;
+                    
+                    // set target
+                    [dopamineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.dopamineStrength isEqualToString:@"Single"])
+                    {
+                        dopamineStrength.selectedIndex = 0;
+                    }
+                    else if ([self.dopamineStrength isEqualToString:@"Double"])
+                    {
+                        dopamineStrength.selectedIndex = 1;
+                    }
+                    else if ([self.dopamineStrength isEqualToString:@"Quad"])
+                    {
+                        dopamineStrength.selectedIndex = 2;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:dopamineStrength];
                 }
-                else if ([self.dopamineStrength isEqualToString:@"Quad"])
-                {
-                    dopamineStrength.selectedIndex = 2;
-                }
-                
-                dopamineStrength.center = CGPointMake(160, 150);
-                
-                [cell addSubview:dopamineStrength];
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.dopamineDoseLabel];
@@ -960,27 +1002,69 @@
                 self.dobutamineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.dobutamineRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                SVSegmentedControl *dobutamineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
-                [dobutamineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                
-                dobutamineStrength.crossFadeLabelsOnDrag = YES;
-                dobutamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                dobutamineStrength.tag = 2;
-                
-                if ([self.dobutamineStrength isEqualToString:@"Single"])
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    dobutamineStrength.selectedIndex = 0;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *dobutamineStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", Nil]];
+                    
+                    // set properties
+                    dobutamineStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    dobutamineStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    dobutamineStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    dobutamineStrengthUISegmentedControl.tag = 2;
+                    
+                    // set target
+                    [dobutamineStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        dobutamineStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        dobutamineStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Quad"])
+                    {
+                        dobutamineStrengthUISegmentedControl.selectedSegmentIndex = 2;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:dobutamineStrengthUISegmentedControl];
                 }
-                else if ([self.dobutamineStrength isEqualToString:@"Double"])
+                else
                 {
-                    dobutamineStrength.selectedIndex = 1;
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *dobutamineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                    
+                    // set properties
+                    dobutamineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    dobutamineStrength.center = CGPointMake(160, 150);
+                    dobutamineStrength.crossFadeLabelsOnDrag = YES;
+                    dobutamineStrength.tag = 2;
+                    
+                    // set target
+                    [dobutamineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.dobutamineStrength isEqualToString:@"Single"])
+                    {
+                        dobutamineStrength.selectedIndex = 0;
+                    }
+                    else if ([self.dobutamineStrength isEqualToString:@"Double"])
+                    {
+                        dobutamineStrength.selectedIndex = 1;
+                    }
+                    else if ([self.dobutamineStrength isEqualToString:@"Quad"])
+                    {
+                        dobutamineStrength.selectedIndex = 2;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:dobutamineStrength];
                 }
-                else if ([self.dobutamineStrength isEqualToString:@"Quad"])
-                {
-                    dobutamineStrength.selectedIndex = 2;
-                }
-                
-                dobutamineStrength.center = CGPointMake(160, 150);
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.dobutamineDoseLabel];
@@ -989,7 +1073,6 @@
                 [cell addSubview:diluent];
                 [cell addSubview:self.dobutamineDose2Label];
                 [cell addSubview:self.dobutamineRangeLabel];
-                [cell addSubview:dobutamineStrength];
                 
                 drug.text = @"DOBUTAMINE";
                 
@@ -1103,23 +1186,61 @@
                 self.adrenalineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.adrenalineRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                SVSegmentedControl *adrenalineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
-                [adrenalineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                
-                adrenalineStrength.crossFadeLabelsOnDrag = YES;
-                adrenalineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                adrenalineStrength.tag = 3;
-                
-                if ([self.adrenalineStrength isEqualToString:@"Single"])
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    adrenalineStrength.selectedIndex = 0;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *adrenalineStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    adrenalineStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    adrenalineStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    adrenalineStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    adrenalineStrengthUISegmentedControl.tag = 3;
+                    
+                    // set target
+                    [adrenalineStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        adrenalineStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        adrenalineStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:adrenalineStrengthUISegmentedControl];
                 }
-                else if ([self.adrenalineStrength isEqualToString:@"Double"])
+                else
                 {
-                    adrenalineStrength.selectedIndex = 1;
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *adrenalineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    adrenalineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    adrenalineStrength.center = CGPointMake(160.0f, 150.0f);
+                    adrenalineStrength.crossFadeLabelsOnDrag = YES;
+                    adrenalineStrength.tag = 3;
+                    
+                    // set target
+                    [adrenalineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.adrenalineStrength isEqualToString:@"Single"])
+                    {
+                        adrenalineStrength.selectedIndex = 0;
+                    }
+                    else if ([self.adrenalineStrength isEqualToString:@"Double"])
+                    {
+                        adrenalineStrength.selectedIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:adrenalineStrength];
                 }
-                
-                adrenalineStrength.center = CGPointMake(160, 150);
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.adrenalineDoseLabel];
@@ -1128,7 +1249,6 @@
                 [cell addSubview:diluent];
                 [cell addSubview:self.adrenalineDose2Label];
                 [cell addSubview:self.adrenalineRangeLabel];
-                [cell addSubview:adrenalineStrength];
                 
                 drug.text = NSLocalizedString(@"ADRENALINE", nil);
                 
@@ -1329,23 +1449,61 @@
                 self.insulinRangeLabel.textColor = [UIColor lightGrayColor];
                 self.insulinRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                SVSegmentedControl *insulinStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
-                [insulinStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                
-                insulinStrength.crossFadeLabelsOnDrag = YES;
-                insulinStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                insulinStrength.tag = 5;
-                
-                if ([self.insulinStrength isEqualToString:@"Single"])
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    insulinStrength.selectedIndex = 0;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *insulinStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    insulinStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    insulinStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    insulinStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    insulinStrengthUISegmentedControl.tag = 5;
+                    
+                    // set target
+                    [insulinStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        insulinStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        insulinStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:insulinStrengthUISegmentedControl];
                 }
-                else if ([self.insulinStrength isEqualToString:@"Double"])
+                else
                 {
-                    insulinStrength.selectedIndex = 1;
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *insulinStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    insulinStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    insulinStrength.center = CGPointMake(160, 150);
+                    insulinStrength.crossFadeLabelsOnDrag = YES;
+                    insulinStrength.tag = 5;
+                    
+                    // set target
+                    [insulinStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.insulinStrength isEqualToString:@"Single"])
+                    {
+                        insulinStrength.selectedIndex = 0;
+                    }
+                    else if ([self.insulinStrength isEqualToString:@"Double"])
+                    {
+                        insulinStrength.selectedIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:insulinStrength];
                 }
-                
-                insulinStrength.center = CGPointMake(160, 150);
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.insulinDoseLabel];
@@ -1354,7 +1512,7 @@
                 [cell addSubview:diluent];
                 [cell addSubview:self.insulinDose2Label];
                 [cell addSubview:self.insulinRangeLabel];
-                [cell addSubview:insulinStrength];
+                
                 
                 drug.text = @"INSULIN";
                 
@@ -1463,23 +1621,61 @@
                 self.atracuriumRangeLabel.textColor = [UIColor lightGrayColor];
                 self.atracuriumRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                SVSegmentedControl *atracuriumStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
-                [atracuriumStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                
-                atracuriumStrength.crossFadeLabelsOnDrag = YES;
-                atracuriumStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                atracuriumStrength.tag = 6;
-                
-                if ([self.atracuriumStrength isEqualToString:@"Single"])
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    atracuriumStrength.selectedIndex = 0;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *atracuriumStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    atracuriumStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    atracuriumStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    atracuriumStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    atracuriumStrengthUISegmentedControl.tag = 0;
+                    
+                    // set target
+                    [atracuriumStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        atracuriumStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        atracuriumStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:atracuriumStrengthUISegmentedControl];
                 }
-                else if ([self.atracuriumStrength isEqualToString:@"Double"])
+                else
                 {
-                    atracuriumStrength.selectedIndex = 1;
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *atracuriumStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    atracuriumStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    atracuriumStrength.center = CGPointMake(160.0f, 150.0f);
+                    atracuriumStrength.crossFadeLabelsOnDrag = YES;
+                    atracuriumStrength.tag = 6;
+                    
+                    // set target
+                    [atracuriumStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.atracuriumStrength isEqualToString:@"Single"])
+                    {
+                        atracuriumStrength.selectedIndex = 0;
+                    }
+                    else if ([self.atracuriumStrength isEqualToString:@"Double"])
+                    {
+                        atracuriumStrength.selectedIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:atracuriumStrength];
                 }
-                
-                atracuriumStrength.center = CGPointMake(160, 150);
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.atracuriumDoseLabel];
@@ -1488,7 +1684,7 @@
                 [cell addSubview:diluent];
                 [cell addSubview:self.atracuriumDose2Label];
                 [cell addSubview:self.atracuriumRangeLabel];
-                [cell addSubview:atracuriumStrength];
+                
                 
                 drug.text = @"ATRACURIUM";
                 
@@ -1544,6 +1740,7 @@
             
             returnCell = cell;
         }
+#pragma mark Lidocaine
         else if (indexPath.section == 7)
         {
             static NSString *CellIdentifier = @"Lidocaine";
@@ -1674,6 +1871,7 @@
             
             returnCell = cell;
         }
+#pragma mark Midazolam
         else if (indexPath.section == 8)
         {
             static NSString *CellIdentifier = @"Midazolam";
@@ -1730,23 +1928,61 @@
                 self.midazolamRangeLabel.textColor = [UIColor lightGrayColor];
                 self.midazolamRangeLabel.backgroundColor = [UIColor clearColor];
                 
-                SVSegmentedControl *midazolamStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
-                [midazolamStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-                
-                midazolamStrength.crossFadeLabelsOnDrag = YES;
-                midazolamStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
-                midazolamStrength.tag = 8;
-                
-                if ([self.morphineStrength isEqualToString:@"Single"])
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    midazolamStrength.selectedIndex = 0;
+                    // Use a standard UISegmentedControl for iOS 7
+                    UISegmentedControl *midazolamStrengthUISegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    midazolamStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    midazolamStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
+                    midazolamStrengthUISegmentedControl.tintColor = [UIColor redColor];
+                    midazolamStrengthUISegmentedControl.tag = 8;
+                    
+                    // set target
+                    [midazolamStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        midazolamStrengthUISegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        midazolamStrengthUISegmentedControl.selectedSegmentIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:midazolamStrengthUISegmentedControl];
                 }
-                else if ([self.morphineStrength isEqualToString:@"Double"])
+                else
                 {
-                    midazolamStrength.selectedIndex = 1;
+                    // Use a SVSegmentedControl for iOS 5/6
+                    SVSegmentedControl *midazolamStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", nil]];
+                    
+                    // set properties
+                    midazolamStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
+                    midazolamStrength.center = CGPointMake(160.0f, 150.0f);
+                    midazolamStrength.crossFadeLabelsOnDrag = YES;
+                    midazolamStrength.tag = 8;
+                    
+                    // set target
+                    [midazolamStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+                    
+                    // set value
+                    if ([self.morphineStrength isEqualToString:@"Single"])
+                    {
+                        midazolamStrength.selectedIndex = 0;
+                    }
+                    else if ([self.morphineStrength isEqualToString:@"Double"])
+                    {
+                        midazolamStrength.selectedIndex = 1;
+                    }
+                    
+                    // add to cell
+                    [cell addSubview:midazolamStrength];
                 }
-                
-                midazolamStrength.center = CGPointMake(160, 150);
                 
                 [cell addSubview:drug];
                 [cell addSubview:self.midazolamDoseLabel];
@@ -1755,7 +1991,7 @@
                 [cell addSubview:diluent];
                 [cell addSubview:self.midazolamDose2Label];
                 [cell addSubview:self.midazolamRangeLabel];
-                [cell addSubview:midazolamStrength];
+                
                 
                 drug.text = @"MIDAZOLAM";
                 
@@ -1807,6 +2043,7 @@
             
             returnCell = cell;
         }
+#pragma mark Prostin
         else if (indexPath.section == 9)
         {
             static NSString *CellIdentifier = @"Prostin";
@@ -2596,6 +2833,7 @@
                                               message:@"Final concentration exceeds\n0.4 mg/ml.\n(although higher concentrations have been used)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+                    
                     [alertView show];
                     morphineConcentrationHighWarningGiven = YES;
                 }
@@ -2606,6 +2844,7 @@
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 0.4 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+                    
                     [alertView show];
                 }
             }
@@ -2723,6 +2962,7 @@
                                               message:@"Final concentration exceeds\n3.2 mg/ml.\n(Can be used more concentrated in fluid restricted patients and always via a central line)"
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+                    
                     [alertView show];
                     dopamineConcentrationHighWarningGiven = YES;
                 }
@@ -2733,6 +2973,7 @@
                                               message:[NSString stringWithFormat:@"Final concentration %@ mg/ml.\n(> 3.2 mg/ml)", tempString]
                                               delegate:nil cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
+                    
                     [alertView show];
                 }
             }
