@@ -573,24 +573,28 @@
             }
             
             self.weight = [[UITextField alloc] initWithFrame:CGRectMake(1.0, 1.0, 120, 30)];
-            self.weight.borderStyle = UITextBorderStyleRoundedRect;
-            self.weight.placeholder = NSLocalizedString(@"kilograms", nil);
             self.weight.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            self.weight.placeholder = NSLocalizedString(@"kilograms", nil);
             self.weight.clearButtonMode = UITextFieldViewModeAlways;
+            self.weight.borderStyle = UITextBorderStyleRoundedRect;
+            self.weight.keyboardType = UIKeyboardTypeDecimalPad;
+            self.weight.textAlignment = UITextAlignmentLeft;
             self.weight.delegate = self;
             self.weight.tag = 10;
             
-            //use the new decimal pad if using iOS 4.1 or greater
-            if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                [self.weight setKeyboardType:UIKeyboardTypeDecimalPad];
-                [self.weight setKeyboardAppearance:UIKeyboardAppearanceAlert];
+                self.weight.keyboardAppearance = UIKeyboardAppearanceDefault;
             }
-            self.weight.textAlignment = UITextAlignmentLeft;
-            cell.accessoryView = self.weight;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            else
+            {
+                self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
+            }
             
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = NSLocalizedString(@"Weight", nil);
+            cell.accessoryView = self.weight;
             
             returnCell = cell;
         }
@@ -606,22 +610,27 @@
             }
             
             self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-            self.gestation.borderStyle = UITextBorderStyleRoundedRect;
-            self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
             self.gestation.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
             self.gestation.clearButtonMode = UITextFieldViewModeAlways;
+            self.gestation.borderStyle = UITextBorderStyleRoundedRect;
+            self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
+            self.gestation.textAlignment = UITextAlignmentLeft;
             self.gestation.delegate = self;
             self.gestation.tag = 20;
             
-            //use the new decimal pad if using iOS 4.1 or greater
-            if((UIKeyboardTypeDecimalPad) && ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1))
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                [self.gestation setKeyboardType:UIKeyboardTypeDecimalPad];
-                [self.gestation setKeyboardAppearance:UIKeyboardAppearanceAlert];
+                self.gestation.keyboardAppearance = UIKeyboardAppearanceDefault;
             }
-            self.gestation.textAlignment = UITextAlignmentLeft;
-            cell.accessoryView = self.gestation;
+            else
+            {
+                self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
+            }
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryView = self.gestation;
             
             UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestationSwipeLeft:)];
             swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;

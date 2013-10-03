@@ -159,13 +159,14 @@
             }
             
             self.inspiratoryTime = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 132.0f, 31.0f)];
-            self.inspiratoryTime.borderStyle = UITextBorderStyleRoundedRect;
-            self.inspiratoryTime.placeholder = @"seconds";
             self.inspiratoryTime.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             self.inspiratoryTime.clearButtonMode = UITextFieldViewModeAlways;
+            self.inspiratoryTime.borderStyle = UITextBorderStyleRoundedRect;
+            self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
+            self.inspiratoryTime.textAlignment = UITextAlignmentLeft;
+            self.inspiratoryTime.placeholder = @"seconds";
             self.inspiratoryTime.delegate = self;
             self.inspiratoryTime.tag = 10;
-            self.inspiratoryTime.keyboardType = UIKeyboardTypeDecimalPad;
             
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -177,11 +178,9 @@
                 self.inspiratoryTime.keyboardAppearance = UIKeyboardAppearanceAlert;
             }
             
-            self.inspiratoryTime.textAlignment = UITextAlignmentLeft;
-            
-            cell.accessoryView = self.inspiratoryTime;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Inspiratory time:";
+            cell.accessoryView = self.inspiratoryTime;
             
             returnCell = cell;
         }
@@ -198,13 +197,14 @@
             }
             
             self.rate = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 6.0f, 132.0f, 31.0f)];
-            self.rate.borderStyle = UITextBorderStyleRoundedRect;
-            self.rate.placeholder = @"per minute";
             self.rate.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             self.rate.clearButtonMode = UITextFieldViewModeAlways;
+            self.rate.borderStyle = UITextBorderStyleRoundedRect;
+            self.rate.keyboardType = UIKeyboardTypeDecimalPad;
+            self.rate.textAlignment = UITextAlignmentLeft;
+            self.rate.placeholder = @"per minute";
             self.rate.delegate = self;
             self.rate.tag = 20;
-            self.rate.keyboardType = UIKeyboardTypeDecimalPad;
             
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -216,11 +216,9 @@
                 self.rate.keyboardAppearance = UIKeyboardAppearanceAlert;
             }
             
-            self.rate.textAlignment = UITextAlignmentLeft;
-            
-            cell.accessoryView = self.rate;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"Desired rate:";
+            cell.accessoryView = self.rate;
             
             returnCell = cell;
         }
@@ -229,26 +227,26 @@
             static NSString *CellIdentifier = @"ExpiratoryTime";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if (cell == nil)
+            if (!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                               reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleGray;
                 cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+                cell.selectionStyle = UITableViewCellSelectionStyleGray;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             self.expiratoryTime = [[UILabel alloc] initWithFrame:CGRectMake(162.0f, 11.0f, 132.0f, 21.0f)];
-            self.expiratoryTime.font = [UIFont boldSystemFontOfSize:17.0f];
-            self.expiratoryTime.textColor = [UIColor lightGrayColor];
             self.expiratoryTime.highlightedTextColor = [UIColor whiteColor];
-            self.expiratoryTime.textAlignment = UITextAlignmentCenter;
-            self.expiratoryTime.text = @"Calculate";
+            self.expiratoryTime.font = [UIFont boldSystemFontOfSize:17.0f];
             self.expiratoryTime.backgroundColor = [UIColor clearColor];
-            cell.accessoryView = self.expiratoryTime;
+            self.expiratoryTime.textAlignment = UITextAlignmentCenter;
+            self.expiratoryTime.textColor = [UIColor lightGrayColor];
+            self.expiratoryTime.text = @"Calculate";
             
-            cell.textLabel.text = @"Expiratory time:";
             cell.textLabel.highlightedTextColor = [UIColor blackColor];
+            cell.textLabel.text = @"Expiratory time:";
+            cell.accessoryView = self.expiratoryTime;
             
             returnCell = cell;
         }
