@@ -113,11 +113,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    float height = 200.0f;
+    float height;
     
-    if (section == 1)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        height = 0.0f;
+        height = 140.0f;
+    }
+    else
+    {
+        height = 200.0f;
     }
     
     return height;
