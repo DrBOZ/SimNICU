@@ -850,7 +850,7 @@
     UIWebView *webView;
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f))];
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f))];
     }
     else
     {
