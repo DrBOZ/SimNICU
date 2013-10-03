@@ -47,13 +47,24 @@
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        float roundedSwitchHeight = 160.0f;
-        float pickerHeight = 180.0f;
+        float roundedSwitchHeight;
+        float pickerHeight;
+        float pickerLabelHeightAdjustment;
+        float suggestionLabelHeight;
         
         if (appDelegate.window.bounds.size.height == 568)
         {
-            roundedSwitchHeight = 240.0f;
+            roundedSwitchHeight = 250.0f;
             pickerHeight = 216.0f;
+            pickerLabelHeightAdjustment = 20.0f;
+            suggestionLabelHeight = (appDelegate.window.bounds.size.height - 40.0f);
+        }
+        else
+        {
+            roundedSwitchHeight = 220.0f;
+            pickerHeight = 180.0f;
+            pickerLabelHeightAdjustment = 20.0f;
+            suggestionLabelHeight = (appDelegate.window.bounds.size.height - 40.0f);
         }
         
         //menu table
@@ -84,21 +95,14 @@
         
         [self.view addSubview:roundingLabel];
         
-        self.suggestionBasedOn = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 60.0f), 286.0f, 30.0f)];
+        self.suggestionBasedOn = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, suggestionLabelHeight, 286.0f, 30.0f)];
         self.suggestionBasedOn.text = @"";
         
         [self formatLabelForiOS7:self.suggestionBasedOn];
         
-        /*
-        self.suggestionBasedOn.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];  //iOS 6.0
-        self.suggestionBasedOn.backgroundColor = [UIColor clearColor];
-        self.suggestionBasedOn.shadowColor = [UIColor whiteColor];
-        self.suggestionBasedOn.shadowOffset = CGSizeMake(0.0f, 1.0f);
-        self.suggestionBasedOn.font = [UIFont boldSystemFontOfSize:16.0f];
-         */
         [self.view addSubview:self.suggestionBasedOn];
         
-        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)]; // 205
+        UILabel *weight = [[UILabel alloc] initWithFrame:CGRectMake(17.0f, (appDelegate.window.bounds.size.height - pickerHeight - pickerLabelHeightAdjustment), 65.0f, 30.0f)]; // 205
         weight.text = @"Weight";
         
         // format label
@@ -107,22 +111,22 @@
         // add to view
         [self.view addSubview:weight];
         
-        UILabel *gest = [[UILabel alloc] initWithFrame:CGRectMake(83.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        UILabel *gest = [[UILabel alloc] initWithFrame:CGRectMake(85.0f, (appDelegate.window.bounds.size.height - pickerHeight - pickerLabelHeightAdjustment), 65.0f, 30.0f)];
         gest.text = @"Gest";
         [self formatLabelForiOS7:gest];
         [self.view addSubview:gest];
         
-        UILabel *ETTsize = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        UILabel *ETTsize = [[UILabel alloc] initWithFrame:CGRectMake(148.0f, (appDelegate.window.bounds.size.height - pickerHeight - pickerLabelHeightAdjustment), 65.0f, 30.0f)];
         ETTsize.text = @"Size";
         [self formatLabelForiOS7:ETTsize];
         [self.view addSubview:ETTsize];
         
-        UILabel *oral = [[UILabel alloc] initWithFrame:CGRectMake(215.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        UILabel *oral = [[UILabel alloc] initWithFrame:CGRectMake(210.0f, (appDelegate.window.bounds.size.height - pickerHeight - pickerLabelHeightAdjustment), 65.0f, 30.0f)];
         oral.text = @"Oral";
         [self formatLabelForiOS7:oral];
         [self.view addSubview:oral];
         
-        UILabel *cut = [[UILabel alloc] initWithFrame:CGRectMake(275.0f, (appDelegate.window.bounds.size.height - pickerHeight - 31.0f), 65.0f, 30.0f)];
+        UILabel *cut = [[UILabel alloc] initWithFrame:CGRectMake(270.0f, (appDelegate.window.bounds.size.height - pickerHeight - pickerLabelHeightAdjustment), 65.0f, 30.0f)];
         
         if (self.displayLengthToCutETT) {
             cut.text = @"Cut";

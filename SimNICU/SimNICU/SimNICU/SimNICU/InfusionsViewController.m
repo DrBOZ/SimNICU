@@ -528,27 +528,39 @@
 {
     float footer = 0;
     
-    /*
-     if (section == 1)
-     {
-     if (([self.dopamineStrength isEqualToString:@"Double"] && [self.dobutamineStrength isEqualToString:@"Double"]) || ([self.dopamineStrength isEqualToString:@"Quad"] && [self.dobutamineStrength isEqualToString:@"Quad"]))
-     {
-     footer = 100;
-     }
-     }
-     */
-    if (self.workingWeight)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        if (section == 9)
+        if (self.workingWeight)
         {
-            footer = 100.0f;
+            if (section == 9)
+            {
+                footer = 50.0f;
+            }
+        }
+        else
+        {
+            if (section == 6)
+            {
+                footer = 50.0f;
+            }
         }
     }
     else
     {
-        if (section == 6)
+        if (self.workingWeight)
         {
-            footer = 100.0f;
+            if (section == 9)
+            {
+                footer = 100.0f;
+            }
+        }
+        else
+        {
+            if (section == 6)
+            {
+                footer = 100.0f;
+            }
         }
     }
     
@@ -1631,7 +1643,7 @@
                     atracuriumStrengthUISegmentedControl.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
                     atracuriumStrengthUISegmentedControl.center = CGPointMake(160.0f, 150.0f);
                     atracuriumStrengthUISegmentedControl.tintColor = [UIColor redColor];
-                    atracuriumStrengthUISegmentedControl.tag = 0;
+                    atracuriumStrengthUISegmentedControl.tag = 6;
                     
                     // set target
                     [atracuriumStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];

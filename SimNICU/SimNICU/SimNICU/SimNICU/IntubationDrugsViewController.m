@@ -172,11 +172,30 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    float height = 22.0f;
+    float height;
     
-    if (section == 0)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        height = 66.0f;
+        if (section == 0)
+        {
+            height = 66.0f;
+        }
+        else
+        {
+            height = 44.0f;
+        }
+    }
+    else
+    {
+        if (section == 0)
+        {
+            height = 66.0f;
+        }
+        else
+        {
+            height = 22.0f;
+        }
     }
     
     return height;
@@ -202,13 +221,28 @@
 {
     float height = 0;
     
-    if (section == 0)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        height = 44.0f;
+        if (section == 0)
+        {
+            height = 32.0f;
+        }
+        else if (section == 1)
+        {
+            height = 66.0f;
+        }
     }
-    else if (section == 1)
+    else
     {
-        height = 88.0f;
+        if (section == 0)
+        {
+            height = 44.0f;
+        }
+        else if (section == 1)
+        {
+            height = 88.0f;
+        }
     }
     
     return height;
