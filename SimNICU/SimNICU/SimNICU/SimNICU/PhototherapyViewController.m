@@ -30,39 +30,19 @@
     
     self.title = NSLocalizedString(@"Phototherapy", nil);
     
-    // I have moved this to the Preferences class
-    /*
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    // set locale specific defaults
-    NSString *currentLocale = [[NSLocale currentLocale] localeIdentifier];
-    NSLog(@"Current locale = %@", currentLocale);
-    
-    if (!preferences.guidelineCountry)
-    {
-        if ([currentLocale isEqualToString:@"en_GB"])
-        {
-            preferences.guidelineCountry = @"UK";
-            preferences.bilirubinUnits = @"SI";
-        }
-        else if ([currentLocale isEqualToString:@"en_US"])
-        {
-            preferences.guidelineCountry = @"US";
-            preferences.bilirubinUnits = @"US";
-        }
-        else
-        {
-            preferences.guidelineCountry = @"US";
-            preferences.bilirubinUnits = @"US";
-        }
-    }
-     */
-    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //menu table
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    }
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -608,7 +588,6 @@
         if (indexPath.row == (0 + extraRowsInSectionOne))
         {
             PhototherapyGestationViewController *newViewController = [[PhototherapyGestationViewController alloc] init];
-            // newViewController.guidelineCountry = self.guidelineCountry;
             newViewController.gestation = self.gestation;
             newViewController.delegate = self;
             
@@ -621,8 +600,6 @@
                 if (self.gestation)
                 {
                     PhototherapyGraphViewController *newViewController = [[PhototherapyGraphViewController alloc] init];
-                    // newViewController.guidelineCountry = preferences.guidelineCountry;
-                    // newViewController.bilirubinUnits = preferences.bilirubinUnits;
                     newViewController.gestation = self.gestation;
                     
                     if (self.selectedPatient)
@@ -632,8 +609,17 @@
                     
                     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
                     
-                    navController.navigationBar.tintColor = [UIColor blackColor];
-                    navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    // iOS 7 specifics
+                    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                    {
+                        navController.navigationBar.barTintColor = [UIColor grayColor];
+                        navController.navigationBar.tintColor = [UIColor redColor];
+                    }
+                    else
+                    {
+                        navController.navigationBar.tintColor = [UIColor blackColor];
+                        navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    }
                     
                     [appDelegate.navigationController presentModalViewController:navController animated:YES];
                 }

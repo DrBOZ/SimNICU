@@ -26,8 +26,6 @@
     BOOL portraitOrientationDefaultsSet;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,16 +44,41 @@
     // instantiate array
     self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
     
-    // ShinobiChart
-    self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    // ShinobiChart
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
     {
-        self.chart.title = @"Treatment threshold graph for babies with neonatal jaudice";
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // self.chart.title = @"";
+            
+            self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
+        }
+        else
+        {
+            // self.chart.title = @"Treatment threshold graph for babies with neonatal jaudice";
+            
+            self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
+        }
     }
     else
     {
-        self.chart.title = @"Treatment threshold graph for jaundice";
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // self.chart.title = @"Treatment threshold graph";
+            
+            self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
+        }
+        else
+        {
+            // self.chart.title = @"Treatment threshold graph";
+            
+            self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
+        }
     }
     
     self.chart.datasource = self;
@@ -1671,6 +1694,15 @@
     {
         self.navigationItem.rightBarButtonItem.enabled = NO;
         
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            //delegate
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            self.chart.frame = CGRectMake(0.0f, 52.0f, (appDelegate.window.bounds.size.height), (appDelegate.window.bounds.size.width - 52.0f));
+        }
+        
         if (!landscapeOrientationDefaultsSet)
         {
             if ([preferences.guidelineCountry isEqualToString:@"US"])
@@ -1708,7 +1740,15 @@
                 self.xAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
             }
             
-            self.chart.title = @"Treatment threshold graph for babies with neonatal jaundice";
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.chart.title = @"";
+            }
+            else
+            {
+                self.chart.title = @"Treatment threshold graph for babies with neonatal jaundice";
+            }
             
             int maxResultInDays = 7;
             
@@ -1777,6 +1817,15 @@
     {
         self.navigationItem.rightBarButtonItem.enabled = YES;
         
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            //delegate
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            self.chart.frame = CGRectMake(0.0f, 64.0f, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height - 64.0f));
+        }
+        
         if (!portraitOrientationDefaultsSet)
         {
             if ([preferences.guidelineCountry isEqualToString:@"US"]) // setting view controller title
@@ -1806,7 +1855,15 @@
                 }
             }
             
-            self.chart.title = @"Treatment threshold graph for jaundice"; // setting graph title
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.chart.title = @"Treatment threshold graph";
+            }
+            else
+            {
+                self.chart.title = @"Treatment threshold graph for jaundice";
+            }
             
             int maxResultInDays = 7;
             
@@ -1898,8 +1955,17 @@
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
-    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-    navController.navigationBar.tintColor = [UIColor blackColor];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+    }
     
     [self presentModalViewController:navController animated:YES];
 }

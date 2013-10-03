@@ -232,6 +232,9 @@
 {
     [super viewDidLoad];
     
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
@@ -281,9 +284,6 @@
     
     NSLog(@"AppViewController viewDidLoad");
     
-    // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     // self.contentView is a UIView that covers the entire window and contains
     // both the UITableView and the non-scrolling HeaderView (containing the image)
     self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f + iOS7Adjustment, (appDelegate.window.bounds.size.width), (appDelegate.window.bounds.size.height - iOS7Adjustment))];
@@ -298,7 +298,9 @@
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - iOS7Adjustment, 300.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
+        // self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(10.0f, 160.0f - iOS7Adjustment, 300.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
+        
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 160.0f - iOS7Adjustment, 320.0f, (appDelegate.window.bounds.size.height - 230 + iOS7Adjustment)) style:UITableViewStylePlain];
     }
     else
     {
@@ -316,16 +318,34 @@
     // Add the screen mask gradient to the UITableView
     self.tableBgView = [[UIImageView alloc] init];
     
-    // Different image gradients for iPhone 4 and iPhone 5
-    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    // screen hack for iOS 7 to prevent options scrolling behind headers
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.tableBgView.frame = CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196));
-        self.tableBgView.image = [UIImage imageNamed:@"bgOverlay.png"];
+        // Different image gradients for iPhone 4 and iPhone 5
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.tableBgView.frame = CGRectMake(-10.0f, 146.0f, 340.0f, (appDelegate.window.bounds.size.height - 196));
+            self.tableBgView.image = [UIImage imageNamed:@"bgOverlay.png"];
+        }
+        else
+        {
+            self.tableBgView.frame = CGRectMake(-10.0f, 146.0f, 340.0f, (appDelegate.window.bounds.size.height - 196));
+            self.tableBgView.image = [UIImage imageNamed:@"bgOverlay.png"];
+        }
     }
     else
     {
-        self.tableBgView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50));
-        self.tableBgView.image = [UIImage imageNamed:@"bgApplication.png"];
+        // Different image gradients for iPhone 4 and iPhone 5
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.tableBgView.frame = CGRectMake(0.0f, 146.0f, 320.0f, (appDelegate.window.bounds.size.height - 196));
+            self.tableBgView.image = [UIImage imageNamed:@"bgOverlay.png"];
+        }
+        else
+        {
+            self.tableBgView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 50));
+            self.tableBgView.image = [UIImage imageNamed:@"bgApplication.png"];
+        }
     }
     
     self.tableBgView.userInteractionEnabled = NO;
@@ -334,9 +354,19 @@
     // screen hack for iOS 7 to prevent options scrolling behind headers
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        UIImageView *screenHack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScreenHack01.png"]];
-        screenHack.frame = CGRectMake(5.0f, 214.0f - 64.0f, 311.0f, 11.0f);
-        [self.contentView addSubview:screenHack];
+        // Different for iPhone 4 and iPhone 5
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            UIImageView *screenHack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScreenHack01.png"]];
+            screenHack.frame = CGRectMake(-10.0f, 214.0f - 64.0f, 340.0f, 11.0f);
+            [self.contentView addSubview:screenHack];
+        }
+        else
+        {
+            UIImageView *screenHack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ScreenHack02.png"]];
+            screenHack.frame = CGRectMake(-10.0f, 214.0f - 64.0f, 340.0f, 11.0f);
+            [self.contentView addSubview:screenHack];
+        }
     }
     
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)

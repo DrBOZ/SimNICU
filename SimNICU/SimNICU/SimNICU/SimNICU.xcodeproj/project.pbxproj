@@ -303,6 +303,10 @@
 		5C756CA617989E15002F983E /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C756CA417989E15002F983E /* Calculator.m */; };
 		5C7A453017999A7000D95614 /* AgeResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A452F17999A6F00D95614 /* AgeResultsCell.m */; };
 		5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7A452F17999A6F00D95614 /* AgeResultsCell.m */; };
+		5C7CB1D717FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */; };
+		5C7CB1D817FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */; };
+		5C7CB1DA17FDFBB200C5D697 /* ScreenHack02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */; };
+		5C7CB1DB17FDFBB200C5D697 /* ScreenHack02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */; };
 		5C8606CC178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606CD178AD30D00428ED4 /* DrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606CB178AD30D00428ED4 /* DrugsViewController.m */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
@@ -989,6 +993,8 @@
 		5C756CA417989E15002F983E /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
 		5C7A452E17999A6E00D95614 /* AgeResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeResultsCell.h; sourceTree = "<group>"; };
 		5C7A452F17999A6F00D95614 /* AgeResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeResultsCell.m; sourceTree = "<group>"; };
+		5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.5inchScreenHack.png; sourceTree = "<group>"; };
+		5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenHack02.png; sourceTree = "<group>"; };
 		5C8606CA178AD30D00428ED4 /* DrugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsViewController.h; sourceTree = "<group>"; };
 		5C8606CB178AD30D00428ED4 /* DrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsViewController.m; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
@@ -2746,6 +2752,8 @@
 				5CA3CC1F17B7999F002E96DC /* Default@2x.png */,
 				5CA3CC1D17B79996002E96DC /* Default.png */,
 				5C28EAB717FD6691009DDF17 /* ScreenHack01.png */,
+				5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */,
+				5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -3103,6 +3111,7 @@
 				5C0E0627178F82F500768739 /* gentamicinPresentation.html in Resources */,
 				5C0E062A178F830500768739 /* gentamicinDose.html in Resources */,
 				5C0E062D178F831800768739 /* gentamicinPreparation.html in Resources */,
+				5C7CB1DA17FDFBB200C5D697 /* ScreenHack02.png in Resources */,
 				5C0E0630178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0633178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
 				5C0E0636178F834C00768739 /* gentamicinContraindications.html in Resources */,
@@ -3139,6 +3148,7 @@
 				5CA3C11F17924142002AB53D /* vancomycinDose.html in Resources */,
 				5CA3C1221792414D002AB53D /* vancomycinPreparation.html in Resources */,
 				5CA3C12517924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */,
+				5C7CB1D717FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */,
 				5CA3C12817924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */,
 				5CA3C12B1792417E002AB53D /* vancomycinMonitoring.html in Resources */,
 				5CA3C12E1792418C002AB53D /* vancomycinContraindications.html in Resources */,
@@ -3226,7 +3236,9 @@
 				5CD3B05216CF38D500DE362C /* gastroschisis0.html in Resources */,
 				5CD3B05316CF38D500DE362C /* gastroschisis1.html in Resources */,
 				5CD3B05416CF38D500DE362C /* hfov0.html in Resources */,
+				5C7CB1DB17FDFBB200C5D697 /* ScreenHack02.png in Resources */,
 				5CD3B05516CF38D500DE362C /* hfov1.html in Resources */,
+				5C7CB1D817FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */,
 				5CD3B05616CF38D500DE362C /* pulmonaryHaem0.html in Resources */,
 				5CD3B05716CF38D500DE362C /* pulmonaryHaem1.html in Resources */,
 				5CD3B05816CF38D500DE362C /* pulmonaryHaem2.html in Resources */,
