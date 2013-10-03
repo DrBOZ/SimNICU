@@ -345,14 +345,14 @@
         [self.myHeaderView addSubview:self.appImageView];
         
         // display background
-        self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 65.0f)];
+        self.displayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 260.0f, 65.0f)];
         self.displayBackground.backgroundColor = [UIColor blackColor];
         self.displayBackground.alpha = .5;
         self.displayBackground.hidden = YES;
         [self.myHeaderView addSubview:self.displayBackground];
         
         // dismiss button image & view
-        self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(250.0f, 42.0f, 22.0f, 22.0f)];
+        self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(265.0f, 42.0f, 22.0f, 22.0f)];
         self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2.png"];
         self.displayDismissButtonView.userInteractionEnabled = YES;
         self.displayDismissButtonView.hidden = YES;
@@ -546,7 +546,16 @@
     {
         // transparent button over the app's image triggers reveal transition
         UIButton *flipButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        flipButton.frame = CGRectMake(10.0f, 0.0f, 275.0f, 150.0f);
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            flipButton.frame = CGRectMake(00.0f, 0.0f + 64.0f, 320.0f, 150.0f);
+        }
+        else
+        {
+            flipButton.frame = CGRectMake(10.0f, 0.0f, 275.0f, 150.0f);
+        }
         [flipButton addTarget:appDelegate.revealController action:nil forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:flipButton];
         
@@ -558,7 +567,17 @@
     }
     
     self.dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.dismissButton.frame = CGRectMake(250.0f, 35.0f, 40.0f, 40.0f);
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.dismissButton.frame = CGRectMake(255.0f, 33.0f + 64.0f, 40.0f, 40.0f);
+    }
+    else
+    {
+        self.dismissButton.frame = CGRectMake(250.0f, 35.0f, 40.0f, 40.0f);
+    }
+    
     [self.dismissButton addTarget:self action:@selector(clearScreen) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.dismissButton];
     
