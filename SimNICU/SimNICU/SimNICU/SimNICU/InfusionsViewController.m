@@ -630,6 +630,7 @@
                 
                 // segmented control
                 SVSegmentedControl *morphineStrength = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"single", @"double", @"quad", nil]];
+                
                 [morphineStrength addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
                 morphineStrength.crossFadeLabelsOnDrag = YES;
                 morphineStrength.thumb.tintColor = [UIColor colorWithRed:0.6 green:0.2 blue:0.2 alpha:1];
@@ -648,7 +649,27 @@
                     morphineStrength.selectedIndex = 2;
                 }
                 
-                morphineStrength.center = CGPointMake(160, 150);
+                morphineStrength.center = CGPointMake(160.0f, 150.0f);
+                
+                /*
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    morphineStrength.hidden = YES;
+                    
+                    UISegmentedControl *morphineStrength2 = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"single", @"double", @"quad", Nil]];
+                    morphineStrength2.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    morphineStrength2.tintColor = [UIColor redColor];
+                    
+                    morphineStrength2.center = CGPointMake(160.0f, 150.0f);
+                    
+                    morphineStrength2.selectedSegmentIndex = morphineStrength.selectedIndex;
+                    
+                    [morphineStrength2 addTarget:self action:@selector(changeSegementedControl:) forControlEvents:UIControlEventValueChanged];
+                    
+                    [cell addSubview:morphineStrength2];
+                }
+                 */
                 
                 [cell addSubview:morphineStrength];
                 
@@ -1824,7 +1845,18 @@
                 self.prostinDose3Label.backgroundColor = [UIColor clearColor];
                 self.prostinDose3Label.adjustsFontSizeToFitWidth = YES;
                 
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.normalSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 280.0f, 40.0f)];
+                    self.normalSlider.minimumValue = 1.0f;
+                    self.normalSlider.maximumValue = 50.0f;
+                    self.normalSlider.value = 1.0f;
+                    [self.normalSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+                    self.normalSlider.continuous = YES;
+                    
+                    [cell addSubview:self.normalSlider];
+                }
+                else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
                 {
                     
                     self.anisotropicSlider = [[UISlider alloc] initWithFrame:CGRectMake(20.0f, 140.0f, 280.0f, 40.0f)];
@@ -3168,7 +3200,7 @@
     }
 }
 
-#pragma mark - SPSegmentedControl
+#pragma mark - SVSegmentedControl
 
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl
 {
