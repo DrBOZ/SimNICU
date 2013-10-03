@@ -640,7 +640,7 @@
                     morphineStrengthUISegmentedControl.tintColor = [UIColor redColor];
                     
                     // set target
-                    [morphineStrengthUISegmentedControl addTarget:self action:@selector(changeSegementedControl:) forControlEvents:UIControlEventValueChanged];
+                    [morphineStrengthUISegmentedControl addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
                     
                     // set value
                     if ([self.morphineStrength isEqualToString:@"Single"])
@@ -3220,7 +3220,7 @@
 
 #pragma mark - SVSegmentedControl
 
-- (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl
+- (void)segmentedControlChangedValue:(UIControl *)segmentedControl
 {
     // Set workingWeightKGAsFloat
     //
@@ -3231,25 +3231,55 @@
 #pragma mark morphine
     if (segmentedControl.tag == 0)      // morphine
     {
-        switch (segmentedControl.selectedIndex)
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.morphineStrength = @"Single";
-                self.morphineStrengthDose = @"1 mg/kg";
-                break;
-                
-            case 1:
-                self.morphineStrength = @"Double";
-                self.morphineStrengthDose = @"2 mg/kg";
-                break;
-                
-            case 2:
-                self.morphineStrength = @"Quad";
-                self.morphineStrengthDose = @"4 mg/kg";
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.morphineStrength = @"Single";
+                    self.morphineStrengthDose = @"1 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.morphineStrength = @"Double";
+                    self.morphineStrengthDose = @"2 mg/kg";
+                    break;
+                    
+                case 2:
+                    self.morphineStrength = @"Quad";
+                    self.morphineStrengthDose = @"4 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.morphineStrength = @"Single";
+                    self.morphineStrengthDose = @"1 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.morphineStrength = @"Double";
+                    self.morphineStrengthDose = @"2 mg/kg";
+                    break;
+                    
+                case 2:
+                    self.morphineStrength = @"Quad";
+                    self.morphineStrengthDose = @"4 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         self.morphineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.morphineStrength, self.morphineStrengthDose];
@@ -3423,27 +3453,74 @@
 #pragma mark dopamine
     else if (segmentedControl.tag == 1) // dopamine
     {
-        switch (segmentedControl.selectedIndex)
+        /*
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.dopamineStrength = @"Single";
-                self.dopamineStrengthDose = @"30 mg/kg";
-                break;
-                
-            case 1:
-                self.dopamineStrength = @"Double";
-                self.dopamineStrengthDose = @"60 mg/kg";
-                
-                break;
-                
-            case 2:
-                self.dopamineStrength = @"Quad";
-                self.dopamineStrengthDose = @"120 mg/kg";
-                
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            
+        }
+        */
+        
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
+        {
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.dopamineStrength = @"Single";
+                    self.dopamineStrengthDose = @"30 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.dopamineStrength = @"Double";
+                    self.dopamineStrengthDose = @"60 mg/kg";
+                    
+                    break;
+                    
+                case 2:
+                    self.dopamineStrength = @"Quad";
+                    self.dopamineStrengthDose = @"120 mg/kg";
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.dopamineStrength = @"Single";
+                    self.dopamineStrengthDose = @"30 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.dopamineStrength = @"Double";
+                    self.dopamineStrengthDose = @"60 mg/kg";
+                    
+                    break;
+                    
+                case 2:
+                    self.dopamineStrength = @"Quad";
+                    self.dopamineStrengthDose = @"120 mg/kg";
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         self.dopamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dopamineStrength, self.dopamineStrengthDose];
@@ -3617,25 +3694,55 @@
 #pragma mark dobutamine
     else if (segmentedControl.tag == 2) // dobutamine
     {
-        switch (segmentedControl.selectedIndex)
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.dobutamineStrength = @"Single";
-                self.dobutamineStrengthDose = @"30mg/kg";
-                break;
-                
-            case 1:
-                self.dobutamineStrength = @"Double";
-                self.dobutamineStrengthDose = @"60mg/kg";
-                break;
-                
-            case 2:
-                self.dobutamineStrength = @"Quad";
-                self.dobutamineStrengthDose = @"120mg/kg";
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.dobutamineStrength = @"Single";
+                    self.dobutamineStrengthDose = @"30mg/kg";
+                    break;
+                    
+                case 1:
+                    self.dobutamineStrength = @"Double";
+                    self.dobutamineStrengthDose = @"60mg/kg";
+                    break;
+                    
+                case 2:
+                    self.dobutamineStrength = @"Quad";
+                    self.dobutamineStrengthDose = @"120mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.dobutamineStrength = @"Single";
+                    self.dobutamineStrengthDose = @"30mg/kg";
+                    break;
+                    
+                case 1:
+                    self.dobutamineStrength = @"Double";
+                    self.dobutamineStrengthDose = @"60mg/kg";
+                    break;
+                    
+                case 2:
+                    self.dobutamineStrength = @"Quad";
+                    self.dobutamineStrengthDose = @"120mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         self.dobutamineStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.dobutamineStrength, self.dobutamineStrengthDose];
@@ -3809,20 +3916,45 @@
 #pragma mark adrenaline
     else if (segmentedControl.tag == 3) // adrenaline
     {
-        switch (segmentedControl.selectedIndex)
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.adrenalineStrength = @"Single";
-                self.adrenalineStrengthDose = @"3 mg/kg";
-                break;
-                
-            case 1:
-                self.adrenalineStrength = @"Double";
-                self.adrenalineStrengthDose = @"6 mg/kg";
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.adrenalineStrength = @"Single";
+                    self.adrenalineStrengthDose = @"3 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.adrenalineStrength = @"Double";
+                    self.adrenalineStrengthDose = @"6 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.adrenalineStrength = @"Single";
+                    self.adrenalineStrengthDose = @"3 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.adrenalineStrength = @"Double";
+                    self.adrenalineStrengthDose = @"6 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         if (self.workingWeight)
@@ -3936,20 +4068,45 @@
 #pragma mark insulin
     else if (segmentedControl.tag == 5) // insulin
     {
-        switch (segmentedControl.selectedIndex)
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.insulinStrength = @"Single";
-                self.insulinStrengthDose = @"10 units/kg";
-                break;
-                
-            case 1:
-                self.insulinStrength = @"Double";
-                self.insulinStrengthDose = @"20 units/kg";
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.insulinStrength = @"Single";
+                    self.insulinStrengthDose = @"10 units/kg";
+                    break;
+                    
+                case 1:
+                    self.insulinStrength = @"Double";
+                    self.insulinStrengthDose = @"20 units/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.insulinStrength = @"Single";
+                    self.insulinStrengthDose = @"10 units/kg";
+                    break;
+                    
+                case 1:
+                    self.insulinStrength = @"Double";
+                    self.insulinStrengthDose = @"20 units/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         if (self.workingWeight)
@@ -4003,20 +4160,45 @@
 #pragma mark atracurium
     else if (segmentedControl.tag == 6) // atracurium
     {
-        switch (segmentedControl.selectedIndex)
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.atracuriumStrength = @"Single";
-                self.atracuriumStrengthDose = @"60 mg/kg";
-                break;
-                
-            case 1:
-                self.atracuriumStrength = @"Double";
-                self.atracuriumStrengthDose = @"120 mg/kg";
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.atracuriumStrength = @"Single";
+                    self.atracuriumStrengthDose = @"60 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.atracuriumStrength = @"Double";
+                    self.atracuriumStrengthDose = @"120 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.atracuriumStrength = @"Single";
+                    self.atracuriumStrengthDose = @"60 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.atracuriumStrength = @"Double";
+                    self.atracuriumStrengthDose = @"120 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         if (self.workingWeight)
@@ -4160,20 +4342,45 @@
 #pragma mark midazolam
     else if (segmentedControl.tag == 8) // midazolam
     {
-        switch (segmentedControl.selectedIndex)
+        if ([segmentedControl isKindOfClass:[SVSegmentedControl class]])
         {
-            case 0:
-                self.midazolamStrength = @"Single";
-                self.midazolamStrengthDose = @"10 mg/kg";
-                break;
-                
-            case 1:
-                self.midazolamStrength = @"Double";
-                self.midazolamStrengthDose = @"20 mg/kg";
-                break;
-                
-            default:
-                break;
+            SVSegmentedControl *control = (SVSegmentedControl *)segmentedControl;
+            
+            switch (control.selectedIndex)
+            {
+                case 0:
+                    self.midazolamStrength = @"Single";
+                    self.midazolamStrengthDose = @"10 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.midazolamStrength = @"Double";
+                    self.midazolamStrengthDose = @"20 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        else if ([segmentedControl isKindOfClass:[UISegmentedControl class]])
+        {
+            UISegmentedControl *control = (UISegmentedControl *)segmentedControl;
+            
+            switch (control.selectedSegmentIndex)
+            {
+                case 0:
+                    self.midazolamStrength = @"Single";
+                    self.midazolamStrengthDose = @"10 mg/kg";
+                    break;
+                    
+                case 1:
+                    self.midazolamStrength = @"Double";
+                    self.midazolamStrengthDose = @"20 mg/kg";
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         
         self.midazolamStrengthLabel.text = [NSString stringWithFormat:@"%@ strength (%@)", self.midazolamStrength, self.midazolamStrengthDose];
