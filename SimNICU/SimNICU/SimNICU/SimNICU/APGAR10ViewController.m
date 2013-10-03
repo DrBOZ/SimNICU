@@ -161,6 +161,27 @@
     return header;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    CGFloat height = 0.0f;
+    
+    if (section == 4)
+    {
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            height = 40.0f;
+        }
+        else
+        {
+            height = 44.0f;
+        }
+        
+    }
+    
+    return height;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     NSString *footer = nil;
@@ -422,9 +443,7 @@
     if (indexPath.section == 0) 
     {
         self.colour = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"White", @"Blue", @"Pink", nil]];
-        self.colour.frame = CGRectMake(0.0, 0.0, 300, 44);
-        
-        self.colour.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.colour];
         
         if (self.patient)
         {
@@ -444,9 +463,7 @@
     else if (indexPath.section == 1)
     {
         self.heartRate = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"0", @"< 100", @"> 100", nil]];
-        self.heartRate.frame = CGRectMake(0.0, 0.0, 300, 44);
-        
-        self.heartRate.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.heartRate];
         
         if (self.patient)
         {
@@ -466,9 +483,7 @@
     else if (indexPath.section == 2) // Respiratory Effort
     {
         self.respiratoryEffort = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Apnoea", nil), @"Gasp", @"Regular", nil]];
-        self.respiratoryEffort.frame = CGRectMake(0.0, 0.0, 300, 44);
-        
-        self.respiratoryEffort.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.respiratoryEffort];
         
         if (self.patient)
         {
@@ -488,9 +503,7 @@
     else if (indexPath.section == 3) // Tone
     {
         self.tone = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Flaccid", @"Limp", @"Good", nil]];
-        self.tone.frame = CGRectMake(0.0, 0.0, 300, 44);
-        
-        self.tone.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.tone];
         
         if (self.patient)
         {
@@ -510,9 +523,7 @@
     else if (indexPath.section == 4) // Reflexes
     {
         self.reflexes = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Nil", @"Grimace", @"Cry", nil]];
-        self.reflexes.frame = CGRectMake(0.0, 0.0, 300, 44);
-        
-        self.reflexes.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.reflexes];
         
         if (self.patient)
         {

@@ -10,6 +10,25 @@
 
 @implementation APGARVCFormats
 
++ (void)formatSegmentedControl:(UISegmentedControl *)segmentedControl
+{
+    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        segmentedControl.frame = CGRectMake(0.0f, 0.0f, 290.0f, 44.0f);
+    }
+    else
+    {
+        segmentedControl.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
+    }
+}
+
++ (void)formatAPGARScoreText:(UILabel *)label
+{
+    
+}
+
 + (void)formatLabel:(UILabel *)label
 {
     label.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];

@@ -10,6 +10,8 @@
 
 @interface APGARVCFormats : NSObject
 
++ (void)formatSegmentedControl:(UISegmentedControl *)segmentedControl;
++ (void)formatAPGARScoreText:(UILabel *)label;
 + (void)formatLabel:(UILabel *)label;
 
 @end

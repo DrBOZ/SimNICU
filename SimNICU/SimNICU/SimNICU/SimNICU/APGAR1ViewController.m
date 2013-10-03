@@ -143,6 +143,26 @@
     return header;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    CGFloat height = 0.0f;
+    
+    if (section == 4)
+    {
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            height = 40.0f;
+        }
+        else
+        {
+            height = 44.0f;
+        }
+        
+    }
+    
+    return height;
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
@@ -171,7 +191,6 @@
      7) based on section, I just need to pass in the property to be instantiated and formatted
      8) I need to know which VC also, so as to assign the APGARscore at x min
     */
-    
     
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -455,9 +474,7 @@
     if (indexPath.section == 0) 
     {
         self.colour = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"White", @"Blue", @"Pink", nil]];
-        self.colour.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
-        
-        self.colour.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.colour];
         
         if (self.patient)
         {
@@ -477,9 +494,7 @@
     else if (indexPath.section == 1)
     {
         self.heartRate = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"0", @"< 100", @"> 100", nil]];
-        self.heartRate.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
-        
-        self.heartRate.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.heartRate];
         
         if (self.patient)
         {
@@ -499,9 +514,7 @@
     else if (indexPath.section == 2) // Respiratory Effort
     {
         self.respiratoryEffort = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Apnoea", nil), @"Gasp", @"Regular", nil]];
-        self.respiratoryEffort.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
-        
-        self.respiratoryEffort.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.respiratoryEffort];
         
         if (self.patient)
         {
@@ -521,9 +534,7 @@
     else if (indexPath.section == 3) // Tone
     {
         self.tone = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Flaccid", @"Limp", @"Good", nil]];
-        self.tone.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
-        
-        self.tone.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.tone];
         
         if (self.patient)
         {
@@ -543,9 +554,7 @@
     else if (indexPath.section == 4) // Reflexes
     {
         self.reflexes = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Nil", @"Grimace", @"Cry", nil]];
-        self.reflexes.frame = CGRectMake(0.0f, 0.0f, 300.0f, 44.0f);
-        
-        self.reflexes.segmentedControlStyle = UISegmentedControlStyleBordered;
+        [APGARVCFormats formatSegmentedControl:self.reflexes];
         
         if (self.patient)
         {

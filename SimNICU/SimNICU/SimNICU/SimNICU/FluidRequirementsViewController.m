@@ -131,7 +131,7 @@
             // present weight as grams
             int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
             
-            self.title = [NSString stringWithFormat:@"Working weight %i g", workingWeightGRAMSAsInt];
+            self.title = [NSString stringWithFormat:@"Working weight %ig", workingWeightGRAMSAsInt];
         }
         else
         {
