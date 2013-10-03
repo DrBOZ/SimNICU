@@ -28,7 +28,11 @@
     {
         self.title = @"Information";
         
-        self.view.tintColor = [UIColor redColor];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.view.tintColor = [UIColor redColor];
+        }
         
         AboutSimNICUViewController *firstViewController = [[AboutSimNICUViewController alloc] init];
         
