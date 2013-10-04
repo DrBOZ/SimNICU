@@ -171,6 +171,12 @@
             {
                 self.borderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
                 [self.borderSwitch addTarget:self action:@selector(borderSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.borderSwitch.onTintColor = [UIColor redColor];
+                }
             }
             
             self.borderSwitch.on = [preferences.border intValue];

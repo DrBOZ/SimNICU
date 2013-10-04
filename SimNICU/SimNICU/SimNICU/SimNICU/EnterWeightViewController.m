@@ -844,16 +844,22 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            self.switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
-            
-            // iOS 7 specifics
-            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            if (!self.switchObj)
             {
-                self.switchObj.onTintColor = [UIColor redColor];
+                self.switchObj = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+                
+                // set target
+                [self.switchObj addTarget:self action:@selector(patientConfidentialityModeToggle) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.switchObj.onTintColor = [UIColor redColor];
+                }
             }
             
             self.switchObj.on = !self.confidentialityModeOn;
-            [self.switchObj addTarget:self action:@selector(patientConfidentialityModeToggle) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+            
             cell.accessoryView = self.switchObj;
             
             cell.textLabel.text = NSLocalizedString(@"Patient List", nil);

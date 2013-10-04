@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/EnterWeightViewController.m"
-            timestampString = "402589156.453685"
+            timestampString = "402590867.82372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1252"
-            endingLineNumber = "1252"
+            startingLineNumber = "1258"
+            endingLineNumber = "1258"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/FluidRequirementsViewController.m"
-            timestampString = "402584057.754822"
+            timestampString = "402590259.877887"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1062"
-            endingLineNumber = "1062"
+            startingLineNumber = "1072"
+            endingLineNumber = "1072"
             landmarkName = "-formatSliderAppearance:"
             landmarkType = "5">
          </BreakpointContent>

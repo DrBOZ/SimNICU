@@ -24,17 +24,6 @@
     NSMutableArray *tableData;
 }
 
-- (UISwitch *)trackball
-{
-    if (!_trackball)
-    {
-        _trackball = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
-        [_trackball addTarget:self action:@selector(trackballSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
-    }
-    
-    return _trackball;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -117,7 +106,7 @@
     {
         if (indexPath.row == 0)
         {
-            static NSString *CellIdentifier = @"Switch";
+            static NSString *CellIdentifier = @"Autocorrection";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if (!cell)
@@ -132,7 +121,14 @@
             {
                 self.autocorrection = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
                 
+                // set target
                 [self.autocorrection addTarget:self action:@selector(autocorrectionSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.autocorrection.onTintColor = [UIColor redColor];
+                }
             }
             
             // set value for switch
@@ -145,7 +141,7 @@
         }
         else if (indexPath.row == 1)
         {
-            static NSString *CellIdentifier = @"Switch";
+            static NSString *CellIdentifier = @"Trackball";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if (!cell)
@@ -160,7 +156,14 @@
             {
                 self.trackball = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
                 
+                // add target
                 [self.trackball addTarget:self action:@selector(trackballSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.trackball.onTintColor = [UIColor redColor];
+                }
             }
             
             // set value for switch

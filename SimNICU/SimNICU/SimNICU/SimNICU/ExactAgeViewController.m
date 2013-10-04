@@ -40,17 +40,6 @@
 
 @implementation ExactAgeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -331,6 +320,8 @@
     // if birthdate set then don't allow to change
     if (indexPath.row == 0)
     {
+        // There is an anoying bug here, that does not allow the user to reselect a birth time, leave it for now
+        
         if (!self.dateAndTimeOfBirth && !self.selectedPatient.birthTimeSet)
         {
             path = indexPath;

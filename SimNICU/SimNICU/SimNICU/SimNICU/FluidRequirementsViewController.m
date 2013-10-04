@@ -918,7 +918,21 @@
     text.shadowOffset = CGSizeMake(0.0f, 1.0f);
     text.numberOfLines = 0;
     text.font = [UIFont boldSystemFontOfSize:15.0f];
-    text.text = @"A weight is needed for this calculator.\n\nPlease go back and press the          \nbutton, or slide the image to the right,\nand enter a weight or gestation\nor select a patient.";
+
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        text.text = @"A weight is needed for this calculator.\n\nPlease go back and enter a weight or gestation, or select a patient.";
+    }
+    else
+    {
+        text.text = @"A weight is needed for this calculator.\n\nPlease go back and press the          \nbutton, or slide the image to the right,\nand enter a weight or gestation\nor select a patient.";
+        
+        UIImageView *plusButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"plusButton2.png"]];
+        plusButton.frame = CGRectMake(270.0f, 36.0f, 40.0f, 40.0f);
+        [instructions addSubview:plusButton];
+    }
+    
     [instructions addSubview:text];
     
     UnderlineLabel *thankYou = [[UnderlineLabel alloc] initWithFrame:CGRectMake(0.0f, 136.0f, 320.0f, 44.0f)];
@@ -933,10 +947,6 @@
     thankYou.font = [UIFont boldSystemFontOfSize:15.0f];
     thankYou.text = @"Thank you.";
     [instructions addSubview:thankYou];
-    
-    UIImageView *plusButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"plusButton2.png"]];
-    plusButton.frame = CGRectMake(270.0f, 36.0f, 40.0f, 40.0f);
-    [instructions addSubview:plusButton];
     
     [footerView addSubview:instructions];
     
