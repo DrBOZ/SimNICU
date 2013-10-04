@@ -154,9 +154,14 @@
     {
         self.title = @"Weight not entered";
     }
-    
-    // check if using iOS 5.0 or more, and if yes than handle anisotropic slider
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
+
+    // if iOS 7 then return default slider
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // do nothing
+    }
+    // if  iOS 5 or 6, then handle anisotropic slider
+    else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
     {
         [DAAnisotropicImage startAnisotropicUpdatesWithHandler:^(UIImage *image)
          {
@@ -168,6 +173,9 @@
              
              [self.totalPotassiumSlider setThumbImage:image forState:UIControlStateNormal];
              [self.totalPotassiumSlider setThumbImage:image forState:UIControlStateHighlighted];
+             
+             [self.totalCalciumSlider setThumbImage:image forState:UIControlStateNormal];
+             [self.totalCalciumSlider setThumbImage:image forState:UIControlStateHighlighted];
          }];
     }
 }
@@ -1046,7 +1054,7 @@
     // if iOS 7 then return default slider
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // do nothing
+        
     }
     // if  iOS 5 or 6, then add anisotropic images to sliders
     else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
