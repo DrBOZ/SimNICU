@@ -20,14 +20,15 @@
 
 @implementation UDBarTrackballItem
 
-- (id)initForTextView:(UITextView *)textView {  
+- (id)initForTextView:(UITextView *)textView
+{
     self.textView = textView;
   
     UIButton *trackballButton = [[UIButton alloc] init];
   
     [trackballButton setImage:[UIImage imageNamed:@"trackball.png"] forState:UIControlStateNormal];
     [trackballButton setImage:[UIImage imageNamed:@"trackball blue highlighted.png"] forState:UIControlStateHighlighted];
-    [trackballButton setFrame:CGRectMake(0, 0, 44, 44)];
+    [trackballButton setFrame:CGRectMake(0.0f, 0.0f, 44.0f, 44.0f)];
   
     [trackballButton addTarget:self action:@selector(touchDownAction:withEvent:) forControlEvents:UIControlEventTouchDown];
     [trackballButton addTarget:self action:@selector(touchDownRepeatAction:withEvent:) forControlEvents:UIControlEventTouchDownRepeat];
@@ -41,26 +42,30 @@
 
 #pragma mark - Touch
 
-- (void)touchDownAction:(id)sender withEvent:(UIEvent *)event {
+- (void)touchDownAction:(id)sender withEvent:(UIEvent *)event
+{
     self.selectionMode = NO;
   
     [self prepareTracking:event];
 }
 
-- (void)touchDownRepeatAction:(id)sender withEvent:(UIEvent *)event {
+- (void)touchDownRepeatAction:(id)sender withEvent:(UIEvent *)event
+{
     self.selectionMode = YES;
  
     [self prepareTracking:event];
 }
 
-- (void)touchDragAction:(id)sender withEvent:(UIEvent *)event {
+- (void)touchDragAction:(id)sender withEvent:(UIEvent *)event
+{
     // Continue faking a touched down button
     [sender setImage:[UIImage imageNamed:@"trackball blue highlighted.png"] forState:UIControlStateNormal];
 
     [self track:[[event allTouches] anyObject]];
 }
 
-- (void)touchUpAction:(id)sender withEvent:(UIEvent *)event {
+- (void)touchUpAction:(id)sender withEvent:(UIEvent *)event
+{
     // Reset faked touched down button
     [sender setImage:[UIImage imageNamed:@"trackball.png"] forState:UIControlStateNormal];
     
@@ -69,7 +74,8 @@
 
 #pragma mark - Tracking
 
-- (void)prepareTracking:(UIEvent *)event {
+- (void)prepareTracking:(UIEvent *)event
+{
     // Store touch down origin
     UITouch *touch = [[event allTouches] anyObject];
     self.touchOrigin = [touch locationInView:self.textView];
@@ -87,7 +93,8 @@
     CGSize movement = CGSizeMake(touchPos.x - self.touchOrigin.x, touchPos.y - self.touchOrigin.y);
   
     // Set new caret position
-    if (self.selectionMode) {
+    if (self.selectionMode)
+    {
         // Calculate new caret position
         UITextPosition *newCaretPos = [self calcPos:self.endCaretOrigin delta:movement];
         
@@ -105,7 +112,8 @@
     [self.textView scrollRangeToVisible:[self.textView selectedRange]];
 }
 
-- (UITextPosition *)calcPos:(UITextPosition *)pos delta:(CGSize)delta {
+- (UITextPosition *)calcPos:(UITextPosition *)pos delta:(CGSize)delta
+{
     CGRect rect = [self.textView caretRectForPosition:pos];
     CGPoint center = CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
     // Double movement so one tracking motion can reach end to end
@@ -140,11 +148,14 @@
     
     CGFloat left, top, right, bottom;
     
-    if (startRect.origin.y != endRect.origin.y) {
+    if (startRect.origin.y != endRect.origin.y)
+    {
         // Multiline selection: Use entire width
         left = 0;
         right = [self.textView frame].size.width;
-    } else {
+    }
+    else
+    {
         left = MIN(startRect.origin.x, endRect.origin.x);
         right = MAX(startRect.origin.x + startRect.size.width, endRect.origin.x + endRect.size.width);
     }

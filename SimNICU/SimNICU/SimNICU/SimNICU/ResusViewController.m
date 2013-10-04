@@ -557,7 +557,18 @@
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 259.0f, 22.0f)];
+    CGFloat leftTextPosition;
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        leftTextPosition = 15.0f;
+    }
+    else
+    {
+        leftTextPosition = 18.0f;
+    }
+    cell.drug = [[UILabel alloc] initWithFrame:CGRectMake(leftTextPosition, 7.0f, 259.0f, 22.0f)];
     cell.drug.font = [UIFont boldSystemFontOfSize:17.0f];
     cell.drug.adjustsFontSizeToFitWidth = YES;
     cell.drug.textColor = [UIColor blackColor];
@@ -574,7 +585,7 @@
     cell.equals.text = @"=";
     cell.equals.hidden = YES;
     
-    cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 28.0f, 259.0f, 26.0f)];
+    cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(leftTextPosition, 28.0f, 259.0f, 26.0f)];
     cell.subLabel2.textColor = [UIColor lightGrayColor];
     cell.subLabel2.font = [UIFont systemFontOfSize:14.0f];
     cell.subLabel2.backgroundColor = [UIColor clearColor];

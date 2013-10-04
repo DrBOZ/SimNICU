@@ -1165,7 +1165,15 @@
         row = section.rows[0];
     }
     
-    textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
+    }
+    else
+    {
+        textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
+    }
     
     // set values
     textView.font = [UIFont systemFontOfSize:14.0f];
@@ -1484,6 +1492,17 @@
         textView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (textView.contentSize.height + 10.0f));
     }
 }
+
+/*
+- (NSIndexPath *)keyForIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath class] == [NSIndexPath class])
+    {
+        return indexPath;
+    }
+    return [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+}
+ */
 
 - (void)textViewDidChange:(UITextView *)textView
 {

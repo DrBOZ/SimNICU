@@ -120,10 +120,20 @@
 {
     float footer = 0.0f;
     
-    if (section == 0)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // footer = 66.0f;
-        footer = 200.0f;
+        if (section == 0)
+        {
+            footer = 150.0f;
+        }
+    }
+    else
+    {
+        if (section == 0)
+        {
+            footer = 200.0f;
+        }
     }
     
     return footer;
