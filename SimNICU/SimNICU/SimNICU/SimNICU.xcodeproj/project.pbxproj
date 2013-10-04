@@ -552,6 +552,16 @@
 		5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B7417DA125E003365F6 /* SyncClient.m */; };
 		5CB46B8117DA4062003365F6 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8017DA4062003365F6 /* ConnectionViewController.m */; };
 		5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B8017DA4062003365F6 /* ConnectionViewController.m */; };
+		5CB5BC2F17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC2E17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png */; };
+		5CB5BC3017FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC2E17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png */; };
+		5CB5BC3217FF6AC5007F3921 /* Demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3117FF6AC5007F3921 /* Demo.png */; };
+		5CB5BC3317FF6AC5007F3921 /* Demo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3117FF6AC5007F3921 /* Demo.png */; };
+		5CB5BC3517FF7318007F3921 /* Demo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3417FF7318007F3921 /* Demo02.png */; };
+		5CB5BC3617FF7318007F3921 /* Demo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3417FF7318007F3921 /* Demo02.png */; };
+		5CB5BC3817FF7970007F3921 /* Demo35.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3717FF7970007F3921 /* Demo35.png */; };
+		5CB5BC3917FF7970007F3921 /* Demo35.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3717FF7970007F3921 /* Demo35.png */; };
+		5CB5BC4A17FF87A2007F3921 /* dismiss_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */; };
+		5CB5BC4B17FF87A2007F3921 /* dismiss_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -1352,6 +1362,11 @@
 		5CB46B7417DA125E003365F6 /* SyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncClient.m; sourceTree = "<group>"; };
 		5CB46B7F17DA4062003365F6 /* ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionViewController.h; sourceTree = "<group>"; };
 		5CB46B8017DA4062003365F6 /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
+		5CB5BC2E17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen shot 4 Oct 2013 22.22.53.png"; sourceTree = "<group>"; };
+		5CB5BC3117FF6AC5007F3921 /* Demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Demo.png; sourceTree = "<group>"; };
+		5CB5BC3417FF7318007F3921 /* Demo02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Demo02.png; sourceTree = "<group>"; };
+		5CB5BC3717FF7970007F3921 /* Demo35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Demo35.png; sourceTree = "<group>"; };
+		5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismiss_iOS7.png; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -2752,12 +2767,17 @@
 				5CA71F8617FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png */,
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
+				5CB5BC3117FF6AC5007F3921 /* Demo.png */,
+				5CB5BC3417FF7318007F3921 /* Demo02.png */,
+				5CB5BC3717FF7970007F3921 /* Demo35.png */,
+				5CB5BC2E17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png */,
 				5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */,
 				5CA3CC1F17B7999F002E96DC /* Default@2x.png */,
 				5CA3CC1D17B79996002E96DC /* Default.png */,
 				5C28EAB717FD6691009DDF17 /* ScreenHack01.png */,
 				5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */,
 				5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */,
+				5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -3075,6 +3095,7 @@
 				5C940C04166E3C5B0044A7D1 /* ActionSheetPickerViewController.xib in Resources */,
 				5C940C5D166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg in Resources */,
 				5C940C5E166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg in Resources */,
+				5CB5BC3517FF7318007F3921 /* Demo02.png in Resources */,
 				5CCA063E17FB7FCC00AF2E0C /* Media.xcassets in Resources */,
 				5C940CC2166E45860044A7D1 /* Localizable.strings in Resources */,
 				5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */,
@@ -3084,6 +3105,7 @@
 				5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */,
 				5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */,
 				5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */,
+				5CB5BC3817FF7970007F3921 /* Demo35.png in Resources */,
 				5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */,
 				5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */,
@@ -3183,7 +3205,9 @@
 				5C51D8FB17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FE17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
 				5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
+				5CB5BC4A17FF87A2007F3921 /* dismiss_iOS7.png in Resources */,
 				5CA3CC1E17B79996002E96DC /* Default.png in Resources */,
+				5CB5BC2F17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */,
 				5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */,
 				5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */,
 				5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */,
@@ -3192,6 +3216,7 @@
 				5C0B9B8617D2022B000B9E34 /* trackball blue highlighted@2x.pxm in Resources */,
 				5C0B9B8717D2022B000B9E34 /* trackball highlighted.png in Resources */,
 				5C0B9B8817D2022B000B9E34 /* trackball highlighted.pxm in Resources */,
+				5CB5BC3217FF6AC5007F3921 /* Demo.png in Resources */,
 				5C0B9B8917D2022B000B9E34 /* trackball highlighted@2x.png in Resources */,
 				5C0B9B8A17D2022B000B9E34 /* trackball highlighted@2x.pxm in Resources */,
 				5C0B9B8B17D2022B000B9E34 /* trackball.png in Resources */,
@@ -3239,6 +3264,7 @@
 				5CD3B05016CF38D500DE362C /* earlyCareMisc.html in Resources */,
 				5CD3B05116CF38D500DE362C /* earlyCareVentSettings.html in Resources */,
 				5CD3B05216CF38D500DE362C /* gastroschisis0.html in Resources */,
+				5CB5BC3317FF6AC5007F3921 /* Demo.png in Resources */,
 				5CD3B05316CF38D500DE362C /* gastroschisis1.html in Resources */,
 				5CD3B05416CF38D500DE362C /* hfov0.html in Resources */,
 				5C7CB1DB17FDFBB200C5D697 /* ScreenHack02.png in Resources */,
@@ -3252,6 +3278,7 @@
 				5CD3B05B16CF38D500DE362C /* weightConversionTable.html in Resources */,
 				5CD3B05C16CF38D500DE362C /* ActionSheetPickerViewController.xib in Resources */,
 				5CD3B06216CF38D500DE362C /* SimNICU_MainPhoto320x150.jpg in Resources */,
+				5CB5BC3917FF7970007F3921 /* Demo35.png in Resources */,
 				5CD3B06316CF38D500DE362C /* SimNICU_MainPhoto640x300.jpg in Resources */,
 				5CD3B08616CF38D500DE362C /* Localizable.strings in Resources */,
 				5CD3B0A416CF38D500DE362C /* weightConversionTableComma.html in Resources */,
@@ -3263,6 +3290,7 @@
 				5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
 				5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
+				5CB5BC4B17FF87A2007F3921 /* dismiss_iOS7.png in Resources */,
 				5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */,
 				5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */,
 				5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */,
@@ -3292,6 +3320,7 @@
 				5C0E0625178F82E300768739 /* gentamicinIndications.html in Resources */,
 				5C0E0628178F82F500768739 /* gentamicinPresentation.html in Resources */,
 				5C0E062B178F830500768739 /* gentamicinDose.html in Resources */,
+				5CB5BC3617FF7318007F3921 /* Demo02.png in Resources */,
 				5C0E062E178F831800768739 /* gentamicinPreparation.html in Resources */,
 				5C0E0631178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0634178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
@@ -3316,6 +3345,7 @@
 				5C52F3B31791656D000CFD80 /* vitaminKIndications.html in Resources */,
 				5C52F3B61791657C000CFD80 /* vitaminKPresentation.html in Resources */,
 				5C52F3B917916589000CFD80 /* vitaminKDose.html in Resources */,
+				5CB5BC3017FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */,
 				5C52F3BC1791659B000CFD80 /* vitaminKPreparation.html in Resources */,
 				5C52F3BF179165B1000CFD80 /* vitaminKContraindications.html in Resources */,
 				5C52F3C2179165C1000CFD80 /* vitaminKInteractions.html in Resources */,

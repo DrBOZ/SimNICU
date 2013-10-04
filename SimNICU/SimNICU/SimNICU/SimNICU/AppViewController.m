@@ -391,7 +391,7 @@
         
         // dismiss button image & view
         self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(265.0f, 42.0f, 22.0f, 22.0f)];
-        self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2.png"];
+        self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss_iOS7.png"];
         self.displayDismissButtonView.userInteractionEnabled = YES;
         self.displayDismissButtonView.hidden = YES;
         [self.myHeaderView addSubview:self.displayDismissButtonView];
@@ -545,35 +545,68 @@
     if (appViewControllerLoadingForTheFirstTime)
     {
         // recreate loading screen to animate off
-        
-        // display background
-        loadingDisplayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
-        loadingDisplayBackground.backgroundColor = [UIColor blackColor];
-        loadingDisplayBackground.hidden = NO;
-        loadingDisplayBackground.alpha = .4;
-        [self.myHeaderView addSubview:loadingDisplayBackground];
-        
-        // displayTextLabel
-        loadingDisplayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
-        loadingDisplayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
-        loadingDisplayTextLabel.backgroundColor = [UIColor clearColor];
-        loadingDisplayTextLabel.textAlignment = UITextAlignmentCenter;
-        loadingDisplayTextLabel.textColor = [UIColor whiteColor];
-        loadingDisplayTextLabel.adjustsFontSizeToFitWidth = YES;
-        loadingDisplayTextLabel.text = @"LOADING";
-        loadingDisplayTextLabel.hidden = NO;
-        [self.myHeaderView addSubview:loadingDisplayTextLabel];
-        
-        // displayDetailTextLabel
-        loadingDisplayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
-        loadingDisplayDetailTextLabel.backgroundColor = [UIColor clearColor];
-        loadingDisplayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
-        loadingDisplayDetailTextLabel.textAlignment = UITextAlignmentCenter;
-        loadingDisplayDetailTextLabel.textColor = [UIColor whiteColor];
-        loadingDisplayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-        loadingDisplayDetailTextLabel.text = @"Please wait...";
-        loadingDisplayDetailTextLabel.hidden = NO;
-        [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // display background
+            loadingDisplayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 260.0f, 65.0f)];
+            loadingDisplayBackground.backgroundColor = [UIColor blackColor];
+            loadingDisplayBackground.hidden = NO;
+            loadingDisplayBackground.alpha = .4;
+            [self.myHeaderView addSubview:loadingDisplayBackground];
+            
+            // displayTextLabel
+            loadingDisplayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(45.0f + 70.0f, 39.0f + 8.0f, 210.0f, 30.0f)];
+            loadingDisplayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+            loadingDisplayTextLabel.backgroundColor = [UIColor clearColor];
+            loadingDisplayTextLabel.textAlignment = UITextAlignmentLeft;
+            loadingDisplayTextLabel.textColor = [UIColor whiteColor];
+            loadingDisplayTextLabel.adjustsFontSizeToFitWidth = YES;
+            loadingDisplayTextLabel.text = @"LOADING";
+            loadingDisplayTextLabel.hidden = NO;
+            [self.myHeaderView addSubview:loadingDisplayTextLabel];
+            
+            // displayDetailTextLabel
+            loadingDisplayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(45.0f + 70.0f, 60.0f + 8.0f, 210.0f, 30.0f)];
+            loadingDisplayDetailTextLabel.backgroundColor = [UIColor clearColor];
+            loadingDisplayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+            loadingDisplayDetailTextLabel.textAlignment = UITextAlignmentLeft;
+            loadingDisplayDetailTextLabel.textColor = [UIColor whiteColor];
+            loadingDisplayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+            loadingDisplayDetailTextLabel.text = @"Please wait...";
+            loadingDisplayDetailTextLabel.hidden = NO;
+            [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
+        }
+        else
+        {
+            // display background
+            loadingDisplayBackground = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 245.0f, 50.0f)];
+            loadingDisplayBackground.backgroundColor = [UIColor blackColor];
+            loadingDisplayBackground.hidden = NO;
+            loadingDisplayBackground.alpha = .4;
+            [self.myHeaderView addSubview:loadingDisplayBackground];
+            
+            // displayTextLabel
+            loadingDisplayTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 39.0f, 210.0f, 30.0f)];
+            loadingDisplayTextLabel.font = [UIFont boldSystemFontOfSize:20.0f];
+            loadingDisplayTextLabel.backgroundColor = [UIColor clearColor];
+            loadingDisplayTextLabel.textAlignment = UITextAlignmentCenter;
+            loadingDisplayTextLabel.textColor = [UIColor whiteColor];
+            loadingDisplayTextLabel.adjustsFontSizeToFitWidth = YES;
+            loadingDisplayTextLabel.text = @"LOADING";
+            loadingDisplayTextLabel.hidden = NO;
+            [self.myHeaderView addSubview:loadingDisplayTextLabel];
+            
+            // displayDetailTextLabel
+            loadingDisplayDetailTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(39.0f, 60.0f, 227.0f, 30.0f)];
+            loadingDisplayDetailTextLabel.backgroundColor = [UIColor clearColor];
+            loadingDisplayDetailTextLabel.font = [UIFont systemFontOfSize:18.0f];
+            loadingDisplayDetailTextLabel.textAlignment = UITextAlignmentCenter;
+            loadingDisplayDetailTextLabel.textColor = [UIColor whiteColor];
+            loadingDisplayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
+            loadingDisplayDetailTextLabel.text = @"Please wait...";
+            loadingDisplayDetailTextLabel.hidden = NO;
+            [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
+        }
     }
     
     // delegate
