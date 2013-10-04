@@ -134,7 +134,7 @@
     
     if (section == 0)
     {
-        returnString = @"Version 1.4.2";
+        returnString = @"Version 2.0";
     }
     
     return returnString;
