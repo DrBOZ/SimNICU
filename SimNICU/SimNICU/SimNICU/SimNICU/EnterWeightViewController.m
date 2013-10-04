@@ -585,7 +585,8 @@
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                self.weight.keyboardAppearance = UIKeyboardAppearanceDefault;
+                // self.weight.keyboardAppearance = UIKeyboardAppearanceDefault;
+                self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
             }
             else
             {
@@ -622,7 +623,8 @@
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                self.gestation.keyboardAppearance = UIKeyboardAppearanceDefault;
+                // self.gestation.keyboardAppearance = UIKeyboardAppearanceDefault;
+                self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
             }
             else
             {
