@@ -232,10 +232,9 @@
         // Flexible space to align custom buttons
         UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
         
-        // iOS 7 specifics
-        
         UIBarButtonItem *settingsButton;
         
+        // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
             settingsButton = [CBBarButtonItems customBarButtonWithTitle:@"Settings" target:self action:@selector(showSettings)];

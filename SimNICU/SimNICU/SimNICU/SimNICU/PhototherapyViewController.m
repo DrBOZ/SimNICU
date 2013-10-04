@@ -167,18 +167,42 @@
 {
     float height = 22.0f;
     
-    if (section == 0)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        float fourInchDisplayPadding = 0.0f;
-
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        if (appDelegate.window.bounds.size.height == 568)
+        if (section == 0)
         {
-            fourInchDisplayPadding = 22.0f;
+            float fourInchDisplayPadding = 0.0f;
+            
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                fourInchDisplayPadding = 22.0f;
+            }
+            
+            height = 66.0f + fourInchDisplayPadding;
         }
-        
-        height = 66.0f + fourInchDisplayPadding;
+        else if (section == 1)
+        {
+            height = 44.0f;
+        }
+    }
+    else
+    {
+        if (section == 0)
+        {
+            float fourInchDisplayPadding = 0.0f;
+            
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                fourInchDisplayPadding = 22.0f;
+            }
+            
+            height = 66.0f + fourInchDisplayPadding;
+        }
     }
     
     return height;
@@ -206,15 +230,33 @@
     
     float footer = 0.0f;
     
-    if (section == 0)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        if ([preferences.guidelineCountry isEqualToString:@"US"])
+        if (section == 0)
         {
-            footer = 66.0f;
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
+            {
+                footer = 50.0f;
+            }
+            else if ([preferences.guidelineCountry isEqualToString:@"UK"])
+            {
+                footer = 50.0f;
+            }
         }
-        else if ([preferences.guidelineCountry isEqualToString:@"UK"])
+    }
+    else
+    {
+        if (section == 0)
         {
-            footer = 66.0f;
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
+            {
+                footer = 66.0f;
+            }
+            else if ([preferences.guidelineCountry isEqualToString:@"UK"])
+            {
+                footer = 66.0f;
+            }
         }
     }
     

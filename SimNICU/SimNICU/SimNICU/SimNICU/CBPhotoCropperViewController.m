@@ -69,10 +69,20 @@
     
     [self.view addSubview:self.scrollView];
 	
-    // Control buttons
-    UIBarButtonItem *imageButton = [CBBarButtonItems customBarButtonWithImageFile:@"crop.png"
-                                                                           target:self
-                                                                           action:@selector(saveAndClose:)];
+    // Crop button
+    UIBarButtonItem *cropButton;
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        cropButton = [CBBarButtonItems customBarButtonWithTitle:@"Crop" target:self action:@selector(saveAndClose:)];
+    }
+    else
+    {
+        cropButton = [CBBarButtonItems customBarButtonWithImageFile:@"crop.png"
+                                                             target:self
+                                                             action:@selector(saveAndClose:)];
+    }
     
     // Add button
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
@@ -82,16 +92,9 @@
     // Flexible space to align custom buttons
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
      
-    NSArray *items = [NSArray arrayWithObjects:addButton,flexibleItem, imageButton, flexibleItem, nil];
+    NSArray *items = [NSArray arrayWithObjects:addButton,flexibleItem, cropButton, flexibleItem, nil];
      
     self.navigationItem.rightBarButtonItems = items;
-    
-    /*
-    if (!_showsInfoButton)
-    {
-        [self.infoButton setHidden:YES];         no used, delete later
-    }
-     */
     
     // add cropping rectangle
     self.cropRectangleButton = [[UIButton alloc] init];

@@ -18,17 +18,6 @@
 
 @implementation PaperSizeTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self)
-    {
-        // Custom initialization
-
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,6 +25,12 @@
     [CBTrackers logEvent:@"Settings/PDF/Paper Size"];
     
     self.title = @"Paper Size";
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.view.tintColor = [UIColor redColor];
+    }
 }
 
 - (void)didReceiveMemoryWarning
