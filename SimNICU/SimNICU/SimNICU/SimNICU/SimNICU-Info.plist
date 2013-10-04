@@ -9,13 +9,18 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>SimNICU_iPhone_Icon.png</string>
+	<string>App_icon.png</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>SimNICU_iPhone_Icon_iOS7</string>
+				<string>SimNICU_iPhone_Icon</string>
+				<string>AppIcon03</string>
+				<string>App_Icon02</string>
+				<string>App_icon</string>
 				<string>SimNICU_iPhone_Icon.png</string>
 				<string>SimNICU_iPhone_Icon@2x.png</string>
 			</array>
