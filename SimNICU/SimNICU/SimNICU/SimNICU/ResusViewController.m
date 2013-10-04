@@ -259,9 +259,20 @@
 {
     int footer = 0;
     
-    if (section == 2)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        footer = 300;
+        if (section == 2)
+        {
+            footer = 240;
+        }
+    }
+    else
+    {
+        if (section == 2)
+        {
+            footer = 300;
+        }
     }
     
     return footer;
@@ -464,7 +475,8 @@
                 cautionLabel.text = @"Intubate and ventilate";
                 cautionLabel.font = [UIFont boldSystemFontOfSize:16.0f];
                 
-                cell.subLabel3.text = @" ";
+                cell.dose.text = nil;
+                cell.subLabel3.text = nil;
                 
                 [cell addSubview:cautionLabel];
             }
