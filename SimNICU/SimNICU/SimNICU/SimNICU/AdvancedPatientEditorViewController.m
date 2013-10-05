@@ -339,6 +339,113 @@
     return 22.0f;
 }
 
+- (CGFloat)heightForTextView:(UITextView *)textView
+{
+    // get textView height
+    HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+    
+    UITextView *textViewToMeasure;
+    
+    if (!textViewToMeasure)
+    {
+        textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+    }
+    
+    if ([section.sectionName isEqual:@"Background"])
+    {
+        textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+    }
+    else if ([section.sectionName isEqual:@"Active Problems"])
+    {
+        textViewToMeasure.text = self.selectedPatient.activeProblems;
+    }
+    else if ([section.sectionName isEqual:@"Resolved Problems"])
+    {
+        textViewToMeasure.text = self.selectedPatient.resolvedProblems;
+    }
+    else if ([section.sectionName isEqual:@"Recent Significant Events"])
+    {
+        textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
+    }
+    else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+    {
+        textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
+    }
+    else if ([section.sectionName isEqual:@"CXR"])
+    {
+        textViewToMeasure.text = self.selectedPatient.cxr;
+    }
+    else if ([section.sectionName isEqual:@"Cardiovascular"])
+    {
+        textViewToMeasure.text = self.selectedPatient.cardiovascular;
+    }
+    else if ([section.sectionName isEqual:@"Lines"])
+    {
+        textViewToMeasure.text = self.selectedPatient.lines;
+    }
+    else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+    {
+        textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
+    }
+    else if ([section.sectionName isEqual:@"Fluid Balance"])
+    {
+        textViewToMeasure.text = self.selectedPatient.fluidBalance;
+    }
+    else if ([section.sectionName isEqual:@"Biochemistry"])
+    {
+        textViewToMeasure.text = self.selectedPatient.electrolytes;
+    }
+    else if ([section.sectionName isEqual:@"Jaundice"])
+    {
+        textViewToMeasure.text = self.selectedPatient.jaundice;
+    }
+    else if ([section.sectionName isEqual:@"Sepsis"])
+    {
+        textViewToMeasure.text = self.selectedPatient.sepsis;
+    }
+    else if ([section.sectionName isEqual:@"Drugs"])
+    {
+        textViewToMeasure.text = self.selectedPatient.drugs;
+    }
+    else if ([section.sectionName isEqual:@"ROP"])
+    {
+        textViewToMeasure.text = self.selectedPatient.rop;
+    }
+    else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+    {
+        textViewToMeasure.text = self.selectedPatient.cranialUSS;
+    }
+    else if ([section.sectionName isEqual:@"Parents / Social"])
+    {
+        textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
+    }
+    else if ([section.sectionName isEqual:@"Examination"])
+    {
+        textViewToMeasure.text = self.selectedPatient.impression;
+    }
+    else if ([section.sectionName isEqual:@"Summary"])
+    {
+        textViewToMeasure.text = self.selectedPatient.plan;
+    }
+    else if ([section.sectionName isEqual:@"Plan"])
+    {
+        textViewToMeasure.text = self.selectedPatient.jobs;
+    }
+    
+    // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+    
+    [textViewToMeasure sizeToFit];
+    
+    CGFloat height = textViewToMeasure.frame.size.height;
+    
+    textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+    // textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    textView.font = [UIFont systemFontOfSize:14.0f];
+    
+    return height;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     float height = 55.0f;
@@ -349,11 +456,128 @@
     }
     else
     {
-        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
-        
-        HandoverRow *row = section.rows[indexPath.row];
-        
-        height = [row.rowHeight floatValue];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            UITextView *textView;
+            
+            if (!textView)
+            {
+                textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+            }
+            
+            HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+            
+            if ([section.sectionName isEqual:@"Background"])
+            {
+                textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+            }
+            else if ([section.sectionName isEqual:@"Active Problems"])
+            {
+                textView.text = self.selectedPatient.activeProblems;
+            }
+            else if ([section.sectionName isEqual:@"Resolved Problems"])
+            {
+                textView.text = self.selectedPatient.resolvedProblems;
+            }
+            else if ([section.sectionName isEqual:@"Recent Significant Events"])
+            {
+                textView.text = self.selectedPatient.recentSignificantEvents;
+            }
+            else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+            {
+                textView.text = self.selectedPatient.ventilationAndSedation;
+            }
+            else if ([section.sectionName isEqual:@"CXR"])
+            {
+                textView.text = self.selectedPatient.cxr;
+            }
+            else if ([section.sectionName isEqual:@"Cardiovascular"])
+            {
+                textView.text = self.selectedPatient.cardiovascular;
+            }
+            else if ([section.sectionName isEqual:@"Lines"])
+            {
+                textView.text = self.selectedPatient.lines;
+            }
+            else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+            {
+                textView.text = self.selectedPatient.feedsAndFluids;
+            }
+            else if ([section.sectionName isEqual:@"Fluid Balance"])
+            {
+                textView.text = self.selectedPatient.fluidBalance;
+            }
+            else if ([section.sectionName isEqual:@"Biochemistry"])
+            {
+                textView.text = self.selectedPatient.electrolytes;
+            }
+            else if ([section.sectionName isEqual:@"Jaundice"])
+            {
+                if (indexPath.row == 0)
+                {
+                    HandoverRow *row = section.rows[indexPath.row];
+                    
+                    height = [row.rowHeight floatValue];
+                    
+                    return height;
+                }
+                else if (indexPath.row == 1)
+                {
+                    textView.text = self.selectedPatient.jaundice;
+                }
+            }
+            else if ([section.sectionName isEqual:@"Sepsis"])
+            {
+                textView.text = self.selectedPatient.sepsis;
+            }
+            else if ([section.sectionName isEqual:@"Drugs"])
+            {
+                textView.text = self.selectedPatient.drugs;
+            }
+            else if ([section.sectionName isEqual:@"ROP"])
+            {
+                textView.text = self.selectedPatient.rop;
+            }
+            else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+            {
+                textView.text = self.selectedPatient.cranialUSS;
+            }
+            else if ([section.sectionName isEqual:@"Parents / Social"])
+            {
+                textView.text = self.selectedPatient.parentsAndSocial;
+            }
+            else if ([section.sectionName isEqual:@"Examination"])
+            {
+                textView.text = self.selectedPatient.impression;
+            }
+            else if ([section.sectionName isEqual:@"Summary"])
+            {
+                textView.text = self.selectedPatient.plan;
+            }
+            else if ([section.sectionName isEqual:@"Plan"])
+            {
+                textView.text = self.selectedPatient.jobs;
+            }
+#warning add settings option to use dynamic text
+            // textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            textView.font = [UIFont systemFontOfSize:14.0f];
+            
+            [textView sizeToFit];
+            
+            height = textView.frame.size.height;
+            
+            NSLog(@"textView.text = \"%@\"", textView.text);
+            NSLog(@"textView.height = %f", textView.frame.size.height);
+        }
+        else
+        {
+            HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+            
+            HandoverRow *row = section.rows[indexPath.row];
+            
+            height = [row.rowHeight floatValue];
+        }
     }
     
     return height;
@@ -1168,15 +1392,112 @@
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
+        UITextView *textViewToMeasure;
+        
+        if (!textViewToMeasure)
+        {
+            textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+        }
+        
+        if ([section.sectionName isEqual:@"Background"])
+        {
+            textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+        }
+        else if ([section.sectionName isEqual:@"Active Problems"])
+        {
+            textViewToMeasure.text = self.selectedPatient.activeProblems;
+        }
+        else if ([section.sectionName isEqual:@"Resolved Problems"])
+        {
+            textViewToMeasure.text = self.selectedPatient.resolvedProblems;
+        }
+        else if ([section.sectionName isEqual:@"Recent Significant Events"])
+        {
+            textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
+        }
+        else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+        {
+            textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
+        }
+        else if ([section.sectionName isEqual:@"CXR"])
+        {
+            textViewToMeasure.text = self.selectedPatient.cxr;
+        }
+        else if ([section.sectionName isEqual:@"Cardiovascular"])
+        {
+            textViewToMeasure.text = self.selectedPatient.cardiovascular;
+        }
+        else if ([section.sectionName isEqual:@"Lines"])
+        {
+            textViewToMeasure.text = self.selectedPatient.lines;
+        }
+        else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+        {
+            textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
+        }
+        else if ([section.sectionName isEqual:@"Fluid Balance"])
+        {
+            textViewToMeasure.text = self.selectedPatient.fluidBalance;
+        }
+        else if ([section.sectionName isEqual:@"Biochemistry"])
+        {
+            textViewToMeasure.text = self.selectedPatient.electrolytes;
+        }
+        else if ([section.sectionName isEqual:@"Jaundice"])
+        {
+            textViewToMeasure.text = self.selectedPatient.jaundice;
+        }
+        else if ([section.sectionName isEqual:@"Sepsis"])
+        {
+            textViewToMeasure.text = self.selectedPatient.sepsis;
+        }
+        else if ([section.sectionName isEqual:@"Drugs"])
+        {
+            textViewToMeasure.text = self.selectedPatient.drugs;
+        }
+        else if ([section.sectionName isEqual:@"ROP"])
+        {
+            textViewToMeasure.text = self.selectedPatient.rop;
+        }
+        else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+        {
+            textViewToMeasure.text = self.selectedPatient.cranialUSS;
+        }
+        else if ([section.sectionName isEqual:@"Parents / Social"])
+        {
+            textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
+        }
+        else if ([section.sectionName isEqual:@"Examination"])
+        {
+            textViewToMeasure.text = self.selectedPatient.impression;
+        }
+        else if ([section.sectionName isEqual:@"Summary"])
+        {
+            textViewToMeasure.text = self.selectedPatient.plan;
+        }
+        else if ([section.sectionName isEqual:@"Plan"])
+        {
+            textViewToMeasure.text = self.selectedPatient.jobs;
+        }
+        
+        // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+        
+        [textViewToMeasure sizeToFit];
+        
+        CGFloat height = textViewToMeasure.frame.size.height;
+        
+        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+        // textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        textView.font = [UIFont systemFontOfSize:14.0f];
     }
     else
     {
         textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
+        textView.font = [UIFont systemFontOfSize:14.0f];
     }
     
     // set values
-    textView.font = [UIFont systemFontOfSize:14.0f];
     textView.textColor = [UIColor grayColor];
     textView.scrollEnabled = NO;
     
@@ -1506,151 +1827,180 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    // this was just for playing around with
-    float adjustment = 0.0f;
+    // get height of UITextView before change
+    CGFloat heightBeforeChange;
     
-    // get reference to row data
-    HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
-    HandoverRow *row;
-    
-    if (textView.tag == 11)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        row = section.rows[1];
+        heightBeforeChange = [self heightForTextView:textView];
+    }
+    
+    // set text
+    {
+        if ([textView isEqual:self.backgroundTextView])
+        {
+            self.selectedPatient.background = textView.text;
+        }
+        else if ([textView isEqual:self.activeProblemsTextView])
+        {
+            self.selectedPatient.activeProblems = textView.text;
+        }
+        else if ([textView isEqual:self.resolvedProblemsTextView])
+        {
+            self.selectedPatient.resolvedProblems = textView.text;
+        }
+        else if ([textView isEqual:self.recentSignificantEventsTextView])
+        {
+            self.selectedPatient.recentSignificantEvents = textView.text;
+        }
+        else if ([textView isEqual:self.ventilationAndSedationTextView])
+        {
+            self.selectedPatient.ventilationAndSedation = textView.text;
+        }
+        else if ([textView isEqual:self.cxrTextView])
+        {
+            self.selectedPatient.cxr = textView.text;
+        }
+        else if ([textView isEqual:self.cardiovascularTextView])
+        {
+            self.selectedPatient.cardiovascular = textView.text;
+        }
+        else if ([textView isEqual:self.linesTextView])
+        {
+            self.selectedPatient.lines = textView.text;
+        }
+        else if ([textView isEqual:self.feedsAndFluidsTextView])
+        {
+            self.selectedPatient.feedsAndFluids = textView.text;
+        }
+        else if ([textView isEqual:self.fluidBalanceTextView])
+        {
+            self.selectedPatient.fluidBalance = textView.text;
+        }
+        else if ([textView isEqual:self.electrolytesTextView])
+        {
+            self.selectedPatient.electrolytes = textView.text;
+        }
+        else if ([textView isEqual:self.jaundiceTextView])
+        {
+            self.selectedPatient.jaundice = textView.text;
+        }
+        else if ([textView isEqual:self.sepsisTextView])
+        {
+            self.selectedPatient.sepsis = textView.text;
+        }
+        else if ([textView isEqual:self.drugsTextView])
+        {
+            self.selectedPatient.drugs = textView.text;
+        }
+        else if ([textView isEqual:self.ropTextView])
+        {
+            self.selectedPatient.rop = textView.text;
+        }
+        else if ([textView isEqual:self.cranialUSSTextView])
+        {
+            self.selectedPatient.cranialUSS = textView.text;
+        }
+        else if ([textView isEqual:self.parentsAndSocialTextView])
+        {
+            self.selectedPatient.parentsAndSocial = textView.text;
+        }
+        else if ([textView isEqual:self.impressionTextView])
+        {
+            self.selectedPatient.impression = textView.text;
+        }
+        else if ([textView isEqual:self.planTextView])
+        {
+            self.selectedPatient.plan = textView.text;
+        }
+        else if ([textView isEqual:self.jobsTextView])
+        {
+            self.selectedPatient.jobs = textView.text;
+        }
+    }
+    
+    // adjust height
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // check if an update is required
+        if (!([self heightForTextView:textView] == heightBeforeChange))
+        {
+            // update size of textView
+            [self setupTextView:textView];
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+        }
     }
     else
     {
-        row = section.rows[0];
-    }
-    
-    // get row height
-    float rowHeight = [row.rowHeight floatValue];
-    
-    // get textView height
-    float contentHeight = textView.contentSize.height;
-    
-    // first check if contentHeight is greater than rowHeight
-    // YES...
-    if ((contentHeight + adjustment) > rowHeight)
-    {
-        // update rowHeight
-        rowHeight = contentHeight;
+        // this was just for playing around with
+        float adjustment = 0.0f;
         
-        row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+        // get reference to row data
+        HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+        HandoverRow *row;
         
-        // update textView frame
-        textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, rowHeight);
-        
-        // update tableView
-        [self.myTableView2 beginUpdates];
-        [self.myTableView2 endUpdates];
-    }
-    // NO...
-    else if ((contentHeight + adjustment) < rowHeight)
-    {
-        if (textView.tag == 19) // special case for last one
+        if (textView.tag == 11)
         {
-            if (rowHeight > (346 + adjustment))
-            {
-                // rowHeight -= (rowHeight - (contentHeight + adjustment));
-                rowHeight = contentHeight;
-            }
+            row = section.rows[1];
         }
         else
         {
-            rowHeight = contentHeight;
+            row = section.rows[0];
         }
         
-        row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+        // get row height
+        float rowHeight = [row.rowHeight floatValue];
         
-        textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, (rowHeight + adjustment));
+        // get textView height
+        float contentHeight = textView.contentSize.height;
         
-        [self.myTableView2 beginUpdates];
-        [self.myTableView2 endUpdates];
-    }
-    
-    // This is going to be the main code
-    row.rowText = textView.text;
-    
-    // legacy code
-    if ([textView isEqual:self.backgroundTextView])
-    {
-        self.selectedPatient.background = textView.text;
-    }
-    else if ([textView isEqual:self.activeProblemsTextView])
-    {
-        self.selectedPatient.activeProblems = textView.text;
-    }
-    else if ([textView isEqual:self.resolvedProblemsTextView])
-    {
-        self.selectedPatient.resolvedProblems = textView.text;
-    }
-    else if ([textView isEqual:self.recentSignificantEventsTextView])
-    {
-        self.selectedPatient.recentSignificantEvents = textView.text;
-    }
-    else if ([textView isEqual:self.ventilationAndSedationTextView])
-    {
-        self.selectedPatient.ventilationAndSedation = textView.text;
-    }
-    else if ([textView isEqual:self.cxrTextView])
-    {
-        self.selectedPatient.cxr = textView.text;
-    }
-    else if ([textView isEqual:self.cardiovascularTextView])
-    {
-        self.selectedPatient.cardiovascular = textView.text;
-    }
-    else if ([textView isEqual:self.linesTextView])
-    {
-        self.selectedPatient.lines = textView.text;
-    }
-    else if ([textView isEqual:self.feedsAndFluidsTextView])
-    {
-        self.selectedPatient.feedsAndFluids = textView.text;
-    }
-    else if ([textView isEqual:self.fluidBalanceTextView])
-    {
-        self.selectedPatient.fluidBalance = textView.text;
-    }
-    else if ([textView isEqual:self.electrolytesTextView])
-    {
-        self.selectedPatient.electrolytes = textView.text;
-    }
-    else if ([textView isEqual:self.jaundiceTextView])
-    {
-        self.selectedPatient.jaundice = textView.text;
-    }
-    else if ([textView isEqual:self.sepsisTextView])
-    {
-        self.selectedPatient.sepsis = textView.text;
-    }
-    else if ([textView isEqual:self.drugsTextView])
-    {
-        self.selectedPatient.drugs = textView.text;
-    }
-    else if ([textView isEqual:self.ropTextView])
-    {
-        self.selectedPatient.rop = textView.text;
-    }
-    else if ([textView isEqual:self.cranialUSSTextView])
-    {
-        self.selectedPatient.cranialUSS = textView.text;
-    }
-    else if ([textView isEqual:self.parentsAndSocialTextView])
-    {
-        self.selectedPatient.parentsAndSocial = textView.text;
-    }
-    else if ([textView isEqual:self.impressionTextView])
-    {
-        self.selectedPatient.impression = textView.text;
-    }
-    else if ([textView isEqual:self.planTextView])
-    {
-        self.selectedPatient.plan = textView.text;
-    }
-    else if ([textView isEqual:self.jobsTextView])
-    {
-        self.selectedPatient.jobs = textView.text;
+        // first check if contentHeight is greater than rowHeight
+        // YES...
+        if ((contentHeight + adjustment) > rowHeight)
+        {
+            // update rowHeight
+            rowHeight = contentHeight;
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            // update textView frame
+            textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, rowHeight);
+            
+            // update tableView
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+        }
+        // NO...
+        else if ((contentHeight + adjustment) < rowHeight)
+        {
+            if (textView.tag == 19) // special case for last one
+            {
+                if (rowHeight > (346 + adjustment))
+                {
+                    // rowHeight -= (rowHeight - (contentHeight + adjustment));
+                    rowHeight = contentHeight;
+                }
+            }
+            else
+            {
+                rowHeight = contentHeight;
+            }
+            
+            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+            
+            textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, (rowHeight + adjustment));
+            
+            [self.myTableView2 beginUpdates];
+            [self.myTableView2 endUpdates];
+        }
+        
+        // This is going to be the main code
+        // row.rowText = textView.text;
     }
 }
 
