@@ -1270,6 +1270,13 @@
         // self.chart.bounds = cell.bounds;
         [cell addSubview:self.chart];
         
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // change chart title font
+            self.chart.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        }
+        
         self.shinobiChartImage = [[UIImage alloc] init];
         
         UIGraphicsBeginImageContext(self.chart.bounds.size);
@@ -2266,6 +2273,12 @@
     // self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     
     self.chart.title = [NSString stringWithFormat:@"Infants born at %i%@ weeks gestation", [self.gestation intValue], plusString];
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.chart.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    }
     
     self.chart.datasource = self;
     self.chart.delegate = self;
@@ -4459,7 +4472,17 @@
                 }
             }
             
-            self.chart.title = @"Treatment threshold graph for jaundice"; // setting graph title
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.chart.title = @"Treatment threshold graph for jaundice"; // setting graph title
+                self.chart.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+            }
+            else
+            {
+                self.chart.title = @"Treatment threshold graph for jaundice";
+            }
+            
             
             int maxResultInDays = 7;
             
@@ -4544,14 +4567,472 @@
 
 - (void)phototherapyAddBilirubinResultViewController:(PhototherapyAddBilirubinResultViewController *)controller didFinishAddingNewBilirubinResult:(BilirubinResult *)result forBirthDate:(NSDate *)date
 {
-#warning code required
+    Preferences *preferences = [Preferences sharedPreferences];
     
+    if (self.selectedPatient)
+    {
+        if (!self.selectedPatient.bilirubinResults)
+        {
+            self.selectedPatient.bilirubinResults = [[NSMutableArray alloc] initWithCapacity:5];
+        }
+        
+        [self.selectedPatient.bilirubinResults addObject:result];
+    }
+    else
+    {
+        [self.bilirubinLevelsToPlot addObject:result];
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+    landscapeOrientationDefaultsSet = NO;
+    portraitOrientationDefaultsSet = NO;
+    
+    //
+    // ensure all plots can be seen
+    
+    int maxResultInDays = 7;
+    
+    int yAxisLimitSI = 550;
+    int yAxisLimitUS = 30;
+    
+    int maxBiliResultSI = 0;
+    int maxBiliResultUS = 0;
+    
+    int i = 0;
+    
+    if (self.selectedPatient)
+    {
+        NSLog(@" ");
+        NSLog(@" ");
+        NSLog(@"selectedPatient diagnostic");
+        
+        do
+        {
+            if ([self.selectedPatient.bilirubinResults count] > 0)
+            {
+                // obtain bilirubin result, sample age, and units
+                BilirubinResult *checkResult = [self.selectedPatient.bilirubinResults objectAtIndex:i];
+                
+                // check if there is a 'cord sample'
+                if ([checkResult.sampleAgeInDays doubleValue] <= 0.08)
+                {
+                    self.xAxis.rangePaddingLow = [NSNumber numberWithFloat:0.08f];
+                }
+                
+                // update maxResultInDays
+                if ([checkResult.sampleAgeInDays integerValue] >= maxResultInDays)
+                {
+                    maxResultInDays = [checkResult.sampleAgeInDays integerValue] + 1;
+                }
+                
+                // update maxBiliResult
+                if ([checkResult.bilirubinUnit isEqualToString:@"SI"])
+                {
+                    // yes, bilirubin unit is in mmol/L
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultSI)
+                    {
+                        maxBiliResultSI = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    // next check if it is greater than of equal to 550...
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitSI)
+                    {
+                        // yes it is...
+                        yAxisLimitSI = [checkResult.bilirubinResult integerValue] + 25;
+                    }
+                }
+                else // bilirubin unit is in mg/dL
+                {
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultUS)
+                    {
+                        // maxBiliResultUS = [checkResult.bilirubinResult integerValue] + 5;
+                        maxBiliResultUS = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitUS)
+                    {
+                        yAxisLimitUS = [checkResult.bilirubinResult integerValue] + 5;
+                    }
+                }
+            }
+            
+            i = i + 1;
+            
+        } while (i < [self.selectedPatient.bilirubinResults count]);
+        
+        // after this we have maxBiliResultSI, maxBiliResultUS, yAxisLimitSI, yAxisLimitUS
+        
+        NSLog(@"maxBiliResultSI = %i", maxBiliResultSI);
+        NSLog(@"maxBiliResultUS = %i", maxBiliResultUS);
+        NSLog(@" ");
+        NSLog(@"yAxisLimitSI = %i", yAxisLimitSI);
+        NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+        NSLog(@" ");
+        
+        // recreate x-Axis
+        SChartNumberRange *newxRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:maxResultInDays]];
+        self.xAxis.defaultRange = newxRange;
+        
+        // recreate y-Axis
+        SChartNumberRange *newyRange;
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
+        {
+            NSLog(@"Chart is in SI units");
+            if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
+            {
+                yAxisLimitSI = (maxBiliResultUS * 17.1) + 25;
+            }
+            NSLog(@"new yAxisLimitSI = %i", yAxisLimitSI);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitSI]];
+            self.yAxis.defaultRange = newyRange;
+        }
+        else // chart is in mg/dL
+        {
+            NSLog(@"Chart is in US units");
+            if ((maxBiliResultSI / 17.1) > yAxisLimitUS)
+            {
+                yAxisLimitUS = (maxBiliResultSI / 17.1) + 5;
+            }
+            NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitUS]];
+            self.yAxis.defaultRange = newyRange;
+        }
+    }
+    else
+    {
+        NSLog(@" ");
+        NSLog(@" ");
+        NSLog(@"NO selectedPatient diagnostic");
+        
+        do
+        {
+            if ([self.bilirubinLevelsToPlot count] > 0)
+            {
+                // obtain bilirubin result, sample age, and units
+                BilirubinResult *checkResult = [self.bilirubinLevelsToPlot objectAtIndex:i];
+                
+                // check if there is a 'cord sample'
+                if ([checkResult.sampleAgeInDays doubleValue] <= 0.08)
+                {
+                    self.xAxis.rangePaddingLow = [NSNumber numberWithFloat:0.08f];
+                }
+                
+                // update maxResultInDays
+                if ([checkResult.sampleAgeInDays integerValue] >= maxResultInDays)
+                {
+                    maxResultInDays = [checkResult.sampleAgeInDays integerValue] + 1;
+                }
+                
+                // update maxBiliResult
+                if ([checkResult.bilirubinUnit isEqualToString:@"SI"])
+                {
+                    // yes, bilirubin unit is in mmol/L
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultSI)
+                    {
+                        maxBiliResultSI = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    // next check if it is greater than of equal to 550...
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitSI)
+                    {
+                        // yes it is...
+                        yAxisLimitSI = [checkResult.bilirubinResult integerValue] + 25;
+                    }
+                }
+                else // bilirubin unit is in mg/dL
+                {
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultUS)
+                    {
+                        // maxBiliResultUS = [checkResult.bilirubinResult integerValue] + 5;
+                        maxBiliResultUS = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitUS)
+                    {
+                        yAxisLimitUS = [checkResult.bilirubinResult integerValue] + 5;
+                    }
+                }
+            }
+            
+            i = i + 1;
+            
+        } while (i < [self.bilirubinLevelsToPlot count]);
+        
+        // after this we have maxBiliResultSI, maxBiliResultUS, yAxisLimitSI, yAxisLimitUS
+        
+        NSLog(@"maxBiliResultSI = %i", maxBiliResultSI);
+        NSLog(@"maxBiliResultUS = %i", maxBiliResultUS);
+        NSLog(@" ");
+        NSLog(@"yAxisLimitSI = %i", yAxisLimitSI);
+        NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+        NSLog(@" ");
+        
+        // recreate x-Axis
+        SChartNumberRange *newxRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:maxResultInDays]];
+        self.xAxis.defaultRange = newxRange;
+        
+        // recreate y-Axis
+        SChartNumberRange *newyRange;
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
+        {
+            NSLog(@"Chart is in SI units");
+            if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
+            {
+                yAxisLimitSI = (maxBiliResultUS * 17.1) + 25;
+            }
+            NSLog(@"new yAxisLimitSI = %i", yAxisLimitSI);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitSI]];
+            self.yAxis.defaultRange = newyRange;
+        }
+        else // chart is in mg/dL
+        {
+            NSLog(@"Chart is in US units");
+            if ((maxBiliResultSI / 17.1) > yAxisLimitUS)
+            {
+                yAxisLimitUS = (maxBiliResultSI / 17.1) + 5;
+            }
+            NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitUS]];
+            self.yAxis.defaultRange = newyRange;
+        }
+        
+    }
+    
+    [self.chart reloadData];
+    [self.chart redrawChart];
+    
+    // self.dateAndTimeOfBirthForThisChart = date;
 }
 
 - (void)phototherapyAddBilirubinResultViewControllerDidFinishDeletingBilirubinResults:(PhototherapyAddBilirubinResultViewController *)controller
 {
-#warning code required
+    // access singleton
+    Preferences *preferences = [Preferences sharedPreferences];
     
+    //
+    // ensure all plots can be seen
+    
+    int maxResultInDays = 7;
+    
+    int yAxisLimitSI = 550;
+    int yAxisLimitUS = 30;
+    
+    int maxBiliResultSI = 0;
+    int maxBiliResultUS = 0;
+    
+    int i = 0;
+    
+    if (self.selectedPatient)
+    {
+        NSLog(@" ");
+        NSLog(@" ");
+        NSLog(@"selectedPatient diagnostic");
+        
+        do
+        {
+            if ([self.selectedPatient.bilirubinResults count] > 0)
+            {
+                // obtain bilirubin result, sample age, and units
+                BilirubinResult *checkResult = [self.selectedPatient.bilirubinResults objectAtIndex:i];
+                
+                // check if there is a 'cord sample'
+                if ([checkResult.sampleAgeInDays doubleValue] <= 0.08)
+                {
+                    self.xAxis.rangePaddingLow = [NSNumber numberWithFloat:0.08f];
+                }
+                
+                // update maxResultInDays
+                if ([checkResult.sampleAgeInDays integerValue] >= maxResultInDays)
+                {
+                    maxResultInDays = [checkResult.sampleAgeInDays integerValue] + 1;
+                }
+                
+                // update maxBiliResult
+                if ([checkResult.bilirubinUnit isEqualToString:@"SI"])
+                {
+                    // yes, bilirubin unit is in mmol/L
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultSI)
+                    {
+                        maxBiliResultSI = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    // next check if it is greater than of equal to 550...
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitSI)
+                    {
+                        // yes it is...
+                        yAxisLimitSI = [checkResult.bilirubinResult integerValue] + 25;
+                    }
+                }
+                else // bilirubin unit is in mg/dL
+                {
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultUS)
+                    {
+                        // maxBiliResultUS = [checkResult.bilirubinResult integerValue] + 5;
+                        maxBiliResultUS = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitUS)
+                    {
+                        yAxisLimitUS = [checkResult.bilirubinResult integerValue] + 5;
+                    }
+                }
+            }
+            
+            i = i + 1;
+            
+        } while (i < [self.selectedPatient.bilirubinResults count]);
+        
+        // after this we have maxBiliResultSI, maxBiliResultUS, yAxisLimitSI, yAxisLimitUS
+        
+        NSLog(@"maxBiliResultSI = %i", maxBiliResultSI);
+        NSLog(@"maxBiliResultUS = %i", maxBiliResultUS);
+        NSLog(@" ");
+        NSLog(@"yAxisLimitSI = %i", yAxisLimitSI);
+        NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+        NSLog(@" ");
+        
+        // recreate x-Axis
+        SChartNumberRange *newxRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:maxResultInDays]];
+        self.xAxis.defaultRange = newxRange;
+        
+        // recreate y-Axis
+        SChartNumberRange *newyRange;
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
+        {
+            NSLog(@"Chart is in SI units");
+            if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
+            {
+                yAxisLimitSI = (maxBiliResultUS * 17.1) + 25;
+            }
+            NSLog(@"new yAxisLimitSI = %i", yAxisLimitSI);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitSI]];
+            self.yAxis.defaultRange = newyRange;
+        }
+        else // chart is in mg/dL
+        {
+            NSLog(@"Chart is in US units");
+            if ((maxBiliResultSI / 17.1) > yAxisLimitUS)
+            {
+                yAxisLimitUS = (maxBiliResultSI / 17.1) + 5;
+            }
+            NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitUS]];
+            self.yAxis.defaultRange = newyRange;
+        }
+    }
+    else
+    {
+        NSLog(@" ");
+        NSLog(@" ");
+        NSLog(@"NO selectedPatient diagnostic");
+        
+        do
+        {
+            if ([self.bilirubinLevelsToPlot count] > 0)
+            {
+                // obtain bilirubin result, sample age, and units
+                BilirubinResult *checkResult = [self.bilirubinLevelsToPlot objectAtIndex:i];
+                
+                // check if there is a 'cord sample'
+                if ([checkResult.sampleAgeInDays doubleValue] <= 0.08)
+                {
+                    self.xAxis.rangePaddingLow = [NSNumber numberWithFloat:0.08f];
+                }
+                
+                // update maxResultInDays
+                if ([checkResult.sampleAgeInDays integerValue] >= maxResultInDays)
+                {
+                    maxResultInDays = [checkResult.sampleAgeInDays integerValue] + 1;
+                }
+                
+                // update maxBiliResult
+                if ([checkResult.bilirubinUnit isEqualToString:@"SI"])
+                {
+                    // yes, bilirubin unit is in mmol/L
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultSI)
+                    {
+                        maxBiliResultSI = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    // next check if it is greater than of equal to 550...
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitSI)
+                    {
+                        // yes it is...
+                        yAxisLimitSI = [checkResult.bilirubinResult integerValue] + 25;
+                    }
+                }
+                else // bilirubin unit is in mg/dL
+                {
+                    if ([checkResult.bilirubinResult integerValue] > maxBiliResultUS)
+                    {
+                        // maxBiliResultUS = [checkResult.bilirubinResult integerValue] + 5;
+                        maxBiliResultUS = [checkResult.bilirubinResult integerValue];
+                    }
+                    
+                    if ([checkResult.bilirubinResult integerValue] >= yAxisLimitUS)
+                    {
+                        yAxisLimitUS = [checkResult.bilirubinResult integerValue] + 5;
+                    }
+                }
+            }
+            
+            i = i + 1;
+            
+        } while (i < [self.bilirubinLevelsToPlot count]);
+        
+        // after this we have maxBiliResultSI, maxBiliResultUS, yAxisLimitSI, yAxisLimitUS
+        
+        NSLog(@"maxBiliResultSI = %i", maxBiliResultSI);
+        NSLog(@"maxBiliResultUS = %i", maxBiliResultUS);
+        NSLog(@" ");
+        NSLog(@"yAxisLimitSI = %i", yAxisLimitSI);
+        NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+        NSLog(@" ");
+        
+        // recreate x-Axis
+        SChartNumberRange *newxRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:maxResultInDays]];
+        self.xAxis.defaultRange = newxRange;
+        
+        // recreate y-Axis
+        SChartNumberRange *newyRange;
+        if ([preferences.bilirubinUnits isEqualToString:@"SI"])
+        {
+            NSLog(@"Chart is in SI units");
+            if ((maxBiliResultUS * 17.1) > yAxisLimitSI)
+            {
+                yAxisLimitSI = (maxBiliResultUS * 17.1) + 25;
+            }
+            NSLog(@"new yAxisLimitSI = %i", yAxisLimitSI);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitSI]];
+            self.yAxis.defaultRange = newyRange;
+        }
+        else // chart is in mg/dL
+        {
+            NSLog(@"Chart is in US units");
+            if ((maxBiliResultSI / 17.1) > yAxisLimitUS)
+            {
+                yAxisLimitUS = (maxBiliResultSI / 17.1) + 5;
+            }
+            NSLog(@"yAxisLimitUS = %i", yAxisLimitUS);
+            
+            newyRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:yAxisLimitUS]];
+            self.yAxis.defaultRange = newyRange;
+        }
+        
+    }
+    
+    [self.chart reloadData];
+    [self.chart redrawChart];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)phototherapyAddBilirubinResultViewControllerDidCancel:(PhototherapyAddBilirubinResultViewController *)controller

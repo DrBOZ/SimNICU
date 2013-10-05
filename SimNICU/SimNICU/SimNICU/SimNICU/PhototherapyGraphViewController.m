@@ -1855,14 +1855,12 @@
                 }
             }
             
+            self.chart.title = @"Treatment threshold graph for jaundice";
+            
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                self.chart.title = @"Treatment threshold graph";
-            }
-            else
-            {
-                self.chart.title = @"Treatment threshold graph for jaundice";
+                self.chart.titleLabel.font = [UIFont systemFontOfSize:14.0f];
             }
             
             int maxResultInDays = 7;
