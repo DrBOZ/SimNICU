@@ -39,32 +39,24 @@
         // delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        Calculator *calculator;
-        
         // create arrays
         
         calculatorGroup = [[NSMutableArray alloc] initWithCapacity:2];
         
         calculators = [[NSMutableArray alloc] initWithCapacity:4];
         
-        calculator = [[Calculator alloc] init];
-        calculator.text = @"Exact age";
-        calculator.detailText = @"days, hours, minutes";
-        [calculators addObject:calculator];
+        [calculators addObject:[Calculator calculatorWithText:@"Exact age"
+                                                andDetailText:@"days, hours, minutes"]];
         
-        calculator = [[Calculator alloc] init];
-        calculator.text = @"Including postmenstrual age";
-        calculator.detailText = @"Until 40 weeks gestation";
-        [calculators addObject:calculator];
+        [calculators addObject:[Calculator calculatorWithText:@"Including postmenstrual age"
+                                                andDetailText:@"Until 40 weeks gestation"]];
         
         [calculatorGroup addObject:calculators];
         
         calculators = [[NSMutableArray alloc] initWithCapacity:4];
         
-        calculator = [[Calculator alloc] init];
-        calculator.text = @"Corrected age";
-        calculator.detailText = @"After 40 weeks gestation";
-        [calculators addObject:calculator];
+        [calculators addObject:[Calculator calculatorWithText:@"Corrected age"
+                                                andDetailText:@"After 40 weeks gestation"]];
         
         /*
         calculator = [[Calculator alloc] init];
