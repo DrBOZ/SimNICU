@@ -84,8 +84,22 @@
         [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         
         // rounded Switch
-        self.roundedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(230.0f, roundedSwitchHeight, 80.0f, 44.0f)];
+        self.roundedSwitch = [[UISwitch alloc] init];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.roundedSwitch.frame = CGRectMake(240.0f, roundedSwitchHeight, 80.0f, 44.0f);
+            self.roundedSwitch.onTintColor = [UIColor redColor];
+        }
+        else
+        {
+            self.roundedSwitch.frame = CGRectMake(230.0f, roundedSwitchHeight, 80.0f, 44.0f);
+        }
+        
+        // set target
         [self.roundedSwitch addTarget:self action:@selector(changeRoundUp) forControlEvents:UIControlEventValueChanged];
+        
         [self.view addSubview:self.roundedSwitch];
         
         UILabel *roundingLabel = [[UILabel alloc] initWithFrame:CGRectMake(145.0f, roundedSwitchHeight, 100.0f, 30.0f)];

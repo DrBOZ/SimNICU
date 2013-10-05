@@ -135,6 +135,13 @@
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
     {
         _eraseDataSwitch = [[UISwitch alloc] init];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            _eraseDataSwitch.onTintColor = [UIColor redColor];
+        }
+        
         [_eraseDataSwitch addTarget:self action:@selector(eraseDataSwitchChanged:) forControlEvents:UIControlEventValueChanged];
         
         _passcodeLockOn = [[KKKeychain getStringForKey:@"passcode_on"] isEqualToString:@"YES"];

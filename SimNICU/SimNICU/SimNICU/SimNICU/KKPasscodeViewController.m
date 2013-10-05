@@ -47,6 +47,9 @@
 - (void)loadView
 {
 	[super loadView];
+    
+    //delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 	
@@ -57,32 +60,35 @@
 	_enterPasscodeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	_enterPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-#if USE_DIMPLE_BACKGROUND
-    
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // set background colour
-    if (appDelegate.window.bounds.size.height == 568)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // 4 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-        [tempImageView setFrame:_enterPasscodeTableView.frame];
-        
-        _enterPasscodeTableView.backgroundView = tempImageView;
+        // no images
     }
     else
     {
-        // 3.5 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-        [tempImageView setFrame:_enterPasscodeTableView.frame];
+#if USE_DIMPLE_BACKGROUND
         
-        _enterPasscodeTableView.backgroundView = tempImageView;
-    }
-    
-#else
-    // code
+        // set background colour
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            // 4 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            [tempImageView setFrame:_enterPasscodeTableView.frame];
+            
+            _enterPasscodeTableView.backgroundView = tempImageView;
+        }
+        else
+        {
+            // 3.5 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            [tempImageView setFrame:_enterPasscodeTableView.frame];
+            
+            _enterPasscodeTableView.backgroundView = tempImageView;
+        }
+        
 #endif
+    }
     
 	[self.view addSubview:_enterPasscodeTableView];
 	
@@ -93,29 +99,35 @@
 	_setPasscodeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	_setPasscodeTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-#if USE_DIMPLE_BACKGROUND
-    
-    // set background colour
-    if (appDelegate.window.bounds.size.height == 568)
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // 4 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-        [tempImageView setFrame:_setPasscodeTableView.frame];
-        
-        _setPasscodeTableView.backgroundView = tempImageView;
+        // no images
     }
     else
     {
-        // 3.5 inch Retina
-        UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-        [tempImageView setFrame:_setPasscodeTableView.frame];
+#if USE_DIMPLE_BACKGROUND
         
-        _setPasscodeTableView.backgroundView = tempImageView;
-    }
-    
-#else
-    // code
+        // set background colour
+        if (appDelegate.window.bounds.size.height == 568)
+        {
+            // 4 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            [tempImageView setFrame:_setPasscodeTableView.frame];
+            
+            _setPasscodeTableView.backgroundView = tempImageView;
+        }
+        else
+        {
+            // 3.5 inch Retina
+            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            [tempImageView setFrame:_setPasscodeTableView.frame];
+            
+            _setPasscodeTableView.backgroundView = tempImageView;
+        }
+        
 #endif
+    }
     
 	[self.view addSubview:_setPasscodeTableView];
 	
@@ -160,9 +172,7 @@
 	[self.view addSubview:_confirmPasscodeTableView];
     
     _shouldReleaseFirstResponser = NO;
-
 }
-
 
 - (void)viewWillAppear:(BOOL)animated 
 {
@@ -192,8 +202,6 @@
 	_tableViews = [[NSMutableArray alloc] init];
 	_textFields = [[NSMutableArray alloc] init];
 	_boxes = [[NSMutableArray alloc] init];
-	
-  
   
   if (_mode == KKPasscodeModeSet) {
     self.navigationItem.title = NSLocalizedString(@"Set Passcode", @"");
@@ -215,9 +223,6 @@
   } else {
     self.navigationItem.title = NSLocalizedString(@"Enter Passcode", @"");
   }
-  
-
-  
 	if (_mode == KKPasscodeModeSet || _mode == KKPasscodeModeChange) {
 		if (_passcodeLockOn) {
 			_enterPasscodeTableView.tableHeaderView = [self headerViewForTextField:_enterPasscodeTextField];
@@ -296,7 +301,6 @@
 	}
 }
 
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
@@ -306,16 +310,13 @@
     [_confirmPasscodeTextField resignFirstResponder];
 }
 
-
 #pragma mark -
 #pragma mark Private methods
-
 
 - (void)cancelButtonPressed:(id)sender
 {
 	[self dismissModalViewControllerAnimated:YES];
 }
-
 
 - (void)incrementFailedAttemptsLabel
 {
@@ -360,7 +361,6 @@
 			}
 		}
 	}
-	
 }
 
 - (void)moveToNextTableView
@@ -690,12 +690,10 @@
 	return 0;
 }
 
-
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return 1;
 }
-
 
 - (UITableViewCell*)tableView:(UITableView*)aTableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -766,9 +764,5 @@
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     return _shouldReleaseFirstResponser;
 }
-
-#pragma mark -
-#pragma mark Memory management
-
 
 @end
