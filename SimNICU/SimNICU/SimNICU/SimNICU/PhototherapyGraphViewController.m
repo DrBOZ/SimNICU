@@ -53,14 +53,10 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // self.chart.title = @"";
-            
             self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
         }
         else
         {
-            // self.chart.title = @"Treatment threshold graph for babies with neonatal jaudice";
-            
             self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
         }
     }
@@ -69,14 +65,10 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // self.chart.title = @"Treatment threshold graph";
-            
             self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
         }
         else
         {
-            // self.chart.title = @"Treatment threshold graph";
-            
             self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
         }
     }
@@ -1740,14 +1732,12 @@
                 self.xAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
             }
             
+            self.chart.title = @"Treatment threshold graph for babies with neonatal jaundice";
+            
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                self.chart.title = @"";
-            }
-            else
-            {
-                self.chart.title = @"Treatment threshold graph for babies with neonatal jaundice";
+                self.chart.titleLabel.font = [UIFont systemFontOfSize:15.0f];
             }
             
             int maxResultInDays = 7;
