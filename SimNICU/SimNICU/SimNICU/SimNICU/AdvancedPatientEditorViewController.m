@@ -1645,8 +1645,17 @@
                 
                 PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
                 
-                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-                navController.navigationBar.tintColor = [UIColor blackColor];
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    navController.navigationBar.barTintColor = [UIColor grayColor];
+                    navController.navigationBar.tintColor = [UIColor redColor];
+                }
+                else
+                {
+                    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                    navController.navigationBar.tintColor = [UIColor blackColor];
+                }
                 
                 [self presentModalViewController:navController animated:YES];
             }
@@ -1659,8 +1668,17 @@
                 
                 PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
                 
-                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-                navController.navigationBar.tintColor = [UIColor blackColor];
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    navController.navigationBar.barTintColor = [UIColor grayColor];
+                    navController.navigationBar.tintColor = [UIColor redColor];
+                }
+                else
+                {
+                    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                    navController.navigationBar.tintColor = [UIColor blackColor];
+                }
                 
                 [self presentModalViewController:navController animated:YES];
             }
@@ -4526,11 +4544,13 @@
 
 - (void)phototherapyAddBilirubinResultViewController:(PhototherapyAddBilirubinResultViewController *)controller didFinishAddingNewBilirubinResult:(BilirubinResult *)result forBirthDate:(NSDate *)date
 {
+#warning code required
     
 }
 
 - (void)phototherapyAddBilirubinResultViewControllerDidFinishDeletingBilirubinResults:(PhototherapyAddBilirubinResultViewController *)controller
 {
+#warning code required
     
 }
 

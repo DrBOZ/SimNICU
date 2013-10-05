@@ -49,6 +49,8 @@
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        
+        // self.view.tintColor = [UIColor redColor];
     }
     else
     {
@@ -272,6 +274,7 @@
             cell.backgroundColor = [UIColor whiteColor];
         }
         
+        cell.textLabel.textColor = [UIColor redColor];
         cell.userInteractionEnabled = YES;
         
         BilirubinResult *biliResult = [self.selectedPatient.bilirubinResults objectAtIndex:indexPath.row];

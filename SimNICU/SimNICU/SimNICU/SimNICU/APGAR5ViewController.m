@@ -40,7 +40,7 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // hack
+            // hack to display UINavigation Bar in the correct colour
             UITableView *colourMatch = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 64.0f)];
             [self.view addSubview:colourMatch];
             
