@@ -272,6 +272,8 @@
 		5C56F6071801A46300665E22 /* CBFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6051801A46300665E22 /* CBFonts.m */; };
 		5C56F60A1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */; };
 		5C56F60B1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */; };
+		5C56F6101801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */; };
+		5C56F6111801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */; };
 		5C5A116717D2393F00CE96E5 /* KxIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116217D2393F00CE96E5 /* KxIntroView.m */; };
 		5C5A116817D2393F00CE96E5 /* KxIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */; };
 		5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */; };
@@ -969,6 +971,8 @@
 		5C56F6051801A46300665E22 /* CBFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFonts.m; sourceTree = "<group>"; };
 		5C56F6081801CA4300665E22 /* BloodProductsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodProductsTableViewCell.h; sourceTree = "<group>"; };
 		5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodProductsTableViewCell.m; sourceTree = "<group>"; };
+		5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewWebViewCell.h; sourceTree = "<group>"; };
+		5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewWebViewCell.m; sourceTree = "<group>"; };
 		5C5A116117D2393F00CE96E5 /* KxIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroView.h; sourceTree = "<group>"; };
 		5C5A116217D2393F00CE96E5 /* KxIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroView.m; sourceTree = "<group>"; };
 		5C5A116317D2393F00CE96E5 /* KxIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroViewController.h; sourceTree = "<group>"; };
@@ -2698,6 +2702,8 @@
 				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
 				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
 				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
+				5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */,
+				5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */,
 				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
 				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
 				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
@@ -3433,6 +3439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C56F6101801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */,
 				5C940A6E166E37FE0044A7D1 /* main.m in Sources */,
 				5C940A72166E37FE0044A7D1 /* AppDelegate.m in Sources */,
 				5C940A93166E38770044A7D1 /* DAAnisotropicImage.m in Sources */,
@@ -3668,6 +3675,7 @@
 				5CD3AFC716CF38D500DE362C /* PatientDetailsEnterWeightViewController.m in Sources */,
 				5CD3AFC816CF38D500DE362C /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
 				5CD3AFC916CF38D500DE362C /* AboutSimNICUViewController.m in Sources */,
+				5C56F6111801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */,
 				5CD3AFCA16CF38D500DE362C /* UnderlineLabel.m in Sources */,
 				5CD3AFCB16CF38D500DE362C /* InstructionsViewController.m in Sources */,
 				5CD3AFCD16CF38D500DE362C /* DisclaimerViewController.m in Sources */,

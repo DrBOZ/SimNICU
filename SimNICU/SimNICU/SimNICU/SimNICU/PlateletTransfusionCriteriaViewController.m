@@ -1,19 +1,20 @@
 //
 //  PlateletTransfusionCriteriaViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 01/10/2012.
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
 #import "PlateletTransfusionCriteriaViewController.h"
+#import "CBTableViewWebViewCell.h"
 #import "AppDelegate.h"
 
 @interface PlateletTransfusionCriteriaViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) UIWebView *webView0;
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
@@ -31,13 +32,16 @@
     self.title = @"Platelet Transfusion";
     
     //tableView
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    
+    // iOS version differences
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height));
     }
     else
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64));
     }
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -62,7 +66,7 @@
 - (void)viewDidUnload
 {
     self.myTableView = nil;
-    self.webView0 = nil;
+    self.webView = nil;
     self.swipeGestureRecognizer = nil;
     
     [super viewDidUnload];
@@ -77,7 +81,7 @@
         NSLog(@"PlateletTransfusionViewController unloaded properties");
         
         self.myTableView = nil;
-        self.webView0 = nil;
+        self.webView = nil;
         self.swipeGestureRecognizer = nil;
     }
 }
@@ -116,14 +120,25 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"Bag of platelets should be hung vertically for 10 minutes before transfusion to allow most platelets to settle in the volume being transfused.\nThe bag should then be sampled vertically into the syringe used for administration.";;
+    NSString *footerTitle;
+    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        footerTitle = @"Bag of platelets should be hung vertically for 10 minutes before transfusion to allow most platelets to settle in the volume being transfused.\n\nThe bag should then be sampled vertically into the syringe used for administration.";
+    }
+    else
+    {
+        footerTitle = @"Bag of platelets should be hung vertically for 10 minutes before transfusion to allow most platelets to settle in the volume being transfused.\nThe bag should then be sampled vertically into the syringe used for administration.";
+    }
+    
+    return footerTitle;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        return 120.0f;
+        return 130.0f;
     }
     else
     {
@@ -133,48 +148,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *returnCell = nil;
+    NSString *CellIdentifier = @"CellIdentifier";
+    CBTableViewWebViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if  (indexPath.section == 0)
+    if(!cell)
     {
-        static NSString *CellIdentifier = @"cell0";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if(cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.backgroundColor = [UIColor whiteColor];
-        }
-        
-        self.webView0 = [[UIWebView alloc] initWithFrame:CGRectMake(10, 5, 300, 190)];
-        self.webView0.backgroundColor = [UIColor clearColor];
-        self.webView0.opaque = NO;
-        self.webView0.scalesPageToFit = NO;
-        
-        if ([self.webView0 respondsToSelector:@selector(scrollView)])
-        {
-            self.webView0.scrollView.scrollEnabled = NO;
-        }
-        else
-        {
-            for (id subview in self.webView0.subviews)
-                if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-                    ((UIScrollView *)subview).scrollEnabled = NO;
-        }
-        
-        self.webView0.dataDetectorTypes = UIDataDetectorTypeNone;
-        
-        NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"platelets" ofType:@"html"] isDirectory:NO];
-        NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
-        [self.webView0 loadRequest:URLReq];
-        
-        [cell addSubview:self.webView0];
-        
-        returnCell = cell;
+        cell = [[CBTableViewWebViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    return returnCell;
+    [cell loadHMTLPageWithFilename:@"platelets"];
+    
+    return cell;
 }
 
 #pragma mark - Table view delegate
