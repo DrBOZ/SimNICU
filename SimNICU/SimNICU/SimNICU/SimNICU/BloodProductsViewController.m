@@ -193,7 +193,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 66.0f;
+    return 60.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -226,7 +226,7 @@
         {
             cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.backgroundColor = [UIColor whiteColor];
+            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
         
         cell.bloodProduct.text = @"Packed Red Cells";
@@ -264,7 +264,6 @@
             cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-            cell.backgroundColor = [UIColor whiteColor];
         }
         
         cell.bloodProduct.text = @"Platelets";
@@ -303,7 +302,6 @@
             {
                 cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.bloodProduct.text = @"Fresh Frozen Plasma";
@@ -340,7 +338,6 @@
             {
                 cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.bloodProduct.text = @"Cryoprecipitate";
@@ -379,7 +376,6 @@
         {
             cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.backgroundColor = [UIColor whiteColor];
         }
         
         cell.bloodProduct.text = @"Immunoglobulin";

@@ -15,6 +15,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        // cell
+        self.backgroundColor = [UIColor whiteColor];
+        
+        // setup labels
         self.bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 9.0f, 177.0f, 21.0f)];
         [CBFonts textFormattingForLabel:self.bloodProduct];
         self.bloodProduct.adjustsFontSizeToFitWidth = YES;
