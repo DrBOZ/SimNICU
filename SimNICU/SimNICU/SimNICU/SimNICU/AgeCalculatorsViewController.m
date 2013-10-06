@@ -173,13 +173,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *header = nil;
+    NSArray *headerText = @[@"Chronological Age", @"Corrected Age", @"Gestational Age"];
     
-    if (section == 0) header = @"Chronological Age";
-    else if (section == 1) header = @"Corrected Age";
-    else if (section == 2) header = @"Gestational Age";
-    
-    return header;
+    return headerText[section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
