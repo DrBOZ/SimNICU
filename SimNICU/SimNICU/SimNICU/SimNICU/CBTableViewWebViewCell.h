@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CBWebView.h"
 
 @interface CBTableViewWebViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) CBWebView *webView;
 
-- (void)loadHMTLPageWithFilename:(NSString *)filename;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier webView:(CBWebView *)webView;
 
 @end

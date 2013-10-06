@@ -1232,9 +1232,7 @@
             CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
             
 #else
-            
-            CrUSSViewController *newViewController = [[CrUSSViewController alloc] init];
-            
+            CrUSSViewController *newViewController = [CrUSSViewController new];
 #endif
             
             [self.navigationController pushViewController:newViewController animated:YES];

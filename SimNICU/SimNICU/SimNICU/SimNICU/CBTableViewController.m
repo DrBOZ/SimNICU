@@ -19,9 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // add TableView background
-    // [CBTableViewController setBackgroundForTableView:self.tableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
@@ -42,15 +39,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    
-}
-
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     // update TableView background
-    [CBTableViewController updateBackgroundForTableView:self.tableView];
+    // [CBTableViewController updateBackgroundForTableView:self.tableView];
+    [CBTableViewController setBackgroundForTableView:self.tableView];
 }
 
 #pragma mark Class Methods
@@ -72,7 +65,7 @@
         // set background colour
         UIImageView *tempImageView;
         
-        if (appDelegate.window.bounds.size.height == 568)
+        if (appDelegate.window.bounds.size.height == 568.0f)
         {
             // 4 inch Retina
             if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))
@@ -109,6 +102,7 @@
     }
 }
 
+/*
 + (void)updateBackgroundForTableView:(UITableView *)myTableView
 {
     // iOS 7 specifics
@@ -126,7 +120,7 @@
         // set background colour
         UIImageView *tempImageView;
         
-        if (appDelegate.window.bounds.size.height == 568)
+        if (appDelegate.window.bounds.size.height == 568.0f)
         {
             // 4 inch Retina
             if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))
@@ -162,6 +156,7 @@
 #endif
     }
 }
+ */
 
 + (void)setSecondaryBackgroundForTableView:(UITableView *)myTableView
 {

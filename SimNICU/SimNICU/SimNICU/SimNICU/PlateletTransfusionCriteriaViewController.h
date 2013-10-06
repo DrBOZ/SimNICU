@@ -3,11 +3,11 @@
 //  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 30/08/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CBTableViewWebViewController.h"
 
-@interface PlateletTransfusionCriteriaViewController : UIViewController
+@interface PlateletTransfusionCriteriaViewController : CBTableViewWebViewController
 
 @end

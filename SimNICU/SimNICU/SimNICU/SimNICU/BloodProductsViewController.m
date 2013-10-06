@@ -404,7 +404,8 @@
     }
     else if (indexPath.section == 1)
     {
-        PlateletTransfusionCriteriaViewController *newViewController = [[PlateletTransfusionCriteriaViewController alloc] init];
+        PlateletTransfusionCriteriaViewController *newViewController = [[PlateletTransfusionCriteriaViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        // PlateletTransfusionCriteriaViewController2 *newViewController = [[PlateletTransfusionCriteriaViewController2 alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:newViewController animated:YES];
     }
 }

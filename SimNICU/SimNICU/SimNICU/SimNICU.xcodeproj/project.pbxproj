@@ -274,6 +274,18 @@
 		5C56F60B1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */; };
 		5C56F6101801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */; };
 		5C56F6111801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */; };
+		5C56F6141801DEE500665E22 /* CBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6131801DEE500665E22 /* CBWebView.m */; };
+		5C56F6151801DEE500665E22 /* CBWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6131801DEE500665E22 /* CBWebView.m */; };
+		5C56F6191801E01100665E22 /* CrUSSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6181801E01100665E22 /* CrUSSModel.m */; };
+		5C56F61A1801E01100665E22 /* CrUSSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6181801E01100665E22 /* CrUSSModel.m */; };
+		5C56F61E1801E3A600665E22 /* PlateletTransfusionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F61D1801E3A600665E22 /* PlateletTransfusionModel.m */; };
+		5C56F61F1801E3A600665E22 /* PlateletTransfusionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F61D1801E3A600665E22 /* PlateletTransfusionModel.m */; };
+		5C56F6221801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */; };
+		5C56F6231801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */; };
+		5C56F6361802005000665E22 /* CrUSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6351802005000665E22 /* CrUSSViewController.m */; };
+		5C56F6371802005000665E22 /* CrUSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6351802005000665E22 /* CrUSSViewController.m */; };
+		5C56F63E1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F63D1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m */; };
+		5C56F63F1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F63D1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m */; };
 		5C5A116717D2393F00CE96E5 /* KxIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116217D2393F00CE96E5 /* KxIntroView.m */; };
 		5C5A116817D2393F00CE96E5 /* KxIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */; };
 		5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */; };
@@ -398,14 +410,12 @@
 		5C940BB6166E3C2E0044A7D1 /* bloodTransfusionCriteria1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B63166E3C2E0044A7D1 /* bloodTransfusionCriteria1.html */; };
 		5C940BB8166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B66166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m */; };
 		5C940BB9166E3C2E0044A7D1 /* platelets.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B67166E3C2E0044A7D1 /* platelets.html */; };
-		5C940BBA166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */; };
 		5C940BBB166E3C2E0044A7D1 /* cooling2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B6A166E3C2E0044A7D1 /* cooling2.html */; };
 		5C940BBC166E3C2E0044A7D1 /* CoolingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */; };
 		5C940BBD166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6E166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m */; };
 		5C940BBE166E3C2E0044A7D1 /* crUSS.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B6F166E3C2E0044A7D1 /* crUSS.html */; };
 		5C940BBF166E3C2E0044A7D1 /* crUSS0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B70166E3C2E0044A7D1 /* crUSS0.html */; };
 		5C940BC0166E3C2F0044A7D1 /* crUSS1.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B71166E3C2E0044A7D1 /* crUSS1.html */; };
-		5C940BC1166E3C2F0044A7D1 /* CrUSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B73166E3C2E0044A7D1 /* CrUSSViewController.m */; };
 		5C940BC3166E3C2F0044A7D1 /* curosurfDoses2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B75166E3C2E0044A7D1 /* curosurfDoses2.html */; };
 		5C940BC4166E3C2F0044A7D1 /* curosurfFurtherDoses.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B76166E3C2E0044A7D1 /* curosurfFurtherDoses.html */; };
 		5C940BC5166E3C2F0044A7D1 /* CurosurfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B78166E3C2E0044A7D1 /* CurosurfViewController.m */; };
@@ -626,10 +636,8 @@
 		5CD3AFD316CF38D500DE362C /* APGAR20ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B5F166E3C2E0044A7D1 /* APGAR20ViewController.m */; };
 		5CD3AFD416CF38D500DE362C /* BloodProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B61166E3C2E0044A7D1 /* BloodProductsViewController.m */; };
 		5CD3AFD516CF38D500DE362C /* BloodTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B66166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m */; };
-		5CD3AFD616CF38D500DE362C /* PlateletTransfusionCriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */; };
 		5CD3AFD716CF38D500DE362C /* CoolingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */; };
 		5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6E166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m */; };
-		5CD3AFD916CF38D500DE362C /* CrUSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B73166E3C2E0044A7D1 /* CrUSSViewController.m */; };
 		5CD3AFDA16CF38D500DE362C /* CurosurfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B78166E3C2E0044A7D1 /* CurosurfViewController.m */; };
 		5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */; };
 		5CD3AFDC16CF38D500DE362C /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */; };
@@ -973,6 +981,18 @@
 		5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodProductsTableViewCell.m; sourceTree = "<group>"; };
 		5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewWebViewCell.h; sourceTree = "<group>"; };
 		5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewWebViewCell.m; sourceTree = "<group>"; };
+		5C56F6121801DEE500665E22 /* CBWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWebView.h; sourceTree = "<group>"; };
+		5C56F6131801DEE500665E22 /* CBWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWebView.m; sourceTree = "<group>"; };
+		5C56F6171801E01100665E22 /* CrUSSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSModel.h; sourceTree = "<group>"; };
+		5C56F6181801E01100665E22 /* CrUSSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSModel.m; sourceTree = "<group>"; };
+		5C56F61C1801E3A600665E22 /* PlateletTransfusionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateletTransfusionModel.h; sourceTree = "<group>"; };
+		5C56F61D1801E3A600665E22 /* PlateletTransfusionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateletTransfusionModel.m; sourceTree = "<group>"; };
+		5C56F6201801EC4A00665E22 /* CBTableViewWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewWebViewController.h; sourceTree = "<group>"; };
+		5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewWebViewController.m; sourceTree = "<group>"; };
+		5C56F6341802005000665E22 /* CrUSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSViewController.h; sourceTree = "<group>"; };
+		5C56F6351802005000665E22 /* CrUSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSViewController.m; sourceTree = "<group>"; };
+		5C56F63C1802190E00665E22 /* PlateletTransfusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateletTransfusionCriteriaViewController.h; sourceTree = "<group>"; };
+		5C56F63D1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateletTransfusionCriteriaViewController.m; sourceTree = "<group>"; };
 		5C5A116117D2393F00CE96E5 /* KxIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroView.h; sourceTree = "<group>"; };
 		5C5A116217D2393F00CE96E5 /* KxIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroView.m; sourceTree = "<group>"; };
 		5C5A116317D2393F00CE96E5 /* KxIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroViewController.h; sourceTree = "<group>"; };
@@ -1156,8 +1176,6 @@
 		5C940B65166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodTransfusionCriteriaViewController.h; sourceTree = "<group>"; };
 		5C940B66166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodTransfusionCriteriaViewController.m; sourceTree = "<group>"; };
 		5C940B67166E3C2E0044A7D1 /* platelets.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = platelets.html; sourceTree = "<group>"; };
-		5C940B68166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlateletTransfusionCriteriaViewController.h; sourceTree = "<group>"; };
-		5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlateletTransfusionCriteriaViewController.m; sourceTree = "<group>"; };
 		5C940B6A166E3C2E0044A7D1 /* cooling2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = cooling2.html; sourceTree = "<group>"; };
 		5C940B6B166E3C2E0044A7D1 /* CoolingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolingViewController.h; sourceTree = "<group>"; };
 		5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolingViewController.m; sourceTree = "<group>"; };
@@ -1166,8 +1184,6 @@
 		5C940B6F166E3C2E0044A7D1 /* crUSS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = crUSS.html; sourceTree = "<group>"; };
 		5C940B70166E3C2E0044A7D1 /* crUSS0.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = crUSS0.html; sourceTree = "<group>"; };
 		5C940B71166E3C2E0044A7D1 /* crUSS1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = crUSS1.html; sourceTree = "<group>"; };
-		5C940B72166E3C2E0044A7D1 /* CrUSSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSViewController.h; sourceTree = "<group>"; };
-		5C940B73166E3C2E0044A7D1 /* CrUSSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSViewController.m; sourceTree = "<group>"; };
 		5C940B75166E3C2E0044A7D1 /* curosurfDoses2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = curosurfDoses2.html; sourceTree = "<group>"; };
 		5C940B76166E3C2E0044A7D1 /* curosurfFurtherDoses.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = curosurfFurtherDoses.html; sourceTree = "<group>"; };
 		5C940B77166E3C2E0044A7D1 /* CurosurfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurosurfViewController.h; sourceTree = "<group>"; };
@@ -1887,11 +1903,31 @@
 		5C56F60D1801D17A00665E22 /* PlateletTransfusionCriteria */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B67166E3C2E0044A7D1 /* platelets.html */,
-				5C940B68166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.h */,
-				5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */,
+				5C56F63C1802190E00665E22 /* PlateletTransfusionCriteriaViewController.h */,
+				5C56F63D1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m */,
+				5C56F61C1801E3A600665E22 /* PlateletTransfusionModel.h */,
+				5C56F61D1801E3A600665E22 /* PlateletTransfusionModel.m */,
+				5C56F61B1801E06500665E22 /* HTML page */,
 			);
 			name = PlateletTransfusionCriteria;
+			sourceTree = "<group>";
+		};
+		5C56F6161801DFCB00665E22 /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B6F166E3C2E0044A7D1 /* crUSS.html */,
+				5C940B70166E3C2E0044A7D1 /* crUSS0.html */,
+				5C940B71166E3C2E0044A7D1 /* crUSS1.html */,
+			);
+			name = "HTML pages";
+			sourceTree = "<group>";
+		};
+		5C56F61B1801E06500665E22 /* HTML page */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B67166E3C2E0044A7D1 /* platelets.html */,
+			);
+			name = "HTML page";
 			sourceTree = "<group>";
 		};
 		5C5A116017D2391800CE96E5 /* kxintro */ = {
@@ -2116,11 +2152,11 @@
 		5C930AF617B0E81600CBE616 /* General Information */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B6F166E3C2E0044A7D1 /* crUSS.html */,
-				5C940B70166E3C2E0044A7D1 /* crUSS0.html */,
-				5C940B71166E3C2E0044A7D1 /* crUSS1.html */,
-				5C940B72166E3C2E0044A7D1 /* CrUSSViewController.h */,
-				5C940B73166E3C2E0044A7D1 /* CrUSSViewController.m */,
+				5C56F6341802005000665E22 /* CrUSSViewController.h */,
+				5C56F6351802005000665E22 /* CrUSSViewController.m */,
+				5C56F6171801E01100665E22 /* CrUSSModel.h */,
+				5C56F6181801E01100665E22 /* CrUSSModel.m */,
+				5C56F6161801DFCB00665E22 /* HTML pages */,
 			);
 			name = "General Information";
 			sourceTree = "<group>";
@@ -2702,12 +2738,16 @@
 				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
 				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
 				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
+				5C56F6201801EC4A00665E22 /* CBTableViewWebViewController.h */,
+				5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */,
 				5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */,
 				5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */,
 				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
 				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
 				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
 				5C316CFA17C2BF830096B8D3 /* CBTrackers.m */,
+				5C56F6121801DEE500665E22 /* CBWebView.h */,
+				5C56F6131801DEE500665E22 /* CBWebView.m */,
 				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
 				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
 				5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */,
@@ -3449,6 +3489,7 @@
 				5C940A9E166E38CA0044A7D1 /* SVSegmentedThumb.m in Sources */,
 				5C940AA9166E38E20044A7D1 /* KKKeychain.m in Sources */,
 				5C940AAB166E38E30044A7D1 /* KKPasscodeLock.m in Sources */,
+				5C56F63E1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m in Sources */,
 				5C940AAC166E38E30044A7D1 /* KKPasscodeSettingsViewController.m in Sources */,
 				5C940AAD166E38E30044A7D1 /* KKPasscodeViewController.m in Sources */,
 				5C940AC6166E39130044A7D1 /* KalDataSource.m in Sources */,
@@ -3475,6 +3516,7 @@
 				5C940B14166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m in Sources */,
 				5C940B15166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m in Sources */,
 				5C940B16166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
+				5C56F6191801E01100665E22 /* CrUSSModel.m in Sources */,
 				5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */,
 				5C940B3A166E3BDF0044A7D1 /* UnderlineLabel.m in Sources */,
 				5C940B42166E3BED0044A7D1 /* InstructionsViewController.m in Sources */,
@@ -3487,10 +3529,8 @@
 				5C940BB3166E3C2E0044A7D1 /* APGAR20ViewController.m in Sources */,
 				5C940BB4166E3C2E0044A7D1 /* BloodProductsViewController.m in Sources */,
 				5C940BB8166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m in Sources */,
-				5C940BBA166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m in Sources */,
 				5C940BBC166E3C2E0044A7D1 /* CoolingViewController.m in Sources */,
 				5C940BBD166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
-				5C940BC1166E3C2F0044A7D1 /* CrUSSViewController.m in Sources */,
 				5C940BC5166E3C2F0044A7D1 /* CurosurfViewController.m in Sources */,
 				5C940BCA166E3C2F0044A7D1 /* CDHViewController.m in Sources */,
 				5C940BD2166E3C2F0044A7D1 /* EarlyCareViewController.m in Sources */,
@@ -3516,6 +3556,7 @@
 				5C940C09166E3C5B0044A7D1 /* PhototherapyClinicalStatusViewController.m in Sources */,
 				5C940C0A166E3C5B0044A7D1 /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
 				5C940C0B166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m in Sources */,
+				5C56F6141801DEE500665E22 /* CBWebView.m in Sources */,
 				5C940C0C166E3C5B0044A7D1 /* PhototherapyUnitsViewController.m in Sources */,
 				5C940C0D166E3C5B0044A7D1 /* PhototherapyAddBilirubinResultViewController.m in Sources */,
 				5C940C0E166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.m in Sources */,
@@ -3559,6 +3600,7 @@
 				5CD3B0C21790729200DA0278 /* DrugDose.m in Sources */,
 				5CD3B0C61790759600DA0278 /* DrugIndication.m in Sources */,
 				5CD3B0CA1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
+				5C56F6361802005000665E22 /* CrUSSViewController.m in Sources */,
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
 				5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
@@ -3587,6 +3629,7 @@
 				5C56F6061801A46300665E22 /* CBFonts.m in Sources */,
 				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
+				5C56F6221801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */,
 				5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
@@ -3619,6 +3662,7 @@
 				5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
 				5C4DC72517E5340C00412C72 /* UIView+JMNoise.m in Sources */,
 				5C4DC73317E5340C00412C72 /* UAModalPanel.m in Sources */,
+				5C56F61E1801E3A600665E22 /* PlateletTransfusionModel.m in Sources */,
 				5C4DC73517E5340C00412C72 /* UATitledModalPanel.m in Sources */,
 				5C4DC73717E5340C00412C72 /* UAGradientBackground.m in Sources */,
 				5C4DC73917E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
@@ -3659,6 +3703,7 @@
 				5CD3AFB716CF38D500DE362C /* KalTileView.m in Sources */,
 				5CD3AFB816CF38D500DE362C /* KalView.m in Sources */,
 				5CD3AFB916CF38D500DE362C /* KalViewController.m in Sources */,
+				5C56F6231801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */,
 				5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */,
 				5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */,
@@ -3687,10 +3732,8 @@
 				5CD3AFD316CF38D500DE362C /* APGAR20ViewController.m in Sources */,
 				5CD3AFD416CF38D500DE362C /* BloodProductsViewController.m in Sources */,
 				5CD3AFD516CF38D500DE362C /* BloodTransfusionCriteriaViewController.m in Sources */,
-				5CD3AFD616CF38D500DE362C /* PlateletTransfusionCriteriaViewController.m in Sources */,
 				5CD3AFD716CF38D500DE362C /* CoolingViewController.m in Sources */,
 				5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
-				5CD3AFD916CF38D500DE362C /* CrUSSViewController.m in Sources */,
 				5CD3AFDA16CF38D500DE362C /* CurosurfViewController.m in Sources */,
 				5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */,
 				5CD3AFDC16CF38D500DE362C /* EarlyCareViewController.m in Sources */,
@@ -3701,6 +3744,7 @@
 				5CD3AFE116CF38D500DE362C /* IntubationDrugsViewController.m in Sources */,
 				5CD3AFE216CF38D500DE362C /* OxygenationIndexViewController.m in Sources */,
 				5CD3AFE316CF38D500DE362C /* PlasticBagViewController.m in Sources */,
+				5C56F61F1801E3A600665E22 /* PlateletTransfusionModel.m in Sources */,
 				5CD3AFE416CF38D500DE362C /* PulmonaryHaemorrhageViewController.m in Sources */,
 				5CD3AFE516CF38D500DE362C /* ResusViewController.m in Sources */,
 				5CD3AFE616CF38D500DE362C /* ROPViewController.m in Sources */,
@@ -3710,6 +3754,7 @@
 				5CD3AFEA16CF38D500DE362C /* WeightConversionViewController.m in Sources */,
 				5CD3AFEB16CF38D500DE362C /* ActionSheetPickerViewController.m in Sources */,
 				5CD3AFEC16CF38D500DE362C /* PhototherapyViewController.m in Sources */,
+				5C56F61A1801E01100665E22 /* CrUSSModel.m in Sources */,
 				5CD3AFED16CF38D500DE362C /* PhototherapyGestationViewController.m in Sources */,
 				5CD3AFEE16CF38D500DE362C /* PhototherapyGraphViewController.m in Sources */,
 				5CD3AFEF16CF38D500DE362C /* PhototherapyGuidelineCountryViewController.m in Sources */,
@@ -3804,6 +3849,7 @@
 				5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */,
 				5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */,
 				5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */,
+				5C56F6371802005000665E22 /* CrUSSViewController.m in Sources */,
 				5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */,
 				5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */,
 				5C3C02BA17DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */,
@@ -3812,6 +3858,8 @@
 				5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */,
 				5C88570D17E443FB00446E5F /* CBTableViewController.m in Sources */,
+				5C56F63F1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m in Sources */,
+				5C56F6151801DEE500665E22 /* CBWebView.m in Sources */,
 				5C4DC70917E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
 				5C4DC72617E5340C00412C72 /* UIView+JMNoise.m in Sources */,
 				5C4DC73417E5340C00412C72 /* UAModalPanel.m in Sources */,

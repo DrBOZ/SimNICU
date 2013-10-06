@@ -11,7 +11,6 @@
 @interface CBTableViewController : UITableViewController
 
 + (void)setBackgroundForTableView:(UITableView *)myTableView;
-+ (void)updateBackgroundForTableView:(UITableView *)myTableView;
 + (void)setSecondaryBackgroundForTableView:(UITableView *)myTableView;
 
 @end
