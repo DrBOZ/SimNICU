@@ -49,6 +49,8 @@
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
             [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+            
+            self.view.tintColor = [UIColor redColor];
         }
         else
         {

@@ -1577,20 +1577,27 @@
     
     int tag = textField.tag;
     
+    // editing weight
     if (tag == 10)
     {
         NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
         
         [self.myTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
     }
-    
-    if (tag == 20)
+    // editing gestation
+    else if (tag == 20)
     {
-        // NSLog(@"Editing Gestation");
-        
         NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
         
-        [self.myTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            [self.myTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        }
+        else
+        {
+            [self.myTableView selectRowAtIndexPath:path animated:YES scrollPosition:UITableViewScrollPositionTop];
+        }
     }
 }
 
@@ -1687,8 +1694,17 @@
         
         PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
         
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        navController.navigationBar.tintColor = [UIColor blackColor];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            navController.navigationBar.barTintColor = [UIColor grayColor];
+            navController.navigationBar.tintColor = [UIColor redColor];
+        }
+        else
+        {
+            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+            navController.navigationBar.tintColor = [UIColor blackColor];
+        }
         
         patientDetailsViewController.userWantsToAddAPatient = @"YES";
         

@@ -43,7 +43,15 @@
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
     //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+    }
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
@@ -71,7 +79,9 @@
     self.PaO2.delegate = self;
     
     self.meanAirwayPressure.keyboardType = UIKeyboardTypeDecimalPad;
+    
     self.inspiredOxygen.keyboardType = UIKeyboardTypeDecimalPad;
+    
     self.PaO2.keyboardType = UIKeyboardTypeDecimalPad;
 }
 

@@ -43,30 +43,13 @@
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
             [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+            
+            self.view.tintColor = [UIColor redColor];
         }
         else
         {
             // set background colour
             [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
-            
-            /*
-            if (appDelegate.window.bounds.size.height == 568.0f)
-            {
-                // 4 inch Retina
-                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-                [tempImageView setFrame:self.myTableView.frame];
-                
-                self.myTableView.backgroundView = tempImageView;
-            }
-            else
-            {
-                // 3.5 inch Retina
-                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-                [tempImageView setFrame:self.myTableView.frame];
-                
-                self.myTableView.backgroundView = tempImageView;
-            }
-             */
         }
         
         [self.view addSubview:self.myTableView];

@@ -210,6 +210,7 @@
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
                 self.rate.keyboardAppearance = UIKeyboardAppearanceDefault;
+                // self.rate.keyboardAppearance = UIKeyboardAppearanceAlert;
             }
             else
             {
