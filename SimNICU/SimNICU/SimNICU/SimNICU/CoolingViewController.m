@@ -39,14 +39,16 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     //tableView
-    // iOS 7 specifics
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    
+    // iOS version differences
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height));
     }
     else
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0));
     }
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
@@ -113,51 +115,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows = 0;
+    NSArray *numberOfRows = @[@1, @3, @2];
     
-    switch (section) 
-    {
-        case 0:
-            rows = 1;
-            break;
-            
-        case 1:
-            rows = 3;
-            break;
-            
-        case 2:
-            rows = 2;
-            break;
-            
-        default:
-            break;
-    }
-    
-    return rows;
+    return [numberOfRows[section] intValue];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *header;
+    NSArray *headerTitles = @[@"Selection Criteria", @"with at least one of the following", @"AND any of the following"];
     
-    switch (section) {
-        case 0:
-            header = @"Selection Criteria";
-            break;
-            
-        case 1:
-            header = @"with at least one of the following";
-            break;
-            
-        case 2:
-            header = @"AND any of the following";
-            break;
-            
-        default:
-            break;
-    }
-    
-    return header;
+    return headerTitles[section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -229,11 +196,10 @@
             static NSString *CellIdentifier = @"cell11";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 [cell setBackgroundColor:[UIColor whiteColor]];
             }
             
@@ -244,14 +210,13 @@
         }
         else
         {
-            static NSString *CellIdentifier = @"cell12";
+            static NSString *CellIdentifier = @"CordGases";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 [cell setBackgroundColor:[UIColor whiteColor]];
             }
             
@@ -275,11 +240,10 @@
             static NSString *CellIdentifier = @"cell20";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 [cell setBackgroundColor:[UIColor whiteColor]];
             }
             
@@ -293,7 +257,7 @@
             static NSString *CellIdentifier = @"cell21";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -329,10 +293,11 @@
 {
     if (indexPath.section == 2 && indexPath.row == 1)
     {
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
         CoolingCriteriaEncephalopathyViewController *newViewController = [[CoolingCriteriaEncephalopathyViewController alloc] init];
-        [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        // [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        [self.navigationController pushViewController:newViewController animated:YES];
     }
 }
 
