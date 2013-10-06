@@ -12,7 +12,6 @@
 #import "InfusionsViewController.h"
 #import "DAAnisotropicImage.h"
 #import "SVSegmentedControl.h"
-#import "CBDisplayMethods.h"
 #import "AppDelegate.h"
 
 @interface InfusionsViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -121,7 +120,7 @@
     [self.view addSubview:self.myTableView];
     
     // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    [CBTableViewController setBackgroundForTableView:self.myTableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
@@ -2237,11 +2236,11 @@
                     strength.font = [UIFont systemFontOfSize:15];
                     strength.textColor = [UIColor lightGrayColor];
                     strength.adjustsFontSizeToFitWidth = YES;
-                    strength.minimumFontSize = 10;
+                    strength.minimumFontSize = 10.0f;
                     strength.backgroundColor = [UIColor clearColor];
                     
                     UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, CELL_WIDTH_FOR_TEXT, 20)];
-                    text.font = [UIFont systemFontOfSize:15.0];
+                    text.font = [UIFont systemFontOfSize:15.0f];
                     text.textColor = [UIColor lightGrayColor];
                     text.adjustsFontSizeToFitWidth = YES;
                     text.minimumFontSize = 10.0;

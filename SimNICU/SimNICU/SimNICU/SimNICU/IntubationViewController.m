@@ -81,7 +81,7 @@
         [self.view addSubview:self.myTableView];
         
         // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        [CBTableViewController setBackgroundForTableView:self.myTableView];
         
         // rounded Switch
         self.roundedSwitch = [[UISwitch alloc] init];
@@ -194,7 +194,7 @@
         [self.view addSubview:self.myTableView];
         
         // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        [CBTableViewController setBackgroundForTableView:self.myTableView];
         
         // rounded Switch
         self.roundedSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(230.0f, roundedSwitchHeight, 80.0f, 44.0f)];
@@ -309,7 +309,7 @@
         [self.view addSubview:self.myTableView];
         
         // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        [CBTableViewController setBackgroundForTableView:self.myTableView];
         
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.0)
         {

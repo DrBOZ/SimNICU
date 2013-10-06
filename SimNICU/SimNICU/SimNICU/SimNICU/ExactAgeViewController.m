@@ -8,7 +8,6 @@
 
 #import "ExactAgeViewController.h"
 #import "ActionSheetPicker.h"
-#import "CBDisplayMethods.h"
 #import "NSDate+TCUtils.h"
 #import "CBTimeMethods.h"
 #import "CBDatePicker.h"
@@ -70,7 +69,7 @@
     [self.view addSubview:self.myTableView];
     
     // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    [CBTableViewController setBackgroundForTableView:self.myTableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];

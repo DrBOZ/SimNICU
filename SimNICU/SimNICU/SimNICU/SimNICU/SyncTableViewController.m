@@ -86,7 +86,7 @@
     [tableData addObject:sectionData];
     
     // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.tableView];
+    [CBTableViewController setBackgroundForTableView:self.tableView];
     
     // swipe gesture recognizer
     self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];

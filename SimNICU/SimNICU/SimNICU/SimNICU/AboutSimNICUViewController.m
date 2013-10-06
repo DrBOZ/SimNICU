@@ -8,8 +8,8 @@
 
 #import "AboutSimNICUViewController.h"
 #import "KxIntroViewController.h"
+#import "CBTableViewController.h"
 #import "AppViewController.h"
-#import "CBDisplayMethods.h"
 #import "KxIntroViewPage.h"
 #import "UnderlineLabel.h"
 #import "AppDelegate.h"
@@ -65,9 +65,10 @@
     [headerView addSubview:imageView];
     
     self.myTableView.tableHeaderView = headerView;
+    self.myTableView.tableFooterView = [self setupFooterView];
     
     // add TableView background
-    [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    [CBTableViewController setBackgroundForTableView:self.myTableView];
     
     aboutMenuItems = [[NSMutableArray alloc] initWithCapacity:5];
     
@@ -85,7 +86,7 @@
     
 #endif
     
-    [self.myTableView setTableFooterView:[self setupFooterView]];
+    // [self.myTableView setTableFooterView:[self setupFooterView]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -127,6 +128,7 @@
     
     return rows;
 }
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -252,27 +254,29 @@
 
 - (UIView *)setupFooterView
 {
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 200.0f)];
+    UIView *footerView = [UIView new];
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        footerView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 250.0f);
+    }
+    else
+    {
+        footerView.frame = CGRectMake(0.0f, 0.0f, 320.0f, 200.0f);
+    }
     
     // Developer
     UILabel *developerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
-    developerLabel.backgroundColor = [UIColor clearColor];
-    developerLabel.textAlignment = UITextAlignmentCenter;
-    developerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    developerLabel.shadowColor = [UIColor whiteColor];
-    developerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    developerLabel.numberOfLines = 1;
+    [CBFonts darkGrayOffsetShadowFormattingForLabel:developerLabel];
     developerLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    developerLabel.numberOfLines = 1;
     developerLabel.text = @"DEVELOPER";
     [footerView addSubview:developerLabel];
     
     // Conrad Bosman
     UILabel *developerNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, 320.0f, 90.0f)];
-    developerNameLabel.backgroundColor = [UIColor clearColor];
-    developerNameLabel.textAlignment = UITextAlignmentCenter;
-    developerNameLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    developerNameLabel.shadowColor = [UIColor whiteColor];
-    developerNameLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    [CBFonts darkGrayOffsetShadowFormattingForLabel:developerNameLabel];
     developerNameLabel.numberOfLines = 3;
     developerNameLabel.font = [UIFont systemFontOfSize:13.0f];
     // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
@@ -281,12 +285,7 @@
     
     // Acknowledgment text
     UnderlineLabel *acknowledgmentsLabel = [[UnderlineLabel alloc] initWithFrame:CGRectMake(0.0f, 100.0f, 320.0f, 44.0f)];
-    acknowledgmentsLabel.backgroundColor = [UIColor clearColor];
-    acknowledgmentsLabel.textAlignment = UITextAlignmentCenter;
-    acknowledgmentsLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    // acknowledgmentsLabel.textColor = [UIColor blueColor];
-    acknowledgmentsLabel.shadowColor = [UIColor whiteColor];
-    acknowledgmentsLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    [CBFonts darkGrayOffsetShadowFormattingForLabel:acknowledgmentsLabel];
     acknowledgmentsLabel.numberOfLines = 1;
     acknowledgmentsLabel.font = [UIFont systemFontOfSize:15.0f];
     acknowledgmentsLabel.start = 70.0f;
@@ -304,12 +303,8 @@
     
     // Copyright text
     UILabel *tableFooterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 140.0f, 320.0f, 44.0f)];
-    tableFooterLabel.backgroundColor = [UIColor clearColor];
-    tableFooterLabel.textAlignment = UITextAlignmentCenter;
-    tableFooterLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-    tableFooterLabel.shadowColor = [UIColor whiteColor];
-    tableFooterLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    tableFooterLabel.numberOfLines = 1;
+    [CBFonts darkGrayOffsetShadowFormattingForLabel:tableFooterLabel];
+    tableFooterLabel.numberOfLines = 2;
     tableFooterLabel.font = [UIFont systemFontOfSize:15.0f];
     tableFooterLabel.text = @"\nCopyright 2013 © Conrad Bosman";
     [footerView addSubview:tableFooterLabel];

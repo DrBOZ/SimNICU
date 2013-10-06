@@ -42,14 +42,14 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+            [CBTableViewController setBackgroundForTableView:self.myTableView];
             
             self.view.tintColor = [UIColor redColor];
         }
         else
         {
             // set background colour
-            [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
+            [CBTableViewController setSecondaryBackgroundForTableView:self.myTableView];
         }
         
         [self.view addSubview:self.myTableView];

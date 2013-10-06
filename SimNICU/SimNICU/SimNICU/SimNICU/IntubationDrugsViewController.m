@@ -47,7 +47,7 @@
         [self.view addSubview:self.myTableView];
         
         // add TableView background
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        [CBTableViewController setBackgroundForTableView:self.myTableView];
     }
     
     // swipe gesture recognizer

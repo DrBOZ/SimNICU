@@ -12,10 +12,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "CBTableViewController.h"
-    #import "CBDisplayMethods.h"
     #import "CBBarButtonItems.h"
     #import "AppDelegate.h"
     #import "Preferences.h"
     #import "CBTrackers.h"
+    #import "CBFonts.h"
     #import "Flurry.h"
 #endif

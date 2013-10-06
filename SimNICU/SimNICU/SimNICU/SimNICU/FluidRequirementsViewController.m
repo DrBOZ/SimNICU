@@ -101,7 +101,7 @@
     self.MLperHOURTableView.bounces = YES;
     [self.view addSubview:self.MLperHOURTableView];
     
-    [CBDisplayMethods setBackgroundForTableView:self.MLperHOURTableView];
+    [CBTableViewController setBackgroundForTableView:self.MLperHOURTableView];
     
     if (!self.workingWeight)
     {

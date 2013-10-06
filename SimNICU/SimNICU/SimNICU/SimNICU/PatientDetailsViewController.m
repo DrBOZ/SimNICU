@@ -50,11 +50,11 @@
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+        [CBTableViewController setBackgroundForTableView:self.myTableView];
     }
     else
     {
-        [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
+        [CBTableViewController setSecondaryBackgroundForTableView:self.myTableView];
     }
     
     [self.view addSubview:self.myTableView];
