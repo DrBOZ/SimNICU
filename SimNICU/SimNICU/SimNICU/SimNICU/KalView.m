@@ -29,45 +29,81 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {
-    if ((self = [super initWithFrame:frame])) {
+    if ((self = [super initWithFrame:frame]))
+    {
         delegate = theDelegate;
         logic = theLogic;
         [logic addObserver:self forKeyPath:@"selectedMonthNameAndYear" options:NSKeyValueObservingOptionNew context:NULL];
         self.autoresizesSubviews = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)];
-        headerView.backgroundColor = [UIColor grayColor];
-        // headerView.backgroundColor = [UIColor whiteColor];
-        [self addSubviewsToHeaderView:headerView];
-        [self addSubview:headerView];
+        UIView *headerView;
         
-        UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
-
-        contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        
-#if USE_DIMPLE_BACKGROUND
-        
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // 4 inch Retina
-            // contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples4inchForKal.png"]];
-            contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, frame.size.width, kHeaderHeight)];
+            headerView.backgroundColor = [UIColor whiteColor];
         }
         else
         {
-            // 3.5 inch Retina
-            // contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples35inchForKal.png"]];
-            contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, kHeaderHeight)];
+            headerView.backgroundColor = [UIColor grayColor];
         }
         
+        [self addSubviewsToHeaderView:headerView];
+        [self addSubview:headerView];
+        
+        UIView *contentView;
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // hack
+            UITableView *tempTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 64.0f) style:UITableViewStyleGrouped];
+            
+            [self addSubview:tempTableView];
+            
+            
+            contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, kHeaderHeight + 64.0f, frame.size.width, frame.size.height - kHeaderHeight - 64.0f)];
+        }
+        else
+        {
+            contentView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
+        }
+
+        contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            contentView.backgroundColor = [UIColor lightGrayColor];
+        }
+        else
+        {
+#if USE_DIMPLE_BACKGROUND
+            
+            //delegate
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            // set background colour
+            if (appDelegate.window.bounds.size.height == 568)
+            {
+                // 4 inch Retina
+                // contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples4inchForKal.png"]];
+                contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+            }
+            else
+            {
+                // 3.5 inch Retina
+                // contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LightGreyWithDimples35inchForKal.png"]];
+                contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+            }
+            
 #else
-        contentView.backgroundColor = [UIColor lightGrayColor];
+            contentView.backgroundColor = [UIColor lightGrayColor];
 #endif
+        }
         
         [self addSubviewsToContentView:contentView];
         [self addSubview:contentView];
@@ -104,7 +140,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
     const CGFloat kChangeMonthButtonWidth = 46.0f;
     const CGFloat kChangeMonthButtonHeight = 30.0f;
     const CGFloat kMonthLabelWidth = 200.0f;
-    const CGFloat kHeaderVerticalAdjust = 3.f;
+    const CGFloat kHeaderVerticalAdjust = 3.0f;
     
     // Header background gradient
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"]];
