@@ -19,17 +19,26 @@
         self.backgroundColor = [UIColor whiteColor];
         
         // setup labels
-        self.bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 9.0f, 177.0f, 21.0f)];
+        self.bloodProduct = [UILabel new];
         [CBFonts textFormattingForLabel:self.bloodProduct];
         self.bloodProduct.adjustsFontSizeToFitWidth = YES;
         
-        self.volume = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 9.0f, 80.0f, 21.0f)];
+        self.volume = [UILabel new];
         [CBFonts textFormattingForLabel:self.volume];
         self.volume.textAlignment = UITextAlignmentRight;
         
-        self.regimen = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 33.0f, 237.0f, 21.0f)];
+        self.regimen = [UILabel new];
         [CBFonts detailTextFormattingForLabel:self.regimen];
         self.regimen.adjustsFontSizeToFitWidth = YES;
+        
+        // iOS version differences
+        CGFloat adjustment = 0.0f;
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0) adjustment = -5.0f;
+        
+        self.bloodProduct.frame = CGRectMake(20.0f + adjustment, 9.0f, 177.0f, 21.0f);
+        self.volume.frame = CGRectMake(200.0f + adjustment, 9.0f, 80.0f, 21.0f);
+        self.regimen.frame = CGRectMake(20.0f + adjustment, 33.0f, 237.0f, 21.0f);
         
         [self addSubview:self.bloodProduct];
         [self addSubview:self.volume];

@@ -1866,6 +1866,30 @@
 			name = Screen_Drugs;
 			sourceTree = "<group>";
 		};
+		5C56F60C1801D16200665E22 /* BloodTransfusionCriteria */ = {
+			isa = PBXGroup;
+			children = (
+				5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */,
+				5C940B62166E3C2E0044A7D1 /* bloodTransfusionCriteria0.html */,
+				5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */,
+				5C940B63166E3C2E0044A7D1 /* bloodTransfusionCriteria1.html */,
+				5C940CC9166E45FA0044A7D1 /* bloodTransfusionCriteria2.html */,
+				5C940B65166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.h */,
+				5C940B66166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m */,
+			);
+			name = BloodTransfusionCriteria;
+			sourceTree = "<group>";
+		};
+		5C56F60D1801D17A00665E22 /* PlateletTransfusionCriteria */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B67166E3C2E0044A7D1 /* platelets.html */,
+				5C940B68166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.h */,
+				5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */,
+			);
+			name = PlateletTransfusionCriteria;
+			sourceTree = "<group>";
+		};
 		5C5A116017D2391800CE96E5 /* kxintro */ = {
 			isa = PBXGroup;
 			children = (
@@ -2957,16 +2981,8 @@
 				5C940B61166E3C2E0044A7D1 /* BloodProductsViewController.m */,
 				5C56F6081801CA4300665E22 /* BloodProductsTableViewCell.h */,
 				5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */,
-				5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */,
-				5C940B62166E3C2E0044A7D1 /* bloodTransfusionCriteria0.html */,
-				5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */,
-				5C940B63166E3C2E0044A7D1 /* bloodTransfusionCriteria1.html */,
-				5C940CC9166E45FA0044A7D1 /* bloodTransfusionCriteria2.html */,
-				5C940B65166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.h */,
-				5C940B66166E3C2E0044A7D1 /* BloodTransfusionCriteriaViewController.m */,
-				5C940B67166E3C2E0044A7D1 /* platelets.html */,
-				5C940B68166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.h */,
-				5C940B69166E3C2E0044A7D1 /* PlateletTransfusionCriteriaViewController.m */,
+				5C56F60C1801D16200665E22 /* BloodTransfusionCriteria */,
+				5C56F60D1801D17A00665E22 /* PlateletTransfusionCriteria */,
 			);
 			name = Screen_BloodProducts;
 			sourceTree = "<group>";
