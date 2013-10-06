@@ -9,6 +9,7 @@
 #import "PlateletTransfusionCriteriaViewController.h"
 #import "BloodTransfusionCriteriaViewController.h"
 #import "BloodProductsViewController.h"
+#import "BloodProductsTableViewCell.h"
 #import "AppDelegate.h"
 
 @interface BloodProductsViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -42,13 +43,16 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //tableView
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    
+    // iOS version differences
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height));
     }
     else
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f));
     }
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
@@ -164,61 +168,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows = 1;
-    
-    if (section == 2) 
-    {
-        rows = 2;
-    }
-    
-    return rows;
+    if (section == 2) return 2;
+    else return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *header = nil;
+    NSArray *headerTitles = @[NSLocalizedString(@"Anaemia", nil), @"Thrombocytopenia", @"Deranged coagulation", @"Miscellaneous"];
     
-    if (section == 0) {
-        header = NSLocalizedString(@"Anaemia", nil);
-    }
-    else if (section == 1)
-    {
-        header = @"Thrombocytopenia";
-    }
-    else if (section == 2)
-    {
-        header = @"Deranged coagulation";
-    }
-    else if (section == 3)
-    {
-        header = @"Miscellaneous";
-    }
-    
-    return header;
+    return headerTitles[section];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    NSString *footer = nil;
-    
-    if (section == 1)
-    {
-        footer = @"Contact Blood Bank ahead of time";
-    }
-    
-    return footer;
+    if (section == 1) return @"Contact Blood Bank ahead of time";
+    else return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    float height = 44.0f;
-    
-    if (section == 0) 
-    {
-        height = 66.0f;
-    }
-    
-    return height;
+    if (section == 0) return 66.0f;
+    else return 44.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,7 +198,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *returnCell = nil;
+    BloodProductsTableViewCell *returnCell = nil;
     
     // convert if user is using a european locale
     NSString *UKLocaleWorkingWeight;
@@ -249,35 +219,18 @@
     
     if(indexPath.section == 0)
     {
-        static NSString *CellIdentifier = @"Anaemia";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        NSString *CellIdentifier = @"Anaemia";
+        BloodProductsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        UILabel *bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 9.0f, 177.0f, 21.0f)];
-        bloodProduct.font = [UIFont boldSystemFontOfSize:17.0f];
-        bloodProduct.backgroundColor = [UIColor clearColor];
-        bloodProduct.textColor = [UIColor blackColor];
-        bloodProduct.adjustsFontSizeToFitWidth = YES;
-        
-        UILabel *volume = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 9.0f, 80.0f, 21.0f)];
-        volume.font = [UIFont boldSystemFontOfSize:17.0f];
-        volume.backgroundColor = [UIColor clearColor];
-        volume.textAlignment = UITextAlignmentRight;
-        
-        UILabel *regimen = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 33.0f, 237.0f, 21.0f)];
-        regimen.backgroundColor = [UIColor clearColor];
-        regimen.font = [UIFont systemFontOfSize:14.0f];
-        regimen.textColor = [UIColor lightGrayColor];
-        regimen.adjustsFontSizeToFitWidth = YES;
-        
-        bloodProduct.text = @"Packed Red Cells";
-        regimen.text = @"20 ml/kg over 4 hours";
+        cell.bloodProduct.text = @"Packed Red Cells";
+        cell.regimen.text = @"20 ml/kg over 4 hours";
         
         float packedCellsTotalVolume = (workingWeightKGAsFloat * 20.0f);
         
@@ -292,51 +245,30 @@
         
         if (packedCellsTotalVolume) 
         {
-            volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:packedCellsTotalVolume]]];
+            cell.volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:packedCellsTotalVolume]]];
         }
         else 
         {
-            volume.text = @"";
+            cell.volume.text = @"";
         }
-        
-        [cell addSubview:bloodProduct];
-        [cell addSubview:regimen];
-        [cell addSubview:volume];
         
         returnCell = cell;
     }
     else if (indexPath.section == 1)
     {
-        static NSString *CellIdentifier = @"Platelets";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        NSString *CellIdentifier = @"Platelets";
+        BloodProductsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        UILabel *bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 9.0f, 177.0f, 21.0f)];
-        bloodProduct.font = [UIFont boldSystemFontOfSize:17.0f];
-        bloodProduct.backgroundColor = [UIColor clearColor];
-        bloodProduct.textColor = [UIColor blackColor];
-        bloodProduct.adjustsFontSizeToFitWidth = YES;
-        
-        UILabel *volume = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 9.0f, 80.0f, 21.0f)];
-        volume.font = [UIFont boldSystemFontOfSize:17.0f];
-        volume.backgroundColor = [UIColor clearColor];
-        volume.textAlignment = UITextAlignmentRight;
-        
-        UILabel *regimen = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 33.0f, 237.0f, 21.0f)];
-        regimen.backgroundColor = [UIColor clearColor];
-        regimen.font = [UIFont systemFontOfSize:14.0f];
-        regimen.textColor = [UIColor lightGrayColor];
-        regimen.adjustsFontSizeToFitWidth = YES;
-        
-        bloodProduct.text = @"Platelets";
-        regimen.text = @"10 ml/kg over 20 minutes";
+        cell.bloodProduct.text = @"Platelets";
+        cell.regimen.text = @"10 ml/kg over 20 minutes";
         
         float plateletsTotalVolume = (workingWeightKGAsFloat * 10.0f);
         
@@ -351,16 +283,12 @@
         
         if (plateletsTotalVolume) 
         {
-            volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:plateletsTotalVolume]]];
+            cell.volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:plateletsTotalVolume]]];
         }
         else 
         {
-            volume.text = @"";
+            cell.volume.text = @"";
         }
-        
-        [cell addSubview:bloodProduct];
-        [cell addSubview:regimen];
-        [cell addSubview:volume];
         
         returnCell = cell;
     }
@@ -368,35 +296,18 @@
     {
         if (indexPath.row == 0) 
         {
-            static NSString *CellIdentifier = @"FFP";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"FFP";
+            BloodProductsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UILabel *bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 9.0f, 160.0f, 21.0f)];
-            bloodProduct.font = [UIFont boldSystemFontOfSize:17.0f];
-            bloodProduct.backgroundColor = [UIColor clearColor];
-            bloodProduct.textColor = [UIColor blackColor];
-            bloodProduct.adjustsFontSizeToFitWidth = YES;
-            
-            UILabel *volume = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 9.0f, 80.0f, 21.0f)];
-            volume.font = [UIFont boldSystemFontOfSize:17.0f];
-            volume.backgroundColor = [UIColor clearColor];
-            volume.textAlignment = UITextAlignmentRight;
-            
-            UILabel *regimen = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 33.0f, 237.0f, 21.0f)];
-            regimen.backgroundColor = [UIColor clearColor];
-            regimen.font = [UIFont systemFontOfSize:14.0f];
-            regimen.textColor = [UIColor lightGrayColor];
-            regimen.adjustsFontSizeToFitWidth = YES;
-            
-            bloodProduct.text = @"Fresh Frozen Plasma";
-            regimen.text = @"10 ml/kg over 20 minutes";
+            cell.bloodProduct.text = @"Fresh Frozen Plasma";
+            cell.regimen.text = @"10 ml/kg over 20 minutes";
             
             float FFPTotalVolume = (workingWeightKGAsFloat * 10.0f);
             
@@ -411,50 +322,29 @@
             
             if (FFPTotalVolume) 
             {
-                volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:FFPTotalVolume]]];
+                cell.volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:FFPTotalVolume]]];
             }
             else 
             {
-                volume.text = @"";
+                cell.volume.text = @"";
             }
-            
-            [cell addSubview:bloodProduct];
-            [cell addSubview:regimen];
-            [cell addSubview:volume];
             
             returnCell = cell;
         }
         else
         {
-            static NSString *CellIdentifier = @"Cryoprecipitate";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            NSString *CellIdentifier = @"Cryoprecipitate";
+            BloodProductsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            UILabel *bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 9.0f, 177.0f, 21.0f)];
-            bloodProduct.font = [UIFont boldSystemFontOfSize:17.0f];
-            bloodProduct.backgroundColor = [UIColor clearColor];
-            bloodProduct.textColor = [UIColor blackColor];
-            bloodProduct.adjustsFontSizeToFitWidth = YES;
-            
-            UILabel *volume = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 9.0f, 80.0f, 21.0f)];
-            volume.font = [UIFont boldSystemFontOfSize:17.0f];
-            volume.backgroundColor = [UIColor clearColor];
-            volume.textAlignment = UITextAlignmentRight;
-            
-            UILabel *regimen = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 33.0f, 237.0f, 21.0f)];
-            regimen.backgroundColor = [UIColor clearColor];
-            regimen.font = [UIFont systemFontOfSize:14.0f];
-            regimen.textColor = [UIColor lightGrayColor];
-            regimen.adjustsFontSizeToFitWidth = YES;
-            
-            bloodProduct.text = @"Cryoprecipitate";
-            regimen.text = @"10 ml/kg over 20 minutes";
+            cell.bloodProduct.text = @"Cryoprecipitate";
+            cell.regimen.text = @"10 ml/kg over 20 minutes";
             
             // 10 ml/kg - later put in user defined variable
             float cryoTotalVolume = (workingWeightKGAsFloat * 10.0f);
@@ -470,55 +360,30 @@
             
             if (cryoTotalVolume) 
             {
-                volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:cryoTotalVolume]]];
+                cell.volume.text = [NSString stringWithFormat:@"%@ ml", [formatter stringFromNumber:[NSNumber numberWithFloat:cryoTotalVolume]]];
             }
             else 
             {
-                volume.text = @"";
+                cell.volume.text = @"";
             }
-            
-            [cell addSubview:bloodProduct];
-            [cell addSubview:regimen];
-            [cell addSubview:volume];
             
             returnCell = cell;
         }
     }
     else if (indexPath.section == 3) // future feature...
     {
-        static NSString *CellIdentifier = @"Immunoglobulin";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        NSString *CellIdentifier = @"Immunoglobulin";
+        BloodProductsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[BloodProductsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        UILabel *bloodProduct = [[UILabel alloc] initWithFrame:CGRectMake(20, 9, 177, 21)];
-        bloodProduct.font = [UIFont boldSystemFontOfSize:17.0];
-        bloodProduct.backgroundColor = [UIColor clearColor];
-        bloodProduct.textColor = [UIColor blackColor];
-        bloodProduct.adjustsFontSizeToFitWidth = YES;
-        
-        UILabel *volume = [[UILabel alloc] initWithFrame:CGRectMake(220, 9, 80, 21)];
-        volume.font = [UIFont boldSystemFontOfSize:17.0];
-        volume.backgroundColor = [UIColor clearColor];
-        volume.textAlignment = UITextAlignmentRight;
-        
-        UILabel *regimen = [[UILabel alloc] initWithFrame:CGRectMake(20, 33, 237, 21)];
-        regimen.backgroundColor = [UIColor clearColor];
-        regimen.font = [UIFont systemFontOfSize:14.0];
-        regimen.textColor = [UIColor lightGrayColor];
-        regimen.adjustsFontSizeToFitWidth = YES;
-        
-        bloodProduct.text = @"Immunoglobulin";
-        regimen.text = @"";
-        
-        [cell addSubview:bloodProduct];
-        [cell addSubview:regimen];
-        [cell addSubview:volume];
+        cell.bloodProduct.text = @"Immunoglobulin";
+        cell.regimen.text = @"";
         
         returnCell = cell;
     }
@@ -530,29 +395,21 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *path = nil;
-    
-    if (indexPath.section == 0 || indexPath.section == 1) 
-    {
-        path = indexPath;
-    }
-    
-    return path;
+    if (indexPath.section == 0 || indexPath.section == 1) return indexPath;
+    else return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     if (indexPath.section == 0) 
     {
         BloodTransfusionCriteriaViewController *newViewController = [[BloodTransfusionCriteriaViewController alloc] init];
-        [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        [self.navigationController pushViewController:newViewController animated:YES];
     }
     else if (indexPath.section == 1)
     {
         PlateletTransfusionCriteriaViewController *newViewController = [[PlateletTransfusionCriteriaViewController alloc] init];
-        [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        [self.navigationController pushViewController:newViewController animated:YES];
     }
 }
 

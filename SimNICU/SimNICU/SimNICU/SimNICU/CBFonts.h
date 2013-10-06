@@ -10,10 +10,18 @@
 
 @interface CBFonts : NSObject
 
+// TableViewCell label formatting
+
++ (UILabel *)textFormattingForLabel:(UILabel *)label;
++ (UILabel *)detailTextFormattingForLabel:(UILabel *)label;
+
+// Header / Footer formatting
+
 + (UILabel *)darkGrayOffsetShadowFormattingForLabel:(UILabel *)label;
 
 // Colours
-
 + (UIColor *)specialGray;
 
 @end
+
+// should really refactor this to CBFormatting, or something

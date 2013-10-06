@@ -270,6 +270,8 @@
 		5C552AAA1790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */; };
 		5C56F6061801A46300665E22 /* CBFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6051801A46300665E22 /* CBFonts.m */; };
 		5C56F6071801A46300665E22 /* CBFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6051801A46300665E22 /* CBFonts.m */; };
+		5C56F60A1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */; };
+		5C56F60B1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */; };
 		5C5A116717D2393F00CE96E5 /* KxIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116217D2393F00CE96E5 /* KxIntroView.m */; };
 		5C5A116817D2393F00CE96E5 /* KxIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */; };
 		5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */; };
@@ -965,6 +967,8 @@
 		5C552AA81790267800577BE0 /* DrugDosePatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientTableViewCell.m; sourceTree = "<group>"; };
 		5C56F6041801A46300665E22 /* CBFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFonts.h; sourceTree = "<group>"; };
 		5C56F6051801A46300665E22 /* CBFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFonts.m; sourceTree = "<group>"; };
+		5C56F6081801CA4300665E22 /* BloodProductsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodProductsTableViewCell.h; sourceTree = "<group>"; };
+		5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodProductsTableViewCell.m; sourceTree = "<group>"; };
 		5C5A116117D2393F00CE96E5 /* KxIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroView.h; sourceTree = "<group>"; };
 		5C5A116217D2393F00CE96E5 /* KxIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroView.m; sourceTree = "<group>"; };
 		5C5A116317D2393F00CE96E5 /* KxIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroViewController.h; sourceTree = "<group>"; };
@@ -2951,6 +2955,8 @@
 			children = (
 				5C940B60166E3C2E0044A7D1 /* BloodProductsViewController.h */,
 				5C940B61166E3C2E0044A7D1 /* BloodProductsViewController.m */,
+				5C56F6081801CA4300665E22 /* BloodProductsTableViewCell.h */,
+				5C56F6091801CA4300665E22 /* BloodProductsTableViewCell.m */,
 				5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */,
 				5C940B62166E3C2E0044A7D1 /* bloodTransfusionCriteria0.html */,
 				5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */,
@@ -3550,6 +3556,7 @@
 				5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
 				5C930AEC17B0C7C400CBE616 /* CrUSSOptionsViewController.m in Sources */,
+				5C56F60A1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */,
 				5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
 				5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFB17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
@@ -3740,6 +3747,7 @@
 				5C756CA617989E15002F983E /* Calculator.m in Sources */,
 				5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
+				5C56F60B1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */,
 				5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */,
 				5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */,
 				5C65858417FCBF3300454277 /* APGARVCFormats.m in Sources */,
