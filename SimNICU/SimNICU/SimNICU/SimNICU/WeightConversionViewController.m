@@ -30,20 +30,22 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //webView
-    // iOS 7 specifics
+    self.webView = [UIWebView new];
+    
+    // iOS version differences
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height))];
+        self.webView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height));
     }
     else
     {
-        self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
+        self.webView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f));
     }
     self.webView.backgroundColor = [UIColor clearColor];
     self.webView.dataDetectorTypes = UIDataDetectorTypeAll;
     [self.view addSubview:self.webView];
     
-    NSString *filename = Nil;
+    NSString *filename;
     
     // Number localization code
     if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])

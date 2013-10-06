@@ -1,11 +1,13 @@
 //
 //  PulmonaryHaemorrhageViewController.h
-//  Neonatal Intensive Care
+//  SimNICU
 //
-//  Created by Conrad Bosman on 10/08/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Created by Conrad Bosman on 07/10/2013.
+//  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-@interface PulmonaryHaemorrhageViewController : UIViewController
+#import "CBTableViewWebViewController.h"
+
+@interface PulmonaryHaemorrhageViewController : CBTableViewWebViewController
 
 @end
