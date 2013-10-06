@@ -10,7 +10,6 @@
 #import "BloodTransfusionCriteriaViewController.h"
 #import "BloodProductsViewController.h"
 #import "BloodProductsTableViewCell.h"
-#import "AppDelegate.h"
 
 @interface BloodProductsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -405,7 +404,6 @@
     else if (indexPath.section == 1)
     {
         PlateletTransfusionCriteriaViewController *newViewController = [[PlateletTransfusionCriteriaViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        // PlateletTransfusionCriteriaViewController2 *newViewController = [[PlateletTransfusionCriteriaViewController2 alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:newViewController animated:YES];
     }
 }
