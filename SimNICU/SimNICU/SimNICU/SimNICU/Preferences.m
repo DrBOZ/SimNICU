@@ -58,6 +58,7 @@
         self.image = [aDecoder decodeObjectForKey:@"image"];
         self.autocorrection = [aDecoder decodeObjectForKey:@"autocorrection"];
         self.trackball = [aDecoder decodeObjectForKey:@"trackball"];
+        self.dynamicText = [aDecoder decodeObjectForKey:@"dynamicText"];
         self.handoverSections = [aDecoder decodeObjectForKey:@"handoverSections"];
     }
     
@@ -100,6 +101,8 @@
                   forKey:@"autocorrection"];
     [aCoder encodeObject:self.trackball
                   forKey:@"trackball"];
+    [aCoder encodeObject:self.dynamicText
+                  forKey:@"dynamicText"];
     [aCoder encodeObject:self.handoverSections
                   forKey:@"handoverSections"];
 }
@@ -158,6 +161,12 @@
     if (!self.trackball)
     {
         self.trackball = [NSNumber numberWithInt:1];
+    }
+    
+    // default dynamic text
+    if (!self.dynamicText)
+    {
+        self.dynamicText = [NSNumber numberWithInt:0];
     }
     
 #if RESET_PREFERENCES_HANDOVER_SECTIONS

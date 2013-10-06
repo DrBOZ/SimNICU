@@ -139,7 +139,7 @@
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // the following caused problems in iOS 7
+        
     }
     else
     {

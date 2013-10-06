@@ -40,6 +40,7 @@
 // Daily Summary Editor
 @property (nonatomic, retain) NSNumber *autocorrection;
 @property (nonatomic, retain) NSNumber *trackball;
+@property (nonatomic, retain) NSNumber *dynamicText;
 @property (nonatomic, retain) NSMutableArray *handoverSections;
 
 // PDF settings

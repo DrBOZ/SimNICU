@@ -15,6 +15,7 @@
 @interface DailySummaryEditorSettingsTableViewController ()
 
 @property (nonatomic, strong) UISwitch *autocorrection;
+@property (nonatomic, strong) UISwitch *dynamicText;
 @property (nonatomic, strong) UISwitch *trackball;
 
 @end
@@ -176,7 +177,7 @@
         }
         else if (indexPath.row == 2)
         {
-            static NSString *CellIdentifier = @"Landscape";
+            static NSString *CellIdentifier = @"DynamicText";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if (!cell)
@@ -186,7 +187,26 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
             
-            cell.accessoryView = nil;
+            // lazy instantiation
+            if (!self.dynamicText)
+            {
+                self.dynamicText = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+                
+                // add target
+                [self.dynamicText addTarget:self action:@selector(dynamicTextSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.dynamicText.onTintColor = [UIColor redColor];
+                }
+            }
+            
+            // set value for switch
+            self.dynamicText.on = [preferences.dynamicText intValue];
+            
+            // add to cell
+            cell.accessoryView = self.dynamicText;
             
             returnCell = cell;
         }
@@ -219,6 +239,13 @@
     Preferences *preferences = [Preferences sharedPreferences];
     
     preferences.autocorrection = [NSNumber numberWithInt:self.autocorrection.on];
+}
+
+- (void)dynamicTextSwitchChangedValue
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    preferences.dynamicText = [NSNumber numberWithInt:self.dynamicText.on];
 }
 
 - (void)trackballSwitchChangedValue

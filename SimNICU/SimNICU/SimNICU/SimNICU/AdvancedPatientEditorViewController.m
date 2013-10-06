@@ -440,8 +440,17 @@
     CGFloat height = textViewToMeasure.frame.size.height;
     
     textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
-    // textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    textView.font = [UIFont systemFontOfSize:14.0f];
+    
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.dynamicText intValue])
+    {
+        textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    }
+    else
+    {
+        textView.font = [UIFont systemFontOfSize:14.0f];
+    }
     
     return height;
 }
@@ -559,9 +568,17 @@
             {
                 textView.text = self.selectedPatient.jobs;
             }
-#warning add settings option to use dynamic text
-            // textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-            textView.font = [UIFont systemFontOfSize:14.0f];
+            
+            Preferences *preferences = [Preferences sharedPreferences];
+            
+            if ([preferences.dynamicText intValue])
+            {
+                textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            }
+            else
+            {
+                textView.font = [UIFont systemFontOfSize:14.0f];
+            }
             
             [textView sizeToFit];
             
@@ -1496,8 +1513,17 @@
         CGFloat height = textViewToMeasure.frame.size.height;
         
         textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
-        // textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        textView.font = [UIFont systemFontOfSize:14.0f];
+        
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        if ([preferences.dynamicText intValue])
+        {
+            textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        }
+        else
+        {
+            textView.font = [UIFont systemFontOfSize:14.0f];
+        }
     }
     else
     {

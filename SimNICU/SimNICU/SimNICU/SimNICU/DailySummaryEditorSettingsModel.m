@@ -34,6 +34,13 @@
     rowData.text = @"Tool Bar";
     [sectionData.rowData addObject:rowData];
     
+    // Nice idea, but difficult to implement...
+    /*
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = @"Dynamic Text";
+    [sectionData.rowData addObject:rowData];
+     */
+    
     [tableData addObject:sectionData];
     
     if ([preferences.trackball intValue] == 1)
