@@ -214,13 +214,13 @@
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 92.0f + 64.0f) style:UITableViewStylePlain];
-        self.myTableView1.userInteractionEnabled = NO;
+        // self.myTableView1.userInteractionEnabled = YES;
         self.myTableView1.separatorColor = [UIColor clearColor];
     }
     else
     {
         self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 92.0f) style:UITableViewStylePlain];
-        self.myTableView1.userInteractionEnabled = YES;
+        // self.myTableView1.userInteractionEnabled = YES;
         self.myTableView1.separatorColor = [UIColor grayColor];
     }
     self.myTableView1.rowHeight = 44.0f;
@@ -1650,8 +1650,17 @@
         
         PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
         
-        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-        navController.navigationBar.tintColor = [UIColor blackColor];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            navController.navigationBar.barTintColor = [UIColor grayColor];
+            navController.navigationBar.tintColor = [UIColor redColor];
+        }
+        else
+        {
+            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+            navController.navigationBar.tintColor = [UIColor blackColor];
+        }
         
         [self presentModalViewController:navController animated:YES];
     }

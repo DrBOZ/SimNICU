@@ -23,16 +23,6 @@
 
 @implementation PatientDetailsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
-    {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -43,13 +33,29 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     // Instantiate TableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20 - 44)) style:UITableViewStyleGrouped];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+    }
+    else
+    {
+        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+    }
     self.myTableView.rowHeight = 50.0f;
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     
     // set background colour
-    [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        [CBDisplayMethods setBackgroundForTableView:self.myTableView];
+    }
+    else
+    {
+        [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
+    }
     
     [self.view addSubview:self.myTableView];
     
@@ -173,17 +179,25 @@
     {
         UIView *headerView;
         
-        headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 30.0f)];
         
-        UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
+        UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 30.0f)];
         
-        headerLabel.textColor = [UIColor whiteColor];
-        // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-        headerLabel.shadowColor = [UIColor blackColor];
-        headerLabel.shadowOffset = CGSizeMake(0, 1);
-        headerLabel.backgroundColor = [UIColor clearColor];
-        headerLabel.opaque = YES;
-        headerLabel.font = [UIFont boldSystemFontOfSize:18];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // do nothing
+        }
+        else
+        {
+            headerLabel.textColor = [UIColor whiteColor];
+            // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            headerLabel.shadowColor = [UIColor blackColor];
+            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+            headerLabel.backgroundColor = [UIColor clearColor];
+            headerLabel.opaque = YES;
+            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+        }
         
         headerLabel.text = @"Working Weight";
         
@@ -211,6 +225,7 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
@@ -242,8 +257,6 @@
                 cell.detailTextLabel.text = @"";
             }
             
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
             returnCell = cell;
         }
         else if (indexPath.row == 1) // Date of Birth
@@ -256,10 +269,19 @@
             }
             
             cell.textLabel.text = @"Date of Birth";
-            cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
             cell.detailTextLabel.text = @"";
+            cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                // nothing
+            }
+            else
+            {
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+            }
             
             if (self.patientToEdit.formattedBirthDate)
             {
@@ -273,24 +295,46 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                // nothing
+            }
+            else
+            {
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+            }
+            
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.text = @"Time of Birth";
+            cell.detailTextLabel.text = @"";
             
-            self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 206.0f, 30.0f)];
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(112.0f, 10.0f, 180.0f, 30.0f)];
+                self.birthDateTextField.backgroundColor = [UIColor clearColor];
+                
+                [cell.contentView addSubview:self.birthDateTextField];
+            }
+            else
+            {
+                self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 206.0f, 30.0f)];
+                cell.accessoryView = self.birthDateTextField;
+            }
+            
             self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             self.birthDateTextField.textAlignment = UITextAlignmentLeft;
             self.birthDateTextField.font = [UIFont boldSystemFontOfSize:17.0f];
             self.birthDateTextField.userInteractionEnabled = NO;
             // self.birthDateTextField.delegate = self;
-            
-            cell.accessoryView = self.birthDateTextField;
             
             if (self.patientToEdit.birthTimeSet)
             {
@@ -345,7 +389,17 @@
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                // nothing
+            }
+            else
+            {
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+            }
+            
             cell.textLabel.text = @"Birth Weight";
             
             if (self.patientToEdit.birthWeight) 
@@ -390,7 +444,17 @@
             }
             
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                // nothing
+            }
+            else
+            {
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+            }
+            
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             

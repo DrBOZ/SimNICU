@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/AdvancedPatientEditorViewController.m"
-            timestampString = "402715650.890541"
+            timestampString = "402718255.436791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2306"
-            endingLineNumber = "2306"
+            startingLineNumber = "2315"
+            endingLineNumber = "2315"
             landmarkName = "-loadShinobiChartWithFrame:"
             landmarkType = "5">
          </BreakpointContent>
