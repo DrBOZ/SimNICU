@@ -30,29 +30,29 @@
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+        }
         self.myTableView.separatorColor = [UIColor grayColor];
         self.myTableView.dataSource = self;
         self.myTableView.delegate = self;
         self.myTableView.rowHeight = 50.0f;
         self.myTableView.bounces = NO;
         
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
+            [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         }
         else
         {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
+            [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
         }
         
         [self.view addSubview:self.myTableView];
@@ -167,12 +167,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *returnCell;
     
     if (indexPath.row == 0)
     {
-        if(cell == nil)
+        NSString *CellIdentifier = @"Date";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
@@ -190,40 +192,67 @@
         
         cell.detailTextLabel.text = self.formattedWorkingWeightDate;
         
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:16.0f];
+            cell.detailTextLabel.textAlignment = UITextAlignmentRight;
+        }
+        
+        returnCell = cell;
     }
     else if (indexPath.row == 1) // working weight textField
     {
-        if(cell == nil)
+        NSString *CellIdentifier = @"WorkingWeight";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
-        self.workingWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
-        self.workingWeight.borderStyle = UITextBorderStyleRoundedRect;
-        self.workingWeight.placeholder = @"kilograms";
-        self.workingWeight.clearButtonMode = UITextFieldViewModeAlways;
-        self.workingWeight.adjustsFontSizeToFitWidth = YES;
-        self.workingWeight.returnKeyType = UIReturnKeyNext;
-        self.workingWeight.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
-        self.workingWeight.textAlignment = UITextAlignmentLeft;
-        self.workingWeight.delegate = self;
-        self.workingWeight.text = self.patientToEdit.workingWeight;
-        self.workingWeight.autocorrectionType = UITextAutocorrectionTypeNo;
+        if (!self.workingWeight)
+        {
+            self.workingWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.workingWeight.borderStyle = UITextBorderStyleRoundedRect;
+            self.workingWeight.placeholder = @"kilograms";
+            self.workingWeight.clearButtonMode = UITextFieldViewModeAlways;
+            self.workingWeight.adjustsFontSizeToFitWidth = YES;
+            self.workingWeight.returnKeyType = UIReturnKeyNext;
+            self.workingWeight.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+            self.workingWeight.textAlignment = UITextAlignmentLeft;
+            self.workingWeight.delegate = self;
+            self.workingWeight.autocorrectionType = UITextAutocorrectionTypeNo;
+            
+            self.workingWeight.keyboardType = UIKeyboardTypeDecimalPad;
+            self.workingWeight.keyboardAppearance = UIKeyboardAppearanceAlert;
+        }
         
-        self.workingWeight.keyboardType = UIKeyboardTypeDecimalPad;
-        self.workingWeight.keyboardAppearance = UIKeyboardAppearanceAlert;
+        self.workingWeight.text = self.patientToEdit.workingWeight;
         
         cell.accessoryView = self.workingWeight;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"W. Weight";
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // do not set font
+        }
+        else
+        {
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+        }
+        
         cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
         
         [self.workingWeight becomeFirstResponder];
+        
+        returnCell = cell;
     }
     
-    return cell;
+    return returnCell;
 }
 
 # pragma mark - Table view delegate

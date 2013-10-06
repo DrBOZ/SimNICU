@@ -319,8 +319,11 @@
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(112.0f, 10.0f, 180.0f, 30.0f)];
-                self.birthDateTextField.backgroundColor = [UIColor clearColor];
+                if (!self.birthDateTextField)
+                {
+                    self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(112.0f, 10.0f, 180.0f, 30.0f)];
+                    self.birthDateTextField.backgroundColor = [UIColor clearColor];
+                }
                 
                 [cell.contentView addSubview:self.birthDateTextField];
             }

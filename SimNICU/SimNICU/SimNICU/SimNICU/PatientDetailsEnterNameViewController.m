@@ -33,28 +33,48 @@
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+        }
         self.myTableView.rowHeight = 50.0f;
         self.myTableView.bounces = NO;
         self.myTableView.dataSource = self;
         self.myTableView.separatorColor = [UIColor grayColor];
         
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
+            [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         }
         else
         {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
+            // set background colour
+            [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
             
-            self.myTableView.backgroundView = tempImageView;
+            /*
+            if (appDelegate.window.bounds.size.height == 568.0f)
+            {
+                // 4 inch Retina
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+                [tempImageView setFrame:self.myTableView.frame];
+                
+                self.myTableView.backgroundView = tempImageView;
+            }
+            else
+            {
+                // 3.5 inch Retina
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+                [tempImageView setFrame:self.myTableView.frame];
+                
+                self.myTableView.backgroundView = tempImageView;
+            }
+             */
         }
         
         [self.view addSubview:self.myTableView];

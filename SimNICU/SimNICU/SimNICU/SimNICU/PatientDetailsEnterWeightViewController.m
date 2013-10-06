@@ -25,28 +25,48 @@
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        }
+        else
+        {
+            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f)) style:UITableViewStyleGrouped];
+        }
         [self.myTableView setSeparatorColor:[UIColor grayColor]];
         [self.myTableView setDataSource:self];
         [self.myTableView setRowHeight:50.0f];
         [self.myTableView setBounces:NO];
         
-        // set background colour
-        if (appDelegate.window.bounds.size.height == 568)
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // 4 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
-            
-            self.myTableView.backgroundView = tempImageView;
+            [CBDisplayMethods setBackgroundForTableView:self.myTableView];
         }
         else
         {
-            // 3.5 inch Retina
-            UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-            [tempImageView setFrame:self.myTableView.frame];
+            // set background colour
+            [CBDisplayMethods setSecondaryBackgroundForTableView:self.myTableView];
             
-            self.myTableView.backgroundView = tempImageView;
+            /*
+            if (appDelegate.window.bounds.size.height == 568.0f)
+            {
+                // 4 inch Retina
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
+                [tempImageView setFrame:self.myTableView.frame];
+                
+                self.myTableView.backgroundView = tempImageView;
+            }
+            else
+            {
+                // 3.5 inch Retina
+                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
+                [tempImageView setFrame:self.myTableView.frame];
+                
+                self.myTableView.backgroundView = tempImageView;
+            }
+             */
         }
         
         [self.view addSubview:self.myTableView];
@@ -153,31 +173,36 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *returnCell;
     
     if (indexPath.row == 0)
     {
-        if(cell == nil)
+        NSString *CellIdentifier = @"Gestation";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
-        self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
-        self.gestation.borderStyle = UITextBorderStyleRoundedRect;
-        self.gestation.placeholder = @"weeks";
-        self.gestation.clearButtonMode = UITextFieldViewModeWhileEditing;
-        self.gestation.adjustsFontSizeToFitWidth = YES;
-        self.gestation.returnKeyType = UIReturnKeyNext;
-        // not for capitilisation
-        self.gestation.textAlignment = UITextAlignmentLeft;
-        self.gestation.delegate = self;
-        self.gestation.text = self.patientToEdit.gestation;
-        self.gestation.autocorrectionType = UITextAutocorrectionTypeNo;
+        if (!self.gestation)
+        {
+            self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.gestation.borderStyle = UITextBorderStyleRoundedRect;
+            self.gestation.placeholder = @"weeks";
+            self.gestation.clearButtonMode = UITextFieldViewModeWhileEditing;
+            self.gestation.adjustsFontSizeToFitWidth = YES;
+            self.gestation.returnKeyType = UIReturnKeyNext;
+            // not for capitilisation
+            self.gestation.textAlignment = UITextAlignmentLeft;
+            self.gestation.delegate = self;
+            self.gestation.autocorrectionType = UITextAutocorrectionTypeNo;
+            self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
+            self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
+        }
         
-        self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
-        self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
+        self.gestation.text = self.patientToEdit.gestation;
         
         cell.accessoryView = self.gestation;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -188,43 +213,64 @@
         {
             [self.gestation becomeFirstResponder];
         }
+        
+        returnCell = cell;
     }
     else if (indexPath.row == 1)
     {
-        if(cell == nil)
+        NSString *CellIdentifier = @"BirthWeight";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
         
-        self.birthWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
-        self.birthWeight.borderStyle = UITextBorderStyleRoundedRect;
-        self.birthWeight.placeholder = @"kilograms";
-        self.birthWeight.clearButtonMode = UITextFieldViewModeAlways;
-        self.birthWeight.adjustsFontSizeToFitWidth = YES;
-        self.birthWeight.returnKeyType = UIReturnKeyNext;
-        self.birthWeight.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
-        self.birthWeight.textAlignment = UITextAlignmentLeft;
-        self.birthWeight.delegate = self;
-        self.birthWeight.text = self.patientToEdit.birthWeight;
-        self.birthWeight.autocorrectionType = UITextAutocorrectionTypeNo;
+        if (!self.birthWeight)
+        {
+            self.birthWeight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.birthWeight.borderStyle = UITextBorderStyleRoundedRect;
+            self.birthWeight.placeholder = @"kilograms";
+            self.birthWeight.clearButtonMode = UITextFieldViewModeAlways;
+            self.birthWeight.adjustsFontSizeToFitWidth = YES;
+            self.birthWeight.returnKeyType = UIReturnKeyNext;
+            self.birthWeight.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+            self.birthWeight.textAlignment = UITextAlignmentLeft;
+            self.birthWeight.delegate = self;
+            self.birthWeight.autocorrectionType = UITextAutocorrectionTypeNo;
+            
+            self.birthWeight.keyboardType = UIKeyboardTypeDecimalPad;
+            self.birthWeight.keyboardAppearance = UIKeyboardAppearanceAlert;
+        }
         
-        self.birthWeight.keyboardType = UIKeyboardTypeDecimalPad;
-        self.birthWeight.keyboardAppearance = UIKeyboardAppearanceAlert;
+        self.birthWeight.text = self.patientToEdit.birthWeight;
         
         cell.accessoryView = self.birthWeight;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"Birth Weight";
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:11];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // do not set font
+        }
+        else
+        {
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+        }
+        
         cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
         
         if ([self.textFieldToBecomeFirstResponder isEqualToString:@"Birth Weight"])
         {
             [self.birthWeight becomeFirstResponder];
         }
+        
+        returnCell = cell;
     }
     
-    return cell;
+    return returnCell;
 }
 
 #pragma mark - TextField delegate
