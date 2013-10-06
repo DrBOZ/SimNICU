@@ -48,16 +48,12 @@
                        @"Question",
                        @"Suggestion",
                        @"Bug Report",
-                       @"I can help translate",
-                       @"I want to be a beta tester",
                        @"Other", nil];
         
         self.topicsToSend = [[NSArray alloc]initWithObjects:
                              @"Question",
                              @"Suggestion",
                              @"Bug Report",
-                             @"Translation",
-                             @"Beta Tester",
                              @"Other", nil];
     }
     
@@ -178,7 +174,8 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         if(indexPath.section==1)
         {
             //General Infos
@@ -198,7 +195,20 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:CellIdentifier];
                 
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                _descriptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(2.0f, 0.0f, 300.0f, 88.0f)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    _descriptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(10.0f, 0.0f, 300.0f, 88.0f)];
+                    _descriptionPlaceHolder = [[UITextField alloc]initWithFrame:CGRectMake(15.0f, 8.0f, 300.0f, 20.0f)];
+                }
+                else
+                {
+                    _descriptionTextView = [[UITextView alloc]initWithFrame:CGRectMake(2.0f, 0.0f, 300.0f, 88.0f)];
+                    _descriptionPlaceHolder = [[UITextField alloc]initWithFrame:CGRectMake(10.0f, 8.0f, 300.0f, 20.0f)];
+                }
+                
+                
                 _descriptionTextView.backgroundColor = [UIColor clearColor];
                 _descriptionTextView.font = [UIFont systemFontOfSize:16.0f];
                 _descriptionTextView.delegate = self;
@@ -206,7 +216,7 @@
                 _descriptionTextView.text = self.descriptionText;
                 [cell.contentView addSubview:_descriptionTextView];
                 
-                _descriptionPlaceHolder = [[UITextField alloc]initWithFrame:CGRectMake(10.0f, 8.0f, 300.0f, 20.0f)];
+                
                 _descriptionPlaceHolder.font = [UIFont systemFontOfSize:16.0f];
                 _descriptionPlaceHolder.placeholder = NSLocalizedString(@"Please enter text here.", nil);
                 _descriptionPlaceHolder.userInteractionEnabled = NO;
