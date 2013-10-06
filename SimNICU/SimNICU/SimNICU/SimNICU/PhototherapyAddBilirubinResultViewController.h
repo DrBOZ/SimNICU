@@ -1,6 +1,6 @@
 //
 //  PhototherapyAddBilirubinResultViewController.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 14/10/2012.
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.

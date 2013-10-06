@@ -1,6 +1,6 @@
 //
 //  PhototherapyNeurotoxicityRiskViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 27/10/2012.
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.

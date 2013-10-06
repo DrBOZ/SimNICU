@@ -31,8 +31,11 @@
     [trackballButton setFrame:CGRectMake(0.0f, 0.0f, 44.0f, 44.0f)];
   
     [trackballButton addTarget:self action:@selector(touchDownAction:withEvent:) forControlEvents:UIControlEventTouchDown];
+    
     [trackballButton addTarget:self action:@selector(touchDownRepeatAction:withEvent:) forControlEvents:UIControlEventTouchDownRepeat];
+    
     [trackballButton addTarget:self action:@selector(touchDragAction:withEvent:) forControlEvents:UIControlEventTouchDragInside|UIControlEventTouchDragOutside];
+    
     [trackballButton addTarget:self action:@selector(touchUpAction:withEvent:) forControlEvents:UIControlEventTouchUpInside|UIControlEventTouchUpOutside];
 
     self = [super initWithCustomView:trackballButton];
@@ -78,10 +81,13 @@
 {
     // Store touch down origin
     UITouch *touch = [[event allTouches] anyObject];
+    
+    // this is the x and y position relative to the origin of the textView being edited
     self.touchOrigin = [touch locationInView:self.textView];
     
     // Store carets origin
     UITextRange *selection = [self.textView selectedTextRange];
+    
     self.startCaretOrigin = selection.start;
     self.endCaretOrigin = selection.end;
 }
@@ -89,7 +95,14 @@
 - (void)track:(UITouch *)touch
 {
     // Calculate movement delta
+    //
+    // finger press position relative to origin of textView being edited
     CGPoint touchPos = [touch locationInView:self.textView];
+    
+    // tested: works fine with iOS 7
+    // NSLog(@"touchPos: x = %f, y = %f", touchPos.x, touchPos.y);
+    
+    //
     CGSize movement = CGSizeMake(touchPos.x - self.touchOrigin.x, touchPos.y - self.touchOrigin.y);
   
     // Set new caret position
@@ -100,7 +113,9 @@
         
         // Set new caret position
         [self.textView setSelectedTextRange:[self.textView textRangeFromPosition:self.startCaretOrigin toPosition:newCaretPos]];
-    } else {
+    }
+    else
+    {
         // Calculate new caret position
         UITextPosition *newCaretPos = [self calcPos:self.startCaretOrigin delta:movement];
         
@@ -116,17 +131,26 @@
 {
     CGRect rect = [self.textView caretRectForPosition:pos];
     CGPoint center = CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
+    
     // Double movement so one tracking motion can reach end to end
     CGFloat newX = center.x + delta.width * 2;
     CGFloat newY = center.y + delta.height * 2;
     
-    // Constrain: Don't implicitly jump to beginningOfDocument or endOfDocument
-    CGFloat minHeight = [self.textView caretRectForPosition:[self.textView beginningOfDocument]].origin.y;
-    CGFloat maxHeight = [self.textView caretRectForPosition:[self.textView endOfDocument]].origin.y;
-    if (newY < minHeight)
-        newY = minHeight;
-    else if (newY > maxHeight)
-        newY = maxHeight;
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // the following caused problems in iOS 7
+    }
+    else
+    {
+        // Constrain: Don't implicitly jump to beginningOfDocument or endOfDocument
+        CGFloat minHeight = [self.textView caretRectForPosition:[self.textView beginningOfDocument]].origin.y;
+        CGFloat maxHeight = [self.textView caretRectForPosition:[self.textView endOfDocument]].origin.y;
+        if (newY < minHeight)
+            newY = minHeight;
+        else if (newY > maxHeight)
+            newY = maxHeight;
+    }
     
     return [self.textView closestPositionToPoint:CGPointMake(newX, newY)];
 }

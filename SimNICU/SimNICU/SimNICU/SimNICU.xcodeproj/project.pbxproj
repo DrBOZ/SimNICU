@@ -160,6 +160,8 @@
 		5C3C02BA17DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */; };
 		5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
 		5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
+		5C422D851800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */; };
+		5C422D861800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */; };
 		5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
 		5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
 		5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE417B63A0C00F8CED6 /* CrUSSImage.m */; };
@@ -887,6 +889,8 @@
 		5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardTableViewController.m; sourceTree = "<group>"; };
 		5C3C02BB17DAA80200E4297A /* PostnatalWardSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardSection.h; sourceTree = "<group>"; };
 		5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardSection.m; sourceTree = "<group>"; };
+		5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartForJaundice.h; sourceTree = "<group>"; };
+		5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartForJaundice.m; sourceTree = "<group>"; };
 		5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSDataBase.h; sourceTree = "<group>"; };
 		5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSDataBase.m; sourceTree = "<group>"; };
 		5C427FE317B63A0C00F8CED6 /* CrUSSImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSImage.h; sourceTree = "<group>"; };
@@ -2672,6 +2676,8 @@
 				5C316CFA17C2BF830096B8D3 /* CBTrackers.m */,
 				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
 				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
+				5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */,
+				5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */,
 				5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */,
 				5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */,
 				5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */,
@@ -3408,6 +3414,7 @@
 				5C940A6E166E37FE0044A7D1 /* main.m in Sources */,
 				5C940A72166E37FE0044A7D1 /* AppDelegate.m in Sources */,
 				5C940A93166E38770044A7D1 /* DAAnisotropicImage.m in Sources */,
+				5C422D851800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */,
 				5C940A97166E38B10044A7D1 /* ZUUIRevealController.m in Sources */,
 				5C940A9D166E38CA0044A7D1 /* SVSegmentedControl.m in Sources */,
 				5C940A9E166E38CA0044A7D1 /* SVSegmentedThumb.m in Sources */,
@@ -3684,6 +3691,7 @@
 				5CD3AFF716CF38D500DE362C /* ActionSheetStringPicker.m in Sources */,
 				5CD3AFF816CF38D500DE362C /* ActionSheetDatePicker.m in Sources */,
 				5CD3AFF916CF38D500DE362C /* ActionSheetDistancePicker.m in Sources */,
+				5C422D861800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */,
 				5CD3AFFA16CF38D500DE362C /* DistancePickerView.m in Sources */,
 				5CD3AFFB16CF38D500DE362C /* NSDate+TCUtils.m in Sources */,
 				5CD3AFFC16CF38D500DE362C /* User.m in Sources */,

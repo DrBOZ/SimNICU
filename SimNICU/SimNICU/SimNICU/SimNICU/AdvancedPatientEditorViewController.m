@@ -1267,7 +1267,6 @@
 #pragma mark Jaundice/Phototherapy
     else if ([CellIdentifier isEqualToString:@"Phototherapy"])
     {
-        // self.chart.bounds = cell.bounds;
         [cell addSubview:self.chart];
         
         // iOS 7 specifics
@@ -1277,6 +1276,8 @@
             self.chart.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         }
         
+        // attempts to recreate chart on PDF
+        /*
         self.shinobiChartImage = [[UIImage alloc] init];
         
         UIGraphicsBeginImageContext(self.chart.bounds.size);
@@ -1285,7 +1286,7 @@
         
         self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        
+        */
         
         /*
         UIGraphicsBeginImageContext(self.chart.bounds.size);
@@ -4472,17 +4473,13 @@
                 }
             }
             
+            self.chart.title = @"Treatment threshold graph for jaundice"; // setting graph title
+            
             // iOS 7 specifics
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                self.chart.title = @"Treatment threshold graph for jaundice"; // setting graph title
                 self.chart.titleLabel.font = [UIFont systemFontOfSize:14.0f];
             }
-            else
-            {
-                self.chart.title = @"Treatment threshold graph for jaundice";
-            }
-            
             
             int maxResultInDays = 7;
             
