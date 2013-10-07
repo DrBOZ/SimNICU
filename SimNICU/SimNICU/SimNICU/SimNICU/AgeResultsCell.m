@@ -19,6 +19,8 @@
         self.ageTextLabel.textAlignment = UITextAlignmentLeft;
         self.ageTextLabel.backgroundColor = [UIColor clearColor];
         self.ageTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+        [CBFonts textFormattingForLabel:self.ageTextLabel withTextStyle:UIFontTextStyleBody minFontSize:14.0f];
+        
         [self addSubview:self.ageTextLabel];
         
         // they are the opposite way round, because I initially started with age in words at the top
@@ -61,11 +63,11 @@
         
         if (style == UITableViewCellStyleSubtitle)
         {
-            self.label1.font = [UIFont boldSystemFontOfSize:17];
-            self.label2.font = [UIFont boldSystemFontOfSize:17];
-            self.label3.font = [UIFont boldSystemFontOfSize:17];
-            self.label4.font = [UIFont boldSystemFontOfSize:17];
-            self.label5.font = [UIFont boldSystemFontOfSize:17];
+            self.label1.font = [UIFont boldSystemFontOfSize:17.0f];
+            self.label2.font = [UIFont boldSystemFontOfSize:17.0f];
+            self.label3.font = [UIFont boldSystemFontOfSize:17.0f];
+            self.label4.font = [UIFont boldSystemFontOfSize:17.0f];
+            self.label5.font = [UIFont boldSystemFontOfSize:17.0f];
         }
     }
     return self;

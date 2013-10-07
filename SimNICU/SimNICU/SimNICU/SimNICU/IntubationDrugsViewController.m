@@ -248,7 +248,7 @@
     return height;
 }
 
-- (IntubationDrugsTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IntubationDrugsTableViewCell *returnCell = nil;
     
@@ -257,12 +257,13 @@
 #pragma mark Morphine
         if (indexPath.row == 0)
         {
-            static NSString *CellIdentifier = @"Morphine";
+            NSString *CellIdentifier = @"Morphine";
             IntubationDrugsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if(!cell)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                // cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 
                 cell.drug.text = @"Morphine";
 
@@ -303,7 +304,8 @@
             
             if(!cell)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                // cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 
                 NSString *UKLocaleWorkingWeight;
                 UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
@@ -383,7 +385,8 @@
             
             if(!cell)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                // cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 
                 cell.drug.text = @"Atropine";
                 
@@ -424,7 +427,8 @@
             
             if(!cell)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                // cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 
                 cell.drug.text = @"Neostigmine";
                 
@@ -462,6 +466,7 @@
     return returnCell;
 }
 
+/*
 - (IntubationDrugsTableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
 {
     IntubationDrugsTableViewCell *cell;
@@ -493,6 +498,7 @@
     
     return cell;
 }
+ */
 
 #pragma mark - Table view delegate
 

@@ -298,6 +298,16 @@
 		5C56F66318022F8900665E22 /* CurosurfModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F66118022F8900665E22 /* CurosurfModel.m */; };
 		5C56F66A180234C700665E22 /* CurosurfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F669180234C700665E22 /* CurosurfViewController.m */; };
 		5C56F66B180234C700665E22 /* CurosurfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F669180234C700665E22 /* CurosurfViewController.m */; };
+		5C56F66D1802389500665E22 /* dismiss2_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F66C1802389500665E22 /* dismiss2_iOS7.png */; };
+		5C56F66E1802389500665E22 /* dismiss2_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F66C1802389500665E22 /* dismiss2_iOS7.png */; };
+		5C56F67018023B5A00665E22 /* App_icon_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F66F18023B5A00665E22 /* App_icon_58x58.png */; };
+		5C56F67118023B5A00665E22 /* App_icon_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F66F18023B5A00665E22 /* App_icon_58x58.png */; };
+		5C56F67318023B6300665E22 /* App_icon_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F67218023B6300665E22 /* App_icon_29x29.png */; };
+		5C56F67418023B6300665E22 /* App_icon_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F67218023B6300665E22 /* App_icon_29x29.png */; };
+		5C56F67618023B9200665E22 /* App_icon_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F67518023B9200665E22 /* App_icon_80x80.png */; };
+		5C56F67718023B9200665E22 /* App_icon_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C56F67518023B9200665E22 /* App_icon_80x80.png */; };
+		5C56F682180259BB00665E22 /* DynamicTextTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F681180259BB00665E22 /* DynamicTextTesterViewController.m */; };
+		5C56F683180259BB00665E22 /* DynamicTextTesterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F681180259BB00665E22 /* DynamicTextTesterViewController.m */; };
 		5C5A116717D2393F00CE96E5 /* KxIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116217D2393F00CE96E5 /* KxIntroView.m */; };
 		5C5A116817D2393F00CE96E5 /* KxIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116417D2393F00CE96E5 /* KxIntroViewController.m */; };
 		5C5A116917D2393F00CE96E5 /* KxIntroViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A116617D2393F00CE96E5 /* KxIntroViewPage.m */; };
@@ -585,8 +595,6 @@
 		5CB5BC3617FF7318007F3921 /* Demo02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3417FF7318007F3921 /* Demo02.png */; };
 		5CB5BC3817FF7970007F3921 /* Demo35.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3717FF7970007F3921 /* Demo35.png */; };
 		5CB5BC3917FF7970007F3921 /* Demo35.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC3717FF7970007F3921 /* Demo35.png */; };
-		5CB5BC4A17FF87A2007F3921 /* dismiss_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */; };
-		5CB5BC4B17FF87A2007F3921 /* dismiss_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */; };
 		5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */; };
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
@@ -1011,6 +1019,12 @@
 		5C56F66118022F8900665E22 /* CurosurfModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurosurfModel.m; sourceTree = "<group>"; };
 		5C56F668180234C700665E22 /* CurosurfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurosurfViewController.h; sourceTree = "<group>"; };
 		5C56F669180234C700665E22 /* CurosurfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurosurfViewController.m; sourceTree = "<group>"; };
+		5C56F66C1802389500665E22 /* dismiss2_iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismiss2_iOS7.png; sourceTree = "<group>"; };
+		5C56F66F18023B5A00665E22 /* App_icon_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = App_icon_58x58.png; sourceTree = "<group>"; };
+		5C56F67218023B6300665E22 /* App_icon_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = App_icon_29x29.png; sourceTree = "<group>"; };
+		5C56F67518023B9200665E22 /* App_icon_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = App_icon_80x80.png; sourceTree = "<group>"; };
+		5C56F680180259BB00665E22 /* DynamicTextTesterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicTextTesterViewController.h; sourceTree = "<group>"; };
+		5C56F681180259BB00665E22 /* DynamicTextTesterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicTextTesterViewController.m; sourceTree = "<group>"; };
 		5C5A116117D2393F00CE96E5 /* KxIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroView.h; sourceTree = "<group>"; };
 		5C5A116217D2393F00CE96E5 /* KxIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxIntroView.m; sourceTree = "<group>"; };
 		5C5A116317D2393F00CE96E5 /* KxIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxIntroViewController.h; sourceTree = "<group>"; };
@@ -1406,7 +1420,6 @@
 		5CB5BC3117FF6AC5007F3921 /* Demo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Demo.png; sourceTree = "<group>"; };
 		5CB5BC3417FF7318007F3921 /* Demo02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Demo02.png; sourceTree = "<group>"; };
 		5CB5BC3717FF7970007F3921 /* Demo35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Demo35.png; sourceTree = "<group>"; };
-		5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dismiss_iOS7.png; sourceTree = "<group>"; };
 		5CB8C34316D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_Lite_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
@@ -1985,6 +1998,15 @@
 			name = "HTML pages";
 			sourceTree = "<group>";
 		};
+		5C56F6781802558900665E22 /* Screen_DynamicTextTester */ = {
+			isa = PBXGroup;
+			children = (
+				5C56F680180259BB00665E22 /* DynamicTextTesterViewController.h */,
+				5C56F681180259BB00665E22 /* DynamicTextTesterViewController.m */,
+			);
+			name = Screen_DynamicTextTester;
+			sourceTree = "<group>";
+		};
 		5C5A116017D2391800CE96E5 /* kxintro */ = {
 			isa = PBXGroup;
 			children = (
@@ -2331,6 +2353,7 @@
 				5C63B14116BA003600B31431 /* Screen_UVCUAC */,
 				5C63B12716B9F57B00B31431 /* Screen_VitK */,
 				5C63B12916B9FA0B00B31431 /* Screen_WeightConversion */,
+				5C56F6781802558900665E22 /* Screen_DynamicTextTester */,
 				5C940C26166E3CE40044A7D1 /* Settings */,
 			);
 			name = ScreenControllers;
@@ -2895,6 +2918,9 @@
 			isa = PBXGroup;
 			children = (
 				5CA71F8617FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png */,
+				5C56F66F18023B5A00665E22 /* App_icon_58x58.png */,
+				5C56F67218023B6300665E22 /* App_icon_29x29.png */,
+				5C56F67518023B9200665E22 /* App_icon_80x80.png */,
 				5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */,
 				5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */,
 				5CB5BC3117FF6AC5007F3921 /* Demo.png */,
@@ -2907,7 +2933,7 @@
 				5C28EAB717FD6691009DDF17 /* ScreenHack01.png */,
 				5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */,
 				5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */,
-				5CB5BC4917FF87A2007F3921 /* dismiss_iOS7.png */,
+				5C56F66C1802389500665E22 /* dismiss2_iOS7.png */,
 			);
 			name = SimNICU;
 			sourceTree = "<group>";
@@ -3219,6 +3245,7 @@
 				5C940C04166E3C5B0044A7D1 /* ActionSheetPickerViewController.xib in Resources */,
 				5C940C5D166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg in Resources */,
 				5C940C5E166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg in Resources */,
+				5C56F67018023B5A00665E22 /* App_icon_58x58.png in Resources */,
 				5CB5BC3517FF7318007F3921 /* Demo02.png in Resources */,
 				5CCA063E17FB7FCC00AF2E0C /* Media.xcassets in Resources */,
 				5C940CC2166E45860044A7D1 /* Localizable.strings in Resources */,
@@ -3265,6 +3292,7 @@
 				5C0E0630178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0633178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
 				5C0E0636178F834C00768739 /* gentamicinContraindications.html in Resources */,
+				5C56F67318023B6300665E22 /* App_icon_29x29.png in Resources */,
 				5C0E0639178F835900768739 /* gentamicinInteractions.html in Resources */,
 				5C0E063C178F836700768739 /* gentamicinSideEffects.html in Resources */,
 				5C0E063F178F837800768739 /* gentamicinMonitoring.html in Resources */,
@@ -3305,6 +3333,7 @@
 				5CA3C13117924198002AB53D /* vancomycinInteractions.html in Resources */,
 				5CA3C134179241A7002AB53D /* vancomycinSideEffects.html in Resources */,
 				5CA3C137179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
+				5C56F66D1802389500665E22 /* dismiss2_iOS7.png in Resources */,
 				5CA3C13A179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
 				5CA3C13D179241D8002AB53D /* vancomycinReferences.html in Resources */,
 				5C51D8C7179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */,
@@ -3329,12 +3358,12 @@
 				5C51D8FB17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FE17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
 				5C51D90117932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
-				5CB5BC4A17FF87A2007F3921 /* dismiss_iOS7.png in Resources */,
 				5CA3CC1E17B79996002E96DC /* Default.png in Resources */,
 				5CB5BC2F17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */,
 				5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */,
 				5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */,
 				5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */,
+				5C56F67618023B9200665E22 /* App_icon_80x80.png in Resources */,
 				5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */,
 				5C0B9B8517D2022B000B9E34 /* trackball blue highlighted@2x.png in Resources */,
 				5C0B9B8617D2022B000B9E34 /* trackball blue highlighted@2x.pxm in Resources */,
@@ -3414,7 +3443,6 @@
 				5CD3B0AA16CF38D500DE362C /* bloodTransfusionCriteria0Comma.html in Resources */,
 				5CD3B0AB16CF38D500DE362C /* bloodTransfusionCriteria1Comma.html in Resources */,
 				5CB8C34416D002610066BC0A /* SimNICU_Lite_iPhone_Icon@2x.png in Resources */,
-				5CB5BC4B17FF87A2007F3921 /* dismiss_iOS7.png in Resources */,
 				5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */,
 				5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */,
 				5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */,
@@ -3432,6 +3460,7 @@
 				5C0E0600178F51BC00768739 /* adrenalineIndications.html in Resources */,
 				5C0E0603178F51CB00768739 /* adrenalinePresentation.html in Resources */,
 				5C0E0606178F51D900768739 /* adrenalineDose.html in Resources */,
+				5C56F67718023B9200665E22 /* App_icon_80x80.png in Resources */,
 				5C0E0609178F51E800768739 /* adrenalinePreparation.html in Resources */,
 				5C0E060C178F51FC00768739 /* adrenalineStability.html in Resources */,
 				5C0E060F178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
@@ -3459,11 +3488,13 @@
 				5C0E0650178F941D00768739 /* amoxicillinPresentation.html in Resources */,
 				5C0E0653178F942C00768739 /* amoxicillinDose.html in Resources */,
 				5C0E0656178F943C00768739 /* amoxicillinPreparation.html in Resources */,
+				5C56F67418023B6300665E22 /* App_icon_29x29.png in Resources */,
 				5C0E0659178F945B00768739 /* amoxicillinIncompatibilities.html in Resources */,
 				5C0E065C178F946F00768739 /* amoxicillinContraindications.html in Resources */,
 				5C0E065F178F948100768739 /* amoxicillinSideEffects.html in Resources */,
 				5C0E0662178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
 				5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */,
+				5C56F67118023B5A00665E22 /* App_icon_58x58.png in Resources */,
 				5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */,
 				5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */,
 				5C52F3B31791656D000CFD80 /* vitaminKIndications.html in Resources */,
@@ -3487,6 +3518,7 @@
 				5CA3C12C1792417E002AB53D /* vancomycinMonitoring.html in Resources */,
 				5CA3C12F1792418C002AB53D /* vancomycinContraindications.html in Resources */,
 				5CA3C13217924198002AB53D /* vancomycinInteractions.html in Resources */,
+				5C56F66E1802389500665E22 /* dismiss2_iOS7.png in Resources */,
 				5CA3C135179241A7002AB53D /* vancomycinSideEffects.html in Resources */,
 				5CA3C138179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
 				5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
@@ -3607,6 +3639,7 @@
 				5C940C0B166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m in Sources */,
 				5C56F6141801DEE500665E22 /* CBWebView.m in Sources */,
 				5C940C0C166E3C5B0044A7D1 /* PhototherapyUnitsViewController.m in Sources */,
+				5C56F682180259BB00665E22 /* DynamicTextTesterViewController.m in Sources */,
 				5C940C0D166E3C5B0044A7D1 /* PhototherapyAddBilirubinResultViewController.m in Sources */,
 				5C940C0E166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.m in Sources */,
 				5C940C1D166E3CAC0044A7D1 /* AbstractActionSheetPicker.m in Sources */,
@@ -3756,6 +3789,7 @@
 				5CD3AFB616CF38D500DE362C /* KalMonthView.m in Sources */,
 				5CD3AFB716CF38D500DE362C /* KalTileView.m in Sources */,
 				5CD3AFB816CF38D500DE362C /* KalView.m in Sources */,
+				5C56F683180259BB00665E22 /* DynamicTextTesterViewController.m in Sources */,
 				5CD3AFB916CF38D500DE362C /* KalViewController.m in Sources */,
 				5C56F6231801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */,

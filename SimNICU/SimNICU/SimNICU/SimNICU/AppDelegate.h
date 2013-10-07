@@ -28,10 +28,14 @@
 #define IRATE_PREVIEW_MODE 0
 #define DCINTROSPECT_ON 1
 #define RESET_CELL_INFO 0
-#define RESET_PREFERENCES_HANDOVER_SECTIONS 1
+#define RESET_PREFERENCES_HANDOVER_SECTIONS 0
+
+// Dynamic Text
+#define USE_DYNAMIC_TEXT 1
+#define DYNAMIC_TEXT_TESTER 1
 
 // Intro screen
-#define INTRO_SCREEN 0                                      // turn on for release
+#define INTRO_SCREEN 0                                      // turn on for release (maybe not!)
 
 // This is just for creating the startup screen images
 #define LOADING_GRAPHICS 0

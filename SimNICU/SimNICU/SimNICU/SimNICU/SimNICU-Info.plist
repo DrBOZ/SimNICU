@@ -16,6 +16,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>App_icon_80x80</string>
+				<string>App_icon_58x58</string>
+				<string>App_icon_29x29</string>
 				<string>SimNICU_iPhone_Icon_iOS7</string>
 				<string>SimNICU_iPhone_Icon</string>
 				<string>AppIcon03</string>

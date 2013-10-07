@@ -135,7 +135,7 @@
     {
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
         {
-            height = 66.0f;
+            height = 55.0f;
         }
         else
         {
@@ -143,7 +143,7 @@
         }
     }
     
-    return height;
+    return 44.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,6 +168,7 @@
         }
         
         cell.textLabel.text = @"Gestation 36/40 or more";
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
         
         returnCell = cell;
     }
@@ -189,6 +190,10 @@
             cell.textLabel.text = @"APGAR score";
             cell.detailTextLabel.text = @"less than 6 at 10 minutes";
             
+            // Dynamic text formatting for iOS 7
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+            
             returnCell = cell;
         }
         else if (indexPath.row == 1)
@@ -205,6 +210,10 @@
             
             cell.textLabel.text = @"Resuscitation";
             cell.detailTextLabel.text = @"Still required at 10 minutes";
+            
+            // Dynamic text formatting for iOS 7
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
             
             returnCell = cell;
         }
@@ -223,6 +232,10 @@
             cell.textLabel.text = @"Cord gases";
             cell.detailTextLabel.text = @"any pH < 7.0 or BE < -15 within 60 min of birth";
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            
+            // Dynamic text formatting for iOS 7
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
             
             if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
             {
@@ -250,6 +263,10 @@
             cell.textLabel.text = @"Seizures";
             cell.detailTextLabel.text = @"Clinical or on cerebral function monitoring";
             
+            // Dynamic text formatting for iOS 7
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+            
             returnCell = cell;
         }
         else
@@ -267,6 +284,10 @@
             cell.textLabel.text = @"Moderate to severe encephalopathy";
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.detailTextLabel.text = @"Repeated neurological assessment";
+            
+            // Dynamic text formatting for iOS 7
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
             
             returnCell = cell; 
         }

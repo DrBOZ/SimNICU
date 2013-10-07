@@ -79,7 +79,7 @@
     
 #else
     
-    [aboutMenuItems addObject:@"Intro screen"];
+    // [aboutMenuItems addObject:@"Intro screen"];
     [aboutMenuItems addObject:@"Rate on iTunes"];
     [aboutMenuItems addObject:@"Feedback / Requests"];
     // [aboutMenuItems addObject:@"Developer Information"];
@@ -180,14 +180,14 @@
             
 #else
             
-            cell.imageView.image = [UIImage imageNamed:@"intro01.png"];
-            // cell.imageView.image = [UIImage imageNamed:@"star.png"];
+            // cell.imageView.image = [UIImage imageNamed:@"intro01.png"];
+            cell.imageView.image = [UIImage imageNamed:@"star.png"];
 #endif
         }
         else if (indexPath.row == 1)
         {
             // cell.imageView.image = [UIImage imageNamed:@"star.png"];
-            cell.imageView.image = [UIImage imageNamed:@"star.png"];
+            cell.imageView.image = [UIImage imageNamed:@"mail01.png"];
         }
         else if (indexPath.row == 2)
         {
@@ -226,11 +226,13 @@
     
     if (indexPath.row == 0)
     {
-        [self showIntroScreen];
+        // [self showIntroScreen];
+        [[iRate sharedInstance] openRatingsPageInAppStore];
     }
     else if (indexPath.row == 1)
     {
-        [[iRate sharedInstance] openRatingsPageInAppStore];
+        // [[iRate sharedInstance] openRatingsPageInAppStore];
+        [self.delegate aboutSimNICUViewControllerDelegateDidSelectFeedback:self];
     }
     else if (indexPath.row == 2)
     {

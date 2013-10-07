@@ -20,15 +20,15 @@
         
         // setup labels
         self.bloodProduct = [UILabel new];
-        [CBFonts textFormattingForLabel:self.bloodProduct];
+        
         self.bloodProduct.adjustsFontSizeToFitWidth = YES;
         
         self.volume = [UILabel new];
-        [CBFonts textFormattingForLabel:self.volume];
+        
         self.volume.textAlignment = UITextAlignmentRight;
         
         self.regimen = [UILabel new];
-        [CBFonts detailTextFormattingForLabel:self.regimen];
+        
         self.regimen.adjustsFontSizeToFitWidth = YES;
         
         // iOS version differences

@@ -12,30 +12,49 @@
 
 // TableViewCell label formatting
 
-+ (UILabel *)textFormattingForLabel:(UILabel *)label
++ (UILabel *)textFormattingForLabel:(UILabel *)label withTextStyle:(NSString *)textStyle minFontSize:(CGFloat)minFontSize
 {
-    // black formatting
-    label.font = [UIFont boldSystemFontOfSize:17.0f];
-    label.backgroundColor = [UIColor clearColor];
+    // black text
     label.textColor = [UIColor blackColor];
+    label.backgroundColor = [UIColor clearColor];
     
     // iOS version differences
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         
+#if USE_DYNAMIC_TEXT
+        
+        label.font = [UIFont preferredFontForTextStyle:textStyle];
+        label.adjustsFontSizeToFitWidth = YES;
+        
+        // NSLog(@"label.font.xHeight = %f", label.font.xHeight);
+        
+        if (label.font.xHeight < (minFontSize / 2.0f))
+        {
+            label.font = [UIFont boldSystemFontOfSize:minFontSize];
+            
+            NSLog(@"Using minFontSize = %f", minFontSize);
+        }
+        
+#else
+        
+        label.font = [UIFont boldSystemFontOfSize:17.0f];
+        
+#endif
+        
     }
     else
     {
-        
+        // iOS 6 default
     }
     
     return label;
 }
 
-+ (UILabel *)detailTextFormattingForLabel:(UILabel *)label
++ (UILabel *)detailTextFormattingForLabel:(UILabel *)label withTextStyle:(NSString *)textStyle minFontSize:(CGFloat)minFontSize
 {
     // gray formatting
-    label.font = [UIFont systemFontOfSize:14.0f];
+    
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor lightGrayColor];
     
@@ -43,11 +62,67 @@
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         
+#if USE_DYNAMIC_TEXT
+        
+        label.font = [UIFont preferredFontForTextStyle:textStyle];
+        label.adjustsFontSizeToFitWidth = YES;
+        
+#else
+        
+        label.font = [UIFont systemFontOfSize:14.0f];
+        
+#endif
+        
     }
     else
     {
+        label.font = [UIFont systemFontOfSize:14.0f];
+    }
+    
+    return label;
+}
+
++ (UILabel *)mainPickerHeadlineTextFormattingforLabel:(UILabel *)label;
+{
+    // black text
+    label.textColor = [UIColor blackColor];
+    label.backgroundColor = [UIColor clearColor];
+    
+    // boldSystemFontOfSize:18.0f minimum
+    
+    // iOS version differences
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        
+#if USE_DYNAMIC_TEXT
+        
+        label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        label.adjustsFontSizeToFitWidth = YES;
+        
+        // NSLog(@"label.font.xHeight = %f", label.font.xHeight);
+        
+        if (label.font.xHeight < 9.0f)
+        {
+            label.font = [UIFont boldSystemFontOfSize:18.0f];
+        }
+        
+#else
+        
+        label.font = [UIFont boldSystemFontOfSize:17.0f];
+        
+#endif
         
     }
+    else
+    {
+        // iOS 6 default
+    }
+    
+    return label;
+}
+
++ (UILabel *)mainPickerSubheadlineDetailTextFormattingForLabel:(UILabel *)label;
+{
     
     return label;
 }

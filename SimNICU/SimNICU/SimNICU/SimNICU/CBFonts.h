@@ -11,12 +11,14 @@
 @interface CBFonts : NSObject
 
 // TableViewCell label formatting
++ (UILabel *)mainPickerHeadlineTextFormattingforLabel:(UILabel *)label;
++ (UILabel *)mainPickerSubheadlineDetailTextFormattingForLabel:(UILabel *)label;
 
-+ (UILabel *)textFormattingForLabel:(UILabel *)label;
-+ (UILabel *)detailTextFormattingForLabel:(UILabel *)label;
++ (UILabel *)textFormattingForLabel:(UILabel *)label withTextStyle:(NSString *)textStyle minFontSize:(CGFloat)minFontSize;
++ (UILabel *)detailTextFormattingForLabel:(UILabel *)label withTextStyle:(NSString *)textStyle minFontSize:(CGFloat)minFontSize;
+
 
 // Header / Footer formatting
-
 + (UILabel *)darkGrayOffsetShadowFormattingForLabel:(UILabel *)label;
 
 // Colours

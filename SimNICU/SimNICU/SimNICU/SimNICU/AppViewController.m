@@ -61,6 +61,8 @@
 #import "WeightConversionViewController.h"
 #import "ActionSheetPickerViewController.h"
 
+#import "DynamicTextTesterViewController.h"
+
 @interface AppViewController ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
@@ -391,7 +393,7 @@
         
         // dismiss button image & view
         self.displayDismissButtonView = [[UIImageView alloc] initWithFrame:CGRectMake(265.0f, 42.0f, 22.0f, 22.0f)];
-        self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss_iOS7.png"];
+        self.displayDismissButtonView.image = [UIImage imageNamed:@"dismiss2_iOS7.png"];
         self.displayDismissButtonView.userInteractionEnabled = YES;
         self.displayDismissButtonView.hidden = YES;
         [self.myHeaderView addSubview:self.displayDismissButtonView];
@@ -871,6 +873,15 @@
     screen.segueId = @"WeightConversion";
     [screens addObject:screen];
     
+#if DYNAMIC_TEXT_TESTER
+    
+    screen = [Screen new];
+    screen.menuText = @"Dynamic Text Tester";
+    screen.segueId = @"DynamicTextTester";
+    [screens addObject:screen];
+    
+#endif
+    
     appDelegate.currentController = self;
 }
 
@@ -1026,6 +1037,7 @@
             }
             
             cell.textLabel.text = @"Infusions";
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
         }
@@ -1041,6 +1053,7 @@
             }
             
             cell.textLabel.text = @"Intubation";
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
         }
@@ -1056,6 +1069,7 @@
             }
             
             cell.textLabel.text = @"Resuscitation Drugs";
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
         }
@@ -1074,6 +1088,9 @@
         Screen *thisScreen = screens[indexPath.row];
         cell.textLabel.text = [thisScreen menuText];
         cell.detailTextLabel.text = [thisScreen detailMenuText];
+        
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+        [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
         
         returnCell = cell;
     }
@@ -1606,6 +1623,12 @@
 
 #endif
             
+#pragma mark DynamicTextTester
+        }
+        else if ([thisScreenType isEqualToString:@"DynamicTextTester"])
+        {
+            DynamicTextTesterViewController *vc = [DynamicTextTesterViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         else
         {

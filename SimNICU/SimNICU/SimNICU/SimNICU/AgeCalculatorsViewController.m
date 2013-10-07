@@ -196,6 +196,9 @@
     cell.textLabel.text = calculator.text;
     cell.detailTextLabel.text = calculator.detailText;
     
+    [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+    [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+    
     return cell;
 }
 

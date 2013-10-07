@@ -221,6 +221,7 @@
         }
         
         cell.textLabel.text = @"Date of Birth";
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
         
         if (self.selectedPatient)
         {
@@ -316,6 +317,7 @@
         
         cell.accessoryView = self.dateTextField;
         cell.textLabel.text = @"Date";
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
         
         returnCell = cell;
     }
@@ -349,6 +351,7 @@
         }
         
         cell.textLabel.text = @"Gestation at birth";
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
         
         if (self.selectedPatient)
         {
@@ -379,6 +382,9 @@
         
         cell.ageTextLabel.text = @"Chronological Age";
         cell.textLabel.text = @"";
+        
+        [CBFonts textFormattingForLabel:cell.ageTextLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
         
         if (self.dateOfBirth && self.selectedDate)
         {
@@ -431,6 +437,9 @@
             cell.textLabel.text = @"";
             cell.ageTextLabel.text = @"Postmenstrual Age";
             
+            [CBFonts textFormattingForLabel:cell.ageTextLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
+            
             if (gestationHasBeenEntered && self.dateOfBirth && self.selectedDate)
             {
                 // get postmenstrual age
@@ -476,6 +485,9 @@
             // set default textLabel.text to nil, as this is the one centered on the cell
             cell.textLabel.text = @"";
             cell.ageTextLabel.text = @"Corrected Age"; // this is the label top justified
+            
+            [CBFonts textFormattingForLabel:cell.ageTextLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
+            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
             
             if (gestationHasBeenEntered && self.dateOfBirth && self.selectedDate)
             {
