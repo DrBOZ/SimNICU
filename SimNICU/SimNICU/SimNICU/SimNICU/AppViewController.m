@@ -316,7 +316,7 @@
     [self.contentView addSubview:self.myTableView];
     
     // Add the screen mask gradient to the UITableView
-    self.tableBgView = [[UIImageView alloc] init];
+    self.tableBgView = [UIImageView new];
     
     // screen hack for iOS 7 to prevent options scrolling behind headers
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -514,7 +514,7 @@
 {
     NSDate *currentDate = [NSDate date];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateStyle:NSDateFormatterShortStyle];
     
     self.title = [formatter stringFromDate:currentDate];
@@ -657,36 +657,36 @@
     
     Screen *screen;
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"APGAR scores";
     screen.segueId = @"APGAR";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Blood Products";
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
 #if CALCULATOR_PREVIEW_MODE
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Calculator";
     screen.segueId = @"Calculator";
     [screens addObject:screen];
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Cooling";
     screen.segueId = @"Cooling";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Corrected Age";
     screen.segueId = @"Age Calculators";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Cranial Ultrasound";
     screen.segueId = @"CrUSS";
     
@@ -700,61 +700,61 @@
     
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Curosurf\u00AE";
     screen.segueId = @"Curosurf";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Diaphragmatic Hernia";
     screen.segueId = @"CDH";
     [screens addObject:screen];
     
 #if DRUGS_PREVIEW_MODE
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Drugs";
     screen.segueId = @"Drugs";
     [screens addObject:screen];
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Early Care";
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
 #if FLUID_BALANCE_PREVIEW_MODE
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Fluid Balance";
     screen.segueId = @"FluidBalance";
     [screens addObject:screen];
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Fluid Requirements";
     screen.segueId = @"FluidRequirements";
     [screens addObject:screen];
     
 #if FEEDS_AND_FLUIDS_PREVIEW_MODE
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Feeds & Fluids";
     screen.segueId = @"FeedsAndFluids";
     [screens addObject:screen];
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Gastroschisis";
     screen.segueId = @"Gastroschisis";
     [screens addObject:screen];
     
 #if GLUCOSE_LOAD_PREVIEW_MODE
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Glucose Load";
     
     screen.detailMenuText = @"Coming soon!";
@@ -763,7 +763,7 @@
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
     {
         screen.menuText = @"High Frequency Oscillation";
@@ -777,65 +777,65 @@
     
 #if HYPOGLYCAEMIA_PREVIEW_MODE
     
-     screen = [[Screen alloc] init];
+     screen = [Screen new];
      screen.menuText = @"Hypoglycaemia Screen";
      screen.segueId = @"Hypo";
      [screens addObject:screen];
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Infusions";
     screen.segueId = @"Infusions";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Intubation";
     screen.segueId = @"Intubation";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Naloxone (Narcan)";
     screen.segueId = @"Narcan";
     [screens addObject:screen];
     
     // Outcomes
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Oxygenation Index";
     screen.segueId = @"OI";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Phototherapy";
     screen.segueId = @"Phototherapy";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Plastic Bag (at delivery)";
     screen.segueId = @"Thermoregulation";
     [screens addObject:screen];
     
 #if POSTNATAL_WARD_PREVIEW_MODE
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Postnatal Ward Problems";
     screen.segueId = @"PostnatalWard";
     [screens addObject:screen];
     
 #endif
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = NSLocalizedString(@"Pulmonary Haemorrhage", nil);
     screen.segueId = @"PulmonaryHaemorrhage";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Resuscitation Drugs";
     screen.segueId = @"Resus";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Retinopathy of Prematurity";
     screen.segueId = @"ROP";
     [screens addObject:screen];
@@ -843,7 +843,7 @@
     // Sarnat score
     
     /*
-     screen = [[Screen alloc] init];
+     screen = [Screen new];
      screen.menuText = @"Seizures";
      screen.segueId = @"Fits";
      [screens addObject:screen];
@@ -851,22 +851,22 @@
     
     // Sodium correction
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Transport Ventilator";
     screen.segueId = @"BabyPac";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"UAC / UVC";
     screen.segueId = @"UACUVC";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Vitamin K";
     screen.segueId = @"VitK";
     [screens addObject:screen];
     
-    screen = [[Screen alloc] init];
+    screen = [Screen new];
     screen.menuText = @"Weight Conversion";
     screen.segueId = @"WeightConversion";
     [screens addObject:screen];
@@ -1176,7 +1176,7 @@
         
         else if ([thisScreenType isEqualToString:@"BloodProducts"])
         {
-            BloodProductsViewController *newViewController = [[BloodProductsViewController alloc] init];
+            BloodProductsViewController *newViewController = [BloodProductsViewController new];
             // BloodProductsTableViewController *newViewController = [[BloodProductsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             newViewController.workingWeight = self.weight;
             
@@ -1187,7 +1187,7 @@
         
         else if ([thisScreenType isEqualToString:@"Calculator"])
         {
-            CalculatorViewController *newViewController = [[CalculatorViewController alloc] init];
+            CalculatorViewController *newViewController = [CalculatorViewController new];
             
             if (self.selectedPatient)
             {
@@ -1195,7 +1195,7 @@
             }
             else if (self.weight)
             {
-                Patient *tempPatient = [[Patient alloc] init];
+                Patient *tempPatient =  [Patient new];
                 tempPatient.workingWeight = self.weight;
                 
                 newViewController.selectedPatient = tempPatient;
@@ -1208,7 +1208,7 @@
         
         else if ([thisScreenType isEqualToString:@"Cooling"])
         {
-            CoolingViewController *newViewController = [[CoolingViewController alloc] init];
+            CoolingViewController *newViewController = [CoolingViewController new];
     
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1217,7 +1217,7 @@
         
         else if ([thisScreenType isEqualToString:@"Curosurf"])
         {
-            CurosurfViewController *newViewController = [[CurosurfViewController alloc] init];
+            CurosurfViewController *newViewController = [CurosurfViewController new];
 
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1229,7 +1229,7 @@
 
 #if CRUSS_PREVIEW_MODE
             
-            CrUSSOptionsViewController *newViewController = [[CrUSSOptionsViewController alloc] init];
+            CrUSSOptionsViewController *newViewController = [CrUSSOptionsViewController new];
             
 #else
             CrUSSViewController *newViewController = [CrUSSViewController new];
@@ -1242,7 +1242,7 @@
         
         else if ([thisScreenType isEqualToString:@"CDH"])
         {
-            CDHViewController *newViewController = [[CDHViewController alloc] init];
+            CDHViewController *newViewController = [CDHViewController new];
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1251,7 +1251,7 @@
         
         else if ([thisScreenType isEqualToString:@"Drugs"])
         {
-            DrugsViewController *newViewController = [[DrugsViewController alloc] init];
+            DrugsViewController *newViewController = [DrugsViewController new];
             newViewController.index = 0;
             
             if (self.selectedPatient.workingWeight)
@@ -1271,7 +1271,7 @@
         
         else if ([thisScreenType isEqualToString:@"EarlyCare"])
         {
-            EarlyCareViewController *newViewController = [[EarlyCareViewController alloc] init];
+            EarlyCareViewController *newViewController = [EarlyCareViewController new];;
             
             if (self.earlyCareWarningShown)
             {
@@ -1294,7 +1294,7 @@
         
         else if ([thisScreenType isEqual:@"FluidRequirements"])
         {
-            FluidRequirementsViewController *newViewController = [[FluidRequirementsViewController alloc] init];
+            FluidRequirementsViewController *newViewController = [FluidRequirementsViewController new];;
             
             if (self.selectedPatient.workingWeight)
             {
@@ -1319,7 +1319,7 @@
         
         else if ([thisScreenType isEqualToString:@"Gastroschisis"])
         {
-            GastroschisisViewController *newViewController = [[GastroschisisViewController alloc] init];
+            GastroschisisViewController *newViewController = [GastroschisisViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1330,7 +1330,7 @@
         {
 #if GLUCOSE_LOAD_PREVIEW_MODE
             
-            GlucoseLoadController *newViewController = [[GlucoseLoadController alloc] init];
+            GlucoseLoadController *newViewController = [GlucoseLoadController new];;
             [self.navigationController pushViewController:newViewController animated:YES];
             
 #else
@@ -1342,7 +1342,7 @@
         
         else if ([thisScreenType isEqualToString:@"HFOV"])
         {
-            HFOVViewController *newViewController = [[HFOVViewController alloc] init];
+            HFOVViewController *newViewController = [HFOVViewController new];;
 
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1351,7 +1351,7 @@
         
         else if ([thisScreenType isEqualToString:@"Infusions"])
         {
-            InfusionsViewController *newViewController = [[InfusionsViewController alloc] init];
+            InfusionsViewController *newViewController = [InfusionsViewController new];;
             
             if (self.selectedPatient.workingWeight)
             {
@@ -1369,7 +1369,7 @@
         
         else if ([thisScreenType isEqualToString:@"Intubation"])
         {
-            IntubationViewController *newViewController = [[IntubationViewController alloc] init];
+            IntubationViewController *newViewController = [IntubationViewController new];;
             
             if (self.selectedPatient)
             {
@@ -1392,7 +1392,7 @@
         {
             NSLog(@"showNarcan");
             
-            ResusViewController *newViewController = [[ResusViewController alloc] init];
+            ResusViewController *newViewController = [ResusViewController new];;
             newViewController.workingWeight = self.weight;
             newViewController.narcanSelected = @"YES";
             
@@ -1415,7 +1415,7 @@
             
 #else
             
-            OxygenationIndexViewController *newViewController = [[OxygenationIndexViewController alloc] init];
+            OxygenationIndexViewController *newViewController = [OxygenationIndexViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
             
@@ -1427,7 +1427,7 @@
         
         else if ([thisScreenType isEqualToString:@"Thermoregulation"])
         {
-            PlasticBagViewController *newViewController = [[PlasticBagViewController alloc] init];
+            PlasticBagViewController *newViewController = [PlasticBagViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1436,7 +1436,7 @@
         
         else if ([thisScreenType isEqualToString:@"Phototherapy"])
         {
-            PhototherapyViewController *newViewController = [[PhototherapyViewController alloc] init];
+            PhototherapyViewController *newViewController = [PhototherapyViewController new];;
             
             if (self.selectedPatient.gestation)
             {
@@ -1475,7 +1475,7 @@
         
         else if ([thisScreenType isEqualToString:@"PulmonaryHaemorrhage"])
         {
-            PulmonaryHaemorrhageViewController *newViewController = [[PulmonaryHaemorrhageViewController alloc] init];
+            PulmonaryHaemorrhageViewController *newViewController = [PulmonaryHaemorrhageViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1484,7 +1484,7 @@
         
         else if ([thisScreenType isEqualToString:@"Resus"])
         {
-            ResusViewController *newViewController = [[ResusViewController alloc] init];
+            ResusViewController *newViewController = [ResusViewController new];;
             newViewController.workingWeight = self.weight;
             
             [self.navigationController pushViewController:newViewController animated:YES];
@@ -1494,13 +1494,13 @@
         
         else if ([thisScreenType isEqualToString:@"ROP"])
         {
-            ROPViewController *newViewController = [[ROPViewController alloc] init];
+            ROPViewController *newViewController = [ROPViewController new];;
             
             newViewController.selectedPatient = self.selectedPatient;
             
             if ((!self.selectedPatient) && (self.gestation || self.weight))
             {
-                Patient *newPatient = [[Patient alloc] init];
+                Patient *newPatient = [Patient new];;
                 
                 if (self.gestation && self.weight)
                 {
@@ -1532,7 +1532,7 @@
         
         else if ([thisScreenType isEqualToString:@"BabyPac"])
         {
-            TransportVentilatorViewController *newViewController = [[TransportVentilatorViewController alloc] init];
+            TransportVentilatorViewController *newViewController = [TransportVentilatorViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1541,13 +1541,13 @@
 
         else if ([thisScreenType isEqualToString:@"UACUVC"])
         {
-            UVCUACViewController *newViewController = [[UVCUACViewController alloc] init];
+            UVCUACViewController *newViewController = [UVCUACViewController new];;
             
             newViewController.selectedPatient = self.selectedPatient;
             
             if ((!self.selectedPatient) && (self.gestation || self.weight))
             {
-                Patient *newPatient = [[Patient alloc] init];
+                Patient *newPatient = [Patient new];;
                 
                 if (self.gestation && self.weight)
                 {
@@ -1579,7 +1579,7 @@
         
         else if ([thisScreenType isEqualToString:@"VitK"])
         {
-            VitKViewController *newViewController = [[VitKViewController alloc] init];
+            VitKViewController *newViewController = [VitKViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
@@ -1600,7 +1600,7 @@
             
 #else
             
-            WeightConversionViewController *newViewController = [[WeightConversionViewController alloc] init];
+            WeightConversionViewController *newViewController = [WeightConversionViewController new];;
             
             [self.navigationController pushViewController:newViewController animated:YES];
 
@@ -1650,7 +1650,7 @@
 
 - (void)showAboutScreen
 {
-    InfoTabBarController *newViewController = [[InfoTabBarController alloc] init];
+    InfoTabBarController *newViewController = [InfoTabBarController new];;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
     
@@ -1777,7 +1777,7 @@
         NSString *estimatedWeight;
         
         // create growth chart and retrieve estimated weight
-        // self.growthChart = [[GrowthChart alloc] init];
+        // self.growthChart = [GrowthChart new];;
         
         estimatedWeight = [GrowthChart getWeightForSex:sex atCentile:centile atGestation:gestation];
         
@@ -1793,7 +1793,7 @@
         }
         else
         {
-            NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+            NSNumberFormatter *formatter =  [NSNumberFormatter new];;
             formatter.roundingMode = NSNumberFormatterRoundHalfEven;
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
             // if locale has an arabic decimal separator then use english
@@ -1976,7 +1976,7 @@
 
 - (void)sendFeedback
 {
-    AAMFeedbackViewController *newViewController = [[AAMFeedbackViewController alloc] init];
+    AAMFeedbackViewController *newViewController = [AAMFeedbackViewController new];
     newViewController.toRecipients = [NSArray arrayWithObject:@"conrad.bosman@nhs.net"];
     newViewController.ccRecipients = nil;
     newViewController.bccRecipients = nil;
