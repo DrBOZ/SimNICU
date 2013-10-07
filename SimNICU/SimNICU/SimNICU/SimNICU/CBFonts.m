@@ -21,27 +21,38 @@
     // iOS version differences
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        
-#if USE_DYNAMIC_TEXT
-        
-        label.font = [UIFont preferredFontForTextStyle:textStyle];
-        label.adjustsFontSizeToFitWidth = YES;
-        
-        // NSLog(@"label.font.xHeight = %f", label.font.xHeight);
-        
-        if (label.font.xHeight < (minFontSize / 2.0f))
+        #if USE_DYNAMIC_TEXT
         {
-            label.font = [UIFont boldSystemFontOfSize:minFontSize];
-            
-            NSLog(@"Using minFontSize = %f", minFontSize);
+            label.font = [UIFont preferredFontForTextStyle:textStyle];
+            label.adjustsFontSizeToFitWidth = YES;
+        
+            // ensure font is
+            if (label.font.xHeight < (minFontSize / 2.0f))
+            {
+                NSLog(@"Using minFontSize = %f", minFontSize);
+                
+                if ([textStyle isEqualToString:UIFontTextStyleHeadline])
+                {
+                    label.font = [UIFont boldSystemFontOfSize:minFontSize];
+                }
+                else
+                {
+                    label.font = [UIFont systemFontOfSize:minFontSize];
+                }
+            }
         }
-        
-#else
-        
-        label.font = [UIFont boldSystemFontOfSize:17.0f];
-        
-#endif
-        
+        #else
+        {
+            if ([textStyle isEqualToString:UIFontTextStyleHeadline])
+            {
+                label.font = [UIFont boldSystemFontOfSize:minFontSize];
+            }
+            else
+            {
+                label.font = [UIFont systemFontOfSize:minFontSize];
+            }
+        }
+        #endif
     }
     else
     {

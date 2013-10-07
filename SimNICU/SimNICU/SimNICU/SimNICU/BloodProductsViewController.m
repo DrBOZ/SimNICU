@@ -383,6 +383,11 @@
         returnCell = cell;
     }
     
+    // Dynamic text formatting for iOS 7
+    [CBFonts textFormattingForLabel:returnCell.bloodProduct withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+    [CBFonts textFormattingForLabel:returnCell.volume withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+    [CBFonts detailTextFormattingForLabel:returnCell.regimen withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+    
     return returnCell;
 }
 

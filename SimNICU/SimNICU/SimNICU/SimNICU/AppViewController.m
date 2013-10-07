@@ -1037,7 +1037,7 @@
             }
             
             cell.textLabel.text = @"Infusions";
-            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
         }
@@ -1053,7 +1053,7 @@
             }
             
             cell.textLabel.text = @"Intubation";
-            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
         }
@@ -1069,7 +1069,7 @@
             }
             
             cell.textLabel.text = @"Resuscitation Drugs";
-            [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+            // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
         }
@@ -1089,8 +1089,8 @@
         cell.textLabel.text = [thisScreen menuText];
         cell.detailTextLabel.text = [thisScreen detailMenuText];
         
-        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
-        [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+        // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+        // [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
         
         returnCell = cell;
     }

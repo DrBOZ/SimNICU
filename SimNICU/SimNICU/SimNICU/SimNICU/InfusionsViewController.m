@@ -594,50 +594,19 @@
                 [cell setBackgroundColor:[UIColor whiteColor]];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
-                drug.font = [UIFont boldSystemFontOfSize:17.0];
-                drug.adjustsFontSizeToFitWidth = YES;
-                drug.textColor = [UIColor blackColor];
-                drug.backgroundColor = [UIColor clearColor];
+                // setup labels
+                UILabel *drug = [UILabel new];
+                self.morphineDoseLabel = [UILabel new];
+                self.morphineStrengthLabel = [UILabel new];
+                UILabel *text = [UILabel new];
+                UILabel *diluent = [UILabel new];
+                self.morphineDose2Label = [UILabel new];
+                self.morphineRangeLabel = [UILabel new];
                 
-                self.morphineDoseLabel = [[UILabel alloc] initWithFrame:CGRectMake(172, 2, 124, 22)];
-                self.morphineDoseLabel.font = [UIFont boldSystemFontOfSize:17.0];
-                self.morphineDoseLabel.adjustsFontSizeToFitWidth = YES;
-                self.morphineDoseLabel.minimumFontSize = 12;
-                self.morphineDoseLabel.backgroundColor = [UIColor clearColor];
-                self.morphineDoseLabel.textAlignment = UITextAlignmentRight;
+                // format labels
+                NSArray *labels = @[drug, self.morphineDoseLabel, self.morphineStrengthLabel, text, diluent, self.morphineDose2Label, self.morphineRangeLabel];
                 
-                self.morphineStrengthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 257, 20)];
-                self.morphineStrengthLabel.font = [UIFont systemFontOfSize:15];
-                self.morphineStrengthLabel.textColor = [UIColor lightGrayColor];
-                self.morphineStrengthLabel.adjustsFontSizeToFitWidth = YES;
-                self.morphineStrengthLabel.minimumFontSize = 10;
-                self.morphineStrengthLabel.backgroundColor = [UIColor clearColor];
-                
-                UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 257, 20)];
-                text.font = [UIFont systemFontOfSize:15.0];
-                text.textColor = [UIColor lightGrayColor];
-                text.adjustsFontSizeToFitWidth = YES;
-                text.minimumFontSize = 10.0;
-                text.backgroundColor = [UIColor clearColor];
-                
-                UILabel *diluent = [[UILabel alloc] initWithFrame:CGRectMake(20, 62, 257, 20)];
-                diluent.font = [UIFont boldSystemFontOfSize:17.0];
-                diluent.textColor = [UIColor blackColor];
-                diluent.adjustsFontSizeToFitWidth = YES;
-                diluent.minimumFontSize = 10.0;
-                diluent.backgroundColor = [UIColor clearColor];
-                diluent.adjustsFontSizeToFitWidth = YES;
-                
-                self.morphineDose2Label = [[UILabel alloc] initWithFrame:CGRectMake(20, 83, 276, 20)];
-                self.morphineDose2Label.font = [UIFont systemFontOfSize:15.0];
-                self.morphineDose2Label.textColor = [UIColor lightGrayColor];
-                self.morphineDose2Label.backgroundColor = [UIColor clearColor];
-                
-                self.morphineRangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 102, 276, 20)];
-                self.morphineRangeLabel.font = [UIFont systemFontOfSize:15.0];
-                self.morphineRangeLabel.textColor = [UIColor lightGrayColor];
-                self.morphineRangeLabel.backgroundColor = [UIColor clearColor];
+                [self formatLabels:labels];
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -779,50 +748,19 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
-                drug.font = [UIFont boldSystemFontOfSize:17.0];
-                drug.adjustsFontSizeToFitWidth = YES;
-                drug.textColor = [UIColor blackColor];
-                drug.backgroundColor = [UIColor clearColor];
+                // setup labels
+                UILabel *drug = [UILabel new];
+                self.dopamineDoseLabel = [UILabel new];
+                self.dopamineStrengthLabel = [UILabel new];
+                UILabel *text = [UILabel new];
+                UILabel *diluent = [UILabel new];
+                self.dopamineDose2Label = [UILabel new];
+                self.dopamineRangeLabel = [UILabel new];
                 
-                self.dopamineDoseLabel = [[UILabel alloc] initWithFrame:CGRectMake(172, 2, 124, 22)];
-                self.dopamineDoseLabel.font = [UIFont boldSystemFontOfSize:17.0];
-                self.dopamineDoseLabel.adjustsFontSizeToFitWidth = YES;
-                self.dopamineDoseLabel.minimumFontSize = 12;
-                self.dopamineDoseLabel.backgroundColor = [UIColor clearColor];
-                self.dopamineDoseLabel.textAlignment = UITextAlignmentRight;
+                // format labels
+                NSArray *labels = @[drug, self.dopamineDoseLabel, self.dopamineStrengthLabel, text, diluent, self.dopamineDose2Label, self.dopamineRangeLabel];
                 
-                self.dopamineStrengthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, (20), 257, 20)];
-                self.dopamineStrengthLabel.font = [UIFont systemFontOfSize:15];
-                self.dopamineStrengthLabel.textColor = [UIColor lightGrayColor];
-                self.dopamineStrengthLabel.adjustsFontSizeToFitWidth = YES;
-                self.dopamineStrengthLabel.minimumFontSize = 10;
-                self.dopamineStrengthLabel.backgroundColor = [UIColor clearColor];
-                
-                UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20, (40), 257, 20)];
-                text.font = [UIFont systemFontOfSize:15.0];
-                text.textColor = [UIColor lightGrayColor];
-                text.adjustsFontSizeToFitWidth = YES;
-                text.minimumFontSize = 10.0;
-                text.backgroundColor = [UIColor clearColor];
-                
-                UILabel *diluent = [[UILabel alloc] initWithFrame:CGRectMake(20, (62), 257, 20)];
-                diluent.font = [UIFont boldSystemFontOfSize:17.0];
-                diluent.textColor = [UIColor blackColor];
-                diluent.adjustsFontSizeToFitWidth = YES;
-                diluent.minimumFontSize = 10.0;
-                diluent.backgroundColor = [UIColor clearColor];
-                diluent.adjustsFontSizeToFitWidth = YES;
-                
-                self.dopamineDose2Label = [[UILabel alloc] initWithFrame:CGRectMake(20, (83), 276, 20)];
-                self.dopamineDose2Label.font = [UIFont systemFontOfSize:15.0];
-                self.dopamineDose2Label.textColor = [UIColor lightGrayColor];
-                self.dopamineDose2Label.backgroundColor = [UIColor clearColor];
-                
-                self.dopamineRangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, (102), 276, 20)];
-                self.dopamineRangeLabel.font = [UIFont systemFontOfSize:15.0];
-                self.dopamineRangeLabel.textColor = [UIColor lightGrayColor];
-                self.dopamineRangeLabel.backgroundColor = [UIColor clearColor];
+                [self formatLabels:labels];
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -968,50 +906,19 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
-                drug.font = [UIFont boldSystemFontOfSize:17.0];
-                drug.adjustsFontSizeToFitWidth = YES;
-                drug.textColor = [UIColor blackColor];
-                drug.backgroundColor = [UIColor clearColor];
+                // setup labels
+                UILabel *drug = [UILabel new];
+                self.self.dobutamineDoseLabel = [UILabel new];
+                self.self.dobutamineStrengthLabel = [UILabel new];
+                UILabel *text = [UILabel new];
+                UILabel *diluent = [UILabel new];
+                self.dobutamineDose2Label = [UILabel new];
+                self.dobutamineRangeLabel = [UILabel new];
                 
-                self.dobutamineDoseLabel = [[UILabel alloc] initWithFrame:CGRectMake(172, 2, 124, 22)];
-                self.dobutamineDoseLabel.font = [UIFont boldSystemFontOfSize:17.0];
-                self.dobutamineDoseLabel.adjustsFontSizeToFitWidth = YES;
-                self.dobutamineDoseLabel.minimumFontSize = 12;
-                self.dobutamineDoseLabel.backgroundColor = [UIColor clearColor];
-                self.dobutamineDoseLabel.textAlignment = UITextAlignmentRight;
+                // format labels
+                NSArray *labels = @[drug, self.dobutamineDoseLabel, self.dobutamineStrengthLabel, text, diluent, self.dobutamineDose2Label, self.dobutamineRangeLabel];
                 
-                self.dobutamineStrengthLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 257, 20)];
-                self.dobutamineStrengthLabel.font = [UIFont systemFontOfSize:15];
-                self.dobutamineStrengthLabel.textColor = [UIColor lightGrayColor];
-                self.dobutamineStrengthLabel.adjustsFontSizeToFitWidth = YES;
-                self.dobutamineStrengthLabel.minimumFontSize = 10;
-                self.dobutamineStrengthLabel.backgroundColor = [UIColor clearColor];
-                
-                UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 257, 20)];
-                text.font = [UIFont systemFontOfSize:15.0];
-                text.textColor = [UIColor lightGrayColor];
-                text.adjustsFontSizeToFitWidth = YES;
-                text.minimumFontSize = 10.0;
-                text.backgroundColor = [UIColor clearColor];
-                
-                UILabel *diluent = [[UILabel alloc] initWithFrame:CGRectMake(20, 62, 257, 20)];
-                diluent.font = [UIFont boldSystemFontOfSize:17.0];
-                diluent.textColor = [UIColor blackColor];
-                diluent.adjustsFontSizeToFitWidth = YES;
-                diluent.minimumFontSize = 10.0;
-                diluent.backgroundColor = [UIColor clearColor];
-                diluent.adjustsFontSizeToFitWidth = YES;
-                
-                self.dobutamineDose2Label = [[UILabel alloc] initWithFrame:CGRectMake(20, 83, 276, 20)];
-                self.dobutamineDose2Label.font = [UIFont systemFontOfSize:15.0];
-                self.dobutamineDose2Label.textColor = [UIColor lightGrayColor];
-                self.dobutamineDose2Label.backgroundColor = [UIColor clearColor];
-                
-                self.dobutamineRangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 102, 276, 20)];
-                self.dobutamineRangeLabel.font = [UIFont systemFontOfSize:15.0];
-                self.dobutamineRangeLabel.textColor = [UIColor lightGrayColor];
-                self.dobutamineRangeLabel.backgroundColor = [UIColor clearColor];
+                [self formatLabels:labels];
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -1152,6 +1059,21 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
+                // setup labels
+                UILabel *drug = [UILabel new];
+                self.adrenalineDoseLabel = [UILabel new];
+                self.adrenalineStrengthLabel = [UILabel new];
+                UILabel *text = [UILabel new];
+                UILabel *diluent = [UILabel new];
+                self.adrenalineDose2Label = [UILabel new];
+                self.adrenalineRangeLabel = [UILabel new];
+                
+                // format labels
+                NSArray *labels = @[drug, self.adrenalineDoseLabel, self.adrenalineStrengthLabel, text, diluent, self.adrenalineDose2Label, self.adrenalineRangeLabel];
+                
+                [self formatLabels:labels];
+                
+                /*
                 UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
                 drug.font = [UIFont boldSystemFontOfSize:17.0];
                 drug.adjustsFontSizeToFitWidth = YES;
@@ -1196,6 +1118,7 @@
                 self.adrenalineRangeLabel.font = [UIFont systemFontOfSize:15.0];
                 self.adrenalineRangeLabel.textColor = [UIColor lightGrayColor];
                 self.adrenalineRangeLabel.backgroundColor = [UIColor clearColor];
+                 */
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -1339,41 +1262,41 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
-                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
-                drug.font = [UIFont boldSystemFontOfSize:17.0];
+                UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 2.0f, 144.0f, 22.0f)];
+                drug.font = [UIFont boldSystemFontOfSize:17.0f];
                 drug.adjustsFontSizeToFitWidth = YES;
                 drug.textColor = [UIColor blackColor];
                 drug.backgroundColor = [UIColor clearColor];
                 
-                UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(172, 2, 124, 22)];
-                dose.font = [UIFont boldSystemFontOfSize:17.0];
+                UILabel *dose = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 2.0f, 124.0f, 22.0f)];
+                dose.font = [UIFont boldSystemFontOfSize:17.0f];
                 dose.adjustsFontSizeToFitWidth = YES;
-                dose.minimumFontSize = 12;
+                dose.minimumFontSize = 12.0f;
                 dose.backgroundColor = [UIColor clearColor];
                 dose.textAlignment = UITextAlignmentRight;
                 
-                UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20, 25, 257, 20)]; // 40
-                text.font = [UIFont systemFontOfSize:15.0];
+                UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 25.0f, 257.0f, 20.0f)]; // 40
+                text.font = [UIFont systemFontOfSize:15.0f];
                 text.textColor = [UIColor lightGrayColor];
                 text.adjustsFontSizeToFitWidth = YES;
-                text.minimumFontSize = 10.0;
+                text.minimumFontSize = 10.0f;
                 text.backgroundColor = [UIColor clearColor];
                 
-                UILabel *diluent = [[UILabel alloc] initWithFrame:CGRectMake(20, 47, 257, 20)]; // 62
-                diluent.font = [UIFont boldSystemFontOfSize:17.0];
+                UILabel *diluent = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 47.0f, 257.0f, 20.0f)]; // 62
+                diluent.font = [UIFont boldSystemFontOfSize:17.0f];
                 diluent.textColor = [UIColor blackColor];
                 diluent.adjustsFontSizeToFitWidth = YES;
-                diluent.minimumFontSize = 10.0;
+                diluent.minimumFontSize = 10.0f;
                 diluent.backgroundColor = [UIColor clearColor];
                 diluent.adjustsFontSizeToFitWidth = YES;
                 
-                UILabel *dose2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 68, 276, 20)]; // 83
-                dose2.font = [UIFont systemFontOfSize:15.0];
+                UILabel *dose2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 68.0f, 276.0f, 20.0f)]; // 83
+                dose2.font = [UIFont systemFontOfSize:15.0f];
                 dose2.textColor = [UIColor lightGrayColor];
                 dose2.backgroundColor = [UIColor clearColor];
                 
-                UILabel *range = [[UILabel alloc] initWithFrame:CGRectMake(20, 87, 276, 20)]; // 102
-                range.font = [UIFont systemFontOfSize:15.0];
+                UILabel *range = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 87.0f, 276.0f, 20.0f)]; // 102
+                range.font = [UIFont systemFontOfSize:15.0f];
                 range.textColor = [UIColor lightGrayColor];
                 range.backgroundColor = [UIColor clearColor];
                 
@@ -1415,6 +1338,21 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
+                // setup labels
+                UILabel *drug = [UILabel new];
+                self.insulinDoseLabel = [UILabel new];
+                self.insulinStrengthLabel = [UILabel new];
+                UILabel *text = [UILabel new];
+                UILabel *diluent = [UILabel new];
+                self.insulinDose2Label = [UILabel new];
+                self.insulinRangeLabel = [UILabel new];
+                
+                // format labels
+                NSArray *labels = @[drug, self.insulinDoseLabel, self.insulinStrengthLabel, text, diluent, self.insulinDose2Label, self.insulinRangeLabel];
+                
+                [self formatLabels:labels];
+                
+                /*
                 UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
                 drug.font = [UIFont boldSystemFontOfSize:17.0];
                 drug.adjustsFontSizeToFitWidth = YES;
@@ -1459,6 +1397,7 @@
                 self.insulinRangeLabel.font = [UIFont systemFontOfSize:15.0];
                 self.insulinRangeLabel.textColor = [UIColor lightGrayColor];
                 self.insulinRangeLabel.backgroundColor = [UIColor clearColor];
+                 */
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -1894,6 +1833,21 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
+                // setup labels
+                UILabel *drug = [UILabel new];
+                self.midazolamDoseLabel = [UILabel new];
+                self.midazolamStrengthLabel = [UILabel new];
+                UILabel *text = [UILabel new];
+                UILabel *diluent = [UILabel new];
+                self.midazolamDose2Label = [UILabel new];
+                self.midazolamRangeLabel = [UILabel new];
+                
+                // format labels
+                NSArray *labels = @[drug, self.midazolamDoseLabel, self.midazolamStrengthLabel, text, diluent, self.midazolamDose2Label, self.midazolamRangeLabel];
+                
+                [self formatLabels:labels];
+                
+                /*
                 UILabel *drug = [[UILabel alloc] initWithFrame:CGRectMake(20, 2, 144, 22)];
                 drug.font = [UIFont boldSystemFontOfSize:17.0];
                 drug.adjustsFontSizeToFitWidth = YES;
@@ -1938,6 +1892,7 @@
                 self.midazolamRangeLabel.font = [UIFont systemFontOfSize:15.0];
                 self.midazolamRangeLabel.textColor = [UIColor lightGrayColor];
                 self.midazolamRangeLabel.backgroundColor = [UIColor clearColor];
+                 */
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -2762,6 +2717,69 @@
     }
     
     return returnCell;
+}
+
+- (void)formatLabels:(NSArray *)labels
+{
+    UILabel *labelToFormat;
+    
+    // drug
+    labelToFormat = labels[0];
+    labelToFormat.frame = CGRectMake(20.0f, 2.0f, 144.0f, 22.0f);
+    labelToFormat.font = [UIFont boldSystemFontOfSize:17.0f];
+    labelToFormat.adjustsFontSizeToFitWidth = YES;
+    labelToFormat.textColor = [UIColor blackColor];
+    labelToFormat.backgroundColor = [UIColor clearColor];
+    
+    // DoseLabel
+    labelToFormat = labels[1];
+    labelToFormat.frame = CGRectMake(172.0f, 2.0f, 124.0f, 22.0f);
+    labelToFormat.font = [UIFont boldSystemFontOfSize:17.0f];
+    labelToFormat.adjustsFontSizeToFitWidth = YES;
+    labelToFormat.minimumFontSize = 12.0f;
+    labelToFormat.backgroundColor = [UIColor clearColor];
+    labelToFormat.textAlignment = UITextAlignmentRight;
+    
+    // StrengthLabel
+    labelToFormat = labels[2];
+    labelToFormat.frame = CGRectMake(20.0f, 20.0f, 257.0f, 20.0f);
+    labelToFormat.font = [UIFont systemFontOfSize:15.0f];
+    labelToFormat.textColor = [UIColor lightGrayColor];
+    labelToFormat.adjustsFontSizeToFitWidth = YES;
+    labelToFormat.minimumFontSize = 10.0f;
+    labelToFormat.backgroundColor = [UIColor clearColor];
+    
+    // text
+    labelToFormat = labels[3];
+    labelToFormat.frame = CGRectMake(20.0f, 40.0f, 257.0f, 20.0f);
+    labelToFormat.font = [UIFont systemFontOfSize:15.0f];
+    labelToFormat.textColor = [UIColor lightGrayColor];
+    labelToFormat.adjustsFontSizeToFitWidth = YES;
+    labelToFormat.minimumFontSize = 10.0f;
+    labelToFormat.backgroundColor = [UIColor clearColor];
+    
+    // diluent
+    labelToFormat = labels[4];
+    labelToFormat.frame = CGRectMake(20.0f, 62.0f, 257.0f, 20.0f);
+    labelToFormat.font = [UIFont boldSystemFontOfSize:17.0f];
+    labelToFormat.textColor = [UIColor blackColor];
+    labelToFormat.adjustsFontSizeToFitWidth = YES;
+    labelToFormat.minimumFontSize = 10.0f;
+    labelToFormat.backgroundColor = [UIColor clearColor];
+    
+    // Dose2Label
+    labelToFormat = labels[5];
+    labelToFormat.frame = CGRectMake(20.0f, 83.0f, 276.0f, 20.0f);
+    labelToFormat.font = [UIFont systemFontOfSize:15.0f];
+    labelToFormat.textColor = [UIColor lightGrayColor];
+    labelToFormat.backgroundColor = [UIColor clearColor];
+    
+    // RangeLabel
+    labelToFormat = labels[6];
+    labelToFormat.frame = CGRectMake(20.0f, 102.0f, 276.0f, 20.0f);
+    labelToFormat.font = [UIFont systemFontOfSize:15.0f];
+    labelToFormat.textColor = [UIColor lightGrayColor];
+    labelToFormat.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Table view delegate
