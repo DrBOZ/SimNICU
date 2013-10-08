@@ -169,52 +169,56 @@
             {
                 int gestation = [self.selectedPatient.gestation integerValue];
                 
-                if (gestation < 28)
+                if (gestation < 37)
                 {
-                    // extreme preterm fluids
+                    // preterm fluids
                     if (ageInDays < 1)
                     {
                         mlPerKgPerDay = 60;
                     }
                     else if (ageInDays >= 1 && ageInDays < 2)
                     {
-                        mlPerKgPerDay = 75;
+                        mlPerKgPerDay = 80;
                     }
                     else if (ageInDays >= 2 && ageInDays < 3)
                     {
-                        mlPerKgPerDay = 80;
+                        mlPerKgPerDay = 100;
                     }
                     else if (ageInDays >= 3 && ageInDays < 4)
                     {
-                        mlPerKgPerDay = 90;
-                    }
-                    else if (ageInDays >= 4)
-                    {
                         mlPerKgPerDay = 120;
+                    }
+                    else if (ageInDays >= 4 && ageInDays < 5)
+                    {
+                        mlPerKgPerDay = 135;
+                    }
+                    else if (ageInDays >= 5)
+                    {
+                        mlPerKgPerDay = 150;
                     }
                 }
                 else
                 {
-                    // normal fluids
+                    // term fluids
                     if (ageInDays < 1)
                     {
                         mlPerKgPerDay = 60;
                     }
                     else if (ageInDays >= 1 && ageInDays < 2)
                     {
-                        mlPerKgPerDay = 70;
+                        mlPerKgPerDay = 90;
                     }
                     else if (ageInDays >= 2 && ageInDays < 3)
                     {
-                        mlPerKgPerDay = 80;
+                        mlPerKgPerDay = 120;
                     }
                     else if (ageInDays >= 3 && ageInDays < 4)
                     {
-                        mlPerKgPerDay = 90;
+                        mlPerKgPerDay = 150;
                     }
                     else if (ageInDays >= 4)
                     {
-                        mlPerKgPerDay = 120;
+                        mlPerKgPerDay = 150;
                     }
                 }
             }
