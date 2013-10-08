@@ -1315,6 +1315,7 @@
             
             if (self.selectedPatient.workingWeight)
             {
+                newViewController.selectedPatient = self.selectedPatient;
                 newViewController.workingWeight = self.selectedPatient.workingWeight;
             }
             else if (self.weight)

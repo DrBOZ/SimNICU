@@ -155,70 +155,76 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    /*
-     if (self.selectedPatient)
-     {
-     if (self.selectedPatient.birthDate && self.selectedPatient.birthTimeSet)
-     {
-     // calculate exact age
-     double ageInDays = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[NSDate date]];
-     
-     if (self.selectedPatient.gestation)
-     {
-     int gestation = [self.selectedPatient.gestation integerValue];
-     
-     if (gestation < 28)
-     {
-     // extreme preterm fluids
-     if (ageInDays < 1)
-     {
-     mlPerKgPerDay = 60;
-     }
-     else if (ageInDays >= 1 && ageInDays < 2)
-     {
-     mlPerKgPerDay = 75;
-     }
-     else if (ageInDays >= 2 && ageInDays < 3)
-     {
-     mlPerKgPerDay = 80;
-     }
-     else if (ageInDays >= 3 && ageInDays < 4)
-     {
-     mlPerKgPerDay = 90;
-     }
-     else if (ageInDays >= 4)
-     {
-     mlPerKgPerDay = 120;
-     }
-     }
-     else
-     {
-     // normal fluids
-     if (ageInDays < 1)
-     {
-     mlPerKgPerDay = 60;
-     }
-     else if (ageInDays >= 1 && ageInDays < 2)
-     {
-     mlPerKgPerDay = 70;
-     }
-     else if (ageInDays >= 2 && ageInDays < 3)
-     {
-     mlPerKgPerDay = 80;
-     }
-     else if (ageInDays >= 3 && ageInDays < 4)
-     {
-     mlPerKgPerDay = 90;
-     }
-     else if (ageInDays >= 4)
-     {
-     mlPerKgPerDay = 120;
-     }
-     }
-     }
-     }
-     }
-     */
+    // select most appropriate fluids
+    
+    if (self.workingWeight)
+    {
+        // requires that both birth date and birth time is set
+        if (self.selectedPatient.birthDate && self.selectedPatient.birthTimeSet)
+        {
+            // calculate exact age
+            double ageInDays = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[NSDate date]];
+            
+            if (self.selectedPatient.gestation)
+            {
+                int gestation = [self.selectedPatient.gestation integerValue];
+                
+                if (gestation < 28)
+                {
+                    // extreme preterm fluids
+                    if (ageInDays < 1)
+                    {
+                        mlPerKgPerDay = 60;
+                    }
+                    else if (ageInDays >= 1 && ageInDays < 2)
+                    {
+                        mlPerKgPerDay = 75;
+                    }
+                    else if (ageInDays >= 2 && ageInDays < 3)
+                    {
+                        mlPerKgPerDay = 80;
+                    }
+                    else if (ageInDays >= 3 && ageInDays < 4)
+                    {
+                        mlPerKgPerDay = 90;
+                    }
+                    else if (ageInDays >= 4)
+                    {
+                        mlPerKgPerDay = 120;
+                    }
+                }
+                else
+                {
+                    // normal fluids
+                    if (ageInDays < 1)
+                    {
+                        mlPerKgPerDay = 60;
+                    }
+                    else if (ageInDays >= 1 && ageInDays < 2)
+                    {
+                        mlPerKgPerDay = 70;
+                    }
+                    else if (ageInDays >= 2 && ageInDays < 3)
+                    {
+                        mlPerKgPerDay = 80;
+                    }
+                    else if (ageInDays >= 3 && ageInDays < 4)
+                    {
+                        mlPerKgPerDay = 90;
+                    }
+                    else if (ageInDays >= 4)
+                    {
+                        mlPerKgPerDay = 120;
+                    }
+                }
+            }
+            
+            // move slider to correct position
+            [self.totalFluidSlider setValue:mlPerKgPerDay animated:YES];
+            
+            [self sliderValueChanged:self.totalFluidSlider];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning

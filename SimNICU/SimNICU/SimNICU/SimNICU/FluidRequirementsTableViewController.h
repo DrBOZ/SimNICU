@@ -11,7 +11,7 @@
 
 @interface FluidRequirementsTableViewController : CBTableViewController
 
-@property (nonatomic, strong) NSString *workingWeight;
 @property (nonatomic, strong) Patient *selectedPatient;
+@property (nonatomic, strong) NSString *workingWeight;
 
 @end
