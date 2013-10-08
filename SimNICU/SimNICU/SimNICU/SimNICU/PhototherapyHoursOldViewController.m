@@ -444,9 +444,9 @@
 {
     // select the date and time of the bilirubin sample
     
+    // if date has not already been selected, then use current date and time
     if (!self.selectedDate)
     {
-        // if date has not already been selected, then use current date and time
         self.selectedDate = [NSDate date];
     }
     
