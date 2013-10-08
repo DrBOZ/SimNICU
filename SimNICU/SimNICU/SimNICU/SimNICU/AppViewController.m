@@ -35,7 +35,7 @@
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
 #import "CrUSSViewController.h"
-#import "CrUSSOptionsViewController.h"
+#import "CrUSSOptionsTableViewController.h"
 #import "DrugsTableViewController.h"
 #import "EarlyCareViewController.h"
 #import "FluidRequirementsTableViewController.h"
@@ -1245,13 +1245,13 @@
 
 #if CRUSS_PREVIEW_MODE
             
-            CrUSSOptionsViewController *newViewController = [CrUSSOptionsViewController new];
+            CrUSSOptionsTableViewController *vc = [[CrUSSOptionsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
 #else
-            CrUSSViewController *newViewController = [CrUSSViewController new];
+            CrUSSViewController *vc = [CrUSSViewController new];
 #endif
             
-            [self.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
 #pragma mark Congenital Diaphragmatic Hernia

@@ -1,28 +1,34 @@
 //
-//  AgeCalculatorsViewController.m
-//  SimNICU
+//  CrUSSOptionsTableViewController.m
+//  Neonatal Intensive Care
 //
-//  Created by Conrad Bosman on 18/07/2013.
+//  Created by Conrad Bosman on 06/08/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "CrUSSOptionsTableViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "CrUSSRadiologyViewController.h"
-#import "CrUSSOptionsViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CrUSSViewController.h"
 #import "CBTableViewRowData.h"
 
-@interface CrUSSOptionsViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
+@interface CrUSSOptionsTableViewController ()
 
 @end
 
-@implementation CrUSSOptionsViewController
+@implementation CrUSSOptionsTableViewController
 {
     NSMutableArray *tableData;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
 }
 
 - (void)viewDidLoad
@@ -32,9 +38,6 @@
     [CBTrackers logEvent:@"CrUSS Options"];
     
     self.title = @"Cranial Ultrasound";
-    
-    // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     tableData = [[NSMutableArray alloc] initWithCapacity:3];
     CBTableViewSectionData *sectionData;
@@ -85,42 +88,19 @@
                                                                              style:UIBarButtonItemStyleBordered
                                                                             target:nil
                                                                             action:nil];
-    
-    // create UITableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-    self.myTableView.rowHeight = 50.0f;  // was 44.0f
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.separatorColor = [UIColor grayColor];
-    self.myTableView.hidden = NO;
-    self.myTableView.bounces = YES;
-    self.myTableView.scrollEnabled = YES;
-    [self.view addSubview:self.myTableView];
-    
-    // add TableView background
-    [CBTableViewController setBackgroundForTableView:self.myTableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
+    // [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source

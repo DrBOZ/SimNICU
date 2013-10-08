@@ -13,6 +13,8 @@
 		5C06D4B61803BA4900A3B46C /* DrugInfoSimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4B41803BA4900A3B46C /* DrugInfoSimpleTableViewController.m */; };
 		5C06D4B91803BD4F00A3B46C /* DrugDosePatientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4B81803BD4F00A3B46C /* DrugDosePatientTableViewController.m */; };
 		5C06D4BA1803BD4F00A3B46C /* DrugDosePatientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4B81803BD4F00A3B46C /* DrugDosePatientTableViewController.m */; };
+		5C06D4BD1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */; };
+		5C06D4BE1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */; };
 		5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */; };
@@ -360,8 +362,6 @@
 		5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
-		5C930AEC17B0C7C400CBE616 /* CrUSSOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEB17B0C7C400CBE616 /* CrUSSOptionsViewController.m */; };
-		5C930AED17B0C7C400CBE616 /* CrUSSOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEB17B0C7C400CBE616 /* CrUSSOptionsViewController.m */; };
 		5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */; };
@@ -805,6 +805,8 @@
 		5C06D4B41803BA4900A3B46C /* DrugInfoSimpleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugInfoSimpleTableViewController.m; sourceTree = "<group>"; };
 		5C06D4B71803BD4F00A3B46C /* DrugDosePatientTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugDosePatientTableViewController.h; sourceTree = "<group>"; };
 		5C06D4B81803BD4F00A3B46C /* DrugDosePatientTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientTableViewController.m; sourceTree = "<group>"; };
+		5C06D4BB1803C03700A3B46C /* CrUSSOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSOptionsTableViewController.h; sourceTree = "<group>"; };
+		5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSOptionsTableViewController.m; sourceTree = "<group>"; };
 		5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartPhototherapyDataSource.h; sourceTree = "<group>"; };
 		5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartPhototherapyDataSource.m; sourceTree = "<group>"; };
 		5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted.png"; sourceTree = "<group>"; };
@@ -1080,8 +1082,6 @@
 		5C8B20641791125000579522 /* DrugDoseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseTableViewCell.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		5C8C3DEB16707C900073886A /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
-		5C930AEA17B0C7C400CBE616 /* CrUSSOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSOptionsViewController.h; sourceTree = "<group>"; };
-		5C930AEB17B0C7C400CBE616 /* CrUSSOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSOptionsViewController.m; sourceTree = "<group>"; };
 		5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSectionData.h; sourceTree = "<group>"; };
 		5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSectionData.m; sourceTree = "<group>"; };
 		5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewRowData.h; sourceTree = "<group>"; };
@@ -2142,8 +2142,8 @@
 		5C63B14016B9FFFA00B31431 /* Screen_CrUSS */ = {
 			isa = PBXGroup;
 			children = (
-				5C930AEA17B0C7C400CBE616 /* CrUSSOptionsViewController.h */,
-				5C930AEB17B0C7C400CBE616 /* CrUSSOptionsViewController.m */,
+				5C06D4BB1803C03700A3B46C /* CrUSSOptionsTableViewController.h */,
+				5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */,
 				5C930AF617B0E81600CBE616 /* General Information */,
 				5C930AF717B0E82A00CBE616 /* Technique */,
 				5C930AF817B0E83100CBE616 /* Radiology */,
@@ -3696,7 +3696,6 @@
 				5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
-				5C930AEC17B0C7C400CBE616 /* CrUSSOptionsViewController.m in Sources */,
 				5C06D4B91803BD4F00A3B46C /* DrugDosePatientTableViewController.m in Sources */,
 				5C56F60A1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */,
 				5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
@@ -3710,6 +3709,7 @@
 				5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */,
+				5C06D4BD1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */,
 				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
@@ -3889,6 +3889,7 @@
 				5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
+				5C06D4BE1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */,
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 				5C756C9D179898A6002F983E /* ExactAgeViewController.m in Sources */,
 				5C756CA217989A33002F983E /* AgeCalculatorsViewController.m in Sources */,
@@ -3906,7 +3907,6 @@
 				5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE617A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
-				5C930AED17B0C7C400CBE616 /* CrUSSOptionsViewController.m in Sources */,
 				5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
 				5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,

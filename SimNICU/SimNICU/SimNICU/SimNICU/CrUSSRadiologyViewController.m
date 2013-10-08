@@ -54,21 +54,36 @@
     
     
     // instantiate UIScrollView & UIPageControl
+    self.viewLabel = [UILabel new];
+    self.scrollView1 = [UIScrollView new];
+    self.pageControl1 = [UIPageControl new];
+    self.scrollView2 = [UIScrollView new];
+    self.pageControl2 = [UIPageControl new];
+    
+    // iOS 7 specific adjustment
+    CGFloat iOS7Adjustment = 0.0f;
+    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        iOS7Adjustment = 20.0f + 44.0f;
+    }
+    
+    // set frames
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
-        self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 46.0f, 320.0f, 40.0f)];
-        self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 99.0f, 320.0f, 274.0f)];
-        self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 360.0f, 320.0f, 36.0f)];
-        self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 400.0f, 320.0f, 60.0f)];
-        self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 448.0f, 320.0f, 36.0f)];
+        self.viewLabel.frame = CGRectMake(0.0f, 46.0f + iOS7Adjustment, 320.0f, 40.0f);
+        self.scrollView1.frame = CGRectMake(0.0f, 99.0f + iOS7Adjustment, 320.0f, 274.0f);
+        self.pageControl1.frame = CGRectMake(0.0f, 360.0f + iOS7Adjustment, 320.0f, 36.0f);
+        self.scrollView2.frame = CGRectMake(0.0f, 400.0f + iOS7Adjustment, 320.0f, 60.0f);
+        self.pageControl2.frame = CGRectMake(0.0f, 448.0f + iOS7Adjustment, 320.0f, 36.0f);
     }
     else // 3.5 inch Retina
     {
-        self.viewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 320.0f, 40.0f)];
-        self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 50.0f, 320.0f, 274.0f)];
-        self.pageControl1 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 310.0f, 320.0f, 36.0f)];
-        self.scrollView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 340.0f, 320.0f, 60.0f)];
-        self.pageControl2 = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, 370.0f, 320.0f, 36.0f)];
+        self.viewLabel.frame = CGRectMake(0.0f, 10.0f + iOS7Adjustment, 320.0f, 40.0f);
+        self.scrollView1.frame = CGRectMake(0.0f, 50.0f + iOS7Adjustment, 320.0f, 274.0f);
+        self.pageControl1.frame = CGRectMake(0.0f, 310.0f + iOS7Adjustment, 320.0f, 36.0f);
+        self.scrollView2.frame = CGRectMake(0.0f, 340.0f + iOS7Adjustment, 320.0f, 60.0f);
+        self.pageControl2.frame = CGRectMake(0.0f, 370.0f + iOS7Adjustment, 320.0f, 36.0f);
     }
     
     self.viewLabel.adjustsFontSizeToFitWidth = YES;
