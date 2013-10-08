@@ -35,16 +35,6 @@
 
 @implementation PhototherapyHoursOldViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,14 +48,16 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    self.myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height));
     }
     else
     {
-        self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
+        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f));
     }
     self.myTableView.rowHeight = 50.0f;  // was 44.0f
     self.myTableView.dataSource = self;
@@ -113,6 +105,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    // this waits until the view controller is dismissed
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound)
     {
         if (self.ageInDays && self.formattedAge)
@@ -147,10 +140,10 @@
     
     if(indexPath.row == 0)
     {
-        static NSString *CellIdentifier = @"birthDateAndTime";
+        NSString *CellIdentifier = @"birthDateAndTime";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -159,12 +152,15 @@
         
         cell.textLabel.text = @"Birth";
         
-        self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
-        self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.birthDateTextField.textAlignment = UITextAlignmentCenter;
-        self.birthDateTextField.adjustsFontSizeToFitWidth = YES;
-        self.birthDateTextField.userInteractionEnabled = NO;
-        self.birthDateTextField.delegate = self;
+        if (!self.birthDateTextField)
+        {
+            self.birthDateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.birthDateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            self.birthDateTextField.textAlignment = UITextAlignmentCenter;
+            self.birthDateTextField.adjustsFontSizeToFitWidth = YES;
+            self.birthDateTextField.userInteractionEnabled = NO;
+            self.birthDateTextField.delegate = self;
+        }
         
         if (self.selectedPatient)
         {
@@ -265,22 +261,25 @@
         static NSString *CellIdentifier = @"CurrentDateAndTime";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
-        self.dateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.dateTextField.borderStyle = UITextBorderStyleRoundedRect;
-        self.dateTextField.clearButtonMode = UITextFieldViewModeNever;
-        self.dateTextField.placeholder = @"date and time of sample";
-        self.dateTextField.textAlignment = UITextAlignmentCenter;
-        self.dateTextField.adjustsFontSizeToFitWidth = YES;
-        self.dateTextField.userInteractionEnabled = NO;
-        self.dateTextField.delegate = self;
+        if (!self.dateTextField)
+        {
+            self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
+            self.dateTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            self.dateTextField.borderStyle = UITextBorderStyleRoundedRect;
+            self.dateTextField.clearButtonMode = UITextFieldViewModeNever;
+            self.dateTextField.placeholder = @"date and time of sample";
+            self.dateTextField.textAlignment = UITextAlignmentCenter;
+            self.dateTextField.adjustsFontSizeToFitWidth = YES;
+            self.dateTextField.userInteractionEnabled = NO;
+            self.dateTextField.delegate = self;
+        }
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -299,7 +298,7 @@
         static NSString *CellIdentifier = @"Sample Age";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -344,12 +343,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     if (indexPath.row == 0)
     {
+        // check if a patient has already been selected
         if (self.selectedPatient)
         {
+            // YES
             if (!self.dateAndTimeOfBirth && !self.selectedPatient.birthTimeSet)
             {
                 [self selectABirthTime:self.birthDateTextField];
@@ -361,11 +360,13 @@
         }
         else
         {
+            // NO
             [self selectABirthDate:self.birthDateTextField];
         }
     }
     else if (indexPath.row == 1)
     {
+        // select sample date and time
         [self selectADate:self.dateTextField];
     }
 }
@@ -441,12 +442,13 @@
 
 - (void)selectADate:(UIControl *)sender
 {
+    // select the date and time of the bilirubin sample
     
-    self.selectedDate = [NSDate date];
-    
-    /*
-    self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"" datePickerMode:UIDatePickerModeDateAndTime selectedDate:self.selectedDate target:self action:@selector(dateWasSelected:element:) origin:sender];
-    */
+    if (!self.selectedDate)
+    {
+        // if date has not already been selected, then use current date and time
+        self.selectedDate = [NSDate date];
+    }
     
     self.actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
                                                            datePickerMode:UIDatePickerModeDateAndTime
@@ -457,9 +459,12 @@
                                                                    action:@selector(dateWasSelected:element:)
                                                                    origin:sender];
     
+    // set buttons
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Today", nil) value:[NSDate date]];
     [self.actionSheetPicker addCustomButtonWithTitle:NSLocalizedString(@"Yesterday", nil) value:[[NSDate date] TC_dateByAddingCalendarUnits:NSDayCalendarUnit amount:-1]];
     self.actionSheetPicker.hideCancel = YES;
+    
+    // show picker
     [self.actionSheetPicker showActionSheetPicker];
 }
 
