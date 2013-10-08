@@ -56,7 +56,7 @@
 #import "InfoTabBarController.h"
 #import "TransportVentilatorViewController.h"
 #import "UVCUACViewController.h"
-#import "VitKViewController.h"
+#import "VitKTableViewController.h"
 #import "WeightConversionViewController.h"
 #import "ActionSheetPickerViewController.h"
 
@@ -1597,9 +1597,9 @@
         
         else if ([thisScreenType isEqualToString:@"VitK"])
         {
-            VitKViewController *newViewController = [VitKViewController new];;
+            VitKTableViewController *vc = [[VitKTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
-            [self.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
 #pragma mark Weight Conversion

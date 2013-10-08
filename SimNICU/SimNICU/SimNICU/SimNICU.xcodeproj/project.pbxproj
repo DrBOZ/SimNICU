@@ -15,6 +15,10 @@
 		5C06D4BA1803BD4F00A3B46C /* DrugDosePatientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4B81803BD4F00A3B46C /* DrugDosePatientTableViewController.m */; };
 		5C06D4BD1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */; };
 		5C06D4BE1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */; };
+		5C06D4C11803C54400A3B46C /* VitKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C01803C54400A3B46C /* VitKTableViewController.m */; };
+		5C06D4C21803C54400A3B46C /* VitKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C01803C54400A3B46C /* VitKTableViewController.m */; };
+		5C06D4C51803C72400A3B46C /* VitKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */; };
+		5C06D4C61803C72400A3B46C /* VitKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */; };
 		5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */; };
@@ -464,7 +468,6 @@
 		5C940BE5166E3C2F0044A7D1 /* ROPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */; };
 		5C940BE6166E3C2F0044A7D1 /* TransportVentilatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */; };
 		5C940BE7166E3C2F0044A7D1 /* UVCUACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */; };
-		5C940BE8166E3C2F0044A7D1 /* VitKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */; };
 		5C940BE9166E3C2F0044A7D1 /* weightConversionTable.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */; };
 		5C940BEA166E3C2F0044A7D1 /* WeightConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */; };
 		5C940C03166E3C5B0044A7D1 /* ActionSheetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BED166E3C5A0044A7D1 /* ActionSheetPickerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -661,7 +664,6 @@
 		5CD3AFE616CF38D500DE362C /* ROPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */; };
 		5CD3AFE716CF38D500DE362C /* TransportVentilatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */; };
 		5CD3AFE816CF38D500DE362C /* UVCUACViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */; };
-		5CD3AFE916CF38D500DE362C /* VitKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */; };
 		5CD3AFEA16CF38D500DE362C /* WeightConversionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */; };
 		5CD3AFEB16CF38D500DE362C /* ActionSheetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BED166E3C5A0044A7D1 /* ActionSheetPickerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5CD3AFEC16CF38D500DE362C /* PhototherapyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BF0166E3C5A0044A7D1 /* PhototherapyViewController.m */; };
@@ -807,6 +809,10 @@
 		5C06D4B81803BD4F00A3B46C /* DrugDosePatientTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDosePatientTableViewController.m; sourceTree = "<group>"; };
 		5C06D4BB1803C03700A3B46C /* CrUSSOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSOptionsTableViewController.h; sourceTree = "<group>"; };
 		5C06D4BC1803C03700A3B46C /* CrUSSOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrUSSOptionsTableViewController.m; sourceTree = "<group>"; };
+		5C06D4BF1803C54400A3B46C /* VitKTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VitKTableViewController.h; sourceTree = "<group>"; };
+		5C06D4C01803C54400A3B46C /* VitKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VitKTableViewController.m; sourceTree = "<group>"; };
+		5C06D4C31803C72400A3B46C /* VitKTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VitKTableViewCell.h; sourceTree = "<group>"; };
+		5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VitKTableViewCell.m; sourceTree = "<group>"; };
 		5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartPhototherapyDataSource.h; sourceTree = "<group>"; };
 		5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartPhototherapyDataSource.m; sourceTree = "<group>"; };
 		5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted.png"; sourceTree = "<group>"; };
@@ -1250,8 +1256,6 @@
 		5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportVentilatorViewController.m; sourceTree = "<group>"; };
 		5C940BA7166E3C2E0044A7D1 /* UVCUACViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVCUACViewController.h; sourceTree = "<group>"; };
 		5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVCUACViewController.m; sourceTree = "<group>"; };
-		5C940BA9166E3C2E0044A7D1 /* VitKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VitKViewController.h; sourceTree = "<group>"; };
-		5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VitKViewController.m; sourceTree = "<group>"; };
 		5C940BAB166E3C2E0044A7D1 /* weightConversionTable.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTable.html; sourceTree = "<group>"; };
 		5C940BAC166E3C2E0044A7D1 /* WeightConversionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightConversionViewController.h; sourceTree = "<group>"; };
 		5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeightConversionViewController.m; sourceTree = "<group>"; };
@@ -2075,8 +2079,10 @@
 		5C63B12716B9F57B00B31431 /* Screen_VitK */ = {
 			isa = PBXGroup;
 			children = (
-				5C940BA9166E3C2E0044A7D1 /* VitKViewController.h */,
-				5C940BAA166E3C2E0044A7D1 /* VitKViewController.m */,
+				5C06D4BF1803C54400A3B46C /* VitKTableViewController.h */,
+				5C06D4C01803C54400A3B46C /* VitKTableViewController.m */,
+				5C06D4C31803C72400A3B46C /* VitKTableViewCell.h */,
+				5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */,
 			);
 			name = Screen_VitK;
 			sourceTree = "<group>";
@@ -3625,7 +3631,6 @@
 				5C56F66A180234C700665E22 /* CurosurfViewController.m in Sources */,
 				5C940BE6166E3C2F0044A7D1 /* TransportVentilatorViewController.m in Sources */,
 				5C940BE7166E3C2F0044A7D1 /* UVCUACViewController.m in Sources */,
-				5C940BE8166E3C2F0044A7D1 /* VitKViewController.m in Sources */,
 				5C940BEA166E3C2F0044A7D1 /* WeightConversionViewController.m in Sources */,
 				5C940C03166E3C5B0044A7D1 /* ActionSheetPickerViewController.m in Sources */,
 				5C940C05166E3C5B0044A7D1 /* PhototherapyViewController.m in Sources */,
@@ -3635,6 +3640,7 @@
 				5C940C09166E3C5B0044A7D1 /* PhototherapyClinicalStatusViewController.m in Sources */,
 				5C940C0A166E3C5B0044A7D1 /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
 				5C940C0B166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m in Sources */,
+				5C06D4C11803C54400A3B46C /* VitKTableViewController.m in Sources */,
 				5C56F6141801DEE500665E22 /* CBWebView.m in Sources */,
 				5C940C0C166E3C5B0044A7D1 /* PhototherapyUnitsViewController.m in Sources */,
 				5C56F682180259BB00665E22 /* DynamicTextTesterViewController.m in Sources */,
@@ -3665,6 +3671,7 @@
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
 				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
 				5C56F65D18022D5100665E22 /* PulmonaryHaemorrhageViewController.m in Sources */,
+				5C06D4C51803C72400A3B46C /* VitKTableViewCell.m in Sources */,
 				5C98A6A31787553400F246E3 /* DrugDatabase.m in Sources */,
 				5C98A6A71787562700F246E3 /* DrugCategory.m in Sources */,
 				5C98A6AB1787577000F246E3 /* Drug.m in Sources */,
@@ -3809,6 +3816,7 @@
 				5CD3AFCE16CF38D500DE362C /* APGARTabBarController.m in Sources */,
 				5CD3AFCF16CF38D500DE362C /* APGAR1ViewController.m in Sources */,
 				5CD3AFD016CF38D500DE362C /* APGAR5ViewController.m in Sources */,
+				5C06D4C21803C54400A3B46C /* VitKTableViewController.m in Sources */,
 				5CD3AFD116CF38D500DE362C /* APGAR10ViewController.m in Sources */,
 				5CD3AFD216CF38D500DE362C /* APGAR15ViewController.m in Sources */,
 				5CD3AFD316CF38D500DE362C /* APGAR20ViewController.m in Sources */,
@@ -3831,7 +3839,6 @@
 				5CD3AFE616CF38D500DE362C /* ROPViewController.m in Sources */,
 				5CD3AFE716CF38D500DE362C /* TransportVentilatorViewController.m in Sources */,
 				5CD3AFE816CF38D500DE362C /* UVCUACViewController.m in Sources */,
-				5CD3AFE916CF38D500DE362C /* VitKViewController.m in Sources */,
 				5C06D4B11803B68F00A3B46C /* DrugsTableViewController.m in Sources */,
 				5CD3AFEA16CF38D500DE362C /* WeightConversionViewController.m in Sources */,
 				5CD3AFEB16CF38D500DE362C /* ActionSheetPickerViewController.m in Sources */,
@@ -3863,6 +3870,7 @@
 				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
 				5CD3B00316CF38D500DE362C /* Screen.m in Sources */,
 				5CD3B00416CF38D500DE362C /* GrowthChart.m in Sources */,
+				5C06D4C61803C72400A3B46C /* VitKTableViewCell.m in Sources */,
 				5C56F65E18022D5100665E22 /* PulmonaryHaemorrhageViewController.m in Sources */,
 				5CD3B00516CF38D500DE362C /* InfoTabBarController.m in Sources */,
 				5CD3B00616CF38D500DE362C /* ResusViewTableViewCell.m in Sources */,
