@@ -156,6 +156,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     // select most appropriate fluids
+    // need to have this data editable by the user and saved in preferences
     
     if (self.workingWeight)
     {
