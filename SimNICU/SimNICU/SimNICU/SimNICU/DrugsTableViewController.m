@@ -1,21 +1,21 @@
 //
-//  DrugsViewController.m
-//  SimNICU
+//  DrugsTableViewController.m
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 08/07/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "DrugDosePatientViewController.h"
-#import "DrugInfoSimpleViewController.h"
-#import "DrugsViewController.h"
+#import "DrugDosePatientTableViewController.h"
+#import "DrugInfoSimpleTableViewController.h"
+#import "DrugsTableViewController.h"
 #import "DrugDatabase.h"
 #import "DrugCategory.h"
 #import "DrugSection.h"
 #import "AppDelegate.h"
 #import "Drug.h"
 
-@interface DrugsViewController ()
+@interface DrugsTableViewController ()
 {
     int numberOfSectionsInTableView;
     
@@ -26,37 +26,21 @@
     UISearchDisplayController *searchDisplayController;
 }
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) DrugCategory *drugCategory;
-@property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *drugSections;
 
 @end
 
-@implementation DrugsViewController
+@implementation DrugsTableViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+	
     [CBTrackers logEvent:@"Drugs"];
-    
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     //back button
     self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
-    
-    //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - (20 + 44))) style:UITableViewStylePlain];
-    self.myTableView.rowHeight = 50.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 0.0f;
-    self.myTableView.sectionHeaderHeight = 0.0f;
-    self.myTableView.backgroundColor = [UIColor whiteColor];
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
     
     // searchBar
     searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
@@ -71,17 +55,15 @@
     searchDisplayController.searchResultsDelegate = self;
     searchDisplayController.searchResultsDataSource = self;
     
-    self.myTableView.tableHeaderView = searchBar;
+    self.tableView.tableHeaderView = searchBar;
     
     searchData = [[NSMutableArray alloc] init];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -184,14 +166,14 @@
         }
     }
     
-    self.myTableView.contentOffset = CGPointMake(0.0f, 44.0f);
+    self.tableView.contentOffset = CGPointMake(0.0f, 44.0f);
     
-    [self.myTableView reloadData];
+    [self.tableView reloadData];
     
     // scroll to last drug selected
     if (appDelegate.lastDrugPath)
     {
-        [self.myTableView scrollToRowAtIndexPath:appDelegate.lastDrugPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        [self.tableView scrollToRowAtIndexPath:appDelegate.lastDrugPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
 }
 
@@ -201,18 +183,13 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     int sections = 1;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         sections = [self.drugSections count];
     }
@@ -224,7 +201,7 @@
 {
     int rows = 0;;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         DrugSection *drugSectionToCount = [self.drugSections objectAtIndex:section];
         rows = [drugSectionToCount.drugs count];
@@ -241,7 +218,7 @@
 {
     float height = 0.0f;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         height = 22.0f;
     }
@@ -253,7 +230,7 @@
 {
     NSString *header;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         DrugSection *drugSection = [self.drugSections objectAtIndex:section];
         
@@ -267,7 +244,7 @@
 {
     NSMutableArray *tempArray = NULL;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         tempArray = [[NSMutableArray alloc] init];
         
@@ -298,7 +275,7 @@
     
     Drug *drug;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         DrugSection *drugSection = [self.drugSections objectAtIndex:indexPath.section];
         
@@ -331,7 +308,7 @@
     NSString *selectedDrug;
     
     // set selected row and get drug, set drug name
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         DrugSection *drugSection = [self.drugSections objectAtIndex:indexPath.section];
         Drug *drug = [drugSection.drugs objectAtIndex:indexPath.row];
@@ -342,20 +319,20 @@
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         Drug *drug = [searchData objectAtIndex:indexPath.row];
-
+        
         selectedDrug = drug.name;
         NSLog(@"Drug selected = %@", drug.name);
     }
     
     // load appropriate Drug view Controller
-
+    
     if (self.selectedPatient)
     {
-        // push DrugDosePatientViewController
-        DrugDosePatientViewController *drugDosePatientViewController = [[DrugDosePatientViewController alloc] init];
-        drugDosePatientViewController.selectedDrug = selectedDrug;
-        drugDosePatientViewController.selectedPatient = self.selectedPatient;
-        [self.navigationController pushViewController:drugDosePatientViewController animated:YES];
+        // push the drug information for the specific patient
+        DrugDosePatientTableViewController *vc = [[DrugDosePatientTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        vc.selectedDrug = selectedDrug;
+        vc.selectedPatient = self.selectedPatient;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     else if (self.workingWeight)
     {
@@ -363,10 +340,10 @@
     }
     else
     {
-        // push DrugInfoSimpleViewController
-        DrugInfoSimpleViewController *drugInfoSimpleViewController = [[DrugInfoSimpleViewController alloc] init];
-        drugInfoSimpleViewController.selectedDrug = selectedDrug;
-        [self.navigationController pushViewController:drugInfoSimpleViewController animated:YES];
+        // push the basic drug information
+        DrugInfoSimpleTableViewController *vc = [[DrugInfoSimpleTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        vc.selectedDrug = selectedDrug;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -374,11 +351,11 @@
 {
     int i = 0;
     
-    if (tableView == self.myTableView)
+    if (tableView == self.tableView)
     {
         if (index == 0)
         {
-            [self.myTableView setContentOffset:CGPointZero animated:NO];
+            [self.tableView setContentOffset:CGPointZero animated:NO];
             return NSNotFound;
         }
         else
@@ -410,5 +387,6 @@
     
     return YES;
 }
+
 
 @end

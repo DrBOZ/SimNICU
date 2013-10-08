@@ -1,14 +1,14 @@
 //
-//  DrugDosePatientViewController.m
-//  SimNICU
+//  DrugDosePatientTableViewController.m
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 12/07/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "DrugDosePatientViewController.h"
+#import "DrugDosePatientTableViewController.h"
 #import "DrugDosePatientTableViewCell.h"
-#import "DrugInfoSimpleViewController.h"
+#import "DrugInfoSimpleTableViewController.h"
 #import "DrugRouteOfAdministration.h"
 #import "DrugDoseTableViewCell.h"
 #import "DrugIndication.h"
@@ -17,25 +17,14 @@
 #import "AppDelegate.h"
 #import "Drug.h"
 
-@interface DrugDosePatientViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface DrugDosePatientTableViewController ()
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSString *workingWeight;
 @property (nonatomic, strong) Drug *drug;
 
 @end
 
-@implementation DrugDosePatientViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@implementation DrugDosePatientTableViewController
 
 - (void)viewDidLoad
 {
@@ -48,20 +37,6 @@
     
     //back button
     self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
-    
-    //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewStylePlain];
-    self.myTableView.rowHeight = 44.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 10.0f;
-    self.myTableView.sectionHeaderHeight = 10.0f;
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     
     // cycle through drug database and find current drugCategory
     DrugCategory *drugCategory;
@@ -88,11 +63,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
@@ -342,14 +312,14 @@
                     // set text
                     
                     /*
-                    UILabel *testLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 210.0f, 30.0f)];
-                    testLabel2.textColor = [UIColor blackColor];
-                    testLabel2.backgroundColor = [UIColor clearColor];
-                    testLabel2.font = [UIFont boldSystemFontOfSize:20.0f];
-                    testLabel2.adjustsFontSizeToFitWidth = YES;
-                    testLabel2.textAlignment = UITextAlignmentLeft;
-                    testLabel2.text = @"= 4mg/kg <32 weeks gestation";
-                    [cell addSubview:testLabel2];
+                     UILabel *testLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 50.0f, 210.0f, 30.0f)];
+                     testLabel2.textColor = [UIColor blackColor];
+                     testLabel2.backgroundColor = [UIColor clearColor];
+                     testLabel2.font = [UIFont boldSystemFontOfSize:20.0f];
+                     testLabel2.adjustsFontSizeToFitWidth = YES;
+                     testLabel2.textAlignment = UITextAlignmentLeft;
+                     testLabel2.text = @"= 4mg/kg <32 weeks gestation";
+                     [cell addSubview:testLabel2];
                      */
                 }
             }
@@ -379,9 +349,9 @@
     
     if (indexPath.section == ([self.drug.dosingDetails count] +1))
     {
-        DrugInfoSimpleViewController *newViewController = [[DrugInfoSimpleViewController alloc] init];
-        newViewController.selectedDrug = self.selectedDrug;
-        [self.navigationController pushViewController:newViewController animated:YES];
+        DrugInfoSimpleTableViewController *vc = [[DrugInfoSimpleTableViewController alloc] init];
+        vc.selectedDrug = self.selectedDrug;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

@@ -1,12 +1,12 @@
 //
-//  DrugInfoSimpleViewController.m
-//  SimNICU
+//  DrugInfoSimpleTableViewController.m
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 10/07/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "DrugInfoSimpleViewController.h"
+#import "DrugInfoSimpleTableViewController.h"
 #import "SimNICUWebView.h"
 #import "DrugDatabase.h"
 #import "DrugCategory.h"
@@ -15,29 +15,17 @@
 #import "DrugInfo.h"
 #import "Drug.h"
 
+@interface DrugInfoSimpleTableViewController ()
 
-@interface DrugInfoSimpleViewController () <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) NSMutableArray *drugSections;
 @property (nonatomic, strong) DrugCategory *drugCategory;
-@property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) Drug *drug;
 
 @end
 
-@implementation DrugInfoSimpleViewController
+@implementation DrugInfoSimpleTableViewController
 {
     NSMutableArray *webViewSections;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
@@ -48,20 +36,6 @@
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64)) style:UITableViewCellStyleDefault]; // 416
-    self.myTableView.rowHeight = 44.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 10.0f;
-    self.myTableView.sectionHeaderHeight = 10.0f;
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
     
     // cycle through drug database and find current drugCategory
     DrugCategory *drugCategory;
@@ -109,34 +83,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    NSLog(@"DrugInfoSimpleViewController didReceiveMemoryWarning");
-    
-    if ([self isViewLoaded] && self.view.window == nil)
-    {
-        NSLog(@"DrugInfoSimpleViewController unloaded properties");
-        
-        self.myTableView = nil;
-        self.swipeGestureRecognizer = nil;
-    }
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewDidUnload
-{
-    self.myTableView = nil;
-    self.swipeGestureRecognizer = nil;
-    
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -231,5 +178,6 @@
     
     return webView;
 }
+
 
 @end

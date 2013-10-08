@@ -36,8 +36,7 @@
 #import "CDHViewController.h"
 #import "CrUSSViewController.h"
 #import "CrUSSOptionsViewController.h"
-#import "DrugCategoriesViewController.h"
-#import "DrugsViewController.h"
+#import "DrugsTableViewController.h"
 #import "EarlyCareViewController.h"
 #import "FluidRequirementsTableViewController.h"
 #import "GastroschisisViewController.h"
@@ -1268,7 +1267,8 @@
         
         else if ([thisScreenType isEqualToString:@"Drugs"])
         {
-            DrugsViewController *newViewController = [DrugsViewController new];
+            // DrugsViewController *newViewController = [DrugsViewController new];
+            DrugsTableViewController *newViewController = [[DrugsTableViewController alloc] initWithStyle:UITableViewStylePlain];
             newViewController.index = 0;
             
             if (self.selectedPatient.workingWeight)
