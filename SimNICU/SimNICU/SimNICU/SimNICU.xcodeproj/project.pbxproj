@@ -176,8 +176,6 @@
 		5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */; };
 		5C4350BD178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
-		5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */; };
-		5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */; };
 		5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
 		5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
 		5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
@@ -781,6 +779,8 @@
 		5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */; };
 		5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4617CB411900426991 /* JaundiceViewController.m */; };
 		5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD43A4617CB411900426991 /* JaundiceViewController.m */; };
+		5CD812061803A44C00DABA19 /* FluidRequirementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */; };
+		5CD812071803A44C00DABA19 /* FluidRequirementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
@@ -929,8 +929,6 @@
 		5C4350B2178DE17300E926B1 /* DrugBenzylpenicillinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugBenzylpenicillinViewController.m; sourceTree = "<group>"; };
 		5C4350B6178DE27100E926B1 /* benzylpenicillinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinPharmacology.html; sourceTree = "<group>"; };
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
-		5C4AAC7517BF49BC00BD68F5 /* FluidRequirementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidRequirementsViewController.h; sourceTree = "<group>"; };
-		5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidRequirementsViewController.m; sourceTree = "<group>"; };
 		5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTableViewController.h; sourceTree = "<group>"; };
 		5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTableViewController.m; sourceTree = "<group>"; };
 		5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarCustomTextItem.h; sourceTree = "<group>"; };
@@ -1436,6 +1434,8 @@
 		5CD3B0C91790773700DA0278 /* DrugRouteOfAdministration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugRouteOfAdministration.m; sourceTree = "<group>"; };
 		5CD43A4517CB411900426991 /* JaundiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JaundiceViewController.h; sourceTree = "<group>"; };
 		5CD43A4617CB411900426991 /* JaundiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JaundiceViewController.m; sourceTree = "<group>"; };
+		5CD812041803A44C00DABA19 /* FluidRequirementsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidRequirementsTableViewController.h; sourceTree = "<group>"; };
+		5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidRequirementsTableViewController.m; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -1777,8 +1777,8 @@
 		5C4AAC7417BF497E00BD68F5 /* Screen_FluidRequirements */ = {
 			isa = PBXGroup;
 			children = (
-				5C4AAC7517BF49BC00BD68F5 /* FluidRequirementsViewController.h */,
-				5C4AAC7617BF49BC00BD68F5 /* FluidRequirementsViewController.m */,
+				5CD812041803A44C00DABA19 /* FluidRequirementsTableViewController.h */,
+				5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */,
 			);
 			name = Screen_FluidRequirements;
 			sourceTree = "<group>";
@@ -3714,7 +3714,6 @@
 				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 				5C56F6221801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */,
-				5C4AAC7717BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */,
 				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
@@ -3751,6 +3750,7 @@
 				5C56F61E1801E3A600665E22 /* PlateletTransfusionModel.m in Sources */,
 				5C4DC73517E5340C00412C72 /* UATitledModalPanel.m in Sources */,
 				5C4DC73717E5340C00412C72 /* UAGradientBackground.m in Sources */,
+				5CD812061803A44C00DABA19 /* FluidRequirementsTableViewController.m in Sources */,
 				5C4DC73917E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
 				5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */,
 				5C4DC74317E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
@@ -3860,6 +3860,7 @@
 				5CD3AFFC16CF38D500DE362C /* User.m in Sources */,
 				5CD3AFFD16CF38D500DE362C /* Device.m in Sources */,
 				5CD3AFFE16CF38D500DE362C /* Patient.m in Sources */,
+				5CD812071803A44C00DABA19 /* FluidRequirementsTableViewController.m in Sources */,
 				5CD3AFFF16CF38D500DE362C /* Preferences.m in Sources */,
 				5CD3B00016CF38D500DE362C /* RoundImage.m in Sources */,
 				5CD3B00116CF38D500DE362C /* BilirubinResult.m in Sources */,
@@ -3922,7 +3923,6 @@
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 				5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */,
-				5C4AAC7817BF49BC00BD68F5 /* FluidRequirementsViewController.m in Sources */,
 				5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */,
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
 				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,

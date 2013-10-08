@@ -1,25 +1,22 @@
 //
-//  FluidRequirementsViewController.m
-//  SimNICU
+//  FluidRequirementsTableViewController.m
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 17/08/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "FluidRequirementsViewController.h"
+#import "FluidRequirementsTableViewController.h"
 #import "DAAnisotropicImage.h"
 #import "UnderlineLabel.h"
 #import "CBTimeMethods.h"
 
-@interface FluidRequirementsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface FluidRequirementsTableViewController ()
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERKGPERDAY;
-@property (nonatomic, strong) UITableView *MLperHOURTableView;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERHOUR;
 @property (nonatomic, strong) UILabel *totalFluidsMLPERDAY;
 @property (nonatomic, strong) UISlider *totalFluidSlider;
-// @property (nonatomic, strong) UITableView *additives;
 
 @property (nonatomic, strong) UILabel *totalSodiumMMOLPERKGPERDAY;
 @property (nonatomic, strong) UILabel *totalSodiumMMOLPERDAY;
@@ -38,7 +35,7 @@
 
 @end
 
-@implementation FluidRequirementsViewController
+@implementation FluidRequirementsTableViewController
 {
     float workingWeightKGAsFloat;
     double workingWeightKGAsDouble;
@@ -59,9 +56,9 @@
     double caMMOLPerBag;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self)
     {
         // default values
@@ -80,41 +77,17 @@
     
     [CBTrackers logEvent:@"Fluid Requirements"];
 	
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    // iOS 7 specifics
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        self.MLperHOURTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
-    }
-    else
-    {
-        self.MLperHOURTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-    }
-    self.MLperHOURTableView.separatorColor = [UIColor grayColor];
-    self.MLperHOURTableView.sectionFooterHeight = 15.0f;
-    self.MLperHOURTableView.scrollEnabled = YES;
-    self.MLperHOURTableView.dataSource = self;
-    self.MLperHOURTableView.rowHeight = 50.0f;
-    self.MLperHOURTableView.delegate = self;
-    self.MLperHOURTableView.bounces = YES;
-    [self.view addSubview:self.MLperHOURTableView];
-    
-    [CBTableViewController setBackgroundForTableView:self.MLperHOURTableView];
-    
+    // if no working weight then show instructions
     if (!self.workingWeight)
     {
-        self.MLperHOURTableView.tableFooterView = [self setupFooterView];
-        
-        // swipe gesture recognizer
-        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        [self.MLperHOURTableView addGestureRecognizer:self.swipeGestureRecognizer];
+        self.tableView.tableFooterView = [self setupFooterView];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     if (self.workingWeight)
     {
         // goes through the entire string and replaces any commas with full stops in case
@@ -154,7 +127,7 @@
     {
         self.title = @"Weight not entered";
     }
-
+    
     // if iOS 7 then return default slider
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
@@ -183,68 +156,68 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     /*
-    if (self.selectedPatient)
-    {
-        if (self.selectedPatient.birthDate && self.selectedPatient.birthTimeSet)
-        {
-            // calculate exact age
-            double ageInDays = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[NSDate date]];
-            
-            if (self.selectedPatient.gestation)
-            {
-                int gestation = [self.selectedPatient.gestation integerValue];
-                
-                if (gestation < 28)
-                {
-                    // extreme preterm fluids
-                    if (ageInDays < 1)
-                    {
-                        mlPerKgPerDay = 60;
-                    }
-                    else if (ageInDays >= 1 && ageInDays < 2)
-                    {
-                        mlPerKgPerDay = 75;
-                    }
-                    else if (ageInDays >= 2 && ageInDays < 3)
-                    {
-                        mlPerKgPerDay = 80;
-                    }
-                    else if (ageInDays >= 3 && ageInDays < 4)
-                    {
-                        mlPerKgPerDay = 90;
-                    }
-                    else if (ageInDays >= 4)
-                    {
-                        mlPerKgPerDay = 120;
-                    }
-                }
-                else
-                {
-                    // normal fluids
-                    if (ageInDays < 1)
-                    {
-                        mlPerKgPerDay = 60;
-                    }
-                    else if (ageInDays >= 1 && ageInDays < 2)
-                    {
-                        mlPerKgPerDay = 70;
-                    }
-                    else if (ageInDays >= 2 && ageInDays < 3)
-                    {
-                        mlPerKgPerDay = 80;
-                    }
-                    else if (ageInDays >= 3 && ageInDays < 4)
-                    {
-                        mlPerKgPerDay = 90;
-                    }
-                    else if (ageInDays >= 4)
-                    {
-                        mlPerKgPerDay = 120;
-                    }
-                }
-            }
-        }
-    }
+     if (self.selectedPatient)
+     {
+     if (self.selectedPatient.birthDate && self.selectedPatient.birthTimeSet)
+     {
+     // calculate exact age
+     double ageInDays = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[NSDate date]];
+     
+     if (self.selectedPatient.gestation)
+     {
+     int gestation = [self.selectedPatient.gestation integerValue];
+     
+     if (gestation < 28)
+     {
+     // extreme preterm fluids
+     if (ageInDays < 1)
+     {
+     mlPerKgPerDay = 60;
+     }
+     else if (ageInDays >= 1 && ageInDays < 2)
+     {
+     mlPerKgPerDay = 75;
+     }
+     else if (ageInDays >= 2 && ageInDays < 3)
+     {
+     mlPerKgPerDay = 80;
+     }
+     else if (ageInDays >= 3 && ageInDays < 4)
+     {
+     mlPerKgPerDay = 90;
+     }
+     else if (ageInDays >= 4)
+     {
+     mlPerKgPerDay = 120;
+     }
+     }
+     else
+     {
+     // normal fluids
+     if (ageInDays < 1)
+     {
+     mlPerKgPerDay = 60;
+     }
+     else if (ageInDays >= 1 && ageInDays < 2)
+     {
+     mlPerKgPerDay = 70;
+     }
+     else if (ageInDays >= 2 && ageInDays < 3)
+     {
+     mlPerKgPerDay = 80;
+     }
+     else if (ageInDays >= 3 && ageInDays < 4)
+     {
+     mlPerKgPerDay = 90;
+     }
+     else if (ageInDays >= 4)
+     {
+     mlPerKgPerDay = 120;
+     }
+     }
+     }
+     }
+     }
      */
 }
 
@@ -252,11 +225,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source
@@ -494,7 +462,7 @@
                     self.totalSodiumMMOLPERKGPERDAY.backgroundColor = [UIColor clearColor];
                     self.totalSodiumMMOLPERKGPERDAY.textColor = [UIColor blackColor];
                     [cell addSubview:self.totalSodiumMMOLPERKGPERDAY];
-
+                    
                     // will have to change this to a property to allow animation
                     UILabel *mmolPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(58.0f, 41.0f, 150.0f, 22.0f)];
                     mmolPerKgPerDay.font = [UIFont boldSystemFontOfSize:16.0f];
@@ -519,7 +487,7 @@
                     self.totalSodiumMMOLPERDAY.textAlignment = UITextAlignmentRight;
                     self.totalSodiumMMOLPERDAY.textColor = [UIColor blackColor];
                     [cell addSubview:self.totalSodiumMMOLPERDAY];
-
+                    
                     UILabel *mmolPerDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 41.0f, 128.0f, 22.0f)];
                     mmolPerDayLabel.font = [UIFont boldSystemFontOfSize:16.0f];
                     mmolPerDayLabel.backgroundColor = [UIColor clearColor];
@@ -527,7 +495,7 @@
                     mmolPerDayLabel.textColor = [UIColor blackColor];
                     mmolPerDayLabel.text = @"mmol/day";
                     [cell addSubview:mmolPerDayLabel];
-
+                    
                     // mmol/500ml bag
                     self.totalSodiumMMOLPERBAG = [[UILabel alloc] initWithFrame:CGRectMake(125.0f, 62.0f, 68.0f, 22.0f)];
                     self.totalSodiumMMOLPERBAG.font = [UIFont systemFontOfSize:17.0f];
@@ -596,7 +564,7 @@
                     potassium.textColor = [UIColor blackColor];
                     potassium.text = @"Potassium chloride 15%";
                     [cell addSubview:potassium];
-
+                    
                     self.totalPotassiumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
                     self.totalPotassiumMMOLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
                     self.totalPotassiumMMOLPERKGPERDAY.backgroundColor = [UIColor clearColor];
@@ -633,7 +601,7 @@
                     mmolPerDayLabel.textColor = [UIColor blackColor];
                     mmolPerDayLabel.text = @"mmol/day";
                     [cell addSubview:mmolPerDayLabel];
-
+                    
                     // mmol/500ml bag
                     self.totalPotassiumMMOLPERBAG = [[UILabel alloc] initWithFrame:CGRectMake(125.0f, 62.0f, 68.0f, 22.0f)];
                     self.totalPotassiumMMOLPERBAG.font = [UIFont systemFontOfSize:17.0f];
@@ -701,7 +669,7 @@
                     potassium.textColor = [UIColor blackColor];
                     potassium.text = @"Calcium";
                     [cell addSubview:potassium];
-
+                    
                     self.totalCalciumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
                     self.totalCalciumMMOLPERKGPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
                     self.totalCalciumMMOLPERKGPERDAY.backgroundColor = [UIColor clearColor];
@@ -722,7 +690,7 @@
                     equals.textColor = [UIColor blackColor];
                     equals.text = @"=";
                     [cell addSubview:equals];
-
+                    
                     // mmol/day
                     self.totalCalciumMMOLPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 40.0f, 58.0f, 22.0f)];
                     self.totalCalciumMMOLPERDAY.font = [UIFont boldSystemFontOfSize:17.0f];
@@ -738,7 +706,7 @@
                     mmolPerDayLabel.textColor = [UIColor blackColor];
                     mmolPerDayLabel.text = @"mmol/day";
                     [cell addSubview:mmolPerDayLabel];
-
+                    
                     self.totalCalciumMMOLPERBAG = [[UILabel alloc] initWithFrame:CGRectMake(125.0f, 62.0f, 68.0f, 22.0f)];
                     self.totalCalciumMMOLPERBAG.font = [UIFont systemFontOfSize:17.0f];
                     self.totalCalciumMMOLPERBAG.backgroundColor = [UIColor clearColor];
@@ -810,7 +778,7 @@
         
         // update variable
         mlPerKgPerDay = sender.value;
-
+        
         // calculate values
         [self calculateValuesWhenSliderChanged:sender];
     }
@@ -885,7 +853,7 @@
     formatter.maximumFractionDigits = digits;
     
     formattedResult = [NSString stringWithFormat:@"%@", [formatter stringFromNumber:[NSNumber numberWithDouble:result]]];
-     
+    
     return formattedResult;
 }
 
@@ -918,7 +886,7 @@
     text.shadowOffset = CGSizeMake(0.0f, 1.0f);
     text.numberOfLines = 0;
     text.font = [UIFont boldSystemFontOfSize:15.0f];
-
+    
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {

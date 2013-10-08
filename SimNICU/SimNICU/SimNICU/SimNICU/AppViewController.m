@@ -39,7 +39,7 @@
 #import "DrugCategoriesViewController.h"
 #import "DrugsViewController.h"
 #import "EarlyCareViewController.h"
-#import "FluidRequirementsViewController.h"
+#import "FluidRequirementsTableViewController.h"
 #import "GastroschisisViewController.h"
 #import "GlucoseLoadController.h"
 #import "CorrectedAgeViewController.h"
@@ -1311,7 +1311,7 @@
         
         else if ([thisScreenType isEqual:@"FluidRequirements"])
         {
-            FluidRequirementsViewController *newViewController = [FluidRequirementsViewController new];;
+            FluidRequirementsTableViewController *newViewController = [[FluidRequirementsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
             if (self.selectedPatient.workingWeight)
             {
