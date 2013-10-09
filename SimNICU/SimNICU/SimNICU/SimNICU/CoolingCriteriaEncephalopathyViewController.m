@@ -137,7 +137,7 @@
         static NSString *CellIdentifier = @"cell0";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];

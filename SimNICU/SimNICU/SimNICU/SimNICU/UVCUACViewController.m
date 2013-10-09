@@ -373,7 +373,7 @@
             static NSString *CellIdentifier = @"cell00";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -417,7 +417,7 @@
             static NSString *CellIdentifier = @"cell01";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -435,7 +435,7 @@
             static NSString *CellIdentifier = @"cell02";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -456,7 +456,7 @@
             static NSString *CellIdentifier = @"cell10";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 [cell setBackgroundColor:[UIColor whiteColor]];
@@ -499,7 +499,7 @@
             static NSString *CellIdentifier = @"cell11";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil)
+            if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;

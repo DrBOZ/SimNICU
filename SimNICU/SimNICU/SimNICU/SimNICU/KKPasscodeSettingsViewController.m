@@ -277,7 +277,8 @@
 	static NSString *CellIdentifier = @"KKPasscodeSettingsCell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil)
+    
+	if (!cell)
     {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.backgroundColor = [UIColor whiteColor];

@@ -147,7 +147,7 @@
         static NSString *CellIdentifier = @"cell01";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
@@ -182,7 +182,7 @@
         static NSString *CellIdentifier = @"cell01";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];

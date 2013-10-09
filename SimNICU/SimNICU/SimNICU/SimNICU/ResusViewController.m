@@ -341,7 +341,7 @@
             NSString *CellIdentifier = @"cell01";
             ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
             cell.drug.text = @"8.4% Sodium Bicarbonate IV";
             
@@ -418,7 +418,7 @@
             NSString *CellIdentifier = @"cell10";
             ResusViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
-            if(cell == nil) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            if(!cell) cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             
             cell.drug.text = @"Calcium Gluconate 10% IV";
             

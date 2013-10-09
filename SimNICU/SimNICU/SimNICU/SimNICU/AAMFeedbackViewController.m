@@ -174,7 +174,7 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
+    if (!cell)
     {
         if(indexPath.section==1)
         {

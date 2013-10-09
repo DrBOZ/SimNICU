@@ -154,7 +154,7 @@
     
     if (indexPath.row == 0) 
     {
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
@@ -183,7 +183,7 @@
     }
     else if (indexPath.row == 1)
     {
-        if(cell == nil)
+        if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
             [cell setBackgroundColor:[UIColor whiteColor]];
