@@ -132,14 +132,15 @@
     CGRect rect = [self.textView caretRectForPosition:pos];
     CGPoint center = CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
     
-    // Double movement so one tracking motion can reach end to end
-    CGFloat newX = center.x + delta.width * 2;
-    CGFloat newY = center.y + delta.height * 2;
+    CGFloat x = 1.0f;   // change to 2.0f for double movement
+    
+    CGFloat newX = (center.x + delta.width * x);
+    CGFloat newY = (center.y + delta.height * x);
     
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        
+        // do nothing
     }
     else
     {
