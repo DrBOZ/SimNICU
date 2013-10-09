@@ -31,7 +31,7 @@
 // #import "BloodProductsTableViewController.h"
 #import "BloodProductsViewController.h"
 #import "CalculatorViewController.h"
-#import "CoolingViewController.h"
+#import "CoolingTableViewController.h"
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
 #import "CrUSSViewController.h"
@@ -1224,9 +1224,9 @@
         
         else if ([thisScreenType isEqualToString:@"Cooling"])
         {
-            CoolingViewController *newViewController = [CoolingViewController new];
+            CoolingTableViewController *vc = [CoolingTableViewController new];
     
-            [self.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
 #pragma mark Curosurf

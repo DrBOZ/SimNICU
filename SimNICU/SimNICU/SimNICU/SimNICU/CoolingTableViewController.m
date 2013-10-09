@@ -1,28 +1,33 @@
 //
-//  CoolingViewController.m
+//  CoolingTableViewController.m
 //  SimNICU
 //
 //  Created by Conrad Bosman on 12/08/2012.
-//  Copyright (c) 2012 SimNICU Project. All rights reserved.
+//  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
 #import "CoolingCriteriaEncephalopathyViewController.h"
-#import "CoolingViewController.h"
-#import "AppDelegate.h"
+#import "CoolingTableViewController.h"
 
-@interface CoolingViewController () <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
+@interface CoolingTableViewController ()
 
 @end
 
-@implementation CoolingViewController
+@implementation CoolingTableViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+	
     [CBTrackers logEvent:@"Cooling"];
     
     self.navigationItem.backBarButtonItem =
@@ -30,80 +35,14 @@
                                      style:UIBarButtonItemStyleBordered
                                     target:nil
                                     action:nil];
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.title = @"Cooling Criteria";
-    
-    //background
-    self.view.backgroundColor = [UIColor blackColor];
-    
-    //tableView
-    self.myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    
-    // iOS version differences
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height));
-    }
-    else
-    {
-        self.myTableView.frame = CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0));
-    }
-    self.myTableView.rowHeight = 44.0f;
-    self.myTableView.dataSource = self;
-    self.myTableView.delegate = self;
-    self.myTableView.sectionFooterHeight = 10.0f;
-    self.myTableView.sectionHeaderHeight = 10.0f;
-    self.myTableView.separatorColor = [UIColor grayColor];
-    [self.view addSubview:self.myTableView];
-    
-    // add TableView background
-    [CBTableViewController setBackgroundForTableView:self.myTableView];
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    NSLog(@"CoolingViewController didReceiveMemoryWarning");
-    
-    if ([self isViewLoaded] && self.view.window == nil)
-    {
-        NSLog(@"CoolingViewController unloaded properties");
-        
-        self.myTableView = nil;
-        self.swipeGestureRecognizer = nil;
-    }
-}
-
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewDidUnload
-{
-    self.myTableView = nil;
-    self.swipeGestureRecognizer = nil;
-    
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -131,7 +70,7 @@
 {
     float height = 44.0f;
     
-    if (section == 0) 
+    if (section == 0)
     {
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 4.1)
         {
@@ -174,7 +113,7 @@
     }
     else if(indexPath.section == 1)
     {
-        if (indexPath.row == 0) 
+        if (indexPath.row == 0)
         {
             static NSString *CellIdentifier = @"cell10";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -236,7 +175,7 @@
     }
     else if(indexPath.section == 2)
     {
-        if (indexPath.row == 0) 
+        if (indexPath.row == 0)
         {
             static NSString *CellIdentifier = @"cell20";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -269,7 +208,7 @@
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.detailTextLabel.text = @"Repeated neurological assessment";
             
-            returnCell = cell; 
+            returnCell = cell;
         }
     }
     
@@ -286,7 +225,7 @@
 {
     NSIndexPath *path;
     
-    if (indexPath.section == 2 && indexPath.row == 1) 
+    if (indexPath.section == 2 && indexPath.row == 1)
     {
         path = indexPath;
     }
@@ -305,6 +244,5 @@
         [self.navigationController pushViewController:newViewController animated:YES];
     }
 }
-
 
 @end
