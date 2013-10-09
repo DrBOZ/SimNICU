@@ -130,6 +130,8 @@
 		5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0663178F94CD00768739 /* amoxicillinLicence.html */; };
 		5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
 		5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
+		5C0F75B71804FF18000D0CC2 /* EarlyCareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */; };
+		5C0F75B81804FF18000D0CC2 /* EarlyCareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */; };
 		5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
 		5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
 		5C101D2E17AE99020095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2D17AE99020095E751 /* Default.png */; };
@@ -882,6 +884,8 @@
 		5C0E0660178F94BD00768739 /* amoxicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinMonitoring.html; sourceTree = "<group>"; };
 		5C0E0663178F94CD00768739 /* amoxicillinLicence.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinLicence.html; sourceTree = "<group>"; };
 		5C0E0666178F94DE00768739 /* amoxicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinReferences.html; sourceTree = "<group>"; };
+		5C0F75B51804FF18000D0CC2 /* EarlyCareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarlyCareModel.h; sourceTree = "<group>"; };
+		5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarlyCareModel.m; sourceTree = "<group>"; };
 		5C101D2217AE4DA50095E751 /* GlucoseLoadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseLoadController.h; sourceTree = "<group>"; };
 		5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseLoadController.m; sourceTree = "<group>"; };
 		5C101D2D17AE99020095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -1678,6 +1682,8 @@
 				5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */,
 				5C940B86166E3C2E0044A7D1 /* EarlyCareViewController.h */,
 				5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */,
+				5C0F75B51804FF18000D0CC2 /* EarlyCareModel.h */,
+				5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */,
 			);
 			name = Screen_EarlyCare;
 			sourceTree = "<group>";
@@ -3665,6 +3671,7 @@
 				5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */,
 				5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */,
 				5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */,
+				5C0F75B71804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
 				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
@@ -3796,6 +3803,7 @@
 				5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */,
 				5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */,
 				5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */,
+				5C0F75B81804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
 				5CD3AFBD16CF38D500DE362C /* DCIntrospect.m in Sources */,
 				5CD3AFBE16CF38D500DE362C /* DCStatusBarOverlay.m in Sources */,
 				5CD3AFBF16CF38D500DE362C /* DCFrameView.m in Sources */,
