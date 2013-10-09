@@ -90,19 +90,25 @@
 @property (strong, nonatomic) UIWindow *window;
 
 // Jobs
-// 1) Convert UIViewControllers to UITableViewControllers?
+// 1) Convert UIViewControllers to UITableViewControllers - YES, about half way through
 // 2) Now I have started changing over, set standard cell height for all UITableViews?
 // 3) Fix Shinobi chart - crashes when loaded in the Simulator
 // 4) Add a clear button to Daily Summary Editor
 // 5) Convert the Daily Summary headings from a NSString to an NSArray or even NSDictionary
 //    to enable the saving of a date with the NSString.  This will allow converting the text to red
-//    if it is out of date.
+//    if it is out of date - MAYBE...
 // 6) 
 // 7) patient.
 
 // 8) Finish dictation commands
-// 9) Finish custom text commands
+// 9) Finish custom text commands, improve these
+// 9) Fix custom box for iOS 7
+// 9) Fix Plan for iOS7 (needs to be a set min height)
+// 9) Blue toolbar for dailySummaryVC? why is this?
 //10) Custom text subviews is too difficult currently
+//11) Sort new patient bilirubin graphs
+//
+//12) Add current weights
 
 
 @end
