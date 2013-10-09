@@ -1288,18 +1288,18 @@
         
         else if ([thisScreenType isEqualToString:@"EarlyCare"])
         {
-            EarlyCareViewController *newViewController = [EarlyCareViewController new];;
+            EarlyCareViewController *vc = [[EarlyCareViewController alloc] initWithStyle:UITableViewStylePlain];
             
             if (self.earlyCareWarningShown)
             {
-                newViewController.earlyCareWarningShown = YES;
+                vc.earlyCareWarningShown = YES;
             }
             else
             {
                 self.earlyCareWarningShown = YES;
             }
             
-            [self.navigationController pushViewController:newViewController animated:YES];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
         else if ([thisScreenType isEqualToString:@"FluidBalance"])

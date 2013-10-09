@@ -453,7 +453,6 @@
 		5C940BCF166E3C2F0044A7D1 /* earlyCareVentStrategies.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */; };
 		5C940BD0166E3C2F0044A7D1 /* earlyCareMisc.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */; };
 		5C940BD1166E3C2F0044A7D1 /* earlyCareVentSettings.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */; };
-		5C940BD2166E3C2F0044A7D1 /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */; };
 		5C940BD3166E3C2F0044A7D1 /* gastroschisis0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */; };
 		5C940BD5166E3C2F0044A7D1 /* GastroschisisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */; };
 		5C940BD6166E3C2F0044A7D1 /* hfov0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B8C166E3C2E0044A7D1 /* hfov0.html */; };
@@ -654,7 +653,6 @@
 		5CD3AFD716CF38D500DE362C /* CoolingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6C166E3C2E0044A7D1 /* CoolingViewController.m */; };
 		5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B6E166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m */; };
 		5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */; };
-		5CD3AFDC16CF38D500DE362C /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */; };
 		5CD3AFDD16CF38D500DE362C /* GastroschisisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */; };
 		5CD3AFDE16CF38D500DE362C /* HFOVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */; };
 		5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */; };
@@ -800,6 +798,8 @@
 		5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */; };
 		5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 		5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
+		5CFCCC9918050DD900031979 /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCCC9818050DD900031979 /* EarlyCareViewController.m */; };
+		5CFCCC9A18050DD900031979 /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCCC9818050DD900031979 /* EarlyCareViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1231,8 +1231,6 @@
 		5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentStrategies.html; sourceTree = "<group>"; };
 		5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareMisc.html; sourceTree = "<group>"; };
 		5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = earlyCareVentSettings.html; sourceTree = "<group>"; };
-		5C940B86166E3C2E0044A7D1 /* EarlyCareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarlyCareViewController.h; sourceTree = "<group>"; };
-		5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarlyCareViewController.m; sourceTree = "<group>"; };
 		5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = gastroschisis0.html; sourceTree = "<group>"; };
 		5C940B8A166E3C2E0044A7D1 /* GastroschisisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastroschisisViewController.h; sourceTree = "<group>"; };
 		5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastroschisisViewController.m; sourceTree = "<group>"; };
@@ -1456,6 +1454,8 @@
 		5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextEditorTableViewController.m; sourceTree = "<group>"; };
 		5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeightMethods.h; sourceTree = "<group>"; };
 		5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeightMethods.m; sourceTree = "<group>"; };
+		5CFCCC9718050DD900031979 /* EarlyCareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarlyCareViewController.h; sourceTree = "<group>"; };
+		5CFCCC9818050DD900031979 /* EarlyCareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarlyCareViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1672,18 +1672,11 @@
 		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B7F166E3C2E0044A7D1 /* earlyCare0.html */,
-				5C940B80166E3C2E0044A7D1 /* earlyCare1.html */,
-				5C940B81166E3C2E0044A7D1 /* earlyCare2.html */,
-				5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */,
-				5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */,
-				5C940B82166E3C2E0044A7D1 /* earlyCareNICUAdmission.html */,
-				5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */,
-				5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */,
-				5C940B86166E3C2E0044A7D1 /* EarlyCareViewController.h */,
-				5C940B87166E3C2E0044A7D1 /* EarlyCareViewController.m */,
+				5CFCCC9718050DD900031979 /* EarlyCareViewController.h */,
+				5CFCCC9818050DD900031979 /* EarlyCareViewController.m */,
 				5C0F75B51804FF18000D0CC2 /* EarlyCareModel.h */,
 				5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */,
+				5CFCCC96180506FA00031979 /* HTML pages */,
 			);
 			name = Screen_EarlyCare;
 			sourceTree = "<group>";
@@ -3133,6 +3126,21 @@
 			name = PatientListWarnings;
 			sourceTree = "<group>";
 		};
+		5CFCCC96180506FA00031979 /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B7F166E3C2E0044A7D1 /* earlyCare0.html */,
+				5C940B80166E3C2E0044A7D1 /* earlyCare1.html */,
+				5C940B81166E3C2E0044A7D1 /* earlyCare2.html */,
+				5C940B85166E3C2E0044A7D1 /* earlyCareVentSettings.html */,
+				5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */,
+				5C940B82166E3C2E0044A7D1 /* earlyCareNICUAdmission.html */,
+				5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */,
+				5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */,
+			);
+			name = "HTML pages";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3623,7 +3631,6 @@
 				5C940BBC166E3C2E0044A7D1 /* CoolingViewController.m in Sources */,
 				5C940BBD166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
 				5C940BCA166E3C2F0044A7D1 /* CDHViewController.m in Sources */,
-				5C940BD2166E3C2F0044A7D1 /* EarlyCareViewController.m in Sources */,
 				5C940BD5166E3C2F0044A7D1 /* GastroschisisViewController.m in Sources */,
 				5C940BD8166E3C2F0044A7D1 /* HFOVViewController.m in Sources */,
 				5C940BD9166E3C2F0044A7D1 /* InfusionsViewController.m in Sources */,
@@ -3718,6 +3725,7 @@
 				5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C56F6061801A46300665E22 /* CBFonts.m in Sources */,
 				5C427FE517B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
+				5CFCCC9918050DD900031979 /* EarlyCareViewController.m in Sources */,
 				5C427FE917B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
 				5C56F6221801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CF73ECD17B8F86D00096965 /* CBWeightMethods.m in Sources */,
@@ -3832,7 +3840,6 @@
 				5CD3AFD716CF38D500DE362C /* CoolingViewController.m in Sources */,
 				5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
 				5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */,
-				5CD3AFDC16CF38D500DE362C /* EarlyCareViewController.m in Sources */,
 				5CD3AFDD16CF38D500DE362C /* GastroschisisViewController.m in Sources */,
 				5CD3AFDE16CF38D500DE362C /* HFOVViewController.m in Sources */,
 				5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */,
@@ -3906,6 +3913,7 @@
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C06D4BE1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */,
+				5CFCCC9A18050DD900031979 /* EarlyCareViewController.m in Sources */,
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 				5C756C9D179898A6002F983E /* ExactAgeViewController.m in Sources */,
 				5C756CA217989A33002F983E /* AgeCalculatorsViewController.m in Sources */,

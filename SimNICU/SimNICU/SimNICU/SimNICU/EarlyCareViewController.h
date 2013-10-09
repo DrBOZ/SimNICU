@@ -1,12 +1,14 @@
 //
 //  EarlyCareViewController.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 10/08/2012.
-//  Copyright (c) 2012 SimNICU Project. All rights reserved.
+//  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-@interface EarlyCareViewController : UIViewController
+#import "CBTableViewWebViewController.h"
+
+@interface EarlyCareViewController : CBTableViewWebViewController
 
 @property (nonatomic) BOOL earlyCareWarningShown;
 
