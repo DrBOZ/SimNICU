@@ -23,8 +23,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 235.0f)
                                          header:@"Indications"
                                        resource:@"curosurfIndications"
-                                 cellIdentifier:@"Cell0"
-                        heightForRowAtIndexPath:@240.0f];
+                                 cellIdentifier:@"Cell0"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -33,8 +32,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 370.0f)
                                          header:@"Doses"
                                        resource:@"curosurfDoses2"
-                                 cellIdentifier:@"Cell1"
-                        heightForRowAtIndexPath:@375.0f];
+                                 cellIdentifier:@"Cell1"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -43,8 +41,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(12.0f, 0.0f, 300.0f, 130.0f)
                                          header:@"Further doses"
                                        resource:@"curosurfFurtherDoses"
-                                 cellIdentifier:@"Cell2"
-                        heightForRowAtIndexPath:@135.0f];
+                                 cellIdentifier:@"Cell2"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     

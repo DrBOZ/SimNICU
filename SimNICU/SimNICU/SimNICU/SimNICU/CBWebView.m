@@ -35,7 +35,7 @@
     return self;
 }
 
-+ (CBWebView *)createWebViewWithFrame:(CGRect)frame header:(NSString *)header resource:(NSString *)resource cellIdentifier:(NSString *)cellIdentifier heightForRowAtIndexPath:(NSNumber *)height
++ (CBWebView *)createWebViewWithFrame:(CGRect)frame header:(NSString *)header resource:(NSString *)resource cellIdentifier:(NSString *)cellIdentifier
 {
     CBWebView *webView;
     
@@ -43,7 +43,7 @@
     webView.header = header;
     webView.resource = resource;
     webView.cellIdentifier = cellIdentifier;
-    webView.heightForRowAtIndexPath = height;
+    webView.heightForRowAtIndexPath = [NSNumber numberWithFloat:(webView.frame.size.height + 5.0f)];
     [webView loadHMTLPageWithFilename:webView.resource];
     
     return  webView;

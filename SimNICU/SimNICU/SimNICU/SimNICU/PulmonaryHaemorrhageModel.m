@@ -20,54 +20,44 @@
     
     // Section 0
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 345.0f)];
-    webView.header = @"Initial Management";
-    // Number localization code
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-    {
-        webView.resource = @"pulmonaryHaem0Comma";
-    }
-    else
-    {
-        webView.resource = @"pulmonaryHaem0";
-    }
-    webView.cellIdentifier = @"Cell0";
-    webView.heightForRowAtIndexPath = @350.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
-    [webViewRows addObject:webView];
     
+    // Number localization code
+    NSString *resource;
+    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
+        resource = @"pulmonaryHaem0Comma";
+    else
+        resource = @"pulmonaryHaem0";
+    
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 345.0f)
+                                         header:@"Initial Management"
+                                       resource:resource
+                                 cellIdentifier:@"Cell0"];
+    [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
     // Section 1
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 175.0f)];
-    webView.header = @"Investigations";
-    webView.resource = @"pulmonaryHaem1";
-    webView.cellIdentifier = @"Cell1";
-    webView.heightForRowAtIndexPath = @180.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 175.0f)
+                                         header:@"Investigations"
+                                       resource:@"pulmonaryHaem1"
+                                 cellIdentifier:@"Cell1"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     // Section 2
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 230.0f)];
-    webView.header = @"Ongoing Management";
+    
     // Number localization code
     if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-    {
-        webView.resource = @"pulmonaryHaem2Comma";
-    }
+        resource = @"pulmonaryHaem2Comma";
     else
-    {
-        webView.resource = @"pulmonaryHaem2";
-    }
-    webView.cellIdentifier = @"Cell02";
-    webView.heightForRowAtIndexPath = @235.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
-    [webViewRows addObject:webView];
+        resource = @"pulmonaryHaem2";
     
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 230.0f)
+                                         header:@"Ongoing Management"
+                                       resource:resource
+                                 cellIdentifier:@"Cell02"];
+    [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
     // Section 3

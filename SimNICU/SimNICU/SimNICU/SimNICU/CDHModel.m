@@ -23,8 +23,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 160.0f)
                                          header:@"Delivery Room Care"
                                        resource:@"cdh0"
-                                 cellIdentifier:@"Cell0"
-                        heightForRowAtIndexPath:@165.0f];
+                                 cellIdentifier:@"Cell0"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -41,8 +40,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 695.0f)
                                          header:@"Neonatal Unit"
                                        resource:resource
-                                 cellIdentifier:@"Cell1"
-                        heightForRowAtIndexPath:@700.0f];
+                                 cellIdentifier:@"Cell1"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -51,8 +49,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 95.0f)
                                          header:@"Surgery"
                                        resource:@"cdh2"
-                                 cellIdentifier:@"Cell2"
-                        heightForRowAtIndexPath:@100.0f];
+                                 cellIdentifier:@"Cell2"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -60,8 +57,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 265.0f)
                                          header:@"Post-Operative Care"
                                        resource:@"cdh3"
-                                 cellIdentifier:@"Cell3"
-                        heightForRowAtIndexPath:@270.0f];
+                                 cellIdentifier:@"Cell3"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     

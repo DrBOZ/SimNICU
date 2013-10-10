@@ -23,8 +23,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 245.0f)
                                          header:@"Delivery Room Care"
                                        resource:@"gastroschisis0"
-                                 cellIdentifier:@"Cell0"
-                        heightForRowAtIndexPath:@250.0f];
+                                 cellIdentifier:@"Cell0"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -33,8 +32,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 135.0f)
                                          header:@"Neonatal Unit"
                                        resource:@"gastroschisis0"
-                                 cellIdentifier:@"Cell1"
-                        heightForRowAtIndexPath:@140.0f];
+                                 cellIdentifier:@"Cell1"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
