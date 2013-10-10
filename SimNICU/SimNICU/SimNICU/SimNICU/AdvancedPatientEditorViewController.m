@@ -5199,29 +5199,32 @@
 
 - (UIView *)trackballAccessoryViewForUITextView:(UITextView *)textView
 {
-    // Use this simple toolbar if you don't want to use the special input accessory view.
+    // Tool 1: Simple tool
     // UIToolbar *trackballToolbar = [[UIToolbar alloc] init];
     // [trackballToolbar sizeToFit];
     // [trackballToolbar setTintColor:[UIColor colorWithRed:145/255. green:153/255. blue:164/255. alpha:1]];
     
-    // Special input accessory view; allows smaller height in landscape orientation
+    // Tool 2: Special input accessory view; allows smaller height in landscape orientation
     
-    UIToolbar *trackballToolbar = [[UDInputAccessoryView alloc] init];
-    
-    /*
-    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-     */
+    // Create toolbar
+    UIToolbar *trackballToolbar = [UDInputAccessoryView new];
     
     // create trackball
     UDBarTrackballItem *trackball = [[UDBarTrackballItem alloc] initForTextView:textView];
     
     // create left custom text button
-    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"done" insertingTextViewText:@""];
+    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"done"
+                                                              insertingTextViewText:@""];
     customText1.delegate = self;
     
     // create right custom text button
-    CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom" insertingTextViewText:@""];
+    CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom"
+                                                              insertingTextViewText:@""];
     customText2.delegate = self;
+    
+    /* Spacer, if required
+     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+     */
     
     [trackballToolbar setItems:@[customText2, trackball, customText1] animated:YES];
     

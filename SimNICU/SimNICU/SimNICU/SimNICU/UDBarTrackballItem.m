@@ -132,7 +132,8 @@
     CGRect rect = [self.textView caretRectForPosition:pos];
     CGPoint center = CGPointMake(rect.origin.x + rect.size.width / 2, rect.origin.y + rect.size.height / 2);
     
-    CGFloat x = 1.0f;   // change to 2.0f for double movement
+    // x changes the tracking movement 1.0 is normal speed, 2.0 is double speed
+    CGFloat x = 0.5f;
     
     CGFloat newX = (center.x + delta.width * x);
     CGFloat newY = (center.y + delta.height * x);

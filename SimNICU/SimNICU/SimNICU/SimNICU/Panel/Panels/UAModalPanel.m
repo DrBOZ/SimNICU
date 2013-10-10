@@ -273,7 +273,6 @@
 
 - (void)closePressed:(id)sender
 {
-	
 	// Using Delegates
 	if ([delegate respondsToSelector:@selector(shouldCloseModalPanel:)]) {
 		if ([delegate shouldCloseModalPanel:self]) {

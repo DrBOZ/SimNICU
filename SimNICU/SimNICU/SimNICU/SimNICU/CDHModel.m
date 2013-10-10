@@ -29,18 +29,11 @@
     
     // section 1
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    
-    // Number localization code
-    NSString *resource;
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        resource = @"cdh1Comma";
-    else
-        resource = @"cdh1";
-    
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 695.0f)
                                          header:@"Neonatal Unit"
-                                       resource:resource
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"cdh1Comma" : @"cdh1")
                                  cellIdentifier:@"Cell1"];
+    
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
