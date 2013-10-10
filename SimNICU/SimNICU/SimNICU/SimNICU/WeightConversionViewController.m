@@ -45,19 +45,10 @@
     self.webView.dataDetectorTypes = UIDataDetectorTypeAll;
     [self.view addSubview:self.webView];
     
-    NSString *filename;
-    
-    // Number localization code
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-    {
-        filename = @"weightConversionTableComma";
-    }
-    else
-    {
-        filename = @"weightConversionTable";
-    }
-    
-    NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"html"] isDirectory:NO];
+    NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle]
+                                             pathForResource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"weightConversionTableComma" : @"weightConversionTable")
+                                             ofType:@"html"]
+                                isDirectory:NO];
     
     NSURLRequest *URLReq = [NSURLRequest requestWithURL:htmlURL];
     [self.webView loadRequest:URLReq];

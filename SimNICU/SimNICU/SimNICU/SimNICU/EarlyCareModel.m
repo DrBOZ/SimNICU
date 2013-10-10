@@ -41,18 +41,9 @@
     
     // Section Two
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    
-    // Number localization code
-    NSString *resource;
-    
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        resource = @"earlyCareVentSettingsComma";
-    else
-        resource = @"earlyCareVentSettings";
-    
     webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 155.0f)
                                          header:@"Initial Ventilator Settings"
-                                       resource:resource
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"earlyCareVentSettingsComma" : @"earlyCareVentSettings")
                                  cellIdentifier:@"Cell1"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];

@@ -20,54 +20,29 @@
     
     // Section 0
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 1000.0f)];
-    webView.header = @"Transfusion Criteria";
-    // Number localization code
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-    {
-        webView.resource = @"bloodTransfusionCriteria0Comma";
-    }
-    else
-    {
-        webView.resource = @"bloodTransfusionCriteria0";
-    }
-    webView.cellIdentifier = @"TransfusionCriteria";
-    webView.heightForRowAtIndexPath = @755.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 750.0f)
+                                         header:@"Transfusion Criteria"
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"bloodTransfusionCriteria0Comma" : @"bloodTransfusionCriteria0")
+                                 cellIdentifier:@"TransfusionCriteria"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     // Section 1
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 1000.0f)];
-    webView.header = @"Reticulocytes";
-    // Number localization code
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-    {
-        webView.resource = @"bloodTransfusionCriteria1Comma";
-    }
-    else
-    {
-        webView.resource = @"bloodTransfusionCriteria1";
-    }
-    webView.cellIdentifier = @"Reticulocytes";
-    webView.heightForRowAtIndexPath = @170.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 165.0f)
+                                         header:@"Reticulocytes"
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"bloodTransfusionCriteria1Comma" : @"bloodTransfusionCriteria1")
+                                 cellIdentifier:@"Reticulocytes"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     // Section 2
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 1000.0f)];
-    webView.header = NSLocalizedString(@"Frusemide", nil);
-    webView.resource = @"bloodTransfusionCriteria2";
-    webView.cellIdentifier = @"Frusemide";
-    webView.heightForRowAtIndexPath = @190.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 185.0f)
+                                         header:NSLocalizedString(@"Frusemide", nil)
+                                       resource:@"bloodTransfusionCriteria2"
+                                 cellIdentifier:@"Frusemide"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     return webViewSections;

@@ -20,17 +20,9 @@
     
     // Section 0
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    
-    // Number localization code
-    NSString *resource;
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        resource = @"pulmonaryHaem0Comma";
-    else
-        resource = @"pulmonaryHaem0";
-    
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 345.0f)
                                          header:@"Initial Management"
-                                       resource:resource
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"pulmonaryHaem0Comma" : @"pulmonaryHaem0")
                                  cellIdentifier:@"Cell0"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
@@ -46,38 +38,20 @@
     
     // Section 2
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    
-    // Number localization code
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-        resource = @"pulmonaryHaem2Comma";
-    else
-        resource = @"pulmonaryHaem2";
-    
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 230.0f)
                                          header:@"Ongoing Management"
-                                       resource:resource
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"pulmonaryHaem2Comma" : @"pulmonaryHaem2")
                                  cellIdentifier:@"Cell02"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
     // Section 3
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 175.0f)];
-    webView.header = @"With blood results";
-    // Number localization code
-    if ([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","])
-    {
-        webView.resource = @"pulmonaryHaem3Comma";
-    }
-    else
-    {
-        webView.resource = @"pulmonaryHaem3";
-    }
-    webView.cellIdentifier = @"Cell03";
-    webView.heightForRowAtIndexPath = @180.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 175.0f)
+                                         header:@"With blood results"
+                                       resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"pulmonaryHaem3Comma" : @"pulmonaryHaem3")
+                                 cellIdentifier:@"Cell03"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     return webViewSections;
