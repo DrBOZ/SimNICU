@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GastroschisisViewController : UIViewController
+@interface GastroschisisViewController : CBTableViewWebViewController
 
 @end

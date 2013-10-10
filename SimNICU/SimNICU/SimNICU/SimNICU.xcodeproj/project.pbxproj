@@ -804,6 +804,8 @@
 		5CFF4C01180635E7006C8480 /* DailySummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */; };
 		5CFF4C04180662CD006C8480 /* CDHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C03180662CD006C8480 /* CDHModel.m */; };
 		5CFF4C05180662CD006C8480 /* CDHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C03180662CD006C8480 /* CDHModel.m */; };
+		5CFF4C0E180667F2006C8480 /* GastroschisisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */; };
+		5CFF4C0F180667F2006C8480 /* GastroschisisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1464,6 +1466,8 @@
 		5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryTableViewController.m; sourceTree = "<group>"; };
 		5CFF4C02180662CD006C8480 /* CDHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDHModel.h; sourceTree = "<group>"; };
 		5CFF4C03180662CD006C8480 /* CDHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDHModel.m; sourceTree = "<group>"; };
+		5CFF4C0C180667F2006C8480 /* GastroschisisModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastroschisisModel.h; sourceTree = "<group>"; };
+		5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastroschisisModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2118,10 +2122,11 @@
 		5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */,
-				5C940CDD166E47D80044A7D1 /* gastroschisis1.html */,
 				5C940B8A166E3C2E0044A7D1 /* GastroschisisViewController.h */,
 				5C940B8B166E3C2E0044A7D1 /* GastroschisisViewController.m */,
+				5CFF4C0C180667F2006C8480 /* GastroschisisModel.h */,
+				5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */,
+				5CFF4C0B180667D7006C8480 /* HTML pages */,
 			);
 			name = Screen_Gastroschisis;
 			sourceTree = "<group>";
@@ -3161,6 +3166,15 @@
 			name = "HTML pages";
 			sourceTree = "<group>";
 		};
+		5CFF4C0B180667D7006C8480 /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B88166E3C2E0044A7D1 /* gastroschisis0.html */,
+				5C940CDD166E47D80044A7D1 /* gastroschisis1.html */,
+			);
+			name = "HTML pages";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3693,6 +3707,7 @@
 				5C940C40166E3E230044A7D1 /* BilirubinResult.m in Sources */,
 				5C940C41166E3E230044A7D1 /* SimNICUWebView.m in Sources */,
 				5C940C42166E3E230044A7D1 /* Screen.m in Sources */,
+				5CFF4C0E180667F2006C8480 /* GastroschisisModel.m in Sources */,
 				5C940C43166E3E230044A7D1 /* GrowthChart.m in Sources */,
 				5C940CB9166E43800044A7D1 /* InfoTabBarController.m in Sources */,
 				5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */,
@@ -3894,6 +3909,7 @@
 				5CD3AFF716CF38D500DE362C /* ActionSheetStringPicker.m in Sources */,
 				5CD3AFF816CF38D500DE362C /* ActionSheetDatePicker.m in Sources */,
 				5CD3AFF916CF38D500DE362C /* ActionSheetDistancePicker.m in Sources */,
+				5CFF4C0F180667F2006C8480 /* GastroschisisModel.m in Sources */,
 				5C422D861800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */,
 				5CD3AFFA16CF38D500DE362C /* DistancePickerView.m in Sources */,
 				5CD3AFFB16CF38D500DE362C /* NSDate+TCUtils.m in Sources */,
