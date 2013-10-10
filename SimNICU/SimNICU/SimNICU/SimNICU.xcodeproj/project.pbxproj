@@ -2141,15 +2141,11 @@
 		5C63B13C16B9FEF900B31431 /* Screen_CDH */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B79166E3C2E0044A7D1 /* cdh0.html */,
-				5C940CD3166E47070044A7D1 /* cdh1.html */,
-				5C39630316B839790039C387 /* cdh1Comma.html */,
-				5C940B7B166E3C2E0044A7D1 /* cdh2.html */,
-				5C940CD8166E47420044A7D1 /* cdh3.html */,
 				5C940B7D166E3C2E0044A7D1 /* CDHViewController.h */,
 				5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */,
 				5CFF4C02180662CD006C8480 /* CDHModel.h */,
 				5CFF4C03180662CD006C8480 /* CDHModel.m */,
+				5CFF4C0A180665D4006C8480 /* HTML pages */,
 			);
 			name = Screen_CDH;
 			sourceTree = "<group>";
@@ -3149,6 +3145,18 @@
 				5C940B82166E3C2E0044A7D1 /* earlyCareNICUAdmission.html */,
 				5C940B83166E3C2E0044A7D1 /* earlyCareVentStrategies.html */,
 				5C940B84166E3C2E0044A7D1 /* earlyCareMisc.html */,
+			);
+			name = "HTML pages";
+			sourceTree = "<group>";
+		};
+		5CFF4C0A180665D4006C8480 /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B79166E3C2E0044A7D1 /* cdh0.html */,
+				5C940CD3166E47070044A7D1 /* cdh1.html */,
+				5C39630316B839790039C387 /* cdh1Comma.html */,
+				5C940B7B166E3C2E0044A7D1 /* cdh2.html */,
+				5C940CD8166E47420044A7D1 /* cdh3.html */,
 			);
 			name = "HTML pages";
 			sourceTree = "<group>";
