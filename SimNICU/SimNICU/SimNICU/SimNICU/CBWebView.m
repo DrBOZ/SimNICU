@@ -35,6 +35,20 @@
     return self;
 }
 
++ (CBWebView *)createWebViewWithFrame:(CGRect)frame header:(NSString *)header resource:(NSString *)resource cellIdentifier:(NSString *)cellIdentifier heightForRowAtIndexPath:(NSNumber *)height
+{
+    CBWebView *webView;
+    
+    webView = [[CBWebView alloc] initWithFrame:frame];
+    webView.header = header;
+    webView.resource = resource;
+    webView.cellIdentifier = cellIdentifier;
+    webView.heightForRowAtIndexPath = height;
+    [webView loadHMTLPageWithFilename:webView.resource];
+    
+    return  webView;
+}
+
 - (void)loadHMTLPageWithFilename:(NSString *)filename
 {
     NSURL *htmlURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:filename ofType:@"html"] isDirectory:NO];

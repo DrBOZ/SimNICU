@@ -800,6 +800,8 @@
 		5CF73ECE17B8F86D00096965 /* CBWeightMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */; };
 		5CFCCC9918050DD900031979 /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCCC9818050DD900031979 /* EarlyCareViewController.m */; };
 		5CFCCC9A18050DD900031979 /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCCC9818050DD900031979 /* EarlyCareViewController.m */; };
+		5CFF4C00180635E7006C8480 /* DailySummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */; };
+		5CFF4C01180635E7006C8480 /* DailySummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1456,6 +1458,8 @@
 		5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeightMethods.m; sourceTree = "<group>"; };
 		5CFCCC9718050DD900031979 /* EarlyCareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarlyCareViewController.h; sourceTree = "<group>"; };
 		5CFCCC9818050DD900031979 /* EarlyCareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarlyCareViewController.m; sourceTree = "<group>"; };
+		5CFF4BFE180635E7006C8480 /* DailySummaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryTableViewController.h; sourceTree = "<group>"; };
+		5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2944,6 +2948,8 @@
 			children = (
 				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
 				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5CFF4BFE180635E7006C8480 /* DailySummaryTableViewController.h */,
+				5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */,
 				5C4DC75017E562F000412C72 /* DictationCommands.h */,
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
 				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
@@ -3611,6 +3617,7 @@
 				5C06D4B51803BA4900A3B46C /* DrugInfoSimpleTableViewController.m in Sources */,
 				5C940AFC166E3AFE0044A7D1 /* PortraitOnlyNavigationController.m in Sources */,
 				5C940B01166E3B110044A7D1 /* AppViewController.m in Sources */,
+				5CFF4C00180635E7006C8480 /* DailySummaryTableViewController.m in Sources */,
 				5C940B07166E3B420044A7D1 /* EnterWeightViewController.m in Sources */,
 				5C940B0C166E3B650044A7D1 /* PatientDetailsViewController.m in Sources */,
 				5C940B14166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m in Sources */,
@@ -3894,6 +3901,7 @@
 				5CD3B00916CF38D500DE362C /* InfusionsViewMaximalTableViewCell.m in Sources */,
 				5CD3B00A16CF38D500DE362C /* InfusionDrug.m in Sources */,
 				5CD3B00B16CF38D500DE362C /* InfusionDrugPreparation.m in Sources */,
+				5CFF4C01180635E7006C8480 /* DailySummaryTableViewController.m in Sources */,
 				5CD3B00C16CF38D500DE362C /* CalculatorViewController.m in Sources */,
 				5CD3B00D16CF38D500DE362C /* CalculatorBrain.m in Sources */,
 				5C98A6A41787553400F246E3 /* DrugDatabase.m in Sources */,

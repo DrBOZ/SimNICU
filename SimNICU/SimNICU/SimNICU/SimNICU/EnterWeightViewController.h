@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 SimNICU. All rights reserved.
 //
 
-#import "AdvancedPatientEditorViewController.h"
+#import "AdvancedPatientEditorViewController.h" // aiming to delete this one
 #import "KKPasscodeSettingsViewController.h"
+#import "DailySummaryTableViewController.h"
 #import "OxygenationIndexViewController.h"
 #import "PatientDetailsViewController.h"
 #import "BayEditorTableViewController.h"

@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSString *resource;
 @property (nonatomic, strong) NSString *cellIdentifier;
 
++ (CBWebView *)createWebViewWithFrame:(CGRect)frame header:(NSString *)header resource:(NSString *)resource cellIdentifier:(NSString *)cellIdentifier heightForRowAtIndexPath:(NSNumber *)height;
+
 - (void)loadHMTLPageWithFilename:(NSString *)filename;
 
 @end
