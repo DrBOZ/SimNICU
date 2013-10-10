@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C03AB901806E85500870330 /* IntubationDrugsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C03AB8F1806E85500870330 /* IntubationDrugsTableViewController.m */; };
+		5C03AB911806E85500870330 /* IntubationDrugsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C03AB8F1806E85500870330 /* IntubationDrugsTableViewController.m */; };
 		5C06D4B01803B68F00A3B46C /* DrugsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4AF1803B68F00A3B46C /* DrugsTableViewController.m */; };
 		5C06D4B11803B68F00A3B46C /* DrugsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4AF1803B68F00A3B46C /* DrugsTableViewController.m */; };
 		5C06D4B51803BA4900A3B46C /* DrugInfoSimpleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4B41803BA4900A3B46C /* DrugInfoSimpleTableViewController.m */; };
@@ -461,7 +463,6 @@
 		5C940BD8166E3C2F0044A7D1 /* HFOVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */; };
 		5C940BD9166E3C2F0044A7D1 /* InfusionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */; };
 		5C940BDA166E3C2F0044A7D1 /* IntubationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */; };
-		5C940BDB166E3C2F0044A7D1 /* IntubationDrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */; };
 		5C940BDC166E3C2F0044A7D1 /* OxygenationIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */; };
 		5C940BDD166E3C2F0044A7D1 /* PlasticBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B99166E3C2E0044A7D1 /* PlasticBagViewController.m */; };
 		5C940BDE166E3C2F0044A7D1 /* pulmonaryHaem0.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B9A166E3C2E0044A7D1 /* pulmonaryHaem0.html */; };
@@ -657,7 +658,6 @@
 		5CD3AFDE16CF38D500DE362C /* HFOVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */; };
 		5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */; };
 		5CD3AFE016CF38D500DE362C /* IntubationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */; };
-		5CD3AFE116CF38D500DE362C /* IntubationDrugsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */; };
 		5CD3AFE216CF38D500DE362C /* OxygenationIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */; };
 		5CD3AFE316CF38D500DE362C /* PlasticBagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940B99166E3C2E0044A7D1 /* PlasticBagViewController.m */; };
 		5CD3AFE516CF38D500DE362C /* ResusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940BA1166E3C2E0044A7D1 /* ResusViewController.m */; };
@@ -813,6 +813,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C03AB8E1806E85500870330 /* IntubationDrugsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntubationDrugsTableViewController.h; sourceTree = "<group>"; };
+		5C03AB8F1806E85500870330 /* IntubationDrugsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntubationDrugsTableViewController.m; sourceTree = "<group>"; };
 		5C06D4AE1803B68F00A3B46C /* DrugsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugsTableViewController.h; sourceTree = "<group>"; };
 		5C06D4AF1803B68F00A3B46C /* DrugsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugsTableViewController.m; sourceTree = "<group>"; };
 		5C06D4B31803BA4900A3B46C /* DrugInfoSimpleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugInfoSimpleTableViewController.h; sourceTree = "<group>"; };
@@ -1252,8 +1254,6 @@
 		5C940B91166E3C2E0044A7D1 /* InfusionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfusionsViewController.m; sourceTree = "<group>"; };
 		5C940B92166E3C2E0044A7D1 /* IntubationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntubationViewController.h; sourceTree = "<group>"; };
 		5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntubationViewController.m; sourceTree = "<group>"; };
-		5C940B94166E3C2E0044A7D1 /* IntubationDrugsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntubationDrugsViewController.h; sourceTree = "<group>"; };
-		5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntubationDrugsViewController.m; sourceTree = "<group>"; };
 		5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OxygenationIndexViewController.h; sourceTree = "<group>"; };
 		5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OxygenationIndexViewController.m; sourceTree = "<group>"; };
 		5C940B98166E3C2E0044A7D1 /* PlasticBagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlasticBagViewController.h; sourceTree = "<group>"; };
@@ -1736,8 +1736,8 @@
 			children = (
 				5C940B92166E3C2E0044A7D1 /* IntubationViewController.h */,
 				5C940B93166E3C2E0044A7D1 /* IntubationViewController.m */,
-				5C940B94166E3C2E0044A7D1 /* IntubationDrugsViewController.h */,
-				5C940B95166E3C2E0044A7D1 /* IntubationDrugsViewController.m */,
+				5C03AB8E1806E85500870330 /* IntubationDrugsTableViewController.h */,
+				5C03AB8F1806E85500870330 /* IntubationDrugsTableViewController.m */,
 				5C940CFC166E724B0044A7D1 /* IntubationDrugsTableViewCell.h */,
 				5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */,
 			);
@@ -3098,13 +3098,13 @@
 		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B6A166E3C2E0044A7D1 /* cooling2.html */,
 				5C27A7F118055CA900A18ECE /* CoolingTableViewController.h */,
 				5C27A7F218055CA900A18ECE /* CoolingTableViewController.m */,
 				5C940B6D166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.h */,
 				5C940B6E166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m */,
 				5CFF4C15180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.h */,
 				5CFF4C16180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m */,
+				5CFF4C19180687EB006C8480 /* HTML page */,
 			);
 			name = Screen_Cooling;
 			sourceTree = "<group>";
@@ -3193,6 +3193,14 @@
 				5C940B8D166E3C2E0044A7D1 /* hfov1.html */,
 			);
 			name = "HTML pages";
+			sourceTree = "<group>";
+		};
+		5CFF4C19180687EB006C8480 /* HTML page */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B6A166E3C2E0044A7D1 /* cooling2.html */,
+			);
+			name = "HTML page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3690,7 +3698,6 @@
 				5C940BD9166E3C2F0044A7D1 /* InfusionsViewController.m in Sources */,
 				5C56F6551802285F00665E22 /* PulmonaryHaemorrhageModel.m in Sources */,
 				5C940BDA166E3C2F0044A7D1 /* IntubationViewController.m in Sources */,
-				5C940BDB166E3C2F0044A7D1 /* IntubationDrugsViewController.m in Sources */,
 				5C940BDC166E3C2F0044A7D1 /* OxygenationIndexViewController.m in Sources */,
 				5C940BDD166E3C2F0044A7D1 /* PlasticBagViewController.m in Sources */,
 				5C940BE3166E3C2F0044A7D1 /* ResusViewController.m in Sources */,
@@ -3703,6 +3710,7 @@
 				5C940C05166E3C5B0044A7D1 /* PhototherapyViewController.m in Sources */,
 				5C940C06166E3C5B0044A7D1 /* PhototherapyGestationViewController.m in Sources */,
 				5C940C07166E3C5B0044A7D1 /* PhototherapyGraphViewController.m in Sources */,
+				5C03AB901806E85500870330 /* IntubationDrugsTableViewController.m in Sources */,
 				5C940C08166E3C5B0044A7D1 /* PhototherapyGuidelineCountryViewController.m in Sources */,
 				5C940C09166E3C5B0044A7D1 /* PhototherapyClinicalStatusViewController.m in Sources */,
 				5C940C0A166E3C5B0044A7D1 /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
@@ -3903,7 +3911,6 @@
 				5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */,
 				5C06D4BA1803BD4F00A3B46C /* DrugDosePatientTableViewController.m in Sources */,
 				5CD3AFE016CF38D500DE362C /* IntubationViewController.m in Sources */,
-				5CD3AFE116CF38D500DE362C /* IntubationDrugsViewController.m in Sources */,
 				5CD3AFE216CF38D500DE362C /* OxygenationIndexViewController.m in Sources */,
 				5CD3AFE316CF38D500DE362C /* PlasticBagViewController.m in Sources */,
 				5C56F66318022F8900665E22 /* CurosurfModel.m in Sources */,
@@ -3978,6 +3985,7 @@
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 				5C756C9D179898A6002F983E /* ExactAgeViewController.m in Sources */,
 				5C756CA217989A33002F983E /* AgeCalculatorsViewController.m in Sources */,
+				5C03AB911806E85500870330 /* IntubationDrugsTableViewController.m in Sources */,
 				5C756CA617989E15002F983E /* Calculator.m in Sources */,
 				5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */,

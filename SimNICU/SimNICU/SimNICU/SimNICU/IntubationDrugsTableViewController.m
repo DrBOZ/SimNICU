@@ -1,59 +1,26 @@
 //
-//  IntubationDrugsBackgroundViewController.m
-//  SimNICU
+//  IntubationDrugsTableViewController.m
+//  Neonatal Intensive Care
 //
-//  Created by Conrad Bosman on 13/08/2012.
-//  Copyright (c) 2012 SimNICU. All rights reserved.
+//  Created by Conrad Bosman on 10/10/2013.
+//  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "IntubationDrugsViewController.h"
+#import "IntubationDrugsTableViewController.h"
 #import "IntubationDrugsTableViewCell.h"
-#import "AppDelegate.h"
 
-@interface IntubationDrugsViewController ()
-
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) NSString *selectedDrug;
+@interface IntubationDrugsTableViewController ()
 
 @end
 
-@implementation IntubationDrugsViewController
+@implementation IntubationDrugsTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        //delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        //tableView
-        // iOS 7 specifics
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
-        }
-        else
-        {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        }
-        self.myTableView.rowHeight = 44.0f;
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.sectionFooterHeight = 10.0f;
-        self.myTableView.sectionHeaderHeight = 10.0f;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBTableViewController setBackgroundForTableView:self.myTableView];
+    if (self) {
+        // Custom initialization
     }
-    
-    // swipe gesture recognizer
-    self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-    [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    
     return self;
 }
 
@@ -103,37 +70,10 @@
     }
 }
 
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewDidUnload
-{
-    self.myTableView = nil;
-    self.swipeGestureRecognizer = nil;
-    
-    [super viewDidUnload];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    NSLog(@"IntubationDrugsViewController didReceiveMemoryWarning");
-    
-    if ([self isViewLoaded] && self.view.window == nil)
-    {
-        NSLog(@"IntubationDrugsViewController unloaded properties");
-        
-        self.myTableView = nil;
-        self.swipeGestureRecognizer = nil;
-    }
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -266,7 +206,7 @@
                 cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 
                 cell.drug.text = @"Morphine";
-
+                
                 NSString *UKLocaleWorkingWeight;
                 UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:@"," withString:@"."];
                 UKLocaleWorkingWeight = [self.workingWeight stringByReplacingOccurrencesOfString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] withString:@"."];
@@ -465,40 +405,6 @@
     
     return returnCell;
 }
-
-/*
-- (IntubationDrugsTableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
-{
-    IntubationDrugsTableViewCell *cell;
-    
-    cell = [[IntubationDrugsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.backgroundColor = [UIColor whiteColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.drug = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 7.0f, 108.0f, 21.0f)];
-    cell.drug.font = [UIFont boldSystemFontOfSize:18.0f];
-    cell.drug.adjustsFontSizeToFitWidth = YES;
-    cell.drug.textColor = [UIColor blackColor];
-    cell.drug.backgroundColor = [UIColor clearColor];
-    
-    cell.dose = [[UILabel alloc] initWithFrame:CGRectMake(154.0f, 7.0f, 152.0f, 21.0f)];
-    cell.dose.font = [UIFont boldSystemFontOfSize:17.0f];
-    cell.dose.adjustsFontSizeToFitWidth = YES;
-    cell.dose.backgroundColor = [UIColor clearColor];
-
-    cell.subLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(18.0f, 27.0f, 248.0f, 21.0f)];
-    cell.subLabel2.textColor = [UIColor lightGrayColor];
-    cell.subLabel2.font = [UIFont systemFontOfSize:14.0f];
-    cell.subLabel2.backgroundColor = [UIColor clearColor];
-    
-    [cell addSubview:cell.drug];
-    [cell addSubview:cell.dose];
-    [cell addSubview:cell.subLabel2];
-    
-    return cell;
-}
- */
 
 #pragma mark - Table view delegate
 

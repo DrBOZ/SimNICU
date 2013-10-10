@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-#import "IntubationDrugsViewController.h"
+#import "IntubationDrugsTableViewController.h"
 #import "IntubationViewController.h"
 #import "CurosurfViewController.h"
 #import "CBTimeMethods.h"
@@ -664,19 +664,19 @@
     
     if (indexPath.row == 0) 
     {
-        IntubationDrugsViewController *newViewController = [[IntubationDrugsViewController alloc] init];
-        newViewController.workingWeight = self.weight;
+        IntubationDrugsTableViewController *vc = [[IntubationDrugsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.workingWeight = self.weight;
         
-        [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        [appDelegate.navigationController pushViewController:vc animated:YES];
     }
     else 
     {
-        CurosurfViewController *newViewController = [[CurosurfViewController alloc] init];
+        CurosurfViewController *vc = [CurosurfViewController new];
 
-        newViewController.curosurfDoseSelected = @"YES";
-        NSLog(@"newViewController.curosurfDoseSelected = %@", newViewController.curosurfDoseSelected);
+        vc.curosurfDoseSelected = @"YES";
+        NSLog(@"newViewController.curosurfDoseSelected = %@", vc.curosurfDoseSelected);
         
-        [appDelegate.navigationController pushViewController:newViewController animated:YES];
+        [appDelegate.navigationController pushViewController:vc animated:YES];
     }
 }
 
