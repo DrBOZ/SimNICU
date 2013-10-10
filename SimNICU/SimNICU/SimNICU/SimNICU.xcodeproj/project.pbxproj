@@ -806,6 +806,8 @@
 		5CFF4C05180662CD006C8480 /* CDHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C03180662CD006C8480 /* CDHModel.m */; };
 		5CFF4C0E180667F2006C8480 /* GastroschisisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */; };
 		5CFF4C0F180667F2006C8480 /* GastroschisisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */; };
+		5CFF4C1318068292006C8480 /* HFOVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C1218068292006C8480 /* HFOVModel.m */; };
+		5CFF4C1418068292006C8480 /* HFOVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C1218068292006C8480 /* HFOVModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1468,6 +1470,8 @@
 		5CFF4C03180662CD006C8480 /* CDHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDHModel.m; sourceTree = "<group>"; };
 		5CFF4C0C180667F2006C8480 /* GastroschisisModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GastroschisisModel.h; sourceTree = "<group>"; };
 		5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastroschisisModel.m; sourceTree = "<group>"; };
+		5CFF4C1118068292006C8480 /* HFOVModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFOVModel.h; sourceTree = "<group>"; };
+		5CFF4C1218068292006C8480 /* HFOVModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFOVModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2101,10 +2105,11 @@
 		5C63B12816B9F9DD00B31431 /* Screen_HFOV */ = {
 			isa = PBXGroup;
 			children = (
-				5C940B8C166E3C2E0044A7D1 /* hfov0.html */,
-				5C940B8D166E3C2E0044A7D1 /* hfov1.html */,
 				5C940B8E166E3C2E0044A7D1 /* HFOVViewController.h */,
 				5C940B8F166E3C2E0044A7D1 /* HFOVViewController.m */,
+				5CFF4C1118068292006C8480 /* HFOVModel.h */,
+				5CFF4C1218068292006C8480 /* HFOVModel.m */,
+				5CFF4C1018068269006C8480 /* HTML pages */,
 			);
 			name = Screen_HFOV;
 			sourceTree = "<group>";
@@ -3175,6 +3180,15 @@
 			name = "HTML pages";
 			sourceTree = "<group>";
 		};
+		5CFF4C1018068269006C8480 /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C940B8C166E3C2E0044A7D1 /* hfov0.html */,
+				5C940B8D166E3C2E0044A7D1 /* hfov1.html */,
+			);
+			name = "HTML pages";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3721,6 +3735,7 @@
 				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
 				5C56F65D18022D5100665E22 /* PulmonaryHaemorrhageViewController.m in Sources */,
 				5C06D4C51803C72400A3B46C /* VitKTableViewCell.m in Sources */,
+				5CFF4C1318068292006C8480 /* HFOVModel.m in Sources */,
 				5C98A6A31787553400F246E3 /* DrugDatabase.m in Sources */,
 				5C98A6A71787562700F246E3 /* DrugCategory.m in Sources */,
 				5C98A6AB1787577000F246E3 /* Drug.m in Sources */,
@@ -3982,6 +3997,7 @@
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
 				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
+				5CFF4C1418068292006C8480 /* HFOVModel.m in Sources */,
 				5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */,
 				5CD43A4817CB411900426991 /* JaundiceViewController.m in Sources */,
 				5C39F0AA17CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
