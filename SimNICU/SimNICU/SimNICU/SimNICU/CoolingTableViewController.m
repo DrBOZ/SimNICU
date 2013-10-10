@@ -237,11 +237,9 @@
 {
     if (indexPath.section == 2 && indexPath.row == 1)
     {
-        // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        CoolingCriteriaEncephalopathyViewController *vc = [[CoolingCriteriaEncephalopathyViewController alloc] initWithStyle:UITableViewStyleGrouped];
         
-        CoolingCriteriaEncephalopathyViewController *newViewController = [[CoolingCriteriaEncephalopathyViewController alloc] init];
-        // [appDelegate.navigationController pushViewController:newViewController animated:YES];
-        [self.navigationController pushViewController:newViewController animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

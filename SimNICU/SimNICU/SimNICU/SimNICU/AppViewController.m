@@ -1224,7 +1224,7 @@
         
         else if ([thisScreenType isEqualToString:@"Cooling"])
         {
-            CoolingTableViewController *vc = [CoolingTableViewController new];
+            CoolingTableViewController *vc = [[CoolingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
             [self.navigationController pushViewController:vc animated:YES];
         }

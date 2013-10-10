@@ -808,6 +808,8 @@
 		5CFF4C0F180667F2006C8480 /* GastroschisisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */; };
 		5CFF4C1318068292006C8480 /* HFOVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C1218068292006C8480 /* HFOVModel.m */; };
 		5CFF4C1418068292006C8480 /* HFOVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C1218068292006C8480 /* HFOVModel.m */; };
+		5CFF4C17180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C16180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m */; };
+		5CFF4C18180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C16180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1472,6 +1474,8 @@
 		5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GastroschisisModel.m; sourceTree = "<group>"; };
 		5CFF4C1118068292006C8480 /* HFOVModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFOVModel.h; sourceTree = "<group>"; };
 		5CFF4C1218068292006C8480 /* HFOVModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFOVModel.m; sourceTree = "<group>"; };
+		5CFF4C15180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolingCriteriaEncephalopathyModel.h; sourceTree = "<group>"; };
+		5CFF4C16180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolingCriteriaEncephalopathyModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3099,6 +3103,8 @@
 				5C27A7F218055CA900A18ECE /* CoolingTableViewController.m */,
 				5C940B6D166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.h */,
 				5C940B6E166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m */,
+				5CFF4C15180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.h */,
+				5CFF4C16180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m */,
 			);
 			name = Screen_Cooling;
 			sourceTree = "<group>";
@@ -3808,6 +3814,7 @@
 				5C3C02B917DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */,
 				5C56F66218022F8900665E22 /* CurosurfModel.m in Sources */,
 				5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
+				5CFF4C17180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m in Sources */,
 				5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */,
@@ -3985,6 +3992,7 @@
 				5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5C195CE617A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
+				5CFF4C18180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m in Sources */,
 				5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
 				5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,

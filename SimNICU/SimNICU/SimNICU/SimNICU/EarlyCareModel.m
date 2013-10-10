@@ -36,14 +36,6 @@
                                          header:nil
                                        resource:@"earlyCare2"
                                  cellIdentifier:@"Cell02"];
-    
-    /*
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 395.0f)
-                                         header:nil
-                                       resource:@"earlyCare2"
-                                 cellIdentifier:@"Cell02"
-                        heightForRowAtIndexPath:@230.0f];
-     */
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     

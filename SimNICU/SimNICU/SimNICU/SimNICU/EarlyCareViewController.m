@@ -11,16 +11,6 @@
 
 @implementation EarlyCareViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        self.webViewSections = [EarlyCareModel webViews];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -28,6 +18,8 @@
     [CBTrackers logEvent:@"Early Care"];
     
     self.title = @"Early Care";
+    
+    self.webViewSections = [EarlyCareModel webViews];
     
     if (!self.earlyCareWarningShown)
     {
