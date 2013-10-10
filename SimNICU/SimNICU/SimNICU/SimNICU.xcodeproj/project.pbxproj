@@ -802,6 +802,8 @@
 		5CFCCC9A18050DD900031979 /* EarlyCareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFCCC9818050DD900031979 /* EarlyCareViewController.m */; };
 		5CFF4C00180635E7006C8480 /* DailySummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */; };
 		5CFF4C01180635E7006C8480 /* DailySummaryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */; };
+		5CFF4C04180662CD006C8480 /* CDHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C03180662CD006C8480 /* CDHModel.m */; };
+		5CFF4C05180662CD006C8480 /* CDHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFF4C03180662CD006C8480 /* CDHModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1460,6 +1462,8 @@
 		5CFCCC9818050DD900031979 /* EarlyCareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarlyCareViewController.m; sourceTree = "<group>"; };
 		5CFF4BFE180635E7006C8480 /* DailySummaryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryTableViewController.h; sourceTree = "<group>"; };
 		5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryTableViewController.m; sourceTree = "<group>"; };
+		5CFF4C02180662CD006C8480 /* CDHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDHModel.h; sourceTree = "<group>"; };
+		5CFF4C03180662CD006C8480 /* CDHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDHModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2144,6 +2148,8 @@
 				5C940CD8166E47420044A7D1 /* cdh3.html */,
 				5C940B7D166E3C2E0044A7D1 /* CDHViewController.h */,
 				5C940B7E166E3C2E0044A7D1 /* CDHViewController.m */,
+				5CFF4C02180662CD006C8480 /* CDHModel.h */,
+				5CFF4C03180662CD006C8480 /* CDHModel.m */,
 			);
 			name = Screen_CDH;
 			sourceTree = "<group>";
@@ -3744,6 +3750,7 @@
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
 				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
 				5C56F64318021BA300665E22 /* BloodTransfusionCriteriaModel.m in Sources */,
+				5CFF4C04180662CD006C8480 /* CDHModel.m in Sources */,
 				5C39F0A917CFEC0B007B2CF9 /* DailySummaryPDFViewController.m in Sources */,
 				5C0B9B9117D2023C000B9E34 /* UDBarTrackballItem.m in Sources */,
 				5C0B9B9417D20438000B9E34 /* UDInputAccessoryView.m in Sources */,
@@ -3942,6 +3949,7 @@
 				5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */,
 				5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
+				5CFF4C05180662CD006C8480 /* CDHModel.m in Sources */,
 				5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,
 				5C427FEA17B652C500F8CED6 /* CrUSSScanSeries.m in Sources */,
