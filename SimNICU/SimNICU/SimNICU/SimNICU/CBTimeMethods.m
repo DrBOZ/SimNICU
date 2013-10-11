@@ -320,7 +320,7 @@
     int compsWeeks = [comps week];
     int compsDays = [comps day];
     
-    NSLog(@"Age = %i years, %i months, %i weeks, %i days", compsYears, compsMonths, compsWeeks, compsDays);
+    // NSLog(@"Age = %i years, %i months, %i weeks, %i days", compsYears, compsMonths, compsWeeks, compsDays);
     
     // format in normal English
     if (compsYears < 1)
@@ -597,7 +597,7 @@
     {
         formattedDate1 = [NSString stringWithFormat:@"%i days", compsDays];
     }
-    NSLog(@"%i days", compsDays);
+    // NSLog(@"%i days", compsDays);
     
     // format in weeks and days spelt
     NSString *formattedDate2 = nil;
@@ -608,7 +608,7 @@
     
     // format in weeks and days (57+4)
     formattedDate2 = [NSString stringWithFormat:@"%i+%i", compsWeeks, compsDays];
-    NSLog(@"%i+%i", compsWeeks, compsDays);
+    // NSLog(@"%i+%i", compsWeeks, compsDays);
     
     // create Array
     NSMutableArray *formattedDates = [[NSMutableArray alloc] init];

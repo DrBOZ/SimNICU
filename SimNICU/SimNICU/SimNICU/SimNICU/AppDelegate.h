@@ -26,9 +26,9 @@
 
 // testing tools
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 1
+#define DCINTROSPECT_ON 0
 #define RESET_CELL_INFO 0
-#define RESET_PREFERENCES_HANDOVER_SECTIONS 0
+#define RESET_PREFERENCES_HANDOVER_SECTIONS 1
 
 // Dynamic Text
 #define USE_DYNAMIC_TEXT 1
@@ -102,9 +102,9 @@
 
 // 8) Finish dictation commands
 // 9) Finish custom text commands, improve these
-// 9) Fix custom box for iOS 7
+//
 // 9) Fix Plan for iOS7 (needs to be a set min height)
-// 9) Blue toolbar for dailySummaryVC? why is this?
+// 9) 
 //10) Custom text subviews is too difficult currently
 //11) Sort new patient bilirubin graphs
 //

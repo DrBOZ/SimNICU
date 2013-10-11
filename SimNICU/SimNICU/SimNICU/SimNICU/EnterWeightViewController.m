@@ -1851,7 +1851,7 @@
                 
                 if (patientInDatabase)
                 {
-                    NSLog(@"There is a patient in the list");
+                    // NSLog(@"There is a patient in the list");
                 }
                 else // there isn't
                 {

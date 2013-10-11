@@ -134,6 +134,8 @@
 		5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E0666178F94DE00768739 /* amoxicillinReferences.html */; };
 		5C0F75B71804FF18000D0CC2 /* EarlyCareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */; };
 		5C0F75B81804FF18000D0CC2 /* EarlyCareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */; };
+		5C0FB8C01807ADFD00FC6342 /* CustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FB8BF1807ADFD00FC6342 /* CustomText.m */; };
+		5C0FB8C11807ADFD00FC6342 /* CustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0FB8BF1807ADFD00FC6342 /* CustomText.m */; };
 		5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
 		5C101D2517AE4DA50095E751 /* GlucoseLoadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */; };
 		5C101D2E17AE99020095E751 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C101D2D17AE99020095E751 /* Default.png */; };
@@ -898,6 +900,8 @@
 		5C0E0666178F94DE00768739 /* amoxicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amoxicillinReferences.html; sourceTree = "<group>"; };
 		5C0F75B51804FF18000D0CC2 /* EarlyCareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarlyCareModel.h; sourceTree = "<group>"; };
 		5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarlyCareModel.m; sourceTree = "<group>"; };
+		5C0FB8BE1807ADFD00FC6342 /* CustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomText.h; sourceTree = "<group>"; };
+		5C0FB8BF1807ADFD00FC6342 /* CustomText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomText.m; sourceTree = "<group>"; };
 		5C101D2217AE4DA50095E751 /* GlucoseLoadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlucoseLoadController.h; sourceTree = "<group>"; };
 		5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlucoseLoadController.m; sourceTree = "<group>"; };
 		5C101D2D17AE99020095E751 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -2792,6 +2796,8 @@
 				5C679FBD1794CA0100B9A813 /* Bay.m */,
 				5C756CA317989E15002F983E /* Calculator.h */,
 				5C756CA417989E15002F983E /* Calculator.m */,
+				5C0FB8BE1807ADFD00FC6342 /* CustomText.h */,
+				5C0FB8BF1807ADFD00FC6342 /* CustomText.m */,
 				5C13B42717C8CB6000C88EEF /* HandoverSection.h */,
 				5C13B42817C8CB6000C88EEF /* HandoverSection.m */,
 				5CAE2E1417E6CDE4001823A3 /* HandoverSectionCustomText.h */,
@@ -3694,6 +3700,7 @@
 				5C940BBD166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
 				5C940BCA166E3C2F0044A7D1 /* CDHViewController.m in Sources */,
 				5C940BD5166E3C2F0044A7D1 /* GastroschisisViewController.m in Sources */,
+				5C0FB8C01807ADFD00FC6342 /* CustomText.m in Sources */,
 				5C940BD8166E3C2F0044A7D1 /* HFOVViewController.m in Sources */,
 				5C940BD9166E3C2F0044A7D1 /* InfusionsViewController.m in Sources */,
 				5C56F6551802285F00665E22 /* PulmonaryHaemorrhageModel.m in Sources */,
@@ -3942,6 +3949,7 @@
 				5C422D861800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */,
 				5CD3AFFA16CF38D500DE362C /* DistancePickerView.m in Sources */,
 				5CD3AFFB16CF38D500DE362C /* NSDate+TCUtils.m in Sources */,
+				5C0FB8C11807ADFD00FC6342 /* CustomText.m in Sources */,
 				5CD3AFFC16CF38D500DE362C /* User.m in Sources */,
 				5CD3AFFD16CF38D500DE362C /* Device.m in Sources */,
 				5CD3AFFE16CF38D500DE362C /* Patient.m in Sources */,

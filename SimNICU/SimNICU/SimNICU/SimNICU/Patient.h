@@ -100,6 +100,7 @@
 @property (nonatomic, retain) NSString *cardiovascular;
 @property (nonatomic, retain) NSString *lines;
 @property (nonatomic, retain) NSString *feedsAndFluids;
+@property (nonatomic, retain) NSDate *feedsAndFluidLastEntryDate;
 @property (nonatomic, retain) NSString *fluidBalance;
 @property (nonatomic, retain) NSString *electrolytes;
 @property (nonatomic, retain) NSString *jaundice;

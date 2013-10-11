@@ -255,9 +255,6 @@
 	
 	UADebugLog(@"roundedRect frame: %@", NSStringFromCGRect(self.roundedRect.frame));
 	UADebugLog(@"contentView frame: %@", NSStringFromCGRect(self.contentView.frame));
-    
-    NSLog(@"roundedRect frame: %@", NSStringFromCGRect(self.roundedRect.frame));
-	NSLog(@"contentView frame: %@", NSStringFromCGRect(self.contentView.frame));
 }
 
 - (void)closePressed:(id)sender

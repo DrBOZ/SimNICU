@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
 //
 
-#import "HandoverSectionCustomText.h"
 #import "HandoverSection.h"
 #import "Preferences.h"
 #import "HandoverRow.h"
+#import "CustomText.h"
 
 @implementation Preferences
 
@@ -107,6 +107,16 @@
                   forKey:@"handoverSections"];
 }
 
+- (CustomText *)customText:(NSString *)text ref:(NSString *)referenceText
+{
+    CustomText *customText = [CustomText new];
+    
+    [customText createCustomTextWithReferenceName:referenceText
+                                          forText:text];
+    
+    return customText;
+}
+
 - (void)setDefaults
 {
     // find user's current locale
@@ -182,14 +192,14 @@
         
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         HandoverSection *newSection;
-        HandoverSectionCustomText *customText;
+        CustomText *customText;
         
         /*
         newSection.customText = [[NSMutableArray alloc] initWithCapacity:2]; 
          
         // custom text template
         {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"";
             customText.customText = @"";
             
@@ -205,17 +215,11 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Transfer from 
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"Transfer from";
-                customText.customText = @"Transfer from ";
-                
-                [newSection.customText addObject:customText];
-            }
+            [newSection.customText addObject:[self customText:@"Transfer from " ref:@"Transfer from"]];
             
             // Spontaneous preterm labour
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Spontaneous preterm labour";
                 customText.customText = @"Spontaneous preterm labour";
                 
@@ -224,7 +228,7 @@
             
             // Maternal antepartum haemorrhage
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = NSLocalizedString(@"Maternal antepartum haemorrhage", nil);
                 customText.customText = NSLocalizedString(@"Maternal antepartum haemorrhage", nil);
                 
@@ -233,7 +237,7 @@
             
             // Prolonged rupture of membranes
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Prolonged rupture of membranes";
                 customText.customText = @"Prolonged rupture of membranes";
                 
@@ -242,7 +246,7 @@
             
             // Normal delivery
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Normal delivery";
                 customText.customText = @"Normal delivery";
                 
@@ -251,7 +255,7 @@
             
             // Em LSCS
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Em LSCS";
                 customText.customText = @"Em LSCS";
                 
@@ -260,7 +264,7 @@
             
             // Poor condition at birth
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Poor condition at birth";
                 customText.customText = @"Poor condition at birth";
                 
@@ -269,7 +273,7 @@
             
             // Maternal group B Strep
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Maternal group B Strep";
                 customText.customText = @"Maternal group B Strep";
                 
@@ -278,7 +282,7 @@
             
             // Maternal gestational diabetes
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Maternal gestational diabetes";
                 customText.customText = @"Maternal gestational diabetes";
                 
@@ -287,7 +291,7 @@
             
             // Maternal pyrexia
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Maternal pyrexia";
                 customText.customText = @"Maternal pyrexia";
                 
@@ -296,7 +300,7 @@
             
             // Chorioamnionitis
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Chorioamnionitis";
                 customText.customText = @"Chorioamnionitis";
                 
@@ -305,7 +309,7 @@
             
             // Maternal insulin dependant diabetes
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Maternal insulin dependant diabetes";
                 customText.customText = @"Maternal insulin dependant diabetes";
                 
@@ -324,7 +328,7 @@
             
             // Prematurity
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Prematurity";
                 customText.customText = @"Prematurity";
                 
@@ -333,7 +337,7 @@
             
             // Respiratory distress syndrome
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Respiratory distress syndrome";
                 customText.customText = @"Respiratory distress syndrome";
                 
@@ -342,7 +346,7 @@
             
             // Surfactant deficient lung disease
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Surfactant deficient lung disease";
                 customText.customText = @"Surfactant deficient lung disease";
                 
@@ -351,7 +355,7 @@
             
             // Pneumothorax
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Pneumothorax";
                 customText.customText = @"Pneumothorax";
                 
@@ -360,7 +364,7 @@
             
             // Suspected sepsis
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Suspected sepsis";
                 customText.customText = @"Suspected sepsis";
                 
@@ -369,7 +373,7 @@
             
             // Establishing enteral feeds
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Establishing enteral feeds";
                 customText.customText = @"Establishing enteral feeds";
                 
@@ -378,7 +382,7 @@
             
             // Bilious aspirates
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Bilious aspirates";
                 customText.customText = @"Bilious aspirates";
                 
@@ -387,7 +391,7 @@
             
             // Abdominal concerns
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Abdominal concerns";
                 customText.customText = @"Abdominal concerns";
                 
@@ -396,7 +400,7 @@
             
             // Hypoxic ischaemic encephalopathy
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = NSLocalizedString(@"Hypoxic ischaemic encephalopathy", nil);
                 customText.customText = NSLocalizedString(@"Hypoxic ischaemic encephalopathy", nil);
                 
@@ -405,7 +409,7 @@
             
             // Breech delivery
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Breech delivery";
                 customText.customText = @"Breech delivery";
                 
@@ -424,7 +428,7 @@
             
             // Respiratory distress syndrome
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Respiratory distress syndrome";
                 customText.customText = @"Respiratory distress syndrome";
                 
@@ -433,7 +437,7 @@
             
             // Suspected sepsis
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Suspected sepsis";
                 customText.customText = @"Suspected sepsis";
                 
@@ -442,7 +446,7 @@
             
             // Pneumothorax
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Pneumothorax";
                 customText.customText = @"Pneumothorax";
                 
@@ -451,7 +455,7 @@
             
             // Bilious aspirates
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Bilious aspirates";
                 customText.customText = @"Bilious aspirates";
                 
@@ -460,7 +464,7 @@
             
             // Abdominal concerns
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Abdominal concerns";
                 customText.customText = @"Abdominal concerns";
                 
@@ -479,7 +483,7 @@
             
             // Pneumothorax
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName =  @"Pneumothorax";
                 customText.customText = @"Pneumothorax";
                 
@@ -488,7 +492,7 @@
             
             // Pulmonary haemorrhage
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = NSLocalizedString(@"Pulmonary haemorrhage", nil);
                 customText.customText = NSLocalizedString(@"Pulmonary haemorrhage", nil);
                 
@@ -497,7 +501,7 @@
             
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
                 
@@ -516,7 +520,7 @@
             
             // Breathing in air
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Breathing in air";
                 customText.customText = @"Breathing in air";
                 
@@ -525,7 +529,7 @@
             
             // Breathing in _ L/min n/c oxygen
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Breathing in _ L/min n/c oxygen";
                 customText.customText = @"Breathing in _ L/min nasal cannulae oxygen";
                 
@@ -534,7 +538,7 @@
             
             // Breathing in _ % headbox oxygen
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Breathing in _ % headbox oxygen";
                 customText.customText = @"Breathing in _ % headbox oxygen";
                 
@@ -543,7 +547,7 @@
             
             // No events
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"No events";
                 customText.customText = @"No events";
                 
@@ -552,7 +556,7 @@
             
             // pH
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"pH_";
                 customText.customText = @"pH ";
                 
@@ -561,7 +565,7 @@
             
             // PCO2
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"PCO2";
                 customText.customText = @" PCO2 ";
                 
@@ -570,7 +574,7 @@
             
             // PO2
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"PO2";
                 customText.customText = @" PO2 ";
                 
@@ -579,7 +583,7 @@
             
             // SB
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"SB";
                 customText.customText = @" SB ";
                 
@@ -588,7 +592,7 @@
             
             // BE
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"BE";
                 customText.customText = @" BE ";
                 
@@ -597,7 +601,7 @@
             
             // Detailed respiratory exam
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[Detailed respiratory exam]";
                 customText.customText = @"";
                 
@@ -616,7 +620,7 @@
             
             // Normal appearances
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Normal appearances";
                 customText.customText = @"Normal appearances";
                 
@@ -625,7 +629,7 @@
             
             // Ground glass appearances
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Ground glass appearances";
                 customText.customText = @"Ground glass appearances";
                 
@@ -634,7 +638,7 @@
             
             // Fluid in the horizontal fissure
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Fluid in the horizontal fissure";
                 customText.customText = @"Fluid in the horizontal fissure";
                 
@@ -643,7 +647,7 @@
             
             // No consolidation
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"No consolidation";
                 customText.customText = @"No consolidation";
                 
@@ -652,7 +656,7 @@
             
             // No pneumothorax
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"No pneumothorax";
                 customText.customText = @"No pneumothorax";
                 
@@ -661,7 +665,7 @@
             
             // Nasogastric tube in the stomach
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Nasogastric tube in the stomach";
                 customText.customText = @"Nasogastric tube in the stomach";
                 
@@ -670,7 +674,7 @@
             
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
                 
@@ -687,9 +691,49 @@
             newSection.sectionName = @"Cardiovascular";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
+            // Hb
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"Hb"
+                                                      forText:@"Hb "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // WCC
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"WCC"
+                                                      forText:@" WCC "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // aNC
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"aNC"
+                                                      forText:@" aNC "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // Plats
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"Plats"
+                                                      forText:@" Plats "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // current date
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"[current date]"
+                                                      forText:@"[current date]"];
+                [newSection.customText addObject:customText];
+            }
+            
             // Stable
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Stable";
                 customText.customText = @"Stable";
                 
@@ -698,7 +742,7 @@
             
             // Hypotensive
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Hypotensive";
                 customText.customText = @"Hypotensive ";
                 
@@ -707,7 +751,7 @@
             
             // Mean BP
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Mean BP";
                 customText.customText = @"Mean BP ";
                 
@@ -716,7 +760,7 @@
             
             // Arterial
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"arterial";
                 customText.customText = @" arterial ";
                 
@@ -725,7 +769,7 @@
             
             // Cuff
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"cuff";
                 customText.customText = @" cuff";
                 
@@ -734,7 +778,7 @@
             
             // Fluid bolus
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Fluid bolus";
                 customText.customText = @"Fluid bolus ";
                 
@@ -743,7 +787,7 @@
             
             // ml/kg
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"ml/kg";
                 customText.customText = @" ml/kg ";
                 
@@ -752,7 +796,7 @@
             
             // Dobutamine @
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Dobutamine @";
                 customText.customText = @"Dobutamine @ ";
                 
@@ -761,7 +805,7 @@
             
             // Adrenaline @
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Adrenaline @";
                 customText.customText = @"Adrenaline @ ";
                 
@@ -770,7 +814,7 @@
             
             // micrograms/kg/min
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"micrograms/kg/min";
                 customText.customText = @" micrograms/kg/min";
                 
@@ -779,52 +823,16 @@
             
             // Hydrocortisone
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Hydrocortisone";
                 customText.customText = @"Hydrocortisone";
                 
                 [newSection.customText addObject:customText];
             }
             
-            // Hb
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"Hb";
-                customText.customText = @"Hb ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // WCC
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"WCC";
-                customText.customText = @" WCC ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // aNC
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"aNC";
-                customText.customText = @" aNC ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // Plats
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"Plats";
-                customText.customText = @" Plats ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
             // PT
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"PT";
                 customText.customText = @"PT ";
                 
@@ -833,7 +841,7 @@
             
             // APTT
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"APTT";
                 customText.customText = @" APTT ";
                 
@@ -842,7 +850,7 @@
             
             // TT
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"TT";
                 customText.customText = @" TT ";
                 
@@ -851,7 +859,7 @@
             
             // Fibrinogen
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Fibrinogen";
                 customText.customText = @"Fibrinogen ";
                 
@@ -860,7 +868,7 @@
             
             // High
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"High";
                 customText.customText = @"High ";
                 
@@ -869,7 +877,7 @@
             
             // Low
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Low";
                 customText.customText = @"Low ";
                 
@@ -886,9 +894,66 @@
             newSection.sectionName = @"Lines";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
+            // 24G
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"24G"
+                                                      forText:@"24G "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // dorsum
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"dorsum"
+                                                      forText:@"dorsum "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // left
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"left"
+                                                      forText:@"left "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // right
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"right"
+                                                      forText:@"right "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // hand
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"hand"
+                                                      forText:@"hand"];
+                [newSection.customText addObject:customText];
+            }
+            
+            // foot
+            {
+                customText = [CustomText new];
+                [customText createCustomTextWithReferenceName:@"foot"
+                                                      forText:@"foot "];
+                [newSection.customText addObject:customText];
+            }
+            
+            // antecubital fossa
+            {
+                customText = [CustomText new];
+                customText.customTextReferenceName = @"antecubital fossa";
+                customText.customText = @"antecubital fossa ";
+                
+                [newSection.customText addObject:customText];
+            }
+            
             // UVC
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"UVC";
                 customText.customText = @"UVC ";
                 
@@ -897,7 +962,7 @@
             
             // UAC
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"UAC";
                 customText.customText = @"UAC ";
                 
@@ -906,7 +971,7 @@
             
             // Broviac line
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Broviac line";
                 customText.customText = @"Broviac line ";
                 
@@ -915,79 +980,16 @@
             
             // Long line
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Long line";
                 customText.customText = @"Long line ";
                 
                 [newSection.customText addObject:customText];
             }
             
-            // 24G
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"24G";
-                customText.customText = @"24G ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // dorsum
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"dorsum";
-                customText.customText = @"dorsum ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // left
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"left";
-                customText.customText = @"left ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // right
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"right";
-                customText.customText = @"right ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // hand
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"hand";
-                customText.customText = @"hand ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // foot
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"foot";
-                customText.customText = @"foot ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
-            // antecubital fossa
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"antecubital fossa";
-                customText.customText = @"antecubital fossa ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
             // long saphenous
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"long saphenous";
                 customText.customText = @"long saphenous ";
                 
@@ -996,7 +998,7 @@
             
             // No lines
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"No intravenous lines";
                 customText.customText = @"No intravenous lines";
                 
@@ -1005,7 +1007,7 @@
             
             // day 0
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[day 0]";
                 customText.customText = @"[day 0]";
                 
@@ -1014,7 +1016,7 @@
             
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
                 
@@ -1033,7 +1035,7 @@
             
             // Nil by mouth
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Nil by mouth";
                 customText.customText = @"Nil by mouth";
                 
@@ -1042,7 +1044,7 @@
             
             // ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"ml/kg/day";
                 customText.customText = @"ml/kg/day";
                 
@@ -1051,7 +1053,7 @@
             
             // 60 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"60 ml/kg/day ";
                 customText.customText = @"60 ml/kg/day ";
                 
@@ -1060,7 +1062,7 @@
             
             // 90 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"90 ml/kg/day ";
                 customText.customText = @"90 ml/kg/day ";
                 
@@ -1069,7 +1071,7 @@
             
             // 120 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"120 ml/kg/day ";
                 customText.customText = @"120 ml/kg/day ";
                 
@@ -1078,7 +1080,7 @@
             
             // 135 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"135 ml/kg/day ";
                 customText.customText = @"135 ml/kg/day ";
                 
@@ -1087,7 +1089,7 @@
             
             // 150 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"150 ml/kg/day ";
                 customText.customText = @"150 ml/kg/day ";
                 
@@ -1096,7 +1098,7 @@
             
             // 165 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"165 ml/kg/day ";
                 customText.customText = @"165 ml/kg/day ";
                 
@@ -1105,7 +1107,7 @@
             
             // 180 ml/kg/day
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"180 ml/kg/day ";
                 customText.customText = @"180 ml/kg/day ";
                 
@@ -1114,7 +1116,7 @@
             
             // Parenteral nutrition
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Parenteral nutrition";
                 customText.customText = @"Parenteral nutrition";
                 
@@ -1124,7 +1126,7 @@
             
             // 10% Dextrose
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"10% Dextrose ";
                 customText.customText = @"10% Dextrose ";
                 
@@ -1133,7 +1135,7 @@
             
             // with electrolytes
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"with electrolytes";
                 customText.customText = @"with electrolytes";
                 
@@ -1142,7 +1144,7 @@
             
             // Fully enterally fed
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Fully enterally fed";
                 customText.customText = @"Fully enterally fed";
                 
@@ -1151,7 +1153,7 @@
             
             // Minimal milky aspirates
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Minimal milky aspirates";
                 customText.customText = @"Minimal milky aspirates";
                 
@@ -1160,7 +1162,7 @@
             
             // Passing urine
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Passing urine";
                 customText.customText = @"Passing urine";
                 
@@ -1169,7 +1171,7 @@
             
             // Bowels opened
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Bowels opened";
                 customText.customText = @"Bowels opened";
                 
@@ -1188,7 +1190,7 @@
             
             // Last 24 hours
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Last 24 hours";
                 customText.customText = @"Last 24 hours ";
                 
@@ -1197,7 +1199,7 @@
             
             // INPUT
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"INPUT";
                 customText.customText = @"INPUT\n";
                 
@@ -1206,7 +1208,7 @@
             
             // Vamin
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Vamin";
                 customText.customText = @"Vamin\t";
                 
@@ -1215,7 +1217,7 @@
             
             // Lipid
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Lipd";
                 customText.customText = @"Lipid\t";
                 
@@ -1224,7 +1226,7 @@
             
             // 10% Dextrose
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"10% Dextrose";
                 customText.customText = @"10% Dextrose\t";
                 
@@ -1233,7 +1235,7 @@
             
             // Milk
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Milk";
                 customText.customText = @"Milk\t";
                 
@@ -1242,7 +1244,7 @@
             
             // OUTPUT
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"OUTPUT";
                 customText.customText = @"OUTPUT\n";
                 
@@ -1251,7 +1253,7 @@
             
             // Aspirates
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Aspirates";
                 customText.customText = @"Aspirates\t";
                 
@@ -1260,7 +1262,7 @@
             
             // Ileostomy
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Ileostomy";
                 customText.customText = @"Ileostomy\t";
                 
@@ -1269,7 +1271,7 @@
             
             // Jejunostomy
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Jejunostomy";
                 customText.customText = @"Jejunostomy\t";
                 
@@ -1278,7 +1280,7 @@
             
             // Urine
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Urine";
                 customText.customText = @"Urine\t";
                 
@@ -1287,7 +1289,7 @@
             
             // ml/kg/hour
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"ml/kg/hour";
                 customText.customText = @" ml/kg/hour ";
                 
@@ -1304,15 +1306,25 @@
             newSection.sectionName = @"Biochemistry";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
+            // Na
+            [newSection.customText addObject:[self customText:@"Na " ref:@"Na"]];
+            
+            // K
+            [newSection.customText addObject:[self customText:@" K " ref:@"K"]];
+            
+            // U
+            [newSection.customText addObject:[self customText:@" U " ref:@"U"]];
+            
+            // Cr
+            [newSection.customText addObject:[self customText:@" Cr " ref:@"Cr"]];
+            
             // current date
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"[current date]";
-                customText.customText = @"[current date]";
-                
-                [newSection.customText addObject:customText];
-            }
-        
+            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            
+            // current date and time
+            [newSection.customText addObject:[self customText:@"[current date and time]"
+                                                          ref:@"[current date and time]"]];
+            
             [self.handoverSections addObject:newSection];
         }
         
@@ -1324,13 +1336,7 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // current date
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"[current date]";
-                customText.customText = @"[current date]";
-                
-                [newSection.customText addObject:customText];
-            }
+            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -1342,9 +1348,15 @@
             newSection.sectionName = @"Sepsis";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
+            // CRP
+            [newSection.customText addObject:[self customText:@"CRP " ref:@"CRP"]];
+            
+            // < 5
+            [newSection.customText addObject:[self customText:@"< 5" ref:@"< 5"]];
+            
             // No sepsis concerns
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"No sepsis concerns";
                 customText.customText = @"No sepsis concerns";
             
@@ -1353,25 +1365,16 @@
             
             // Temperature
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Temperature";
                 customText.customText = @"Temperature ";
                 
                 [newSection.customText addObject:customText];
             }
             
-            // CRP
-            {
-                customText = [[HandoverSectionCustomText alloc] init];
-                customText.customTextReferenceName = @"CRP";
-                customText.customText = @"CRP ";
-                
-                [newSection.customText addObject:customText];
-            }
-            
             // Blood cultures 
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Blood cultures";
                 customText.customText = @"Blood cultures ";
                 
@@ -1380,7 +1383,7 @@
             
             // pending
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"pending";
                 customText.customText = @"pending ";
                 
@@ -1389,7 +1392,7 @@
             
             // no growth
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"no growth";
                 customText.customText = @"no growth ";
                 
@@ -1398,7 +1401,7 @@
             
             // [CSF results]
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[CSF results]";
                 customText.customText = @"CSF \nClear and colourless\nNo organisms seen\nRC  WC  Polys  Lymphs \nProtein \nGlucose    Blood glucose ";
                 
@@ -1407,7 +1410,7 @@
             
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
                 
@@ -1426,7 +1429,7 @@
         
             // Abidec
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Abidec";
                 customText.customText = @"Abidec ";
             
@@ -1435,7 +1438,7 @@
         
             // Amoxicillin
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Amoxicillin";
                 customText.customText = @"Amoxicillin ";
             
@@ -1444,7 +1447,7 @@
         
             // Benzylpenicillin
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Benzylpenicillin";
                 customText.customText = @"Benzylpenicillin ";
             
@@ -1453,7 +1456,7 @@
         
             // Breast milk fortifier
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Breast milk fortifier";
             customText.customText = @"Breast milk fortifier ";
             
@@ -1462,7 +1465,7 @@
         
             // Caffeine
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Caffeine";
             customText.customText = @"Caffeine ";
             
@@ -1471,7 +1474,7 @@
         
             // Cefotaxime
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Cefotaxime";
             customText.customText = @"Cefotaxime ";
             
@@ -1480,7 +1483,7 @@
         
             // Flucloxacillin
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Flucloxacillin";
             customText.customText = @"Flucloxacillin ";
             
@@ -1489,7 +1492,7 @@
         
             // Folic acid
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Folic acid";
             customText.customText = @"Folic acid ";
             
@@ -1498,7 +1501,7 @@
         
             // Gaviscon
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Gaviscon";
             customText.customText = @"Gaviscon ";
             
@@ -1507,7 +1510,7 @@
         
             // Gentamicin
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Gentamicin";
             customText.customText = @"Gentamicin ";
             
@@ -1516,7 +1519,7 @@
         
             // Sytron
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Sytron";
             customText.customText = @"Sytron ";
             
@@ -1525,7 +1528,7 @@
         
             // Vancomycin
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Vancomycin";
             customText.customText = @"Vancomycin ";
             
@@ -1534,7 +1537,7 @@
         
             // Vitamins
             {
-            customText = [[HandoverSectionCustomText alloc] init];
+            customText = [CustomText new];
             customText.customTextReferenceName = @"Vitamins";
             customText.customText = @"Vitamins ";
             
@@ -1543,7 +1546,7 @@
             
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
                 
@@ -1562,7 +1565,7 @@
         
             // Screening not indicated
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Screening not indicated";
                 customText.customText = @"Screening not indicated";
             
@@ -1571,7 +1574,7 @@
         
             // In ROP book
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"In ROP book";
                 customText.customText = @"In ROP book";
             
@@ -1580,7 +1583,7 @@
         
             // Bilateral
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Bilateral";
                 customText.customText = @"Bilateral ";
             
@@ -1589,7 +1592,7 @@
         
             // grade 1
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"grade 1";
                 customText.customText = @"grade 1 ";
             
@@ -1598,7 +1601,7 @@
         
             // ROP
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"ROP";
                 customText.customText = @"ROP ";
             
@@ -1607,7 +1610,7 @@
         
             // Lazer therapy
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Lazer therapy";
                 customText.customText = @"Lazer therapy ";
             
@@ -1616,7 +1619,7 @@
         
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
             
@@ -1635,7 +1638,7 @@
         
             // Cranial USS ordered
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Cranial USS ordered";
                 customText.customText = @"Cranial USS ordered";
             
@@ -1644,7 +1647,7 @@
         
             // Unilateral
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Unilateral_";
                 customText.customText = @"Unilateral ";
             
@@ -1653,7 +1656,7 @@
         
             // Bilateral
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Bilateral_";
                 customText.customText = @"Bilateral ";
             
@@ -1662,7 +1665,7 @@
         
             // Grade
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"grade_";
                 customText.customText = @"grade ";
                 
@@ -1671,7 +1674,7 @@
         
             // germinal matrix haemorrhage
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"germinal matrix haemorrhage";  // need to localise
                 customText.customText = @"germinal matrix haemorrhage";
             
@@ -1680,7 +1683,7 @@
         
             // periventricular leucomalacia
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"periventricular leucomalacia";
                 customText.customText = @"periventricular leucomalacia";
             
@@ -1689,7 +1692,7 @@
         
             // current date
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"[current date]";
                 customText.customText = @"[current date]";
             
@@ -1708,7 +1711,7 @@
         
             {
                 // custom text 01
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"No concerns";
                 customText.customText = @"No concerns";
                 
@@ -1727,7 +1730,7 @@
         
             // Limited examination
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Limited examination";
                 customText.customText = @"Looks well\nPink and well perfused\nSleeping\nHeart rate \nNo respiratory distress\nSaO2";
                 
@@ -1736,7 +1739,7 @@
             
             // Normal examination
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Normal examination";
                 customText.customText = @"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discoloration";
         
@@ -1745,7 +1748,7 @@
         
             // custom text 02
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Oscillated examination";
                 customText.customText = @"Add Text";
             
@@ -1754,7 +1757,7 @@
             
             // Dysmorphic examination
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"General dysmorphic examination";
                 customText.customText = @"Tone: abnormal";
                 
@@ -1763,7 +1766,7 @@
             
             // Down's examination
             {
-                customText = [[HandoverSectionCustomText alloc] init];
+                customText = [CustomText new];
                 customText.customTextReferenceName = @"Down's syndrome examination";  // need to localise
                 customText.customText = @"Tone: abnormal";
                 

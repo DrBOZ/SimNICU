@@ -159,7 +159,12 @@
     if ([customText.customText isEqualToString:@"[current date]"])
     {
         // paste formatted date
-        pasteboard.string = [CBStringMethods dayAndMonthInParenthesesForDate:[NSDate date] andLocale:[NSLocale currentLocale]];
+        pasteboard.string = [NSString stringWithFormat:@" %@", [CBStringMethods dayAndMonthInParenthesesForDate:[NSDate date] andLocale:[NSLocale currentLocale]]];
+    }
+    else if ([customText.customText isEqualToString:@"[current date and time]"])
+    {
+        // paste formatted date and time
+        pasteboard.string = [NSString stringWithFormat:@" %@", [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:[NSDate date] andLocale:[NSLocale currentLocale]]];
     }
     else
     {

@@ -66,8 +66,6 @@
 // overriding the subclass to make room for the title bar
 - (CGRect)contentViewFrame
 {
-	NSLog(@"UATitledModalPanel: contentViewFrame");
-    
     CGRect titleBarFrame = [self titleBarFrame];
     
 	CGRect roundedRectFrame = [self roundedRectFrame];

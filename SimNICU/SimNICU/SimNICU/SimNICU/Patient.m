@@ -95,6 +95,7 @@
         self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
         self.lines = [aDecoder decodeObjectForKey:@"Lines"];
         self.feedsAndFluids = [aDecoder decodeObjectForKey:@"FeedsAndFluids"];
+        self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
         self.fluidBalance = [aDecoder decodeObjectForKey:@"FluidBalance"];
         self.electrolytes = [aDecoder decodeObjectForKey:@"Electrolytes"];
         self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
@@ -479,6 +480,7 @@
     [aCoder encodeObject:self.cardiovascular forKey:@"Cardiovascular"];
     [aCoder encodeObject:self.lines forKey:@"Lines"];
     [aCoder encodeObject:self.feedsAndFluids forKey:@"FeedsAndFluids"];
+    [aCoder encodeObject:self.feedsAndFluidLastEntryDate forKey:@"FeedsAndFluidsLastEntryDate"];
     [aCoder encodeObject:self.fluidBalance forKey:@"FluidBalance"];
     [aCoder encodeObject:self.electrolytes forKey:@"Electrolytes"];
     [aCoder encodeObject:self.jaundice forKey:@"Jaundice"];

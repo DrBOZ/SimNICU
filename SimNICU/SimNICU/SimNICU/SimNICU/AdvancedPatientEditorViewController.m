@@ -592,9 +592,6 @@
             [textView sizeToFit];
             
             height = textView.frame.size.height;
-            
-            NSLog(@"textView.text = \"%@\"", textView.text);
-            NSLog(@"textView.height = %f", textView.frame.size.height);
         }
         else
         {
@@ -1423,6 +1420,10 @@
         row = section.rows[0];
     }
     
+    // set values
+    textView.textColor = [UIColor grayColor];
+    textView.scrollEnabled = NO;
+    
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
@@ -1468,6 +1469,18 @@
         else if ([section.sectionName isEqual:@"Feeds & Fluids"])
         {
             textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
+            
+            if (self.selectedPatient.feedsAndFluidLastEntryDate)
+            {
+                double daysSinceEdit = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.feedsAndFluidLastEntryDate and:[NSDate date]];
+                
+                NSLog(@"days since edit = %f", daysSinceEdit);
+                                        
+                if (daysSinceEdit > 0.5)
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Fluid Balance"])
         {
@@ -1539,10 +1552,6 @@
         textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
         textView.font = [UIFont systemFontOfSize:14.0f];
     }
-    
-    // set values
-    textView.textColor = [UIColor grayColor];
-    textView.scrollEnabled = NO;
     
     // set delegate
     textView.delegate = self;
@@ -1943,6 +1952,7 @@
         else if ([textView isEqual:self.feedsAndFluidsTextView])
         {
             self.selectedPatient.feedsAndFluids = textView.text;
+            self.selectedPatient.feedsAndFluidLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.fluidBalanceTextView])
         {
@@ -2292,10 +2302,10 @@
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    NSLog(@"Frame.origin.x = %f", frame.origin.x);
-    NSLog(@"Frame.origin.y = %f", frame.origin.y);
-    NSLog(@"Frame.size.width = %f", frame.size.width);
-    NSLog(@"Frame.size.height = %f", frame.size.height);
+    // NSLog(@"Frame.origin.x = %f", frame.origin.x);
+    // NSLog(@"Frame.origin.y = %f", frame.origin.y);
+    // NSLog(@"Frame.size.width = %f", frame.size.width);
+    // NSLog(@"Frame.size.height = %f", frame.size.height);
     
     // shinobi chart
     
