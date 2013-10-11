@@ -47,8 +47,6 @@
 		self.headerLabel.shadowOffset = CGSizeMake(0, -1);
 		self.headerLabel.textAlignment = UITextAlignmentCenter;
 		[self.titleBar addSubview:self.headerLabel];
-
-		
     }
     return self;
 }
@@ -68,20 +66,39 @@
 // overriding the subclass to make room for the title bar
 - (CGRect)contentViewFrame
 {
-	CGRect titleBarFrame = [self titleBarFrame];
+	NSLog(@"UATitledModalPanel: contentViewFrame");
+    
+    CGRect titleBarFrame = [self titleBarFrame];
+    
 	CGRect roundedRectFrame = [self roundedRectFrame];
+    
 	CGFloat y = titleBarFrame.origin.y + titleBarFrame.size.height;
-	CGRect rect = CGRectMake(self.margin.left + self.padding.left,
-							 self.margin.top + self.padding.top + y,
-							 roundedRectFrame.size.width - self.padding.left - self.padding.right,
-							 roundedRectFrame.size.height - y - self.padding.bottom - self.padding.bottom);
+    
+    CGRect rect;
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        rect = CGRectMake(self.margin.left + self.padding.left,
+                          (self.margin.top + self.padding.top + y) - 64.0f,
+                          roundedRectFrame.size.width - self.padding.left - self.padding.right,
+                          roundedRectFrame.size.height - y - self.padding.bottom - self.padding.bottom);
+    }
+    else
+    {
+        rect = CGRectMake(self.margin.left + self.padding.left,
+                          (self.margin.top + self.padding.top + y),
+                          roundedRectFrame.size.width - self.padding.left - self.padding.right,
+                          roundedRectFrame.size.height - y - self.padding.bottom - self.padding.bottom);
+    }
+    
 	return rect;
 }
 
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
 	
 	self.titleBar.frame = [self titleBarFrame];
 	self.headerLabel.frame = self.titleBar.bounds;

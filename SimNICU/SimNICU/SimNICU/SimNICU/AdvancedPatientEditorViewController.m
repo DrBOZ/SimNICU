@@ -180,8 +180,17 @@
     NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item2, flexibleItem, item3, flexibleItem, item4, nil];
     self.toolbarItems = items;
     
-    // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
-    self.navigationController.toolbar.tintColor = [UIColor grayColor];
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        self.navigationController.toolbar.barTintColor = [UIColor lightGrayColor];
+        self.navigationController.toolbar.tintColor = [UIColor whiteColor];
+    }
+    else
+    {
+        // self.navigationController.toolbar.barStyle = UIBarStyleBlackOpaque;
+        self.navigationController.toolbar.tintColor = [UIColor grayColor];
+    }
     
     // set the first patient to display
     if (!self.selectedPatient)

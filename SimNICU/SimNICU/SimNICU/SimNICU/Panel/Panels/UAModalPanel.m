@@ -186,7 +186,7 @@
 
 - (CGRect)roundedRectFrame
 {
-	// iOS 7 specifics
+    // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         return CGRectMake(self.margin.left + self.frame.origin.x,
@@ -233,23 +233,12 @@
 
 - (CGRect)contentViewFrame
 {
-	CGRect rect;
+    CGRect rect;
     
-    // iOS 7 specifics
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        rect = CGRectMake(self.margin.left + self.frame.origin.x,
-                          self.margin.top + self.frame.origin.y - 128.0f,
-                          self.frame.size.width - self.margin.left - self.margin.right,
-                          self.frame.size.height - self.margin.top - self.margin.bottom);
-    }
-    else
-    {
-        rect = CGRectMake(self.margin.left + self.frame.origin.x,
-                          self.margin.top + self.frame.origin.y - 128.0f,
-                          self.frame.size.width - self.margin.left - self.margin.right,
-                          self.frame.size.height - self.margin.top - self.margin.bottom);
-    }
+    rect = CGRectMake(self.margin.left + self.frame.origin.x,
+                      self.margin.top + self.frame.origin.y,
+                      self.frame.size.width - self.margin.left - self.margin.right,
+                      self.frame.size.height - self.margin.top - self.margin.bottom);
     
     return rect;
 }
@@ -257,7 +246,7 @@
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
 	
 	self.roundedRect.frame	= [self roundedRectFrame];
 	self.closeButton.frame	= [self closeButtonFrame];
@@ -310,7 +299,6 @@
 		// no-op
 	}
 }
-
 
 - (void)showAnimationStarting {};		//subclasses override
 - (void)showAnimationPart1Finished {};	//subclasses override

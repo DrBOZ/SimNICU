@@ -62,14 +62,18 @@
 
 - (void)layoutSubviews
 {
-	[super layoutSubviews];
+    [super layoutSubviews];
 	
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        CGRect rect = CGRectMake(self.contentView.bounds.origin.x, self.contentView.bounds.origin.y - 64.0f, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
+        /*
+        CGRect rect = CGRectMake(self.contentView.bounds.origin.x, self.contentView.bounds.origin.y - 128.0f, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
         
         [view setFrame:rect];
+        */
+        
+        [view setFrame:self.contentView.bounds];
     }
     else
     {

@@ -20,7 +20,7 @@
 
 @interface CBModalPanel : UATitledModalPanel <UITableViewDataSource, UITableViewDelegate>
 {
-	UIView			*view;
+	UIView *view;
 }
 
 @property (nonatomic, unsafe_unretained) id <CBModalPanelDelegate> delegate;

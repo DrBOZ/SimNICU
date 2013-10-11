@@ -23,7 +23,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 345.0f)
                                          header:@"Initial Management"
                                        resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"pulmonaryHaem0Comma" : @"pulmonaryHaem0")
-                                 cellIdentifier:@"Cell0"];
+                                 cellIdentifier:@"Cell01"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -32,7 +32,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 175.0f)
                                          header:@"Investigations"
                                        resource:@"pulmonaryHaem1"
-                                 cellIdentifier:@"Cell1"];
+                                 cellIdentifier:@"Cell02"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -41,7 +41,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 230.0f)
                                          header:@"Ongoing Management"
                                        resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"pulmonaryHaem2Comma" : @"pulmonaryHaem2")
-                                 cellIdentifier:@"Cell02"];
+                                 cellIdentifier:@"Cell03"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
@@ -50,7 +50,7 @@
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 175.0f)
                                          header:@"With blood results"
                                        resource:([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@","] ? @"pulmonaryHaem3Comma" : @"pulmonaryHaem3")
-                                 cellIdentifier:@"Cell03"];
+                                 cellIdentifier:@"Cell04"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
     
