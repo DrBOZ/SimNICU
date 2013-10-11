@@ -91,6 +91,7 @@
         self.resolvedProblems = [aDecoder decodeObjectForKey:@"ResolvedProblems"];
         self.recentSignificantEvents = [aDecoder decodeObjectForKey:@"RecentSignificantEvents"];
         self.ventilationAndSedation = [aDecoder decodeObjectForKey:@"VentilationAndSedation"];
+        self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
         self.cxr = [aDecoder decodeObjectForKey:@"CXR"];
         self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
         self.lines = [aDecoder decodeObjectForKey:@"Lines"];
@@ -101,6 +102,7 @@
         self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
         self.sepsis = [aDecoder decodeObjectForKey:@"Sepsis"];
         self.drugs = [aDecoder decodeObjectForKey:@"Drugs"];
+        self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
         self.rop = [aDecoder decodeObjectForKey:@"ROP"];
         self.cranialUSS = [aDecoder decodeObjectForKey:@"CranialUSS"];
         self.parentsAndSocial = [aDecoder decodeObjectForKey:@"ParentsAndSocial"];
@@ -476,6 +478,7 @@
     [aCoder encodeObject:self.resolvedProblems forKey:@"ResolvedProblems"];
     [aCoder encodeObject:self.recentSignificantEvents forKey:@"RecentSignificantEvents"];
     [aCoder encodeObject:self.ventilationAndSedation forKey:@"VentilationAndSedation"];
+    [aCoder encodeObject:self.ventilationAndSedationLastEntryDate forKey:@"VentilationAndSedationLastEntryDate"];
     [aCoder encodeObject:self.cxr forKey:@"CXR"];
     [aCoder encodeObject:self.cardiovascular forKey:@"Cardiovascular"];
     [aCoder encodeObject:self.lines forKey:@"Lines"];
@@ -486,6 +489,7 @@
     [aCoder encodeObject:self.jaundice forKey:@"Jaundice"];
     [aCoder encodeObject:self.sepsis forKey:@"Sepsis"];
     [aCoder encodeObject:self.drugs forKey:@"Drugs"];
+    [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
     [aCoder encodeObject:self.rop forKey:@"ROP"];
     [aCoder encodeObject:self.cranialUSS forKey:@"CranialUSS"];
     [aCoder encodeObject:self.parentsAndSocial forKey:@"ParentsAndSocial"];

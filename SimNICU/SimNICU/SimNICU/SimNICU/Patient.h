@@ -96,6 +96,7 @@
 @property (nonatomic, retain) NSString *resolvedProblems;
 @property (nonatomic, retain) NSString *recentSignificantEvents;
 @property (nonatomic, retain) NSString *ventilationAndSedation;
+@property (nonatomic, retain) NSDate *ventilationAndSedationLastEntryDate;
 @property (nonatomic, retain) NSString *cxr;
 @property (nonatomic, retain) NSString *cardiovascular;
 @property (nonatomic, retain) NSString *lines;
@@ -106,6 +107,7 @@
 @property (nonatomic, retain) NSString *jaundice;
 @property (nonatomic, retain) NSString *sepsis;
 @property (nonatomic, retain) NSString *drugs;
+@property (nonatomic, retain) NSDate *drugsLastEntryDate;
 @property (nonatomic, retain) NSString *rop;
 @property (nonatomic, retain) NSString *cranialUSS;
 @property (nonatomic, retain) NSString *parentsAndSocial;

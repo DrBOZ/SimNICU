@@ -1453,6 +1453,14 @@
         else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
         {
             textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
+            
+            if (self.selectedPatient.ventilationAndSedationLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.ventilationAndSedationLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"CXR"])
         {
@@ -1472,11 +1480,7 @@
             
             if (self.selectedPatient.feedsAndFluidLastEntryDate)
             {
-                double daysSinceEdit = [CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.feedsAndFluidLastEntryDate and:[NSDate date]];
-                
-                NSLog(@"days since edit = %f", daysSinceEdit);
-                                        
-                if (daysSinceEdit > 0.5)
+                if ([self isDate:self.selectedPatient.feedsAndFluidLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
                 {
                     textView.textColor = [UIColor redColor];
                 }
@@ -1501,6 +1505,14 @@
         else if ([section.sectionName isEqual:@"Drugs"])
         {
             textViewToMeasure.text = self.selectedPatient.drugs;
+            
+            if (self.selectedPatient.drugsLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.drugsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"ROP"])
         {
@@ -1573,6 +1585,15 @@
     }
     
     return textView;
+}
+
+- (BOOL)isDate:(NSDate *)date moreThanTwelveHoursLaterThanDate:(NSDate *)currentDate
+{
+    double daysSinceEdit = [CBTimeMethods getDaysDifferenceDoubleBetween:date and:currentDate];
+    
+    NSLog(@"days since edit = %f", daysSinceEdit);
+    
+    return ((daysSinceEdit > 0.5) ? YES : NO);
 }
 
 #pragma mark -
@@ -1936,6 +1957,7 @@
         else if ([textView isEqual:self.ventilationAndSedationTextView])
         {
             self.selectedPatient.ventilationAndSedation = textView.text;
+            self.selectedPatient.ventilationAndSedationLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.cxrTextView])
         {
@@ -1973,6 +1995,7 @@
         else if ([textView isEqual:self.drugsTextView])
         {
             self.selectedPatient.drugs = textView.text;
+            self.selectedPatient.drugsLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.ropTextView])
         {
