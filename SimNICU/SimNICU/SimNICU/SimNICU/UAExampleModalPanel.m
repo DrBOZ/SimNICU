@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Urban Apps. All rights reserved.
 //
 
-#import "HandoverSectionCustomText.h"
 #import "UAExampleModalPanel.h"
 #import "CBTableViewRowData.h"
+#import "CustomText.h"
 
 #define BLACK_BAR_COMPONENTS				{ 0.22, 0.22, 0.22, 1.0, 0.07, 0.07, 0.07, 1.0 }
 
@@ -91,7 +91,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         }
         
-        HandoverSectionCustomText *customText = tableRows[indexPath.row];
+        CustomText *customText = tableRows[indexPath.row];
         
         cell.textLabel.text = customText.customTextReferenceName;
     }
@@ -123,7 +123,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // obtain relevant text
-    HandoverSectionCustomText *customText = tableRows[indexPath.row];
+    CustomText *customText = tableRows[indexPath.row];
     
     // copy relevant text into clipboard
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];

@@ -850,15 +850,16 @@
     UIWebView *webView;
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 44.0f))];
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height) - 64.0f - 44.0f)];
+        [webView setScalesPageToFit:YES];
     }
     else
     {
         webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
+        [webView setScalesPageToFit:YES];
     }
     NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView setScalesPageToFit:YES];
     [webView loadRequest:request];
     
     [self.view addSubview:webView];

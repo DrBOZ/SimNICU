@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "HandoverSectionCustomText.h"
 #import "CustomTextModel.h"
 #import "HandoverSection.h"
+#import "CustomText.h"
 
 @implementation CustomTextModel
 
@@ -22,7 +22,7 @@
     // get the handover section to display custom text
     HandoverSection *handoverSection = preferences.handoverSections[section];
     
-    HandoverSectionCustomText *customText;
+    CustomText *customText;
     
     for (customText in handoverSection.customText)
     {

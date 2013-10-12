@@ -196,6 +196,10 @@
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
 		5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
+		5C4DB5961808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
+		5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
+		5C4DB59A1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */; };
+		5C4DB59B1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */; };
 		5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
 		5C4DC70917E512C300412C72 /* CBBarCustomTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */; };
 		5C4DC72517E5340C00412C72 /* UIView+JMNoise.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DC71117E5340C00412C72 /* UIView+JMNoise.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -578,8 +582,6 @@
 		5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */; };
 		5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
 		5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
-		5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */; };
-		5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */; };
 		5CB46B6A17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
 		5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
 		5CB46B6D17DA1194003365F6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB46B6C17DA1194003365F6 /* GameKit.framework */; };
@@ -961,6 +963,10 @@
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
 		5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTableViewController.h; sourceTree = "<group>"; };
 		5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTableViewController.m; sourceTree = "<group>"; };
+		5C4DB5941808F99400F6849A /* CBTextViewMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTextViewMethods.h; sourceTree = "<group>"; };
+		5C4DB5951808F99400F6849A /* CBTextViewMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTextViewMethods.m; sourceTree = "<group>"; };
+		5C4DB5981808FE0E00F6849A /* HandoverSectionCustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSectionCustomText.h; sourceTree = "<group>"; };
+		5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverSectionCustomText.m; sourceTree = "<group>"; };
 		5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarCustomTextItem.h; sourceTree = "<group>"; };
 		5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarCustomTextItem.m; sourceTree = "<group>"; };
 		5C4DC71017E5340C00412C72 /* UIView+JMNoise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JMNoise.h"; sourceTree = "<group>"; };
@@ -1415,8 +1421,6 @@
 		5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsModel.m; sourceTree = "<group>"; };
 		5CAE2E1017E6C25C001823A3 /* CustomTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextTableViewController.h; sourceTree = "<group>"; };
 		5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextTableViewController.m; sourceTree = "<group>"; };
-		5CAE2E1417E6CDE4001823A3 /* HandoverSectionCustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSectionCustomText.h; sourceTree = "<group>"; };
-		5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverSectionCustomText.m; sourceTree = "<group>"; };
 		5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTableViewController.h; sourceTree = "<group>"; };
 		5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTableViewController.m; sourceTree = "<group>"; };
 		5CB46B6C17DA1194003365F6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -2800,8 +2804,8 @@
 				5C0FB8BF1807ADFD00FC6342 /* CustomText.m */,
 				5C13B42717C8CB6000C88EEF /* HandoverSection.h */,
 				5C13B42817C8CB6000C88EEF /* HandoverSection.m */,
-				5CAE2E1417E6CDE4001823A3 /* HandoverSectionCustomText.h */,
-				5CAE2E1517E6CDE4001823A3 /* HandoverSectionCustomText.m */,
+				5C4DB5981808FE0E00F6849A /* HandoverSectionCustomText.h */,
+				5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */,
 				5C13B42B17C910BB00C88EEF /* HandoverRow.h */,
 				5C13B42C17C910BB00C88EEF /* HandoverRow.m */,
 				5C940C2F166E3E230044A7D1 /* Patient.h */,
@@ -2842,6 +2846,8 @@
 				5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */,
 				5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */,
 				5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */,
+				5C4DB5941808F99400F6849A /* CBTextViewMethods.h */,
+				5C4DB5951808F99400F6849A /* CBTextViewMethods.m */,
 				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
 				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
 				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
@@ -3684,6 +3690,7 @@
 				5C940B0C166E3B650044A7D1 /* PatientDetailsViewController.m in Sources */,
 				5C940B14166E3B7B0044A7D1 /* PatientDetailsEnterNameViewController.m in Sources */,
 				5C940B15166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m in Sources */,
+				5C4DB5961808F99400F6849A /* CBTextViewMethods.m in Sources */,
 				5C940B16166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
 				5C56F6191801E01100665E22 /* CrUSSModel.m in Sources */,
 				5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */,
@@ -3698,6 +3705,7 @@
 				5C940BB3166E3C2E0044A7D1 /* APGAR20ViewController.m in Sources */,
 				5C940BB4166E3C2E0044A7D1 /* BloodProductsViewController.m in Sources */,
 				5C940BBD166E3C2E0044A7D1 /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
+				5C4DB59A1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */,
 				5C940BCA166E3C2F0044A7D1 /* CDHViewController.m in Sources */,
 				5C940BD5166E3C2F0044A7D1 /* GastroschisisViewController.m in Sources */,
 				5C0FB8C01807ADFD00FC6342 /* CustomText.m in Sources */,
@@ -3848,7 +3856,6 @@
 				5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */,
 				5CAE2E0D17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
 				5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
-				5CAE2E1617E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 				5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */,
 				5CF4B79817EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,
 				5C23A24317EDD99B00299D3E /* CBModalPanel.m in Sources */,
@@ -3939,6 +3946,7 @@
 				5CD3AFF116CF38D500DE362C /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
 				5CD3AFF216CF38D500DE362C /* NeurotoxicityRiskFactor.m in Sources */,
 				5CD3AFF316CF38D500DE362C /* PhototherapyUnitsViewController.m in Sources */,
+				5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */,
 				5CD3AFF416CF38D500DE362C /* PhototherapyAddBilirubinResultViewController.m in Sources */,
 				5CD3AFF516CF38D500DE362C /* PhototherapyHoursOldViewController.m in Sources */,
 				5CD3AFF616CF38D500DE362C /* AbstractActionSheetPicker.m in Sources */,
@@ -4033,6 +4041,7 @@
 				5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */,
 				5C56F64C18021F8C00665E22 /* BloodTransfusionCriteriaViewController.m in Sources */,
 				5CB46B7217DA124E003365F6 /* SyncServer.m in Sources */,
+				5C4DB59B1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */,
 				5C56F6371802005000665E22 /* CrUSSViewController.m in Sources */,
 				5CB46B7617DA125E003365F6 /* SyncClient.m in Sources */,
 				5CB46B8217DA4062003365F6 /* ConnectionViewController.m in Sources */,
@@ -4057,7 +4066,6 @@
 				5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
 				5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
 				5C06D4B61803BA4900A3B46C /* DrugInfoSimpleTableViewController.m in Sources */,
-				5CAE2E1717E6CDE4001823A3 /* HandoverSectionCustomText.m in Sources */,
 				5C56F66B180234C700665E22 /* CurosurfViewController.m in Sources */,
 				5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */,
 				5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */,

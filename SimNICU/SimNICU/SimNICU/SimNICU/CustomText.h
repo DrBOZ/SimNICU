@@ -10,9 +10,9 @@
 
 @interface CustomText : NSObject
 
-@property (nonatomic, strong) NSNumber *customTextHeightLandscape;
+// @property (nonatomic, strong) NSNumber *customTextHeightLandscape;
 @property (nonatomic, strong) NSString *customTextReferenceName;
-@property (nonatomic, strong) NSNumber *customTextHeight;
+// @property (nonatomic, strong) NSNumber *customTextHeight;
 @property (nonatomic, strong) NSString *customText;
 
 - (void)createCustomTextWithReferenceName:(NSString *)referenceName forText:(NSString *)text;

@@ -698,7 +698,6 @@
             }
             
             self.backgroundTextView.text = self.selectedPatient.background;
-            // [self formatHeightOfTextView:self.backgroundTextView];
         }
         else if ([section.sectionName isEqual:@"Active Problems"])
         {
@@ -719,7 +718,6 @@
             }
             
             self.activeProblemsTextView.text = self.selectedPatient.activeProblems;
-            // [self formatHeightOfTextView:self.activeProblemsTextView];
         }
         else if ([section.sectionName isEqual:@"Resolved Problems"])
         {
@@ -740,7 +738,6 @@
             }
             
             self.resolvedProblemsTextView.text = self.selectedPatient.resolvedProblems;
-            // [self formatHeightOfTextView:self.resolvedProblemsTextView];
         }
         else if ([section.sectionName isEqual:@"Recent Significant Events"])
         {
@@ -761,7 +758,6 @@
             }
             
             self.recentSignificantEventsTextView.text = self.selectedPatient.recentSignificantEvents;
-            // [self formatHeightOfTextView:self.recentSignificantEventsTextView];
         }
         else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
         {
@@ -782,7 +778,6 @@
             }
             
             self.ventilationAndSedationTextView.text = self.selectedPatient.ventilationAndSedation;
-            // [self formatHeightOfTextView:self.ventilationAndSedationTextView];
         }
         else if ([section.sectionName isEqual:@"CXR"])
         {
@@ -803,7 +798,6 @@
             }
             
             self.cxrTextView.text = self.selectedPatient.cxr;
-            // [self formatHeightOfTextView:self.cxrTextView];
         }
         else if ([section.sectionName isEqual:@"Cardiovascular"])
         {
@@ -824,7 +818,6 @@
             }
             
             self.cardiovascularTextView.text = self.selectedPatient.cardiovascular;
-            // [self formatHeightOfTextView:self.cardiovascularTextView];
         }
         else if ([section.sectionName isEqual:@"Lines"])
         {
@@ -845,7 +838,6 @@
             }
             
             self.linesTextView.text = self.selectedPatient.lines;
-            // [self formatHeightOfTextView:self.linesTextView];
         }
         else if ([section.sectionName isEqual:@"Feeds & Fluids"])
         {
@@ -866,7 +858,6 @@
             }
             
             self.feedsAndFluidsTextView.text = self.selectedPatient.feedsAndFluids;
-            // [self formatHeightOfTextView:self.feedsAndFluidsTextView];
         }
         else if ([section.sectionName isEqual:@"Fluid Balance"])
         {
@@ -887,7 +878,6 @@
             }
             
             self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
-            // [self formatHeightOfTextView:self.fluidBalanceTextView];
         }
         else if ([section.sectionName isEqual:@"Biochemistry"])
         {
@@ -908,7 +898,6 @@
             }
             
             self.electrolytesTextView.text = self.selectedPatient.electrolytes;
-            // [self formatHeightOfTextView:self.electrolytesTextView];
         }
         else if ([section.sectionName isEqual:@"Jaundice"])
         {
@@ -955,7 +944,6 @@
                 }
                 
                 self.jaundiceTextView.text = self.selectedPatient.jaundice;
-                // [self formatHeightOfTextView:self.jaundiceTextView];
             }
         }
         else if ([section.sectionName isEqual:@"Sepsis"])
@@ -977,7 +965,6 @@
             }
             
             self.sepsisTextView.text = self.selectedPatient.sepsis;
-            // [self formatHeightOfTextView:self.sepsisTextView];
         }
         else if ([section.sectionName isEqual:@"Drugs"])
         {
@@ -998,7 +985,6 @@
             }
             
             self.drugsTextView.text = self.selectedPatient.drugs;
-            // [self formatHeightOfTextView:self.drugsTextView];
         }
         else if ([section.sectionName isEqual:@"ROP"])
         {
@@ -1019,7 +1005,6 @@
             }
             
             self.ropTextView.text = self.selectedPatient.rop;
-            // [self formatHeightOfTextView:self.ropTextView];
         }
         else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
         {
@@ -1040,7 +1025,6 @@
             }
             
             self.cranialUSSTextView.text = self.selectedPatient.cranialUSS;
-            // [self formatHeightOfTextView:self.cranialUSSTextView];
         }
         else if ([section.sectionName isEqual:@"Parents / Social"])
         {
@@ -1061,7 +1045,6 @@
             }
             
             self.parentsAndSocialTextView.text = self.selectedPatient.parentsAndSocial;
-            // [self formatHeightOfTextView:self.parentsAndSocialTextView];
         }
         else if ([section.sectionName isEqual:@"Examination"])
         {
@@ -1082,7 +1065,6 @@
             }
             
             self.impressionTextView.text = self.selectedPatient.impression;
-            // [self formatHeightOfTextView:self.impressionTextView];
         }
         else if ([section.sectionName isEqual:@"Summary"])
         {
@@ -1103,7 +1085,6 @@
             }
             
             self.planTextView.text = self.selectedPatient.plan;
-            // [self formatHeightOfTextView:self.planTextView];
         }
         else if ([section.sectionName isEqual:@"Plan"])
         {
@@ -1124,7 +1105,6 @@
             }
             
             self.jobsTextView.text = self.selectedPatient.jobs;
-            // [self formatHeightOfTextView:self.jobsTextView];
         }
         else
         {
@@ -2010,6 +1990,7 @@
     [self.navigationItem setRightBarButtonItem:self.editButtonItem animated:YES];
 }
 
+/*
 - (void)formatHeightOfTextView:(UITextView *)textView
 {
     HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
@@ -2050,6 +2031,7 @@
         textView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (textView.contentSize.height + 10.0f));
     }
 }
+ */
 
 /*
 - (NSIndexPath *)keyForIndexPath:(NSIndexPath *)indexPath

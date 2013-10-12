@@ -14,16 +14,16 @@
 {
     if((self = [super init]))
     {
-        self.customTextReferenceName = [aDecoder decodeObjectForKey:@"customTextReferenceName"];
-        self.customText = [aDecoder decodeObjectForKey:@"customText"];
+        self.customTextReferenceName = [aDecoder decodeObjectForKey:@"CustomTextReferenceName"];
+        self.customText = [aDecoder decodeObjectForKey:@"CustomText"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.customTextReferenceName forKey:@"customTextReferenceName"];
-    [aCoder encodeObject:self.customText forKey:@"customText"];
+    [aCoder encodeObject:self.customTextReferenceName forKey:@"CustomTextReferenceName"];
+    [aCoder encodeObject:self.customText forKey:@"CustomText"];
 }
 
 - (void)createCustomTextWithReferenceName:(NSString *)referenceName forText:(NSString *)text

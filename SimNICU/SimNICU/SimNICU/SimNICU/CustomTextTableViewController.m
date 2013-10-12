@@ -8,9 +8,9 @@
 
 #import "CustomTextEditorTableViewController.h"
 #import "CustomTextTableViewController.h"
-#import "HandoverSectionCustomText.h"
 // #import "CustomTextModel.h"
 #import "HandoverSection.h"
+#import "CustomText.h"
 
 @interface CustomTextTableViewController ()
 {
@@ -79,7 +79,7 @@
     HandoverSection *handoverSection = preferences.handoverSections[self.section];
     
     // create new custom text
-    HandoverSectionCustomText *newCustomText = [[HandoverSectionCustomText alloc] init];
+    CustomText *newCustomText = [CustomText new];
     newCustomText.customTextReferenceName = @"New custom text";
     newCustomText.customText = @"Enter custom text...";
 
@@ -129,7 +129,7 @@
     // get the handover section to display custom text
     HandoverSection *handoverSection = preferences.handoverSections[self.section];
     
-    HandoverSectionCustomText *customText = handoverSection.customText[indexPath.row];
+    CustomText *customText = handoverSection.customText[indexPath.row];
     
     cell.textLabel.text = customText.customTextReferenceName;
     
@@ -177,7 +177,7 @@
     
     HandoverSection *handoverSection = preferences.handoverSections[self.section];
     
-    HandoverSectionCustomText *ct = handoverSection.customText[sourceIndexPath.row];
+    CustomText *ct = handoverSection.customText[sourceIndexPath.row];
     
     // remove text from old location
     [handoverSection.customText removeObjectAtIndex:sourceIndexPath.row];

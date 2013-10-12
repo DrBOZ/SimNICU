@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "HandoverSectionCustomText.h"
 #import "CBTableViewRowData.h"
 #import "CBStringMethods.h"
 #import "CBModalPanel.h"
+#import "CustomText.h"
 
 #define BLACK_BAR_COMPONENTS				{ 0.22, 0.22, 0.22, 1.0, 0.07, 0.07, 0.07, 1.0 }
 
@@ -110,7 +110,7 @@
             }
         }
         
-        HandoverSectionCustomText *customText = tableRows[indexPath.row];
+        CustomText *customText = tableRows[indexPath.row];
         
         cell.textLabel.text = customText.customTextReferenceName;
     }
@@ -151,7 +151,7 @@
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     
     // obtain relevant text
-    HandoverSectionCustomText *customText = tableRows[indexPath.row];
+    CustomText *customText = tableRows[indexPath.row];
     
     // check for special text
     

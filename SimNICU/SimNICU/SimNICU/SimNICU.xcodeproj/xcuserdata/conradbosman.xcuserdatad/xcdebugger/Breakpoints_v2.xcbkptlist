@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/AdvancedPatientEditorViewController.m"
-            timestampString = "403236721.299405"
+            timestampString = "403241274.585136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2495"
-            endingLineNumber = "2495"
+            startingLineNumber = "2477"
+            endingLineNumber = "2477"
             landmarkName = "-loadShinobiChartWithFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SimNICU/UAExampleModalPanel.m"
-            timestampString = "403141649.717256"
+            filePath = "SimNICU/AdvancedPatientEditorViewController.m"
+            timestampString = "403241720.680289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-initWithFrame:title:array:forTextView:"
+            startingLineNumber = "1674"
+            endingLineNumber = "1674"
+            landmarkName = "-setupTextView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
