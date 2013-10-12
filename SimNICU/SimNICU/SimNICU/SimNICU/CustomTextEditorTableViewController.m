@@ -23,6 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tableView.scrollEnabled = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -34,6 +36,37 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation))
+    {
+        // set a minimum height for the plan textView
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 64.0f);
+        }
+        else
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 64.0f);
+        }
+    }
+    else
+    {
+        // set a minimum height for the plan textView
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 235.0f);
+        }
+        else
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 147.0f);
+        }
+    }
 }
 
 #pragma mark - Table view data source
@@ -58,14 +91,14 @@
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // set a minimum height for the plan textView
+    // set the height for the UITableViewCell in portrait
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
-        return 210.0f;
+        return 245.0f;
     }
     else
     {
-        return 120.0f;
+        return 157.0f;
     }
 }
 
@@ -97,14 +130,29 @@
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // set a minimum height for the plan textView
-    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
     {
-        self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 200.0f);
+        // set a minimum height for the plan textView
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 64.0f);
+        }
+        else
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 64.0f);
+        }
     }
     else
     {
-        self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 110.0f);
+        // set a minimum height for the plan textView
+        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 235.0f);
+        }
+        else
+        {
+            self.customTextView.frame = CGRectMake(5.0f, 5.0f, 280.0f, 147.0f);
+        }
     }
 
     // set values

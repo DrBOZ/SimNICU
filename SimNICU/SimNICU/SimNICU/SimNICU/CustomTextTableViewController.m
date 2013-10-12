@@ -84,7 +84,7 @@
     newCustomText.customText = @"Enter custom text...";
 
     // create path to new customText
-    NSArray *indexPaths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:[handoverSection.customText count] inSection:self.section], nil];
+    NSArray *indexPaths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:[handoverSection.customText count] inSection:0], nil];
     
     // add to array
     [handoverSection.customText addObject:newCustomText];
@@ -190,7 +190,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CustomTextEditorTableViewController *newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    CustomTextEditorTableViewController *newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStylePlain];
     newViewController.section = self.section;
     newViewController.row = indexPath.row;
     

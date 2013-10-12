@@ -91,7 +91,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 // Jobs
-// 1) Convert UIViewControllers to UITableViewControllers - YES, about half way through
+// 1) Need to be able to edit the ref of new custom text
 // 2) Now I have started changing over, set standard cell height for all UITableViews?
 // 3) Fix Shinobi chart - crashes when loaded in the Simulator
 // 4) Add a clear button to Daily Summary Editor
@@ -102,11 +102,11 @@
 // 7) patient.
 
 // 8) Finish dictation commands
-// 9) Finish custom text commands, improve these
+//
 //
 // 9) Fix Plan for iOS7 (needs to be a set min height)
 // 9) 
-//10) Custom text subviews is too difficult currently
+//10)
 //11) Sort new patient bilirubin graphs
 //
 //12) Add current weights
