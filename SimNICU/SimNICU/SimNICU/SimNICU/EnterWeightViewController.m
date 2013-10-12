@@ -168,6 +168,7 @@
         self.myTableView.rowHeight = 50;
         self.myTableView.dataSource = self;
         self.myTableView.delegate = self;
+        self.myTableView.scrollEnabled = NO;
         
         // self.myTableView.backgroundView.opaque = YES;
         self.myTableView.separatorColor = [UIColor grayColor];
@@ -211,7 +212,6 @@
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
             self.enterWeightViewControllerNavigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 64.0f)];
-            // self.enterWeightViewControllerNavigationBar.barStyle = UIBarStyleBlackOpaque;
             self.enterWeightViewControllerNavigationBar.barTintColor = [UIColor grayColor];
             self.enterWeightViewControllerNavigationBar.tintColor = [UIColor redColor];
         }
@@ -265,58 +265,6 @@
         
         // push to navigation bar
         [self.enterWeightViewControllerNavigationBar pushNavigationItem:self.enterWeightViewControllerNavigationItem animated:NO];
-        
-        /*
-        // Tableview
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 273.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
-        }
-        else
-        {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 273.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        }
-        self.myTableView.rowHeight = 50;
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        
-        // self.myTableView.backgroundView.opaque = YES;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        
-        // set background colour
-        
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            // no colour
-        }
-        else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 6.0)
-        {
-            if (appDelegate.window.bounds.size.height == 568)
-            {
-                // 4 inch Retina
-                
-                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_4_PORTRAIT_PNG]];
-                [tempImageView setFrame:self.myTableView.frame];
-                
-                self.myTableView.backgroundView = tempImageView;
-            }
-            else
-            {
-                // 3.5 inch Retina
-                
-                UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SECONDARY_BACKGROUND_IPHONE_35_PORTRAIT_PNG]];
-                [tempImageView setFrame:self.myTableView.frame];
-                
-                self.myTableView.backgroundView = tempImageView;
-            }
-        }
-        else
-        {
-            self.myTableView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-        }
-        
-        [self.view addSubview:self.myTableView];
-         */
         
         self.confidentialityModeOn = YES;
         self.gestationMode = 0;
@@ -1778,6 +1726,12 @@
     {
         [Flurry logEvent:@"EnterWeight: close patient list"];
         
+        // reposition
+        [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        
+        // reset disabled scroll
+        self.myTableView.scrollEnabled = NO;
+        
         if (self.editingModeOn)
         {
             [self setEditing:NO animated:YES];
@@ -1800,6 +1754,8 @@
     else  // ie opening patient list
     {
         [Flurry logEvent:@"EnterWeight: open patient list"];
+        
+        self.myTableView.scrollEnabled = YES;
         
         // first check if passcode set
         if ([[KKPasscodeLock sharedLock] isPasscodeRequired]) 
