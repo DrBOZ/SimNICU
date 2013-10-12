@@ -91,24 +91,34 @@
         self.resolvedProblems = [aDecoder decodeObjectForKey:@"ResolvedProblems"];
         self.recentSignificantEvents = [aDecoder decodeObjectForKey:@"RecentSignificantEvents"];
         self.ventilationAndSedation = [aDecoder decodeObjectForKey:@"VentilationAndSedation"];
-        self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
         self.cxr = [aDecoder decodeObjectForKey:@"CXR"];
         self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
         self.lines = [aDecoder decodeObjectForKey:@"Lines"];
         self.feedsAndFluids = [aDecoder decodeObjectForKey:@"FeedsAndFluids"];
-        self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
         self.fluidBalance = [aDecoder decodeObjectForKey:@"FluidBalance"];
         self.electrolytes = [aDecoder decodeObjectForKey:@"Electrolytes"];
         self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
         self.sepsis = [aDecoder decodeObjectForKey:@"Sepsis"];
         self.drugs = [aDecoder decodeObjectForKey:@"Drugs"];
-        self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
         self.rop = [aDecoder decodeObjectForKey:@"ROP"];
         self.cranialUSS = [aDecoder decodeObjectForKey:@"CranialUSS"];
         self.parentsAndSocial = [aDecoder decodeObjectForKey:@"ParentsAndSocial"];
         self.impression = [aDecoder decodeObjectForKey:@"Impression"];
         self.plan = [aDecoder decodeObjectForKey:@"Plan"];
         self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
+        
+        // UITextView entry dates
+        self.activeProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ActiveProblemsLastEntryDate"];
+        self.recentSignificantEventsLastEntryDate = [aDecoder decodeObjectForKey:@"RecentSignificantEventsLastEntryDate"];
+        self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
+        self.cardiovascularLastEntryDate = [aDecoder decodeObjectForKey:@"CardiovascularLastEntryDate"];
+        self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
+        self.fluidBalanceLastEntryDate = [aDecoder decodeObjectForKey:@"FluidBalanceLastEntryDate"];
+        self.sepsisLastEntryDate = [aDecoder decodeObjectForKey:@"SepsisLastEntryDate"];
+        self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
+        self.impressionLastEntryDate = [aDecoder decodeObjectForKey:@"ImpressionLastEntryDate"];
+        self.planLastEntryDate = [aDecoder decodeObjectForKey:@"PlanLastEntryDate"];
+        self.jobsLastEntryDate = [aDecoder decodeObjectForKey:@"JobsLastEntryDate"];
         
         // handover sections
         self.handoverSections = [aDecoder decodeObjectForKey:@"HandoverSections"];
@@ -478,24 +488,34 @@
     [aCoder encodeObject:self.resolvedProblems forKey:@"ResolvedProblems"];
     [aCoder encodeObject:self.recentSignificantEvents forKey:@"RecentSignificantEvents"];
     [aCoder encodeObject:self.ventilationAndSedation forKey:@"VentilationAndSedation"];
-    [aCoder encodeObject:self.ventilationAndSedationLastEntryDate forKey:@"VentilationAndSedationLastEntryDate"];
     [aCoder encodeObject:self.cxr forKey:@"CXR"];
     [aCoder encodeObject:self.cardiovascular forKey:@"Cardiovascular"];
     [aCoder encodeObject:self.lines forKey:@"Lines"];
     [aCoder encodeObject:self.feedsAndFluids forKey:@"FeedsAndFluids"];
-    [aCoder encodeObject:self.feedsAndFluidLastEntryDate forKey:@"FeedsAndFluidsLastEntryDate"];
     [aCoder encodeObject:self.fluidBalance forKey:@"FluidBalance"];
     [aCoder encodeObject:self.electrolytes forKey:@"Electrolytes"];
     [aCoder encodeObject:self.jaundice forKey:@"Jaundice"];
     [aCoder encodeObject:self.sepsis forKey:@"Sepsis"];
     [aCoder encodeObject:self.drugs forKey:@"Drugs"];
-    [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
     [aCoder encodeObject:self.rop forKey:@"ROP"];
     [aCoder encodeObject:self.cranialUSS forKey:@"CranialUSS"];
     [aCoder encodeObject:self.parentsAndSocial forKey:@"ParentsAndSocial"];
     [aCoder encodeObject:self.impression forKey:@"Impression"];
     [aCoder encodeObject:self.plan forKey:@"Plan"];
     [aCoder encodeObject:self.jobs forKey:@"Jobs"];
+    
+    // UITextView text entry dates
+    [aCoder encodeObject:self.activeProblemsLastEntryDate forKey:@"ActiveProblemsLastEntryDate"];
+    [aCoder encodeObject:self.recentSignificantEventsLastEntryDate forKey:@"RecentSignificantEventsLastEntryDate"];
+    [aCoder encodeObject:self.ventilationAndSedationLastEntryDate forKey:@"VentilationAndSedationLastEntryDate"];
+    [aCoder encodeObject:self.cardiovascularLastEntryDate forKey:@"CardiovascularLastEntryDate"];
+    [aCoder encodeObject:self.feedsAndFluidLastEntryDate forKey:@"FeedsAndFluidsLastEntryDate"];
+    [aCoder encodeObject:self.fluidBalanceLastEntryDate forKey:@"FluidBalanceLastEntryDate"];
+    [aCoder encodeObject:self.sepsisLastEntryDate forKey:@"SepsisLastEntryDate"];
+    [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
+    [aCoder encodeObject:self.impressionLastEntryDate forKey:@"ImpressionLastEntryDate"];
+    [aCoder encodeObject:self.planLastEntryDate forKey:@"PlanLastEntryDate"];
+    [aCoder encodeObject:self.jobsLastEntryDate forKey:@"JobsLastEntryDate"];
     
     // handover sections
     [aCoder encodeObject:self.handoverSections forKey:@"HandoverSections"];

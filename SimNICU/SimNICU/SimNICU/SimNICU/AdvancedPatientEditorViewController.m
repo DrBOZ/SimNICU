@@ -1441,6 +1441,14 @@
         else if ([section.sectionName isEqual:@"Active Problems"])
         {
             textViewToMeasure.text = self.selectedPatient.activeProblems;
+            
+            if (self.selectedPatient.activeProblemsLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.activeProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Resolved Problems"])
         {
@@ -1449,6 +1457,14 @@
         else if ([section.sectionName isEqual:@"Recent Significant Events"])
         {
             textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
+            
+            if (self.selectedPatient.recentSignificantEventsLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.recentSignificantEventsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
         {
@@ -1469,6 +1485,14 @@
         else if ([section.sectionName isEqual:@"Cardiovascular"])
         {
             textViewToMeasure.text = self.selectedPatient.cardiovascular;
+            
+            if (self.selectedPatient.cardiovascularLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.cardiovascularLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Lines"])
         {
@@ -1489,6 +1513,14 @@
         else if ([section.sectionName isEqual:@"Fluid Balance"])
         {
             textViewToMeasure.text = self.selectedPatient.fluidBalance;
+            
+            if (self.selectedPatient.fluidBalanceLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.fluidBalanceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Biochemistry"])
         {
@@ -1501,6 +1533,14 @@
         else if ([section.sectionName isEqual:@"Sepsis"])
         {
             textViewToMeasure.text = self.selectedPatient.sepsis;
+            
+            if (self.selectedPatient.sepsisLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.sepsisLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Drugs"])
         {
@@ -1529,6 +1569,14 @@
         else if ([section.sectionName isEqual:@"Examination"])
         {
             textViewToMeasure.text = self.selectedPatient.impression;
+            
+            if (self.selectedPatient.impressionLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.impressionLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Summary"])
         {
@@ -1537,6 +1585,14 @@
         else if ([section.sectionName isEqual:@"Plan"])
         {
             textViewToMeasure.text = self.selectedPatient.jobs;
+            
+            if (self.selectedPatient.planLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.planLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         
         // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -2023,9 +2079,10 @@
         }
     }
     
-    // adjust height
+    // ensure text colour is reset to light gray
+    textView.textColor = [UIColor grayColor];
     
-    // iOS 7 specifics
+    // adjust height
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         // check if an update is required
