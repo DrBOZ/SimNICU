@@ -576,6 +576,13 @@
             loadingDisplayDetailTextLabel.text = @"Please wait...";
             loadingDisplayDetailTextLabel.hidden = NO;
             [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
+            
+#if CLOCK_IN_TO_HOURSTRACKER_REMINDER
+            
+            loadingDisplayTextLabel.text = @"CLOCK IN";
+            loadingDisplayDetailTextLabel.text = @"";
+            
+#endif
         }
         else
         {
@@ -896,7 +903,12 @@
         // do not animate the load screen off...
 #else
         // clear loading screen animation
+        
+#if CLOCK_IN_TO_HOURSTRACKER_REMINDER
+        CGFloat animationDuration = 3.0f;
+#else
         CGFloat animationDuration = 0.5f;
+#endif
         CGFloat animationDelay = 0.0f;
         
         [UIView animateWithDuration:animationDuration
