@@ -578,20 +578,60 @@
                 textView.text = self.selectedPatient.jobs;
             }
             
-            Preferences *preferences = [Preferences sharedPreferences];
-            
-            if ([preferences.dynamicText intValue])
+            // Plan textView must stay large
+            if (![section.sectionName isEqual:@"Plan"])
             {
-                textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                Preferences *preferences = [Preferences sharedPreferences];
+                
+                if ([preferences.dynamicText intValue])
+                {
+                    textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                }
+                else
+                {
+                    textView.font = [UIFont systemFontOfSize:14.0f];
+                }
+                
+                [textView sizeToFit];
+                
+                height = textView.frame.size.height;
             }
             else
             {
-                textView.font = [UIFont systemFontOfSize:14.0f];
+                Preferences *preferences = [Preferences sharedPreferences];
+                
+                if ([preferences.dynamicText intValue])
+                {
+                    textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                }
+                else
+                {
+                    textView.font = [UIFont systemFontOfSize:14.0f];
+                }
+                
+                [textView sizeToFit];
+                
+                height = textView.frame.size.height;
+                
+                // delegate
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                // set a minimum height for the plan textView
+                if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+                {
+                    if (height < 344.0f)
+                    {
+                        height = 344.0f;
+                    }
+                }
+                else
+                {
+                    if (height < 192.0f)
+                    {
+                        height = 192.0f;
+                    }
+                }
             }
-            
-            [textView sizeToFit];
-            
-            height = textView.frame.size.height;
         }
         else
         {
@@ -1595,14 +1635,48 @@
             }
         }
         
-        // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-        textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
-        
-        [textViewToMeasure sizeToFit];
-        
-        CGFloat height = textViewToMeasure.frame.size.height;
-        
-        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+        // Plan textView must stay large
+        if (![section.sectionName isEqual:@"Plan"])
+        {
+            // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+            
+            [textViewToMeasure sizeToFit];
+            
+            CGFloat height = textViewToMeasure.frame.size.height;
+            
+            textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+        }
+        else
+        {
+            // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+            
+            [textViewToMeasure sizeToFit];
+            
+            CGFloat height = textViewToMeasure.frame.size.height;
+            
+            // delegate
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            
+            // set a minimum height for the plan textView
+            if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+            {
+                if (height < 344.0f)
+                {
+                    height = 344.0f;
+                }
+            }
+            else
+            {
+                if (height < 192.0f)
+                {
+                    height = 192.0f;
+                }
+            }
+            
+            textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+        }
         
         Preferences *preferences = [Preferences sharedPreferences];
         
@@ -1882,6 +1956,9 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
     int row = 0;
     
     // Jaundice cell different
@@ -1892,19 +1969,23 @@
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:textView.tag];
     
-    [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    
     // animate the fingerprint in
     // [self animateFingerprintIn];
-    
-    // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // instead, check if user is using the 3.5 inch screen or 4 inch screen
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
     {
         // animate patient details off to make room
         [self animatePatientDetailsOff];
+    }
+    
+    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+    {
+        [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    else
+    {
+        [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
     
     // change right bar button
