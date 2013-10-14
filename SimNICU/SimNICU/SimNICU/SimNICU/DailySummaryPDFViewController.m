@@ -212,7 +212,7 @@
     
 #pragma mark Date and Time
     
-    CGFloat dateAndTimeAdjustment = -26.0;
+    CGFloat dateAndTimeAdjustment = -80.0;
     
     // date
     NSDate *currentDateAndTime = [NSDate date];
