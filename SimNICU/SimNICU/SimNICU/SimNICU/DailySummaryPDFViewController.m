@@ -45,6 +45,7 @@
 
 @property (nonatomic, strong) UIPrintInteractionController *printController;
 @property (nonatomic, strong) NSString *fileNamePath;
+@property (nonatomic, strong) UIWebView *webView;
 
 - (void)drawSignature;
 - (void)drawBorder;
@@ -103,6 +104,30 @@
     selectedPatientInBay = [self.selectedPatientInBayNSNumber intValue];
     selectedBay = [self.selectedBayNSNumber intValue];
     
+    // delegate
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // create webView to display PDF
+    // iOS 7 specifics
+    if (!self.webView)
+    {
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height) - 64.0f - 44.0f)];
+            [self.webView setScalesPageToFit:YES];
+            
+            self.webView.scrollView.showsHorizontalScrollIndicator = NO;
+            self.webView.scrollView.showsVerticalScrollIndicator = NO;
+        }
+        else
+        {
+            self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
+            [self.webView setScalesPageToFit:YES];
+        }
+        
+        [self.view addSubview:self.webView];
+    }
+    
     // setup Print Controller
     Class printControllerClass = NSClassFromString(@"UIPrintInteractionController");
     self.printController = [printControllerClass sharedPrintController];
@@ -144,7 +169,7 @@
     }
     
     // create file name
-    NSString *fileName = @"dailySummary.pdf";
+    NSString *fileName = @"dailySummary2.pdf";
     
     // obtain full path to file
     NSArray *arrayPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -876,27 +901,26 @@
 
 - (void)displayPDF
 {
-    // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    // delegate
+//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    
+//    UIWebView *webView;
+//    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//    {
+//        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height) - 64.0f - 44.0f)];
+//        [webView setScalesPageToFit:YES];
+//    }
+//    else
+//    {
+//        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
+//        [webView setScalesPageToFit:YES];
+//    }
     
-    // create webView to display PDF
-    // iOS 7 specifics
-    UIWebView *webView;
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height) - 64.0f - 44.0f)];
-        [webView setScalesPageToFit:YES];
-    }
-    else
-    {
-        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
-        [webView setScalesPageToFit:YES];
-    }
     NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
+    [self.webView loadRequest:request];
     
-    [self.view addSubview:webView];
+//    [self.view addSubview:webView];
 }
 
 - (void)print
