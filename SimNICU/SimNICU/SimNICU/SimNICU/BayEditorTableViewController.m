@@ -130,7 +130,7 @@
         
         UITextField *textField = [[UITextField alloc] init];
         textField.frame = CGRectMake(10.0f, 5.0f, 220.0f, 33.0f);
-        textField.font = [UIFont boldSystemFontOfSize:17.0f];
+        textField.font = [UIFont systemFontOfSize:17.0f];
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         textField.autocorrectionType = UITextAutocorrectionTypeNo;
         textField.returnKeyType = UIReturnKeyDone;

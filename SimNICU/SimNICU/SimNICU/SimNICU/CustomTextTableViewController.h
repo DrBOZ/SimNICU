@@ -13,6 +13,3 @@
 @property (nonatomic) int section;
 
 @end
-
-
-// need to be able to edit the title of the custom text

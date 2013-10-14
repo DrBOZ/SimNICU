@@ -516,7 +516,7 @@
     NSDate *currentDate = [NSDate date];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
+    formatter.dateStyle = NSDateFormatterShortStyle;
     
     self.title = [formatter stringFromDate:currentDate];
         

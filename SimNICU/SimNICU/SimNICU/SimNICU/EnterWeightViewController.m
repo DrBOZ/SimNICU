@@ -1303,18 +1303,16 @@
     newViewController.selectedBayNSNumber = [NSNumber numberWithInt:indexPath.section - 2];
     newViewController.selectedPatientInBayNSNumber = [NSNumber numberWithInt:indexPath.row];
     
-    /*
-    DailySummaryTableViewController *vc = [DailySummaryTableViewController new];
-    vc.delegate = self;
-    vc.bayData = self.bayData;
-    vc.selectedPatient = patient;
-    vc.selectedBayNSNumber = [NSNumber numberWithInt:indexPath.section - 2];
-    vc.selectedPatientInBayNSNumber = [NSNumber numberWithInt:indexPath.row];
-    */
-     
-    // PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+//    DailySummaryTableViewController *vc = [DailySummaryTableViewController new];
+//    vc.delegate = self;
+//    vc.bayData = self.bayData;
+//    vc.selectedPatient = patient;
+//    vc.selectedBayNSNumber = [NSNumber numberWithInt:indexPath.section - 2];
+//    vc.selectedPatientInBayNSNumber = [NSNumber numberWithInt:indexPath.row];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController]; // allows orientation change
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+    
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController]; // allows orientation change
     
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)

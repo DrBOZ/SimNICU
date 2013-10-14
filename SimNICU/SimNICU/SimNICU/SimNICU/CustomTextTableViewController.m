@@ -12,9 +12,10 @@
 #import "HandoverSection.h"
 #import "CustomText.h"
 
-@interface CustomTextTableViewController ()
+@interface CustomTextTableViewController () <UITextFieldDelegate>
 {
-    // NSArray *tableData;
+    NSMutableArray *textFields;
+    BOOL userIsEditingTextField;
 }
 
 @end
@@ -113,25 +114,39 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSString *CellIdentifier = [NSString stringWithFormat:@"CustomText %i",indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (!cell)
+    if(!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.backgroundColor = [UIColor whiteColor];
+        
+        UITextField *textField = [[UITextField alloc] init];
+        textField.frame = CGRectMake(10.0f, 5.0f, 220.0f, 33.0f);
+        textField.font = [UIFont systemFontOfSize:17.0f];
+        textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        textField.returnKeyType = UIReturnKeyDone;
+        textField.adjustsFontSizeToFitWidth = YES;
+        textField.tag = indexPath.row;
+        textField.userInteractionEnabled = NO;
+        textField.delegate = self;
+        
+        // singleton object
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        // get the handover section to display custom text
+        HandoverSection *handoverSection = preferences.handoverSections[self.section];
+        
+        CustomText *customText = handoverSection.customText[indexPath.row];
+        
+        textField.text = customText.customTextReferenceName;
+        
+        [cell.contentView addSubview:textField];
     }
-    
-    // singleton object
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    // get the handover section to display custom text
-    HandoverSection *handoverSection = preferences.handoverSections[self.section];
-    
-    CustomText *customText = handoverSection.customText[indexPath.row];
-    
-    cell.textLabel.text = customText.customTextReferenceName;
     
     return cell;
 }
@@ -190,11 +205,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CustomTextEditorTableViewController *newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    newViewController.section = self.section;
-    newViewController.row = indexPath.row;
-    
-    [self.navigationController pushViewController:newViewController animated:YES];
+    if (self.tableView.editing)
+    {
+        // edit textField
+        // self textFieldDidBeginEditing:
+    }
+    else
+    {
+        CustomTextEditorTableViewController *newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        newViewController.section = self.section;
+        newViewController.row = indexPath.row;
+        
+        [self.navigationController pushViewController:newViewController animated:YES];
+    }
+}
+
+#pragma mark - Text view delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (self.editing)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    return YES;
 }
 
 @end

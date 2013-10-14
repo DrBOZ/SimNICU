@@ -1068,8 +1068,7 @@
         if (self.selectedPatient.birthDate)
         {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            
-            formatter.timeStyle = [NSTimeZone localTimeZone];
+            formatter.timeZone = [NSTimeZone localTimeZone];
             formatter.dateStyle = NSDateFormatterShortStyle;
             formatter.timeStyle = NSDateFormatterNoStyle;
             

@@ -44,7 +44,7 @@
         APGAR15ViewController *newAPGAR15ViewController = [[APGAR15ViewController alloc] init];
         APGAR20ViewController *newAPGAR20ViewController = [[APGAR20ViewController alloc] init];
         
-        self.viewControllers = [NSArray arrayWithObjects:newAPGAR1ViewController, newAPGAR5ViewController, newAPGAR10ViewController, newAPGAR15ViewController, newAPGAR20ViewController, nil];
+        self.viewControllers = @[newAPGAR1ViewController, newAPGAR5ViewController, newAPGAR10ViewController, newAPGAR15ViewController, newAPGAR20ViewController];
         
         // setup 'save' button
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAPGAR)];
