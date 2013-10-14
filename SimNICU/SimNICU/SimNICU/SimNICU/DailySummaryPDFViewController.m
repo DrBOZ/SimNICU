@@ -210,6 +210,45 @@
     // left hand side of page
     printableArea = CGSizeMake((pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), pageHeight - (2 * kBorderInset) - (kMarginInsetTop + kMarginInsetBottom) - verticalPointToPrint);
     
+#pragma mark Date and Time
+    
+    CGFloat dateAndTimeAdjustment = -26.0;
+    
+    // date
+    NSDate *currentDateAndTime = [NSDate date];
+    
+    // create a rectangle to display text based on the page size
+    CGRect renderingRect = CGRectMake(20.0f, topInset + verticalPointToPrint + dateAndTimeAdjustment, pageWidth - (kBorderInset * 2) - (kMarginInsetLeft + kMarginInsetRight), 22.0f);
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeZone = [NSTimeZone localTimeZone];
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    NSString *date = [NSString stringWithFormat:@"%@", [formatter stringFromDate:currentDateAndTime]];
+    
+    // draw text
+    [date drawInRect:renderingRect
+            withFont:font
+       lineBreakMode:UILineBreakModeWordWrap
+           alignment:UITextAlignmentLeft];
+    
+    // time
+    // create a rectangle to display text based on the page size
+    renderingRect = CGRectMake(20.0f, topInset + verticalPointToPrint + (dateAndTimeAdjustment + 18.0f), pageWidth - (kBorderInset * 2) - (kMarginInsetLeft + kMarginInsetRight), 22.0f);
+    
+    formatter.dateStyle = NSDateFormatterNoStyle;
+    formatter.timeZone = [NSTimeZone localTimeZone];
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    
+    date = [formatter stringFromDate:currentDateAndTime];
+    
+    // draw text
+    [date drawInRect:renderingRect
+            withFont:font
+       lineBreakMode:UILineBreakModeWordWrap
+           alignment:UITextAlignmentLeft];
+    
 #pragma mark - Daily Summary
     
     [self drawText:@"Daily Summary"
@@ -474,8 +513,6 @@
                   withFont:textFont
              lineBreakMode:UILineBreakModeWordWrap
                  alignment:UITextAlignmentLeft];
-    
-
 }
 
 - (void)drawHeaderText:(NSString *)theHeaderText withFont:(UIFont *)theHeaderFont andBodyText:(NSString *)theBodyText withFont:(UIFont *)theBodyFont onLeftSideOfPageAtVerticalPosition:(float)y
