@@ -108,7 +108,6 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // create webView to display PDF
-    // iOS 7 specifics
     if (!self.webView)
     {
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -116,8 +115,8 @@
             self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height) - 64.0f - 44.0f)];
             [self.webView setScalesPageToFit:YES];
             
-            self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-            self.webView.scrollView.showsVerticalScrollIndicator = NO;
+            self.automaticallyAdjustsScrollViewInsets = NO;
+            self.webView.scrollView.pagingEnabled = YES;
         }
         else
         {
