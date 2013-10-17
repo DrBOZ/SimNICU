@@ -468,7 +468,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    float height = 55.0f;
+    CGFloat height = 55.0f;
     
     if ([tableView isEqual:self.myTableView1])
     {
@@ -2163,7 +2163,7 @@
     else
     {
         // this was just for playing around with
-        float adjustment = 0.0f;
+        CGFloat adjustment = 0.0f;
         
         // get reference to row data
         HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];

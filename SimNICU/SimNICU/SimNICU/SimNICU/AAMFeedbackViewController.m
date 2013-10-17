@@ -143,14 +143,14 @@
     return 4;
 }
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0 && indexPath.row == 1)
     {
-        return MAX(88, _descriptionTextView.contentSize.height);
+        return MAX(88.0f, _descriptionTextView.contentSize.height);
     }
     
-    return 44;
+    return 44.0f;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

@@ -112,7 +112,7 @@
     return [self.bayData count];
 }
 
-- (float)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 220.0f;
 }

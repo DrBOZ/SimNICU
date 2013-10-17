@@ -63,13 +63,13 @@
 {
     UIButton *button;
     
-    float x, y;
+    CGFloat x, y;
     
     x = BUTTON_H_PADDING + (BUTTON_WIDTH + BUTTON_H_PADDING) * column;
     y = TEXTAREA_HEIGHT + BUTTON_V_PADDING + (BUTTON_HEIGHT + BUTTON_V_PADDING) * row;
     
-    float buttonWidth = BUTTON_WIDTH;
-    float buttonHeight = BUTTON_HEIGHT;
+    CGFloat buttonWidth = BUTTON_WIDTH;
+    CGFloat buttonHeight = BUTTON_HEIGHT;
     
     if (width > 1)
         buttonWidth = (BUTTON_WIDTH + BUTTON_H_PADDING) * width - BUTTON_H_PADDING;

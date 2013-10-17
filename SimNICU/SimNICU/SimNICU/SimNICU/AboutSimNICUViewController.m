@@ -144,7 +144,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    float height = 44.0f;
+    CGFloat height = 44.0f;
     
     if (section == 0)
     {

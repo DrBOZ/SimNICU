@@ -211,7 +211,7 @@
 
 - (UIImage *)croppedPhoto
 {
-    float adjustment = 0.0f;
+    CGFloat adjustment = 0.0f;
     
     CGFloat ox = self.scrollView.contentOffset.x;
     CGFloat oy = self.scrollView.contentOffset.y;
@@ -256,7 +256,7 @@
 
 - (BOOL)isRectanglePositionValid:(CGPoint)pos
 {
-    float adjustment = 0.0f;
+    CGFloat adjustment = 0.0f;
     
     CGRect innerRect = CGRectMake((pos.x + adjustment), (pos.y + adjustment), 300.0f, 65.0f);
     return CGRectContainsRect(self.scrollView.frame, innerRect);

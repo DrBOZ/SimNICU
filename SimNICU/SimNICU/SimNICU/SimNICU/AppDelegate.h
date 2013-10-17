@@ -28,12 +28,12 @@
 #define IRATE_PREVIEW_MODE 0
 #define DCINTROSPECT_ON 0
 #define RESET_CELL_INFO 0
-#define RESET_PREFERENCES_HANDOVER_SECTIONS 1
-#define CLOCK_IN_TO_HOURSTRACKER_REMINDER 1
+#define RESET_PREFERENCES_HANDOVER_SECTIONS 0
+#define CLOCK_IN_TO_HOURSTRACKER_REMINDER 0
 
 // Dynamic Text
 #define USE_DYNAMIC_TEXT 1
-#define DYNAMIC_TEXT_TESTER 1
+#define DYNAMIC_TEXT_TESTER 0
 
 // Intro screen
 #define INTRO_SCREEN 0                                      // turn on for release (maybe not!)
@@ -60,8 +60,8 @@
 #define SYNC_PREVIEW_MODE 0
 
 // Settings
-#define LOCALISATION_PREVIEW_MODE 0
-#define GROWTH_CHART_PREVIEW_MODE 0
+#define LOCALISATION_PREVIEW_MODE 1
+#define GROWTH_CHART_PREVIEW_MODE 1
 
 #import "ZUUIRevealController.h"
 #import "DrugDatabase.h"
