@@ -127,7 +127,7 @@
 // 7)
 // 8) 
 // 9) 
-//10) Add Time and Date
+//10)
 //11) Add weight chart
 //12) Add phototherapy chart
 //13)
@@ -137,7 +137,7 @@
 //17) Add biochemistry edit
 //18) change names of patient properties to match UITextFields
 //19) 
-//20) 'Plan' cell height should not reduce
+//20)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -218,46 +218,48 @@
     [self.shinobiCell addSubview:self.chart];
      */
     
-    // tableViews
-    // iOS 7 specifics
+    // tableView 1
+    self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 92.0f + 64.0f) style:UITableViewStylePlain];
-        self.myTableView1.userInteractionEnabled = NO;
+        self.myTableView1.frame = CGRectMake(0.0f, 0.0f, 320.0f, 92.0f + 64.0f);
         self.myTableView1.separatorColor = [UIColor clearColor];
     }
     else
     {
-        self.myTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 92.0f) style:UITableViewStylePlain];
-        self.myTableView1.userInteractionEnabled = NO;
+        self.myTableView1.frame = CGRectMake(0.0f, 0.0f, 320.0f, 92.0f);
         self.myTableView1.separatorColor = [UIColor grayColor];
     }
+    self.myTableView1.userInteractionEnabled = YES;
+    self.myTableView1.sectionFooterHeight = 10.0f;
+    self.myTableView1.sectionHeaderHeight = 10.0f;
+    self.myTableView1.scrollEnabled = NO;
     self.myTableView1.rowHeight = 44.0f;
     self.myTableView1.dataSource = self;
     self.myTableView1.delegate = self;
-    self.myTableView1.sectionFooterHeight = 10.0f;
-    self.myTableView1.sectionHeaderHeight = 10.0f;
-    
     self.myTableView1.bounces = NO;
     
     [self.view addSubview:self.myTableView1];
     
+    // tableView 2
+    self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     
-    // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 92.0f + 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f)) style:UITableViewStylePlain];
+        self.myTableView2.frame = CGRectMake(0.0f, 92.0f + 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f));
     }
     else
     {
-        self.myTableView2 = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f)) style:UITableViewStylePlain];
+        self.myTableView2.frame = CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f));
     }
+    self.myTableView2.separatorColor = [UIColor grayColor];
+    self.myTableView2.sectionFooterHeight = 10.0f;
+    self.myTableView2.sectionHeaderHeight = 10.0f;
     self.myTableView2.rowHeight = 44.0f;
     self.myTableView2.dataSource = self;
     self.myTableView2.delegate = self;
-    self.myTableView2.sectionFooterHeight = 10.0f;
-    self.myTableView2.sectionHeaderHeight = 10.0f;
-    self.myTableView2.separatorColor = [UIColor grayColor];
+    
     [self.view addSubview:self.myTableView2];
 }
 
