@@ -1459,6 +1459,14 @@
         if ([section.sectionName isEqual:@"Background"])
         {
             textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+            
+            if (self.selectedPatient.backgroundLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.backgroundLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Active Problems"])
         {
@@ -1475,6 +1483,14 @@
         else if ([section.sectionName isEqual:@"Resolved Problems"])
         {
             textViewToMeasure.text = self.selectedPatient.resolvedProblems;
+
+            if (self.selectedPatient.resolvedProblemsLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.resolvedProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Recent Significant Events"])
         {
@@ -1503,6 +1519,14 @@
         else if ([section.sectionName isEqual:@"CXR"])
         {
             textViewToMeasure.text = self.selectedPatient.cxr;
+            
+            if (self.selectedPatient.cxrLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.cxrLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Cardiovascular"])
         {
@@ -1519,6 +1543,14 @@
         else if ([section.sectionName isEqual:@"Lines"])
         {
             textViewToMeasure.text = self.selectedPatient.lines;
+            
+            if (self.selectedPatient.linesLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.linesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Feeds & Fluids"])
         {
@@ -1547,10 +1579,26 @@
         else if ([section.sectionName isEqual:@"Biochemistry"])
         {
             textViewToMeasure.text = self.selectedPatient.electrolytes;
+            
+            if (self.selectedPatient.electrolytesLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.electrolytesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Jaundice"])
         {
             textViewToMeasure.text = self.selectedPatient.jaundice;
+            
+            if (self.selectedPatient.jaundiceLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.jaundiceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Sepsis"])
         {
@@ -1579,14 +1627,38 @@
         else if ([section.sectionName isEqual:@"ROP"])
         {
             textViewToMeasure.text = self.selectedPatient.rop;
+            
+            if (self.selectedPatient.ropLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.ropLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
         {
             textViewToMeasure.text = self.selectedPatient.cranialUSS;
+            
+            if (self.selectedPatient.cranialUSSLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.cranialUSSLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Parents / Social"])
         {
             textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
+            
+            if (self.selectedPatient.parentsAndSocialLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.parentsAndSocialLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Examination"])
         {
@@ -1603,14 +1675,22 @@
         else if ([section.sectionName isEqual:@"Summary"])
         {
             textViewToMeasure.text = self.selectedPatient.plan;
+            
+            if (self.selectedPatient.planLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.planLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
         }
         else if ([section.sectionName isEqual:@"Plan"])
         {
             textViewToMeasure.text = self.selectedPatient.jobs;
             
-            if (self.selectedPatient.planLastEntryDate)
+            if (self.selectedPatient.jobsLastEntryDate)
             {
-                if ([self isDate:self.selectedPatient.planLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                if ([self isDate:self.selectedPatient.jobsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
                 {
                     textView.textColor = [UIColor redColor];
                 }
@@ -2062,18 +2142,22 @@
         if ([textView isEqual:self.backgroundTextView])
         {
             self.selectedPatient.background = textView.text;
+            self.selectedPatient.backgroundLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.activeProblemsTextView])
         {
             self.selectedPatient.activeProblems = textView.text;
+            self.selectedPatient.activeProblemsLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.resolvedProblemsTextView])
         {
             self.selectedPatient.resolvedProblems = textView.text;
+            self.selectedPatient.resolvedProblemsLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.recentSignificantEventsTextView])
         {
             self.selectedPatient.recentSignificantEvents = textView.text;
+            self.selectedPatient.recentSignificantEventsLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.ventilationAndSedationTextView])
         {
@@ -2083,14 +2167,17 @@
         else if ([textView isEqual:self.cxrTextView])
         {
             self.selectedPatient.cxr = textView.text;
+            self.selectedPatient.cxrLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.cardiovascularTextView])
         {
             self.selectedPatient.cardiovascular = textView.text;
+            self.selectedPatient.cardiovascularLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.linesTextView])
         {
             self.selectedPatient.lines = textView.text;
+            self.selectedPatient.linesLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.feedsAndFluidsTextView])
         {
@@ -2100,18 +2187,22 @@
         else if ([textView isEqual:self.fluidBalanceTextView])
         {
             self.selectedPatient.fluidBalance = textView.text;
+            self.selectedPatient.fluidBalanceLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.electrolytesTextView])
         {
             self.selectedPatient.electrolytes = textView.text;
+            self.selectedPatient.electrolytesLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.jaundiceTextView])
         {
             self.selectedPatient.jaundice = textView.text;
+            self.selectedPatient.jaundiceLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.sepsisTextView])
         {
             self.selectedPatient.sepsis = textView.text;
+            self.selectedPatient.sepsisLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.drugsTextView])
         {
@@ -2121,26 +2212,32 @@
         else if ([textView isEqual:self.ropTextView])
         {
             self.selectedPatient.rop = textView.text;
+            self.selectedPatient.ropLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.cranialUSSTextView])
         {
             self.selectedPatient.cranialUSS = textView.text;
+            self.selectedPatient.cranialUSSLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.parentsAndSocialTextView])
         {
             self.selectedPatient.parentsAndSocial = textView.text;
+            self.selectedPatient.parentsAndSocialLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.impressionTextView])
         {
             self.selectedPatient.impression = textView.text;
+            self.selectedPatient.impressionLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.planTextView])
         {
             self.selectedPatient.plan = textView.text;
+            self.selectedPatient.planLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.jobsTextView])
         {
             self.selectedPatient.jobs = textView.text;
+            self.selectedPatient.jobsLastEntryDate = [NSDate date];
         }
     }
     

@@ -113,17 +113,26 @@
 @property (nonatomic, retain) NSString *jobs;
 
 // text entry dates
-@property (nonatomic, retain) NSDate *activeProblemsLastEntryDate;          // need to finish
-@property (nonatomic, retain) NSDate *recentSignificantEventsLastEntryDate; // need to finish
+@property (nonatomic, retain) NSDate *backgroundLastEntryDate;
+@property (nonatomic, retain) NSDate *activeProblemsLastEntryDate;
+@property (nonatomic, retain) NSDate *resolvedProblemsLastEntryDate;
+@property (nonatomic, retain) NSDate *recentSignificantEventsLastEntryDate;
 @property (nonatomic, retain) NSDate *ventilationAndSedationLastEntryDate;
-@property (nonatomic, retain) NSDate *cardiovascularLastEntryDate;          // need to finish
+@property (nonatomic, retain) NSDate *cxrLastEntryDate;
+@property (nonatomic, retain) NSDate *cardiovascularLastEntryDate;
+@property (nonatomic, retain) NSDate *linesLastEntryDate;
 @property (nonatomic, retain) NSDate *feedsAndFluidLastEntryDate;
-@property (nonatomic, retain) NSDate *fluidBalanceLastEntryDate;            // need to finish
-@property (nonatomic, retain) NSDate *sepsisLastEntryDate;                  // need to finish
+@property (nonatomic, retain) NSDate *fluidBalanceLastEntryDate;
+@property (nonatomic, retain) NSDate *electrolytesLastEntryDate;
+@property (nonatomic, retain) NSDate *jaundiceLastEntryDate;
+@property (nonatomic, retain) NSDate *sepsisLastEntryDate;
 @property (nonatomic, retain) NSDate *drugsLastEntryDate;
-@property (nonatomic, retain) NSDate *impressionLastEntryDate;              // need to finish
-@property (nonatomic, retain) NSDate *planLastEntryDate;                    // need to finish
-@property (nonatomic, retain) NSDate *jobsLastEntryDate;                    // need to finish
+@property (nonatomic, retain) NSDate *ropLastEntryDate;
+@property (nonatomic, retain) NSDate *cranialUSSLastEntryDate;
+@property (nonatomic, retain) NSDate *parentsAndSocialLastEntryDate;
+@property (nonatomic, retain) NSDate *impressionLastEntryDate;
+@property (nonatomic, retain) NSDate *planLastEntryDate;
+@property (nonatomic, retain) NSDate *jobsLastEntryDate;
 
 @property (nonatomic, retain) NSString *maternalBloodGroup;
 @property (nonatomic, retain) NSString *maternalRhesus;

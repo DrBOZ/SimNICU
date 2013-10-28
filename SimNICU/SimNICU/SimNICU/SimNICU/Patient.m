@@ -108,14 +108,23 @@
         self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
         
         // UITextView entry dates
+        self.backgroundLastEntryDate = [aDecoder decodeObjectForKey:@"BackgroundLastEntryDate"];
         self.activeProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ActiveProblemsLastEntryDate"];
+        self.resolvedProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ResolvedProblemsLastEntryDate"];
         self.recentSignificantEventsLastEntryDate = [aDecoder decodeObjectForKey:@"RecentSignificantEventsLastEntryDate"];
         self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
+        self.cxrLastEntryDate = [aDecoder decodeObjectForKey:@"CXRLastEntryDate"];
         self.cardiovascularLastEntryDate = [aDecoder decodeObjectForKey:@"CardiovascularLastEntryDate"];
+        self.linesLastEntryDate = [aDecoder decodeObjectForKey:@"LinesLastEntryDate"];
         self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
         self.fluidBalanceLastEntryDate = [aDecoder decodeObjectForKey:@"FluidBalanceLastEntryDate"];
+        self.electrolytesLastEntryDate = [aDecoder decodeObjectForKey:@"ElectrolytesLastEntryDate"];
+        self.jaundiceLastEntryDate = [aDecoder decodeObjectForKey:@"JaundiceLastEntryDate"];
         self.sepsisLastEntryDate = [aDecoder decodeObjectForKey:@"SepsisLastEntryDate"];
         self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
+        self.ropLastEntryDate = [aDecoder decodeObjectForKey:@"ROPLastEntryDate"];
+        self.cranialUSSLastEntryDate = [aDecoder decodeObjectForKey:@"CranialUSSLastEntryDate"];
+        self.parentsAndSocialLastEntryDate = [aDecoder decodeObjectForKey:@"ParentsAndSocialLastEntryDate"];
         self.impressionLastEntryDate = [aDecoder decodeObjectForKey:@"ImpressionLastEntryDate"];
         self.planLastEntryDate = [aDecoder decodeObjectForKey:@"PlanLastEntryDate"];
         self.jobsLastEntryDate = [aDecoder decodeObjectForKey:@"JobsLastEntryDate"];
@@ -505,14 +514,23 @@
     [aCoder encodeObject:self.jobs forKey:@"Jobs"];
     
     // UITextView text entry dates
+    [aCoder encodeObject:self.backgroundLastEntryDate forKey:@"BackgroundLastEntryDate"];
     [aCoder encodeObject:self.activeProblemsLastEntryDate forKey:@"ActiveProblemsLastEntryDate"];
+    [aCoder encodeObject:self.resolvedProblemsLastEntryDate forKey:@"ResolvedProblemsLastEntryDate"];
     [aCoder encodeObject:self.recentSignificantEventsLastEntryDate forKey:@"RecentSignificantEventsLastEntryDate"];
     [aCoder encodeObject:self.ventilationAndSedationLastEntryDate forKey:@"VentilationAndSedationLastEntryDate"];
+    [aCoder encodeObject:self.cxrLastEntryDate forKey:@"CXRLastEntryDate"];
     [aCoder encodeObject:self.cardiovascularLastEntryDate forKey:@"CardiovascularLastEntryDate"];
+    [aCoder encodeObject:self.linesLastEntryDate forKey:@"LinesLastEntryDate"];
     [aCoder encodeObject:self.feedsAndFluidLastEntryDate forKey:@"FeedsAndFluidsLastEntryDate"];
     [aCoder encodeObject:self.fluidBalanceLastEntryDate forKey:@"FluidBalanceLastEntryDate"];
+    [aCoder encodeObject:self.electrolytesLastEntryDate forKey:@"ElectrolytesLastEntryDate"];
+    [aCoder encodeObject:self.jaundiceLastEntryDate forKey:@"JaundiceLastEntryDate"];
     [aCoder encodeObject:self.sepsisLastEntryDate forKey:@"SepsisLastEntryDate"];
     [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
+    [aCoder encodeObject:self.ropLastEntryDate forKey:@"ROPLastEntryDate"];
+    [aCoder encodeObject:self.cranialUSSLastEntryDate forKey:@"CranialUSSLastEntryDate"];
+    [aCoder encodeObject:self.parentsAndSocialLastEntryDate forKey:@"ParentsAndSocialLastEntryDate"];
     [aCoder encodeObject:self.impressionLastEntryDate forKey:@"ImpressionLastEntryDate"];
     [aCoder encodeObject:self.planLastEntryDate forKey:@"PlanLastEntryDate"];
     [aCoder encodeObject:self.jobsLastEntryDate forKey:@"JobsLastEntryDate"];
