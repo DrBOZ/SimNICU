@@ -50,7 +50,9 @@
  Setting a radius of `0` will draw square corners. */
 @property (nonatomic, retain)   NSNumber *cornerRadius;
 
-/** Should the legend show symbols next to the series titles */
+/** A BOOLean that indicates if symbols should be shown in the legend.
+
+The default value is YES (symbols will be shown). Symbols are collected from the series objects through the SChartLegendItem protocol.*/
 @property (nonatomic)           BOOL showSymbols;
 
 /** Where should the symbols be drawn if showSymbols is `YES`

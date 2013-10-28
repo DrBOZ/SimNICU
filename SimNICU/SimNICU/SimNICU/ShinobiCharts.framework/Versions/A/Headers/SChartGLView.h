@@ -8,7 +8,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
-#import "SChartAnimationCurve.h"
+
+@class SChartSeries;
 
 #define SHINOBI_MAX_THIN_LINE_WIDTH 2.0f
 
@@ -24,13 +25,6 @@ typedef struct {
     GLenum stencilOp;
     GLenum stencilFunc;
 } SChartGLStencilParams;
-
-typedef struct {
-    float                duration;
-    SChartAnimationCurve curve;
-    float                scale[2];
-    float                refPoint[2];
-} SChartGLAnimationParams;
 
 @interface SChartGLView : UIView {
     CAEAGLLayer* _eaglLayer;
@@ -54,13 +48,21 @@ typedef struct {
     GLuint vertexShader;
     GLuint vertexShaderAnimate;
     GLuint vertexShaderOffset;
+    GLuint vertexShaderOffsetAnimate;
     GLuint vertexShaderOffsetThickLine;
+    GLuint vertexShaderOffsetThickLineAnimate;
     GLuint vertexShaderOffsetThickLineDisplaceRotate;
+    GLuint vertexShaderOffsetThickLineDisplaceRotateAnimate;
     GLuint vertexShaderPoint;
+    GLuint vertexShaderPointAnimate;
+    GLuint vertexShaderPointWithRadiusAnimate;
     GLuint vertexShaderPointDisplaceRotate;
+    GLuint vertexShaderPointDisplaceRotateAnimate;
     GLuint vertexShaderPointWithRadius;
     GLuint vertexShaderDisplaceRotate;
+    GLuint vertexShaderDisplaceRotateAnimate;
     GLuint vertexShaderDisplaceRotateTexture;
+    GLuint vertexShaderDisplaceRotateTextureAnimate;
     GLuint fragmentShader;
     GLuint fragmentShaderTexture;
     GLuint fragmentShaderPoint;
@@ -68,14 +70,23 @@ typedef struct {
     GLuint programHandle;
     GLuint programHandleAnimate;
     GLuint programHandlePoint;
+    GLuint programHandlePointAnimate;
     GLuint programHandlePointWithRadius;
+    GLuint programHandlePointWithRadiusAnimate;
     GLuint programHandleThickLine;
+    GLuint programHandleThickLineAnimate;
     GLuint programHandleOffset;
+    GLuint programHandleOffsetAnimate;
     GLuint programHandleOffsetThickLine;
+    GLuint programHandleOffsetThickLineAnimate;
     GLuint programHandleRadialSlice;
+    GLuint programHandleRadialSliceAnimate;
     GLuint programHandleRadialEffect;
+    GLuint programHandleRadialEffectAnimate;
     GLuint programHandleThickLineRadial;
+    GLuint programHandleThickLineRadialAnimate;
     GLuint programHandleOffsetThickLineRadial;
+    GLuint programHandleOffsetThickLineRadialAnimate;
     GLuint lastUsedProgram;
     GLuint _positionSlot;
     GLuint _colourSlot;
@@ -83,29 +94,45 @@ typedef struct {
     GLuint _colourSlotAnimate;
     GLuint _positionSlotOffset;
     GLuint _colourSlotOffset;
+    GLuint _positionSlotOffsetAnimate;
+    GLuint _colourSlotOffsetAnimate;
     GLuint _offsetMultiplerSlot;
     GLuint _positionSlotOffsetThickLine;
     GLuint _colourSlotOffsetThickLine;
     GLuint _offsetMultiplerSlotThickLine;
+    GLuint _positionSlotOffsetThickLineAnimate;
+    GLuint _colourSlotOffsetThickLineAnimate;
+    GLuint _offsetMultiplerSlotThickLineAnimate;
     GLuint _positionSlotOffsetThickLineRadial;
     GLuint _colourSlotOffsetThickLineRadial;
     GLuint _offsetMultiplerSlotThickLineRadial;
     GLuint _positionSlotPoint;
+    GLuint _positionSlotPointAnimate;
     GLuint _colourSlotPoint;
+    GLuint _colourSlotPointAnimate;
     GLuint _positionSlotPointWithRadius;
+    GLuint _positionSlotPointWithRadiusAnimate;
     GLuint _colourSlotPointWithRadius;
+    GLuint _colourSlotPointWithRadiusAnimate;
     GLuint _radiusSlotPointWithRadius;
+    GLuint _radiusSlotPointWithRadiusAnimate;
     GLuint _positionSlotThickLine;
     GLuint _colourSlotThickLine;
+    GLuint _positionSlotThickLineAnimate;
+    GLuint _colourSlotThickLineAnimate;
     GLuint _positionSlotThickLineRadial;
     GLuint _colourSlotThickLineRadial;
     GLuint _positionSlotRadialSlice;
     GLuint _colourSlotRadialSlice;
     GLuint _positionSlotRadialEffect;
+    GLuint _positionSlotRadialEffectAnimate;
     GLuint _colourSlotRadialEffect;
+    GLuint _colourSlotRadialEffectAnimate;
     GLuint _uvSlotRadialEffect;
+    GLuint _uvSlotRadialEffectAnimate;
     
     BOOL performCalculations;
+    BOOL resetAnimationTimer;
     BOOL updateLineTriangles;
     BOOL needsResize;
     BOOL usePremultipliedAlpha;
@@ -135,14 +162,23 @@ typedef struct {
     GLint *uniforms;
     GLint *uniformsAnimate;
     GLint *uniformsOffset;
+    GLint *uniformsOffsetAnimate;
     GLint *uniformsOffsetThickLine;
+    GLint *uniformsOffsetThickLineAnimate;
     GLint *uniformsOffsetThickLineRadial;
+    GLint *uniformsOffsetThickLineRadialAnimate;
     GLint *uniformsPoint;
+    GLint *uniformsPointAnimate;
     GLint *uniformsPointWithRadius;
+    GLint *uniformsPointWithRadiusAnimate;
     GLint *uniformsThickLine;
+    GLint *uniformsThickLineAnimate;
     GLint *uniformsThickLineRadial;
+    GLint *uniformsThickLineRadialAnimate;
     GLint *uniformsRadialSlice;
+    GLint *uniformsRadialSliceAnimate;
     GLint *uniformsRadialEffect;
+    GLint *uniformsRadialEffectAnimate;
     
     GLuint spriteTexture;
     GLuint spriteTextureOpaque;
@@ -161,10 +197,14 @@ typedef struct {
     float spriteTextureSize;
     
     float currentDepth;
-    double animationTime;
+    
+    double thisFrameTime;
     double lastFrameTime;
+    double stepInTime;
+    
     BOOL animationActive;
     BOOL animationPaused;
+    
     int dynamicVertexCounter;
     int numDynamicVertexBatches;
     int numRadialSlices;
@@ -183,8 +223,10 @@ typedef struct {
 - (float) glHeight;
 
 @property (nonatomic, assign) BOOL performCalculations;
+@property (nonatomic, assign) BOOL resetAnimationTimer;
 @property (nonatomic, assign) BOOL updateLineTriangles;
 @property (nonatomic, retain) NSMutableArray *allTextures;
+@property (nonatomic, retain) NSMutableArray *allSeries;
 
 -(GLuint) getFramebuffer;
 -(GLuint) getColorRenderBuffer;
@@ -238,6 +280,7 @@ typedef struct GLVertex3DWithUV      GLVertex3DWithUV;
 typedef struct GLColour4f            GLColour4f;
 
 -(void)addTriangles       :(GLTriangle3D *)triangles
+                 forSeries:(SChartSeries *)series
                      count:(int)count
                     opaque:(BOOL)opaque
          stencilParameters:(SChartGLStencilParams *)stencilParams
@@ -246,6 +289,7 @@ typedef struct GLColour4f            GLColour4f;
             shouldFreeData:(BOOL)freeData;
 
 -(void)addTriangleStrip   :(GLVertex3D *)vertices
+                 forSeries:(SChartSeries *)series
                      count:(int)count
                     opaque:(BOOL)opaque
          stencilParameters:(SChartGLStencilParams *)stencilParams
@@ -254,17 +298,18 @@ typedef struct GLColour4f            GLColour4f;
             shouldFreeData:(BOOL)freeData;
 
 -(void)addIndexedTriangles:(GLVertex3D *)vertices
-                     count:(int)count
-               withIndices:(GLushort *) __attribute__((cf_consumed)) indices
-            withIndexCount:(int)indexCount
-                    opaque:(BOOL)opaque
-         stencilParameters:(SChartGLStencilParams *)stencilParams
-       animationParameters:(const SChartGLAnimationParams *)animationParams
-           withTranslation:(const SChartGLTranslation *)translation
-    isLastInTransformBatch:(BOOL)endTransformBatch
-            shouldFreeData:(BOOL)freeData;
+forSeries:(SChartSeries *)series
+count:(int)count
+withIndices:(GLushort *) __attribute__((cf_consumed)) indices
+withIndexCount:(int)indexCount
+opaque:(BOOL)opaque
+stencilParameters:(SChartGLStencilParams *)stencilParams
+withTranslation:(const SChartGLTranslation *)translation
+isLastInTransformBatch:(BOOL)endTransformBatch
+shouldFreeData:(BOOL)freeData;
 
 -(void)addLines           :(GLVertex3D *)vertices
+                 forSeries:(SChartSeries *)series
                      count:(int)count
               withDrawMode:(GLenum)drawMode
                  withWidth:(float)width
@@ -277,20 +322,21 @@ typedef struct GLColour4f            GLColour4f;
             shouldFreeData:(BOOL)freeData;
 
 -(void)addIndexedLines    :(GLVertex3D *)vertices
+                 forSeries:(SChartSeries *)series
                      count:(int)count
-               withIndices:(GLushort *)indices
+               withIndices:(GLushort *) __attribute__((cf_consumed)) indices
             withIndexCount:(int)indexCount
               withDrawMode:(GLenum)drawMode
                  withWidth:(float)width
            roundThickLines:(BOOL)round
                     opaque:(BOOL)opaque
          stencilParameters:(SChartGLStencilParams *)stencilParams
-       animationParameters:(const SChartGLAnimationParams *)animationParams
            withTranslation:(const SChartGLTranslation *)translation
     isLastInTransformBatch:(BOOL)endTransformBatch
             shouldFreeData:(BOOL)freeData;
 
 -(void)addLinesWithOffset :(GLVertex3DWithOffset *)vertices
+                 forSeries:(SChartSeries *)series
                      count:(int)count
               withDrawMode:(GLenum)drawMode
                  withWidth:(float)width
@@ -301,6 +347,7 @@ typedef struct GLColour4f            GLColour4f;
             shouldFreeData:(BOOL)freeData;
 
 -(void)addPoints          :(GLVertex3DWithTexture *)points
+                 forSeries:(SChartSeries *)series
                      count:(int)count
                 withRadius:(float)radius
            withRadiusArray:(float*)radii
@@ -310,6 +357,7 @@ typedef struct GLColour4f            GLColour4f;
             shouldFreeData:(BOOL)freeData;
 
 -(void)addDynamicTriangles:(GLTriangle3D *)triangles
+                 forSeries:(SChartSeries *)series
                      count:(int)count
                     opaque:(BOOL)opaque
          stencilParameters:(SChartGLStencilParams *)stencilParams
@@ -319,6 +367,7 @@ typedef struct GLColour4f            GLColour4f;
             shouldFreeData:(BOOL)freeData;
 
 -(void)addIndexedDynamicTriangles:(GLVertex3D *)vertices
+                        forSeries:(SChartSeries *)series
                             count:(int)count
                       withIndices:(GLushort *)indices
                    withIndexCount:(int)indexCount
@@ -330,6 +379,7 @@ typedef struct GLColour4f            GLColour4f;
                    shouldFreeData:(BOOL)freeData;
 
 -(void)addIndexedOffsetTriangles:(GLVertex3DWithOffset *)vertices
+                       forSeries:(SChartSeries *)series
                            count:(int)count
                      withIndices:(GLushort *)indices
                   withIndexCount:(int)indexCount
@@ -341,6 +391,7 @@ typedef struct GLColour4f            GLColour4f;
                   shouldFreeData:(BOOL)freeData;
 
 -(void)addPieSlice        :(GLVertex3DWithUV *)vertices
+                 forSeries:(SChartSeries *)series
                      count:(int)count
                withIndices:(GLushort *)indices
             withIndexCount:(int)indexCount
@@ -368,6 +419,8 @@ typedef struct GLColour4f            GLColour4f;
 // @name convertUIColorToGLColour4f */
 // Converts a UIColor to a GLColour4f */
 - (GLColour4f)convertUIColorToGLColour4f:(UIColor *) uiC;
+
+-(float)timeIncrement;
 
 @end
 

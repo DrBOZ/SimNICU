@@ -27,10 +27,12 @@
 
 /** Each ShinobiChart has a SChartTheme object that can control the style for all objects on the chart in one central location. Individual properties can still be set directly on the chart objects, indeed they will take precedence over theme values, but the theme is a convenient way to control the overall look and feel of the chart. 
  
- SCharts come with two built-in themes - Default (SChartTheme) and Midnight (SChartMidnightTheme). Each theme contains a number of style objects that affect the look of certain aspects of the chart ie: chart, axes, etc. There are also a number of style objects for each series type. If there are more series of that type than styles - they will wrap around and use the first style again. 
+ SCharts come with two built-in themes - Light (SChartLightTheme) and Dark (SChartDarkTheme). Each theme contains a number of style objects that affect the look of certain aspects of the chart ie: chart, axes, etc. There are also a number of style objects for each series type. If there are more series of that type than styles - they will wrap around and use the first style again. 
  
- *Default Theme*: Brighter colors based on a white background<br>
- *Midnight Theme*: Softer colors on a black background
+ *Light Theme*: Brighter colors based on a white background<br>
+ *Dark Theme*: Softer colors on a black background
+ 
+ By default, a chart will use the light theme.
  
  To create custom themes, choose one of the three built-in themes that most matches your desired theme and customise. To switch the theme on a chart - simply set `chart.theme` to a new theme object.
  */

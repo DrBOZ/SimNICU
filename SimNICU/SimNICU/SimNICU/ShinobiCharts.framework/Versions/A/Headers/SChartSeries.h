@@ -19,6 +19,7 @@
 @class SChartSeriesStyle;
 @class SChartDataPoint;
 @class ShinobiChart;
+@class SChartAnimation;
 
 typedef enum {
     SChartSelectionNone,
@@ -61,11 +62,39 @@ SChartBarSeries<br>
 
 @property (nonatomic, retain) SChartDataSeries *dataSeries;
 
- 
 #pragma mark -
 #pragma mark Status
 
 @property (nonatomic, assign) SChartSeriesOrientation orientation;
+
+/** Dictates whether or not a series is hidden on the chart.
+ 
+ If the 'hidden' property of a chart series is set to `YES`, then the series will not be drawn on the chart.
+ If this property is set to `NO`, the series will be drawn as usual.
+ The default setting is `NO` */
+@property (nonatomic)           BOOL    hidden;
+
+/** Whether entry and exit animations are anabled for this series.
+ 
+ If this is set to YES, series will animate in and out using their entryAnimation and exitAnimation animation properties.
+ If this is set to NO, series will appear and disappear instantly, with no animation.
+ The default is NO - animation disabled.
+ */
+@property (nonatomic)           BOOL    animationEnabled;
+
+/** The animation which describes how the series will enter the chart.
+
+ The chart series will enter when the chart is first drawn, or when their hidden property is set to NO (having previously been YES).
+ See `SChartAnimation` for more details.
+ */
+@property (retain, nonatomic)   SChartAnimation     *entryAnimation;
+
+/** The animation which describes how the series will exit the chart.
+ 
+ The chart series will exit the chart when their hidden property is set to YES (having previously been NO).
+ See `SChartAnimation` for more details.
+ */
+@property (retain, nonatomic)   SChartAnimation     *exitAnimation;
 
 #pragma mark -
 #pragma mark Selection Options
@@ -107,17 +136,6 @@ SChartBarSeries<br>
 
 
 #pragma mark -
-#pragma mark Drawing
-
-/** Whether or not the series should be drawn on the chart */
-- (BOOL)shouldBeDrawn;
-
-- (NSArray*)xValueKeys;
-- (NSArray*)yValueKeys;
-
-//-(NSString *)stringForSeriesWithDataPoint:(SChartDataPoint *)dataPoint onChart:(ShinobiChart *)chart;
-
-#pragma mark -
 #pragma mark Styling
 /**@name Styling */
 /** Override any default settings or theme settings on a _per series_ basis by editing the values in these style objects. */
@@ -125,12 +143,6 @@ SChartBarSeries<br>
 
 /** Style settings in this object will be applied when the series is marked as selected (or a point is selected).*/
 @property (nonatomic, retain) SChartSeriesStyle *_selectedStyle;
-
-- (void)applyStylesFromTheme:(SChartTheme *)theme
-                atStyleIndex:(unsigned)seriesIndex
-         preservingSetValues:(BOOL)preserveValues;
-
-- (SEL)themeStyleSelector; // subclasses implement this
 
 
 #pragma mark -
@@ -142,6 +154,18 @@ SChartBarSeries<br>
 
 /** Whether or not the series should be represented in the legend */
 @property (nonatomic, assign) BOOL showInLegend;
+
+
+#pragma mark -
+#pragma mark Drawing
+
+/** Whether or not the series should be drawn on the chart.
+ 
+ This was deprecated - use the hidden property instead.*/
+- (BOOL)shouldBeDrawn DEPRECATED_ATTRIBUTE;
+
+- (NSArray*)xValueKeys;
+- (NSArray*)yValueKeys;
 
 
 @end

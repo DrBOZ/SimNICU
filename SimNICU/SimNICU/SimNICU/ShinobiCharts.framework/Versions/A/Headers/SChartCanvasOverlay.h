@@ -36,6 +36,7 @@
     UITapGestureRecognizer          *singleTapGesture;
     UITapGestureRecognizer          *radialTapGesture;
     UILongPressGestureRecognizer    *longPressGesture;
+    UIPanGestureRecognizer          *radialRotationGesture;
     BOOL                             atLeastOneAxisNeedsPanning; // YES if at least one axis needs panning enabled
     
     BOOL                             zoomStartedThisGesture;

@@ -108,12 +108,22 @@
 #import "SChartGridStripeStyle.h"
 #import "SChartMajorGridlineStyle.h"
 
+// Animations
+#import "SChartAnimation.h"
+#import "SChartFlatAnimationCurve.h"
+#import "SChartLinearAnimationCurve.h"
+#import "SChartEaseInAnimationCurve.h"
+#import "SChartEaseOutAnimationCurve.h"
+#import "SChartEaseInOutAnimationCurve.h"
+#import "SChartBounceAnimationCurve.h"
+#import "SChartDelayBounceAnimationCurve.h"
+#import "SChartBounceDelayAnimationCurve.h"
+
 // Annotations
 #import "SChartAnnotation.h"
 
 // Miscellaneous
 #import "SChartTitle.h"
-#import "SChartAnimationCurve.h"
 
 // Chart Themes
 #import "SChartTheme.h"

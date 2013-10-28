@@ -363,6 +363,11 @@ typedef enum {
  Otherwise, if set to `NO` the radial chart's tap gesture recognizer will be disabled. Default `YES`. */
 @property (nonatomic) BOOL radialTapEnabled;
 
+/** When set to `YES` the radial-chart rotation gesture is enabled
+ 
+ Otherwise, if set to `NO` the radial chart's rotation gesture recognizer will be disabled. Default `YES`. */
+@property (nonatomic) BOOL radialRotationEnabled;
+
 @property (nonatomic, readonly) SChartCanvas *canvas;
 
 #pragma mark -

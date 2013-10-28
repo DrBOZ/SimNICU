@@ -8,6 +8,7 @@
 @interface SChartGLView (DonutChartSeries)
 
 - (void)drawRadialSlice:(int)sliceIndex
+              forSeries:(SChartSeries*)series
               fromAngle:(float)startAngle
                 toAngle:(float)endAngle
              fromCentre:(CGPoint)centre

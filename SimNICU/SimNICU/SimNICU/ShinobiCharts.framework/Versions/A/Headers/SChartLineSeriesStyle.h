@@ -30,22 +30,40 @@ typedef enum {
 @property (nonatomic)             BOOL      fillWithGradient;
 @property (nonatomic)             BOOL      fillWithGradientSet;
 
-/** The color of the line */
+/** The color of the line 
+ 
+ This property is used as long as `showFill` isn't set to `YES`.  If the area is filled, `areaLineColor` is used instead.
+ */
 @property (nonatomic, retain)     UIColor   *lineColor;
 
-/** The color for the line if the area is filled */
+/** The color for the line if the area is filled 
+ 
+ If the area isn't filled, `lineColor` is used instead.
+ */
 @property (nonatomic, retain)     UIColor   *areaLineColor;
 
-/** The color of the line below the baseline */
+/** The color of the line below the baseline 
+ 
+ This property is used as long as `showFill` isn't set to `YES`.  If the area is filled, `areaLineColorBelowBaseline` is used instead.
+ */
 @property (nonatomic, retain)     UIColor   *lineColorBelowBaseline;
 
-/** The color for the line if the area is filled */
+/** The color for the line if the area is filled 
+ 
+ If the area isn't filled, `lineColorBelowBaseline` is used instead.
+ */
 @property (nonatomic, retain)     UIColor   *areaLineColorBelowBaseline;
 
-/** The width of the line in pixels */
+/** The width of the line in pixels 
+ 
+ This property is used as long as `showFill` isn't set to `YES`.  If the area is filled, `areaLineWidth` is used instead.
+ */
 @property (nonatomic, retain)     NSNumber  *lineWidth;
 
-/** The width of the line in pixels, ir the area is filled */
+/** The width of the line in pixels, if the area is filled 
+ 
+ If the area isn't filled, `lineWidth` is used instead.
+ */
 @property (nonatomic, retain)     NSNumber  *areaLineWidth;
 
 /** The color of the fill between the line and the axis */

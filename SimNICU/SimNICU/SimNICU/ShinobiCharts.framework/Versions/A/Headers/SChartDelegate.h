@@ -13,6 +13,7 @@
 @class SChartRadialDataPoint;
 @class SChartRadialSeries;
 @class SChartTickMark;
+@class SChartAnimation;
 
 /**
  SChartMovementInformation describes why a chart is triggering pan and zoom delegate methods.
@@ -82,13 +83,32 @@ typedef struct SChartMovementInformation
 
 /** A notification that the chart object is panning.
  
- The range for each axis (ie: `chart.xAxis.axisRange`) is updated as the user pans the chart - this method is called continually during the pan gesture.*/
+ Cartesian Series: The range for each axis (ie: `chart.xAxis.axisRange`) is updated as the user pans the chart.
+ Radial Series: The rotation of the series is updated as the user pans the chart.
+ This method is called continually during the pan gesture
+ */
 - (void)sChartIsPanning:(ShinobiChart *)chart;
 
 /** A notification that the chart object is panning, with additional data
  
  This method is similar to sChartIsPanning:, however extra data describing the pan is given as an argument */
 - (void)sChartIsPanning:(ShinobiChart *)chart withChartMovementInformation:(const SChartMovementInformation *)information;
+
+
+/** A notification that a radial series is being panned 
+ 
+ */
+-(void)sChart:(ShinobiChart *)radial radialSeriesIsPanning: (SChartRadialSeries *)radialSeries;
+
+/** A notification that a panning gesture on a radial series has ended, and the series will begin to decelerate.
+ 
+ */
+-(void)sChart:(ShinobiChart *)chart radialSeriesWillBeginDecelerating:(SChartRadialSeries *)radialSeries;
+
+/** A notification that a radial series has come to a halt after being panned + released.
+ 
+ */
+-(void)sChart:(ShinobiChart *)chart radialSeriesDidEndDecelerating:(SChartRadialSeries *)radialSeries;
 
 #pragma mark -
 #pragma mark Touch Gestures
@@ -105,9 +125,9 @@ atPixelCoordinate:(CGPoint)pixelPoint;
 - (void)sChart:(ShinobiChart *)chart toggledSelectionForPoint:(SChartDataPoint *)dataPoint inSeries:(SChartSeries *)series
 atPixelCoordinate:(CGPoint)pixelPoint;
 
-/** A notification that a data point on a radial (pie or donut, etc) chart has been selected or de-selected.
+/** A notification that a data point on a radial (pie or donut, etc) chart has changed state to 'selected' from 'deselected' or vice versa.
  
- A touch gesture has resulted in the `selected` property of the data point changing. The data point is returned along with the current pixel coordinates of that point and the series that it belongs to.  */
+ The`selected` property of the data point has changed. This could be as a result of a tap gesture on the chart, or of programmatically selecting the point (`setSlice:asSelected`). The data point is returned along with the series that it belongs to and the pixel coordinates of the tap, if any.  */
 - (void)sChart:(ShinobiChart *)chart toggledSelectionForRadialPoint:(SChartRadialDataPoint *)dataPoint inSeries:(SChartRadialSeries *)series
 atPixelCoordinate:(CGPoint)pixelPoint;
 
@@ -121,6 +141,7 @@ atPixelCoordinate:(CGPoint)pixelPoint;
 
 #pragma mark -
 #pragma mark Rendering
+/** @name Chart Rendering */
 
 /** A notification that the chart object has started rendering
  
@@ -133,6 +154,8 @@ atPixelCoordinate:(CGPoint)pixelPoint;
 
 #pragma mark -
 #pragma mark Tick Marks
+/** @name Tick Marks */
+
 /** Alter a tickmark before it is added to an axis on the chart.
  
  This method gives you each tickMark just before it is added to its axis. Use this to set colors, borders, or even move the tickmark's label elsewhere.
@@ -162,6 +185,34 @@ atPixelCoordinate:(CGPoint)pixelPoint;
  You should set frequencies of the correct type to match the axis - for example, SChartDateFrequency for SChartDateTimeAxis, or NSNumber for SChartNumberAxis.
  */
 -(void)sChart:(ShinobiChart *)chart setMajorTickFrequency:(id * const)majorTickFrequency andMinorTickFrequency:(id * const)minorTickFrequency onGeneratingTickMarksforAxis:(SChartAxis *)axis;
+
+
+#pragma mark -
+#pragma mark Animation
+/** @name Animation */
+
+/** A notification that an animation of a chart series has ended.
+ 
+ Note that this callback will still be called should one animation be interrupted by another and the series continues to be animated by the second animation.
+ */
+-(void)sChartSeries:(SChartSeries *)series animationDidFinish: (SChartAnimation *)animation;
+
+
+#pragma mark -
+#pragma mark Data Loading
+/** @name Data Loading */
+
+/** A notification that the chart will start loading its data.
+ 
+ */
+-(void)sChartWillStartLoadingData:(ShinobiChart *)chart;
+
+/** A notification that the chart has finished loading its data.
+ 
+ */
+-(void)sChartDidFinishLoadingData:(ShinobiChart *)chart;
+
+
 
 @end
 

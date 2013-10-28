@@ -63,6 +63,4 @@
 @property (nonatomic) BOOL reloadedData;
 @property (nonatomic, assign) BOOL orientationChanged;
 
--(void)setNeedsToRenderChart;
-
 @end

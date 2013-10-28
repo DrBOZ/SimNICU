@@ -7,15 +7,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
 #import "SChartRadialSeries.h"
+#import "SChartAnimation.h"
 
 @protocol SChartDatasource;
 @class SChartDonutSeriesStyle;
- 
+
+typedef enum {
+    SChartRadialSeriesDrawDirectionAntiClockwise,
+    SChartRadialSeriesDrawDirectionClockwise
+} SChartRadialSeriesDrawDirection;
+
 /** An SChartDonutSeries displays magnitude data on the chart - the larger the value of the datapoint, the larger the slice representing that datapoint.
  
- Whereas datapoints for Cartesian Series require an X and a Y, Radial Series require a name and a value. 
+ Whereas datapoints for Cartesian Series require an X and a Y, Radial Series require a name and a value.
  The xValue of a datapoint given to a Donut Series is used as the name of the slice, and the yValue is used as its magnitude.
  See 'SChartRadialDatapoint' for a convenience datapoint class.
  
@@ -32,16 +37,7 @@
  
  */
 
-@interface SChartDonutSeries : SChartRadialSeries {
-    CGPoint donutCenter;
-    BOOL    _firstRender;
-    float   targetRotation;
-    double  animationStartTime;
-    float   animationStartRotation;
-    float   animationSpan;
-    float   animDuration;
-    BOOL    animActive;
-}
+@interface SChartDonutSeries : SChartRadialSeries
 
 #pragma mark -
 #pragma mark Styling
@@ -58,7 +54,6 @@
 
 -(void)setSelectedStyle:(SChartDonutSeriesStyle *)selectedStyle;
 
-
 /** The inner radius of the series. */
 @property (nonatomic)         float                  innerRadius;
 
@@ -71,24 +66,52 @@
 /** The current rotation of the series */
 @property (nonatomic)         float                  rotation;
 
-/** Duration of the selected slice rotation animation in seconds.
-    Note: This is a guidance value only and the actual duration may change depending on the total angular distance the rotation covers.
-    Duration for a PI/2 radians rotation is going to match this value exactly. */
-@property (nonatomic)         float                  animationDuration;
+/** DEPRECATED - configure the selectionAnimation property instead.
+ */
+@property (nonatomic)         float                  animationDuration DEPRECATED_ATTRIBUTE;
 
-/** Animation curve type of the selected slice rotation animation
+/** DEPRECATED - configure the selectionAnimation property instead.
+ */
+@property (nonatomic)           SChartAnimationCurve    animationCurveType DEPRECATED_ATTRIBUTE;
+
+
+/** An animation object describing the motion of a donut series when a slice is selected.
+ 
+ The angleCurve of the animation describes any rotation of the series from its current position to its selected position.
+ The radiusCurve describes the animation f any increase or decrease in the protrusion of the slice as a result of being selected or deselected.
+ */
+@property (nonatomic, retain)   SChartAnimation     *selectionAnimation;
+
+/** Whether or not panning is enabled on this series.
+ 
+ If panning is enabled, performing a swipe gesture on the series will cause it to rotate.
+ The series will stay under the user's finger whilst your finger remains on the series and will continue to rotate with a velocity proportionate to the speed of the swipe gesture once the user's finger is lifted. See rotationFriction.
+ The default value for this property is NO.
+ */
+@property (nonatomic)           BOOL                gesturePanningEnabled;
+
+/** The amount of friction applied to this pie series after a rotation (pan) gesture finishes, and the series begins to spin.
+ This is used as the percentage of decay of velocity per frame. The default value is 0.02, or 2%.
+ */
+@property (nonatomic)         float                  rotationFriction;
+
+/** The direction in which data is drawn around the centre of the plot.
  
  typedef enum { <br>
- SChartAnimationCurveLinear, <br>
- SChartAnimationCurveEaseIn, <br>
- SChartAnimationCurveEaseOut, <br>
- SChartAnimationCurveEaseInOut <br>
- SChartAnimationCurveBounce <br>
- } SChartRadialChartEffect;
+ SChartRadialSeriesDrawDirectionClockwise, <br>
+ SChartRadialSeriesDrawDirectionAntiClockwise <br>
+ } SChartRadialSeriesDrawDirection;
  
- Default is SChartAnimationCurveBounce.
+ Default is SChartRadialSeriesDrawDirectionAntiClockwise.
  */
-@property (nonatomic)         SChartAnimationCurve   animationCurveType;
+@property (nonatomic)       SChartRadialSeriesDrawDirection drawDirection;
+
+/**
+ By default, tapping on a radial series during panning will just stop the pan.  If this property is enabled, tapping on a slice in the series will select that slice.  This property defaults to NO.
+ 
+ If this property is enabled, and selectedPosition is not set to a value, the donut series will keep spinning whilst a slice moves out.  The same is true for the case where a slice moves in once it is deselected.
+ */
+@property (nonatomic, assign) BOOL  selectionEnabledDuringPanning;
 
 /** Creates the labels for the donut series **/
 -(void)createLabels:(id <SChartDatasource>)datasource onChart:(ShinobiChart *)chart;
@@ -97,7 +120,7 @@
 -(void)setSlice:(int)sliceIndex asSelected:(BOOL)sel;
 
 /** Draw a slice of a series **/
-- (void)drawSlice:(int)sliceIndex ofTotal:(int)totalSlices fromAngle:(float)startAngle toAngle:(float)endAngle 
+- (void)drawSlice:(int)sliceIndex ofTotal:(int)totalSlices fromAngle:(float)startAngle toAngle:(float)endAngle
        fromCentre:(CGPoint)centre withInnerRadius:(float)innerRadius andOuterRadius:(float)outerRadius asSelected:(BOOL)sel inFrame:(CGRect)frame;
 
 /** Returns the center of the donut */
@@ -106,6 +129,14 @@
 /** Returns the centre of the slice at a given index within the chart as a CGPoint **/
 - (CGPoint)getSliceCenter:(int)sliceIndex;
 
--(void)drawWithDrawer:(SChartGLView *)glView;
+/** Returns the index of the slice at the given angle in radians 
+ 
+ */
+-(int)indexOfSliceAtAngle:(double)rads;
+
+/** Rotates the specified slice to the specified angle in radians with the provided animation 
+ 
+ */
+-(void)rotateSliceAtIndex:(int)index toAngle:(double)rads withAnimation:(SChartAnimation *)animation ;
 
 @end

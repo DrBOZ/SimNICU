@@ -8,6 +8,7 @@
 @interface SChartGLView (BarColumnChartSeries)
 
 - (void)barColumnFill               :(float*)series
+             forSeries:(SChartSeries *)s
                       withBaseSeries:(float*)baseSeries
                             withSize:(GLuint)size
                            withColor:(UIColor*)fillColour
@@ -18,10 +19,10 @@
                       withGLBaseline:(float)glBaseline
                       andOrientation:(int)orientation
                     willDrawLinesToo:(BOOL)willDrawLines
-                 animationParameters:(const SChartGLAnimationParams *)animParams
                       andTranslation:(const SChartGLTranslation *)transform;
 
 - (void)barColumnLine               :(float*)series
+             forSeries:(SChartSeries *)s
                       withBaseSeries:(float*)baseSeries
                             withSize:(GLuint)i
                            withColor:(UIColor*)lineColor
@@ -30,7 +31,6 @@
                        withLineWidth:(float)lineWidth
                       withGLBaseline:(float)glBaseline
                       andOrientation:(int)orientation
-                 animationParameters:(const SChartGLAnimationParams *)animParams
                       andTranslation:(const SChartGLTranslation *)transform;
 
 @end

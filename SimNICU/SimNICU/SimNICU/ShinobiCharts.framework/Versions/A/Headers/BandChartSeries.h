@@ -10,6 +10,7 @@
 @interface SChartGLView (BandChartSeries)
 
 - (void)drawBandSeriesFill:(float *)seriesHigh
+                 forSeries:(SChartSeries *)s
               andLowSeries:(float *)seriesLow
                   withSize:(int)size 
          withAreaColorHigh:(UIColor *)areaColorHigh 

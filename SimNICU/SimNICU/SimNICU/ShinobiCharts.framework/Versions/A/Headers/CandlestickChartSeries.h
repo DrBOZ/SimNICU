@@ -7,16 +7,17 @@
 
 @interface SChartGLView (CandlestickChartSeries)
 
-- (void)drawCandlesticks:(float *)series 
+- (void)drawCandlesticks:(float *)series
+               forSeries:(SChartSeries *)s
                 withSize:(int)size 
               withColors:(NSMutableArray *)colors 
       withGradientColors:(NSMutableArray *)gradientColors  
         withOutlineColor:(UIColor *)outlineColor 
           withStickColor:(UIColor *)stickColor
          withCandleWidth:(float)candleWidth 
-        withOutlineWidth:(float)outlineWidth 
+        withOutlineWidth:(float)outlineWidth
           withStickWidth:(float)stickWidth
-         withOrientation:(int)orientation 
+         withOrientation:(int)orientation
           andTranslation:(const SChartGLTranslation *)transform;
 
 @end

@@ -8,6 +8,7 @@
 @interface SChartGLView (LineChartSeries)
 
 - (void)horizontalFill:(float*)series
+             forSeries:(SChartSeries *)s
               withSize:(GLuint)size
              withColor:(UIColor*)fillColour
 withColorBelowBaseline:(UIColor*)fillColourBelowBaseline
@@ -21,6 +22,7 @@ withMaxOffsetBelowBaseline:(float)maxOffsetBelowBaseline
         andTranslation:(const SChartGLTranslation *)transform;
 
 - (void)drawLineStrip:(float*)series
+             forSeries:(SChartSeries *)s
              withSize:(GLuint)size
             withColor:(UIColor*)lineColour
 withColorBelowBaseline:(UIColor*)lineColourBelowBaseline
@@ -29,17 +31,19 @@ withColorBelowBaseline:(UIColor*)lineColourBelowBaseline
     withFillDirection:(int)fillDirection
        andTranslation:(const SChartGLTranslation *)transform;
 
-- (void)drawDataPoints:(float*)series
-     withPointTextures:(int*)textures
+
+- (void)drawDataPoints:(float *)series
+             forSeries:(SChartSeries *)s
+     withPointTextures:(int *)textures
               withSize:(GLuint)size
-             withColor:(UIColor*)pointColour
+             withColor:(UIColor *)pointColour
 withColorBelowBaseline:(UIColor*)pointColourBelowBaseline
             withRadius:(float)radius
        withRadiusArray:(float*)radii
               withFade:(float)fade
           withBaseline:(float)baseline
      withFillDirection:(int)fillDirection
-        andTranslation:(const SChartGLTranslation *)transform
+        andTranslation:(const SChartGLTranslation *)translation
 isLastInTransformBatch:(BOOL)endTransformBatch;
 
 

@@ -11,26 +11,22 @@
  
  Some range types, such as a number range, may be valid for several axis types.
  */
-@interface SChartRange : NSObject {
-   
-    id minimum;
-    id maximum;
-}
+@interface SChartRange : NSObject
 
 /** @name Initialisation */
 /** Initialise with a minimum object  and maximum object*/
-- (id)initWithMinimum:(id)min andMaximum:(id)max;
+- (id)initWithMinimum:(NSNumber *)min andMaximum:(NSNumber *)max;
 
 /** @name Setting the range */
 /** The object representing the minimum _value_ for this range. */
-@property (nonatomic, retain, readonly) id minimum;
+@property (nonatomic, retain, readonly) NSNumber *minimum;
 
 /** The object representing the maximum _value_ for this range. */
-@property (nonatomic, retain, readonly) id maximum;
+@property (nonatomic, retain, readonly) NSNumber *maximum;
 
 /** @name Information about the range */
-/** Returns an object representing the total _value_ difference between the minimum and maximum */
-- (id)span;
+/** Returns an NSNumber representing the total _value_ difference between the minimum and maximum */
+- (NSNumber *)span;
 
 
 #pragma mark -

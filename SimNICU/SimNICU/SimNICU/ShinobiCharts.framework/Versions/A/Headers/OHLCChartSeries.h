@@ -9,7 +9,8 @@
 
 @interface SChartGLView (OHLCChartSeries)
 
-- (void)drawOHLCPoints:(float *)series 
+- (void)drawOHLCPoints:(float *)series
+             forSeries:(SChartSeries *)s
               withSize:(int)size 
             withColors:(NSMutableArray *)colors 
     withGradientColors:(NSMutableArray *)gradientColors  

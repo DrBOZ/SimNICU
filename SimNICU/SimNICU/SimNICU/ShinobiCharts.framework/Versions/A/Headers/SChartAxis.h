@@ -335,8 +335,14 @@ typedef enum {
  The subclass of SChartRange that is returned will correspond to the axis type. */
 - (SChartRange *)getNewRangeWithMinimum:(NSNumber *)minimum withMaximum:(NSNumber *)maximum;
 
-- (SChartRange *)appropriateRangeWithFloatMin:(double)min andFloatMax:(double)max;
 
+
+/** Returns a range within which all the visible (non-hidden) series on this axis will be displayed.
+ 
+ Setting the default range to this range should frame your data nicely.
+ Note that this will take baselines, bar/column widths etc into consideration.
+ */
+- (SChartRange *)visibleRange;
 
 #pragma mark -
 #pragma mark Tick Marks
@@ -391,10 +397,10 @@ typedef enum {
  Specifying this can improve the render time of the chart - it will not have to traverse all of the data to compare differences. */
 @property (nonatomic) double barColSpacing;
 
-/* The minimum x value of a column across all of the barColumn series for this axis. */
+/** The minimum x value of a column across all of the barColumn series for this axis. */
 @property (nonatomic, readonly) NSNumber *barColMin;
 
-/* The maximum x value of a column across all of the barColumn series for this axis. */
+/** The maximum x value of a column across all of the barColumn series for this axis. */
 @property (nonatomic, readonly) NSNumber *barColMax;
 
 /** During the next render process, forces the recalculation of the barcolumn series.
@@ -531,6 +537,8 @@ typedef enum {
 
 // Zooms the axis based on momentum, centred on a specified position
 -(BOOL)zoomWithMomentum:(double)velocity fromPosition:(double)position;
+
+
 
 
 #pragma mark -

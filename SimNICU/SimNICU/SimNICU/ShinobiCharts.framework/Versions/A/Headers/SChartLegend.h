@@ -147,10 +147,8 @@ typedef enum {
  If this is not set by the user the symbol will automatically take up half of the width of the legend (with the chart series label/text taking up the other half).*/
 @property (nonatomic, retain) NSNumber *symbolWidth;
 
-/** A BOOLean that indicates if symbols should be shown in the legend.
- 
- The default value is YES (symbols will be shown). Symbols are collected from the series objects through the SChartLegendItem protocol.*/
-@property (nonatomic, assign) BOOL showSymbols;
+/** Deprecated - set this property on the style object instead. */
+@property (nonatomic, assign) BOOL showSymbols  DEPRECATED_ATTRIBUTE;
 
 /** A number specifying how many series are shown per row on horizontal legends */
 @property (nonatomic, assign) int maxSeriesPerLine;

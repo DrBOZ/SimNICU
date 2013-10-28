@@ -1,11 +1,11 @@
 //
 //  SChartLightTheme.h
-//  ShinobiControls_Source
+//  SChart
 //
-//  Created by Simon Withington on 23/08/2012.
-//
+//  Copyright 2013 Scott Logic Ltd. All rights reserved.
 //
 
+/** The SChartLightTheme uses brighter colors based on a white background. */
 @class SChartTheme;
 
 @interface SChartLightTheme : SChartTheme

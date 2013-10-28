@@ -518,7 +518,6 @@
 		5C940CAC166E413A0044A7D1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */; };
 		5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */; };
 		5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */; };
-		5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */; };
 		5C940CB9166E43800044A7D1 /* InfoTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940CB8166E43800044A7D1 /* InfoTabBarController.m */; };
 		5C940CC2166E45860044A7D1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CC4166E45860044A7D1 /* Localizable.strings */; };
 		5C940CC7166E45FA0044A7D1 /* bloodTransfusionCriteria2.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940CC9166E45FA0044A7D1 /* bloodTransfusionCriteria2.html */; };
@@ -719,7 +718,6 @@
 		5CD3B01B16CF38D500DE362C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
 		5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AEE166E39C10044A7D1 /* libGoogleAnalytics.a */; };
 		5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AF1166E39E80044A7D1 /* libTestFlight.a */; };
-		5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */; };
 		5CD3B02016CF38D500DE362C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A6A166E37FE0044A7D1 /* InfoPlist.strings */; };
 		5CD3B02716CF38D500DE362C /* KKPasscodeLock.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AA2166E38E20044A7D1 /* KKPasscodeLock.bundle */; };
 		5CD3B02816CF38D500DE362C /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AD0166E391D0044A7D1 /* Kal.bundle */; };
@@ -793,6 +791,7 @@
 		5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B7016D04B6C0002BBD7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
+		5CEB6693181EA101008FC40B /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEB6692181EA101008FC40B /* ShinobiCharts.framework */; };
 		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
@@ -1347,7 +1346,6 @@
 		5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
 		5C940CB7166E43800044A7D1 /* InfoTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTabBarController.h; sourceTree = "<group>"; };
 		5C940CB8166E43800044A7D1 /* InfoTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTabBarController.m; sourceTree = "<group>"; };
 		5C940CBA166E44F20044A7D1 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1462,6 +1460,8 @@
 		5CE04B7016D04B6C0002BBD7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatePickerActionSheet.h; sourceTree = "<group>"; };
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
+		5CEB6690181EA033008FC40B /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
+		5CEB6692181EA101008FC40B /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
 		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
@@ -1497,6 +1497,7 @@
 				5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */,
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
 				5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
+				5CEB6693181EA101008FC40B /* ShinobiCharts.framework in Frameworks */,
 				5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */,
 				5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */,
 				5C940CAC166E413A0044A7D1 /* AudioToolbox.framework in Frameworks */,
@@ -1513,7 +1514,6 @@
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
 				5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */,
 				5C940CA0166E40D50044A7D1 /* Security.framework in Frameworks */,
-				5C940CB6166E43440044A7D1 /* ShinobiCharts.framework in Frameworks */,
 				5CCC272316D66AC500D14080 /* Social.framework in Frameworks */,
 				5C940C9E166E40B70044A7D1 /* SystemConfiguration.framework in Frameworks */,
 				5C940A62166E37FE0044A7D1 /* UIKit.framework in Frameworks */,
@@ -1543,7 +1543,6 @@
 				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 				5CD3B01616CF38D500DE362C /* QuartzCore.framework in Frameworks */,
 				5CD3B01716CF38D500DE362C /* Security.framework in Frameworks */,
-				5CD3B01E16CF38D500DE362C /* ShinobiCharts.framework in Frameworks */,
 				5CE04B7116D04B6C0002BBD7 /* Social.framework in Frameworks */,
 				5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */,
 				5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */,
@@ -2323,6 +2322,7 @@
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
 				5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */,
 				5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */,
+				5CEB6692181EA101008FC40B /* ShinobiCharts.framework */,
 				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
 				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
 				5C940CAB166E413A0044A7D1 /* AudioToolbox.framework */,
@@ -2340,7 +2340,7 @@
 				5CE04B6516D04AFB0002BBD7 /* Parse.framework */,
 				5C940CA1166E40E40044A7D1 /* QuartzCore.framework */,
 				5C940C9F166E40D50044A7D1 /* Security.framework */,
-				5C940CB5166E43440044A7D1 /* ShinobiCharts.framework */,
+				5CEB6690181EA033008FC40B /* ShinobiCharts.framework */,
 				5CE04B7016D04B6C0002BBD7 /* Social.framework */,
 				5C940C9D166E40B70044A7D1 /* SystemConfiguration.framework */,
 				5C940A61166E37FE0044A7D1 /* UIKit.framework */,
@@ -2402,7 +2402,6 @@
 				5C940AAE166E38F60044A7D1 /* Kal */,
 				5C940A9F166E38D10044A7D1 /* KKPasscodeLock */,
 				5C5A116017D2391800CE96E5 /* kxintro */,
-				5C940ADC166E39720044A7D1 /* Shinobi */,
 				5C940A98166E38B90044A7D1 /* SVSegmentedControl */,
 				5C940ADA166E39600044A7D1 /* TestFlight */,
 				5C23A24017EDD65400299D3E /* UAModalPanel */,
@@ -2557,13 +2556,6 @@
 				5C940AE5166E39A10044A7D1 /* DCCrossHairView.m */,
 			);
 			name = DCIntrospect;
-			sourceTree = "<group>";
-		};
-		5C940ADC166E39720044A7D1 /* Shinobi */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Shinobi;
 			sourceTree = "<group>";
 		};
 		5C940AF8166E3AB60044A7D1 /* Config */ = {
@@ -4273,7 +4265,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
@@ -4300,7 +4294,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
