@@ -246,7 +246,10 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Recent Significant Events";
-            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // ml/kg/day
+            [newSection.customText addObject:[self customText:@" ml/kg/day" ref:@"ml/kg/day"]];
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
@@ -376,8 +379,14 @@
             newSection.sectionName = @"Feeds & Fluids";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:5];
             
+            // Fully enterally fed
+            [newSection.customText addObject:[self customText:@"Fully enterally fed" ref:@"Fully enterally fed"]];
+            
             // ml/kg/day
-            [newSection.customText addObject:[self customText:@"ml/kg/day" ref:@"ml/kg/day"]];
+            [newSection.customText addObject:[self customText:@" ml/kg/day" ref:@"ml/kg/day"]];
+            
+            // Minimal milky aspirates
+            [newSection.customText addObject:[self customText:@"Minimal milky aspirates" ref:@"Minimal milky aspirates"]];
             
             // Parenteral nutrition
             [newSection.customText addObject:[self customText:@"Standard preterm PN" ref:@"Standard preterm PN"]];
@@ -387,12 +396,6 @@
             
             // Green regime
             [newSection.customText addObject:[self customText:@"Green regime" ref:@"Green regime"]];
-            
-            // Fully enterally fed
-            [newSection.customText addObject:[self customText:@"Fully enterally fed" ref:@"Fully enterally fed"]];
-            
-            // Minimal milky aspirates
-            [newSection.customText addObject:[self customText:@"Minimal milky aspirates" ref:@"Minimal milky aspirates"]];
             
             [self.handoverSections addObject:newSection];
         }
@@ -429,6 +432,27 @@
             // Cr
             [newSection.customText addObject:[self customText:@" Cr " ref:@"Cr"]];
             
+            // Ca
+            [newSection.customText addObject:[self customText:@"Ca " ref:@"Ca"]];
+            
+            // Adj Ca
+            [newSection.customText addObject:[self customText:@" Adj Ca " ref:@"Adj Ca"]];
+            
+            // Phosphate
+            [newSection.customText addObject:[self customText:@" PO4  " ref:@"PO4"]];
+            
+            // Mg
+            [newSection.customText addObject:[self customText:@"Mg " ref:@"Mg"]];
+            
+            // Alkaline Phosphatase
+            [newSection.customText addObject:[self customText:@"ALP " ref:@"Alk Phos"]];
+            
+            // ALT
+            [newSection.customText addObject:[self customText:@" ALT " ref:@"ALT"]];
+            
+            // ALB
+            [newSection.customText addObject:[self customText:@" ALB " ref:@"ALB"]];
+            
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
             
@@ -445,6 +469,12 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Jaundice";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // Below phototherapy line
+            [newSection.customText addObject:[self customText:@"Below phototherapy line" ref:@"Below phototherapy line"]];
+            
+            // Above phototherapy line
+            [newSection.customText addObject:[self customText:@"Above phototherapy line" ref:@"Above phototherapy line"]];
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
@@ -528,6 +558,12 @@
             
             // No concerns
             [newSection.customText addObject:[self customText:@"No concerns" ref:@"No concerns"]];
+            
+            // Visiting regularly
+            [newSection.customText addObject:[self customText:@"Visiting regularly" ref:@"Visiting regularlyç"]];
+            
+            // Social concerns
+            [newSection.customText addObject:[self customText:@"Social concerns" ref:@"Social concerns"]];
         
             [self.handoverSections addObject:newSection];
         } 
@@ -552,6 +588,9 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Summary";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // Preterm infant establishing enteral feeds
+            [newSection.customText addObject:[self customText:@"Preterm infant establishing enteral feeds" ref:@"Preterm infant establishing enteral feeds"]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -562,6 +601,9 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Plan";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // ml/kg/day
+            [newSection.customText addObject:[self customText:@" ml/kg/day" ref:@"ml/kg/day"]];
         
             [self.handoverSections addObject:newSection];
         }
