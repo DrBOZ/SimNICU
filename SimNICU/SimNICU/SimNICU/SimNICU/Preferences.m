@@ -52,6 +52,7 @@
         self.userKnowsHowToSwipeGestation = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipeGestation"];
         self.userKnowsHowToSwipePatientList = [aDecoder decodeObjectForKey:@"userKnowsHowToSwipePatientList"];
         self.correctAgeForPrematurityUntilYears = [aDecoder decodeObjectForKey:@"correctAgeForPrematurityUntilYears"];
+        self.ageInDaysSetting = [aDecoder decodeObjectForKey:@"ageInDaysSetting"];
         self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
         self.signature = [aDecoder decodeObjectForKey:@"signature"];
         self.border = [aDecoder decodeObjectForKey:@"border"];
@@ -89,6 +90,8 @@
                   forKey:@"userKnowsHowToSwipePatientList"];
     [aCoder encodeObject:self.correctAgeForPrematurityUntilYears
                   forKey:@"correctAgeForPrematurityUntilYears"];
+    [aCoder encodeObject:self.ageInDaysSetting
+                  forKey:@"ageInDaysSetting"];
     [aCoder encodeObject:self.paperSize
                   forKey:@"paperSize"];
     [aCoder encodeObject:self.signature
@@ -388,6 +391,9 @@
             // Minimal milky aspirates
             [newSection.customText addObject:[self customText:@"Minimal milky aspirates" ref:@"Minimal milky aspirates"]];
             
+            // No vomits
+            [newSection.customText addObject:[self customText:@"No vomits" ref:@"No vomits"]];
+            
             // Parenteral nutrition
             [newSection.customText addObject:[self customText:@"Standard preterm PN" ref:@"Standard preterm PN"]];
             
@@ -495,6 +501,12 @@
             // < 5
             [newSection.customText addObject:[self customText:@"< 5" ref:@"< 5"]];
             
+            // Blood cultures
+            [newSection.customText addObject:[self customText:@"Blood cultures" ref:@"Blood cultures"]];
+            
+            // Blood cultures
+            [newSection.customText addObject:[self customText:@" no growth" ref:@"no growth"]];
+            
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
         
@@ -507,6 +519,12 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Drugs";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // Nil
+            [newSection.customText addObject:[self customText:@"Nil" ref:@"Nil"]];
+            
+            // Stopped antibiotics
+            [newSection.customText addObject:[self customText:@"Stopped antibiotics" ref:@"Stopped antibiotics"]];
         
             // Benzylpenicillin
             [newSection.customText addObject:[self customText:@"Benzylpenicillin" ref:@"Benzylpenicillin"]];
@@ -532,6 +550,9 @@
         
             // Screening not indicated
             [newSection.customText addObject:[self customText:@"Screening not indicated" ref:@"Screening not indicated"]];
+            
+            // In ROP book
+            [newSection.customText addObject:[self customText:@"In ROP book" ref:@"In ROP book"]];
             
             [self.handoverSections addObject:newSection];
         }
@@ -560,7 +581,7 @@
             [newSection.customText addObject:[self customText:@"No concerns" ref:@"No concerns"]];
             
             // Visiting regularly
-            [newSection.customText addObject:[self customText:@"Visiting regularly" ref:@"Visiting regularlyç"]];
+            [newSection.customText addObject:[self customText:@"Visiting regularly" ref:@"Visiting regularly"]];
             
             // Social concerns
             [newSection.customText addObject:[self customText:@"Social concerns" ref:@"Social concerns"]];
@@ -591,6 +612,9 @@
             
             // Preterm infant establishing enteral feeds
             [newSection.customText addObject:[self customText:@"Preterm infant establishing enteral feeds" ref:@"Preterm infant establishing enteral feeds"]];
+            
+            // Medically fit for discharge
+            [newSection.customText addObject:[self customText:@"Medically fit for discharge" ref:@"Medically fit for discharge"]];
         
             [self.handoverSections addObject:newSection];
         }

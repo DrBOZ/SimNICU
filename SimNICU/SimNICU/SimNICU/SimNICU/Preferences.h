@@ -36,6 +36,10 @@
 
 // Corrected age calculator
 @property (nonatomic, retain) NSNumber *correctAgeForPrematurityUntilYears;
+@property (nonatomic, retain) NSNumber *ageInDaysSetting;                       // 0 for day 0
+                                                                                // 1 for day 1
+                                                                                // 2 for day 1 before 12:00
+                                                                                //           0 after  12:00
 
 // Daily Summary Editor
 @property (nonatomic, retain) NSNumber *autocorrection;
