@@ -1,0 +1,23 @@
+//
+//  DayZeroTableViewController.h
+//  SimNICU
+//
+//  Created by Conrad Bosman on 30/10/2013.
+//  Copyright (c) 2013 Conrad Bosman. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class DayZeroTableViewController;
+
+@protocol DayZeroTableViewControllerDelegate <NSObject>
+
+- (void)dayZeroTableViewControllerDidSelectNewOption:(DayZeroTableViewController *)controller;
+
+@end
+
+@interface DayZeroTableViewController : CBTableViewController
+
+@property (nonatomic, unsafe_unretained) id <DayZeroTableViewControllerDelegate> delegate;
+
+@end

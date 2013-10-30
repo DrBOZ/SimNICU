@@ -8,9 +8,10 @@
 
 #import "DailySummaryEditorSettingsTableViewController.h"
 #import "PDFGenerationTableViewController.h"
-#import "SettingsTableViewController.h"
-#import "EnterWeightViewController.h"
 #import "BayEditorTableViewController.h"
+#import "SettingsTableViewController.h"
+#import "DayZeroTableViewController.h"
+#import "EnterWeightViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 #import "SettingsModel.h"
@@ -114,6 +115,12 @@
     
     if (indexPath.section == 0)
     {
+        DayZeroTableViewController *vc = [[DayZeroTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.section == 1)
+    {
         EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
         
         // Bay Editor
@@ -123,7 +130,7 @@
         
         [self.navigationController pushViewController:bayEditorTableViewController animated:YES];
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == 2)
     {
         if (indexPath.row == 0)
         {
