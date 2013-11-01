@@ -50,6 +50,13 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    if (section == 1) return @"Day 0 if infant is born before 12:00 midday, Day 1 if born after.";
+    
+    else return nil;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Preferences *preferences = [Preferences sharedPreferences];
@@ -125,7 +132,7 @@
             self.dayMixed.backgroundColor = [UIColor whiteColor];
         }
         
-        self.dayMixed.textLabel.text = @"Mixed";
+        self.dayMixed.textLabel.text = @"Depends on time of birth";
         
         if ([preferences.ageInDaysSetting intValue] == 2)
         {

@@ -25,6 +25,8 @@
 // Calendrical Time Difference Methods
 + (NSInteger)getDaysDifferenceIntBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
++ (NSInteger)getAgeInDaysOfPatient:(Patient *)patient;
+
 + (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;
 
 + (NSInteger)getYearsDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB;

@@ -293,6 +293,41 @@
     return differenceToReturn;
 }
 
++ (NSInteger)getAgeInDaysOfPatient:(Patient *)patient
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    int age = 0;
+    
+    age = [self getDaysDifferenceIntBetween:patient.birthDate and:[NSDate date]];
+    
+    if ([preferences.ageInDaysSetting intValue] == 2)
+    {
+        if (patient.birthTimeSet)
+        {
+            // if time of birth is before midday then Day 1
+            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:patient.birthDate];
+            NSInteger currentHour = [components hour];
+            
+            if (currentHour < 12)
+            {
+                age = age + 1;
+            }
+        }
+        else
+        {
+            // time of birth is not set
+            age = age + 1;
+        }
+    }
+    else
+    {
+        age = age + [preferences.ageInDaysSetting intValue];
+    }
+    
+    return age;
+}
+
 + (NSMutableArray *)getFormattedYearsMonthsWeeksDaysDifferenceBetween:(NSDate *)dateA and:(NSDate *)dateB
 {
     NSString *formattedDate = nil;
