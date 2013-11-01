@@ -686,8 +686,6 @@
 {
     NSString *daysAndCorrectedGestationalAge = nil;
     
-    
-    
     return daysAndCorrectedGestationalAge;
 }
 

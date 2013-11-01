@@ -10,28 +10,19 @@
 
 @interface DayZeroTableViewController ()
 
+@property UITableViewCell *day0;
+@property UITableViewCell *day1;
+@property UITableViewCell *dayMixed;
+
 @end
 
 @implementation DayZeroTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.view.tintColor = [UIColor redColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,38 +35,166 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    if (section == 0)
+    {
+        return 2;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    Preferences *preferences = [Preferences sharedPreferences];
     
-    if (!cell)
+    UITableViewCell *returnCell = nil;
+    
+    if (indexPath.section == 0)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"day0";
+            self.day0 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!self.day0)
+            {
+                self.day0 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                self.day0.selectionStyle = UITableViewCellSelectionStyleBlue;
+                self.day0.backgroundColor = [UIColor whiteColor];
+            }
+            
+            self.day0.textLabel.text = @"day 0";
+            
+            if ([preferences.ageInDaysSetting intValue] == 0)
+            {
+                self.day0.accessoryType = UITableViewCellAccessoryCheckmark;
+                self.day0.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            }
+            else
+            {
+                self.day0.accessoryType = UITableViewCellAccessoryNone;
+                self.day0.textLabel.textColor = [UIColor blackColor];
+            }
+            
+            returnCell = self.day0;
+        }
+        else if (indexPath.row == 1)
+        {
+            static NSString *CellIdentifier = @"day1";
+            self.day1 = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (!self.day1)
+            {
+                self.day1 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                self.day1.selectionStyle = UITableViewCellSelectionStyleBlue;
+                self.day1.backgroundColor = [UIColor whiteColor];
+            }
+            
+            self.day1.textLabel.text = @"day 1";
+            
+            if ([preferences.ageInDaysSetting intValue] == 1)
+            {
+                self.day1.accessoryType = UITableViewCellAccessoryCheckmark;
+                self.day1.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            }
+            else
+            {
+                self.day1.accessoryType = UITableViewCellAccessoryNone;
+                self.day1.textLabel.textColor = [UIColor blackColor];
+            }
+            
+            returnCell = self.day1;
+        }
+    }
+    else
+    {
+        static NSString *CellIdentifier = @"dayMixed";
+        self.dayMixed = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!self.dayMixed)
+        {
+            self.dayMixed = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            self.dayMixed.selectionStyle = UITableViewCellSelectionStyleBlue;
+            self.dayMixed.backgroundColor = [UIColor whiteColor];
+        }
+        
+        self.dayMixed.textLabel.text = @"Mixed";
+        
+        if ([preferences.ageInDaysSetting intValue] == 2)
+        {
+            self.dayMixed.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.dayMixed.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+        }
+        else
+        {
+            self.dayMixed.accessoryType = UITableViewCellAccessoryNone;
+            self.dayMixed.textLabel.textColor = [UIColor blackColor];
+        }
+        
+        returnCell = self.dayMixed;
     }
     
-    if (indexPath.row == 0)
+    return returnCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if (indexPath.section == 0)
     {
-        cell.textLabel.text = @"day 0";
+        if (indexPath.row == 0)
+        {
+            preferences.ageInDaysSetting = [NSNumber numberWithInt:0];
+            
+            // set checkmarks
+            self.day0.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.day0.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            
+            self.day1.accessoryType = UITableViewCellAccessoryNone;
+            self.day1.textLabel.textColor = [UIColor blackColor];
+            
+            self.dayMixed.accessoryType = UITableViewCellAccessoryNone;
+            self.dayMixed.textLabel.textColor = [UIColor blackColor];
+        }
+        else if (indexPath.row == 1)
+        {
+            preferences.ageInDaysSetting = [NSNumber numberWithInt:1];
+            
+            // set checkmarks
+            self.day0.accessoryType = UITableViewCellAccessoryNone;
+            self.day0.textLabel.textColor = [UIColor blackColor];
+            
+            self.day1.accessoryType = UITableViewCellAccessoryCheckmark;
+            self.day1.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            
+            self.dayMixed.accessoryType = UITableViewCellAccessoryNone;
+            self.dayMixed.textLabel.textColor = [UIColor blackColor];
+        }
     }
-    else if (indexPath.row == 1)
+    else
     {
-        cell.textLabel.text = @"day 1";
-    }
-    else if (indexPath.row == 2)
-    {
-        cell.textLabel.text = @"mixed";
+        preferences.ageInDaysSetting = [NSNumber numberWithInt:2];
+        
+        // set checkmarks
+        self.day0.accessoryType = UITableViewCellAccessoryNone;
+        self.day0.textLabel.textColor = [UIColor blackColor];
+        
+        self.day1.accessoryType = UITableViewCellAccessoryNone;
+        self.day1.textLabel.textColor = [UIColor blackColor];
+        
+        self.dayMixed.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.dayMixed.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
     }
     
-    return cell;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

@@ -1190,8 +1190,10 @@
             
             NSString *correctedAge = formattedDates[2];
             
+            Preferences *preferences = [Preferences sharedPreferences];
+            
             // display days and corrected age
-            displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]], correctedAge];
+            displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", ([CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]] + [preferences.ageInDaysSetting intValue]), correctedAge];
         }
         
         // display gestation and corrected gestation, birth weight and working weight

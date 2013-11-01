@@ -150,6 +150,11 @@
         self.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
     }
     
+    if (!self.ageInDaysSetting)
+    {
+        self.ageInDaysSetting = [NSNumber numberWithInt:1];
+    }
+    
     // set phototherapy defaults
     if (!self.guidelineCountry)
     {
