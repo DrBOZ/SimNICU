@@ -43,25 +43,21 @@
     
     [tableData addObject:sectionData];
     
-    if ([preferences.trackball intValue] == 1)
+    // section 1
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = @"Custom Text";
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    HandoverSection *section;
+    
+    for (section in preferences.handoverSections)
     {
-        // section 1
-        sectionData = [[CBTableViewSectionData alloc] init];
-        sectionData.titleForHeader = @"Custom Text";
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:20];
-        
-        Preferences *preferences = [Preferences sharedPreferences];
-        HandoverSection *section;
-        
-        for (section in preferences.handoverSections)
-        {
-            rowData = [[CBTableViewRowData alloc] init];
-            rowData.text = section.sectionName;
-            [sectionData.rowData addObject:rowData];
-        }
-        
-        [tableData addObject:sectionData];
+        rowData = [[CBTableViewRowData alloc] init];
+        rowData.text = section.sectionName;
+        [sectionData.rowData addObject:rowData];
     }
+    
+    [tableData addObject:sectionData];
     
     return tableData;
 }
