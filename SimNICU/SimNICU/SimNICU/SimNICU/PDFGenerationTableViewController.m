@@ -12,7 +12,7 @@
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 
-@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, CBPhotoCropperDelegate>
+@interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, CBPhotoCropperDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UITextView *signatureTextView;
 @property (nonatomic, strong) UISwitch *borderSwitch;
@@ -59,7 +59,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITable view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -124,6 +124,15 @@
     }
     
     return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 2)
+    {
+        return 240.0f;
+    }
+    else return 0.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -283,7 +292,7 @@
     preferences.border = [NSNumber numberWithInt:self.borderSwitch.on];
 }
 
-#pragma mark - Table view delegate
+#pragma mark - UITable view delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -335,6 +344,12 @@
 
 #pragma mark - UITextView delegate
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    // move tableview up
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     // create string with new text
@@ -379,6 +394,23 @@
     Preferences *preferences = [Preferences sharedPreferences];
     
     preferences.signature = textView.text;
+}
+
+#pragma mark - UIScrollView delegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    // check if textview has focus
+    if ([self.signatureTextView isFirstResponder])
+    {
+        // lose keyboard
+        [self.signatureTextView resignFirstResponder];
+        
+        // other way to do it is to reset footer height and update table
+        
+        // scroll tableView back
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
 
 #pragma mark - PaperSizeTableViewControllerDelegate

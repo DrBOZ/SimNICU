@@ -1,6 +1,6 @@
 //
 //  DailySummaryPDFViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 29/08/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
@@ -35,7 +35,7 @@
 #define kMarginInsetLeft 70.0f
 #define kMarginInsetRight 10.0f
 #define kMarginInsetTop 50.0f
-#define kMarginInsetBottom 50.0f
+#define kMarginInsetBottom 80.0f  // 50.0f
 #define kLineWidth 2.0f
 
 #define kLeftPrintingAdjustment 0.0f
@@ -845,7 +845,9 @@
 - (void)drawSignature
 {
     Preferences *preferences = [Preferences sharedPreferences];
-    float signatureStartPoint = 165.0f;
+    CGFloat signatureStartPoint = 165.0f;  // 120.0f
+    
+    CGFloat signatureVerticalAdjustment = -24.0f;  //50.0f
     
     // draw line
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -854,8 +856,8 @@
     
     CGContextSetStrokeColorWithColor(currentContext, [UIColor blackColor].CGColor);
     
-    CGPoint startPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset - signatureStartPoint, pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
-    CGPoint endPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset, pageHeight - kBorderInset - kMarginInsetBottom - 50.0f);
+    CGPoint startPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset - signatureStartPoint, pageHeight - kBorderInset - kMarginInsetBottom - signatureVerticalAdjustment);
+    CGPoint endPoint = CGPointMake(pageWidth - kMarginInsetLeft - kBorderInset + 4.0f, pageHeight - kBorderInset - kMarginInsetBottom - signatureVerticalAdjustment);
     
     CGContextBeginPath(currentContext);
     CGContextMoveToPoint(currentContext, startPoint.x, startPoint.y);
@@ -865,10 +867,10 @@
     CGContextDrawPath(currentContext, kCGPathFillStroke);
     
     // draw signature
-    CGRect renderingRect = CGRectMake(pageWidth - kMarginInsetLeft - kBorderInset - signatureStartPoint, pageHeight - kBorderInset - kMarginInsetBottom - 40.0f, signatureStartPoint, 84.0f);
+    CGRect renderingRect = CGRectMake(pageWidth - kMarginInsetLeft - kBorderInset - signatureStartPoint, pageHeight - kBorderInset - kMarginInsetBottom + 30.0f, signatureStartPoint, 84.0f);
     
     // draw text
-    [preferences.signature drawInRect:renderingRect withFont:[UIFont systemFontOfSize:10.0f] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
+    [preferences.signature drawInRect:renderingRect withFont:[UIFont systemFontOfSize:9.0f] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentLeft];
 }
 
 - (void)drawBorder
