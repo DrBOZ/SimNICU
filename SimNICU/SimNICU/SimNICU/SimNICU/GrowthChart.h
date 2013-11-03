@@ -1,6 +1,6 @@
 //
 //  GrowthChart.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 14/07/2012.
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.

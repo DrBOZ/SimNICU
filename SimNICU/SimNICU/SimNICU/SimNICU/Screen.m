@@ -1,6 +1,6 @@
 //
 //  Screen.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 24/05/2012.
 //  Copyright (c) 2012 SimNICU Project. All rights reserved.
