@@ -38,8 +38,7 @@
         self.lastname = [aDecoder decodeObjectForKey:@"LastName"];
         self.firstname = [aDecoder decodeObjectForKey:@"FirstName"];
         self.birthWeight = [aDecoder decodeObjectForKey:@"BirthWeight"];
-        // self.lastWeight = [aDecoder decodeObjectForKey:@"LastWeight"];
-        // self.currentWeight = [aDecoder decodeObjectForKey:@"CurrentWeight"];
+        self.weights = [aDecoder decodeObjectForKey:@"Weights"];
         self.gestation = [aDecoder decodeObjectForKey:@"Gestation"];
         self.correctedGestation = [aDecoder decodeObjectForKey:@"CorrectedGestation"];
         
@@ -444,8 +443,7 @@
     [aCoder encodeObject:self.lastname forKey:@"LastName"];
     [aCoder encodeObject:self.firstname forKey:@"FirstName"];
     [aCoder encodeObject:self.birthWeight forKey:@"BirthWeight"];
-    // [aCoder encodeObject:self.lastWeight forKey:@"LastWeight"];
-    // [aCoder encodeObject:self.currentWeight forKey:@"CurrentWeight"];
+    [aCoder encodeObject:self.weights forKey:@"Weights"];
     [aCoder encodeObject:self.gestation forKey:@"Gestation"];
     [aCoder encodeObject:self.correctedGestation forKey:@"CorrectedGestation"];
     

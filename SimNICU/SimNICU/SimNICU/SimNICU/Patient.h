@@ -31,9 +31,8 @@
 @property (nonatomic, retain) NSString *formattedWorkingWeightDate;
 
 // Weights
+@property (nonatomic, retain) NSArray *weights;
 @property (nonatomic, retain) NSString *birthWeight;
-@property (nonatomic, retain) NSString *lastWeight;
-@property (nonatomic, retain) NSString *currentWeight;
 @property (nonatomic, retain) NSString *workingWeight;
 
 // Estimated Weight
