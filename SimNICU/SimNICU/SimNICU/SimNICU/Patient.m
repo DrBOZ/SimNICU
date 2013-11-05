@@ -83,6 +83,8 @@
         // bilirubin results
         self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
         self.birthTimeSet = [aDecoder decodeObjectForKey:@"BirthTimeSet"];
+        self.neurotoxicityRiskFactors = [aDecoder decodeObjectForKey:@"NeurotoxicityRiskFactors"];
+        self.clinicalStatus = [aDecoder decodeObjectForKey:@"ClinicalStatus"];
         
         // UITextViews
         self.background = [aDecoder decodeObjectForKey:@"Background"];
@@ -148,6 +150,9 @@
 {
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    self.clinicalStatus = @"Well";              // @"Unwell"
+    self.neurotoxicityRiskFactors = @"None";    // @"Present"
     
     // reset code
 #if RESET_CELL_INFO
@@ -488,6 +493,8 @@
     // bilirubin results
     [aCoder encodeObject:self.bilirubinResults forKey:@"BilirubinResults"];
     [aCoder encodeObject:self.birthTimeSet forKey:@"BirthTimeSet"];
+    [aCoder encodeObject:self.neurotoxicityRiskFactors forKey:@"NeurotoxicityRiskFactors"];
+    [aCoder encodeObject:self.clinicalStatus forKey:@"ClinicalStatus"];
     
     // UITextViews
     [aCoder encodeObject:self.background forKey:@"Background"];

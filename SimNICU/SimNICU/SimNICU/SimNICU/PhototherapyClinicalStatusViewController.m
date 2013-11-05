@@ -166,7 +166,7 @@
     }
     else if (indexPath.row == 1)
     {
-        static NSString *CellIdentifier = @"unwell";
+        static NSString *CellIdentifier = @"Unwell";
         self.unwellCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!self.unwellCell)

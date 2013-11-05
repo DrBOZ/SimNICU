@@ -714,8 +714,6 @@
             else
             {
                 PhototherapyGraphViewController *newViewController = [[PhototherapyGraphViewController alloc] init];
-                // newViewController.guidelineCountry = preferences.guidelineCountry;
-                // newViewController.bilirubinUnits = preferences.bilirubinUnits;
                 newViewController.gestation = self.gestation;
                 
                 if (self.selectedPatient)
@@ -763,10 +761,28 @@
                 {
                     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
                     
+                    // iOS 7 specifics
+                    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                    {
+                        navController.navigationBar.barTintColor = [UIColor grayColor];
+                        navController.navigationBar.tintColor = [UIColor redColor];
+                    }
+                    else
+                    {
+                        navController.navigationBar.tintColor = [UIColor blackColor];
+                        navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    }
+                    
+                    [appDelegate.navigationController presentModalViewController:navController animated:YES];
+                    
+                    /*
+                    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+                    
                     navController.navigationBar.tintColor = [UIColor blackColor];
                     navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                     
                     [appDelegate.navigationController presentModalViewController:navController animated:YES];
+                     */
                 }
             }
         }

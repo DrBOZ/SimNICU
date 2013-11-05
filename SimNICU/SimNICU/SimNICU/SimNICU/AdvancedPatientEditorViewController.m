@@ -106,6 +106,9 @@
 @property (nonatomic, strong) UITableViewCell *shinobiCell;
 @property (nonatomic, strong) UIImage *shinobiChartImage;
 
+@property (nonatomic, strong) UISegmentedControl *clinicalStatusSegmentedControl;
+@property (nonatomic, strong) UISegmentedControl *neurotoxicityRiskFactorsSegmentedControl;
+
 @property (nonatomic, strong) CBModalPanel *modalPanel;
 
 @property (nonatomic, strong) UIButton *fingerprintButton;
@@ -145,6 +148,9 @@
     if (self)
     {
         firstButtonPressSinceScroll = NO;
+        
+        // default neurotoxicity risk
+        self.neurotoxicityRisk = @"Lower";
     }
     return self;
 }
@@ -263,32 +269,6 @@
     [self.view addSubview:self.myTableView2];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    /*
-    [self textViewDidChange:self.backgroundTextView];
-    [self textViewDidChange:self.activeProblemsTextView];
-    [self textViewDidChange:self.resolvedProblemsTextView];
-    [self textViewDidChange:self.recentSignificantEventsTextView];
-    [self textViewDidChange:self.ventilationAndSedationTextView];
-    [self textViewDidChange:self.cxrTextView];
-    [self textViewDidChange:self.cardiovascularTextView];
-    [self textViewDidChange:self.linesTextView];
-    [self textViewDidChange:self.feedsAndFluidsTextView];
-    [self textViewDidChange:self.fluidBalanceTextView];
-    [self textViewDidChange:self.electrolytesTextView];
-    [self textViewDidChange:self.jaundiceTextView];
-    [self textViewDidChange:self.sepsisTextView];
-    [self textViewDidChange:self.drugsTextView];
-    [self textViewDidChange:self.ropTextView];
-    [self textViewDidChange:self.cranialUSSTextView];
-    [self textViewDidChange:self.parentsAndSocialTextView];
-    [self textViewDidChange:self.impressionTextView];
-    [self textViewDidChange:self.planTextView];
-    [self textViewDidChange:self.jobsTextView];
-     */
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -321,7 +301,17 @@
     {
         HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
         
-        rows = [handoverSection.rows count];
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        // if Phototherapy section and user is using US preferences then add another two rows
+        if ([handoverSection.sectionName isEqual:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
+        {
+            rows = [handoverSection.rows count] + 2;
+        }
+        else
+        {
+            rows = [handoverSection.rows count];
+        }
     }
     
     return rows;
@@ -926,6 +916,106 @@
             }
             else if (indexPath.row == 1)
             {
+                Preferences *preferences = [Preferences sharedPreferences];
+                
+                if ([preferences.guidelineCountry isEqualToString:@"US"])
+                {
+                    CellIdentifier = @"ClinicalStatus";
+                    
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                        
+                        self.clinicalStatusSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Well", @"Unwell"]];
+                        self.clinicalStatusSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+                        self.clinicalStatusSegmentedControl.frame = CGRectMake(0.0f, 0.0f, 100.0f, 24.0f);
+                        self.clinicalStatusSegmentedControl.tintColor = [UIColor redColor];
+                        
+                        [self.clinicalStatusSegmentedControl addTarget:self
+                                                                action:@selector(selectClinicalStatus)
+                                                      forControlEvents:UIControlEventValueChanged];
+                        
+                        cell.accessoryView = self.clinicalStatusSegmentedControl;
+                    }
+                    
+                    cell.textLabel.text = @"Clinical Status";
+                    cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+                }
+                else
+                {
+                    // phototherapy
+                    CellIdentifier = @"Jaundice";
+                    
+                    if (newJaundice)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                        
+                        newJaundice = NO;
+                    }
+                    else
+                    {
+                        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                        
+                        if (!cell)
+                        {
+                            cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                        }
+                    }
+                    
+                    self.jaundiceTextView.text = self.selectedPatient.jaundice;
+                }
+            }
+            else if (indexPath.row == 2)
+            {
+                CellIdentifier = @"NeurotoxicityRiskFactors";
+                
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    
+                    self.neurotoxicityRiskFactorsSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"None", @"Some"]];
+                    self.neurotoxicityRiskFactorsSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+                    self.neurotoxicityRiskFactorsSegmentedControl.frame = CGRectMake(0.0f, 0.0f, 100.0f, 24.0f);
+                    self.neurotoxicityRiskFactorsSegmentedControl.tintColor = [UIColor redColor];
+                    
+                    [self.neurotoxicityRiskFactorsSegmentedControl addTarget:self
+                                                                      action:@selector(selectNeurotoxicityRiskFactors)
+                                                            forControlEvents:UIControlEventValueChanged];
+                    
+                    cell.accessoryView = self.neurotoxicityRiskFactorsSegmentedControl;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                }
+                
+                cell.textLabel.text = @"Neurotoxicity Risk Factors";
+                cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+                
+                /*
+                self.colour = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"White", @"Blue", @"Pink", nil]];
+                [APGARVCFormats formatSegmentedControl:self.colour];
+                
+                if (self.patient)
+                {
+                    if (!(self.patient.APGAR1minColour == NULL))
+                    {
+                        self.colour.selectedSegmentIndex = [self.patient.APGAR1minColour intValue];
+                    }
+                }
+                
+                [self.colour addTarget:self
+                                action:@selector(selectColour)
+                      forControlEvents:UIControlEventValueChanged];
+                
+                 */
+                
+            }
+            else if (indexPath.row == 3)
+            {
                 // phototherapy
                 CellIdentifier = @"Jaundice";
                 
@@ -1124,6 +1214,16 @@
     }
     
     return cell;
+}
+
+- (void)selectClinicalStatus
+{
+    // code
+}
+
+- (void)selectNeurotoxicityRiskFactors
+{
+    // code
 }
 
 #pragma mark -
@@ -3273,7 +3373,6 @@
         if ([preferences.guidelineCountry isEqualToString:@"US"])
         {
             // could implement a conditional statement if user want UK style for US or risk factor lines...
-            
             numberOfSeries = 3;
         }
         if ([preferences.guidelineCountry isEqualToString:@"UK"])
