@@ -1,0 +1,78 @@
+/*
+ Localizable.strings
+ SimNICU
+ 
+ Created by Conrad Bosman on 10/08/2012.
+ Copyright (c) 2012 SimNICU Project. All rights reserved.
+ */
+
+"Adrenaline" = "Epinephrine";
+"ADRENALINE" = "EPINEPHRINE";
+"Anaemia" = "Anemia";
+"apnoea" = "apnea";
+"Apnoea" = "Apnea";
+"Atracurium" = "Atracurium";
+"Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium" = "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium";
+"Blood in the Nappy" = "Blood in the Diaper";
+"Blue Line - Phototherapy" = "Blue Line - Phototherapy";
+"Dinoprostone" = "Dinoprostone";
+"Dobutamine" = "Dobutamine";
+"DOBUTAMINE" = "DOBUTAMINE";
+"Done" = "Done";
+"Dopamine" = "Dopamine";
+"Down's Syndrome" = "Down Syndrome";
+"Edward's Syndrome" = "Edward Syndrome";
+"Forename" = "First name";
+"Frusemide" = "Furosemide";
+"full stop" = "period";
+"Guidelines" = "Guidelines";
+"Heparin" = "Heparin";
+"Hyperglycaemia" = "Hyperglycemia";
+"hyperkalaemia" = "hyperkalemia";
+"Hypocalcaemia" = "Hypocalcemia";
+"Hypoglycaemia" = "Hypoglycemia";
+"Hypoxic ischaemic encephalopathy" = "Hypoxic ischemic encephalopathy";
+"if required" = "if required";
+"Insulin" = "Insulin";
+"Intubation drugs" = "Intubation drugs";
+"Isoimmune Haemolytic Disease" = "Isoimmune Hemolytic Disease";
+"kilograms" = "kilograms";
+"Lidocaine" = "Lidocaine";
+"Like SimNICU?" = "Like SimNICU?";
+"Maternal antepartum haemorrhage" = "Maternal antepartum hemorrhage";
+"Midazolam" = "Midazolam";
+"Morphine" = "Morphine";
+"Neonatal Intensive Care" = "Neonatal Intensive Care";
+"Pancuronium" = "Pancuronium";
+"Paracetamol" = "Acetaminophen";
+"Passcode Lock" = "Passcode Lock";
+"Patau's Syndrome" = "Patau Syndrome";
+"Patient list" = "Patient list";
+"Phototherapy" = "Phototherapy";
+
+"Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
+
+"Pulmonary haemorrhage" = "Pulmonary hemorrhage";
+"Pulmonary Haemorrhage" = "Pulmonary Hemorrhage";
+"Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
+"Repeat doses may be required" = "Repeat doses may be required";
+"Rocuronium" = "Rocuronium";
+"Serum bilirubin units" = "Serum bilirubin units";
+"Surname" = "Last name";
+"Tachypnoea" = "Tachypnea";
+"Today" = "Today";
+
+"The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1" = "The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1";
+
+"This chart is designed for interpreting bilirubin levels up to 14 days of age." = "This chart is designed for interpreting bilirubin levels up to 14 days of age.";
+
+"Treatment threshold" = "Treatment threshold";
+"Units" = "Units";
+"Vecuronium" = "Vecuronium";
+"WARNING" = "WARNING";
+"weeks" = "weeks";
+"Weight" = "Weight";
+"Weight not entered" = "Weight not entered";
+"Yesterday" = "Yesterday";
+
+

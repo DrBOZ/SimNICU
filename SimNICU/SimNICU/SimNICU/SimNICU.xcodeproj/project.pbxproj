@@ -1108,6 +1108,32 @@
 		5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenHack02.png; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
 		5C8606D0178ADD3E00428ED4 /* DrugSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSection.m; sourceTree = "<group>"; };
+		5C871A36182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C871A37182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5C871A38182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/bloodTransfusionCriteria2.html; sourceTree = "<group>"; };
+		5C871A39182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/cdh1.html; sourceTree = "<group>"; };
+		5C871A3A182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/cdh1Comma.html; sourceTree = "<group>"; };
+		5C871A3B182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/cdh3.html; sourceTree = "<group>"; };
+		5C871A3C182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/curosurfIndications.html; sourceTree = "<group>"; };
+		5C871A3D182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/gastroschisis1.html; sourceTree = "<group>"; };
+		5C871A3E182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/pulmonaryHaem1.html; sourceTree = "<group>"; };
+		5C871A3F182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/pulmonaryHaem2.html; sourceTree = "<group>"; };
+		5C871A40182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
+		5C871A41182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/pulmonaryHaem3.html; sourceTree = "<group>"; };
+		5C871A42182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = pt; path = pt.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
+		5C871A43182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C871A44182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5C871A45182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/bloodTransfusionCriteria2.html; sourceTree = "<group>"; };
+		5C871A46182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/cdh1.html; sourceTree = "<group>"; };
+		5C871A47182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/cdh1Comma.html; sourceTree = "<group>"; };
+		5C871A48182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/cdh3.html; sourceTree = "<group>"; };
+		5C871A49182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/curosurfIndications.html; sourceTree = "<group>"; };
+		5C871A4A182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/gastroschisis1.html; sourceTree = "<group>"; };
+		5C871A4B182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/pulmonaryHaem1.html; sourceTree = "<group>"; };
+		5C871A4C182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/pulmonaryHaem2.html; sourceTree = "<group>"; };
+		5C871A4D182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
+		5C871A4E182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/pulmonaryHaem3.html; sourceTree = "<group>"; };
+		5C871A4F182AD74100B13E27 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = fr; path = fr.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
 		5C88570A17E443FB00446E5F /* CBTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewController.h; sourceTree = "<group>"; };
 		5C88570B17E443FB00446E5F /* CBTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewController.m; sourceTree = "<group>"; };
 		5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sherwood-forest-hospitals-logo.jpg"; sourceTree = "<group>"; };
@@ -3272,6 +3298,8 @@
 				en,
 				"en-GB",
 				"en-US",
+				pt,
+				fr,
 			);
 			mainGroup = 5C940A52166E37FE0044A7D1;
 			productRefGroup = 5C940A5E166E37FE0044A7D1 /* Products */;
@@ -4083,6 +4111,8 @@
 				5C39630216B839790039C387 /* en */,
 				5C39630416B839850039C387 /* en-GB */,
 				5C39630516B839860039C387 /* en-US */,
+				5C871A3A182AD6B100B13E27 /* pt */,
+				5C871A47182AD74100B13E27 /* fr */,
 			);
 			name = cdh1Comma.html;
 			sourceTree = "<group>";
@@ -4093,6 +4123,8 @@
 				5C63B13316B9FD0400B31431 /* en */,
 				5C63B13516B9FD0A00B31431 /* en-GB */,
 				5C63B13616B9FD0B00B31431 /* en-US */,
+				5C871A40182AD6B100B13E27 /* pt */,
+				5C871A4D182AD74100B13E27 /* fr */,
 			);
 			name = pulmonaryHaem2Comma.html;
 			sourceTree = "<group>";
@@ -4103,6 +4135,8 @@
 				5C63B13816B9FD1200B31431 /* en */,
 				5C63B13A16B9FD1600B31431 /* en-GB */,
 				5C63B13B16B9FD1700B31431 /* en-US */,
+				5C871A42182AD6B100B13E27 /* pt */,
+				5C871A4F182AD74100B13E27 /* fr */,
 			);
 			name = pulmonaryHaem3Comma.html;
 			sourceTree = "<group>";
@@ -4113,6 +4147,8 @@
 				5C940A6B166E37FE0044A7D1 /* en */,
 				5C940CBA166E44F20044A7D1 /* en-GB */,
 				5C940CBB166E44FE0044A7D1 /* en-US */,
+				5C871A36182AD6B100B13E27 /* pt */,
+				5C871A43182AD74100B13E27 /* fr */,
 			);
 			name = InfoPlist.strings;
 			path = SimNICU;
@@ -4124,6 +4160,8 @@
 				5C940CC3166E45860044A7D1 /* en */,
 				5C940CC5166E458D0044A7D1 /* en-GB */,
 				5C940CC6166E458E0044A7D1 /* en-US */,
+				5C871A37182AD6B100B13E27 /* pt */,
+				5C871A44182AD74100B13E27 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4134,6 +4172,8 @@
 				5C940CC8166E45FA0044A7D1 /* en */,
 				5C940CCA166E46040044A7D1 /* en-GB */,
 				5C940CCB166E46050044A7D1 /* en-US */,
+				5C871A38182AD6B100B13E27 /* pt */,
+				5C871A45182AD74100B13E27 /* fr */,
 			);
 			name = bloodTransfusionCriteria2.html;
 			sourceTree = "<group>";
@@ -4144,6 +4184,8 @@
 				5C940CCD166E469A0044A7D1 /* en */,
 				5C940CCF166E46A00044A7D1 /* en-GB */,
 				5C940CD0166E46A10044A7D1 /* en-US */,
+				5C871A3C182AD6B100B13E27 /* pt */,
+				5C871A49182AD74100B13E27 /* fr */,
 			);
 			name = curosurfIndications.html;
 			sourceTree = "<group>";
@@ -4154,6 +4196,8 @@
 				5C940CD2166E47070044A7D1 /* en */,
 				5C940CD4166E47100044A7D1 /* en-GB */,
 				5C940CD5166E47110044A7D1 /* en-US */,
+				5C871A39182AD6B100B13E27 /* pt */,
+				5C871A46182AD74100B13E27 /* fr */,
 			);
 			name = cdh1.html;
 			sourceTree = "<group>";
@@ -4164,6 +4208,8 @@
 				5C940CD7166E47420044A7D1 /* en */,
 				5C940CD9166E474A0044A7D1 /* en-GB */,
 				5C940CDA166E474B0044A7D1 /* en-US */,
+				5C871A3B182AD6B100B13E27 /* pt */,
+				5C871A48182AD74100B13E27 /* fr */,
 			);
 			name = cdh3.html;
 			sourceTree = "<group>";
@@ -4174,6 +4220,8 @@
 				5C940CDC166E47D80044A7D1 /* en */,
 				5C940CDE166E47E30044A7D1 /* en-GB */,
 				5C940CDF166E47E50044A7D1 /* en-US */,
+				5C871A3D182AD6B100B13E27 /* pt */,
+				5C871A4A182AD74100B13E27 /* fr */,
 			);
 			name = gastroschisis1.html;
 			sourceTree = "<group>";
@@ -4184,6 +4232,8 @@
 				5C940CE1166E48190044A7D1 /* en */,
 				5C940CE3166E481F0044A7D1 /* en-GB */,
 				5C940CE4166E48200044A7D1 /* en-US */,
+				5C871A3E182AD6B100B13E27 /* pt */,
+				5C871A4B182AD74100B13E27 /* fr */,
 			);
 			name = pulmonaryHaem1.html;
 			sourceTree = "<group>";
@@ -4194,6 +4244,8 @@
 				5C940CE6166E482C0044A7D1 /* en */,
 				5C940CE8166E48360044A7D1 /* en-GB */,
 				5C940CE9166E48390044A7D1 /* en-US */,
+				5C871A3F182AD6B100B13E27 /* pt */,
+				5C871A4C182AD74100B13E27 /* fr */,
 			);
 			name = pulmonaryHaem2.html;
 			sourceTree = "<group>";
@@ -4204,6 +4256,8 @@
 				5C940CEB166E48410044A7D1 /* en */,
 				5C940CED166E48480044A7D1 /* en-GB */,
 				5C940CEE166E48490044A7D1 /* en-US */,
+				5C871A41182AD6B100B13E27 /* pt */,
+				5C871A4E182AD74100B13E27 /* fr */,
 			);
 			name = pulmonaryHaem3.html;
 			sourceTree = "<group>";
