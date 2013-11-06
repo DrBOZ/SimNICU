@@ -1,6 +1,6 @@
 /*
  Localizable.strings
- SimNICU
+ Neonatal Intensive Care
  
  Created by Conrad Bosman on 10/08/2012.
  Copyright (c) 2012 SimNICU Project. All rights reserved.
@@ -42,7 +42,7 @@
 "Maternal antepartum haemorrhage" = "Maternal antepartum hemorrhage";
 "Midazolam" = "Midazolam";
 "Morphine" = "Morphine";
-"Neonatal Intensive Care" = "Neonatal Intensive Care";
+"Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
 "Pancuronium" = "Pancuronium";
 "Paracetamol" = "Acetaminophen";
 "Passcode Lock" = "Passcode Lock";

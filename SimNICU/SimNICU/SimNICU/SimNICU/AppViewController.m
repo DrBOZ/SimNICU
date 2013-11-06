@@ -524,7 +524,7 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
-        self.title = @"Neonatal Intensive Care";
+        self.title = NSLocalizedString(@"Neonatal Intensive Care", @"App Title, noun");
         
     });
 }
@@ -535,11 +535,11 @@
     
 #ifdef LITE_VERSION
     
-    if (!self.title) self.title = @"Neonatal Intensive Care";
+    if (!self.title) self.title = NSLocalizedString(@"Neonatal Intensive Care", @"App Title, noun");
     
 #else
     
-    if (!self.title) self.title = @"Neonatal Intensive Care";
+    if (!self.title) self.title = NSLocalizedString(@"Neonatal Intensive Care", @"App Title, noun");
     
 #endif
     
