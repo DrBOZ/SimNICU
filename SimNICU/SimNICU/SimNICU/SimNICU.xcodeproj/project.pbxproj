@@ -43,6 +43,7 @@
 		5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
 		5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
+		5C0E01B0182C4A6900B7D8C3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0E01AF182C4A6900B7D8C3 /* libz.dylib */; };
 		5C0E05DD178EF77800768739 /* benzylpenicillinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */; };
 		5C0E05DF178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */; };
 		5C0E05E0178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */; };
@@ -171,7 +172,6 @@
 		5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
 		5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
-		5C31BEC317D303200067BA5C /* libisimulate-4.x.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
@@ -420,9 +420,6 @@
 		5C940AE9166E39A10044A7D1 /* DCCrossHairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AE5166E39A10044A7D1 /* DCCrossHairView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5C940AEC166E39B30044A7D1 /* CoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AEB166E39B30044A7D1 /* CoolButton.m */; };
 		5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AEE166E39C10044A7D1 /* libGoogleAnalytics.a */; };
-		5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AF1166E39E80044A7D1 /* libTestFlight.a */; };
-		5C940AF5166E39E80044A7D1 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF2166E39E80044A7D1 /* release_notes.md */; };
-		5C940AF6166E39E80044A7D1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF3166E39E80044A7D1 /* README.md */; };
 		5C940AFC166E3AFE0044A7D1 /* PortraitOnlyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AFB166E3AFE0044A7D1 /* PortraitOnlyNavigationController.m */; };
 		5C940B01166E3B110044A7D1 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C940AFF166E3B110044A7D1 /* AppViewController.m */; };
 		5C940B02166E3B110044A7D1 /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B00166E3B110044A7D1 /* AppViewController.xib */; };
@@ -719,13 +716,10 @@
 		5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A63166E37FE0044A7D1 /* Foundation.framework */; };
 		5CD3B01B16CF38D500DE362C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */; };
 		5CD3B01C16CF38D500DE362C /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AEE166E39C10044A7D1 /* libGoogleAnalytics.a */; };
-		5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C940AF1166E39E80044A7D1 /* libTestFlight.a */; };
 		5CD3B02016CF38D500DE362C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C940A6A166E37FE0044A7D1 /* InfoPlist.strings */; };
 		5CD3B02716CF38D500DE362C /* KKPasscodeLock.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AA2166E38E20044A7D1 /* KKPasscodeLock.bundle */; };
 		5CD3B02816CF38D500DE362C /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AD0166E391D0044A7D1 /* Kal.bundle */; };
 		5CD3B02916CF38D500DE362C /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AD3166E393B0044A7D1 /* iRate.bundle */; };
-		5CD3B02A16CF38D500DE362C /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF2166E39E80044A7D1 /* release_notes.md */; };
-		5CD3B02B16CF38D500DE362C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C940AF3166E39E80044A7D1 /* README.md */; };
 		5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B00166E3B110044A7D1 /* AppViewController.xib */; };
 		5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */; };
 		5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C940B4C166E3C060044A7D1 /* disclaimer.html */; };
@@ -798,6 +792,9 @@
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
 		5CED220017A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
+		5CF18ADD182C4EC600E66633 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF18AD7182C4EC600E66633 /* libTestFlight.a */; };
+		5CF18ADE182C4EC600E66633 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CF18AD8182C4EC600E66633 /* README.md */; };
+		5CF18ADF182C4EC600E66633 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CF18AD9182C4EC600E66633 /* release_notes.md */; };
 		5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */; };
 		5CF4B79817EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */; };
 		5CF4B79917EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */; };
@@ -856,6 +853,7 @@
 		5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTimeMethods.m; sourceTree = "<group>"; };
 		5C0C9D9E179B26360077B881 /* PatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientCell.h; sourceTree = "<group>"; };
 		5C0C9D9F179B26360077B881 /* PatientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientCell.m; sourceTree = "<group>"; };
+		5C0E01AF182C4A6900B7D8C3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		5C0E05DC178EF77800768739 /* benzylpenicillinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinReferences.html; sourceTree = "<group>"; };
 		5C0E05DE178EF7B200768739 /* benzylpenicillinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinLicenceStatus.html; sourceTree = "<group>"; };
 		5C0E05E1178EF7D500768739 /* benzylpenicillinMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinMonitoring.html; sourceTree = "<group>"; };
@@ -939,7 +937,6 @@
 		5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperSizeTableViewController.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
 		5C316CFA17C2BF830096B8D3 /* CBTrackers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTrackers.m; sourceTree = "<group>"; };
-		5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libisimulate-4.x.a"; path = "libisimulate-4.x-1.5-20100925/libisimulate-4.x.a"; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
 		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
@@ -1217,10 +1214,6 @@
 		5C940AEB166E39B30044A7D1 /* CoolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolButton.m; sourceTree = "<group>"; };
 		5C940AED166E39C10044A7D1 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		5C940AEE166E39C10044A7D1 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
-		5C940AF0166E39E80044A7D1 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		5C940AF1166E39E80044A7D1 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		5C940AF2166E39E80044A7D1 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		5C940AF3166E39E80044A7D1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		5C940AFA166E3AFE0044A7D1 /* PortraitOnlyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortraitOnlyNavigationController.h; sourceTree = "<group>"; };
 		5C940AFB166E3AFE0044A7D1 /* PortraitOnlyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortraitOnlyNavigationController.m; sourceTree = "<group>"; };
 		5C940AFE166E3B110044A7D1 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
@@ -1496,6 +1489,12 @@
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalculatorsInfoViewController.m; sourceTree = "<group>"; };
+		5CF18AD7182C4EC600E66633 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		5CF18AD8182C4EC600E66633 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		5CF18AD9182C4EC600E66633 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		5CF18ADA182C4EC600E66633 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		5CF18ADB182C4EC600E66633 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		5CF18ADC182C4EC600E66633 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 		5CF4B79617EB6F9A009AB1F8 /* CustomTextEditorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextEditorTableViewController.h; sourceTree = "<group>"; };
@@ -1521,12 +1520,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C940AF4166E39E80044A7D1 /* libTestFlight.a in Frameworks */,
+				5C0E01B0182C4A6900B7D8C3 /* libz.dylib in Frameworks */,
 				5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */,
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
 				5C940CAE166E41630044A7D1 /* libsqlite3.0.dylib in Frameworks */,
 				5C940AEF166E39C10044A7D1 /* libGoogleAnalytics.a in Frameworks */,
 				5C66527C17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
+				5CF18ADD182C4EC600E66633 /* libTestFlight.a in Frameworks */,
 				5CEB6693181EA101008FC40B /* ShinobiCharts.framework in Frameworks */,
 				5CCC272016D66A4800D14080 /* Accounts.framework in Frameworks */,
 				5CCC272116D66A5A00D14080 /* AdSupport.framework in Frameworks */,
@@ -1554,7 +1554,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CD3B01D16CF38D500DE362C /* libTestFlight.a in Frameworks */,
 				5CE04B6F16D04B570002BBD7 /* libsqlite3.dylib in Frameworks */,
 				5CD3B00F16CF38D500DE362C /* libz.1.1.3.dylib in Frameworks */,
 				5CD3B01016CF38D500DE362C /* libsqlite3.0.dylib in Frameworks */,
@@ -1577,7 +1576,6 @@
 				5CD3B01816CF38D500DE362C /* SystemConfiguration.framework in Frameworks */,
 				5CD3B01916CF38D500DE362C /* UIKit.framework in Frameworks */,
 				5C66527D17BE9B07005F8171 /* libFlurry_4.2.3.a in Frameworks */,
-				5C31BEC317D303200067BA5C /* libisimulate-4.x.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2347,11 +2345,11 @@
 		5C940A60166E37FE0044A7D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C0E01AF182C4A6900B7D8C3 /* libz.dylib */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
 				5C940CAD166E41630044A7D1 /* libsqlite3.0.dylib */,
 				5C66527B17BE9B07005F8171 /* libFlurry_4.2.3.a */,
-				5C31BEC017D3031F0067BA5C /* libisimulate-4.x.a */,
 				5CEB6692181EA101008FC40B /* ShinobiCharts.framework */,
 				5CE04B6816D04B1D0002BBD7 /* Accounts.framework */,
 				5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */,
@@ -2433,7 +2431,7 @@
 				5C940A9F166E38D10044A7D1 /* KKPasscodeLock */,
 				5C5A116017D2391800CE96E5 /* kxintro */,
 				5C940A98166E38B90044A7D1 /* SVSegmentedControl */,
-				5C940ADA166E39600044A7D1 /* TestFlight */,
+				5CF18AD6182C4EC600E66633 /* TestFlightSDK2 */,
 				5C23A24017EDD65400299D3E /* UAModalPanel */,
 				5C0B9B7517D201F3000B9E34 /* UDBarTrackballItem */,
 				5C940A94166E38A00044A7D1 /* ZUUIRevealController */,
@@ -2559,17 +2557,6 @@
 				5C940AEE166E39C10044A7D1 /* libGoogleAnalytics.a */,
 			);
 			name = "Google Analytics";
-			sourceTree = "<group>";
-		};
-		5C940ADA166E39600044A7D1 /* TestFlight */ = {
-			isa = PBXGroup;
-			children = (
-				5C940AF0166E39E80044A7D1 /* TestFlight.h */,
-				5C940AF1166E39E80044A7D1 /* libTestFlight.a */,
-				5C940AF2166E39E80044A7D1 /* release_notes.md */,
-				5C940AF3166E39E80044A7D1 /* README.md */,
-			);
-			name = TestFlight;
 			sourceTree = "<group>";
 		};
 		5C940ADB166E39690044A7D1 /* DCIntrospect */ = {
@@ -3186,6 +3173,19 @@
 			name = PatientListWarnings;
 			sourceTree = "<group>";
 		};
+		5CF18AD6182C4EC600E66633 /* TestFlightSDK2 */ = {
+			isa = PBXGroup;
+			children = (
+				5CF18AD7182C4EC600E66633 /* libTestFlight.a */,
+				5CF18AD8182C4EC600E66633 /* README.md */,
+				5CF18AD9182C4EC600E66633 /* release_notes.md */,
+				5CF18ADA182C4EC600E66633 /* TestFlight+AsyncLogging.h */,
+				5CF18ADB182C4EC600E66633 /* TestFlight+ManualSessions.h */,
+				5CF18ADC182C4EC600E66633 /* TestFlight.h */,
+			);
+			path = TestFlightSDK2;
+			sourceTree = "<group>";
+		};
 		5CFCCC96180506FA00031979 /* HTML pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -3321,8 +3321,6 @@
 				5C940AAA166E38E20044A7D1 /* KKPasscodeLock.bundle in Resources */,
 				5C940AD1166E391D0044A7D1 /* Kal.bundle in Resources */,
 				5C940AD6166E393B0044A7D1 /* iRate.bundle in Resources */,
-				5C940AF5166E39E80044A7D1 /* release_notes.md in Resources */,
-				5C940AF6166E39E80044A7D1 /* README.md in Resources */,
 				5C940B02166E3B110044A7D1 /* AppViewController.xib in Resources */,
 				5C940B08166E3B420044A7D1 /* EnterWeightViewController.xib in Resources */,
 				5C940B51166E3C060044A7D1 /* disclaimer.html in Resources */,
@@ -3405,6 +3403,7 @@
 				5C0E062A178F830500768739 /* gentamicinDose.html in Resources */,
 				5C0E062D178F831800768739 /* gentamicinPreparation.html in Resources */,
 				5C7CB1DA17FDFBB200C5D697 /* ScreenHack02.png in Resources */,
+				5CF18ADE182C4EC600E66633 /* README.md in Resources */,
 				5C0E0630178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0633178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
 				5C0E0636178F834C00768739 /* gentamicinContraindications.html in Resources */,
@@ -3438,6 +3437,7 @@
 				5C52F3CD17916696000CFD80 /* vitaminKReferences.html in Resources */,
 				5CA3C11617924112002AB53D /* vancomycinPharmacology.html in Resources */,
 				5CA3C11917924123002AB53D /* vancomycinIndications.html in Resources */,
+				5CF18ADF182C4EC600E66633 /* release_notes.md in Resources */,
 				5CA3C11C1792412F002AB53D /* vancomycinPresentation.html in Resources */,
 				5CA3C11F17924142002AB53D /* vancomycinDose.html in Resources */,
 				5CA3C1221792414D002AB53D /* vancomycinPreparation.html in Resources */,
@@ -3505,8 +3505,6 @@
 				5CD3B02716CF38D500DE362C /* KKPasscodeLock.bundle in Resources */,
 				5CD3B02816CF38D500DE362C /* Kal.bundle in Resources */,
 				5CD3B02916CF38D500DE362C /* iRate.bundle in Resources */,
-				5CD3B02A16CF38D500DE362C /* release_notes.md in Resources */,
-				5CD3B02B16CF38D500DE362C /* README.md in Resources */,
 				5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */,
 				5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */,
 				5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */,
@@ -4337,9 +4335,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SimNICU\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
+					"$(SRCROOT)",
+					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU/SimNICU/TestFlightSDK2,
+					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU/SimNICU,
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4366,9 +4364,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/SimNICU\"",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/libisimulate-4.x-1.5-20100925\"",
+					"$(SRCROOT)",
+					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU/SimNICU/TestFlightSDK2,
+					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU/SimNICU,
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

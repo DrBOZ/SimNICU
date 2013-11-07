@@ -12,6 +12,7 @@
 #import "DCIntrospect.h"
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "TestFlight.h"
 #import "iRate.h"
 
 // Google Analytics dispatch period in seconds
@@ -105,6 +106,12 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
      
 
+#endif
+    
+#if TESTFLIGHT
+    
+    [TestFlight takeOff:@"562fb6ea-7532-409f-843a-0733e8bdd78c"];
+    
 #endif
 
 #if GOOGLE_ANALYTICS

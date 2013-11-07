@@ -21,6 +21,7 @@
 // @"LightGrayBackground4inchRetina.png"
 
 #define GOOGLE_ANALYTICS 0                                  // turn on for release
+#define TESTFLIGHT 1                                        // turn off for release
 #define FLURRY_LIVE 0
 #define IRATE_SET 0                                         // turn on for release
 
