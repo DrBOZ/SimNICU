@@ -6,6 +6,7 @@
  Copyright (c) 2013 Conrad Bosman. All rights reserved.
  */
 
+"About" = "Acerca de";
 "Adrenaline" = "Epinephrine";
 "ADRENALINE" = "EPINEPHRINE";
 "Anaemia" = "Anemia";
@@ -18,8 +19,10 @@
 "Blood Products" = "Produtos Sanguíneos";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
 "Cooling" = "Resfriamento";
+"Copyright" = "Direitos autorais";
 "Corrected Age" = "Idade corrigida";
 "Cranial Ultrasound" = "Ultra-som craniano";
+"DEVELOPER" = "REVELADOR";
 "Diaphragmatic Hernia" = "Hérnia diafragmática";
 "Dinoprostone" = "Dinoprostone";
 "Dobutamine" = "Dobutamine";
@@ -30,12 +33,13 @@
 "Early Care" = "Early Care";
 "Edward's Syndrome" = "Edward Syndrome";
 "Emergency" = "Emergência";
+"Feedback" = "Parecer";
 "Fluid Requirements" = "Necessidades hídricas";
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
 "full stop" = "period";
 "Gastroschisis" = "Gastroschisis";
-"General" = "Genérico";
+"General" = "Geral";
 "Guidelines" = "Guidelines";
 "Heparin" = "Heparin";
 "High Frequency Oscillation" = "High Frequency Oscillation";
@@ -45,6 +49,7 @@
 "Hypoglycaemia" = "Hypoglycemia";
 "Hypoxic ischaemic encephalopathy" = "Hypoxic ischemic encephalopathy";
 "if required" = "if required";
+"Information" = "Informações";
 "Infusions" = "Infusões";
 "Insulin" = "Insulin";
 "Intubation" = "Intubação";
@@ -69,14 +74,17 @@
 
 "Pulmonary haemorrhage" = "Pulmonary hemorrhage";
 "Pulmonary Haemorrhage" = "Pulmonary Hemorrhage";
+"Rate on iTunes" = "Taxa sobre iTunes";
 "Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
 "Repeat doses may be required" = "Repeat doses may be required";
+"Requests" = "Pedidos";
 "Resuscitation" = "Resuscitation";
 "Resuscitation Drugs" = "Drogas reanimação";
 "Rocuronium" = "Rocuronium";
 "Serum bilirubin units" = "Serum bilirubin units";
 "Surname" = "Last name";
 "Tachypnoea" = "Tachypnea";
+"Thank you for your support" = "Obrigado por seu apoio";
 "Today" = "Today";
 
 "The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1" = "The default unit of measure for total bilirubin is mg/dL.\n\nPlease select µmol/L if your bilirubin values are captured in the global standard SI metric units.\n\nBilirubin conversion from US to SI units is 17.1";

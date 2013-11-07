@@ -22,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Legal";
+        self.title = NSLocalizedString(@"Legal", nil);
     }
     return self;
 }
@@ -30,10 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"DisclaimerViewController viewDidLoad");
-    
-    self.title = @"Legal";
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

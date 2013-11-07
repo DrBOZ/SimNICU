@@ -29,7 +29,7 @@
 #define DCINTROSPECT_ON 0
 #define RESET_CELL_INFO 0
 #define RESET_PREFERENCES_HANDOVER_SECTIONS 1               // this is for custom text
-#define CLOCK_IN_TO_HOURSTRACKER_REMINDER 1
+#define CLOCK_IN_TO_HOURSTRACKER_REMINDER 0
 
 // Dynamic Text
 #define USE_DYNAMIC_TEXT 1

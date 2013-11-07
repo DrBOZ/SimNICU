@@ -1,6 +1,6 @@
 //
 //  InfoTabBarController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 20/11/2012.
 //  Copyright (c) 2012 Conrad Bosman. All rights reserved.
@@ -11,13 +11,9 @@
 #import "AboutSimNICUViewController.h"
 #import "DisclaimerViewController.h"
 #import "InfoTabBarController.h"
+#import "ZUUIRevealController.h"
 #import "AppViewController.h"
 #import "AppDelegate.h"
-#import "ZUUIRevealController.h"
-
-@interface InfoTabBarController ()
-
-@end
 
 @implementation InfoTabBarController
 
@@ -26,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Information";
+        self.title = NSLocalizedString(@"Information", @"Noun - information about the App");
         
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -57,17 +53,8 @@
 		UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(closeModal)];
 		self.navigationItem.leftBarButtonItem = backButton;
     }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
     
+    return self;
 }
 
 - (void)viewDidUnload
