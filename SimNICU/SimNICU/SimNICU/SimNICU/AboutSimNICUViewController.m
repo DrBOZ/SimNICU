@@ -313,7 +313,8 @@
     developerNameLabel.numberOfLines = 3;
     developerNameLabel.font = [UIFont systemFontOfSize:13.0f];
     // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
-    developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nNottingham, England";
+    // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nNottingham, England";
+    developerNameLabel.text = [NSString stringWithFormat:@"Dr Conrad Bosman MBBS (%@) MRCPCH\nNottingham, %@", NSLocalizedString(@"London", nil), NSLocalizedString(@"England", nil)];
     [footerView addSubview:developerNameLabel];
     
     // Translator
