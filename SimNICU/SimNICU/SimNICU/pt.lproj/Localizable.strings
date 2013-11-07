@@ -19,8 +19,8 @@
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
 "Cooling" = "Resfriamento";
 "Corrected Age" = "Idade corrigida";
-"Cranial Ultrasound" = "Cranial Ultrasound";
-"Diaphragmatic Hernia" = "Diaphragmatic Hernia";
+"Cranial Ultrasound" = "Ultra-som craniano";
+"Diaphragmatic Hernia" = "Hérnia diafragmática";
 "Dinoprostone" = "Dinoprostone";
 "Dobutamine" = "Dobutamine";
 "DOBUTAMINE" = "DOBUTAMINE";
@@ -30,7 +30,7 @@
 "Early Care" = "Early Care";
 "Edward's Syndrome" = "Edward Syndrome";
 "Emergency" = "Emergência";
-"Fluid Requirements" = "Fluid Requirements";
+"Fluid Requirements" = "Necessidades hídricas";
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
 "full stop" = "period";
@@ -87,7 +87,7 @@
 "Treatment threshold" = "Treatment threshold";
 "Units" = "Units";
 "Vecuronium" = "Vecuronium";
-"Vitamin K" = "Vitamin K";
+"Vitamin K" = "Vitamina K";
 "WARNING" = "WARNING";
 "weeks" = "weeks";
 "Weight" = "Weight";
