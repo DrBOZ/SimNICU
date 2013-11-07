@@ -2,38 +2,52 @@
  Localizable.strings
  Neonatal Intensive Care
  
- Created by Conrad Bosman on 10/08/2012.
- Copyright (c) 2012 SimNICU Project. All rights reserved.
+ Created by Conrad Bosman on 06/11/2013.
+ Copyright (c) 2013 Conrad Bosman. All rights reserved.
  */
 
 "Adrenaline" = "Epinephrine";
 "ADRENALINE" = "EPINEPHRINE";
 "Anaemia" = "Anemia";
+"APGAR scores" = "APGAR scores";
 "apnoea" = "apnea";
 "Apnoea" = "Apnea";
 "Atracurium" = "Atracurium";
 "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium" = "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium";
 "Blood in the Nappy" = "Blood in the Diaper";
+"Blood Products" = "Produtos Sanguíneos";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
+"Cooling" = "Resfriamento";
+"Corrected Age" = "Idade corrigida";
+"Cranial Ultrasound" = "Cranial Ultrasound";
+"Diaphragmatic Hernia" = "Diaphragmatic Hernia";
 "Dinoprostone" = "Dinoprostone";
 "Dobutamine" = "Dobutamine";
 "DOBUTAMINE" = "DOBUTAMINE";
 "Done" = "Done";
 "Dopamine" = "Dopamine";
 "Down's Syndrome" = "Down Syndrome";
+"Early Care" = "Early Care";
 "Edward's Syndrome" = "Edward Syndrome";
+"Emergency" = "Emergência";
+"Fluid Requirements" = "Fluid Requirements";
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
 "full stop" = "period";
+"Gastroschisis" = "Gastroschisis";
+"General" = "Genérico";
 "Guidelines" = "Guidelines";
 "Heparin" = "Heparin";
+"High Frequency Oscillation" = "High Frequency Oscillation";
 "Hyperglycaemia" = "Hyperglycemia";
 "hyperkalaemia" = "hyperkalemia";
 "Hypocalcaemia" = "Hypocalcemia";
 "Hypoglycaemia" = "Hypoglycemia";
 "Hypoxic ischaemic encephalopathy" = "Hypoxic ischemic encephalopathy";
 "if required" = "if required";
+"Infusions" = "Infusões";
 "Insulin" = "Insulin";
+"Intubation" = "Intubação";
 "Intubation drugs" = "Intubation drugs";
 "Isoimmune Haemolytic Disease" = "Isoimmune Hemolytic Disease";
 "kilograms" = "kilograms";
@@ -43,12 +57,13 @@
 "Midazolam" = "Midazolam";
 "Morphine" = "Morphine";
 "Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
+"Oxygenation Index" = "Oxygenation Index";
 "Pancuronium" = "Pancuronium";
 "Paracetamol" = "Acetaminophen";
 "Passcode Lock" = "Passcode Lock";
 "Patau's Syndrome" = "Patau Syndrome";
 "Patient list" = "Patient list";
-"Phototherapy" = "Phototherapy";
+"Phototherapy" = "Fototerapia";
 
 "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
 
@@ -56,6 +71,8 @@
 "Pulmonary Haemorrhage" = "Pulmonary Hemorrhage";
 "Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
 "Repeat doses may be required" = "Repeat doses may be required";
+"Resuscitation" = "Resuscitation";
+"Resuscitation Drugs" = "Drogas reanimação";
 "Rocuronium" = "Rocuronium";
 "Serum bilirubin units" = "Serum bilirubin units";
 "Surname" = "Last name";
@@ -66,12 +83,15 @@
 
 "This chart is designed for interpreting bilirubin levels up to 14 days of age." = "This chart is designed for interpreting bilirubin levels up to 14 days of age.";
 
+"Transport Ventilator" = "Transporte Ventilador";
 "Treatment threshold" = "Treatment threshold";
 "Units" = "Units";
 "Vecuronium" = "Vecuronium";
+"Vitamin K" = "Vitamin K";
 "WARNING" = "WARNING";
 "weeks" = "weeks";
 "Weight" = "Weight";
+"Weight Conversion" = "Conversão de peso";
 "Weight not entered" = "Weight not entered";
 "Yesterday" = "Yesterday";
 

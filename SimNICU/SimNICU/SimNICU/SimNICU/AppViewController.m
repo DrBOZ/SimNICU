@@ -666,36 +666,36 @@
     Screen *screen;
     
     screen = [Screen new];
-    screen.menuText = @"APGAR scores";
+    screen.menuText = NSLocalizedString(@"APGAR scores", nil);
     screen.segueId = @"APGAR";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Blood Products";
+    screen.menuText = NSLocalizedString(@"Blood Products", nil);
     screen.segueId = @"BloodProducts";
     [screens addObject:screen];
     
 #if CALCULATOR_PREVIEW_MODE
     
     screen = [Screen new];
-    screen.menuText = @"Calculator";
+    screen.menuText = NSLocalizedString(@"Calculator", nil);
     screen.segueId = @"Calculator";
     [screens addObject:screen];
     
 #endif
     
     screen = [Screen new];
-    screen.menuText = @"Cooling";
+    screen.menuText = NSLocalizedString(@"Cooling", nil);
     screen.segueId = @"Cooling";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Corrected Age";
+    screen.menuText = NSLocalizedString(@"Corrected Age", nil);
     screen.segueId = @"Age Calculators";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Cranial Ultrasound";
+    screen.menuText = NSLocalizedString(@"Cranial Ultrasound", nil);
     screen.segueId = @"CrUSS";
     
     /*
@@ -714,21 +714,21 @@
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Diaphragmatic Hernia";
+    screen.menuText = NSLocalizedString(@"Diaphragmatic Hernia", nil);
     screen.segueId = @"CDH";
     [screens addObject:screen];
     
 #if DRUGS_PREVIEW_MODE
     
     screen = [Screen new];
-    screen.menuText = @"Drugs";
+    screen.menuText = NSLocalizedString(@"Drugs", nil);
     screen.segueId = @"Drugs";
     [screens addObject:screen];
     
 #endif
     
     screen = [Screen new];
-    screen.menuText = @"Early Care";
+    screen.menuText = NSLocalizedString(@"Early Care", nil);
     screen.segueId = @"EarlyCare";
     [screens addObject:screen];
     
@@ -742,7 +742,7 @@
 #endif
     
     screen = [Screen new];
-    screen.menuText = @"Fluid Requirements";
+    screen.menuText = NSLocalizedString(@"Fluid Requirements", nil);
     screen.segueId = @"FluidRequirements";
     [screens addObject:screen];
     
@@ -756,14 +756,14 @@
 #endif
     
     screen = [Screen new];
-    screen.menuText = @"Gastroschisis";
+    screen.menuText = NSLocalizedString(@"Gastroschisis", nil);
     screen.segueId = @"Gastroschisis";
     [screens addObject:screen];
     
 #if GLUCOSE_LOAD_PREVIEW_MODE
     
     screen = [Screen new];
-    screen.menuText = @"Glucose Load";
+    screen.menuText = NSLocalizedString(@"Glucose Load", nil);
     
     screen.detailMenuText = @"Coming soon!";
     screen.segueId = @"GlucoseInfusionRate";
@@ -786,48 +786,48 @@
 #if HYPOGLYCAEMIA_PREVIEW_MODE
     
      screen = [Screen new];
-     screen.menuText = @"Hypoglycaemia Screen";
+     screen.menuText = NSLocalizedString(@"Hypoglycaemia Screen", nil);
      screen.segueId = @"Hypo";
      [screens addObject:screen];
     
 #endif
     
     screen = [Screen new];
-    screen.menuText = @"Infusions";
+    screen.menuText = NSLocalizedString(@"Infusions", nil);
     screen.segueId = @"Infusions";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Intubation";
+    screen.menuText = NSLocalizedString(@"Intubation", nil);
     screen.segueId = @"Intubation";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Naloxone (Narcan)";
+    screen.menuText = NSLocalizedString(@"Naloxone (Narcan)", nil);
     screen.segueId = @"Narcan";
     [screens addObject:screen];
     
     // Outcomes
     
     screen = [Screen new];
-    screen.menuText = @"Oxygenation Index";
+    screen.menuText = NSLocalizedString(@"Oxygenation Index", nil);
     screen.segueId = @"OI";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Phototherapy";
+    screen.menuText = NSLocalizedString(@"Phototherapy", nil);
     screen.segueId = @"Phototherapy";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Plastic Bag (at delivery)";
+    screen.menuText = NSLocalizedString(@"Plastic Bag (at delivery)", nil);
     screen.segueId = @"Thermoregulation";
     [screens addObject:screen];
     
 #if POSTNATAL_WARD_PREVIEW_MODE
     
     screen = [Screen new];
-    screen.menuText = @"Postnatal Ward Problems";
+    screen.menuText = NSLocalizedString(@"Postnatal Ward Problems", nil);
     screen.segueId = @"PostnatalWard";
     [screens addObject:screen];
     
@@ -839,12 +839,12 @@
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Resuscitation Drugs";
+    screen.menuText = NSLocalizedString(@"Resuscitation Drugs", nil);
     screen.segueId = @"Resus";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Retinopathy of Prematurity";
+    screen.menuText = NSLocalizedString(@"Retinopathy of Prematurity", nil);
     screen.segueId = @"ROP";
     [screens addObject:screen];
     
@@ -860,22 +860,22 @@
     // Sodium correction
     
     screen = [Screen new];
-    screen.menuText = @"Transport Ventilator";
+    screen.menuText = NSLocalizedString(@"Transport Ventilator", nil);
     screen.segueId = @"BabyPac";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"UAC / UVC";
+    screen.menuText = NSLocalizedString(@"UAC / UVC", nil);
     screen.segueId = @"UACUVC";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Vitamin K";
+    screen.menuText = NSLocalizedString(@"Vitamin K", nil);
     screen.segueId = @"VitK";
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = @"Weight Conversion";
+    screen.menuText = NSLocalizedString(@"Weight Conversion", nil);
     screen.segueId = @"WeightConversion";
     [screens addObject:screen];
     
@@ -1022,8 +1022,8 @@
 {
     NSString *header;
     
-    if (section == 0) header = @"Emergency";
-    else if (section == 1) header = @"General";
+    if (section == 0) header = NSLocalizedString(@"Emergency", nil);
+    else if (section == 1) header = NSLocalizedString(@"General", nil);
     
     return header;
 }
@@ -1047,7 +1047,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Infusions";
+            cell.textLabel.text = NSLocalizedString(@"Infusions", nil);
             // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
@@ -1063,7 +1063,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Intubation";
+            cell.textLabel.text = NSLocalizedString(@"Intubation", nil);
             // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
@@ -1079,7 +1079,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Resuscitation Drugs";
+            cell.textLabel.text = NSLocalizedString(@"Resuscitation Drugs", nil);
             // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
             
             returnCell = cell;
