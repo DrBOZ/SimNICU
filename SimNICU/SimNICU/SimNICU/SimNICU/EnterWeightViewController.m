@@ -55,43 +55,43 @@
         
         // add default bay data
         Bay *bay1 = [[Bay alloc] init];
-        bay1.bayName = @"Bay 1";
+        bay1.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay 1", nil), 1];
         bay1.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [_bayData addObject:bay1];
         
         Bay *bay2 = [[Bay alloc] init];
-        bay2.bayName = @"Bay 2";
+        bay2.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay 1", nil), 2];
         bay2.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [_bayData addObject:bay2];
         
         Bay *bay3 = [[Bay alloc] init];
-        bay3.bayName = @"Bay 3";
+        bay3.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay 1", nil), 3];
         bay3.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [_bayData addObject:bay3];
         
         Bay *bay4 = [[Bay alloc] init];
-        bay4.bayName = @"Low Dependency";
+        bay4.bayName = NSLocalizedString(@"Low Dependency", nil);
         bay4.patientsInBay = [[NSMutableArray alloc] initWithCapacity:8];
         
         [_bayData addObject:bay4];
         
         Bay *bay5 = [[Bay alloc] init];
-        bay5.bayName = @"Transitional Care";
+        bay5.bayName = NSLocalizedString(@"Transitional Care", nil);
         bay5.patientsInBay = [[NSMutableArray alloc] initWithCapacity:8];
         
         [_bayData addObject:bay5];
         
         Bay *bay6 = [[Bay alloc] init];
-        bay6.bayName = @"Postnatal Ward";
+        bay6.bayName = NSLocalizedString(@"Postnatal Ward", nil);
         bay6.patientsInBay = [[NSMutableArray alloc] initWithCapacity:20];
         
         [_bayData addObject:bay6];
         
         Bay *bay7 = [[Bay alloc] init];
-        bay7.bayName = @"Misc";
+        bay7.bayName = NSLocalizedString(@"Misc", nil);
         bay7.patientsInBay = [[NSMutableArray alloc] initWithCapacity:20];
         
         Patient *patient;
@@ -589,7 +589,7 @@
             swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
             [cell addGestureRecognizer:swipeRight];
             
-            cell.textLabel.text = @"Gestation";
+            cell.textLabel.text = NSLocalizedString(@"Gestation", nil);
             
             Preferences *preferences = [Preferences sharedPreferences];
             

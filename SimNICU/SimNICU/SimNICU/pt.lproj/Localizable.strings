@@ -15,6 +15,7 @@
 "Apnoea" = "Apnea";
 "Atracurium" = "Atracurium";
 "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium" = "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium";
+"Bay" = "Bay";
 "Blood in the Nappy" = "Blood in the Diaper";
 "Blood Products" = "Produtos Sanguíneos";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
@@ -41,6 +42,7 @@
 "full stop" = "period";
 "Gastroschisis" = "Gastroschisis";
 "General" = "Geral";
+"Gestation" = "Gestation";
 "Guidelines" = "Guidelines";
 "Heparin" = "Heparin";
 "High Frequency Oscillation" = "High Frequency Oscillation";
@@ -60,8 +62,10 @@
 "Lidocaine" = "Lidocaine";
 "Like SimNICU?" = "Like SimNICU?";
 "London" = "Londres";
+"Low Dependency" = "Low Dependency";
 "Maternal antepartum haemorrhage" = "Maternal antepartum hemorrhage";
 "Midazolam" = "Midazolam";
+"Misc" = "Misc";
 "Morphine" = "Morphine";
 "Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
 "Oxygenation Index" = "Oxygenation Index";
@@ -74,6 +78,7 @@
 
 "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
 
+"Postnatal Ward" = "Postnatal Ward";
 "Pulmonary haemorrhage" = "Pulmonary hemorrhage";
 "Pulmonary Haemorrhage" = "Pulmonary Hemorrhage";
 "Rate on iTunes" = "Taxa sobre iTunes";
@@ -93,6 +98,7 @@
 
 "This chart is designed for interpreting bilirubin levels up to 14 days of age." = "This chart is designed for interpreting bilirubin levels up to 14 days of age.";
 
+"Transitional Care" = "Transitional Care";
 "Transport Ventilator" = "Transporte Ventilador";
 "Treatment threshold" = "Treatment threshold";
 "Units" = "Units";
