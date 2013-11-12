@@ -10,28 +10,28 @@
 "Adrenaline" = "Epinephrine";
 "ADRENALINE" = "EPINEPHRINE";
 "Anaemia" = "Anemia";
-"APGAR scores" = "APGAR scores";
+"APGAR scores" = "Escore de APGAR";
 "apnoea" = "apnea";
 "Apnoea" = "Apnea";
 "Atracurium" = "Atracurium";
 "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium" = "Atropine used to alleviate vagal side effects OR WITH Neostigmine as an antidote to Atracurium";
 "Bay" = "Bay";
 "Blood in the Nappy" = "Blood in the Diaper";
-"Blood Products" = "Produtos Sanguíneos";
+"Blood Products" = "Transfusões Sanguineas";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
-"Cooling" = "Resfriamento";
+"Cooling" = "Resfriamento Protetor";
 "Copyright" = "Direitos autorais";
 "Corrected Age" = "Idade corrigida";
-"Cranial Ultrasound" = "Ultra-som craniano";
+"Cranial Ultrasound" = "Ultrassom transfontanelar";
 "DEVELOPER" = "REVELADOR";
-"Diaphragmatic Hernia" = "Hérnia diafragmática";
+"Diaphragmatic Hernia" = "Cuidados na Hérnia Diafragmática";
 "Dinoprostone" = "Dinoprostone";
 "Dobutamine" = "Dobutamine";
 "DOBUTAMINE" = "DOBUTAMINE";
 "Done" = "Done";
 "Dopamine" = "Dopamine";
 "Down's Syndrome" = "Down Syndrome";
-"Early Care" = "Early Care";
+"Early Care" = "Prematuro extremo";
 "Edward's Syndrome" = "Edward Syndrome";
 "Emergency" = "Emergência";
 "England" = "Inglaterra";
@@ -40,12 +40,12 @@
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
 "full stop" = "period";
-"Gastroschisis" = "Gastroschisis";
+"Gastroschisis" = "Cuidados na gastrosquise";
 "General" = "Geral";
 "Gestation" = "Gestation";
 "Guidelines" = "Guidelines";
 "Heparin" = "Heparin";
-"High Frequency Oscillation" = "High Frequency Oscillation";
+"High Frequency Oscillation" = "Ventilação oscilatória de alta frequência";
 "Hyperglycaemia" = "Hyperglycemia";
 "hyperkalaemia" = "hyperkalemia";
 "Hypocalcaemia" = "Hypocalcemia";
@@ -53,9 +53,9 @@
 "Hypoxic ischaemic encephalopathy" = "Hypoxic ischemic encephalopathy";
 "if required" = "if required";
 "Information" = "Informações";
-"Infusions" = "Infusões";
+"Infusions" = "Soluções";
 "Insulin" = "Insulin";
-"Intubation" = "Intubação";
+"Intubation" = "Intubação traqueal";
 "Intubation drugs" = "Intubation drugs";
 "Isoimmune Haemolytic Disease" = "Isoimmune Hemolytic Disease";
 "kilograms" = "kilograms";
@@ -68,25 +68,27 @@
 "Misc" = "Misc";
 "Morphine" = "Morphine";
 "Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
-"Oxygenation Index" = "Oxygenation Index";
+"Oxygenation Index" = "Índice de oxigenação";
 "Pancuronium" = "Pancuronium";
 "Paracetamol" = "Acetaminophen";
 "Passcode Lock" = "Passcode Lock";
 "Patau's Syndrome" = "Patau Syndrome";
 "Patient list" = "Patient list";
 "Phototherapy" = "Fototerapia";
+"Plastic Bag (at delivery)" = "Saco plástico (ao nascimento)";
 
 "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
 
 "Postnatal Ward" = "Postnatal Ward";
-"Pulmonary haemorrhage" = "Pulmonary hemorrhage";
-"Pulmonary Haemorrhage" = "Pulmonary Hemorrhage";
+"Pulmonary haemorrhage" = "Cuidados na Hemorragia pulmonar";
+"Pulmonary Haemorrhage" = "Cuidados na Hemorragia pulmonar";
 "Rate on iTunes" = "Taxa sobre iTunes";
 "Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
 "Repeat doses may be required" = "Repeat doses may be required";
 "Requests" = "Pedidos";
 "Resuscitation" = "Resuscitation";
-"Resuscitation Drugs" = "Drogas reanimação";
+"Resuscitation Drugs" = "Drogas de reanimação";
+"Retinopathy of Prematurity" = "Cuidados na Retinopatia da prematuridade";
 "Rocuronium" = "Rocuronium";
 "Serum bilirubin units" = "Serum bilirubin units";
 "Surname" = "Last name";
@@ -99,8 +101,9 @@
 "This chart is designed for interpreting bilirubin levels up to 14 days of age." = "This chart is designed for interpreting bilirubin levels up to 14 days of age.";
 
 "Transitional Care" = "Transitional Care";
-"Transport Ventilator" = "Transporte Ventilador";
+"Transport Ventilator" = "Ventilador Pulmonar de Transporte";
 "Treatment threshold" = "Treatment threshold";
+"UAC / UVC" = "Cateteres umbilicais";
 "Units" = "Units";
 "Vecuronium" = "Vecuronium";
 "Vitamin K" = "Vitamina K";
@@ -109,6 +112,7 @@
 "Weight" = "Weight";
 "Weight Conversion" = "Conversão de peso";
 "Weight not entered" = "Weight not entered";
+"Working Weight" = "peso selecionado";
 "Yesterday" = "Yesterday";
 
 

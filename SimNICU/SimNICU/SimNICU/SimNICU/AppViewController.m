@@ -774,7 +774,7 @@
     screen = [Screen new];
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.0)
     {
-        screen.menuText = @"High Frequency Oscillation";
+        screen.menuText = NSLocalizedString(@"High Frequency Oscillation", nil);
     }
     else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 3.0)
     {
@@ -803,7 +803,7 @@
     [screens addObject:screen];
     
     screen = [Screen new];
-    screen.menuText = NSLocalizedString(@"Naloxone (Narcan)", nil);
+    screen.menuText = NSLocalizedString(@"Naloxone (Narcan\u00AE)", nil);
     screen.segueId = @"Narcan";
     [screens addObject:screen];
     
@@ -1098,6 +1098,8 @@
 
         Screen *thisScreen = screens[indexPath.row];
         cell.textLabel.text = [thisScreen menuText];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        
         cell.detailTextLabel.text = [thisScreen detailMenuText];
         
         // [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
@@ -1889,7 +1891,7 @@
             self.displayTextLabel.text = [NSString stringWithFormat:@"%@ kg", weight];
         }
         
-        self.displayDetailTextLabel.text = @"Working Weight";
+        self.displayDetailTextLabel.text = NSLocalizedString(@"Working Weight", nil);
         self.displayAgeTextLabel.text = @"";
         self.displayDetailTextLabel.hidden = NO;
         self.displayAgeTextLabel.hidden = NO;

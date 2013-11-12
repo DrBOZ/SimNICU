@@ -333,8 +333,7 @@
         [CBFonts darkGrayOffsetShadowFormattingForLabel:translatorNameLabel];
         translatorNameLabel.numberOfLines = 3;
         translatorNameLabel.font = [UIFont systemFontOfSize:13.0f];
-        // developerNameLabel.text = @"Dr Conrad Bosman MBBS (London) MRCPCH\nQueen's Medical Centre\nNottingham, England";
-        translatorNameLabel.text = @"Dr Márcio Fossari\nSanta Catarina, Brasil";
+        translatorNameLabel.text = @"M.D. Márcio Fossari\nMarieta Kondor Bornhausen\nITAJAÍ - SC BRAZIL";
         [footerView addSubview:translatorNameLabel];
     }
     
