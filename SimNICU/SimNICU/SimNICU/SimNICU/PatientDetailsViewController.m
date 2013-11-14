@@ -30,7 +30,10 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:nil
+                                                                            action:nil];
     
     // Instantiate TableView
     // iOS 7 specifics
@@ -365,7 +368,7 @@
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.textLabel.text = @"Gestation";
+            cell.textLabel.text = NSLocalizedString(@"Gestation", nil);
             
             if (self.patientToEdit.gestation)
             {

@@ -55,19 +55,19 @@
         
         // add default bay data
         Bay *bay1 = [[Bay alloc] init];
-        bay1.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay 1", nil), 1];
+        bay1.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay", nil), 1];
         bay1.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [_bayData addObject:bay1];
         
         Bay *bay2 = [[Bay alloc] init];
-        bay2.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay 1", nil), 2];
+        bay2.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay", nil), 2];
         bay2.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [_bayData addObject:bay2];
         
         Bay *bay3 = [[Bay alloc] init];
-        bay3.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay 1", nil), 3];
+        bay3.bayName = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"Bay", nil), 3];
         bay3.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [_bayData addObject:bay3];
@@ -237,7 +237,8 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            settingsButton = [CBBarButtonItems customBarButtonWithTitle:@"Settings" target:self action:@selector(showSettings)];
+            settingsButton = [CBBarButtonItems customBarButtonWithTitle:NSLocalizedString(@"Settings", nil)
+                                                                 target:self action:@selector(showSettings)];
         }
         else
         {
@@ -617,7 +618,7 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                self.sex = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Male", @"Female", @"Unknown", nil]];
+                self.sex = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Male", nil), NSLocalizedString(@"Female", nil), NSLocalizedString(@"Unknown", nil), nil]];
                 self.sex.frame = CGRectMake(1.0, 1.0, 240, 40);
                 
                 // iOS 7 specifics
@@ -659,7 +660,7 @@
                 {
                     self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                     self.button.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
-                    [self.button setTitle:@"Done" forState:UIControlStateNormal];
+                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
                     [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
                 }
                 else
@@ -733,7 +734,7 @@
                 {
                     self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                     self.button.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
-                    [self.button setTitle:@"Done" forState:UIControlStateNormal];
+                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
                     [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
                 }
                 else
@@ -977,8 +978,8 @@
             int newRowIndex = [[self.bayData[([self.bayData count] -1)] patientsInBay] count];
             
             Patient *newPatient = [[Patient alloc] init];
-            newPatient.firstname = @"add";
-            newPatient.lastname = @"new patient";
+            newPatient.firstname = NSLocalizedString(@"add", nil);
+            newPatient.lastname = NSLocalizedString(@"new patient", nil);
             
             [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:newPatient];
             

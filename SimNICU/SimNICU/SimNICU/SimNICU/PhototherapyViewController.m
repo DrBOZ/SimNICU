@@ -345,7 +345,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Gestation";
+            cell.textLabel.text = NSLocalizedString(@"Gestation", nil);
             
             if (self.gestation)
             {

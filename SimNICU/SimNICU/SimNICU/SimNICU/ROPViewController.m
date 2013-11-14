@@ -583,7 +583,7 @@
         {
             case 0:
                 // Gestation
-                cell.textLabel.text = @"Gestation";
+                cell.textLabel.text = NSLocalizedString(@"Gestation", nil);
                 cell.detailTextLabel.text = @"< 32/40";
                 break;
                 

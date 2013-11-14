@@ -31,7 +31,7 @@
     [CBTrackers logEvent:@"Cooling"];
     
     self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
                                      style:UIBarButtonItemStyleBordered
                                     target:nil
                                     action:nil];

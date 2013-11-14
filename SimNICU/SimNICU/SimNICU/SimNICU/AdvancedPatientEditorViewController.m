@@ -325,7 +325,7 @@
     
     if ([tableView isEqual:self.myTableView1])
     {
-        returnString = @"Patient";
+        returnString = NSLocalizedString(@"Patient", nil);
     }
     else
     {

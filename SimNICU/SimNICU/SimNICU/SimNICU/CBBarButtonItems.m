@@ -21,7 +21,7 @@
 + (UIBarButtonItem *)backBarButtonWithTarget:(id)target action:(SEL)action
 {
     // back button text for subsequent screens
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:target
                                                                   action:action];

@@ -20,7 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = @"Gestation / Weight";
+        self.title = [NSString stringWithFormat:@"%@ / %@", NSLocalizedString(@"Gestation", nil), NSLocalizedString(@"Weight", nil)];
         
         //delegate
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -189,7 +189,7 @@
         
         cell.accessoryView = self.gestation;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = @"Gestation";
+        cell.textLabel.text = NSLocalizedString(@"Gestation", nil);
         cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
         
         if ([self.textFieldToBecomeFirstResponder isEqualToString:@"Gestation"])
