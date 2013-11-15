@@ -123,9 +123,6 @@
     
     for(drug in self.drugCategory.drugs)
     {
-        // Drug *drugToAdd = [[Drug alloc] init];
-        // drugToAdd = drug;
-        
         // Look at the first letter of the drug
         firstLetterOfDrug = [drug.name substringToIndex:1];
         

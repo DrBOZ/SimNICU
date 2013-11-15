@@ -888,6 +888,18 @@
     
 #endif
     
+    // alphebetise the screens array based on the screen.menuText property values
+    NSArray *sortedScreens;
+    
+    sortedScreens = [screens sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+                        {
+                            NSString *first = [(Screen *)a menuText];
+                            NSString *second = [(Screen *)b menuText];
+                            return [first compare:second];
+                        }];
+    
+    screens = [NSMutableArray arrayWithArray:sortedScreens];
+    
     appDelegate.currentController = self;
 }
 
