@@ -21,37 +21,37 @@
     
     // Age Calculators section
     sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Age Calculators";
+    sectionData.titleForHeader = NSLocalizedString(@"Age Calculators", nil);
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"First day of life";
+    rowData.text = NSLocalizedString(@"First day of life", nil);
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
     
     // Patient List section
     sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Patient List";
+    sectionData.titleForHeader = NSLocalizedString(@"Patient List", nil);
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Bay Editor";
+    rowData.text = NSLocalizedString(@"Bay Editor", nil);
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
     
     // Daily Summary section
     sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Daily Summary";
+    sectionData.titleForHeader = NSLocalizedString(@"Daily Summary", nil);
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Editor";
+    rowData.text = NSLocalizedString(@"Editor", @"like word processor");
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"PDF";
+    rowData.text = NSLocalizedString(@"PDF", @"a type of document");
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
