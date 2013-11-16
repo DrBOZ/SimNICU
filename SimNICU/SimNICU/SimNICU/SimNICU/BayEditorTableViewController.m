@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Bay Editor";
+    self.title = NSLocalizedString(@"Bay Editor", nil);
     
     [CBTrackers logEvent:@"Bay Editor"];  // could add in to return number of patients...
     
@@ -78,7 +78,7 @@
     if ([self.bayData count] <20)
     {
         Bay *bay = [[Bay alloc] init];
-        bay.bayName = @"New Bay";
+        bay.bayName = NSLocalizedString(@"New Bay", nil);
         bay.patientsInBay = [[NSMutableArray alloc] initWithCapacity:4];
         
         [self.bayData addObject:bay];

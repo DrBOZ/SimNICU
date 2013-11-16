@@ -52,7 +52,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    if (section == 1) return @"Day 0 if infant is born before 12:00 midday, Day 1 if born after.";
+    if (section == 1) return NSLocalizedString(@"Day 0 if infant is born before 12:00 midday, Day 1 if born after.", nil);
     
     else return nil;
 }
@@ -77,7 +77,7 @@
                 self.day0.backgroundColor = [UIColor whiteColor];
             }
             
-            self.day0.textLabel.text = @"day 0";
+            self.day0.textLabel.text = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"day", @"noun"), 0];
             
             if ([preferences.ageInDaysSetting intValue] == 0)
             {
@@ -104,7 +104,7 @@
                 self.day1.backgroundColor = [UIColor whiteColor];
             }
             
-            self.day1.textLabel.text = @"day 1";
+            self.day1.textLabel.text = [NSString stringWithFormat:@"%@ %i", NSLocalizedString(@"day", @"noun"), 1];
             
             if ([preferences.ageInDaysSetting intValue] == 1)
             {
@@ -132,7 +132,7 @@
             self.dayMixed.backgroundColor = [UIColor whiteColor];
         }
         
-        self.dayMixed.textLabel.text = @"Depends on time of birth";
+        self.dayMixed.textLabel.text = NSLocalizedString(@"Depends on time of birth", nil);
         
         if ([preferences.ageInDaysSetting intValue] == 2)
         {

@@ -31,7 +31,7 @@
     
     [CBTrackers logEvent:@"Settings"];
     
-    self.title = @"Settings";
+    self.title = NSLocalizedString(@"Settings", nil);
     
     // setup back button
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];

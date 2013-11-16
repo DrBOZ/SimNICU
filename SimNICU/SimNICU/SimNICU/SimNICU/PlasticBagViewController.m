@@ -135,7 +135,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Plastic bag (at delivery)";
+    return NSLocalizedString(@"Plastic Bag (at delivery)", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
