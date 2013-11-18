@@ -198,6 +198,12 @@
 		5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */; };
 		5C4AAC7C17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
 		5C4AAC7D17BF524B00BD68F5 /* TemplateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */; };
+		5C4BBF98183A3C07002607EC /* CFAMOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBF97183A3C07002607EC /* CFAMOptionsTableViewController.m */; };
+		5C4BBF99183A3C07002607EC /* CFAMOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBF97183A3C07002607EC /* CFAMOptionsTableViewController.m */; };
+		5C4BBF9C183A3CF9002607EC /* CFAMOptionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */; };
+		5C4BBF9D183A3CF9002607EC /* CFAMOptionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */; };
+		5C4BBFA8183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */; };
+		5C4BBFA9183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */; };
 		5C4DB5961808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
 		5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
 		5C4DB59A1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */; };
@@ -963,6 +969,12 @@
 		5C4350BC178DFD8E00E926B1 /* benzylpenicillinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = benzylpenicillinIndications.html; sourceTree = "<group>"; };
 		5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateTableViewController.h; sourceTree = "<group>"; };
 		5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateTableViewController.m; sourceTree = "<group>"; };
+		5C4BBF96183A3C07002607EC /* CFAMOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMOptionsTableViewController.h; sourceTree = "<group>"; };
+		5C4BBF97183A3C07002607EC /* CFAMOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMOptionsTableViewController.m; sourceTree = "<group>"; };
+		5C4BBF9A183A3CF9002607EC /* CFAMOptionsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMOptionsModel.h; sourceTree = "<group>"; };
+		5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMOptionsModel.m; sourceTree = "<group>"; };
+		5C4BBFA6183A4BE3002607EC /* CFAMTermsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMTermsWebViewController.h; sourceTree = "<group>"; };
+		5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMTermsWebViewController.m; sourceTree = "<group>"; };
 		5C4DB5941808F99400F6849A /* CBTextViewMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTextViewMethods.h; sourceTree = "<group>"; };
 		5C4DB5951808F99400F6849A /* CBTextViewMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTextViewMethods.m; sourceTree = "<group>"; };
 		5C4DB5981808FE0E00F6849A /* HandoverSectionCustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSectionCustomText.h; sourceTree = "<group>"; };
@@ -1840,6 +1852,27 @@
 			name = Screen_FluidRequirements;
 			sourceTree = "<group>";
 		};
+		5C4BBF95183A332F002607EC /* Screen_CFAM */ = {
+			isa = PBXGroup;
+			children = (
+				5C4BBF96183A3C07002607EC /* CFAMOptionsTableViewController.h */,
+				5C4BBF97183A3C07002607EC /* CFAMOptionsTableViewController.m */,
+				5C4BBF9A183A3CF9002607EC /* CFAMOptionsModel.h */,
+				5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */,
+				5C4BBF9E183A48D3002607EC /* Options */,
+			);
+			name = Screen_CFAM;
+			sourceTree = "<group>";
+		};
+		5C4BBF9E183A48D3002607EC /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				5C4BBFA6183A4BE3002607EC /* CFAMTermsWebViewController.h */,
+				5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */,
+			);
+			name = Options;
+			sourceTree = "<group>";
+		};
 		5C4DC70E17E5340C00412C72 /* UAModalPanelItems */ = {
 			isa = PBXGroup;
 			children = (
@@ -2388,6 +2421,7 @@
 				5CDB9F2616BE333200B457EC /* Screen_BloodProducts */,
 				5C940B53166E3C130044A7D1 /* Screen_Calculator */,
 				5C63B13C16B9FEF900B31431 /* Screen_CDH */,
+				5C4BBF95183A332F002607EC /* Screen_CFAM */,
 				5CDB9F2416BE322900B457EC /* Screen_Cooling */,
 				5C63B14016B9FFFA00B31431 /* Screen_CrUSS */,
 				5CDB9F2516BE326600B457EC /* Screen_Curosurf */,
@@ -3754,6 +3788,8 @@
 				5C940C09166E3C5B0044A7D1 /* PhototherapyClinicalStatusViewController.m in Sources */,
 				5C940C0A166E3C5B0044A7D1 /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
 				5C940C0B166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m in Sources */,
+				5C4BBFA8183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */,
+				5C4BBF98183A3C07002607EC /* CFAMOptionsTableViewController.m in Sources */,
 				5C06D4C11803C54400A3B46C /* VitKTableViewController.m in Sources */,
 				5C56F6141801DEE500665E22 /* CBWebView.m in Sources */,
 				5C940C0C166E3C5B0044A7D1 /* PhototherapyUnitsViewController.m in Sources */,
@@ -3839,6 +3875,7 @@
 				5C06D4BD1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */,
 				5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
+				5C4BBF9C183A3CF9002607EC /* CFAMOptionsModel.m in Sources */,
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
 				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
 				5C56F64318021BA300665E22 /* BloodTransfusionCriteriaModel.m in Sources */,
@@ -3900,6 +3937,7 @@
 				5CD3AFAC16CF38D500DE362C /* SVSegmentedControl.m in Sources */,
 				5CD3AFAD16CF38D500DE362C /* SVSegmentedThumb.m in Sources */,
 				5CD3AFAE16CF38D500DE362C /* KKKeychain.m in Sources */,
+				5C4BBF99183A3C07002607EC /* CFAMOptionsTableViewController.m in Sources */,
 				5C56F6071801A46300665E22 /* CBFonts.m in Sources */,
 				5CD3AFAF16CF38D500DE362C /* KKPasscodeLock.m in Sources */,
 				5CD3AFB016CF38D500DE362C /* KKPasscodeSettingsViewController.m in Sources */,
@@ -3945,6 +3983,7 @@
 				5CD3AFD416CF38D500DE362C /* BloodProductsViewController.m in Sources */,
 				5CD3AFD816CF38D500DE362C /* CoolingCriteriaEncephalopathyViewController.m in Sources */,
 				5CD3AFDB16CF38D500DE362C /* CDHViewController.m in Sources */,
+				5C4BBFA9183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */,
 				5CD3AFDD16CF38D500DE362C /* GastroschisisViewController.m in Sources */,
 				5CD3AFDE16CF38D500DE362C /* HFOVViewController.m in Sources */,
 				5CD3AFDF16CF38D500DE362C /* InfusionsViewController.m in Sources */,
@@ -4062,6 +4101,7 @@
 				5C5A11A717D2727C00CE96E5 /* AAMFeedbackTopicsViewController.m in Sources */,
 				5C5A11A917D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */,
 				5C1A0BD717D6D85600C41623 /* SettingsTableViewController.m in Sources */,
+				5C4BBF9D183A3CF9002607EC /* CFAMOptionsModel.m in Sources */,
 				5C1A0BDC17D6F13B00C41623 /* PDFGenerationTableViewController.m in Sources */,
 				5C1A0BE017D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m in Sources */,
 				5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */,

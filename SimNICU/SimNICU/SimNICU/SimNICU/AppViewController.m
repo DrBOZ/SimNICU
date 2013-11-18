@@ -31,6 +31,7 @@
 // #import "BloodProductsTableViewController.h"
 #import "BloodProductsViewController.h"
 #import "CalculatorViewController.h"
+#import "CFAMOptionsTableViewController.h"
 #import "CoolingTableViewController.h"
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
@@ -684,6 +685,15 @@
     
 #endif
     
+#if CFAM_PREVIEW_MODE
+    
+    screen = [Screen new];
+    screen.menuText = NSLocalizedString(@"Cerebral Function Monitoring", nil);
+    screen.segueId = @"CFAM";
+    [screens addObject:screen];
+    
+#endif
+    
     screen = [Screen new];
     screen.menuText = NSLocalizedString(@"Cooling", nil);
     screen.segueId = @"Cooling";
@@ -1244,6 +1254,15 @@
             }
             
             [self.navigationController pushViewController:newViewController animated:YES];
+        }
+        
+#pragma mark CFAM
+        
+        else if ([thisScreenType isEqualToString:@"CFAM"])
+        {
+            CFAMOptionsTableViewController *vc = [[CFAMOptionsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
 #pragma mark Cooling

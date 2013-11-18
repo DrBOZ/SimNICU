@@ -16,10 +16,6 @@
 #import "CBTableViewRowData.h"
 #import "SettingsModel.h"
 
-@interface SettingsTableViewController ()
-
-@end
-
 @implementation SettingsTableViewController
 {
     NSArray *tableData;
