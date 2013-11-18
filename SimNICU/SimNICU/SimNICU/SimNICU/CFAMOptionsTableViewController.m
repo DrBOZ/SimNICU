@@ -7,7 +7,7 @@
 //
 
 #import "CFAMOptionsTableViewController.h"
-// #import "CFAMTermsViewController.h"
+#import "CFAMTermsWebViewController.h"
 #import "CBTableViewSectionData.h"
 #import "CBTableViewRowData.h"
 #import "CFAMOptionsModel.h"
@@ -106,9 +106,9 @@
     
     if (indexPath.section == 0)
     {
-        // CFAMTermsViewController *vc = [CFAMTermsViewController new];
+        CFAMTermsWebViewController *vc = [CFAMTermsWebViewController new];
         
-        // [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.section == 1)
     {

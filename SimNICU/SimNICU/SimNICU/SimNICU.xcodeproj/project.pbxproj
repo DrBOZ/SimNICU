@@ -204,6 +204,26 @@
 		5C4BBF9D183A3CF9002607EC /* CFAMOptionsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */; };
 		5C4BBFA8183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */; };
 		5C4BBFA9183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */; };
+		5C4BBFAC183A4DF9002607EC /* CFAMTermsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBFAB183A4DF9002607EC /* CFAMTermsModel.m */; };
+		5C4BBFAD183A4DF9002607EC /* CFAMTermsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4BBFAB183A4DF9002607EC /* CFAMTermsModel.m */; };
+		5C4BBFB0183A4E4B002607EC /* upperMargin.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFAF183A4E4B002607EC /* upperMargin.html */; };
+		5C4BBFB1183A4E4B002607EC /* upperMargin.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFAF183A4E4B002607EC /* upperMargin.html */; };
+		5C4BBFB3183A4E6B002607EC /* lowerMargin.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFB2183A4E6B002607EC /* lowerMargin.html */; };
+		5C4BBFB4183A4E6B002607EC /* lowerMargin.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFB2183A4E6B002607EC /* lowerMargin.html */; };
+		5C4BBFB6183A4E80002607EC /* eeg.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFB5183A4E80002607EC /* eeg.html */; };
+		5C4BBFB7183A4E80002607EC /* eeg.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFB5183A4E80002607EC /* eeg.html */; };
+		5C4BBFB9183A4E90002607EC /* aeeg.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFB8183A4E90002607EC /* aeeg.html */; };
+		5C4BBFBA183A4E90002607EC /* aeeg.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFB8183A4E90002607EC /* aeeg.html */; };
+		5C4BBFBC183A4E9F002607EC /* amplitude.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFBB183A4E9F002607EC /* amplitude.html */; };
+		5C4BBFBD183A4E9F002607EC /* amplitude.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFBB183A4E9F002607EC /* amplitude.html */; };
+		5C4BBFBF183A4EB8002607EC /* artefact.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFBE183A4EB8002607EC /* artefact.html */; };
+		5C4BBFC0183A4EB8002607EC /* artefact.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFBE183A4EB8002607EC /* artefact.html */; };
+		5C4BBFC2183A4EC4002607EC /* electrode.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC1183A4EC4002607EC /* electrode.html */; };
+		5C4BBFC3183A4EC4002607EC /* electrode.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC1183A4EC4002607EC /* electrode.html */; };
+		5C4BBFC5183A4ED8002607EC /* impedance.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC4183A4ED8002607EC /* impedance.html */; };
+		5C4BBFC6183A4ED8002607EC /* impedance.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC4183A4ED8002607EC /* impedance.html */; };
+		5C4BBFC8183A4EF1002607EC /* burstSuppression.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC7183A4EF1002607EC /* burstSuppression.html */; };
+		5C4BBFC9183A4EF1002607EC /* burstSuppression.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC7183A4EF1002607EC /* burstSuppression.html */; };
 		5C4DB5961808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
 		5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
 		5C4DB59A1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */; };
@@ -975,6 +995,17 @@
 		5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMOptionsModel.m; sourceTree = "<group>"; };
 		5C4BBFA6183A4BE3002607EC /* CFAMTermsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMTermsWebViewController.h; sourceTree = "<group>"; };
 		5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMTermsWebViewController.m; sourceTree = "<group>"; };
+		5C4BBFAA183A4DF9002607EC /* CFAMTermsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMTermsModel.h; sourceTree = "<group>"; };
+		5C4BBFAB183A4DF9002607EC /* CFAMTermsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMTermsModel.m; sourceTree = "<group>"; };
+		5C4BBFAF183A4E4B002607EC /* upperMargin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upperMargin.html; sourceTree = "<group>"; };
+		5C4BBFB2183A4E6B002607EC /* lowerMargin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lowerMargin.html; sourceTree = "<group>"; };
+		5C4BBFB5183A4E80002607EC /* eeg.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = eeg.html; sourceTree = "<group>"; };
+		5C4BBFB8183A4E90002607EC /* aeeg.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aeeg.html; sourceTree = "<group>"; };
+		5C4BBFBB183A4E9F002607EC /* amplitude.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = amplitude.html; sourceTree = "<group>"; };
+		5C4BBFBE183A4EB8002607EC /* artefact.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = artefact.html; sourceTree = "<group>"; };
+		5C4BBFC1183A4EC4002607EC /* electrode.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = electrode.html; sourceTree = "<group>"; };
+		5C4BBFC4183A4ED8002607EC /* impedance.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = impedance.html; sourceTree = "<group>"; };
+		5C4BBFC7183A4EF1002607EC /* burstSuppression.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = burstSuppression.html; sourceTree = "<group>"; };
 		5C4DB5941808F99400F6849A /* CBTextViewMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTextViewMethods.h; sourceTree = "<group>"; };
 		5C4DB5951808F99400F6849A /* CBTextViewMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTextViewMethods.m; sourceTree = "<group>"; };
 		5C4DB5981808FE0E00F6849A /* HandoverSectionCustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSectionCustomText.h; sourceTree = "<group>"; };
@@ -1869,8 +1900,27 @@
 			children = (
 				5C4BBFA6183A4BE3002607EC /* CFAMTermsWebViewController.h */,
 				5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */,
+				5C4BBFAA183A4DF9002607EC /* CFAMTermsModel.h */,
+				5C4BBFAB183A4DF9002607EC /* CFAMTermsModel.m */,
+				5C4BBFAE183A4E05002607EC /* HTML pages */,
 			);
 			name = Options;
+			sourceTree = "<group>";
+		};
+		5C4BBFAE183A4E05002607EC /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C4BBFB5183A4E80002607EC /* eeg.html */,
+				5C4BBFB8183A4E90002607EC /* aeeg.html */,
+				5C4BBFBB183A4E9F002607EC /* amplitude.html */,
+				5C4BBFBE183A4EB8002607EC /* artefact.html */,
+				5C4BBFC1183A4EC4002607EC /* electrode.html */,
+				5C4BBFC4183A4ED8002607EC /* impedance.html */,
+				5C4BBFC7183A4EF1002607EC /* burstSuppression.html */,
+				5C4BBFAF183A4E4B002607EC /* upperMargin.html */,
+				5C4BBFB2183A4E6B002607EC /* lowerMargin.html */,
+			);
+			name = "HTML pages";
 			sourceTree = "<group>";
 		};
 		5C4DC70E17E5340C00412C72 /* UAModalPanelItems */ = {
@@ -3351,6 +3401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4BBFC2183A4EC4002607EC /* electrode.html in Resources */,
 				5C940A6C166E37FE0044A7D1 /* InfoPlist.strings in Resources */,
 				5C940AAA166E38E20044A7D1 /* KKPasscodeLock.bundle in Resources */,
 				5C940AD1166E391D0044A7D1 /* Kal.bundle in Resources */,
@@ -3383,6 +3434,7 @@
 				5C940BD3166E3C2F0044A7D1 /* gastroschisis0.html in Resources */,
 				5C940CDB166E47D80044A7D1 /* gastroschisis1.html in Resources */,
 				5C940BD6166E3C2F0044A7D1 /* hfov0.html in Resources */,
+				5C4BBFB6183A4E80002607EC /* eeg.html in Resources */,
 				5C940BD7166E3C2F0044A7D1 /* hfov1.html in Resources */,
 				5C940BDE166E3C2F0044A7D1 /* pulmonaryHaem0.html in Resources */,
 				5C940CE0166E48190044A7D1 /* pulmonaryHaem1.html in Resources */,
@@ -3424,12 +3476,14 @@
 				5C0E0602178F51CB00768739 /* adrenalinePresentation.html in Resources */,
 				5C0E0605178F51D900768739 /* adrenalineDose.html in Resources */,
 				5C0E0608178F51E800768739 /* adrenalinePreparation.html in Resources */,
+				5C4BBFC8183A4EF1002607EC /* burstSuppression.html in Resources */,
 				5C0E060B178F51FC00768739 /* adrenalineStability.html in Resources */,
 				5C0E060E178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
 				5C0E0611178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */,
 				5C0E0614178F523900768739 /* adrenalineSideEffects.html in Resources */,
 				5C0E0617178F524700768739 /* adrenalineMonitoring.html in Resources */,
 				5C0E061A178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
+				5C4BBFBF183A4EB8002607EC /* artefact.html in Resources */,
 				5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */,
 				5C0E0621178F816700768739 /* gentamicinPharmacology.html in Resources */,
 				5C0E0624178F82E300768739 /* gentamicinIndications.html in Resources */,
@@ -3456,10 +3510,12 @@
 				5C0E065B178F946F00768739 /* amoxicillinContraindications.html in Resources */,
 				5C0E065E178F948000768739 /* amoxicillinSideEffects.html in Resources */,
 				5C0E0661178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
+				5C4BBFBC183A4E9F002607EC /* amplitude.html in Resources */,
 				5C0E0664178F94CE00768739 /* amoxicillinLicence.html in Resources */,
 				5C0E0667178F94DF00768739 /* amoxicillinReferences.html in Resources */,
 				5C52F3AF1791655E000CFD80 /* vitaminKPharmacology.html in Resources */,
 				5C52F3B21791656D000CFD80 /* vitaminKIndications.html in Resources */,
+				5C4BBFB0183A4E4B002607EC /* upperMargin.html in Resources */,
 				5C52F3B51791657C000CFD80 /* vitaminKPresentation.html in Resources */,
 				5C52F3B817916589000CFD80 /* vitaminKDose.html in Resources */,
 				5C52F3BB1791659B000CFD80 /* vitaminKPreparation.html in Resources */,
@@ -3512,6 +3568,7 @@
 				5CB5BC2F17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */,
 				5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */,
 				5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */,
+				5C4BBFB9183A4E90002607EC /* aeeg.html in Resources */,
 				5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */,
 				5C56F67618023B9200665E22 /* App_icon_80x80.png in Resources */,
 				5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */,
@@ -3520,6 +3577,7 @@
 				5C0B9B8717D2022B000B9E34 /* trackball highlighted.png in Resources */,
 				5C0B9B8817D2022B000B9E34 /* trackball highlighted.pxm in Resources */,
 				5CB5BC3217FF6AC5007F3921 /* Demo.png in Resources */,
+				5C4BBFB3183A4E6B002607EC /* lowerMargin.html in Resources */,
 				5C0B9B8917D2022B000B9E34 /* trackball highlighted@2x.png in Resources */,
 				5C0B9B8A17D2022B000B9E34 /* trackball highlighted@2x.pxm in Resources */,
 				5C0B9B8B17D2022B000B9E34 /* trackball.png in Resources */,
@@ -3528,6 +3586,7 @@
 				5C0B9B8E17D2022B000B9E34 /* trackball@2x.pxm in Resources */,
 				5C88E74B17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg in Resources */,
 				5C4DC74617E54B4900412C72 /* UAExampleView.xib in Resources */,
+				5C4BBFC5183A4ED8002607EC /* impedance.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3550,6 +3609,7 @@
 				5CD3B04116CF38D500DE362C /* crUSS.html in Resources */,
 				5CD3B04216CF38D500DE362C /* crUSS0.html in Resources */,
 				5CD3B04316CF38D500DE362C /* crUSS1.html in Resources */,
+				5C4BBFBD183A4E9F002607EC /* amplitude.html in Resources */,
 				5CD3B04416CF38D500DE362C /* curosurfIndications.html in Resources */,
 				5CD3B04516CF38D500DE362C /* curosurfDoses2.html in Resources */,
 				5CD3B04616CF38D500DE362C /* curosurfFurtherDoses.html in Resources */,
@@ -3573,6 +3633,7 @@
 				5C7CB1D817FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */,
 				5CD3B05616CF38D500DE362C /* pulmonaryHaem0.html in Resources */,
 				5CD3B05716CF38D500DE362C /* pulmonaryHaem1.html in Resources */,
+				5C4BBFBA183A4E90002607EC /* aeeg.html in Resources */,
 				5CD3B05816CF38D500DE362C /* pulmonaryHaem2.html in Resources */,
 				5CD3B05916CF38D500DE362C /* pulmonaryHaem3.html in Resources */,
 				5CD3B05A16CF38D500DE362C /* rop21.html in Resources */,
@@ -3596,6 +3657,7 @@
 				5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */,
 				5C4350B8178DE27100E926B1 /* benzylpenicillinPharmacology.html in Resources */,
 				5C4350BE178DFD8E00E926B1 /* benzylpenicillinIndications.html in Resources */,
+				5C4BBFB1183A4E4B002607EC /* upperMargin.html in Resources */,
 				5C0E05E0178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */,
 				5C0E05E3178EF7D500768739 /* benzylpenicillinMonitoring.html in Resources */,
 				5C0E05E6178EF7F100768739 /* benzylpenicillinSideEffects.html in Resources */,
@@ -3614,6 +3676,7 @@
 				5C0E060F178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
 				5C0E0612178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */,
 				5C0E0615178F523900768739 /* adrenalineSideEffects.html in Resources */,
+				5C4BBFC0183A4EB8002607EC /* artefact.html in Resources */,
 				5C0E0618178F524700768739 /* adrenalineMonitoring.html in Resources */,
 				5C0E061B178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
 				5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */,
@@ -3622,11 +3685,13 @@
 				5C0E0628178F82F500768739 /* gentamicinPresentation.html in Resources */,
 				5C0E062B178F830500768739 /* gentamicinDose.html in Resources */,
 				5CB5BC3617FF7318007F3921 /* Demo02.png in Resources */,
+				5C4BBFB4183A4E6B002607EC /* lowerMargin.html in Resources */,
 				5C0E062E178F831800768739 /* gentamicinPreparation.html in Resources */,
 				5C0E0631178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0634178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
 				5C0E0637178F834C00768739 /* gentamicinContraindications.html in Resources */,
 				5C0E063A178F835900768739 /* gentamicinInteractions.html in Resources */,
+				5C4BBFC3183A4EC4002607EC /* electrode.html in Resources */,
 				5C0E063D178F836700768739 /* gentamicinSideEffects.html in Resources */,
 				5C0E0640178F837800768739 /* gentamicinMonitoring.html in Resources */,
 				5C0E0643178F838600768739 /* gentamicinReferences.html in Resources */,
@@ -3643,6 +3708,7 @@
 				5C0E0662178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
 				5C0E0665178F94CE00768739 /* amoxicillinLicence.html in Resources */,
 				5C56F67118023B5A00665E22 /* App_icon_58x58.png in Resources */,
+				5C4BBFC9183A4EF1002607EC /* burstSuppression.html in Resources */,
 				5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */,
 				5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */,
 				5C52F3B31791656D000CFD80 /* vitaminKIndications.html in Resources */,
@@ -3664,6 +3730,7 @@
 				5CA3C12617924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */,
 				5CA3C12917924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */,
 				5CA3C12C1792417E002AB53D /* vancomycinMonitoring.html in Resources */,
+				5C4BBFC6183A4ED8002607EC /* impedance.html in Resources */,
 				5CA3C12F1792418C002AB53D /* vancomycinContraindications.html in Resources */,
 				5CA3C13217924198002AB53D /* vancomycinInteractions.html in Resources */,
 				5C56F66E1802389500665E22 /* dismiss2_iOS7.png in Resources */,
@@ -3673,6 +3740,7 @@
 				5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */,
 				5C51D8C8179329FC004A7FF5 /* vitaminsPharmacology.html in Resources */,
 				5C51D8CB17932A0E004A7FF5 /* vitaminsIndications.html in Resources */,
+				5C4BBFB7183A4E80002607EC /* eeg.html in Resources */,
 				5C51D8CE17932A1B004A7FF5 /* vitaminsPresentation.html in Resources */,
 				5C51D8D117932A26004A7FF5 /* vitaminsDose.html in Resources */,
 				5C51D8D417932A34004A7FF5 /* vitaminsAdministration.html in Resources */,
@@ -3779,6 +3847,7 @@
 				5C940BE6166E3C2F0044A7D1 /* TransportVentilatorViewController.m in Sources */,
 				5C940BE7166E3C2F0044A7D1 /* UVCUACViewController.m in Sources */,
 				5C940BEA166E3C2F0044A7D1 /* WeightConversionViewController.m in Sources */,
+				5C4BBFAC183A4DF9002607EC /* CFAMTermsModel.m in Sources */,
 				5C940C03166E3C5B0044A7D1 /* ActionSheetPickerViewController.m in Sources */,
 				5C940C05166E3C5B0044A7D1 /* PhototherapyViewController.m in Sources */,
 				5C940C06166E3C5B0044A7D1 /* PhototherapyGestationViewController.m in Sources */,
@@ -4029,6 +4098,7 @@
 				5CD3AFFF16CF38D500DE362C /* Preferences.m in Sources */,
 				5CD3B00016CF38D500DE362C /* RoundImage.m in Sources */,
 				5CD3B00116CF38D500DE362C /* BilirubinResult.m in Sources */,
+				5C4BBFAD183A4DF9002607EC /* CFAMTermsModel.m in Sources */,
 				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
 				5CD3B00316CF38D500DE362C /* Screen.m in Sources */,
 				5CD3B00416CF38D500DE362C /* GrowthChart.m in Sources */,
