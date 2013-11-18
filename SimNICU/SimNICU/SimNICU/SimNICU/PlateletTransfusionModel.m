@@ -20,14 +20,11 @@
     
     // Section One
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 190.0f)];
-    webView.header = @"Transfusion Criteria";
-    webView.resource = @"platelets";
-    webView.cellIdentifier = @"CellIdentifier";
-    webView.heightForRowAtIndexPath = @130.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 125.0f)
+                                         header:NSLocalizedString(@"Transfusion Criteria", nil)
+                                       resource:@"platelets"
+                                 cellIdentifier:@"CellIdentifier"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     return webViewSections;

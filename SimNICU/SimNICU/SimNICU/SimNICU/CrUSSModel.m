@@ -20,26 +20,20 @@
     
     // Section One
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 330.0f)];
-    webView.header = @"Indications";
-    webView.resource = @"crUSS0"; // could delete this
-    webView.cellIdentifier = @"cell0";
-    webView.heightForRowAtIndexPath = @335.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 330.0f)
+                                         header:NSLocalizedString(@"Indications", nil)
+                                       resource:@"crUSS0"
+                                 cellIdentifier:@"cell0"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     // Section Two
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [[CBWebView alloc] initWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 170.0f)];
-    webView.header = @"Timings of scans";
-    webView.resource = @"crUSS1";
-    webView.cellIdentifier = @"cell1";
-    webView.heightForRowAtIndexPath = @175.0f;
-    [webView loadHMTLPageWithFilename:webView.resource];
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 170.0f)
+                                         header:NSLocalizedString(@"Timings of scans", nil)
+                                       resource:@"crUSS1"
+                                 cellIdentifier:@"cell1"];
     [webViewRows addObject:webView];
-    
     [webViewSections addObject:webViewRows];
     
     return webViewSections;

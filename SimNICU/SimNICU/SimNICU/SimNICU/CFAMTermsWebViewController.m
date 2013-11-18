@@ -31,7 +31,7 @@
 	
     [CBTrackers logEvent:@"CFAM/Terms"];
     
-    self.title = NSLocalizedString(@"Terms & Abbreviations", nil);
+    self.title = NSLocalizedString(@"Terms", nil);
 }
 
 - (void)didReceiveMemoryWarning

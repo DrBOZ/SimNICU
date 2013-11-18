@@ -1912,9 +1912,9 @@
 			children = (
 				5C4BBFB5183A4E80002607EC /* eeg.html */,
 				5C4BBFB8183A4E90002607EC /* aeeg.html */,
-				5C4BBFBB183A4E9F002607EC /* amplitude.html */,
-				5C4BBFBE183A4EB8002607EC /* artefact.html */,
 				5C4BBFC1183A4EC4002607EC /* electrode.html */,
+				5C4BBFBE183A4EB8002607EC /* artefact.html */,
+				5C4BBFBB183A4E9F002607EC /* amplitude.html */,
 				5C4BBFC4183A4ED8002607EC /* impedance.html */,
 				5C4BBFC7183A4EF1002607EC /* burstSuppression.html */,
 				5C4BBFAF183A4E4B002607EC /* upperMargin.html */,
