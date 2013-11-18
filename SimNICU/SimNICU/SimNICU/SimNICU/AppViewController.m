@@ -32,6 +32,7 @@
 #import "BloodProductsViewController.h"
 #import "CalculatorViewController.h"
 #import "CFAMOptionsTableViewController.h"
+#import "CFAMInterpretationWebViewController.h"
 #import "CoolingTableViewController.h"
 #import "CurosurfViewController.h"
 #import "CDHViewController.h"
@@ -1260,7 +1261,8 @@
         
         else if ([thisScreenType isEqualToString:@"CFAM"])
         {
-            CFAMOptionsTableViewController *vc = [[CFAMOptionsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            // CFAMOptionsTableViewController *vc = [[CFAMOptionsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            CFAMInterpretationWebViewController *vc = [CFAMInterpretationWebViewController new];
             
             [self.navigationController pushViewController:vc animated:YES];
         }

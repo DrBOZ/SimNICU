@@ -23,6 +23,28 @@
 		5C06D4C21803C54400A3B46C /* VitKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C01803C54400A3B46C /* VitKTableViewController.m */; };
 		5C06D4C51803C72400A3B46C /* VitKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */; };
 		5C06D4C61803C72400A3B46C /* VitKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */; };
+		5C0700A1183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0700A0183A7B06001EF769 /* CFAMInterpretationWebViewController.m */; };
+		5C0700A2183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0700A0183A7B06001EF769 /* CFAMInterpretationWebViewController.m */; };
+		5C0700A5183A7B1D001EF769 /* CFAMInterpretationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0700A4183A7B1D001EF769 /* CFAMInterpretationModel.m */; };
+		5C0700A6183A7B1D001EF769 /* CFAMInterpretationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0700A4183A7B1D001EF769 /* CFAMInterpretationModel.m */; };
+		5C0700AD183A7BB0001EF769 /* CFAMNormal.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700AC183A7BB0001EF769 /* CFAMNormal.html */; };
+		5C0700AE183A7BB0001EF769 /* CFAMNormal.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700AC183A7BB0001EF769 /* CFAMNormal.html */; };
+		5C0700B0183A7BC0001EF769 /* CFAMModeratelyAbnormal.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700AF183A7BC0001EF769 /* CFAMModeratelyAbnormal.html */; };
+		5C0700B1183A7BC0001EF769 /* CFAMModeratelyAbnormal.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700AF183A7BC0001EF769 /* CFAMModeratelyAbnormal.html */; };
+		5C0700B3183A7BCF001EF769 /* CFAMSeverelyAbnormal.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700B2183A7BCF001EF769 /* CFAMSeverelyAbnormal.html */; };
+		5C0700B4183A7BCF001EF769 /* CFAMSeverelyAbnormal.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700B2183A7BCF001EF769 /* CFAMSeverelyAbnormal.html */; };
+		5C0700BC183A8739001EF769 /* CFAMModeratelyAbnormal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700BB183A8739001EF769 /* CFAMModeratelyAbnormal.jpg */; };
+		5C0700BD183A8739001EF769 /* CFAMModeratelyAbnormal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700BB183A8739001EF769 /* CFAMModeratelyAbnormal.jpg */; };
+		5C0700BF183A8915001EF769 /* CFAMNormal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700BE183A8915001EF769 /* CFAMNormal.jpg */; };
+		5C0700C0183A8915001EF769 /* CFAMNormal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700BE183A8915001EF769 /* CFAMNormal.jpg */; };
+		5C0700C2183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700C1183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg */; };
+		5C0700C3183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700C1183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg */; };
+		5C0700C5183A8C69001EF769 /* CFAMSeizures.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700C4183A8C69001EF769 /* CFAMSeizures.html */; };
+		5C0700C6183A8C69001EF769 /* CFAMSeizures.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700C4183A8C69001EF769 /* CFAMSeizures.html */; };
+		5C0700C8183A8D41001EF769 /* CFAMSeizures02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700C7183A8D41001EF769 /* CFAMSeizures02.jpg */; };
+		5C0700C9183A8D41001EF769 /* CFAMSeizures02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700C7183A8D41001EF769 /* CFAMSeizures02.jpg */; };
+		5C0700CB183A8D51001EF769 /* CFAMSeizures01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700CA183A8D51001EF769 /* CFAMSeizures01.jpg */; };
+		5C0700CC183A8D51001EF769 /* CFAMSeizures01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700CA183A8D51001EF769 /* CFAMSeizures01.jpg */; };
 		5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */; };
@@ -863,6 +885,19 @@
 		5C06D4C01803C54400A3B46C /* VitKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VitKTableViewController.m; sourceTree = "<group>"; };
 		5C06D4C31803C72400A3B46C /* VitKTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VitKTableViewCell.h; sourceTree = "<group>"; };
 		5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VitKTableViewCell.m; sourceTree = "<group>"; };
+		5C07009F183A7B06001EF769 /* CFAMInterpretationWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMInterpretationWebViewController.h; sourceTree = "<group>"; };
+		5C0700A0183A7B06001EF769 /* CFAMInterpretationWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMInterpretationWebViewController.m; sourceTree = "<group>"; };
+		5C0700A3183A7B1D001EF769 /* CFAMInterpretationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMInterpretationModel.h; sourceTree = "<group>"; };
+		5C0700A4183A7B1D001EF769 /* CFAMInterpretationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMInterpretationModel.m; sourceTree = "<group>"; };
+		5C0700AC183A7BB0001EF769 /* CFAMNormal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CFAMNormal.html; sourceTree = "<group>"; };
+		5C0700AF183A7BC0001EF769 /* CFAMModeratelyAbnormal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CFAMModeratelyAbnormal.html; sourceTree = "<group>"; };
+		5C0700B2183A7BCF001EF769 /* CFAMSeverelyAbnormal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CFAMSeverelyAbnormal.html; sourceTree = "<group>"; };
+		5C0700BB183A8739001EF769 /* CFAMModeratelyAbnormal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CFAMModeratelyAbnormal.jpg; sourceTree = "<group>"; };
+		5C0700BE183A8915001EF769 /* CFAMNormal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CFAMNormal.jpg; sourceTree = "<group>"; };
+		5C0700C1183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CFAMSeverelyAbnormal.jpg; sourceTree = "<group>"; };
+		5C0700C4183A8C69001EF769 /* CFAMSeizures.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CFAMSeizures.html; sourceTree = "<group>"; };
+		5C0700C7183A8D41001EF769 /* CFAMSeizures02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CFAMSeizures02.jpg; sourceTree = "<group>"; };
+		5C0700CA183A8D51001EF769 /* CFAMSeizures01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CFAMSeizures01.jpg; sourceTree = "<group>"; };
 		5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartPhototherapyDataSource.h; sourceTree = "<group>"; };
 		5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartPhototherapyDataSource.m; sourceTree = "<group>"; };
 		5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted.png"; sourceTree = "<group>"; };
@@ -1647,6 +1682,22 @@
 			name = "Specific Drug View Controllers";
 			sourceTree = "<group>";
 		};
+		5C0700A7183A7B25001EF769 /* HTML pages */ = {
+			isa = PBXGroup;
+			children = (
+				5C0700AC183A7BB0001EF769 /* CFAMNormal.html */,
+				5C0700BE183A8915001EF769 /* CFAMNormal.jpg */,
+				5C0700AF183A7BC0001EF769 /* CFAMModeratelyAbnormal.html */,
+				5C0700BB183A8739001EF769 /* CFAMModeratelyAbnormal.jpg */,
+				5C0700B2183A7BCF001EF769 /* CFAMSeverelyAbnormal.html */,
+				5C0700C1183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg */,
+				5C0700C4183A8C69001EF769 /* CFAMSeizures.html */,
+				5C0700CA183A8D51001EF769 /* CFAMSeizures01.jpg */,
+				5C0700C7183A8D41001EF769 /* CFAMSeizures02.jpg */,
+			);
+			name = "HTML pages";
+			sourceTree = "<group>";
+		};
 		5C0B9B7517D201F3000B9E34 /* UDBarTrackballItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -1976,6 +2027,11 @@
 		5C4BBFCE183A6398002607EC /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				5C07009F183A7B06001EF769 /* CFAMInterpretationWebViewController.h */,
+				5C0700A0183A7B06001EF769 /* CFAMInterpretationWebViewController.m */,
+				5C0700A3183A7B1D001EF769 /* CFAMInterpretationModel.h */,
+				5C0700A4183A7B1D001EF769 /* CFAMInterpretationModel.m */,
+				5C0700A7183A7B25001EF769 /* HTML pages */,
 			);
 			name = Summary;
 			sourceTree = "<group>";
@@ -3477,6 +3533,7 @@
 				5C940A6C166E37FE0044A7D1 /* InfoPlist.strings in Resources */,
 				5C940AAA166E38E20044A7D1 /* KKPasscodeLock.bundle in Resources */,
 				5C940AD1166E391D0044A7D1 /* Kal.bundle in Resources */,
+				5C0700B0183A7BC0001EF769 /* CFAMModeratelyAbnormal.html in Resources */,
 				5C940AD6166E393B0044A7D1 /* iRate.bundle in Resources */,
 				5C940B02166E3B110044A7D1 /* AppViewController.xib in Resources */,
 				5C940B08166E3B420044A7D1 /* EnterWeightViewController.xib in Resources */,
@@ -3497,7 +3554,9 @@
 				5C940BC8166E3C2F0044A7D1 /* cdh2.html in Resources */,
 				5C940CD6166E47420044A7D1 /* cdh3.html in Resources */,
 				5C940BCB166E3C2F0044A7D1 /* earlyCare0.html in Resources */,
+				5C0700C2183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg in Resources */,
 				5C940BCC166E3C2F0044A7D1 /* earlyCare1.html in Resources */,
+				5C0700BF183A8915001EF769 /* CFAMNormal.jpg in Resources */,
 				5C940BCD166E3C2F0044A7D1 /* earlyCare2.html in Resources */,
 				5C940BCE166E3C2F0044A7D1 /* earlyCareNICUAdmission.html in Resources */,
 				5C940BCF166E3C2F0044A7D1 /* earlyCareVentStrategies.html in Resources */,
@@ -3543,12 +3602,14 @@
 				5C0E05EE178EF83400768739 /* benzylpenicillinPreparation.html in Resources */,
 				5C0E05F1178EF86B00768739 /* benzylpenicillinDose.html in Resources */,
 				5C0E05F4178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */,
+				5C0700C8183A8D41001EF769 /* CFAMSeizures02.jpg in Resources */,
 				5C0E05FC178F51AA00768739 /* adrenalinePharmacology.html in Resources */,
 				5C0E05FF178F51BC00768739 /* adrenalineIndications.html in Resources */,
 				5C0E0602178F51CB00768739 /* adrenalinePresentation.html in Resources */,
 				5C0E0605178F51D900768739 /* adrenalineDose.html in Resources */,
 				5C0E0608178F51E800768739 /* adrenalinePreparation.html in Resources */,
 				5C4BBFC8183A4EF1002607EC /* burstSuppression.html in Resources */,
+				5C0700C5183A8C69001EF769 /* CFAMSeizures.html in Resources */,
 				5C0E060B178F51FC00768739 /* adrenalineStability.html in Resources */,
 				5C0E060E178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
 				5C0E0611178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */,
@@ -3574,11 +3635,13 @@
 				5C0E0642178F838600768739 /* gentamicinReferences.html in Resources */,
 				5C0E0645178F83A500768739 /* gentamicinLicenceStatus.html in Resources */,
 				5C0E0649178F93F900768739 /* amoxicillinPharmacology.html in Resources */,
+				5C0700B3183A7BCF001EF769 /* CFAMSeverelyAbnormal.html in Resources */,
 				5C0E064C178F940B00768739 /* amoxicillinIndications.html in Resources */,
 				5C0E064F178F941D00768739 /* amoxicillinPresentation.html in Resources */,
 				5C0E0652178F942C00768739 /* amoxicillinDose.html in Resources */,
 				5C0E0655178F943C00768739 /* amoxicillinPreparation.html in Resources */,
 				5C0E0658178F945B00768739 /* amoxicillinIncompatibilities.html in Resources */,
+				5C0700AD183A7BB0001EF769 /* CFAMNormal.html in Resources */,
 				5C0E065B178F946F00768739 /* amoxicillinContraindications.html in Resources */,
 				5C0E065E178F948000768739 /* amoxicillinSideEffects.html in Resources */,
 				5C0E0661178F94BE00768739 /* amoxicillinMonitoring.html in Resources */,
@@ -3647,7 +3710,9 @@
 				5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */,
 				5C0B9B8517D2022B000B9E34 /* trackball blue highlighted@2x.png in Resources */,
 				5C0B9B8617D2022B000B9E34 /* trackball blue highlighted@2x.pxm in Resources */,
+				5C0700BC183A8739001EF769 /* CFAMModeratelyAbnormal.jpg in Resources */,
 				5C0B9B8717D2022B000B9E34 /* trackball highlighted.png in Resources */,
+				5C0700CB183A8D51001EF769 /* CFAMSeizures01.jpg in Resources */,
 				5C0B9B8817D2022B000B9E34 /* trackball highlighted.pxm in Resources */,
 				5CB5BC3217FF6AC5007F3921 /* Demo.png in Resources */,
 				5C4BBFB3183A4E6B002607EC /* lowerMargin.html in Resources */,
@@ -3672,6 +3737,7 @@
 				5CD3B02816CF38D500DE362C /* Kal.bundle in Resources */,
 				5CD3B02916CF38D500DE362C /* iRate.bundle in Resources */,
 				5CD3B02C16CF38D500DE362C /* AppViewController.xib in Resources */,
+				5C0700C0183A8915001EF769 /* CFAMNormal.jpg in Resources */,
 				5CD3B02D16CF38D500DE362C /* EnterWeightViewController.xib in Resources */,
 				5CD3B03B16CF38D500DE362C /* disclaimer.html in Resources */,
 				5CD3B03C16CF38D500DE362C /* bloodTransfusionCriteria0.html in Resources */,
@@ -3752,6 +3818,7 @@
 				5C0E0615178F523900768739 /* adrenalineSideEffects.html in Resources */,
 				5C4BBFC0183A4EB8002607EC /* artefact.html in Resources */,
 				5C0E0618178F524700768739 /* adrenalineMonitoring.html in Resources */,
+				5C0700CC183A8D51001EF769 /* CFAMSeizures01.jpg in Resources */,
 				5C0E061B178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
 				5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */,
 				5C0E0622178F816700768739 /* gentamicinPharmacology.html in Resources */,
@@ -3760,12 +3827,14 @@
 				5C0E062B178F830500768739 /* gentamicinDose.html in Resources */,
 				5CB5BC3617FF7318007F3921 /* Demo02.png in Resources */,
 				5C4BBFB4183A4E6B002607EC /* lowerMargin.html in Resources */,
+				5C0700BD183A8739001EF769 /* CFAMModeratelyAbnormal.jpg in Resources */,
 				5C0E062E178F831800768739 /* gentamicinPreparation.html in Resources */,
 				5C0E0631178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0634178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
 				5C0E0637178F834C00768739 /* gentamicinContraindications.html in Resources */,
 				5C0E063A178F835900768739 /* gentamicinInteractions.html in Resources */,
 				5C4BBFC3183A4EC4002607EC /* electrode.html in Resources */,
+				5C0700B4183A7BCF001EF769 /* CFAMSeverelyAbnormal.html in Resources */,
 				5C0E063D178F836700768739 /* gentamicinSideEffects.html in Resources */,
 				5C0E0640178F837800768739 /* gentamicinMonitoring.html in Resources */,
 				5C0E0643178F838600768739 /* gentamicinReferences.html in Resources */,
@@ -3784,6 +3853,7 @@
 				5C56F67118023B5A00665E22 /* App_icon_58x58.png in Resources */,
 				5C4BBFC9183A4EF1002607EC /* burstSuppression.html in Resources */,
 				5C0E0668178F94DF00768739 /* amoxicillinReferences.html in Resources */,
+				5C0700C6183A8C69001EF769 /* CFAMSeizures.html in Resources */,
 				5C52F3B01791655E000CFD80 /* vitaminKPharmacology.html in Resources */,
 				5C52F3B31791656D000CFD80 /* vitaminKIndications.html in Resources */,
 				5C52F3B61791657C000CFD80 /* vitaminKPresentation.html in Resources */,
@@ -3791,6 +3861,7 @@
 				5CB5BC3017FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */,
 				5C52F3BC1791659B000CFD80 /* vitaminKPreparation.html in Resources */,
 				5C52F3BF179165B1000CFD80 /* vitaminKContraindications.html in Resources */,
+				5C0700AE183A7BB0001EF769 /* CFAMNormal.html in Resources */,
 				5C52F3C2179165C1000CFD80 /* vitaminKInteractions.html in Resources */,
 				5C52F3C5179165DC000CFD80 /* vitaminKSideEffects.html in Resources */,
 				5C52F3C8179165EB000CFD80 /* vitaminKMonitoring.html in Resources */,
@@ -3800,6 +3871,7 @@
 				5CA3C11A17924123002AB53D /* vancomycinIndications.html in Resources */,
 				5CA3C11D1792412F002AB53D /* vancomycinPresentation.html in Resources */,
 				5CA3C12017924142002AB53D /* vancomycinDose.html in Resources */,
+				5C0700C9183A8D41001EF769 /* CFAMSeizures02.jpg in Resources */,
 				5CA3C1231792414D002AB53D /* vancomycinPreparation.html in Resources */,
 				5CA3C12617924161002AB53D /* vancomycinYSiteCompatibilities.html in Resources */,
 				5CA3C12917924170002AB53D /* vancomycinYSiteIncompatibilities.html in Resources */,
@@ -3830,9 +3902,11 @@
 				5C51D8F017932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */,
 				5C51D8F317932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */,
 				5C51D8F617932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */,
+				5C0700C3183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg in Resources */,
 				5C51D8F917932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */,
 				5C51D8FC17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
+				5C0700B1183A7BC0001EF769 /* CFAMModeratelyAbnormal.html in Resources */,
 				5C51D90217932F09004A7FF5 /* sodiumChlorideReferences.html in Resources */,
 				5C28EAB917FD6691009DDF17 /* ScreenHack01.png in Resources */,
 				5C101D2E17AE99020095E751 /* Default.png in Resources */,
@@ -3877,6 +3951,7 @@
 				5C940ACF166E39130044A7D1 /* UIViewAdditions.m in Sources */,
 				5C940AD7166E393B0044A7D1 /* iRate.m in Sources */,
 				5C940AE6166E39A10044A7D1 /* DCIntrospect.m in Sources */,
+				5C0700A1183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */,
 				5C940AE7166E39A10044A7D1 /* DCStatusBarOverlay.m in Sources */,
 				5C940AE8166E39A10044A7D1 /* DCFrameView.m in Sources */,
 				5C940AE9166E39A10044A7D1 /* DCCrossHairView.m in Sources */,
@@ -4056,6 +4131,7 @@
 				5C4DC73517E5340C00412C72 /* UATitledModalPanel.m in Sources */,
 				5C4DC73717E5340C00412C72 /* UAGradientBackground.m in Sources */,
 				5CD812061803A44C00DABA19 /* FluidRequirementsTableViewController.m in Sources */,
+				5C0700A5183A7B1D001EF769 /* CFAMInterpretationModel.m in Sources */,
 				5C4DC73917E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
 				5C4DC73B17E5340C00412C72 /* UARoundedRectView.m in Sources */,
 				5C4DC74317E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
@@ -4101,6 +4177,7 @@
 				5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */,
 				5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */,
 				5C0F75B81804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
+				5C0700A6183A7B1D001EF769 /* CFAMInterpretationModel.m in Sources */,
 				5CD3AFBD16CF38D500DE362C /* DCIntrospect.m in Sources */,
 				5CD3AFBE16CF38D500DE362C /* DCStatusBarOverlay.m in Sources */,
 				5CD3AFBF16CF38D500DE362C /* DCFrameView.m in Sources */,
@@ -4158,6 +4235,7 @@
 				5CD3AFF316CF38D500DE362C /* PhototherapyUnitsViewController.m in Sources */,
 				5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */,
 				5CD3AFF416CF38D500DE362C /* PhototherapyAddBilirubinResultViewController.m in Sources */,
+				5C0700A2183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */,
 				5CD3AFF516CF38D500DE362C /* PhototherapyHoursOldViewController.m in Sources */,
 				5CD3AFF616CF38D500DE362C /* AbstractActionSheetPicker.m in Sources */,
 				5CD3AFF716CF38D500DE362C /* ActionSheetStringPicker.m in Sources */,

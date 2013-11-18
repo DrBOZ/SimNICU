@@ -55,12 +55,12 @@
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = NSLocalizedString(@"Summary", nil);
+    rowData.text = NSLocalizedString(@"Guide", nil);
     [sectionData.rowData addObject:rowData];
     
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = NSLocalizedString(@"Examples", nil);
-    [sectionData.rowData addObject:rowData];
+//    rowData = [[CBTableViewRowData alloc] init];
+//    rowData.text = NSLocalizedString(@"Examples", nil);
+//    [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
     

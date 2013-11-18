@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "CFAMInterpretationWebViewController.h"
 #import "CFAMIndicationsWebViewController.h"
 #import "CFAMOptionsTableViewController.h"
 #import "CFAMTermsWebViewController.h"
@@ -135,9 +136,9 @@
     {
         if (indexPath.row == 0)
         {
-//            DailySummaryEditorSettingsTableViewController *newViewController = [[DailySummaryEditorSettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-//            
-//            [self.navigationController pushViewController:newViewController animated:YES];
+            CFAMInterpretationWebViewController *vc = [CFAMInterpretationWebViewController new];
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }
         else if (indexPath.row == 1)
         {
