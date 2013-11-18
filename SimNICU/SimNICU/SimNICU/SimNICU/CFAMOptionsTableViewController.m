@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
+#import "CFAMIndicationsWebViewController.h"
 #import "CFAMOptionsTableViewController.h"
 #import "CFAMTermsWebViewController.h"
 #import "CBTableViewSectionData.h"
@@ -106,9 +107,18 @@
     
     if (indexPath.section == 0)
     {
-        CFAMTermsWebViewController *vc = [CFAMTermsWebViewController new];
-        
-        [self.navigationController pushViewController:vc animated:YES];
+        if (indexPath.row == 0)
+        {
+            CFAMTermsWebViewController *vc = [CFAMTermsWebViewController new];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else
+        {
+            CFAMIndicationsWebViewController *vc = [CFAMIndicationsWebViewController new];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     else if (indexPath.section == 1)
     {

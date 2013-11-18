@@ -593,6 +593,12 @@
 		5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */; };
 		5CA3C13D179241D8002AB53D /* vancomycinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13C179241D8002AB53D /* vancomycinReferences.html */; };
 		5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C13C179241D8002AB53D /* vancomycinReferences.html */; };
+		5CA3C67D183A660300E2AA67 /* CFAMIndicationsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3C67C183A660300E2AA67 /* CFAMIndicationsWebViewController.m */; };
+		5CA3C67E183A660300E2AA67 /* CFAMIndicationsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3C67C183A660300E2AA67 /* CFAMIndicationsWebViewController.m */; };
+		5CA3C681183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3C680183A661800E2AA67 /* CFAMIndicationsModel.m */; };
+		5CA3C682183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3C680183A661800E2AA67 /* CFAMIndicationsModel.m */; };
+		5CA3C684183A67EE00E2AA67 /* CFAMIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C683183A67EE00E2AA67 /* CFAMIndications.html */; };
+		5CA3C685183A67EE00E2AA67 /* CFAMIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C683183A67EE00E2AA67 /* CFAMIndications.html */; };
 		5CA3CC1E17B79996002E96DC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC1D17B79996002E96DC /* Default.png */; };
 		5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC1F17B7999F002E96DC /* Default@2x.png */; };
 		5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */; };
@@ -1473,6 +1479,11 @@
 		5CA3C136179241BE002AB53D /* vancomycinDrugMonitoring.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinDrugMonitoring.html; sourceTree = "<group>"; };
 		5CA3C139179241CE002AB53D /* vancomycinLicenceStatus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinLicenceStatus.html; sourceTree = "<group>"; };
 		5CA3C13C179241D8002AB53D /* vancomycinReferences.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinReferences.html; sourceTree = "<group>"; };
+		5CA3C67B183A660300E2AA67 /* CFAMIndicationsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMIndicationsWebViewController.h; sourceTree = "<group>"; };
+		5CA3C67C183A660300E2AA67 /* CFAMIndicationsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMIndicationsWebViewController.m; sourceTree = "<group>"; };
+		5CA3C67F183A661800E2AA67 /* CFAMIndicationsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAMIndicationsModel.h; sourceTree = "<group>"; };
+		5CA3C680183A661800E2AA67 /* CFAMIndicationsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAMIndicationsModel.m; sourceTree = "<group>"; };
+		5CA3C683183A67EE00E2AA67 /* CFAMIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = CFAMIndications.html; sourceTree = "<group>"; };
 		5CA3CC1D17B79996002E96DC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		5CA3CC1F17B7999F002E96DC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -1898,11 +1909,12 @@
 		5C4BBF9E183A48D3002607EC /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				5C4BBFA6183A4BE3002607EC /* CFAMTermsWebViewController.h */,
-				5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */,
-				5C4BBFAA183A4DF9002607EC /* CFAMTermsModel.h */,
-				5C4BBFAB183A4DF9002607EC /* CFAMTermsModel.m */,
-				5C4BBFAE183A4E05002607EC /* HTML pages */,
+				5C4BBFCA183A635F002607EC /* Terms */,
+				5C4BBFCB183A6374002607EC /* Indications */,
+				5C4BBFCC183A637F002607EC /* Electrode Placement */,
+				5C4BBFCD183A638D002607EC /* Monitor Setup */,
+				5C4BBFCE183A6398002607EC /* Summary */,
+				5C4BBFCF183A63A0002607EC /* Examples */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -1921,6 +1933,58 @@
 				5C4BBFB2183A4E6B002607EC /* lowerMargin.html */,
 			);
 			name = "HTML pages";
+			sourceTree = "<group>";
+		};
+		5C4BBFCA183A635F002607EC /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				5C4BBFA6183A4BE3002607EC /* CFAMTermsWebViewController.h */,
+				5C4BBFA7183A4BE3002607EC /* CFAMTermsWebViewController.m */,
+				5C4BBFAA183A4DF9002607EC /* CFAMTermsModel.h */,
+				5C4BBFAB183A4DF9002607EC /* CFAMTermsModel.m */,
+				5C4BBFAE183A4E05002607EC /* HTML pages */,
+			);
+			name = Terms;
+			sourceTree = "<group>";
+		};
+		5C4BBFCB183A6374002607EC /* Indications */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3C67B183A660300E2AA67 /* CFAMIndicationsWebViewController.h */,
+				5CA3C67C183A660300E2AA67 /* CFAMIndicationsWebViewController.m */,
+				5CA3C67F183A661800E2AA67 /* CFAMIndicationsModel.h */,
+				5CA3C680183A661800E2AA67 /* CFAMIndicationsModel.m */,
+				5CA3C67A183A65C600E2AA67 /* HTML page */,
+			);
+			name = Indications;
+			sourceTree = "<group>";
+		};
+		5C4BBFCC183A637F002607EC /* Electrode Placement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Electrode Placement";
+			sourceTree = "<group>";
+		};
+		5C4BBFCD183A638D002607EC /* Monitor Setup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Monitor Setup";
+			sourceTree = "<group>";
+		};
+		5C4BBFCE183A6398002607EC /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Summary;
+			sourceTree = "<group>";
+		};
+		5C4BBFCF183A63A0002607EC /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Examples;
 			sourceTree = "<group>";
 		};
 		5C4DC70E17E5340C00412C72 /* UAModalPanelItems */ = {
@@ -3116,6 +3180,14 @@
 			name = Vancomycin;
 			sourceTree = "<group>";
 		};
+		5CA3C67A183A65C600E2AA67 /* HTML page */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3C683183A67EE00E2AA67 /* CFAMIndications.html */,
+			);
+			name = "HTML page";
+			sourceTree = "<group>";
+		};
 		5CAE2E0A17E6B3B1001823A3 /* CBPhotoCropper */ = {
 			isa = PBXGroup;
 			children = (
@@ -3554,6 +3626,7 @@
 				5CA71F8717FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png in Resources */,
 				5C51D8E017932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */,
 				5C51D8E317932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */,
+				5CA3C684183A67EE00E2AA67 /* CFAMIndications.html in Resources */,
 				5C51D8E617932E8F004A7FF5 /* sodiumChloridePresentation.html in Resources */,
 				5C51D8E917932E9E004A7FF5 /* sodiumChloridePreparation.html in Resources */,
 				5C51D8EC17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */,
@@ -3671,6 +3744,7 @@
 				5C0E0603178F51CB00768739 /* adrenalinePresentation.html in Resources */,
 				5C0E0606178F51D900768739 /* adrenalineDose.html in Resources */,
 				5C56F67718023B9200665E22 /* App_icon_80x80.png in Resources */,
+				5CA3C685183A67EE00E2AA67 /* CFAMIndications.html in Resources */,
 				5C0E0609178F51E800768739 /* adrenalinePreparation.html in Resources */,
 				5C0E060C178F51FC00768739 /* adrenalineStability.html in Resources */,
 				5C0E060F178F521200768739 /* adrenalineYSiteCompatibilities.html in Resources */,
@@ -3887,6 +3961,7 @@
 				5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */,
 				5C0F75B71804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
+				5CA3C681183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */,
 				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
@@ -3924,6 +3999,7 @@
 				5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */,
 				5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */,
 				5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
+				5CA3C67D183A660300E2AA67 /* CFAMIndicationsWebViewController.m in Sources */,
 				5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */,
 				5C101D2417AE4DA50095E751 /* GlucoseLoadController.m in Sources */,
 				5C06D4B91803BD4F00A3B46C /* DrugDosePatientTableViewController.m in Sources */,
@@ -4030,6 +4106,7 @@
 				5CD3AFBF16CF38D500DE362C /* DCFrameView.m in Sources */,
 				5CD3AFC016CF38D500DE362C /* DCCrossHairView.m in Sources */,
 				5CD3AFC116CF38D500DE362C /* CoolButton.m in Sources */,
+				5CA3C67E183A660300E2AA67 /* CFAMIndicationsWebViewController.m in Sources */,
 				5CD3AFC216CF38D500DE362C /* PortraitOnlyNavigationController.m in Sources */,
 				5CD3AFC316CF38D500DE362C /* AppViewController.m in Sources */,
 				5CD3AFC416CF38D500DE362C /* EnterWeightViewController.m in Sources */,
@@ -4185,6 +4262,7 @@
 				5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90E17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
+				5CA3C682183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */,
 				5C8AE93617E2C6A70002BC04 /* BayEditorTableViewController.m in Sources */,
 				5C88570D17E443FB00446E5F /* CBTableViewController.m in Sources */,
 				5C56F63F1802190E00665E22 /* PlateletTransfusionCriteriaViewController.m in Sources */,

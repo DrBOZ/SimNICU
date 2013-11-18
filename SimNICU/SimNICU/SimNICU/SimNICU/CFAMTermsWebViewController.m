@@ -9,10 +9,6 @@
 #import "CFAMTermsWebViewController.h"
 #import "CFAMTermsModel.h"
 
-@interface CFAMTermsWebViewController ()
-
-@end
-
 @implementation CFAMTermsWebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
