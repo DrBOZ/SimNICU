@@ -41,7 +41,7 @@
     
     [CBTrackers logEvent:@"Phototherapy/Graph/Add Bili/Hours Old"];
     
-    self.title = @"Sample Age";
+    self.title = NSLocalizedString(@"Sample Age", nil);
     
     self.view.backgroundColor = [UIColor lightGrayColor];
     

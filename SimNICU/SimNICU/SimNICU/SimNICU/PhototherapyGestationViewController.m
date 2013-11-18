@@ -26,7 +26,7 @@
 	
     [CBTrackers logEvent:@"Phototherapy/Gestation Selector"];
     
-    self.title = @"Gestation";
+    self.title = NSLocalizedString(@"Gestation", nil);
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

@@ -1755,7 +1755,7 @@
         NSString *correctedAge = formattedDates[2];
         
         // display days and corrected age
-        self.displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
+        self.displayAgeTextLabel.text = [NSString stringWithFormat:@"%@ %i (%@)", NSLocalizedString(@"day", nil), [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
     }
     
     self.displayDetailTextLabel.text = [self.selectedPatient returnTwoLineDetailDisplayLabelText];

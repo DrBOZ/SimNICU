@@ -316,7 +316,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Patient";
+            cell.textLabel.text = NSLocalizedString(@"Patient", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.selectedPatient.firstname, self.selectedPatient.lastname];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             

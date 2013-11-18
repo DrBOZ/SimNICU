@@ -99,7 +99,7 @@
     [super viewDidLoad];
     
     // set title
-    self.title = @"Daily Summary";
+    self.title = NSLocalizedString(@"Daily Summary", nil);
     
     selectedPatientInBay = [self.selectedPatientInBayNSNumber intValue];
     selectedBay = [self.selectedBayNSNumber intValue];
@@ -341,7 +341,7 @@
             // set rightSidePointToPrint
             rightSidePointToPrint = verticalPointToPrint;
             
-            [self drawHeaderText:@"Background"
+            [self drawHeaderText:NSLocalizedString(@"Background", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.background
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -349,7 +349,7 @@
 #pragma mark Active Problems
         else if ([section.sectionName isEqual:@"Active Problems"] && ([self.selectedPatient.activeProblems length] > 0))
         {
-            [self drawHeaderText:@"Active Problems"
+            [self drawHeaderText:NSLocalizedString(@"Active Problems", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.activeProblems
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -357,7 +357,7 @@
 #pragma mark Resolved Problems
         else if ([section.sectionName isEqual:@"Resolved Problems"] && ([self.selectedPatient.resolvedProblems length] > 0))
         {
-            [self drawHeaderText:@"Resolved Problems"
+            [self drawHeaderText:NSLocalizedString(@"Resolved Problems", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.resolvedProblems
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -365,7 +365,7 @@
 #pragma mark Recent Significant Events
         else if ([section.sectionName isEqual:@"Recent Significant Events"] && ([self.selectedPatient.recentSignificantEvents length] > 0))
         {
-            [self drawHeaderText:@"Recent Significant Events"
+            [self drawHeaderText:NSLocalizedString(@"Recent Significant Events", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.recentSignificantEvents
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -373,7 +373,7 @@
 #pragma mark Recent Ventilation & Sedation
         else if ([section.sectionName isEqual:@"Ventilation & Sedation"] && ([self.selectedPatient.ventilationAndSedation length] > 0))
         {
-            [self drawHeaderText:@"Ventilation & Sedation"
+            [self drawHeaderText:NSLocalizedString(@"Ventilation & Sedation", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.ventilationAndSedation
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -381,7 +381,7 @@
 #pragma mark Recent CXR
         else if ([section.sectionName isEqual:@"CXR"] && ([self.selectedPatient.cxr length] > 0))
         {
-            [self drawHeaderText:@"CXR"
+            [self drawHeaderText:NSLocalizedString(@"CXR", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.cxr
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -389,7 +389,7 @@
 #pragma mark Cardiovascular
         else if ([section.sectionName isEqual:@"Cardiovascular"] && ([self.selectedPatient.cardiovascular length] > 0))
         {
-            [self drawHeaderText:@"Cardiovascular"
+            [self drawHeaderText:NSLocalizedString(@"Cardiovascular", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.cardiovascular
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -397,7 +397,7 @@
 #pragma mark Lines
         else if ([section.sectionName isEqual:@"Lines"] && ([self.selectedPatient.lines length] > 0))
         {
-            [self drawHeaderText:@"Lines"
+            [self drawHeaderText:NSLocalizedString(@"Lines", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.lines
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -405,7 +405,7 @@
 #pragma mark Feeds & Fluids
         else if ([section.sectionName isEqual:@"Feeds & Fluids"] && ([self.selectedPatient.feedsAndFluids length] > 0))
         {
-            [self drawHeaderText:@"Feeds & Fluids"
+            [self drawHeaderText:NSLocalizedString(@"Feeds & Fluids", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.feedsAndFluids
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -413,7 +413,7 @@
 #pragma mark Fluid Balance
         else if ([section.sectionName isEqual:@"Fluid Balance"] && ([self.selectedPatient.fluidBalance length] > 0))
         {
-            [self drawHeaderText:@"Fluid Balance"
+            [self drawHeaderText:NSLocalizedString(@"Fluid Balance", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.fluidBalance
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -421,7 +421,7 @@
 #pragma mark Biochemistry
         else if ([section.sectionName isEqual:@"Biochemistry"] && ([self.selectedPatient.electrolytes length] > 0))
         {
-            [self drawHeaderText:@"Biochemistry"
+            [self drawHeaderText:NSLocalizedString(@"Biochemistry", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.electrolytes
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -429,7 +429,7 @@
 #pragma mark Jaundice
         else if ([section.sectionName isEqual:@"Jaundice"] && ([self.selectedPatient.jaundice length] > 0))
         {
-            [self drawHeaderText:@"Jaundice"
+            [self drawHeaderText:NSLocalizedString(@"Jaundice", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.jaundice
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -437,7 +437,7 @@
 #pragma mark Sepsis
         else if ([section.sectionName isEqual:@"Sepsis"] && ([self.selectedPatient.sepsis length] > 0))
         {
-            [self drawHeaderText:@"Sepsis"
+            [self drawHeaderText:NSLocalizedString(@"Sepsis", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.sepsis
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -445,7 +445,7 @@
 #pragma mark Drugs
         else if ([section.sectionName isEqual:@"Drugs"] && ([self.selectedPatient.drugs length] > 0))
         {
-            [self drawHeaderText:@"Drugs"
+            [self drawHeaderText:NSLocalizedString(@"Drugs", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.drugs
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -453,7 +453,7 @@
 #pragma mark ROP
         else if ([section.sectionName isEqual:@"ROP"] && ([self.selectedPatient.rop length] > 0))
         {
-            [self drawHeaderText:@"ROP"
+            [self drawHeaderText:NSLocalizedString(@"ROP", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.rop
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -461,7 +461,7 @@
 #pragma mark Neurology & Cranial USS
         else if ([section.sectionName isEqual:@"Neurology & Cranial USS"] && ([self.selectedPatient.cranialUSS length] > 0))
         {
-            [self drawHeaderText:@"Neurology & Cranial USS"
+            [self drawHeaderText:NSLocalizedString(@"Neurology & Cranial USS", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.cranialUSS
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -469,7 +469,7 @@
 #pragma mark Parents & Social
         else if ([section.sectionName isEqual:@"Parents & Social"] && ([self.selectedPatient.parentsAndSocial length] > 0))
         {
-            [self drawHeaderText:@"Parents & Social"
+            [self drawHeaderText:NSLocalizedString(@"Parents & Social", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.parentsAndSocial
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -477,7 +477,7 @@
 #pragma mark Examination
         else if ([section.sectionName isEqual:@"Examination"] && ([self.selectedPatient.impression length] > 0))
         {
-            [self drawHeaderText:@"Examination"
+            [self drawHeaderText:NSLocalizedString(@"Examination", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.impression
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -485,7 +485,7 @@
 #pragma mark Summary
         else if ([section.sectionName isEqual:@"Summary"] && ([self.selectedPatient.plan length] > 0))
         {
-            [self drawHeaderText:@"Summary"
+            [self drawHeaderText:NSLocalizedString(@"Summary", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.plan
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
@@ -497,7 +497,7 @@
             
             planWithAddedCarriageReturns = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n", self.selectedPatient.jobs];
             
-            [self drawHeaderText:@"Plan"
+            [self drawHeaderText:NSLocalizedString(@"Plan", nil)
                         withFont:headerFont
                      andBodyText:planWithAddedCarriageReturns
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];

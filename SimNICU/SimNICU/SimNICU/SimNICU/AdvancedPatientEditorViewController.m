@@ -1291,7 +1291,7 @@
             NSString *correctedAge = formattedDates[2];
             
             // display days and corrected age
-            displayAgeTextLabel.text = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
+            displayAgeTextLabel.text = [NSString stringWithFormat:@"%@ %i (%@)", NSLocalizedString(@"day", nil), [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
         }
         
         // display gestation and corrected gestation, birth weight and working weight
@@ -5573,12 +5573,12 @@
     UDBarTrackballItem *trackball = [[UDBarTrackballItem alloc] initForTextView:textView];
     
     // create left custom text button
-    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"done"
+    CBBarCustomTextItem *customText1 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:NSLocalizedString(@"done", nil)
                                                               insertingTextViewText:@""];
     customText1.delegate = self;
     
     // create right custom text button
-    CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:@"custom"
+    CBBarCustomTextItem *customText2 = [[CBBarCustomTextItem alloc] initForTextView:textView withButtonText:NSLocalizedString(@"custom", nil)
                                                               insertingTextViewText:@""];
     customText2.delegate = self;
     

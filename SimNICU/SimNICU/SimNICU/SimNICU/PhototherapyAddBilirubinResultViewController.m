@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
 	
-    self.title = @"Add Result";
+    self.title = NSLocalizedString(@"Add Result", nil);
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
     
@@ -189,7 +189,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Sample Age";
+            cell.textLabel.text = NSLocalizedString(@"Sample Age", nil);
             
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -245,7 +245,7 @@
             
             cell.accessoryView = self.bilirubinTextField;
             
-            cell.textLabel.text = @"Serum Bilirubin";
+            cell.textLabel.text = NSLocalizedString(@"Serum Bilirubin", nil);
             
             if (self.bilirubinLevel)
             {
