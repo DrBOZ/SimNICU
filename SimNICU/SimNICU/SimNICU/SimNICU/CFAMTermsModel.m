@@ -20,7 +20,7 @@
     
     // EEG
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 45.0f)
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 110.0f)
                                          header:NSLocalizedString(@"EEG", nil)
                                        resource:@"eeg"
                                  cellIdentifier:@"EEG"];
@@ -29,7 +29,7 @@
     
     // aEEG
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 45.0f)
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 90.0f)
                                          header:NSLocalizedString(@"aEEG", nil)
                                        resource:@"aeeg"
                                  cellIdentifier:@"aEEG"];
@@ -38,7 +38,7 @@
     
     // electrode
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 45.0f)
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 90.0f)
                                          header:NSLocalizedString(@"Electrode", nil)
                                        resource:@"electrode"
                                  cellIdentifier:@"Electrode"];
@@ -47,7 +47,7 @@
     
     // artefact
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 45.0f)
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 130.0f)
                                          header:NSLocalizedString(@"Artefact", nil)
                                        resource:@"artefact"
                                  cellIdentifier:@"Artefact"];
@@ -56,7 +56,7 @@
     
     // amplitude
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 45.0f)
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 110.0f)
                                          header:NSLocalizedString(@"Amplitude", nil)
                                        resource:@"amplitude"
                                  cellIdentifier:@"Amplitude"];
@@ -65,7 +65,7 @@
     
     // impedance
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
-    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 45.0f)
+    webView = [CBWebView createWebViewWithFrame:CGRectMake(10.0f, 5.0f, 300.0f, 70.0f)
                                          header:NSLocalizedString(@"Impedance", nil)
                                        resource:@"impedance"
                                  cellIdentifier:@"Impedance"];
