@@ -13,6 +13,10 @@
 #import "CustomText.h"
 
 @interface CustomTextEditorTableViewController () <UITextViewDelegate>
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 @property (nonatomic, strong) UITextView *customTextView;
 
@@ -26,8 +30,28 @@
     
     self.title = NSLocalizedString(@"Edit Custom Text", nil);
     
-    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.scrollEnabled = NO;
+    
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
