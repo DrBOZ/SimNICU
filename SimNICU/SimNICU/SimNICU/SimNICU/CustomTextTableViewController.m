@@ -259,7 +259,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CustomTextEditorTableViewController *newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    CustomTextEditorTableViewController *newViewController;
+    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    }
+    else
+    {
+        newViewController = [[CustomTextEditorTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    }
+    
     newViewController.section = self.section;
     newViewController.row = indexPath.row;
     

@@ -24,6 +24,9 @@
 {
     [super viewDidLoad];
     
+    self.title = NSLocalizedString(@"Edit Custom Text", nil);
+    
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.scrollEnabled = NO;
 }
 
