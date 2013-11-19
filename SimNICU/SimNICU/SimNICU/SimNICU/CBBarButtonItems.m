@@ -70,13 +70,18 @@
     
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        button.frame = CGRectMake(-12.0f, 0.0f, 50.0f, 30.0f);
+        button.frame = CGRectMake(10.0f, 0.0f, 50.0f, 30.0f);
         
         [button setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
         
         buttonView.frame = CGRectMake(0.0f, 0.0f, 50.0f, 30.0f);
+        
+        UIImageView *backArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backArrow.png"]];
+        backArrow.frame = CGRectMake(-8.0f, 5.0f, (25.0f / 2), (41.0f / 2));
+        
+        [buttonView addSubview:backArrow];
     }
     else
     {

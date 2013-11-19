@@ -430,6 +430,8 @@
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
 		5C8EC28E183BDE0D0078593C /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EC28D183BDE0D0078593C /* back_button_normal.png */; };
 		5C8EC28F183BDE0D0078593C /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EC28D183BDE0D0078593C /* back_button_normal.png */; };
+		5C8EC291183C051F0078593C /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EC290183C051F0078593C /* backArrow.png */; };
+		5C8EC292183C051F0078593C /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EC290183C051F0078593C /* backArrow.png */; };
 		5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */; };
@@ -1229,6 +1231,7 @@
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		5C8C3DEB16707C900073886A /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		5C8EC28D183BDE0D0078593C /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
+		5C8EC290183C051F0078593C /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
 		5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSectionData.h; sourceTree = "<group>"; };
 		5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSectionData.m; sourceTree = "<group>"; };
 		5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewRowData.h; sourceTree = "<group>"; };
@@ -3114,6 +3117,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8EC28D183BDE0D0078593C /* back_button_normal.png */,
+				5C8EC290183C051F0078593C /* backArrow.png */,
 				5CCA063D17FB7FCC00AF2E0C /* Media.xcassets */,
 				5CAE2E0A17E6B3B1001823A3 /* CBPhotoCropper */,
 				5C88E74917D3BCCA00DAB98D /* Hospital Logo */,
@@ -3737,6 +3741,7 @@
 				5C52F3C7179165EB000CFD80 /* vitaminKMonitoring.html in Resources */,
 				5C52F3CA17916687000CFD80 /* vitaminKLicenceStatus.html in Resources */,
 				5C52F3CD17916696000CFD80 /* vitaminKReferences.html in Resources */,
+				5C8EC291183C051F0078593C /* backArrow.png in Resources */,
 				5CA3C11617924112002AB53D /* vancomycinPharmacology.html in Resources */,
 				5CA3C11917924123002AB53D /* vancomycinIndications.html in Resources */,
 				5CF18ADF182C4EC600E66633 /* release_notes.md in Resources */,
@@ -3969,6 +3974,7 @@
 				5C51D8D117932A26004A7FF5 /* vitaminsDose.html in Resources */,
 				5C51D8D417932A34004A7FF5 /* vitaminsAdministration.html in Resources */,
 				5C51D8D717932A3F004A7FF5 /* vitaminsContraindications.html in Resources */,
+				5C8EC292183C051F0078593C /* backArrow.png in Resources */,
 				5C51D8DA17932A4E004A7FF5 /* vitaminsLicenceStatus.html in Resources */,
 				5C51D8DD17932A5B004A7FF5 /* vitaminsReferences.html in Resources */,
 				5C51D8E117932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */,
