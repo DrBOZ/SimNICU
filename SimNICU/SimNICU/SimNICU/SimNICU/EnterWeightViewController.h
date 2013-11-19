@@ -52,5 +52,6 @@
 - (void)patientConfidentialityModeToggle;
 - (void)addPatient;
 - (void)dismissKeyboard;
+- (void)saveData;
 
 @end

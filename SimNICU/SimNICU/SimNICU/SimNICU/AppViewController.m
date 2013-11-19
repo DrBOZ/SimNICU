@@ -120,7 +120,7 @@
 #if GOOGLE_ANALYTICS
         
 #else
-        NSLog(@"GOOGLE ANALYTICS OFF");
+        NSLog(@"Google Analytics: Off");
 #endif
         
     }
@@ -284,8 +284,6 @@
         
         self.infoPassedThrough = nil;
     }
-    
-    NSLog(@"AppViewController viewDidLoad");
     
     // self.contentView is a UIView that covers the entire window and contains
     // both the UITableView and the non-scrolling HeaderView (containing the image)

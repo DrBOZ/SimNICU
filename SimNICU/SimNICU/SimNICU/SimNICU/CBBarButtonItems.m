@@ -56,6 +56,45 @@
     return [CBBarButtonItems customBarButtonWithImageFile:@"sync.png" target:target action:action];
 }
 
++ (UIBarButtonItem *)customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:(id)target action:(SEL)action longPressTarget:(id)longPressTarget longPressAction:(SEL)longPressAction
+{
+    // setup gesture recogniser
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:longPressTarget
+                                                                                                   action:longPressAction];
+    // setup view
+    UIView *buttonView = [UIView new];
+    
+    // setup button
+    UIButton *button = [UIButton new];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        button.frame = CGRectMake(-12.0f, 0.0f, 50.0f, 30.0f);
+        
+        [button setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+        
+        buttonView.frame = CGRectMake(0.0f, 0.0f, 50.0f, 30.0f);
+    }
+    else
+    {
+        button.frame = CGRectMake(0.0f, 0.0f, 50.0f, 30.0f);
+        
+        UIImage *backImage = [UIImage imageNamed:@"back_button_normal.png"];
+        [button setBackgroundImage:backImage  forState:UIControlStateNormal];
+        [button setBackgroundImage:backImage forState:UIControlStateHighlighted];
+        
+        buttonView.frame = CGRectMake(0.0f, 0.0f, 50.0f, 30.0f);
+    }
+    
+    [buttonView addGestureRecognizer:longPressGesture];
+    [buttonView addSubview:button];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:buttonView];
+}
+
 + (UIBarButtonItem *)customBarButtonWithImageFile:(NSString *)imageFile target:(id)target action:(SEL)action
 {
     // setup image
@@ -81,9 +120,9 @@
 {
     // setup button
     UIBarButtonItem *customButton = [[UIBarButtonItem alloc] initWithTitle:title
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:target
-                                                                  action:action];
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:target
+                                                                    action:action];
     return customButton;
 }
 

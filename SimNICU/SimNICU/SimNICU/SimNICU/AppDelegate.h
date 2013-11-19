@@ -93,26 +93,18 @@
 @property (strong, nonatomic) UIWindow *window;
 
 // Jobs
-// 1) Need to be able to edit the ref of new custom text
+// 1) Finish Daily Summary US options
 // 2) Now I have started changing over, set standard cell height for all UITableViews?
-// 3) Fix Shinobi chart - crashes when loaded in the Simulator
+// 3)
 // 4) Add a clear button to Daily Summary Editor
-// 5) Convert the Daily Summary headings from a NSString to an NSArray or even NSDictionary
-//    to enable the saving of a date with the NSString.  This will allow converting the text to red
-//    if it is out of date - MAYBE...
-// 6) 
+// 5)
+// 6) Need to be able to edit the ref of new custom text
 // 7) patient.
-
 // 8) Finish dictation commands
-//
-//
-// 9) Fix Plan for iOS7 (needs to be a set min height)
 // 9) 
 //10)
 //11) Sort new patient bilirubin graphs
-//
 //12) Add current weights
-
 
 @end
 

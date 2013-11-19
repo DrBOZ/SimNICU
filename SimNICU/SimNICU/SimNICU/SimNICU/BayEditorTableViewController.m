@@ -19,6 +19,10 @@
 @end
 
 @implementation BayEditorTableViewController
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 - (void)viewDidLoad
 {
@@ -30,6 +34,27 @@
     
     // Setup Add button
     self.navigationItem.rightBarButtonItem = [CBBarButtonItems addBarButtonWithTarget:self action:@selector(add)];
+    
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

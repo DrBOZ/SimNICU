@@ -23,6 +23,9 @@
 @implementation DailySummaryEditorSettingsTableViewController
 {
     NSMutableArray *tableData;
+    
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
 }
 
 - (void)viewDidLoad
@@ -33,6 +36,12 @@
     
     self.title = @"Daily Summary Editor";
     
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
+    
     tableData = [DailySummaryEditorSettingsModel getArrayForTableView];
 }
 
@@ -40,6 +49,21 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - Table view data source

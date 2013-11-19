@@ -17,6 +17,10 @@
 @end
 
 @implementation PaperSizeTableViewController
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 - (void)viewDidLoad
 {
@@ -24,12 +28,33 @@
 
     [CBTrackers logEvent:@"Settings/PDF/Paper Size"];
     
-    self.title = @"Paper Size";
+    self.title = NSLocalizedString(@"Paper Size", nil);
+    
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
     
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
         self.view.tintColor = [UIColor redColor];
+    }
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
     }
 }
 

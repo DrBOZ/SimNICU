@@ -23,6 +23,9 @@
 @implementation PDFGenerationTableViewController
 {
     NSMutableArray *tableData;
+    
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
 }
 
 - (void)viewDidLoad
@@ -31,7 +34,13 @@
     
     [CBTrackers logEvent:@"Settings/PDF Generation"];
     
-    self.title = @"PDF Settings";
+    self.title = NSLocalizedString(@"PDF Settings", nil);
+    
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
     
     tableData = [[NSMutableArray alloc] initWithCapacity:3];
     CBTableViewSectionData *sectionData;
@@ -51,6 +60,21 @@
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning

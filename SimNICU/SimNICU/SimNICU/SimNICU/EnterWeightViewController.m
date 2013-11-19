@@ -304,7 +304,12 @@
     
 }
 
-- (void)savePatientList
+- (void)savePatientList // legacy code
+{
+    [self saveData];
+}
+
+- (void)saveData
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
@@ -318,11 +323,11 @@
     
 #ifdef LITE_VERSION
     
-    NSLog(@"PatientList saved to SimNICU-Lite.plist");
+    NSLog(@"SimNICU-Lite.plist: data saved");
     
 #else
     
-    NSLog(@"PatientList saved to SimNICU.plist");
+    NSLog(@"SimNICU.plist: data saved");
     
 #endif
 
@@ -2161,7 +2166,7 @@
 - (void)shouldEraseApplicationData:(KKPasscodeViewController*)viewController 
 {
     [self.patientList removeAllObjects];
-    [self savePatientList];
+    [self saveData];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You have entered an incorrect passcode too many times. All account data in this app has been deleted." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
@@ -2204,8 +2209,13 @@
 
 - (void)AdvancedPatientEditorViewControllerDidFinish:(AdvancedPatientEditorViewController *)controller
 {
+    // dismiss modal view controller
     [self dismissModalViewControllerAnimated:YES];
     
+    // save patient info in case of crash
+    [self saveData];
+    
+    // reload table data
     [self.myTableView reloadData];
 }
 

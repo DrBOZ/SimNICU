@@ -428,6 +428,8 @@
 		5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8B20641791125000579522 /* DrugDoseTableViewCell.m */; };
 		5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3DEB16707C900073886A /* CalculatorViewController.m */; };
+		5C8EC28E183BDE0D0078593C /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EC28D183BDE0D0078593C /* back_button_normal.png */; };
+		5C8EC28F183BDE0D0078593C /* back_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C8EC28D183BDE0D0078593C /* back_button_normal.png */; };
 		5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */; };
@@ -1226,6 +1228,7 @@
 		5C8B20641791125000579522 /* DrugDoseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugDoseTableViewCell.m; sourceTree = "<group>"; };
 		5C8C3DE916707C7B0073886A /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		5C8C3DEB16707C900073886A /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
+		5C8EC28D183BDE0D0078593C /* back_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button_normal.png; sourceTree = "<group>"; };
 		5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSectionData.h; sourceTree = "<group>"; };
 		5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSectionData.m; sourceTree = "<group>"; };
 		5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewRowData.h; sourceTree = "<group>"; };
@@ -1240,8 +1243,8 @@
 		5C940A6B166E37FE0044A7D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C940A6D166E37FE0044A7D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SimNICU/main.m; sourceTree = "<group>"; };
 		5C940A6F166E37FE0044A7D1 /* SimNICU-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SimNICU-Prefix.pch"; path = "SimNICU/SimNICU-Prefix.pch"; sourceTree = "<group>"; };
-		5C940A70166E37FE0044A7D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5C940A71166E37FE0044A7D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5C940A70166E37FE0044A7D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SimNICU/AppDelegate.h; sourceTree = "<group>"; };
+		5C940A71166E37FE0044A7D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SimNICU/AppDelegate.m; sourceTree = "<group>"; };
 		5C940A91166E38770044A7D1 /* DAAnisotropicImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAnisotropicImage.h; sourceTree = "<group>"; };
 		5C940A92166E38770044A7D1 /* DAAnisotropicImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAnisotropicImage.m; sourceTree = "<group>"; };
 		5C940A95166E38B10044A7D1 /* ZUUIRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZUUIRevealController.h; sourceTree = "<group>"; };
@@ -1429,8 +1432,8 @@
 		5C940C2A166E3D030044A7D1 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		5C940C2F166E3E230044A7D1 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
 		5C940C30166E3E230044A7D1 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
-		5C940C31166E3E230044A7D1 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
-		5C940C32166E3E230044A7D1 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
+		5C940C31166E3E230044A7D1 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = SimNICU/Preferences.h; sourceTree = "<group>"; };
+		5C940C32166E3E230044A7D1 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = SimNICU/Preferences.m; sourceTree = "<group>"; };
 		5C940C33166E3E230044A7D1 /* RoundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundImage.h; sourceTree = "<group>"; };
 		5C940C34166E3E230044A7D1 /* RoundImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundImage.m; sourceTree = "<group>"; };
 		5C940C35166E3E230044A7D1 /* BilirubinResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BilirubinResult.h; sourceTree = "<group>"; };
@@ -1439,8 +1442,8 @@
 		5C940C38166E3E230044A7D1 /* SimNICUWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimNICUWebView.m; sourceTree = "<group>"; };
 		5C940C39166E3E230044A7D1 /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
 		5C940C3A166E3E230044A7D1 /* Screen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Screen.m; sourceTree = "<group>"; };
-		5C940C3B166E3E230044A7D1 /* GrowthChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrowthChart.h; sourceTree = "<group>"; };
-		5C940C3C166E3E230044A7D1 /* GrowthChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrowthChart.m; sourceTree = "<group>"; };
+		5C940C3B166E3E230044A7D1 /* GrowthChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GrowthChart.h; path = SimNICU/GrowthChart.h; sourceTree = "<group>"; };
+		5C940C3C166E3E230044A7D1 /* GrowthChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GrowthChart.m; path = SimNICU/GrowthChart.m; sourceTree = "<group>"; };
 		5C940C4C166E3FDE0044A7D1 /* SimNICU_MainPhoto320x150.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SimNICU_MainPhoto320x150.jpg; sourceTree = "<group>"; };
 		5C940C4D166E3FDE0044A7D1 /* SimNICU_MainPhoto640x300.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SimNICU_MainPhoto640x300.jpg; sourceTree = "<group>"; };
 		5C940C9D166E40B70044A7D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1818,18 +1821,17 @@
 			name = UAModalPanel;
 			sourceTree = "<group>";
 		};
-		5C2B164617DC0F400038B4A8 /* PDF Settings */ = {
+		5C2B164617DC0F400038B4A8 /* Paper Size Settings */ = {
 			isa = PBXGroup;
 			children = (
 				5C88E74A17D3BCE900DAB98D /* sherwood-forest-hospitals-logo.jpg */,
 				5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */,
 				5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */,
-				5C8AE8F017E22A2D0002BC04 /* CBPhotoCropper */,
 			);
-			name = "PDF Settings";
+			name = "Paper Size Settings";
 			sourceTree = "<group>";
 		};
-		5C39630816B83FB60039C387 /* Screen_EarlyCare */ = {
+		5C39630816B83FB60039C387 /* Early Care */ = {
 			isa = PBXGroup;
 			children = (
 				5CFCCC9718050DD900031979 /* EarlyCareViewController.h */,
@@ -1838,10 +1840,10 @@
 				5C0F75B61804FF18000D0CC2 /* EarlyCareModel.m */,
 				5CFCCC96180506FA00031979 /* HTML pages */,
 			);
-			name = Screen_EarlyCare;
+			name = "Early Care";
 			sourceTree = "<group>";
 		};
-		5C39630916B842870039C387 /* Screen_Resus */ = {
+		5C39630916B842870039C387 /* Resuscitation */ = {
 			isa = PBXGroup;
 			children = (
 				5C940BA0166E3C2E0044A7D1 /* ResusViewController.h */,
@@ -1849,29 +1851,29 @@
 				5C940CF9166E67440044A7D1 /* ResusViewTableViewCell.h */,
 				5C940CFA166E67480044A7D1 /* ResusViewTableViewCell.m */,
 			);
-			name = Screen_Resus;
+			name = Resuscitation;
 			sourceTree = "<group>";
 		};
-		5C39630A16B843EA0039C387 /* Screen_Thermoregulation */ = {
+		5C39630A16B843EA0039C387 /* Thermoregulation */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B98166E3C2E0044A7D1 /* PlasticBagViewController.h */,
 				5C940B99166E3C2E0044A7D1 /* PlasticBagViewController.m */,
 			);
-			name = Screen_Thermoregulation;
+			name = Thermoregulation;
 			sourceTree = "<group>";
 		};
-		5C39630B16B8442E0039C387 /* Screen_ROP */ = {
+		5C39630B16B8442E0039C387 /* Retinopathy of Prematurity */ = {
 			isa = PBXGroup;
 			children = (
 				5C940BA2166E3C2E0044A7D1 /* rop21.html */,
 				5C940BA3166E3C2E0044A7D1 /* ROPViewController.h */,
 				5C940BA4166E3C2E0044A7D1 /* ROPViewController.m */,
 			);
-			name = Screen_ROP;
+			name = "Retinopathy of Prematurity";
 			sourceTree = "<group>";
 		};
-		5C39630C16B849D40039C387 /* Screen_Intubation */ = {
+		5C39630C16B849D40039C387 /* Intubation */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B92166E3C2E0044A7D1 /* IntubationViewController.h */,
@@ -1881,10 +1883,10 @@
 				5C940CFC166E724B0044A7D1 /* IntubationDrugsTableViewCell.h */,
 				5C940CFD166E724E0044A7D1 /* IntubationDrugsTableViewCell.m */,
 			);
-			name = Screen_Intubation;
+			name = Intubation;
 			sourceTree = "<group>";
 		};
-		5C3C02B617DA9FBE00E4297A /* Screen_Postnatal Ward */ = {
+		5C3C02B617DA9FBE00E4297A /* Postnatal Ward */ = {
 			isa = PBXGroup;
 			children = (
 				5C3C02B717DA9FF200E4297A /* PostnatalWardTableViewController.h */,
@@ -1892,7 +1894,7 @@
 				5C3C02BB17DAA80200E4297A /* PostnatalWardSection.h */,
 				5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */,
 			);
-			name = "Screen_Postnatal Ward";
+			name = "Postnatal Ward";
 			sourceTree = "<group>";
 		};
 		5C4350B0178DE14600E926B1 /* Drugs */ = {
@@ -1936,16 +1938,16 @@
 			name = Benzylpenicillin;
 			sourceTree = "<group>";
 		};
-		5C4AAC7417BF497E00BD68F5 /* Screen_FluidRequirements */ = {
+		5C4AAC7417BF497E00BD68F5 /* Fluid Requirements */ = {
 			isa = PBXGroup;
 			children = (
 				5CD812041803A44C00DABA19 /* FluidRequirementsTableViewController.h */,
 				5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */,
 			);
-			name = Screen_FluidRequirements;
+			name = "Fluid Requirements";
 			sourceTree = "<group>";
 		};
-		5C4BBF95183A332F002607EC /* Screen_CFAM */ = {
+		5C4BBF95183A332F002607EC /* CFAM */ = {
 			isa = PBXGroup;
 			children = (
 				5C4BBF96183A3C07002607EC /* CFAMOptionsTableViewController.h */,
@@ -1954,7 +1956,7 @@
 				5C4BBF9B183A3CF9002607EC /* CFAMOptionsModel.m */,
 				5C4BBF9E183A48D3002607EC /* Options */,
 			);
-			name = Screen_CFAM;
+			name = CFAM;
 			sourceTree = "<group>";
 		};
 		5C4BBF9E183A48D3002607EC /* Options */ = {
@@ -1964,7 +1966,7 @@
 				5C4BBFCB183A6374002607EC /* Indications */,
 				5C4BBFCC183A637F002607EC /* Electrode Placement */,
 				5C4BBFCD183A638D002607EC /* Monitor Setup */,
-				5C4BBFCE183A6398002607EC /* Summary */,
+				5C4BBFCE183A6398002607EC /* Guide */,
 				5C4BBFCF183A63A0002607EC /* Examples */,
 			);
 			name = Options;
@@ -2024,7 +2026,7 @@
 			name = "Monitor Setup";
 			sourceTree = "<group>";
 		};
-		5C4BBFCE183A6398002607EC /* Summary */ = {
+		5C4BBFCE183A6398002607EC /* Guide */ = {
 			isa = PBXGroup;
 			children = (
 				5C07009F183A7B06001EF769 /* CFAMInterpretationWebViewController.h */,
@@ -2033,7 +2035,7 @@
 				5C0700A4183A7B1D001EF769 /* CFAMInterpretationModel.m */,
 				5C0700A7183A7B25001EF769 /* HTML pages */,
 			);
-			name = Summary;
+			name = Guide;
 			sourceTree = "<group>";
 		};
 		5C4BBFCF183A63A0002607EC /* Examples */ = {
@@ -2095,13 +2097,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		5C4E30DC16BECF5000ACB898 /* Screen_TransportVentilator */ = {
+		5C4E30DC16BECF5000ACB898 /* Transport Ventilator */ = {
 			isa = PBXGroup;
 			children = (
 				5C940BA5166E3C2E0044A7D1 /* TransportVentilatorViewController.h */,
 				5C940BA6166E3C2E0044A7D1 /* TransportVentilatorViewController.m */,
 			);
-			name = Screen_TransportVentilator;
+			name = "Transport Ventilator";
 			sourceTree = "<group>";
 		};
 		5C51D8DE17932E51004A7FF5 /* Sodium chloride */ = {
@@ -2255,13 +2257,13 @@
 			name = "HTML pages";
 			sourceTree = "<group>";
 		};
-		5C56F6781802558900665E22 /* Screen_DynamicTextTester */ = {
+		5C56F6781802558900665E22 /* Dynamic Text Tester */ = {
 			isa = PBXGroup;
 			children = (
 				5C56F680180259BB00665E22 /* DynamicTextTesterViewController.h */,
 				5C56F681180259BB00665E22 /* DynamicTextTesterViewController.m */,
 			);
-			name = Screen_DynamicTextTester;
+			name = "Dynamic Text Tester";
 			sourceTree = "<group>";
 		};
 		5C5A116017D2391800CE96E5 /* kxintro */ = {
@@ -2295,7 +2297,7 @@
 			name = AAMFeedback;
 			sourceTree = "<group>";
 		};
-		5C63B12516B9CDA700B31431 /* Screen_APGAR */ = {
+		5C63B12516B9CDA700B31431 /* APGAR */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B54166E3C2E0044A7D1 /* APGARTabBarController.h */,
@@ -2313,10 +2315,10 @@
 				5C65858117FCBF3300454277 /* APGARVCFormats.h */,
 				5C65858217FCBF3300454277 /* APGARVCFormats.m */,
 			);
-			name = Screen_APGAR;
+			name = APGAR;
 			sourceTree = "<group>";
 		};
-		5C63B12616B9D03D00B31431 /* Screen_Infusions */ = {
+		5C63B12616B9D03D00B31431 /* Infusions */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B90166E3C2E0044A7D1 /* InfusionsViewController.h */,
@@ -2330,10 +2332,10 @@
 				5C6FFA31166F213D00F9C4B6 /* InfusionDrugPreparation.h */,
 				5C6FFA32166F213D00F9C4B6 /* InfusionDrugPreparation.m */,
 			);
-			name = Screen_Infusions;
+			name = Infusions;
 			sourceTree = "<group>";
 		};
-		5C63B12716B9F57B00B31431 /* Screen_VitK */ = {
+		5C63B12716B9F57B00B31431 /* Vitamin K */ = {
 			isa = PBXGroup;
 			children = (
 				5C06D4BF1803C54400A3B46C /* VitKTableViewController.h */,
@@ -2341,10 +2343,10 @@
 				5C06D4C31803C72400A3B46C /* VitKTableViewCell.h */,
 				5C06D4C41803C72400A3B46C /* VitKTableViewCell.m */,
 			);
-			name = Screen_VitK;
+			name = "Vitamin K";
 			sourceTree = "<group>";
 		};
-		5C63B12816B9F9DD00B31431 /* Screen_HFOV */ = {
+		5C63B12816B9F9DD00B31431 /* HFOV */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B8E166E3C2E0044A7D1 /* HFOVViewController.h */,
@@ -2353,20 +2355,20 @@
 				5CFF4C1218068292006C8480 /* HFOVModel.m */,
 				5CFF4C1018068269006C8480 /* HTML pages */,
 			);
-			name = Screen_HFOV;
+			name = HFOV;
 			sourceTree = "<group>";
 		};
-		5C63B12916B9FA0B00B31431 /* Screen_WeightConversion */ = {
+		5C63B12916B9FA0B00B31431 /* Weight Conversion */ = {
 			isa = PBXGroup;
 			children = (
 				5C940BAC166E3C2E0044A7D1 /* WeightConversionViewController.h */,
 				5C940BAD166E3C2E0044A7D1 /* WeightConversionViewController.m */,
 				5C56F64D1802220F00665E22 /* HTML pages */,
 			);
-			name = Screen_WeightConversion;
+			name = "Weight Conversion";
 			sourceTree = "<group>";
 		};
-		5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */ = {
+		5C63B12A16B9FACB00B31431 /* Gastroschisis */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B8A166E3C2E0044A7D1 /* GastroschisisViewController.h */,
@@ -2375,10 +2377,10 @@
 				5CFF4C0D180667F2006C8480 /* GastroschisisModel.m */,
 				5CFF4C0B180667D7006C8480 /* HTML pages */,
 			);
-			name = Screen_Gastroschisis;
+			name = Gastroschisis;
 			sourceTree = "<group>";
 		};
-		5C63B12B16B9FB1D00B31431 /* Screen_PulmonaryHaemorrhage */ = {
+		5C63B12B16B9FB1D00B31431 /* Pulmonary Haemorrhage */ = {
 			isa = PBXGroup;
 			children = (
 				5C56F65B18022D5100665E22 /* PulmonaryHaemorrhageViewController.h */,
@@ -2387,10 +2389,10 @@
 				5C56F6541802285F00665E22 /* PulmonaryHaemorrhageModel.m */,
 				5C56F6521802283B00665E22 /* HTML pages */,
 			);
-			name = Screen_PulmonaryHaemorrhage;
+			name = "Pulmonary Haemorrhage";
 			sourceTree = "<group>";
 		};
-		5C63B13C16B9FEF900B31431 /* Screen_CDH */ = {
+		5C63B13C16B9FEF900B31431 /* CDH */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B7D166E3C2E0044A7D1 /* CDHViewController.h */,
@@ -2399,10 +2401,10 @@
 				5CFF4C03180662CD006C8480 /* CDHModel.m */,
 				5CFF4C0A180665D4006C8480 /* HTML pages */,
 			);
-			name = Screen_CDH;
+			name = CDH;
 			sourceTree = "<group>";
 		};
-		5C63B14016B9FFFA00B31431 /* Screen_CrUSS */ = {
+		5C63B14016B9FFFA00B31431 /* Cranial Ultrasound */ = {
 			isa = PBXGroup;
 			children = (
 				5C06D4BB1803C03700A3B46C /* CrUSSOptionsTableViewController.h */,
@@ -2411,16 +2413,16 @@
 				5C930AF717B0E82A00CBE616 /* Technique */,
 				5C930AF817B0E83100CBE616 /* Radiology */,
 			);
-			name = Screen_CrUSS;
+			name = "Cranial Ultrasound";
 			sourceTree = "<group>";
 		};
-		5C63B14116BA003600B31431 /* Screen_UVCUAC */ = {
+		5C63B14116BA003600B31431 /* Umbilical Lines */ = {
 			isa = PBXGroup;
 			children = (
 				5C940BA7166E3C2E0044A7D1 /* UVCUACViewController.h */,
 				5C940BA8166E3C2E0044A7D1 /* UVCUACViewController.m */,
 			);
-			name = Screen_UVCUAC;
+			name = "Umbilical Lines";
 			sourceTree = "<group>";
 		};
 		5C66527917BE9AD6005F8171 /* Flurry */ = {
@@ -2431,7 +2433,7 @@
 			name = Flurry;
 			sourceTree = "<group>";
 		};
-		5C756C81179851A3002F983E /* Screen_Age Calculators */ = {
+		5C756C81179851A3002F983E /* Age Calculators */ = {
 			isa = PBXGroup;
 			children = (
 				5C756C9F17989A32002F983E /* AgeCalculatorsViewController.h */,
@@ -2441,7 +2443,7 @@
 				5C940DDD17AD503600840511 /* Corrected Age */,
 				5C756C9E17989A15002F983E /* Gestational Age */,
 			);
-			name = "Screen_Age Calculators";
+			name = "Age Calculators";
 			sourceTree = "<group>";
 		};
 		5C756C9E17989A15002F983E /* Gestational Age */ = {
@@ -2455,13 +2457,13 @@
 			name = "Gestational Age";
 			sourceTree = "<group>";
 		};
-		5C8606CE178AD99700428ED4 /* Screen_GlucoseLoad */ = {
+		5C8606CE178AD99700428ED4 /* Glucose Load */ = {
 			isa = PBXGroup;
 			children = (
 				5C101D2217AE4DA50095E751 /* GlucoseLoadController.h */,
 				5C101D2317AE4DA50095E751 /* GlucoseLoadController.m */,
 			);
-			name = Screen_GlucoseLoad;
+			name = "Glucose Load";
 			sourceTree = "<group>";
 		};
 		5C88E74917D3BCCA00DAB98D /* Hospital Logo */ = {
@@ -2471,13 +2473,135 @@
 			name = "Hospital Logo";
 			sourceTree = "<group>";
 		};
-		5C8AE8F017E22A2D0002BC04 /* CBPhotoCropper */ = {
+		5C8AE8F017E22A2D0002BC04 /* Hospital Logo Settings */ = {
 			isa = PBXGroup;
 			children = (
 				5C8AE90B17E241A40002BC04 /* CBPhotoCropperViewController.h */,
 				5C8AE90C17E241A50002BC04 /* CBPhotoCropperViewController.m */,
 			);
-			name = CBPhotoCropper;
+			name = "Hospital Logo Settings";
+			sourceTree = "<group>";
+		};
+		5C8EC281183B872D0078593C /* CFAM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CFAM;
+			sourceTree = "<group>";
+		};
+		5C8EC282183B87FA0078593C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C940C3B166E3E230044A7D1 /* GrowthChart.h */,
+				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5C8EC283183B88620078593C /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				5C940A70166E37FE0044A7D1 /* AppDelegate.h */,
+				5C940A71166E37FE0044A7D1 /* AppDelegate.m */,
+				5C940C31166E3E230044A7D1 /* Preferences.h */,
+				5C940C32166E3E230044A7D1 /* Preferences.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		5C8EC284183B88B70078593C /* CB Methods */ = {
+			isa = PBXGroup;
+			children = (
+				5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */,
+				5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */,
+				5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */,
+				5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */,
+				5C1FC126179EB32E00E345C4 /* CBDatePicker.h */,
+				5C1FC127179EB32E00E345C4 /* CBDatePicker.m */,
+				5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */,
+				5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */,
+				5C56F6041801A46300665E22 /* CBFonts.h */,
+				5C56F6051801A46300665E22 /* CBFonts.m */,
+				5C23A24117EDD99B00299D3E /* CBModalPanel.h */,
+				5C23A24217EDD99B00299D3E /* CBModalPanel.m */,
+				5C21A16F17EF149A00BA5C3A /* CBStringMethods.h */,
+				5C21A17017EF149A00BA5C3A /* CBStringMethods.m */,
+				5C88570A17E443FB00446E5F /* CBTableViewController.h */,
+				5C88570B17E443FB00446E5F /* CBTableViewController.m */,
+				5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */,
+				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
+				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
+				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
+				5C56F6201801EC4A00665E22 /* CBTableViewWebViewController.h */,
+				5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */,
+				5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */,
+				5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */,
+				5C4DB5941808F99400F6849A /* CBTextViewMethods.h */,
+				5C4DB5951808F99400F6849A /* CBTextViewMethods.m */,
+				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
+				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
+				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
+				5C316CFA17C2BF830096B8D3 /* CBTrackers.m */,
+				5C56F6121801DEE500665E22 /* CBWebView.h */,
+				5C56F6131801DEE500665E22 /* CBWebView.m */,
+				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
+				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
+				5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */,
+				5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */,
+				5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */,
+				5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */,
+			);
+			name = "CB Methods";
+			sourceTree = "<group>";
+		};
+		5C8EC285183B95750078593C /* Bay Editor Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5C8AE93317E2C6A30002BC04 /* BayEditorTableViewController.h */,
+				5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */,
+			);
+			name = "Bay Editor Settings";
+			sourceTree = "<group>";
+		};
+		5C8EC286183B958F0078593C /* First Day of Life Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5C05CEC91820EC4D006486C5 /* DayZeroTableViewController.h */,
+				5C05CECA1820EC4D006486C5 /* DayZeroTableViewController.m */,
+			);
+			name = "First Day of Life Settings";
+			sourceTree = "<group>";
+		};
+		5C8EC287183B95F10078593C /* Daily Summary Editor */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
+				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
+				5CAE2E0B17E6BD31001823A3 /* DailySummaryEditorSettingsModel.h */,
+				5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */,
+				5CAE2E0F17E6C215001823A3 /* CustomText */,
+			);
+			name = "Daily Summary Editor";
+			sourceTree = "<group>";
+		};
+		5C8EC288183B96380078593C /* PDF Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
+				5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */,
+				5C2B164617DC0F400038B4A8 /* Paper Size Settings */,
+				5C8AE8F017E22A2D0002BC04 /* Hospital Logo Settings */,
+			);
+			name = "PDF Settings";
+			sourceTree = "<group>";
+		};
+		5C8EC28A183B97250078593C /* Edit Custom Text */ = {
+			isa = PBXGroup;
+			children = (
+				5CF4B79617EB6F9A009AB1F8 /* CustomTextEditorTableViewController.h */,
+				5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */,
+			);
+			name = "Edit Custom Text";
 			sourceTree = "<group>";
 		};
 		5C930AF617B0E81600CBE616 /* General Information */ = {
@@ -2527,10 +2651,12 @@
 			isa = PBXGroup;
 			children = (
 				5C940AF8166E3AB60044A7D1 /* Config */,
-				5C940A67166E37FE0044A7D1 /* ScreenControllers */,
+				5C8EC283183B88620078593C /* Singletons */,
+				5C8EC282183B87FA0078593C /* Models */,
+				5C940A67166E37FE0044A7D1 /* View Controllers */,
 				5C940C2D166E3DF10044A7D1 /* Images */,
-				5C940C2E166E3E0F0044A7D1 /* miscObjects */,
-				5C940A82166E38320044A7D1 /* 3rd Party */,
+				5C940C2E166E3E0F0044A7D1 /* My Classes */,
+				5C940A82166E38320044A7D1 /* 3rd Party Classes */,
 				5C940A60166E37FE0044A7D1 /* Frameworks */,
 				5C940A5E166E37FE0044A7D1 /* Products */,
 			);
@@ -2579,49 +2705,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5C940A67166E37FE0044A7D1 /* ScreenControllers */ = {
+		5C940A67166E37FE0044A7D1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C940A70166E37FE0044A7D1 /* AppDelegate.h */,
-				5C940A71166E37FE0044A7D1 /* AppDelegate.m */,
-				5C940AF9166E3AED0044A7D1 /* Application */,
-				5C940B17166E3B8B0044A7D1 /* Screen_About */,
-				5C756C81179851A3002F983E /* Screen_Age Calculators */,
-				5C63B12516B9CDA700B31431 /* Screen_APGAR */,
-				5CDB9F2616BE333200B457EC /* Screen_BloodProducts */,
-				5C940B53166E3C130044A7D1 /* Screen_Calculator */,
-				5C63B13C16B9FEF900B31431 /* Screen_CDH */,
-				5C4BBF95183A332F002607EC /* Screen_CFAM */,
-				5CDB9F2416BE322900B457EC /* Screen_Cooling */,
-				5C63B14016B9FFFA00B31431 /* Screen_CrUSS */,
-				5CDB9F2516BE326600B457EC /* Screen_Curosurf */,
+				5C940AF9166E3AED0044A7D1 /* Main Views */,
+				5C940B17166E3B8B0044A7D1 /* About */,
+				5C756C81179851A3002F983E /* Age Calculators */,
+				5C63B12516B9CDA700B31431 /* APGAR */,
+				5CDB9F2616BE333200B457EC /* Blood Products */,
+				5C940B53166E3C130044A7D1 /* Calculator */,
+				5C63B13C16B9FEF900B31431 /* CDH */,
+				5C4BBF95183A332F002607EC /* CFAM */,
+				5CDB9F2416BE322900B457EC /* Cooling */,
+				5C63B14016B9FFFA00B31431 /* Cranial Ultrasound */,
+				5CDB9F2516BE326600B457EC /* Curosurf */,
 				5C5380E916D267AB0003F7BB /* Screen_Drugs */,
-				5C39630816B83FB60039C387 /* Screen_EarlyCare */,
-				5C4AAC7417BF497E00BD68F5 /* Screen_FluidRequirements */,
-				5C63B12A16B9FACB00B31431 /* Screen_Gastroschisis */,
-				5C8606CE178AD99700428ED4 /* Screen_GlucoseLoad */,
-				5C63B12816B9F9DD00B31431 /* Screen_HFOV */,
-				5C63B12616B9D03D00B31431 /* Screen_Infusions */,
-				5C39630C16B849D40039C387 /* Screen_Intubation */,
-				5CDB9F2B16BE414D00B457EC /* Screen_OxygenationIndex */,
-				5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */,
-				5C3C02B617DA9FBE00E4297A /* Screen_Postnatal Ward */,
-				5C63B12B16B9FB1D00B31431 /* Screen_PulmonaryHaemorrhage */,
-				5C39630916B842870039C387 /* Screen_Resus */,
-				5C39630B16B8442E0039C387 /* Screen_ROP */,
-				5C39630A16B843EA0039C387 /* Screen_Thermoregulation */,
-				5C4E30DC16BECF5000ACB898 /* Screen_TransportVentilator */,
-				5C63B14116BA003600B31431 /* Screen_UVCUAC */,
-				5C63B12716B9F57B00B31431 /* Screen_VitK */,
-				5C63B12916B9FA0B00B31431 /* Screen_WeightConversion */,
-				5C56F6781802558900665E22 /* Screen_DynamicTextTester */,
+				5C39630816B83FB60039C387 /* Early Care */,
+				5C4AAC7417BF497E00BD68F5 /* Fluid Requirements */,
+				5C63B12A16B9FACB00B31431 /* Gastroschisis */,
+				5C8606CE178AD99700428ED4 /* Glucose Load */,
+				5C63B12816B9F9DD00B31431 /* HFOV */,
+				5C63B12616B9D03D00B31431 /* Infusions */,
+				5C39630C16B849D40039C387 /* Intubation */,
+				5CDB9F2B16BE414D00B457EC /* Oxygenation Index */,
+				5C940BEB166E3C390044A7D1 /* Phototherapy */,
+				5C3C02B617DA9FBE00E4297A /* Postnatal Ward */,
+				5C63B12B16B9FB1D00B31431 /* Pulmonary Haemorrhage */,
+				5C39630916B842870039C387 /* Resuscitation */,
+				5C39630B16B8442E0039C387 /* Retinopathy of Prematurity */,
+				5C39630A16B843EA0039C387 /* Thermoregulation */,
+				5C4E30DC16BECF5000ACB898 /* Transport Ventilator */,
+				5C63B14116BA003600B31431 /* Umbilical Lines */,
+				5C63B12716B9F57B00B31431 /* Vitamin K */,
+				5C63B12916B9FA0B00B31431 /* Weight Conversion */,
+				5C56F6781802558900665E22 /* Dynamic Text Tester */,
 				5C940C26166E3CE40044A7D1 /* Settings */,
 			);
-			name = ScreenControllers;
+			name = "View Controllers";
 			path = SimNICU;
 			sourceTree = "<group>";
 		};
-		5C940A82166E38320044A7D1 /* 3rd Party */ = {
+		5C940A82166E38320044A7D1 /* 3rd Party Classes */ = {
 			isa = PBXGroup;
 			children = (
 				5C5A11A117D2726300CE96E5 /* AAMFeedback */,
@@ -2640,7 +2764,7 @@
 				5C0B9B7517D201F3000B9E34 /* UDBarTrackballItem */,
 				5C940A94166E38A00044A7D1 /* ZUUIRevealController */,
 			);
-			name = "3rd Party";
+			name = "3rd Party Classes";
 			path = SimNICU;
 			sourceTree = "<group>";
 		};
@@ -2792,7 +2916,7 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
-		5C940AF9166E3AED0044A7D1 /* Application */ = {
+		5C940AF9166E3AED0044A7D1 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
 				5C940AFA166E3AFE0044A7D1 /* PortraitOnlyNavigationController.h */,
@@ -2800,7 +2924,7 @@
 				5C940AFD166E3B030044A7D1 /* Front View */,
 				5C940B03166E3B2C0044A7D1 /* Rear View */,
 			);
-			name = Application;
+			name = "Main Views";
 			sourceTree = "<group>";
 		};
 		5C940AFD166E3B030044A7D1 /* Front View */ = {
@@ -2821,9 +2945,9 @@
 				5C940B06166E3B420044A7D1 /* EnterWeightViewController.xib */,
 				5C0C9D9E179B26360077B881 /* PatientCell.h */,
 				5C0C9D9F179B26360077B881 /* PatientCell.m */,
+				5C9BE62117970F31009616CA /* Daily Summary */,
 				5CB46B6617D9FBED003365F6 /* Sync */,
 				5C1A0BD817D6F0F100C41623 /* Settings */,
-				5C9BE62117970F31009616CA /* Daily Summary */,
 			);
 			name = "Rear View";
 			sourceTree = "<group>";
@@ -2851,7 +2975,7 @@
 			name = "Sub Views";
 			sourceTree = "<group>";
 		};
-		5C940B17166E3B8B0044A7D1 /* Screen_About */ = {
+		5C940B17166E3B8B0044A7D1 /* About */ = {
 			isa = PBXGroup;
 			children = (
 				5C940CB7166E43800044A7D1 /* InfoTabBarController.h */,
@@ -2859,7 +2983,7 @@
 				5C940B18166E3BBA0044A7D1 /* About */,
 				5C940B19166E3BC00044A7D1 /* Disclaimer */,
 			);
-			name = Screen_About;
+			name = About;
 			sourceTree = "<group>";
 		};
 		5C940B18166E3BBA0044A7D1 /* About */ = {
@@ -2893,7 +3017,7 @@
 			name = Instructions;
 			sourceTree = "<group>";
 		};
-		5C940B53166E3C130044A7D1 /* Screen_Calculator */ = {
+		5C940B53166E3C130044A7D1 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				5C8C3DE916707C7B0073886A /* CalculatorViewController.h */,
@@ -2901,10 +3025,10 @@
 				5CF259FE1679F28000B38DA2 /* CalculatorBrain.h */,
 				5CF259FF1679F28000B38DA2 /* CalculatorBrain.m */,
 			);
-			name = Screen_Calculator;
+			name = Calculator;
 			sourceTree = "<group>";
 		};
-		5C940BEB166E3C390044A7D1 /* Screen_Phototherapy */ = {
+		5C940BEB166E3C390044A7D1 /* Phototherapy */ = {
 			isa = PBXGroup;
 			children = (
 				5C940BEF166E3C5A0044A7D1 /* PhototherapyViewController.h */,
@@ -2928,16 +3052,16 @@
 				5C940C01166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.h */,
 				5C940C02166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.m */,
 			);
-			name = Screen_Phototherapy;
+			name = Phototherapy;
 			sourceTree = "<group>";
 		};
-		5C940C0F166E3C780044A7D1 /* Classes */ = {
+		5C940C0F166E3C780044A7D1 /* ActionSheetPicker Classes */ = {
 			isa = PBXGroup;
 			children = (
 				5C940C10166E3C850044A7D1 /* Utilities */,
 				5C940C11166E3C8C0044A7D1 /* ActionSheetPicker */,
 			);
-			name = Classes;
+			name = "ActionSheetPicker Classes";
 			sourceTree = "<group>";
 		};
 		5C940C10166E3C850044A7D1 /* Utilities */ = {
@@ -2989,6 +3113,7 @@
 		5C940C2D166E3DF10044A7D1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5C8EC28D183BDE0D0078593C /* back_button_normal.png */,
 				5CCA063D17FB7FCC00AF2E0C /* Media.xcassets */,
 				5CAE2E0A17E6B3B1001823A3 /* CBPhotoCropper */,
 				5C88E74917D3BCCA00DAB98D /* Hospital Logo */,
@@ -2996,19 +3121,21 @@
 				5C940C44166E3E340044A7D1 /* App */,
 				5C940C46166E3E470044A7D1 /* APGAR */,
 				5C940C45166E3E3F0044A7D1 /* Calculator */,
+				5C8EC281183B872D0078593C /* CFAM */,
 				5CDBACB1179C142400D1A03D /* PatientListWarnings */,
 			);
 			name = Images;
 			path = SimNICU;
 			sourceTree = "<group>";
 		};
-		5C940C2E166E3E0F0044A7D1 /* miscObjects */ = {
+		5C940C2E166E3E0F0044A7D1 /* My Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5C8EC284183B88B70078593C /* CB Methods */,
 				5C940BEC166E3C5A0044A7D1 /* ActionSheetPickerViewController.h */,
 				5C940BED166E3C5A0044A7D1 /* ActionSheetPickerViewController.m */,
 				5C940BEE166E3C5A0044A7D1 /* ActionSheetPickerViewController.xib */,
-				5C940C0F166E3C780044A7D1 /* Classes */,
+				5C940C0F166E3C780044A7D1 /* ActionSheetPicker Classes */,
 				5C679FBC1794CA0100B9A813 /* Bay.h */,
 				5C679FBD1794CA0100B9A813 /* Bay.m */,
 				5C756CA317989E15002F983E /* Calculator.h */,
@@ -3023,8 +3150,6 @@
 				5C13B42C17C910BB00C88EEF /* HandoverRow.m */,
 				5C940C2F166E3E230044A7D1 /* Patient.h */,
 				5C940C30166E3E230044A7D1 /* Patient.m */,
-				5C940C31166E3E230044A7D1 /* Preferences.h */,
-				5C940C32166E3E230044A7D1 /* Preferences.m */,
 				5C940C33166E3E230044A7D1 /* RoundImage.h */,
 				5C940C34166E3E230044A7D1 /* RoundImage.m */,
 				5C940C35166E3E230044A7D1 /* BilirubinResult.h */,
@@ -3033,50 +3158,10 @@
 				5C940C38166E3E230044A7D1 /* SimNICUWebView.m */,
 				5C940C39166E3E230044A7D1 /* Screen.h */,
 				5C940C3A166E3E230044A7D1 /* Screen.m */,
-				5C940C3B166E3E230044A7D1 /* GrowthChart.h */,
-				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
-				5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */,
-				5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */,
-				5C4DC70617E512C300412C72 /* CBBarCustomTextItem.h */,
-				5C4DC70717E512C300412C72 /* CBBarCustomTextItem.m */,
-				5C1FC126179EB32E00E345C4 /* CBDatePicker.h */,
-				5C1FC127179EB32E00E345C4 /* CBDatePicker.m */,
-				5CE500D717A05CB4000F825E /* CBDatePickerActionSheet.h */,
-				5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */,
-				5C56F6041801A46300665E22 /* CBFonts.h */,
-				5C56F6051801A46300665E22 /* CBFonts.m */,
-				5C23A24117EDD99B00299D3E /* CBModalPanel.h */,
-				5C23A24217EDD99B00299D3E /* CBModalPanel.m */,
-				5C21A16F17EF149A00BA5C3A /* CBStringMethods.h */,
-				5C21A17017EF149A00BA5C3A /* CBStringMethods.m */,
-				5C88570A17E443FB00446E5F /* CBTableViewController.h */,
-				5C88570B17E443FB00446E5F /* CBTableViewController.m */,
-				5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */,
-				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
-				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
-				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
-				5C56F6201801EC4A00665E22 /* CBTableViewWebViewController.h */,
-				5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */,
-				5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */,
-				5C56F60F1801D54C00665E22 /* CBTableViewWebViewCell.m */,
-				5C4DB5941808F99400F6849A /* CBTextViewMethods.h */,
-				5C4DB5951808F99400F6849A /* CBTextViewMethods.m */,
-				5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */,
-				5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */,
-				5C316CF917C2BF830096B8D3 /* CBTrackers.h */,
-				5C316CFA17C2BF830096B8D3 /* CBTrackers.m */,
-				5C56F6121801DEE500665E22 /* CBWebView.h */,
-				5C56F6131801DEE500665E22 /* CBWebView.m */,
-				5CF73ECB17B8F86D00096965 /* CBWeightMethods.h */,
-				5CF73ECC17B8F86D00096965 /* CBWeightMethods.m */,
-				5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */,
-				5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */,
-				5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */,
-				5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */,
 				5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */,
 				5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */,
 			);
-			name = miscObjects;
+			name = "My Classes";
 			path = SimNICU;
 			sourceTree = "<group>";
 		};
@@ -3258,8 +3343,7 @@
 				5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */,
 				5C6B6E4D17E78D31003600DD /* CustomTextModel.h */,
 				5C6B6E4E17E78D31003600DD /* CustomTextModel.m */,
-				5CF4B79617EB6F9A009AB1F8 /* CustomTextEditorTableViewController.h */,
-				5CF4B79717EB6F9A009AB1F8 /* CustomTextEditorTableViewController.m */,
+				5C8EC28A183B97250078593C /* Edit Custom Text */,
 			);
 			name = CustomText;
 			sourceTree = "<group>";
@@ -3279,18 +3363,10 @@
 		5CB46B6717D9FC13003365F6 /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				5C8AE93317E2C6A30002BC04 /* BayEditorTableViewController.h */,
-				5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */,
-				5C05CEC91820EC4D006486C5 /* DayZeroTableViewController.h */,
-				5C05CECA1820EC4D006486C5 /* DayZeroTableViewController.m */,
-				5C1A0BDD17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.h */,
-				5C1A0BDE17D6FC5C00C41623 /* DailySummaryEditorSettingsTableViewController.m */,
-				5CAE2E0B17E6BD31001823A3 /* DailySummaryEditorSettingsModel.h */,
-				5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */,
-				5CAE2E0F17E6C215001823A3 /* CustomText */,
-				5C1A0BD917D6F13B00C41623 /* PDFGenerationTableViewController.h */,
-				5C1A0BDA17D6F13B00C41623 /* PDFGenerationTableViewController.m */,
-				5C2B164617DC0F400038B4A8 /* PDF Settings */,
+				5C8EC286183B958F0078593C /* First Day of Life Settings */,
+				5C8EC285183B95750078593C /* Bay Editor Settings */,
+				5C8EC287183B95F10078593C /* Daily Summary Editor */,
+				5C8EC288183B96380078593C /* PDF Settings */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -3330,7 +3406,7 @@
 			name = AdvancedDataInput;
 			sourceTree = "<group>";
 		};
-		5CDB9F2416BE322900B457EC /* Screen_Cooling */ = {
+		5CDB9F2416BE322900B457EC /* Cooling */ = {
 			isa = PBXGroup;
 			children = (
 				5C27A7F118055CA900A18ECE /* CoolingTableViewController.h */,
@@ -3341,10 +3417,10 @@
 				5CFF4C16180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m */,
 				5CFF4C19180687EB006C8480 /* HTML page */,
 			);
-			name = Screen_Cooling;
+			name = Cooling;
 			sourceTree = "<group>";
 		};
-		5CDB9F2516BE326600B457EC /* Screen_Curosurf */ = {
+		5CDB9F2516BE326600B457EC /* Curosurf */ = {
 			isa = PBXGroup;
 			children = (
 				5C56F668180234C700665E22 /* CurosurfViewController.h */,
@@ -3353,10 +3429,10 @@
 				5C56F66118022F8900665E22 /* CurosurfModel.m */,
 				5C56F65F18022F3B00665E22 /* HTML pages */,
 			);
-			name = Screen_Curosurf;
+			name = Curosurf;
 			sourceTree = "<group>";
 		};
-		5CDB9F2616BE333200B457EC /* Screen_BloodProducts */ = {
+		5CDB9F2616BE333200B457EC /* Blood Products */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B60166E3C2E0044A7D1 /* BloodProductsViewController.h */,
@@ -3366,16 +3442,16 @@
 				5C56F60C1801D16200665E22 /* BloodTransfusionCriteria */,
 				5C56F60D1801D17A00665E22 /* PlateletTransfusionCriteria */,
 			);
-			name = Screen_BloodProducts;
+			name = "Blood Products";
 			sourceTree = "<group>";
 		};
-		5CDB9F2B16BE414D00B457EC /* Screen_OxygenationIndex */ = {
+		5CDB9F2B16BE414D00B457EC /* Oxygenation Index */ = {
 			isa = PBXGroup;
 			children = (
 				5C940B96166E3C2E0044A7D1 /* OxygenationIndexViewController.h */,
 				5C940B97166E3C2E0044A7D1 /* OxygenationIndexViewController.m */,
 			);
-			name = Screen_OxygenationIndex;
+			name = "Oxygenation Index";
 			sourceTree = "<group>";
 		};
 		5CDBACB1179C142400D1A03D /* PatientListWarnings */ = {
@@ -3615,6 +3691,7 @@
 				5C0E0611178F522700768739 /* adrenalineYSiteIncompatibilities.html in Resources */,
 				5C0E0614178F523900768739 /* adrenalineSideEffects.html in Resources */,
 				5C0E0617178F524700768739 /* adrenalineMonitoring.html in Resources */,
+				5C8EC28E183BDE0D0078593C /* back_button_normal.png in Resources */,
 				5C0E061A178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
 				5C4BBFBF183A4EB8002607EC /* artefact.html in Resources */,
 				5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */,
@@ -3881,6 +3958,7 @@
 				5CA3C13217924198002AB53D /* vancomycinInteractions.html in Resources */,
 				5C56F66E1802389500665E22 /* dismiss2_iOS7.png in Resources */,
 				5CA3C135179241A7002AB53D /* vancomycinSideEffects.html in Resources */,
+				5C8EC28F183BDE0D0078593C /* back_button_normal.png in Resources */,
 				5CA3C138179241BE002AB53D /* vancomycinDrugMonitoring.html in Resources */,
 				5CA3C13B179241CE002AB53D /* vancomycinLicenceStatus.html in Resources */,
 				5CA3C13E179241D8002AB53D /* vancomycinReferences.html in Resources */,

@@ -19,6 +19,9 @@
 @implementation SettingsTableViewController
 {
     NSArray *tableData;
+    
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
 }
 
 - (void)viewDidLoad
@@ -30,21 +33,37 @@
     self.title = NSLocalizedString(@"Settings", nil);
     
     // setup back button
-    self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];
+    // self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(backButtonPressed)];
+    
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
     
     // get table data
     tableData = [SettingsModel getArrayForTableView];
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)done
-{
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source
