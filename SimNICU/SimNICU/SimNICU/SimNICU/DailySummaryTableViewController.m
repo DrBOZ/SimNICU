@@ -5157,7 +5157,7 @@
 - (void)CBBarButtonTextItem:(CBBarCustomTextItem *)sender wasPressedInTextView:(UITextView *)textView
 {
     // work out which button was pressed
-    if ([sender.buttonText isEqualToString:@"done"])
+    if ([sender.buttonText isEqualToString:NSLocalizedString(@"done", nil)])
     {
         // close modal
         [self.modalPanel closePressed:nil];
@@ -5165,7 +5165,7 @@
         // close keyboard
         [textView resignFirstResponder];
     }
-    else if ([sender.buttonText isEqualToString:@"custom"])
+    else if ([sender.buttonText isEqualToString:NSLocalizedString(@"custom", nil)])
     {
         if (!self.modalPanel)
         {

@@ -186,11 +186,11 @@
         // setting only row text
         if (indexPath.row == 15)
         {
-            cell.textLabel.text = @"38+ weeks";
+            cell.textLabel.text = [NSString stringWithFormat:@"38+ %@", NSLocalizedString(@"weeks", nil)];
         }
         else
         {
-            cell.textLabel.text = [NSString stringWithFormat:@"%i weeks", (indexPath.row + 23)];
+            cell.textLabel.text = [NSString stringWithFormat:@"%i %@", (indexPath.row + 23), NSLocalizedString(@"weeks", nil)];
         }
         
         // setting initial checkmarks and text colour
@@ -256,7 +256,7 @@
                 self.USTermGestation.backgroundColor = [UIColor whiteColor];
             }
             
-            self.USTermGestation.textLabel.text = @"38+ weeks";
+            self.USTermGestation.textLabel.text = [NSString stringWithFormat:@"38+ %@", NSLocalizedString(@"weeks", nil)];
             
             if (self.gestation)
             {

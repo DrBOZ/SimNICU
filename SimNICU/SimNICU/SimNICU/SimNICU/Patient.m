@@ -170,7 +170,7 @@
         
         // 00 - Background
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Background", nil);
+        newSection.sectionName = @"Background";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -183,7 +183,7 @@
         
         // 01 - Active Problems
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Active Problems", nil);
+        newSection.sectionName = @"Active Problems";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -196,7 +196,7 @@
         
         // 02 - Resolved Problems
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Resolved Problems", nil);
+        newSection.sectionName = @"Resolved Problems";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -209,7 +209,7 @@
         
         // 03 - Recent Significant Events
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Recent Significant Events", nil);
+        newSection.sectionName = @"Recent Significant Events";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -222,7 +222,7 @@
         
         // 04 - Ventilation & Sedation
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Ventilation & Sedation", nil);
+        newSection.sectionName = @"Ventilation & Sedation";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -235,7 +235,7 @@
         
         // 05 - CXR
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"CXR", nil);
+        newSection.sectionName = @"CXR";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -248,7 +248,7 @@
         
         // 06 - Cardiovascular
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Cardiovascular", nil);
+        newSection.sectionName = @"Cardiovascular";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -261,7 +261,7 @@
         
         // 07 - Lines
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Lines", nil);
+        newSection.sectionName = @"Lines";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -274,7 +274,7 @@
         
         // 08 - Feeds & Fluids
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Feeds & Fluids", nil);
+        newSection.sectionName = @"Feeds & Fluids";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -287,7 +287,7 @@
         
         // 09 - Fluid Balance
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Fluid Balance", nil);
+        newSection.sectionName = @"Fluid Balance";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -300,7 +300,7 @@
         
         // 10 - Biochemistry
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Biochemistry", nil);
+        newSection.sectionName = @"Biochemistry";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -313,7 +313,7 @@
         
         // 11 - Jaundice
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Jaundice", nil);
+        newSection.sectionName = @"Jaundice";
         newSection.sectionEditable = @"YES";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
         
@@ -338,7 +338,7 @@
         
         // 12 - Sepsis
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Sepsis", nil);
+        newSection.sectionName = @"Sepsis";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -351,7 +351,7 @@
         
         // 13 - Drugs
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Drugs", nil);
+        newSection.sectionName = @"Drugs";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -364,7 +364,7 @@
         
         // 14 - ROP
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"ROP", nil);
+        newSection.sectionName = @"ROP";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -377,7 +377,7 @@
         
         // 15 - Neurology & Cranial USS
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Neurology & Cranial USS", nil);
+        newSection.sectionName = @"Neurology & Cranial USS";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -390,7 +390,7 @@
         
         // 16 - Parents / Social
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Parents / Social", nil);
+        newSection.sectionName = @"Parents / Social";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -403,7 +403,7 @@
         
         // 17 - Examination
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Examination", nil);
+        newSection.sectionName = @"Examination";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -416,7 +416,7 @@
         
         // 18 - Summary
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Summary", nil);
+        newSection.sectionName = @"Summary";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
@@ -429,7 +429,7 @@
         
         // 19 - Plan
         newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = NSLocalizedString(@"Plan", nil);
+        newSection.sectionName = @"Plan";
         newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         

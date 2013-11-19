@@ -187,7 +187,7 @@
         self.dynamicText = [NSNumber numberWithInt:0];
     }
     
-#if RESET_PREFERENCES_HANDOVER_SECTIONS
+#if RESET_PREFERENCES_HANDOVER_SECTIONS_CUSTOM_TEXT
     
     self.HandoverSections = nil;
     
@@ -195,7 +195,7 @@
     
     if (!self.handoverSections)
     {
-        // create array - note this is similar but difference to the patient handover Sections
+        // create array - note this is similar but different to the patient handover Sections
         // which includes individual patient rowHeight data for information contained in the sections
         
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
@@ -205,20 +205,24 @@
         // 00 - Background
         {
             newSection = [[HandoverSection alloc] init];
-            newSection.sectionName = @"Background";
+            newSection.sectionName = NSLocalizedString(@"Background", nil);
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Transfer from 
-            [newSection.customText addObject:[self customText:@"Transfer from " ref:@"Transfer from"]];
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"Transfer from", nil)]
+                                                          ref:NSLocalizedString(@"Transfer from", nil)]];
             
             // Spontaneous preterm labour
-            [newSection.customText addObject:[self customText:@"Spontaneous preterm labour" ref:@"Spontaneous preterm labour"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Spontaneous preterm labour", nil)
+                                                          ref:NSLocalizedString(@"Spontaneous preterm labour", nil)]];
             
             // Maternal antepartum haemorrhage
-            [newSection.customText addObject:[self customText:@"Maternal APH" ref:@"Maternal APH"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Maternal APH", nil)
+                                                          ref:NSLocalizedString(@"Maternal APH", nil)]];
             
             // Em LSCS
-            [newSection.customText addObject:[self customText:@"Em LSCS" ref:@"Em LSCS"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Em LSCS", @"Emergency Lower Segment Caesarean Section")
+                                                          ref:NSLocalizedString(@"Em LSCS", @"Emergency Lower Segment Caesarean Section")]];
         
             [self.handoverSections addObject:newSection];
         }

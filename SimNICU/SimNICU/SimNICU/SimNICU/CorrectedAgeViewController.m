@@ -343,7 +343,7 @@
             self.gestation.textAlignment = UITextAlignmentCenter;
             self.gestation.adjustsFontSizeToFitWidth = YES;
             self.gestation.returnKeyType = UIReturnKeyNext;
-            self.gestation.placeholder = @"weeks";
+            self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
             self.gestation.delegate = self;
             // [self.gestation becomeFirstResponder];
             

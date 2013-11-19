@@ -425,7 +425,7 @@
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                     cell.backgroundColor = [UIColor whiteColor];
-                    cell.textLabel.text = @"Clinical Status";
+                    cell.textLabel.text = NSLocalizedString(@"Clinical Status", nil);
                 }
                 
                 if (self.clinicalStatus)
@@ -451,7 +451,7 @@
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 cell.backgroundColor = [UIColor whiteColor];
-                cell.textLabel.text = @"Risk Factors";
+                cell.textLabel.text = NSLocalizedString(@"Risk Factors", nil);
             }
             
             if ([preferences.guidelineCountry isEqualToString:@"US"])

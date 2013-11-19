@@ -29,16 +29,20 @@
 "Blood in the Nappy" = "Blood in the Diaper";
 "Blood Products" = "Transfusões Sanguineas";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
+"Cancel" = "Cancelar";
 "Cardiovascular" = "Sistema Cardiovascular";
+"Clinical Status" = "Estado Clínico";
 "Cooling" = "Resfriamento Protetor";
 "Copyright" = "Direitos autorais";
 "Corrected Age" = "Idade corrigida";
 "Cranial Ultrasound" = "Ultrassom transfontanelar";
 "custom" = "padronizado";
+"Custom text" = "Texto padronizado";
 "CXR" = "Último raio-x";
 "Daily Summary" = "Resumo Diário";
 "day" = "dia";
 "Day 0 if infant is born before 12:00 midday, Day 1 if born after." = "Dia 0 se o recém-nascido nasceu antes do meio-dia. Dia 1 se nasceu após o meio-dia.";
+"Delete" = "Apagar";
 "Depends on time of birth" = "Depende da hora de nascimento";
 "DEVELOPER" = "REVELADOR";
 "Diaphragmatic Hernia" = "Cuidados na Hérnia Diafragmática";
@@ -51,10 +55,13 @@
 "Down's Syndrome" = "Down Syndrome";
 "Drugs" = "Drogas ou Medicações";
 "Early Care" = "Prematuro extremo";
+"Echocardiography" = "Ecocardio";
 "Edward's Syndrome" = "Edward Syndrome";
 "Emergency" = "Emergência";
+"Em LSCS" = "Nascimento por Cesárea"; // ? Cesárea de Emergência
 "England" = "Inglaterra";
 "Examination" = "Exame Físico";
+"FBC & Blood Film" = "Exames Hematológicos";
 "Feedback" = "Parecer";
 "Feeds & Fluids" = "Alimentação e Hidratação";
 "Female" = "Feminino";
@@ -90,13 +97,15 @@
 "London" = "Londres";
 "Low Dependency" = "Baixo Risco";
 "Male" = "Masculino";
-"Maternal antepartum haemorrhage" = "Maternal antepartum hemorrhage";
+"Maternal APH" = "Hemorragia materna pré-parto";
 "Midazolam" = "Midazolam";
 "Misc" = "Outros";
 "Morphine" = "Morphine";
 "Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
 "Neurology & Cranial USS" = "Exame Neurológico e Ultrassom Transfontanelar";
+"Neurotoxicity Risk Factors" = "Fatores de Risco";
 "New Bay" = "Novo Leito";
+"None" = "Nenhum";
 "Oxygenation Index" = "Índice de oxigenação";
 "Pancuronium" = "Pancuronium";
 "Paracetamol" = "Acetaminophen";
@@ -123,14 +132,19 @@
 "Resuscitation" = "Resuscitation";
 "Resuscitation Drugs" = "Drogas de reanimação";
 "Retinopathy of Prematurity" = "Cuidados na Retinopatia da prematuridade";
+"Risk Factors" = "Risk Factors";
 "Rocuronium" = "Rocuronium";
+"Rodwell Score" = "Escore de Rodwell";
 "ROP" = "Retinopatia da Prematuridade";
 "Sample" = "Amostra";
 "Sample Age" = "Data da Amostra";
+"Search" = "Buscar";
 "Sepsis" = "Sepse";
 "Serum Bilirubin" = "Bilirrubina Sérica";
 "Serum bilirubin units" = "Serum bilirubin units";
 "Settings" = "Definições";
+"Some" = "Algum";
+"Spontaneous preterm labour" = "TPP espontâneo";
 "Summary" = "Lista de Problemas";
 "Surname" = "Last name";
 "Tachypnoea" = "Tachypnea";
@@ -141,12 +155,14 @@
 
 "This chart is designed for interpreting bilirubin levels up to 14 days of age." = "This chart is designed for interpreting bilirubin levels up to 14 days of age.";
 
+"Transfer from" = "Transferido de";
 "Transitional Care" = "Risco Intermediário";
 "Transport Ventilator" = "Ventilador Pulmonar de Transporte";
 "Treatment threshold" = "Treatment threshold";
 "UAC / UVC" = "Cateteres umbilicais";
 "Units" = "Units";
 "Unknown" = "Ambigua";
+"Unwell" = "Mal";
 "Vecuronium" = "Vecuronium";
 "Ventilation & Sedation" = "Ventilação e Sedação";
 "Vitamin K" = "Vitamina K";
@@ -155,7 +171,8 @@
 "Weight" = "Peso";
 "Weight Conversion" = "Conversão de peso";
 "Weight not entered" = "Weight not entered";
-"Working Weight" = "peso selecionado";
+"Well" = "Bem";
+"Working Weight" = "Peso Selecionado";
 "Yesterday" = "Yesterday";
 
 

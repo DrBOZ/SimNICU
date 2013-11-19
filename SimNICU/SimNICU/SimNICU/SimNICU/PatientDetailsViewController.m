@@ -69,7 +69,7 @@
 {
     if([self.userWantsToAddAPatient isEqualToString:@"YES"])
     {
-        self.title = @"New Patient";
+        self.title = NSLocalizedString(@"New Patient", nil);
         
 #if GOOGLE_ANALYTICS
         
@@ -93,7 +93,7 @@
     }
     else
     {
-        self.title = @"Edit Patient";
+        self.title = NSLocalizedString(@"Edit Patient", nil);
         
 #if GOOGLE_ANALYTICS
         
@@ -202,7 +202,7 @@
             headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
         }
         
-        headerLabel.text = @"Working Weight";
+        headerLabel.text = NSLocalizedString(@"Working Weight", nil);
         
         [headerView addSubview:headerLabel];
         
@@ -232,7 +232,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Name";
+            cell.textLabel.text = NSLocalizedString(@"Name", nil);
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             
@@ -250,7 +250,7 @@
                 }
                 else 
                 {
-                    self.patientToEdit.firstname = @"Baby";
+                    self.patientToEdit.firstname = NSLocalizedString(@"Baby", nil);
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.patientToEdit.firstname, self.patientToEdit.lastname];
                     cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17];
                 }
@@ -271,7 +271,7 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = @"Date of Birth";
+            cell.textLabel.text = NSLocalizedString(@"Date of Birth", nil);
             cell.detailTextLabel.text = @"";
             cell.textLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
             cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:17.0f];
@@ -316,7 +316,7 @@
             }
             
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
-            cell.textLabel.text = @"Time of Birth";
+            cell.textLabel.text = NSLocalizedString(@"Time of Birth", nil);
             cell.detailTextLabel.text = @"";
             
             // iOS 7 specifics
@@ -352,7 +352,7 @@
             }
             else
             {
-                self.birthDateTextField.text = @"Can be entered later";
+                self.birthDateTextField.text = NSLocalizedString(@"Can be entered later", nil);
             }
             
             returnCell = cell;
@@ -406,7 +406,7 @@
                 cell.textLabel.font = [UIFont boldSystemFontOfSize:11.0f];
             }
             
-            cell.textLabel.text = @"Birth Weight";
+            cell.textLabel.text = NSLocalizedString(@"Birth Weight", nil);
             
             if (self.patientToEdit.birthWeight) 
             {
@@ -484,7 +484,7 @@
             }
             else
             {
-                cell.textLabel.text = @"Date";
+                cell.textLabel.text = NSLocalizedString(@"Date", nil);
                 cell.detailTextLabel.text = @"";
             }
         }
@@ -600,7 +600,7 @@
         {
             if (!self.patientToEdit.firstname) 
             {
-                self.patientToEdit.firstname = @"Baby";
+                self.patientToEdit.firstname = NSLocalizedString(@"Baby", nil);
             }
         }
     }
@@ -636,7 +636,7 @@
     {
         if (!self.patientToEdit.firstname) 
         {
-            self.patientToEdit.firstname = @"Baby";
+            self.patientToEdit.firstname = NSLocalizedString(@"Baby", nil);
         }
     }
     

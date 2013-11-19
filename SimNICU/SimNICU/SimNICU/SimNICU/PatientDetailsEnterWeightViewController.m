@@ -173,7 +173,7 @@
         {
             self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 180.0f, 30.0f)];
             self.gestation.borderStyle = UITextBorderStyleRoundedRect;
-            self.gestation.placeholder = @"weeks";
+            self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
             self.gestation.clearButtonMode = UITextFieldViewModeWhileEditing;
             self.gestation.adjustsFontSizeToFitWidth = YES;
             self.gestation.returnKeyType = UIReturnKeyNext;

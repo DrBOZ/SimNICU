@@ -329,7 +329,7 @@
     }
     else
     {
-        returnString = handoverSection.sectionName;
+        returnString = NSLocalizedString(handoverSection.sectionName, nil);
     }
     
     return returnString;
@@ -929,9 +929,9 @@
                         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                         
-                        self.clinicalStatusSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Well", @"Unwell"]];
+                        self.clinicalStatusSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Well", nil) , NSLocalizedString(@"Unwell", nil)]];
                         self.clinicalStatusSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBordered;
-                        self.clinicalStatusSegmentedControl.frame = CGRectMake(0.0f, 0.0f, 100.0f, 24.0f);
+                        self.clinicalStatusSegmentedControl.frame = CGRectMake(0.0f, 0.0f, 110.0f, 24.0f);
                         self.clinicalStatusSegmentedControl.tintColor = [UIColor redColor];
                         
                         [self.clinicalStatusSegmentedControl addTarget:self
@@ -941,7 +941,7 @@
                         cell.accessoryView = self.clinicalStatusSegmentedControl;
                     }
                     
-                    cell.textLabel.text = @"Clinical Status";
+                    cell.textLabel.text = NSLocalizedString(@"Clinical Status", nil);
                     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
                 }
                 else
@@ -979,9 +979,9 @@
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     
-                    self.neurotoxicityRiskFactorsSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"None", @"Some"]];
+                    self.neurotoxicityRiskFactorsSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"None", nil) , NSLocalizedString(@"Some", nil)]];
                     self.neurotoxicityRiskFactorsSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBordered;
-                    self.neurotoxicityRiskFactorsSegmentedControl.frame = CGRectMake(0.0f, 0.0f, 100.0f, 24.0f);
+                    self.neurotoxicityRiskFactorsSegmentedControl.frame = CGRectMake(0.0f, 0.0f, 110.0f, 24.0f);
                     self.neurotoxicityRiskFactorsSegmentedControl.tintColor = [UIColor redColor];
                     
                     [self.neurotoxicityRiskFactorsSegmentedControl addTarget:self
@@ -992,7 +992,7 @@
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 }
                 
-                cell.textLabel.text = @"Neurotoxicity Risk Factors";
+                cell.textLabel.text = NSLocalizedString(@"Neurotoxicity Risk Factors", nil);
                 cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
                 
                 /*
@@ -1907,7 +1907,26 @@
         // lookup if cell allows editing
         HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
         
-        userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
+        if ([section.sectionName isEqualToString:@"Jaundice"])
+        {
+            Preferences *preferences = [Preferences sharedPreferences];
+            
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
+            {
+                if (indexPath.row == 0 || indexPath.row == 3)
+                {
+                    userCanEditRowAtIndexPath = YES;
+                }
+            }
+            else
+            {
+                userCanEditRowAtIndexPath = YES;
+            }
+        }
+        else
+        {
+            userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
+        }
     }
     
     return userCanEditRowAtIndexPath;
@@ -5596,7 +5615,7 @@
 - (void)CBBarButtonTextItem:(CBBarCustomTextItem *)sender wasPressedInTextView:(UITextView *)textView
 {
     // work out which button was pressed
-    if ([sender.buttonText isEqualToString:@"done"])
+    if ([sender.buttonText isEqualToString:NSLocalizedString(@"done", nil)])
     {
         // close modal
         [self.modalPanel closePressed:nil];
@@ -5604,7 +5623,7 @@
         // close keyboard
         [textView resignFirstResponder];
     }
-    else if ([sender.buttonText isEqualToString:@"custom"])
+    else if ([sender.buttonText isEqualToString:NSLocalizedString(@"custom", nil)])
     {
         if (!self.modalPanel)
         {
@@ -5624,11 +5643,17 @@
                 // instead, check if user is using the 3.5 inch screen or 4 inch screen
                 if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
                 {
-                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 170.0f) title:@"Custom text" array:section.customText forTextView:textView];
+                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 170.0f)
+                                                                    title:NSLocalizedString(@"Custom text", @"i.e. user customisable text")
+                                                                    array:section.customText
+                                                              forTextView:textView];
                 }
                 else
                 {
-                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
+                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 260.0f)
+                                                                    title:NSLocalizedString(@"Custom text", @"i.e. user customisable text")
+                                                                    array:section.customText
+                                                              forTextView:textView];
                 }
             }
             else
@@ -5636,11 +5661,17 @@
                 // instead, check if user is using the 3.5 inch screen or 4 inch screen
                 if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
                 {
-                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 170.0f) title:@"Custom text" array:section.customText forTextView:textView];
+                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 170.0f)
+                                                                    title:NSLocalizedString(@"Custom text", @"i.e. user customisable text")
+                                                                    array:section.customText
+                                                              forTextView:textView];
                 }
                 else
                 {
-                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Custom text" array:section.customText forTextView:textView];
+                    self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f)
+                                                                    title:NSLocalizedString(@"Custom text", @"i.e. user customisable text")
+                                                                    array:section.customText
+                                                              forTextView:textView];
                 }
             }
             

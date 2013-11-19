@@ -150,7 +150,7 @@
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        cell.textLabel.text = @"Birth";
+        cell.textLabel.text = NSLocalizedString(@"Birth", nil);
         
         if (!self.birthDateTextField)
         {
@@ -289,7 +289,7 @@
         self.dateTextField.text = [formatter stringFromDate:self.selectedDate];
         
         cell.accessoryView = self.dateTextField;
-        cell.textLabel.text = @"Sample";
+        cell.textLabel.text = NSLocalizedString(@"Sample", nil);
         
         returnCell = cell;
     }
@@ -305,7 +305,7 @@
             cell.backgroundColor = [UIColor whiteColor];
         }
         
-        cell.textLabel.text = @"Sample Age";
+        cell.textLabel.text = NSLocalizedString(@"Sample Age", nil);
         
         if (self.formattedAge)
         {

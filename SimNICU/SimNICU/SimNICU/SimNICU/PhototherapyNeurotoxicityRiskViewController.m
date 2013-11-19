@@ -27,8 +27,6 @@
     
     [CBTrackers logEvent:@"Phototherapy/Neurotoxicity Risk"];
     
-    self.title = NSLocalizedString(@"Neurotoxicity Risk", nil); // need to add to localization string file
-    
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -170,7 +168,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return NSLocalizedString(@"Neurotoxicity risk factors", nil);  // add to localization string file...;
+    return NSLocalizedString(@"Neurotoxicity Risk Factors", nil);
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/AdvancedPatientEditorViewController.m"
-            timestampString = "405377723.142443"
+            timestampString = "406515208.142093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2676"
-            endingLineNumber = "2676"
+            startingLineNumber = "2695"
+            endingLineNumber = "2695"
             landmarkName = "-loadShinobiChartWithFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,12 +52,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/AdvancedPatientEditorViewController.m"
-            timestampString = "406503947.873319"
+            timestampString = "406515208.142093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2866"
-            endingLineNumber = "2866"
+            startingLineNumber = "2885"
+            endingLineNumber = "2885"
             landmarkName = "-loadSectionDataForPatientEditing:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SimNICU/DailySummaryTableViewController.m"
+            timestampString = "406510577.686543"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5159"
+            endingLineNumber = "5159"
+            landmarkName = "-CBBarButtonTextItem:wasPressedInTextView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

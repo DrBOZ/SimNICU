@@ -275,7 +275,7 @@
     
 #pragma mark - Daily Summary
     
-    [self drawText:@"Daily Summary"
+    [self drawText:NSLocalizedString(@"Daily Summary", nil)
           withFont:headerFont onLeftSideOfPageAtVerticalPosition:verticalPointToPrint];
     
 #pragma mark Day
@@ -289,7 +289,7 @@
         NSString *correctedAge = formattedDates[2];
 
         // display days and corrected age
-        dayText = [NSString stringWithFormat:@"day %i (%@)", [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
+        dayText = [NSString stringWithFormat:@"%@ %i (%@)", NSLocalizedString(@"day", nil), [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
     }
     
     [self drawText:dayText

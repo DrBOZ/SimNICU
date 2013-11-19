@@ -30,7 +30,7 @@
 	
     [CBTrackers logEvent:@"Phototherapy/Clinical Status"];
     
-    self.title = NSLocalizedString(@"Clinical Status", nil); // need to add to localization string file
+    // self.title = NSLocalizedString(@"Clinical Status", nil);
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -109,7 +109,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return NSLocalizedString(@"Clinical Status", nil);  // add to localization string file...
+    return NSLocalizedString(@"Clinical Status", nil);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
