@@ -9,11 +9,11 @@
 #import "BloodTransfusionCriteriaViewController.h"
 #import "BloodTransfusionCriteriaModel.h"
 
-@interface BloodTransfusionCriteriaViewController ()
-
-@end
-
 @implementation BloodTransfusionCriteriaViewController
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 - (void)viewDidLoad
 {

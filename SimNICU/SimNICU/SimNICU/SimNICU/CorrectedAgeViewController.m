@@ -44,6 +44,9 @@
 @implementation CorrectedAgeViewController
 {
     BOOL gestationHasBeenEntered;
+    
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
 }
 
 - (void)viewDidLoad
@@ -67,7 +70,13 @@
     }
     
     // back button
-    self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
+    // self.navigationItem.backBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:nil action:nil];
+    
+    // setup back bar button with long press gesture
+    self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                       action:@selector(backButtonPressed)
+                                                                                                              longPressTarget:self
+                                                                                                              longPressAction:@selector(backButtonLongPressed)];
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -99,6 +108,21 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.myTableView addGestureRecognizer:swipeRight];
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

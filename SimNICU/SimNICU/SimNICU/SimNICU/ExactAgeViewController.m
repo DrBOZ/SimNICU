@@ -17,6 +17,10 @@
 
 
 @interface ExactAgeViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 @property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
 @property (nonatomic, retain) AbstractActionSheetPicker *actionSheetPicker;

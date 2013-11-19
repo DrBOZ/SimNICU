@@ -32,9 +32,6 @@
     
     self.title = NSLocalizedString(@"Settings", nil);
     
-    // setup back button
-    // self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(backButtonPressed)];
-    
     // setup back bar button with long press gesture
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
                                                                                                                        action:@selector(backButtonPressed)

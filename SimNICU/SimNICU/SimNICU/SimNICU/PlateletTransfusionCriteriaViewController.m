@@ -9,11 +9,11 @@
 #import "PlateletTransfusionCriteriaViewController.h"
 #import "PlateletTransfusionModel.h"
 
-@interface PlateletTransfusionCriteriaViewController ()
-
-@end
-
 @implementation PlateletTransfusionCriteriaViewController
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

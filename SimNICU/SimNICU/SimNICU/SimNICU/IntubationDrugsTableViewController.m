@@ -9,11 +9,11 @@
 #import "IntubationDrugsTableViewController.h"
 #import "IntubationDrugsTableViewCell.h"
 
-@interface IntubationDrugsTableViewController ()
-
-@end
-
 @implementation IntubationDrugsTableViewController
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
