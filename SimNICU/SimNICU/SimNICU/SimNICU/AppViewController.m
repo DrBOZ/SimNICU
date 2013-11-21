@@ -684,14 +684,10 @@
     
 #endif
     
-#if CFAM_PREVIEW_MODE
-    
     screen = [Screen new];
     screen.menuText = NSLocalizedString(@"Cerebral Function Monitoring", nil);
     screen.segueId = @"CFAM";
     [screens addObject:screen];
-    
-#endif
     
     screen = [Screen new];
     screen.menuText = NSLocalizedString(@"Cooling", nil);

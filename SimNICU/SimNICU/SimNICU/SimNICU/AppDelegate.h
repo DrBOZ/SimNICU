@@ -55,11 +55,9 @@
 #define CALCULATOR_PREVIEW_MODE 0
 #define CRUSS_PREVIEW_MODE 0
 #define DRUGS_PREVIEW_MODE 0
-#define CFAM_PREVIEW_MODE 1
 
 // Rear VC
-#define SETTINGS_PREVIEW_MODE 1
-#define SYNC_PREVIEW_MODE 0
+#define SYNC_PREVIEW_MODE 0                 // this needs updating for iOS 7
 
 // Settings
 #define LOCALISATION_PREVIEW_MODE 0

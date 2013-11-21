@@ -1196,29 +1196,6 @@
             
             [self presentModalViewController:navController animated:YES];
         }
-        else if (indexPath.row == 2)
-        {
-            // Settings
-#if SETTINGS_PREVIEW_MODE
-            
-            [self showSettings];
-            
-#else
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-#endif
-        }
-        else
-        {
-            KKPasscodeSettingsViewController *controller = [[KKPasscodeSettingsViewController alloc] init];
-            controller.delegate = self;
-            
-            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:controller];
-            
-            navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-            navController.navigationBar.tintColor = [UIColor blackColor];
-            
-            [self presentModalViewController:navController animated:YES];
-        }
     }
     else if(indexPath.section > 1)
     {
