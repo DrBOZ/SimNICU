@@ -34,7 +34,7 @@
 
 // Dynamic Text
 #define USE_DYNAMIC_TEXT 1
-#define DYNAMIC_TEXT_TESTER 1
+#define DYNAMIC_TEXT_TESTER 0
 
 // Intro screen
 #define INTRO_SCREEN 0                                      // turn on for release (maybe not!)

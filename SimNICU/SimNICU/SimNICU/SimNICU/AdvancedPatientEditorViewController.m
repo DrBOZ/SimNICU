@@ -524,6 +524,8 @@
             }
             else if ([section.sectionName isEqual:@"Jaundice"])
             {
+                Preferences *preferences = [Preferences sharedPreferences];
+                
                 if (indexPath.row == 0)
                 {
                     HandoverRow *row = section.rows[indexPath.row];
@@ -532,9 +534,22 @@
                     
                     return height;
                 }
-                else if (indexPath.row == 1)
+                else
                 {
-                    textView.text = self.selectedPatient.jaundice;
+                    if ([preferences.guidelineCountry isEqualToString:@"US"])
+                    {
+                        if (indexPath.row == 3)
+                        {
+                            textView.text = self.selectedPatient.jaundice;
+                        }
+                    }
+                    else
+                    {
+                        if (indexPath.row == 1)
+                        {
+                            textView.text = self.selectedPatient.jaundice;
+                        }
+                    }
                 }
             }
             else if ([section.sectionName isEqual:@"Sepsis"])
@@ -2145,7 +2160,16 @@
     // Jaundice cell different
     if (textView.tag == 11)
     {
-        row = 1;
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        if ([preferences.guidelineCountry isEqualToString:@"US"])
+        {
+            row = 3;
+        }
+        else
+        {
+            row = 1;
+        }
     }
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:textView.tag];
