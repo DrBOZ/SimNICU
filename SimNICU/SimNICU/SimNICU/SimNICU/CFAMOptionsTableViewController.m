@@ -123,14 +123,7 @@
     }
     else if (indexPath.section == 1)
     {
-//        EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
-//        
-//        // Bay Editor
-//        BayEditorTableViewController *bayEditorTableViewController = [[BayEditorTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-//        bayEditorTableViewController.bayData = controller.bayData;
-//        bayEditorTableViewController.delegate = controller;
-//        
-//        [self.navigationController pushViewController:bayEditorTableViewController animated:YES];
+        // code
     }
     else if (indexPath.section == 2)
     {
@@ -142,9 +135,7 @@
         }
         else if (indexPath.row == 1)
         {
-//            PDFGenerationTableViewController *newViewController = [[PDFGenerationTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-//            
-//            [self.navigationController pushViewController:newViewController animated:YES];
+            // code
         }
         else
         {

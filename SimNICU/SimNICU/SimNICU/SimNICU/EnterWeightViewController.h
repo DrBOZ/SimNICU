@@ -48,10 +48,9 @@
 @property (nonatomic) BOOL confidentialityModeOn;
 @property (nonatomic, strong) UITextField *weight;
 
-- (void)savePatientList;
 - (void)patientConfidentialityModeToggle;
-- (void)addPatient;
 - (void)dismissKeyboard;
+- (void)addPatient;
 - (void)saveData;
 
 @end

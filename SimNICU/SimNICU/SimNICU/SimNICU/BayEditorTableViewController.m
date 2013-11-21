@@ -100,7 +100,7 @@
 
 - (void)add
 {
-    if ([self.bayData count] <20)
+    if ([self.bayData count] < 20)
     {
         Bay *bay = [[Bay alloc] init];
         bay.bayName = NSLocalizedString(@"New Bay", nil);
@@ -211,7 +211,7 @@
     }
     else
     {
-        // check if there are any patient in the bay
+        // check if there are any patients in the bay
         if ([[self.bayData[indexPath.row] patientsInBay] count])
         {
             // ideally present dialog box to ask user if they want the patients moving or deleting

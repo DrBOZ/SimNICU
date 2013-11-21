@@ -37,6 +37,7 @@
 
 - (void)selectCentile;
 - (void)selectSex;
+- (void)loadData;
 
 @end
 
@@ -109,7 +110,7 @@
 
 # pragma mark
 
-- (void)loadPatientList
+- (void)loadData
 {
     NSString *path = [self dataFilePath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path])
@@ -137,7 +138,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        [self loadPatientList];
+        [self loadData];
         
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -302,11 +303,6 @@
     
 #endif
     
-}
-
-- (void)savePatientList // legacy code
-{
-    [self saveData];
 }
 
 - (void)saveData
@@ -663,9 +659,14 @@
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
                 {
-                    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    self.button.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
+                    self.button = [UIButton buttonWithType:UIButtonTypeSystem];
+                    self.button.frame = CGRectMake(0.0f, 1.0f, 120.0f, 30.0f);
                     [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
+                    
+                    UIFontDescriptor *bodyFontDesciptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+                    UIFontDescriptor *boldBodyFontDescriptor = [bodyFontDesciptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+                    self.button.titleLabel.font = [UIFont fontWithDescriptor:boldBodyFontDescriptor size:18.0f];
+                    
                     [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
                 }
                 else
