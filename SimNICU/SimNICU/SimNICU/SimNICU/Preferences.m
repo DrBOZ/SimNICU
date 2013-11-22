@@ -234,6 +234,10 @@
             newSection.sectionName = @"Active Problems";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
             
+            // Suspected sepsis
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Suspected sepsis", nil)
+                                                          ref:NSLocalizedString(@"Suspected Sepsis", nil)]];
+            
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
         
@@ -540,19 +544,32 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Nil
-            [newSection.customText addObject:[self customText:@"Nil" ref:@"Nil"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Nil", nil)
+                                                          ref:NSLocalizedString(@"Nil", nil)]];
             
             // Stopped antibiotics
-            [newSection.customText addObject:[self customText:@"Stopped antibiotics" ref:@"Stopped antibiotics"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Stopped antibiotics", nil)
+                                                          ref:NSLocalizedString(@"Stopped antibiotics", nil)]];
+            
+            // Aciclovir
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Aciclovir", nil)
+                                                          ref:NSLocalizedString(@"Aciclovir", nil)]];
         
             // Benzylpenicillin
-            [newSection.customText addObject:[self customText:@"Benzylpenicillin" ref:@"Benzylpenicillin"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Benzylpenicillin", nil)
+                                                          ref:NSLocalizedString(@"Benzylpenicillin", nil)]];
         
+            // Flucloxacillin
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Flucloxacillin", nil)
+                                                          ref:NSLocalizedString(@"Flucloxacillin", nil)]];
+            
             // Gentamicin
-            [newSection.customText addObject:[self customText:@"Gentamicin" ref:@"Gentamicin"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Gentamicin", nil)
+                                                          ref:NSLocalizedString(@"Gentamicin", nil)]];
             
             // Caffeine
-            [newSection.customText addObject:[self customText:@"Caffeine" ref:@"Caffeine"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Caffeine", nil)
+                                                          ref:NSLocalizedString(@"Caffeine", nil)]];
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
