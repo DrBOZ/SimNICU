@@ -180,7 +180,7 @@
         
         CustomText *customText = handoverSection.customText[indexPath.row];
         
-        textField.text = customText.customTextReferenceName;
+        textField.text = NSLocalizedString(customText.customTextReferenceName, nil);
         
         [cell.contentView addSubview:textField];
     }

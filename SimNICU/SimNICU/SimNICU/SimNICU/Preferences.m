@@ -336,10 +336,12 @@
             [newSection.customText addObject:[self customText:@"Hb " ref:@"Hb"]];
             
             // WCC
-            [newSection.customText addObject:[self customText:@" WCC " ref:@"WCC"]];
+            [newSection.customText addObject:[self customText:@" WCC "
+                                                          ref:NSLocalizedString(@"WCC", nil)]];
             
             // Plats
-            [newSection.customText addObject:[self customText:@" Plats " ref:@"Plats"]];
+            [newSection.customText addObject:[self customText:@" Plats "
+                                                          ref:NSLocalizedString(@"Plats", nil)]];
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
@@ -354,32 +356,40 @@
         // 07 - Lines
         {
             newSection = [[HandoverSection alloc] init];
-            newSection.sectionName = @"Lines";
+            newSection.sectionName = NSLocalizedString(@"Lines", nil);
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // 24G
-            [newSection.customText addObject:[self customText:@"24G " ref:@"24G"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"24G ", nil)
+                                                          ref:NSLocalizedString(@"24G", nil)]];
             
             // dorsum
-            [newSection.customText addObject:[self customText:@"dorsum " ref:@"dorsum"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"dorsum ", nil)
+                                                          ref:NSLocalizedString(@"dorsum", nil)]];
             
             // left
-            [newSection.customText addObject:[self customText:@"left " ref:@"left"]];
+            [newSection.customText addObject:[self customText:@"left "
+                                                          ref:@"left"]];
             
             // right
-            [newSection.customText addObject:[self customText:@"right " ref:@"right"]];
+            [newSection.customText addObject:[self customText:@"right "
+                                                          ref:@"right"]];
             
             // hand
-            [newSection.customText addObject:[self customText:@"hand" ref:@"hand"]];
+            [newSection.customText addObject:[self customText:@"hand"
+                                                          ref:@"hand"]];
             
             // foot
-            [newSection.customText addObject:[self customText:@"foot " ref:@"foot"]];
+            [newSection.customText addObject:[self customText:@"foot "
+                                                          ref:@"foot"]];
             
             // antecubital fossa
-            [newSection.customText addObject:[self customText:@"antecubital fossa " ref:@"antecubital fossa"]];
+            [newSection.customText addObject:[self customText:@"antecubital fossa "
+                                                          ref:@"antecubital fossa"]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:@"[current date]"]];
             
             [self.handoverSections addObject:newSection];
         }

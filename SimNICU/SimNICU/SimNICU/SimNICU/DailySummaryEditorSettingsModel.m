@@ -23,15 +23,15 @@
     
     // section 0
     sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Text Entry";
+    sectionData.titleForHeader = NSLocalizedString(@"Text Entry", nil);
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Autocorrection";
+    rowData.text = NSLocalizedString(@"Autocorrection", nil);
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = @"Tool Bar";
+    rowData.text = NSLocalizedString(@"Tool Bar", nil);
     [sectionData.rowData addObject:rowData];
     
     // Nice idea, but difficult to implement...
@@ -45,7 +45,7 @@
     
     // section 1
     sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = @"Custom Text";
+    sectionData.titleForHeader = NSLocalizedString(@"Custom Text", @"Text that the user can change");
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:20];
     
     HandoverSection *section;
@@ -53,7 +53,7 @@
     for (section in preferences.handoverSections)
     {
         rowData = [[CBTableViewRowData alloc] init];
-        rowData.text = section.sectionName;
+        rowData.text = NSLocalizedString(section.sectionName, nil);
         [sectionData.rowData addObject:rowData];
     }
     

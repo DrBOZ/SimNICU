@@ -34,7 +34,7 @@
 
     [CBTrackers logEvent:@"Settings/Daily Summary Editor"];
     
-    self.title = @"Daily Summary Editor";
+    self.title = NSLocalizedString(@"Editor Settings", nil);
     
     // setup back bar button with long press gesture
     self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
