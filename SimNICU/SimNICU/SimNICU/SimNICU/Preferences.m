@@ -234,6 +234,18 @@
             newSection.sectionName = @"Active Problems";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
             
+            // Hypotension
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypotension", nil)
+                                                          ref:NSLocalizedString(@"Hypotension", nil)]];
+            
+            // Anaemia
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Anaemia", nil)
+                                                          ref:NSLocalizedString(@"Anaemia", nil)]];
+            
+            // Hypoglycaemia
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypoglycaemia", nil)
+                                                          ref:NSLocalizedString(@"Hypoglycaemia", nil)]];
+            
             // Suspected sepsis
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Suspected sepsis", nil)
                                                           ref:NSLocalizedString(@"Suspected Sepsis", nil)]];
@@ -250,6 +262,22 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Resolved Problems";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
+            
+            // Hypotension
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypotension", nil)
+                                                          ref:NSLocalizedString(@"Hypotension", nil)]];
+            
+            // Anaemia
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Anaemia", nil)
+                                                          ref:NSLocalizedString(@"Anaemia", nil)]];
+            
+            // Hypoglycaemia
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypoglycaemia", nil)
+                                                          ref:NSLocalizedString(@"Hypoglycaemia", nil)]];
+            
+            // Suspected sepsis
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Suspected sepsis", nil)
+                                                          ref:NSLocalizedString(@"Suspected Sepsis", nil)]];
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
@@ -372,20 +400,20 @@
                                                           ref:NSLocalizedString(@"dorsum", nil)]];
             
             // left
-            [newSection.customText addObject:[self customText:@"left "
-                                                          ref:@"left"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"left ", nil)
+                                                          ref:NSLocalizedString(@"left", nil)]];
             
             // right
-            [newSection.customText addObject:[self customText:@"right "
-                                                          ref:@"right"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"right ", nil)
+                                                          ref:NSLocalizedString(@"right", nil)]];
             
             // hand
-            [newSection.customText addObject:[self customText:@"hand"
-                                                          ref:@"hand"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"hand", nil)
+                                                          ref:NSLocalizedString(@"hand", nil)]];
             
             // foot
-            [newSection.customText addObject:[self customText:@"foot "
-                                                          ref:@"foot"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"foot ", nil)
+                                                          ref:NSLocalizedString(@"foot", nil)]];
             
             // antecubital fossa
             [newSection.customText addObject:[self customText:@"antecubital fossa "
@@ -393,7 +421,7 @@
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]"
-                                                          ref:@"[current date]"]];
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
             
             [self.handoverSections addObject:newSection];
         }
