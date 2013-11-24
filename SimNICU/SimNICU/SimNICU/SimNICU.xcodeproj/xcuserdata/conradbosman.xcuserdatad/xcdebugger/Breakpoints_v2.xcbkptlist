@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/EnterWeightViewController.m"
-            timestampString = "406763604.620031"
+            timestampString = "406945733.60993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2169"
-            endingLineNumber = "2169"
+            startingLineNumber = "2184"
+            endingLineNumber = "2184"
             landmarkName = "-bayEditorTableViewControllerDidFinishEditingBays:"
             landmarkType = "5">
          </BreakpointContent>

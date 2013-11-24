@@ -663,9 +663,7 @@
                     self.button.frame = CGRectMake(0.0f, 1.0f, 120.0f, 30.0f);
                     [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
                     
-                    UIFontDescriptor *bodyFontDesciptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
-                    UIFontDescriptor *boldBodyFontDescriptor = [bodyFontDesciptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
-                    self.button.titleLabel.font = [UIFont fontWithDescriptor:boldBodyFontDescriptor size:18.0f];
+                    [self unhighlightDoneButton];
                     
                     [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
                 }
@@ -1503,11 +1501,12 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    // NSLog(@"textFieldDidBeginEditing");
+    // Set Done
+    [self highlightDoneButton];
     
     // This prevents user from hiding the rear view controller when entering numeric data
     
-    self.userEditingTextField = YES; 
+    self.userEditingTextField = YES;
     
     // if user has not entered a weight, and is just entering a gestation, then assume they do not know the weight
     // and a selection for sex must be made
@@ -1684,8 +1683,24 @@
     NSLog(@"Centile selected: %@", self.selectedCentile);
 }
 
+- (void)highlightDoneButton
+{
+    UIFontDescriptor *bodyFontDesciptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    UIFontDescriptor *boldBodyFontDescriptor = [bodyFontDesciptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    self.button.titleLabel.font = [UIFont fontWithDescriptor:boldBodyFontDescriptor size:18.0f];
+}
+
+- (void)unhighlightDoneButton
+{
+    UIFontDescriptor *bodyFontDesciptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    self.button.titleLabel.font = [UIFont fontWithDescriptor:bodyFontDesciptor size:18.0f];
+}
+
 - (void)dismissKeyboard
 {
+    // Set Done button font
+    [self unhighlightDoneButton];
+    
     [self.weight resignFirstResponder];
     [self.gestation resignFirstResponder];
     
