@@ -333,7 +333,8 @@
     HandoverSection *section;
     // HandoverRow *row;
     
-    for (section in self.selectedPatient.handoverSections) // longwinded but may be useful later...
+    // for (section in self.selectedPatient.handoverSections) // longwinded but may be useful later...
+    for (section in preferences.handoverSections)
     {
 #pragma mark Background
         if ([section.sectionName isEqual:@"Background"] && ([self.selectedPatient.background length] > 0))
@@ -394,12 +395,28 @@
                      andBodyText:self.selectedPatient.cardiovascular
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
+#pragma mark Haematology
+        else if ([section.sectionName isEqual:@"Haematology"] && ([self.selectedPatient.haematology length] > 0))
+        {
+            [self drawHeaderText:NSLocalizedString(@"Haematology", nil)
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.haematology
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+        }
 #pragma mark Lines
         else if ([section.sectionName isEqual:@"Lines"] && ([self.selectedPatient.lines length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Lines", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.lines
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+        }
+#pragma mark Echocardiogram
+        else if ([section.sectionName isEqual:@"Echocardiogram"] && ([self.selectedPatient.echocardiogram length] > 0))
+        {
+            [self drawHeaderText:NSLocalizedString(@"Echocardiogram", nil)
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.echocardiogram
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Feeds & Fluids

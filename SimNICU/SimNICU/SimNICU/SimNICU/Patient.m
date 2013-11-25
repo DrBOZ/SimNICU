@@ -94,7 +94,9 @@
         self.ventilationAndSedation = [aDecoder decodeObjectForKey:@"VentilationAndSedation"];
         self.cxr = [aDecoder decodeObjectForKey:@"CXR"];
         self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
+        self.haematology = [aDecoder decodeObjectForKey:@"Haematology"];
         self.lines = [aDecoder decodeObjectForKey:@"Lines"];
+        self.echocardiogram = [aDecoder decodeObjectForKey:@"Echocardiogram"];
         self.feedsAndFluids = [aDecoder decodeObjectForKey:@"FeedsAndFluids"];
         self.fluidBalance = [aDecoder decodeObjectForKey:@"FluidBalance"];
         self.electrolytes = [aDecoder decodeObjectForKey:@"Electrolytes"];
@@ -116,7 +118,9 @@
         self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
         self.cxrLastEntryDate = [aDecoder decodeObjectForKey:@"CXRLastEntryDate"];
         self.cardiovascularLastEntryDate = [aDecoder decodeObjectForKey:@"CardiovascularLastEntryDate"];
+        self.haematologyLastEntryDate = [aDecoder decodeObjectForKey:@"HaematologyLastEntryDate"];
         self.linesLastEntryDate = [aDecoder decodeObjectForKey:@"LinesLastEntryDate"];
+        self.echocardiogram = [aDecoder decodeObjectForKey:@"EchocardiogramLastEntryDate"];
         self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
         self.fluidBalanceLastEntryDate = [aDecoder decodeObjectForKey:@"FluidBalanceLastEntryDate"];
         self.electrolytesLastEntryDate = [aDecoder decodeObjectForKey:@"ElectrolytesLastEntryDate"];
@@ -164,6 +168,8 @@
     {
         // will almost certainly be better to convert this to a NSDictionary
         
+        // NOTE: this list is ordered by TextView.tag
+        
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         HandoverSection *newSection;
         HandoverRow *newRow;
@@ -171,7 +177,7 @@
         // 00 - Background
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Background";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -184,7 +190,7 @@
         // 01 - Active Problems
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Active Problems";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -197,7 +203,7 @@
         // 02 - Resolved Problems
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Resolved Problems";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -210,7 +216,7 @@
         // 03 - Recent Significant Events
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Recent Significant Events";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -223,7 +229,7 @@
         // 04 - Ventilation & Sedation
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Ventilation & Sedation";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -236,7 +242,7 @@
         // 05 - CXR
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"CXR";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -249,7 +255,7 @@
         // 06 - Cardiovascular
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cardiovascular";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -262,7 +268,7 @@
         // 07 - Lines
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Lines";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -275,7 +281,7 @@
         // 08 - Feeds & Fluids
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Feeds & Fluids";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -288,7 +294,7 @@
         // 09 - Fluid Balance
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Fluid Balance";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -301,7 +307,7 @@
         // 10 - Biochemistry
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Biochemistry";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -314,7 +320,7 @@
         // 11 - Jaundice
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jaundice";
-        newSection.sectionEditable = @"YES";
+        // newSection.sectionEditable = @"YES";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
         
         newRow = [[HandoverRow alloc] init];
@@ -339,7 +345,7 @@
         // 12 - Sepsis
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Sepsis";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -352,7 +358,7 @@
         // 13 - Drugs
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Drugs";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -365,7 +371,7 @@
         // 14 - ROP
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"ROP";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -378,7 +384,7 @@
         // 15 - Neurology & Cranial USS
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Neurology & Cranial USS";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -391,7 +397,7 @@
         // 16 - Parents / Social
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Parents / Social";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -404,7 +410,7 @@
         // 17 - Examination
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Examination";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -417,7 +423,7 @@
         // 18 - Summary
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Summary";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -430,12 +436,38 @@
         // 19 - Plan
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Plan";
-        newSection.sectionEditable = @"NO";
+        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
         newRow.rowHeight = [NSNumber numberWithFloat:346.0f];
         newRow.rowText = self.jobs;
+        [newSection.rows addObject:newRow];
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 20 - Haematology
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Haematology";
+        // newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowText = self.haematology;
+        [newSection.rows addObject:newRow];
+        
+        [self.handoverSections addObject:newSection];
+        
+        // 21 - Echocardiogram
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Echocardiogram";
+        // newSection.sectionEditable = @"NO";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowText = self.echocardiogram;
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
@@ -504,7 +536,9 @@
     [aCoder encodeObject:self.ventilationAndSedation forKey:@"VentilationAndSedation"];
     [aCoder encodeObject:self.cxr forKey:@"CXR"];
     [aCoder encodeObject:self.cardiovascular forKey:@"Cardiovascular"];
+    [aCoder encodeObject:self.haematology forKey:@"Haematology"];
     [aCoder encodeObject:self.lines forKey:@"Lines"];
+    [aCoder encodeObject:self.echocardiogram forKey:@"Echocardiogram"];
     [aCoder encodeObject:self.feedsAndFluids forKey:@"FeedsAndFluids"];
     [aCoder encodeObject:self.fluidBalance forKey:@"FluidBalance"];
     [aCoder encodeObject:self.electrolytes forKey:@"Electrolytes"];
@@ -526,7 +560,9 @@
     [aCoder encodeObject:self.ventilationAndSedationLastEntryDate forKey:@"VentilationAndSedationLastEntryDate"];
     [aCoder encodeObject:self.cxrLastEntryDate forKey:@"CXRLastEntryDate"];
     [aCoder encodeObject:self.cardiovascularLastEntryDate forKey:@"CardiovascularLastEntryDate"];
+    [aCoder encodeObject:self.haematologyLastEntryDate forKey:@"HaematologyLastEntryDate"];
     [aCoder encodeObject:self.linesLastEntryDate forKey:@"LinesLastEntryDate"];
+    [aCoder encodeObject:self.echocardiogramLastEntryDate forKey:@"EchocardiogramLastEntryDate"];
     [aCoder encodeObject:self.feedsAndFluidLastEntryDate forKey:@"FeedsAndFluidsLastEntryDate"];
     [aCoder encodeObject:self.fluidBalanceLastEntryDate forKey:@"FluidBalanceLastEntryDate"];
     [aCoder encodeObject:self.electrolytesLastEntryDate forKey:@"ElectrolytesLastEntryDate"];

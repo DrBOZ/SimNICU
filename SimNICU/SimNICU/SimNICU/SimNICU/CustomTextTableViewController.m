@@ -99,8 +99,8 @@
     
     // create new custom text
     CustomText *newCustomText = [CustomText new];
-    newCustomText.customTextReferenceName = @"New custom text";
-    newCustomText.customText = @"Enter custom text...";
+    newCustomText.customTextReferenceName = NSLocalizedString(@"New custom text", nil);
+    newCustomText.customText = [NSString stringWithFormat:@"%@...", NSLocalizedString(@"Custom text", nil)];
 
     // create path to new customText
     NSArray *indexPaths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:[handoverSection.customText count] inSection:0], nil];

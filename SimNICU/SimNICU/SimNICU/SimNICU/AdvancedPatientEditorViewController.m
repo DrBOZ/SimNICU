@@ -47,7 +47,9 @@
     BOOL newVentilationAndSedation;
     BOOL newCXR;
     BOOL newCardiovascular;
+    BOOL newHaematology;
     BOOL newLines;
+    BOOL newEchocardiogram;
     BOOL newFeedsAndFluids;
     BOOL newFluidBalance;
     BOOL newElectrolytes;
@@ -89,7 +91,9 @@
 @property (nonatomic, strong) UITextView *ventilationAndSedationTextView;
 @property (nonatomic, strong) UITextView *cxrTextView;
 @property (nonatomic, strong) UITextView *cardiovascularTextView;
+@property (nonatomic, strong) UITextView *haematologyTextView;
 @property (nonatomic, strong) UITextView *linesTextView;
+@property (nonatomic, strong) UITextView *echocardiogramTextView;
 @property (nonatomic, strong) UITextView *feedsAndFluidsTextView;
 @property (nonatomic, strong) UITextView *fluidBalanceTextView;
 @property (nonatomic, strong) UITextView *electrolytesTextView;
@@ -113,13 +117,15 @@
 
 @property (nonatomic, strong) UIButton *fingerprintButton;
 
+- (int)getUserDefinedSectionForTextView:(UITextView *)textView;
+
 @end
 
 @implementation AdvancedPatientEditorViewController
 
 // things I need to still do
 //
-// 1) Add option to calcualate first day as day 0, day 1 or mixture
+// 1)
 // 2) 
 // 3) use edit data to allow edits
 // 
@@ -279,13 +285,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     if  ([tableView isEqual:self.myTableView1])
     {
         return 1;
     }
     else
     {
-        return [self.selectedPatient.handoverSections count];
+        // return [self.selectedPatient.handoverSections count];
+        return [preferences.handoverSections count];
     }
 }
 
@@ -299,10 +308,40 @@
     }
     else
     {
-        HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
+        // HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
         
         Preferences *preferences = [Preferences sharedPreferences];
         
+        HandoverSection *handoverSection = preferences.handoverSections[section];
+        
+        HandoverSection *handoverSectionForPatient;
+        
+        NSLog(@"checking %@", handoverSection.sectionName);
+        
+        for (handoverSectionForPatient in self.selectedPatient.handoverSections)
+        {
+            if ([handoverSectionForPatient.sectionName isEqualToString:handoverSection.sectionName])
+            {
+                // if Phototherapy section and user is using US preferences then add another two rows
+                if ([handoverSection.sectionName isEqual:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
+                {
+                    rows = [handoverSectionForPatient.rows count] + 2;
+                }
+                else
+                {
+                    rows = [handoverSectionForPatient.rows count];
+                }
+            }
+        }
+        
+        NSLog(@"rows = %i", rows);
+        
+        if (rows == 0)
+        {
+            NSLog(@"error");
+        }
+        
+        /*
         // if Phototherapy section and user is using US preferences then add another two rows
         if ([handoverSection.sectionName isEqual:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
         {
@@ -312,6 +351,7 @@
         {
             rows = [handoverSection.rows count];
         }
+         */
     }
     
     return rows;
@@ -321,7 +361,10 @@
 {
     NSString *returnString = nil;
     
-    HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
+    // order as per the user's preferences
+    Preferences *preferences = [Preferences sharedPreferences];
+
+    HandoverSection *handoverSection = preferences.handoverSections[section];
     
     if ([tableView isEqual:self.myTableView1])
     {
@@ -329,6 +372,7 @@
     }
     else
     {
+        // localisation of section name occurs here
         returnString = NSLocalizedString(handoverSection.sectionName, nil);
     }
     
@@ -337,20 +381,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    // can use the method to work out header font height here
     return 22.0f;
 }
 
 - (CGFloat)heightForTextView:(UITextView *)textView
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     // get textView height
+    
+    // as based on textView.tag, get from selected patient info
     HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
     
-    UITextView *textViewToMeasure;
-    
-    if (!textViewToMeasure)
-    {
-        textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
-    }
+    UITextView *textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
     
     if ([section.sectionName isEqual:@"Background"])
     {
@@ -380,9 +424,17 @@
     {
         textViewToMeasure.text = self.selectedPatient.cardiovascular;
     }
+    else if ([section.sectionName isEqual:@"Haematology"])
+    {
+        textViewToMeasure.text = self.selectedPatient.haematology;
+    }
     else if ([section.sectionName isEqual:@"Lines"])
     {
         textViewToMeasure.text = self.selectedPatient.lines;
+    }
+    else if ([section.sectionName isEqual:@"Echocardiogram"])
+    {
+        textViewToMeasure.text = self.selectedPatient.echocardiogram;
     }
     else if ([section.sectionName isEqual:@"Feeds & Fluids"])
     {
@@ -442,8 +494,6 @@
     
     textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
     
-    Preferences *preferences = [Preferences sharedPreferences];
-    
     if ([preferences.dynamicText intValue])
     {
         textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -469,14 +519,12 @@
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            UITextView *textView;
+            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
             
-            if (!textView)
-            {
-                textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
-            }
+            // in order of preferences
+            Preferences *preferences = [Preferences sharedPreferences];
             
-            HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+            HandoverSection *section = preferences.handoverSections[indexPath.section];
             
             if ([section.sectionName isEqual:@"Background"])
             {
@@ -506,9 +554,17 @@
             {
                 textView.text = self.selectedPatient.cardiovascular;
             }
+            else if ([section.sectionName isEqual:@"Haematology"])
+            {
+                textView.text = self.selectedPatient.haematology;
+            }
             else if ([section.sectionName isEqual:@"Lines"])
             {
                 textView.text = self.selectedPatient.lines;
+            }
+            else if ([section.sectionName isEqual:@"Echocardiogram"])
+            {
+                textView.text = self.selectedPatient.echocardiogram;
             }
             else if ([section.sectionName isEqual:@"Feeds & Fluids"])
             {
@@ -525,14 +581,30 @@
             else if ([section.sectionName isEqual:@"Jaundice"])
             {
                 Preferences *preferences = [Preferences sharedPreferences];
-                
+
                 if (indexPath.row == 0)
                 {
+                    /*
                     HandoverRow *row = section.rows[indexPath.row];
                     
                     height = [row.rowHeight floatValue];
                     
                     return height;
+                    */
+                    
+                    // delegate
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    
+                    // Different graph sizes for iPhone 4 and iPhone 5
+                    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+                    {
+                        return 320.0f;
+                    }
+                    else
+                    {
+                        return 260.0f;
+                    }
+                    
                 }
                 else
                 {
@@ -655,6 +727,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     NSString *CellIdentifier;
     
     UITableViewCell *cell;
@@ -682,7 +756,8 @@
     }
     else
     {
-        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+        // HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+        HandoverSection *section = preferences.handoverSections[indexPath.section];
         
         if ([section.sectionName isEqual:@"Background"])
         {
@@ -826,6 +901,26 @@
             
             self.cardiovascularTextView.text = self.selectedPatient.cardiovascular;
         }
+        else if ([section.sectionName isEqual:@"Haematology"])
+        {
+            CellIdentifier = @"Haematology";
+            
+            if (newHaematology)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.haematologyTextView.text = self.selectedPatient.haematology;
+        }
         else if ([section.sectionName isEqual:@"Lines"])
         {
             CellIdentifier = @"Lines";
@@ -845,6 +940,26 @@
             }
             
             self.linesTextView.text = self.selectedPatient.lines;
+        }
+        else if ([section.sectionName isEqual:@"Echocardiogram"])
+        {
+            CellIdentifier = @"Echocardiogram";
+            
+            if (newEchocardiogram)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.echocardiogramTextView.text = self.selectedPatient.echocardiogram;
         }
         else if ([section.sectionName isEqual:@"Feeds & Fluids"])
         {
@@ -1388,6 +1503,15 @@
         
         [cell.contentView addSubview:self.cardiovascularTextView];
     }
+#pragma mark Haematology
+    else if ([CellIdentifier isEqualToString:@"Haematology"])
+    {
+        self.haematologyTextView = [[UITextView alloc] init];
+        self.haematologyTextView.tag = 20;
+        [self setupTextView:self.haematologyTextView];
+        
+        [cell.contentView addSubview:self.haematologyTextView];
+    }
 #pragma mark Lines
     else if ([CellIdentifier isEqualToString:@"Lines"])
     {
@@ -1396,6 +1520,15 @@
         [self setupTextView:self.linesTextView];
         
         [cell.contentView addSubview:self.linesTextView];
+    }
+#pragma mark Echocardiogram
+    else if ([CellIdentifier isEqualToString:@"Echocardiogram"])
+    {
+        self.echocardiogramTextView = [[UITextView alloc] init];
+        self.echocardiogramTextView.tag = 21;
+        [self setupTextView:self.echocardiogramTextView];
+        
+        [cell.contentView addSubview:self.echocardiogramTextView];
     }
 #pragma mark Feeds & Fluids
     else if ([CellIdentifier isEqualToString:@"FeedsAndFluids"])
@@ -1546,6 +1679,10 @@
     
     // get textView height
     HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+    // HandoverSection *section = preferences.handoverSections[textView.tag];
+    
+    
+    // this could be deleted with code lower down
     HandoverRow *row;
     
     if (textView.tag == 11)
@@ -1868,6 +2005,7 @@
     }
     else
     {
+        // this could be deleted iOS 6 & iOS 7 should be the same...
         textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
         textView.font = [UIFont systemFontOfSize:14.0f];
     }
@@ -1919,13 +2057,14 @@
     // sections may or may not be editable
     else if ([tableView isEqual:self.myTableView2])
     {
-        // lookup if cell allows editing
-        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+        // alternative
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        // whether a section is editable is contained in data from the preferences handover sections
+        HandoverSection *section = preferences.handoverSections[indexPath.section];
         
         if ([section.sectionName isEqualToString:@"Jaundice"])
         {
-            Preferences *preferences = [Preferences sharedPreferences];
-            
             if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
                 if (indexPath.row == 0 || indexPath.row == 3)
@@ -1942,6 +2081,30 @@
         {
             userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
         }
+        
+        /*
+        // lookup if cell allows editing
+        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+        
+        if ([section.sectionName isEqualToString:@"Jaundice"])
+        {
+            if ([preferences.guidelineCountry isEqualToString:@"US"])
+            {
+                if (indexPath.row == 0 || indexPath.row == 3)
+                {
+                    userCanEditRowAtIndexPath = YES;
+                }
+            }
+            else
+            {
+                userCanEditRowAtIndexPath = YES;
+            }
+        }
+        else
+        {
+            userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
+        }
+         */
     }
     
     return userCanEditRowAtIndexPath;
@@ -1980,9 +2143,12 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     UITableViewCellEditingStyle *editingStyle = UITableViewCellEditingStyleInsert;
     
-    HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+    // HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+    HandoverSection *section = preferences.handoverSections[indexPath.section];
     
     if ([tableView isEqual:self.myTableView1])
     {
@@ -2031,8 +2197,13 @@
     }
     else
     {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        HandoverSection *section = preferences.handoverSections[indexPath.row];
+        
+        
         // Jaundice
-        if (indexPath.section == 11)
+        if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             if (indexPath.row == 0)
             {
@@ -2150,18 +2321,45 @@
     return userCanEditTextField;
 }
 
+- (int)getUserDefinedSectionForTextView:(UITextView *)textView
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    // this is because the user can reorder the sections
+    HandoverSection *handoverSectionDefaultOrder = self.selectedPatient.handoverSections[textView.tag];
+    
+    HandoverSection *handoverSectionUserOrder;
+    
+    int section = 0;
+    
+    int correctSection;
+    
+    for (handoverSectionUserOrder in preferences.handoverSections)
+    {
+        if ([handoverSectionUserOrder.sectionName isEqualToString:handoverSectionDefaultOrder.sectionName])
+        {
+            correctSection = section;
+        }
+        
+        // increment section
+        section = section + 1;
+    }
+    
+    return correctSection;
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    Preferences *preferences = [Preferences sharedPreferences];
     
     int row = 0;
     
     // Jaundice cell different
     if (textView.tag == 11)
     {
-        Preferences *preferences = [Preferences sharedPreferences];
-        
         if ([preferences.guidelineCountry isEqualToString:@"US"])
         {
             row = 3;
@@ -2172,7 +2370,29 @@
         }
     }
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:textView.tag];
+    // get correct indexPath
+    // this is because the user can reorder the sections
+    // HandoverSection *handoverSectionDefaultOrder = self.selectedPatient.handoverSections[textView.tag];
+    
+    // HandoverSection *handoverSectionUserOrder;
+    
+    // int x = 0;
+    int correctedSection = [self getUserDefinedSectionForTextView:textView];
+    
+    /*
+    for (handoverSectionUserOrder in preferences.handoverSections)
+    {
+        if ([handoverSectionUserOrder.sectionName isEqualToString:handoverSectionDefaultOrder.sectionName])
+        {
+            correctedSection = x;
+        }
+        
+        // increment section
+        x = x + 1;
+    }
+     */
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:correctedSection];
     
     // animate the fingerprint in
     // [self animateFingerprintIn];
@@ -2199,9 +2419,6 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    // animate the fingerprint off
-    // [self animateFingerprintOut];
-    
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -2317,10 +2534,20 @@
             self.selectedPatient.cardiovascular = textView.text;
             self.selectedPatient.cardiovascularLastEntryDate = [NSDate date];
         }
+        else if ([textView isEqual:self.haematologyTextView])
+        {
+            self.selectedPatient.haematology = textView.text;
+            self.selectedPatient.haematologyLastEntryDate = [NSDate date];
+        }
         else if ([textView isEqual:self.linesTextView])
         {
             self.selectedPatient.lines = textView.text;
             self.selectedPatient.linesLastEntryDate = [NSDate date];
+        }
+        else if ([textView isEqual:self.echocardiogramTextView])
+        {
+            self.selectedPatient.echocardiogram = textView.text;
+            self.selectedPatient.echocardiogramLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.feedsAndFluidsTextView])
         {
@@ -2495,7 +2722,9 @@
     newVentilationAndSedation = YES;
     newCXR = YES;
     newCardiovascular = YES;
+    newHaematology = YES;
     newLines = YES;
+    newEchocardiogram = YES;
     newFeedsAndFluids = YES;
     newFluidBalance = YES;
     newElectrolytes = YES;
@@ -2591,7 +2820,9 @@
     newVentilationAndSedation = YES;
     newCXR = YES;
     newCardiovascular = YES;
+    newHaematology = YES;
     newLines = YES;
+    newEchocardiogram = YES;
     newFeedsAndFluids = YES;
     newFluidBalance = YES;
     newElectrolytes = YES;
@@ -3355,17 +3586,22 @@
         // delegate
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
+        self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectZero
+                                                        title:NSLocalizedString(@"Dictation Commands", nil)
+                                                        array:[DictationCommands returnListOfAppleDictationCommands]
+                                                  forTextView:nil];
+        
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
             // check if user is using the 3.5 inch screen or 4 inch screen
             if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
             {
-                self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 170.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+                self.modalPanel.frame = CGRectMake(0.0f, 64.0f, 320.0f, 170.0f);
             }
             else
             {
-                self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+                self.modalPanel.frame = CGRectMake(0.0f, 64.0f, 320.0f, 260.0f);
             }
         }
         else // iOS 5/6
@@ -3373,11 +3609,11 @@
             // check if user is using the 3.5 inch screen or 4 inch screen
             if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
             {
-                self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 170.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+                self.modalPanel.frame = CGRectMake(0.0f, 0.0f, 320.0f, 170.0f);
             }
             else
             {
-                self.modalPanel = [[CBModalPanel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 260.0f) title:@"Dictation Commands" array:[DictationCommands returnListOfAppleDictationCommands] forTextView:nil];
+                self.modalPanel.frame = CGRectMake(0.0f, 0.0f, 320.0f, 260.0f);
             }
         }
         
@@ -5654,7 +5890,12 @@
             // get array
             Preferences *preferences = [Preferences sharedPreferences];
             
-            HandoverSection *section = preferences.handoverSections[textView.tag];
+#warning code required
+            HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+            
+            
+            
+            // HandoverSection *section = preferences.handoverSections[textView.tag];
             
             // setup modal
             

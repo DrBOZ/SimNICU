@@ -100,7 +100,9 @@
 @property (nonatomic, retain) NSString *ventilationAndSedation;
 @property (nonatomic, retain) NSString *cxr;
 @property (nonatomic, retain) NSString *cardiovascular;
+@property (nonatomic, retain) NSString *haematology;
 @property (nonatomic, retain) NSString *lines;
+@property (nonatomic, retain) NSString *echocardiogram;
 @property (nonatomic, retain) NSString *feedsAndFluids;
 @property (nonatomic, retain) NSString *fluidBalance;
 @property (nonatomic, retain) NSString *electrolytes;
@@ -122,7 +124,9 @@
 @property (nonatomic, retain) NSDate *ventilationAndSedationLastEntryDate;
 @property (nonatomic, retain) NSDate *cxrLastEntryDate;
 @property (nonatomic, retain) NSDate *cardiovascularLastEntryDate;
+@property (nonatomic, retain) NSDate *haematologyLastEntryDate;
 @property (nonatomic, retain) NSDate *linesLastEntryDate;
+@property (nonatomic, retain) NSDate *echocardiogramLastEntryDate;
 @property (nonatomic, retain) NSDate *feedsAndFluidLastEntryDate;
 @property (nonatomic, retain) NSDate *fluidBalanceLastEntryDate;
 @property (nonatomic, retain) NSDate *electrolytesLastEntryDate;

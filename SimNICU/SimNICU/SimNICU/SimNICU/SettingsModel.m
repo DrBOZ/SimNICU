@@ -47,6 +47,10 @@
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
     
     rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Sections", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    rowData = [[CBTableViewRowData alloc] init];
     rowData.text = NSLocalizedString(@"Editor", @"like word processor");
     [sectionData.rowData addObject:rowData];
     

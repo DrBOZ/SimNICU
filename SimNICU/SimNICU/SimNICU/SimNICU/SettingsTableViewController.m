@@ -146,11 +146,16 @@
     {
         if (indexPath.row == 0)
         {
+#warning code required
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        else if (indexPath.row == 1)
+        {
             DailySummaryEditorSettingsTableViewController *newViewController = [[DailySummaryEditorSettingsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
             [self.navigationController pushViewController:newViewController animated:YES];
         }
-        else if (indexPath.row == 1)
+        else if (indexPath.row == 2)
         {
             PDFGenerationTableViewController *newViewController = [[PDFGenerationTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             

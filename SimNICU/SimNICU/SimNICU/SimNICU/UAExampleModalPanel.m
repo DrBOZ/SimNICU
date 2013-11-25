@@ -75,8 +75,8 @@
 	return [tableRows count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	NSString *cellIdentifier = @"UAModalPanelCell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     

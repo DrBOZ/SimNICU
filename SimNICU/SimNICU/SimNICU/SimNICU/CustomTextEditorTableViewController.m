@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Edit Custom Text", nil);
+    // self.title = NSLocalizedString(@"Edit Custom Text", nil);
     
     self.tableView.scrollEnabled = NO;
     

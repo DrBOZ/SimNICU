@@ -9,7 +9,7 @@
 "About" = "Acerca de";
 "add" = "adicionar";
 "new patient" = "um novo paciente";
-"Active Problems" = "Doenças em tratamento";
+"Active Problems" = "Doenças em tratamento"; // ? Problemas Ativos
 "Add Result" = "Adicionar Resultado";
 "Adrenaline" = "Epinephrine";
 "ADRENALINE" = "EPINEPHRINE";
@@ -43,10 +43,11 @@
 "Corrected Age" = "Idade corrigida";
 "Cranial Ultrasound" = "Ultrassom transfontanelar";
 "Creatinine" = "Creatinina";
+"[current date]" = "[data atual]";
 "custom" = "padronizado";
 "Custom text" = "Texto padronizado"; // check this with Márcio
 "Custom Text" = "Texto Personalizado";
-"CXR" = "Último raio-x";
+"CXR" = "Último raio-x"; // ? Raio-x de Tórax
 "Daily Summary" = "Resumo Diário";
 "day" = "dia";
 "Day 0 if infant is born before 12:00 midday, Day 1 if born after." = "Dia 0 se o recém-nascido nasceu antes do meio-dia. Dia 1 se nasceu após o meio-dia.";
@@ -64,20 +65,20 @@
 "Down's Syndrome" = "Down Syndrome";
 "Drugs" = "Drogas ou Medicações";
 "Early Care" = "Prematuro extremo";
-"Echocardiography" = "Ecocardio";
+"Echocardiogram" = "Ecocardio"; // ? Ecodoppler
 "Edit Custom Text" = "Editar Texto Personalizado";
 "Editor Settings" = "Editor Settings";
 "Edward's Syndrome" = "Edward Syndrome";
 "Emergency" = "Emergência";
-"Em LSCS" = "Nascimento por Cesárea";               // ? Cesárea de Emergência
+"Em LSCS" = "Nascimento por Cesárea"; // ? Cesárea de Emergência
 "England" = "Inglaterra";
-"Examination" = "Exame Físico";                     // correct x2
+"Examination" = "Exame Físico"; // correct x2
 "FBC & Blood Film" = "Exames Hematológicos";
 "Feedback" = "Parecer";
-"Feeds & Fluids" = "Alimentação e Hidratação";      // ? Alimentação e Fluidos
+"Feeds & Fluids" = "Alimentação e Hidratação"; // ? Alimentação e Fluidos
 "Female" = "Feminino";
 "First day of life" = "Primeiro dia de vida";
-"Fluid Balance" = "Balanço Hídrico";                // correct x2
+"Fluid Balance" = "Balanço Hídrico"; // correct x2
 "Fluid Requirements" = "Necessidades hídricas";
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
@@ -112,11 +113,14 @@
 "Maternal APH" = "Hemorragia materna pré-parto";
 "Midazolam" = "Midazolam";
 "Misc" = "Outros";
+"ml/kg/day" = "ml/kg/dia";
 "Morphine" = "Morphine";
 "Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
 "Neurology & Cranial USS" = "Exame Neurológico e Ultrassom Transfontanelar"; // correct x2
 "Neurotoxicity Risk Factors" = "Fatores de Risco";
 "New Bay" = "Novo Leito";
+"New custom text" = "Novo texto personalizado";
+"No vomits" = "Sem vômitos";
 "None" = "Nenhum";
 "Oxygenation Index" = "Índice de oxigenação";
 "Pancuronium" = "Pancuronium";
@@ -131,6 +135,7 @@
 "Plastic Bag (at delivery)" = "Saco plástico (ao nascimento)";
 
 "Plats" = "Plaquetas";
+"Platelets" = "Plaquetas";
 "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
 
 "Postnatal Ward" = "Alojamento Conjunto";
@@ -141,7 +146,7 @@
 "Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
 "Repeat doses may be required" = "Repeat doses may be required";
 "Requests" = "Pedidos";
-"Resolved Problems" = "Doenças resolvidas";
+"Resolved Problems" = "Doenças resolvidas"; // ? Problemas Resolvidos
 "Resuscitation" = "Resuscitation";
 "Resuscitation Drugs" = "Drogas de reanimação";
 "Retinopathy of Prematurity" = "Cuidados na Retinopatia da prematuridade"; // ?? Retinopatia da Prematuridade

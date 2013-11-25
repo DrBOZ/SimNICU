@@ -2146,7 +2146,7 @@
 			name = "Vitamin K";
 			sourceTree = "<group>";
 		};
-		5C5380E916D267AB0003F7BB /* Screen_Drugs */ = {
+		5C5380E916D267AB0003F7BB /* Drugs */ = {
 			isa = PBXGroup;
 			children = (
 				5C06D4AE1803B68F00A3B46C /* DrugsTableViewController.h */,
@@ -2170,7 +2170,7 @@
 				5C0E05F6178EFDE200768739 /* DrugInfo.h */,
 				5C0E05F7178EFDE300768739 /* DrugInfo.m */,
 			);
-			name = Screen_Drugs;
+			name = Drugs;
 			sourceTree = "<group>";
 		};
 		5C56F60C1801D16200665E22 /* BloodTransfusionCriteria */ = {
@@ -2298,6 +2298,15 @@
 				5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */,
 			);
 			name = AAMFeedback;
+			sourceTree = "<group>";
+		};
+		5C5D24D1184387C300856191 /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
+				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
+			);
+			name = PDF;
 			sourceTree = "<group>";
 		};
 		5C63B12516B9CDA700B31431 /* APGAR */ = {
@@ -2722,7 +2731,7 @@
 				5CDB9F2416BE322900B457EC /* Cooling */,
 				5C63B14016B9FFFA00B31431 /* Cranial Ultrasound */,
 				5CDB9F2516BE326600B457EC /* Curosurf */,
-				5C5380E916D267AB0003F7BB /* Screen_Drugs */,
+				5C5380E916D267AB0003F7BB /* Drugs */,
 				5C39630816B83FB60039C387 /* Early Care */,
 				5C4AAC7417BF497E00BD68F5 /* Fluid Requirements */,
 				5C63B12A16B9FACB00B31431 /* Gastroschisis */,
@@ -3282,8 +3291,7 @@
 				5CFF4BFF180635E7006C8480 /* DailySummaryTableViewController.m */,
 				5C4DC75017E562F000412C72 /* DictationCommands.h */,
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
-				5C39F0A717CFEC0B007B2CF9 /* DailySummaryPDFViewController.h */,
-				5C39F0A817CFEC0B007B2CF9 /* DailySummaryPDFViewController.m */,
+				5C5D24D1184387C300856191 /* PDF */,
 				5C940B09166E3B540044A7D1 /* Patient Details */,
 				5CD43A4417CB40E600426991 /* AdvancedDataInput */,
 			);

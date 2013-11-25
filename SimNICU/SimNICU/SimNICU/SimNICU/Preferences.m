@@ -198,6 +198,8 @@
         // create array - note this is similar but different to the patient handover Sections
         // which includes individual patient rowHeight data for information contained in the sections
         
+        // NOTE: do not localise sectionNames...
+        
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         HandoverSection *newSection;
         
@@ -205,7 +207,8 @@
         // 00 - Background
         {
             newSection = [[HandoverSection alloc] init];
-            newSection.sectionName = NSLocalizedString(@"Background", nil);
+            newSection.sectionName = @"Background";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Transfer from 
@@ -232,7 +235,16 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Active Problems";
-            newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
+            newSection.sectionEditable = @"NO";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // Prematurity
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Prematurity", nil)
+                                                          ref:NSLocalizedString(@"Prematurity", nil)]];
+            
+            // RDS
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"RDS", nil)
+                                                          ref:NSLocalizedString(@"RDS", nil)]];
             
             // Hypotension
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypotension", nil)
@@ -242,16 +254,33 @@
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Anaemia", nil)
                                                           ref:NSLocalizedString(@"Anaemia", nil)]];
             
+            // Establishing enteral feeds
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Establishing enteral feeds", nil)
+                                                          ref:NSLocalizedString(@"Establishing enteral feeds", nil)]];
+            
             // Hypoglycaemia
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypoglycaemia", nil)
                                                           ref:NSLocalizedString(@"Hypoglycaemia", nil)]];
+            
+            // Jaundice requiring phototherapy
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Jaundice requiring phototherapy", nil)
+                                                          ref:NSLocalizedString(@"Jaundice requiring phototherapy", nil)]];
             
             // Suspected sepsis
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Suspected sepsis", nil)
                                                           ref:NSLocalizedString(@"Suspected Sepsis", nil)]];
             
+            // Maternal Group B Strep positive
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Maternal Group B Strep positive", nil)
+                                                          ref:NSLocalizedString(@"Maternal Group B Strep positive", nil)]];
+            
+            // Breech
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Breech", nil)
+                                                          ref:NSLocalizedString(@"Breech", nil)]];
+            
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -261,7 +290,12 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Resolved Problems";
-            newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
+            newSection.sectionEditable = @"NO";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // RDS
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"RDS", nil)
+                                                          ref:NSLocalizedString(@"RDS", nil)]];
             
             // Hypotension
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypotension", nil)
@@ -274,6 +308,10 @@
             // Hypoglycaemia
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypoglycaemia", nil)
                                                           ref:NSLocalizedString(@"Hypoglycaemia", nil)]];
+            
+            // Jaundice requiring phototherapy
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Jaundice requiring phototherapy", nil)
+                                                          ref:NSLocalizedString(@"Jaundice requiring phototherapy", nil)]];
             
             // Suspected sepsis
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Suspected sepsis", nil)
@@ -290,6 +328,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Recent Significant Events";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // ml/kg/day
@@ -306,6 +345,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Ventilation & Sedation";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Breathing in air
@@ -337,6 +377,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"CXR";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Ground glass appearances
@@ -362,6 +403,24 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Cardiovascular";
+            newSection.sectionEditable = @"NO";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // micrograms/kg/min
+            [newSection.customText addObject:[self customText:@" micrograms/kg/min" ref:@"micrograms/kg/min"]];
+            
+            // current date
+            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+        
+            [self.handoverSections addObject:newSection];
+        }
+        
+#pragma mark Haematology
+        // 06 - Haematology
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Haematology";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Hb
@@ -378,9 +437,6 @@
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
             
-            // micrograms/kg/min
-            [newSection.customText addObject:[self customText:@" micrograms/kg/min" ref:@"micrograms/kg/min"]];
-        
             [self.handoverSections addObject:newSection];
         }
         
@@ -388,7 +444,8 @@
         // 07 - Lines
         {
             newSection = [[HandoverSection alloc] init];
-            newSection.sectionName = NSLocalizedString(@"Lines", nil);
+            newSection.sectionName = @"Lines";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // 24G
@@ -426,24 +483,42 @@
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Echocardiogram
+        // 075 - Echocardiogram
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Echocardiogram";
+            newSection.sectionEditable = @"NO";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // current date
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
+            
+            [self.handoverSections addObject:newSection];
+        }
+        
 #pragma mark Feeds & Fluids
         // 08 - Feeds & Fluids
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Feeds & Fluids";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:5];
             
             // Fully enterally fed
             [newSection.customText addObject:[self customText:@"Fully enterally fed" ref:@"Fully enterally fed"]];
             
             // ml/kg/day
-            [newSection.customText addObject:[self customText:@" ml/kg/day" ref:@"ml/kg/day"]];
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %@", NSLocalizedString(@"ml/kg/day", nil)]
+                                                          ref:NSLocalizedString(@"ml/kg/day", nil)]];
             
             // Minimal milky aspirates
             [newSection.customText addObject:[self customText:@"Minimal milky aspirates" ref:@"Minimal milky aspirates"]];
             
             // No vomits
-            [newSection.customText addObject:[self customText:@"No vomits" ref:@"No vomits"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"No vomits", nil)
+                                                          ref:NSLocalizedString(@"No vomits", nil)]];
             
             // Parenteral nutrition
             [newSection.customText addObject:[self customText:@"Standard preterm PN" ref:@"Standard preterm PN"]];
@@ -462,6 +537,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Fluid Balance";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // ml/kg
@@ -475,6 +551,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Biochemistry";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Na
@@ -525,6 +602,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Jaundice";
+            newSection.sectionEditable = @"YES";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Below phototherapy line
@@ -544,6 +622,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Sepsis";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
             // CRP
@@ -569,6 +648,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Drugs";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Nil
@@ -609,7 +689,8 @@
         // 14 - ROP
         {
             newSection = [[HandoverSection alloc] init];
-            newSection.sectionName = @"Retinopathy of prematurity";
+            newSection.sectionName = @"ROP";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
             // Screening not indicated
@@ -626,6 +707,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Neurology & Cranial USS";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
             // current date
@@ -639,6 +721,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Parents / Social";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
             
             // No concerns
@@ -658,6 +741,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Examination";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
             
             // Normal examination
@@ -672,6 +756,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Summary";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Preterm infant establishing enteral feeds
@@ -688,6 +773,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Plan";
+            newSection.sectionEditable = @"NO";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // ml/kg/day
