@@ -7,6 +7,7 @@
 //
 
 #import "DailySummaryEditorSettingsTableViewController.h"
+#import "DailySummarySectionsTableViewController.h"
 #import "PDFGenerationTableViewController.h"
 #import "BayEditorTableViewController.h"
 #import "SettingsTableViewController.h"
@@ -146,8 +147,9 @@
     {
         if (indexPath.row == 0)
         {
-#warning code required
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            DailySummarySectionsTableViewController *vc = [[DailySummarySectionsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }
         else if (indexPath.row == 1)
         {
