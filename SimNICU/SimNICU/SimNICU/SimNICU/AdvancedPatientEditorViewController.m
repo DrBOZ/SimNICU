@@ -3140,35 +3140,36 @@
     NSMutableArray *returnArray = nil;
     
     // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    /*
     // temp toggle to reset cell heights and ability to edit
 #if RESET_CELL_INFO
     self.selectedPatient.handoverSections = nil;
 #endif
     
-    /*
-    self.selectedPatient.background = nil;
-    self.selectedPatient.activeProblems = nil;
-    self.selectedPatient.resolvedProblems = nil;
-    self.selectedPatient.recentSignificantEvents = nil;
-    self.selectedPatient.ventilationAndSedation = nil;
-    self.selectedPatient.cxr = nil;
-    self.selectedPatient.cardiovascular = nil;
-    self.selectedPatient.lines = nil;
-    self.selectedPatient.feedsAndFluids = nil;
-    self.selectedPatient.fluidBalance = nil;
-    self.selectedPatient.electrolytes = nil;
-    self.selectedPatient.jaundice = nil;
-    self.selectedPatient.sepsis = nil;
-    self.selectedPatient.drugs = nil;
-    self.selectedPatient.rop = nil;
-    self.selectedPatient.cranialUSS = nil;
-    self.selectedPatient.parentsAndSocial = nil;
-    self.selectedPatient.impression = nil;
-    self.selectedPatient.plan = nil;
-    self.selectedPatient.jobs = nil;
-     */
+    
+//    self.selectedPatient.background = nil;
+//    self.selectedPatient.activeProblems = nil;
+//    self.selectedPatient.resolvedProblems = nil;
+//    self.selectedPatient.recentSignificantEvents = nil;
+//    self.selectedPatient.ventilationAndSedation = nil;
+//    self.selectedPatient.cxr = nil;
+//    self.selectedPatient.cardiovascular = nil;
+//    self.selectedPatient.lines = nil;
+//    self.selectedPatient.feedsAndFluids = nil;
+//    self.selectedPatient.fluidBalance = nil;
+//    self.selectedPatient.electrolytes = nil;
+//    self.selectedPatient.jaundice = nil;
+//    self.selectedPatient.sepsis = nil;
+//    self.selectedPatient.drugs = nil;
+//    self.selectedPatient.rop = nil;
+//    self.selectedPatient.cranialUSS = nil;
+//    self.selectedPatient.parentsAndSocial = nil;
+//    self.selectedPatient.impression = nil;
+//    self.selectedPatient.plan = nil;
+//    self.selectedPatient.jobs = nil;
+     
     
     // first check to see if any data has alread been added
     if (!self.selectedPatient.handoverSections)
@@ -3430,6 +3431,7 @@
         
         [self.selectedPatient.handoverSections addObject:newSection];
     }
+    */
     
     returnArray = [[NSMutableArray alloc] initWithCapacity:20];
     

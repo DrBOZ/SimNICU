@@ -166,8 +166,6 @@
     // set default sections here
     if (!self.handoverSections)
     {
-        // will almost certainly be better to convert this to a NSDictionary
-        
         // NOTE: this list is ordered by TextView.tag
         
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
@@ -213,7 +211,6 @@
         // 03 - Recent Significant Events
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Recent Significant Events";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -226,7 +223,6 @@
         // 04 - Ventilation & Sedation
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Ventilation & Sedation";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -239,7 +235,6 @@
         // 05 - CXR
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"CXR";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -252,7 +247,6 @@
         // 06 - Cardiovascular
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Cardiovascular";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -265,7 +259,6 @@
         // 07 - Lines
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Lines";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -278,7 +271,6 @@
         // 08 - Feeds & Fluids
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Feeds & Fluids";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -291,7 +283,6 @@
         // 09 - Fluid Balance
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Fluid Balance";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -304,7 +295,6 @@
         // 10 - Biochemistry
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Biochemistry";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -317,7 +307,6 @@
         // 11 - Jaundice
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Jaundice";
-        // newSection.sectionEditable = @"YES";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
         
         newRow = [[HandoverRow alloc] init];
@@ -342,7 +331,6 @@
         // 12 - Sepsis
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Sepsis";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
@@ -391,7 +379,6 @@
         // 16 - Parents / Social
         newSection = [[HandoverSection alloc] init];
         newSection.sectionName = @"Parents / Social";
-        // newSection.sectionEditable = @"NO";
         newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
         
         newRow = [[HandoverRow alloc] init];
