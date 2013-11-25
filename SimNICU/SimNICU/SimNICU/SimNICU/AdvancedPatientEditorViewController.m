@@ -1358,6 +1358,33 @@
 
 #pragma mark -
 
+- (int)getUserDefinedSectionForTextView:(UITextView *)textView
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    // this is because the user can reorder the sections
+    HandoverSection *handoverSectionDefaultOrder = self.selectedPatient.handoverSections[textView.tag];
+    
+    HandoverSection *handoverSectionUserOrder;
+    
+    int section = 0;
+    
+    int correctSection;
+    
+    for (handoverSectionUserOrder in preferences.handoverSections)
+    {
+        if ([handoverSectionUserOrder.sectionName isEqualToString:handoverSectionDefaultOrder.sectionName])
+        {
+            correctSection = section;
+        }
+        
+        // increment section
+        section = section + 1;
+    }
+    
+    return correctSection;
+}
+
 - (UITableViewCell *)formatCellForTableWithCellIdentifier:(NSString *)CellIdentifier
 {
     UITableViewCell *cell;
@@ -2319,33 +2346,6 @@
     }
     
     return userCanEditTextField;
-}
-
-- (int)getUserDefinedSectionForTextView:(UITextView *)textView
-{
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    // this is because the user can reorder the sections
-    HandoverSection *handoverSectionDefaultOrder = self.selectedPatient.handoverSections[textView.tag];
-    
-    HandoverSection *handoverSectionUserOrder;
-    
-    int section = 0;
-    
-    int correctSection;
-    
-    for (handoverSectionUserOrder in preferences.handoverSections)
-    {
-        if ([handoverSectionUserOrder.sectionName isEqualToString:handoverSectionDefaultOrder.sectionName])
-        {
-            correctSection = section;
-        }
-        
-        // increment section
-        section = section + 1;
-    }
-    
-    return correctSection;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -5890,12 +5890,10 @@
             // get array
             Preferences *preferences = [Preferences sharedPreferences];
             
-#warning code required
-            HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+            int handoverSection = [self getUserDefinedSectionForTextView:textView];
             
+            HandoverSection *section = preferences.handoverSections[handoverSection];
             
-            
-            // HandoverSection *section = preferences.handoverSections[textView.tag];
             
             // setup modal
             

@@ -23,6 +23,7 @@
 	return self;
 }
 
+/*
 - (void)dealloc 
 {
     [super dealloc];
@@ -40,5 +41,6 @@
 	[status release];
     [self.segueId release];
 }
+ */
 
 @end
