@@ -312,4 +312,11 @@
     customText.customTextReferenceName = textField.text;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self done];
+    
+    return NO;
+}
+
 @end
