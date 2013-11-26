@@ -17,31 +17,31 @@
     NSString *problem;
     
     // populate array of problems, in alphabetical order
-    problem = NSLocalizedString(@"Anorectal malformations", nil);
+    problem = NSLocalizedString(@"Anorectal Malformations", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Ambiguous genitalia", nil);
+    problem = NSLocalizedString(@"Ambiguous Genitalia", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"BCG vaccination", nil);
+    problem = NSLocalizedString(@"BCG Vaccination", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Blood in the nappy", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Brachial nerve palsies", nil);
+    problem = NSLocalizedString(@"Brachial Nerve Palsies", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Breast swelling / mastitis", nil);
+    problem = NSLocalizedString(@"Breast Swelling / Mastitis", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Breast Feeding", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Cardiac arrhythmia", nil);
+    problem = NSLocalizedString(@"Cardiac Arrhythmia", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Cleft lip & palate", nil);
+    problem = NSLocalizedString(@"Cleft Lip & Palate", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Cyanosis", nil);
@@ -59,7 +59,7 @@
     problem = NSLocalizedString(@"Grunting", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Heart murmurs", nil);
+    problem = NSLocalizedString(@"Heart Murmurs", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Hepatitis B", nil);
@@ -104,7 +104,7 @@
     problem = NSLocalizedString(@"Offensive Liquor", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Opiate withdrawl / NAS", nil);
+    problem = NSLocalizedString(@"Opiate Withdrawl / NAS", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Patau's Syndrome", nil);
@@ -116,19 +116,19 @@
     problem = NSLocalizedString(@"Polyhydraminios", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Preauricular skin tags", nil);
+    problem = NSLocalizedString(@"Preauricular Skin Tags", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Prolonged rupture of membranes (PROM)", nil);
+    problem = NSLocalizedString(@"Prolonged Rupture of Membranes (PROM)", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Pyrexia", nil);
     [problems addObject:problem];
     
-    problem = @"Rashes";
+    problem = NSLocalizedString(@"Rashes", nil);
     [problems addObject:problem];
     
-    problem = @"Red Reflexes";
+    problem = NSLocalizedString(@"Red Reflexes", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Sacral Dimple", nil);
@@ -137,46 +137,46 @@
     problem = NSLocalizedString(@"Scalp Swelling", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Single palmar crease", nil);
+    problem = NSLocalizedString(@"Single Palmar Crease", nil);
     [problems addObject:problem];
     
-    problem = NSLocalizedString(@"Sticky eyes", nil);
+    problem = NSLocalizedString(@"Sticky Eyes", nil);
     [problems addObject:problem];
     
-    problem = @"Sticky Umbilicus";
+    problem = NSLocalizedString(@"Sticky Umbilicus", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Tachypnoea", nil);
     [problems addObject:problem];
     
-    problem = @"Talipes";
+    problem = NSLocalizedString(@"Talipes", nil);
     [problems addObject:problem];
     
-    problem = @"Testicular Swelling";
+    problem = NSLocalizedString(@"Testicular swelling", nil);
     [problems addObject:problem];
     
-    problem = @"Thrombocytopenia";
+    problem = NSLocalizedString(@"Thrombocytopenia", nil);
     [problems addObject:problem];
     
-    problem = @"Thyroid Disease (Maternal)";
+    problem = NSLocalizedString(@"Thyroid Disease (Maternal)", nil);
     [problems addObject:problem];
     
-    problem = @"Tongue Tie";
+    problem = NSLocalizedString(@"Tongue Tie", nil);
     [problems addObject:problem];
     
-    problem = @"Two Vessels in Cord";
+    problem = NSLocalizedString(@"Two Vessels in Cord", nil);
     [problems addObject:problem];
     
-    problem = @"Undescended Testes";
+    problem = NSLocalizedString(@"Undescended Testes", nil);
     [problems addObject:problem];
     
-    problem = @"Vitamin K";
+    problem = NSLocalizedString(@"Vitamin K", nil);
     [problems addObject:problem];
     
-    problem = @"Vomiting";
+    problem = NSLocalizedString(@"Vomiting", nil);
     [problems addObject:problem];
     
-    problem = @"Weight Loss";
+    problem = NSLocalizedString(@"Weight Loss", nil);
     [problems addObject:problem];
     
     // need to alphabetise
