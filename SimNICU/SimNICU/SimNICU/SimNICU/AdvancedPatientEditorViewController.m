@@ -2132,30 +2132,6 @@
         {
             userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
         }
-        
-        /*
-        // lookup if cell allows editing
-        HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
-        
-        if ([section.sectionName isEqualToString:@"Jaundice"])
-        {
-            if ([preferences.guidelineCountry isEqualToString:@"US"])
-            {
-                if (indexPath.row == 0 || indexPath.row == 3)
-                {
-                    userCanEditRowAtIndexPath = YES;
-                }
-            }
-            else
-            {
-                userCanEditRowAtIndexPath = YES;
-            }
-        }
-        else
-        {
-            userCanEditRowAtIndexPath = [section.sectionEditable boolValue];
-        }
-         */
     }
     
     return userCanEditRowAtIndexPath;
@@ -2194,11 +2170,10 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Preferences *preferences = [Preferences sharedPreferences];
-    
     UITableViewCellEditingStyle *editingStyle = UITableViewCellEditingStyleInsert;
     
-    // HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+    Preferences *preferences = [Preferences sharedPreferences];
+    
     HandoverSection *section = preferences.handoverSections[indexPath.section];
     
     if ([tableView isEqual:self.myTableView1])
@@ -2250,8 +2225,7 @@
     {
         Preferences *preferences = [Preferences sharedPreferences];
         
-        HandoverSection *section = preferences.handoverSections[indexPath.row];
-        
+        HandoverSection *section = preferences.handoverSections[indexPath.section];
         
         // Jaundice
         if ([section.sectionName isEqualToString:@"Jaundice"])

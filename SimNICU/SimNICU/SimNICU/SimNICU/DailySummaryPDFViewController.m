@@ -52,6 +52,8 @@
 
 @end
 
+#warning bug - check Alice MOON
+
 @implementation DailySummaryPDFViewController
 {
     float pageWidth;
