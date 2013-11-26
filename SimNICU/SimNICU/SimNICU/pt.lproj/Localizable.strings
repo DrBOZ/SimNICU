@@ -6,6 +6,7 @@
  Copyright (c) 2013 Conrad Bosman. All rights reserved.
  */
 
+"24G" = "Abocath";
 "About" = "Acerca de";
 "add" = "adicionar";
 "new patient" = "um novo paciente";
@@ -15,6 +16,7 @@
 "ADRENALINE" = "EPINEPHRINE";
 "Age Calculators" = "Cálculo da idade";
 "Anaemia" = "Anemia";
+"antecubital fossa" = "fossa ante-cubital";
 "APGAR scores" = "Escore de APGAR";
 "apnoea" = "apnea";
 "Apnoea" = "Apnea";
@@ -29,7 +31,7 @@
 "Biochemistry" = "Eletrólitos e Bioquímica";
 "Birth" = "Nascimento";
 "Blood Cultures" = "Hemoculturas";
-"Blood in the Nappy" = "Blood in the Diaper";
+"Blood in the nappy" = "Blood in the diaper";
 "Blood Products" = "Transfusões Sanguineas";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
 "Breathing in air" = "Ar Ambiente";
@@ -45,7 +47,7 @@
 "Creatinine" = "Creatinina";
 "[current date]" = "[data atual]";
 "custom" = "padronizado";
-"Custom text" = "Texto padronizado"; // check this with Márcio
+"Custom text" = "Texto padronizado"; // ? Texto personalizado
 "Custom Text" = "Texto Personalizado";
 "CXR" = "Último raio-x"; // ? Raio-x de Tórax
 "Daily Summary" = "Resumo Diário";
@@ -88,6 +90,7 @@
 "Gentamicin" = "Gentamicina";
 "Gestation" = "Gestação";
 "Guidelines" = "Guidelines";
+"hand" = "mão";
 "Heparin" = "Heparin";
 "High Frequency Oscillation" = "Ventilação oscilatória de alta frequência";
 "Hyperglycaemia" = "Hyperglycemia";
@@ -104,9 +107,11 @@
 "Isoimmune Haemolytic Disease" = "Isoimmune Hemolytic Disease";
 "Jaundice" = "Icterícia";
 "kilograms" = "kilogramas";
+"left" = "esquerda";
 "Lidocaine" = "Lidocaine";
 "Like SimNICU?" = "Like SimNICU?";
 "Lines" = "Acessos";
+"Long line" = "PICC";
 "London" = "Londres";
 "Low Dependency" = "Baixo Risco";
 "Male" = "Masculino";
@@ -150,6 +155,7 @@
 "Resuscitation" = "Resuscitation";
 "Resuscitation Drugs" = "Drogas de reanimação";
 "Retinopathy of Prematurity" = "Cuidados na Retinopatia da prematuridade"; // ?? Retinopatia da Prematuridade
+"right" = "direita";
 "Risk Factors" = "Risk Factors";
 "Rocuronium" = "Rocuronium";
 "Rodwell Score" = "Escore de Rodwell";
@@ -160,7 +166,7 @@
 "Sepsis" = "Sepse";
 "Serum Bilirubin" = "Bilirrubina Sérica";
 "Serum bilirubin units" = "Serum bilirubin units";
-"Settings" = "Definições";
+"Settings" = "Definições"; // ? Ajustes
 "Some" = "Algum";
 "Spontaneous preterm labour" = "TPP espontâneo";
 "Summary" = "Lista de Problemas"; // correct x2

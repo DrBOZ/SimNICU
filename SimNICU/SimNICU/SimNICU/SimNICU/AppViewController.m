@@ -832,7 +832,7 @@
 #if POSTNATAL_WARD_PREVIEW_MODE
     
     screen = [Screen new];
-    screen.menuText = NSLocalizedString(@"Postnatal Ward Problems", nil);
+    screen.menuText = NSLocalizedString(@"Postnatal Ward", nil);
     screen.segueId = @"PostnatalWard";
     [screens addObject:screen];
     

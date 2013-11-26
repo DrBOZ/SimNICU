@@ -449,19 +449,19 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // 24G
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"24G ", nil)
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"24G", nil)]
                                                           ref:NSLocalizedString(@"24G", nil)]];
             
             // dorsum
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"dorsum ", nil)
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"dorsum", nil)]
                                                           ref:NSLocalizedString(@"dorsum", nil)]];
             
             // left
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"left ", nil)
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"left", nil)]
                                                           ref:NSLocalizedString(@"left", nil)]];
             
             // right
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"right ", nil)
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"right", nil)]
                                                           ref:NSLocalizedString(@"right", nil)]];
             
             // hand
@@ -473,8 +473,12 @@
                                                           ref:NSLocalizedString(@"foot", nil)]];
             
             // antecubital fossa
-            [newSection.customText addObject:[self customText:@"antecubital fossa "
-                                                          ref:@"antecubital fossa"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"antecubital fossa", nil)
+                                                          ref:NSLocalizedString(@"antecubital fossa", nil)]];
+            
+            // long line
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Long line", nil)
+                                                          ref:NSLocalizedString(@"Long line", nil)]];
             
             // current date
             [newSection.customText addObject:[self customText:@"[current date]"

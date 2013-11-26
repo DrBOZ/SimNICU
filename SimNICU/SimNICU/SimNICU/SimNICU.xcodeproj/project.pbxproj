@@ -386,6 +386,8 @@
 		5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5A11AA17D274B700CE96E5 /* MessageUI.framework */; };
 		5C5D24DA1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DB1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
+		5C5D24DE1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
+		5C5D24DF1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -1158,6 +1160,8 @@
 		5C5A11AA17D274B700CE96E5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		5C5D24D81843FDD800856191 /* DailySummarySectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummarySectionsTableViewController.h; sourceTree = "<group>"; };
 		5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummarySectionsTableViewController.m; sourceTree = "<group>"; };
+		5C5D24DC1844CD7E00856191 /* PostnatalWardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardModel.h; sourceTree = "<group>"; };
+		5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardModel.m; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -1896,6 +1900,8 @@
 				5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */,
 				5C3C02BB17DAA80200E4297A /* PostnatalWardSection.h */,
 				5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */,
+				5C5D24DC1844CD7E00856191 /* PostnatalWardModel.h */,
+				5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */,
 			);
 			name = "Postnatal Ward";
 			sourceTree = "<group>";
@@ -4228,6 +4234,7 @@
 				5C56F66218022F8900665E22 /* CurosurfModel.m in Sources */,
 				5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */,
 				5CFF4C17180684AC006C8480 /* CoolingCriteriaEncephalopathyModel.m in Sources */,
+				5C5D24DE1844CD7E00856191 /* PostnatalWardModel.m in Sources */,
 				5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */,
 				5C8AE90D17E241A60002BC04 /* CBPhotoCropperViewController.m in Sources */,
 				5C8AE93517E2C6A60002BC04 /* BayEditorTableViewController.m in Sources */,
@@ -4380,6 +4387,7 @@
 				5C98A6A81787562700F246E3 /* DrugCategory.m in Sources */,
 				5C98A6AC1787577000F246E3 /* Drug.m in Sources */,
 				5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */,
+				5C5D24DF1844CD7E00856191 /* PostnatalWardModel.m in Sources */,
 				5C4350B4178DE17300E926B1 /* DrugBenzylpenicillinViewController.m in Sources */,
 				5C0E05F9178EFDE300768739 /* DrugInfo.m in Sources */,
 				5C552AA217901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */,

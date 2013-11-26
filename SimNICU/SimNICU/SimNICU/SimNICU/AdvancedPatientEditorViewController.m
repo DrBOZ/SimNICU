@@ -5467,12 +5467,12 @@
     if ((![self.selectedPatient.jaundice isEqualToString:@""]) || !self.selectedPatient.jaundice)
     {
         // add the next text above the current text
-        formattedText = [NSString stringWithFormat:@"Mother\t: %@\nBaby\t: %@\nDCT\t\t: %@\n\n%@", maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted, self.selectedPatient.jaundice];
+        formattedText = [NSString stringWithFormat:@"Mother: %@\nBaby: %@\nDCT: %@\n\n%@", maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted, self.selectedPatient.jaundice];
     }
     else
     {
         // fill the UITextView with new textman
-        formattedText = [NSString stringWithFormat:@"Mother\t: %@\nBaby\t: %@\nDCT\t\t: %@",maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted];
+        formattedText = [NSString stringWithFormat:@"Mother: %@\nBaby: %@\nDCT: %@",maternalBloodGroupFormatted, babyBloodGroupFormatted, dctFormatted];
     }
     
     // set the text in the TextView

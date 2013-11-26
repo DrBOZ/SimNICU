@@ -36,7 +36,7 @@
 	
     [CBTrackers logEvent:@"Jaundice Data Entry"];
     
-    self.title = @"Jaundice";
+    self.title = NSLocalizedString(@"Jaundice", nil);
     
     sectionHeaders = [[NSMutableArray alloc] initWithCapacity:4];
     NSString *header;

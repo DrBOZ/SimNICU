@@ -8,6 +8,7 @@
 
 #import "PostnatalWardTableViewController.h"
 #import "PostnatalWardSection.h"
+#import "PostnatalWardModel.h"
 
 @interface PostnatalWardTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -18,7 +19,7 @@
 
 @implementation PostnatalWardTableViewController
 {
-    NSMutableArray *problems;
+    NSArray *problems;
     
     NSMutableArray *searchData;
     
@@ -31,7 +32,7 @@
     self = [super initWithStyle:style];
     if (self)
     {
-        [self createProblemList];
+        problems = [PostnatalWardModel getListOfPostnatalWardProblems];;
     }
     
     return self;
@@ -233,6 +234,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
     }
     
@@ -303,176 +305,6 @@
     }
     
     return YES;
-}
-
-- (void)createProblemList
-{
-    problems = [[NSMutableArray alloc] initWithCapacity:50];
-    
-    NSString *problem;
-    
-    // populate array of problems, in alphabetical order
-    problem = @"Anorectal Malformations";
-    [problems addObject:problem];
-    
-    problem = @"Ambiguous Genitalia";
-    [problems addObject:problem];
-    
-    problem = @"BCG Vaccination";
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Blood in the Nappy", nil);
-    [problems addObject:problem];
-    
-    problem = @"Brachial Nerve Palsies";
-    [problems addObject:problem];
-    
-    problem = @"Breast Swelling / Mastitis";
-    [problems addObject:problem];
-    
-    problem = @"Breast Feeding";
-    [problems addObject:problem];
-    
-    problem = @"Cardiac Arrhythmia";
-    [problems addObject:problem];
-    
-    problem = @"Cleft Lip & Palate";
-    [problems addObject:problem];
-    
-    problem = @"Cyanosis";
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Down's Syndrome", nil);
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Edward's Syndrome", nil);
-    [problems addObject:problem];
-    
-    problem = @"Fever";
-    [problems addObject:problem];
-    
-    problem = @"Group B Strep (Maternal)";
-    [problems addObject:problem];
-    
-    problem = @"Grunting";
-    [problems addObject:problem];
-    
-    problem = @"Heart Murmurs";
-    [problems addObject:problem];
-    
-    problem = @"Hepatitis B";
-    [problems addObject:problem];
-    
-    problem = @"Hip Problems";
-    [problems addObject:problem];
-    
-    problem = @"Hydronephrosis";
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Hypoglycaemia", nil);
-    [problems addObject:problem];
-    
-    problem = @"Hypospadias";
-    [problems addObject:problem];
-    
-    problem = @"Hypothermia";
-    [problems addObject:problem];
-    
-    problem = @"Hypotonia";
-    [problems addObject:problem];
-    
-    problem = @"Irritability";
-    [problems addObject:problem];
-    
-    problem = @"Jaundice";
-    [problems addObject:problem];
-    
-    problem = @"Jittery";
-    [problems addObject:problem];
-    
-    problem = @"Limb Abnormalities";
-    [problems addObject:problem];
-    
-    problem = @"Natal Teeth";
-    [problems addObject:problem];
-    
-    problem = @"Noisy Breathing";
-    [problems addObject:problem];
-    
-    problem = @"Offensive Liquor";
-    [problems addObject:problem];
-    
-    problem = @"Opiate Withdrawl";
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Patau's Syndrome", nil);
-    [problems addObject:problem];
-    
-    problem = @"Polydactyly";
-    [problems addObject:problem];
-    
-    problem = @"Polyhydraminios";
-    [problems addObject:problem];
-    
-    problem = @"Preauricular Skin Tags";
-    [problems addObject:problem];
-    
-    problem = @"Prolonged Rupture of Membranes (PROM)";
-    [problems addObject:problem];
-    
-    problem = @"Rashes";
-    [problems addObject:problem];
-    
-    problem = @"Red Reflexes";
-    [problems addObject:problem];
-    
-    problem = @"Sacral Dimple";
-    [problems addObject:problem];
-    
-    problem = @"Scalp Swelling";
-    [problems addObject:problem];
-    
-    problem = @"Single Palmar Crease";
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Sticky Eyes", nil);
-    [problems addObject:problem];
-    
-    problem = @"Sticky Umbilicus";
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Tachypnoea", nil);
-    [problems addObject:problem];
-    
-    problem = @"Talipes";
-    [problems addObject:problem];
-    
-    problem = @"Testicular Swelling";
-    [problems addObject:problem];
-    
-    problem = @"Thrombocytopenia";
-    [problems addObject:problem];
-    
-    problem = @"Thyroid Disease (Maternal)";
-    [problems addObject:problem];
-    
-    problem = @"Tongue Tie";
-    [problems addObject:problem];
-    
-    problem = @"Two Vessels in Cord";
-    [problems addObject:problem];
-    
-    problem = @"Undescended Testes";
-    [problems addObject:problem];
-    
-    problem = @"Vitamin K";
-    [problems addObject:problem];
-    
-    problem = @"Vomiting";
-    [problems addObject:problem];
-    
-    problem = @"Weight Loss";
-    [problems addObject:problem];
 }
 
 @end

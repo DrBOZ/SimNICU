@@ -27,13 +27,13 @@
 
 // testing tools
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 1  
-#define RESET_CELL_INFO 1                                   // WARNING this resets all Daily Summary Data!!!
+#define DCINTROSPECT_ON 0
+#define RESET_CELL_INFO 1                                   // Should leave this on
 #define RESET_PREFERENCES_HANDOVER_SECTIONS_CUSTOM_TEXT 1   // Resets custom text in preferences
 #define CLOCK_IN_TO_HOURSTRACKER_REMINDER 0
 
 // Dynamic Text
-#define USE_DYNAMIC_TEXT 1
+#define USE_DYNAMIC_TEXT 0
 #define DYNAMIC_TEXT_TESTER 0
 
 // Intro screen
@@ -48,7 +48,7 @@
 // Features in development
 // Front VC
 #define FEEDS_AND_FLUIDS_PREVIEW_MODE 0
-#define POSTNATAL_WARD_PREVIEW_MODE 0
+#define POSTNATAL_WARD_PREVIEW_MODE 1
 #define FLUID_BALANCE_PREVIEW_MODE 0
 #define HYPOGLYCAEMIA_PREVIEW_MODE 0
 #define GLUCOSE_LOAD_PREVIEW_MODE 0
