@@ -1819,6 +1819,18 @@
                 }
             }
         }
+        else if ([section.sectionName isEqual:@"Haematology"])
+        {
+            textViewToMeasure.text = self.selectedPatient.haematology;
+            
+            if (self.selectedPatient.haematologyLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.haematologyLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
+        }
         else if ([section.sectionName isEqual:@"Lines"])
         {
             textViewToMeasure.text = self.selectedPatient.lines;
@@ -1826,6 +1838,18 @@
             if (self.selectedPatient.linesLastEntryDate)
             {
                 if ([self isDate:self.selectedPatient.linesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
+        }
+        else if ([section.sectionName isEqual:@"Echocardiogram"])
+        {
+            textViewToMeasure.text = self.selectedPatient.echocardiogram;
+            
+            if (self.selectedPatient.echocardiogramLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.echocardiogramLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
                 {
                     textView.textColor = [UIColor redColor];
                 }
@@ -2360,42 +2384,9 @@
     // Jaundice cell different
     if (textView.tag == 11)
     {
-        if ([preferences.guidelineCountry isEqualToString:@"US"])
-        {
-            row = 3;
-        }
-        else
-        {
-            row = 1;
-        }
+        if ([preferences.guidelineCountry isEqualToString:@"US"]) row = 3;
+        else row = 1;
     }
-    
-    // get correct indexPath
-    // this is because the user can reorder the sections
-    // HandoverSection *handoverSectionDefaultOrder = self.selectedPatient.handoverSections[textView.tag];
-    
-    // HandoverSection *handoverSectionUserOrder;
-    
-    // int x = 0;
-    int correctedSection = [self getUserDefinedSectionForTextView:textView];
-    
-    /*
-    for (handoverSectionUserOrder in preferences.handoverSections)
-    {
-        if ([handoverSectionUserOrder.sectionName isEqualToString:handoverSectionDefaultOrder.sectionName])
-        {
-            correctedSection = x;
-        }
-        
-        // increment section
-        x = x + 1;
-    }
-     */
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:correctedSection];
-    
-    // animate the fingerprint in
-    // [self animateFingerprintIn];
     
     // instead, check if user is using the 3.5 inch screen or 4 inch screen
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
@@ -2404,17 +2395,39 @@
         [self animatePatientDetailsOff];
     }
     
+    // check if text is greater than the available screen height
+    CGFloat heightOfTextView = [self heightForTextView:textView];
+    
+    // get correct indexPath
+    // this is because the user can reorder the sections
+    
+    int correctedSection = [self getUserDefinedSectionForTextView:textView];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:correctedSection];
+    
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
-        [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if (heightOfTextView <= 134.0f)
+        {
+            [self.myTableView2 scrollToRowAtIndexPath:indexPath
+                                     atScrollPosition:UITableViewScrollPositionTop
+                                             animated:YES];
+        }
     }
     else
     {
-        [self.myTableView2 scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        if (heightOfTextView <= 134.0f)
+        {
+            [self.myTableView2 scrollToRowAtIndexPath:indexPath
+                                     atScrollPosition:UITableViewScrollPositionMiddle
+                                             animated:NO];
+        }
     }
     
     // change right bar button
-    [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showModalPanel:)] animated:YES];
+    [self.navigationItem setRightBarButtonItem:[CBBarButtonItems infoBarButtonWithTarget:self
+                                                                                  action:@selector(showModalPanel:)]
+                                      animated:YES];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
@@ -3137,303 +3150,7 @@
 
 - (NSMutableArray *)loadSectionDataForPatientEditing:(BOOL)editing
 {
-    NSMutableArray *returnArray = nil;
-    
-    // delegate
-    // AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    /*
-    // temp toggle to reset cell heights and ability to edit
-#if RESET_CELL_INFO
-    self.selectedPatient.handoverSections = nil;
-#endif
-    
-    
-//    self.selectedPatient.background = nil;
-//    self.selectedPatient.activeProblems = nil;
-//    self.selectedPatient.resolvedProblems = nil;
-//    self.selectedPatient.recentSignificantEvents = nil;
-//    self.selectedPatient.ventilationAndSedation = nil;
-//    self.selectedPatient.cxr = nil;
-//    self.selectedPatient.cardiovascular = nil;
-//    self.selectedPatient.lines = nil;
-//    self.selectedPatient.feedsAndFluids = nil;
-//    self.selectedPatient.fluidBalance = nil;
-//    self.selectedPatient.electrolytes = nil;
-//    self.selectedPatient.jaundice = nil;
-//    self.selectedPatient.sepsis = nil;
-//    self.selectedPatient.drugs = nil;
-//    self.selectedPatient.rop = nil;
-//    self.selectedPatient.cranialUSS = nil;
-//    self.selectedPatient.parentsAndSocial = nil;
-//    self.selectedPatient.impression = nil;
-//    self.selectedPatient.plan = nil;
-//    self.selectedPatient.jobs = nil;
-     
-    
-    // first check to see if any data has alread been added
-    if (!self.selectedPatient.handoverSections)
-    {
-        // instantiate array
-        self.selectedPatient.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
-        HandoverSection *newSection;
-        HandoverRow *newRow;
-        
-        // 00 - Background
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Background";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 01 - Active Problems
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Active Problems";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 02 - Resolved Problems
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Resolved Problems";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 03 - Recent Significant Events
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Recent Significant Events";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 04 - Ventilation & Sedation
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Ventilation & Sedation";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 05 - CXR
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"CXR";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 06 - Cardiovascular
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Cardiovascular";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 07 - Lines
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Lines";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 08 - Feeds & Fluids
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Feeds & Fluids";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 09 - Fluid Balance
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Fluid Balance";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 10 - Biochemistry
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Biochemistry";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 11 - Jaundice
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Jaundice";
-        newSection.sectionEditable = @"YES";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:2];
-        
-        newRow = [[HandoverRow alloc] init];
-        // Different graph sizes for iPhone 4 and iPhone 5
-        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-        {
-            newRow.rowHeight = [NSNumber numberWithFloat:320.0f];
-        }
-        else
-        {
-            newRow.rowHeight = [NSNumber numberWithFloat:260.0f];
-        }
-        [newSection.rows addObject:newRow];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 12 - Sepsis
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Sepsis";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 13 - Drugs
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Drugs";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 14 - ROP
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"ROP";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 15 - Neurology & Cranial USS
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Neurology & Cranial USS";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 16 - Parents / Social
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Parents / Social";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 17 - Examination
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Examination";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 18 - Summary
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Summary";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-        
-        // 19 - Plan
-        newSection = [[HandoverSection alloc] init];
-        newSection.sectionName = @"Plan";
-        newSection.sectionEditable = @"NO";
-        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        newRow = [[HandoverRow alloc] init];
-        newRow.rowHeight = [NSNumber numberWithFloat:346.0f];
-        [newSection.rows addObject:newRow];
-        
-        [self.selectedPatient.handoverSections addObject:newSection];
-    }
-    */
-    
-    returnArray = [[NSMutableArray alloc] initWithCapacity:20];
+    NSMutableArray *returnArray = [[NSMutableArray alloc] initWithCapacity:20];
     
     HandoverSection *section;
     
@@ -3465,7 +3182,9 @@
     [self.ventilationAndSedationTextView resignFirstResponder];
     [self.cxrTextView resignFirstResponder];
     [self.cardiovascularTextView resignFirstResponder];
+    [self.haematologyTextView resignFirstResponder];
     [self.linesTextView resignFirstResponder];
+    [self.echocardiogramTextView resignFirstResponder];
     [self.fluidBalanceTextView resignFirstResponder];
     [self.feedsAndFluidsTextView resignFirstResponder];
     [self.electrolytesTextView resignFirstResponder];
