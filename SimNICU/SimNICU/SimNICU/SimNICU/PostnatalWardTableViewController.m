@@ -44,7 +44,7 @@
 
     [CBTrackers logEvent:@"Postnatal Ward"];
     
-    self.title = @"Postnatal Ward";
+    self.title = NSLocalizedString(@"Postnatal Ward", nil);
     
     //tableView
     self.tableView.rowHeight = 50.0f;

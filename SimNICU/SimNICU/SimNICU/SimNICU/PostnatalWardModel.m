@@ -179,7 +179,17 @@
     problem = NSLocalizedString(@"Weight Loss", nil);
     [problems addObject:problem];
     
-    // need to alphabetise
+    // alphebetise the array based on the problem string value
+    NSArray *sortedProblems;
+    
+    sortedProblems = [problems sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+                     {
+                         NSString *first = (NSString *)a;
+                         NSString *second = (NSString *)b;
+                         return [first compare:second];
+                     }];
+    
+    problems = [NSMutableArray arrayWithArray:sortedProblems];
     
     return problems;
 }

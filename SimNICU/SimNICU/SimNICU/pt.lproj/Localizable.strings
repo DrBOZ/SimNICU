@@ -10,6 +10,7 @@
 "About" = "Acerca de";
 "add" = "adicionar";
 "new patient" = "um novo paciente";
+"Above phototherapy line" = "Abaixo do nível para fototerapia";
 "Active Problems" = "Doenças em tratamento"; // ? Problemas Ativos
 "Add Result" = "Adicionar Resultado";
 "Adrenaline" = "Epinephrine";
@@ -27,10 +28,11 @@
 "Background" = "História médica";
 "Bay" = "Berço";
 "Bay Editor" = "Editor de leito";
+"Below phototherapy line" = "Acima do nível para fototerapia";
 "Benzylpenicillin" = "Penicilina";
 "Biochemistry" = "Eletrólitos e Bioquímica";
 "Birth" = "Nascimento";
-"Blood Cultures" = "Hemoculturas";
+"Blood cultures" = "Hemoculturas";
 "Blood in the nappy" = "Blood in the diaper";
 "Blood Products" = "Transfusões Sanguineas";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
@@ -45,6 +47,7 @@
 "Corrected Age" = "Idade corrigida";
 "Cranial Ultrasound" = "Ultrassom transfontanelar";
 "Creatinine" = "Creatinina";
+"CRP" = "Proteína C-Reativa";
 "[current date]" = "[data atual]";
 "custom" = "padronizado";
 "Custom text" = "Texto padronizado"; // ? Texto personalizado
@@ -81,14 +84,17 @@
 "Female" = "Feminino";
 "First day of life" = "Primeiro dia de vida";
 "Fluid Balance" = "Balanço Hídrico"; // correct x2
+"Fluid in the horizontal fissure" = "Líquido na incisura horizontal";
 "Fluid Requirements" = "Necessidades hídricas";
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
 "full stop" = "period";
+"Fully enterally fed" = "Alimentação enteral plena";
 "Gastroschisis" = "Cuidados na gastrosquise";
 "General" = "Geral";
 "Gentamicin" = "Gentamicina";
 "Gestation" = "Gestação";
+"Ground glass appearances" = "Aspecto de vidro moído (DMH)";
 "Guidelines" = "Guidelines";
 "hand" = "mão";
 "Heparin" = "Heparin";
@@ -117,14 +123,19 @@
 "Male" = "Masculino";
 "Maternal APH" = "Hemorragia materna pré-parto";
 "Midazolam" = "Midazolam";
+"Minimal milky aspirates" = "Aspirado leitoso mínimo";
 "Misc" = "Outros";
 "ml/kg/day" = "ml/kg/dia";
 "Morphine" = "Morphine";
+"Nasogastric tube in the stomach" = "Presença de sonda gástrica";
 "Neonatal Intensive Care" = "Terapia Intensiva Neonatal";
 "Neurology & Cranial USS" = "Exame Neurológico e Ultrassom Transfontanelar"; // correct x2
 "Neurotoxicity Risk Factors" = "Fatores de Risco";
 "New Bay" = "Novo Leito";
 "New custom text" = "Novo texto personalizado";
+"Nil" = "Nenhuma";
+"no growth" = "sem crescimento bacteriano";
+"No obvious pneumothorax" = "Sem pneumotórax visível";
 "No vomits" = "Sem vômitos";
 "None" = "Nenhum";
 "Oxygenation Index" = "Índice de oxigenação";
@@ -143,7 +154,9 @@
 "Platelets" = "Plaquetas";
 "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements." = "Please rate it on the App Store.\nIt will only take a moment, and will help me to work hard on future improvements.";
 
+"Pneumothorax" = "Pneumotórax";
 "Postnatal Ward" = "Alojamento Conjunto";
+"Prophylactic phototherapy" = "Fototerapia profilática";
 "Pulmonary haemorrhage" = "Cuidados na Hemorragia pulmonar";
 "Pulmonary Haemorrhage" = "Cuidados na Hemorragia pulmonar";
 "Rate on iTunes" = "Taxa sobre iTunes";
@@ -162,6 +175,7 @@
 "ROP" = "Retinopatia da Prematuridade";
 "Sample" = "Amostra";
 "Sample Age" = "Data da Amostra";
+"Screening not indicated" = "Screening não indicado";
 "Search" = "Buscar";
 "Sepsis" = "Sepse";
 "Serum Bilirubin" = "Bilirrubina Sérica";
@@ -169,6 +183,8 @@
 "Settings" = "Definições"; // ? Ajustes
 "Some" = "Algum";
 "Spontaneous preterm labour" = "TPP espontâneo";
+"Standard preterm PN" = "Fórmula de pré-termo padrão";
+"Stopped antibiotics" = "Terminado antibióticos";
 "Summary" = "Lista de Problemas"; // correct x2
 "Surname" = "Last name";
 "Tachypnoea" = "Tachypnea";

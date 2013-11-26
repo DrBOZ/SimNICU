@@ -318,7 +318,8 @@
                                                           ref:NSLocalizedString(@"Suspected Sepsis", nil)]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -332,10 +333,12 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // ml/kg/day
-            [newSection.customText addObject:[self customText:@" ml/kg/day" ref:@"ml/kg/day"]];
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %@", NSLocalizedString(@"ml/kg/day", nil)]
+                                                          ref:NSLocalizedString(@"ml/kg/day", nil)]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -349,25 +352,32 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Breathing in air
-            [newSection.customText addObject:[self customText:@"Breathing in air" ref:@"Breathing in air"]];
+            [newSection.customText addObject:[self customText:@"Breathing in air"
+                                                          ref:@"Breathing in air"]];
             
             // No events
-            [newSection.customText addObject:[self customText:@"No events" ref:@"No events"]];
+            [newSection.customText addObject:[self customText:@"No events"
+                                                          ref:@"No events"]];
             
             // pH
-            [newSection.customText addObject:[self customText:@"pH " ref:@"pH"]];
+            [newSection.customText addObject:[self customText:@"pH "
+                                                          ref:@"pH"]];
             
             // PCO2
-            [newSection.customText addObject:[self customText:@" PCO2 " ref:@"PCO2"]];
+            [newSection.customText addObject:[self customText:@" PCO2 "
+                                                          ref:@"PCO2"]];
             
             // PO2
-            [newSection.customText addObject:[self customText:@" PO2 " ref:@"PO2"]];
+            [newSection.customText addObject:[self customText:@" PO2 "
+                                                          ref:@"PO2"]];
             
             // SB
-            [newSection.customText addObject:[self customText:@" SB " ref:@"SB"]];
+            [newSection.customText addObject:[self customText:@" SB "
+                                                          ref:@"SB"]];
             
             // BE
-            [newSection.customText addObject:[self customText:@" BE " ref:@"BE"]];
+            [newSection.customText addObject:[self customText:@" BE "
+                                                          ref:@"BE"]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -381,19 +391,24 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // Ground glass appearances
-            [newSection.customText addObject:[self customText:@"Ground glass appearances" ref:@"Ground glass appearances"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Ground glass appearances", nil)
+                                                          ref:NSLocalizedString(@"Ground glass appearances", nil)]];
             
             // Fluid in the horizontal fissure
-            [newSection.customText addObject:[self customText:@"Fluid in the horizontal fissure" ref:@"Fluid in the horizontal fissure"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Fluid in the horizontal fissure", nil)
+                                                          ref:NSLocalizedString(@"Fluid in the horizontal fissure", nil)]];
             
             // No pneumothorax
-            [newSection.customText addObject:[self customText:@"No obvious pneumothorax" ref:@"No obvious pneumothorax"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"No obvious pneumothorax", nil)
+                                                          ref:NSLocalizedString(@"No obvious pneumothorax", nil)]];
             
             // Nasogastric tube in the stomach
-            [newSection.customText addObject:[self customText:@"Nasogastric tube in the stomach" ref:@"Nasogastric tube in the stomach"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Nasogastric tube in the stomach", nil)
+                                                          ref:NSLocalizedString(@"Nasogastric tube in the stomach", nil)]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -407,10 +422,12 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // micrograms/kg/min
-            [newSection.customText addObject:[self customText:@" micrograms/kg/min" ref:@"micrograms/kg/min"]];
+            [newSection.customText addObject:[self customText:@" micrograms/kg/min"
+                                                          ref:@"micrograms/kg/min"]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -424,7 +441,8 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Hb
-            [newSection.customText addObject:[self customText:@"Hb " ref:@"Hb"]];
+            [newSection.customText addObject:[self customText:@"Hb "
+                                                          ref:@"Hb"]];
             
             // WCC
             [newSection.customText addObject:[self customText:@" WCC "
@@ -435,7 +453,8 @@
                                                           ref:NSLocalizedString(@"Plats", nil)]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
             
             [self.handoverSections addObject:newSection];
         }
@@ -511,21 +530,24 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:5];
             
             // Fully enterally fed
-            [newSection.customText addObject:[self customText:@"Fully enterally fed" ref:@"Fully enterally fed"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Fully enterally fed", nil)
+                                                          ref:NSLocalizedString(@"Fully enterally fed", nil)]];
             
             // ml/kg/day
             [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %@", NSLocalizedString(@"ml/kg/day", nil)]
                                                           ref:NSLocalizedString(@"ml/kg/day", nil)]];
             
             // Minimal milky aspirates
-            [newSection.customText addObject:[self customText:@"Minimal milky aspirates" ref:@"Minimal milky aspirates"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Minimal milky aspirates", nil)
+                                                          ref:NSLocalizedString(@"Minimal milky aspirates", nil)]];
             
             // No vomits
             [newSection.customText addObject:[self customText:NSLocalizedString(@"No vomits", nil)
                                                           ref:NSLocalizedString(@"No vomits", nil)]];
             
             // Parenteral nutrition
-            [newSection.customText addObject:[self customText:@"Standard preterm PN" ref:@"Standard preterm PN"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Standard preterm PN", nil)
+                                                          ref:NSLocalizedString(@"Standard preterm PN", nil)]];
             
             // Yellow regime
             [newSection.customText addObject:[self customText:@"Yellow regime" ref:@"Yellow regime"]];
@@ -568,31 +590,44 @@
             [newSection.customText addObject:[self customText:@" U " ref:@"U"]];
             
             // Cr
-            [newSection.customText addObject:[self customText:@" Cr " ref:@"Cr"]];
+            [newSection.customText addObject:[self customText:@" Cr "
+                                                          ref:@"Cr"]];
             
             // Ca
-            [newSection.customText addObject:[self customText:@"Ca " ref:@"Ca"]];
+            [newSection.customText addObject:[self customText:@"Ca "
+                                                          ref:@"Ca"]];
             
             // Adj Ca
-            [newSection.customText addObject:[self customText:@" Adj Ca " ref:@"Adj Ca"]];
+            [newSection.customText addObject:[self customText:@" Adj Ca "
+                                                          ref:@"Adj Ca"]];
+            
+            // ionised Ca
+            [newSection.customText addObject:[self customText:@" Ca (i)"
+                                                          ref:@"Ca ionised"]];
             
             // Phosphate
-            [newSection.customText addObject:[self customText:@" PO4  " ref:@"PO4"]];
+            [newSection.customText addObject:[self customText:@" PO4  "
+                                                          ref:@"PO4"]];
             
             // Mg
-            [newSection.customText addObject:[self customText:@"Mg " ref:@"Mg"]];
+            [newSection.customText addObject:[self customText:@"Mg "
+                                                          ref:@"Mg"]];
             
             // Alkaline Phosphatase
-            [newSection.customText addObject:[self customText:@"ALP " ref:@"Alk Phos"]];
+            [newSection.customText addObject:[self customText:@"ALP "
+                                                          ref:@"Alk Phos"]];
             
             // ALT
-            [newSection.customText addObject:[self customText:@" ALT " ref:@"ALT"]];
+            [newSection.customText addObject:[self customText:@" ALT "
+                                                          ref:@"ALT"]];
             
             // ALB
-            [newSection.customText addObject:[self customText:@" ALB " ref:@"ALB"]];
+            [newSection.customText addObject:[self customText:@" ALB "
+                                                          ref:@"ALB"]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
             
             // current date and time
             [newSection.customText addObject:[self customText:@"[current date and time]"
@@ -610,13 +645,24 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Below phototherapy line
-            [newSection.customText addObject:[self customText:@"Below phototherapy line" ref:@"Below phototherapy line"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Below phototherapy line", nil)
+                                                          ref:NSLocalizedString(@"Below phototherapy line", nil)]];
             
             // Above phototherapy line
-            [newSection.customText addObject:[self customText:@"Above phototherapy line" ref:@"Above phototherapy line"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Above phototherapy line", nil)
+                                                          ref:NSLocalizedString(@"Above phototherapy line", nil)]];
+            
+            // Prophylactic phototherapy
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Prophylactic phototherapy", nil)
+                                                          ref:NSLocalizedString(@"Prophylactic phototherapy", nil)]];
+            
+            // Direct Bilirubin
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"Direct bilirubin", nil)]
+                                                          ref:NSLocalizedString(@"Direct bilirubin", nil)]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -630,19 +676,24 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
             // CRP
-            [newSection.customText addObject:[self customText:@"CRP " ref:@"CRP"]];
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@"%@ ", NSLocalizedString(@"CRP ", nil)]
+                                                          ref:NSLocalizedString(@"CRP", nil)]];
             
             // < 5
-            [newSection.customText addObject:[self customText:@"< 5" ref:@"< 5"]];
+            [newSection.customText addObject:[self customText:@"< 5"
+                                                          ref:@"< 5"]];
             
             // Blood cultures
-            [newSection.customText addObject:[self customText:@"Blood cultures" ref:@"Blood cultures"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Blood cultures", nil)
+                                                          ref:NSLocalizedString(@"Blood cultures", nil)]];
             
             // Blood cultures
-            [newSection.customText addObject:[self customText:@" no growth" ref:@"no growth"]];
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %@", NSLocalizedString(@"no growth", nil)]
+                                                          ref:NSLocalizedString(@"no growth", nil)]];
             
             // current date
-            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -698,7 +749,8 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
             // Screening not indicated
-            [newSection.customText addObject:[self customText:@"Screening not indicated" ref:@"Screening not indicated"]];
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Screening not indicated", nil)
+                                                          ref:NSLocalizedString(@"Screening not indicated", nil)]];
             
             // In ROP book
             [newSection.customText addObject:[self customText:@"In ROP book" ref:@"In ROP book"]];
