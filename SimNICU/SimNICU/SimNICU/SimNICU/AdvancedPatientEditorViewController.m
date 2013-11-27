@@ -81,7 +81,9 @@
 @property (nonatomic, strong) ShinobiChart *chart;
 
 @property (nonatomic, strong) NSMutableArray *bilirubinLevelsToPlot;
+@property (nonatomic, strong) NSString *neurotoxicityRiskFactors;
 @property (nonatomic, strong) NSString *neurotoxicityRisk;
+@property (nonatomic, strong) NSString *clinicalStatus;
 @property (nonatomic, strong) NSNumber *gestation;
 
 @property (nonatomic, strong) UITextView *backgroundTextView;
@@ -144,9 +146,6 @@
 //15) 
 //16) 
 //17) Add biochemistry edit
-//18) change names of patient properties to match UITextFields
-//19) 
-//20)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -157,6 +156,8 @@
         
         // default neurotoxicity risk
         self.neurotoxicityRisk = @"Lower";
+        self.neurotoxicityRiskFactors = @"None";
+        self.clinicalStatus = @"Well";
     }
     return self;
 }
@@ -164,6 +165,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // set neurotoxicity risk factors for selected patient
+    if (self.selectedPatient.neurotoxicityRiskFactors)
+    {
+        self.neurotoxicityRiskFactors = self.selectedPatient.neurotoxicityRiskFactors;
+    }
+    
+    // set clinical status for selected patient
+    if (self.selectedPatient.clinicalStatus)
+    {
+        self.clinicalStatus = self.selectedPatient.clinicalStatus;
+    }
+    
+    // set bilirubin neurotoxicity risk
+    if (self.neurotoxicityRiskFactors && self.clinicalStatus)
+    {
+        [self calculateNeurotoxicityRisk];
+    }
+    
+    NSLog(@"2");
+    
+    NSLog(@"Neurotoxicity risk factors = %@", self.neurotoxicityRiskFactors);
+    NSLog(@"Clinical Status = %@", self.clinicalStatus);
+    NSLog(@"Neurotoxicity risk = %@", self.neurotoxicityRisk);
     
     portraitOrientationDefaultsSet = YES;
     
@@ -316,8 +341,6 @@
         
         HandoverSection *handoverSectionForPatient;
         
-        NSLog(@"checking %@", handoverSection.sectionName);
-        
         for (handoverSectionForPatient in self.selectedPatient.handoverSections)
         {
             if ([handoverSectionForPatient.sectionName isEqualToString:handoverSection.sectionName])
@@ -333,8 +356,6 @@
                 }
             }
         }
-        
-        NSLog(@"rows = %i", rows);
         
         if (rows == 0)
         {
@@ -1073,6 +1094,19 @@
                     
                     cell.textLabel.text = NSLocalizedString(@"Clinical Status", nil);
                     cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+                    
+                    // set clinical status segmented control
+                    if (self.clinicalStatus)
+                    {
+                        if ([self.clinicalStatus isEqualToString:@"Well"])
+                        {
+                            self.clinicalStatusSegmentedControl.selectedSegmentIndex = 0;
+                        }
+                        else if ([self.clinicalStatus isEqualToString:@"Unwell"])
+                        {
+                            self.clinicalStatusSegmentedControl.selectedSegmentIndex = 1;
+                        }
+                    }
                 }
                 else
                 {
@@ -1125,24 +1159,17 @@
                 cell.textLabel.text = NSLocalizedString(@"Neurotoxicity Risk Factors", nil);
                 cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
                 
-                /*
-                self.colour = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"White", @"Blue", @"Pink", nil]];
-                [APGARVCFormats formatSegmentedControl:self.colour];
-                
-                if (self.patient)
+                if (self.neurotoxicityRiskFactors)
                 {
-                    if (!(self.patient.APGAR1minColour == NULL))
+                    if ([self.neurotoxicityRiskFactors isEqualToString:@"None"])
                     {
-                        self.colour.selectedSegmentIndex = [self.patient.APGAR1minColour intValue];
+                        self.neurotoxicityRiskFactorsSegmentedControl.selectedSegmentIndex = 0;
+                    }
+                    else if ([self.neurotoxicityRiskFactors isEqualToString:@"Present"])
+                    {
+                        self.neurotoxicityRiskFactorsSegmentedControl.selectedSegmentIndex = 1;
                     }
                 }
-                
-                [self.colour addTarget:self
-                                action:@selector(selectColour)
-                      forControlEvents:UIControlEventValueChanged];
-                
-                 */
-                
             }
             else if (indexPath.row == 3)
             {
@@ -1348,12 +1375,83 @@
 
 - (void)selectClinicalStatus
 {
-    // code
+    if ([self.clinicalStatusSegmentedControl selectedSegmentIndex] == 0)
+    {
+        self.selectedPatient.clinicalStatus = @"Well";
+        self.clinicalStatus = @"Well";
+    }
+    else if ([self.clinicalStatusSegmentedControl selectedSegmentIndex] == 1)
+    {
+        self.selectedPatient.clinicalStatus = @"Unwell";
+        self.clinicalStatus = @"Unwell";
+    }
+    
+    // set neurotoxicity risk if both factors are set
+    if (self.neurotoxicityRiskFactors && self.clinicalStatus)
+    {
+        [self calculateNeurotoxicityRisk];
+    }
+    
+    // update ShinobiChart
+    [self.chart reloadData];
+    [self.chart redrawChart];
 }
 
 - (void)selectNeurotoxicityRiskFactors
 {
-    // code
+    if ([self.neurotoxicityRiskFactorsSegmentedControl selectedSegmentIndex] == 0)
+    {
+        self.selectedPatient.neurotoxicityRiskFactors = @"None";
+        self.neurotoxicityRiskFactors = @"None";
+    }
+    else if ([self.neurotoxicityRiskFactorsSegmentedControl selectedSegmentIndex] == 1)
+    {
+        self.selectedPatient.neurotoxicityRiskFactors = @"Present";
+        self.neurotoxicityRiskFactors = @"Present";
+    }
+    
+    // set neurotoxicity risk if both factors are set
+    if (self.neurotoxicityRiskFactors && self.clinicalStatus)
+    {
+        [self calculateNeurotoxicityRisk];
+    }
+    
+    // update ShinobiChart
+    [self.chart reloadData];
+    [self.chart redrawChart];
+}
+
+- (void)calculateNeurotoxicityRisk
+{
+    NSLog(@"1");
+    
+    // this is for the US guideline
+    if ([self.selectedPatient.gestation integerValue] >= 38)
+    {
+        if ([self.clinicalStatus isEqualToString:@"Well"] && [self.neurotoxicityRiskFactors isEqualToString:@"None"])
+        {
+            self.neurotoxicityRisk = @"Lower";
+        }
+        else
+        {
+            self.neurotoxicityRisk = @"Medium";
+        }
+    }
+    else if ([self.selectedPatient.gestation integerValue] >= 35)
+    {
+        if ([self.clinicalStatus isEqualToString:@"Well"] && [self.neurotoxicityRiskFactors isEqualToString:@"None"])
+        {
+            self.neurotoxicityRisk = @"Medium";
+        }
+        else
+        {
+            self.neurotoxicityRisk = @"Higher";
+        }
+    }
+    else
+    {
+        // display a message
+    }
 }
 
 #pragma mark -

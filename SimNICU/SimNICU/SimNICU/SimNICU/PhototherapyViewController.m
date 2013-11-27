@@ -46,8 +46,6 @@
     self.myTableView.rowHeight = 44.0f;
     self.myTableView.dataSource = self;
     self.myTableView.delegate = self;
-    // self.myTableView.sectionFooterHeight = 10.0f;
-    // self.myTableView.sectionHeaderHeight = 10.0f;
     self.myTableView.separatorColor = [UIColor grayColor];
     self.myTableView.hidden = NO;
     self.myTableView.bounces = YES;
@@ -428,6 +426,12 @@
                     cell.textLabel.text = NSLocalizedString(@"Clinical Status", nil);
                 }
                 
+                // check if patient has this already set
+                if (self.selectedPatient.clinicalStatus)
+                {
+                    self.clinicalStatus = self.selectedPatient.clinicalStatus;
+                }
+                
                 if (self.clinicalStatus)
                 {
                     cell.detailTextLabel.text = self.clinicalStatus;
@@ -454,16 +458,19 @@
                 cell.textLabel.text = NSLocalizedString(@"Risk Factors", nil);
             }
             
-            if ([preferences.guidelineCountry isEqualToString:@"US"])
+            // check if patient has this already set
+            if (self.selectedPatient.neurotoxicityRiskFactors)
             {
-                if (self.neurotoxicityRiskFactors)
-                {
-                    cell.detailTextLabel.text = self.neurotoxicityRiskFactors;
-                }
-                else
-                {
-                    cell.detailTextLabel.text = @"select";
-                }
+                self.neurotoxicityRiskFactors = self.selectedPatient.neurotoxicityRiskFactors;
+            }
+            
+            if (self.neurotoxicityRiskFactors)
+            {
+                cell.detailTextLabel.text = self.neurotoxicityRiskFactors;
+            }
+            else
+            {
+                cell.detailTextLabel.text = @"select";
             }
             
             returnCell = cell;
@@ -826,6 +833,11 @@
 
 - (void)phototherapyNeurotoxicityRiskViewController:(PhototherapyNeurotoxicityRiskViewController *)controller didFinishSelectingNeurotoxicityRisk:(NSString *)neurotoxicityRisk
 {
+    if (self.selectedPatient)
+    {
+        self.selectedPatient.neurotoxicityRiskFactors = neurotoxicityRisk;
+    }
+    
     self.neurotoxicityRiskFactors = neurotoxicityRisk;
     
     [self.myTableView reloadData];
@@ -835,6 +847,11 @@
 
 - (void)phototherapyClinicalStatusViewController:(PhototherapyClinicalStatusViewController *)controller didFinishSelectingClinicalStatus:(NSString *)clinicalStatus
 {
+    if (self.selectedPatient)
+    {
+        self.selectedPatient.clinicalStatus = clinicalStatus;
+    }
+    
     self.clinicalStatus = clinicalStatus;
     
     [self.myTableView reloadData];
@@ -847,17 +864,12 @@
     // access singleton
     Preferences *preferences = [Preferences sharedPreferences];
     
-    // self.guidelineCountry = guidelineCountry;
-    
-    // [self.delegate phototherapyViewController:self didChangeGuidelineCountry:guidelineCountry];
-    
     // change bilirubin units depending on which country guideline selected
     if ([preferences.guidelineCountry isEqualToString:@"UK"])
     {
         if ([preferences.bilirubinUnits isEqualToString:@"US"])
         {
             preferences.bilirubinUnits = @"SI";
-            // [self.delegate phototherapyViewController:self didChangeBilirubinUnit:@"SI"];
         }
     }
     else if ([preferences.guidelineCountry isEqualToString:@"US"])
@@ -865,7 +877,6 @@
         if ([preferences.bilirubinUnits isEqualToString:@"SI"])
         {
             preferences.bilirubinUnits = @"US";
-            // [self.delegate phototherapyViewController:self didChangeBilirubinUnit:@"US"];
         }
     }
     
