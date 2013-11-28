@@ -180,7 +180,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Calculator";
+    static NSString *CellIdentifier = @"Age Calculators";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(!cell)
@@ -196,8 +196,15 @@
     cell.textLabel.text = calculator.text;
     cell.detailTextLabel.text = calculator.detailText;
     
-    [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
-    [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+    // Specific font for iOS 7
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // Age Calculator name
+        [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:17.0f];
+        
+        // Age Calculator details
+        [CBFonts detailTextFormattingForLabel:cell.detailTextLabel withTextStyle:UIFontTextStyleFootnote minFontSize:14.0f];
+    }
     
     return cell;
 }

@@ -1071,7 +1071,9 @@
 
 - (void)showInfoScreen
 {
-    CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
+    // CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
+    CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
     newViewController.delegate = self;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
