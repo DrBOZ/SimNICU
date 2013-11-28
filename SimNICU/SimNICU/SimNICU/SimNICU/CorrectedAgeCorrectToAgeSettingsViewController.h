@@ -16,7 +16,7 @@
 
 @end
 
-@interface CorrectedAgeCorrectToAgeSettingsViewController : UIViewController
+@interface CorrectedAgeCorrectToAgeSettingsViewController : CBTableViewController
 
 @property (nonatomic, unsafe_unretained) id <CorrectedAgeCorrectToAgeSettingsViewControllerDelegate> delegate;
 

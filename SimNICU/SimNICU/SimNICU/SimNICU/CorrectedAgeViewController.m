@@ -1071,12 +1071,11 @@
 
 - (void)showInfoScreen
 {
-    // CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] init];
-    CorrectedAgeInfoViewController *newViewController = [[CorrectedAgeInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    CorrectedAgeInfoViewController *vc = [[CorrectedAgeInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
-    newViewController.delegate = self;
+    vc.delegate = self;
     
-    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
+    PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
     
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)

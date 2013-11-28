@@ -120,10 +120,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CorrectedAgeCorrectToAgeSettingsViewController *newViewController = [[CorrectedAgeCorrectToAgeSettingsViewController alloc] init];
-    newViewController.delegate = self;
+    CorrectedAgeCorrectToAgeSettingsViewController *vc = [[CorrectedAgeCorrectToAgeSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    vc.delegate = self;
     
-    [self.navigationController pushViewController:newViewController animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)closeModal
