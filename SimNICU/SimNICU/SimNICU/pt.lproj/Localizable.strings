@@ -55,7 +55,9 @@
 "CXR" = "Último raio-x"; // ? Raio-x de Tórax
 "Daily Summary" = "Resumo Diário";
 "day" = "dia";
+"Day" = "Dia";
 "Day 0 if infant is born before 12:00 midday, Day 1 if born after." = "Dia 0 se o recém-nascido nasceu antes do meio-dia. Dia 1 se nasceu após o meio-dia.";
+"Days" = "Dias";
 "Delete" = "Apagar";
 "Depends on time of birth" = "Depende da hora de nascimento";
 "DEVELOPER" = "REVELADOR";
@@ -70,7 +72,7 @@
 "Down's Syndrome" = "Down Syndrome";
 "Drugs" = "Drogas ou Medicações";
 "Early Care" = "Prematuro extremo";
-"Echocardiogram" = "Ecocardio"; // ? Ecodoppler
+"Echocardiogram" = "Ecocardio";
 "Edit Custom Text" = "Editar Texto Personalizado";
 "Editor Settings" = "Editor Settings";
 "Edward's Syndrome" = "Edward Syndrome";

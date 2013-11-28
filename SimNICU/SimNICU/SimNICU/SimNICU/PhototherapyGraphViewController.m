@@ -101,7 +101,7 @@
     // Use a number axis for the x axis.
     SChartNumberRange *xRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:7]];
     self.xAxis = [[SChartNumberAxis alloc] initWithRange:xRange];
-    self.xAxis.title = @"Days";
+    self.xAxis.title = NSLocalizedString(@"Days", nil);
     self.xAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
     self.xAxis.zoomInLimit = 4;
     self.xAxis.anchorPoint = 0;
@@ -120,7 +120,7 @@
         // Use a number axis for the y axis.
         SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:550]];
         self.yAxis = [[SChartNumberAxis alloc] initWithRange:yRange];
-        self.yAxis.title = @"Total Serum Bilirubin (µmol/L)";
+        self.yAxis.title = NSLocalizedString(@"Total Serum Bilirubin (µmol/L)", nil);
         self.yAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
         self.yAxis.zoomInLimit = 2;
         self.yAxis.majorTickFrequency = [NSNumber numberWithInt:50];
@@ -138,7 +138,7 @@
         // Use a number axis for the y axis.
         SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:30]];
         self.yAxis = [[SChartNumberAxis alloc] initWithRange:yRange];
-        self.yAxis.title = @"Total Serum Bilirubin (mg/dL)";
+        self.yAxis.title = NSLocalizedString(@"Total Serum Bilirubin (mg/dL)", nil);
         self.yAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
         self.yAxis.zoomInLimit = 2;
         self.yAxis.majorTickFrequency = [NSNumber numberWithInt:5];

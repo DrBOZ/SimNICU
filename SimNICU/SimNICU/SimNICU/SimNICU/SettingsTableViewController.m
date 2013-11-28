@@ -128,12 +128,6 @@
     
     if (indexPath.section == 0)
     {
-        DayZeroTableViewController *vc = [[DayZeroTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else if (indexPath.section == 1)
-    {
         EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
         
         // Bay Editor
@@ -143,7 +137,7 @@
         
         [self.navigationController pushViewController:bayEditorTableViewController animated:YES];
     }
-    else if (indexPath.section == 2)
+    else if (indexPath.section == 1)
     {
         if (indexPath.row == 0)
         {
@@ -167,6 +161,12 @@
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
+    }
+    else if (indexPath.section == 2)
+    {
+        DayZeroTableViewController *vc = [[DayZeroTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
     else
     {

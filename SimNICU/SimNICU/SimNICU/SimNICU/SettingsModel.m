@@ -19,17 +19,6 @@
     CBTableViewSectionData *sectionData;
     CBTableViewRowData *rowData;
     
-    // Age Calculators section
-    sectionData = [[CBTableViewSectionData alloc] init];
-    sectionData.titleForHeader = NSLocalizedString(@"Age Calculators", nil);
-    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = NSLocalizedString(@"First day of life", nil);
-    [sectionData.rowData addObject:rowData];
-    
-    [tableData addObject:sectionData];
-    
     // Patient List section
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = NSLocalizedString(@"Patient List", nil);
@@ -60,9 +49,71 @@
     
     [tableData addObject:sectionData];
     
+    // Age Calculators section
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = NSLocalizedString(@"Age Calculators", nil);
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"First day of life", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Correct to age", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    [tableData addObject:sectionData];
+    
+    /*
+    // Fluid Requirements section
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = NSLocalizedString(@"Fluid requirements", nil);
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Daily increments", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Default electrolytes", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    [tableData addObject:sectionData];
+    
+    // Infusions section
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = NSLocalizedString(@"Infusions", nil);
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Drugs", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Infusion strength", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    [tableData addObject:sectionData];
+    
+    // Intubation section
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = NSLocalizedString(@"Intubation", nil);
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"Drugs", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = NSLocalizedString(@"ETT type", nil);
+    [sectionData.rowData addObject:rowData];
+    
+    [tableData addObject:sectionData];
+     */
+    
 #if SYNCRONISATION_PREVIEW_MODE
     
-    // Syncronisation section
+    // Intubation section
     sectionData = [[CBTableViewSectionData alloc] init];
     sectionData.titleForHeader = @"Syncronisation";
     sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];

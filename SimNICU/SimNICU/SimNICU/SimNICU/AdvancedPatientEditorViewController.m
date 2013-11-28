@@ -3003,11 +3003,6 @@
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    // NSLog(@"Frame.origin.x = %f", frame.origin.x);
-    // NSLog(@"Frame.origin.y = %f", frame.origin.y);
-    // NSLog(@"Frame.size.width = %f", frame.size.width);
-    // NSLog(@"Frame.size.height = %f", frame.size.height);
-    
     // shinobi chart
     
     // set gestation for chart
@@ -3024,9 +3019,7 @@
     self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
     
     // ShinobiChart
-    // self.chart = [[ShinobiChart alloc] initWithFrame:cell.bounds];
     self.chart = [[ShinobiChart alloc] initWithFrame:frame];
-    // self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 320.0f)];
     
     self.chart.title = [NSString stringWithFormat:@"Infants born at %i%@ weeks gestation", [self.gestation intValue], plusString];
     
@@ -3084,7 +3077,7 @@
         // Use a number axis for the y axis.
         SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:550]];
         self.yAxis = [[SChartNumberAxis alloc] initWithRange:yRange];
-        self.yAxis.title = @"Total Serum Bilirubin (µmol/L)";
+        self.yAxis.title = NSLocalizedString(@"Total Serum Bilirubin (µmol/L)", nil);
         self.yAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
         self.yAxis.zoomInLimit = 1;
         self.yAxis.majorTickFrequency = [NSNumber numberWithInt:50];
@@ -3101,7 +3094,7 @@
         // Use a number axis for the y axis.
         SChartNumberRange *yRange = [[SChartNumberRange alloc] initWithMinimum:[NSNumber numberWithInt:0] andMaximum:[NSNumber numberWithInt:30]];
         self.yAxis = [[SChartNumberAxis alloc] initWithRange:yRange];
-        self.yAxis.title = @"Total Serum Bilirubin (mg/dL)";
+        self.yAxis.title = NSLocalizedString(@"Total Serum Bilirubin (µmol/L)", nil);
         self.yAxis.rangePaddingHigh = [NSNumber numberWithFloat:0.25f];
         self.yAxis.zoomInLimit = 2;
         self.yAxis.majorTickFrequency = [NSNumber numberWithInt:5];
