@@ -1,120 +1,27 @@
 //
 //  AgeCalculatorsViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 18/07/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
-#import "ZUUIRevealController.h"
-#import "EnterWeightViewController.h"
-#import "PortraitOnlyNavigationController.h"
 #import "AgeCalculatorsInfoViewController.h"
+#import "PortraitOnlyNavigationController.h"
 #import "AgeCalculatorsViewController.h"
 #import "CorrectedAgeViewController.h"
+#import "EnterWeightViewController.h"
 #import "ExactAgeViewController.h"
-#import "Calculator.h"
-
-@interface AgeCalculatorsViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeGestureRecognizer;
-@property (nonatomic, strong) UITableView *myTableView;
-
-@end
+#import "CBTableViewSectionData.h"
+#import "ZUUIRevealController.h"
+#import "AgeCalculatorsModel.h"
+#import "CBTableViewRowData.h"
 
 @implementation AgeCalculatorsViewController
 {
     NSMutableArray *calculatorGroup;
     NSMutableArray *calculators;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // info button
-        self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showInfoScreen)];
-        
-        // delegate
-		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        
-        // create arrays
-        
-        calculatorGroup = [[NSMutableArray alloc] initWithCapacity:2];
-        
-        calculators = [[NSMutableArray alloc] initWithCapacity:4];
-        
-        [calculators addObject:[Calculator calculatorWithText:@"Exact age"
-                                                andDetailText:@"days, hours, minutes"]];
-        
-        [calculators addObject:[Calculator calculatorWithText:@"Including postmenstrual age"
-                                                andDetailText:@"Until 40 weeks gestation"]];
-        
-        [calculatorGroup addObject:calculators];
-        
-        calculators = [[NSMutableArray alloc] initWithCapacity:4];
-        
-        [calculators addObject:[Calculator calculatorWithText:@"Corrected age"
-                                                andDetailText:@"After 40 weeks gestation"]];
-        
-        /*
-        calculator = [[Calculator alloc] init];
-        calculator.text = @"Decimal age";
-        calculator.detailText = @"for older growth charts";
-        [calculators addObject:calculator];
-         */
-        
-        [calculatorGroup addObject:calculators];
-        
-        /*
-        calculators = [[NSMutableArray alloc] initWithCapacity:2];
-        
-        calculator = [[Calculator alloc] init];
-        calculator.text = @"Gestational age";
-        calculator.detailText = @"from LMP";
-        [calculators addObject:calculator];
-        
-        calculator = [[Calculator alloc] init];
-        calculator.text = @"Gestational age";
-        calculator.detailText = @"from EDD";
-        [calculators addObject:calculator];
-        
-        [calculatorGroup addObject:calculators];
-         */
-        
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
-                                                                                 style:UIBarButtonItemStyleBordered
-                                                                                target:nil
-                                                                                action:nil];
-        
-        // create UITableView
-        // iOS 7 specifics
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height)) style:UITableViewStyleGrouped];
-        }
-        else
-        {
-            self.myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f)) style:UITableViewStyleGrouped];
-        }
-        self.myTableView.rowHeight = 50.0f;  // was 44.0f
-        self.myTableView.dataSource = self;
-        self.myTableView.delegate = self;
-        self.myTableView.separatorColor = [UIColor grayColor];
-        self.myTableView.hidden = NO;
-        self.myTableView.bounces = YES;
-        self.myTableView.scrollEnabled = YES;
-        [self.view addSubview:self.myTableView];
-        
-        // add TableView background
-        [CBTableViewController setBackgroundForTableView:self.myTableView];
-        
-        // swipe gesture recognizer
-        self.swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
-        [self.myTableView addGestureRecognizer:self.swipeGestureRecognizer];
-    }
-    return self;
+    NSArray *tableData;
 }
 
 - (void)viewDidLoad
@@ -122,25 +29,23 @@
     [super viewDidLoad];
 	
     [CBTrackers logEvent:@"Age Calculators"];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    if (self.selectedPatient)
-    {
-        self.title = @"Patient selected";
-    }
-    else
-    {
-        self.title = @"Age";
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-    [self.myTableView deselectRowAtIndexPath:[self.myTableView indexPathForSelectedRow] animated:YES];
+    // set title
+    if (self.selectedPatient) self.title = NSLocalizedString(@"Patient selected", nil);
+    else self.title = NSLocalizedString(@"Age", nil);
+    
+    // info button
+    self.navigationItem.rightBarButtonItem = [CBBarButtonItems infoBarButtonWithTarget:self action:@selector(showInfoScreen)];
+    
+    // get table data
+    tableData = [AgeCalculatorsModel getArrayForTableView];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:nil
+                                                                            action:nil];
+    
+    self.tableView.rowHeight = 50.0f;
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,21 +54,18 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [calculatorGroup count];;
+    return [tableData count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [calculatorGroup[section] count];
+    CBTableViewSectionData *sectionData = tableData[section];
+    
+    return [sectionData.rowData count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -173,14 +75,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSArray *headerText = @[@"Chronological Age", @"Corrected Age", @"Gestational Age"];
+    CBTableViewSectionData *sectionData = tableData[section];
     
-    return headerText[section];
+    return sectionData.titleForHeader;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Age Calculators";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(!cell)
@@ -191,10 +93,11 @@
         cell.backgroundColor = [UIColor whiteColor];
     }
     
-    Calculator *calculator;
-    calculator = [calculatorGroup[indexPath.section] objectAtIndex:indexPath.row];
-    cell.textLabel.text = calculator.text;
-    cell.detailTextLabel.text = calculator.detailText;
+    CBTableViewSectionData *sectionData = tableData[indexPath.section];
+    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
+    
+    cell.textLabel.text = rowData.text;
+    cell.detailTextLabel.text = rowData.detailText;
     
     // Specific font for iOS 7
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -213,28 +116,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Calculator *calculator = [calculatorGroup[indexPath.section] objectAtIndex:indexPath.row];
+    CBTableViewSectionData *sectionData = tableData[indexPath.section];
+    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
     
-    if ([calculator.text isEqualToString:@"Exact age"])
+    if ([rowData.text isEqualToString:@"Exact age"])
     {
         ExactAgeViewController *newViewController = [[ExactAgeViewController alloc] init];
         newViewController.selectedPatient = self.selectedPatient;
         [self.navigationController pushViewController:newViewController animated:YES];
     }
-    else if ([calculator.text isEqualToString:@"Including postmenstrual age"])
+    else if ([rowData.text isEqualToString:@"Including postmenstrual age"])
     {
         CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
         
-        newViewController.typeOfAgeCalculator = calculator.text;
+        newViewController.typeOfAgeCalculator = rowData.text;
         newViewController.selectedPatient = self.selectedPatient;
         
         [self.navigationController pushViewController:newViewController animated:YES];
     }
-    else if ([calculator.text isEqualToString:@"Corrected age"])
+    else if ([rowData.text isEqualToString:@"Corrected age"])
     {
         CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
         
-        newViewController.typeOfAgeCalculator = calculator.text;
+        newViewController.typeOfAgeCalculator = rowData.text;
         newViewController.selectedPatient = self.selectedPatient;
         
         [self.navigationController pushViewController:newViewController animated:YES];
@@ -252,8 +156,6 @@
     {
         navController.navigationBar.barTintColor = [UIColor grayColor];
         navController.navigationBar.tintColor = [UIColor redColor];
-        // navController.topViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        // navController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     }
     else
     {

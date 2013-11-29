@@ -74,11 +74,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rows = nil;
-    
     CBTableViewSectionData *sectionData = tableData[section];
     
-    rows = [sectionData.rowData count];
+    int rows = [sectionData.rowData count];
     
     return rows;
 }
@@ -90,12 +88,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *header = nil;
-    
     CBTableViewSectionData *sectionData = tableData[section];
-    header = sectionData.titleForHeader;
     
-    return header;
+    return sectionData.titleForHeader;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -663,6 +663,8 @@
 		5CB8C34616D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */; };
 		5CB8C35116D019E10066BC0A /* SimNICU_RoundedIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */; };
 		5CB8C35216D019E10066BC0A /* SimNICU_RoundedIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */; };
+		5CC55393184819D30099F3C4 /* AgeCalculatorsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC55392184819D30099F3C4 /* AgeCalculatorsModel.m */; };
+		5CC55394184819D30099F3C4 /* AgeCalculatorsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC55392184819D30099F3C4 /* AgeCalculatorsModel.m */; };
 		5CCA063E17FB7FCC00AF2E0C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCA063D17FB7FCC00AF2E0C /* Media.xcassets */; };
 		5CCA063F17FB7FCC00AF2E0C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCA063D17FB7FCC00AF2E0C /* Media.xcassets */; };
 		5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */; };
@@ -1560,6 +1562,8 @@
 		5CB8C34516D004AE0066BC0A /* SimNICU_Lite_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_Lite_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CB8C34F16D019E00066BC0A /* SimNICU_RoundedIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_RoundedIcon.png; sourceTree = "<group>"; };
 		5CB8C35016D019E10066BC0A /* SimNICU_RoundedIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_RoundedIcon@2x.png"; sourceTree = "<group>"; };
+		5CC55391184819D30099F3C4 /* AgeCalculatorsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsModel.h; sourceTree = "<group>"; };
+		5CC55392184819D30099F3C4 /* AgeCalculatorsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalculatorsModel.m; sourceTree = "<group>"; };
 		5CCA063D17FB7FCC00AF2E0C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5CCC271816D64A1F00D14080 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		5CD3B0AF16CF38D500DE362C /* SimNICU Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SimNICU Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2475,6 +2479,8 @@
 			children = (
 				5C756C9F17989A32002F983E /* AgeCalculatorsViewController.h */,
 				5C756CA017989A33002F983E /* AgeCalculatorsViewController.m */,
+				5CC55391184819D30099F3C4 /* AgeCalculatorsModel.h */,
+				5CC55392184819D30099F3C4 /* AgeCalculatorsModel.m */,
 				5C940DDF17AD506900840511 /* Info */,
 				5C940DDE17AD504900840511 /* Exact Age */,
 				5C940DDD17AD503600840511 /* Corrected Age */,
@@ -4102,6 +4108,7 @@
 				5C56F6551802285F00665E22 /* PulmonaryHaemorrhageModel.m in Sources */,
 				5C940BDA166E3C2F0044A7D1 /* IntubationViewController.m in Sources */,
 				5C940BDC166E3C2F0044A7D1 /* OxygenationIndexViewController.m in Sources */,
+				5CC55393184819D30099F3C4 /* AgeCalculatorsModel.m in Sources */,
 				5C940BDD166E3C2F0044A7D1 /* PlasticBagViewController.m in Sources */,
 				5C940BE3166E3C2F0044A7D1 /* ResusViewController.m in Sources */,
 				5C940BE5166E3C2F0044A7D1 /* ROPViewController.m in Sources */,
@@ -4393,6 +4400,7 @@
 				5C552AA217901D0000577BE0 /* DrugDoseWeightViewController.m in Sources */,
 				5C552AAA1790267900577BE0 /* DrugDosePatientTableViewCell.m in Sources */,
 				5CD3B0C31790729200DA0278 /* DrugDose.m in Sources */,
+				5CC55394184819D30099F3C4 /* AgeCalculatorsModel.m in Sources */,
 				5CD3B0C71790759600DA0278 /* DrugIndication.m in Sources */,
 				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */,

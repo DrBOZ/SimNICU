@@ -1189,16 +1189,15 @@
     {
         Screen *thisScreen = screens[indexPath.row];
         
-        // NSString *thisScreenType = [thisScreen segueId];
         NSString *thisScreenType = thisScreen.segueId;
         
 #pragma mark Age Calculators
         
         if([thisScreenType isEqualToString:@"Age Calculators"])
         {
-            AgeCalculatorsViewController *newViewController = [[AgeCalculatorsViewController alloc] init];
-            newViewController.selectedPatient = self.selectedPatient;
-            [self.navigationController pushViewController:newViewController animated:YES];
+            AgeCalculatorsViewController *vc = [[AgeCalculatorsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.selectedPatient = self.selectedPatient;
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
 #pragma mark APGAR
