@@ -9,6 +9,7 @@
 #import "DailySummaryEditorSettingsTableViewController.h"
 #import "DailySummarySectionsTableViewController.h"
 #import "PDFGenerationTableViewController.h"
+#import "CorrectedAgeInfoViewController.h"
 #import "BayEditorTableViewController.h"
 #import "SettingsTableViewController.h"
 #import "DayZeroTableViewController.h"
@@ -164,9 +165,18 @@
     }
     else if (indexPath.section == 2)
     {
-        DayZeroTableViewController *vc = [[DayZeroTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        
-        [self.navigationController pushViewController:vc animated:YES];
+        if (indexPath.row == 0)
+        {
+            DayZeroTableViewController *vc = [[DayZeroTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else if (indexPath.row == 1)
+        {
+            CorrectedAgeInfoViewController *vc = [[CorrectedAgeInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     else
     {

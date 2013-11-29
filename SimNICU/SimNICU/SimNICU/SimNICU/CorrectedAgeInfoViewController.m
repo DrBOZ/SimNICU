@@ -14,6 +14,10 @@
 @end
 
 @implementation CorrectedAgeInfoViewController
+{
+    // this is to prevent a long press on the back button from triggering two actions
+    BOOL backButtonLongPressed;
+}
 
 - (void)viewDidLoad
 {
@@ -23,9 +27,35 @@
     
     [CBTrackers logEvent:@"Age Calculators/Corrected Age/Info"];
     
-    // setup Done button
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [CBBarButtonItems doneBarButtonWithTarget:self action:@selector(closeModal)];
+    if (self.isModal)
+    {
+        // setup Done button
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem = [CBBarButtonItems doneBarButtonWithTarget:self action:@selector(closeModal)];
+    }
+    else
+    {
+        // setup back bar button with long press gesture
+        self.navigationItem.leftBarButtonItem = [CBBarButtonItems customBackBarButtonItemWithLongPressGestureRecognizerWithTarget:self
+                                                                                                                           action:@selector(backButtonPressed)
+                                                                                                                  longPressTarget:self
+                                                                                                                  longPressAction:@selector(backButtonLongPressed)];
+    }
+}
+
+- (void)backButtonPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)backButtonLongPressed
+{
+    if (!backButtonLongPressed)
+    {
+        backButtonLongPressed = YES;
+        
+        [self.navigationController dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,7 +66,14 @@
 
 -(void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer
 {
-    [self closeModal];
+    if (self.isModal)
+    {
+        [self closeModal];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - UITableView data source

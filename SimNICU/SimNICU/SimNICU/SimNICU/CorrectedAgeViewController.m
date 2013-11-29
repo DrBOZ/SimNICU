@@ -1074,6 +1074,7 @@
     CorrectedAgeInfoViewController *vc = [[CorrectedAgeInfoViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
     vc.delegate = self;
+    vc.isModal = YES;
     
     PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
     

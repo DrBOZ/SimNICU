@@ -19,5 +19,6 @@
 @interface CorrectedAgeInfoViewController : CBTableViewController
 
 @property (nonatomic, unsafe_unretained) id <CorrectedAgeInfoViewControllerDelegate> delegate;
+@property (nonatomic) BOOL isModal;
 
 @end
