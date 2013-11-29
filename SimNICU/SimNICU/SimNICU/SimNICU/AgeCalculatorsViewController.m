@@ -119,22 +119,25 @@
     CBTableViewSectionData *sectionData = tableData[indexPath.section];
     CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
     
-    if ([rowData.text isEqualToString:@"Exact age"])
+    if (indexPath.section == 0)
     {
-        ExactAgeViewController *newViewController = [[ExactAgeViewController alloc] init];
-        newViewController.selectedPatient = self.selectedPatient;
-        [self.navigationController pushViewController:newViewController animated:YES];
+        if (indexPath.row == 0)
+        {
+            ExactAgeViewController *newViewController = [[ExactAgeViewController alloc] init];
+            newViewController.selectedPatient = self.selectedPatient;
+            [self.navigationController pushViewController:newViewController animated:YES];
+        }
+        else if (indexPath.row == 1)
+        {
+            CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
+            
+            newViewController.typeOfAgeCalculator = rowData.text;
+            newViewController.selectedPatient = self.selectedPatient;
+            
+            [self.navigationController pushViewController:newViewController animated:YES];
+        }
     }
-    else if ([rowData.text isEqualToString:@"Including postmenstrual age"])
-    {
-        CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
-        
-        newViewController.typeOfAgeCalculator = rowData.text;
-        newViewController.selectedPatient = self.selectedPatient;
-        
-        [self.navigationController pushViewController:newViewController animated:YES];
-    }
-    else if ([rowData.text isEqualToString:@"Corrected age"])
+    else if (indexPath.section == 1)
     {
         CorrectedAgeViewController *newViewController = [[CorrectedAgeViewController alloc] init];
         

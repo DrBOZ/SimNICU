@@ -119,11 +119,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    CBTableViewSectionData *sectionData = tableData[indexPath.section];
+    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
     
     if (indexPath.section == 0)
     {
+        //delegate
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
         EnterWeightViewController *controller = (EnterWeightViewController *)appDelegate.revealController.rearViewController;
         
         // Bay Editor
