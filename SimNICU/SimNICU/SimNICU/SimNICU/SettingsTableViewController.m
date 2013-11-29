@@ -119,9 +119,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CBTableViewSectionData *sectionData = tableData[indexPath.section];
-    CBTableViewRowData *rowData = sectionData.rowData[indexPath.row];
-    
     if (indexPath.section == 0)
     {
         //delegate
