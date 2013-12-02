@@ -2364,7 +2364,7 @@
             else
             {
                 // Blood Group Info
-                JaundiceViewController *newViewController = [[JaundiceViewController alloc] init];
+                JaundiceViewController *newViewController = [[JaundiceViewController alloc] initWithStyle:UITableViewStyleGrouped];
                 newViewController.selectedPatient = self.selectedPatient;
                 newViewController.delegate = self;
                 

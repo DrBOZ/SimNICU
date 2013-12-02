@@ -388,6 +388,10 @@
 		5C5D24DB1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DE1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
 		5C5D24DF1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
+		5C6257A3184CC65A008F01D1 /* VascularLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A2184CC65A008F01D1 /* VascularLine.m */; };
+		5C6257A4184CC65A008F01D1 /* VascularLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A2184CC65A008F01D1 /* VascularLine.m */; };
+		5C6257A7184CC976008F01D1 /* VascularLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A6184CC976008F01D1 /* VascularLinesTableViewController.m */; };
+		5C6257A8184CC976008F01D1 /* VascularLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A6184CC976008F01D1 /* VascularLinesTableViewController.m */; };
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
@@ -1164,6 +1168,10 @@
 		5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummarySectionsTableViewController.m; sourceTree = "<group>"; };
 		5C5D24DC1844CD7E00856191 /* PostnatalWardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardModel.h; sourceTree = "<group>"; };
 		5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardModel.m; sourceTree = "<group>"; };
+		5C6257A1184CC65A008F01D1 /* VascularLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VascularLine.h; sourceTree = "<group>"; };
+		5C6257A2184CC65A008F01D1 /* VascularLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VascularLine.m; sourceTree = "<group>"; };
+		5C6257A5184CC976008F01D1 /* VascularLinesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VascularLinesTableViewController.h; sourceTree = "<group>"; };
+		5C6257A6184CC976008F01D1 /* VascularLinesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VascularLinesTableViewController.m; sourceTree = "<group>"; };
 		5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pulmonaryHaem0Comma.html; sourceTree = "<group>"; };
 		5C63B13316B9FD0400B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem2Comma.html; sourceTree = "<group>"; };
 		5C63B13516B9FD0A00B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem2Comma.html"; sourceTree = "<group>"; };
@@ -3204,6 +3212,8 @@
 				5C940C3A166E3E230044A7D1 /* Screen.m */,
 				5C4AAC7A17BF524B00BD68F5 /* TemplateTableViewController.h */,
 				5C4AAC7B17BF524B00BD68F5 /* TemplateTableViewController.m */,
+				5C6257A1184CC65A008F01D1 /* VascularLine.h */,
+				5C6257A2184CC65A008F01D1 /* VascularLine.m */,
 			);
 			name = "My Classes";
 			path = SimNICU;
@@ -3442,6 +3452,8 @@
 			children = (
 				5CD43A4517CB411900426991 /* JaundiceViewController.h */,
 				5CD43A4617CB411900426991 /* JaundiceViewController.m */,
+				5C6257A5184CC976008F01D1 /* VascularLinesTableViewController.h */,
+				5C6257A6184CC976008F01D1 /* VascularLinesTableViewController.m */,
 			);
 			name = AdvancedDataInput;
 			sourceTree = "<group>";
@@ -4159,6 +4171,7 @@
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
 				5CA3C681183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */,
 				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
+				5C6257A3184CC65A008F01D1 /* VascularLine.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
 				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
@@ -4218,6 +4231,7 @@
 				5C13B42917C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5C4BBF9C183A3CF9002607EC /* CFAMOptionsModel.m in Sources */,
 				5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */,
+				5C6257A7184CC976008F01D1 /* VascularLinesTableViewController.m in Sources */,
 				5CD43A4717CB411900426991 /* JaundiceViewController.m in Sources */,
 				5C56F64318021BA300665E22 /* BloodTransfusionCriteriaModel.m in Sources */,
 				5CFF4C04180662CD006C8480 /* CDHModel.m in Sources */,
@@ -4297,6 +4311,7 @@
 				5C56F6231801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */,
 				5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */,
+				5C6257A8184CC976008F01D1 /* VascularLinesTableViewController.m in Sources */,
 				5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */,
 				5C0F75B81804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
 				5C0700A6183A7B1D001EF769 /* CFAMInterpretationModel.m in Sources */,
@@ -4378,6 +4393,7 @@
 				5C4BBFAD183A4DF9002607EC /* CFAMTermsModel.m in Sources */,
 				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
 				5CD3B00316CF38D500DE362C /* Screen.m in Sources */,
+				5C6257A4184CC65A008F01D1 /* VascularLine.m in Sources */,
 				5CD3B00416CF38D500DE362C /* GrowthChart.m in Sources */,
 				5C06D4C61803C72400A3B46C /* VitKTableViewCell.m in Sources */,
 				5C56F65E18022D5100665E22 /* PulmonaryHaemorrhageViewController.m in Sources */,

@@ -464,7 +464,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Lines";
-            newSection.sectionEditable = @"NO";
+            newSection.sectionEditable = @"YES";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // 24G
