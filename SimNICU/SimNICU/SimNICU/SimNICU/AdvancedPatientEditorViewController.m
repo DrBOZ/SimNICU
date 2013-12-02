@@ -9,6 +9,7 @@
 #import "PhototherapyAddBilirubinResultViewController.h"
 #import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
+#import "VascularLinesTableViewController.h"
 #import "DailySummaryPDFViewController.h"
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
@@ -31,7 +32,7 @@
 
 // #import "CBBarCustomTableViewTextItem.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
+@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -333,22 +334,30 @@
     }
     else
     {
-        // HandoverSection *handoverSection = self.selectedPatient.handoverSections[section];
+        // NOTE:    handoverSection list is ordered by user preferences
+        //          number of rows are stored in the patient object
         
+        // first get preferences singleton
         Preferences *preferences = [Preferences sharedPreferences];
         
+        // get the relevant handoverSection as per user preferences
         HandoverSection *handoverSection = preferences.handoverSections[section];
         
-        HandoverSection *handoverSectionForPatient;
-        
-        for (handoverSectionForPatient in self.selectedPatient.handoverSections)
+        // cycle through all of the handoverSections saved for the selected patient
+        for (HandoverSection *handoverSectionForPatient in self.selectedPatient.handoverSections)
         {
+            // and check if it matches the handoverSection ordered by user preferences
             if ([handoverSectionForPatient.sectionName isEqualToString:handoverSection.sectionName])
             {
+                // set the number of rows...
+                
                 // if Phototherapy section and user is using US preferences then add another two rows
                 if ([handoverSection.sectionName isEqual:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
                 {
+                    // these extra rows are for the Clinical Status & Neurotoxicity Risk Factors segmented controls
                     rows = [handoverSectionForPatient.rows count] + 2;
+                    
+                    // could add a toggle here to include another one row (large row) for the blood group / DCT data
                 }
                 else
                 {
@@ -357,22 +366,11 @@
             }
         }
         
+#warning this must be checked...
         if (rows == 0)
         {
             NSLog(@"error");
         }
-        
-        /*
-        // if Phototherapy section and user is using US preferences then add another two rows
-        if ([handoverSection.sectionName isEqual:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
-        {
-            rows = [handoverSection.rows count] + 2;
-        }
-        else
-        {
-            rows = [handoverSection.rows count];
-        }
-         */
     }
     
     return rows;
@@ -2324,6 +2322,30 @@
         Preferences *preferences = [Preferences sharedPreferences];
         
         HandoverSection *section = preferences.handoverSections[indexPath.section];
+        
+        // Vascular lines
+        if ([section.sectionName isEqualToString:@"Lines"])
+        {
+            VascularLinesTableViewController *vc = [[VascularLinesTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.selectedPatient = self.selectedPatient;
+            vc.delegate = self;
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+            
+            // iOS 7 specifics
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                navController.navigationBar.barTintColor = [UIColor grayColor];
+                navController.navigationBar.tintColor = [UIColor redColor];
+            }
+            else
+            {
+                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+                navController.navigationBar.tintColor = [UIColor blackColor];
+            }
+            
+            [self presentModalViewController:navController animated:YES];
+        }
         
         // Jaundice
         if ([section.sectionName isEqualToString:@"Jaundice"])
@@ -5578,6 +5600,20 @@
 
 - (void)jaundiceViewControllerDidCancel:(JaundiceViewController *)controller
 {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - VascularLinesTableViewController delegate
+
+- (void)vascularLinesTableViewControllerDidFinish:(VascularLinesTableViewController *)controller withResults:(NSMutableArray *)results
+{
+    // dismiss modal
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)vascularLinesTableViewControllerDidCancel:(VascularLinesTableViewController *)controller
+{
+    // dismiss modal
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -314,133 +314,148 @@
 
 - (void)done
 {
-    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:5];
+    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:6];
     
     // DO NOT LOCALISE THESE!
     
     // Maternal blood group
-    NSString *resultsMaternalBloodGroup = nil;
-    
-    if (self.maternalBloodGroup.selectedSegmentIndex == 0)
     {
-        resultsMaternalBloodGroup = @"AB";
+        NSString *resultsMaternalBloodGroup = nil;
+        
+        if (self.maternalBloodGroup.selectedSegmentIndex == 0)
+        {
+            resultsMaternalBloodGroup = @"AB";
+        }
+        else if (self.maternalBloodGroup.selectedSegmentIndex == 1)
+        {
+            resultsMaternalBloodGroup = @"A";
+        }
+        else if (self.maternalBloodGroup.selectedSegmentIndex == 2)
+        {
+            resultsMaternalBloodGroup = @"B";
+        }
+        else if (self.maternalBloodGroup.selectedSegmentIndex == 3)
+        {
+            resultsMaternalBloodGroup = @"O";
+        }
+        else
+        {
+            resultsMaternalBloodGroup = @"?";
+        }
+        
+        [results addObject:resultsMaternalBloodGroup];
     }
-    else if (self.maternalBloodGroup.selectedSegmentIndex == 1)
-    {
-        resultsMaternalBloodGroup = @"A";
-    }
-    else if (self.maternalBloodGroup.selectedSegmentIndex == 2)
-    {
-        resultsMaternalBloodGroup = @"B";
-    }
-    else if (self.maternalBloodGroup.selectedSegmentIndex == 3)
-    {
-        resultsMaternalBloodGroup = @"O";
-    }
-    else
-    {
-        resultsMaternalBloodGroup = @"?";
-    }
-    
-    [results addObject:resultsMaternalBloodGroup];
     
     // Maternal Rhesus D status
-    NSString *resultsMaternalRhesus = nil;
-    
-    if (self.maternalRhesus.selectedSegmentIndex == 0)
     {
-        resultsMaternalRhesus = @"Neg";
+        NSString *resultsMaternalRhesus = nil;
+        
+        if (self.maternalRhesus.selectedSegmentIndex == 0)
+        {
+            resultsMaternalRhesus = @"Neg";
+        }
+        else if (self.maternalRhesus.selectedSegmentIndex == 1)
+        {
+            resultsMaternalRhesus = @"Pos";
+        }
+        else
+        {
+            resultsMaternalRhesus = @"?";
+        }
+        
+        [results addObject:resultsMaternalRhesus];
     }
-    else if (self.maternalRhesus.selectedSegmentIndex == 1)
-    {
-        resultsMaternalRhesus = @"Pos";
-    }
-    else
-    {
-        resultsMaternalRhesus = @"?";
-    }
-    
-    [results addObject:resultsMaternalRhesus];
     
     // Maternal antibodies
-    NSString *resultsMaternalAntibodies = nil;
-    
-    if (self.maternalAntibodies.selectedSegmentIndex == 0)
     {
-        resultsMaternalAntibodies = @" - no antibodies";
+        NSString *resultsMaternalAntibodies = nil;
+        
+        if (self.maternalAntibodies.selectedSegmentIndex == 0)
+        {
+            resultsMaternalAntibodies = @" - no antibodies";
+        }
+        else if (self.maternalAntibodies.selectedSegmentIndex == 1)
+        {
+            resultsMaternalAntibodies = @" - antibodies present";
+        }
+        else
+        {
+            resultsMaternalAntibodies = @"?";
+        }
+        
+        [results addObject:resultsMaternalAntibodies];
     }
-    else if (self.maternalAntibodies.selectedSegmentIndex == 1)
-    {
-        resultsMaternalAntibodies = @" - antibodies present";
-    }
-    else
-    {
-        resultsMaternalAntibodies = @"?";
-    }
-    
-    [results addObject:resultsMaternalAntibodies];
     
     // Baby blood group
-    NSString *resultsBabyBloodGroup = nil;
-    
-    if (self.babyBloodGroup.selectedSegmentIndex == 0)
     {
-        resultsBabyBloodGroup = @"AB";
+        NSString *resultsBabyBloodGroup = nil;
+        
+        if (self.babyBloodGroup.selectedSegmentIndex == 0)
+        {
+            resultsBabyBloodGroup = @"AB";
+        }
+        else if (self.babyBloodGroup.selectedSegmentIndex == 1)
+        {
+            resultsBabyBloodGroup = @"A";
+        }
+        else if (self.babyBloodGroup.selectedSegmentIndex == 2)
+        {
+            resultsBabyBloodGroup = @"B";
+        }
+        else if (self.babyBloodGroup.selectedSegmentIndex == 3)
+        {
+            resultsBabyBloodGroup = @"O";
+        }
+        else
+        {
+            resultsBabyBloodGroup = @"?";
+        }
+        
+        [results addObject:resultsBabyBloodGroup];
     }
-    else if (self.babyBloodGroup.selectedSegmentIndex == 1)
-    {
-        resultsBabyBloodGroup = @"A";
-    }
-    else if (self.babyBloodGroup.selectedSegmentIndex == 2)
-    {
-        resultsBabyBloodGroup = @"B";
-    }
-    else if (self.babyBloodGroup.selectedSegmentIndex == 3)
-    {
-        resultsBabyBloodGroup = @"O";
-    }
-    else
-    {
-        resultsBabyBloodGroup = @"?";
-    }
-    
-    [results addObject:resultsBabyBloodGroup];
     
     // Baby Rhesus D status
-    NSString *resultsBabyRhesus = nil;
-    
-    if (self.babyRhesus.selectedSegmentIndex == 0)
     {
-        resultsBabyRhesus = @"Neg";
+        NSString *resultsBabyRhesus = nil;
+        
+        if (self.babyRhesus.selectedSegmentIndex == 0)
+        {
+            resultsBabyRhesus = @"Neg";
+        }
+        else if (self.babyRhesus.selectedSegmentIndex == 1)
+        {
+            resultsBabyRhesus = @"Pos";
+        }
+        else
+        {
+            resultsBabyRhesus = @"?";
+        }
+        
+        [results addObject:resultsBabyRhesus];
     }
-    else if (self.babyRhesus.selectedSegmentIndex == 1)
-    {
-        resultsBabyRhesus = @"Pos";
-    }
-    else
-    {
-        resultsBabyRhesus = @"?";
-    }
-    
-    [results addObject:resultsBabyRhesus];
     
     // Direct Coombs Test
-    NSString *resultsDCT = nil;
+    {
+        NSString *resultsDCT = nil;
+        
+        if (self.dct.selectedSegmentIndex == 0)
+        {
+            resultsDCT = @"negative";
+        }
+        else if (self.dct.selectedSegmentIndex == 1)
+        {
+            resultsDCT = @"positive";
+        }
+        else
+        {
+            resultsDCT = @"?";
+        }
+        
+        [results addObject:resultsDCT];
+    }
     
-    if (self.dct.selectedSegmentIndex == 0)
-    {
-        resultsDCT = @"negative";
-    }
-    else if (self.dct.selectedSegmentIndex == 1)
-    {
-        resultsDCT = @"positive";
-    }
-    else
-    {
-        resultsDCT = @"?";
-    }
-    
-    [results addObject:resultsDCT];
+    // currently setting of the patient results occurs in the delegate
+    // is this a good structure?...
     
     [self.delegate jaundiceViewControllerDidFinish:self withResults:results];
 }
