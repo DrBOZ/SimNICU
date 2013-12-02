@@ -1441,8 +1441,8 @@
 		5C940C28166E3D030044A7D1 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		5C940C29166E3D030044A7D1 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		5C940C2A166E3D030044A7D1 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
-		5C940C2F166E3E230044A7D1 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Patient.h; sourceTree = "<group>"; };
-		5C940C30166E3E230044A7D1 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Patient.m; sourceTree = "<group>"; };
+		5C940C2F166E3E230044A7D1 /* Patient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Patient.h; path = SimNICU/Patient.h; sourceTree = "<group>"; };
+		5C940C30166E3E230044A7D1 /* Patient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Patient.m; path = SimNICU/Patient.m; sourceTree = "<group>"; };
 		5C940C31166E3E230044A7D1 /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = SimNICU/Preferences.h; sourceTree = "<group>"; };
 		5C940C32166E3E230044A7D1 /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = SimNICU/Preferences.m; sourceTree = "<group>"; };
 		5C940C33166E3E230044A7D1 /* RoundImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundImage.h; sourceTree = "<group>"; };
@@ -2537,6 +2537,8 @@
 			children = (
 				5C940C3B166E3E230044A7D1 /* GrowthChart.h */,
 				5C940C3C166E3E230044A7D1 /* GrowthChart.m */,
+				5C940C2F166E3E230044A7D1 /* Patient.h */,
+				5C940C30166E3E230044A7D1 /* Patient.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -3192,8 +3194,6 @@
 				5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */,
 				5C13B42B17C910BB00C88EEF /* HandoverRow.h */,
 				5C13B42C17C910BB00C88EEF /* HandoverRow.m */,
-				5C940C2F166E3E230044A7D1 /* Patient.h */,
-				5C940C30166E3E230044A7D1 /* Patient.m */,
 				5C940C33166E3E230044A7D1 /* RoundImage.h */,
 				5C940C34166E3E230044A7D1 /* RoundImage.m */,
 				5C940C35166E3E230044A7D1 /* BilirubinResult.h */,

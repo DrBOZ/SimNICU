@@ -35,115 +35,137 @@
     if((self = [super init]))
     {
         // Demographics
-        self.lastname = [aDecoder decodeObjectForKey:@"LastName"];
-        self.firstname = [aDecoder decodeObjectForKey:@"FirstName"];
-        self.birthWeight = [aDecoder decodeObjectForKey:@"BirthWeight"];
-        self.weights = [aDecoder decodeObjectForKey:@"Weights"];
-        self.gestation = [aDecoder decodeObjectForKey:@"Gestation"];
-        self.correctedGestation = [aDecoder decodeObjectForKey:@"CorrectedGestation"];
+        {
+            self.lastname = [aDecoder decodeObjectForKey:@"LastName"];
+            self.firstname = [aDecoder decodeObjectForKey:@"FirstName"];
+            self.gestation = [aDecoder decodeObjectForKey:@"Gestation"];
+            self.correctedGestation = [aDecoder decodeObjectForKey:@"CorrectedGestation"];
+            
+            self.birthDate = [aDecoder decodeObjectForKey:@"BirthDate"];
+            self.formattedBirthDate = [aDecoder decodeObjectForKey:@"FormattedBirthDate"];
+        }
         
-        self.birthDate = [aDecoder decodeObjectForKey:@"BirthDate"];
-        self.formattedBirthDate = [aDecoder decodeObjectForKey:@"FormattedBirthDate"];
-        self.workingWeight = [aDecoder decodeObjectForKey:@"WorkingWeight"];
-        self.workingWeightDate = [aDecoder decodeObjectForKey:@"WorkingWeightDate"];
-        self.formattedWorkingWeightDate = [aDecoder decodeObjectForKey:@"FormattedWorkingWeightDate"];
+        // Weights
+        {
+            // Birth weight
+            self.birthWeight = [aDecoder decodeObjectForKey:@"BirthWeight"];
+            
+            // Current weights
+            self.weights = [aDecoder decodeObjectForKey:@"Weights"];
+            
+            // Working weights
+            self.workingWeight = [aDecoder decodeObjectForKey:@"WorkingWeight"];
+            self.workingWeightDate = [aDecoder decodeObjectForKey:@"WorkingWeightDate"];
+            self.formattedWorkingWeightDate = [aDecoder decodeObjectForKey:@"FormattedWorkingWeightDate"];
+        }
         
-        self.NewBabyAPGARSSaved = [aDecoder decodeObjectForKey:@"NewBabyAPGARSSaved"];
-        
-        self.APGAR1minColour = [aDecoder decodeObjectForKey:@"APGAR1minColour"];
-        self.APGAR1minHeartRate = [aDecoder decodeObjectForKey:@"APGAR1minHeartRate"];
-        self.APGAR1minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR1minRespiratoryEffort"];
-        self.APGAR1minTone = [aDecoder decodeObjectForKey:@"APGAR1minTone"];
-        self.APGAR1minReflexes = [aDecoder decodeObjectForKey:@"APGAR1minReflexes"];
-        
-        self.APGAR5minColour = [aDecoder decodeObjectForKey:@"APGAR5minColour"];
-        self.APGAR5minHeartRate = [aDecoder decodeObjectForKey:@"APGAR5minHeartRate"];
-        self.APGAR5minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR5minRespiratoryEffort"];
-        self.APGAR5minTone = [aDecoder decodeObjectForKey:@"APGAR5minTone"];
-        self.APGAR5minReflexes = [aDecoder decodeObjectForKey:@"APGAR5minReflexes"];
-        
-        self.APGAR10minColour = [aDecoder decodeObjectForKey:@"APGAR10minColour"];
-        self.APGAR10minHeartRate = [aDecoder decodeObjectForKey:@"APGAR10minHeartRate"];
-        self.APGAR10minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR10minRespiratoryEffort"];
-        self.APGAR10minTone = [aDecoder decodeObjectForKey:@"APGAR10minTone"];
-        self.APGAR10minReflexes = [aDecoder decodeObjectForKey:@"APGAR10minReflexes"];
-        
-        self.APGAR15minColour = [aDecoder decodeObjectForKey:@"APGAR15minColour"];
-        self.APGAR15minHeartRate = [aDecoder decodeObjectForKey:@"APGAR15minHeartRate"];
-        self.APGAR15minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR15minRespiratoryEffort"];
-        self.APGAR15minTone = [aDecoder decodeObjectForKey:@"APGAR15minTone"];
-        self.APGAR15minReflexes = [aDecoder decodeObjectForKey:@"APGAR15minReflexes"];
-        
-        self.APGAR20minColour = [aDecoder decodeObjectForKey:@"APGAR20minColour"];
-        self.APGAR20minHeartRate = [aDecoder decodeObjectForKey:@"APGAR20minHeartRate"];
-        self.APGAR20minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR20minRespiratoryEffort"];
-        self.APGAR20minTone = [aDecoder decodeObjectForKey:@"APGAR20minTone"];
-        self.APGAR20minReflexes = [aDecoder decodeObjectForKey:@"APGAR20minReflexes"];
+        // APGAR scores
+        {
+            self.NewBabyAPGARSSaved = [aDecoder decodeObjectForKey:@"NewBabyAPGARSSaved"];
+            
+            self.APGAR1minColour = [aDecoder decodeObjectForKey:@"APGAR1minColour"];
+            self.APGAR1minHeartRate = [aDecoder decodeObjectForKey:@"APGAR1minHeartRate"];
+            self.APGAR1minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR1minRespiratoryEffort"];
+            self.APGAR1minTone = [aDecoder decodeObjectForKey:@"APGAR1minTone"];
+            self.APGAR1minReflexes = [aDecoder decodeObjectForKey:@"APGAR1minReflexes"];
+            
+            self.APGAR5minColour = [aDecoder decodeObjectForKey:@"APGAR5minColour"];
+            self.APGAR5minHeartRate = [aDecoder decodeObjectForKey:@"APGAR5minHeartRate"];
+            self.APGAR5minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR5minRespiratoryEffort"];
+            self.APGAR5minTone = [aDecoder decodeObjectForKey:@"APGAR5minTone"];
+            self.APGAR5minReflexes = [aDecoder decodeObjectForKey:@"APGAR5minReflexes"];
+            
+            self.APGAR10minColour = [aDecoder decodeObjectForKey:@"APGAR10minColour"];
+            self.APGAR10minHeartRate = [aDecoder decodeObjectForKey:@"APGAR10minHeartRate"];
+            self.APGAR10minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR10minRespiratoryEffort"];
+            self.APGAR10minTone = [aDecoder decodeObjectForKey:@"APGAR10minTone"];
+            self.APGAR10minReflexes = [aDecoder decodeObjectForKey:@"APGAR10minReflexes"];
+            
+            self.APGAR15minColour = [aDecoder decodeObjectForKey:@"APGAR15minColour"];
+            self.APGAR15minHeartRate = [aDecoder decodeObjectForKey:@"APGAR15minHeartRate"];
+            self.APGAR15minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR15minRespiratoryEffort"];
+            self.APGAR15minTone = [aDecoder decodeObjectForKey:@"APGAR15minTone"];
+            self.APGAR15minReflexes = [aDecoder decodeObjectForKey:@"APGAR15minReflexes"];
+            
+            self.APGAR20minColour = [aDecoder decodeObjectForKey:@"APGAR20minColour"];
+            self.APGAR20minHeartRate = [aDecoder decodeObjectForKey:@"APGAR20minHeartRate"];
+            self.APGAR20minRespiratoryEffort = [aDecoder decodeObjectForKey:@"APGAR20minRespiratoryEffort"];
+            self.APGAR20minTone = [aDecoder decodeObjectForKey:@"APGAR20minTone"];
+            self.APGAR20minReflexes = [aDecoder decodeObjectForKey:@"APGAR20minReflexes"];
+        }
         
         // bilirubin results
-        self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
-        self.birthTimeSet = [aDecoder decodeObjectForKey:@"BirthTimeSet"];
-        self.neurotoxicityRiskFactors = [aDecoder decodeObjectForKey:@"NeurotoxicityRiskFactors"];
-        self.clinicalStatus = [aDecoder decodeObjectForKey:@"ClinicalStatus"];
+        {
+            self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
+            self.birthTimeSet = [aDecoder decodeObjectForKey:@"BirthTimeSet"];
+            self.neurotoxicityRiskFactors = [aDecoder decodeObjectForKey:@"NeurotoxicityRiskFactors"];
+            self.clinicalStatus = [aDecoder decodeObjectForKey:@"ClinicalStatus"];
+        }
         
         // UITextViews
-        self.background = [aDecoder decodeObjectForKey:@"Background"];
-        self.activeProblems = [aDecoder decodeObjectForKey:@"ActiveProblems"];
-        self.resolvedProblems = [aDecoder decodeObjectForKey:@"ResolvedProblems"];
-        self.recentSignificantEvents = [aDecoder decodeObjectForKey:@"RecentSignificantEvents"];
-        self.ventilationAndSedation = [aDecoder decodeObjectForKey:@"VentilationAndSedation"];
-        self.cxr = [aDecoder decodeObjectForKey:@"CXR"];
-        self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
-        self.haematology = [aDecoder decodeObjectForKey:@"Haematology"];
-        self.lines = [aDecoder decodeObjectForKey:@"Lines"];
-        self.echocardiogram = [aDecoder decodeObjectForKey:@"Echocardiogram"];
-        self.feedsAndFluids = [aDecoder decodeObjectForKey:@"FeedsAndFluids"];
-        self.fluidBalance = [aDecoder decodeObjectForKey:@"FluidBalance"];
-        self.electrolytes = [aDecoder decodeObjectForKey:@"Electrolytes"];
-        self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
-        self.sepsis = [aDecoder decodeObjectForKey:@"Sepsis"];
-        self.drugs = [aDecoder decodeObjectForKey:@"Drugs"];
-        self.rop = [aDecoder decodeObjectForKey:@"ROP"];
-        self.cranialUSS = [aDecoder decodeObjectForKey:@"CranialUSS"];
-        self.parentsAndSocial = [aDecoder decodeObjectForKey:@"ParentsAndSocial"];
-        self.impression = [aDecoder decodeObjectForKey:@"Impression"];
-        self.plan = [aDecoder decodeObjectForKey:@"Plan"];
-        self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
+        {
+            self.background = [aDecoder decodeObjectForKey:@"Background"];
+            self.activeProblems = [aDecoder decodeObjectForKey:@"ActiveProblems"];
+            self.resolvedProblems = [aDecoder decodeObjectForKey:@"ResolvedProblems"];
+            self.recentSignificantEvents = [aDecoder decodeObjectForKey:@"RecentSignificantEvents"];
+            self.ventilationAndSedation = [aDecoder decodeObjectForKey:@"VentilationAndSedation"];
+            self.cxr = [aDecoder decodeObjectForKey:@"CXR"];
+            self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
+            self.haematology = [aDecoder decodeObjectForKey:@"Haematology"];
+            self.lines = [aDecoder decodeObjectForKey:@"Lines"];
+            self.echocardiogram = [aDecoder decodeObjectForKey:@"Echocardiogram"];
+            self.feedsAndFluids = [aDecoder decodeObjectForKey:@"FeedsAndFluids"];
+            self.fluidBalance = [aDecoder decodeObjectForKey:@"FluidBalance"];
+            self.electrolytes = [aDecoder decodeObjectForKey:@"Electrolytes"];
+            self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
+            self.sepsis = [aDecoder decodeObjectForKey:@"Sepsis"];
+            self.drugs = [aDecoder decodeObjectForKey:@"Drugs"];
+            self.rop = [aDecoder decodeObjectForKey:@"ROP"];
+            self.cranialUSS = [aDecoder decodeObjectForKey:@"CranialUSS"];
+            self.parentsAndSocial = [aDecoder decodeObjectForKey:@"ParentsAndSocial"];
+            self.impression = [aDecoder decodeObjectForKey:@"Impression"];
+            self.plan = [aDecoder decodeObjectForKey:@"Plan"];
+            self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
+        }
         
         // UITextView entry dates
-        self.backgroundLastEntryDate = [aDecoder decodeObjectForKey:@"BackgroundLastEntryDate"];
-        self.activeProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ActiveProblemsLastEntryDate"];
-        self.resolvedProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ResolvedProblemsLastEntryDate"];
-        self.recentSignificantEventsLastEntryDate = [aDecoder decodeObjectForKey:@"RecentSignificantEventsLastEntryDate"];
-        self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
-        self.cxrLastEntryDate = [aDecoder decodeObjectForKey:@"CXRLastEntryDate"];
-        self.cardiovascularLastEntryDate = [aDecoder decodeObjectForKey:@"CardiovascularLastEntryDate"];
-        self.haematologyLastEntryDate = [aDecoder decodeObjectForKey:@"HaematologyLastEntryDate"];
-        self.linesLastEntryDate = [aDecoder decodeObjectForKey:@"LinesLastEntryDate"];
-        self.echocardiogramLastEntryDate = [aDecoder decodeObjectForKey:@"EchocardiogramLastEntryDate"];
-        self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
-        self.fluidBalanceLastEntryDate = [aDecoder decodeObjectForKey:@"FluidBalanceLastEntryDate"];
-        self.electrolytesLastEntryDate = [aDecoder decodeObjectForKey:@"ElectrolytesLastEntryDate"];
-        self.jaundiceLastEntryDate = [aDecoder decodeObjectForKey:@"JaundiceLastEntryDate"];
-        self.sepsisLastEntryDate = [aDecoder decodeObjectForKey:@"SepsisLastEntryDate"];
-        self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
-        self.ropLastEntryDate = [aDecoder decodeObjectForKey:@"ROPLastEntryDate"];
-        self.cranialUSSLastEntryDate = [aDecoder decodeObjectForKey:@"CranialUSSLastEntryDate"];
-        self.parentsAndSocialLastEntryDate = [aDecoder decodeObjectForKey:@"ParentsAndSocialLastEntryDate"];
-        self.impressionLastEntryDate = [aDecoder decodeObjectForKey:@"ImpressionLastEntryDate"];
-        self.planLastEntryDate = [aDecoder decodeObjectForKey:@"PlanLastEntryDate"];
-        self.jobsLastEntryDate = [aDecoder decodeObjectForKey:@"JobsLastEntryDate"];
+        {
+            self.backgroundLastEntryDate = [aDecoder decodeObjectForKey:@"BackgroundLastEntryDate"];
+            self.activeProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ActiveProblemsLastEntryDate"];
+            self.resolvedProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ResolvedProblemsLastEntryDate"];
+            self.recentSignificantEventsLastEntryDate = [aDecoder decodeObjectForKey:@"RecentSignificantEventsLastEntryDate"];
+            self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
+            self.cxrLastEntryDate = [aDecoder decodeObjectForKey:@"CXRLastEntryDate"];
+            self.cardiovascularLastEntryDate = [aDecoder decodeObjectForKey:@"CardiovascularLastEntryDate"];
+            self.haematologyLastEntryDate = [aDecoder decodeObjectForKey:@"HaematologyLastEntryDate"];
+            self.linesLastEntryDate = [aDecoder decodeObjectForKey:@"LinesLastEntryDate"];
+            self.echocardiogramLastEntryDate = [aDecoder decodeObjectForKey:@"EchocardiogramLastEntryDate"];
+            self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
+            self.fluidBalanceLastEntryDate = [aDecoder decodeObjectForKey:@"FluidBalanceLastEntryDate"];
+            self.electrolytesLastEntryDate = [aDecoder decodeObjectForKey:@"ElectrolytesLastEntryDate"];
+            self.jaundiceLastEntryDate = [aDecoder decodeObjectForKey:@"JaundiceLastEntryDate"];
+            self.sepsisLastEntryDate = [aDecoder decodeObjectForKey:@"SepsisLastEntryDate"];
+            self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
+            self.ropLastEntryDate = [aDecoder decodeObjectForKey:@"ROPLastEntryDate"];
+            self.cranialUSSLastEntryDate = [aDecoder decodeObjectForKey:@"CranialUSSLastEntryDate"];
+            self.parentsAndSocialLastEntryDate = [aDecoder decodeObjectForKey:@"ParentsAndSocialLastEntryDate"];
+            self.impressionLastEntryDate = [aDecoder decodeObjectForKey:@"ImpressionLastEntryDate"];
+            self.planLastEntryDate = [aDecoder decodeObjectForKey:@"PlanLastEntryDate"];
+            self.jobsLastEntryDate = [aDecoder decodeObjectForKey:@"JobsLastEntryDate"];
+        }
         
         // handover sections
         self.handoverSections = [aDecoder decodeObjectForKey:@"HandoverSections"];
         
         // Blood bank info
-        self.maternalBloodGroup = [aDecoder decodeObjectForKey:@"MaternalBloodGroup"];
-        self.maternalRhesus = [aDecoder decodeObjectForKey:@"MaternalRhesus"];
-        self.maternalAntibodies = [aDecoder decodeObjectForKey:@"MaternalAntibodies"];
-        self.babyBloodGroup = [aDecoder decodeObjectForKey:@"BabyBloodGroup"];
-        self.babyRhesus = [aDecoder decodeObjectForKey:@"BabyRhesus"];
-        self.dct = [aDecoder decodeObjectForKey:@"DCT"];
+        {
+            self.maternalBloodGroup = [aDecoder decodeObjectForKey:@"MaternalBloodGroup"];
+            self.maternalRhesus = [aDecoder decodeObjectForKey:@"MaternalRhesus"];
+            self.maternalAntibodies = [aDecoder decodeObjectForKey:@"MaternalAntibodies"];
+            self.babyBloodGroup = [aDecoder decodeObjectForKey:@"BabyBloodGroup"];
+            self.babyRhesus = [aDecoder decodeObjectForKey:@"BabyRhesus"];
+            self.dct = [aDecoder decodeObjectForKey:@"DCT"];
+        }
         
         [self setDefaultValues];
     }
