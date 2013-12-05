@@ -605,7 +605,14 @@
         }
     }
     
-    return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
+    if (self.firstname && self.lastname)
+    {
+        return [NSString stringWithFormat:@"%@ %@", self.firstname, self.lastname];
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"%@", self.firstname];
+    }
 }
 
 - (NSString *)returnTwoLineDetailDisplayLabelText
