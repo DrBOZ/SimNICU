@@ -7,6 +7,7 @@
 //
 
 #import "BayEditorTableViewController.h"
+#import "BayEditorTableViewCell.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
@@ -44,6 +45,8 @@
 
 - (void)backButtonPressed
 {
+    [self done];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -52,6 +55,8 @@
     if (!backButtonLongPressed)
     {
         backButtonLongPressed = YES;
+        
+        [self done];
         
         [self.navigationController dismissModalViewControllerAnimated:YES];
     }
@@ -70,16 +75,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound)
-    {
-        [self done];
-    }
-    
-    [super viewWillDisappear:animated];
-}
-
 - (void)done
 {
     // Ensure that there is at least one bay
@@ -93,9 +88,8 @@
         [self.bayData addObject:bay];
     }
     
+    // let delegate know that editing has finished, so as to reorder patient list bays
     [self.delegate bayEditorTableViewControllerDidFinishEditingBays:self];
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)add
@@ -142,33 +136,21 @@
     return 220.0f;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (BayEditorTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier = [NSString stringWithFormat:@"Bay %i",indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BayEditorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[BayEditorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
-        
-        UITextField *textField = [[UITextField alloc] init];
-        textField.frame = CGRectMake(10.0f, 5.0f, 220.0f, 33.0f);
-        textField.font = [UIFont systemFontOfSize:17.0f];
-        textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        textField.autocorrectionType = UITextAutocorrectionTypeNo;
-        textField.returnKeyType = UIReturnKeyDone;
-        textField.adjustsFontSizeToFitWidth = YES;
-        textField.tag = indexPath.row;
-        textField.delegate = self;
-        textField.text = [self.bayData[indexPath.row] bayName];   // note this the TextField's text
-        
-        [cell.contentView addSubview:textField];
+        cell.textField.delegate = self;
     }
     
-    cell.textLabel.text = [self.bayData[indexPath.row] bayName];
-    cell.textLabel.hidden = YES;
+    cell.textField.tag = indexPath.row;
+    cell.textField.text = [self.bayData[indexPath.row] bayName];
     
     return cell;
 }
@@ -248,6 +230,9 @@
         
         NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+        
+        // to ensure TextField.tag consistency
+        [self.tableView reloadData];
     }
 }
 
@@ -271,6 +256,9 @@
     
     // add bay at new location
     [self.bayData insertObject:bay atIndex:destinationIndexPath.row];
+    
+    // update textField.tags
+    [self.tableView reloadData];
 }
 
 # pragma mark - Table view delegate
@@ -309,9 +297,11 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    NSLog(@"textField.tag = %i", textField.tag);
+    
     NSIndexPath *path = [NSIndexPath indexPathForRow:textField.tag inSection:0];
     
-    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -340,7 +330,6 @@
  3) Something like this would be very useful as a Unit overview, with numbers of babies and levels of care.
  4) Tracker to return number of patients
  
- I have done a good job with this VC - it is pretty slick
  */
 
 @end

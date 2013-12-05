@@ -860,6 +860,8 @@
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
 		5CED220017A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
+		5CEEC8771850273D0044F617 /* BayEditorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEEC8761850273D0044F617 /* BayEditorTableViewCell.m */; };
+		5CEEC8781850273D0044F617 /* BayEditorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEEC8761850273D0044F617 /* BayEditorTableViewCell.m */; };
 		5CF18ADD182C4EC600E66633 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF18AD7182C4EC600E66633 /* libTestFlight.a */; };
 		5CF18ADE182C4EC600E66633 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CF18AD8182C4EC600E66633 /* README.md */; };
 		5CF18ADF182C4EC600E66633 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CF18AD9182C4EC600E66633 /* release_notes.md */; };
@@ -1602,6 +1604,8 @@
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeCalculatorsInfoViewController.m; sourceTree = "<group>"; };
+		5CEEC8751850273D0044F617 /* BayEditorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BayEditorTableViewCell.h; sourceTree = "<group>"; };
+		5CEEC8761850273D0044F617 /* BayEditorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BayEditorTableViewCell.m; sourceTree = "<group>"; };
 		5CF18AD7182C4EC600E66633 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		5CF18AD8182C4EC600E66633 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		5CF18AD9182C4EC600E66633 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -2612,6 +2616,8 @@
 			children = (
 				5C8AE93317E2C6A30002BC04 /* BayEditorTableViewController.h */,
 				5C8AE93417E2C6A40002BC04 /* BayEditorTableViewController.m */,
+				5CEEC8751850273D0044F617 /* BayEditorTableViewCell.h */,
+				5CEEC8761850273D0044F617 /* BayEditorTableViewCell.m */,
 			);
 			name = "Bay Editor Settings";
 			sourceTree = "<group>";
@@ -4273,6 +4279,7 @@
 				5C4DC74317E549ED00412C72 /* UAExampleModalPanel.m in Sources */,
 				5C4DC75217E562F200412C72 /* DictationCommands.m in Sources */,
 				5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */,
+				5CEEC8771850273D0044F617 /* BayEditorTableViewCell.m in Sources */,
 				5CAE2E0D17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
 				5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
 				5C6B6E4F17E78D31003600DD /* CustomTextModel.m in Sources */,
@@ -4311,6 +4318,7 @@
 				5C56F6231801EC4A00665E22 /* CBTableViewWebViewController.m in Sources */,
 				5CD3AFBA16CF38D500DE362C /* NSDateAdditions.m in Sources */,
 				5CD3AFBB16CF38D500DE362C /* UIViewAdditions.m in Sources */,
+				5CEEC8781850273D0044F617 /* BayEditorTableViewCell.m in Sources */,
 				5C6257A8184CC976008F01D1 /* VascularLinesTableViewController.m in Sources */,
 				5CD3AFBC16CF38D500DE362C /* iRate.m in Sources */,
 				5C0F75B81804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
