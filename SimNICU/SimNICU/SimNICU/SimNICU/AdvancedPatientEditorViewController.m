@@ -3028,13 +3028,18 @@
     // shinobi chart
     
     // set gestation for chart
-    self.gestation = [NSNumber numberWithInt:[self.selectedPatient.gestation intValue]];
-    NSString *plusString = @"";
+    NSString *plusString;
     
-    if ([self.gestation integerValue] > 38)
+    if (self.selectedPatient.gestation)
     {
-        self.gestation = [NSNumber numberWithInteger:38];
-        plusString = @"+";
+        self.gestation = [NSNumber numberWithInt:[self.selectedPatient.gestation intValue]];
+        plusString = @"";
+        
+        if ([self.gestation integerValue] > 38)
+        {
+            self.gestation = [NSNumber numberWithInteger:38];
+            plusString = @"+";
+        }
     }
     
     // instantiate array
@@ -3043,7 +3048,14 @@
     // ShinobiChart
     self.chart = [[ShinobiChart alloc] initWithFrame:frame];
     
-    self.chart.title = [NSString stringWithFormat:@"Infants born at %i%@ weeks gestation", [self.gestation intValue], plusString];
+    if (!self.gestation)
+    {
+        self.chart.title = NSLocalizedString(@"Chart requires gestation to be entered", nil);
+    }
+    else
+    {
+        self.chart.title = [NSString stringWithFormat:@"Infants born at %i%@ weeks gestation", [self.gestation intValue], plusString];
+    }
     
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -5034,7 +5046,14 @@
 {
     newPatientDetails = YES;
     
+    self.chart = nil;
+    newBiliChart = YES;
+    
+    // reload shinobichart
+    [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
+    
     [self.myTableView1 reloadData];
+    
     [self.myTableView2 reloadData];
     
     [self dismissModalViewControllerAnimated:YES];
