@@ -37,6 +37,7 @@
 "Blood Products" = "Transfusões Sanguineas";
 "Blue Line - Phototherapy" = "Blue Line - Phototherapy";
 "Breathing in air" = "Ar Ambiente";
+"Breech" = "Pélvico";
 "Caffeine" = "Cafeína";
 "Cancel" = "Cancelar";
 "Cardiovascular" = "Sistema Cardiovascular";
@@ -74,11 +75,12 @@
 "Early Care" = "Prematuro extremo";
 "Echocardiogram" = "Ecocardio";
 "Edit Custom Text" = "Editar Texto Personalizado";
-"Editor Settings" = "Editor Settings";
+"Editor Settings" = "Editor";
 "Edward's Syndrome" = "Edward Syndrome";
 "Emergency" = "Emergência";
 "Em LSCS" = "Nascimento por Cesárea"; // ? Cesárea de Emergência
 "England" = "Inglaterra";
+"Establishing enteral feeds" = "Alimentação Enteral";
 "Examination" = "Exame Físico"; // correct x2
 "FBC & Blood Film" = "Exames Hematológicos";
 "Feedback" = "Parecer";
@@ -98,13 +100,15 @@
 "Gestation" = "Gestação";
 "Ground glass appearances" = "Aspecto de vidro moído (DMH)";
 "Guidelines" = "Guidelines";
+"Haematology" = "Hematologia";
 "hand" = "mão";
 "Heparin" = "Heparin";
 "High Frequency Oscillation" = "Ventilação oscilatória de alta frequência";
 "Hyperglycaemia" = "Hyperglycemia";
 "hyperkalaemia" = "hyperkalemia";
 "Hypocalcaemia" = "Hypocalcemia";
-"Hypoglycaemia" = "Hypoglycemia";
+"Hypoglycaemia" = "Hipoglicemia";
+"Hypotension" = "Hipotensão";
 "Hypoxic ischaemic encephalopathy" = "Hypoxic ischemic encephalopathy";
 "if required" = "if required";
 "Information" = "Informações";
@@ -114,6 +118,7 @@
 "Intubation drugs" = "Intubation drugs";
 "Isoimmune Haemolytic Disease" = "Isoimmune Hemolytic Disease";
 "Jaundice" = "Icterícia";
+"Jaundice requiring phototherapy" = "Icterícia com Níveis para Fototerapia";
 "kilograms" = "kilogramas";
 "left" = "esquerda";
 "Lidocaine" = "Lidocaine";
@@ -124,6 +129,7 @@
 "Low Dependency" = "Baixo Risco";
 "Male" = "Masculino";
 "Maternal APH" = "Hemorragia materna pré-parto";
+"Maternal Group B Strep positive" = "Mãe Estrepto B positivo";
 "Midazolam" = "Midazolam";
 "Minimal milky aspirates" = "Aspirado leitoso mínimo";
 "Misc" = "Outros";
@@ -158,10 +164,12 @@
 
 "Pneumothorax" = "Pneumotórax";
 "Postnatal Ward" = "Alojamento Conjunto";
+"Prematurity" = "Prematuridade";
 "Prophylactic phototherapy" = "Fototerapia profilática";
 "Pulmonary haemorrhage" = "Cuidados na Hemorragia pulmonar";
 "Pulmonary Haemorrhage" = "Cuidados na Hemorragia pulmonar";
 "Rate on iTunes" = "Taxa sobre iTunes";
+"RDS" = "DMH";
 "Recent Significant Events" = "Eventos recentes";  // ? "Eventos Recentes Significantes"; check with Márcio
 "Red Line - Exchange Transfusion" = "Red Line - Exchange Transfusion";
 "Repeat doses may be required" = "Repeat doses may be required";
@@ -179,6 +187,7 @@
 "Sample Age" = "Data da Amostra";
 "Screening not indicated" = "Screening não indicado";
 "Search" = "Buscar";
+"Sections" = "Seções";
 "Sepsis" = "Sepse";
 "Serum Bilirubin" = "Bilirrubina Sérica";
 "Serum bilirubin units" = "Serum bilirubin units";
@@ -189,6 +198,7 @@
 "Stopped antibiotics" = "Terminado antibióticos";
 "Summary" = "Lista de Problemas"; // correct x2
 "Surname" = "Last name";
+"Suspected Sepsis" = "Suspeita de Sepse";
 "Tachypnoea" = "Tachypnea";
 "Text Entry" = "Entrada de Texto";
 "Thank you for your support" = "Obrigado por seu apoio";
