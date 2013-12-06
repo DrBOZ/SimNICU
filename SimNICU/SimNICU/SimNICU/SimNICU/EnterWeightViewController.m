@@ -1278,7 +1278,7 @@
     Bay *bay = self.bayData[indexPath.section - 2];
     Patient *patient = bay.patientsInBay[indexPath.row];
     
-    AdvancedPatientEditorViewController *newViewController = [[AdvancedPatientEditorViewController alloc] init];
+    DailySummaryViewController *newViewController = [[DailySummaryViewController alloc] init];
     newViewController.delegate = self;
     newViewController.bayData = self.bayData;
     newViewController.selectedPatient = patient;
@@ -2189,9 +2189,9 @@
     [self.myTableView reloadData];
 }
 
-#pragma mark - AdvancedPatientEditorViewControllerDelegate
+#pragma mark - DailySummaryViewControllerDelegate
 
-- (void)AdvancedPatientEditorViewControllerDidFinish:(AdvancedPatientEditorViewController *)controller
+- (void)DailySummaryViewControllerDidFinish:(DailySummaryViewController *)controller
 {
     // dismiss modal view controller
     [self dismissModalViewControllerAnimated:YES];

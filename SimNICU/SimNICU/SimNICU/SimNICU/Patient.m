@@ -104,6 +104,7 @@
         
         // UITextViews
         {
+            self.weight = [aDecoder decodeObjectForKey:@"Weight"];
             self.background = [aDecoder decodeObjectForKey:@"Background"];
             self.activeProblems = [aDecoder decodeObjectForKey:@"ActiveProblems"];
             self.resolvedProblems = [aDecoder decodeObjectForKey:@"ResolvedProblems"];
@@ -130,6 +131,7 @@
         
         // UITextView entry dates
         {
+            self.weightLastEntryDate = [aDecoder decodeObjectForKey:@"WeightLastEntryDate"];
             self.backgroundLastEntryDate = [aDecoder decodeObjectForKey:@"BackgroundLastEntryDate"];
             self.activeProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ActiveProblemsLastEntryDate"];
             self.resolvedProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ResolvedProblemsLastEntryDate"];
@@ -473,6 +475,18 @@
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
+        
+        // 22 - Weight
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Weight";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowText = self.echocardiogram;
+        [newSection.rows addObject:newRow];
+        
+        [self.handoverSections addObject:newSection];
     }
 }
 
@@ -531,6 +545,7 @@
     [aCoder encodeObject:self.clinicalStatus forKey:@"ClinicalStatus"];
     
     // UITextViews
+    [aCoder encodeObject:self.weight forKey:@"Weight"];
     [aCoder encodeObject:self.background forKey:@"Background"];
     [aCoder encodeObject:self.activeProblems forKey:@"ActiveProblems"];
     [aCoder encodeObject:self.resolvedProblems forKey:@"ResolvedProblems"];
@@ -555,6 +570,7 @@
     [aCoder encodeObject:self.jobs forKey:@"Jobs"];
     
     // UITextView text entry dates
+    [aCoder encodeObject:self.weightLastEntryDate forKey:@"WeightLastEntryDate"];
     [aCoder encodeObject:self.backgroundLastEntryDate forKey:@"BackgroundLastEntryDate"];
     [aCoder encodeObject:self.activeProblemsLastEntryDate forKey:@"ActiveProblemsLastEntryDate"];
     [aCoder encodeObject:self.resolvedProblemsLastEntryDate forKey:@"ResolvedProblemsLastEntryDate"];
@@ -613,6 +629,66 @@
     {
         return [NSString stringWithFormat:@"%@", self.firstname];
     }
+}
+
+- (NSString *)returnDayOfLifeAndAgePlusGestationAndCorrectedGestation
+{
+    NSString *detailDisplayText;
+    
+    if ([self.lastname isEqualToString:@""])                                                        // Nil of names entered
+    {
+        self.lastname = @"BABY";
+        self.firstname = @"New";
+    }
+    else if ([self.firstname isEqualToString:@""]) self.firstname = @"Baby";                        // Surname only
+    
+    if ([self.firstname isEqualToString:@"add"] && [self.lastname isEqualToString:@"new patient"])  // New patient
+    {
+        detailDisplayText = @"";
+    }
+    else if (!self.birthWeight && !self.gestation)                                                  // Name only
+    {
+        detailDisplayText = @"";
+    }
+    else if (self.birthWeight && !self.gestation)                                                   // Birth weight (or ww) but no gestation
+    {
+        if (self.workingWeight)
+        {
+            NSString *formattedWorkingWeight = [Patient formatWeight:self.workingWeight];
+            detailDisplayText = [NSString stringWithFormat:@"Working weight %@", formattedWorkingWeight];
+        }
+        else
+        {
+            NSString *formattedBirthWeight = [Patient formatWeight:self.birthWeight];
+            detailDisplayText = [NSString stringWithFormat:@"Birth Weight %@", formattedBirthWeight];
+        }
+    }
+    else if (self.gestation && !self.birthWeight)                                                   // Gestation but no birth weight
+    {
+        NSString *estimatedWeight = [GrowthChart getWeightForSex:@"Unknown" atCentile:@"50th" atGestation:self.gestation];
+        
+        NSString *formattedEstimatedWeight = [Patient formatWeight:estimatedWeight];
+        
+        detailDisplayText = [NSString stringWithFormat:@"%@/40 estimated weight %@", self.gestation, formattedEstimatedWeight];
+        // detailDisplayText = [NSString stringWithFormat:@"%@/40 gestation - no weight", self.gestation];
+    }
+    else if (self.gestation && self.birthWeight)                                                    // Gestation and birth weight
+    {
+        NSString *formattedBirthWeight = [Patient formatWeight:[self birthWeight]];
+        NSString *formattedWorkingWeight = [Patient formatWeight:[self workingWeight]];
+        
+        if (self.workingWeight && self.birthDate)                                                   // + Working Weight
+        {
+            detailDisplayText = [NSString stringWithFormat:@"%@/40 (%@) now %@ (ww %@)", [self gestation], formattedBirthWeight, [CBTimeMethods calculateCurrentGestation:self], formattedWorkingWeight];
+            self.correctedGestation = [CBTimeMethods calculateCurrentGestation:self];
+        }
+        else                                                                                        // - Working Weight
+        {
+            detailDisplayText = [NSString stringWithFormat:@"%@/40 birth weight %@", [self gestation], formattedBirthWeight];
+        }
+    }
+    
+    return detailDisplayText;
 }
 
 - (NSString *)returnTwoLineDetailDisplayLabelText

@@ -1,5 +1,5 @@
 //
-//  AdvancedPatientEditorViewController.m
+//  DailySummaryViewController.m
 //  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 17/07/2013.
@@ -7,12 +7,12 @@
 //
 
 #import "PhototherapyAddBilirubinResultViewController.h"
-#import "AdvancedPatientEditorViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "VascularLinesTableViewController.h"
 #import "DailySummaryPDFViewController.h"
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
+#import "DailySummaryViewController.h"
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
 #import "UDInputAccessoryView.h"
@@ -32,7 +32,7 @@
 
 // #import "CBBarCustomTableViewTextItem.h"
 
-@interface AdvancedPatientEditorViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
+@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -40,6 +40,7 @@
     BOOL landscapeOrientationDefaultsSet;
     BOOL portraitOrientationDefaultsSet;
     
+    BOOL newPatientWeight;
     BOOL newPatientDetails;
     BOOL newPatientBackground;
     BOOL newActiveProblems;
@@ -87,6 +88,7 @@
 @property (nonatomic, strong) NSString *clinicalStatus;
 @property (nonatomic, strong) NSNumber *gestation;
 
+@property (nonatomic, strong) UITextView *weightTextView;
 @property (nonatomic, strong) UITextView *backgroundTextView;
 @property (nonatomic, strong) UITextView *activeProblemsTextView;
 @property (nonatomic, strong) UITextView *resolvedProblemsTextView;
@@ -124,28 +126,28 @@
 
 @end
 
-@implementation AdvancedPatientEditorViewController
+@implementation DailySummaryViewController
 
 // things I need to still do
 //
 // 1)
-// 2) 
+// 2)
 // 3) use edit data to allow edits
-// 
+//
 // 4) add analytics
 // 5) create a weight shinobi chart
 // 6) dateAndTimeForThisChart thing for ShinobiChart
 //
 // 7)
-// 8) 
-// 9) 
+// 8)
+// 9)
 //10)
 //11) Add weight chart
 //12) Add phototherapy chart
 //13)
-//14) 
-//15) 
-//16) 
+//14)
+//15)
+//16)
 //17) Add biochemistry edit
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -251,9 +253,9 @@
     
     [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
     /*
-    self.shinobiCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Phototherapy"];
-    self.shinobiCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [self.shinobiCell addSubview:self.chart];
+     self.shinobiCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Phototherapy"];
+     self.shinobiCell.selectionStyle = UITableViewCellSelectionStyleNone;
+     [self.shinobiCell addSubview:self.chart];
      */
     
     // tableView 1
@@ -382,7 +384,7 @@
     
     // order as per the user's preferences
     Preferences *preferences = [Preferences sharedPreferences];
-
+    
     HandoverSection *handoverSection = preferences.handoverSections[section];
     
     if ([tableView isEqual:self.myTableView1])
@@ -401,7 +403,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     // can use the method to work out header font height here
-    return 22.0f;
+    if ([tableView isEqual:self.myTableView1])
+    {
+        return 22.0f;
+    }
+    else
+    {
+        return 22.0f;
+    }
 }
 
 - (CGFloat)heightForTextView:(UITextView *)textView
@@ -415,7 +424,11 @@
     
     UITextView *textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
     
-    if ([section.sectionName isEqual:@"Background"])
+    if ([section.sectionName isEqual:@"Weight"])
+    {
+        textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
+    }
+    else if ([section.sectionName isEqual:@"Background"])
     {
         textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
     }
@@ -531,7 +544,8 @@
     
     if ([tableView isEqual:self.myTableView1])
     {
-        height = 70.0f;
+        // height = 70.0f;
+        height = 90.0f;
     }
     else
     {
@@ -545,7 +559,11 @@
             
             HandoverSection *section = preferences.handoverSections[indexPath.section];
             
-            if ([section.sectionName isEqual:@"Background"])
+            if ([section.sectionName isEqual:@"Weight"])
+            {
+                textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
+            }
+            else if ([section.sectionName isEqual:@"Background"])
             {
                 textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
             }
@@ -600,16 +618,16 @@
             else if ([section.sectionName isEqual:@"Jaundice"])
             {
                 Preferences *preferences = [Preferences sharedPreferences];
-
+                
                 if (indexPath.row == 0)
                 {
                     /*
-                    HandoverRow *row = section.rows[indexPath.row];
-                    
-                    height = [row.rowHeight floatValue];
-                    
-                    return height;
-                    */
+                     HandoverRow *row = section.rows[indexPath.row];
+                     
+                     height = [row.rowHeight floatValue];
+                     
+                     return height;
+                     */
                     
                     // delegate
                     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -778,7 +796,29 @@
         // HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
         HandoverSection *section = preferences.handoverSections[indexPath.section];
         
-        if ([section.sectionName isEqual:@"Background"])
+        if ([section.sectionName isEqual:@"Weight"])
+        {
+            CellIdentifier = @"Weight";
+            
+            if (newPatientWeight)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                
+                newPatientWeight = NO;
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.weightTextView.text = self.selectedPatient.weight;
+        }
+        else if ([section.sectionName isEqual:@"Background"])
         {
             CellIdentifier = @"Background";
             
@@ -1520,11 +1560,21 @@
         displayDetailTextLabel.textAlignment = UITextAlignmentLeft;
         [cell.contentView addSubview:displayDetailTextLabel];
         
+        // weights label
+        UILabel *weightTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(13.0f, 65.0f, 300.0f, 22.0f)];
+        weightTextLabel.textColor = [UIColor grayColor];
+        weightTextLabel.backgroundColor = [UIColor clearColor];
+        weightTextLabel.font = [UIFont systemFontOfSize:14.0f];
+        weightTextLabel.adjustsFontSizeToFitWidth = NO;
+        weightTextLabel.textAlignment = UITextAlignmentLeft;
+        weightTextLabel.text = @"BW 1.255 kg CW 1.155 kg (7% loss) WW 1.255 kg";
+        [cell.contentView addSubview:weightTextLabel];
+        
         // display patient's name & birthDate
         if (self.selectedPatient.birthDate)
         {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-
+            
             formatter.timeZone = [NSTimeZone localTimeZone];
             formatter.dateStyle = NSDateFormatterShortStyle;
             formatter.timeStyle = NSDateFormatterNoStyle;
@@ -1545,6 +1595,10 @@
             
             // display days and corrected age
             displayAgeTextLabel.text = [NSString stringWithFormat:@"%@ %i (%@)", NSLocalizedString(@"day", nil), [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge];
+            
+            /* display days and corrected age
+            displayAgeTextLabel.text = [NSString stringWithFormat:@"%@ %i (%@) %@", NSLocalizedString(@"day", nil), [CBTimeMethods getAgeInDaysOfPatient:self.selectedPatient], correctedAge, [self.selectedPatient returnGestationAndCorrectedGestationOnly]];
+             */
         }
         
         // display gestation and corrected gestation, birth weight and working weight
@@ -1552,16 +1606,25 @@
         
         // add fingerprint button
         /*
-        self.fingerprintButton = [[UIButton alloc] init];
-        self.fingerprintButton.frame = CGRectMake(320.0f - 40.0f, 15.0f, 30.0f, 37.8f);
-        [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateNormal];
-        [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateHighlighted];
-        self.fingerprintButton.userInteractionEnabled = NO;
-        self.fingerprintButton.alpha = 0.0f;
-        self.fingerprintButton.hidden = YES;
-        
-        [cell.contentView addSubview:self.fingerprintButton];
+         self.fingerprintButton = [[UIButton alloc] init];
+         self.fingerprintButton.frame = CGRectMake(320.0f - 40.0f, 15.0f, 30.0f, 37.8f);
+         [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateNormal];
+         [self.fingerprintButton setImage:[UIImage imageNamed:@"FingerprintGray.png"] forState:UIControlStateHighlighted];
+         self.fingerprintButton.userInteractionEnabled = NO;
+         self.fingerprintButton.alpha = 0.0f;
+         self.fingerprintButton.hidden = YES;
+         
+         [cell.contentView addSubview:self.fingerprintButton];
          */
+    }
+#pragma mark Weight
+    else if ([CellIdentifier isEqualToString:@"Weight"])
+    {
+        self.weightTextView = [[UITextView alloc] init];
+        self.weightTextView.tag = 22;
+        [self setupTextView:self.weightTextView];
+        
+        [cell.contentView addSubview:self.weightTextView];
     }
 #pragma mark Background
     else if ([CellIdentifier isEqualToString:@"Background"])
@@ -1694,21 +1757,21 @@
         
         // attempts to recreate chart on PDF
         /*
-        self.shinobiChartImage = [[UIImage alloc] init];
-        
-        UIGraphicsBeginImageContext(self.chart.bounds.size);
-        
-        [self.chart.layer renderInContext:UIGraphicsGetCurrentContext()];
-        
-        self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        */
+         self.shinobiChartImage = [[UIImage alloc] init];
+         
+         UIGraphicsBeginImageContext(self.chart.bounds.size);
+         
+         [self.chart.layer renderInContext:UIGraphicsGetCurrentContext()];
+         
+         self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
+         UIGraphicsEndImageContext();
+         */
         
         /*
-        UIGraphicsBeginImageContext(self.chart.bounds.size);
-        [self.chart.layer renderInContext:UIGraphicsGetCurrentContext()];
-        self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+         UIGraphicsBeginImageContext(self.chart.bounds.size);
+         [self.chart.layer renderInContext:UIGraphicsGetCurrentContext()];
+         self.shinobiChartImage = UIGraphicsGetImageFromCurrentImageContext();
+         UIGraphicsEndImageContext();
          */
     }
 #pragma mark Jaundice/DCT
@@ -1831,7 +1894,19 @@
             textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
         }
         
-        if ([section.sectionName isEqual:@"Background"])
+        if ([section.sectionName isEqual:@"Weight"])
+        {
+            textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
+            
+            if (self.selectedPatient.weightLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.weightLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
+        }
+        else if ([section.sectionName isEqual:@"Background"])
         {
             textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
             
@@ -1858,7 +1933,7 @@
         else if ([section.sectionName isEqual:@"Resolved Problems"])
         {
             textViewToMeasure.text = self.selectedPatient.resolvedProblems;
-
+            
             if (self.selectedPatient.resolvedProblemsLastEntryDate)
             {
                 if ([self isDate:self.selectedPatient.resolvedProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
@@ -2237,6 +2312,7 @@
 {
     [super setEditing:editing animated:animated];
     
+    [self.weightTextView resignFirstResponder];
     [self.backgroundTextView resignFirstResponder];
     [self.activeProblemsTextView resignFirstResponder];
     [self.resolvedProblemsTextView resignFirstResponder];
@@ -2361,10 +2437,10 @@
                 newViewController.delegate = self;
                 
                 /*
-                if (self.dateAndTimeOfBirthForThisChart)
-                {
-                    newViewController.dateAndTimeOfBirthForThisChart = self.dateAndTimeOfBirthForThisChart;
-                }
+                 if (self.dateAndTimeOfBirthForThisChart)
+                 {
+                 newViewController.dateAndTimeOfBirthForThisChart = self.dateAndTimeOfBirthForThisChart;
+                 }
                  */
                 
                 PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
@@ -2418,6 +2494,7 @@
     
     if ([tableView isEqual:self.myTableView1])
     {
+        [self.weightTextView resignFirstResponder];
         [self.backgroundTextView resignFirstResponder];
         [self.activeProblemsTextView resignFirstResponder];
         [self.resolvedProblemsTextView resignFirstResponder];
@@ -2425,7 +2502,9 @@
         [self.ventilationAndSedationTextView resignFirstResponder];
         [self.cxrTextView resignFirstResponder];
         [self.cardiovascularTextView resignFirstResponder];
+        [self.haematologyTextView resignFirstResponder];
         [self.linesTextView resignFirstResponder];
+        [self.echocardiogramTextView resignFirstResponder];
         [self.fluidBalanceTextView resignFirstResponder];
         [self.feedsAndFluidsTextView resignFirstResponder];
         [self.electrolytesTextView resignFirstResponder];
@@ -2540,57 +2619,57 @@
 }
 
 /*
-- (void)formatHeightOfTextView:(UITextView *)textView
-{
-    HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
-    HandoverRow *row;
-    
-    if (textView.tag == 11)
-    {
-        row = section.rows[1];
-    }
-    else
-    {
-        row = section.rows[0];
-    }
-    
-    float rowHeight = [row.rowHeight floatValue];
-    float contentHeight = textView.contentSize.height;
-    
-    if ((contentHeight + 5.0f) > rowHeight)
-    {
-        rowHeight += ((contentHeight + 5.0f) - rowHeight);
-        
-        row.rowHeight = [NSNumber numberWithFloat:rowHeight];
-        
-        [self.myTableView2 beginUpdates];
-        [self.myTableView2 endUpdates];
-        
-        textView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (textView.contentSize.height + 10.0f));
-    }
-    else if ((contentHeight + 5.0f) < rowHeight)
-    {
-        rowHeight -= (rowHeight - (contentHeight + 5.0f));
-        
-        row.rowHeight = [NSNumber numberWithFloat:rowHeight];
-        
-        [self.myTableView2 beginUpdates];
-        [self.myTableView2 endUpdates];
-        
-        textView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (textView.contentSize.height + 10.0f));
-    }
-}
+ - (void)formatHeightOfTextView:(UITextView *)textView
+ {
+ HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+ HandoverRow *row;
+ 
+ if (textView.tag == 11)
+ {
+ row = section.rows[1];
+ }
+ else
+ {
+ row = section.rows[0];
+ }
+ 
+ float rowHeight = [row.rowHeight floatValue];
+ float contentHeight = textView.contentSize.height;
+ 
+ if ((contentHeight + 5.0f) > rowHeight)
+ {
+ rowHeight += ((contentHeight + 5.0f) - rowHeight);
+ 
+ row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+ 
+ [self.myTableView2 beginUpdates];
+ [self.myTableView2 endUpdates];
+ 
+ textView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (textView.contentSize.height + 10.0f));
+ }
+ else if ((contentHeight + 5.0f) < rowHeight)
+ {
+ rowHeight -= (rowHeight - (contentHeight + 5.0f));
+ 
+ row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+ 
+ [self.myTableView2 beginUpdates];
+ [self.myTableView2 endUpdates];
+ 
+ textView.frame = CGRectMake(5.0f, 5.0f, 310.0f, (textView.contentSize.height + 10.0f));
+ }
+ }
  */
 
 /*
-- (NSIndexPath *)keyForIndexPath:(NSIndexPath *)indexPath
-{
-    if ([indexPath class] == [NSIndexPath class])
-    {
-        return indexPath;
-    }
-    return [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
-}
+ - (NSIndexPath *)keyForIndexPath:(NSIndexPath *)indexPath
+ {
+ if ([indexPath class] == [NSIndexPath class])
+ {
+ return indexPath;
+ }
+ return [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+ }
  */
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -2606,7 +2685,12 @@
     
     // set text
     {
-        if ([textView isEqual:self.backgroundTextView])
+        if ([textView isEqual:self.weightTextView])
+        {
+            self.selectedPatient.weight = textView.text;
+            self.selectedPatient.weightLastEntryDate = [NSDate date];
+        }
+        else if ([textView isEqual:self.backgroundTextView])
         {
             self.selectedPatient.background = textView.text;
             self.selectedPatient.backgroundLastEntryDate = [NSDate date];
@@ -2815,13 +2899,14 @@
 
 - (void)done
 {
-    [self.delegate AdvancedPatientEditorViewControllerDidFinish:self];
+    [self.delegate DailySummaryViewControllerDidFinish:self];
 }
 
 - (void)previousPatientButtonPressed
 {
     // load new data in tableView
     newPatientDetails = YES;
+    newPatientWeight = YES;
     newPatientBackground = YES;
     newActiveProblems = YES;
     newResolvedProblems = YES;
@@ -2912,7 +2997,7 @@
     {
         firstButtonPressSinceScroll = NO;
     }
-
+    
     [self.myTableView2 scrollToRowAtIndexPath:indexPathForLastRow atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
@@ -2920,6 +3005,7 @@
 {
     // load new data in tableView
     newPatientDetails = YES;
+    newPatientWeight = YES;
     newPatientBackground = YES;
     newActiveProblems = YES;
     newResolvedProblems = YES;
@@ -3275,6 +3361,7 @@
 - (void)fingerprintTouched
 {
     [self.backgroundTextView resignFirstResponder];
+    [self.weightTextView resignFirstResponder];
     [self.activeProblemsTextView resignFirstResponder];
     [self.resolvedProblemsTextView resignFirstResponder];
     [self.recentSignificantEventsTextView resignFirstResponder];
@@ -5660,18 +5747,18 @@
     newViewController.selectedPatientInBayNSNumber = [NSNumber numberWithInt:selectedPatientInBay];
     
     /*
-    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 640.0f, 640.0f)];
-    
-    [tempView addSubview:self.chart];
-    
-    UIGraphicsBeginImageContext(tempView.bounds.size);
-    
-    [tempView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    newViewController.phototherapyChart = self.shinobiChartImage;
+     UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 640.0f, 640.0f)];
+     
+     [tempView addSubview:self.chart];
+     
+     UIGraphicsBeginImageContext(tempView.bounds.size);
+     
+     [tempView.layer renderInContext:UIGraphicsGetCurrentContext()];
+     
+     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+     UIGraphicsEndImageContext();
+     
+     newViewController.phototherapyChart = self.shinobiChartImage;
      */
     
     [self.navigationController pushViewController:newViewController animated:YES];
@@ -5807,11 +5894,11 @@
     [textView paste:nil];
     
     /*
-    // copy a carriage return - later set this up as an option in settings
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = @"\n";
-    
-    [textView paste:nil];
+     // copy a carriage return - later set this up as an option in settings
+     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+     pasteboard.string = @"\n";
+     
+     [textView paste:nil];
      */
 }
 

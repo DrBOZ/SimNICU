@@ -93,6 +93,7 @@
 
 @property (nonatomic, retain) NSMutableArray *handoverSections;
 
+@property (nonatomic, retain) NSString *weight;
 @property (nonatomic, retain) NSString *background;
 @property (nonatomic, retain) NSString *activeProblems;
 @property (nonatomic, retain) NSString *resolvedProblems;
@@ -117,6 +118,7 @@
 @property (nonatomic, retain) NSString *jobs;
 
 // text entry dates
+@property (nonatomic, retain) NSDate *weightLastEntryDate;
 @property (nonatomic, retain) NSDate *backgroundLastEntryDate;
 @property (nonatomic, retain) NSDate *activeProblemsLastEntryDate;
 @property (nonatomic, retain) NSDate *resolvedProblemsLastEntryDate;
@@ -151,6 +153,7 @@
 
 - (NSString *)returnDisplayTextLabelText;
 - (NSString *)returnTwoLineDetailDisplayLabelText;
+- (NSString *)returnDayOfLifeAndAgePlusGestationAndCorrectedGestation;
 - (NSString *)returnDaysAndCorrectedGestationalAge;
 - (NSString *)returnGestationAndCorrectedGestationOnly;
 

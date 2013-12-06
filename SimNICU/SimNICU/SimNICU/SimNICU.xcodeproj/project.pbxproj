@@ -388,6 +388,8 @@
 		5C5D24DB1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DE1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
 		5C5D24DF1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
+		5C60AB9018504D64002A49C3 /* DailySummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60AB8F18504D64002A49C3 /* DailySummaryViewController.m */; };
+		5C60AB9118504D64002A49C3 /* DailySummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60AB8F18504D64002A49C3 /* DailySummaryViewController.m */; };
 		5C6257A3184CC65A008F01D1 /* VascularLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A2184CC65A008F01D1 /* VascularLine.m */; };
 		5C6257A4184CC65A008F01D1 /* VascularLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A2184CC65A008F01D1 /* VascularLine.m */; };
 		5C6257A7184CC976008F01D1 /* VascularLinesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6257A6184CC976008F01D1 /* VascularLinesTableViewController.m */; };
@@ -597,8 +599,6 @@
 		5C98A6A81787562700F246E3 /* DrugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6A61787562700F246E3 /* DrugCategory.m */; };
 		5C98A6AB1787577000F246E3 /* Drug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6AA1787577000F246E3 /* Drug.m */; };
 		5C98A6AC1787577000F246E3 /* Drug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98A6AA1787577000F246E3 /* Drug.m */; };
-		5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */; };
-		5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */; };
 		5CA3C11617924112002AB53D /* vancomycinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11517924112002AB53D /* vancomycinPharmacology.html */; };
 		5CA3C11717924112002AB53D /* vancomycinPharmacology.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11517924112002AB53D /* vancomycinPharmacology.html */; };
 		5CA3C11917924123002AB53D /* vancomycinIndications.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3C11817924123002AB53D /* vancomycinIndications.html */; };
@@ -1170,6 +1170,8 @@
 		5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummarySectionsTableViewController.m; sourceTree = "<group>"; };
 		5C5D24DC1844CD7E00856191 /* PostnatalWardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardModel.h; sourceTree = "<group>"; };
 		5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardModel.m; sourceTree = "<group>"; };
+		5C60AB8E18504D64002A49C3 /* DailySummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummaryViewController.h; sourceTree = "<group>"; };
+		5C60AB8F18504D64002A49C3 /* DailySummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryViewController.m; sourceTree = "<group>"; };
 		5C6257A1184CC65A008F01D1 /* VascularLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VascularLine.h; sourceTree = "<group>"; };
 		5C6257A2184CC65A008F01D1 /* VascularLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VascularLine.m; sourceTree = "<group>"; };
 		5C6257A5184CC976008F01D1 /* VascularLinesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VascularLinesTableViewController.h; sourceTree = "<group>"; };
@@ -1522,8 +1524,6 @@
 		5C98A6A61787562700F246E3 /* DrugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugCategory.m; sourceTree = "<group>"; };
 		5C98A6A91787577000F246E3 /* Drug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drug.h; sourceTree = "<group>"; };
 		5C98A6AA1787577000F246E3 /* Drug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drug.m; sourceTree = "<group>"; };
-		5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPatientEditorViewController.h; sourceTree = "<group>"; };
-		5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPatientEditorViewController.m; sourceTree = "<group>"; };
 		5CA3C11517924112002AB53D /* vancomycinPharmacology.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPharmacology.html; sourceTree = "<group>"; };
 		5CA3C11817924123002AB53D /* vancomycinIndications.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinIndications.html; sourceTree = "<group>"; };
 		5CA3C11B1792412F002AB53D /* vancomycinPresentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = vancomycinPresentation.html; sourceTree = "<group>"; };
@@ -3332,8 +3332,8 @@
 		5C9BE62117970F31009616CA /* Daily Summary */ = {
 			isa = PBXGroup;
 			children = (
-				5C9BE62217970FDA009616CA /* AdvancedPatientEditorViewController.h */,
-				5C9BE62317970FDA009616CA /* AdvancedPatientEditorViewController.m */,
+				5C60AB8E18504D64002A49C3 /* DailySummaryViewController.h */,
+				5C60AB8F18504D64002A49C3 /* DailySummaryViewController.m */,
 				5C4DC75017E562F000412C72 /* DictationCommands.h */,
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
 				5C5D24D1184387C300856191 /* PDF */,
@@ -4182,6 +4182,7 @@
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
 				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
 				5C56F65D18022D5100665E22 /* PulmonaryHaemorrhageViewController.m in Sources */,
+				5C60AB9018504D64002A49C3 /* DailySummaryViewController.m in Sources */,
 				5C06D4C51803C72400A3B46C /* VitKTableViewCell.m in Sources */,
 				5CFF4C1318068292006C8480 /* HFOVModel.m in Sources */,
 				5C98A6A31787553400F246E3 /* DrugDatabase.m in Sources */,
@@ -4198,7 +4199,6 @@
 				5C56F6361802005000665E22 /* CrUSSViewController.m in Sources */,
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
-				5C9BE62417970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
@@ -4429,12 +4429,12 @@
 				5CD3B0CB1790773700DA0278 /* DrugRouteOfAdministration.m in Sources */,
 				5C8B20661791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBF1794CA0100B9A813 /* Bay.m in Sources */,
-				5C9BE62517970FDA009616CA /* AdvancedPatientEditorViewController.m in Sources */,
 				5C756C891798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8D1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C06D4BE1803C03700A3B46C /* CrUSSOptionsTableViewController.m in Sources */,
 				5CFCCC9A18050DD900031979 /* EarlyCareViewController.m in Sources */,
 				5C756C911798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
+				5C60AB9118504D64002A49C3 /* DailySummaryViewController.m in Sources */,
 				5C756C9D179898A6002F983E /* ExactAgeViewController.m in Sources */,
 				5C756CA217989A33002F983E /* AgeCalculatorsViewController.m in Sources */,
 				5C03AB911806E85500870330 /* IntubationDrugsTableViewController.m in Sources */,

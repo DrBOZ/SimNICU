@@ -1,5 +1,5 @@
 //
-//  AdvancedPatientEditorViewController.h
+//  DailySummaryViewController.h
 //  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 17/07/2013.
@@ -9,19 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Patient.h"
 
-@class AdvancedPatientEditorViewController;
+@class DailySummaryViewController;
 
-@protocol AdvancedPatientEditorViewControllerDelegate <NSObject>
+@protocol DailySummaryViewControllerDelegate <NSObject>
 
 @optional
 
-- (void)AdvancedPatientEditorViewControllerDidFinish:(AdvancedPatientEditorViewController *)controller;
+- (void)DailySummaryViewControllerDidFinish:(DailySummaryViewController *)controller;
 
 @end
 
-@interface AdvancedPatientEditorViewController : UIViewController
+@interface DailySummaryViewController : UIViewController
 
-@property (nonatomic, weak) id <AdvancedPatientEditorViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DailySummaryViewControllerDelegate> delegate;
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSMutableArray *bayData;
 @property (nonatomic, strong) NSNumber *selectedBayNSNumber;

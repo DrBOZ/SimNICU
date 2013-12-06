@@ -203,8 +203,35 @@
         self.handoverSections = [[NSMutableArray alloc] initWithCapacity:20];
         HandoverSection *newSection;
         
+#pragma mark Weight
+        // 00 - Weight
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Weight";
+            newSection.sectionEditable = @"YES";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // kg
+            [newSection.customText addObject:[self customText:NSLocalizedString(@" kg ", nil)
+                                                          ref:NSLocalizedString(@"kg", nil)]];
+            
+            // (gain of  g in days)
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"(gain of g in  days)", nil)
+                                                          ref:NSLocalizedString(@"(gain of  g in days)", nil)]];
+            
+            // % weight loss
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"% weight loss", nil)
+                                                          ref:NSLocalizedString(@"% weight loss", nil)]];
+            
+            // current date
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
+            
+            [self.handoverSections addObject:newSection];
+        }
+        
 #pragma mark Background
-        // 00 - Background
+        // 01 - Background
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Background";
@@ -231,7 +258,7 @@
         }
         
 #pragma mark Active Problems
-        // 01 - Active Problems
+        // 02 - Active Problems
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Active Problems";
@@ -286,7 +313,7 @@
         }
         
 #pragma mark Resolved Problems
-        // 02 - Resolved Problems
+        // 03 - Resolved Problems
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Resolved Problems";
@@ -325,7 +352,7 @@
         }
         
 #pragma mark Recent Significant Events
-        // 03 - Recent Significant Events
+        // 04 - Recent Significant Events
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Recent Significant Events";
@@ -344,7 +371,7 @@
         }
         
 #pragma mark Ventilation & Sedation
-        // 04 - Ventilation & Sedation
+        // 05 - Ventilation & Sedation
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Ventilation & Sedation";
@@ -383,7 +410,7 @@
         }
         
 #pragma mark CXR
-        // 05 - CXR
+        // 06 - CXR
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"CXR";
@@ -414,7 +441,7 @@
         }
         
 #pragma mark Cardiovascular
-        // 06 - Cardiovascular
+        // 07 - Cardiovascular
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Cardiovascular";
@@ -433,7 +460,7 @@
         }
         
 #pragma mark Haematology
-        // 06 - Haematology
+        // 08 - Haematology
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Haematology";
@@ -460,7 +487,7 @@
         }
         
 #pragma mark Lines
-        // 07 - Lines
+        // 09 - Lines
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Lines";
@@ -507,7 +534,7 @@
         }
         
 #pragma mark Echocardiogram
-        // 075 - Echocardiogram
+        // 10 - Echocardiogram
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Echocardiogram";
@@ -522,7 +549,7 @@
         }
         
 #pragma mark Feeds & Fluids
-        // 08 - Feeds & Fluids
+        // 11 - Feeds & Fluids
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Feeds & Fluids";
@@ -559,7 +586,7 @@
         }
        
 #pragma mark Fluid Balance
-        // 09 - Fluid Balance
+        // 12 - Fluid Balance
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Fluid Balance";
@@ -573,7 +600,7 @@
         }
         
 #pragma mark Biochemistry
-        // 10 - Biochemistry
+        // 13 - Biochemistry
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Biochemistry";
@@ -637,7 +664,7 @@
         }
         
 #pragma mark Jaundice
-        // 11 - Jaundice
+        // 14 - Jaundice
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Jaundice";
@@ -668,7 +695,7 @@
         }
        
 #pragma mark Sepsis
-        // 12 - Sepsis
+        // 15 - Sepsis
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Sepsis";
@@ -699,7 +726,7 @@
         }
         
 #pragma mark Drugs
-        // 13 - Drugs
+        // 16 - Drugs
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Drugs";
@@ -741,7 +768,7 @@
         }
         
 #pragma mark Retinopathy of Prematurity
-        // 14 - ROP
+        // 17 - ROP
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"ROP";
@@ -759,7 +786,7 @@
         }
         
 #pragma mark Neurology & Cranial USS
-        // 15 - Neurology & Cranial USS
+        // 18 - Neurology & Cranial USS
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Neurology & Cranial USS";
@@ -773,7 +800,7 @@
         }
         
 #pragma mark Parents / Social
-        // 16 - Parents / Social
+        // 19 - Parents / Social
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Parents / Social";
@@ -793,7 +820,7 @@
         } 
         
 #pragma mark Examination
-         // 17 - Examination
+         // 20 - Examination
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Examination";
@@ -808,7 +835,7 @@
         }
         
 #pragma mark Summary
-        // 18 - Summary
+        // 21 - Summary
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Summary";
@@ -825,7 +852,7 @@
         }
         
 #pragma mark Plan
-        // 19 - Plan
+        // 22 - Plan
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Plan";
