@@ -13,6 +13,7 @@
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "DailySummaryViewController.h"
+#import "HaematologyViewController.h"
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
 #import "UDInputAccessoryView.h"
@@ -32,7 +33,7 @@
 
 // #import "CBBarCustomTableViewTextItem.h"
 
-@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
+@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, HaematologyViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -2399,8 +2400,18 @@
         
         HandoverSection *section = preferences.handoverSections[indexPath.section];
         
+        if ([section.sectionName isEqualToString:@"Haematology"])
+        {
+            HaematologyViewController *vc = [HaematologyViewController new];
+            vc.delegate =self;
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+            
+            [self setupAndPresentModalNavController:navController];
+        }
+        
         // Vascular lines
-        if ([section.sectionName isEqualToString:@"Lines"])
+        else if ([section.sectionName isEqualToString:@"Lines"])
         {
             VascularLinesTableViewController *vc = [[VascularLinesTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.selectedPatient = self.selectedPatient;
@@ -2408,23 +2419,11 @@
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
-            // iOS 7 specifics
-            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-            {
-                navController.navigationBar.barTintColor = [UIColor grayColor];
-                navController.navigationBar.tintColor = [UIColor redColor];
-            }
-            else
-            {
-                navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-                navController.navigationBar.tintColor = [UIColor blackColor];
-            }
-            
-            [self presentModalViewController:navController animated:YES];
+            [self setupAndPresentModalNavController:navController];
         }
         
         // Jaundice
-        if ([section.sectionName isEqualToString:@"Jaundice"])
+        else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             if (indexPath.row == 0)
             {
@@ -2445,19 +2444,7 @@
                 
                 PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
                 
-                // iOS 7 specifics
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-                {
-                    navController.navigationBar.barTintColor = [UIColor grayColor];
-                    navController.navigationBar.tintColor = [UIColor redColor];
-                }
-                else
-                {
-                    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-                    navController.navigationBar.tintColor = [UIColor blackColor];
-                }
-                
-                [self presentModalViewController:navController animated:YES];
+                [self setupAndPresentModalNavController:navController];
             }
             else
             {
@@ -2468,22 +2455,27 @@
                 
                 PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:newViewController];
                 
-                // iOS 7 specifics
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-                {
-                    navController.navigationBar.barTintColor = [UIColor grayColor];
-                    navController.navigationBar.tintColor = [UIColor redColor];
-                }
-                else
-                {
-                    navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
-                    navController.navigationBar.tintColor = [UIColor blackColor];
-                }
-                
-                [self presentModalViewController:navController animated:YES];
+                [self setupAndPresentModalNavController:navController];
             }
         }
     }
+}
+
+- (void)setupAndPresentModalNavController:(PortraitOnlyNavigationController *)navController
+{
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        navController.navigationBar.barTintColor = [UIColor grayColor];
+        navController.navigationBar.tintColor = [UIColor redColor];
+    }
+    else
+    {
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        navController.navigationBar.tintColor = [UIColor blackColor];
+    }
+    
+    [self presentModalViewController:navController animated:YES];
 }
 
 #pragma mark - UITableView delegate
@@ -5621,6 +5613,18 @@
 }
 
 - (void)phototherapyAddBilirubinResultViewControllerDidCancel:(PhototherapyAddBilirubinResultViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - HaematologyViewController delegate
+
+- (void)haematologyViewControllerDidFinish:(HaematologyViewController *)controller withResults:(NSMutableArray *)results
+{
+    
+}
+
+- (void)haematologyViewControllerDidCancel:(HaematologyViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
 }

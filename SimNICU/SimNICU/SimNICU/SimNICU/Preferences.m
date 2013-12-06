@@ -464,7 +464,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Haematology";
-            newSection.sectionEditable = @"NO";
+            newSection.sectionEditable = @"YES";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Hb
