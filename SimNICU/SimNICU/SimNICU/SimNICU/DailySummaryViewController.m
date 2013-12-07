@@ -131,25 +131,9 @@
 
 // things I need to still do
 //
-// 1)
-// 2)
-// 3) use edit data to allow edits
-//
-// 4) add analytics
-// 5) create a weight shinobi chart
-// 6) dateAndTimeForThisChart thing for ShinobiChart
-//
-// 7)
-// 8)
-// 9)
-//10)
-//11) Add weight chart
-//12) Add phototherapy chart
-//13)
-//14)
-//15)
-//16)
-//17) Add biochemistry edit
+// 1) add analytics
+// 2) create a weight shinobi chart
+// 3) dateAndTimeForThisChart thing for ShinobiChart
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -361,6 +345,14 @@
                     rows = [handoverSectionForPatient.rows count] + 2;
                     
                     // could add a toggle here to include another one row (large row) for the blood group / DCT data
+                }
+                else if ([handoverSection.sectionName isEqual:@"Haematology"])
+                {
+                    // show the last three haematology results
+                }
+                else if ([handoverSection.sectionName isEqual:@"Biochemistry"])
+                {
+                    // show the last three biochemistry results
                 }
                 else
                 {
@@ -5630,8 +5622,48 @@
 
 #pragma mark - AddBloodResultTableViewController delegate
 
-- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withResults:(NSMutableArray *)results
+- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSMutableArray *)sampleData
 {
+    // add sample data to selected patient
+    [self.selectedPatient.allBloodResultSampleData addObject:sampleData];
+    
+    // setup indexPath variables
+    // NSIndexPath *indexPath;
+    // NSArray *indexPaths;
+    
+    /*
+    // reload haematology section
+    {
+        // find out which row user has selected for Haematology
+        
+        indexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+        indexPaths = [NSArray arrayWithObject:indexPath];
+        [self.myTableView2 reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    }
+     */
+    
+    /*
+    // reload biochemistry section
+    {
+        // find out which row user has selected for Biochemistry
+        
+        indexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+        indexPaths = [NSArray arrayWithObject:indexPath];
+        [self.myTableView2 reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    }
+     */
+    
+    // or could just reload table...
+    [self.myTableView2 reloadData];
+    
+    // check if a new bilirubin result has been added
+    
+    
+    // add bilirubin result and redraw chart
+//    [self phototherapyAddBilirubinResultViewController:nil
+//                     didFinishAddingNewBilirubinResult:nil
+//                                          forBirthDate:nil];
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 

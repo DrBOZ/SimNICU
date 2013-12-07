@@ -12,7 +12,7 @@
 
 @protocol AddBloodResultTableViewControllerDelegate <NSObject>
 
-- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withResults:(NSMutableArray *)results;
+- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSMutableArray *)sampleData;
 
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller;
 

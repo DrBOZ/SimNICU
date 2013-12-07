@@ -340,135 +340,32 @@
 
 - (void)done
 {
-    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:5];
+    NSMutableArray *sampleData = [[NSMutableArray alloc] initWithCapacity:2];
     
-    /*
-     // Maternal blood group
-     NSString *resultsMaternalBloodGroup = nil;
-     
-     if (self.maternalBloodGroup.selectedSegmentIndex == 0)
-     {
-     resultsMaternalBloodGroup = @"AB";
-     }
-     else if (self.maternalBloodGroup.selectedSegmentIndex == 1)
-     {
-     resultsMaternalBloodGroup = @"A";
-     }
-     else if (self.maternalBloodGroup.selectedSegmentIndex == 2)
-     {
-     resultsMaternalBloodGroup = @"B";
-     }
-     else if (self.maternalBloodGroup.selectedSegmentIndex == 3)
-     {
-     resultsMaternalBloodGroup = @"O";
-     }
-     else
-     {
-     resultsMaternalBloodGroup = @"?";
-     }
-     
-     [results addObject:resultsMaternalBloodGroup];
-     
-     // Maternal Rhesus D status
-     NSString *resultsMaternalRhesus = nil;
-     
-     if (self.maternalRhesus.selectedSegmentIndex == 0)
-     {
-     resultsMaternalRhesus = @"Neg";
-     }
-     else if (self.maternalRhesus.selectedSegmentIndex == 1)
-     {
-     resultsMaternalRhesus = @"Pos";
-     }
-     else
-     {
-     resultsMaternalRhesus = @"?";
-     }
-     
-     [results addObject:resultsMaternalRhesus];
-     
-     // Maternal antibodies
-     NSString *resultsMaternalAntibodies = nil;
-     
-     if (self.maternalAntibodies.selectedSegmentIndex == 0)
-     {
-     resultsMaternalAntibodies = @" - no antibodies";
-     }
-     else if (self.maternalAntibodies.selectedSegmentIndex == 1)
-     {
-     resultsMaternalAntibodies = @" - antibodies present";
-     }
-     else
-     {
-     resultsMaternalAntibodies = @"?";
-     }
-     
-     [results addObject:resultsMaternalAntibodies];
-     
-     // Baby blood group
-     NSString *resultsBabyBloodGroup = nil;
-     
-     if (self.babyBloodGroup.selectedSegmentIndex == 0)
-     {
-     resultsBabyBloodGroup = @"AB";
-     }
-     else if (self.babyBloodGroup.selectedSegmentIndex == 1)
-     {
-     resultsBabyBloodGroup = @"A";
-     }
-     else if (self.babyBloodGroup.selectedSegmentIndex == 2)
-     {
-     resultsBabyBloodGroup = @"B";
-     }
-     else if (self.babyBloodGroup.selectedSegmentIndex == 3)
-     {
-     resultsBabyBloodGroup = @"O";
-     }
-     else
-     {
-     resultsBabyBloodGroup = @"?";
-     }
-     
-     [results addObject:resultsBabyBloodGroup];
-     
-     // Baby Rhesus D status
-     NSString *resultsBabyRhesus = nil;
-     
-     if (self.babyRhesus.selectedSegmentIndex == 0)
-     {
-     resultsBabyRhesus = @"Neg";
-     }
-     else if (self.babyRhesus.selectedSegmentIndex == 1)
-     {
-     resultsBabyRhesus = @"Pos";
-     }
-     else
-     {
-     resultsBabyRhesus = @"?";
-     }
-     
-     [results addObject:resultsBabyRhesus];
-     
-     // Direct Coombs Test
-     NSString *resultsDCT = nil;
-     
-     if (self.dct.selectedSegmentIndex == 0)
-     {
-     resultsDCT = @"negative";
-     }
-     else if (self.dct.selectedSegmentIndex == 1)
-     {
-     resultsDCT = @"positive";
-     }
-     else
-     {
-     resultsDCT = @"?";
-     }
-     
-     [results addObject:resultsDCT];
-     */
+    // add sample date
+    [sampleData addObject:self.resultDate];
     
-    [self.delegate addBloodResultTableViewControllerDidFinish:self withResults:results];
+    // create results array
+    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:22];
+    
+    for (int section = 1; section < [tableData count]; section ++)
+    {
+        CBTableViewSectionData *sectionData = tableData[section];
+        int rows = [sectionData.rowData count];
+        
+        for (int row = 0; row < rows; row ++)
+        {
+            CBTableViewRowData *rowData = sectionData.rowData[row];
+            
+            [results addObject:rowData.textField.text];
+            
+            NSLog(@"text added = %@", rowData.textField.text);
+        }
+    }
+    
+    [sampleData addObject:results];
+    
+    [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:sampleData];
 }
 
 - (void)cancel

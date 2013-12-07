@@ -38,8 +38,15 @@
 // Estimated Weight
 @property (nonatomic, strong) NSString *estimatedWeight;
 
+// All blood result sample data
+@property (nonatomic, strong) NSMutableArray *allBloodResultSampleData;
+
+// Displayed Haematology results
+
+// Displayed Biochemistry results
+
 // Bilirubin results
-@property (nonatomic, strong) NSMutableArray *bilirubinResults;
+@property (nonatomic, strong) NSMutableArray *bilirubinResults; // all plotted
 
 @property (nonatomic, strong) NSString *neurotoxicityRiskFactors;
 @property (nonatomic, strong) NSString *clinicalStatus;
