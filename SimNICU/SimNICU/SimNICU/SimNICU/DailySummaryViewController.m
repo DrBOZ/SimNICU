@@ -31,6 +31,8 @@
 #import "Patient.h"
 #import "Bay.h"
 
+#import "AddBloodResultTableViewController.h"
+
 // #import "CBBarCustomTableViewTextItem.h"
 
 @interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, HaematologyViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
@@ -2402,8 +2404,13 @@
         
         if ([section.sectionName isEqualToString:@"Haematology"])
         {
+            /*
             HaematologyViewController *vc = [HaematologyViewController new];
             vc.delegate =self;
+             */
+            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             

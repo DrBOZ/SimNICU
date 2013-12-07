@@ -8,6 +8,18 @@
 
 #import "CBTableViewController.h"
 
+@class AddBloodResultTableViewController;
+
+@protocol AddBloodResultTableViewControllerDelegate <NSObject>
+
+- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withResults:(NSMutableArray *)results;
+
+- (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller;
+
+@end
+
 @interface AddBloodResultTableViewController : CBTableViewController
+
+@property (nonatomic, unsafe_unretained) id <AddBloodResultTableViewControllerDelegate> delegate;
 
 @end

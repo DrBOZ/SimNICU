@@ -170,6 +170,8 @@
 		5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42817C8CB6000C88EEF /* HandoverSection.m */; };
 		5C13B42D17C910BB00C88EEF /* HandoverRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42C17C910BB00C88EEF /* HandoverRow.m */; };
 		5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42C17C910BB00C88EEF /* HandoverRow.m */; };
+		5C13DDA11852873300DBB676 /* AddBloodResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13DDA01852873300DBB676 /* AddBloodResultModel.m */; };
+		5C13DDA21852873300DBB676 /* AddBloodResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13DDA01852873300DBB676 /* AddBloodResultModel.m */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -999,6 +1001,8 @@
 		5C13B42817C8CB6000C88EEF /* HandoverSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverSection.m; sourceTree = "<group>"; };
 		5C13B42B17C910BB00C88EEF /* HandoverRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverRow.h; sourceTree = "<group>"; };
 		5C13B42C17C910BB00C88EEF /* HandoverRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverRow.m; sourceTree = "<group>"; };
+		5C13DD9F1852873300DBB676 /* AddBloodResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBloodResultModel.h; sourceTree = "<group>"; };
+		5C13DDA01852873300DBB676 /* AddBloodResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBloodResultModel.m; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -3466,6 +3470,8 @@
 			children = (
 				5C642BDF1851B2AD0052337B /* AddBloodResultTableViewController.h */,
 				5C642BE01851B2AD0052337B /* AddBloodResultTableViewController.m */,
+				5C13DD9F1852873300DBB676 /* AddBloodResultModel.h */,
+				5C13DDA01852873300DBB676 /* AddBloodResultModel.m */,
 				5C642BDB1851AB470052337B /* HaematologyViewController.h */,
 				5C642BDC1851AB470052337B /* HaematologyViewController.m */,
 				5CD43A4517CB411900426991 /* JaundiceViewController.h */,
@@ -4142,6 +4148,7 @@
 				5C940BDD166E3C2F0044A7D1 /* PlasticBagViewController.m in Sources */,
 				5C940BE3166E3C2F0044A7D1 /* ResusViewController.m in Sources */,
 				5C940BE5166E3C2F0044A7D1 /* ROPViewController.m in Sources */,
+				5C13DDA11852873300DBB676 /* AddBloodResultModel.m in Sources */,
 				5C5D24DA1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */,
 				5C56F66A180234C700665E22 /* CurosurfViewController.m in Sources */,
 				5C940BE6166E3C2F0044A7D1 /* TransportVentilatorViewController.m in Sources */,
@@ -4413,6 +4420,7 @@
 				5CD3AFFF16CF38D500DE362C /* Preferences.m in Sources */,
 				5CD3B00016CF38D500DE362C /* RoundImage.m in Sources */,
 				5CD3B00116CF38D500DE362C /* BilirubinResult.m in Sources */,
+				5C13DDA21852873300DBB676 /* AddBloodResultModel.m in Sources */,
 				5C4BBFAD183A4DF9002607EC /* CFAMTermsModel.m in Sources */,
 				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
 				5CD3B00316CF38D500DE362C /* Screen.m in Sources */,

@@ -521,26 +521,16 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            self.weight = [[UITextField alloc] initWithFrame:CGRectMake(1.0, 1.0, 120, 30)];
+            self.weight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
             self.weight.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             self.weight.placeholder = NSLocalizedString(@"kilograms", nil);
+            self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
             self.weight.clearButtonMode = UITextFieldViewModeAlways;
             self.weight.borderStyle = UITextBorderStyleRoundedRect;
             self.weight.keyboardType = UIKeyboardTypeDecimalPad;
             self.weight.textAlignment = UITextAlignmentLeft;
             self.weight.delegate = self;
             self.weight.tag = 10;
-            
-            // iOS 7 specifics
-            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-            {
-                // self.weight.keyboardAppearance = UIKeyboardAppearanceDefault;
-                self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
-            }
-            else
-            {
-                self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
-            }
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = NSLocalizedString(@"Weight", nil);
@@ -562,23 +552,13 @@
             self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
             self.gestation.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
+            self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
             self.gestation.clearButtonMode = UITextFieldViewModeAlways;
             self.gestation.borderStyle = UITextBorderStyleRoundedRect;
             self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
             self.gestation.textAlignment = UITextAlignmentLeft;
             self.gestation.delegate = self;
             self.gestation.tag = 20;
-            
-            // iOS 7 specifics
-            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-            {
-                // self.gestation.keyboardAppearance = UIKeyboardAppearanceDefault;
-                self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
-            }
-            else
-            {
-                self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
-            }
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.accessoryView = self.gestation;
