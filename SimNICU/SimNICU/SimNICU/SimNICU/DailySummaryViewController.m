@@ -7,13 +7,13 @@
 //
 
 #import "PhototherapyAddBilirubinResultViewController.h"
+#import "AddBloodResultTableViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "VascularLinesTableViewController.h"
 #import "DailySummaryPDFViewController.h"
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "DailySummaryViewController.h"
-#import "HaematologyViewController.h"
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
 #import "UDInputAccessoryView.h"
@@ -31,11 +31,9 @@
 #import "Patient.h"
 #import "Bay.h"
 
-#import "AddBloodResultTableViewController.h"
-
 // #import "CBBarCustomTableViewTextItem.h"
 
-@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, HaematologyViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
+@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, AddBloodResultTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -2404,13 +2402,19 @@
         
         if ([section.sectionName isEqualToString:@"Haematology"])
         {
-            /*
-            HaematologyViewController *vc = [HaematologyViewController new];
-            vc.delegate =self;
-             */
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.delegate = self;
             
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
+            [self setupAndPresentModalNavController:navController];
+        }
+        
+        // Biochemistry
+        else if ([section.sectionName isEqualToString:@"Biochemistry"])
+        {
+            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
@@ -5624,14 +5628,14 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark - HaematologyViewController delegate
+#pragma mark - AddBloodResultTableViewController delegate
 
-- (void)haematologyViewControllerDidFinish:(HaematologyViewController *)controller withResults:(NSMutableArray *)results
+- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withResults:(NSMutableArray *)results
 {
-    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)haematologyViewControllerDidCancel:(HaematologyViewController *)controller
+- (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
 }

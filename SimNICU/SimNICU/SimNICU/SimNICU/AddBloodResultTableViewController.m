@@ -78,8 +78,8 @@
         // date and time
         case 0:
             
-            if (showDatePicker) return 2;
-            else return 1;
+            if (showDatePicker) return 3;
+            else return 2;
             
             break;
             
@@ -94,7 +94,7 @@
 {
     CGFloat height = 44.0f;
     
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if (indexPath.section == 0 && indexPath.row == 1 && showDatePicker)
     {
         height = 216.0f;
     }
@@ -153,27 +153,65 @@
             
             return cell;
         }
+        else if (indexPath.row == 1)
+        {
+            if (showDatePicker)
+            {
+                static NSString *CellIdentifier = @"Date Picker";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if(!cell)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.backgroundColor = [UIColor whiteColor];
+                    
+                    self.datePicker = [UIDatePicker new];
+                    self.datePicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 300.0f);
+                    
+                    [self.datePicker addTarget:self
+                                        action:@selector(datePickerChangedValue)
+                              forControlEvents:UIControlEventValueChanged];
+                    
+                    [cell.contentView addSubview:self.datePicker];
+                }
+                
+                return cell;
+            }
+            else
+            {
+                static NSString *CellIdentifier = @"Previous Results";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if(!cell)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.backgroundColor = [UIColor whiteColor];
+                }
+                
+                cell.textLabel.text = NSLocalizedString(@"Previous Results", nil);
+                
+                return cell;
+            }
+            
+        }
         else
         {
-            static NSString *CellIdentifier = @"Date Picker";
+            static NSString *CellIdentifier = @"Previous Results";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 cell.backgroundColor = [UIColor whiteColor];
-                
-                self.datePicker = [UIDatePicker new];
-                self.datePicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 300.0f);
-                
-                [self.datePicker addTarget:self
-                                    action:@selector(datePickerChangedValue)
-                          forControlEvents:UIControlEventValueChanged];
-                
-                [cell.contentView addSubview:self.datePicker];
             }
+            
+            cell.textLabel.text = NSLocalizedString(@"Previous Results", nil);
             
             return cell;
         }
@@ -232,16 +270,26 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) return indexPath;
+    if (indexPath.section == 0)
+    {
+        return indexPath;
+    }
     else return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    showDatePicker = !showDatePicker;
-    
-    // update table
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (indexPath.row == 0)
+    {
+        showDatePicker = !showDatePicker;
+        
+        // update table
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else
+    {
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 #pragma mark UITextField delegate

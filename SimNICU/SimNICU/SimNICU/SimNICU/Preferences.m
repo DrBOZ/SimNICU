@@ -604,7 +604,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Biochemistry";
-            newSection.sectionEditable = @"NO";
+            newSection.sectionEditable = @"YES";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
             
             // Na

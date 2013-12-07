@@ -30,6 +30,10 @@
     rowData.text = @"Date and Time";
     [sectionData.rowData addObject:rowData];
     
+    rowData = [CBTableViewRowData new];
+    rowData.text = @"Previous results";
+    [sectionData.rowData addObject:rowData];
+    
     [tableData addObject:sectionData];
     
     //  FBC
