@@ -110,6 +110,15 @@
     else return 0.0f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == (tableData.count - 1))
+    {
+        return 300.0f;
+    }
+    else return 0.0f;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     CBTableViewSectionData *sectionData = tableData[section];
@@ -171,7 +180,7 @@
     }
     else
     {
-        static NSString *CellIdentifier = @"Cell";
+        NSString *CellIdentifier = [NSString stringWithFormat:@"%i - %i", indexPath.section, indexPath.row];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         CBTableViewSectionData *sectionData = tableData[indexPath.section];
@@ -183,21 +192,21 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.backgroundColor = [UIColor whiteColor];
+            
+            cell.textLabel.text = NSLocalizedString(rowData.text, nil);
+            
+            rowData.textField.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
+            rowData.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+            rowData.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
+            rowData.textField.clearButtonMode = UITextFieldViewModeAlways;
+            rowData.textField.borderStyle = UITextBorderStyleRoundedRect;
+            rowData.textField.keyboardType = UIKeyboardTypeDecimalPad;
+            rowData.textField.textAlignment = UITextAlignmentLeft;
+            rowData.textField.placeholder = nil;
+            rowData.textField.delegate = self;
+            
+            cell.accessoryView = rowData.textField;
         }
-        
-        cell.textLabel.text = NSLocalizedString(rowData.text, nil);
-        
-        rowData.textField.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
-        rowData.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        rowData.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
-        rowData.textField.clearButtonMode = UITextFieldViewModeAlways;
-        rowData.textField.borderStyle = UITextBorderStyleRoundedRect;
-        rowData.textField.keyboardType = UIKeyboardTypeDecimalPad;
-        rowData.textField.textAlignment = UITextAlignmentLeft;
-        rowData.textField.placeholder = nil;
-        rowData.textField.delegate = self;
-        
-        cell.accessoryView = rowData.textField;
         
         return cell;
     }
@@ -239,6 +248,8 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    NSLog(@"textFieldDidBeginEditing");
+    
     for (int section = 1; section < [tableData count]; section ++)
     {
         CBTableViewSectionData *sectionData = tableData[section];
@@ -250,6 +261,7 @@
             
             if (textField.tag == rowData.textField.tag)
             {
+                // scroll up to middle
                 NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
                 
                 [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
