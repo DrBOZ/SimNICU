@@ -13,17 +13,17 @@
 
 @interface AddBloodResultTableViewController () <UIPickerViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong) NSDate *resultDate;
 @property (nonatomic, strong) UIDatePicker *datePicker;
-
-@property (nonatomic, strong) UITextField *HbResultTextField;
+@property (nonatomic, strong) NSDate *resultDate;
 
 @end
 
 @implementation AddBloodResultTableViewController
 {
+    // obtained from AddBloodResultModel
     NSArray *tableData;
     
+    // toggle variable to let UITableView know if to display date picker
     BOOL showDatePicker;
     
     // this is to prevent a long press on the back button from triggering two actions
@@ -34,10 +34,13 @@
 {
     [super viewDidLoad];
 	
+    // log trackers
     [CBTrackers logEvent:@"Add Blood Result"];
     
+    // set title
     self.title = NSLocalizedString(@"Add Result", nil);
     
+    // set navigation item buttons and tint for iOS 7
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];

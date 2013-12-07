@@ -399,8 +399,6 @@
 		5C63B12D16B9FB9C00B31431 /* pulmonaryHaem0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B12C16B9FB9C00B31431 /* pulmonaryHaem0Comma.html */; };
 		5C63B13216B9FD0400B31431 /* pulmonaryHaem2Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13416B9FD0400B31431 /* pulmonaryHaem2Comma.html */; };
 		5C63B13716B9FD1200B31431 /* pulmonaryHaem3Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C63B13916B9FD1200B31431 /* pulmonaryHaem3Comma.html */; };
-		5C642BDD1851AB470052337B /* HaematologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C642BDC1851AB470052337B /* HaematologyViewController.m */; };
-		5C642BDE1851AB470052337B /* HaematologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C642BDC1851AB470052337B /* HaematologyViewController.m */; };
 		5C642BE11851B2AD0052337B /* AddBloodResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C642BE01851B2AD0052337B /* AddBloodResultTableViewController.m */; };
 		5C642BE21851B2AD0052337B /* AddBloodResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C642BE01851B2AD0052337B /* AddBloodResultTableViewController.m */; };
 		5C65858317FCBF3300454277 /* APGARVCFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C65858217FCBF3300454277 /* APGARVCFormats.m */; };
@@ -1191,8 +1189,6 @@
 		5C63B13816B9FD1200B31431 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/pulmonaryHaem3Comma.html; sourceTree = "<group>"; };
 		5C63B13A16B9FD1600B31431 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
 		5C63B13B16B9FD1700B31431 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-US"; path = "en-US.lproj/pulmonaryHaem3Comma.html"; sourceTree = "<group>"; };
-		5C642BDB1851AB470052337B /* HaematologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaematologyViewController.h; sourceTree = "<group>"; };
-		5C642BDC1851AB470052337B /* HaematologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HaematologyViewController.m; sourceTree = "<group>"; };
 		5C642BDF1851B2AD0052337B /* AddBloodResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBloodResultTableViewController.h; sourceTree = "<group>"; };
 		5C642BE01851B2AD0052337B /* AddBloodResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBloodResultTableViewController.m; sourceTree = "<group>"; };
 		5C65858117FCBF3300454277 /* APGARVCFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APGARVCFormats.h; sourceTree = "<group>"; };
@@ -3472,8 +3468,6 @@
 				5C642BE01851B2AD0052337B /* AddBloodResultTableViewController.m */,
 				5C13DD9F1852873300DBB676 /* AddBloodResultModel.h */,
 				5C13DDA01852873300DBB676 /* AddBloodResultModel.m */,
-				5C642BDB1851AB470052337B /* HaematologyViewController.h */,
-				5C642BDC1851AB470052337B /* HaematologyViewController.m */,
 				5CD43A4517CB411900426991 /* JaundiceViewController.h */,
 				5CD43A4617CB411900426991 /* JaundiceViewController.m */,
 				5C6257A5184CC976008F01D1 /* VascularLinesTableViewController.h */,
@@ -4161,7 +4155,6 @@
 				5C940C07166E3C5B0044A7D1 /* PhototherapyGraphViewController.m in Sources */,
 				5C03AB901806E85500870330 /* IntubationDrugsTableViewController.m in Sources */,
 				5C940C08166E3C5B0044A7D1 /* PhototherapyGuidelineCountryViewController.m in Sources */,
-				5C642BDD1851AB470052337B /* HaematologyViewController.m in Sources */,
 				5C940C09166E3C5B0044A7D1 /* PhototherapyClinicalStatusViewController.m in Sources */,
 				5C940C0A166E3C5B0044A7D1 /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,
 				5C940C0B166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m in Sources */,
@@ -4316,7 +4309,6 @@
 			files = (
 				5CD3AFA816CF38D500DE362C /* main.m in Sources */,
 				5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */,
-				5C642BDE1851AB470052337B /* HaematologyViewController.m in Sources */,
 				5C56F64418021BA300665E22 /* BloodTransfusionCriteriaModel.m in Sources */,
 				5CD3AFAA16CF38D500DE362C /* DAAnisotropicImage.m in Sources */,
 				5CD3AFAB16CF38D500DE362C /* ZUUIRevealController.m in Sources */,

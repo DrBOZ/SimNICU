@@ -36,28 +36,57 @@
     
     [tableData addObject:sectionData];
     
+    int tag = 0;
+    
     //  FBC
     {
         sectionData = [CBTableViewSectionData new];
         sectionData.titleForHeader = @"Haematology";
         sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:3];
         
+        // 01 Haemoglobin
         rowData = [CBTableViewRowData new];
         rowData.text = @"Hb";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 0;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
+        // 02 Total white cell count
         rowData = [CBTableViewRowData new];
         rowData.text = @"WCC";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 1;
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        // 02 absolute neutrophil count
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"aNC";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Platelets";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 2;
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Reticulocytes";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Nucleated RBC";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         [tableData addObject:sectionData];
@@ -72,25 +101,29 @@
         rowData = [CBTableViewRowData new];
         rowData.text = @"PT";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 3;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"APTT";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 4;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"TT";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 5;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Fibrinogen";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 6;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         [tableData addObject:sectionData];
@@ -105,108 +138,29 @@
         rowData = [CBTableViewRowData new];
         rowData.text = @"Na";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 7;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"K";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 8;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Urea";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 9;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Creatinine";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 10;
-        [sectionData.rowData addObject:rowData];
-        
-        [tableData addObject:sectionData];
-    }
-    
-    // LFTs
-    {
-        sectionData = [CBTableViewSectionData new];
-        sectionData.titleForHeader = nil;
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:5];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"Alk Phos";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 11;
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"ALT";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 12;
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"SBR";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 13;
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"gamma GT";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 14;
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"Albumin";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 15;
-        [sectionData.rowData addObject:rowData];
-        
-        [tableData addObject:sectionData];
-    }
-    
-    // Bone profile
-    {
-        sectionData = [CBTableViewSectionData new];
-        sectionData.titleForHeader = nil;
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:4];
-        
-//        rowData = [CBTableViewRowData new];
-//        rowData.text = NSLocalizedString(@"Alk Phos", @"Alkaline phosphatase");
-//        [sectionData.rowData addObject:rowData];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"Ca";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 16;
-        [sectionData.rowData addObject:rowData];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"Ca (adjusted)";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 17;
-        [sectionData.rowData addObject:rowData];
-        
-//        rowData = [CBTableViewRowData new];
-//        rowData.text = NSLocalizedString(@"Albumin", nil);
-//        [sectionData.rowData addObject:rowData];
-        
-        [tableData addObject:sectionData];
-    }
-    
-    // Mg
-    {
-        sectionData = [CBTableViewSectionData new];
-        sectionData.titleForHeader = nil;
-        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:1];
-        
-        rowData = [CBTableViewRowData new];
-        rowData.text = @"Mg";
-        rowData.textField = [UITextField new];
-        rowData.textField.tag = 18;
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         [tableData addObject:sectionData];
@@ -221,7 +175,123 @@
         rowData = [CBTableViewRowData new];
         rowData.text = @"CRP";
         rowData.textField = [UITextField new];
-        rowData.textField.tag = 19;
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        [tableData addObject:sectionData];
+    }
+    
+    // LFTs
+    {
+        sectionData = [CBTableViewSectionData new];
+        sectionData.titleForHeader = nil;
+        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:5];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Alk Phos";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"ALT";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Bilirubin (indirect)";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"gamma GT";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Albumin";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        [tableData addObject:sectionData];
+    }
+    
+    // Conjugated bilirubin
+    {
+        sectionData = [CBTableViewSectionData new];
+        sectionData.titleForHeader = nil;
+        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Bilirubin (direct)";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        [tableData addObject:sectionData];
+    }
+    
+    // Bone profile
+    {
+        sectionData = [CBTableViewSectionData new];
+        sectionData.titleForHeader = nil;
+        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:4];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Ca";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Ca (adjusted)";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        [tableData addObject:sectionData];
+    }
+    
+    // Mg
+    {
+        sectionData = [CBTableViewSectionData new];
+        sectionData.titleForHeader = nil;
+        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Mg";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
+        [sectionData.rowData addObject:rowData];
+        
+        [tableData addObject:sectionData];
+    }
+    
+    // Ammonia
+    {
+        sectionData = [CBTableViewSectionData new];
+        sectionData.titleForHeader = nil;
+        sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        rowData = [CBTableViewRowData new];
+        rowData.text = @"Ammonia";
+        rowData.textField = [UITextField new];
+        rowData.textField.tag = tag;
+        tag ++;
         [sectionData.rowData addObject:rowData];
         
         [tableData addObject:sectionData];
