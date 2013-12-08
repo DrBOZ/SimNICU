@@ -5694,7 +5694,7 @@
             {
                 if ([handoverSection.sectionName isEqualToString:@"Haematology"])
                 {
-                    handoverSection.rows
+                    // handoverSection.rows
                 }
                 
                 // increment section
