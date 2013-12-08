@@ -1,6 +1,6 @@
 //
 //  EnterWeightViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 05/09/2012.
 //  Copyright (c) 2012 SimNICU. All rights reserved.
@@ -178,7 +178,7 @@
         
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
-            // no colour
+            self.view.backgroundColor = [UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0];
         }
         else if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 6.0)
         {

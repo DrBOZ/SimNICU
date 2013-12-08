@@ -47,6 +47,7 @@
         // 01 Haemoglobin
         rowData = [CBTableViewRowData new];
         rowData.text = @"Hb";
+        rowData.reference = @"Haemoglobin value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -55,6 +56,7 @@
         // 02 Total white cell count
         rowData = [CBTableViewRowData new];
         rowData.text = @"WCC";
+        rowData.reference = @"Total White Cell Count value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -63,6 +65,7 @@
         // 02 absolute neutrophil count
         rowData = [CBTableViewRowData new];
         rowData.text = @"aNC";
+        rowData.reference = @"Absolute neutrophil count value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -70,6 +73,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Platelets";
+        rowData.reference = @"Platelet value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -77,6 +81,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Reticulocytes";
+        rowData.reference = @"Reticulocytes value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -84,6 +89,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Nucleated RBC";
+        rowData.reference = @"Nucleated Red Blood Cells value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -100,6 +106,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"PT";
+        rowData.reference = @"Prothrombin Time value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -107,6 +114,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"APTT";
+        rowData.reference = @"Activated Partial Thromboplatin Time value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -114,6 +122,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"TT";
+        rowData.reference = @"Thrombin Time value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -121,6 +130,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Fibrinogen";
+        rowData.reference = @"Fibrinogen value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -137,6 +147,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Na";
+        rowData.reference = @"Sodium value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -144,6 +155,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"K";
+        rowData.reference = @"Potassium value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -151,6 +163,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Urea";
+        rowData.reference = @"Urea value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -158,6 +171,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Creatinine";
+        rowData.reference = @"Creatinine value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -174,6 +188,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"CRP";
+        rowData.reference = @"C Reactive Protein value";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -190,6 +205,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Alk Phos";
+        rowData.reference = @"Alkaline phosphatase value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -197,6 +213,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"ALT";
+        rowData.reference = @"Alanine Transaminase value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -204,6 +221,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Bilirubin (indirect)";
+        rowData.reference = @"Unconjugated Bilirubin value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -211,6 +229,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"gamma GT";
+        rowData.reference = @"gamma GT value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -218,6 +237,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Albumin";
+        rowData.reference = @"Albumin value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -234,6 +254,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Bilirubin (direct)";
+        rowData.reference = @"Conjugated Bilirubin value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -250,6 +271,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Ca";
+        rowData.reference = @"Calcium value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -257,6 +279,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Ca (adjusted)";
+        rowData.reference = @"Adjusted Calcium value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -273,6 +296,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Mg";
+        rowData.reference = @"Magnesium value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;
@@ -289,6 +313,7 @@
         
         rowData = [CBTableViewRowData new];
         rowData.text = @"Ammonia";
+        rowData.reference = @"Ammonia value (serum)";
         rowData.textField = [UITextField new];
         rowData.textField.tag = tag;
         tag ++;

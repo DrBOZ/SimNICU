@@ -13,7 +13,8 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSString *detailText;
 
-@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) NSString *reference;              // for NSDictionary usage
+@property (nonatomic, strong) UITextField *textField;           // for UITextFields
 
 @property (nonatomic, strong) NSString *viewControllerToLoad;
 @property (nonatomic, strong) NSNumber *detailTextFontSize;

@@ -14,6 +14,7 @@
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
 #import "DailySummaryViewController.h"
+#import "BloodResultTableViewCell.h"
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
 #import "UDInputAccessoryView.h"
@@ -278,7 +279,7 @@
     {
         self.myTableView2.frame = CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f));
     }
-    self.myTableView2.separatorColor = [UIColor grayColor];
+    self.myTableView2.separatorColor = [UIColor clearColor];
     self.myTableView2.sectionFooterHeight = 10.0f;
     self.myTableView2.sectionHeaderHeight = 10.0f;
     self.myTableView2.rowHeight = 44.0f;
@@ -349,10 +350,17 @@
                 else if ([handoverSection.sectionName isEqual:@"Haematology"])
                 {
                     // show the last three haematology results
+                    
+                    // temp code
+                    // rows = [handoverSectionForPatient.rows count];
+                    rows = 4;
                 }
                 else if ([handoverSection.sectionName isEqual:@"Biochemistry"])
                 {
                     // show the last three biochemistry results
+                    
+                    // temp code
+                    rows = [handoverSectionForPatient.rows count];
                 }
                 else
                 {
@@ -361,7 +369,6 @@
             }
         }
         
-#warning this must be checked...
         if (rows == 0)
         {
             NSLog(@"error");
@@ -586,7 +593,14 @@
             }
             else if ([section.sectionName isEqual:@"Haematology"])
             {
-                textView.text = self.selectedPatient.haematology;
+                if (indexPath.row < 3)
+                {
+                    return 28.0f;
+                }
+                else
+                {
+                    textView.text = self.selectedPatient.haematology;
+                }
             }
             else if ([section.sectionName isEqual:@"Lines"])
             {
@@ -789,7 +803,7 @@
         // HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
         HandoverSection *section = preferences.handoverSections[indexPath.section];
         
-        if ([section.sectionName isEqual:@"Weight"])
+        if ([section.sectionName isEqualToString:@"Weight"])
         {
             CellIdentifier = @"Weight";
             
@@ -811,7 +825,7 @@
             
             self.weightTextView.text = self.selectedPatient.weight;
         }
-        else if ([section.sectionName isEqual:@"Background"])
+        else if ([section.sectionName isEqualToString:@"Background"])
         {
             CellIdentifier = @"Background";
             
@@ -833,7 +847,7 @@
             
             self.backgroundTextView.text = self.selectedPatient.background;
         }
-        else if ([section.sectionName isEqual:@"Active Problems"])
+        else if ([section.sectionName isEqualToString:@"Active Problems"])
         {
             CellIdentifier = @"ActiveProblems";
             
@@ -853,7 +867,7 @@
             
             self.activeProblemsTextView.text = self.selectedPatient.activeProblems;
         }
-        else if ([section.sectionName isEqual:@"Resolved Problems"])
+        else if ([section.sectionName isEqualToString:@"Resolved Problems"])
         {
             CellIdentifier = @"ResolvedProblems";
             
@@ -873,7 +887,7 @@
             
             self.resolvedProblemsTextView.text = self.selectedPatient.resolvedProblems;
         }
-        else if ([section.sectionName isEqual:@"Recent Significant Events"])
+        else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
         {
             CellIdentifier = @"RecentSignificantEvents";
             
@@ -893,7 +907,7 @@
             
             self.recentSignificantEventsTextView.text = self.selectedPatient.recentSignificantEvents;
         }
-        else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+        else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
         {
             CellIdentifier = @"VentilationAndSedation";
             
@@ -913,7 +927,7 @@
             
             self.ventilationAndSedationTextView.text = self.selectedPatient.ventilationAndSedation;
         }
-        else if ([section.sectionName isEqual:@"CXR"])
+        else if ([section.sectionName isEqualToString:@"CXR"])
         {
             CellIdentifier = @"CXR";
             
@@ -933,7 +947,7 @@
             
             self.cxrTextView.text = self.selectedPatient.cxr;
         }
-        else if ([section.sectionName isEqual:@"Cardiovascular"])
+        else if ([section.sectionName isEqualToString:@"Cardiovascular"])
         {
             CellIdentifier = @"Cardiovascular";
             
@@ -953,27 +967,53 @@
             
             self.cardiovascularTextView.text = self.selectedPatient.cardiovascular;
         }
-        else if ([section.sectionName isEqual:@"Haematology"])
+        else if ([section.sectionName isEqualToString:@"Haematology"])
         {
-            CellIdentifier = @"Haematology";
-            
-            if (newHaematology)
+            if (indexPath.row < 3)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-            }
-            else
-            {
+                CellIdentifier = @"FBC Result";
+                
                 cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
                 if (!cell)
                 {
-                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    cell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:@"FBC Result"];
+                }
+                
+                // first check number of data rows
+                if (indexPath.row % 2)
+                {
+                    cell.contentView.backgroundColor = [UIColor whiteColor];
+                    // cell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                }
+                else
+                {
+                    cell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    // cell.contentView.backgroundColor = [UIColor whiteColor];
                 }
             }
-            
-            self.haematologyTextView.text = self.selectedPatient.haematology;
+            else if (indexPath.row == 3)
+            {
+                CellIdentifier = @"Haematology";
+                
+                if (newHaematology)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+                else
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    }
+                }
+                
+                self.haematologyTextView.text = self.selectedPatient.haematology;
+            }
         }
-        else if ([section.sectionName isEqual:@"Lines"])
+        else if ([section.sectionName isEqualToString:@"Lines"])
         {
             CellIdentifier = @"Lines";
             
@@ -993,7 +1033,7 @@
             
             self.linesTextView.text = self.selectedPatient.lines;
         }
-        else if ([section.sectionName isEqual:@"Echocardiogram"])
+        else if ([section.sectionName isEqualToString:@"Echocardiogram"])
         {
             CellIdentifier = @"Echocardiogram";
             
@@ -1013,7 +1053,7 @@
             
             self.echocardiogramTextView.text = self.selectedPatient.echocardiogram;
         }
-        else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+        else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
         {
             CellIdentifier = @"FeedsAndFluids";
             
@@ -1033,7 +1073,7 @@
             
             self.feedsAndFluidsTextView.text = self.selectedPatient.feedsAndFluids;
         }
-        else if ([section.sectionName isEqual:@"Fluid Balance"])
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
         {
             CellIdentifier = @"FluidBalance";
             
@@ -1053,7 +1093,7 @@
             
             self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
         }
-        else if ([section.sectionName isEqual:@"Biochemistry"])
+        else if ([section.sectionName isEqualToString:@"Biochemistry"])
         {
             CellIdentifier = @"Biochemistry";
             
@@ -1073,7 +1113,7 @@
             
             self.electrolytesTextView.text = self.selectedPatient.electrolytes;
         }
-        else if ([section.sectionName isEqual:@"Jaundice"])
+        else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             if (indexPath.row == 0)
             {
@@ -2347,7 +2387,18 @@
     }
     else if ([tableView isEqual:self.myTableView2])
     {
-        if ([section.sectionName isEqual:@"Jaundice"])
+        if ([section.sectionName isEqualToString:@"Haematology"])
+        {
+            if (indexPath.row == 0)
+            {
+                editingStyle = UITableViewCellEditingStyleDelete;
+            }
+            else
+            {
+                editingStyle = UITableViewCellEditingStyleInsert;
+            }
+        }
+        else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             editingStyle = UITableViewCellEditingStyleInsert;
         }
@@ -5622,7 +5673,7 @@
 
 #pragma mark - AddBloodResultTableViewController delegate
 
-- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSMutableArray *)sampleData
+- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
 {
     // add sample data to selected patient
     [self.selectedPatient.allBloodResultSampleData addObject:sampleData];

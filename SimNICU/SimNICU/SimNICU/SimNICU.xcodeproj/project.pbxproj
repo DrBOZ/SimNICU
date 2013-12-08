@@ -248,6 +248,8 @@
 		5C4BBFC6183A4ED8002607EC /* impedance.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC4183A4ED8002607EC /* impedance.html */; };
 		5C4BBFC8183A4EF1002607EC /* burstSuppression.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC7183A4EF1002607EC /* burstSuppression.html */; };
 		5C4BBFC9183A4EF1002607EC /* burstSuppression.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BBFC7183A4EF1002607EC /* burstSuppression.html */; };
+		5C4C49CC1854CBA200BD3E9A /* BloodResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C49CB1854CBA200BD3E9A /* BloodResultTableViewCell.m */; };
+		5C4C49CD1854CBA200BD3E9A /* BloodResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4C49CB1854CBA200BD3E9A /* BloodResultTableViewCell.m */; };
 		5C4DB5961808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
 		5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5951808F99400F6849A /* CBTextViewMethods.m */; };
 		5C4DB59A1808FE0E00F6849A /* HandoverSectionCustomText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4DB5991808FE0E00F6849A /* HandoverSectionCustomText.m */; };
@@ -1067,6 +1069,8 @@
 		5C4BBFC1183A4EC4002607EC /* electrode.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = electrode.html; sourceTree = "<group>"; };
 		5C4BBFC4183A4ED8002607EC /* impedance.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = impedance.html; sourceTree = "<group>"; };
 		5C4BBFC7183A4EF1002607EC /* burstSuppression.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = burstSuppression.html; sourceTree = "<group>"; };
+		5C4C49CA1854CBA200BD3E9A /* BloodResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodResultTableViewCell.h; sourceTree = "<group>"; };
+		5C4C49CB1854CBA200BD3E9A /* BloodResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodResultTableViewCell.m; sourceTree = "<group>"; };
 		5C4DB5941808F99400F6849A /* CBTextViewMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTextViewMethods.h; sourceTree = "<group>"; };
 		5C4DB5951808F99400F6849A /* CBTextViewMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTextViewMethods.m; sourceTree = "<group>"; };
 		5C4DB5981808FE0E00F6849A /* HandoverSectionCustomText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandoverSectionCustomText.h; sourceTree = "<group>"; };
@@ -2076,6 +2080,15 @@
 			children = (
 			);
 			name = Examples;
+			sourceTree = "<group>";
+		};
+		5C4C49C51854B3E100BD3E9A /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5C4C49CA1854CBA200BD3E9A /* BloodResultTableViewCell.h */,
+				5C4C49CB1854CBA200BD3E9A /* BloodResultTableViewCell.m */,
+			);
+			name = UITableViewCells;
 			sourceTree = "<group>";
 		};
 		5C4DC70E17E5340C00412C72 /* UAModalPanelItems */ = {
@@ -3342,6 +3355,7 @@
 			children = (
 				5C60AB8E18504D64002A49C3 /* DailySummaryViewController.h */,
 				5C60AB8F18504D64002A49C3 /* DailySummaryViewController.m */,
+				5C4C49C51854B3E100BD3E9A /* UITableViewCells */,
 				5C4DC75017E562F000412C72 /* DictationCommands.h */,
 				5C4DC75117E562F100412C72 /* DictationCommands.m */,
 				5C5D24D1184387C300856191 /* PDF */,
@@ -4184,6 +4198,7 @@
 				5CFF4C0E180667F2006C8480 /* GastroschisisModel.m in Sources */,
 				5C940C43166E3E230044A7D1 /* GrowthChart.m in Sources */,
 				5C940CB9166E43800044A7D1 /* InfoTabBarController.m in Sources */,
+				5C4C49CC1854CBA200BD3E9A /* BloodResultTableViewCell.m in Sources */,
 				5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */,
 				5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */,
 				5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */,
@@ -4481,6 +4496,7 @@
 				5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */,
 				5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */,
 				5C05CECC1820EC4D006486C5 /* DayZeroTableViewController.m in Sources */,
+				5C4C49CD1854CBA200BD3E9A /* BloodResultTableViewCell.m in Sources */,
 				5C13B42A17C8CB6000C88EEF /* HandoverSection.m in Sources */,
 				5CFF4C1418068292006C8480 /* HFOVModel.m in Sources */,
 				5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */,

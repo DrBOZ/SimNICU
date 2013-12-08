@@ -332,7 +332,7 @@
 {
     self.resultDate = self.datePicker.date;
     
-    // update table
+    // update the 'Sampe Date/Time' row with the new date
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
     [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
@@ -340,14 +340,12 @@
 
 - (void)done
 {
-    NSMutableArray *sampleData = [[NSMutableArray alloc] initWithCapacity:2];
+    NSMutableDictionary *sampleData = [NSMutableDictionary dictionary];
     
     // add sample date
-    [sampleData addObject:self.resultDate];
+    [sampleData setObject:self.resultDate forKey:@"Result Date"];
     
-    // create results array
-    NSMutableArray *results = [[NSMutableArray alloc] initWithCapacity:22];
-    
+    // add sample results
     for (int section = 1; section < [tableData count]; section ++)
     {
         CBTableViewSectionData *sectionData = tableData[section];
@@ -357,13 +355,9 @@
         {
             CBTableViewRowData *rowData = sectionData.rowData[row];
             
-            [results addObject:rowData.textField.text];
-            
-            NSLog(@"text added = %@", rowData.textField.text);
+            [sampleData setObject:rowData.textField.text forKey:rowData.reference];
         }
     }
-    
-    [sampleData addObject:results];
     
     [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:sampleData];
 }
