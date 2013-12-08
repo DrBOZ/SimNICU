@@ -1898,8 +1898,6 @@
     
     // get textView height
     HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
-    // HandoverSection *section = preferences.handoverSections[textView.tag];
-    
     
     // this could be deleted with code lower down
     HandoverRow *row;
@@ -1927,7 +1925,7 @@
             textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
         }
         
-        if ([section.sectionName isEqual:@"Weight"])
+        if ([section.sectionName isEqualToString:@"Weight"])
         {
             textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
             
@@ -1939,7 +1937,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Background"])
+        else if ([section.sectionName isEqualToString:@"Background"])
         {
             textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
             
@@ -1951,7 +1949,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Active Problems"])
+        else if ([section.sectionName isEqualToString:@"Active Problems"])
         {
             textViewToMeasure.text = self.selectedPatient.activeProblems;
             
@@ -1963,7 +1961,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Resolved Problems"])
+        else if ([section.sectionName isEqualToString:@"Resolved Problems"])
         {
             textViewToMeasure.text = self.selectedPatient.resolvedProblems;
             
@@ -1975,7 +1973,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Recent Significant Events"])
+        else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
         {
             textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
             
@@ -1987,7 +1985,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+        else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
         {
             textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
             
@@ -1999,7 +1997,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"CXR"])
+        else if ([section.sectionName isEqualToString:@"CXR"])
         {
             textViewToMeasure.text = self.selectedPatient.cxr;
             
@@ -2011,7 +2009,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Cardiovascular"])
+        else if ([section.sectionName isEqualToString:@"Cardiovascular"])
         {
             textViewToMeasure.text = self.selectedPatient.cardiovascular;
             
@@ -2023,7 +2021,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Haematology"])
+        else if ([section.sectionName isEqualToString:@"Haematology"])
         {
             textViewToMeasure.text = self.selectedPatient.haematology;
             
@@ -2035,7 +2033,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Lines"])
+        else if ([section.sectionName isEqualToString:@"Lines"])
         {
             textViewToMeasure.text = self.selectedPatient.lines;
             
@@ -2047,7 +2045,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Echocardiogram"])
+        else if ([section.sectionName isEqualToString:@"Echocardiogram"])
         {
             textViewToMeasure.text = self.selectedPatient.echocardiogram;
             
@@ -2059,7 +2057,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+        else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
         {
             textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
             
@@ -2071,7 +2069,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Fluid Balance"])
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
         {
             textViewToMeasure.text = self.selectedPatient.fluidBalance;
             
@@ -2083,7 +2081,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Biochemistry"])
+        else if ([section.sectionName isEqualToString:@"Biochemistry"])
         {
             textViewToMeasure.text = self.selectedPatient.electrolytes;
             
@@ -2095,7 +2093,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Jaundice"])
+        else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             textViewToMeasure.text = self.selectedPatient.jaundice;
             
@@ -2107,7 +2105,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Sepsis"])
+        else if ([section.sectionName isEqualToString:@"Sepsis"])
         {
             textViewToMeasure.text = self.selectedPatient.sepsis;
             
@@ -2119,7 +2117,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Drugs"])
+        else if ([section.sectionName isEqualToString:@"Drugs"])
         {
             textViewToMeasure.text = self.selectedPatient.drugs;
             
@@ -2131,7 +2129,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"ROP"])
+        else if ([section.sectionName isEqualToString:@"ROP"])
         {
             textViewToMeasure.text = self.selectedPatient.rop;
             
@@ -2143,7 +2141,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+        else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
         {
             textViewToMeasure.text = self.selectedPatient.cranialUSS;
             
@@ -2155,7 +2153,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Parents / Social"])
+        else if ([section.sectionName isEqualToString:@"Parents / Social"])
         {
             textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
             
@@ -2167,7 +2165,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Examination"])
+        else if ([section.sectionName isEqualToString:@"Examination"])
         {
             textViewToMeasure.text = self.selectedPatient.impression;
             
@@ -2179,7 +2177,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Summary"])
+        else if ([section.sectionName isEqualToString:@"Summary"])
         {
             textViewToMeasure.text = self.selectedPatient.plan;
             
@@ -2191,7 +2189,7 @@
                 }
             }
         }
-        else if ([section.sectionName isEqual:@"Plan"])
+        else if ([section.sectionName isEqualToString:@"Plan"])
         {
             textViewToMeasure.text = self.selectedPatient.jobs;
             
@@ -2205,7 +2203,7 @@
         }
         
         // Plan textView must stay large
-        if (![section.sectionName isEqual:@"Plan"])
+        if (![section.sectionName isEqualToString:@"Plan"])
         {
             // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
@@ -5677,6 +5675,35 @@
 {
     // add sample data to selected patient
     [self.selectedPatient.allBloodResultSampleData addObject:sampleData];
+    
+    // reorder self.selectedPatient.allBloodResultSampleData based on sampleDate
+    
+    
+    // check Haematology
+    {
+        if ([sampleData objectForKey:@"Haemoglobin value"] || [sampleData objectForKey:@"Total White Cell Count value"] || [sampleData objectForKey:@"Platelet value"])
+        {
+            // need to add another row to Daily Summary under Haematology section
+            
+            // first need to find the reference to the Haematology section in handoverSections
+            HandoverSection *handoverSection;
+            
+            int section = 0;
+            
+            for (handoverSection in self.selectedPatient.handoverSections)
+            {
+                if ([handoverSection.sectionName isEqualToString:@"Haematology"])
+                {
+                    handoverSection.rows
+                }
+                
+                // increment section
+                section = section + 1;
+            }
+            
+            
+        }
+    }
     
     // setup indexPath variables
     // NSIndexPath *indexPath;
