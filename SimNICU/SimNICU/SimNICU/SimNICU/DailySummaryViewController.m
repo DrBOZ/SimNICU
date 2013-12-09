@@ -2530,7 +2530,7 @@
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Haematology", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                                otherButtonTitles:@[NSLocalizedString(@"Add blood results", nil) ,NSLocalizedString(@"Add transfusion information", nil), NSLocalizedString(@"Show all results", nil)]];
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) ,NSLocalizedString(@"Add transfusion information", nil), NSLocalizedString(@"Show all results", nil)]];
                 
                 actionSheet.tag = 0;
                 [actionSheet showOnViewController:self];
