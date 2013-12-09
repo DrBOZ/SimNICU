@@ -369,9 +369,18 @@
         }
     }
     
-    NSString *displayFBC = @"NO";
+    NSString *displayResults = @"NO";
     
-    [sampleData setObject:displayFBC forKey:@"Display FBC"];
+    [sampleData setObject:displayResults forKey:@"Display FBC"];
+    [sampleData setObject:displayResults forKey:@"Display Clotting"];
+    [sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
+    [sampleData setObject:displayResults forKey:@"Display U&Es"];
+    [sampleData setObject:displayResults forKey:@"Display CRP"];
+    [sampleData setObject:displayResults forKey:@"Display LFTs"];
+    [sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
+    [sampleData setObject:displayResults forKey:@"Display Bone Profile"];
+    [sampleData setObject:displayResults forKey:@"Display Magnesium"];
+    [sampleData setObject:displayResults forKey:@"Display Ammonia"];
     
     [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:sampleData];
 }

@@ -5770,44 +5770,25 @@
     [self.selectedPatient.allBloodResultSampleData addObject:sampleData];
     
     // reorder self.selectedPatient.allBloodResultSampleData based on sampleDate
-    
+#warning important job
     
     // check Haematology
     {
+        // check FBC
         if (![[sampleData objectForKey:@"Haemoglobin value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Total White Cell Count value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Platelet value"] isEqualToString:@""])
         {
             // there are new FBC results to display
             [sampleData setValue:@"YES" forKey:@"Display FBC"];
         }
+        // check Clotting
+        if (![[sampleData objectForKey:@"Prothrombin Time value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Activated Partial Thromboplatin Time value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Thrombin Time value"] isEqualToString:@""])
+        {
+            // there are new Clotting results to display
+            [sampleData setValue:@"YES" forKey:@"Display Clotting"];
+        }
     }
     
-    // setup indexPath variables
-    // NSIndexPath *indexPath;
-    // NSArray *indexPaths;
-    
-    /*
-    // reload haematology section
-    {
-        // find out which row user has selected for Haematology
-        
-        indexPath = [NSIndexPath indexPathForRow:7 inSection:0];
-        indexPaths = [NSArray arrayWithObject:indexPath];
-        [self.myTableView2 reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-    }
-     */
-    
-    /*
-    // reload biochemistry section
-    {
-        // find out which row user has selected for Biochemistry
-        
-        indexPath = [NSIndexPath indexPathForRow:12 inSection:0];
-        indexPaths = [NSArray arrayWithObject:indexPath];
-        [self.myTableView2 reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-    }
-     */
-    
-    // or could just reload table...
+    // reload table
     [self.myTableView2 reloadData];
     
     // check if a new bilirubin result has been added
