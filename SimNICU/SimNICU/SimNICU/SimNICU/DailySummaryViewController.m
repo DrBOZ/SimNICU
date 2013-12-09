@@ -33,9 +33,11 @@
 #import "Patient.h"
 #import "Bay.h"
 
+#import "JLActionSheet.h"
+
 // #import "CBBarCustomTableViewTextItem.h"
 
-@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, AddBloodResultTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, CBBarButtonTextItemDelegate>
+@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, AddBloodResultTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, JLActionSheetDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -2443,6 +2445,31 @@
     return editingStyle;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *titleForDeleteConfirmationButton;;
+    
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    HandoverSection *section = preferences.handoverSections[indexPath.section];
+    
+    if ([tableView isEqual:self.myTableView2])
+    {
+        if ([section.sectionName isEqualToString:@"Haematology"])
+        {
+            int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
+            
+            if (indexPath.row < numberOfHaematologyResultsToDisplay)
+            {
+                // these are for the haematology results
+                titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
+            }
+        }
+    }
+    
+    return titleForDeleteConfirmationButton;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([tableView isEqual:self.myTableView1])
@@ -2500,12 +2527,13 @@
             }
             else
             {
-                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.delegate = self;
+                JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Haematology", nil)
+                                                                         delegate:self
+                                                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add blood results", nil) ,NSLocalizedString(@"Add transfusion information", nil), NSLocalizedString(@"Show all results", nil)]];
                 
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-                
-                [self setupAndPresentModalNavController:navController];
+                actionSheet.tag = 0;
+                [actionSheet showOnViewController:self];
             }
         }
         
@@ -6094,6 +6122,27 @@
      
      [textView paste:nil];
      */
+}
+
+#pragma mark - JLActionSheet delegate
+
+- (void)actionSheet:(JLActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Haematology
+    if (actionSheet.tag == 0)
+    {
+        // add blood results
+        if (buttonIndex == 3)
+        {
+            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.delegate = self;
+            vc.bloodResultOrder = @"Haematology First";
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+            
+            [self setupAndPresentModalNavController:navController];
+        }
+    }
 }
 
 @end

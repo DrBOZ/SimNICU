@@ -21,5 +21,6 @@
 @interface AddBloodResultTableViewController : CBTableViewController
 
 @property (nonatomic, unsafe_unretained) id <AddBloodResultTableViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSString *bloodResultOrder;
 
 @end

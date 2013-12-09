@@ -10,6 +10,6 @@
 
 @interface AddBloodResultModel : NSObject
 
-+ (NSArray *)getArrayForTableView;
++ (NSArray *)getArrayForTableViewInBloodResultOrder:(NSString *)bloodResultOrder;
 
 @end

@@ -51,7 +51,7 @@
     }
     
     // get table data
-    tableData = [AddBloodResultModel getArrayForTableView];
+    tableData = [AddBloodResultModel getArrayForTableViewInBloodResultOrder:self.bloodResultOrder];
     
     // set default blood result date
     self.resultDate = [NSDate date];
@@ -81,8 +81,8 @@
         // date and time
         case 0:
             
-            if (showDatePicker) return 3;
-            else return 2;
+            if (showDatePicker) return 2;
+            else return 1;
             
             break;
             
