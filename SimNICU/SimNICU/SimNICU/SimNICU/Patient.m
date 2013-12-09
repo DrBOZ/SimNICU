@@ -94,6 +94,11 @@
             self.APGAR20minReflexes = [aDecoder decodeObjectForKey:@"APGAR20minReflexes"];
         }
         
+        // All blood results
+        {
+            self.allBloodResultSampleData = [aDecoder decodeObjectForKey:@"AllBloodResultSampleData"];
+        }
+        
         // bilirubin results
         {
             self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
@@ -537,6 +542,9 @@
     [aCoder encodeObject:self.APGAR20minRespiratoryEffort forKey:@"APGAR20minRespiratoryEffort"];
     [aCoder encodeObject:self.APGAR20minTone forKey:@"APGAR20minTone"];
     [aCoder encodeObject:self.APGAR20minReflexes forKey:@"APGAR20minReflexes"];
+    
+    // All blood results
+    [aCoder encodeObject:self.allBloodResultSampleData forKey:@"AllBloodResultSampleData"];
     
     // bilirubin results
     [aCoder encodeObject:self.bilirubinResults forKey:@"BilirubinResults"];

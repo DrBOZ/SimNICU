@@ -349,11 +349,8 @@
                 }
                 else if ([handoverSection.sectionName isEqual:@"Haematology"])
                 {
-                    // show the last three haematology results
-                    
-                    // temp code
-                    // rows = [handoverSectionForPatient.rows count];
-                    rows = 4;
+                    // find out how many results to display plus free text
+                    rows = ([[self getHaematologyResultsToDisplay] count] + 1);
                 }
                 else if ([handoverSection.sectionName isEqual:@"Biochemistry"])
                 {
@@ -593,9 +590,18 @@
             }
             else if ([section.sectionName isEqual:@"Haematology"])
             {
-                if (indexPath.row < 3)
+                int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
+                
+                if (numberOfHaematologyResultsToDisplay)
                 {
-                    return 28.0f;
+                    if (indexPath.row < numberOfHaematologyResultsToDisplay)
+                    {
+                        return 28.0f;
+                    }
+                    else
+                    {
+                        textView.text = self.selectedPatient.haematology;
+                    }
                 }
                 else
                 {
@@ -800,7 +806,6 @@
     }
     else
     {
-        // HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
         HandoverSection *section = preferences.handoverSections[indexPath.section];
         
         if ([section.sectionName isEqualToString:@"Weight"])
@@ -969,30 +974,55 @@
         }
         else if ([section.sectionName isEqualToString:@"Haematology"])
         {
-            if (indexPath.row < 3)
+            NSArray *haematologyResults = [self getHaematologyResultsToDisplay];
+            
+            int numberOfHaematologyResultsToDisplay = [haematologyResults count];
+            
+            if (indexPath.row < numberOfHaematologyResultsToDisplay)
             {
                 CellIdentifier = @"FBC Result";
                 
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                BloodResultTableViewCell *FBCResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 
-                if (!cell)
+                if (!FBCResultCell)
                 {
-                    cell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:@"FBC Result"];
+                    FBCResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:@"FBC Result"];
                 }
                 
+                // display FBC results
+                FBCResultCell.HbResult.text = haematologyResults[indexPath.row][1];
+                FBCResultCell.WCCResult.text = haematologyResults[indexPath.row][2];
+                FBCResultCell.PlatsResult.text = haematologyResults[indexPath.row][3];
+                
                 // first check number of data rows
-                if (indexPath.row % 2)
+                if (numberOfHaematologyResultsToDisplay % 2)
                 {
-                    cell.contentView.backgroundColor = [UIColor whiteColor];
-                    // cell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    if (indexPath.row % 2)
+                    {
+                        FBCResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                        // cell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    }
+                    else
+                    {
+                        FBCResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                        // cell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
                 }
                 else
                 {
-                    cell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
-                    // cell.contentView.backgroundColor = [UIColor whiteColor];
+                    if (indexPath.row % 2)
+                    {
+                        FBCResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    }
+                    else
+                    {
+                        FBCResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
                 }
+                
+                return FBCResultCell;
             }
-            else if (indexPath.row == 3)
+            else
             {
                 CellIdentifier = @"Haematology";
                 
@@ -2387,12 +2417,16 @@
     {
         if ([section.sectionName isEqualToString:@"Haematology"])
         {
-            if (indexPath.row == 0)
+            int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
+            
+            if (indexPath.row < numberOfHaematologyResultsToDisplay)
             {
+                // these are for the haematology results
                 editingStyle = UITableViewCellEditingStyleDelete;
             }
             else
             {
+                // this is for the free text
                 editingStyle = UITableViewCellEditingStyleInsert;
             }
         }
@@ -5673,6 +5707,13 @@
 
 - (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
 {
+    // check if array exists
+    if (!self.selectedPatient.allBloodResultSampleData)
+    {
+        // instantiate it
+        self.selectedPatient.allBloodResultSampleData = [[NSMutableArray alloc] initWithCapacity:25];
+    }
+    
     // add sample data to selected patient
     [self.selectedPatient.allBloodResultSampleData addObject:sampleData];
     
@@ -5681,27 +5722,10 @@
     
     // check Haematology
     {
-        if ([sampleData objectForKey:@"Haemoglobin value"] || [sampleData objectForKey:@"Total White Cell Count value"] || [sampleData objectForKey:@"Platelet value"])
+        if (![[sampleData objectForKey:@"Haemoglobin value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Total White Cell Count value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Platelet value"] isEqualToString:@""])
         {
-            // need to add another row to Daily Summary under Haematology section
-            
-            // first need to find the reference to the Haematology section in handoverSections
-            HandoverSection *handoverSection;
-            
-            int section = 0;
-            
-            for (handoverSection in self.selectedPatient.handoverSections)
-            {
-                if ([handoverSection.sectionName isEqualToString:@"Haematology"])
-                {
-                    // handoverSection.rows
-                }
-                
-                // increment section
-                section = section + 1;
-            }
-            
-            
+            // there are new FBC results to display
+            [sampleData setValue:@"YES" forKey:@"Display FBC"];
         }
     }
     
@@ -5748,6 +5772,27 @@
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (NSArray *)getHaematologyResultsToDisplay
+{
+    // instantiate array
+    NSMutableArray *haematologyResultsToDisplay = [[NSMutableArray alloc] initWithCapacity:[self.selectedPatient.allBloodResultSampleData count]];
+    
+    NSDictionary *sampleData;
+    
+    // cycle through all selected patient's sampledata
+    for (sampleData in self.selectedPatient.allBloodResultSampleData)
+    {
+        if ([[sampleData objectForKey:@"Display FBC"] isEqualToString:@"YES"])
+        {
+            NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"]];
+            
+            [haematologyResultsToDisplay addObject:FBCResult];
+        }
+    }
+    
+    return haematologyResultsToDisplay;
 }
 
 #pragma mark - JaundiceViewController delegate

@@ -22,30 +22,27 @@
             Hb.text = NSLocalizedString(@"Hb", nil);
             [self.contentView addSubview:Hb];
             
-            UILabel *tempHbResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
-            tempHbResult.font = [UIFont systemFontOfSize:14.0f];
-            tempHbResult.text = @"126";
-            [self.contentView addSubview:tempHbResult];
+            self.HbResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
+            self.HbResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.HbResult];
             
             UILabel *WCC = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, 3.0f, 50.0f, 22.0f)];
             WCC.font = [UIFont systemFontOfSize:14.0f];
             WCC.text = NSLocalizedString(@"WCC", nil);
             [self.contentView addSubview:WCC];
             
-            UILabel *tempWCCResult = [[UILabel alloc] initWithFrame:CGRectMake(104.0f, 3.0f, 50.0f, 22.0f)];
-            tempWCCResult.font = [UIFont systemFontOfSize:14.0f];
-            tempWCCResult.text = @"17.4";
-            [self.contentView addSubview:tempWCCResult];
+            self.WCCResult = [[UILabel alloc] initWithFrame:CGRectMake(104.0f, 3.0f, 50.0f, 22.0f)];
+            self.WCCResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.WCCResult];
             
             UILabel *Plats = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, 3.0f, 50.0f, 22.0f)];
             Plats.font = [UIFont systemFontOfSize:14.0f];
             Plats.text = NSLocalizedString(@"Plats", nil);
             [self.contentView addSubview:Plats];
             
-            UILabel *tempPlatsResult = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 3.0f, 50.0f, 22.0f)];
-            tempPlatsResult.font = [UIFont systemFontOfSize:14.0f];
-            tempPlatsResult.text = @"415";
-            [self.contentView addSubview:tempPlatsResult];
+            self.PlatsResult = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 3.0f, 50.0f, 22.0f)];
+            self.PlatsResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.PlatsResult];
             
             UILabel *TempDate = [[UILabel alloc] initWithFrame:CGRectMake(225.0f, 3.0f, 100.0f, 22.0f)];
             TempDate.font = [UIFont systemFontOfSize:14.0f];

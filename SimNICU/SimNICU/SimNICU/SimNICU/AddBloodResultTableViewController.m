@@ -359,6 +359,12 @@
         }
     }
     
+    // I will need to create BOOL variables here for each of the table view cells I create that show in the Daily Summary
+    
+    NSString *displayFBC = @"NO";
+    
+    [sampleData setObject:displayFBC forKey:@"Display FBC"];
+    
     [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:sampleData];
 }
 
