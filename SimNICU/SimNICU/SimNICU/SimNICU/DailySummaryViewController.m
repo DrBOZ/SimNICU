@@ -2477,11 +2477,26 @@
         
         if ([section.sectionName isEqualToString:@"Haematology"])
         {
-            int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
+            NSArray *haematologyResults = [self getHaematologyResultsToDisplay];
+            
+            int numberOfHaematologyResultsToDisplay = [haematologyResults count];
             
             if (indexPath.row < numberOfHaematologyResultsToDisplay)
             {
-                NSLog(@"HERE");
+                // use @"Unique Reference" to change display value
+                NSDictionary *sampleData;
+                
+                // cycle through all selected patient's sampledata
+                for (sampleData in self.selectedPatient.allBloodResultSampleData)
+                {
+                    if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:haematologyResults[indexPath.row][5]])
+                    {
+                        [sampleData setValue:@"NO" forKey:@"Display FBC"];
+                    }
+                }
+                
+                // reload 'Haematology' section
+                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             else
             {
@@ -5795,7 +5810,7 @@
     {
         if ([[sampleData objectForKey:@"Display FBC"] isEqualToString:@"YES"])
         {
-            NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"]];
+            NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
             [haematologyResultsToDisplay addObject:FBCResult];
         }

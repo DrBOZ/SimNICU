@@ -61,6 +61,7 @@
         self.trackball = [aDecoder decodeObjectForKey:@"trackball"];
         self.dynamicText = [aDecoder decodeObjectForKey:@"dynamicText"];
         self.handoverSections = [aDecoder decodeObjectForKey:@"handoverSections"];
+        self.bloodResultUniqueReferenceCounter = [aDecoder decodeObjectForKey:@"BloodResultUniqueReferenceCounter"];
     }
     
     [self setDefaults];
@@ -108,6 +109,8 @@
                   forKey:@"dynamicText"];
     [aCoder encodeObject:self.handoverSections
                   forKey:@"handoverSections"];
+    [aCoder encodeObject:self.bloodResultUniqueReferenceCounter
+                  forKey:@"BloodResultUniqueReferenceCounter"];
 }
 
 - (CustomText *)customText:(NSString *)text ref:(NSString *)referenceText
@@ -185,6 +188,11 @@
     if (!self.dynamicText)
     {
         self.dynamicText = [NSNumber numberWithInt:0];
+    }
+    
+    if (!self.bloodResultUniqueReferenceCounter)
+    {
+        self.bloodResultUniqueReferenceCounter = @0;
     }
     
 #if RESET_PREFERENCES_HANDOVER_SECTIONS_CUSTOM_TEXT

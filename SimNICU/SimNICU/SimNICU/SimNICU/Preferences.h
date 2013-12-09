@@ -47,6 +47,9 @@
 @property (nonatomic, retain) NSNumber *dynamicText;
 @property (nonatomic, retain) NSMutableArray *handoverSections;
 
+// AddBloodResults unique reference
+@property (nonatomic, retain) NSNumber *bloodResultUniqueReferenceCounter;
+
 // PDF settings
 @property (nonatomic, retain) NSString *paperSize;
 @property (nonatomic, retain) NSString *signature;

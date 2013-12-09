@@ -61,6 +61,12 @@
 		5C0B9B8E17D2022B000B9E34 /* trackball@2x.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B8217D2022B000B9E34 /* trackball@2x.pxm */; };
 		5C0B9B9117D2023C000B9E34 /* UDBarTrackballItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */; };
 		5C0B9B9417D20438000B9E34 /* UDInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */; };
+		5C0BC57A1856654E00128CCE /* JLActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0BC5751856654E00128CCE /* JLActionButton.m */; };
+		5C0BC57B1856654E00128CCE /* JLActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0BC5751856654E00128CCE /* JLActionButton.m */; };
+		5C0BC57C1856654E00128CCE /* JLActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0BC5771856654E00128CCE /* JLActionSheet.m */; };
+		5C0BC57D1856654E00128CCE /* JLActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0BC5771856654E00128CCE /* JLActionSheet.m */; };
+		5C0BC57E1856654E00128CCE /* JLActionSheetStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0BC5791856654E00128CCE /* JLActionSheetStyle.m */; };
+		5C0BC57F1856654E00128CCE /* JLActionSheetStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0BC5791856654E00128CCE /* JLActionSheetStyle.m */; };
 		5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */; };
 		5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C9D9F179B26360077B881 /* PatientCell.m */; };
@@ -936,6 +942,12 @@
 		5C0B9B9017D2023C000B9E34 /* UDBarTrackballItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDBarTrackballItem.m; sourceTree = "<group>"; };
 		5C0B9B9217D20438000B9E34 /* UDInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UDInputAccessoryView.h; sourceTree = "<group>"; };
 		5C0B9B9317D20438000B9E34 /* UDInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UDInputAccessoryView.m; sourceTree = "<group>"; };
+		5C0BC5741856654E00128CCE /* JLActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLActionButton.h; sourceTree = "<group>"; };
+		5C0BC5751856654E00128CCE /* JLActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLActionButton.m; sourceTree = "<group>"; };
+		5C0BC5761856654E00128CCE /* JLActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLActionSheet.h; sourceTree = "<group>"; };
+		5C0BC5771856654E00128CCE /* JLActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLActionSheet.m; sourceTree = "<group>"; };
+		5C0BC5781856654E00128CCE /* JLActionSheetStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLActionSheetStyle.h; sourceTree = "<group>"; };
+		5C0BC5791856654E00128CCE /* JLActionSheetStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLActionSheetStyle.m; sourceTree = "<group>"; };
 		5C0C9D9A179AC5DC0077B881 /* CBTimeMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTimeMethods.h; sourceTree = "<group>"; };
 		5C0C9D9B179AC5DC0077B881 /* CBTimeMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTimeMethods.m; sourceTree = "<group>"; };
 		5C0C9D9E179B26360077B881 /* PatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientCell.h; sourceTree = "<group>"; };
@@ -1765,6 +1777,19 @@
 				5C0B9B8217D2022B000B9E34 /* trackball@2x.pxm */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		5C0BC5731856653600128CCE /* JLActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				5C0BC5741856654E00128CCE /* JLActionButton.h */,
+				5C0BC5751856654E00128CCE /* JLActionButton.m */,
+				5C0BC5761856654E00128CCE /* JLActionSheet.h */,
+				5C0BC5771856654E00128CCE /* JLActionSheet.m */,
+				5C0BC5781856654E00128CCE /* JLActionSheetStyle.h */,
+				5C0BC5791856654E00128CCE /* JLActionSheetStyle.m */,
+			);
+			name = JLActionSheet;
 			sourceTree = "<group>";
 		};
 		5C0E05FA178F518C00768739 /* Adrenaline */ = {
@@ -2828,6 +2853,7 @@
 		5C940A82166E38320044A7D1 /* 3rd Party Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5C0BC5731856653600128CCE /* JLActionSheet */,
 				5C5A11A117D2726300CE96E5 /* AAMFeedback */,
 				5C940A83166E384A0044A7D1 /* DAAnisotropicImage */,
 				5C940ADB166E39690044A7D1 /* DCIntrospect */,
@@ -4228,13 +4254,16 @@
 				5C56F6361802005000665E22 /* CrUSSViewController.m in Sources */,
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
+				5C0BC57A1856654E00128CCE /* JLActionButton.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 				5C756C9C179898A6002F983E /* ExactAgeViewController.m in Sources */,
 				5C756CA117989A33002F983E /* AgeCalculatorsViewController.m in Sources */,
+				5C0BC57E1856654E00128CCE /* JLActionSheetStyle.m in Sources */,
 				5C756CA517989E15002F983E /* Calculator.m in Sources */,
 				5C7A453017999A7000D95614 /* AgeResultsCell.m in Sources */,
+				5C0BC57C1856654E00128CCE /* JLActionSheet.m in Sources */,
 				5C05CECB1820EC4D006486C5 /* DayZeroTableViewController.m in Sources */,
 				5C0C9D9C179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
 				5C0C9DA0179B26370077B881 /* PatientCell.m in Sources */,
@@ -4408,6 +4437,7 @@
 				5CD3AFF216CF38D500DE362C /* NeurotoxicityRiskFactor.m in Sources */,
 				5CD3AFF316CF38D500DE362C /* PhototherapyUnitsViewController.m in Sources */,
 				5C4DB5971808F99400F6849A /* CBTextViewMethods.m in Sources */,
+				5C0BC57D1856654E00128CCE /* JLActionSheet.m in Sources */,
 				5CD3AFF416CF38D500DE362C /* PhototherapyAddBilirubinResultViewController.m in Sources */,
 				5C0700A2183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */,
 				5CD3AFF516CF38D500DE362C /* PhototherapyHoursOldViewController.m in Sources */,
@@ -4430,6 +4460,7 @@
 				5C13DDA21852873300DBB676 /* AddBloodResultModel.m in Sources */,
 				5C4BBFAD183A4DF9002607EC /* CFAMTermsModel.m in Sources */,
 				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
+				5C0BC57F1856654E00128CCE /* JLActionSheetStyle.m in Sources */,
 				5CD3B00316CF38D500DE362C /* Screen.m in Sources */,
 				5C6257A4184CC65A008F01D1 /* VascularLine.m in Sources */,
 				5CD3B00416CF38D500DE362C /* GrowthChart.m in Sources */,
@@ -4529,6 +4560,7 @@
 				5C4DC72617E5340C00412C72 /* UIView+JMNoise.m in Sources */,
 				5C4DC73417E5340C00412C72 /* UAModalPanel.m in Sources */,
 				5C4DC73617E5340C00412C72 /* UATitledModalPanel.m in Sources */,
+				5C0BC57B1856654E00128CCE /* JLActionButton.m in Sources */,
 				5C4DC73817E5340C00412C72 /* UAGradientBackground.m in Sources */,
 				5C4DC73A17E5340C00412C72 /* UANoisyGradientBackground.m in Sources */,
 				5C4DC73C17E5340C00412C72 /* UARoundedRectView.m in Sources */,

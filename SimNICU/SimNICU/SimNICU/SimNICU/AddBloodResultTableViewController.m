@@ -342,6 +342,16 @@
 {
     NSMutableDictionary *sampleData = [NSMutableDictionary dictionary];
     
+    // add a unique identifier
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    [sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
+    
+    // increment counter
+    int counter = [preferences.bloodResultUniqueReferenceCounter intValue];
+    counter ++;
+    preferences.bloodResultUniqueReferenceCounter = [NSNumber numberWithInt:counter];
+    
     // add sample date
     [sampleData setObject:self.resultDate forKey:@"Result Date"];
     
@@ -358,8 +368,6 @@
             [sampleData setObject:rowData.textField.text forKey:rowData.reference];
         }
     }
-    
-    // I will need to create BOOL variables here for each of the table view cells I create that show in the Daily Summary
     
     NSString *displayFBC = @"NO";
     
