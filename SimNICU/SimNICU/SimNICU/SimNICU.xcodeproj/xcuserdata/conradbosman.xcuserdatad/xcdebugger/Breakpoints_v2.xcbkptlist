@@ -68,12 +68,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "408259223.981873"
+            timestampString = "408261689.709428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5711"
-            endingLineNumber = "5711"
-            landmarkName = "-addBloodResultTableViewControllerDidFinish:withSampleData:"
+            startingLineNumber = "2484"
+            endingLineNumber = "2484"
+            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -25,6 +25,7 @@
 // #import "ShinobiChartCell.h"
 #import "BilirubinResult.h"
 #import "HandoverSection.h"
+#import "CBStringMethods.h"
 #import "CBTimeMethods.h"
 #import "CBModalPanel.h"
 #import "HandoverRow.h"
@@ -993,6 +994,7 @@
                 FBCResultCell.HbResult.text = haematologyResults[indexPath.row][1];
                 FBCResultCell.WCCResult.text = haematologyResults[indexPath.row][2];
                 FBCResultCell.PlatsResult.text = haematologyResults[indexPath.row][3];
+                FBCResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:haematologyResults[indexPath.row][4] andLocale:[NSLocale currentLocale]];
                 
                 // first check number of data rows
                 if (numberOfHaematologyResultsToDisplay % 2)
@@ -1000,12 +1002,10 @@
                     if (indexPath.row % 2)
                     {
                         FBCResultCell.contentView.backgroundColor = [UIColor whiteColor];
-                        // cell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
                     }
                     else
                     {
                         FBCResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
-                        // cell.contentView.backgroundColor = [UIColor whiteColor];
                     }
                 }
                 else
@@ -2477,12 +2477,21 @@
         
         if ([section.sectionName isEqualToString:@"Haematology"])
         {
-            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.delegate = self;
+            int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
             
-            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-            
-            [self setupAndPresentModalNavController:navController];
+            if (indexPath.row < numberOfHaematologyResultsToDisplay)
+            {
+                NSLog(@"HERE");
+            }
+            else
+            {
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+            }
         }
         
         // Biochemistry

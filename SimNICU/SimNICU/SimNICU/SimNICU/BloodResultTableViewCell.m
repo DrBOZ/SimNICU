@@ -1,6 +1,6 @@
 //
 //  BloodResultTableViewCell.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 08/12/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
@@ -44,10 +44,9 @@
             self.PlatsResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.PlatsResult];
             
-            UILabel *TempDate = [[UILabel alloc] initWithFrame:CGRectMake(225.0f, 3.0f, 100.0f, 22.0f)];
-            TempDate.font = [UIFont systemFontOfSize:14.0f];
-            TempDate.text = @"(08/12 07:15)";
-            [self.contentView addSubview:TempDate];
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)]; // was 225.0f
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
         }
     }
     return self;
