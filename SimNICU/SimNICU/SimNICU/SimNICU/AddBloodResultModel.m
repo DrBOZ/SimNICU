@@ -250,7 +250,7 @@
         {
             sectionData = [CBTableViewSectionData new];
             sectionData.titleForHeader = nil;
-            sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:4];
+            sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:1];
             
             rowData = [CBTableViewRowData new];
             rowData.text = @"Bilirubin (direct)";

@@ -1161,6 +1161,74 @@
         }
         else if ([section.sectionName isEqualToString:@"Biochemistry"])
         {
+            NSArray *biochemistryResults = [self getBiochemistryResultsToDisplay];
+            
+            int numberOfBiochemistryResultsToDisplay = [biochemistryResults count];
+            
+            if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+            {
+                CellIdentifier = biochemistryResults[indexPath.row][0];
+                
+                BloodResultTableViewCell *bloodResultCell;
+                
+                if ([CellIdentifier isEqualToString:@"U&Es Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display U&E results
+                    bloodResultCell.NaResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.KResult.text = biochemistryResults[indexPath.row][2];
+                    bloodResultCell.UreaResult.text = biochemistryResults[indexPath.row][3];
+                    bloodResultCell.CreatinineResult.text = biochemistryResults[indexPath.row][4];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"CRP Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display CRP results
+                    bloodResultCell.CRPResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"LFT Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display U&E results
+                    bloodResultCell.AlkPhosResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.ALTResult.text = biochemistryResults[indexPath.row][2];
+                    bloodResultCell.SBRResult.text = biochemistryResults[indexPath.row][3];
+                    bloodResultCell.GammaGTResult.text = biochemistryResults[indexPath.row][4];
+                    bloodResultCell.ALBResult.text = biochemistryResults[indexPath.row][5];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+#warning coding here
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+            
+            
             CellIdentifier = @"Biochemistry";
             
             if (newElectrolytes)
@@ -5967,7 +6035,7 @@
 - (NSArray *)getBiochemistryResultsToDisplay
 {
     // instantiate array
-    NSMutableArray *haematologyResultsToDisplay = [[NSMutableArray alloc] initWithCapacity:[self.selectedPatient.allBloodResultSampleData count]];
+    NSMutableArray *biochemistryResultsToDisplay = [[NSMutableArray alloc] initWithCapacity:[self.selectedPatient.allBloodResultSampleData count]];
     
     NSDictionary *sampleData;
     
@@ -5977,29 +6045,61 @@
         // check U&Es
         if ([[sampleData objectForKey:@"Display U&Es"] isEqualToString:@"YES"])
         {
-            NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            NSArray *UEsResult = @[@"U&Es Result", [sampleData objectForKey:@"Sodium value (serum)"], [sampleData objectForKey:@"Potassium value (serum)"], [sampleData objectForKey:@"Urea value (serum)"], [sampleData objectForKey:@"Creatinine value (serum)"], @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
-            [haematologyResultsToDisplay addObject:FBCResult];
+            [biochemistryResultsToDisplay addObject:UEsResult];
         }
         
-        // check Clotting
-        if ([[sampleData objectForKey:@"Display Clotting"] isEqualToString:@"YES"])
+        // check CRP
+        if ([[sampleData objectForKey:@"Display CRP"] isEqualToString:@"YES"])
         {
-            NSArray *ClottingResult = @[@"Clotting Result", [sampleData objectForKey:@"Prothrombin Time value"], [sampleData objectForKey:@"Activated Partial Thromboplatin Time value"], [sampleData objectForKey:@"Thrombin Time value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            NSArray *CRPResult = @[@"CRP Result", [sampleData objectForKey:@"C Reactive Protein value"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
-            [haematologyResultsToDisplay addObject:ClottingResult];
+            [biochemistryResultsToDisplay addObject:CRPResult];
         }
         
-        // check Fibrinogen
-        if ([[sampleData objectForKey:@"Display Fibrinogen"] isEqualToString:@"YES"])
+        // check LFTs
+        if ([[sampleData objectForKey:@"Display LFTs"] isEqualToString:@"YES"])
         {
-            NSArray *FibrinogenResult = @[@"Fibrinogen Result", [sampleData objectForKey:@"Fibrinogen value"], @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            NSArray *LFTsResult = @[@"LFT Result", [sampleData objectForKey:@"Alkaline phosphatase value (serum)"], [sampleData objectForKey:@"Alanine Transaminase value (serum)"], [sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"], [sampleData objectForKey:@"gamma GT value (serum)"], [sampleData objectForKey:@"Albumin value (serum)"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
-            [haematologyResultsToDisplay addObject:FibrinogenResult];
+            [biochemistryResultsToDisplay addObject:LFTsResult];
+        }
+        
+        // check Conjugated bilirubin
+        if ([[sampleData objectForKey:@"Display Conjugated Bilirubin"] isEqualToString:@"YES"])
+        {
+            NSArray *ConjugatedBilirubinResult = @[@"Conjugated Bilirubin Result", [sampleData objectForKey:@"Conjugated Bilirubin value (serum)"], @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [biochemistryResultsToDisplay addObject:ConjugatedBilirubinResult];
+        }
+        
+        // check Bone profile
+        if ([[sampleData objectForKey:@"Display Bone Profile"] isEqualToString:@"YES"])
+        {
+            NSArray *BoneProfileResult = @[@"Bone Profile Result", [sampleData objectForKey:@"Calcium value (serum)"], [sampleData objectForKey:@"Adjusted Calcium value (serum)"], @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [biochemistryResultsToDisplay addObject:BoneProfileResult];
+        }
+        
+        // check Magnesium
+        if ([[sampleData objectForKey:@"Display Magnesium"] isEqualToString:@"YES"])
+        {
+            NSArray *MagnesiumResult = @[@"Magnesium Result", [sampleData objectForKey:@"Magnesium value (serum)"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [biochemistryResultsToDisplay addObject:MagnesiumResult];
+        }
+        
+        // check Ammonia
+        if ([[sampleData objectForKey:@"Display Ammonia"] isEqualToString:@"YES"])
+        {
+            NSArray *AmmoniaResult = @[@"Ammonia Result", [sampleData objectForKey:@"Ammonia value (serum)"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [biochemistryResultsToDisplay addObject:AmmoniaResult];
         }
     }
     
-    return haematologyResultsToDisplay;
+    return biochemistryResultsToDisplay;
 }
 
 #pragma mark - JaundiceViewController delegate
