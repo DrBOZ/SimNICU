@@ -48,6 +48,54 @@
             self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.ResultDate];
         }
+        else if ([reuseIdentifier isEqualToString:@"Clotting Result"])
+        {
+            UILabel *PT = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 50.0f, 22.0f)];
+            PT.font = [UIFont systemFontOfSize:14.0f];
+            PT.text = NSLocalizedString(@"PT", nil);
+            [self.contentView addSubview:PT];
+            
+            self.PTResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
+            self.PTResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.PTResult];
+            
+            UILabel *APTT = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, 3.0f, 50.0f, 22.0f)];
+            APTT.font = [UIFont systemFontOfSize:14.0f];
+            APTT.text = NSLocalizedString(@"APTT", nil);
+            [self.contentView addSubview:APTT];
+            
+            self.APTTResult = [[UILabel alloc] initWithFrame:CGRectMake(104.0f, 3.0f, 50.0f, 22.0f)];
+            self.APTTResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.APTTResult];
+            
+            UILabel *TT = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, 3.0f, 50.0f, 22.0f)];
+            TT.font = [UIFont systemFontOfSize:14.0f];
+            TT.text = NSLocalizedString(@"TT", nil);
+            [self.contentView addSubview:TT];
+            
+            self.TTResult = [[UILabel alloc] initWithFrame:CGRectMake(156.0f, 3.0f, 50.0f, 22.0f)];
+            self.TTResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.TTResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)]; // was 225.0f
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
+        else if ([reuseIdentifier isEqualToString:@"Fibrinogen Result"])
+        {
+            UILabel *fibrinogen = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 100.0f, 22.0f)];
+            fibrinogen.font = [UIFont systemFontOfSize:14.0f];
+            fibrinogen.text = NSLocalizedString(@"Fibrinogen", nil);
+            [self.contentView addSubview:fibrinogen];
+            
+            self.FibrinogenResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.FibrinogenResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.FibrinogenResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
     }
     return self;
 }
@@ -58,5 +106,37 @@
 
     
 }
+
+/*
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.0f];
+    
+    for (UIView *subview in self.subviews) {
+        
+        
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationControl"]) {
+            CGRect newFrame = subview.frame;
+            newFrame.origin.x = 200;
+            subview.frame = newFrame;
+        }
+        else if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellEditControl"]) {
+            CGRect newFrame = subview.frame;
+            newFrame.origin.x = 100;
+            subview.frame = newFrame;
+        }
+        else if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellReorderControl"]) {
+            CGRect newFrame = subview.frame;
+            newFrame.origin.x = 200;
+            subview.frame = newFrame;
+        }
+    }
+    [UIView commitAnimations];
+}
+ */
 
 @end

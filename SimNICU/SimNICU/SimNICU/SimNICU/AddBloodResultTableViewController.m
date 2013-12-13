@@ -55,7 +55,8 @@
     
     // set default blood result date
     self.resultDate = [NSDate date];
-    showDatePicker = NO;
+    
+    showDatePicker = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,7 +150,7 @@
             cell.textLabel.text = NSLocalizedString(@"Sample Date/Time", nil);
             
             NSDateFormatter *formatter = [NSDateFormatter new];
-            formatter.dateStyle = NSDateFormatterMediumStyle;
+            formatter.dateStyle = NSDateFormatterShortStyle;
             formatter.timeStyle = NSDateFormatterShortStyle;
             
             cell.detailTextLabel.text = [formatter stringFromDate:self.resultDate];

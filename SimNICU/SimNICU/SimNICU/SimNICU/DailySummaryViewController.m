@@ -983,46 +983,80 @@
             
             if (indexPath.row < numberOfHaematologyResultsToDisplay)
             {
-                CellIdentifier = @"FBC Result";
+                CellIdentifier = haematologyResults[indexPath.row][0];
                 
-                BloodResultTableViewCell *FBCResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                BloodResultTableViewCell *bloodResultCell;
                 
-                if (!FBCResultCell)
+                if ([CellIdentifier isEqualToString:@"FBC Result"])
                 {
-                    FBCResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:@"FBC Result"];
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display FBC results
+                    bloodResultCell.HbResult.text = haematologyResults[indexPath.row][1];
+                    bloodResultCell.WCCResult.text = haematologyResults[indexPath.row][2];
+                    bloodResultCell.PlatsResult.text = haematologyResults[indexPath.row][3];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:haematologyResults[indexPath.row][4] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"Clotting Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display Clotting results
+                    bloodResultCell.PTResult.text = haematologyResults[indexPath.row][1];
+                    bloodResultCell.APTTResult.text = haematologyResults[indexPath.row][2];
+                    bloodResultCell.TTResult.text = haematologyResults[indexPath.row][3];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:haematologyResults[indexPath.row][4] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"Fibrinogen Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display Clotting results
+                    bloodResultCell.FibrinogenResult.text = haematologyResults[indexPath.row][1];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:haematologyResults[indexPath.row][4] andLocale:[NSLocale currentLocale]];
                 }
                 
-                // display FBC results
-                FBCResultCell.HbResult.text = haematologyResults[indexPath.row][1];
-                FBCResultCell.WCCResult.text = haematologyResults[indexPath.row][2];
-                FBCResultCell.PlatsResult.text = haematologyResults[indexPath.row][3];
-                FBCResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:haematologyResults[indexPath.row][4] andLocale:[NSLocale currentLocale]];
                 
                 // first check number of data rows
                 if (numberOfHaematologyResultsToDisplay % 2)
                 {
                     if (indexPath.row % 2)
                     {
-                        FBCResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
                     }
                     else
                     {
-                        FBCResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
                     }
                 }
                 else
                 {
                     if (indexPath.row % 2)
                     {
-                        FBCResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
                     }
                     else
                     {
-                        FBCResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
                     }
                 }
                 
-                return FBCResultCell;
+                return bloodResultCell;
             }
             else
             {
@@ -2518,7 +2552,18 @@
                 {
                     if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:haematologyResults[indexPath.row][5]])
                     {
-                        [sampleData setValue:@"NO" forKey:@"Display FBC"];
+                        if ([haematologyResults[indexPath.row][0] isEqualToString:@"FBC Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display FBC"];
+                        }
+                        else if ([haematologyResults[indexPath.row][0] isEqualToString:@"Clotting Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display Clotting"];
+                        }
+                        else if ([haematologyResults[indexPath.row][0] isEqualToString:@"Fibrinogen Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display Fibrinogen"];
+                        }
                     }
                 }
                 
@@ -5770,7 +5815,14 @@
     [self.selectedPatient.allBloodResultSampleData addObject:sampleData];
     
     // reorder self.selectedPatient.allBloodResultSampleData based on sampleDate
-#warning important job
+    NSArray *sortedBloodResultsSampleData = [self.selectedPatient.allBloodResultSampleData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+                                             {
+                                                 NSDate *first = [(NSDictionary *)a objectForKey:@"Result Date"];
+                                                 NSDate *second = [(NSDictionary *)b objectForKey:@"Result Date"];
+                                                 return [first compare:second];
+                                             }];
+    
+    self.selectedPatient.allBloodResultSampleData = [NSMutableArray arrayWithArray:sortedBloodResultsSampleData];
     
     // check Haematology
     {
@@ -5786,6 +5838,17 @@
             // there are new Clotting results to display
             [sampleData setValue:@"YES" forKey:@"Display Clotting"];
         }
+        // check Fibrinogen
+        if (![[sampleData objectForKey:@"Fibrinogen value"] isEqualToString:@""])
+        {
+            // there are new Fibrinogen results to display
+            [sampleData setValue:@"YES" forKey:@"Display Fibrinogen"];
+        }
+    }
+    
+    // check Biochemistry
+    {
+        // add code
     }
     
     // reload table
@@ -5817,11 +5880,28 @@
     // cycle through all selected patient's sampledata
     for (sampleData in self.selectedPatient.allBloodResultSampleData)
     {
+        // check FBC
         if ([[sampleData objectForKey:@"Display FBC"] isEqualToString:@"YES"])
         {
             NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
             [haematologyResultsToDisplay addObject:FBCResult];
+        }
+        
+        // check Clotting
+        if ([[sampleData objectForKey:@"Display Clotting"] isEqualToString:@"YES"])
+        {
+            NSArray *ClottingResult = @[@"Clotting Result", [sampleData objectForKey:@"Prothrombin Time value"], [sampleData objectForKey:@"Activated Partial Thromboplatin Time value"], [sampleData objectForKey:@"Thrombin Time value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [haematologyResultsToDisplay addObject:ClottingResult];
+        }
+        
+        // check Fibrinogen
+        if ([[sampleData objectForKey:@"Display Fibrinogen"] isEqualToString:@"YES"])
+        {
+            NSArray *FibrinogenResult = @[@"Fibrinogen Result", [sampleData objectForKey:@"Fibrinogen value"], @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [haematologyResultsToDisplay addObject:FibrinogenResult];
         }
     }
     

@@ -13,6 +13,14 @@
 @property (nonatomic, strong) UILabel *HbResult;
 @property (nonatomic, strong) UILabel *WCCResult;
 @property (nonatomic, strong) UILabel *PlatsResult;
+
+@property (nonatomic, strong) UILabel *PTResult;
+@property (nonatomic, strong) UILabel *APTTResult;
+@property (nonatomic, strong) UILabel *TTResult;
+
+@property (nonatomic, strong) UILabel *FibrinogenResult;
+
+
 @property (nonatomic, strong) UILabel *ResultDate;
 
 @end
