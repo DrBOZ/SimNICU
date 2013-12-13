@@ -5905,7 +5905,7 @@
         {
             NSNumberFormatter *formatter = [NSNumberFormatter new];
             
-            BilirubinResult *biliresult = [[BilirubinResult alloc] init];
+            BilirubinResult *biliresult = [BilirubinResult new];
             biliresult.sampleAgeInDays = [NSNumber numberWithDouble:[CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[sampleData objectForKey:@"Result Date"]]];
             
             biliresult.bilirubinResult = [formatter numberFromString:[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"]];
