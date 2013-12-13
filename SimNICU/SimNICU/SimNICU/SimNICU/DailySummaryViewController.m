@@ -2920,15 +2920,6 @@
                 actionSheet.tag = 1;
                 [actionSheet showOnViewController:self];
             }
-            
-            /*
-            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.delegate = self;
-            
-            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-            
-            [self setupAndPresentModalNavController:navController];
-             */
         }
         // Sepsis
         else if ([section.sectionName isEqualToString:@"Sepsis"])
