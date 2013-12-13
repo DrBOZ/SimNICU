@@ -572,6 +572,10 @@
             [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %@", NSLocalizedString(@"ml/kg/day", nil)]
                                                           ref:NSLocalizedString(@"ml/kg/day", nil)]];
             
+            // 10% Dextrose
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %i %@", 10, NSLocalizedString(@"Dextrose", nil)]
+                                                          ref:NSLocalizedString(@"10% Dextrose", nil)]];
+            
             // Minimal milky aspirates
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Minimal milky aspirates", nil)
                                                           ref:NSLocalizedString(@"Minimal milky aspirates", nil)]];
@@ -707,7 +711,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Sepsis";
-            newSection.sectionEditable = @"NO";
+            newSection.sectionEditable = @"YES";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
         
             // CRP
@@ -717,6 +721,10 @@
             // < 5
             [newSection.customText addObject:[self customText:@"< 5"
                                                           ref:@"< 5"]];
+            
+            // No sepsis concerns
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"No sepsis concerns", nil)
+                                                          ref:NSLocalizedString(@"No sepsis concerns", nil)]];
             
             // Blood cultures
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Blood cultures", nil)

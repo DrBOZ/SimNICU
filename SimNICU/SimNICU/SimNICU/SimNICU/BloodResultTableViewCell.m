@@ -98,41 +98,41 @@
         }
         else if ([reuseIdentifier isEqualToString:@"U&Es Result"])
         {
-            UILabel *sodium = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 50.0f, 22.0f)];
-            sodium.font = [UIFont systemFontOfSize:14.0f];
+            UILabel *sodium = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 4.0f, 50.0f, 22.0f)];
+            sodium.font = [UIFont systemFontOfSize:13.0f];
             sodium.text = NSLocalizedString(@"Na", nil);
             [self.contentView addSubview:sodium];
             
-            self.NaResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
+            self.NaResult = [[UILabel alloc] initWithFrame:CGRectMake(33.0f, 3.0f, 50.0f, 22.0f)];
             self.NaResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.NaResult];
             
-            UILabel *potassium = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, 3.0f, 50.0f, 22.0f)];
-            potassium.font = [UIFont systemFontOfSize:14.0f];
+            UILabel *potassium = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 4.0f, 50.0f, 22.0f)];
+            potassium.font = [UIFont systemFontOfSize:13.0f];
             potassium.text = NSLocalizedString(@"K", nil);
             [self.contentView addSubview:potassium];
             
-            self.KResult = [[UILabel alloc] initWithFrame:CGRectMake(104.0f, 3.0f, 50.0f, 22.0f)];
+            self.KResult = [[UILabel alloc] initWithFrame:CGRectMake(72.0f, 3.0f, 50.0f, 22.0f)];
             self.KResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.KResult];
             
-            UILabel *urea = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, 3.0f, 50.0f, 22.0f)];
-            urea.font = [UIFont systemFontOfSize:14.0f];
-            urea.text = NSLocalizedString(@"Plats", nil);
+            UILabel *urea = [[UILabel alloc] initWithFrame:CGRectMake(94.0f, 4.0f, 50.0f, 22.0f)];
+            urea.font = [UIFont systemFontOfSize:13.0f];
+            urea.text = NSLocalizedString(@"Urea", nil);
             [self.contentView addSubview:urea];
             
-            self.UreaResult = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 3.0f, 50.0f, 22.0f)];
+            self.UreaResult = [[UILabel alloc] initWithFrame:CGRectMake(126.0f, 3.0f, 50.0f, 22.0f)];
             self.UreaResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.UreaResult];
             
-            UILabel *creatinine = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, 3.0f, 50.0f, 22.0f)];
-            creatinine.font = [UIFont systemFontOfSize:14.0f];
-            creatinine.text = NSLocalizedString(@"Plats", nil);
+            UILabel *creatinine = [[UILabel alloc] initWithFrame:CGRectMake(156.0f, 4.0f, 50.0f, 22.0f)];
+            creatinine.font = [UIFont systemFontOfSize:13.0f];
+            creatinine.text = NSLocalizedString(@"Cr", nil);
             [self.contentView addSubview:creatinine];
             
-            self.UreaResult = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 3.0f, 50.0f, 22.0f)];
-            self.UreaResult.font = [UIFont systemFontOfSize:14.0f];
-            [self.contentView addSubview:self.UreaResult];
+            self.CreatinineResult = [[UILabel alloc] initWithFrame:CGRectMake(173.0f, 3.0f, 50.0f, 22.0f)];
+            self.CreatinineResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.CreatinineResult];
             
             self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
             self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
@@ -145,7 +145,7 @@
             crp.text = NSLocalizedString(@"CRP", nil);
             [self.contentView addSubview:crp];
             
-            self.CRPResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.CRPResult = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 3.0f, 50.0f, 22.0f)];
             self.CRPResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.CRPResult];
             

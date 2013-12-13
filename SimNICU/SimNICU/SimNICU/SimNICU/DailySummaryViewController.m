@@ -632,7 +632,23 @@
             }
             else if ([section.sectionName isEqual:@"Biochemistry"])
             {
-                textView.text = self.selectedPatient.electrolytes;
+                int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
+                
+                if (numberOfBiochemistryResultsToDisplay)
+                {
+                    if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+                    {
+                        return 28.0f;
+                    }
+                    else
+                    {
+                        textView.text = self.selectedPatient.electrolytes;
+                    }
+                }
+                else
+                {
+                    textView.text = self.selectedPatient.electrolytes;
+                }
             }
             else if ([section.sectionName isEqual:@"Jaundice"])
             {
@@ -682,7 +698,23 @@
             }
             else if ([section.sectionName isEqual:@"Sepsis"])
             {
-                textView.text = self.selectedPatient.sepsis;
+                int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
+                
+                if (numberOfCRPResultsToDisplay)
+                {
+                    if (indexPath.row < numberOfCRPResultsToDisplay)
+                    {
+                        return 28.0f;
+                    }
+                    else
+                    {
+                        textView.text = self.selectedPatient.sepsis;
+                    }
+                }
+                else
+                {
+                    textView.text = self.selectedPatient.sepsis;
+                }
             }
             else if ([section.sectionName isEqual:@"Drugs"])
             {
@@ -2665,9 +2697,39 @@
                 editingStyle = UITableViewCellEditingStyleInsert;
             }
         }
+        else if ([section.sectionName isEqualToString:@"Biochemistry"])
+        {
+            int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
+            
+            if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+            {
+                // these are for the haematology results
+                editingStyle = UITableViewCellEditingStyleDelete;
+            }
+            else
+            {
+                // this is for the free text
+                editingStyle = UITableViewCellEditingStyleInsert;
+            }
+        }
         else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             editingStyle = UITableViewCellEditingStyleInsert;
+        }
+        else if ([section.sectionName isEqualToString:@"Sepsis"])
+        {
+            int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
+            
+            if (indexPath.row < numberOfCRPResultsToDisplay)
+            {
+                // these are for the haematology results
+                editingStyle = UITableViewCellEditingStyleDelete;
+            }
+            else
+            {
+                // this is for the free text
+                editingStyle = UITableViewCellEditingStyleInsert;
+            }
         }
         else
         {
@@ -2695,6 +2757,26 @@
             if (indexPath.row < numberOfHaematologyResultsToDisplay)
             {
                 // these are for the haematology results
+                titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
+            }
+        }
+        else if ([section.sectionName isEqualToString:@"Biochemistry"])
+        {
+            int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
+            
+            if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+            {
+                // these are for the biochemistry results
+                titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
+            }
+        }
+        else if ([section.sectionName isEqualToString:@"Sepsis"])
+        {
+            int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
+            
+            if (indexPath.row < numberOfCRPResultsToDisplay)
+            {
+                // these are for the CRP results
                 titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
             }
         }
@@ -2784,12 +2866,107 @@
         // Biochemistry
         else if ([section.sectionName isEqualToString:@"Biochemistry"])
         {
+            NSArray *biochemistryResults = [self getBiochemistryResultsToDisplay];
+            
+            int numberOfBiochemistryResultsToDisplay = [biochemistryResults count];
+            
+            if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+            {
+                // use @"Unique Reference" to change display value
+                NSDictionary *sampleData;
+                
+                // cycle through all selected patient's sampledata
+                for (sampleData in self.selectedPatient.allBloodResultSampleData)
+                {
+                    if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:biochemistryResults[indexPath.row][7]])
+                    {
+                        if ([biochemistryResults[indexPath.row][0] isEqualToString:@"U&Es Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display U&Es"];
+                        }
+                        else if ([biochemistryResults[indexPath.row][0] isEqualToString:@"LFT Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display LFTs"];
+                        }
+                        else if ([biochemistryResults[indexPath.row][0] isEqualToString:@"Conjugated Bilirubin Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display Conjugated Bilirubin"];
+                        }
+                        else if ([biochemistryResults[indexPath.row][0] isEqualToString:@"Bone Profile Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display Bone Profile"];
+                        }
+                        else if ([biochemistryResults[indexPath.row][0] isEqualToString:@"Magnesium Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display Magnesium"];
+                        }
+                        else if ([biochemistryResults[indexPath.row][0] isEqualToString:@"Ammonia Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display Ammonia"];
+                        }
+                    }
+                }
+                
+                // reload 'Biochemistry' section
+                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            else
+            {
+                JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Biochemistry", nil)
+                                                                         delegate:self
+                                                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show all results", nil)]];
+                
+                actionSheet.tag = 1;
+                [actionSheet showOnViewController:self];
+            }
+            
+            /*
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
             [self setupAndPresentModalNavController:navController];
+             */
+        }
+        // Sepsis
+        else if ([section.sectionName isEqualToString:@"Sepsis"])
+        {
+            NSArray *CRPResults = [self getCRPResultsToDisplay];
+            
+            int numberOfCRPResultsToDisplay = [CRPResults count];
+            
+            if (indexPath.row < numberOfCRPResultsToDisplay)
+            {
+                // use @"Unique Reference" to change display value
+                NSDictionary *sampleData;
+                
+                // cycle through all selected patient's sampledata
+                for (sampleData in self.selectedPatient.allBloodResultSampleData)
+                {
+                    if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:CRPResults[indexPath.row][7]])
+                    {
+                        if ([CRPResults[indexPath.row][0] isEqualToString:@"CRP Result"])
+                        {
+                            [sampleData setValue:@"NO" forKey:@"Display CRP"];
+                        }
+                    }
+                }
+                
+                // reload 'Sepsis' section
+                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            else
+            {
+                JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Sepsis", nil)
+                                                                         delegate:self
+                                                                cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show all results", nil)]];
+                
+                actionSheet.tag = 2;
+                [actionSheet showOnViewController:self];
+            }
         }
         
         // Vascular lines
@@ -6537,6 +6714,35 @@
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.delegate = self;
             vc.bloodResultOrder = @"Haematology First";
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+            
+            [self setupAndPresentModalNavController:navController];
+        }
+    }
+    // Biochemistry
+    else if (actionSheet.tag == 1)
+    {
+        // add blood results
+        if (buttonIndex == 2)
+        {
+            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.delegate = self;
+            vc.bloodResultOrder = @"Biochemistry First";
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+            
+            [self setupAndPresentModalNavController:navController];
+        }
+    }
+    else if (actionSheet.tag == 2)
+    {
+        // add blood results
+        if (buttonIndex == 2)
+        {
+            AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.delegate = self;
+            vc.bloodResultOrder = @"Sepsis First";
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
