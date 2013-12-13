@@ -30,12 +30,6 @@
     rowData.text = @"Date and Time";
     [sectionData.rowData addObject:rowData];
     
-    /*
-    rowData = [CBTableViewRowData new];
-    rowData.text = @"Previous results";
-    [sectionData.rowData addObject:rowData];
-     */
-    
     [tableData addObject:sectionData];
     
     // the tag is used to identify the UITextField position in the UITableView in

@@ -5848,7 +5848,48 @@
     
     // check Biochemistry
     {
-        // add code
+        // check U&Es
+        if (![[sampleData objectForKey:@"Sodium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Potassium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Urea value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Creatinine value (serum)"] isEqualToString:@""])
+        {
+            // there are new U&E results to display
+            [sampleData setValue:@"YES" forKey:@"Display U&Es"];
+        }
+        // check CRP
+        if (![[sampleData objectForKey:@"C Reactive Protein value"] isEqualToString:@""])
+        {
+            // there is a new CRP result to display
+            [sampleData setValue:@"YES" forKey:@"Display CRP"];
+        }
+        // check LFTs
+        if (![[sampleData objectForKey:@"Alkaline phosphatase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Alanine Transaminase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"gamma GT value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Albumin value (serum)"] isEqualToString:@""])
+        {
+            // there are new LFTs results to display
+            [sampleData setValue:@"YES" forKey:@"Display LFTs"];
+        }
+        // check Conjugated bilirubin
+        if (![[sampleData objectForKey:@"Conjugated Bilirubin value (serum)"] isEqualToString:@""])
+        {
+            // there is a new conjugated bilirubin result to display
+            [sampleData setValue:@"YES" forKey:@"Display Conjugated Bilirubin"];
+        }
+        // check Bone profile
+        if (![[sampleData objectForKey:@"Calcium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Adjusted Calcium value (serum)"] isEqualToString:@""])
+        {
+            // there are new Bone profile results to display
+            [sampleData setValue:@"YES" forKey:@"Display Bone Profile"];
+        }
+        // check Magnesium
+        if (![[sampleData objectForKey:@"Magnesium value (serum)"] isEqualToString:@""])
+        {
+            // there is a new Magnesium result to display
+            [sampleData setValue:@"YES" forKey:@"Display Magnesium"];
+        }
+        // check Ammonia
+        if (![[sampleData objectForKey:@"Ammonia value (serum)"] isEqualToString:@""])
+        {
+            // there is a new Ammonia result to display
+            [sampleData setValue:@"YES" forKey:@"Display Ammonia"];
+        }
     }
     
     // reload table
@@ -5882,6 +5923,44 @@
     {
         // check FBC
         if ([[sampleData objectForKey:@"Display FBC"] isEqualToString:@"YES"])
+        {
+            NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [haematologyResultsToDisplay addObject:FBCResult];
+        }
+        
+        // check Clotting
+        if ([[sampleData objectForKey:@"Display Clotting"] isEqualToString:@"YES"])
+        {
+            NSArray *ClottingResult = @[@"Clotting Result", [sampleData objectForKey:@"Prothrombin Time value"], [sampleData objectForKey:@"Activated Partial Thromboplatin Time value"], [sampleData objectForKey:@"Thrombin Time value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [haematologyResultsToDisplay addObject:ClottingResult];
+        }
+        
+        // check Fibrinogen
+        if ([[sampleData objectForKey:@"Display Fibrinogen"] isEqualToString:@"YES"])
+        {
+            NSArray *FibrinogenResult = @[@"Fibrinogen Result", [sampleData objectForKey:@"Fibrinogen value"], @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [haematologyResultsToDisplay addObject:FibrinogenResult];
+        }
+    }
+    
+    return haematologyResultsToDisplay;
+}
+
+- (NSArray *)getBiochemistryResultsToDisplay
+{
+    // instantiate array
+    NSMutableArray *haematologyResultsToDisplay = [[NSMutableArray alloc] initWithCapacity:[self.selectedPatient.allBloodResultSampleData count]];
+    
+    NSDictionary *sampleData;
+    
+    // cycle through all selected patient's sampledata
+    for (sampleData in self.selectedPatient.allBloodResultSampleData)
+    {
+        // check U&Es
+        if ([[sampleData objectForKey:@"Display U&Es"] isEqualToString:@"YES"])
         {
             NSArray *FBCResult = @[@"FBC Result", [sampleData objectForKey:@"Haemoglobin value"], [sampleData objectForKey:@"Total White Cell Count value"], [sampleData objectForKey:@"Platelet value"], [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
