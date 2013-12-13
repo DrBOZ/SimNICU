@@ -5896,12 +5896,27 @@
     [self.myTableView2 reloadData];
     
     // check if a new bilirubin result has been added
-    
-    
-    // add bilirubin result and redraw chart
-//    [self phototherapyAddBilirubinResultViewController:nil
-//                     didFinishAddingNewBilirubinResult:nil
-//                                          forBirthDate:nil];
+    if (![[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"] isEqualToString:@""])
+    {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        // ensure birth date has been added
+        if (self.selectedPatient.birthDate)
+        {
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            
+            BilirubinResult *biliresult = [[BilirubinResult alloc] init];
+            biliresult.sampleAgeInDays = [NSNumber numberWithDouble:[CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[sampleData objectForKey:@"Result Date"]]];
+            
+            biliresult.bilirubinResult = [formatter numberFromString:[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"]];
+            biliresult.bilirubinUnit = preferences.bilirubinUnits;
+            
+            // add result to bilirubin chart
+            [self phototherapyAddBilirubinResultViewController:nil
+                             didFinishAddingNewBilirubinResult:biliresult
+                                                  forBirthDate:self.selectedPatient.birthDate];
+        }
+    }
     
     [self dismissModalViewControllerAnimated:YES];
 }

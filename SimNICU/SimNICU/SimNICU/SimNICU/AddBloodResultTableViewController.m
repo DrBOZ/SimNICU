@@ -154,6 +154,7 @@
             formatter.timeStyle = NSDateFormatterShortStyle;
             
             cell.detailTextLabel.text = [formatter stringFromDate:self.resultDate];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             
             return cell;
         }
