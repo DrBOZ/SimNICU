@@ -96,6 +96,116 @@
             self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.ResultDate];
         }
+        else if ([reuseIdentifier isEqualToString:@"U&Es Result"])
+        {
+            UILabel *sodium = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 50.0f, 22.0f)];
+            sodium.font = [UIFont systemFontOfSize:14.0f];
+            sodium.text = NSLocalizedString(@"Na", nil);
+            [self.contentView addSubview:sodium];
+            
+            self.NaResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
+            self.NaResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.NaResult];
+            
+            UILabel *potassium = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, 3.0f, 50.0f, 22.0f)];
+            potassium.font = [UIFont systemFontOfSize:14.0f];
+            potassium.text = NSLocalizedString(@"K", nil);
+            [self.contentView addSubview:potassium];
+            
+            self.KResult = [[UILabel alloc] initWithFrame:CGRectMake(104.0f, 3.0f, 50.0f, 22.0f)];
+            self.KResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.KResult];
+            
+            UILabel *urea = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, 3.0f, 50.0f, 22.0f)];
+            urea.font = [UIFont systemFontOfSize:14.0f];
+            urea.text = NSLocalizedString(@"Plats", nil);
+            [self.contentView addSubview:urea];
+            
+            self.UreaResult = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 3.0f, 50.0f, 22.0f)];
+            self.UreaResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.UreaResult];
+            
+            UILabel *creatinine = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, 3.0f, 50.0f, 22.0f)];
+            creatinine.font = [UIFont systemFontOfSize:14.0f];
+            creatinine.text = NSLocalizedString(@"Plats", nil);
+            [self.contentView addSubview:creatinine];
+            
+            self.UreaResult = [[UILabel alloc] initWithFrame:CGRectMake(172.0f, 3.0f, 50.0f, 22.0f)];
+            self.UreaResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.UreaResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
+        else if ([reuseIdentifier isEqualToString:@"CRP Result"])
+        {
+            UILabel *crp = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 100.0f, 22.0f)];
+            crp.font = [UIFont systemFontOfSize:14.0f];
+            crp.text = NSLocalizedString(@"CRP", nil);
+            [self.contentView addSubview:crp];
+            
+            self.CRPResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.CRPResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.CRPResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
+        else if ([reuseIdentifier isEqualToString:@"LFT Result"])
+        {
+#warning finish code
+        }
+        else if ([reuseIdentifier isEqualToString:@"Conjugated Bilirubin Result"])
+        {
+            UILabel *directBili = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 100.0f, 22.0f)];
+            directBili.font = [UIFont systemFontOfSize:14.0f];
+            directBili.text = NSLocalizedString(@"Direct bilirubin", nil);
+            [self.contentView addSubview:directBili];
+            
+            self.DirectBiliResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.DirectBiliResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.DirectBiliResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
+        else if ([reuseIdentifier isEqualToString:@"Bone Profile Result"])
+        {
+#warning finish code
+        }
+        else if ([reuseIdentifier isEqualToString:@"Magnesium Result"])
+        {
+            UILabel *Mg = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 100.0f, 22.0f)];
+            Mg.font = [UIFont systemFontOfSize:14.0f];
+            Mg.text = NSLocalizedString(@"Mg", nil);
+            [self.contentView addSubview:Mg];
+            
+            self.MgResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.MgResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.MgResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
+        else if ([reuseIdentifier isEqualToString:@"Ammonia Result"])
+        {
+            UILabel *ammonia = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 3.0f, 100.0f, 22.0f)];
+            ammonia.font = [UIFont systemFontOfSize:14.0f];
+            ammonia.text = NSLocalizedString(@"Ammonia", nil);
+            [self.contentView addSubview:ammonia];
+            
+            self.AmmoniaResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.AmmoniaResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.AmmoniaResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 3.0f, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ResultDate];
+        }
     }
     return self;
 }

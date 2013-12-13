@@ -343,24 +343,27 @@
                 // set the number of rows...
                 
                 // if Phototherapy section and user is using US preferences then add another two rows
-                if ([handoverSection.sectionName isEqual:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
+                if ([handoverSection.sectionName isEqualToString:@"Jaundice"] && [preferences.guidelineCountry isEqualToString:@"US"])
                 {
                     // these extra rows are for the Clinical Status & Neurotoxicity Risk Factors segmented controls
                     rows = [handoverSectionForPatient.rows count] + 2;
                     
                     // could add a toggle here to include another one row (large row) for the blood group / DCT data
                 }
-                else if ([handoverSection.sectionName isEqual:@"Haematology"])
+                else if ([handoverSection.sectionName isEqualToString:@"Haematology"])
                 {
                     // find out how many results to display plus free text
                     rows = ([[self getHaematologyResultsToDisplay] count] + 1);
                 }
-                else if ([handoverSection.sectionName isEqual:@"Biochemistry"])
+                else if ([handoverSection.sectionName isEqualToString:@"Biochemistry"])
                 {
-                    // show the last three biochemistry results
-                    
-                    // temp code
-                    rows = [handoverSectionForPatient.rows count];
+                    // find out how many results to display plus free text
+                    rows = ([[self getBiochemistryResultsToDisplay] count] + 1);
+                }
+                else if ([handoverSection.sectionName isEqualToString:@"Sepsis"])
+                {
+                    // find out how many results to display plus free text
+                    rows = ([[self getCRPResultsToDisplay] count] + 1);
                 }
                 else
                 {
@@ -1187,7 +1190,7 @@
                     bloodResultCell.CreatinineResult.text = biochemistryResults[indexPath.row][4];
                     bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
                 }
-                else if ([CellIdentifier isEqualToString:@"CRP Result"])
+                else if ([CellIdentifier isEqualToString:@"LFT Result"])
                 {
                     bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                     
@@ -1196,8 +1199,39 @@
                         bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
                     }
                     
-                    // display CRP results
-                    bloodResultCell.CRPResult.text = biochemistryResults[indexPath.row][1];
+                    // display LFT results
+                    bloodResultCell.AlkPhosResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.ALTResult.text = biochemistryResults[indexPath.row][2];
+                    bloodResultCell.SBRResult.text = biochemistryResults[indexPath.row][3];
+                    bloodResultCell.GammaGTResult.text = biochemistryResults[indexPath.row][4];
+                    bloodResultCell.ALBResult.text = biochemistryResults[indexPath.row][5];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"Conjugated Bilirubin Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display Conjugated bilirubin result
+                    bloodResultCell.DirectBiliResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"Bone Profile Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display Bone Profile results
+                    bloodResultCell.CaResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.CaAdjResult.text = biochemistryResults[indexPath.row][2];
                     bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
                 }
                 else if ([CellIdentifier isEqualToString:@"LFT Result"])
@@ -1217,35 +1251,79 @@
                     bloodResultCell.ALBResult.text = biochemistryResults[indexPath.row][5];
                     bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
                 }
-#warning coding here
+                else if ([CellIdentifier isEqualToString:@"Magnesium Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display Magnesium result
+                    bloodResultCell.MgResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+                else if ([CellIdentifier isEqualToString:@"Ammonia Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display Ammonia result
+                    bloodResultCell.AmmoniaResult.text = biochemistryResults[indexPath.row][1];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
                 
+                // first check number of data rows
+                if (numberOfBiochemistryResultsToDisplay % 2)
+                {
+                    if (indexPath.row % 2)
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
+                    else
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    }
+                }
+                else
+                {
+                    if (indexPath.row % 2)
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    }
+                    else
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
+                }
                 
-                
-                
-                
-            }
-            
-            
-            
-            
-            
-            CellIdentifier = @"Biochemistry";
-            
-            if (newElectrolytes)
-            {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                return bloodResultCell;
             }
             else
             {
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                CellIdentifier = @"Biochemistry";
                 
-                if (!cell)
+                if (newElectrolytes)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
+                else
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    }
+                }
+                
+                self.electrolytesTextView.text = self.selectedPatient.electrolytes;
             }
-            
-            self.electrolytesTextView.text = self.selectedPatient.electrolytes;
         }
         else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
@@ -1402,23 +1480,76 @@
         }
         else if ([section.sectionName isEqual:@"Sepsis"])
         {
-            CellIdentifier = @"Sepsis";
+            NSArray *crpResults = [self getCRPResultsToDisplay];
             
-            if (newSepsis)
+            int numberOfCRPResultsToDisplay = [crpResults count];
+            
+            if (indexPath.row < numberOfCRPResultsToDisplay)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                CellIdentifier = crpResults[indexPath.row][0];
+                
+                BloodResultTableViewCell *bloodResultCell;
+                
+                if ([CellIdentifier isEqualToString:@"CRP Result"])
+                {
+                    bloodResultCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!bloodResultCell)
+                    {
+                        bloodResultCell = [[BloodResultTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                    }
+                    
+                    // display CRP results
+                    bloodResultCell.CRPResult.text = crpResults[indexPath.row][1];
+                    bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:crpResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
+                }
+                
+                // first check number of data rows
+                if (numberOfCRPResultsToDisplay % 2)
+                {
+                    if (indexPath.row % 2)
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
+                    else
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    }
+                }
+                else
+                {
+                    if (indexPath.row % 2)
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    }
+                    else
+                    {
+                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
+                    }
+                }
+                
+                return bloodResultCell;
             }
             else
             {
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                CellIdentifier = @"Sepsis";
                 
-                if (!cell)
+                if (newSepsis)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
+                else
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    }
+                }
+                
+                self.sepsisTextView.text = self.selectedPatient.sepsis;
             }
-            
-            self.sepsisTextView.text = self.selectedPatient.sepsis;
         }
         else if ([section.sectionName isEqual:@"Drugs"])
         {
@@ -6050,14 +6181,6 @@
             [biochemistryResultsToDisplay addObject:UEsResult];
         }
         
-        // check CRP
-        if ([[sampleData objectForKey:@"Display CRP"] isEqualToString:@"YES"])
-        {
-            NSArray *CRPResult = @[@"CRP Result", [sampleData objectForKey:@"C Reactive Protein value"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
-            
-            [biochemistryResultsToDisplay addObject:CRPResult];
-        }
-        
         // check LFTs
         if ([[sampleData objectForKey:@"Display LFTs"] isEqualToString:@"YES"])
         {
@@ -6100,6 +6223,28 @@
     }
     
     return biochemistryResultsToDisplay;
+}
+
+- (NSArray *)getCRPResultsToDisplay
+{
+    // instantiate array
+    NSMutableArray *crpResultsToDisplay = [[NSMutableArray alloc] initWithCapacity:[self.selectedPatient.allBloodResultSampleData count]];
+    
+    NSDictionary *sampleData;
+    
+    // cycle through all selected patient's sampledata
+    for (sampleData in self.selectedPatient.allBloodResultSampleData)
+    {
+        // check CRP
+        if ([[sampleData objectForKey:@"Display CRP"] isEqualToString:@"YES"])
+        {
+            NSArray *CRPResult = @[@"CRP Result", [sampleData objectForKey:@"C Reactive Protein value"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            
+            [crpResultsToDisplay addObject:CRPResult];
+        }
+    }
+    
+    return crpResultsToDisplay;
 }
 
 #pragma mark - JaundiceViewController delegate
