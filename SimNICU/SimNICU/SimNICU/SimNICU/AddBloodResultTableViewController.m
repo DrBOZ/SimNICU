@@ -369,7 +369,7 @@
 {
     NSLog(@"textFieldDidBeginEditing");
     
-    for (int section = 1; section < [tableData count]; section ++)
+    for (int section = 1; section < tableData.count - 1; section ++) // '- 1' for delete button
     {
         CBTableViewSectionData *sectionData = tableData[section];
         int rows = [sectionData.rowData count];
