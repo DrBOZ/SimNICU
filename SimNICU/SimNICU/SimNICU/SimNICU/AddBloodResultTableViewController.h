@@ -14,6 +14,8 @@
 
 - (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData;
 
+- (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData;
+
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller;
 
 @end
@@ -21,6 +23,9 @@
 @interface AddBloodResultTableViewController : CBTableViewController
 
 @property (nonatomic, unsafe_unretained) id <AddBloodResultTableViewControllerDelegate> delegate;
+@property (nonatomic, strong) NSMutableDictionary *sampleData;
 @property (nonatomic, strong) NSString *bloodResultOrder;
+@property (nonatomic, strong) NSString *editOrAddResult;
+@property (nonatomic, strong) NSDate *resultDate;
 
 @end

@@ -20,7 +20,7 @@
     {
         if ([reuseIdentifier isEqualToString:@"FBC Result"])
         {
-            UILabel *Hb = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            UILabel *Hb = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, DEFAULT_TEXT_Y, 20.0f, 22.0f)];
             Hb.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
             Hb.text = NSLocalizedString(@"Hb", nil);
             [self.contentView addSubview:Hb];
@@ -29,7 +29,7 @@
             self.HbResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.HbResult];
             
-            UILabel *WCC = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            UILabel *WCC = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, DEFAULT_TEXT_Y, 36.0f, 22.0f)];
             WCC.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
             WCC.text = NSLocalizedString(@"WCC", nil);
             [self.contentView addSubview:WCC];
@@ -38,12 +38,13 @@
             self.WCCResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.WCCResult];
             
-            UILabel *Plats = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            UILabel *Plats = [[UILabel alloc] initWithFrame:CGRectMake(136.0f, DEFAULT_TEXT_Y, 34.0f, 22.0f)];
             Plats.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
             Plats.text = NSLocalizedString(@"Plats", nil);
+            Plats.adjustsFontSizeToFitWidth = YES;
             [self.contentView addSubview:Plats];
             
-            self.PlatsResult = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 3.0f, 50.0f, 22.0f)];
+            self.PlatsResult = [[UILabel alloc] initWithFrame:CGRectMake(170.0f, 3.0f, 30.0f, 22.0f)];
             self.PlatsResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.PlatsResult];
             
@@ -210,6 +211,10 @@
             [self.contentView addSubview:self.ResultDate];
         }
     }
+    
+    // set disclosure indicator
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return self;
 }
 

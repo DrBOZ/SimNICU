@@ -14,7 +14,6 @@
 @interface AddBloodResultTableViewController () <UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
-@property (nonatomic, strong) NSDate *resultDate;
 
 @end
 
@@ -33,12 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    // log trackers
-    [CBTrackers logEvent:@"Add Blood Result"];
-    
-    // set title
-    self.title = NSLocalizedString(@"Add Result", nil);
     
     // set navigation item buttons and tint for iOS 7
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
@@ -50,13 +43,66 @@
         self.view.tintColor = [UIColor redColor];
     }
     
+    // instantiate date picker
+    if (!self.datePicker)
+    {
+        self.datePicker = [UIDatePicker new];
+    }
+	
     // get table data
     tableData = [AddBloodResultModel getArrayForTableViewInBloodResultOrder:self.bloodResultOrder];
     
-    // set default blood result date
-    self.resultDate = [NSDate date];
-    
-    showDatePicker = YES;
+    // setup view controller
+    {
+        if ([self.editOrAddResult isEqualToString:@"Edit"])
+        {
+            // log tracker
+            [CBTrackers logEvent:@"Edit Blood Result"];
+            
+            // set title
+            self.title = NSLocalizedString(@"Edit Result", nil);
+            
+            // hide date picker
+            showDatePicker = NO;
+            
+            // set date
+            self.resultDate = [self.sampleData objectForKey:@"Result Date"];
+            
+            // update date picker
+            self.datePicker.date = self.resultDate;
+            
+            /*
+            // add sample results
+            for (int section = 1; section < [tableData count]; section ++)
+            {
+                CBTableViewSectionData *sectionData = tableData[section];
+                int rows = [sectionData.rowData count];
+                
+                for (int row = 0; row < rows; row ++)
+                {
+                    CBTableViewRowData *rowData = sectionData.rowData[row];
+                    
+                    [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
+                }
+            }
+             */
+            
+        }
+        else
+        {
+            // log tracker
+            [CBTrackers logEvent:@"Add Blood Result"];
+            
+            // set title
+            self.title = NSLocalizedString(@"Add Result", nil);
+            
+            // show date picker
+            showDatePicker = YES;
+            
+            // set default blood result date
+            self.resultDate = [NSDate date];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -172,7 +218,7 @@
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     cell.backgroundColor = [UIColor whiteColor];
                     
-                    self.datePicker = [UIDatePicker new];
+                    // self.datePicker = [UIDatePicker new];
                     self.datePicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 300.0f);
                     
                     [self.datePicker addTarget:self
@@ -275,10 +321,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
-    {
-        return indexPath;
-    }
+    if (indexPath.section == 0) return indexPath;
     else return nil;
 }
 
@@ -342,12 +385,12 @@
 
 - (void)done
 {
-    NSMutableDictionary *sampleData = [NSMutableDictionary dictionary];
+    self.sampleData = [NSMutableDictionary dictionary];
     
     // add a unique identifier
     Preferences *preferences = [Preferences sharedPreferences];
     
-    [sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
+    [self.sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
     
     // increment counter
     int counter = [preferences.bloodResultUniqueReferenceCounter intValue];
@@ -355,7 +398,7 @@
     preferences.bloodResultUniqueReferenceCounter = [NSNumber numberWithInt:counter];
     
     // add sample date
-    [sampleData setObject:self.resultDate forKey:@"Result Date"];
+    [self.sampleData setObject:self.resultDate forKey:@"Result Date"];
     
     // add sample results
     for (int section = 1; section < [tableData count]; section ++)
@@ -367,24 +410,24 @@
         {
             CBTableViewRowData *rowData = sectionData.rowData[row];
             
-            [sampleData setObject:rowData.textField.text forKey:rowData.reference];
+            [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
         }
     }
     
     NSString *displayResults = @"NO";
     
-    [sampleData setObject:displayResults forKey:@"Display FBC"];
-    [sampleData setObject:displayResults forKey:@"Display Clotting"];
-    [sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
-    [sampleData setObject:displayResults forKey:@"Display U&Es"];
-    [sampleData setObject:displayResults forKey:@"Display CRP"];
-    [sampleData setObject:displayResults forKey:@"Display LFTs"];
-    [sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
-    [sampleData setObject:displayResults forKey:@"Display Bone Profile"];
-    [sampleData setObject:displayResults forKey:@"Display Magnesium"];
-    [sampleData setObject:displayResults forKey:@"Display Ammonia"];
+    [self.sampleData setObject:displayResults forKey:@"Display FBC"];
+    [self.sampleData setObject:displayResults forKey:@"Display Clotting"];
+    [self.sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
+    [self.sampleData setObject:displayResults forKey:@"Display U&Es"];
+    [self.sampleData setObject:displayResults forKey:@"Display CRP"];
+    [self.sampleData setObject:displayResults forKey:@"Display LFTs"];
+    [self.sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
+    [self.sampleData setObject:displayResults forKey:@"Display Bone Profile"];
+    [self.sampleData setObject:displayResults forKey:@"Display Magnesium"];
+    [self.sampleData setObject:displayResults forKey:@"Display Ammonia"];
     
-    [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:sampleData];
+    [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:self.sampleData];
 }
 
 - (void)cancel

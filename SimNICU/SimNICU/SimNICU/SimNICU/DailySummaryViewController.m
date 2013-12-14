@@ -3068,6 +3068,40 @@
     return indexPath;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    HandoverSection *section = preferences.handoverSections[indexPath.section];
+    
+    if ([section.sectionName isEqualToString:@"Haematology"])
+    {
+        // get the reference to the selected result
+        NSArray *haematologyResults = [self getHaematologyResultsToDisplay];
+        
+        // use @"Unique Reference" to change display value
+        NSDictionary *sampleData;
+        
+        // cycle through all selected patient's sampledata
+        for (sampleData in self.selectedPatient.allBloodResultSampleData)
+        {
+            if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:haematologyResults[indexPath.row][5]])
+            {
+                // instantiate view controller
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.sampleData = [NSMutableDictionary dictionaryWithDictionary:sampleData];
+                vc.bloodResultOrder = @"Haematology First";
+                vc.editOrAddResult = @"Edit";
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+            }
+        }
+    }
+}
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return NO;
@@ -6288,9 +6322,19 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
+{
+    
+    // deselect row
+    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
+}
+
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
+    
+    // deselect row
+    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
 }
 
 - (NSArray *)getHaematologyResultsToDisplay
