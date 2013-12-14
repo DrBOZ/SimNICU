@@ -70,23 +70,6 @@
             
             // update date picker
             self.datePicker.date = self.resultDate;
-            
-            /*
-            // add sample results
-            for (int section = 1; section < [tableData count]; section ++)
-            {
-                CBTableViewSectionData *sectionData = tableData[section];
-                int rows = [sectionData.rowData count];
-                
-                for (int row = 0; row < rows; row ++)
-                {
-                    CBTableViewRowData *rowData = sectionData.rowData[row];
-                    
-                    [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
-                }
-            }
-             */
-            
         }
         else
         {
@@ -296,6 +279,8 @@
             
             cell.accessoryView = rowData.textField;
         }
+        
+        rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
         
         return cell;
     }
