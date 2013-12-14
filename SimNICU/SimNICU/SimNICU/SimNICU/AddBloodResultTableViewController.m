@@ -367,8 +367,6 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    NSLog(@"textFieldDidBeginEditing");
-    
     for (int section = 1; section < tableData.count - 1; section ++) // '- 1' for delete button
     {
         CBTableViewSectionData *sectionData = tableData[section];
@@ -387,11 +385,6 @@
             }
         }
     }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    NSLog(@"textFieldDidEndEditing");
 }
 
 # pragma mark
