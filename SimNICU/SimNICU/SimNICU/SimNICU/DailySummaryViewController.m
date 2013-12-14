@@ -3100,6 +3100,58 @@
             }
         }
     }
+    else if ([section.sectionName isEqualToString:@"Biochemistry"])
+    {
+        // get the reference to the selected result
+        NSArray *biochemistryResults = [self getBiochemistryResultsToDisplay];
+        
+        // use @"Unique Reference" to change display value
+        NSDictionary *sampleData;
+        
+        // cycle through all selected patient's sampledata
+        for (sampleData in self.selectedPatient.allBloodResultSampleData)
+        {
+            if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:biochemistryResults[indexPath.row][7]])
+            {
+                // instantiate view controller
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.sampleData = [NSMutableDictionary dictionaryWithDictionary:sampleData];
+                vc.bloodResultOrder = @"Biochemistry First";
+                vc.editOrAddResult = @"Edit";
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Sepsis"])
+    {
+        // get the reference to the selected result
+        NSArray *CRPResults = [self getCRPResultsToDisplay];
+        
+        // use @"Unique Reference" to change display value
+        NSDictionary *sampleData;
+        
+        // cycle through all selected patient's sampledata
+        for (sampleData in self.selectedPatient.allBloodResultSampleData)
+        {
+            if ([[sampleData objectForKey:@"Unique Reference"] isEqualToNumber:CRPResults[indexPath.row][7]])
+            {
+                // instantiate view controller
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.sampleData = [NSMutableDictionary dictionaryWithDictionary:sampleData];
+                vc.bloodResultOrder = @"Sepsis First";
+                vc.editOrAddResult = @"Edit";
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+            }
+        }
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
