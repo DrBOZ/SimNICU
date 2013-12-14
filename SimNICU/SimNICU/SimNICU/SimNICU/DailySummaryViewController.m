@@ -2853,6 +2853,15 @@
             }
             else
             {
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.bloodResultOrder = @"Haematology First";
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+                
+                /*
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Haematology", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -2860,6 +2869,7 @@
                 
                 actionSheet.tag = 0;
                 [actionSheet showOnViewController:self];
+                 */
             }
         }
         
@@ -2912,6 +2922,15 @@
             }
             else
             {
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.bloodResultOrder = @"Biochemistry First";
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+                
+                /*
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Biochemistry", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -2919,6 +2938,7 @@
                 
                 actionSheet.tag = 1;
                 [actionSheet showOnViewController:self];
+                 */
             }
         }
         // Sepsis
@@ -2950,6 +2970,15 @@
             }
             else
             {
+                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.bloodResultOrder = @"Sepsis First";
+                vc.delegate = self;
+                
+                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+                
+                [self setupAndPresentModalNavController:navController];
+                
+                /*
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Sepsis", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
@@ -2957,6 +2986,7 @@
                 
                 actionSheet.tag = 2;
                 [actionSheet showOnViewController:self];
+                 */
             }
         }
         
@@ -6257,6 +6287,9 @@
 
 - (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
 {
+    // update display properties
+    [self setDisplayValuesForSampleData:sampleData];
+    
     // check if array exists
     if (!self.selectedPatient.allBloodResultSampleData)
     {
@@ -6270,6 +6303,78 @@
     // reorder array
     self.selectedPatient.allBloodResultSampleData = [self reorderArrayByDate:self.selectedPatient.allBloodResultSampleData];
     
+    // reload table
+    [self.myTableView2 reloadData];
+    
+    // check if a new bilirubin result has been added
+    if (![[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"] isEqualToString:@""])
+    {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        // ensure birth date has been added
+        if (self.selectedPatient.birthDate)
+        {
+            NSNumberFormatter *formatter = [NSNumberFormatter new];
+            
+            BilirubinResult *biliresult = [BilirubinResult new];
+            biliresult.sampleAgeInDays = [NSNumber numberWithDouble:[CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[sampleData objectForKey:@"Result Date"]]];
+            
+            biliresult.bilirubinResult = [formatter numberFromString:[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"]];
+            biliresult.bilirubinUnit = preferences.bilirubinUnits;
+            
+            // add result to bilirubin chart
+            [self phototherapyAddBilirubinResultViewController:nil
+                             didFinishAddingNewBilirubinResult:biliresult
+                                                  forBirthDate:self.selectedPatient.birthDate];
+        }
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
+{
+    // update display properties
+    [self setDisplayValuesForSampleData:sampleData];
+    
+    // cycle through all blood result sample data and use the unique refence number to replace sampleData
+    for (int i = 0; i < [self.selectedPatient.allBloodResultSampleData count]; i++)
+    {
+        if ([[self.selectedPatient.allBloodResultSampleData[i] objectForKey:@"Unique Reference"] isEqualToNumber:[sampleData objectForKey:@"Unique Reference"]])
+        {
+            // replace data
+            [self.selectedPatient.allBloodResultSampleData replaceObjectAtIndex:i withObject:sampleData];
+        }
+    }
+    
+    // reorder array
+    self.selectedPatient.allBloodResultSampleData = [self reorderArrayByDate:self.selectedPatient.allBloodResultSampleData];
+    
+    // reload table
+    [self.myTableView2 reloadData];
+    
+#warning watch out for changes to bilirubin results already plotted!
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // deselect row
+    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
+}
+
+- (NSMutableArray *)reorderArrayByDate:(NSMutableArray *)allBloodResultsSampleData
+{
+    NSArray *sortedBloodResultsSampleData = [allBloodResultsSampleData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+                                             {
+                                                 NSDate *first = [(NSDictionary *)a objectForKey:@"Result Date"];
+                                                 NSDate *second = [(NSDictionary *)b objectForKey:@"Result Date"];
+                                                 return [first compare:second];
+                                             }];
+    
+    return [NSMutableArray arrayWithArray:sortedBloodResultsSampleData];
+}
+
+- (void)setDisplayValuesForSampleData:(NSDictionary *)sampleData
+{
     // check Haematology
     {
         // check FBC
@@ -6337,72 +6442,6 @@
             [sampleData setValue:@"YES" forKey:@"Display Ammonia"];
         }
     }
-    
-    // reload table
-    [self.myTableView2 reloadData];
-    
-    // check if a new bilirubin result has been added
-    if (![[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"] isEqualToString:@""])
-    {
-        Preferences *preferences = [Preferences sharedPreferences];
-        
-        // ensure birth date has been added
-        if (self.selectedPatient.birthDate)
-        {
-            NSNumberFormatter *formatter = [NSNumberFormatter new];
-            
-            BilirubinResult *biliresult = [BilirubinResult new];
-            biliresult.sampleAgeInDays = [NSNumber numberWithDouble:[CBTimeMethods getDaysDifferenceDoubleBetween:self.selectedPatient.birthDate and:[sampleData objectForKey:@"Result Date"]]];
-            
-            biliresult.bilirubinResult = [formatter numberFromString:[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"]];
-            biliresult.bilirubinUnit = preferences.bilirubinUnits;
-            
-            // add result to bilirubin chart
-            [self phototherapyAddBilirubinResultViewController:nil
-                             didFinishAddingNewBilirubinResult:biliresult
-                                                  forBirthDate:self.selectedPatient.birthDate];
-        }
-    }
-    
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
-{
-    // cycle through all blood result sample data and use the unique refence number to replace sampleData
-    for (int i = 0; i < [self.selectedPatient.allBloodResultSampleData count]; i++)
-    {
-        if ([[self.selectedPatient.allBloodResultSampleData[i] objectForKey:@"Unique Reference"] isEqualToNumber:[sampleData objectForKey:@"Unique Reference"]])
-        {
-            // replace data
-            [self.selectedPatient.allBloodResultSampleData replaceObjectAtIndex:i withObject:sampleData];
-        }
-    }
-    
-    // reorder array
-    self.selectedPatient.allBloodResultSampleData = [self reorderArrayByDate:self.selectedPatient.allBloodResultSampleData];
-    
-    // reload table
-    [self.myTableView2 reloadData];
-    
-#warning watch out for changes to bilirubin results already plotted!
-    
-    [self dismissModalViewControllerAnimated:YES];
-    
-    // deselect row
-    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
-}
-
-- (NSMutableArray *)reorderArrayByDate:(NSMutableArray *)allBloodResultsSampleData
-{
-    NSArray *sortedBloodResultsSampleData = [allBloodResultsSampleData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
-                                             {
-                                                 NSDate *first = [(NSDictionary *)a objectForKey:@"Result Date"];
-                                                 NSDate *second = [(NSDictionary *)b objectForKey:@"Result Date"];
-                                                 return [first compare:second];
-                                             }];
-    
-    return [NSMutableArray arrayWithArray:sortedBloodResultsSampleData];
 }
 
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller
@@ -6823,8 +6862,8 @@
         if (buttonIndex == 3)
         {
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.delegate = self;
             vc.bloodResultOrder = @"Haematology First";
+            vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
@@ -6838,8 +6877,8 @@
         if (buttonIndex == 2)
         {
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.delegate = self;
             vc.bloodResultOrder = @"Biochemistry First";
+            vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
@@ -6852,14 +6891,19 @@
         if (buttonIndex == 2)
         {
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.delegate = self;
             vc.bloodResultOrder = @"Sepsis First";
+            vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
             [self setupAndPresentModalNavController:navController];
         }
     }
+}
+
+- (void)actionSheet:(JLActionSheet *)actionSheet didDismissButtonAtIndex:(NSInteger)buttonIndex
+{
+    // do nothing
 }
 
 @end

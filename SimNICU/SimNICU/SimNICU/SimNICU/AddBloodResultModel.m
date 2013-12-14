@@ -14,7 +14,7 @@
 
 + (NSArray *)getArrayForTableViewInBloodResultOrder:(NSString *)bloodResultOrder
 {
-    NSMutableArray *tableData = [[NSMutableArray alloc] initWithCapacity:5];
+    NSMutableArray *tableData = [[NSMutableArray alloc] initWithCapacity:9];
     
     CBTableViewSectionData *sectionData;
     CBTableViewRowData *rowData;
@@ -894,6 +894,17 @@
             [tableData addObject:sectionData];
         }
     }
+    
+    // Delete button
+    sectionData = [CBTableViewSectionData new];
+    sectionData.titleForHeader = nil;
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:1];
+    
+    rowData = [CBTableViewRowData new];
+    rowData.text = @"Delete";
+    [sectionData.rowData addObject:rowData];
+    
+    [tableData addObject:sectionData];
     
     return tableData;
 }

@@ -98,7 +98,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [tableData count];
+    if (![self.editOrAddResult isEqualToString:@"Edit"]) return [tableData count] - 1;
+    else return [tableData count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -145,11 +146,22 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == (tableData.count - 1))
+    if ([self.editOrAddResult isEqualToString:@"Edit"])
     {
-        return 300.0f;
+        if (section == (tableData.count - 1))
+        {
+            return 300.0f;
+        }
+        else return 0.0f;
     }
-    else return 0.0f;
+    else
+    {
+        if (section == (tableData.count - 2))
+        {
+            return 300.0f;
+        }
+        else return 0.0f;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -250,6 +262,32 @@
             return cell;
         }
     }
+    else if (indexPath.section == tableData.count - 1)
+    {
+        // Delete cell
+        static NSString *CellIdentifier = @"Delete";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if(!cell)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.textLabel.textColor = [UIColor redColor];
+            cell.backgroundColor = [UIColor whiteColor];
+            
+            UILabel *deleteLabel = [UILabel new];
+            deleteLabel.text = NSLocalizedString(@"Delete Result", nil);
+            deleteLabel.frame = CGRectMake(0.0f, 0.0f, 320.0f, 44.0f);
+            deleteLabel.textAlignment = UITextAlignmentCenter;
+            deleteLabel.textColor = [UIColor redColor];
+            [cell addSubview:deleteLabel];
+        }
+        
+        // cell.textLabel.text = NSLocalizedString(@"Delete Result", nil);
+        
+        return cell;
+    }
     else
     {
         NSString *CellIdentifier = [NSString stringWithFormat:@"%i - %i", indexPath.section, indexPath.row];
@@ -306,22 +344,22 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) return indexPath;
+    if (indexPath.section == 0 || (indexPath.section == tableData.count - 1)) return indexPath;
     else return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
+    if (indexPath.section == 0 && indexPath.row == 0)
     {
         showDatePicker = !showDatePicker;
         
         // update table
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-    else
+    else if (indexPath.section == tableData.count - 1)
     {
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+#warning implement delete
     }
 }
 
