@@ -370,22 +370,53 @@
 
 - (void)done
 {
-    self.sampleData = [NSMutableDictionary dictionary];
-    
-    // add a unique identifier
-    Preferences *preferences = [Preferences sharedPreferences];
-    
-    [self.sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
-    
-    // increment counter
-    int counter = [preferences.bloodResultUniqueReferenceCounter intValue];
-    counter ++;
-    preferences.bloodResultUniqueReferenceCounter = [NSNumber numberWithInt:counter];
-    
-    // add sample date
+    if ([self.editOrAddResult isEqualToString:@"Edit"])
+    {
+        // update sample data
+        [self updateSampleData];
+        
+        [self.delegate addBloodResultTableViewControllerDidFinishEditing:self withSampleData:self.sampleData];
+    }
+    else
+    {
+        self.sampleData = [NSMutableDictionary dictionary];
+        
+        // add a unique identifier
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        [self.sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
+        
+        // increment counter
+        int counter = [preferences.bloodResultUniqueReferenceCounter intValue];
+        counter ++;
+        preferences.bloodResultUniqueReferenceCounter = [NSNumber numberWithInt:counter];
+        
+        // add results to sample data
+        [self updateSampleData];
+        
+        NSString *displayResults = @"NO";
+        
+        [self.sampleData setObject:displayResults forKey:@"Display FBC"];
+        [self.sampleData setObject:displayResults forKey:@"Display Clotting"];
+        [self.sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
+        [self.sampleData setObject:displayResults forKey:@"Display U&Es"];
+        [self.sampleData setObject:displayResults forKey:@"Display CRP"];
+        [self.sampleData setObject:displayResults forKey:@"Display LFTs"];
+        [self.sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
+        [self.sampleData setObject:displayResults forKey:@"Display Bone Profile"];
+        [self.sampleData setObject:displayResults forKey:@"Display Magnesium"];
+        [self.sampleData setObject:displayResults forKey:@"Display Ammonia"];
+        
+        [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:self.sampleData];
+    }
+}
+
+- (void)updateSampleData
+{
+    // add/update sample date
     [self.sampleData setObject:self.resultDate forKey:@"Result Date"];
     
-    // add sample results
+    // add/update sample results
     for (int section = 1; section < [tableData count]; section ++)
     {
         CBTableViewSectionData *sectionData = tableData[section];
@@ -398,21 +429,6 @@
             [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
         }
     }
-    
-    NSString *displayResults = @"NO";
-    
-    [self.sampleData setObject:displayResults forKey:@"Display FBC"];
-    [self.sampleData setObject:displayResults forKey:@"Display Clotting"];
-    [self.sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
-    [self.sampleData setObject:displayResults forKey:@"Display U&Es"];
-    [self.sampleData setObject:displayResults forKey:@"Display CRP"];
-    [self.sampleData setObject:displayResults forKey:@"Display LFTs"];
-    [self.sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
-    [self.sampleData setObject:displayResults forKey:@"Display Bone Profile"];
-    [self.sampleData setObject:displayResults forKey:@"Display Magnesium"];
-    [self.sampleData setObject:displayResults forKey:@"Display Ammonia"];
-    
-    [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:self.sampleData];
 }
 
 - (void)cancel

@@ -6215,15 +6215,8 @@
     // add sample data to selected patient
     [self.selectedPatient.allBloodResultSampleData addObject:sampleData];
     
-    // reorder self.selectedPatient.allBloodResultSampleData based on sampleDate
-    NSArray *sortedBloodResultsSampleData = [self.selectedPatient.allBloodResultSampleData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
-                                             {
-                                                 NSDate *first = [(NSDictionary *)a objectForKey:@"Result Date"];
-                                                 NSDate *second = [(NSDictionary *)b objectForKey:@"Result Date"];
-                                                 return [first compare:second];
-                                             }];
-    
-    self.selectedPatient.allBloodResultSampleData = [NSMutableArray arrayWithArray:sortedBloodResultsSampleData];
+    // reorder array
+    self.selectedPatient.allBloodResultSampleData = [self reorderArrayByDate:self.selectedPatient.allBloodResultSampleData];
     
     // check Haematology
     {
@@ -6324,9 +6317,40 @@
 
 - (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
 {
+    // cycle through all blood result sample data and use the unique refence number to replace sampleData
+    for (int i = 0; i < [self.selectedPatient.allBloodResultSampleData count]; i++)
+    {
+        if ([[self.selectedPatient.allBloodResultSampleData[i] objectForKey:@"Unique Reference"] isEqualToNumber:[sampleData objectForKey:@"Unique Reference"]])
+        {
+            // replace data
+            [self.selectedPatient.allBloodResultSampleData replaceObjectAtIndex:i withObject:sampleData];
+        }
+    }
+    
+    // reorder array
+    self.selectedPatient.allBloodResultSampleData = [self reorderArrayByDate:self.selectedPatient.allBloodResultSampleData];
+    
+    // reload table
+    [self.myTableView2 reloadData];
+    
+#warning watch out for changes to bilirubin results already plotted!
+    
+    [self dismissModalViewControllerAnimated:YES];
     
     // deselect row
     [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
+}
+
+- (NSMutableArray *)reorderArrayByDate:(NSMutableArray *)allBloodResultsSampleData
+{
+    NSArray *sortedBloodResultsSampleData = [allBloodResultsSampleData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+                                             {
+                                                 NSDate *first = [(NSDictionary *)a objectForKey:@"Result Date"];
+                                                 NSDate *second = [(NSDictionary *)b objectForKey:@"Result Date"];
+                                                 return [first compare:second];
+                                             }];
+    
+    return [NSMutableArray arrayWithArray:sortedBloodResultsSampleData];
 }
 
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller
