@@ -2768,7 +2768,7 @@
             if (indexPath.row < numberOfBiochemistryResultsToDisplay)
             {
                 // these are for the biochemistry results
-                titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
+                titleForDeleteConfirmationButton = NSLocalizedString(@"Hide Result", nil);
             }
         }
         else if ([section.sectionName isEqualToString:@"Sepsis"])
@@ -2778,7 +2778,7 @@
             if (indexPath.row < numberOfCRPResultsToDisplay)
             {
                 // these are for the CRP results
-                titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
+                titleForDeleteConfirmationButton = NSLocalizedString(@"Hide Result", nil);
             }
         }
     }
