@@ -2757,7 +2757,7 @@
             if (indexPath.row < numberOfHaematologyResultsToDisplay)
             {
                 // these are for the haematology results
-                titleForDeleteConfirmationButton = NSLocalizedString(@"Remove from Summary", nil);
+                titleForDeleteConfirmationButton = NSLocalizedString(@"Hide Result", nil);
             }
         }
         else if ([section.sectionName isEqualToString:@"Biochemistry"])
@@ -2848,28 +2848,20 @@
                     }
                 }
                 
-                // reload 'Haematology' section
-                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                // delete row
+                NSArray *indexPaths = @[indexPath];
+                
+                [self.myTableView2 deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             else
             {
-                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.bloodResultOrder = @"Haematology First";
-                vc.delegate = self;
-                
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-                
-                [self setupAndPresentModalNavController:navController];
-                
-                /*
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Haematology", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) ,NSLocalizedString(@"Add transfusion information", nil), NSLocalizedString(@"Show all results", nil)]];
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show hidden results", nil)]];
                 
                 actionSheet.tag = 0;
                 [actionSheet showOnViewController:self];
-                 */
             }
         }
         
@@ -2917,28 +2909,20 @@
                     }
                 }
                 
-                // reload 'Biochemistry' section
-                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                // delete row
+                NSArray *indexPaths = @[indexPath];
+                
+                [self.myTableView2 deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             else
             {
-                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.bloodResultOrder = @"Biochemistry First";
-                vc.delegate = self;
-                
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-                
-                [self setupAndPresentModalNavController:navController];
-                
-                /*
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Biochemistry", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show all results", nil)]];
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show hidden results", nil)]];
                 
                 actionSheet.tag = 1;
                 [actionSheet showOnViewController:self];
-                 */
             }
         }
         // Sepsis
@@ -2965,28 +2949,20 @@
                     }
                 }
                 
-                // reload 'Sepsis' section
-                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                // delete row
+                NSArray *indexPaths = @[indexPath];
+                
+                [self.myTableView2 deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             else
             {
-                AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.bloodResultOrder = @"Sepsis First";
-                vc.delegate = self;
-                
-                PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
-                
-                [self setupAndPresentModalNavController:navController];
-                
-                /*
                 JLActionSheet *actionSheet = [[JLActionSheet alloc] initWithTitle:NSLocalizedString(@"Sepsis", nil)
                                                                          delegate:self
                                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show all results", nil)]];
+                                                                otherButtonTitles:@[NSLocalizedString(@"Add new results", nil) , NSLocalizedString(@"Show hidden results", nil)]];
                 
                 actionSheet.tag = 2;
                 [actionSheet showOnViewController:self];
-                 */
             }
         }
         
@@ -6288,7 +6264,7 @@
 - (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
 {
     // update display properties
-    [self setDisplayValuesForSampleData:sampleData];
+    [self setDisplayValuesForSampleData:sampleData forSectionName:nil];
     
     // check if array exists
     if (!self.selectedPatient.allBloodResultSampleData)
@@ -6335,7 +6311,7 @@
 - (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
 {
     // update display properties
-    [self setDisplayValuesForSampleData:sampleData];
+    [self setDisplayValuesForSampleData:sampleData forSectionName:nil];
     
     // cycle through all blood result sample data and use the unique refence number to replace sampleData
     for (int i = 0; i < [self.selectedPatient.allBloodResultSampleData count]; i++)
@@ -6373,9 +6349,10 @@
     return [NSMutableArray arrayWithArray:sortedBloodResultsSampleData];
 }
 
-- (void)setDisplayValuesForSampleData:(NSDictionary *)sampleData
+- (void)setDisplayValuesForSampleData:(NSDictionary *)sampleData forSectionName:(NSString *)sectionName
 {
     // check Haematology
+    if ([sectionName isEqualToString:@"Haematology"] || !sectionName)
     {
         // check FBC
         if (![[sampleData objectForKey:@"Haemoglobin value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Total White Cell Count value"] isEqualToString:@""] || ![[sampleData objectForKey:@"Platelet value"] isEqualToString:@""])
@@ -6398,6 +6375,7 @@
     }
     
     // check Biochemistry
+    if ([sectionName isEqualToString:@"Biochemistry"] || !sectionName)
     {
         // check U&Es
         if (![[sampleData objectForKey:@"Sodium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Potassium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Urea value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Creatinine value (serum)"] isEqualToString:@""])
@@ -6440,6 +6418,16 @@
         {
             // there is a new Ammonia result to display
             [sampleData setValue:@"YES" forKey:@"Display Ammonia"];
+        }
+    }
+    
+    if ([sectionName isEqualToString:@"Sepsis"] || !sectionName)
+    {
+        // check CRP again
+        if (![[sampleData objectForKey:@"C Reactive Protein value"] isEqualToString:@""])
+        {
+            // there is a new CRP result to display
+            [sampleData setValue:@"YES" forKey:@"Display CRP"];
         }
     }
 }
@@ -6859,8 +6847,9 @@
     if (actionSheet.tag == 0)
     {
         // add blood results
-        if (buttonIndex == 3)
+        if (buttonIndex == 2)
         {
+            // Add new results
             AddBloodResultTableViewController *vc = [[AddBloodResultTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.bloodResultOrder = @"Haematology First";
             vc.delegate = self;
@@ -6868,6 +6857,21 @@
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
             [self setupAndPresentModalNavController:navController];
+        }
+        else if (buttonIndex == 1)
+        {
+            // Show hidden results
+            NSDictionary *sampleData;
+            
+            // cycle through all selected patient's sampledata
+            for (sampleData in self.selectedPatient.allBloodResultSampleData)
+            {
+                // check for FBC/Clotting/Fibrinogen results
+                [self setDisplayValuesForSampleData:sampleData forSectionName:@"Haematology"];
+            }
+            
+            // update Haematology section
+            [self updateHandoverSection:@"Haematology"];
         }
     }
     // Biochemistry
@@ -6884,6 +6888,21 @@
             
             [self setupAndPresentModalNavController:navController];
         }
+        else if (buttonIndex == 1)
+        {
+            // Show hidden results
+            NSDictionary *sampleData;
+            
+            // cycle through all selected patient's sampledata
+            for (sampleData in self.selectedPatient.allBloodResultSampleData)
+            {
+                // check for Biochemistry data
+                [self setDisplayValuesForSampleData:sampleData forSectionName:@"Biochemistry"];
+            }
+            
+            // update Biochemistry section
+            [self updateHandoverSection:@"Biochemistry"];
+        }
     }
     else if (actionSheet.tag == 2)
     {
@@ -6898,7 +6917,42 @@
             
             [self setupAndPresentModalNavController:navController];
         }
+        else if (buttonIndex == 1)
+        {
+            // Show hidden results
+            NSDictionary *sampleData;
+            
+            // cycle through all selected patient's sampledata
+            for (sampleData in self.selectedPatient.allBloodResultSampleData)
+            {
+                // check for CRP results
+                [self setDisplayValuesForSampleData:sampleData forSectionName:@"Sepsis"];
+            }
+            
+            // update Sepsis section
+            [self updateHandoverSection:@"Sepsis"];
+        }
     }
+}
+
+- (void)updateHandoverSection:(NSString *)handoverSection
+{
+    // find section reference
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    for (int i = 0; i < preferences.handoverSections.count; i++)
+    {
+        HandoverSection *section = preferences.handoverSections[i];
+        
+        if ([section.sectionName isEqualToString:handoverSection])
+        {
+            // reload section
+            [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:i] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
+    
+    // turn off editing
+    self.editing = !self.editing;
 }
 
 - (void)actionSheet:(JLActionSheet *)actionSheet didDismissButtonAtIndex:(NSInteger)buttonIndex
