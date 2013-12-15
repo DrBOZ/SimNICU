@@ -143,18 +143,7 @@
         int newRowIndex = [bay.patientsInBay count];
         
         // create demo patient which is a week old
-        Patient *patient = [[Patient alloc] init];
-        patient.firstname = @"Demo";
-        patient.lastname = @"Patient";
-        patient.gestation = @"27+5";
-        
-        patient.activeProblems = @"Prematurity\nRDS\nAnaemia of prematurity\nPDA\nHyponatraemia";
-        patient.resolvedProblems = @"Distended abdomen\nSuspected sepsis\n- Group B Srep positive";
-        patient.lines = @"Nil\nLong line removed (12/12)";
-        patient.echocardiogram = @"";
-        patient.drugs = @"Chlorothiazide 10ml/kg BD\nSpironolactone 1mg/kg BD\nCaffeine citrate";
-        patient.rop = @"In book for 23rd December";
-        patient.cranialUSS = @"Day 2 CrUSS normal\nDay 7 CrUSS normal";
+        Patient *patient = [Patient createDemoPatient:@1];
         
         // add patient into
         [bay.patientsInBay addObject:patient];

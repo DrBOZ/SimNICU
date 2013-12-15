@@ -290,12 +290,6 @@
     self.myTableView2.delegate = self;
     
     [self.view addSubview:self.myTableView2];
-    
-    NSLog(@"demo.patient.firstname: %@", self.selectedPatient.firstname);
-    NSLog(@"demo.patient.lastname : %@", self.selectedPatient.lastname);
-    NSLog(@"demo.patient.gestation: %@", self.selectedPatient.gestation);
-    NSLog(@"demo.patient.birthDate: %@", self.selectedPatient.birthDate);
-    NSLog(@"demo.patient.activeProblems: %@", self.selectedPatient.activeProblems);
 }
 
 - (void)didReceiveMemoryWarning

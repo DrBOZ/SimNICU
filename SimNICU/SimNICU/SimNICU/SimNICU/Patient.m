@@ -860,6 +860,78 @@
     return formattedWeight;
 }
 
++ (Patient *)createDemoPatient:(NSNumber *)number
+{
+    Patient *patient = [Patient new];
+    
+    if ([number isEqualToNumber:@1])
+    {
+        patient.firstname = @"Demo";
+        patient.lastname = @"Patient";
+        patient.birthDate = [NSDate dateWithTimeIntervalSinceNow:-244800];
+        patient.birthTimeSet = @"YES";
+        patient.gestation = @"27+5";
+        patient.birthWeight = @"1.255";
+        patient.workingWeight = @"1.255";
+        
+        patient.activeProblems = @"Prematurity\nRDS\nAnaemia of prematurity\nPDA\nHyponatraemia";
+        patient.resolvedProblems = @"Distended abdomen\nSuspected sepsis\n- Group B Srep positive";
+        patient.ventilationAndSedation = @"NCPAP 31% FiO2\nOccasional self-correcting desats and bradys";
+        patient.cardiovascular = @"HR 140 - 160\nMean BP > 32";
+        patient.lines = @"24G dorsum right hand\nLong line right long saphenous (day 2)";
+        patient.jaundice = @"Well below phototherapy line";
+        patient.sepsis = @"Temp 36.5 - 36.4";
+        patient.drugs = @"Chlorothiazide 10ml/kg BD\nSpironolactone 1mg/kg BD\nCaffeine citrate";
+        patient.rop = @"In book for 23rd December";
+        patient.cranialUSS = @"Day 2 CrUSS normal\nDay 7 CrUSS normal";
+        patient.impression = @"Pink\nActive\nHR 157\nNo murmurs\nNo bounding pulses\nCRT less than 1 sec\nRR 50\nMinimal recession\nSaO2 91% on NCPAP FiO2 31%\nAbdomen distended with everted umbilicus\nNon-tender, not shiny or tense\nNot oedematous";
+        patient.plan = @"Persisting NCPAP requirement in higher FiO2.\nAbdomen more distended than yesterday now nearing full enteral feeds";
+        
+        
+        patient.allBloodResultSampleData = [[NSMutableArray alloc] initWithCapacity:5];
+        
+        NSMutableDictionary *sampleData = [NSMutableDictionary dictionary];
+        
+        // admission blood results (30 min)
+        [sampleData setValue:@"YES" forKey:@"Display FBC"];
+        [sampleData setValue:@"18.6" forKey:@"Haemoglobin value"];
+        [sampleData setValue:@"15.6" forKey:@"Total White Cell Count value"];
+        [sampleData setValue:@"366" forKey:@"Platelet value"];
+        
+        [sampleData setValue:@"YES" forKey:@"Display CRP"];
+        [sampleData setValue:@"<5" forKey:@"C Reactive Protein value"];
+        
+        [sampleData setValue:[NSDate dateWithTimeIntervalSinceNow:-243000] forKey:@"Result Date"];
+        [sampleData setValue:@1 forKey:@"Unique Reference"];
+        
+        [patient.allBloodResultSampleData addObject:sampleData];
+        
+        sampleData = [NSMutableDictionary dictionary];
+        
+        // 8 hour blood results
+        [sampleData setValue:@"YES" forKey:@"Display FBC"];
+        [sampleData setValue:@"16.4" forKey:@"Haemoglobin value"];
+        [sampleData setValue:@"12.7" forKey:@"Total White Cell Count value"];
+        [sampleData setValue:@"290" forKey:@"Platelet value"];
+        
+        [sampleData setValue:@"YES" forKey:@"Display U&Es"];
+        [sampleData setValue:@"139" forKey:@"Sodium value (serum)"];
+        [sampleData setValue:@"5.0" forKey:@"Potassium value (serum)"];
+        [sampleData setValue:@"7.3" forKey:@"Urea value (serum)"];
+        [sampleData setValue:@"58" forKey:@"Creatinine value (serum)"];
+        
+        [sampleData setValue:@"YES" forKey:@"Display CRP"];
+        [sampleData setValue:@"<5" forKey:@"C Reactive Protein value"];
+        
+        [sampleData setValue:[NSDate dateWithTimeIntervalSinceNow:-216000] forKey:@"Result Date"];
+        [sampleData setValue:@2 forKey:@"Unique Reference"];
+        
+        [patient.allBloodResultSampleData addObject:sampleData];
+    }
+    
+    return patient;
+}
+
 - (BOOL)meetsCriteriaForROPScreening
 {
     BOOL patientMeetsCriteria = NO;

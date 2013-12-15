@@ -41,10 +41,6 @@
 // All blood result sample data
 @property (nonatomic, strong) NSMutableArray *allBloodResultSampleData;
 
-// Displayed Haematology results
-
-// Displayed Biochemistry results
-
 // Bilirubin results
 @property (nonatomic, strong) NSMutableArray *bilirubinResults; // all plotted
 
@@ -157,6 +153,7 @@
 @property (nonatomic, retain) NSString *dct;
 
 + (NSString *)formatWeight:(NSString *)weight;
++ (Patient *)createDemoPatient:(NSNumber *)number;
 
 - (NSString *)returnDisplayTextLabelText;
 - (NSString *)returnTwoLineDetailDisplayLabelText;
