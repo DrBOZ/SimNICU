@@ -48,6 +48,7 @@
     CGFloat tableWidth;
 }
 
+// lazy instantiation
 - (NSMutableArray *)bayData
 {
     if (!_bayData)
@@ -129,7 +130,44 @@
     }
     else
     {
+        // for backward compatibility
         self.patientList = [[NSMutableArray alloc] initWithCapacity:20];
+        
+#if INCLUDE_DEMO_PATIENT
+        
+        // work out where to add new patient, both in database and in table view
+        int sectionToAddNewPatient = [self.bayData count] + 1;
+        int lastBayInBayData = [self.bayData count] - 1;
+        
+        Bay *bay = self.bayData[lastBayInBayData];
+        int newRowIndex = [bay.patientsInBay count];
+        
+        // create demo patient which is a week old
+        Patient *patient = [[Patient alloc] init];
+        patient.firstname = @"Demo";
+        patient.lastname = @"Patient";
+        patient.gestation = @"27+5";
+        
+        patient.activeProblems = @"Prematurity\nRDS\nAnaemia of prematurity\nPDA\nHyponatraemia";
+        patient.resolvedProblems = @"Distended abdomen\nSuspected sepsis\n- Group B Srep positive";
+        patient.lines = @"Nil\nLong line removed (12/12)";
+        patient.echocardiogram = @"";
+        patient.drugs = @"Chlorothiazide 10ml/kg BD\nSpironolactone 1mg/kg BD\nCaffeine citrate";
+        patient.rop = @"In book for 23rd December";
+        patient.cranialUSS = @"Day 2 CrUSS normal\nDay 7 CrUSS normal";
+        
+        // add patient into
+        [bay.patientsInBay addObject:patient];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddNewPatient];
+        NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+        
+        // insert newly added patient into table view
+        [self.myTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        // scroll down to newly added patient
+        [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+#endif
     }
 }
 
@@ -1954,8 +1992,6 @@
 
 - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient
 {
-    NSLog(@"didFinishAddingPatient");
-    
     [self setEditing:NO animated:YES];
     
     // work out where to add new patient, both in database and in table view

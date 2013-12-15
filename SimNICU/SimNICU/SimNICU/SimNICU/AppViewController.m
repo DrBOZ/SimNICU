@@ -563,7 +563,7 @@
             loadingDisplayTextLabel.textAlignment = UITextAlignmentLeft;
             loadingDisplayTextLabel.textColor = [UIColor whiteColor];
             loadingDisplayTextLabel.adjustsFontSizeToFitWidth = YES;
-            loadingDisplayTextLabel.text = @"LOADING";
+            loadingDisplayTextLabel.text = NSLocalizedString(@"LOADING", @"App loading, verb");
             loadingDisplayTextLabel.hidden = NO;
             [self.myHeaderView addSubview:loadingDisplayTextLabel];
             
@@ -574,7 +574,7 @@
             loadingDisplayDetailTextLabel.textAlignment = UITextAlignmentLeft;
             loadingDisplayDetailTextLabel.textColor = [UIColor whiteColor];
             loadingDisplayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-            loadingDisplayDetailTextLabel.text = @"Please wait...";
+            loadingDisplayDetailTextLabel.text = NSLocalizedString(@"Please wait...", @"Asking user to wait");
             loadingDisplayDetailTextLabel.hidden = NO;
             [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
             
@@ -601,7 +601,7 @@
             loadingDisplayTextLabel.textAlignment = UITextAlignmentCenter;
             loadingDisplayTextLabel.textColor = [UIColor whiteColor];
             loadingDisplayTextLabel.adjustsFontSizeToFitWidth = YES;
-            loadingDisplayTextLabel.text = @"LOADING";
+            loadingDisplayTextLabel.text = NSLocalizedString(@"LOADING", nil);
             loadingDisplayTextLabel.hidden = NO;
             [self.myHeaderView addSubview:loadingDisplayTextLabel];
             
@@ -612,7 +612,7 @@
             loadingDisplayDetailTextLabel.textAlignment = UITextAlignmentCenter;
             loadingDisplayDetailTextLabel.textColor = [UIColor whiteColor];
             loadingDisplayDetailTextLabel.adjustsFontSizeToFitWidth = YES;
-            loadingDisplayDetailTextLabel.text = @"Please wait...";
+            loadingDisplayDetailTextLabel.text = NSLocalizedString(@"Please wait...", nil);
             loadingDisplayDetailTextLabel.hidden = NO;
             [self.myHeaderView addSubview:loadingDisplayDetailTextLabel];
         }
