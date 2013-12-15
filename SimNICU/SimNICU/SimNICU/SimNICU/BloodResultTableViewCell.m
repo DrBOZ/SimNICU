@@ -254,7 +254,7 @@
             Mg.text = NSLocalizedString(@"Mg", nil);
             [self.contentView addSubview:Mg];
             
-            self.MgResult = [[UILabel alloc] initWithFrame:CGRectMake(40.0f, 3.0f, 50.0f, 22.0f)];
+            self.MgResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
             self.MgResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.MgResult];
             

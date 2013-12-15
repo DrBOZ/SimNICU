@@ -868,6 +868,8 @@
 		5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */; };
 		5CEB6693181EA101008FC40B /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CEB6692181EA101008FC40B /* ShinobiCharts.framework */; };
+		5CED07FB185DE8420010A291 /* AppViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED07FA185DE8420010A291 /* AppViewModel.m */; };
+		5CED07FC185DE8420010A291 /* AppViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED07FA185DE8420010A291 /* AppViewModel.m */; };
 		5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */; };
 		5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED21FE17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m */; };
@@ -1624,6 +1626,8 @@
 		5CE500D817A05CB4000F825E /* CBDatePickerActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatePickerActionSheet.m; sourceTree = "<group>"; };
 		5CEB6690181EA033008FC40B /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
 		5CEB6692181EA101008FC40B /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
+		5CED07F9185DE8420010A291 /* AppViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewModel.h; sourceTree = "<group>"; };
+		5CED07FA185DE8420010A291 /* AppViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewModel.m; sourceTree = "<group>"; };
 		5CED21F917A4529C00A5EC9E /* CorrectedAgeInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeInfoViewController.h; sourceTree = "<group>"; };
 		5CED21FA17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorrectedAgeInfoViewController.m; sourceTree = "<group>"; };
 		5CED21FD17A478F000A5EC9E /* AgeCalculatorsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgeCalculatorsInfoViewController.h; sourceTree = "<group>"; };
@@ -3038,6 +3042,8 @@
 			children = (
 				5C940AFE166E3B110044A7D1 /* AppViewController.h */,
 				5C940AFF166E3B110044A7D1 /* AppViewController.m */,
+				5CED07F9185DE8420010A291 /* AppViewModel.h */,
+				5CED07FA185DE8420010A291 /* AppViewModel.m */,
 				5C940B00166E3B110044A7D1 /* AppViewController.xib */,
 			);
 			name = "Front View";
@@ -4255,6 +4261,7 @@
 				5C8B20651791125000579522 /* DrugDoseTableViewCell.m in Sources */,
 				5C679FBE1794CA0100B9A813 /* Bay.m in Sources */,
 				5C0BC57A1856654E00128CCE /* JLActionButton.m in Sources */,
+				5CED07FB185DE8420010A291 /* AppViewModel.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
@@ -4391,6 +4398,7 @@
 				5CD3AFC316CF38D500DE362C /* AppViewController.m in Sources */,
 				5CD3AFC416CF38D500DE362C /* EnterWeightViewController.m in Sources */,
 				5CD3AFC516CF38D500DE362C /* PatientDetailsViewController.m in Sources */,
+				5CED07FC185DE8420010A291 /* AppViewModel.m in Sources */,
 				5CD3AFC616CF38D500DE362C /* PatientDetailsEnterNameViewController.m in Sources */,
 				5CD3AFC716CF38D500DE362C /* PatientDetailsEnterWeightViewController.m in Sources */,
 				5CD3AFC816CF38D500DE362C /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
