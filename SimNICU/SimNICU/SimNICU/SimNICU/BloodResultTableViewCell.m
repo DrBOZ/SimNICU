@@ -160,38 +160,38 @@
         else if ([reuseIdentifier isEqualToString:@"LFT Result"])
         {
             UILabel *alkPhos = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-            alkPhos.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            alkPhos.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT - 1.0f];
             alkPhos.text = NSLocalizedString(@"ALP", nil);
             [self.contentView addSubview:alkPhos];
             
-            self.AlkPhosResult = [[UILabel alloc] initWithFrame:CGRectMake(43.0f, 3.0f, 50.0f, 22.0f)];
+            self.AlkPhosResult = [[UILabel alloc] initWithFrame:CGRectMake(41.0f, 3.0f, 50.0f, 22.0f)];
             self.AlkPhosResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.AlkPhosResult];
             
-            UILabel *alt = [[UILabel alloc] initWithFrame:CGRectMake(72.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-            alt.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            UILabel *alt = [[UILabel alloc] initWithFrame:CGRectMake(68.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            alt.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT - 1.0f];
             alt.text = NSLocalizedString(@"ALT", nil);
             [self.contentView addSubview:alt];
             
-            self.ALTResult = [[UILabel alloc] initWithFrame:CGRectMake(96.0f, 3.0f, 50.0f, 22.0f)];
+            self.ALTResult = [[UILabel alloc] initWithFrame:CGRectMake(91.0f, 3.0f, 50.0f, 22.0f)];
             self.ALTResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.ALTResult];
             
-            UILabel *gammaGT = [[UILabel alloc] initWithFrame:CGRectMake(114.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-            gammaGT.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-            gammaGT.text = NSLocalizedString(@"GGT", nil);
+            UILabel *gammaGT = [[UILabel alloc] initWithFrame:CGRectMake(110.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            gammaGT.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT - 1.0f];
+            gammaGT.text = NSLocalizedString(@"\u03B3GT", nil);
             [self.contentView addSubview:gammaGT];
             
-            self.GammaGTResult = [[UILabel alloc] initWithFrame:CGRectMake(154.0f, 3.0f, 50.0f, 22.0f)];
+            self.GammaGTResult = [[UILabel alloc] initWithFrame:CGRectMake(135.0f, 3.0f, 50.0f, 22.0f)];
             self.GammaGTResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.GammaGTResult];
             
-            UILabel *albumin = [[UILabel alloc] initWithFrame:CGRectMake(148.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-            albumin.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            UILabel *albumin = [[UILabel alloc] initWithFrame:CGRectMake(154.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            albumin.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT - 1.0f];
             albumin.text = NSLocalizedString(@"ALB", nil);
             [self.contentView addSubview:albumin];
-#warning adjusting LFT results here
-            self.ALBResult = [[UILabel alloc] initWithFrame:CGRectMake(176.0f, 3.0f, 50.0f, 22.0f)];
+
+            self.ALBResult = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 3.0f, 50.0f, 22.0f)];
             self.ALBResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.ALBResult];
             
@@ -288,8 +288,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    
 }
 
 /*
