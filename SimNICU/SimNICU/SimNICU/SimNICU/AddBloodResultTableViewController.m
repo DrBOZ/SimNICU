@@ -98,8 +98,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (![self.editOrAddResult isEqualToString:@"Edit"]) return [tableData count] - 1;
-    else return [tableData count];
+    if (![self.editOrAddResult isEqualToString:@"Edit"]) return tableData.count - 1;
+    else return tableData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -326,7 +326,7 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    for (int section = 1; section < [tableData count]; section ++)
+    for (int section = 1; section < tableData.count; section ++)
     {
         CBTableViewSectionData *sectionData = tableData[section];
         int rows = [sectionData.rowData count];
@@ -448,7 +448,7 @@
     [self.sampleData setObject:self.resultDate forKey:@"Result Date"];
     
     // add/update sample results
-    for (int section = 1; section < [tableData count]; section ++)
+    for (int section = 1; section < tableData.count - 1; section ++)
     {
         CBTableViewSectionData *sectionData = tableData[section];
         int rows = [sectionData.rowData count];
