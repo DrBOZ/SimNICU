@@ -218,28 +218,28 @@
         {
             UILabel *calcium = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
             calcium.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-            calcium.text = NSLocalizedString(@"Ca", nil);
+            calcium.text = NSLocalizedString(@"Ca/adj", nil);
             [self.contentView addSubview:calcium];
             
-            self.CaResult = [[UILabel alloc] initWithFrame:CGRectMake(35.0f, 3.0f, 50.0f, 22.0f)];
+            self.CaResult = [[UILabel alloc] initWithFrame:CGRectMake(59.0f, 3.0f, 50.0f, 22.0f)];
             self.CaResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.CaResult];
             
-            UILabel *adjustedCalcium = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-            adjustedCalcium.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-            adjustedCalcium.text = NSLocalizedString(@"Ca (adj)", nil);
-            [self.contentView addSubview:adjustedCalcium];
+            UILabel *dividor = [[UILabel alloc] initWithFrame:CGRectMake(89.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            dividor.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            dividor.text = NSLocalizedString(@"/", nil);
+            [self.contentView addSubview:dividor];
             
-            self.CaAdjResult = [[UILabel alloc] initWithFrame:CGRectMake(114.0f, 3.0f, 50.0f, 22.0f)];
+            self.CaAdjResult = [[UILabel alloc] initWithFrame:CGRectMake(96.0f, 3.0f, 50.0f, 22.0f)];
             self.CaAdjResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.CaAdjResult];
             
-            UILabel *phosphate = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            UILabel *phosphate = [[UILabel alloc] initWithFrame:CGRectMake(128.0f, DEFAULT_TEXT_Y, 60.0f, 22.0f)];
             phosphate.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
             phosphate.text = NSLocalizedString(@"Phos", nil);
             [self.contentView addSubview:phosphate];
             
-            self.PhosphateResult = [[UILabel alloc] initWithFrame:CGRectMake(174.0f, 3.0f, 50.0f, 22.0f)];
+            self.PhosphateResult = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 3.0f, 50.0f, 22.0f)];
             self.PhosphateResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.PhosphateResult];
             
@@ -259,7 +259,7 @@
             [self.contentView addSubview:self.MgResult];
             
             self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, DEFAULT_TEXT_Y, 100.0f, 22.0f)];
-            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            self.ResultDate.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
             [self.contentView addSubview:self.ResultDate];
         }
         else if ([reuseIdentifier isEqualToString:@"Ammonia Result"])
@@ -274,7 +274,7 @@
             [self.contentView addSubview:self.AmmoniaResult];
             
             self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, DEFAULT_TEXT_Y, 100.0f, 22.0f)];
-            self.ResultDate.font = [UIFont systemFontOfSize:14.0f];
+            self.ResultDate.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
             [self.contentView addSubview:self.ResultDate];
         }
     }
