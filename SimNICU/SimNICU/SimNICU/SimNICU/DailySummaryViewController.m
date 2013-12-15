@@ -1264,6 +1264,7 @@
                     // display Bone Profile results
                     bloodResultCell.CaResult.text = biochemistryResults[indexPath.row][1];
                     bloodResultCell.CaAdjResult.text = biochemistryResults[indexPath.row][2];
+                    bloodResultCell.PhosphateResult.text = biochemistryResults[indexPath.row][3];
                     bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
                 }
                 else if ([CellIdentifier isEqualToString:@"LFT Result"])
@@ -6402,7 +6403,7 @@
             [sampleData setValue:@"YES" forKey:@"Display Conjugated Bilirubin"];
         }
         // check Bone profile
-        if (![[sampleData objectForKey:@"Calcium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Adjusted Calcium value (serum)"] isEqualToString:@""])
+        if (![[sampleData objectForKey:@"Calcium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Adjusted Calcium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Phosphate value (serum)"] isEqualToString:@""])
         {
             // there are new Bone profile results to display
             [sampleData setValue:@"YES" forKey:@"Display Bone Profile"];
@@ -6507,7 +6508,7 @@
         // check Conjugated bilirubin
         if ([[sampleData objectForKey:@"Display Conjugated Bilirubin"] isEqualToString:@"YES"])
         {
-            NSArray *ConjugatedBilirubinResult = @[@"Conjugated Bilirubin Result", [sampleData objectForKey:@"Conjugated Bilirubin value (serum)"], @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            NSArray *ConjugatedBilirubinResult = @[@"Conjugated Bilirubin Result", [sampleData objectForKey:@"Conjugated Bilirubin value (serum)"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
             [biochemistryResultsToDisplay addObject:ConjugatedBilirubinResult];
         }
@@ -6515,7 +6516,7 @@
         // check Bone profile
         if ([[sampleData objectForKey:@"Display Bone Profile"] isEqualToString:@"YES"])
         {
-            NSArray *BoneProfileResult = @[@"Bone Profile Result", [sampleData objectForKey:@"Calcium value (serum)"], [sampleData objectForKey:@"Adjusted Calcium value (serum)"], @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
+            NSArray *BoneProfileResult = @[@"Bone Profile Result", [sampleData objectForKey:@"Calcium value (serum)"], [sampleData objectForKey:@"Adjusted Calcium value (serum)"], [sampleData objectForKey:@"Phosphate value (serum)"], @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
             [biochemistryResultsToDisplay addObject:BoneProfileResult];
         }

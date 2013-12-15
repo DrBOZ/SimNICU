@@ -159,7 +159,45 @@
         }
         else if ([reuseIdentifier isEqualToString:@"LFT Result"])
         {
-#warning finish code
+            UILabel *alkPhos = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            alkPhos.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            alkPhos.text = NSLocalizedString(@"ALP", nil);
+            [self.contentView addSubview:alkPhos];
+            
+            self.AlkPhosResult = [[UILabel alloc] initWithFrame:CGRectMake(43.0f, 3.0f, 50.0f, 22.0f)];
+            self.AlkPhosResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.AlkPhosResult];
+            
+            UILabel *alt = [[UILabel alloc] initWithFrame:CGRectMake(72.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            alt.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            alt.text = NSLocalizedString(@"ALT", nil);
+            [self.contentView addSubview:alt];
+            
+            self.ALTResult = [[UILabel alloc] initWithFrame:CGRectMake(96.0f, 3.0f, 50.0f, 22.0f)];
+            self.ALTResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ALTResult];
+            
+            UILabel *gammaGT = [[UILabel alloc] initWithFrame:CGRectMake(114.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            gammaGT.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            gammaGT.text = NSLocalizedString(@"GGT", nil);
+            [self.contentView addSubview:gammaGT];
+            
+            self.GammaGTResult = [[UILabel alloc] initWithFrame:CGRectMake(154.0f, 3.0f, 50.0f, 22.0f)];
+            self.GammaGTResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.GammaGTResult];
+            
+            UILabel *albumin = [[UILabel alloc] initWithFrame:CGRectMake(148.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            albumin.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            albumin.text = NSLocalizedString(@"ALB", nil);
+            [self.contentView addSubview:albumin];
+#warning adjusting LFT results here
+            self.ALBResult = [[UILabel alloc] initWithFrame:CGRectMake(176.0f, 3.0f, 50.0f, 22.0f)];
+            self.ALBResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.ALBResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, DEFAULT_TEXT_Y, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            [self.contentView addSubview:self.ResultDate];
         }
         else if ([reuseIdentifier isEqualToString:@"Conjugated Bilirubin Result"])
         {
@@ -168,7 +206,7 @@
             directBili.text = NSLocalizedString(@"Direct bilirubin", nil);
             [self.contentView addSubview:directBili];
             
-            self.DirectBiliResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.DirectBiliResult = [[UILabel alloc] initWithFrame:CGRectMake(106.0f, 3.0f, 50.0f, 22.0f)];
             self.DirectBiliResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.DirectBiliResult];
             
@@ -178,7 +216,36 @@
         }
         else if ([reuseIdentifier isEqualToString:@"Bone Profile Result"])
         {
-#warning finish code
+            UILabel *calcium = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            calcium.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            calcium.text = NSLocalizedString(@"Ca", nil);
+            [self.contentView addSubview:calcium];
+            
+            self.CaResult = [[UILabel alloc] initWithFrame:CGRectMake(35.0f, 3.0f, 50.0f, 22.0f)];
+            self.CaResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.CaResult];
+            
+            UILabel *adjustedCalcium = [[UILabel alloc] initWithFrame:CGRectMake(66.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            adjustedCalcium.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            adjustedCalcium.text = NSLocalizedString(@"Ca (adj)", nil);
+            [self.contentView addSubview:adjustedCalcium];
+            
+            self.CaAdjResult = [[UILabel alloc] initWithFrame:CGRectMake(114.0f, 3.0f, 50.0f, 22.0f)];
+            self.CaAdjResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.CaAdjResult];
+            
+            UILabel *phosphate = [[UILabel alloc] initWithFrame:CGRectMake(144.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            phosphate.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            phosphate.text = NSLocalizedString(@"Phos", nil);
+            [self.contentView addSubview:phosphate];
+            
+            self.PhosphateResult = [[UILabel alloc] initWithFrame:CGRectMake(174.0f, 3.0f, 50.0f, 22.0f)];
+            self.PhosphateResult.font = [UIFont systemFontOfSize:14.0f];
+            [self.contentView addSubview:self.PhosphateResult];
+            
+            self.ResultDate = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, DEFAULT_TEXT_Y, 100.0f, 22.0f)];
+            self.ResultDate.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            [self.contentView addSubview:self.ResultDate];
         }
         else if ([reuseIdentifier isEqualToString:@"Magnesium Result"])
         {
@@ -187,7 +254,7 @@
             Mg.text = NSLocalizedString(@"Mg", nil);
             [self.contentView addSubview:Mg];
             
-            self.MgResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.MgResult = [[UILabel alloc] initWithFrame:CGRectMake(40.0f, 3.0f, 50.0f, 22.0f)];
             self.MgResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.MgResult];
             
@@ -202,7 +269,7 @@
             ammonia.text = NSLocalizedString(@"Ammonia", nil);
             [self.contentView addSubview:ammonia];
             
-            self.AmmoniaResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.AmmoniaResult = [[UILabel alloc] initWithFrame:CGRectMake(78.0f, 3.0f, 50.0f, 22.0f)];
             self.AmmoniaResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.AmmoniaResult];
             

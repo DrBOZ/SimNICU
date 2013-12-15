@@ -285,6 +285,14 @@
             tag ++;
             [sectionData.rowData addObject:rowData];
             
+            rowData = [CBTableViewRowData new];
+            rowData.text = @"Phosphate";
+            rowData.reference = @"Phosphate value (serum)";
+            rowData.textField = [UITextField new];
+            rowData.textField.tag = tag;
+            tag ++;
+            [sectionData.rowData addObject:rowData];
+            
             [tableData addObject:sectionData];
         }
         
@@ -452,7 +460,7 @@
         {
             sectionData = [CBTableViewSectionData new];
             sectionData.titleForHeader = nil;
-            sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:4];
+            sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:3];
             
             rowData = [CBTableViewRowData new];
             rowData.text = @"Ca";
@@ -465,6 +473,14 @@
             rowData = [CBTableViewRowData new];
             rowData.text = @"Ca (adjusted)";
             rowData.reference = @"Adjusted Calcium value (serum)";
+            rowData.textField = [UITextField new];
+            rowData.textField.tag = tag;
+            tag ++;
+            [sectionData.rowData addObject:rowData];
+            
+            rowData = [CBTableViewRowData new];
+            rowData.text = @"Phosphate";
+            rowData.reference = @"Phosphate value (serum)";
             rowData.textField = [UITextField new];
             rowData.textField.tag = tag;
             tag ++;
@@ -852,6 +868,14 @@
             rowData = [CBTableViewRowData new];
             rowData.text = @"Ca (adjusted)";
             rowData.reference = @"Adjusted Calcium value (serum)";
+            rowData.textField = [UITextField new];
+            rowData.textField.tag = tag;
+            tag ++;
+            [sectionData.rowData addObject:rowData];
+            
+            rowData = [CBTableViewRowData new];
+            rowData.text = @"Phosphate";
+            rowData.reference = @"Phosphate value (serum)";
             rowData.textField = [UITextField new];
             rowData.textField.tag = tag;
             tag ++;

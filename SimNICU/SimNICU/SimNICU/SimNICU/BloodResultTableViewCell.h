@@ -37,6 +37,7 @@
 
 @property (nonatomic, strong) UILabel *CaResult;
 @property (nonatomic, strong) UILabel *CaAdjResult;
+@property (nonatomic, strong) UILabel *PhosphateResult;
 
 @property (nonatomic, strong) UILabel *MgResult;
 
