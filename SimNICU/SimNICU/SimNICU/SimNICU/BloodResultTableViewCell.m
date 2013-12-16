@@ -59,7 +59,7 @@
             PT.text = NSLocalizedString(@"PT", nil);
             [self.contentView addSubview:PT];
             
-            self.PTResult = [[UILabel alloc] initWithFrame:CGRectMake(38.0f, 3.0f, 50.0f, 22.0f)];
+            self.PTResult = [[UILabel alloc] initWithFrame:CGRectMake(35.0f, 3.0f, 50.0f, 22.0f)];
             self.PTResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.PTResult];
             
@@ -92,7 +92,7 @@
             fibrinogen.text = NSLocalizedString(@"Fibrinogen", nil);
             [self.contentView addSubview:fibrinogen];
             
-            self.FibrinogenResult = [[UILabel alloc] initWithFrame:CGRectMake(88.0f, 3.0f, 50.0f, 22.0f)];
+            self.FibrinogenResult = [[UILabel alloc] initWithFrame:CGRectMake(84.0f, 3.0f, 50.0f, 22.0f)];
             self.FibrinogenResult.font = [UIFont systemFontOfSize:14.0f];
             [self.contentView addSubview:self.FibrinogenResult];
             
