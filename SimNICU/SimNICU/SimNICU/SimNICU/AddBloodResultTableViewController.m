@@ -98,7 +98,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // if adding a result (i.e. not editing) then do not show 'delete result' section
     if (![self.editOrAddResult isEqualToString:@"Edit"]) return tableData.count - 1;
+    
+    // show all sections
     else return tableData.count;
 }
 
@@ -284,8 +287,6 @@
             [cell addSubview:deleteLabel];
         }
         
-        // cell.textLabel.text = NSLocalizedString(@"Delete Result", nil);
-        
         return cell;
     }
     else
@@ -316,9 +317,9 @@
             rowData.textField.delegate = self;
             
             cell.accessoryView = rowData.textField;
+            
+            rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
         }
-        
-        rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
         
         return cell;
     }
@@ -458,6 +459,8 @@
             CBTableViewRowData *rowData = sectionData.rowData[row];
             
             [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
+            
+            NSLog(@"Reference: %@ - Value: %@", rowData.reference, rowData.textField.text);
         }
     }
 }

@@ -42,7 +42,7 @@
         {
             sectionData = [CBTableViewSectionData new];
             sectionData.titleForHeader = @"Haematology";
-            sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:3];
+            sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:6];
             
             // 01 Haemoglobin
             rowData = [CBTableViewRowData new];
