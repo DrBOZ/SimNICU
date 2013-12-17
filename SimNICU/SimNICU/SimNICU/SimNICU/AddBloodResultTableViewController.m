@@ -11,7 +11,7 @@
 #import "AddBloodResultModel.h"
 #import "CBTableViewRowData.h"
 
-@interface AddBloodResultTableViewController () <UIPickerViewDelegate, UITextFieldDelegate>
+@interface AddBloodResultTableViewController () <UIPickerViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
 
@@ -70,6 +70,20 @@
             
             // update date picker
             self.datePicker.date = self.resultDate;
+            
+            // add sample results
+            for (int section = 1; section < tableData.count - 1; section ++)
+            {
+                CBTableViewSectionData *sectionData = tableData[section];
+                int rows = [sectionData.rowData count];
+                
+                for (int row = 0; row < rows; row ++)
+                {
+                    CBTableViewRowData *rowData = sectionData.rowData[row];
+                    
+                    rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
+                }
+            }
         }
         else
         {
@@ -306,6 +320,7 @@
             
             cell.textLabel.text = NSLocalizedString(rowData.text, nil);
             
+            // format the textfield for display
             rowData.textField.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
             rowData.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             rowData.textField.keyboardAppearance = UIKeyboardAppearanceAlert;
@@ -317,8 +332,6 @@
             rowData.textField.delegate = self;
             
             cell.accessoryView = rowData.textField;
-            
-            rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
         }
         
         return cell;
@@ -360,7 +373,13 @@
     }
     else if (indexPath.section == tableData.count - 1)
     {
-#warning implement delete
+        // should implement a second check to see if user really wants to do this
+        UIActionSheet *confirmDelete = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Result will be permanently deleted", nil)
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                             destructiveButtonTitle:NSLocalizedString(@"Delete", @"")
+                                                  otherButtonTitles:nil];
+		[confirmDelete showInView:self.view];
     }
 }
 
@@ -388,6 +407,28 @@
     }
 }
 
+#pragma mark UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            
+            // tell delegate to delete result
+            [self.delegate addBloodResultTableViewController:self didFinishDeletingSampleData:self.sampleData];
+            
+            break;
+            
+        case 1:
+            // user cancelled
+            break;
+            
+        default:
+            break;
+    }
+}
+
 # pragma mark
 
 - (void)datePickerChangedValue
@@ -407,7 +448,7 @@
         // update sample data
         [self updateSampleData];
         
-        [self.delegate addBloodResultTableViewControllerDidFinishEditing:self withSampleData:self.sampleData];
+        [self.delegate addBloodResultTableViewController:self didFinishEditingSampleData:self.sampleData];
     }
     else
     {
@@ -439,7 +480,7 @@
         [self.sampleData setObject:displayResults forKey:@"Display Magnesium"];
         [self.sampleData setObject:displayResults forKey:@"Display Ammonia"];
         
-        [self.delegate addBloodResultTableViewControllerDidFinish:self withSampleData:self.sampleData];
+        [self.delegate addBloodResultTableViewController:self didFinishAddingNewSampleData:self.sampleData];
     }
 }
 

@@ -6262,7 +6262,7 @@
 
 #pragma mark - AddBloodResultTableViewController delegate
 
-- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
+- (void)addBloodResultTableViewController:(AddBloodResultTableViewController *)controller didFinishAddingNewSampleData:(NSDictionary *)sampleData
 {
     // update display properties
     [self setDisplayValuesForSampleData:sampleData forSectionName:nil];
@@ -6309,7 +6309,7 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData
+- (void)addBloodResultTableViewController:(AddBloodResultTableViewController *)controller didFinishEditingSampleData:(NSDictionary *)sampleData
 {
     // update display properties
     [self setDisplayValuesForSampleData:sampleData forSectionName:nil];
@@ -6326,6 +6326,29 @@
     
     // reorder array
     self.selectedPatient.allBloodResultSampleData = [self reorderArrayByDate:self.selectedPatient.allBloodResultSampleData];
+    
+    // reload table
+    [self.myTableView2 reloadData];
+    
+#warning watch out for changes to bilirubin results already plotted!
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // deselect row
+    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
+}
+
+- (void)addBloodResultTableViewController:(AddBloodResultTableViewController *)controller didFinishDeletingSampleData:(NSDictionary *)sampleData
+{
+    // cycle through all blood result sample data and use the unique refence number to replace sampleData
+    for (int i = 0; i < [self.selectedPatient.allBloodResultSampleData count]; i++)
+    {
+        if ([[self.selectedPatient.allBloodResultSampleData[i] objectForKey:@"Unique Reference"] isEqualToNumber:[sampleData objectForKey:@"Unique Reference"]])
+        {
+            // delete data
+            [self.selectedPatient.allBloodResultSampleData removeObjectAtIndex:i];
+        }
+    }
     
     // reload table
     [self.myTableView2 reloadData];
@@ -6402,6 +6425,13 @@
             // there is a new conjugated bilirubin result to display
             [sampleData setValue:@"YES" forKey:@"Display Conjugated Bilirubin"];
         }
+        
+        // temp code, as I did not include phosphate initially
+        if (![sampleData objectForKey:@"Phosphate value (serum)"])
+        {
+            [sampleData setValue:@"" forKey:@"Phosphate value (serum)"];
+        }
+        
         // check Bone profile
         if (![[sampleData objectForKey:@"Calcium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Adjusted Calcium value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Phosphate value (serum)"] isEqualToString:@""])
         {
@@ -6516,6 +6546,8 @@
         // check Bone profile
         if ([[sampleData objectForKey:@"Display Bone Profile"] isEqualToString:@"YES"])
         {
+            NSLog(@"Phosphate value (serum) value = %@", [sampleData objectForKey:@"Phosphate value (serum)"]);
+            
             NSArray *BoneProfileResult = @[@"Bone Profile Result", [sampleData objectForKey:@"Calcium value (serum)"], [sampleData objectForKey:@"Adjusted Calcium value (serum)"], [sampleData objectForKey:@"Phosphate value (serum)"], @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
             [biochemistryResultsToDisplay addObject:BoneProfileResult];

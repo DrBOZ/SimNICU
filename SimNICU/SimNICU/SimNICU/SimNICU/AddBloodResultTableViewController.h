@@ -12,9 +12,11 @@
 
 @protocol AddBloodResultTableViewControllerDelegate <NSObject>
 
-- (void)addBloodResultTableViewControllerDidFinish:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData;
+- (void)addBloodResultTableViewController:(AddBloodResultTableViewController *)controller didFinishAddingNewSampleData:(NSDictionary *)sampleData;
 
-- (void)addBloodResultTableViewControllerDidFinishEditing:(AddBloodResultTableViewController *)controller withSampleData:(NSDictionary *)sampleData;
+- (void)addBloodResultTableViewController:(AddBloodResultTableViewController *)controller didFinishEditingSampleData:(NSDictionary *)sampleData;
+
+- (void)addBloodResultTableViewController:(AddBloodResultTableViewController *)controller didFinishDeletingSampleData:(NSDictionary *)sampleData;
 
 - (void)addBloodResultTableViewControllerDidCancel:(AddBloodResultTableViewController *)controller;
 
