@@ -73,6 +73,7 @@
     
     BOOL firstButtonPressSinceScroll; // used to line up sections when pressing fast forward
     
+    NSMutableArray *biochemistryResultsBackroundColors;
     // NSMutableArray *tableView2Sections;
 }
 
@@ -175,6 +176,8 @@
     {
         [self calculateNeurotoxicityRisk];
     }
+    
+    biochemistryResultsBackroundColors = [[NSMutableArray alloc] initWithCapacity:10];
     
     NSLog(@"2");
     
@@ -1311,29 +1314,53 @@
                     bloodResultCell.ResultDate.text = [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:biochemistryResults[indexPath.row][6] andLocale:[NSLocale currentLocale]];
                 }
                 
-                // first check number of data rows
-                if (numberOfBiochemistryResultsToDisplay % 2)
+#warning code required
+                
+                // instead of just alternating rows (which is confusing when there are a lot of results
+                // could try alternating based on a specific day
+                // or a specific sample
+                // could allow user to select
+                
+                // try a specific sample first
+                
+                // indexPath.row defines the order
+                // need an array to reference which would return a value of light / dark to set backgroundColor
+                
+                if ([biochemistryResultsBackroundColors[indexPath.row] isEqualToNumber:@0])
                 {
-                    if (indexPath.row % 2)
-                    {
-                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
-                    }
-                    else
-                    {
-                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
-                    }
+                    bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
                 }
                 else
                 {
-                    if (indexPath.row % 2)
-                    {
-                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
-                    }
-                    else
-                    {
-                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
-                    }
+                    bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
                 }
+                    
+                                                       
+                                                       
+                
+                // first check number of data rows
+//                if (numberOfBiochemistryResultsToDisplay % 2)
+//                {
+//                    if (indexPath.row % 2)
+//                    {
+//                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
+//                    }
+//                    else
+//                    {
+//                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+//                    }
+//                }
+//                else
+//                {
+//                    if (indexPath.row % 2)
+//                    {
+//                        bloodResultCell.contentView.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+//                    }
+//                    else
+//                    {
+//                        bloodResultCell.contentView.backgroundColor = [UIColor whiteColor];
+//                    }
+//                }
                 
                 return bloodResultCell;
             }
@@ -2914,6 +2941,11 @@
                 NSArray *indexPaths = @[indexPath];
                 
                 [self.myTableView2 deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+                // calling this to update shading
+                [self getBiochemistryResultsToDisplay];
+                
+                [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
             else
             {
@@ -6567,6 +6599,51 @@
             NSArray *AmmoniaResult = @[@"Ammonia Result", [sampleData objectForKey:@"Ammonia value (serum)"], @"", @"", @"", @"", [sampleData objectForKey:@"Result Date"], [sampleData objectForKey:@"Unique Reference"]];
             
             [biochemistryResultsToDisplay addObject:AmmoniaResult];
+        }
+    }
+    
+    // set background colors array
+    
+    // set first color
+    biochemistryResultsBackroundColors[0] = @0; // @0 = clear ; @1 = highlighted
+    
+    NSNumber *toggle = @0;
+    
+    for (int i = 1; i < biochemistryResultsToDisplay.count; i++)
+    {
+        if ([biochemistryResultsToDisplay[i][7] intValue] == [biochemistryResultsToDisplay[i - 1][7] intValue])
+        {
+            biochemistryResultsBackroundColors[i-1] = toggle;
+            biochemistryResultsBackroundColors[i] = toggle;
+        }
+        else
+        {
+            if ([toggle isEqualToNumber:@0])
+            {
+                toggle = @1;
+            }
+            else
+            {
+                toggle = @0;
+            }
+            
+            biochemistryResultsBackroundColors[i] = toggle;
+        }
+    }
+    
+    // ensure last set of results is darkened
+    if (!(biochemistryResultsBackroundColors.count % 2))
+    {
+        for (int i = 0; i < biochemistryResultsBackroundColors.count; i++)
+        {
+            if ([biochemistryResultsBackroundColors[i] isEqualToNumber:@0])
+            {
+                biochemistryResultsBackroundColors[i] = @1;
+            }
+            else
+            {
+                biochemistryResultsBackroundColors[i] = @0;
+            }
         }
     }
     

@@ -16,10 +16,10 @@
     if (self)
     {
         self.textField = [[UITextField alloc] init];
-        self.textField.frame = CGRectMake(10.0f, 5.0f, 220.0f, 33.0f);
-        self.textField.font = [UIFont systemFontOfSize:17.0f];
         self.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textField.frame = CGRectMake(10.0f, 5.0f, 220.0f, 33.0f);
+        self.textField.font = [UIFont systemFontOfSize:17.0f];
         self.textField.returnKeyType = UIReturnKeyDone;
         self.textField.adjustsFontSizeToFitWidth = YES;
         

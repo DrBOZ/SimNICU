@@ -66,6 +66,7 @@
 {
     [super viewWillAppear:animated];
     
+    // starts UITableView in editing mode
     [self.tableView setEditing:YES animated:YES];
 }
 
@@ -147,20 +148,13 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.backgroundColor = [UIColor whiteColor];
         cell.textField.delegate = self;
+        cell.tag = indexPath.row;
     }
     
     cell.textField.tag = indexPath.row;
     cell.textField.text = [self.bayData[indexPath.row] bayName];
     
     return cell;
-}
-
-
-- (void)reorderTextFieldTags
-{
-#warning need to implement
-    
-    // to improve user experience when deleting bays
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
