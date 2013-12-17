@@ -545,21 +545,24 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            self.weight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-            self.weight.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-            self.weight.placeholder = NSLocalizedString(@"kilograms", nil);
-            self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
-            self.weight.clearButtonMode = UITextFieldViewModeAlways;
-            self.weight.borderStyle = UITextBorderStyleRoundedRect;
-            self.weight.keyboardType = UIKeyboardTypeDecimalPad;
-            self.weight.textAlignment = UITextAlignmentLeft;
-            self.weight.delegate = self;
-            self.weight.tag = 10;
+            if (!self.weight)
+            {
+                self.weight = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+                self.weight.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+                self.weight.placeholder = NSLocalizedString(@"kilograms", nil);
+                self.weight.keyboardAppearance = UIKeyboardAppearanceAlert;
+                self.weight.clearButtonMode = UITextFieldViewModeAlways;
+                self.weight.borderStyle = UITextBorderStyleRoundedRect;
+                self.weight.keyboardType = UIKeyboardTypeDecimalPad;
+                self.weight.textAlignment = UITextAlignmentLeft;
+                self.weight.delegate = self;
+                self.weight.tag = 10;
+            }
             
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = NSLocalizedString(@"Weight", nil);
             cell.accessoryView = self.weight;
             
@@ -573,21 +576,24 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-            self.gestation.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-            self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
-            self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
-            self.gestation.clearButtonMode = UITextFieldViewModeAlways;
-            self.gestation.borderStyle = UITextBorderStyleRoundedRect;
-            self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
-            self.gestation.textAlignment = UITextAlignmentLeft;
-            self.gestation.delegate = self;
-            self.gestation.tag = 20;
+            if (!self.gestation)
+            {
+                self.gestation = [[UITextField alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+                self.gestation.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+                self.gestation.placeholder = NSLocalizedString(@"weeks", nil);
+                self.gestation.keyboardAppearance = UIKeyboardAppearanceAlert;
+                self.gestation.clearButtonMode = UITextFieldViewModeAlways;
+                self.gestation.borderStyle = UITextBorderStyleRoundedRect;
+                self.gestation.keyboardType = UIKeyboardTypeDecimalPad;
+                self.gestation.textAlignment = UITextAlignmentLeft;
+                self.gestation.delegate = self;
+                self.gestation.tag = 20;
+            }
             
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.accessoryView = self.gestation;
             
             UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestationSwipeLeft:)];
@@ -866,16 +872,8 @@
         NSString *CellIdentifier = [self.bayData[indexPath.section - 2] bayName];
         PatientCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        if(!cell)
-        {
-            cell = [[PatientCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                          reuseIdentifier:CellIdentifier];
-            
-            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-            cell.textLabel.adjustsFontSizeToFitWidth = YES;
-            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
-            cell.backgroundColor = [UIColor whiteColor];
-        }
+        if(!cell) cell = [[PatientCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                            reuseIdentifier:CellIdentifier];
         
         Bay *bay = self.bayData[indexPath.section - 2];
         Patient *patient = bay.patientsInBay[indexPath.row];
