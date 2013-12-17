@@ -155,6 +155,14 @@
     return cell;
 }
 
+
+- (void)reorderTextFieldTags
+{
+#warning need to implement
+    
+    // to improve user experience when deleting bays
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
