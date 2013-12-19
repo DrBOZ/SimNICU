@@ -76,7 +76,7 @@
             self.oneYear.backgroundColor = [UIColor whiteColor];
         }
         
-        self.oneYear.textLabel.text = @"1 year";
+        self.oneYear.textLabel.text = [NSString stringWithFormat:@"%i %@", 1, NSLocalizedString(@"year", nil)];
         
         if ([preferences.correctAgeForPrematurityUntilYears intValue] == 1)
         {
@@ -103,7 +103,7 @@
             self.twoYears.backgroundColor = [UIColor whiteColor];
         }
         
-        self.twoYears.textLabel.text = @"2 years";
+        self.twoYears.textLabel.text = [NSString stringWithFormat:@"%i %@", 2, NSLocalizedString(@"years", nil)];
         
         if ([preferences.correctAgeForPrematurityUntilYears intValue] == 2)
         {
@@ -130,7 +130,7 @@
             self.threeYears.backgroundColor = [UIColor whiteColor];
         }
         
-        self.threeYears.textLabel.text = @"3 years";
+        self.threeYears.textLabel.text = [NSString stringWithFormat:@"%i %@", 3, NSLocalizedString(@"years", nil)];
         
         if ([preferences.correctAgeForPrematurityUntilYears intValue] == 3)
         {
@@ -157,7 +157,7 @@
             self.fourYears.backgroundColor = [UIColor whiteColor];
         }
         
-        self.fourYears.textLabel.text = @"4 years";
+        self.fourYears.textLabel.text = [NSString stringWithFormat:@"%i %@", 4, NSLocalizedString(@"years", nil)];
         
         if ([preferences.correctAgeForPrematurityUntilYears intValue] == 4)
         {
@@ -184,7 +184,7 @@
             self.fiveYears.backgroundColor = [UIColor whiteColor];
         }
         
-        self.fiveYears.textLabel.text = @"5 years";
+        self.fiveYears.textLabel.text = [NSString stringWithFormat:@"%i %@", 5, NSLocalizedString(@"years", nil)];
         
         if ([preferences.correctAgeForPrematurityUntilYears intValue] == 5)
         {

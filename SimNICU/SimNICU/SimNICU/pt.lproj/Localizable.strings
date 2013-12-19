@@ -230,6 +230,11 @@
 "Weight not entered" = "Weight not entered";
 "Well" = "Bem";
 "Working Weight" = "Peso Selecionado";
+"year" = "ano";
+"years" = "anos";
 "Yesterday" = "Yesterday";
 
+// long text
+
+"There is currently no global consensus among professionals regarding when to stop correcting a child's age for prematurity.  The majority of professionals correct through to age two years, though it is common to stop at 1 year." = "Não há consenso global entre os profissionais a repeito do tempo que deve-se utilizar a idade corrigida do prematuro. A maioria dos profissionais utilizam a idade corrigida até o final do 2º ano, mas também é comum utilizar-se até o final do 1º ano.";
 

@@ -95,7 +95,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    return @"There is currently no global consensus among professionals regarding when to stop correcting a child's age for prematurity.  The majority of professionals correct through to age two years, though it is common to stop at 1 year.";;
+    return NSLocalizedString(@"There is currently no global consensus among professionals regarding when to stop correcting a child's age for prematurity.  The majority of professionals correct through to age two years, though it is common to stop at 1 year.", nil);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -122,32 +122,32 @@
         cell.backgroundColor = [UIColor whiteColor];
     }
     
-    cell.textLabel.text = @"Correct to age";
+    cell.textLabel.text = NSLocalizedString(@"Correct to age", nil);
     
     if ([preferences.correctAgeForPrematurityUntilYears intValue] == 1)
     {
-        cell.detailTextLabel.text = @"1 year";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", 1, NSLocalizedString(@"year", nil)];
     }
     else if ([preferences.correctAgeForPrematurityUntilYears intValue] == 2)
     {
-        cell.detailTextLabel.text = @"2 years";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", 2, NSLocalizedString(@"years", nil)];
     }
     else if ([preferences.correctAgeForPrematurityUntilYears intValue] == 3)
     {
-        cell.detailTextLabel.text = @"3 years";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", 3, NSLocalizedString(@"years", nil)];
     }
     else if ([preferences.correctAgeForPrematurityUntilYears intValue] == 4)
     {
-        cell.detailTextLabel.text = @"4 years";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", 4, NSLocalizedString(@"years", nil)];
     }
     else if ([preferences.correctAgeForPrematurityUntilYears intValue] == 5)
     {
-        cell.detailTextLabel.text = @"5 years";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", 5, NSLocalizedString(@"years", nil)];
     }
     else
     {
         preferences.correctAgeForPrematurityUntilYears = [NSNumber numberWithInt:2];
-        cell.detailTextLabel.text = @"2 years";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i %@", 2, NSLocalizedString(@"years", nil)];
     }
     
     return cell;
