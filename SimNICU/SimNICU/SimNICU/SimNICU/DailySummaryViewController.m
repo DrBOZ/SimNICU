@@ -3221,16 +3221,21 @@
     
     int row = 0;
     
+    // Biochemistry free text
+    if (textView.tag == 10)
+    {
+        row = [self getBiochemistryResultsToDisplay].count;
+    }
     // Jaundice cell different
-    if (textView.tag == 11)
+    else if (textView.tag == 11)
     {
         if ([preferences.guidelineCountry isEqualToString:@"US"]) row = 3;
         else row = 1;
     }
-    // Biochemistry free text
-    else if (textView.tag == 10)
+    // Sepsis textView
+    else if (textView.tag == 12)
     {
-        row = [self getBiochemistryResultsToDisplay].count;
+        row = [self getCRPResultsToDisplay].count;
     }
     // Haematology textView
     else if (textView.tag == 20)
@@ -3242,8 +3247,6 @@
     {
         row = [self getCRPResultsToDisplay].count;
     }
-    
-    NSLog(@"textView.tag == %i", textView.tag);
     
     // check if user is using the 3.5 inch screen or 4 inch screen
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
