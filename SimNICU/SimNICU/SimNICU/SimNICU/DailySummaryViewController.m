@@ -2943,7 +2943,7 @@
                 [self.myTableView2 deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
                 
                 // calling this to update shading
-                [self getBiochemistryResultsToDisplay];
+                // [self getBiochemistryResultsToDisplay];
                 
                 [self.myTableView2 reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
@@ -3227,8 +3227,25 @@
         if ([preferences.guidelineCountry isEqualToString:@"US"]) row = 3;
         else row = 1;
     }
+    // Biochemistry free text
+    else if (textView.tag == 10)
+    {
+        row = [self getBiochemistryResultsToDisplay].count;
+    }
+    // Haematology textView
+    else if (textView.tag == 20)
+    {
+        row = [self getHaematologyResultsToDisplay].count;
+    }
+    // Sepsis textView
+    else if (textView.tag == 12)
+    {
+        row = [self getCRPResultsToDisplay].count;
+    }
     
-    // instead, check if user is using the 3.5 inch screen or 4 inch screen
+    NSLog(@"textView.tag == %i", textView.tag);
+    
+    // check if user is using the 3.5 inch screen or 4 inch screen
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
     {
         // animate patient details off to make room
