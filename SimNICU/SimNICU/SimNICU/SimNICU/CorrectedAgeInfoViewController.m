@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
 	
-    self.title = @"Settings";
+    self.title = NSLocalizedString(@"Settings", nil) ;
     
     [CBTrackers logEvent:@"Age Calculators/Corrected Age/Info"];
     
