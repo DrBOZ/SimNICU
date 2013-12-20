@@ -10,6 +10,26 @@
 
 @implementation VascularLine
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if((self = [super init]))
+    {
+        self.lineDescription = [aDecoder decodeObjectForKey:@"LineDescription"];
+        self.lineSite = [aDecoder decodeObjectForKey:@"LineSite"];
+        self.dateInserted = [aDecoder decodeObjectForKey:@"LineDateInserted"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    // Demographics
+    [aCoder encodeObject:self.lineDescription forKey:@"LineDescription"];
+    [aCoder encodeObject:self.lineSite forKey:@"LineSite"];
+    [aCoder encodeObject:self.dateInserted forKey:@"LineDateInserted"];
+}
+
 + (NSArray *)getLineDescriptions
 {
     NSMutableArray *lineDescriptions;
