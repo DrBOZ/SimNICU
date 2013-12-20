@@ -129,11 +129,11 @@
 {
     if ([self.typeOfAgeCalculator isEqualToString:@"Corrected age"])
     {
-        self.title = @"Corrected Age";
+        self.title = NSLocalizedString(@"Corrected Age", nil);
     }
     else if ([self.typeOfAgeCalculator isEqualToString:@"Including postmenstrual age"])
     {
-        self.title = @"Age";
+        self.title = NSLocalizedString(@"Age", nil);
     }
 }
 
@@ -508,7 +508,7 @@
         {
             // set default textLabel.text to nil, as this is the one centered on the cell
             cell.textLabel.text = @"";
-            cell.ageTextLabel.text = @"Corrected Age"; // this is the label top justified
+            cell.ageTextLabel.text = NSLocalizedString(@"Corrected Age", nil); // this is the label top justified
             
             [CBFonts textFormattingForLabel:cell.ageTextLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
             [CBFonts textFormattingForLabel:cell.textLabel withTextStyle:UIFontTextStyleBody minFontSize:16.0f];
