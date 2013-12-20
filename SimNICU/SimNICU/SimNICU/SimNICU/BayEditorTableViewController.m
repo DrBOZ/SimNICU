@@ -232,9 +232,6 @@
         
         NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-        
-        // to ensure TextField.tag consistency
-        [self.tableView reloadData];
     }
 }
 
@@ -258,9 +255,6 @@
     
     // add bay at new location
     [self.bayData insertObject:bay atIndex:destinationIndexPath.row];
-    
-    // update textField.tags
-    [self.tableView reloadData];
 }
 
 # pragma mark - Table view delegate
@@ -271,6 +265,20 @@
 }
 
 #pragma mark - UITextField delegate
+
+- (void)reorderTags
+{
+    NSString *CellIdentifier;
+    
+    for (int i = 0; i < self.bayData.count; i++)
+    {
+        CellIdentifier = [NSString stringWithFormat:@"Bay %i",i];
+        
+        BayEditorTableViewCell *cell = (BayEditorTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        
+        cell.textField.tag = i;
+    }
+}
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
@@ -300,6 +308,9 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     NSLog(@"textField.tag = %i", textField.tag);
+    
+    // to ensure TextField.tag consistency
+    [self reorderTags];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:textField.tag inSection:0];
     
