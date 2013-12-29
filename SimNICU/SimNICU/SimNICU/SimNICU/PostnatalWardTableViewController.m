@@ -1,12 +1,14 @@
 //
 //  PostnatalWardTableViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 07/09/2013.
 //  Copyright (c) 2013 Conrad Bosman. All rights reserved.
 //
 
 #import "PostnatalWardTableViewController.h"
+#import "BiliousVomitingViewController.h"
+#import "BloodInNappyViewController.h"
 #import "TongueTieViewController.h"
 #import "PostnatalWardSection.h"
 #import "PostnatalWardModel.h"
@@ -278,7 +280,19 @@
         problem = [searchData objectAtIndex:indexPath.row];
     }
     
-    if ([problem isEqualToString:@"Tongue Tie"])
+    if ([problem isEqualToString:@"Bilious Vomiting"])
+    {
+        BiliousVomitingViewController *vc = [[BiliousVomitingViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if ([problem isEqualToString:@"Blood in the nappy"])
+    {
+        BloodInNappyViewController *vc = [[BloodInNappyViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if ([problem isEqualToString:@"Tongue Tie"])
     {
         TongueTieViewController *vc = [[TongueTieViewController alloc] initWithStyle:UITableViewStylePlain];
         

@@ -26,6 +26,9 @@
     problem = NSLocalizedString(@"BCG Vaccination", nil);
     [problems addObject:problem];
     
+    problem = NSLocalizedString(@"Bilious Vomiting", nil);
+    [problems addObject:problem];
+    
     problem = NSLocalizedString(@"Blood in the nappy", nil);
     [problems addObject:problem];
     
@@ -171,9 +174,6 @@
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Vitamin K", nil);
-    [problems addObject:problem];
-    
-    problem = NSLocalizedString(@"Vomiting", nil);
     [problems addObject:problem];
     
     problem = NSLocalizedString(@"Weight Loss", nil);

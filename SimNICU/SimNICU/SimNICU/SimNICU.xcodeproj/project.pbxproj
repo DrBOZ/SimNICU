@@ -464,6 +464,22 @@
 		5C8F5A11186FE8EF00A7EE8C /* TongueTieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A0F186FE8EF00A7EE8C /* TongueTieViewController.m */; };
 		5C8F5A14186FE90F00A7EE8C /* TongueTieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A13186FE90F00A7EE8C /* TongueTieModel.m */; };
 		5C8F5A15186FE90F00A7EE8C /* TongueTieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A13186FE90F00A7EE8C /* TongueTieModel.m */; };
+		5C8F5A1A186FF52500A7EE8C /* BloodInNappyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A19186FF52500A7EE8C /* BloodInNappyViewController.m */; };
+		5C8F5A1B186FF52500A7EE8C /* BloodInNappyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A19186FF52500A7EE8C /* BloodInNappyViewController.m */; };
+		5C8F5A1E186FF57A00A7EE8C /* BloodInNappyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A1D186FF57A00A7EE8C /* BloodInNappyModel.m */; };
+		5C8F5A1F186FF57A00A7EE8C /* BloodInNappyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A1D186FF57A00A7EE8C /* BloodInNappyModel.m */; };
+		5C8F5A25186FF61D00A7EE8C /* withdrawlBleed.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A24186FF61D00A7EE8C /* withdrawlBleed.html */; };
+		5C8F5A26186FF61D00A7EE8C /* withdrawlBleed.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A24186FF61D00A7EE8C /* withdrawlBleed.html */; };
+		5C8F5A28186FF89300A7EE8C /* vag-bleeding-d4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A27186FF89300A7EE8C /* vag-bleeding-d4.jpg */; };
+		5C8F5A29186FF89300A7EE8C /* vag-bleeding-d4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A27186FF89300A7EE8C /* vag-bleeding-d4.jpg */; };
+		5C8F5A35186FFD4D00A7EE8C /* BiliousVomitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A34186FFD4D00A7EE8C /* BiliousVomitingViewController.m */; };
+		5C8F5A36186FFD4D00A7EE8C /* BiliousVomitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A34186FFD4D00A7EE8C /* BiliousVomitingViewController.m */; };
+		5C8F5A39186FFD8700A7EE8C /* BiliousVomitingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A38186FFD8700A7EE8C /* BiliousVomitingModel.m */; };
+		5C8F5A3A186FFD8700A7EE8C /* BiliousVomitingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8F5A38186FFD8700A7EE8C /* BiliousVomitingModel.m */; };
+		5C8F5A3D186FFDA900A7EE8C /* biliousVomiting.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A3C186FFDA900A7EE8C /* biliousVomiting.html */; };
+		5C8F5A3E186FFDA900A7EE8C /* biliousVomiting.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A3C186FFDA900A7EE8C /* biliousVomiting.html */; };
+		5C8F5A40186FFDB800A7EE8C /* bilious.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A3F186FFDB800A7EE8C /* bilious.jpg */; };
+		5C8F5A41186FFDB800A7EE8C /* bilious.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C8F5A3F186FFDB800A7EE8C /* bilious.jpg */; };
 		5C930AF017B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF117B0CA6900CBE616 /* CBTableViewSectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */; };
 		5C930AF417B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */; };
@@ -1295,6 +1311,18 @@
 		5C8F5A0F186FE8EF00A7EE8C /* TongueTieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TongueTieViewController.m; sourceTree = "<group>"; };
 		5C8F5A12186FE90F00A7EE8C /* TongueTieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TongueTieModel.h; sourceTree = "<group>"; };
 		5C8F5A13186FE90F00A7EE8C /* TongueTieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TongueTieModel.m; sourceTree = "<group>"; };
+		5C8F5A18186FF52500A7EE8C /* BloodInNappyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodInNappyViewController.h; sourceTree = "<group>"; };
+		5C8F5A19186FF52500A7EE8C /* BloodInNappyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodInNappyViewController.m; sourceTree = "<group>"; };
+		5C8F5A1C186FF57A00A7EE8C /* BloodInNappyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BloodInNappyModel.h; sourceTree = "<group>"; };
+		5C8F5A1D186FF57A00A7EE8C /* BloodInNappyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BloodInNappyModel.m; sourceTree = "<group>"; };
+		5C8F5A24186FF61D00A7EE8C /* withdrawlBleed.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = withdrawlBleed.html; sourceTree = "<group>"; };
+		5C8F5A27186FF89300A7EE8C /* vag-bleeding-d4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "vag-bleeding-d4.jpg"; sourceTree = "<group>"; };
+		5C8F5A33186FFD4D00A7EE8C /* BiliousVomitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiliousVomitingViewController.h; sourceTree = "<group>"; };
+		5C8F5A34186FFD4D00A7EE8C /* BiliousVomitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiliousVomitingViewController.m; sourceTree = "<group>"; };
+		5C8F5A37186FFD8700A7EE8C /* BiliousVomitingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiliousVomitingModel.h; sourceTree = "<group>"; };
+		5C8F5A38186FFD8700A7EE8C /* BiliousVomitingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiliousVomitingModel.m; sourceTree = "<group>"; };
+		5C8F5A3C186FFDA900A7EE8C /* biliousVomiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = biliousVomiting.html; sourceTree = "<group>"; };
+		5C8F5A3F186FFDB800A7EE8C /* bilious.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bilious.jpg; sourceTree = "<group>"; };
 		5C930AEE17B0CA6900CBE616 /* CBTableViewSectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSectionData.h; sourceTree = "<group>"; };
 		5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSectionData.m; sourceTree = "<group>"; };
 		5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewRowData.h; sourceTree = "<group>"; };
@@ -2734,6 +2762,8 @@
 		5C8F5A05186FD14600A7EE8C /* Postnatal Ward Problems */ = {
 			isa = PBXGroup;
 			children = (
+				5C8F5A2A186FFB9C00A7EE8C /* Bilious vomiting */,
+				5C8F5A17186FF4F300A7EE8C /* Blood in the nappy */,
 				5C8F5A07186FD17C00A7EE8C /* Tongue Tie */,
 				5C8F5A06186FD15800A7EE8C /* Antenatal hydronephrosis */,
 			);
@@ -2765,6 +2795,48 @@
 			children = (
 				5C8F5A08186FD19000A7EE8C /* tonguetie.html */,
 				5C8F5A0B186FE7B100A7EE8C /* tongue-tied1.jpg */,
+			);
+			name = "HTML page";
+			sourceTree = "<group>";
+		};
+		5C8F5A17186FF4F300A7EE8C /* Blood in the nappy */ = {
+			isa = PBXGroup;
+			children = (
+				5C8F5A18186FF52500A7EE8C /* BloodInNappyViewController.h */,
+				5C8F5A19186FF52500A7EE8C /* BloodInNappyViewController.m */,
+				5C8F5A1C186FF57A00A7EE8C /* BloodInNappyModel.h */,
+				5C8F5A1D186FF57A00A7EE8C /* BloodInNappyModel.m */,
+				5C8F5A20186FF58100A7EE8C /* HTML page */,
+			);
+			name = "Blood in the nappy";
+			sourceTree = "<group>";
+		};
+		5C8F5A20186FF58100A7EE8C /* HTML page */ = {
+			isa = PBXGroup;
+			children = (
+				5C8F5A24186FF61D00A7EE8C /* withdrawlBleed.html */,
+				5C8F5A27186FF89300A7EE8C /* vag-bleeding-d4.jpg */,
+			);
+			name = "HTML page";
+			sourceTree = "<group>";
+		};
+		5C8F5A2A186FFB9C00A7EE8C /* Bilious vomiting */ = {
+			isa = PBXGroup;
+			children = (
+				5C8F5A33186FFD4D00A7EE8C /* BiliousVomitingViewController.h */,
+				5C8F5A34186FFD4D00A7EE8C /* BiliousVomitingViewController.m */,
+				5C8F5A37186FFD8700A7EE8C /* BiliousVomitingModel.h */,
+				5C8F5A38186FFD8700A7EE8C /* BiliousVomitingModel.m */,
+				5C8F5A3B186FFD8F00A7EE8C /* HTML page */,
+			);
+			name = "Bilious vomiting";
+			sourceTree = "<group>";
+		};
+		5C8F5A3B186FFD8F00A7EE8C /* HTML page */ = {
+			isa = PBXGroup;
+			children = (
+				5C8F5A3C186FFDA900A7EE8C /* biliousVomiting.html */,
+				5C8F5A3F186FFDB800A7EE8C /* bilious.jpg */,
 			);
 			name = "HTML page";
 			sourceTree = "<group>";
@@ -3851,6 +3923,7 @@
 				5C0E05EE178EF83400768739 /* benzylpenicillinPreparation.html in Resources */,
 				5C0E05F1178EF86B00768739 /* benzylpenicillinDose.html in Resources */,
 				5C0E05F4178EF87C00768739 /* benzylpenicillinPresentation.html in Resources */,
+				5C8F5A25186FF61D00A7EE8C /* withdrawlBleed.html in Resources */,
 				5C0700C8183A8D41001EF769 /* CFAMSeizures02.jpg in Resources */,
 				5C0E05FC178F51AA00768739 /* adrenalinePharmacology.html in Resources */,
 				5C0E05FF178F51BC00768739 /* adrenalineIndications.html in Resources */,
@@ -3943,11 +4016,13 @@
 				5C51D8E017932E6B004A7FF5 /* sodiumChloridePharmacology.html in Resources */,
 				5C51D8E317932E7B004A7FF5 /* sodiumChlorideIndications.html in Resources */,
 				5CA3C684183A67EE00E2AA67 /* CFAMIndications.html in Resources */,
+				5C8F5A3D186FFDA900A7EE8C /* biliousVomiting.html in Resources */,
 				5C51D8E617932E8F004A7FF5 /* sodiumChloridePresentation.html in Resources */,
 				5C51D8E917932E9E004A7FF5 /* sodiumChloridePreparation.html in Resources */,
 				5C51D8EC17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */,
 				5C51D8EF17932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */,
 				5C51D8F217932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */,
+				5C8F5A40186FFDB800A7EE8C /* bilious.jpg in Resources */,
 				5C51D8F517932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */,
 				5C51D8F817932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */,
 				5C51D8FB17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
@@ -3957,6 +4032,7 @@
 				5CB5BC2F17FF6A18007F3921 /* iOS Simulator Screen shot 4 Oct 2013 22.22.53.png in Resources */,
 				5CA3CC2017B7999F002E96DC /* Default@2x.png in Resources */,
 				5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */,
+				5C8F5A28186FF89300A7EE8C /* vag-bleeding-d4.jpg in Resources */,
 				5C4BBFB9183A4E90002607EC /* aeeg.html in Resources */,
 				5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */,
 				5C56F67618023B9200665E22 /* App_icon_80x80.png in Resources */,
@@ -4023,6 +4099,7 @@
 				5C7CB1DB17FDFBB200C5D697 /* ScreenHack02.png in Resources */,
 				5CD3B05516CF38D500DE362C /* hfov1.html in Resources */,
 				5C7CB1D817FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */,
+				5C8F5A3E186FFDA900A7EE8C /* biliousVomiting.html in Resources */,
 				5CD3B05616CF38D500DE362C /* pulmonaryHaem0.html in Resources */,
 				5CD3B05716CF38D500DE362C /* pulmonaryHaem1.html in Resources */,
 				5C4BBFBA183A4E90002607EC /* aeeg.html in Resources */,
@@ -4077,6 +4154,8 @@
 				5C0E061E178F526600768739 /* adrenalineReferences.html in Resources */,
 				5C0E0622178F816700768739 /* gentamicinPharmacology.html in Resources */,
 				5C0E0625178F82E300768739 /* gentamicinIndications.html in Resources */,
+				5C8F5A29186FF89300A7EE8C /* vag-bleeding-d4.jpg in Resources */,
+				5C8F5A26186FF61D00A7EE8C /* withdrawlBleed.html in Resources */,
 				5C0E0628178F82F500768739 /* gentamicinPresentation.html in Resources */,
 				5C0E062B178F830500768739 /* gentamicinDose.html in Resources */,
 				5CB5BC3617FF7318007F3921 /* Demo02.png in Resources */,
@@ -4159,6 +4238,7 @@
 				5C51D8ED17932EAF004A7FF5 /* sodiumChlorideExpiry.html in Resources */,
 				5C51D8F017932EBE004A7FF5 /* sodiumChlorideYSiteCompatibilities.html in Resources */,
 				5C51D8F317932ED5004A7FF5 /* sodiumChlorideContraindications.html in Resources */,
+				5C8F5A41186FFDB800A7EE8C /* bilious.jpg in Resources */,
 				5C51D8F617932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */,
 				5C0700C3183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg in Resources */,
 				5C51D8F917932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */,
@@ -4277,6 +4357,7 @@
 				5C940C0D166E3C5B0044A7D1 /* PhototherapyAddBilirubinResultViewController.m in Sources */,
 				5C940C0E166E3C5B0044A7D1 /* PhototherapyHoursOldViewController.m in Sources */,
 				5C940C1D166E3CAC0044A7D1 /* AbstractActionSheetPicker.m in Sources */,
+				5C8F5A39186FFD8700A7EE8C /* BiliousVomitingModel.m in Sources */,
 				5C940C1E166E3CAC0044A7D1 /* ActionSheetStringPicker.m in Sources */,
 				5C940C1F166E3CAC0044A7D1 /* ActionSheetDatePicker.m in Sources */,
 				5C940C20166E3CAC0044A7D1 /* ActionSheetDistancePicker.m in Sources */,
@@ -4297,6 +4378,7 @@
 				5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */,
 				5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */,
 				5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */,
+				5C8F5A1A186FF52500A7EE8C /* BloodInNappyViewController.m in Sources */,
 				5C0F75B71804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
 				5CA3C681183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */,
@@ -4304,6 +4386,7 @@
 				5C6257A3184CC65A008F01D1 /* VascularLine.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
 				5C8F5A14186FE90F00A7EE8C /* TongueTieModel.m in Sources */,
+				5C8F5A1E186FF57A00A7EE8C /* BloodInNappyModel.m in Sources */,
 				5C8C3DEC16707C900073886A /* CalculatorViewController.m in Sources */,
 				5CF25A001679F28000B38DA2 /* CalculatorBrain.m in Sources */,
 				5C56F65D18022D5100665E22 /* PulmonaryHaemorrhageViewController.m in Sources */,
@@ -4328,6 +4411,7 @@
 				5CED07FB185DE8420010A291 /* AppViewModel.m in Sources */,
 				5C756C881798526D002F983E /* CorrectedAgeViewController.m in Sources */,
 				5C756C8C1798528A002F983E /* LMPGestationCalculatorViewController.m in Sources */,
+				5C8F5A35186FFD4D00A7EE8C /* BiliousVomitingViewController.m in Sources */,
 				5C756C901798529F002F983E /* EDDGestationalAgeViewController.m in Sources */,
 				5C756C9C179898A6002F983E /* ExactAgeViewController.m in Sources */,
 				5C756CA117989A33002F983E /* AgeCalculatorsViewController.m in Sources */,
@@ -4459,6 +4543,7 @@
 				5CD3AFC116CF38D500DE362C /* CoolButton.m in Sources */,
 				5CA3C67E183A660300E2AA67 /* CFAMIndicationsWebViewController.m in Sources */,
 				5CD3AFC216CF38D500DE362C /* PortraitOnlyNavigationController.m in Sources */,
+				5C8F5A36186FFD4D00A7EE8C /* BiliousVomitingViewController.m in Sources */,
 				5CD3AFC316CF38D500DE362C /* AppViewController.m in Sources */,
 				5CD3AFC416CF38D500DE362C /* EnterWeightViewController.m in Sources */,
 				5CD3AFC516CF38D500DE362C /* PatientDetailsViewController.m in Sources */,
@@ -4513,6 +4598,7 @@
 				5CD3AFF416CF38D500DE362C /* PhototherapyAddBilirubinResultViewController.m in Sources */,
 				5C0700A2183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */,
 				5CD3AFF516CF38D500DE362C /* PhototherapyHoursOldViewController.m in Sources */,
+				5C8F5A3A186FFD8700A7EE8C /* BiliousVomitingModel.m in Sources */,
 				5CD3AFF616CF38D500DE362C /* AbstractActionSheetPicker.m in Sources */,
 				5CD3AFF716CF38D500DE362C /* ActionSheetStringPicker.m in Sources */,
 				5CD3AFF816CF38D500DE362C /* ActionSheetDatePicker.m in Sources */,
@@ -4579,6 +4665,7 @@
 				5C56F60B1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */,
 				5C0C9DA1179B26370077B881 /* PatientCell.m in Sources */,
 				5C1FC129179EB32E00E345C4 /* CBDatePicker.m in Sources */,
+				5C8F5A1B186FF52500A7EE8C /* BloodInNappyViewController.m in Sources */,
 				5C65858417FCBF3300454277 /* APGARVCFormats.m in Sources */,
 				5CE500DA17A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
 				5CED21FC17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */,
@@ -4642,6 +4729,7 @@
 				5CAE2E0517E6A910001823A3 /* SettingsModel.m in Sources */,
 				5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */,
 				5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */,
+				5C8F5A1F186FF57A00A7EE8C /* BloodInNappyModel.m in Sources */,
 				5C06D4B61803BA4900A3B46C /* DrugInfoSimpleTableViewController.m in Sources */,
 				5C56F66B180234C700665E22 /* CurosurfViewController.m in Sources */,
 				5C6B6E5017E78D31003600DD /* CustomTextModel.m in Sources */,

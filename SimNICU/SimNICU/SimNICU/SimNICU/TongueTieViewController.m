@@ -9,17 +9,13 @@
 #import "TongueTieViewController.h"
 #import "TongueTieModel.h"
 
-@interface TongueTieViewController ()
-
-@end
-
 @implementation TongueTieViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [CBTrackers logEvent:@"Tongue Tie"];
+    [CBTrackers logEvent:@"Postnatal Ward/Tongue Tie"];
     
     self.title = @"Tongue Tie";
     
