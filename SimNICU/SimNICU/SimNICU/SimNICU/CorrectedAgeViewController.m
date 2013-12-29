@@ -554,9 +554,9 @@
                         // not premature
                         cell.label5.text = @"";
                         cell.label4.text = @"";
-                        cell.label3.text = @"Gestation is > 37 weeks";
+                        cell.label3.text = NSLocalizedString(@"Gestation is > 37 weeks", nil);
                         cell.label2.text = @"";
-                        cell.label1.text = @"No need to correct for prematurity";
+                        cell.label1.text = NSLocalizedString(@"No need to correct for prematurity", nil);
                     }
                     else
                     {
@@ -595,7 +595,7 @@
                                     
                                     cell.label3.text = [NSString stringWithFormat:@"Patient is over %d %@ old", [preferences.correctAgeForPrematurityUntilYears intValue], string];
                                     cell.label2.text = @"";
-                                    cell.label1.text = @"No need to correct for prematurity";
+                                    cell.label1.text = NSLocalizedString(@"No need to correct for prematurity", nil);
                                 }
                                 else
                                 {

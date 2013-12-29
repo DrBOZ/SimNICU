@@ -7,6 +7,7 @@
 //
 
 #import "PostnatalWardTableViewController.h"
+#import "TongueTieViewController.h"
 #import "PostnatalWardSection.h"
 #import "PostnatalWardModel.h"
 
@@ -264,7 +265,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSString *problem;
+    
+    if (tableView == self.tableView)
+    {
+        PostnatalWardSection *postnatalWardSection = [self.postnatalWardSections objectAtIndex:indexPath.section];
+        
+        problem = [postnatalWardSection.problems objectAtIndex:indexPath.row];
+    }
+    else if(tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        problem = [searchData objectAtIndex:indexPath.row];
+    }
+    
+    if ([problem isEqualToString:@"Tongue Tie"])
+    {
+        TongueTieViewController *vc = [[TongueTieViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index

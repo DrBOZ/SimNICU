@@ -6466,7 +6466,8 @@
             [sampleData setValue:@"YES" forKey:@"Display CRP"];
         }
         // check LFTs
-        if (![[sampleData objectForKey:@"Alkaline phosphatase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Alanine Transaminase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"gamma GT value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Albumin value (serum)"] isEqualToString:@""])
+        // if (![[sampleData objectForKey:@"Alkaline phosphatase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Alanine Transaminase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Unconjugated Bilirubin value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"gamma GT value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Albumin value (serum)"] isEqualToString:@""])
+        if (![[sampleData objectForKey:@"Alkaline phosphatase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Alanine Transaminase value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"gamma GT value (serum)"] isEqualToString:@""] || ![[sampleData objectForKey:@"Albumin value (serum)"] isEqualToString:@""])
         {
             // there are new LFTs results to display
             [sampleData setValue:@"YES" forKey:@"Display LFTs"];
