@@ -1,18 +1,18 @@
 //
 //  FluidBalanceViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 01/01/2014.
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
-#import "FluidBalanceViewController.h"
+#import "FluidBalanceTableViewController.h"
 
-@interface FluidBalanceViewController ()
+@interface FluidBalanceTableViewController ()
 
 @end
 
-@implementation FluidBalanceViewController
+@implementation FluidBalanceTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

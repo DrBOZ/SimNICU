@@ -41,6 +41,7 @@
 #import "CrUSSOptionsTableViewController.h"
 #import "DrugsTableViewController.h"
 #import "EarlyCareViewController.h"
+#import "FluidBalanceTableViewController.h"
 #import "FluidRequirementsTableViewController.h"
 #import "GastroschisisViewController.h"
 #import "GlucoseLoadController.h"
@@ -946,13 +947,12 @@
     }
     else
     {
-        Screen *thisScreen = screens[indexPath.row];
-        
-        NSString *thisScreenType = thisScreen.segueId;
+        // get reference to selected screen
+        NSString *selectedScreen = [screens[indexPath.row] segueId];
         
 #pragma mark Age Calculators
         
-        if([thisScreenType isEqualToString:@"Age Calculators"])
+        if([selectedScreen isEqualToString:@"Age Calculators"])
         {
             AgeCalculatorsViewController *vc = [[AgeCalculatorsViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.selectedPatient = self.selectedPatient;
@@ -961,7 +961,7 @@
         
 #pragma mark APGAR
         
-        else if([thisScreenType isEqualToString:@"APGAR"])
+        else if([selectedScreen isEqualToString:@"APGAR"])
         {
             APGARTabBarController *newAPGARTabBarController = [[APGARTabBarController alloc] init];
             
@@ -979,7 +979,7 @@
         
 #pragma mark Blood Products
         
-        else if ([thisScreenType isEqualToString:@"BloodProducts"])
+        else if ([selectedScreen isEqualToString:@"BloodProducts"])
         {
             BloodProductsViewController *newViewController = [BloodProductsViewController new];
             // BloodProductsTableViewController *newViewController = [[BloodProductsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -990,7 +990,7 @@
         
 #pragma mark Calculator
         
-        else if ([thisScreenType isEqualToString:@"Calculator"])
+        else if ([selectedScreen isEqualToString:@"Calculator"])
         {
             CalculatorViewController *newViewController = [CalculatorViewController new];
             
@@ -1011,7 +1011,7 @@
         
 #pragma mark CFAM
         
-        else if ([thisScreenType isEqualToString:@"CFAM"])
+        else if ([selectedScreen isEqualToString:@"CFAM"])
         {
             // CFAMOptionsTableViewController *vc = [[CFAMOptionsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             CFAMInterpretationWebViewController *vc = [CFAMInterpretationWebViewController new];
@@ -1021,7 +1021,7 @@
         
 #pragma mark Cooling
         
-        else if ([thisScreenType isEqualToString:@"Cooling"])
+        else if ([selectedScreen isEqualToString:@"Cooling"])
         {
             CoolingTableViewController *vc = [[CoolingTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
     
@@ -1030,7 +1030,7 @@
         
 #pragma mark Curosurf
         
-        else if ([thisScreenType isEqualToString:@"Curosurf"])
+        else if ([selectedScreen isEqualToString:@"Curosurf"])
         {
             CurosurfViewController *newViewController = [CurosurfViewController new];
 
@@ -1039,7 +1039,7 @@
         
 #pragma mark Cranial Ultrasound
         
-        else if ([thisScreenType isEqualToString:@"CrUSS"])
+        else if ([selectedScreen isEqualToString:@"CrUSS"])
         {
 
 #if CRUSS_PREVIEW_MODE
@@ -1055,7 +1055,7 @@
         
 #pragma mark Congenital Diaphragmatic Hernia
         
-        else if ([thisScreenType isEqualToString:@"CDH"])
+        else if ([selectedScreen isEqualToString:@"CDH"])
         {
             CDHViewController *newViewController = [CDHViewController new];
             
@@ -1064,7 +1064,7 @@
         
 #pragma mark Drugs
         
-        else if ([thisScreenType isEqualToString:@"Drugs"])
+        else if ([selectedScreen isEqualToString:@"Drugs"])
         {
             // DrugsViewController *newViewController = [DrugsViewController new];
             DrugsTableViewController *newViewController = [[DrugsTableViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -1085,7 +1085,7 @@
         
 #pragma mark Early Care
         
-        else if ([thisScreenType isEqualToString:@"EarlyCare"])
+        else if ([selectedScreen isEqualToString:@"EarlyCare"])
         {
             EarlyCareViewController *vc = [[EarlyCareViewController alloc] initWithStyle:UITableViewStylePlain];
             
@@ -1101,14 +1101,28 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
         
-        else if ([thisScreenType isEqualToString:@"FluidBalance"])
+#pragma mark Fluid Balance
+        
+        else if ([selectedScreen isEqualToString:@"FluidBalance"])
         {
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            FluidBalanceTableViewController *vc = [[FluidBalanceTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            
+            if (self.selectedPatient.workingWeight)
+            {
+                vc.selectedPatient = self.selectedPatient;
+                vc.workingWeight = self.selectedPatient.workingWeight;
+            }
+            else if (self.weight)
+            {
+                vc.workingWeight = self.weight;
+            }
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
 #pragma mark Fluid Requirements
         
-        else if ([thisScreenType isEqual:@"FluidRequirements"])
+        else if ([selectedScreen isEqualToString:@"FluidRequirements"])
         {
             FluidRequirementsTableViewController *newViewController = [[FluidRequirementsTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
@@ -1127,14 +1141,14 @@
         
 #pragma mark Feeds & Fluids
         
-        else if ([thisScreenType isEqualToString:@"FeedsAndFluids"])
+        else if ([selectedScreen isEqualToString:@"FeedsAndFluids"])
         {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
         
 #pragma mark Gastroschisis
         
-        else if ([thisScreenType isEqualToString:@"Gastroschisis"])
+        else if ([selectedScreen isEqualToString:@"Gastroschisis"])
         {
             GastroschisisViewController *newViewController = [GastroschisisViewController new];;
             
@@ -1143,7 +1157,7 @@
         
 #pragma mark Glucose Load
         
-        else if ([thisScreenType isEqualToString:@"GlucoseInfusionRate"])
+        else if ([selectedScreen isEqualToString:@"GlucoseInfusionRate"])
         {
 #if GLUCOSE_LOAD_PREVIEW_MODE
             
@@ -1157,7 +1171,7 @@
         
 #pragma mark HFOV
         
-        else if ([thisScreenType isEqualToString:@"HFOV"])
+        else if ([selectedScreen isEqualToString:@"HFOV"])
         {
             HFOVViewController *newViewController = [HFOVViewController new];;
 
@@ -1166,7 +1180,7 @@
         
 #pragma mark Infusions
         
-        else if ([thisScreenType isEqualToString:@"Infusions"])
+        else if ([selectedScreen isEqualToString:@"Infusions"])
         {
             InfusionsViewController *newViewController = [InfusionsViewController new];;
             
@@ -1184,7 +1198,7 @@
         
 #pragma mark Intubation
         
-        else if ([thisScreenType isEqualToString:@"Intubation"])
+        else if ([selectedScreen isEqualToString:@"Intubation"])
         {
             IntubationViewController *newViewController = [IntubationViewController new];;
             
@@ -1205,7 +1219,7 @@
         
 #pragma mark Narcan
         
-        else if ([thisScreenType isEqualToString:@"Narcan"])
+        else if ([selectedScreen isEqualToString:@"Narcan"])
         {
             NSLog(@"showNarcan");
             
@@ -1218,7 +1232,7 @@
         
 #pragma mark Oxygenation Index
         
-        else if ([thisScreenType isEqualToString:@"OI"])
+        else if ([selectedScreen isEqualToString:@"OI"])
         {
             
 #ifdef LITE_VERSION
@@ -1242,7 +1256,7 @@
         
 #pragma mark Thermaoregulation
         
-        else if ([thisScreenType isEqualToString:@"Thermoregulation"])
+        else if ([selectedScreen isEqualToString:@"Thermoregulation"])
         {
             PlasticBagViewController *newViewController = [PlasticBagViewController new];;
             
@@ -1251,7 +1265,7 @@
         
 #pragma mark Phototherapy
         
-        else if ([thisScreenType isEqualToString:@"Phototherapy"])
+        else if ([selectedScreen isEqualToString:@"Phototherapy"])
         {
             PhototherapyViewController *newViewController = [PhototherapyViewController new];;
             
@@ -1281,7 +1295,7 @@
         
 #pragma mark Postnatal Ward
         
-        else if ([thisScreenType isEqualToString:@"PostnatalWard"])
+        else if ([selectedScreen isEqualToString:@"PostnatalWard"])
         {
             PostnatalWardTableViewController *newViewController = [[PostnatalWardTableViewController alloc] initWithStyle:UITableViewStylePlain];
             
@@ -1290,7 +1304,7 @@
         
 #pragma mark Pulmonary Haemorrhage
         
-        else if ([thisScreenType isEqualToString:@"PulmonaryHaemorrhage"])
+        else if ([selectedScreen isEqualToString:@"PulmonaryHaemorrhage"])
         {
             PulmonaryHaemorrhageViewController *newViewController = [PulmonaryHaemorrhageViewController new];;
             
@@ -1299,7 +1313,7 @@
         
 #pragma mark Resuscitation
         
-        else if ([thisScreenType isEqualToString:@"Resus"])
+        else if ([selectedScreen isEqualToString:@"Resus"])
         {
             ResusViewController *newViewController = [ResusViewController new];;
             newViewController.workingWeight = self.weight;
@@ -1309,7 +1323,7 @@
         
 #pragma mark Retinopathy of Prematurity
         
-        else if ([thisScreenType isEqualToString:@"ROP"])
+        else if ([selectedScreen isEqualToString:@"ROP"])
         {
             ROPViewController *newViewController = [ROPViewController new];;
             
@@ -1347,7 +1361,7 @@
         
 #pragma mark Transport Ventilator
         
-        else if ([thisScreenType isEqualToString:@"BabyPac"])
+        else if ([selectedScreen isEqualToString:@"BabyPac"])
         {
             TransportVentilatorViewController *newViewController = [TransportVentilatorViewController new];;
             
@@ -1356,7 +1370,7 @@
         
 #pragma mark Umbilical Lines
 
-        else if ([thisScreenType isEqualToString:@"UACUVC"])
+        else if ([selectedScreen isEqualToString:@"UACUVC"])
         {
             UVCUACViewController *newViewController = [UVCUACViewController new];;
             
@@ -1394,7 +1408,7 @@
         
 #pragma mark Vitamin K
         
-        else if ([thisScreenType isEqualToString:@"VitK"])
+        else if ([selectedScreen isEqualToString:@"VitK"])
         {
             VitKTableViewController *vc = [[VitKTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             
@@ -1403,7 +1417,7 @@
         
 #pragma mark Weight Conversion
         
-        else if ([thisScreenType isEqualToString:@"WeightConversion"])
+        else if ([selectedScreen isEqualToString:@"WeightConversion"])
         {
             
 #ifdef LITE_VERSION
@@ -1425,7 +1439,7 @@
             
 #pragma mark DynamicTextTester
         }
-        else if ([thisScreenType isEqualToString:@"DynamicTextTester"])
+        else if ([selectedScreen isEqualToString:@"DynamicTextTester"])
         {
             DynamicTextTesterViewController *vc = [DynamicTextTesterViewController new];
             [self.navigationController pushViewController:vc animated:YES];

@@ -202,8 +202,8 @@
 		5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
 		5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
-		5C31A3D01874D6EE00B585D9 /* FluidBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C31A3CF1874D6EE00B585D9 /* FluidBalanceViewController.m */; };
-		5C31A3D11874D6EE00B585D9 /* FluidBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C31A3CF1874D6EE00B585D9 /* FluidBalanceViewController.m */; };
+		5C31A3D01874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C31A3CF1874D6EE00B585D9 /* FluidBalanceTableViewController.m */; };
+		5C31A3D11874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C31A3CF1874D6EE00B585D9 /* FluidBalanceTableViewController.m */; };
 		5C3962FB16B807A40039C387 /* weightConversionTableComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C3962FA16B807A30039C387 /* weightConversionTableComma.html */; };
 		5C39630116B839790039C387 /* cdh1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630316B839790039C387 /* cdh1Comma.html */; };
 		5C39630716B83D100039C387 /* earlyCareVentSettingsComma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5C39630616B83D0E0039C387 /* earlyCareVentSettingsComma.html */; };
@@ -1068,8 +1068,8 @@
 		5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperSizeTableViewController.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
 		5C316CFA17C2BF830096B8D3 /* CBTrackers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTrackers.m; sourceTree = "<group>"; };
-		5C31A3CE1874D6EE00B585D9 /* FluidBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidBalanceViewController.h; sourceTree = "<group>"; };
-		5C31A3CF1874D6EE00B585D9 /* FluidBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidBalanceViewController.m; sourceTree = "<group>"; };
+		5C31A3CE1874D6EE00B585D9 /* FluidBalanceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidBalanceTableViewController.h; sourceTree = "<group>"; };
+		5C31A3CF1874D6EE00B585D9 /* FluidBalanceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidBalanceTableViewController.m; sourceTree = "<group>"; };
 		5C3962FA16B807A30039C387 /* weightConversionTableComma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = weightConversionTableComma.html; sourceTree = "<group>"; };
 		5C39630216B839790039C387 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/cdh1Comma.html; sourceTree = "<group>"; };
 		5C39630416B839850039C387 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = "en-GB"; path = "en-GB.lproj/cdh1Comma.html"; sourceTree = "<group>"; };
@@ -1947,8 +1947,8 @@
 		5C31A3C61874D5FC00B585D9 /* Fluid Balance */ = {
 			isa = PBXGroup;
 			children = (
-				5C31A3CE1874D6EE00B585D9 /* FluidBalanceViewController.h */,
-				5C31A3CF1874D6EE00B585D9 /* FluidBalanceViewController.m */,
+				5C31A3CE1874D6EE00B585D9 /* FluidBalanceTableViewController.h */,
+				5C31A3CF1874D6EE00B585D9 /* FluidBalanceTableViewController.m */,
 			);
 			name = "Fluid Balance";
 			sourceTree = "<group>";
@@ -4364,7 +4364,7 @@
 				5C642BE11851B2AD0052337B /* AddBloodResultTableViewController.m in Sources */,
 				5C4BBFA8183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */,
 				5C4BBF98183A3C07002607EC /* CFAMOptionsTableViewController.m in Sources */,
-				5C31A3D01874D6EE00B585D9 /* FluidBalanceViewController.m in Sources */,
+				5C31A3D01874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */,
 				5C06D4C11803C54400A3B46C /* VitKTableViewController.m in Sources */,
 				5C56F6141801DEE500665E22 /* CBWebView.m in Sources */,
 				5C940C0C166E3C5B0044A7D1 /* PhototherapyUnitsViewController.m in Sources */,
@@ -4649,7 +4649,7 @@
 				5CD3B00C16CF38D500DE362C /* CalculatorViewController.m in Sources */,
 				5CD3B00D16CF38D500DE362C /* CalculatorBrain.m in Sources */,
 				5C98A6A41787553400F246E3 /* DrugDatabase.m in Sources */,
-				5C31A3D11874D6EE00B585D9 /* FluidBalanceViewController.m in Sources */,
+				5C31A3D11874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */,
 				5C98A6A81787562700F246E3 /* DrugCategory.m in Sources */,
 				5C98A6AC1787577000F246E3 /* Drug.m in Sources */,
 				5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */,

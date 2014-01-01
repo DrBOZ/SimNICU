@@ -92,7 +92,7 @@
 #if FLUID_BALANCE_PREVIEW_MODE
     
     screen = [Screen new];
-    screen.menuText = @"Fluid Balance";
+    screen.menuText = NSLocalizedString(@"Fluid Balance", nil);
     screen.segueId = @"FluidBalance";
     [screens addObject:screen];
     
