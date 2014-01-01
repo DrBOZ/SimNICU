@@ -1538,7 +1538,7 @@
                 self.jaundiceTextView.text = self.selectedPatient.jaundice;
             }
         }
-        else if ([section.sectionName isEqual:@"Sepsis"])
+        else if ([section.sectionName isEqualToString:@"Sepsis"])
         {
             NSArray *crpResults = [self getCRPResultsToDisplay];
             
@@ -1611,7 +1611,7 @@
                 self.sepsisTextView.text = self.selectedPatient.sepsis;
             }
         }
-        else if ([section.sectionName isEqual:@"Drugs"])
+        else if ([section.sectionName isEqualToString:@"Drugs"])
         {
             CellIdentifier = @"Drugs";
             
@@ -1631,7 +1631,7 @@
             
             self.drugsTextView.text = self.selectedPatient.drugs;
         }
-        else if ([section.sectionName isEqual:@"ROP"])
+        else if ([section.sectionName isEqualToString:@"ROP"])
         {
             CellIdentifier = @"ROP";
             
@@ -1651,7 +1651,7 @@
             
             self.ropTextView.text = self.selectedPatient.rop;
         }
-        else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+        else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
         {
             CellIdentifier = @"NeurologyAndCranialUSS";
             
@@ -1671,7 +1671,7 @@
             
             self.cranialUSSTextView.text = self.selectedPatient.cranialUSS;
         }
-        else if ([section.sectionName isEqual:@"Parents / Social"])
+        else if ([section.sectionName isEqualToString:@"Parents / Social"])
         {
             CellIdentifier = @"ParentsSocial";
             
@@ -1691,7 +1691,7 @@
             
             self.parentsAndSocialTextView.text = self.selectedPatient.parentsAndSocial;
         }
-        else if ([section.sectionName isEqual:@"Examination"])
+        else if ([section.sectionName isEqualToString:@"Examination"])
         {
             CellIdentifier = @"Examination";
             
@@ -1711,7 +1711,7 @@
             
             self.impressionTextView.text = self.selectedPatient.impression;
         }
-        else if ([section.sectionName isEqual:@"Summary"])
+        else if ([section.sectionName isEqualToString:@"Summary"])
         {
             CellIdentifier = @"Summary";
             
@@ -1731,7 +1731,7 @@
             
             self.planTextView.text = self.selectedPatient.plan;
         }
-        else if ([section.sectionName isEqual:@"Plan"])
+        else if ([section.sectionName isEqualToString:@"Plan"])
         {
             CellIdentifier = @"Plan";
             
