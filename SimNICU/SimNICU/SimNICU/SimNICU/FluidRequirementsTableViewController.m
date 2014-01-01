@@ -191,11 +191,11 @@
                     }
                     else if (ageInDays >= 4 && ageInDays < 5)
                     {
-                        mlPerKgPerDay = 135;
+                        mlPerKgPerDay = 120; // was 135
                     }
                     else if (ageInDays >= 5)
                     {
-                        mlPerKgPerDay = 150;
+                        mlPerKgPerDay = 120; // was 150
                     }
                 }
                 else
@@ -215,11 +215,11 @@
                     }
                     else if (ageInDays >= 3 && ageInDays < 4)
                     {
-                        mlPerKgPerDay = 150;
+                        mlPerKgPerDay = 120; // was 150
                     }
                     else if (ageInDays >= 4)
                     {
-                        mlPerKgPerDay = 150;
+                        mlPerKgPerDay = 120; // was 150
                     }
                 }
             }
