@@ -104,7 +104,7 @@
             // present weight as grams
             int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
             
-            self.title = [NSString stringWithFormat:@"Working weight %ig", workingWeightGRAMSAsInt];
+            self.title = [NSString stringWithFormat:@"%@ %ig", NSLocalizedString(@"Working weight", nil) ,workingWeightGRAMSAsInt];
         }
         else
         {
@@ -120,12 +120,12 @@
             formatter.minimumFractionDigits = 0;
             formatter.maximumFractionDigits = 3;
             
-            self.title = [NSString stringWithFormat:@"Working weight %@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
+            self.title = [NSString stringWithFormat:@"%@ %@ kg", NSLocalizedString(@"Working weight", nil), [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
         }
     }
     else
     {
-        self.title = @"Weight not entered";
+        self.title = NSLocalizedString(@"Weight not entered", nil);
     }
     
     // if iOS 7 then return default slider
@@ -300,11 +300,11 @@
     {
         if (section == 0)
         {
-            header = @"Total Fluid Volume";
+            header = NSLocalizedString(@"Total Fluid Volume", nil);
         }
         else
         {
-            header = @"Additives";
+            header = NSLocalizedString(@"Additives", nil);
         }
     }
     
@@ -351,7 +351,7 @@
                 mlPerHourLabel.backgroundColor = [UIColor clearColor];
                 mlPerHourLabel.textAlignment = UITextAlignmentRight;
                 mlPerHourLabel.textColor = [UIColor blackColor];
-                mlPerHourLabel.text = @"ml/hour";
+                mlPerHourLabel.text = [NSString stringWithFormat:@"ml/%@", NSLocalizedString(@"hour", nil)];
                 [cell addSubview:mlPerHourLabel];
                 
                 // ml/day
@@ -367,7 +367,7 @@
                 mlPerDayLabel.backgroundColor = [UIColor clearColor];
                 mlPerDayLabel.textAlignment = UITextAlignmentRight;
                 mlPerDayLabel.textColor = [UIColor grayColor];
-                mlPerDayLabel.text = @"ml/day)";
+                mlPerDayLabel.text = [NSString stringWithFormat:@"ml/%@)", NSLocalizedString(@"day", nil)];
                 [cell addSubview:mlPerDayLabel];
                 
                 // equals sign
@@ -465,7 +465,7 @@
                     sodium.font = [UIFont boldSystemFontOfSize:17.0f];
                     sodium.backgroundColor = [UIColor clearColor];
                     sodium.textColor = [UIColor blackColor];
-                    sodium.text = @"Sodium chloride 30%";
+                    sodium.text = NSLocalizedString(@"Sodium chloride 30%", nil);
                     [cell addSubview:sodium];
                     
                     self.totalSodiumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
@@ -480,7 +480,7 @@
                     mmolPerKgPerDay.backgroundColor = [UIColor clearColor];
                     mmolPerKgPerDay.textAlignment = UITextAlignmentLeft;
                     mmolPerKgPerDay.textColor = [UIColor blackColor];
-                    mmolPerKgPerDay.text = @"mmol/kg/day";
+                    mmolPerKgPerDay.text = [NSString stringWithFormat:@"mmol/kg/%@", NSLocalizedString(@"day", nil)]; // mmol/kg/day
                     [cell addSubview:mmolPerKgPerDay];
                     
                     // and this one
@@ -504,7 +504,7 @@
                     mmolPerDayLabel.backgroundColor = [UIColor clearColor];
                     mmolPerDayLabel.textAlignment = UITextAlignmentRight;
                     mmolPerDayLabel.textColor = [UIColor blackColor];
-                    mmolPerDayLabel.text = @"mmol/day";
+                    mmolPerDayLabel.text = [NSString stringWithFormat:@"mmol/%@", NSLocalizedString(@"day", nil)]; // mmol/day
                     [cell addSubview:mmolPerDayLabel];
                     
                     // mmol/500ml bag
@@ -573,7 +573,7 @@
                     potassium.font = [UIFont boldSystemFontOfSize:17.0f];
                     potassium.backgroundColor = [UIColor clearColor];
                     potassium.textColor = [UIColor blackColor];
-                    potassium.text = @"Potassium chloride 15%";
+                    potassium.text = NSLocalizedString(@"Potassium chloride 15%", nil);
                     [cell addSubview:potassium];
                     
                     self.totalPotassiumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
@@ -587,7 +587,7 @@
                     mmolPerKgPerDay.backgroundColor = [UIColor clearColor];
                     mmolPerKgPerDay.textAlignment = UITextAlignmentLeft;
                     mmolPerKgPerDay.textColor = [UIColor blackColor];
-                    mmolPerKgPerDay.text = @"mmol/kg/day";
+                    mmolPerKgPerDay.text = [NSString stringWithFormat:@"mmol/kg/%@", NSLocalizedString(@"day", nil)]; // mmol/kg/day
                     [cell addSubview:mmolPerKgPerDay];
                     
                     UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(167.0f, 40.0f, 10.0f, 22.0f)];
@@ -610,7 +610,7 @@
                     mmolPerDayLabel.backgroundColor = [UIColor clearColor];
                     mmolPerDayLabel.textAlignment = UITextAlignmentRight;
                     mmolPerDayLabel.textColor = [UIColor blackColor];
-                    mmolPerDayLabel.text = @"mmol/day";
+                    mmolPerDayLabel.text = [NSString stringWithFormat:@"mmol/%@", NSLocalizedString(@"day", nil)]; // mmol/day
                     [cell addSubview:mmolPerDayLabel];
                     
                     // mmol/500ml bag
@@ -678,7 +678,7 @@
                     potassium.font = [UIFont boldSystemFontOfSize:17.0f];
                     potassium.backgroundColor = [UIColor clearColor];
                     potassium.textColor = [UIColor blackColor];
-                    potassium.text = @"Calcium";
+                    potassium.text = NSLocalizedString(@"Calcium", nil);
                     [cell addSubview:potassium];
                     
                     self.totalCalciumMMOLPERKGPERDAY = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 40.0f, 150.0f, 22.0f)];
@@ -692,7 +692,7 @@
                     mmolPerKgPerDay.backgroundColor = [UIColor clearColor];
                     mmolPerKgPerDay.textAlignment = UITextAlignmentLeft;
                     mmolPerKgPerDay.textColor = [UIColor blackColor];
-                    mmolPerKgPerDay.text = @"mmol/kg/day";
+                    mmolPerKgPerDay.text = [NSString stringWithFormat:@"mmol/kg/%@", NSLocalizedString(@"day", nil)]; // mmol/kg/day
                     [cell addSubview:mmolPerKgPerDay];
                     
                     UILabel *equals = [[UILabel alloc] initWithFrame:CGRectMake(167.0f, 40.0f, 10.0f, 22.0f)];
@@ -715,7 +715,7 @@
                     mmolPerDayLabel.backgroundColor = [UIColor clearColor];
                     mmolPerDayLabel.textAlignment = UITextAlignmentRight;
                     mmolPerDayLabel.textColor = [UIColor blackColor];
-                    mmolPerDayLabel.text = @"mmol/day";
+                    mmolPerDayLabel.text = [NSString stringWithFormat:@"mmol/%@", NSLocalizedString(@"day", nil)]; // mmol/day
                     [cell addSubview:mmolPerDayLabel];
                     
                     self.totalCalciumMMOLPERBAG = [[UILabel alloc] initWithFrame:CGRectMake(125.0f, 62.0f, 68.0f, 22.0f)];
@@ -901,11 +901,11 @@
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        text.text = @"A weight is needed for this calculator.\n\nPlease go back and enter a weight or gestation, or select a patient.";
+        text.text = NSLocalizedString(@"A weight is needed for this calculator.\n\nPlease go back and enter a weight or gestation, or select a patient.", nil);
     }
     else
     {
-        text.text = @"A weight is needed for this calculator.\n\nPlease go back and press the          \nbutton, or slide the image to the right,\nand enter a weight or gestation\nor select a patient.";
+        text.text = NSLocalizedString(@"A weight is needed for this calculator.\n\nPlease go back and press the          \nbutton, or slide the image to the right,\nand enter a weight or gestation\nor select a patient.", nil);
         
         UIImageView *plusButton = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"plusButton2.png"]];
         plusButton.frame = CGRectMake(270.0f, 36.0f, 40.0f, 40.0f);
@@ -937,7 +937,7 @@
     if ([CellIdentifier isEqual:@"Total Fluid Volume"])
     {
         // ml/kg/day
-        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ ml/kg/day", [self formatResultWithDouble:(double)mlPerKgPerDay maximumFractionDigits:0]];
+        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ ml/kg/%@", [self formatResultWithDouble:(double)mlPerKgPerDay maximumFractionDigits:0], NSLocalizedString(@"day", nil)];
         
         // ml/day
         mlPerDay = mlPerKgPerDay * workingWeightKGAsDouble;
@@ -966,7 +966,7 @@
     if ([slider isEqual:self.totalFluidSlider])
     {
         // ml/kg/day
-        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ ml/kg/day", [self formatResultWithDouble:(double)mlPerKgPerDay maximumFractionDigits:0]];
+        self.totalFluidsMLPERKGPERDAY.text = [NSString stringWithFormat:@"%@ ml/kg/%@", [self formatResultWithDouble:(double)mlPerKgPerDay maximumFractionDigits:0], NSLocalizedString(@"day", nil)];
         
         // ml/day
         mlPerDay = mlPerKgPerDay * workingWeightKGAsDouble;
