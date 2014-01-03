@@ -38,7 +38,7 @@
 
 // #import "CBBarCustomTableViewTextItem.h"
 
-@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, AddBloodResultTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, JLActionSheetDelegate, CBBarButtonTextItemDelegate>
+@interface DailySummaryViewController () <UITableViewDataSource, UITableViewDelegate, SChartDatasource, SChartDelegate, UITextViewDelegate, UIScrollViewDelegate, PatientDetailsViewControllerDelegate, PhototherapyAddBilirubinResultViewControllerDelegate, JaundiceViewControllerDelegate, VascularLinesTableViewControllerDelegate, AddBloodResultTableViewControllerDelegate, FluidBalanceTableViewControllerDelegate, DailySummaryPDFViewControllerDelegate, UAModalPanelDelegate, CBModalPanelDelegate, JLActionSheetDelegate, CBBarButtonTextItemDelegate>
 {
     int selectedBay;
     int selectedPatientInBay;
@@ -3017,6 +3017,7 @@
             FluidBalanceTableViewController *vc = [[FluidBalanceTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.selectedPatient = self.selectedPatient;
             vc.useAsModalViewController = YES;
+            vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             
@@ -6703,6 +6704,16 @@
     }
     
     return crpResultsToDisplay;
+}
+
+#pragma mark - FluidBalanceTableViewController delegate
+
+- (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // deselect row
+    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - JaundiceViewController delegate

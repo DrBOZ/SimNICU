@@ -8,8 +8,23 @@
 
 #import "Patient.h"
 
+@class FluidBalanceTableViewController;
+
+@protocol FluidBalanceTableViewControllerDelegate <NSObject>
+
+- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishAddingNewSampleData:(NSDictionary *)sampleData;
+
+- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishEditingSampleData:(NSDictionary *)sampleData;
+
+- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishDeletingSampleData:(NSDictionary *)sampleData;
+
+- (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller;
+
+@end
+
 @interface FluidBalanceTableViewController : CBTableViewController
 
+@property (nonatomic, unsafe_unretained) id <FluidBalanceTableViewControllerDelegate> delegate;
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
 @property (nonatomic) BOOL useAsModalViewController;

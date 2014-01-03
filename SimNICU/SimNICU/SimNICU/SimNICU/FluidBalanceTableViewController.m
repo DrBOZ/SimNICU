@@ -179,9 +179,7 @@
 
 - (void)cancel
 {
-//    [self.delegate addBloodResultTableViewControllerDidCancel:self];
-    
-    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate fluidBalanceTableViewControllerDidCancel:self];
 }
 
 #pragma mark - UITableView data source
