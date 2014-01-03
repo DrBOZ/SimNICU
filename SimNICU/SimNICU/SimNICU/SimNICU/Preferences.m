@@ -602,7 +602,7 @@
         {
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Fluid Balance";
-            newSection.sectionEditable = @"NO";
+            newSection.sectionEditable = @"YES";
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
             
             // ml/kg

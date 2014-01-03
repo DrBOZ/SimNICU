@@ -80,4 +80,17 @@
     return formattedDateAsStringInParentheses;
 }
 
++ (NSString *)localisedString:(NSString *)string
+{
+    if ([string isEqualToString:@"ml/kg/day"])
+    {
+        return [NSString stringWithFormat:@"ml/kg/%@", NSLocalizedString(@"day", nil)];
+    }
+    else if ([string isEqualToString:@"ml/day"])
+    {
+        return [NSString stringWithFormat:@"ml/%@", NSLocalizedString(@"day", nil)];
+    }
+    else return NSLocalizedString(string, nil);
+}
+
 @end

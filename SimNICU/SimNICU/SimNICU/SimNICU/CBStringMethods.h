@@ -14,4 +14,6 @@
 
 + (NSString *)dayAndMonthAndTimeInParenthesesForDate:(NSDate *)date andLocale:(NSLocale *)locale;
 
++ (NSString *)localisedString:(NSString *)string;
+
 @end

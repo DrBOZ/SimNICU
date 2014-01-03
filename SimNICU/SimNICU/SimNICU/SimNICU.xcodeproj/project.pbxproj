@@ -441,6 +441,12 @@
 		5C7CB1D817FDE29600C5D697 /* 3.5inchScreenHack.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */; };
 		5C7CB1DA17FDFBB200C5D697 /* ScreenHack02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */; };
 		5C7CB1DB17FDFBB200C5D697 /* ScreenHack02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */; };
+		5C83F9901876D9A9006027B4 /* AddFluidCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C83F98F1876D9A9006027B4 /* AddFluidCell.m */; };
+		5C83F9911876D9A9006027B4 /* AddFluidCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C83F98F1876D9A9006027B4 /* AddFluidCell.m */; };
+		5C83F9991876E2F4006027B4 /* addRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83F9981876E2F4006027B4 /* addRow@2x.png */; };
+		5C83F99A1876E2F4006027B4 /* addRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83F9981876E2F4006027B4 /* addRow@2x.png */; };
+		5C83F99C1876E2F9006027B4 /* addRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83F99B1876E2F9006027B4 /* addRow.png */; };
+		5C83F99D1876E2F9006027B4 /* addRow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C83F99B1876E2F9006027B4 /* addRow.png */; };
 		5C8606D1178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
 		5C8606D2178ADD3F00428ED4 /* DrugSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8606D0178ADD3E00428ED4 /* DrugSection.m */; };
 		5C88570C17E443FB00446E5F /* CBTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88570B17E443FB00446E5F /* CBTableViewController.m */; };
@@ -1271,6 +1277,10 @@
 		5C7A452F17999A6F00D95614 /* AgeResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgeResultsCell.m; sourceTree = "<group>"; };
 		5C7CB1D617FDE29600C5D697 /* 3.5inchScreenHack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.5inchScreenHack.png; sourceTree = "<group>"; };
 		5C7CB1D917FDFBB200C5D697 /* ScreenHack02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenHack02.png; sourceTree = "<group>"; };
+		5C83F98E1876D9A9006027B4 /* AddFluidCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFluidCell.h; sourceTree = "<group>"; };
+		5C83F98F1876D9A9006027B4 /* AddFluidCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFluidCell.m; sourceTree = "<group>"; };
+		5C83F9981876E2F4006027B4 /* addRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addRow@2x.png"; sourceTree = "<group>"; };
+		5C83F99B1876E2F9006027B4 /* addRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addRow.png; sourceTree = "<group>"; };
 		5C8606CF178ADD3E00428ED4 /* DrugSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrugSection.h; sourceTree = "<group>"; };
 		5C8606D0178ADD3E00428ED4 /* DrugSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrugSection.m; sourceTree = "<group>"; };
 		5C871A36182AD6B100B13E27 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1955,6 +1965,10 @@
 				5C31A3CF1874D6EE00B585D9 /* FluidBalanceTableViewController.m */,
 				5C31A3D21874F69500B585D9 /* FluidTableViewCell.h */,
 				5C31A3D31874F69500B585D9 /* FluidTableViewCell.m */,
+				5C83F98E1876D9A9006027B4 /* AddFluidCell.h */,
+				5C83F98F1876D9A9006027B4 /* AddFluidCell.m */,
+				5C83F9981876E2F4006027B4 /* addRow@2x.png */,
+				5C83F99B1876E2F9006027B4 /* addRow.png */,
 			);
 			name = "Fluid Balance";
 			sourceTree = "<group>";
@@ -3876,6 +3890,7 @@
 				5C0700B0183A7BC0001EF769 /* CFAMModeratelyAbnormal.html in Resources */,
 				5C940AD6166E393B0044A7D1 /* iRate.bundle in Resources */,
 				5C940B02166E3B110044A7D1 /* AppViewController.xib in Resources */,
+				5C83F9991876E2F4006027B4 /* addRow@2x.png in Resources */,
 				5C940B08166E3B420044A7D1 /* EnterWeightViewController.xib in Resources */,
 				5C940B51166E3C060044A7D1 /* disclaimer.html in Resources */,
 				5C940BB5166E3C2E0044A7D1 /* bloodTransfusionCriteria0.html in Resources */,
@@ -3968,6 +3983,7 @@
 				5C0E062A178F830500768739 /* gentamicinDose.html in Resources */,
 				5C0E062D178F831800768739 /* gentamicinPreparation.html in Resources */,
 				5C7CB1DA17FDFBB200C5D697 /* ScreenHack02.png in Resources */,
+				5C83F99C1876E2F9006027B4 /* addRow.png in Resources */,
 				5CF18ADE182C4EC600E66633 /* README.md in Resources */,
 				5C0E0630178F832900768739 /* gentamicinDrugMonitoring.html in Resources */,
 				5C0E0633178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
@@ -4186,6 +4202,7 @@
 				5C0E0634178F833D00768739 /* gentamicinIncompatibilities.html in Resources */,
 				5C0E0637178F834C00768739 /* gentamicinContraindications.html in Resources */,
 				5C8F5A0D186FE7B100A7EE8C /* tongue-tied1.jpg in Resources */,
+				5C83F99A1876E2F4006027B4 /* addRow@2x.png in Resources */,
 				5C0E063A178F835900768739 /* gentamicinInteractions.html in Resources */,
 				5C4BBFC3183A4EC4002607EC /* electrode.html in Resources */,
 				5C0700B4183A7BCF001EF769 /* CFAMSeverelyAbnormal.html in Resources */,
@@ -4262,6 +4279,7 @@
 				5C51D8F617932EDE004A7FF5 /* sodiumChlorideInteractions.html in Resources */,
 				5C0700C3183A8B0C001EF769 /* CFAMSeverelyAbnormal.jpg in Resources */,
 				5C51D8F917932EE7004A7FF5 /* sodiumChlorideSideEffects.html in Resources */,
+				5C83F99D1876E2F9006027B4 /* addRow.png in Resources */,
 				5C51D8FC17932EF4004A7FF5 /* sodiumChlorideMonitoring.html in Resources */,
 				5C51D8FF17932EFF004A7FF5 /* sodiumChlorideLicenceStatus.html in Resources */,
 				5C0700B1183A7BC0001EF769 /* CFAMModeratelyAbnormal.html in Resources */,
@@ -4403,6 +4421,7 @@
 				5C0F75B71804FF18000D0CC2 /* EarlyCareModel.m in Sources */,
 				5C940D04166E844C0044A7D1 /* InfusionsViewMaximalTableViewCell.m in Sources */,
 				5CA3C681183A661800E2AA67 /* CFAMIndicationsModel.m in Sources */,
+				5C83F9901876D9A9006027B4 /* AddFluidCell.m in Sources */,
 				5C6FFA30166F18F500F9C4B6 /* InfusionDrug.m in Sources */,
 				5C6257A3184CC65A008F01D1 /* VascularLine.m in Sources */,
 				5C6FFA33166F213D00F9C4B6 /* InfusionDrugPreparation.m in Sources */,
@@ -4610,6 +4629,7 @@
 				5CD3AFED16CF38D500DE362C /* PhototherapyGestationViewController.m in Sources */,
 				5CD3AFEE16CF38D500DE362C /* PhototherapyGraphViewController.m in Sources */,
 				5C27A7F418055CA900A18ECE /* CoolingTableViewController.m in Sources */,
+				5C83F9911876D9A9006027B4 /* AddFluidCell.m in Sources */,
 				5CD3AFEF16CF38D500DE362C /* PhototherapyGuidelineCountryViewController.m in Sources */,
 				5CD3AFF016CF38D500DE362C /* PhototherapyClinicalStatusViewController.m in Sources */,
 				5CD3AFF116CF38D500DE362C /* PhototherapyNeurotoxicityRiskViewController.m in Sources */,

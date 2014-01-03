@@ -17,21 +17,16 @@
     {
         self.mlPerDay = [UITextField new];
         self.mlPerDay.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.mlPerDay.clearButtonMode = UITextFieldViewModeWhileEditing;
+        self.mlPerDay.clearButtonMode = UITextFieldViewModeNever;
         self.mlPerDay.keyboardAppearance = UIKeyboardAppearanceAlert;
-        self.mlPerDay.frame = CGRectMake(100.0f, 8.0f, 80.0f, 30.0f);
+        self.mlPerDay.frame = CGRectMake(230.0f, 8.0f, 80.0f, 30.0f);
         self.mlPerDay.borderStyle = UITextBorderStyleRoundedRect;
         self.mlPerDay.keyboardType = UIKeyboardTypeDecimalPad;
-        self.mlPerDay.textAlignment = UITextAlignmentRight;
+        self.mlPerDay.textAlignment = UITextAlignmentLeft;
         self.mlPerDay.adjustsFontSizeToFitWidth = YES;
-        self.mlPerDay.placeholder = @"ml/day";
+        self.mlPerDay.placeholder = [CBStringMethods localisedString:@"ml/day"];
         
         [self.contentView addSubview:self.mlPerDay];
-        
-        UILabel *mlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(230.0f, 2.0f, 90.0f, 44.0f)];
-        mlPerDay.text = @"ml/day";
-        
-        // [self.contentView addSubview:mlPerDay];
     }
     return self;
 }

@@ -10,6 +10,7 @@
 #import "AddBloodResultTableViewController.h"
 #import "PortraitOnlyNavigationController.h"
 #import "VascularLinesTableViewController.h"
+#import "FluidBalanceTableViewController.h"
 #import "DailySummaryPDFViewController.h"
 #import "PatientDetailsViewController.h"
 #import <ShinobiCharts/ShinobiChart.h>
@@ -3005,6 +3006,16 @@
             VascularLinesTableViewController *vc = [[VascularLinesTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.selectedPatient = self.selectedPatient;
             vc.delegate = self;
+            
+            PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+            
+            [self setupAndPresentModalNavController:navController];
+        }
+        
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        {
+            FluidBalanceTableViewController *vc = [[FluidBalanceTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.selectedPatient = self.selectedPatient;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
             

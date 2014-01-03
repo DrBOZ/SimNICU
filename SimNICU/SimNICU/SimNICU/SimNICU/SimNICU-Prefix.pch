@@ -14,6 +14,7 @@
     #import "CBTableViewWebViewController.h"
     #import "CBTableViewController.h"
     #import "CBBarButtonItems.h"
+    #import "CBStringMethods.h"
     #import "AppDelegate.h"
     #import "Preferences.h"
     #import "CBTrackers.h"
