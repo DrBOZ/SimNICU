@@ -37,6 +37,20 @@
     
     [CBTrackers logEvent:@"Fluid Balance"];
     
+    // set up buttons if used modally
+    if (self.useAsModalViewController)
+    {
+        // set navigation item buttons and tint for iOS 7
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.view.tintColor = [UIColor redColor];
+        }
+    }
+    
     // if no working weight then show instructions
     if (!self.workingWeight)
     {
@@ -96,6 +110,78 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)done
+{
+//    if ([self.editOrAddResult isEqualToString:@"Edit"])
+//    {
+//        // update sample data
+//        [self updateSampleData];
+//        
+//        [self.delegate addBloodResultTableViewController:self didFinishEditingSampleData:self.sampleData];
+//    }
+//    else
+//    {
+//        self.sampleData = [NSMutableDictionary dictionary];
+//        
+//        // add a unique identifier
+//        Preferences *preferences = [Preferences sharedPreferences];
+//        
+//        [self.sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
+//        
+//        // increment counter
+//        int counter = [preferences.bloodResultUniqueReferenceCounter intValue];
+//        counter ++;
+//        preferences.bloodResultUniqueReferenceCounter = [NSNumber numberWithInt:counter];
+//        
+//        // add results to sample data
+//        [self updateSampleData];
+//        
+//        NSString *displayResults = @"NO";
+//        
+//        [self.sampleData setObject:displayResults forKey:@"Display FBC"];
+//        [self.sampleData setObject:displayResults forKey:@"Display Clotting"];
+//        [self.sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
+//        [self.sampleData setObject:displayResults forKey:@"Display U&Es"];
+//        [self.sampleData setObject:displayResults forKey:@"Display CRP"];
+//        [self.sampleData setObject:displayResults forKey:@"Display LFTs"];
+//        [self.sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
+//        [self.sampleData setObject:displayResults forKey:@"Display Bone Profile"];
+//        [self.sampleData setObject:displayResults forKey:@"Display Magnesium"];
+//        [self.sampleData setObject:displayResults forKey:@"Display Ammonia"];
+//        
+//        [self.delegate addBloodResultTableViewController:self didFinishAddingNewSampleData:self.sampleData];
+//    }
+}
+
+//- (void)updateSampleData
+//{
+//    // add/update sample date
+//    [self.sampleData setObject:self.resultDate forKey:@"Result Date"];
+//    
+//    // add/update sample results
+//    for (int section = 1; section < tableData.count - 1; section ++)
+//    {
+//        CBTableViewSectionData *sectionData = tableData[section];
+//        int rows = [sectionData.rowData count];
+//        
+//        for (int row = 0; row < rows; row ++)
+//        {
+//            CBTableViewRowData *rowData = sectionData.rowData[row];
+//            
+//            [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
+//            
+//            NSLog(@"Reference: %@ - Value: %@", rowData.reference, rowData.textField.text);
+//        }
+//    }
+//}
+
+- (void)cancel
+{
+//    [self.delegate addBloodResultTableViewControllerDidCancel:self];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - UITableView data source

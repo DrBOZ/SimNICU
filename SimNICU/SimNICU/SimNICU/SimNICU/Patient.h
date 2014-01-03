@@ -41,6 +41,9 @@
 // All blood result sample data
 @property (nonatomic, strong) NSMutableArray *allBloodResultSampleData;
 
+// Fluid balance data
+@property (nonatomic, strong) NSMutableArray *allFluidBalanceData;
+
 // Bilirubin results
 @property (nonatomic, strong) NSMutableArray *bilirubinResults; // all plotted
 

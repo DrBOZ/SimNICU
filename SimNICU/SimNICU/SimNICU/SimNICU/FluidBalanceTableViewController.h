@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
+@property (nonatomic) BOOL useAsModalViewController;
 
 @end

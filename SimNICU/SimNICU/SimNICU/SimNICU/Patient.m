@@ -99,6 +99,11 @@
             self.allBloodResultSampleData = [aDecoder decodeObjectForKey:@"AllBloodResultSampleData"];
         }
         
+        // All fluid balance data
+        {
+            self.allFluidBalanceData = [aDecoder decodeObjectForKey:@"AllFluidBalanceData"];
+        }
+        
         // bilirubin results
         {
             self.bilirubinResults = [aDecoder decodeObjectForKey:@"BilirubinResults"];
@@ -545,6 +550,9 @@
     
     // All blood results
     [aCoder encodeObject:self.allBloodResultSampleData forKey:@"AllBloodResultSampleData"];
+    
+    // All fluid balance data
+    [aCoder encodeObject:self.allFluidBalanceData forKey:@"AllFluidBalanceData"];
     
     // bilirubin results
     [aCoder encodeObject:self.bilirubinResults forKey:@"BilirubinResults"];
