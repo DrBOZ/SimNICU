@@ -11,7 +11,9 @@
 #import "UnderlineLabel.h"
 #import "AddFluidCell.h"
 
-@interface FluidBalanceTableViewController ()
+@interface FluidBalanceTableViewController () <UIPickerViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
+
+@property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end
 
@@ -19,6 +21,9 @@
 {
     float workingWeightKGAsFloat;
     double workingWeightKGAsDouble;
+    
+    // toggle variable to let UITableView know if to display date picker
+    BOOL showDatePicker;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -26,6 +31,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+#warning temporary code
         self.workingWeight = @"1.5";
     }
     return self;
@@ -34,8 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [CBTrackers logEvent:@"Fluid Balance"];
     
     // set up buttons if used modally
     if (self.useAsModalViewController)
@@ -51,10 +55,60 @@
         }
     }
     
-    // if no working weight then show instructions
+    // check if a working weight has been set - if no working weight then setup instructions
     if (!self.workingWeight)
     {
         self.tableView.tableFooterView = [self setupFooterView];
+    }
+    else
+    {
+        // instantiate date picker
+        if (!self.datePicker)
+        {
+            self.datePicker = [UIDatePicker new];
+        }
+        
+        if ([self.editOrAddFluidBalance isEqualToString:@"Edit"])
+        {
+            // log tracker
+            [CBTrackers logEvent:@"Fluid Balance/Edit"];
+            
+            // hide date picker
+            showDatePicker = NO;
+            
+            // set date
+            // self.fluidBalanceDate = [self.sampleData objectForKey:@"Result Date"];
+            
+            // update date picker
+            self.datePicker.date = self.fluidBalanceDate;
+            
+            // add sample results
+            /*
+             for (int section = 1; section < tableData.count - 1; section ++)
+             {
+             CBTableViewSectionData *sectionData = tableData[section];
+             int rows = [sectionData.rowData count];
+             
+             for (int row = 0; row < rows; row ++)
+             {
+             CBTableViewRowData *rowData = sectionData.rowData[row];
+             
+             rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
+             }
+             }
+             */
+        }
+        else
+        {
+            // log tracker
+            [CBTrackers logEvent:@"Fluid Balance/Add"];
+            
+            // show date picker
+            showDatePicker = NO;
+            
+            // set default blood result date
+            self.fluidBalanceDate = [NSDate date];
+        }
     }
 }
 
@@ -103,7 +157,7 @@
     }
     
     // starts UITableView in editing mode
-    [self.tableView setEditing:YES animated:YES];
+    // [self.tableView setEditing:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -188,7 +242,11 @@
 {
     if (self.workingWeight)
     {
-        return 3;
+        // if adding a result (i.e. not editing) then do not show 'delete result' section
+        if (![self.editOrAddFluidBalance isEqualToString:@"Edit"]) return 4;
+        
+        // show all sections, even date though might not have a row if used from main screen...
+        else return 5;
     }
     else
     {
@@ -201,29 +259,71 @@
 {
     if (self.workingWeight)
     {
-        if (section == 0) return 1;
-        
-        else if (section == 1) return 1;
-        
-        else if (section == 2) return 0;
-        
-        else return nil;
+        switch (section)
+        {
+            // Date picker
+            case 0:
+                
+                if (self.useAsModalViewController)
+                {
+                    if (showDatePicker) return 2;
+                    else return 1;
+                }
+                
+                else return 0;
+                
+                break;
+             
+            // INPUT
+            case 1:
+                
+                return 1;
+                
+                break;
+                
+            // OUTPUT
+            case 2:
+                
+                return 1;
+                
+                break;
+                
+            // BALANCE
+            case 3:
+                
+                return 0;
+                
+                break;
+                
+            default:
+                
+                return 0;
+                
+                break;
+        }
     }
-    else
-    {
-        return 0;
-    }
+    
+    else return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    CGFloat height = 44.0f;
+    
+    if (section == 0) height = 0.0f;
+    
+    return height;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (self.workingWeight)
     {
-        if (section == 0) return NSLocalizedString(@"IN", nil);
+        if (section == 1) return NSLocalizedString(@"IN", nil);
         
-        else if (section == 1) return NSLocalizedString(@"OUT", nil);
+        else if (section == 2) return NSLocalizedString(@"OUT", nil);
         
-        else if (section == 2) return NSLocalizedString(@"BALANCE", nil);
+        else if (section == 3) return NSLocalizedString(@"BALANCE", nil);
         
         else return nil;
     }
@@ -232,9 +332,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (self.workingWeight)
+    if (section == 0) return 0.0f;
+    
+    else if (self.workingWeight)
     {
-        if (section == 0 || section == 1) return 70.0f;
+        if (section == 1 || section == 2) return 70.0f;
         
         else return 44.0f;
     }
@@ -245,7 +347,7 @@
 {
     if (self.workingWeight)
     {
-        if (section == 0 || section == 1)
+        if (section == 1 || section == 2)
         {
             CGFloat x = 230.0f;
             
@@ -285,7 +387,7 @@
             
             return  dailyInputResults;
         }
-        else if (section == 2)
+        else if (section == 3)
         {
             CGFloat x = 90.0f;
             
@@ -308,10 +410,14 @@
 {
     CGFloat height = 44.0f;
     
-    if (indexPath.section == 0 && indexPath.row == 1)
+    if (indexPath.section == 0 && indexPath.row == 1 && showDatePicker)
     {
         height = 216.0f;
     }
+//    else if (indexPath.section == 1 && indexPath.row == 2)
+//    {
+//        height = 216.0f;
+//    }
     
     return height;
 }
@@ -321,6 +427,58 @@
     NSString *CellIdentifier;
     
     if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"Date";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            cell.textLabel.text = NSLocalizedString(@"24 Hour Period", nil);
+            
+            NSDateFormatter *formatter = [NSDateFormatter new];
+            formatter.dateStyle = NSDateFormatterShortStyle;
+            formatter.timeStyle = NSDateFormatterNoStyle;
+            
+            cell.detailTextLabel.text = [formatter stringFromDate:self.fluidBalanceDate];
+            cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+            
+            return cell;
+        }
+        else
+        {
+            static NSString *CellIdentifier = @"Date Picker";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.backgroundColor = [UIColor whiteColor];
+                
+                // self.datePicker = [UIDatePicker new];
+                self.datePicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 300.0f);
+                self.datePicker.datePickerMode = UIDatePickerModeDate;
+                
+//                [self.datePicker addTarget:self
+//                                    action:@selector(datePickerChangedValue)
+//                          forControlEvents:UIControlEventValueChanged];
+                
+                [cell.contentView addSubview:self.datePicker];
+            }
+            
+            return cell;
+        }
+    }
+    else if (indexPath.section == 1)
     {
         if (indexPath.row == 0)
         {
@@ -354,7 +512,7 @@
             return cell;
         }
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == 2)
     {
         CellIdentifier = @"OUT";
         
@@ -377,7 +535,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == 1)
     {
         if (indexPath.row == 0 || indexPath.row == 1)
         {
@@ -455,6 +613,35 @@
     [footerView addSubview:instructions];
     
     return footerView;
+}
+
+#pragma mark UITableView delegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 || indexPath.section == 4) return indexPath;
+    else return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && indexPath.row == 0)
+    {
+        showDatePicker = !showDatePicker;
+        
+        // update table
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+//    else if (indexPath.section == tableData.count - 1)
+//    {
+//        // should implement a second check to see if user really wants to do this
+//        UIActionSheet *confirmDelete = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Result will be permanently deleted", nil)
+//                                                                   delegate:self
+//                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+//                                                     destructiveButtonTitle:NSLocalizedString(@"Delete", @"")
+//                                                          otherButtonTitles:nil];
+//		[confirmDelete showInView:self.view];
+//    }
 }
 
 @end

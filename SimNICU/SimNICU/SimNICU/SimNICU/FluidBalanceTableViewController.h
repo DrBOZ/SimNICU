@@ -29,4 +29,7 @@
 @property (nonatomic, strong) NSString *workingWeight;
 @property (nonatomic) BOOL useAsModalViewController;
 
+@property (nonatomic, strong) NSString *editOrAddFluidBalance;
+@property (nonatomic, strong) NSDate *fluidBalanceDate;
+
 @end
