@@ -25,11 +25,14 @@
 @interface FluidBalanceTableViewController : CBTableViewController
 
 @property (nonatomic, unsafe_unretained) id <FluidBalanceTableViewControllerDelegate> delegate;
+
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
-@property (nonatomic) BOOL useAsModalViewController;
 
+@property (nonatomic) BOOL useAsModalViewController;
 @property (nonatomic, strong) NSString *editOrAddFluidBalance;
+
+@property (nonatomic, strong) NSMutableDictionary *fluidBalanceData;
 @property (nonatomic, strong) NSDate *fluidBalanceDate;
 
 @end

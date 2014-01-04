@@ -15,6 +15,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        // set cell selection style
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        // setup textfield
         self.mlPerDay = [UITextField new];
         self.mlPerDay.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         self.mlPerDay.clearButtonMode = UITextFieldViewModeNever;

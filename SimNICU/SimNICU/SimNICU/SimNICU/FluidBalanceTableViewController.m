@@ -33,6 +33,51 @@
     {
 #warning temporary code
         self.workingWeight = @"1.5";
+        
+        // setup dummy fluidBalanceData
+        {
+            self.fluidBalanceData = [[NSMutableDictionary alloc] init];
+            
+            [self.fluidBalanceData setObject:[NSDate date] forKey:@"FluidBalanceDate"];
+            
+            // INPUT array
+            {
+                NSMutableArray *inputData = [[NSMutableArray alloc] initWithCapacity:5];
+                
+                NSMutableArray *fluid1 = [[NSMutableArray alloc] initWithCapacity:2];
+                
+                /* create Fluid class
+                 / for now create fluid NSSTring
+                 */
+                
+                NSString *fluid1Name = @"10% Dextrose";
+                NSNumber *fluid1MlPerDay = @0;
+                
+                [fluid1 addObject:fluid1Name];
+                [fluid1 addObject:fluid1MlPerDay];
+                
+                [inputData addObject:fluid1];
+                
+                [self.fluidBalanceData setObject:inputData forKey:@"InputData"];
+            }
+            
+            // OUTPUT array
+            {
+                NSMutableArray *outputData = [[NSMutableArray alloc] initWithCapacity:5];
+                
+                NSMutableArray *fluid2 = [[NSMutableArray alloc] initWithCapacity:2];
+                
+                NSString *fluid2Name = @"Urine";
+                NSNumber *fluid2MlPerDay = @0;
+                
+                [fluid2 addObject:fluid2Name];
+                [fluid2 addObject:fluid2MlPerDay];
+                
+                [outputData addObject:fluid2];
+                
+                [self.fluidBalanceData setObject:outputData forKey:@"OutputData"];
+            }
+        }
     }
     return self;
 }
@@ -277,14 +322,14 @@
             // INPUT
             case 1:
                 
-                return 1;
+                return [[self.fluidBalanceData objectForKey:@"InputData"] count];
                 
                 break;
                 
             // OUTPUT
             case 2:
                 
-                return 1;
+                return [[self.fluidBalanceData objectForKey:@"OutputData"] count];
                 
                 break;
                 
@@ -356,9 +401,11 @@
             // setup button
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[UIImage imageNamed:@"addRow.png"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"addRow.png"] forState:UIControlStateHighlighted];
             button.frame = CGRectMake(8.0f, 9.0f, 30.0f, 30.0f);
             button.showsTouchWhenHighlighted = NO;
-            [button addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
+            button.tag = section;
+            [button addTarget:self action:@selector(userPressedAddRowButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [dailyInputResults addSubview:button];
             
@@ -480,52 +527,38 @@
     }
     else if (indexPath.section == 1)
     {
-        if (indexPath.row == 0)
-        {
-            CellIdentifier = @"IN";
-            
-            FluidTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [[FluidTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            }
-            
-            cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
-            
-            cell.textLabel.text = @"Milk";
-            cell.detailTextLabel.text = @"60 ml/kg/day";
-            
-            return cell;
-        }
-        else
-        {
-            CellIdentifier = @"Blank Cell";
-            
-            AddFluidCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [[AddFluidCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
-            }
-            
-            return cell;
-        }
-    }
-    else if (indexPath.section == 2)
-    {
-        CellIdentifier = @"OUT";
+        CellIdentifier = [NSString stringWithFormat:@"IN - %i", indexPath.row];
         
         FluidTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (!cell)
         {
             cell = [[FluidTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            cell.mlPerDay.text = [[self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][1] stringValue];
+            cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
+            cell.mlPerDay.delegate = self;
         }
         
-        cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
+        cell.textLabel.text = [self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][0];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", 60, NSLocalizedString(@"day", nil)];
         
-        cell.textLabel.text = @"Urine";
+        return cell;
+    }
+    else if (indexPath.section == 2)
+    {
+        CellIdentifier = [NSString stringWithFormat:@"OUT - %i", indexPath.row];
+        
+        FluidTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[FluidTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            cell.mlPerDay.text = [[self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][1] stringValue];
+            cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
+            cell.mlPerDay.delegate = self;
+        }
+        
+        cell.textLabel.text = [self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][0];
         cell.detailTextLabel.text = @"40 ml/kg/day";
         
         return cell;
@@ -642,6 +675,81 @@
 //                                                          otherButtonTitles:nil];
 //		[confirmDelete showInView:self.view];
 //    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    for (int section = 1; section <= 2; section ++)
+    {
+        NSString *sectionName;
+        
+        if (section == 1) sectionName = @"InputData";
+        else sectionName = @"OutputData";
+        
+        int rows = [[self.fluidBalanceData objectForKey:sectionName] count];
+        
+        for (int row = 0; row < rows; row ++)
+        {
+            FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+            
+            [cell.mlPerDay resignFirstResponder];
+        }
+    }
+}
+
+- (void)userPressedAddRowButton:(UIButton *)sender
+{
+    // determine section button relates to
+    NSString *section;
+    
+    if (sender.tag == 1) section = @"InputData";
+    else section = @"OutputData";
+    
+    // create new fluid data
+    NSMutableArray *fluid = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    // set fluid name
+    NSString *fluidName = [NSString stringWithFormat:@"Fluid %i", ([[self.fluidBalanceData objectForKey:section] count] + 1)];
+    
+    [fluid addObject:fluidName];
+    [fluid addObject:@0];
+    
+    [[self.fluidBalanceData objectForKey:section] addObject:fluid];
+    
+    // update table
+    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:([[self.fluidBalanceData objectForKey:section] count] - 1)
+                                               inSection:sender.tag]];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark UITextField delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+//    for (int section = 1; section < tableData.count - 1; section ++) // '- 1' for delete button
+//    {
+//        CBTableViewSectionData *sectionData = tableData[section];
+//        int rows = [sectionData.rowData count];
+//        
+//        for (int row = 0; row < rows; row ++)
+//        {
+//            CBTableViewRowData *rowData = sectionData.rowData[row];
+//            
+//            if (textField.tag == rowData.textField.tag)
+//            {
+//                // scroll up to middle
+//                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
+//                
+//                [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+//            }
+//        }
+//    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    // code
 }
 
 @end
