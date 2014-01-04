@@ -15,6 +15,12 @@
 
 @property (nonatomic, strong) UIDatePicker *datePicker;
 
+@property (nonatomic, strong) UILabel *totalInMlPerDay;
+@property (nonatomic, strong) UILabel *totalInMlPerKgPerDay;
+
+@property (nonatomic, strong) UILabel *totalOutMlPerDay;
+@property (nonatomic, strong) UILabel *totalOutMlPerKgPerDay;
+
 @end
 
 @implementation FluidBalanceTableViewController
@@ -411,10 +417,8 @@
             
             // title
             UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(x, 0.0f, (320.0f - x), 22.0f)];
+            title.text = (section) ? NSLocalizedString(@"Total OUT", nil) : NSLocalizedString(@"Total IN", nil);
             title.font = [UIFont systemFontOfSize:12.0f];
-            
-            if (section == 0) title.text = NSLocalizedString(@"Total IN", nil);
-            else if (section == 1) title.text = NSLocalizedString(@"Total OUT", nil);
             
             [dailyInputResults addSubview:title];
             
@@ -540,7 +544,7 @@
         }
         
         cell.textLabel.text = [self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][0];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", 60, NSLocalizedString(@"day", nil)];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", [self calculateMlPerKgPerDay:[[self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][1] doubleValue]], NSLocalizedString(@"day", nil)];
         
         return cell;
     }
@@ -681,10 +685,7 @@
 {
     for (int section = 1; section <= 2; section ++)
     {
-        NSString *sectionName;
-        
-        if (section == 1) sectionName = @"InputData";
-        else sectionName = @"OutputData";
+        NSString *sectionName = (section - 1) ? @"OutputData" : @"InputData";
         
         int rows = [[self.fluidBalanceData objectForKey:sectionName] count];
         
@@ -700,10 +701,7 @@
 - (void)userPressedAddRowButton:(UIButton *)sender
 {
     // determine section button relates to
-    NSString *section;
-    
-    if (sender.tag == 1) section = @"InputData";
-    else section = @"OutputData";
+    NSString *section = (sender.tag - 1) ? @"OutputData" : @"InputData";
     
     // create new fluid data
     NSMutableArray *fluid = [[NSMutableArray alloc] initWithCapacity:2];
@@ -749,7 +747,88 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    // code
+    FluidTableViewCell *cell;
+    
+    NSString *sectionName;
+    
+    int section = (textField.tag) / 100;
+    int row;
+    
+    if (section == 1)
+    {
+        sectionName = @"InputData";
+        
+        row = textField.tag - 100;
+    }
+    else
+    {
+        sectionName = @"OutputData";
+        row = textField.tag - 200;
+    }
+    
+    // update results
+    [self.fluidBalanceData objectForKey:sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
+    
+    [self updateResults];
+//    cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+//    
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", [self calculateMlPerKgPerDay:[[self.fluidBalanceData objectForKey:sectionName][row][1]] doubleValue], NSLocalizedString(@"day", nil)];
+}
+
+- (int)calculateMlPerKgPerDay:(double)mlPerDayDouble
+{
+    double result;
+    
+    result = mlPerDayDouble / workingWeightKGAsDouble;
+    
+    return result;
+}
+
+- (void)updateResults
+{
+    double totalIn = 0.0f;
+    double totalOut = 0.0f;
+    double balance = 0.0f;
+    
+    // loop through all of the cells
+    for (int section = 1; section <= 2; section ++)
+    {
+        NSString *sectionName = (section - 1) ? @"OutputData" : @"InputData";
+        
+        int rows = [[self.fluidBalanceData objectForKey:sectionName] count];
+        
+        for (int row = 0; row < rows; row ++)
+        {
+            FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+            
+            double mlperDayDouble = [[self.fluidBalanceData objectForKey:sectionName][row][1] doubleValue];
+            
+            // update individual fluids 'ml/kg/day'
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", [self calculateMlPerKgPerDay:mlperDayDouble], NSLocalizedString(@"day", nil)];
+            
+            // update footer calculations
+            if ([sectionName isEqualToString:@"InputData"])
+            {
+                totalIn = totalIn + mlperDayDouble;
+            }
+            else
+            {
+                totalOut = totalOut + mlperDayDouble;
+            }
+            
+        }
+    }
+    
+    // update balance
+    balance = totalIn - totalOut;
+    
+    NSLog(@"Total In  = %f", totalIn);
+    
+    NSLog(@"Total Out = %f", totalOut);
+    
+    NSLog(@"Balance   = %F", balance);
+    
+    // update labels
 }
 
 @end
