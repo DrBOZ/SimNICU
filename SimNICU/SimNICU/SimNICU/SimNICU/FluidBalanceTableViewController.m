@@ -32,6 +32,9 @@
     
     // toggle variable to let UITableView know if to display date picker
     BOOL showDatePicker;
+    
+    // toggle
+    BOOL userIsEnteringData;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -744,6 +747,11 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    [self resignAllTextFields];
+}
+
+- (void)resignAllTextFields
+{
     for (int section = 1; section <= 2; section ++)
     {
         NSString *sectionName = (section - 1) ? @"OutputData" : @"InputData";
@@ -780,12 +788,23 @@
                                                inSection:sender.tag]];
     
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    // could check if user is editing
+    if (userIsEnteringData)
+    {
+        FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:([[self.fluidBalanceData objectForKey:section] count] - 1) inSection:sender.tag]];
+        
+        [cell.mlPerDay becomeFirstResponder];
+    }
+    // [self resignAllTextFields];
 }
 
 #pragma mark - UITextField delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    userIsEnteringData = YES;
+    
     // work out section and row of textfield from textfield.tag
     int section = textField.tag / 100;
     int row = textField.tag - (section * 100);
@@ -832,6 +851,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    userIsEnteringData = NO;
+    
     NSString *sectionName;
     
     int section = (textField.tag) / 100;
@@ -900,7 +921,14 @@
     self.totalOutMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", totalOut];
     self.totalOutMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", (totalOut / workingWeightKGAsDouble)];
     
-    self.balance.text = [NSString stringWithFormat:@"%0.0f ml (%0.0f ml/kg)", balance, (balance / workingWeightKGAsDouble)];
+    if (balance > 0)
+    {
+        self.balance.text = [NSString stringWithFormat:@"+%0.0f ml (+%0.0f ml/kg)", balance, (balance / workingWeightKGAsDouble)];
+    }
+    else
+    {
+        self.balance.text = [NSString stringWithFormat:@"%0.0f ml (%0.0f ml/kg)", balance, (balance / workingWeightKGAsDouble)];
+    }
 }
 
 #pragma mark - UIPickerView methods

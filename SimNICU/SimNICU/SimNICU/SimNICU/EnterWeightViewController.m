@@ -1311,6 +1311,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+#warning bug user can type '00'
     BOOL allowUserToChangeText = YES;
     
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
