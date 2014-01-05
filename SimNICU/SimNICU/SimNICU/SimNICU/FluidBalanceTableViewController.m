@@ -42,8 +42,69 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-#warning temporary code
-        self.workingWeight = @"1.5";
+        
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // set up buttons if used modally
+    if (self.useAsModalViewController)
+    {
+        // set navigation item buttons and tint for iOS 7
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            self.view.tintColor = [UIColor redColor];
+        }
+    }
+    
+    if (self.selectedPatient)
+    {
+        self.workingWeight = self.selectedPatient.workingWeight;
+        
+        // self.fluidBalanceData = self.selectedPatient.allFluidBalanceData[];
+    }
+    
+    // check if a working weight has been set - if no working weight then setup instructions
+    if (!self.workingWeight)
+    {
+        // log tracker
+        [CBTrackers logEvent:@"Fluid Balance - No working weight!"];
+        
+        self.tableView.tableFooterView = [self setupFooterView];
+    }
+    else
+    {
+        // log tracker
+        if (self.useAsModalViewController) [CBTrackers logEvent:@"Daily Summary/Fluid Balance"];
+        else [CBTrackers logEvent:@"Fluid Balance"];
+        
+        // instantiate date picker
+        if (!self.datePicker)
+        {
+            self.datePicker = [UIDatePicker new];
+        }
+        
+        // do not show date picker
+        showDatePicker = NO;
+        
+        // round current date
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        
+        int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
+        NSDateComponents *dateComponents = [gregorian components:flags fromDate:[NSDate date]];
+        
+        self.fluidBalanceDate = [gregorian dateFromComponents:dateComponents];
+        
+        // set date picker date
+        self.datePicker.date = self.fluidBalanceDate;
         
         // setup dummy fluidBalanceData
         {
@@ -61,7 +122,7 @@
                  / for now create fluid NSSTring
                  */
                 
-                NSString *fluid1Name = @"10% Dextrose";
+                NSString *fluid1Name = @"Fluid 1";
                 NSNumber *fluid1MlPerDay = @0;
                 
                 [fluid1 addObject:fluid1Name];
@@ -88,92 +149,6 @@
                 
                 [self.fluidBalanceData setObject:outputData forKey:@"OutputData"];
             }
-        }
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // set up buttons if used modally
-    if (self.useAsModalViewController)
-    {
-        // set navigation item buttons and tint for iOS 7
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-        
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-        
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            self.view.tintColor = [UIColor redColor];
-        }
-    }
-    
-    // check if a working weight has been set - if no working weight then setup instructions
-    if (!self.workingWeight)
-    {
-        self.tableView.tableFooterView = [self setupFooterView];
-    }
-    else
-    {
-        // instantiate date picker
-        if (!self.datePicker)
-        {
-            self.datePicker = [UIDatePicker new];
-        }
-        
-        if ([self.editOrAddFluidBalance isEqualToString:@"Edit"])
-        {
-            // log tracker
-            [CBTrackers logEvent:@"Fluid Balance/Edit"];
-            
-            // hide date picker
-            showDatePicker = NO;
-            
-            // set date
-            // self.fluidBalanceDate = [self.sampleData objectForKey:@"Result Date"];
-            
-            // update date picker
-            self.datePicker.date = self.fluidBalanceDate;
-            
-            // add sample results
-            /*
-             for (int section = 1; section < tableData.count - 1; section ++)
-             {
-             CBTableViewSectionData *sectionData = tableData[section];
-             int rows = [sectionData.rowData count];
-             
-             for (int row = 0; row < rows; row ++)
-             {
-             CBTableViewRowData *rowData = sectionData.rowData[row];
-             
-             rowData.textField.text = [self.sampleData objectForKey:rowData.reference];
-             }
-             }
-             */
-        }
-        else
-        {
-            // log tracker
-            [CBTrackers logEvent:@"Fluid Balance/Add"];
-            
-            // show date picker
-            showDatePicker = NO;
-            
-            // set default fluid balance date
-            {
-                NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-                [componentsToSubtract setDay:-1];
-                
-                NSDate *yesterday = [[NSCalendar currentCalendar] dateByAddingComponents:componentsToSubtract toDate:[NSDate date] options:0];
-                
-                self.fluidBalanceDate = yesterday;
-            }
-            
-            // set date picker date
-            self.datePicker.date = self.fluidBalanceDate;
         }
     }
 }
@@ -241,68 +216,12 @@
 
 - (void)done
 {
-//    if ([self.editOrAddResult isEqualToString:@"Edit"])
-//    {
-//        // update sample data
-//        [self updateSampleData];
-//        
-//        [self.delegate addBloodResultTableViewController:self didFinishEditingSampleData:self.sampleData];
-//    }
-//    else
-//    {
-//        self.sampleData = [NSMutableDictionary dictionary];
-//        
-//        // add a unique identifier
-//        Preferences *preferences = [Preferences sharedPreferences];
-//        
-//        [self.sampleData setObject:preferences.bloodResultUniqueReferenceCounter forKey:@"Unique Reference"];
-//        
-//        // increment counter
-//        int counter = [preferences.bloodResultUniqueReferenceCounter intValue];
-//        counter ++;
-//        preferences.bloodResultUniqueReferenceCounter = [NSNumber numberWithInt:counter];
-//        
-//        // add results to sample data
-//        [self updateSampleData];
-//        
-//        NSString *displayResults = @"NO";
-//        
-//        [self.sampleData setObject:displayResults forKey:@"Display FBC"];
-//        [self.sampleData setObject:displayResults forKey:@"Display Clotting"];
-//        [self.sampleData setObject:displayResults forKey:@"Display Fibrinogen"];
-//        [self.sampleData setObject:displayResults forKey:@"Display U&Es"];
-//        [self.sampleData setObject:displayResults forKey:@"Display CRP"];
-//        [self.sampleData setObject:displayResults forKey:@"Display LFTs"];
-//        [self.sampleData setObject:displayResults forKey:@"Display Conjugated Bilirubin"];
-//        [self.sampleData setObject:displayResults forKey:@"Display Bone Profile"];
-//        [self.sampleData setObject:displayResults forKey:@"Display Magnesium"];
-//        [self.sampleData setObject:displayResults forKey:@"Display Ammonia"];
-//        
-//        [self.delegate addBloodResultTableViewController:self didFinishAddingNewSampleData:self.sampleData];
-//    }
+    
+    
+    
+    
+    
 }
-
-//- (void)updateSampleData
-//{
-//    // add/update sample date
-//    [self.sampleData setObject:self.resultDate forKey:@"Result Date"];
-//    
-//    // add/update sample results
-//    for (int section = 1; section < tableData.count - 1; section ++)
-//    {
-//        CBTableViewSectionData *sectionData = tableData[section];
-//        int rows = [sectionData.rowData count];
-//        
-//        for (int row = 0; row < rows; row ++)
-//        {
-//            CBTableViewRowData *rowData = sectionData.rowData[row];
-//            
-//            [self.sampleData setObject:rowData.textField.text forKey:rowData.reference];
-//            
-//            NSLog(@"Reference: %@ - Value: %@", rowData.reference, rowData.textField.text);
-//        }
-//    }
-//}
 
 - (void)cancel
 {
@@ -546,7 +465,7 @@
     {
         if (indexPath.row == 0)
         {
-            static NSString *CellIdentifier = @"Date";
+            static NSString *CellIdentifier = @"Time Period";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if(!cell)
@@ -557,13 +476,11 @@
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
-            cell.textLabel.text = NSLocalizedString(@"24 Hour Period", nil);
+            cell.textLabel.text = NSLocalizedString(@"Time Period", nil);
             
-            NSDateFormatter *formatter = [NSDateFormatter new];
-            formatter.dateStyle = NSDateFormatterShortStyle;
-            formatter.timeStyle = NSDateFormatterNoStyle;
+            cell.detailTextLabel.text = [self twentyFourHourTimePeriodStringToDate:self.fluidBalanceDate
+                                                                        forPatient:self.selectedPatient];
             
-            cell.detailTextLabel.text = [formatter stringFromDate:self.fluidBalanceDate];
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             
             return cell;
@@ -632,6 +549,53 @@
         return cell;
     }
     else return nil;
+}
+
+- (NSString *)twentyFourHourTimePeriodStringToDate:(NSDate *)date forPatient:(Patient *)patient
+{
+    NSString *timePeriod;
+    
+    // create time period text
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    // round to date
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
+    NSDateComponents *dateComponents = [gregorian components:flags fromDate:date];
+    
+    NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
+    
+    NSString *timePeriodToDate = [formatter stringFromDate:roundedDate];
+    
+    // round birth date
+    NSDateComponents *birthdateComponents = [gregorian components:flags fromDate:self.selectedPatient.birthDate];
+    
+    NSDate *roundedBirthDate = [gregorian dateFromComponents:birthdateComponents];
+    
+    // check if timeperiod date is equal to birthdate
+    if ([roundedDate compare:roundedBirthDate] == NSOrderedSame)
+    {
+        timePeriod = timePeriodToDate;
+    }
+    else
+    {
+        // from date
+        NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+        [componentsToSubtract setDay:-1];
+        
+        NSDate *fromDate = [[NSCalendar currentCalendar] dateByAddingComponents:componentsToSubtract
+                                                                         toDate:self.fluidBalanceDate
+                                                                        options:0];
+        
+        NSString *timePeriodFromDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:fromDate andLocale:[NSLocale currentLocale]];
+        
+        timePeriod = [NSString stringWithFormat:@"%@ - %@", timePeriodFromDate, timePeriodToDate];
+    }
+    
+    return timePeriod;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
