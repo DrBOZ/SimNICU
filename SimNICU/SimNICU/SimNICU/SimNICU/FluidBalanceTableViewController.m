@@ -501,10 +501,7 @@
                 self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
                 self.timePeriodPicker.dataSource = self;
                 self.timePeriodPicker.delegate = self;
-                
-//                [self.datePicker addTarget:self
-//                                    action:@selector(datePickerChangedValue)
-//                          forControlEvents:UIControlEventValueChanged];
+                [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] inComponent:0 animated:YES];
                 
                 [cell.contentView addSubview:self.timePeriodPicker];
             }
@@ -573,7 +570,8 @@
     NSString *timePeriodToDate = [formatter stringFromDate:roundedDate];
     
     // round birth date
-    NSDateComponents *birthdateComponents = [gregorian components:flags fromDate:self.selectedPatient.birthDate];
+    NSDateComponents *birthdateComponents = [gregorian components:flags
+                                                         fromDate:self.selectedPatient.birthDate];
     
     NSDate *roundedBirthDate = [gregorian dateFromComponents:birthdateComponents];
     
@@ -592,7 +590,8 @@
                                                                          toDate:date
                                                                         options:0];
         
-        NSString *timePeriodFromDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:fromDate andLocale:[NSLocale currentLocale]];
+        NSString *timePeriodFromDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:fromDate
+                                                                                   andLocale:[NSLocale currentLocale]];
         
         timePeriod = [NSString stringWithFormat:@"%@ - %@", timePeriodFromDate, timePeriodToDate];
     }
@@ -914,14 +913,20 @@
 {
     NSDate *date = [CBTimeMethods getDateFromDaysDifference:row fromDate:self.selectedPatient.birthDate];
     
-//    NSDateFormatter *formatter = [NSDateFormatter new];
-//    formatter.dateStyle = NSDateFormatterShortStyle;
-//    formatter.timeStyle = NSDateFormatterNoStyle;
-    
     return [self twentyFourHourTimePeriodStringToDate:date forPatient:self.selectedPatient];
 }
 
 #pragma mark - UIPickerView methods
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSDate *date = [CBTimeMethods getDateFromDaysDifference:row fromDate:self.selectedPatient.birthDate];
+    
+    self.fluidBalanceDate = date;
+    
+    // update the 'Date' row with the new date
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 - (void)datePickerChangedValue
 {
