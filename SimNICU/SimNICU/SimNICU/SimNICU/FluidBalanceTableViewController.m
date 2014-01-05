@@ -87,15 +87,6 @@
         if (self.useAsModalViewController) [CBTrackers logEvent:@"Daily Summary/Fluid Balance"];
         else [CBTrackers logEvent:@"Fluid Balance"];
         
-        // instantiate time period picker
-        if (!self.timePeriodPicker)
-        {
-            self.timePeriodPicker = [[UIPickerView alloc] init];
-            
-            // load time period picker with data
-#warning code needed
-        }
-        
         // do not show date picker
         showTimePeriodPicker = NO;
         
@@ -488,7 +479,7 @@
         }
         else
         {
-            static NSString *CellIdentifier = @"Date Picker";
+            static NSString *CellIdentifier = @"Time Period Picker";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
             if(!cell)
@@ -498,6 +489,8 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
+                // instantiate time period picker
+                if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
                 self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
                 self.timePeriodPicker.dataSource = self;
                 self.timePeriodPicker.delegate = self;
