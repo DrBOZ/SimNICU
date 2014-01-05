@@ -9,11 +9,12 @@
 #import "FluidBalanceTableViewController.h"
 #import "FluidTableViewCell.h"
 #import "UnderlineLabel.h"
+#import "CBTimeMethods.h"
 #import "AddFluidCell.h"
 
-@interface FluidBalanceTableViewController () <UIPickerViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
+@interface FluidBalanceTableViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 
-@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIPickerView *timePeriodPicker;
 
 @property (nonatomic, strong) UILabel *totalInMlPerDay;
 @property (nonatomic, strong) UILabel *totalInMlPerKgPerDay;
@@ -30,8 +31,8 @@
     float workingWeightKGAsFloat;
     double workingWeightKGAsDouble;
     
-    // toggle variable to let UITableView know if to display date picker
-    BOOL showDatePicker;
+    // toggle variable to let UITableView know if to display time period picker
+    BOOL showTimePeriodPicker;
     
     // toggle
     BOOL userIsEnteringData;
@@ -86,14 +87,17 @@
         if (self.useAsModalViewController) [CBTrackers logEvent:@"Daily Summary/Fluid Balance"];
         else [CBTrackers logEvent:@"Fluid Balance"];
         
-        // instantiate date picker
-        if (!self.datePicker)
+        // instantiate time period picker
+        if (!self.timePeriodPicker)
         {
-            self.datePicker = [UIDatePicker new];
+            self.timePeriodPicker = [[UIPickerView alloc] init];
+            
+            // load time period picker with data
+#warning code needed
         }
         
         // do not show date picker
-        showDatePicker = NO;
+        showTimePeriodPicker = NO;
         
         // round current date
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -102,9 +106,6 @@
         NSDateComponents *dateComponents = [gregorian components:flags fromDate:[NSDate date]];
         
         self.fluidBalanceDate = [gregorian dateFromComponents:dateComponents];
-        
-        // set date picker date
-        self.datePicker.date = self.fluidBalanceDate;
         
         // setup dummy fluidBalanceData
         {
@@ -258,7 +259,7 @@
                 
                 if (self.useAsModalViewController)
                 {
-                    if (showDatePicker) return 2;
+                    if (showTimePeriodPicker) return 2;
                     else return 1;
                 }
                 
@@ -445,7 +446,7 @@
 {
     CGFloat height = 44.0f;
     
-    if (indexPath.section == 0 && indexPath.row == 1 && showDatePicker)
+    if (indexPath.section == 0 && indexPath.row == 1 && showTimePeriodPicker)
     {
         height = 216.0f;
     }
@@ -497,14 +498,15 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
-                self.datePicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 300.0f);
-                self.datePicker.datePickerMode = UIDatePickerModeDate;
+                self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
+                self.timePeriodPicker.dataSource = self;
+                self.timePeriodPicker.delegate = self;
                 
-                [self.datePicker addTarget:self
-                                    action:@selector(datePickerChangedValue)
-                          forControlEvents:UIControlEventValueChanged];
+//                [self.datePicker addTarget:self
+//                                    action:@selector(datePickerChangedValue)
+//                          forControlEvents:UIControlEventValueChanged];
                 
-                [cell.contentView addSubview:self.datePicker];
+                [cell.contentView addSubview:self.timePeriodPicker];
             }
             
             return cell;
@@ -587,7 +589,7 @@
         [componentsToSubtract setDay:-1];
         
         NSDate *fromDate = [[NSCalendar currentCalendar] dateByAddingComponents:componentsToSubtract
-                                                                         toDate:self.fluidBalanceDate
+                                                                         toDate:date
                                                                         options:0];
         
         NSString *timePeriodFromDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:fromDate andLocale:[NSLocale currentLocale]];
@@ -692,7 +694,7 @@
 {
     if (indexPath.section == 0 && indexPath.row == 0)
     {
-        showDatePicker = !showDatePicker;
+        showTimePeriodPicker = !showTimePeriodPicker;
         
         // update table
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -895,11 +897,35 @@
     }
 }
 
+#pragma mark - UIPickerView datasource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    // work out total number of days
+    return ([CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]] + 1);
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSDate *date = [CBTimeMethods getDateFromDaysDifference:row fromDate:self.selectedPatient.birthDate];
+    
+//    NSDateFormatter *formatter = [NSDateFormatter new];
+//    formatter.dateStyle = NSDateFormatterShortStyle;
+//    formatter.timeStyle = NSDateFormatterNoStyle;
+    
+    return [self twentyFourHourTimePeriodStringToDate:date forPatient:self.selectedPatient];
+}
+
 #pragma mark - UIPickerView methods
 
 - (void)datePickerChangedValue
 {
-    self.fluidBalanceDate = self.datePicker.date;
+    // self.fluidBalanceDate = self.datePicker.date;
     
     // update the 'Date' row with the new date
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
