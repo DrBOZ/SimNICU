@@ -429,7 +429,7 @@
     }
 }
 
-# pragma mark
+# pragma mark - UIPickerView delegate
 
 - (void)datePickerChangedValue
 {
@@ -440,6 +440,8 @@
     NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
     [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
 }
+
+#pragma mark -
 
 - (void)done
 {

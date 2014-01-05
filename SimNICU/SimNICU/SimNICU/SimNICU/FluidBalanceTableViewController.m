@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UILabel *totalOutMlPerDay;
 @property (nonatomic, strong) UILabel *totalOutMlPerKgPerDay;
 
+@property (nonatomic, strong) UILabel *balance;
+
 @end
 
 @implementation FluidBalanceTableViewController
@@ -157,8 +159,18 @@
             // show date picker
             showDatePicker = NO;
             
-            // set default blood result date
-            self.fluidBalanceDate = [NSDate date];
+            // set default fluid balance date
+            {
+                NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+                [componentsToSubtract setDay:-1];
+                
+                NSDate *yesterday = [[NSCalendar currentCalendar] dateByAddingComponents:componentsToSubtract toDate:[NSDate date] options:0];
+                
+                self.fluidBalanceDate = yesterday;
+            }
+            
+            // set date picker date
+            self.datePicker.date = self.fluidBalanceDate;
         }
     }
 }
@@ -209,6 +221,13 @@
     
     // starts UITableView in editing mode
     // [self.tableView setEditing:YES animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self updateResults];
 }
 
 - (void)didReceiveMemoryWarning
@@ -388,6 +407,7 @@
     else if (self.workingWeight)
     {
         if (section == 1 || section == 2) return 70.0f;
+        else if (section == 3) return 200.0f;
         
         else return 44.0f;
     }
@@ -417,24 +437,63 @@
             
             // title
             UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(x, 0.0f, (320.0f - x), 22.0f)];
-            title.text = (section) ? NSLocalizedString(@"Total OUT", nil) : NSLocalizedString(@"Total IN", nil);
+            title.text = (section - 1) ? NSLocalizedString(@"Total OUT", nil) : NSLocalizedString(@"Total IN", nil);
             title.font = [UIFont systemFontOfSize:12.0f];
             
             [dailyInputResults addSubview:title];
             
             // ml/day
-            UILabel *miscText = [[UILabel alloc] initWithFrame:CGRectMake(x, 22.0f, (320.0f - x), 22.0f)];
-            miscText.font = [UIFont systemFontOfSize:12.0f];
-            miscText.text = [CBStringMethods localisedString:@"90 ml/day"];
+            if (section == 1)
+            {
+                if (!self.totalInMlPerDay)
+                {
+                    self.totalInMlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(x, 22.0f, (320.0f - x), 22.0f)];
+                    self.totalInMlPerDay.font = [UIFont systemFontOfSize:12.0f];
+                    self.totalInMlPerDay.text = @"0 ml/day";
+                }
+                
+                if (!self.totalInMlPerKgPerDay)
+                {
+                    self.totalInMlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(x, 44.0f, (320.0f - x), 22.0f)];
+                    self.totalInMlPerKgPerDay.font = [UIFont systemFontOfSize:12.0f];
+                    self.totalInMlPerKgPerDay.text = @"0 ml/kg/day";
+                }
+                
+                [dailyInputResults addSubview:self.totalInMlPerDay];
+                [dailyInputResults addSubview:self.totalInMlPerKgPerDay];
+            }
+            else if (section == 2)
+            {
+                if (!self.totalOutMlPerDay)
+                {
+                    self.totalOutMlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(x, 22.0f, (320.0f - x), 22.0f)];
+                    self.totalOutMlPerDay.font = [UIFont systemFontOfSize:12.0f];
+                    self.totalOutMlPerDay.text = @"0 ml/day";
+                }
+                
+                if ((!self.totalOutMlPerKgPerDay))
+                {
+                    self.totalOutMlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(x, 44.0f, (320.0f - x), 22.0f)];
+                    self.totalOutMlPerKgPerDay.font = [UIFont systemFontOfSize:12.0f];
+                    self.totalOutMlPerKgPerDay.text = @"0 ml/kg/day";
+                }
+                
+                [dailyInputResults addSubview:self.totalOutMlPerDay];
+                [dailyInputResults addSubview:self.totalOutMlPerKgPerDay];
+            }
             
-            [dailyInputResults addSubview:miscText];
-            
-            // ml/kg/day
-            UILabel *miscText2 = [[UILabel alloc] initWithFrame:CGRectMake(x, 44.0f, (320.0f - x), 22.0f)];
-            miscText2.font = [UIFont systemFontOfSize:12.0f];
-            miscText2.text = [CBStringMethods localisedString:@"60 ml/kg/day"];
-            
-            [dailyInputResults addSubview:miscText2];
+//            UILabel *miscText = [[UILabel alloc] initWithFrame:CGRectMake(x, 22.0f, (320.0f - x), 22.0f)];
+//            miscText.font = [UIFont systemFontOfSize:12.0f];
+//            miscText.text = [CBStringMethods localisedString:@"90 ml/day"];
+//            
+//            [dailyInputResults addSubview:miscText];
+//            
+//            // ml/kg/day
+//            UILabel *miscText2 = [[UILabel alloc] initWithFrame:CGRectMake(x, 44.0f, (320.0f - x), 22.0f)];
+//            miscText2.font = [UIFont systemFontOfSize:12.0f];
+//            miscText2.text = [CBStringMethods localisedString:@"60 ml/kg/day"];
+//            
+//            [dailyInputResults addSubview:miscText2];
             
             return  dailyInputResults;
         }
@@ -444,11 +503,14 @@
             
             UIView *balanceResults = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)];
             
-            UILabel *balance = [[UILabel alloc] initWithFrame:CGRectMake(x, 0.0f, (320.0f - x), 44)];
-            balance.font = [UIFont systemFontOfSize:19.0f];
-            balance.text = @"+69 ml (+40 ml/kg)";
+            if (!self.balance)
+            {
+                self.balance = [[UILabel alloc] initWithFrame:CGRectMake(x, 0.0f, (320.0f - x), 44)];
+                self.balance.font = [UIFont systemFontOfSize:19.0f];
+                self.balance.text = @"0 ml (0 ml/kg)";
+            }
             
-            [balanceResults addSubview:balance];
+            [balanceResults addSubview:self.balance];
             
             return balanceResults;
         }
@@ -515,13 +577,12 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
-                // self.datePicker = [UIDatePicker new];
                 self.datePicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 300.0f);
                 self.datePicker.datePickerMode = UIDatePickerModeDate;
                 
-//                [self.datePicker addTarget:self
-//                                    action:@selector(datePickerChangedValue)
-//                          forControlEvents:UIControlEventValueChanged];
+                [self.datePicker addTarget:self
+                                    action:@selector(datePickerChangedValue)
+                          forControlEvents:UIControlEventValueChanged];
                 
                 [cell.contentView addSubview:self.datePicker];
             }
@@ -544,7 +605,7 @@
         }
         
         cell.textLabel.text = [self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][0];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", [self calculateMlPerKgPerDay:[[self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][1] doubleValue]], NSLocalizedString(@"day", nil)];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([[self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
     }
@@ -563,7 +624,7 @@
         }
         
         cell.textLabel.text = [self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][0];
-        cell.detailTextLabel.text = @"40 ml/kg/day";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([[self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
     }
@@ -721,34 +782,56 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-#pragma mark UITextField delegate
+#pragma mark - UITextField delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-//    for (int section = 1; section < tableData.count - 1; section ++) // '- 1' for delete button
-//    {
-//        CBTableViewSectionData *sectionData = tableData[section];
-//        int rows = [sectionData.rowData count];
-//        
-//        for (int row = 0; row < rows; row ++)
-//        {
-//            CBTableViewRowData *rowData = sectionData.rowData[row];
-//            
-//            if (textField.tag == rowData.textField.tag)
-//            {
-//                // scroll up to middle
-//                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
-//                
-//                [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-//            }
-//        }
-//    }
+    // work out section and row of textfield from textfield.tag
+    int section = textField.tag / 100;
+    int row = textField.tag - (section * 100);
+    
+    // scroll up to middle
+    NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
+    
+    [self.tableView scrollToRowAtIndexPath:path
+                          atScrollPosition:UITableViewScrollPositionMiddle
+                                  animated:YES];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    BOOL allowUserToChangeText = YES;
+    
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if (newText.length > 5)
+    {
+        allowUserToChangeText = NO;
+    }
+    else if (newText.length == 1)
+    {
+        if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+        {
+            textField.text = @"0";
+        }
+    }
+    else if (newText.length == 2)
+    {
+        if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+        {
+            // do nothing
+        }
+        else if ([textField.text isEqualToString:@"0"])
+        {
+            textField.text = @"";
+        }
+    }
+    
+    return allowUserToChangeText;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    FluidTableViewCell *cell;
-    
     NSString *sectionName;
     
     int section = (textField.tag) / 100;
@@ -770,18 +853,6 @@
     [self.fluidBalanceData objectForKey:sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
     
     [self updateResults];
-//    cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-//    
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", [self calculateMlPerKgPerDay:[[self.fluidBalanceData objectForKey:sectionName][row][1]] doubleValue], NSLocalizedString(@"day", nil)];
-}
-
-- (int)calculateMlPerKgPerDay:(double)mlPerDayDouble
-{
-    double result;
-    
-    result = mlPerDayDouble / workingWeightKGAsDouble;
-    
-    return result;
 }
 
 - (void)updateResults
@@ -804,7 +875,7 @@
             double mlperDayDouble = [[self.fluidBalanceData objectForKey:sectionName][row][1] doubleValue];
             
             // update individual fluids 'ml/kg/day'
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%i ml/kg/%@", [self calculateMlPerKgPerDay:mlperDayDouble], NSLocalizedString(@"day", nil)];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", (mlperDayDouble / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
             
             // update footer calculations
             if ([sectionName isEqualToString:@"InputData"])
@@ -815,20 +886,31 @@
             {
                 totalOut = totalOut + mlperDayDouble;
             }
-            
         }
     }
     
     // update balance
     balance = totalIn - totalOut;
     
-    NSLog(@"Total In  = %f", totalIn);
-    
-    NSLog(@"Total Out = %f", totalOut);
-    
-    NSLog(@"Balance   = %F", balance);
-    
     // update labels
+    
+    self.totalInMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", totalIn];
+    self.totalInMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", (totalIn / workingWeightKGAsDouble)];
+    
+    self.totalOutMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", totalOut];
+    self.totalOutMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", (totalOut / workingWeightKGAsDouble)];
+    
+    self.balance.text = [NSString stringWithFormat:@"%0.0f ml (%0.0f ml/kg)", balance, (balance / workingWeightKGAsDouble)];
+}
+
+#pragma mark - UIPickerView methods
+
+- (void)datePickerChangedValue
+{
+    self.fluidBalanceDate = self.datePicker.date;
+    
+    // update the 'Date' row with the new date
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end
