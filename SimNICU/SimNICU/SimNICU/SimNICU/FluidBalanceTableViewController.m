@@ -545,6 +545,8 @@
 
 - (NSString *)twentyFourHourTimePeriodStringToDate:(NSDate *)date forPatient:(Patient *)patient
 {
+    // this may make no sense, but it works...
+    
     NSString *timePeriod;
     
     // create time period text
@@ -560,33 +562,35 @@
     
     NSDate *roundedDate = [gregorian dateFromComponents:dateComponents];
     
-    NSString *timePeriodToDate = [formatter stringFromDate:roundedDate];
+    // NSString *timePeriodToDate = [formatter stringFromDate:roundedDate];
+    NSString *timePeriodToDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:roundedDate andLocale:[NSLocale currentLocale]];
     
-    // round birth date
+    // round current date
     NSDateComponents *birthdateComponents = [gregorian components:flags
-                                                         fromDate:self.selectedPatient.birthDate];
+                                                         fromDate:[NSDate date]];
     
-    NSDate *roundedBirthDate = [gregorian dateFromComponents:birthdateComponents];
+    NSDate *roundedCurrentDate = [gregorian dateFromComponents:birthdateComponents];
     
-    // check if timeperiod date is equal to birthdate
-    if ([roundedDate compare:roundedBirthDate] == NSOrderedSame)
+    // check if timeperiod date is equal to current date
+    if ([roundedDate compare:roundedCurrentDate] == NSOrderedSame)
     {
-        timePeriod = timePeriodToDate;
+        timePeriod = [formatter stringFromDate:roundedDate];
     }
     else
     {
         // from date
         NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-        [componentsToSubtract setDay:-1];
+        [componentsToSubtract setDay:+1];
         
         NSDate *fromDate = [[NSCalendar currentCalendar] dateByAddingComponents:componentsToSubtract
                                                                          toDate:date
                                                                         options:0];
         
-        NSString *timePeriodFromDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:fromDate
-                                                                                   andLocale:[NSLocale currentLocale]];
+        NSString *timePeriodFromDate = [formatter stringFromDate:fromDate];
         
-        timePeriod = [NSString stringWithFormat:@"%@ - %@", timePeriodFromDate, timePeriodToDate];
+        //NSString *timePeriodFromDate = [CBStringMethods dayAndMonthWithoutParenthesesForDate:fromDate andLocale:[NSLocale currentLocale]];
+        
+        timePeriod = [NSString stringWithFormat:@"%@ - %@", timePeriodToDate, timePeriodFromDate];
     }
     
     return timePeriod;
