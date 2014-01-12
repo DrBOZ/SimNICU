@@ -123,14 +123,20 @@
 
 - (void)removeTransition:(Transition *)trans;
 
-- (PulseActivity *)addPulseActivityWithInterval:(NSInteger)intvl usingCallBack:(id)cb andFB:(BOOL)fb;
+- (PulseActivity *)addPulseActivity:(NSInteger)intvl cb:(SEL)cb fb:(BOOL)fb;
 
 - (void)removePulseActivity:(PulseActivity *)pa;
 
 - (BOOL)onEvent:(Event *)ev handledYet:(BOOL)handledYet;  // new feature in FStEng v1.5
 
+- (void)resetHistory;
+
 - (void)registerSubStates:(StateEngine *)stateEng;
 
 - (BOOL)isSubstate:(State *)st;
+
+- (void)enter:(BOOL)hist specIDs:(NSMutableArray *)specIDs;
+
+- (void)leave;
 
 @end

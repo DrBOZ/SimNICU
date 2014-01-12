@@ -10,6 +10,8 @@
 #import "Transition.h"
 #import "HState.h"
 
+@class HState;
+
 @interface StateManager ()
 
 - (void)activate:(BOOL)hist specIDs:(NSMutableArray *)specIDs;
@@ -18,7 +20,7 @@
 
 @implementation StateManager
 
-- (StateManager *)initWithIdentifier:(NSString *)identifier containerState:(HStateC *)containerState defaultState:(NSString *)defaultState name:(NSString *)n
+- (StateManager *)init:(NSString *)identifier containerState:(HStateC *)containerState defaultState:(NSString *)defaultState n:(NSString *)n
 {
     self.id = identifier;
     
@@ -34,7 +36,7 @@
     self.defSt = defaultState;
     
     // conSt = HStateC(containerState);  AS3 code
-    self.contSt = containerState;
+    self.contSt = (HStateC *)containerState;
     
     self.cs = nil;
     
@@ -44,6 +46,7 @@
     if (containerState)
     {
         // containerState.addStateManager(this); AS3 code
+        [containerState addStateManager:(StateManager *)self];
     }
     
     return self;
@@ -78,6 +81,11 @@
     {
         // Take off the first state in the state path.  This is for our level.
         self.cs = specIDs[0];
+        [specIDs removeObjectAtIndex:0];
+        if (specIDs.count == 0)
+        {
+            specIDs = nil;
+        }
     }
     else
     {
@@ -88,7 +96,7 @@
         }
         else if (!self.defSt)
         {
-            // throw new Error("Default start state not defined for state network managed by " + name);
+            NSLog(@"Default start state not defined for state network managed by %@.", self.name);
         }
         else
         {
@@ -96,7 +104,7 @@
         }
         
         // Clear the hist value because we just used it if we were supposed to
-        hist = nil;
+        hist = NO;
     }
     
     // If last state visited is undefined, set it to the current state so we don't lose track of the last state visited
@@ -108,11 +116,11 @@
     // Retrieve appropriate state to enter then do the deed!
     if (!self.contSt.substates[self.cs])
     {
-        // throw new Error("Manager " + name + " was told to start in state " + cs + " but it does not exist as a substate of " + contSt.name);
+        NSLog(@"Manager %@ was told to start in state %@ but it does not exist as a substate of %@.", self.name, self.cs, self.contSt.name);
     }
     
-//    ns = self.contSt.substates[self.cs];      AS3 code
-//    ns.enter(hist, specIDs);
+    ns = [self.contSt.substates objectForKey:self.cs];
+    [ns enter:hist specIDs:specIDs];
 }
 
 /**
@@ -128,13 +136,13 @@
     
     if (self.active && !self.cs)
     {
-//        sp = this.contSt.substates[cs];
-//        sp.leave();
-//        // Record last state entered before we get deactivated
-//        this.lastSt = cs;
-//        active          = false;
-//        // Reset current state
-//        cs = null;
+        sp = [self.contSt.substates objectForKey:self.cs];
+        [sp leave];
+        // Record last state entered before we get deactivated
+        self.lastSt = self.cs;
+        self.active = NO;
+        // Reset current state
+        self.cs = nil;
     }
 }
 
@@ -148,7 +156,26 @@
 
 - (void)resetHistory
 {
-    // code
+    StateManager *smp;
+    HStateC *sp;
+    
+    // if history mechanism is still null, meaning no one has entered this state yet, don't waste time resetting sub-network
+    if (!self.lastSt)
+    {
+        return;
+    }
+    self.lastSt = nil;
+    
+    for (sp in self.contSt.substates)
+    {
+        if ([sp isKindOfClass:[HStateC class]])
+        {
+            for (smp in sp.stMgrs)
+            {
+                [smp resetHistory];
+            }
+        }
+    }
 }
 
 /**
@@ -164,7 +191,32 @@
 
 - (void)chgSt:(Transition *)trans val:(id)val
 {
-    // code
+    State *stp;
+    NSMutableArray *cpyStPath;
+    StateManager *nsm;
+    StateManager *sm;
+    NSString *tmpcs;
+    NSMutableDictionary *mgrs;
+    NSString *sid;
+    StateManager *curSubStateMgr;
+    
+    int i;
+    
+    NSMutableDictionary *statesByID = trans.source._se.statesByID;
+    HStateC *hstp;
+    
+    if (!self.active)
+    {
+        NSLog(@"Trying to change states through <manager %@>.", self.name);
+    }
+    
+    // Steps:
+    // 1. Leave current state
+    // 2. Execute transition actions
+    // 3. Enter new state
+    // RETRIEVE TRANSITION ACTIONS
+    
+    
 }
 
 /**
@@ -177,7 +229,7 @@
 
 - (State *)addState:(NSString *)id nm:(NSString *)nm
 {
-    State *newState = [[State alloc] initWithStateName:nm uniqueID:id stateManager:self];
+    State *newState = [[State alloc] init:id msm:self nm:nm];
     
     return newState;
 }
@@ -192,7 +244,7 @@
 
 - (HState *)addHState:(NSString *)id nm:(NSString *)nm
 {
-    HState *newHState = [[HState alloc] initWithIdentifier:id stateManager:self name:nm];
+    HState *newHState = [[HState alloc] init:id msm:self nm:nm];
     
     return newHState;
 }
@@ -207,7 +259,7 @@
 
 - (HStateC *)addHStateC:(NSString *)id nm:(NSString *)nm
 {
-    HStateC *newHStateC = [[HStateC alloc] initWithIdentifier:id stateManager:self name:nm];
+    HStateC *newHStateC = [[HStateC alloc] init:id msm:self nm:nm];
     
     return newHStateC;
 }

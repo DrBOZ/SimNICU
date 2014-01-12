@@ -19,14 +19,13 @@
     NSMutableDictionary *transitionEvents;   // List of Events that trigger transition for this state
     EventWithData *entryEvent;
     EventWithData *leaveEvent;
+    NSHashTable *hashTable;
 }
 
-- (void)enter:(BOOL)hist specIDs:(NSMutableArray *)specIDs;
 - (void)startStateActivities;
 - (void)leave;
 - (void)stopStateActivities;
 - (Transition *)addTransitionInstance:(NSString *)targetStateID tEvtName:(NSString *)tEvtName transFn:(SEL)transFn doHistory:(BOOL)doHistory ulfst:(NSInteger)ulfst;
-- (void)resetHistory;
 
 @end
 
@@ -449,7 +448,7 @@
 - (void)removeTransition:(Transition *)trans
 {
     int ti;
-    int tei;
+    // int tei;
     BOOL foundTrans = NO;
     BOOL foundEvent = NO;
     
@@ -587,7 +586,7 @@
 {
     HStateC *containingState;
     Transition *tt;
-    int tei;
+    // int tei;
     
     // Check internal actions
     // See if there are any listeners to handle this event

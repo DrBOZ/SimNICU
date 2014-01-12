@@ -16,7 +16,6 @@
     NSTimer *eventTimerDelay;
 }
 
-// @property (nonatomic, strong) HStateC *stNet;
 @property (nonatomic) BOOL handlingEvent;
 @property (nonatomic, strong) NSMutableArray *eventsWaiting;
 @property (nonatomic, strong) EventWithData *unhandledEvent;
