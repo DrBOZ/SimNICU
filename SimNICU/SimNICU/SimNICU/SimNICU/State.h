@@ -109,20 +109,6 @@
 
 - (BOOL)isActive;
 
-- (Transition *)addTransitionToTarget:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn;
-
-- (Transition *)addTransitionToSelf:(NSString *)tEvtName transFn:(SEL)transFn ulfst:(NSInteger)ulfst;
-
-- (Transition *)addTransitionExternal:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn ulfxt:(NSInteger)ulfxt;
-
-- (Transition *)addTransitionToHistory:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn;
-
-- (void)removeTransition:(Transition *)trans;
-
-- (PulseActivity *)addPulseActivity:(NSInteger)intvl cb:(SEL)cb fb:(BOOL)fb;
-
-- (void)removePulseActivity:(PulseActivity *)pa;
-
 - (BOOL)onEvent:(Event *)ev handledYet:(BOOL)handledYet;  // new feature in FStEng v1.5
 
 - (void)resetHistory;
@@ -134,5 +120,23 @@
 - (void)enter:(BOOL)hist specIDs:(NSMutableArray *)specIDs;
 
 - (void)leave;
+
+#pragma mark - Transition methods
+
+- (Transition *)addTransitionToTarget:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn;
+
+- (Transition *)addTransitionToSelf:(NSString *)tEvtName transFn:(SEL)transFn ulfst:(NSInteger)ulfst;
+
+- (Transition *)addTransitionExternal:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn ulfxt:(NSInteger)ulfxt;
+
+- (Transition *)addTransitionToHistory:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn;
+
+- (void)removeTransition:(Transition *)trans;
+
+#pragma mark Pulse Activity methods
+
+- (PulseActivity *)addPulseActivity:(NSInteger)intvl cb:(SEL)cb fb:(BOOL)fb;
+
+- (void)removePulseActivity:(PulseActivity *)pa;
 
 @end

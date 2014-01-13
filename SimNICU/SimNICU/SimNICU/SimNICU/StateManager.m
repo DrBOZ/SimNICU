@@ -20,6 +20,15 @@
 
 @implementation StateManager
 
+/**
+ Constructor for State (network) Manager.  One StateManager is required to manage the
+ network of each HState, or each sub-network of an HStateC.
+ @method new StateManager
+ @param identifier       String identifier (id) for the state manager.  Identifier must be unique only for sibling managers in an HStateC.
+ @param containerSt      Pointer to state containing this manager.  'null' if this is manager at state engine (top) level.
+ @param defaultSt        Default start state (use the State's id).  It is optional here, but if not given here, the developer must specify one with <code>setDefaultState()</code>.
+ @param n                        State manager name (optional).  Used for display purposes only.  If no name passed in, routines use id.
+ */
 - (StateManager *)init:(NSString *)identifier containerState:(HStateC *)containerState defaultState:(NSString *)defaultState n:(NSString *)n
 {
     self.id = identifier;
@@ -69,7 +78,6 @@
  * @param specIDs If present (not null), this is an array of state ID's to enter.  This overrides the default start state for the state.
  * @private
  */
-
 - (void)activate:(BOOL)hist specIDs:(NSMutableArray *)specIDs
 {
     self.active = YES;
@@ -129,7 +137,6 @@
  @method deactivate
  @private
  */
-
 - (void)deactivate
 {
     State *sp;
@@ -153,7 +160,6 @@
  * @method resetHistory
  * @private
  */
-
 - (void)resetHistory
 {
     StateManager *smp;
@@ -188,14 +194,13 @@
  * @param transID Transition ID to use for current state
  * @param val an optional argument that is passed to the transition function
  */
-
 - (void)chgSt:(Transition *)trans val:(id)val
 {
     HStateC *stp;
     NSMutableArray *cpyStPath;
     StateManager *nsm;
     StateManager *sm;
-    NSString *tmpcs;
+    // NSString *tmpcs;
     NSMutableDictionary *mgrs;
     NSString *sid;
     StateManager *curSubStateMgr;
@@ -242,8 +247,7 @@
         // LEAVE CURRENT STATE and any ancestors up to common parent state manager
         if (trans.upLvls > 0)
         {
-#warning need to alter once passUp method is entered
-            // nsm = self passUp...
+            nsm = [self passUp:trans.upLvls transToAncestorHist:(trans.hist && cpyStPath.count == 0)];
             mgrs = [[NSMutableDictionary alloc] init];
             [mgrs setObject:nsm forKey:nsm.id];
         }
@@ -382,12 +386,12 @@
         {
             for (sid in mgrs)
             {
-                // [mgrs objectForKey:sid] passDown...
+                [[mgrs objectForKey:sid] passDown:cpyStPath hist:trans.hist sep:stp._se];
             }
         }
         else
         {
-            // nsm.passDown...
+            [nsm passDown:cpyStPath hist:trans.hist sep:stp._se];
         }
     }
 }
@@ -402,7 +406,6 @@
  * @param upLvls Number of levels to ascend to reach least common ancestor
  * @access private
  */
-
 - (StateManager *)passUp:(int)upLvls transToAncestorHist:(BOOL)transToAncestorHist
 {
     StateManager *nsm = self;
@@ -439,7 +442,6 @@
  * @param hist
  * @private
  */
-
 - (void)passDown:(NSMutableArray *)stPath hist:(BOOL)hist sep:(StateEngine *)sep
 {
     HStateC *stp;
@@ -510,7 +512,6 @@
  * @param       nm      Optional display name for the state.  If not supplied, engine use id.
  * @return
  */
-
 - (State *)addState:(NSString *)id nm:(NSString *)nm
 {
     State *newState = [[State alloc] init:id msm:self nm:nm];
@@ -525,7 +526,6 @@
  * @param       nm      Optional display name for the state.  If not supplied, engine use id.
  * @return
  */
-
 - (HState *)addHState:(NSString *)id nm:(NSString *)nm
 {
     HState *newHState = [[HState alloc] init:id msm:self nm:nm];
@@ -540,7 +540,6 @@
  * @param       nm      Optional display name for the state.  If not supplied, engine use id.
  * @return
  */
-
 - (HStateC *)addHStateC:(NSString *)id nm:(NSString *)nm
 {
     HStateC *newHStateC = [[HStateC alloc] init:id msm:self nm:nm];

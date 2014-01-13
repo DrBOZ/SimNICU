@@ -21,54 +21,23 @@
 #import "Event.h"
 #import "EventDispatcher.h"
 
+// State Engine
+#import "StateManager.h"
 #import "StateEngine.h"
-
-@interface ClassB : NSObject{}
-- (void)print:(Event *)e;
-- (void)dance:(Event *)e;
-@end
-
-@implementation ClassB
-
-- (void)print:(Event *)e
-{
-    NSLog(@"print B");
-    NSLog(@"%@",[e toString]);
-}
-- (void)dance:(Event *)e
-{
-    NSLog(@"nice dance!");
-}
-
-@end
-
-@interface Item : NSObject
-@end
-
-@implementation Item
-@end
+#import "HStateC.h"
+#import "HState.h"
+#import "State.h"
 
 // Google Analytics dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
 
 @interface AppDelegate()
-{
-    EventDispatcher* a;
-    Event* e;
-}
 
 @property (nonatomic, strong) UINavigationController *rearViewNavController;
 
 @end
 
 @implementation AppDelegate
-
-- (void)onEvent:(Event *)_event
-{
-    [a removeEventListener:@"EnterFrame" listener:as3delegate(self,onEvent:)];
-    // NSLog(@"after event a %i", [a retainCount]);
-    // NSLog(@"after event e %i", [e retainCount]);
-}
 
 + (void)initialize
 {
@@ -136,10 +105,20 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // HStateC *rootState = [[HStateC alloc] initWithStateName:@"RootState" uniqueID:@"1" stateManager:nil];
+    StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:nil];
     
-    // StateEngine *stateEngine = [[StateEngine alloc] initWithName:@"Neonate" andStateNetwork:rootState];
+    HState *modelRoot = [[HState alloc] init:@"0" msm:nil nm:@"modelRoot"];
     
+    StateManager *modelRootMgr = [[StateManager alloc] init:@"A" containerState:nil defaultState:@"1" n:@"modelRootMgr"];
+    
+    State *off  = [[State alloc] init:@"1" msm:modelRootMgr nm:@"off"];
+    State *on   = [[State alloc] init:@"2" msm:modelRootMgr nm:@"on"];
+    
+    [model setStateNetwork:modelRoot suppressReassign:NO];
+    
+    [model active:YES];
+
+    NSLog(@"Here");
     
     
     

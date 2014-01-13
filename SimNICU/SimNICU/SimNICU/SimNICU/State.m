@@ -46,13 +46,17 @@
 {
     if((self = [super init]))
     {
+        // sets the state's unique identifier.
         self.id = identifier;
         
+        // sets the state's name
         if (!nm) self.name = identifier;
         else self.name = nm;
         
+        // sets the state's state manager
         self.myStMgr = msm;
         
+        // msm.contSt
         if (msm && [msm.contSt isKindOfClass:[HStateC class]])
         {
             [msm.contSt addAsSubState:self];

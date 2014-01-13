@@ -191,7 +191,6 @@
  @param specIDs
  @private
  */
-
 - (void)enter:(BOOL)hist specIDs:(NSMutableArray *)specIDs
 {
     NSString *curMgrID;
