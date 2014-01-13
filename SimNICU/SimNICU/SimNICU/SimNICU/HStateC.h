@@ -42,7 +42,6 @@
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
-#import "HState.h"
 #import "State.h"
 
 /**
@@ -58,7 +57,7 @@
  * @see StateEngine StateEngine definition examples.
  */
 
-@class HState;
+@class StateManager;
 
 @interface HStateC : State
 

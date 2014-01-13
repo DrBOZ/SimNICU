@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
+#import "PulseActivity.h"
+#import "StateManager.h"
 #import "HStateC.h"
-#import "HState.h"
-
-@class HState;
 
 @interface HStateC ()
 
@@ -274,19 +273,20 @@
  @access private
  */
 
-- (void)leave
-{
-    [self._se.activeStates removeObjectForKey:self.id];
-    
-    [self stopStateActivities];
-    
-    if ([self hasEventListener:@"LEAVE"])
-    {
-        // leaveEvent.data.stateName        = name;
-        // leaveEvent.data.stateID          = id;
-        // dispatchEvent(leaveEvent);
-    }
-}
+#warning duplicate methods
+//- (void)leave
+//{
+//    [self._se.activeStates removeObjectForKey:self.id];
+//    
+//    [self stopStateActivities];
+//    
+//    if ([self hasEventListener:@"LEAVE"])
+//    {
+//        // leaveEvent.data.stateName        = name;
+//        // leaveEvent.data.stateID          = id;
+//        // dispatchEvent(leaveEvent);
+//    }
+//}
 
 /**
  Stops any pulse state activities for this state.

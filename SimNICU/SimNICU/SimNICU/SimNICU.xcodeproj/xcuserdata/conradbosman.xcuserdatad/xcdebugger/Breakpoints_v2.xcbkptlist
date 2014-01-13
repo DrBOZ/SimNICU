@@ -67,28 +67,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SimNICU/AppDelegate.m"
-            timestampString = "411085428.798869"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SimNICU/StateEngine.m"
-            timestampString = "411084325.688729"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-active:"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/StateEngine.m"
-            timestampString = "411084325.688729"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-active"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/PulseActivity.m"
-            timestampString = "411220498.915465"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-prepareToRemove"
             landmarkType = "5">
          </BreakpointContent>
@@ -148,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/PulseActivity.m"
-            timestampString = "411220499.884497"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-start"
             landmarkType = "5">
          </BreakpointContent>
@@ -164,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/PulseActivity.m"
-            timestampString = "411220501.247392"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "-stop"
             landmarkType = "5">
          </BreakpointContent>
@@ -180,27 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/PulseActivity.m"
-            timestampString = "411220506.360232"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-init:origState:cb:fb:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimNICU/PulseActivity.m"
-            timestampString = "411220996.761834"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-frameElapsed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/PulseActivity.m"
-            timestampString = "411220998.205313"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-timerElapsed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/State.m"
-            timestampString = "411227288.680915"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-leave"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/State.m"
-            timestampString = "411235686.445942"
+            timestampString = "411304827.636944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "613"
-            endingLineNumber = "613"
+            startingLineNumber = "615"
+            endingLineNumber = "615"
             landmarkName = "-onEvent:handledYet:"
             landmarkType = "5">
          </BreakpointContent>

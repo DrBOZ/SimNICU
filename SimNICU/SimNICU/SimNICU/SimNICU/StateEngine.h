@@ -10,7 +10,6 @@
 #import "Array.h"
 #import "Event.h"
 #import "EventDispatcher.h"
-#import "HStateC.h"
 
 @class HStateC;
 

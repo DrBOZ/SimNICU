@@ -7,6 +7,7 @@
 //
 
 #import "PulseActivity.h"
+#import "State.h"
 
 @interface PulseActivity ()
 {

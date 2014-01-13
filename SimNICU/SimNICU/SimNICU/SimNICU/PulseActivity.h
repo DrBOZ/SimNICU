@@ -18,7 +18,6 @@
 
 #import "EventDispatcher.h"
 #import "EventWithData.h"
-#import "State.h"
 
 @class State;
 

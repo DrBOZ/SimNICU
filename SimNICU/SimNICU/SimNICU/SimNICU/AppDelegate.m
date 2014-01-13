@@ -136,9 +136,9 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    HStateC *rootState = [[HStateC alloc] initWithStateName:@"RootState" uniqueID:@"1" stateManager:nil];
+    // HStateC *rootState = [[HStateC alloc] initWithStateName:@"RootState" uniqueID:@"1" stateManager:nil];
     
-    StateEngine *stateEngine = [[StateEngine alloc] initWithName:@"Neonate" andStateNetwork:rootState];
+    // StateEngine *stateEngine = [[StateEngine alloc] initWithName:@"Neonate" andStateNetwork:rootState];
     
     
     

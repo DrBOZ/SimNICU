@@ -42,17 +42,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "StateManager.h"
-#import "HStateC.h"
-#import "State.h"
 
-@class StateManager;
 @class State;
 
 @interface Transition : NSObject
 
 @property (nonatomic, strong) State *source;
 @property (nonatomic, strong) NSString *targetID;
+@property (nonatomic, strong) NSMutableArray *stPath;
+@property (nonatomic) NSInteger upLvls;
+@property (nonatomic) BOOL hist;
+@property (nonatomic) SEL xFn;
 
 - (Transition *)init:(State *)src tid:(NSString *)tid tfn:(SEL)tfn doHistory:(BOOL)doHistory upLevelsForExternalTransition:(NSInteger)upLevelsForExternalTransition;
 

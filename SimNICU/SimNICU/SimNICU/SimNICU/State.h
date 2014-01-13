@@ -42,11 +42,6 @@
 //
 
 #import "EventDispatcher.h"
-#import "EventWithData.h"
-#import "PulseActivity.h"
-#import "StateManager.h"
-#import "StateEngine.h"
-#import "Transition.h"
 #import "Event.h"
 
 /**
@@ -73,7 +68,8 @@
  @author Jonathan Kaye (FlashSim.com)
  */
 
-@class EventWithData;
+@class PulseActivity;
+@class StateManager;
 @class StateEngine;
 @class Transition;
 

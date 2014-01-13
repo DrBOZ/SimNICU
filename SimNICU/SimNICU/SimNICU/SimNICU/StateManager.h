@@ -42,12 +42,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Transition.h"
 #import "HStateC.h"
-#import "HState.h"
 
-@class HState;
-@class HStateC;
 @class Transition;
 
 @interface StateManager : NSObject

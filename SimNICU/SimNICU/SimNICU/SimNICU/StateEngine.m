@@ -9,6 +9,7 @@
 #import "StateManager.h"
 #import "EventWithData.h"
 #import "StateEngine.h"
+#import "HStateC.h"
 
 @interface StateEngine ()
 {
@@ -128,11 +129,13 @@
 {
     if (resetHistory)
     {
-        // [self.stNet resetHistory];
+#warning check this
+        [stNet resetHistory];
     }
     
     if (!self.networkPrepared)
     {
+#warning check this
         // [self prepareNetwork];
     }
     
@@ -145,6 +148,7 @@
         [self dispatchEvent:event];
     }
     
+#warning check this
     // self.stNet.myStMgr.cs = self.stNet.id;
     // self.stNet.myStMgr.active = YES;
     
@@ -154,18 +158,19 @@
 
 - (void)prepareNetwork
 {
+#warning check this
     // code
 }
 
 - (void)setSubState2SEwithState:(State *)stPtr
 {
-    if (stPtr.se)
+    if (stPtr._se)
     {
         return;
     }
     else
     {
-        // stPtr registerSubStates(this);
+        [stPtr registerSubStates:self];
     }
 }
 
@@ -199,6 +204,7 @@
 {
     while (self.eventsWaiting.count > 0)
     {
+#warning check this
 //        if (self.eventsWaiting[0].delay) {
 //            <#statements#>
 //        }

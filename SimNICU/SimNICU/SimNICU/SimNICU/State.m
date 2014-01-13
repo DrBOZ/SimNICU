@@ -6,13 +6,14 @@
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
+#import "PulseActivity.h"
 #import "EventWithData.h"
+#import "StateManager.h"
+#import "StateEngine.h"
+#import "Transition.h"
 #import "HStateC.h"
 #import "HState.h"
 #import "State.h"
-
-@class HStateC;
-@class HState;
 
 @interface State ()
 {

@@ -6,17 +6,20 @@
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
+#import "StateManager.h"
 #import "StateEngine.h"
 #import "Transition.h"
+#import "HStateC.h"
+#import "State.h"
 
 @interface Transition ()
 {
     State *target;
-    SEL xFn;
-    BOOL hist;
+    // SEL xFn;
+    // BOOL hist;
     int upLevelsForExtTrans;
-    int upLvls;
-    NSMutableArray *stPath;
+    // int upLvls;
+    // NSMutableArray *stPath;
 }
 
 @end
@@ -43,10 +46,10 @@
     {
         self.source                 = src;
         self.targetID               = tid;
-        upLevelsForExtTrans    = upLevelsForExternalTransition;
-        hist                   = doHistory;
-        xFn                    = tfn;
-        upLvls                 = 0;
+        upLevelsForExtTrans         = upLevelsForExternalTransition;
+        self.hist                   = doHistory;
+        self.xFn                    = tfn;
+        self.upLvls                 = 0;
     }
     
     return self;
@@ -78,7 +81,7 @@
     target = [statesByID objectForKey:self.targetID];
     
     // make sure not sending to history of simple state
-    if (([target isKindOfClass:[HStateC class]]) && hist == YES)
+    if (([target isKindOfClass:[HStateC class]]) && self.hist == YES)
     {
         NSLog(@"History pseudo-states are only in hierarchical states. Cannot transition from %@ to history of State %@", self.source.id, self.targetID);
     }
@@ -98,22 +101,22 @@
             }
             [stPathArray insertObject:sp.id atIndex:0];
         }
-        upLvls = upLevelsForExtTrans;
-        stPath = stPathArray;
+        self.upLvls = upLevelsForExtTrans;
+        self.stPath = stPathArray;
     }
     else if (self.source.myStMgr == target.myStMgr)
     {
         // (b) Transition to sibling
-        upLvls = 0;
+        self.upLvls = 0;
         
         // stPath = [target.id]; // AS3 code
-        stPath = [[NSMutableArray alloc] initWithObjects:target.id, nil];
+        self.stPath = [[NSMutableArray alloc] initWithObjects:target.id, nil];
     }
-    else if (hist && self.source.myStMgr.contSt == target)
+    else if (self.hist && self.source.myStMgr.contSt == target)
     {
         // (c) Transition to history within same network
-        upLvls = 0;
-        stPath = [[NSMutableArray alloc] init];
+        self.upLvls = 0;
+        self.stPath = [[NSMutableArray alloc] init];
     }
     else
     {
@@ -136,8 +139,8 @@
             {
                 // We know we have to go up 'ai' levels to get to the target. We add in upLevelsForExtTrans
                 // to allow the external transition to exit the state as high as desired, then re-enter
-                upLvls = ai + upLevelsForExtTrans;
-                stPath = [[NSMutableArray alloc] init];
+                self.upLvls = ai + upLevelsForExtTrans;
+                self.stPath = [[NSMutableArray alloc] init];
                 if (upLevelsForExtTrans > 0)
                 {
                     // We have to construct the path back to the level of the state appropriate for
@@ -146,12 +149,12 @@
                     int statesUpCt = upLevelsForExtTrans;
                     while (statesUpCt > 0)
                     {
-                        [stPath addObject:ancestorState.id];
+                        [self.stPath addObject:ancestorState.id];
                         ancestorState = ancestorState.myStMgr.contSt;
                         statesUpCt--;
                     }
-                    NSArray *stPathReversed = [[stPath reverseObjectEnumerator] allObjects];
-                    stPath = [NSMutableArray arrayWithArray:stPathReversed];
+                    NSArray *stPathReversed = [[self.stPath reverseObjectEnumerator] allObjects];
+                    self.stPath = [NSMutableArray arrayWithArray:stPathReversed];
                 }
                 
                 // (d) target is an ancestor of source
@@ -178,9 +181,9 @@
                     // (e) source is an ancestor of target
                     // lca_targ.splice(ai + upLevelsForExtTrans, lca_targ - ai - upLevelsForExtTrans); AS3
                     [lca_targ removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(ai + upLevelsForExtTrans, lca_targ.count - ai - upLevelsForExtTrans)]];
-                    upLvls = -1 + upLevelsForExtTrans;
+                    self.upLvls = -1 + upLevelsForExtTrans;
                     NSArray *lca_targReversed = [[lca_targ reverseObjectEnumerator] allObjects];
-                    stPath = [NSMutableArray arrayWithArray:lca_targReversed];
+                    self.stPath = [NSMutableArray arrayWithArray:lca_targReversed];
                     found = YES;
                     break;
                 }
@@ -196,9 +199,9 @@
                         {
                             // (f) SOURCE AND TARGET IN DIFFERENT PATHS
                             [lca_targ removeObjectAtIndex:aj];
-                            upLvls = ai;
+                            self.upLvls = ai;
                             NSArray *lca_targReversed = [[lca_targ reverseObjectEnumerator] allObjects];
-                            stPath = [NSMutableArray arrayWithArray:lca_targReversed];
+                            self.stPath = [NSMutableArray arrayWithArray:lca_targReversed];
                             found = YES;
                             break;
                         }
