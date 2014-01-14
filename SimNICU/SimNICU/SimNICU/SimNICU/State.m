@@ -397,11 +397,11 @@
     {
         if ([tEvtName isEqualToString:ENTRY] || [tEvtName isEqualToString:LEAVE])
         {
-            NSLog(@"You cannot register a transition to a StateEvent %@", tEvtName);
+            NSLog(@"ObjCStEng: You cannot register a transition to a StateEvent %@", tEvtName);
         }
-        else
+        else if ([self hasEventListener:tEvtName])
         {
-            NSLog(@"Trying to add a transition triggered by an event (%@) that is already registered to an internal action.", tEvtName);
+            NSLog(@"ObjCStEng: Trying to add a transition triggered by an event (%@) that is already registered to an internal action.", tEvtName);
         }
     }
     

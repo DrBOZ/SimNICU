@@ -283,8 +283,14 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     StateManager *modelRootMgr = [[StateManager alloc] init:@"A" containerState:modelRoot defaultState:@"1" n:@"modelRootMgr"];
     
     // Create the states
-    [modelRoot addSubState:@"1" mgr:modelRootMgr name:@"off"];
-    [modelRoot addSubState:@"2" mgr:modelRootMgr name:@"on"];
+    State *off = [modelRoot addSubState:@"1" mgr:modelRootMgr name:@"off"];
+    [off addEventListener:@"0" listener:nil];
+    
+    State *on = [modelRoot addSubState:@"2" mgr:modelRootMgr name:@"on"];
+    
+    // Create the transitions
+    [off addTransitionToTarget:@"0" targetStateID:@"2" transFn:nil];
+    [on addTransitionToTarget:@"1" targetStateID:@"1" transFn:nil];
     
 //    StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:[[HState alloc] init:@"0" msm:nil nm:@"modelRoot"]];
 //    
@@ -292,6 +298,11 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 //    [model.topState addSubState:@"2" mgr:nil name:@"on"];
     
     [model active:YES];
+    
+    Event *event = [[Event alloc] initWithType:@"0"];
+    
+    [model dispatchEvent:event];
+    
     
 #endif
     
