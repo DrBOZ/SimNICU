@@ -277,15 +277,19 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     // Create the state network
     HState *modelRoot = [[HState alloc] init:@"0" msm:nil nm:@"modelRoot"];
+    [model setStateNetwork:modelRoot suppressReassign:NO];
     
     // Create the top manager for the network
-    StateManager *modelRootMgr = [[StateManager alloc] init:@"A" containerState:nil defaultState:@"1" n:@"modelRootMgr"];
+    StateManager *modelRootMgr = [[StateManager alloc] init:@"A" containerState:modelRoot defaultState:@"1" n:@"modelRootMgr"];
     
     // Create the states
-    State *off  = [[State alloc] init:@"1" msm:modelRootMgr nm:@"off"];
-    State *on   = [[State alloc] init:@"2" msm:modelRootMgr nm:@"on"];
+    [modelRoot addSubState:@"1" mgr:modelRootMgr name:@"off"];
+    [modelRoot addSubState:@"2" mgr:modelRootMgr name:@"on"];
     
-    [model setStateNetwork:modelRoot suppressReassign:NO];
+//    StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:[[HState alloc] init:@"0" msm:nil nm:@"modelRoot"]];
+//    
+//    [model.topState addSubState:@"1" mgr:nil name:@"off"];
+//    [model.topState addSubState:@"2" mgr:nil name:@"on"];
     
     [model active:YES];
     

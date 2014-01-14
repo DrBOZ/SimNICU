@@ -162,7 +162,7 @@
  */
 - (void)resetHistory
 {
-    StateManager *smp;
+    // StateManager *smp;
     HStateC *sp;
     
     // if history mechanism is still null, meaning no one has entered this state yet, don't waste time resetting sub-network
@@ -172,13 +172,15 @@
     }
     self.lastSt = nil;
     
-    for (sp in self.contSt.substates)
+    for (NSString *id in self.contSt.substates)
     {
+        sp = [self.contSt.substates objectForKey:id];
+        
         if ([sp isKindOfClass:[HStateC class]])
         {
-            for (smp in sp.stMgrs)
+            for (NSString *id in sp.stMgrs)
             {
-                [smp resetHistory];
+                [[sp.stMgrs objectForKey:id] resetHistory];
             }
         }
     }

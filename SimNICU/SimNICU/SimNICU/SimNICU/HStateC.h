@@ -58,6 +58,7 @@
  */
 
 @class StateManager;
+@class HState;
 
 @interface HStateC : State
 
@@ -79,6 +80,12 @@
 @property (nonatomic, strong) NSMutableDictionary *substates;
 
 - (HStateC *)init:(id)identifier msm:(StateManager *)msm nm:(NSString *)nm;
+
+- (State *)addSubState:(NSString *)sid mgr:(StateManager *)mgr name:(NSString *)name;
+
+- (HState *)addSubHState:(NSString *)sid mgr:(StateManager *)mgr name:(NSString *)name;
+
+- (HStateC *)addSubHStateC:(NSString *)sid mgr:(StateManager *)mgr name:(NSString *)name;
 
 - (void)addAsSubState:(State *)st;
 

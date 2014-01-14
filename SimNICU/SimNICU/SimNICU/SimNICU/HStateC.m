@@ -167,9 +167,9 @@
     
     // Go through all the substates and register them. We don't care which sub-network they belong to,
     // as the purpose is just to get a state engine pointer and a unique state id off each state.
-    for (State *ss in self.substates)
+    for (NSString *id in self.substates)
     {
-        [ss registerSubStates:stateEng];
+        [[self.substates objectForKey:id] registerSubStates:stateEng];
     }
 }
 
@@ -253,9 +253,9 @@
 - (void)resetHistory
 {
     // tell managers to reset history
-    for (StateManager *mgr in self.stMgrs)
+    for (NSString *id in self.stMgrs)
     {
-        [mgr resetHistory];
+        [[self.stMgrs objectForKey:id] resetHistory];
     }
 }
 
