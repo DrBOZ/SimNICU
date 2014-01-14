@@ -41,7 +41,6 @@
  @param msm                      Pointer to a state manager, or null if this state is topmost
  @param nm                       Display name of the State.  If null (not supplied), routines use the id for the display name.
  */
-
 - (id)init:(NSString *)identifier msm:(StateManager *)msm nm:(NSString *)nm
 {
     if((self = [super init]))
@@ -81,7 +80,6 @@
  * Deletes memory associated with this state.
  * @method removeState
  */
-
 - (void)removeState
 {
     if (self.transitions)
@@ -98,6 +96,7 @@
     {
         for (int i = 0; i < self.pulseActivities.count; i++)
         {
+#warning logic needs checking...
             // may have to do this backwards
             // i.e. for (int i = self.pulseActivties.count - 1
             
@@ -139,18 +138,17 @@
  @param specIDs
  @access private
  */
-
 - (void)enter:(BOOL)hist specIDs:(NSMutableArray *)specIDs
 {
     // only put leaf states (State, not HStateC nor HState) into the master list of active states
     if (![self isKindOfClass:[HStateC class]])
     {
-        // _se.activeStates[this] = true;
         [self._se.activeStates setObject:[NSNumber numberWithBool:YES] forKey:self.id];
     }
     
     if ([self hasEventListener:ENTRY])
     {
+#warning code required
         // entryEvent.data.stateName  = self.name;
         // entryEvent.data.stateID    = self.id;
         [self dispatchEvent:entryEvent];
@@ -176,7 +174,6 @@
  @method startStateActivities
  @access private
  */
-
 - (void)startStateActivities
 {
     // Start any pulse activities for this state
@@ -195,7 +192,6 @@
  @method leave
  @access private
  */
-
 - (void)leave
 {
     [self._se.activeStates removeObjectForKey:self.id];
@@ -204,6 +200,7 @@
     
     if ([self hasEventListener:LEAVE])
     {
+#warning code required
         // leaveEvent.data.stateName  = self.name;
         // leaveEvent.data.stateID    = self.id;
         [self dispatchEvent:leaveEvent];
@@ -215,7 +212,6 @@
  @method stopStateActivities
  @access private
  */
-
 - (void)stopStateActivities
 {
     // turn off mode pulse activities
@@ -248,7 +244,6 @@
  @param transID
  @param val
  */
-
 - (void)chgSt:(Transition *)trans val:(NSMutableDictionary *)val
 {
     if (![trans.source.id isEqualToString:self.myStMgr.cs])
@@ -267,7 +262,6 @@
  @method isActive
  @return True if the state is active, false if not.
  */
-
 - (BOOL)isActive
 {
     return [self.myStMgr.cs isEqualToString:self.id];
@@ -293,7 +287,6 @@
  * @param targetStateID         id of the target state
  * @param transFn                       An optional function to execute when the transition is fired
  */
-
 - (Transition *)addTransitionToTarget:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn
 {
     if ([self.id isEqualToString:targetStateID])
@@ -323,7 +316,6 @@
  * @param transFn                       An optional function to execute when the transition is fired
  * @param ulfst                         (abbrev. "up levels for self transition") For a transition to self, this value says how many levels to go up before coming back down.  The developer uses this to determine how many states to exit and re-enter.
  */
-
 - (Transition *)addTransitionToSelf:(NSString *)tEvtName transFn:(SEL)transFn ulfst:(NSInteger)ulfst
 {
     return [self addTransitionInstance:self.id tEvtName:tEvtName transFn:transFn doHistory:NO ulfst:ulfst];
@@ -347,7 +339,6 @@
  * @param transFn                       An optional function to execute when the transition is fired
  * @param ulfxt                         (abbrev. "up levels for external transition") For an external transition, this value says how many levels to go up before re-entering that topmost state.  The developer uses this to determine how many states to exit and re-enter.
  */
-
 - (Transition *)addTransitionExternal:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn ulfxt:(NSInteger)ulfxt
 {
     return [self addTransitionInstance:targetStateID tEvtName:tEvtName transFn:transFn doHistory:NO ulfst:ulfxt];
@@ -373,7 +364,6 @@
  * @param targetStateID         id of the target state
  * @param transFn                       An optional function to execute when the transition is fired
  */
-
 - (Transition *)addTransitionToHistory:(NSString *)tEvtName targetStateID:(NSString *)targetStateID transFn:(SEL)transFn
 {
     return [self addTransitionInstance:targetStateID tEvtName:tEvtName transFn:transFn doHistory:YES ulfst:nil];
@@ -391,7 +381,6 @@
  * @param       ulfst                   For external transitions, how many states to go up and then re-enter downward
  * @return
  */
-
 - (Transition *)addTransitionInstance:(NSString *)targetStateID tEvtName:(NSString *)tEvtName transFn:(SEL)transFn doHistory:(BOOL)doHistory ulfst:(NSInteger)ulfst
 {
     if (!ulfst) ulfst = 0;
@@ -449,7 +438,6 @@
  * @method removeTransition
  * @param trans Transition instance to remove from source state.
  */
-
 - (void)removeTransition:(Transition *)trans
 {
     int ti;
@@ -504,7 +492,6 @@
  myState.addPulseActivity(0, 500, myObj.myMethod);
  
  */
-
 - (PulseActivity *)addPulseActivity:(NSInteger)intvl cb:(SEL)cb fb:(BOOL)fb
 {
     PulseActivity *pa;
@@ -539,7 +526,6 @@
  @method removePulseActivity
  @param id ID of the activity
  */
-
 - (void)removePulseActivity:(PulseActivity *)pa
 {
     BOOL found = NO;
@@ -586,7 +572,6 @@
  completely, and do it as described in our book.</p>
  @event onEvent
  */
-
 - (BOOL)onEvent:(Event *)ev handledYet:(BOOL)handledYet  // new feature in FStEng v1.5
 {
     HStateC *containingState;
@@ -649,6 +634,7 @@
             }
             else if ([containingState isKindOfClass:[HStateC class]])
             {
+#warning code required
 //                if (this._se._concEvCt[contaningState] == undefined) {
 //                    this._se._concEvCt[contaningState] = 1;
 //                    contaningState.handledEvYet = handledYet;
@@ -678,7 +664,6 @@
  @method registerSubStates
  @access private
  */
-
 - (void)registerSubStates:(StateEngine *)stateEng
 {
     self._se = stateEng;
@@ -699,7 +684,6 @@
  * @method isSubstate
  * @param       st
  */
-
 - (BOOL)isSubstate:(State *)st
 {
     return false;

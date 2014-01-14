@@ -36,7 +36,6 @@
  * @param       cb                      Callback function for event handler.
  * @param       fb                      Boolean value that is true for frame-based pulses, or false (default) for time-based.
  */
-
 - (PulseActivity *)init:(NSInteger)interval origState:(State *)origState cb:(SEL)cb fb:(BOOL)fb
 {
     if ((self = [super init]))
@@ -47,7 +46,8 @@
         
         if (self.frameBased)
         {
-            // do nothing
+#warning code required
+            // code required
         }
         else
         {
@@ -66,15 +66,16 @@
  * they don't get stranded from garbage collection (though we do explicitly make the listener have a weak reference).
  * @private
  */
-
 - (void)prepareToRemove
 {
+#warning code required
     // [self removeEventListener:@"TICK" listener:self.handler];
     
     [self stop];
     
     if (!self.frameBased)
     {
+#warning code required
         // timerObj.removeEventListener(TimerEvent.TIMER, timerElapsed);
     }
 }
@@ -92,10 +93,12 @@
         {
             frameCount = 0;
             
+#warning code required
             // frameSprite.addEventListener(Event.ENTER_FRAME, frameElapsed, false, 0 , true);
         }
         else
         {
+#warning code required
             // timerObj.reset();
             // timerObj.start();
         }
@@ -108,17 +111,18 @@
  * Stop the pulse activity.
  * @private
  */
-
 - (void)stop
 {
     if (active)
     {
         if (self.frameBased)
         {
+#warning code required
             // do nothing
         }
         else
         {
+#warning code required
             // timerObj.stop();
         }
         
@@ -131,7 +135,6 @@
  * @param       ev
  * @private
  */
-
 - (void)frameElapsed:(Event *)ev
 {
     frameCount++;
@@ -148,7 +151,6 @@
  * @param       ev
  * @private
  */
-
 - (void)timerElapsed:(Event *)ev
 {
     [self dispatchEvent:self.pulseEvent];

@@ -83,6 +83,8 @@
         
     }
     
+    NSLog(@"ObjCStEng: State Engine <%@> initialised.", self.name);
+    
     return self;
 }
 
@@ -346,10 +348,24 @@
 {
     while (self.eventsWaiting.count > 0)
     {
-#warning check this
+        
+        
+        
+        
+//        if ([self.eventsWaiting[0].delay] != 0)
+//        {
+//            <#statements#>
+//        }
 //        if (self.eventsWaiting[0].delay) {
 //            <#statements#>
 //        }
+    }
+    
+    // Clearing the handlingEvent flag, so future event postings invoke processEvent. We clear the
+    // flag here rather than in postEvent because an event could have been postponed and when the handling resumes, we get called.
+    if (self.eventsWaiting.count == 0)
+    {
+        self.handlingEvent = NO;
     }
 }
 

@@ -14,12 +14,19 @@
 
 @interface Transition ()
 {
+    /**
+     * Pointer to the target State (HState or HStateC).
+     * Important: this value is computed just before the stage engine is activated, or when the developer calls <code>myStateEnginePtr.prepareNetwork()</code>.
+     * Therefore, the value may be <code>null</code> if you try to access it before that condition has occurred.
+     * @private
+     */
     State *target;
-    // SEL xFn;
-    // BOOL hist;
+    
+    /**
+     * The number of levels in the state network to go up (towards the root) if this an external transition.
+     * @private
+     */
     int upLevelsForExtTrans;
-    // int upLvls;
-    // NSMutableArray *stPath;
 }
 
 @end
@@ -39,7 +46,6 @@
  * @param       doHistory Boolean value indicating whether or not to go to the History pseudo-state of the target state.
  * @param       upLevelsForExternalTransition This is only for external transitions: it lets one control how many parent states upward the engine exits before returning to enter the state again.
  */
-
 - (Transition *)init:(State *)src tid:(NSString *)tid tfn:(SEL)tfn doHistory:(BOOL)doHistory upLevelsForExternalTransition:(NSInteger)upLevelsForExternalTransition
 {
     if((self = [super init]))
@@ -63,7 +69,6 @@
  * @determineTransition
  * @private
  */
-
 - (void)determineTransition
 {
     NSMutableArray *stPathArray;

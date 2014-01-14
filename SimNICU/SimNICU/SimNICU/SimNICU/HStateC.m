@@ -9,6 +9,7 @@
 #import "PulseActivity.h"
 #import "StateManager.h"
 #import "HStateC.h"
+#import "HState.h"
 
 @interface HStateC ()
 
@@ -31,10 +32,9 @@
  * state, not the StateManager that will control this state's sub-network.
  * @param nm                    Display name of the State.  If null (not supplied), routines use the id for the display name.
  */
-
 - (HStateC *)init:(id)identifier msm:(StateManager *)msm nm:(NSString *)nm
 {
-    if ((self = [super init]))
+    if ((self = [super init:identifier msm:msm nm:nm]))
     {
         self.stMgrs = [[NSMutableDictionary alloc] init];
         self.numStMgrs = 0;
@@ -52,7 +52,6 @@
  * @param st
  * @private
  */
-
 - (void)addAsSubState:(State *)st
 {
     NSString *id = st.id;
@@ -60,14 +59,14 @@
     // check for duplicate ID
     if ([self.substates objectForKey:id])
     {
-//        if ([self isKindOfClass:[HState class]])
-//        {
-//            NSLog(@"Trying to add a sub-state of '%@' with the same id (%@).", self.name, id);
-//        }
-//        else
-//        {
-//            NSLog(@"Trying to add a sub-state of '%@' with the same id (%@). Remember that all siblings (from any manager) must have a unique id.", self.name, id);
-//        }
+        if ([self isKindOfClass:[HState class]])
+        {
+            NSLog(@"Trying to add a sub-state of '%@' with the same id (%@).", self.name, id);
+        }
+        else
+        {
+            NSLog(@"Trying to add a sub-state of '%@' with the same id (%@). Remember that all siblings (from any manager) must have a unique id.", self.name, id);
+        }
     }
     
     // Check that we have the state's state manager within this state
@@ -83,7 +82,6 @@
  * Deletes memory associated with this state.
  * @method removeState
  */
-
 - (void)removeState
 {
     [super removeState];
@@ -101,7 +99,6 @@
  * @method isSubstate
  * @param       st
  */
-
 - (BOOL)isSubstate:(State *)st
 {
     return [self.substates objectForKey:st.id];
@@ -117,7 +114,6 @@
  * @param id    String identifier for the state
  * @param mgr   Parameter specifying the manager of the sub-state.  It is declared as optional so that HState (a child class) does not have to require the manager.  For HStateC's, you need to specify which manager is managing the state to make default start.
  */
-
 - (void)setDefaultStartState:(NSString *)id mgr:(StateManager *)mgr
 {
     // NSString *i;   // unused variable
@@ -143,7 +139,6 @@
  * @method addStateManager
  * @paramsm     State manager pointer that will control this HStateC's network of states.
  */
-
 - (void)addStateManager:(StateManager *)sm
 {
     NSString *id = sm.id;
@@ -154,6 +149,7 @@
     }
     else
     {
+        // defined already -- issue warning
         NSLog(@"Add State Manager Error: duplicate ID (%@) for state '%@'.", id, self.name);
     }
     
@@ -165,7 +161,6 @@
  * @method registerSubStates
  * @private
  */
-
 - (void)registerSubStates:(StateEngine *)stateEng
 {
     [super registerSubStates:stateEng];
@@ -242,7 +237,6 @@
 /**
  * @private
  */
-
 - (void)leave
 {
     for (StateManager *mgr in self.stMgrs)
@@ -253,58 +247,109 @@
     [super leave];
 }
 
-- (void)startStateActivites
+/**
+ * @private
+ */
+- (void)resetHistory
 {
-    // Start any pulse activities for this state
-    if (self.pulseActivities)
+    // tell managers to reset history
+    for (StateManager *mgr in self.stMgrs)
     {
-        for (int i = 0; i < self.pulseActivities.count; i++)
-        {
-            [(PulseActivity *)self.pulseActivities[i] start];
-        }
+        [mgr resetHistory];
     }
 }
 
 /**
- Called when the state is exited (deactivated).  This is a private routine and should not be
- overriden by developers.
- @method leave
- @access private
+ * Given an identifier, create a new sub-state that is a simple state (State).
+ * <p>If a manager has already been declared, use it.  Otherwise, create a new manager.  If we create a new manager,
+ * the developer must use <code>setDefaultStartState</code> to initialize the default start state.</p>
+ * @param sid   state identifier for the sub-state
+ * @param mgr   Manager for the sub-state's network.  We set it as optional so HState users don't need to provide it, but for sub-networks of HStateC's, it is required.
+ * @param name  Optional display name for the state.  If not provided, we use the state id.
  */
-
-#warning duplicate methods
-//- (void)leave
-//{
-//    [self._se.activeStates removeObjectForKey:self.id];
-//    
-//    [self stopStateActivities];
-//    
-//    if ([self hasEventListener:@"LEAVE"])
-//    {
-//        // leaveEvent.data.stateName        = name;
-//        // leaveEvent.data.stateID          = id;
-//        // dispatchEvent(leaveEvent);
-//    }
-//}
-
-/**
- Stops any pulse state activities for this state.
- @method stopStateActivities
- @access private
- */
-
-- (void)stopStateActivities
+- (State *)addSubState:(NSString *)sid mgr:(StateManager *)mgr name:(NSString *)name
 {
-    // turn off mode pulse activities
-    if (self.pulseActivities)
-    {
-        for (int i = 0; i < self.pulseActivities.count; i++)
-        {
-            [(PulseActivity *)self.pulseActivities[i] stop];
-        }
-    }
+    State *newState = [[State alloc] init:sid msm:[self verifyManagerForStateCreation:sid mgr:mgr] nm:name];
+    
+    return newState;
 }
 
+/**
+ * Given an identifier, create a new sub-state that is a hierarchical state (HState).
+ * <p>If a manager has already been declared, use it.  Otherwise, create a new manager.  If we create a new manager,
+ * the developer must use <code>setDefaultStartState</code> to initialize the default start state.</p>
+ * @param sid   state identifier for the sub-state
+ * @param mgr   Manager for the sub-state's network.  We set it as optional so HState users don't need to provide it, but for sub-networks of HStateC's, it is required.
+ * @param name  Optional display name for the state.  If not provided, we use the state id.
+ */
+- (HState *)addSubHState:(NSString *)sid mgr:(StateManager *)mgr name:(NSString *)name
+{
+    HState *newHState = [[HState alloc] init:sid msm:[self verifyManagerForStateCreation:sid mgr:mgr] nm:name];
+    
+    return newHState;
+}
 
+/**
+ * Given an identifier, create a new sub-state that is a concurrent, hierarchical state (HStateC).
+ * <p>If a manager has already been declared, use it.  Otherwise, create a new manager.  If we create a new manager,
+ * the developer must use <code>setDefaultStartState</code> to initialize the default start state.</p>
+ * @param sid   state identifier for the sub-state
+ * @param mgr   Manager for the sub-state's network.  We set it as optional so HState users don't need to provide it, but for sub-networks of HStateC's, it is required.
+ * @param name  Optional display name for the state.  If not provided, we use the state id.
+ *
+ */
+- (HStateC *)addSubHStateC:(NSString *)sid mgr:(StateManager *)mgr name:(NSString *)name
+{
+    HStateC *newHStateC = [[HStateC alloc] init:sid msm:[self verifyManagerForStateCreation:sid mgr:mgr] nm:name];
+    
+    return newHStateC;
+}
+
+/**
+ * Routine checks to see if the proper manager is supplied.  If not, and the state is an HState, we create
+ * the manager.  Otherwise we go through checks to ensure caller is using the correct manager.
+ * @private
+ */
+- (StateManager *)verifyManagerForStateCreation:(NSString *)sid mgr:(StateManager *)mgr
+{
+    NSString *i;
+    StateManager *sm = nil;
+    
+    // 'mgr' is required for HStateC's
+    if (!mgr)
+    {
+        if (![self isKindOfClass:[HState class]])
+        {
+            NSLog(@"ObjCStEng: You must supply a manager to add state %@ as a sub-state of state %@.", sid, self.name);
+        }
+        else
+        {
+            // This is an HState, so retrieve the state manager.
+            for (i in self.stMgrs)
+            {
+                sm = [self.stMgrs objectForKey:i];
+            }
+            // if no manager has been created yet, sn == null
+            if (!sm)
+            {
+                // automatically create a manager for an HState sub-state
+                sm = [[StateManager alloc] init:[NSString stringWithFormat:@"<%@ MANAGER>", self.id] containerState:self defaultState:nil n:nil];
+            }
+        }
+    }
+    else
+    {
+        if ([self.stMgrs objectForKey:mgr.id] != mgr)
+        {
+            NSLog(@"ObjCStEng: You are trying to add a sub-state to a manager %@ that is not a manager of this state %@.", mgr.name, self.name);
+        }
+        else
+        {
+            sm = mgr;
+        }
+    }
+    
+    return sm;
+}
 
 @end

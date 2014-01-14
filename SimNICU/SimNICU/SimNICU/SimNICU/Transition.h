@@ -47,11 +47,35 @@
 
 @interface Transition : NSObject
 
+/**
+ * Pointer to the source State (HState or HStateC).
+ */
 @property (nonatomic, strong) State *source;
+
+/**
+ * ID of the target state.
+ * Identifier must be unique across all states in the state engine.
+ */
 @property (nonatomic, strong) NSString *targetID;
+
+/**
+ * An array consisting of state identifiers from the LCA to the target state.
+ */
 @property (nonatomic, strong) NSMutableArray *stPath;
+
+/**
+ * The number of levels in the state network to go up to reach the Least Common Ancestor.
+ */
 @property (nonatomic) NSInteger upLvls;
+
+/**
+ * @private
+ */
 @property (nonatomic) BOOL hist;
+
+/**
+ * @private
+ */
 @property (nonatomic) SEL xFn;
 
 - (Transition *)init:(State *)src tid:(NSString *)tid tfn:(SEL)tfn doHistory:(BOOL)doHistory upLevelsForExternalTransition:(NSInteger)upLevelsForExternalTransition;

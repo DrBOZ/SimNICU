@@ -33,6 +33,9 @@
 #define CLOCK_IN_TO_HOURSTRACKER_REMINDER 0
 #define INCLUDE_DEMO_PATIENT 1
 
+// State machine
+#define STATE_MACHINE 1
+
 // Dynamic Text
 #define USE_DYNAMIC_TEXT 0
 #define DYNAMIC_TEXT_TESTER 0

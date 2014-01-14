@@ -64,13 +64,11 @@
 /**
  * Number of state managers (i.e., sub-networks) within this state.
  */
-
 @property (nonatomic) NSInteger numStMgrs;
 
 /**
  * An object that holds a hash table (indexed by State Manager id's) to the State Managers for this state.
  */
-
 @property (nonatomic, strong) NSMutableDictionary *stMgrs;
 
 /**
@@ -78,7 +76,6 @@
  * An object that holds a hash table (indexed by state id's) to the children of this state.  Grandchildren (if there are
  * any) are stored in the children's states, not here.
  */
-
 @property (nonatomic, strong) NSMutableDictionary *substates;
 
 - (HStateC *)init:(id)identifier msm:(StateManager *)msm nm:(NSString *)nm;
