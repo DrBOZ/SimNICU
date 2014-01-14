@@ -322,7 +322,7 @@
  @param pty Integer indicating the priority of the event.  By default, all events are given a priority of 1000.
  @acccess public
  */
-- (void)postEvent:(Event *)ev timeDelay:(double)timeDelay pty:(int)pty
+- (void)postEvent:(Event *)ev timeDelay:(NSNumber *)timeDelay pty:(NSInteger)pty
 {
 #warning code required
     // code

@@ -300,14 +300,14 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     [model active:YES];
     
-//    Event *event = [[Event alloc] initWithType:@"0"];
-//    
-//    [model dispatchEvent:event];
-    
     for (NSString *id in model.activeStates)
     {
         NSLog(@"ObjCStEng: State: <%@> is active.", [model.statesByID[id] name]);
     }
+    
+    Event *buttonPressed = [[Event alloc] initWithType:@"BUTTON_PRESSED"];
+    
+    [model postEvent:buttonPressed timeDelay:nil pty:nil];
     
     
 #endif
