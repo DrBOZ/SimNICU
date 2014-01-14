@@ -76,7 +76,7 @@
         {
             myMgr = [[StateManager alloc] init:[NSString stringWithFormat:@"<%@ MANAGER", self.id] containerState:self defaultState:nil n:nil];
         }
-        else if ([self.stMgrs objectForKey:mgr.id] != mgr)
+        else if (self.stMgrs[mgr.id] != mgr)
         {
             NSLog(@"You supplied the wrong manager to manage <state %@>. That state's manager is %@.", self.name, myMgr.name);
         }
@@ -88,7 +88,7 @@
         // our list of managers to retrieve the manager instance.
         for (i in self.stMgrs)
         {
-            myMgr = [self.stMgrs objectForKey:i];
+            myMgr = self.stMgrs[i];
         }
     }
     

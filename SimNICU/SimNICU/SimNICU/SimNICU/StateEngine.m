@@ -273,7 +273,7 @@
         {
             for (NSString *tid in sp.transitions)
             {
-                ta = [sp.transitions objectForKey:tid];
+                ta = sp.transitions[tid];
                 for (tpi = 0; tpi < ta.count; tpi++)
                 {
                     [ta[tpi] determineTransition];

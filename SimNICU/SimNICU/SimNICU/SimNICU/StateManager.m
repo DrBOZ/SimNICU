@@ -127,7 +127,7 @@
         NSLog(@"Manager %@ was told to start in state %@ but it does not exist as a substate of %@.", self.name, self.cs, self.contSt.name);
     }
     
-    ns = [self.contSt.substates objectForKey:self.cs];
+    ns = self.contSt.substates[self.cs];
     [ns enter:hist specIDs:specIDs];
 }
 
@@ -143,7 +143,7 @@
     
     if (self.active && !self.cs)
     {
-        sp = [self.contSt.substates objectForKey:self.cs];
+        sp = self.contSt.substates[self.cs];
         [sp leave];
         // Record last state entered before we get deactivated
         self.lastSt = self.cs;
@@ -174,13 +174,13 @@
     
     for (NSString *id in self.contSt.substates)
     {
-        sp = [self.contSt.substates objectForKey:id];
+        sp = self.contSt.substates[id];
         
         if ([sp isKindOfClass:[HStateC class]])
         {
             for (NSString *id in sp.stMgrs)
             {
-                [[sp.stMgrs objectForKey:id] resetHistory];
+                [sp.stMgrs[id] resetHistory];
             }
         }
     }
@@ -235,7 +235,7 @@
         }
         else
         {
-            stp = [self.contSt.substates objectForKey:self.cs];
+            stp = self.contSt.substates[self.cs];
         }
         
         // If there is a path to traverse, copy the contents to a new array because we
@@ -251,7 +251,7 @@
         {
             nsm = [self passUp:trans.upLvls transToAncestorHist:(trans.hist && cpyStPath.count == 0)];
             mgrs = [[NSMutableDictionary alloc] init];
-            [mgrs setObject:nsm forKey:nsm.id];
+            mgrs[nsm.id] = nsm;
         }
         else
         {
@@ -282,7 +282,7 @@
                 }
                 stp.myStMgr.cs = nil;
                 mgrs = [[NSMutableDictionary alloc] init];
-                [mgrs setObject:nsm forKey:nsm.id];
+                mgrs[nsm.id] = nsm;
             }
             else
             {
@@ -295,7 +295,7 @@
                     // to leave the current sub-state
                     for (sid in stp.substates)
                     {
-                        HStateC *aHStateC = [stp.substates objectForKey:sid];
+                        HStateC *aHStateC = stp.substates[sid];
                         
                         if (aHStateC.id == cpyStPath[0])
                         {
@@ -305,7 +305,7 @@
                                 // The transition is going into a state which is already current. Follow the cpyStPath down to make
                                 // sure we're leaving states that the transition is not going to go through.
                                 i = 1;
-                                while (i < cpyStPath.count && [[statesByID objectForKey:cpyStPath[i]] isActive])
+                                while (i < cpyStPath.count && [statesByID[cpyStPath[i]] isActive])
                                 {
                                     i++;
                                 }
@@ -317,17 +317,17 @@
                                 // we have to leave the current sub-state.
                                 if (i < cpyStPath.count)
                                 {
-                                    curSubStateMgr = [[statesByID objectForKey:cpyStPath[i]] myStMgr];
-                                    [[statesByID objectForKey:curSubStateMgr.cs] leave];
+                                    curSubStateMgr = [statesByID[cpyStPath[i]] myStMgr];
+                                    [statesByID[curSubStateMgr.cs] leave];
                                     curSubStateMgr.lastSt = curSubStateMgr.cs;
                                     curSubStateMgr.cs = nil;
                                 }
                                 else if (trans.hist)
                                 {
-                                    hstp = [statesByID objectForKey:cpyStPath[cpyStPath.count - 1]];
+                                    hstp = statesByID[cpyStPath[cpyStPath.count - 1]];
                                     for (StateManager *smp in hstp.stMgrs)
                                     {
-                                        [[statesByID objectForKey:smp.cs] leave];
+                                        [statesByID[smp.cs] leave];
                                         smp.cs = nil;
                                     }
                                 }
@@ -335,7 +335,7 @@
                             else
                             {
                                 // The transition must take us into a different sub-state from what is current, so leave the current sub-state
-                                [[statesByID objectForKey:sm.cs] leave];
+                                [statesByID[sm.cs] leave];
                                 sm.lastSt = self.cs;
                                 sm.cs = nil;
                             }
@@ -343,7 +343,7 @@
                         }
                     }
                     
-                    nsm = [[statesByID objectForKey:cpyStPath[0]] myStMgr];
+                    nsm = [statesByID[cpyStPath[0]] myStMgr];
                 }
                 else
                 {
@@ -361,15 +361,15 @@
                     
                     for (sid in stp.substates)
                     {
-                        if (![mgrs objectForKey:sid])
+                        if (!mgrs[sid])
                         {
-                            [mgrs setObject:[[stp.substates objectForKey:sid] myStMgr] forKey:sid];
+                            mgrs[sid] = [stp.substates[sid] myStMgr];
                             // Since the transitions have to be in history, we check to see if the current sub-state is the same as the last state visited, which will be entered.
                             // If so, we don't leave the state since we're headed right back in. If the last state visited is different from the current sub-state, we leave
                             // the current sub-state
-                            if ([[mgrs objectForKey:sid] lastSt] != [[mgrs objectForKey:sid] cs])
+                            if ([mgrs[sid] lastSt] != [mgrs[sid] cs])
                             {
-                                [[statesByID objectForKey:[[mgrs objectForKey:sid] cs]] leave];
+                                [statesByID[[mgrs[sid] cs]] leave];
                             }
                         }
                     }
@@ -388,7 +388,7 @@
         {
             for (sid in mgrs)
             {
-                [[mgrs objectForKey:sid] passDown:cpyStPath hist:trans.hist sep:stp._se];
+                [mgrs[sid] passDown:cpyStPath hist:trans.hist sep:stp._se];
             }
         }
         else
@@ -453,11 +453,11 @@
         stPath = nil;
         if (hist == NO)
         {
-            stp = [self.contSt.substates objectForKey:self.defSt];
+            stp = self.contSt.substates[self.defSt];
         }
         else
         {
-            stp = [self.contSt.substates objectForKey:self.lastSt];
+            stp = self.contSt.substates[self.lastSt];
         }
         stp.myStMgr.cs = stp.id;
         [stp enter:hist specIDs:nil];
@@ -467,11 +467,11 @@
         if (!self.contSt)
         {
             // We're at the top of the state network, so the manager has no container state
-            stp = [sep.statesByID objectForKey:[stPath[0] id]];
+            stp = sep.statesByID[[stPath[0] id]];
         }
         else
         {
-            stp = [self.contSt.substates objectForKey:[stPath[0] id]];
+            stp = self.contSt.substates[[stPath[0] id]];
         }
         
         [stPath removeObjectAtIndex:0];
@@ -499,7 +499,7 @@
                         ssm.cs = ssm.lastSt;
                         ssm.lastSt = tmpSt;
                     }
-                    [[stp._se.statesByID objectForKey:ssm.cs] enter:NO specIDs:nil];
+                    [stp._se.statesByID[ssm.cs] enter:NO specIDs:nil];
                 }
             }
         }

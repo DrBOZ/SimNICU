@@ -143,7 +143,7 @@
     // only put leaf states (State, not HStateC nor HState) into the master list of active states
     if (![self isKindOfClass:[HStateC class]])
     {
-        [self._se.activeStates setObject:[NSNumber numberWithBool:YES] forKey:self.id];
+        self._se.activeStates[self.id] = [NSNumber numberWithBool:YES];
     }
     
     if ([self hasEventListener:ENTRY])
@@ -447,13 +447,13 @@
     
     for (ti = 0; ti < [[self.transitions objectForKey:trans.targetID] count]; ti++)
     {
-        if ([self.transitions objectForKey:trans.targetID][ti] == trans) // might need isEqual
+        if (self.transitions[trans.targetID][ti] == trans) // might need isEqual
         {
-            [[self.transitions objectForKey:trans.targetID] removeObjectAtIndex:ti];
+            [self.transitions[trans.targetID] removeObjectAtIndex:ti];
             
             for (NSString *tn in transitionEvents)
             {
-                if ([transitionEvents objectForKey:tn] == trans)
+                if (transitionEvents[tn] == trans)
                 {
                     [transitionEvents removeObjectForKey:tn];
                     foundEvent = YES;
@@ -590,9 +590,9 @@
     if (!handledYet)
     {
         // figure out if there's a transition to trigger
-        if ([transitionEvents objectForKey:ev.type])
+        if (transitionEvents[ev.type])
         {
-            tt = [transitionEvents objectForKey:ev.type]; // value is the transition
+            tt = transitionEvents[ev.type]; // value is the transition
             
             // v1.5
             // Take transition, if supposed to handle it. This mechanism makes highest
@@ -668,13 +668,13 @@
 {
     self._se = stateEng;
     
-    if ([stateEng.statesByID objectForKey:self.id])
+    if (stateEng.statesByID[self.id])
     {
-        NSLog(@"State ID's must be unique. State %@ and %@ cannot share id = %@", [[stateEng.statesByID objectForKey:self.id] name], self.name, self.id);
+        NSLog(@"State ID's must be unique. State %@ and %@ cannot share id = %@", [stateEng.statesByID[self.id] name], self.name, self.id);
     }
     else
     {
-        [stateEng.statesByID setObject:self forKey:self.id];
+        stateEng.statesByID[self.id] = self;
     }
 }
 

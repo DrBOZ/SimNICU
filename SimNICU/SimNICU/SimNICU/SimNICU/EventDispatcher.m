@@ -40,8 +40,11 @@
     //run once
     if([dictASFunctions objectForKey:_type] == nil)
     {
-        [dictASFunctions setObject:[[NSMutableArray alloc]init] forKey:_type];
-        [broadcaster addObserver:self selector:@selector(resolveNotification:) name:_type object:self];
+        [dictASFunctions setObject:[[NSMutableArray alloc] init] forKey:_type];
+        [broadcaster addObserver:self
+                        selector:@selector(resolveNotification:)
+                            name:_type
+                          object:self];
     }
     
     //remove exist listener

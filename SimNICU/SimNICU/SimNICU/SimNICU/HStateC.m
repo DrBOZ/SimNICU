@@ -57,7 +57,7 @@
     NSString *id = st.id;
     
     // check for duplicate ID
-    if ([self.substates objectForKey:id])
+    if (self.substates[id])
     {
         if ([self isKindOfClass:[HState class]])
         {
@@ -70,12 +70,12 @@
     }
     
     // Check that we have the state's state manager within this state
-    if ([self.stMgrs objectForKey:st.myStMgr.id] != st.myStMgr)
+    if (self.stMgrs[st.myStMgr.id] != st.myStMgr)
     {
         NSLog(@"State %@'s StateManager not found in container state %@'s State Manager list.", st.name, self.name);
     }
     
-    [self.substates setObject:st forKey:id];
+    self.substates[id] =  st;
 }
 
 /**
@@ -101,7 +101,7 @@
  */
 - (BOOL)isSubstate:(State *)st
 {
-    return [self.substates objectForKey:st.id];
+    return self.substates[st.id];
 }
 
 /**
@@ -122,7 +122,7 @@
     {
         NSLog(@"For %@ (an HStateC), you must supply the manager of state %@.", self.name, id);
     }
-    else if ([self.stMgrs objectForKey:mgr.id] != mgr)
+    else if (self.stMgrs[mgr.id] != mgr)
     {
         NSLog(@"The manager you supplied %@, is not a manager of state %@.", mgr, self.name);
     }
@@ -143,9 +143,9 @@
 {
     NSString *id = sm.id;
     
-    if (![self.stMgrs objectForKey:id])
+    if (!self.stMgrs[id])
     {
-        [self.stMgrs setObject:sm forKey:id];
+        self.stMgrs[id] = sm;
     }
     else
     {
@@ -169,7 +169,7 @@
     // as the purpose is just to get a state engine pointer and a unique state id off each state.
     for (NSString *id in self.substates)
     {
-        [[self.substates objectForKey:id] registerSubStates:stateEng];
+        [self.substates[id] registerSubStates:stateEng];
     }
 }
 
@@ -198,7 +198,7 @@
     // If this is a special jump, record which state manager not to activate with default start state
     if (specIDs)
     {
-        jsm = [[self.substates objectForKey:specIDs[0]] myStMgr];
+        jsm = [self.substates[specIDs[0]] myStMgr];
     }
     
     // Activate all the state managers, except for the special one dictated by the jump (if specIDs is non-null).
@@ -207,7 +207,7 @@
     // along the branch that contains the special ids (state path).
     for (curMgrID in self.stMgrs)
     {
-        sm = [self.stMgrs objectForKey:curMgrID];
+        sm = self.stMgrs[curMgrID];
         if (!sm)
         {
             NSLog(@"ERROR: State Manager id = %@ of state %@ is null. Did you delete the manager somewhere?", curMgrID, self.name);
@@ -255,7 +255,7 @@
     // tell managers to reset history
     for (NSString *id in self.stMgrs)
     {
-        [[self.stMgrs objectForKey:id] resetHistory];
+        [self.stMgrs[id] resetHistory];
     }
 }
 
@@ -327,7 +327,7 @@
             // This is an HState, so retrieve the state manager.
             for (i in self.stMgrs)
             {
-                sm = [self.stMgrs objectForKey:i];
+                sm = self.stMgrs[i];
             }
             // if no manager has been created yet, sn == null
             if (!sm)

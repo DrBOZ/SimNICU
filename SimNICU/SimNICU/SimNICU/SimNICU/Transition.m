@@ -83,7 +83,7 @@
     
     NSMutableDictionary *statesByID = self.source._se.statesByID;
     
-    target = [statesByID objectForKey:self.targetID];
+    target = statesByID[self.targetID];
     
     // make sure not sending to history of simple state
     if (([target isKindOfClass:[HStateC class]]) && self.hist == YES)

@@ -16,6 +16,7 @@
 #import "iRate.h"
 
 // Actionscript
+#import "ASFunction.h"
 #import "ASMacro.h"
 #import "Array.h"
 #import "Event.h"
@@ -284,13 +285,13 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     // Create the states
     State *off = [modelRoot addSubState:@"1" mgr:modelRootMgr name:@"off"];
-    [off addEventListener:@"0" listener:nil];
+    // [off addEventListener:@"0" listener:nil];
     
     State *on = [modelRoot addSubState:@"2" mgr:modelRootMgr name:@"on"];
     
     // Create the transitions
-    [off addTransitionToTarget:@"0" targetStateID:@"2" transFn:nil];
-    [on addTransitionToTarget:@"1" targetStateID:@"1" transFn:nil];
+    [off addTransitionToTarget:@"BUTTON_PRESSED" targetStateID:@"2" transFn:nil];
+    [on addTransitionToTarget:@"BUTTON_PRESSED" targetStateID:@"1" transFn:nil];
     
 //    StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:[[HState alloc] init:@"0" msm:nil nm:@"modelRoot"]];
 //    
@@ -299,9 +300,14 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     [model active:YES];
     
-    Event *event = [[Event alloc] initWithType:@"0"];
+//    Event *event = [[Event alloc] initWithType:@"0"];
+//    
+//    [model dispatchEvent:event];
     
-    [model dispatchEvent:event];
+    for (NSString *id in model.activeStates)
+    {
+        NSLog(@"ObjCStEng: State: <%@> is active.", [model.statesByID[id] name]);
+    }
     
     
 #endif
