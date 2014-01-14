@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
+#import "StateEngineEvent.h"
 #import "StateManager.h"
 #import "EventWithData.h"
 #import "StateEngine.h"
@@ -68,7 +69,7 @@
         self.spriteForFramePulse = [NSObject new];
         self.networkPrepared = NO;
         self.statesByID = [NSMutableDictionary new];
-        eventTimerDelay = [NSTimer new];
+        // eventTimerDelay = [NSTimer scheduledTimerWithTimeInterval:0 invocation:nil repeats:NO];
         
 #warning this need setting
         // eventTimerDelay.addEventListener(TimerEvent.TIMER_COMPLETE, timeDelayElapsed, false, 0, true);
@@ -324,8 +325,34 @@
  */
 - (void)postEvent:(Event *)ev timeDelay:(NSNumber *)timeDelay pty:(NSInteger)pty
 {
-#warning code required
-    // code
+    int i = 0;
+    
+    StateEngineEvent *newEvent = [StateEngineEvent new];
+    newEvent.event = ev;
+    newEvent.aPriority = pty;
+    newEvent.delay = timeDelay;
+    
+    // Add new event in order of its priority.
+    for (i = 0; i < self.eventsWaiting.count; i++)
+    {
+        if ([self.eventsWaiting[i] aPriority] > pty)
+        {
+            [self.eventsWaiting insertObject:newEvent
+                                     atIndex:i];
+            NSLog(@">>>>>>>>>>>>>>>>>>>>>> FOUND CUTTER");
+            break;
+        }
+    }
+    if (i == self.eventsWaiting.count)
+    {
+        [self.eventsWaiting addObject:newEvent];
+    }
+    
+    if (!self.handlingEvent)
+    {
+        self.handlingEvent = YES;
+        [self processEvents];
+    }
 }
 
 /**
@@ -348,17 +375,55 @@
 {
     while (self.eventsWaiting.count > 0)
     {
+        StateEngineEvent *sev = self.eventsWaiting[0];
         
-        
-        
-        
-//        if ([self.eventsWaiting[0].delay] != 0)
-//        {
-//            <#statements#>
-//        }
-//        if (self.eventsWaiting[0].delay) {
-//            <#statements#>
-//        }
+        if ([self.eventsWaiting[0] delay] != 0)
+        {
+            // if this event should be fired after some delay, setup the timer to come back to processEvents.
+            eventTimerDelay = [NSTimer scheduledTimerWithTimeInterval:[[self.eventsWaiting[0] delay] doubleValue] invocation:nil repeats:NO];
+            
+            // when the timer returns to this routine, the delay will be zero and the event will be fired
+            sev.delay = @0;
+            
+            // start the delay
+            [eventTimerDelay fire];
+            break;
+        }
+        else
+        {
+            // Handle the first event from the queue
+            Event *ev = sev.event;
+            NSMutableDictionary *astates = [NSMutableDictionary new];
+            BOOL handled = NO;
+            
+            for (NSString *sp in self.activeStates)
+            {
+                astates[sp] = self.activeStates[sp];
+            }
+            [self.eventsWaiting removeObjectAtIndex:0];
+            
+            // clear our storage space for knowing when to pass up events to concurrent states
+            self._concEvCt = [NSMutableDictionary new];
+            
+            // dispatch the event to the current active states(s). We copy the activeStates before
+            // dispatching the event because it is possible that during the processing, a transition
+            // is triggered and the real activeStates get updated, then we would send the same event
+            // erroneously to the new active state.
+            for (NSString *activeStID  in astates)
+            {
+                NSLog(@"Breakpoint: result = %hhd", [(State *)astates[activeStID] onEvent:ev handledYet:NO]);
+                handled = ([astates[activeStID] onEvent:ev handledYet:NO] || handled);
+            }
+            
+            if (!handled)
+            {
+                // Pass along the unhandled event in the event property of data
+                // self.unhandledEvent.data.event = ev;
+                // dispatchEvent(self.unhandledEvent];
+            }
+            
+            self._concEvCt = nil;
+        }
     }
     
     // Clearing the handlingEvent flag, so future event postings invoke processEvent. We clear the

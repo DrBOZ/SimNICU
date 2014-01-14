@@ -218,6 +218,8 @@
 		5C26A146187EBD8C00C5A10E /* HState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C26A144187EBD8C00C5A10E /* HState.m */; };
 		5C26A149187EBDB300C5A10E /* EventWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C26A148187EBDB300C5A10E /* EventWithData.m */; };
 		5C26A14A187EBDB300C5A10E /* EventWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C26A148187EBDB300C5A10E /* EventWithData.m */; };
+		5C26A14D18857CD800C5A10E /* StateEngineEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C26A14C18857CD800C5A10E /* StateEngineEvent.m */; };
+		5C26A14E18857CD800C5A10E /* StateEngineEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C26A14C18857CD800C5A10E /* StateEngineEvent.m */; };
 		5C27A7F318055CA900A18ECE /* CoolingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C27A7F218055CA900A18ECE /* CoolingTableViewController.m */; };
 		5C27A7F418055CA900A18ECE /* CoolingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C27A7F218055CA900A18ECE /* CoolingTableViewController.m */; };
 		5C28EAB817FD6691009DDF17 /* ScreenHack01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C28EAB717FD6691009DDF17 /* ScreenHack01.png */; };
@@ -1119,6 +1121,8 @@
 		5C26A144187EBD8C00C5A10E /* HState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HState.m; sourceTree = "<group>"; };
 		5C26A147187EBDB300C5A10E /* EventWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventWithData.h; sourceTree = "<group>"; };
 		5C26A148187EBDB300C5A10E /* EventWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventWithData.m; sourceTree = "<group>"; };
+		5C26A14B18857CD800C5A10E /* StateEngineEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateEngineEvent.h; sourceTree = "<group>"; };
+		5C26A14C18857CD800C5A10E /* StateEngineEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StateEngineEvent.m; sourceTree = "<group>"; };
 		5C27A7F118055CA900A18ECE /* CoolingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolingTableViewController.h; sourceTree = "<group>"; };
 		5C27A7F218055CA900A18ECE /* CoolingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolingTableViewController.m; sourceTree = "<group>"; };
 		5C28EAB717FD6691009DDF17 /* ScreenHack01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenHack01.png; sourceTree = "<group>"; };
@@ -2009,6 +2013,8 @@
 				5C26A144187EBD8C00C5A10E /* HState.m */,
 				5C26A126187EABDA00C5A10E /* StateEngine.h */,
 				5C26A127187EABDA00C5A10E /* StateEngine.m */,
+				5C26A14B18857CD800C5A10E /* StateEngineEvent.h */,
+				5C26A14C18857CD800C5A10E /* StateEngineEvent.m */,
 				5C26A137187EBCEA00C5A10E /* StateManager.h */,
 				5C26A138187EBCEA00C5A10E /* StateManager.m */,
 				5C26A12F187EBC6000C5A10E /* Transition.h */,
@@ -4443,6 +4449,7 @@
 				5C940B15166E3B7B0044A7D1 /* PatientDetailsEnterWeightViewController.m in Sources */,
 				5C4DB5961808F99400F6849A /* CBTextViewMethods.m in Sources */,
 				5C940B16166E3B7B0044A7D1 /* PatientDetailsEnterWorkingWeightViewController.m in Sources */,
+				5C26A14D18857CD800C5A10E /* StateEngineEvent.m in Sources */,
 				5C56F6191801E01100665E22 /* CrUSSModel.m in Sources */,
 				5C940B39166E3BDF0044A7D1 /* AboutSimNICUViewController.m in Sources */,
 				5C940B3A166E3BDF0044A7D1 /* UnderlineLabel.m in Sources */,
@@ -4785,6 +4792,7 @@
 				5CD3B00C16CF38D500DE362C /* CalculatorViewController.m in Sources */,
 				5CD3B00D16CF38D500DE362C /* CalculatorBrain.m in Sources */,
 				5C98A6A41787553400F246E3 /* DrugDatabase.m in Sources */,
+				5C26A14E18857CD800C5A10E /* StateEngineEvent.m in Sources */,
 				5C31A3D11874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */,
 				5C98A6A81787562700F246E3 /* DrugCategory.m in Sources */,
 				5C98A6AC1787577000F246E3 /* Drug.m in Sources */,
