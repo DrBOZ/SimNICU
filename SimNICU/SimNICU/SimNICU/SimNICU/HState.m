@@ -49,7 +49,7 @@
 {
     if (self.numStMgrs == 1)
     {
-        NSLog(@"Trying to add more than one StateManager to HState %@ (by definition, HState's only can have one)", self.name);
+        NSLog(@"ObjCStEng: Trying to add more than one StateManager to HState %@ (by definition, HState's only can have one)", self.name);
     }
     
     [super addStateManager:sm];

@@ -277,47 +277,85 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:nil];
     
     // Create the state network
-    HState *modelRoot = [[HState alloc] init:@"0" msm:nil nm:@"modelRoot"];
+    HState *modelRoot = [[HState alloc] init:@"modelRoot" msm:nil nm:nil];
     [model setStateNetwork:modelRoot suppressReassign:NO];
     
     // Create the top manager for the network
-    StateManager *modelRootMgr = [[StateManager alloc] init:@"A" containerState:modelRoot defaultState:@"1" n:@"modelRootMgr"];
+    StateManager *modelRootMgr = [[StateManager alloc] init:@"modelRootMgr" containerState:modelRoot defaultState:@"off" n:nil];
     
     // Create the states
-    State *off = [modelRoot addSubState:@"1" mgr:modelRootMgr name:@"off"];
+    State *off = [modelRoot addSubState:@"off" mgr:modelRootMgr name:nil];
     // [off addEventListener:@"0" listener:nil];
     
-    State *on = [modelRoot addSubState:@"2" mgr:modelRootMgr name:@"on"];
+    HState *on = [modelRoot addSubHState:@"on" mgr:modelRootMgr name:nil];
+    
+    StateManager *onMgr = [[StateManager alloc] init:@"onMgr"
+                                      containerState:on
+                                        defaultState:@"init"
+                                                   n:nil];
+    
+    // on substates
+    {
+        State *init = [on addSubState:@"init" mgr:onMgr name:nil];
+        
+        HState *modes = [on addSubHState:@"modes"
+                                     mgr:onMgr
+                                    name:nil];
+        
+        StateManager *modesMgr = [[StateManager alloc] init:@"modesMgr"
+                                             containerState:modes
+                                               defaultState:@"ncpap"
+                                                          n:nil];
+        
+        State *ncpap = [modes addSubState:@"ncpap"
+                                      mgr:modesMgr
+                                     name:nil];
+        
+        State *biPhasic = [modes addSubState:@"biPhasic"
+                                         mgr:modesMgr
+                                        name:nil];
+    }
     
     // Create the transitions
-    [off addTransitionToTarget:@"BUTTON_PRESSED" targetStateID:@"2" transFn:nil];
-    [on addTransitionToTarget:@"BUTTON_PRESSED" targetStateID:@"1" transFn:nil];
+    [off addTransitionToTarget:@"TURN_ON_DEVICE"
+                 targetStateID:@"on"
+                       transFn:nil];
     
-//    StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:[[HState alloc] init:@"0" msm:nil nm:@"modelRoot"]];
-//    
-//    [model.topState addSubState:@"1" mgr:nil name:@"off"];
-//    [model.topState addSubState:@"2" mgr:nil name:@"on"];
+    [on addTransitionToTarget:@"TURN_OFF_DEVICE"
+                targetStateID:@"off"
+                      transFn:nil];
     
+    // Activate engine
     [model active:YES];
     
-    for (NSString *id in model.activeStates)
-    {
-        NSLog(@"ObjCStEng: State: <%@> is active.", [model.statesByID[id] name]);
-    }
+    // Log active states
+    [self logActiveStatesForStateEngine:model];
     
-    Event *buttonPressed = [[Event alloc] initWithType:@"BUTTON_PRESSED"];
+    [model postEvent:[[Event alloc] initWithType:@"TURN_ON_DEVICE"]];
     
-    [model postEvent:buttonPressed timeDelay:nil pty:nil];
+    // Log active states
+    [self logActiveStatesForStateEngine:model];
     
-    for (NSString *id in model.activeStates)
-    {
-        NSLog(@"ObjCStEng: State: <%@> is active.", [model.statesByID[id] name]);
-    }
+    [model postEvent:[[Event alloc] initWithType:@"TURN_OFF_DEVICE"]
+           timeDelay:nil
+                 pty:nil];
     
+    // Log active states
+    [self logActiveStatesForStateEngine:model];
+    
+    NSLog(@" ");
     
 #endif
     
     return YES;
+}
+
+- (void)logActiveStatesForStateEngine:(StateEngine *)stateEngine
+{
+    for (NSString *id in stateEngine.activeStates)
+    {
+        NSLog(@"ObjCStEng: State: <%@> is active.", [stateEngine.statesByID[id] name]);
+    }
 }
 
 #ifdef LITE_VERSION

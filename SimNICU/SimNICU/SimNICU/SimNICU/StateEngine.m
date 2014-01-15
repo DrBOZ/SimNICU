@@ -355,6 +355,11 @@
     }
 }
 
+- (void)postEvent:(Event *)ev
+{
+    [self postEvent:ev timeDelay:nil pty:nil];
+}
+
 /**
  This is the main event handler for the state engine.  It used to be called "ieh".
  In version 1 of FStEng, developers were supposed to override this method with their

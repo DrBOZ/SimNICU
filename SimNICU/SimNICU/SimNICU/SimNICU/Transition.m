@@ -215,7 +215,7 @@
                 
                 if (!found)
                 {
-                    NSLog(@"State Engine logic for transition computation is faulty. Cannot find transition from %@ -> %@", self.source.name, target.name);
+                    NSLog(@"ObjCStEng: State Engine logic for transition computation is faulty. Cannot find transition from %@ -> %@", self.source.name, target.name);
                 }
             }
         }

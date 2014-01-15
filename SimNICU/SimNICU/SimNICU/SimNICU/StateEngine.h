@@ -141,6 +141,7 @@
 - (StateEngine *)initWithName:(NSString *)n andStateNetwork:(HStateC *)stateNetwork;
 - (void)setStateNetwork:(HStateC *)sn suppressReassign:(BOOL)suppressReassign;
 - (void)postEvent:(Event *)ev timeDelay:(NSNumber *)timeDelay pty:(NSInteger)pty;
+- (void)postEvent:(Event *)ev;
 - (void)active:(BOOL)activate;
 - (void)prepareNetwork;
 

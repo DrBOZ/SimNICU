@@ -239,9 +239,9 @@
  */
 - (void)leave
 {
-    for (StateManager *mgr in self.stMgrs)
+    for (NSString *mgrID in self.stMgrs)
     {
-        [mgr deactivate];
+        [self.stMgrs[mgrID] deactivate];
     }
     
     [super leave];

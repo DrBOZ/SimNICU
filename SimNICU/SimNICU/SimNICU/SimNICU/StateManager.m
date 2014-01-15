@@ -44,7 +44,6 @@
     
     self.defSt = defaultState;
     
-    // conSt = HStateC(containerState);  AS3 code
     self.contSt = (HStateC *)containerState;
     
     self.cs = nil;
@@ -54,8 +53,7 @@
     // Register this state manager with the state network
     if (containerState)
     {
-        // containerState.addStateManager(this); AS3 code
-        [containerState addStateManager:(StateManager *)self];
+        [containerState addStateManager:self];
     }
     
     return self;
@@ -124,7 +122,7 @@
     // Retrieve appropriate state to enter then do the deed!
     if (!self.contSt.substates[self.cs])
     {
-        NSLog(@"Manager %@ was told to start in state %@ but it does not exist as a substate of %@.", self.name, self.cs, self.contSt.name);
+        NSLog(@"ObjCStEng: Manager %@ was told to start in state %@ but it does not exist as a substate of %@.", self.name, self.cs, self.contSt.name);
     }
     
     ns = self.contSt.substates[self.cs];
