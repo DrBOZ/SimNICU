@@ -256,7 +256,7 @@
         else
         {
             // upLvls == 0 (meaning to transition to a sibling state) or -1 (meaning to transition within this state). We have
-            // to ensure that we leave the curent state ONLY if target is outside (upLvls == 0)
+            // to ensure that we leave the current state ONLY if target is outside (upLvls == 0)
             nsm = self;
             
             // if upLvls == 0, we know we're transitioning to a sibling state if the state path (cpyStPath) is non-null. Therefore,
@@ -467,11 +467,11 @@
         if (!self.contSt)
         {
             // We're at the top of the state network, so the manager has no container state
-            stp = sep.statesByID[[stPath[0] id]];
+            stp = sep.statesByID[stPath[0]];
         }
         else
         {
-            stp = self.contSt.substates[[stPath[0] id]];
+            stp = self.contSt.substates[stPath[0]];
         }
         
         [stPath removeObjectAtIndex:0];

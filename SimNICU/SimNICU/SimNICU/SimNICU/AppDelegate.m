@@ -309,6 +309,11 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     [model postEvent:buttonPressed timeDelay:nil pty:nil];
     
+    for (NSString *id in model.activeStates)
+    {
+        NSLog(@"ObjCStEng: State: <%@> is active.", [model.statesByID[id] name]);
+    }
+    
     
 #endif
     

@@ -143,8 +143,7 @@
     // only put leaf states (State, not HStateC nor HState) into the master list of active states
     if (![self isKindOfClass:[HStateC class]])
     {
-#warning logic error here
-        // self._se.activeStates ob
+        // [self._se.activeStates setObject:[NSNumber numberWithBool:YES] forKey:(id <NSCopying>)self];
         self._se.activeStates[self.id] = [NSNumber numberWithBool:YES];
     }
     

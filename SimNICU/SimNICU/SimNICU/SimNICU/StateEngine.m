@@ -396,9 +396,9 @@
             NSMutableDictionary *astates = [NSMutableDictionary new];
             BOOL handled = NO;
             
-            for (NSString *sp in self.activeStates)
+            for (NSString *spID in self.activeStates)
             {
-                astates[sp] = self.activeStates[sp];
+                astates[spID] = self.activeStates[spID];
             }
             [self.eventsWaiting removeObjectAtIndex:0];
             
@@ -411,8 +411,8 @@
             // erroneously to the new active state.
             for (NSString *activeStID  in astates)
             {
-                NSLog(@"Breakpoint: result = %hhd", [(State *)astates[activeStID] onEvent:ev handledYet:NO]);
-                handled = ([astates[activeStID] onEvent:ev handledYet:NO] || handled);
+                State *state = self.statesByID[activeStID];
+                handled = ([state onEvent:ev handledYet:NO] || handled);
             }
             
             if (!handled)
