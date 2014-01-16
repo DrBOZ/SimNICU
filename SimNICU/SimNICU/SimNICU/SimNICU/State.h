@@ -50,7 +50,8 @@
  * @eventType ENTRY
  */
 
-#define ENTRY @"ENTRY"
+// #define ENTRY @"ENTRY"
+#define State_ENTRY @"State_ENTRY"
 
 /**
  * Event generated when the state is no longer active.
@@ -58,7 +59,8 @@
  * @eventType LEAVE
  */
 
-#define LEAVE @"LEAVE"
+#define State_LEAVE @"State_LEAVE"
+// #define LEAVE @"LEAVE"
 
 /**
  A finite state, or a simple, non-hierarchical state.

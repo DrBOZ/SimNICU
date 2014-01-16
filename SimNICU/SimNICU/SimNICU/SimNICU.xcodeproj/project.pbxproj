@@ -921,6 +921,8 @@
 		5CD812071803A44C00DABA19 /* FluidRequirementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */; };
 		5CDB9F2816BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */; };
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
+		5CDFA3DB18886492004BA8D9 /* EventData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFA3DA18886492004BA8D9 /* EventData.m */; };
+		5CDFA3DC18886492004BA8D9 /* EventData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFA3DA18886492004BA8D9 /* EventData.m */; };
 		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1733,6 +1735,8 @@
 		5CD812051803A44C00DABA19 /* FluidRequirementsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidRequirementsTableViewController.m; sourceTree = "<group>"; };
 		5CDB9F2716BE3BF300B457EC /* bloodTransfusionCriteria0Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria0Comma.html; sourceTree = "<group>"; };
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
+		5CDFA3D918886492004BA8D9 /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
+		5CDFA3DA18886492004BA8D9 /* EventData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventData.m; sourceTree = "<group>"; };
 		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5CE04B6816D04B1D0002BBD7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -2023,6 +2027,8 @@
 				5C26A13C187EBD1500C5A10E /* PulseActivity.m */,
 				5C26A147187EBDB300C5A10E /* EventWithData.h */,
 				5C26A148187EBDB300C5A10E /* EventWithData.m */,
+				5CDFA3D918886492004BA8D9 /* EventData.h */,
+				5CDFA3DA18886492004BA8D9 /* EventData.m */,
 				5C26A118187EA70E00C5A10E /* Actionscript classes */,
 			);
 			name = "State Engine";
@@ -4576,6 +4582,7 @@
 				5CE500D917A05CB4000F825E /* CBDatePickerActionSheet.m in Sources */,
 				5C26A131187EBC6000C5A10E /* Transition.m in Sources */,
 				5CED21FB17A4529C00A5EC9E /* CorrectedAgeInfoViewController.m in Sources */,
+				5CDFA3DB18886492004BA8D9 /* EventData.m in Sources */,
 				5CED21FF17A478F000A5EC9E /* AgeCalculatorsInfoViewController.m in Sources */,
 				5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */,
 				5CA3C67D183A660300E2AA67 /* CFAMIndicationsWebViewController.m in Sources */,
@@ -4844,6 +4851,7 @@
 				5C930AF517B0CA7D00CBE616 /* CBTableViewRowData.m in Sources */,
 				5C31A3D51874F69500B585D9 /* FluidTableViewCell.m in Sources */,
 				5C930AFC17B0E86D00CBE616 /* CrUSSRadiologyViewController.m in Sources */,
+				5CDFA3DC18886492004BA8D9 /* EventData.m in Sources */,
 				5CFF4C05180662CD006C8480 /* CDHModel.m in Sources */,
 				5C427FE217B6390C00F8CED6 /* CrUSSDataBase.m in Sources */,
 				5C427FE617B63A0C00F8CED6 /* CrUSSImage.m in Sources */,

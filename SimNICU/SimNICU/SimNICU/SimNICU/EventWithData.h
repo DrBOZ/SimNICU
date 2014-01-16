@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
 //
 
+#import "EventData.h"
 #import "Event.h"
 
 @interface EventWithData : Event
 
-@property (nonatomic, strong) NSMutableDictionary *data;
+@property (nonatomic, strong) EventData *data;
 
 - (EventWithData *)initWithType:(NSString *)type bubbles:(BOOL)bubbles cancelable:(BOOL)cancelable dataInit:(id)dataInit;
 

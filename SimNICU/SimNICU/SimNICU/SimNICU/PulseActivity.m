@@ -7,6 +7,7 @@
 //
 
 #import "PulseActivity.h"
+#import "EventData.h"
 #import "State.h"
 
 @interface PulseActivity ()
@@ -46,15 +47,20 @@
         
         if (self.frameBased)
         {
-#warning code required
-            // code required
+            NSLog(@"ObjCStEng: Frame based pulse activities are not supported in this Objective C version.");
         }
         else
         {
             timerObj = [[NSTimer alloc] init];
+            // timeObj.addEventListener(TimerEvent.TIMER, timerElapsed, false, 0, true);
         }
         
-        self.pulseEvent = [[EventWithData alloc] initWithType:@"TICK" bubbles:NO cancelable:NO dataInit:nil];
+        EventData *eventData = [EventData new];
+        eventData.stateName = nil; // temp code
+        eventData.stateID = nil;
+        // eventData.stateID = origState;
+        
+        self.pulseEvent = [[EventWithData alloc] initWithType:TICK bubbles:NO cancelable:NO dataInit:eventData];
     }
     
     return self;
@@ -68,14 +74,12 @@
  */
 - (void)prepareToRemove
 {
-#warning code required
-    // [self removeEventListener:@"TICK" listener:self.handler];
+    // [self removeEventListener:TICK listener:self.handler];
     
     [self stop];
     
     if (!self.frameBased)
     {
-#warning code required
         // timerObj.removeEventListener(TimerEvent.TIMER, timerElapsed);
     }
 }
@@ -92,13 +96,11 @@
         if (self.frameBased)
         {
             frameCount = 0;
-            
-#warning code required
+        
             // frameSprite.addEventListener(Event.ENTER_FRAME, frameElapsed, false, 0 , true);
         }
         else
         {
-#warning code required
             // timerObj.reset();
             // timerObj.start();
         }
@@ -117,12 +119,10 @@
     {
         if (self.frameBased)
         {
-#warning code required
-            // do nothing
+            // sprites are not supported
         }
         else
         {
-#warning code required
             // timerObj.stop();
         }
         

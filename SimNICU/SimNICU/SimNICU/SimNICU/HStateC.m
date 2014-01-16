@@ -13,8 +13,6 @@
 
 @interface HStateC ()
 
-- (void)startStateActivities;
-
 @end
 
 @implementation HStateC

@@ -64,11 +64,13 @@
         self.transitions = nil;
         self.pulseActivities = nil;
         
-        // entryEvent = new EventWithData(State.ENTRY, false, false, { stateName: "", stateID : "0" } );
-        entryEvent = [[EventWithData alloc] initWithType:ENTRY bubbles:NO cancelable:NO dataInit:nil];
+        EventData *blankEventData = [EventData new];
+        blankEventData.stateName = @"";
+        blankEventData.stateID = @"0";
         
-        // leaveEvent = new EventWithData(State.LEAVE, false, false, { stateName: "", stateID : "0" } );
-        leaveEvent = [[EventWithData alloc] initWithType:LEAVE bubbles:NO cancelable:NO dataInit:nil];
+        entryEvent = [[EventWithData alloc] initWithType:State_ENTRY bubbles:NO cancelable:NO dataInit:blankEventData];
+        
+        leaveEvent = [[EventWithData alloc] initWithType:State_LEAVE bubbles:NO cancelable:NO dataInit:blankEventData];
         
         transitionEvents = [[NSMutableDictionary alloc] init];
     }
@@ -96,7 +98,6 @@
     {
         for (int i = 0; i < self.pulseActivities.count; i++)
         {
-#warning logic needs checking...
             // may have to do this backwards
             // i.e. for (int i = self.pulseActivties.count - 1
             
@@ -143,15 +144,14 @@
     // only put leaf states (State, not HStateC nor HState) into the master list of active states
     if (![self isKindOfClass:[HStateC class]])
     {
-        // [self._se.activeStates setObject:[NSNumber numberWithBool:YES] forKey:(id <NSCopying>)self];
         self._se.activeStates[self.id] = [NSNumber numberWithBool:YES];
     }
     
-    if ([self hasEventListener:ENTRY])
+    if ([self hasEventListener:State_ENTRY])
     {
-#warning code required
-        // entryEvent.data.stateName  = self.name;
-        // entryEvent.data.stateID    = self.id;
+        entryEvent.data.stateName = self.name;
+        entryEvent.data.stateID = self.id;
+
         [self dispatchEvent:entryEvent];
     }
     
@@ -199,11 +199,11 @@
     
     [self stopStateActivities];
     
-    if ([self hasEventListener:LEAVE])
+    if ([self hasEventListener:State_LEAVE])
     {
-#warning code required
-        // leaveEvent.data.stateName  = self.name;
-        // leaveEvent.data.stateID    = self.id;
+        leaveEvent.data.stateName = self.name;
+        leaveEvent.data.stateID = self.id;
+
         [self dispatchEvent:leaveEvent];
     }
 }
@@ -245,11 +245,11 @@
  @param transID
  @param val
  */
-- (void)chgSt:(Transition *)trans val:(NSMutableDictionary *)val
+- (void)chgSt:(Transition *)trans val:(id)val
 {
     if (![trans.source.id isEqualToString:self.myStMgr.cs])
     {
-        NSLog(@"Called to change state from %@ but it is not active in this network currently.", trans.source.id);
+        NSLog(@"ObjCStEng: Called to change state from %@ but it is not active in this network currently.", trans.source.id);
     }
     else
     {
@@ -396,7 +396,7 @@
     
     if (tEvtName)
     {
-        if ([tEvtName isEqualToString:ENTRY] || [tEvtName isEqualToString:LEAVE])
+        if ([tEvtName isEqualToString:State_ENTRY] || [tEvtName isEqualToString:State_LEAVE])
         {
             NSLog(@"ObjCStEng: You cannot register a transition to a StateEvent %@", tEvtName);
         }
@@ -421,7 +421,7 @@
         {
             if (([[[self.transitions objectForKey:targetStateID][i] targetID] isEqualToString:targetStateID]) && ([transitionEvents objectForKey:tEvtName]))
             {
-                NSLog(@"Duplicate transition on same event name (%@) from %@ to %@", tEvtName, self.name, targetStateID);
+                NSLog(@"ObjCStEng: Duplicate transition on same event name (%@) from %@ to %@", tEvtName, self.name, targetStateID);
             }
         }
         
@@ -469,12 +469,12 @@
     
     if (!foundTrans)
     {
-        NSLog(@"Trying to remove a transition (from %@ to %@ that was not found on %@", trans.source.name, trans.targetID, self.name);
+        NSLog(@"ObjCStEng: Trying to remove a transition (from %@ to %@ that was not found on %@", trans.source.name, trans.targetID, self.name);
     }
     
     if (!foundEvent)
     {
-        NSLog(@"Engine logic error in transition -- did not find transition in transitionEvents (from %@ to %@ on %@)", trans.source.name, trans.targetID, self.name);
+        NSLog(@"ObjCStEng: Engine logic error in transition -- did not find transition in transitionEvents (from %@ to %@ on %@)", trans.source.name, trans.targetID, self.name);
     }
 }
 
@@ -507,7 +507,7 @@
     {
         if ([self.pulseActivities[i] handler] == cb)
         {
-            NSLog(@"Pulse Activity with that callback already exists for this state <%@>", self.name);
+            NSLog(@"ObjCStEng: Pulse Activity with that callback already exists for this state <%@>", self.name);
         }
     }
     
@@ -517,7 +517,7 @@
     ASFunction *function = [[ASFunction alloc] initWithObject:nil method:cb];
     
     // pa.addEventListener(PulseActivity.TICK, cb, false, 0, true)  // AS3
-    [pa addEventListener:@"TICK" listener:function useCapture:NO priority:0 useWeakReference:YES];
+    [pa addEventListener:TICK listener:function useCapture:NO priority:0 useWeakReference:YES];
     
     return pa;
 }
@@ -533,7 +533,7 @@
     
     if (!self.pulseActivities)
     {
-        NSLog(@"No pulse activity on %@ with given Function.", self.name);
+        NSLog(@"ObjCStEng: No pulse activity on %@ with given Function.", self.name);
     }
     
     for (int i = 0; i < self.pulseActivities.count; i++)
@@ -549,7 +549,7 @@
     
     if (!found)
     {
-        NSLog(@"The given pulse activity was not found on state %@", self.name);
+        NSLog(@"ObjCStEng: The given pulse activity was not found on state %@", self.name);
     }
 }
 
@@ -602,9 +602,13 @@
             // before possibly leaving the state.
             if ([ev isKindOfClass:[EventWithData class]])
             {
-                // this.chgSt(tt, EventWithData(ev).data);
-#warning this needs fixing
-                [self chgSt:tt val:nil];
+                EventData *newEventData = [EventData new];
+                newEventData.stateName = nil;
+                newEventData.stateID = nil;
+                
+                EventWithData *eventWithData = [[EventWithData alloc] initWithType:ev.type bubbles:ev.bubbles cancelable:ev.cancelable dataInit:newEventData];
+                
+                [self chgSt:tt val:eventWithData];
             }
             else
             {
@@ -635,18 +639,24 @@
             }
             else if ([containingState isKindOfClass:[HStateC class]])
             {
-#warning code tranlation required
-//                if (this._se._concEvCt[contaningState] == undefined) {
-//                    this._se._concEvCt[contaningState] = 1;
-//                    contaningState.handledEvYet = handledYet;
-//                } else {
-//                    this._se._concEvCt[contaningState]++;
-//                }
-//                contaningState.handledEvYet = contaningState.handledEvYet || handledYet;
-//                
-//                if (this._se._concEvCt[contaningState] == HStateC(contaningState).numStMgrs) {
-//                    handledYet = contaningState.onEvent(ev, contaningState.handledEvYet);
-//                }
+                if (!self._se._concEvCt[containingState.id])
+                {
+                    self._se._concEvCt[containingState.id] = @1;
+                    containingState.handledEvYet = handledYet;
+                }
+                else
+                {
+                    int count = [self._se._concEvCt[containingState.id] intValue];
+                    count++;
+                    
+                    self._se._concEvCt[containingState.id] = [NSNumber numberWithInt:count];
+                }
+                containingState.handledEvYet = containingState.handledEvYet || handledYet;
+                
+                if (self._se._concEvCt[containingState.id] == [NSNumber numberWithInt:[(HStateC *)containingState numStMgrs]])
+                {
+                    handledYet = [containingState onEvent:ev handledYet:containingState.handledEvYet];
+                }
             }
         }
         

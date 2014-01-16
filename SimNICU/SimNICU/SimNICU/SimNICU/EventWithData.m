@@ -10,13 +10,13 @@
 
 @implementation EventWithData
 
-- (EventWithData *)initWithType:(NSString *)_type bubbles:(BOOL)_bubbles cancelable:(BOOL)_cancelable dataInit:(NSMutableDictionary *)_dataInit
+- (EventWithData *)initWithType:(NSString *)_type bubbles:(BOOL)_bubbles cancelable:(BOOL)_cancelable dataInit:(EventData *)_dataInit
 {
     if ((self = [super initWithType:_type bubbles:_bubbles cancelable:_cancelable]))
     {
         if (!_dataInit)
         {
-            self.data = [[NSMutableDictionary alloc] init];
+            self.data = [[EventData alloc] init];
         }
         else
         {

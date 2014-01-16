@@ -63,8 +63,7 @@
  * generates a TICK event that callers can register to listen for.</p>
  * @eventType TICK
  */
-
-// public static const TICK:String = "TICK";
+#define TICK @"TICK"
 
 /**
 * Interval of pulse.

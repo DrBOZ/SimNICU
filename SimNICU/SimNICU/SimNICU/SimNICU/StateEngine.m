@@ -63,15 +63,13 @@
         self.active = NO;
         self.eventsWaiting = [NSMutableArray new];
         self.handlingEvent = NO;
-#warning self.unhandledEvent needs setting
-        self.unhandledEvent = [[EventWithData alloc] init]; // with @"UNHANDLED"
+        self.unhandledEvent = [[EventWithData alloc] initWithType:UNHANDLED];
         self.activeStates = [NSMutableDictionary new];
         self.spriteForFramePulse = [NSObject new];
         self.networkPrepared = NO;
         self.statesByID = [NSMutableDictionary new];
         // eventTimerDelay = [NSTimer scheduledTimerWithTimeInterval:0 invocation:nil repeats:NO];
         
-#warning this need setting
         // eventTimerDelay.addEventListener(TimerEvent.TIMER_COMPLETE, timeDelayElapsed, false, 0, true);
         
         // Create the first state manager, by default. This is done as a convenience.

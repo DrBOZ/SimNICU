@@ -277,21 +277,24 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     StateEngine *model = [[StateEngine alloc] initWithName:@"modelLayer" andStateNetwork:nil];
     
     // Create the state network
-    HState *modelRoot = [[HState alloc] init:@"modelRoot" msm:nil nm:nil];
+    HStateC *modelRoot = [[HStateC alloc] init:@"modelRoot" msm:nil nm:nil];
     [model setStateNetwork:modelRoot suppressReassign:NO];
     
-    // Create the top manager for the network
-    StateManager *modelRootMgr = [[StateManager alloc] init:@"modelRootMgr" containerState:modelRoot defaultState:@"off" n:nil];
+    // Create the top managers for the network
+    StateManager *modelRootMgrA = [[StateManager alloc] init:@"modelRootMgrA" containerState:modelRoot defaultState:@"off" n:nil];
+    
+    StateManager *modelRootMgrB = [[StateManager alloc] init:@"modelRootMgrB" containerState:modelRoot defaultState:@"mainsOff" n:nil];
+    
+    StateManager *modelRootMgrC = [[StateManager alloc] init:@"modelRootMgrC" containerState:modelRoot defaultState:@"O2Off" n:nil];
     
     // Create the states and transitions
-    
-    // modelRoot
+    // modelRootMgrA
     {
         // off state
-        State *off = [modelRoot addSubState:@"off" mgr:modelRootMgr name:nil];
+        State *off = [modelRoot addSubState:@"off" mgr:modelRootMgrA name:nil];
         
         // on state
-        HState *on = [modelRoot addSubHState:@"on" mgr:modelRootMgr name:nil];
+        HState *on = [modelRoot addSubHState:@"on" mgr:modelRootMgrA name:nil];
         
         StateManager *onMgr = [[StateManager alloc] init:@"onMgr"
                                           containerState:on
@@ -346,6 +349,24 @@ static const NSInteger kGANDispatchPeriodSec = 10;
                               targetStateID:@"ncpap"
                                     transFn:nil];
         }
+    }
+    
+    // modelRootMgrB
+    {
+        State *mainsOff = [modelRoot addSubState:@"mainsOff" mgr:modelRootMgrB name:nil];
+        State *mainsOn = [modelRoot addSubState:@"mainsOn" mgr:modelRootMgrB name:nil];
+        
+        [mainsOff addTransitionToTarget:@"TURN_ON_MAINS" targetStateID:@"mainsOn" transFn:nil];
+        [mainsOn addTransitionToTarget:@"TURN_OFF_MAINS" targetStateID:@"mainsOff" transFn:nil];
+    }
+    
+    // modelRootMgrC
+    {
+        State *O2Off = [modelRoot addSubState:@"O2Off" mgr:modelRootMgrC name:nil];
+        State *O2On = [modelRoot addSubState:@"O2On" mgr:modelRootMgrC name:nil];
+        
+        [O2Off addTransitionToTarget:@"TURN_ON_O2" targetStateID:@"O2On" transFn:nil];
+        [O2On addTransitionToTarget:@"TURN_OFF_O2" targetStateID:@"O2Off" transFn:nil];
     }
     
     // Activate engine
