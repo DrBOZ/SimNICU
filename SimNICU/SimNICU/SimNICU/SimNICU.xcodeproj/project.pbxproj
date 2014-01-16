@@ -923,6 +923,8 @@
 		5CDB9F2A16BE400900B457EC /* bloodTransfusionCriteria1Comma.html in Resources */ = {isa = PBXBuildFile; fileRef = 5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */; };
 		5CDFA3DB18886492004BA8D9 /* EventData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFA3DA18886492004BA8D9 /* EventData.m */; };
 		5CDFA3DC18886492004BA8D9 /* EventData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDFA3DA18886492004BA8D9 /* EventData.m */; };
+		5CDFA3DE18887EFE004BA8D9 /* StateEngineExample in Resources */ = {isa = PBXBuildFile; fileRef = 5CDFA3DD18887EFE004BA8D9 /* StateEngineExample */; };
+		5CDFA3DF18887EFE004BA8D9 /* StateEngineExample in Resources */ = {isa = PBXBuildFile; fileRef = 5CDFA3DD18887EFE004BA8D9 /* StateEngineExample */; };
 		5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6516D04AFB0002BBD7 /* Parse.framework */; };
 		5CE04B6916D04B1D0002BBD7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6816D04B1D0002BBD7 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE04B6B16D04B2D0002BBD7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -1737,6 +1739,7 @@
 		5CDB9F2916BE400900B457EC /* bloodTransfusionCriteria1Comma.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bloodTransfusionCriteria1Comma.html; sourceTree = "<group>"; };
 		5CDFA3D918886492004BA8D9 /* EventData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventData.h; sourceTree = "<group>"; };
 		5CDFA3DA18886492004BA8D9 /* EventData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventData.m; sourceTree = "<group>"; };
+		5CDFA3DD18887EFE004BA8D9 /* StateEngineExample */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StateEngineExample; sourceTree = "<group>"; };
 		5CE04B6516D04AFB0002BBD7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5CE04B6816D04B1D0002BBD7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		5CE04B6A16D04B2D0002BBD7 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -2009,6 +2012,7 @@
 		5C26A117187EA6F100C5A10E /* State Engine */ = {
 			isa = PBXGroup;
 			children = (
+				5CDFA3DD18887EFE004BA8D9 /* StateEngineExample */,
 				5C26A133187EBCBC00C5A10E /* State.h */,
 				5C26A134187EBCBC00C5A10E /* State.m */,
 				5C26A13F187EBD5500C5A10E /* HStateC.h */,
@@ -4056,6 +4060,7 @@
 				5C0E05DD178EF77800768739 /* benzylpenicillinReferences.html in Resources */,
 				5C0E05DF178EF7B200768739 /* benzylpenicillinLicenceStatus.html in Resources */,
 				5C0E05E2178EF7D500768739 /* benzylpenicillinMonitoring.html in Resources */,
+				5CDFA3DE18887EFE004BA8D9 /* StateEngineExample in Resources */,
 				5C0E05E5178EF7F100768739 /* benzylpenicillinSideEffects.html in Resources */,
 				5C0E05E8178EF80E00768739 /* benzylpenicillinContraindications.html in Resources */,
 				5C0E05EB178EF82200768739 /* benzylpenicillinIncompatibilities.html in Resources */,
@@ -4309,6 +4314,7 @@
 				5C83F99A1876E2F4006027B4 /* addRow@2x.png in Resources */,
 				5C0E063A178F835900768739 /* gentamicinInteractions.html in Resources */,
 				5C4BBFC3183A4EC4002607EC /* electrode.html in Resources */,
+				5CDFA3DF18887EFE004BA8D9 /* StateEngineExample in Resources */,
 				5C0700B4183A7BCF001EF769 /* CFAMSeverelyAbnormal.html in Resources */,
 				5C0E063D178F836700768739 /* gentamicinSideEffects.html in Resources */,
 				5C0E0640178F837800768739 /* gentamicinMonitoring.html in Resources */,
