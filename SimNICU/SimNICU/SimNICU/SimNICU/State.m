@@ -635,7 +635,7 @@
             }
             else if ([containingState isKindOfClass:[HStateC class]])
             {
-#warning code required
+#warning code tranlation required
 //                if (this._se._concEvCt[contaningState] == undefined) {
 //                    this._se._concEvCt[contaningState] = 1;
 //                    contaningState.handledEvYet = handledYet;

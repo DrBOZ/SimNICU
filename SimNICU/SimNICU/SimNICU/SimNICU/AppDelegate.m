@@ -283,47 +283,70 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     // Create the top manager for the network
     StateManager *modelRootMgr = [[StateManager alloc] init:@"modelRootMgr" containerState:modelRoot defaultState:@"off" n:nil];
     
-    // Create the states
-    State *off = [modelRoot addSubState:@"off" mgr:modelRootMgr name:nil];
-    // [off addEventListener:@"0" listener:nil];
+    // Create the states and transitions
     
-    HState *on = [modelRoot addSubHState:@"on" mgr:modelRootMgr name:nil];
-    
-    StateManager *onMgr = [[StateManager alloc] init:@"onMgr"
-                                      containerState:on
-                                        defaultState:@"init"
-                                                   n:nil];
-    
-    // on substates
+    // modelRoot
     {
-        State *init = [on addSubState:@"init" mgr:onMgr name:nil];
+        // off state
+        State *off = [modelRoot addSubState:@"off" mgr:modelRootMgr name:nil];
         
-        HState *modes = [on addSubHState:@"modes"
-                                     mgr:onMgr
-                                    name:nil];
+        // on state
+        HState *on = [modelRoot addSubHState:@"on" mgr:modelRootMgr name:nil];
         
-        StateManager *modesMgr = [[StateManager alloc] init:@"modesMgr"
-                                             containerState:modes
-                                               defaultState:@"ncpap"
-                                                          n:nil];
+        StateManager *onMgr = [[StateManager alloc] init:@"onMgr"
+                                          containerState:on
+                                            defaultState:@"init"
+                                                       n:nil];
         
-        State *ncpap = [modes addSubState:@"ncpap"
-                                      mgr:modesMgr
+        [off addTransitionToTarget:@"TURN_ON_DEVICE"
+                     targetStateID:@"on"
+                           transFn:nil];
+        
+        [off addTransitionToHistory:@"TURN_ON_DEVICE_TO_HISTORY"
+                      targetStateID:@"on"
+                            transFn:nil];
+        
+        [on addTransitionToTarget:@"TURN_OFF_DEVICE"
+                    targetStateID:@"off"
+                          transFn:nil];
+        
+        // on substates
+        {
+            State *init = [on addSubState:@"init"
+                                      mgr:onMgr
                                      name:nil];
-        
-        State *biPhasic = [modes addSubState:@"biPhasic"
-                                         mgr:modesMgr
+            
+            HState *modes = [on addSubHState:@"modes"
+                                         mgr:onMgr
                                         name:nil];
+            
+            [init addTransitionToTarget:@"INIT_FINISHED"
+                          targetStateID:@"modes"
+                                transFn:nil];
+            
+            StateManager *modesMgr = [[StateManager alloc] init:@"modesMgr"
+                                                 containerState:modes
+                                                   defaultState:@"ncpap"
+                                                              n:nil];
+            
+            
+            State *ncpap = [modes addSubState:@"ncpap"
+                                          mgr:modesMgr
+                                         name:nil];
+            
+            State *biPhasic = [modes addSubState:@"biPhasic"
+                                             mgr:modesMgr
+                                            name:nil];
+            
+            [ncpap addTransitionToTarget:@"CHANGE_TO_BIPHASIC_MODE"
+                           targetStateID:@"biPhasic"
+                                 transFn:nil];
+            
+            [biPhasic addTransitionToTarget:@"CHANGE_TO_NCPAP_MODE"
+                              targetStateID:@"ncpap"
+                                    transFn:nil];
+        }
     }
-    
-    // Create the transitions
-    [off addTransitionToTarget:@"TURN_ON_DEVICE"
-                 targetStateID:@"on"
-                       transFn:nil];
-    
-    [on addTransitionToTarget:@"TURN_OFF_DEVICE"
-                targetStateID:@"off"
-                      transFn:nil];
     
     // Activate engine
     [model active:YES];
@@ -336,14 +359,20 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     // Log active states
     [self logActiveStatesForStateEngine:model];
     
-    [model postEvent:[[Event alloc] initWithType:@"TURN_OFF_DEVICE"]
-           timeDelay:nil
-                 pty:nil];
+    [model postEvent:[[Event alloc] initWithType:@"INIT_FINISHED"]];
     
     // Log active states
     [self logActiveStatesForStateEngine:model];
     
-    NSLog(@" ");
+    [model postEvent:[[Event alloc] initWithType:@"TURN_OFF_DEVICE"]];
+    
+    // Log active states
+    [self logActiveStatesForStateEngine:model];
+    
+    [model postEvent:[[Event alloc] initWithType:@"TURN_ON_DEVICE_TO_HISTORY"]];
+    
+    // Log active states
+    [self logActiveStatesForStateEngine:model];
     
 #endif
     
@@ -352,10 +381,14 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 - (void)logActiveStatesForStateEngine:(StateEngine *)stateEngine
 {
+    // NSLog(@"ObjCStEng: Determining active states in State Engine <%@>", stateEngine.name);
+    
     for (NSString *id in stateEngine.activeStates)
     {
         NSLog(@"ObjCStEng: State: <%@> is active.", [stateEngine.statesByID[id] name]);
     }
+    
+    NSLog(@" ");
 }
 
 #ifdef LITE_VERSION

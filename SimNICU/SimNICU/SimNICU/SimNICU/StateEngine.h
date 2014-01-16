@@ -108,7 +108,7 @@
 
 /**
  * A Dictionary (flash.utils.Dictionary) of the currently active states.
- * <p>The State objects are keys, with values being <code>true</code></p>.
+ * <p>The State objects IDs are keys, with values being <code>true</code></p>.
  */
 @property (nonatomic, strong) NSMutableDictionary *activeStates;
 

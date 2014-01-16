@@ -86,9 +86,9 @@
     target = statesByID[self.targetID];
     
     // make sure not sending to history of simple state
-    if (([target isKindOfClass:[HStateC class]]) && self.hist == YES)
+    if ((![target isKindOfClass:[HStateC class]]) && self.hist == YES)
     {
-        NSLog(@"History pseudo-states are only in hierarchical states. Cannot transition from %@ to history of State %@", self.source.id, self.targetID);
+        NSLog(@"ObjCStEng: History pseudo-states are only in hierarchical states. Cannot transition from %@ to history of State %@", self.source.id, self.targetID);
     }
     
     // Check the type of transition to see if it is a sibling transition or cross-boundary transition

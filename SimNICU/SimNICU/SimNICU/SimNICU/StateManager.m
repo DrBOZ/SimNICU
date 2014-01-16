@@ -102,7 +102,7 @@
         }
         else if (!self.defSt)
         {
-            NSLog(@"Default start state not defined for state network managed by %@.", self.name);
+            NSLog(@"ObjCStEng: Default start state not defined for state network managed by %@.", self.name);
         }
         else
         {
@@ -139,7 +139,7 @@
 {
     State *sp;
     
-    if (self.active && !self.cs)
+    if (self.active && self.cs)
     {
         sp = self.contSt.substates[self.cs];
         [sp leave];
@@ -160,8 +160,8 @@
  */
 - (void)resetHistory
 {
-    // StateManager *smp;
-    HStateC *sp;
+    StateManager *smp;
+    State *sp;
     
     // if history mechanism is still null, meaning no one has entered this state yet, don't waste time resetting sub-network
     if (!self.lastSt)
@@ -176,9 +176,9 @@
         
         if ([sp isKindOfClass:[HStateC class]])
         {
-            for (NSString *id in sp.stMgrs)
+            for (smp in [(HStateC *)sp stMgrs])
             {
-                [sp.stMgrs[id] resetHistory];
+                [smp resetHistory];
             }
         }
     }
@@ -196,9 +196,9 @@
  */
 - (void)chgSt:(Transition *)trans val:(id)val
 {
-    HStateC *stp;
+    State* stp;
     NSMutableArray *cpyStPath;
-    StateManager *nsm;
+    StateManager *nsm;          // next stateManager
     StateManager *sm;
     // NSString *tmpcs;
     NSMutableDictionary *mgrs;
@@ -212,7 +212,7 @@
     
     if (!self.active)
     {
-        NSLog(@"Trying to change states through <manager %@>.", self.name);
+        NSLog(@"Trying to change states through inactive <manager %@>.", self.name);
     }
     
     // Steps:
@@ -279,7 +279,7 @@
                     stp.myStMgr.lastSt = self.cs;
                 }
                 stp.myStMgr.cs = nil;
-                mgrs = [[NSMutableDictionary alloc] init];
+                mgrs = [[NSMutableDictionary alloc] init];  // this is different to original
                 mgrs[nsm.id] = nsm;
             }
             else
@@ -291,13 +291,15 @@
                     // We have to see if the transition is supposed to go down a sibling sub-state rather than the current sub-state. If
                     // it goes down the current sub-state, we don't re-enter that state. If it goes down a sibling sub-state, we have
                     // to leave the current sub-state
-                    for (sid in stp.substates)
+                    for (sid in [(HStateC *)stp substates])
                     {
-                        HStateC *aHStateC = stp.substates[sid];
+                        // HStateC *aHStateC = stp.substates[sid];
                         
-                        if (aHStateC.id == cpyStPath[0])
+                        // if (aHStateC.id == cpyStPath[0])
+                        if ([[(HStateC *)stp substates][sid] id] == cpyStPath[0])
                         {
-                            sm = aHStateC.myStMgr;
+                            // sm = aHStateC.myStMgr;
+                            sm = [[(HStateC *)stp substates][sid] myStMgr];
                             if (sm.cs == cpyStPath[0])
                             {
                                 // The transition is going into a state which is already current. Follow the cpyStPath down to make
@@ -349,19 +351,19 @@
                     mgrs = [[NSMutableDictionary alloc] init];
                     if ([stp isKindOfClass:[State class]])
                     {
-                        NSLog(@"Logic error in State Manager chgSt() for manager id %@. Preparing to enter a sub-state of %@ but it is not hierachical.", self.id, stp.id);
+                        NSLog(@"ObjCStEng: Logic error in State Manager chgSt() for manager id %@. Preparing to enter a sub-state of %@ but it is not hierachical.", self.id, stp.id);
                     }
                     
                     if (!trans.hist)
                     {
-                        NSLog(@"Logic error in State Manager chgSt() for manager id %@. Transition within current state is not to history nor has a descent path.", self.id);
+                        NSLog(@"ObjCStEng: Logic error in State Manager chgSt() for manager id %@. Transition within current state is not to history nor has a descent path.", self.id);
                     }
                     
-                    for (sid in stp.substates)
+                    for (sid in [(HStateC *)stp substates])
                     {
                         if (!mgrs[sid])
                         {
-                            mgrs[sid] = [stp.substates[sid] myStMgr];
+                            mgrs[sid] = [[(HStateC *)stp substates][sid] myStMgr];              // [stp.substates[sid] myStMgr];
                             // Since the transitions have to be in history, we check to see if the current sub-state is the same as the last state visited, which will be entered.
                             // If so, we don't leave the state since we're headed right back in. If the last state visited is different from the current sub-state, we leave
                             // the current sub-state
@@ -427,7 +429,7 @@
         nsm = nsm.contSt.myStMgr;
         if (!nsm)
         {
-            NSLog(@"passUp reached top of state network but was told to go higher. This is logic error in Transition processing");
+            NSLog(@"ObjCStEng: passUp reached top of state network but was told to go higher. This is logic error in Transition processing");
         }
     }
     
@@ -444,9 +446,9 @@
  */
 - (void)passDown:(NSMutableArray *)stPath hist:(BOOL)hist sep:(StateEngine *)sep
 {
-    HStateC *stp;
+    State *stp;
     
-    if (!stPath && stPath.count == 0)
+    if (!stPath || stPath.count == 0)
     {
         stPath = nil;
         if (hist == NO)
@@ -484,7 +486,7 @@
             else if (hist)
             {
                 // Tell stp's managers to activate
-                for (StateManager *ssm in stp.stMgrs)
+                for (StateManager *ssm in [(HStateC *)stp stMgrs])
                 {
                     if (!ssm.lastSt)
                     {
@@ -499,6 +501,21 @@
                     }
                     [stp._se.statesByID[ssm.cs] enter:NO specIDs:nil];
                 }
+            }
+            stPath = nil;
+        }
+        else
+        {
+            // If this state is not active already, enter it
+            if ([stp isActive] == NO)
+            {
+                stp.myStMgr.cs = stp.id;
+                [stp enter:hist specIDs:stPath];
+            }
+            else
+            {
+                // Go down to the next level and see if the first element of stPath is active, then do appropriate enter or passDown from there
+                [[sep.statesByID[stPath[0]] myStMgr] passDown:stPath hist:hist sep:sep];
             }
         }
     }

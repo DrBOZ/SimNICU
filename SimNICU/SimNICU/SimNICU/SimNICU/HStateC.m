@@ -253,9 +253,9 @@
 - (void)resetHistory
 {
     // tell managers to reset history
-    for (NSString *id in self.stMgrs)
+    for (NSString *mgrID in self.stMgrs)
     {
-        [self.stMgrs[id] resetHistory];
+        [self.stMgrs[mgrID] resetHistory];
     }
 }
 
