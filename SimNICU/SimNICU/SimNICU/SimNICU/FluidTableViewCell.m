@@ -1,6 +1,6 @@
 //
 //  FluidTableViewCell.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 02/01/2014.
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
@@ -18,17 +18,39 @@
         // set cell selection style
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        // setup textfield
+        // setup fluid type/name textfield
+        self.fluidName = [UITextField new];
+        self.fluidName.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        self.fluidName.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.fluidName.keyboardAppearance = UIKeyboardAppearanceAlert;
+        self.fluidName.frame = CGRectMake(14.0f, 0.0f, 200.0f, 30.0f);
+        self.fluidName.clearButtonMode = UITextFieldViewModeNever;
+        self.fluidName.keyboardType = UIKeyboardTypeAlphabet;
+        self.fluidName.textAlignment = UITextAlignmentLeft;
+        self.fluidName.borderStyle = UITextBorderStyleNone;
+        self.fluidName.font = [UIFont systemFontOfSize:19.0f];
+        self.fluidName.adjustsFontSizeToFitWidth = YES;
+        self.fluidName.returnKeyType = UIReturnKeyDone;
+        
+        [self.contentView addSubview:self.fluidName];
+        
+        self.mlPerKgPerDay = [UILabel new];
+        self.mlPerKgPerDay.frame = CGRectMake(14.0f, 18.0f, 150.0f, 30.0f);
+        self.mlPerKgPerDay.font = [UIFont systemFontOfSize:12.0f];
+        
+        [self.contentView addSubview:self.mlPerKgPerDay];
+        
+        // setup ml/day textfield
         self.mlPerDay = [UITextField new];
         self.mlPerDay.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        self.mlPerDay.clearButtonMode = UITextFieldViewModeNever;
+        self.mlPerDay.placeholder = [CBStringMethods localisedString:@"ml/day"];
         self.mlPerDay.keyboardAppearance = UIKeyboardAppearanceAlert;
         self.mlPerDay.frame = CGRectMake(230.0f, 8.0f, 80.0f, 30.0f);
+        self.mlPerDay.clearButtonMode = UITextFieldViewModeNever;
         self.mlPerDay.borderStyle = UITextBorderStyleRoundedRect;
         self.mlPerDay.keyboardType = UIKeyboardTypeDecimalPad;
         self.mlPerDay.textAlignment = UITextAlignmentLeft;
         self.mlPerDay.adjustsFontSizeToFitWidth = YES;
-        self.mlPerDay.placeholder = [CBStringMethods localisedString:@"ml/day"];
         
         [self.contentView addSubview:self.mlPerDay];
     }

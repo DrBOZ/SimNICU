@@ -102,7 +102,7 @@
         {
             self.fluidBalanceData = [[NSMutableDictionary alloc] init];
             
-            [self.fluidBalanceData setObject:[NSDate date] forKey:@"FluidBalanceDate"];
+            self.fluidBalanceData[@"FluidBalanceDate"] = [NSDate date];
             
             // INPUT array
             {
@@ -111,7 +111,7 @@
                 NSMutableArray *fluid1 = [[NSMutableArray alloc] initWithCapacity:2];
                 
                 /* create Fluid class
-                 / for now create fluid NSSTring
+                 / for now create fluid NSString
                  */
                 
                 NSString *fluid1Name = @"Fluid 1";
@@ -122,7 +122,7 @@
                 
                 [inputData addObject:fluid1];
                 
-                [self.fluidBalanceData setObject:inputData forKey:@"InputData"];
+                self.fluidBalanceData[@"InputData"] = inputData;
             }
             
             // OUTPUT array
@@ -139,7 +139,7 @@
                 
                 [outputData addObject:fluid2];
                 
-                [self.fluidBalanceData setObject:outputData forKey:@"OutputData"];
+                self.fluidBalanceData[@"OutputData"] = outputData;
             }
         }
     }
@@ -510,14 +510,17 @@
         
         if (!cell)
         {
-            cell = [[FluidTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            cell.mlPerDay.text = [[self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][1] stringValue];
+            cell = [[FluidTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+            cell.fluidName.tag = (indexPath.section * 100) + indexPath.row;
+            cell.fluidName.delegate = self;
+            
+            cell.mlPerDay.text = [self.fluidBalanceData[@"InputData"][indexPath.row][1] stringValue];
             cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
             cell.mlPerDay.delegate = self;
         }
         
-        cell.textLabel.text = [self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][0];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([[self.fluidBalanceData objectForKey:@"InputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
+        cell.fluidName.text = self.fluidBalanceData[@"InputData"][indexPath.row][0];
+        cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([self.fluidBalanceData[@"InputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
     }
@@ -529,14 +532,16 @@
         
         if (!cell)
         {
-            cell = [[FluidTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-            cell.mlPerDay.text = [[self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][1] stringValue];
+            cell = [[FluidTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+            cell.fluidName.tag = (indexPath.section * 100) + indexPath.row;
+            cell.fluidName.delegate = self;
+            cell.mlPerDay.text = [self.fluidBalanceData[@"OutputData"][indexPath.row][1] stringValue];
             cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
             cell.mlPerDay.delegate = self;
         }
         
-        cell.textLabel.text = [self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][0];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([[self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
+        cell.fluidName.text = self.fluidBalanceData[@"OutputData"][indexPath.row][0];
+        cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([[self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
     }
@@ -724,6 +729,7 @@
         {
             FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
             
+            [cell.fluidName resignFirstResponder];
             [cell.mlPerDay resignFirstResponder];
         }
     }
@@ -783,28 +789,32 @@
 {
     BOOL allowUserToChangeText = YES;
     
-    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    
-    if (newText.length > 5)
+    if (textField.tag == 1)
     {
-        allowUserToChangeText = NO;
-    }
-    else if (newText.length == 1)
-    {
-        if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+        // ml/day
+        NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        
+        if (newText.length > 5)
         {
-            textField.text = @"0";
+            allowUserToChangeText = NO;
         }
-    }
-    else if (newText.length == 2)
-    {
-        if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+        else if (newText.length == 1)
         {
-            // do nothing
+            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+            {
+                textField.text = @"0";
+            }
         }
-        else if ([textField.text isEqualToString:@"0"])
+        else if (newText.length == 2)
         {
-            textField.text = @"";
+            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+            {
+                // do nothing
+            }
+            else if ([textField.text isEqualToString:@"0"])
+            {
+                textField.text = @"";
+            }
         }
     }
     
@@ -833,9 +843,17 @@
     }
     
     // update results
-    [self.fluidBalanceData objectForKey:sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
+    self.fluidBalanceData[sectionName][row][0] = textField.text;
+    self.fluidBalanceData[sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
     
     [self updateResults];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self resignAllTextFields];
+    
+    return NO;
 }
 
 - (void)updateResults
@@ -858,7 +876,7 @@
             double mlperDayDouble = [[self.fluidBalanceData objectForKey:sectionName][row][1] doubleValue];
             
             // update individual fluids 'ml/kg/day'
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", (mlperDayDouble / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
+            cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", (mlperDayDouble / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
             
             // update footer calculations
             if ([sectionName isEqualToString:@"InputData"])

@@ -1,6 +1,6 @@
 //
 //  FluidTableViewCell.h
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 02/01/2014.
 //  Copyright (c) 2014 Conrad Bosman. All rights reserved.
@@ -10,6 +10,8 @@
 
 @interface FluidTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UITextField *fluidName;
+@property (nonatomic, strong) UILabel *mlPerKgPerDay;
 @property (nonatomic, strong) UITextField *mlPerDay;
 
 @end

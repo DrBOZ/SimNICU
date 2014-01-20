@@ -17,12 +17,6 @@
 
 @implementation PatientDetailsEnterNameViewController
 
-@synthesize patientToEdit = _patientToEdit;
-@synthesize myTableView = _myTableView;
-@synthesize firstname = _firstname;
-@synthesize lastname = _lastname;
-@synthesize delegate = _delegate;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
