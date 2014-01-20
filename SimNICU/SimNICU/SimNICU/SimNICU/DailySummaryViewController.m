@@ -16,8 +16,10 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "DailySummaryViewController.h"
 #import "BloodResultTableViewCell.h"
+#import "FluidBalanceHeadingCell.h"
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
+#import "FluidBalanceFluidCell.h"
 #import "UDInputAccessoryView.h"
 #import "CBBarCustomTextItem.h"
 #import "UDBarTrackballItem.h"
@@ -359,6 +361,11 @@
                     // find out how many results to display plus free text
                     rows = ([[self getHaematologyResultsToDisplay] count] + 1);
                 }
+                else if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"])
+                {
+                    // rows = ([[self getFluidBalanceResultsToDisplay] count] + 1);
+                    rows = 7;
+                }
                 else if ([handoverSection.sectionName isEqualToString:@"Biochemistry"])
                 {
                     // find out how many results to display plus free text
@@ -632,7 +639,14 @@
             }
             else if ([section.sectionName isEqual:@"Fluid Balance"])
             {
-                textView.text = self.selectedPatient.fluidBalance;
+                if (indexPath.row < 6)
+                {
+                    return 20.0f;
+                }
+                else
+                {
+                    textView.text = self.selectedPatient.fluidBalance;
+                }
             }
             else if ([section.sectionName isEqual:@"Biochemistry"])
             {
@@ -1180,23 +1194,137 @@
         }
         else if ([section.sectionName isEqualToString:@"Fluid Balance"])
         {
-            CellIdentifier = @"FluidBalance";
-            
-            if (newFluidBalance)
+            if (indexPath.row == 0)
             {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                CellIdentifier = @"FluidBalanceHeading";
+                
+                FluidBalanceHeadingCell *fluidBalanceCell;
+                
+                fluidBalanceCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!fluidBalanceCell)
+                {
+                    fluidBalanceCell = [[FluidBalanceHeadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                }
+                
+                fluidBalanceCell.heading.text = @"INPUT";
+    
+                return fluidBalanceCell;
+            }
+            if (indexPath.row == 1)
+            {
+                CellIdentifier = @"FluidBalanceTesting";
+                
+                FluidBalanceFluidCell *fluidBalanceCell;
+                
+                fluidBalanceCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!fluidBalanceCell)
+                {
+                    fluidBalanceCell = [[FluidBalanceFluidCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                }
+                
+                fluidBalanceCell.fluidName.text = @"Vamin";
+                fluidBalanceCell.mlPerDay.text = @"540.9";
+                fluidBalanceCell.mlPerKgPerDay.text = @"120.0";
+                
+                return fluidBalanceCell;
+            }
+            else if (indexPath.row == 2)
+            {
+                CellIdentifier = @"FluidBalanceTesting";
+                
+                FluidBalanceFluidCell *fluidBalanceCell;
+                
+                fluidBalanceCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!fluidBalanceCell)
+                {
+                    fluidBalanceCell = [[FluidBalanceFluidCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                }
+                
+                fluidBalanceCell.fluidName.text = @"Lipid";
+                fluidBalanceCell.mlPerDay.text = @"5.4";
+                fluidBalanceCell.mlPerKgPerDay.text = @"8.7";
+                
+                return fluidBalanceCell;
+            }
+            else if (indexPath.row == 3)
+            {
+                CellIdentifier = @"FluidBalanceTesting";
+                
+                FluidBalanceFluidCell *fluidBalanceCell;
+                
+                fluidBalanceCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!fluidBalanceCell)
+                {
+                    fluidBalanceCell = [[FluidBalanceFluidCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                }
+                
+                fluidBalanceCell.fluidName.text = @"10% Dextrose 0.18% Saline";
+                fluidBalanceCell.mlPerDay.text = @"5.4";
+                fluidBalanceCell.mlPerKgPerDay.text = @"8.7";
+                
+                return fluidBalanceCell;
+            }
+            else if (indexPath.row == 4)
+            {
+                CellIdentifier = @"FluidBalanceTesting1";
+                
+                FluidBalanceFluidCell *fluidBalanceCell;
+                
+                fluidBalanceCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!fluidBalanceCell)
+                {
+                    fluidBalanceCell = [[FluidBalanceFluidCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    fluidBalanceCell.drawTotalLines = YES;
+                }
+                
+                fluidBalanceCell.fluidName.text = @"";
+                fluidBalanceCell.mlPerDay.text = @"25.4";
+                fluidBalanceCell.mlPerKgPerDay.text = @"18.7";
+                
+                return fluidBalanceCell;
+            }
+            else if (indexPath.row == 5)
+            {
+                CellIdentifier = @"FluidBalanceHeading";
+                
+                FluidBalanceHeadingCell *fluidBalanceCell;
+                
+                fluidBalanceCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!fluidBalanceCell)
+                {
+                    fluidBalanceCell = [[FluidBalanceHeadingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                }
+                
+                fluidBalanceCell.heading.text = @"OUTPUT";
+                
+                return fluidBalanceCell;
             }
             else
             {
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                CellIdentifier = @"FluidBalance";
                 
-                if (!cell)
+                if (newFluidBalance)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 }
+                else
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    
+                    if (!cell)
+                    {
+                        cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    }
+                }
+                
+                self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
             }
-            
-            self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
         }
         else if ([section.sectionName isEqualToString:@"Biochemistry"])
         {
@@ -6708,12 +6836,19 @@
 
 #pragma mark - FluidBalanceTableViewController delegate
 
+- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishAddingNewData:(NSDictionary *)fluidBalanceData
+{
+    // update daily summary with fluid balance data
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
     
     // deselect row
-    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
+//    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - JaundiceViewController delegate

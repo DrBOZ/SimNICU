@@ -44,8 +44,6 @@
 // Things I need to fix:
 //
 #warning fix spacing in both modal and non-modal views
-#warning fix fluid naming
-#warning fix done button to save results
 #warning fix custom UITableViewCell to display results
 #warning fix printing
 #warning fix fluid list name editing

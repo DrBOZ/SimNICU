@@ -427,6 +427,12 @@
 		5C5A11A917D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */; };
 		5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5A11AA17D274B700CE96E5 /* MessageUI.framework */; };
 		5C5ACC02188D41CD0085711A /* Jobs in Resources */ = {isa = PBXBuildFile; fileRef = 5C5ACC01188D41CD0085711A /* Jobs */; };
+		5C5ACC06188D794D0085711A /* FluidBalanceFinalBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ACC05188D794D0085711A /* FluidBalanceFinalBalanceCell.m */; };
+		5C5ACC07188D794D0085711A /* FluidBalanceFinalBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ACC05188D794D0085711A /* FluidBalanceFinalBalanceCell.m */; };
+		5C5ACC0A188D79920085711A /* FluidBalanceFluidCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ACC09188D79920085711A /* FluidBalanceFluidCell.m */; };
+		5C5ACC0B188D79920085711A /* FluidBalanceFluidCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ACC09188D79920085711A /* FluidBalanceFluidCell.m */; };
+		5C5ACC15188D8DE70085711A /* FluidBalanceHeadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ACC14188D8DE70085711A /* FluidBalanceHeadingCell.m */; };
+		5C5ACC16188D8DE70085711A /* FluidBalanceHeadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ACC14188D8DE70085711A /* FluidBalanceHeadingCell.m */; };
 		5C5D24DA1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DB1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DE1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
@@ -1293,6 +1299,12 @@
 		5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMFeedbackViewController.m; sourceTree = "<group>"; };
 		5C5A11AA17D274B700CE96E5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		5C5ACC01188D41CD0085711A /* Jobs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jobs; sourceTree = "<group>"; };
+		5C5ACC04188D794D0085711A /* FluidBalanceFinalBalanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidBalanceFinalBalanceCell.h; sourceTree = "<group>"; };
+		5C5ACC05188D794D0085711A /* FluidBalanceFinalBalanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidBalanceFinalBalanceCell.m; sourceTree = "<group>"; };
+		5C5ACC08188D79920085711A /* FluidBalanceFluidCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidBalanceFluidCell.h; sourceTree = "<group>"; };
+		5C5ACC09188D79920085711A /* FluidBalanceFluidCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidBalanceFluidCell.m; sourceTree = "<group>"; };
+		5C5ACC13188D8DE70085711A /* FluidBalanceHeadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidBalanceHeadingCell.h; sourceTree = "<group>"; };
+		5C5ACC14188D8DE70085711A /* FluidBalanceHeadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluidBalanceHeadingCell.m; sourceTree = "<group>"; };
 		5C5D24D81843FDD800856191 /* DailySummarySectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummarySectionsTableViewController.h; sourceTree = "<group>"; };
 		5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummarySectionsTableViewController.m; sourceTree = "<group>"; };
 		5C5D24DC1844CD7E00856191 /* PostnatalWardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardModel.h; sourceTree = "<group>"; };
@@ -2306,6 +2318,7 @@
 		5C4C49C51854B3E100BD3E9A /* UITableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				5C5ACC03188D79120085711A /* Fluid Balance cells */,
 				5C4C49CA1854CBA200BD3E9A /* BloodResultTableViewCell.h */,
 				5C4C49CB1854CBA200BD3E9A /* BloodResultTableViewCell.m */,
 			);
@@ -2562,6 +2575,19 @@
 				5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */,
 			);
 			name = AAMFeedback;
+			sourceTree = "<group>";
+		};
+		5C5ACC03188D79120085711A /* Fluid Balance cells */ = {
+			isa = PBXGroup;
+			children = (
+				5C5ACC13188D8DE70085711A /* FluidBalanceHeadingCell.h */,
+				5C5ACC14188D8DE70085711A /* FluidBalanceHeadingCell.m */,
+				5C5ACC08188D79920085711A /* FluidBalanceFluidCell.h */,
+				5C5ACC09188D79920085711A /* FluidBalanceFluidCell.m */,
+				5C5ACC04188D794D0085711A /* FluidBalanceFinalBalanceCell.h */,
+				5C5ACC05188D794D0085711A /* FluidBalanceFinalBalanceCell.m */,
+			);
+			name = "Fluid Balance cells";
 			sourceTree = "<group>";
 		};
 		5C5D24D1184387C300856191 /* PDF */ = {
@@ -4426,6 +4452,7 @@
 				5C26A145187EBD8C00C5A10E /* HState.m in Sources */,
 				5C26A139187EBCEA00C5A10E /* StateManager.m in Sources */,
 				5C26A128187EABDA00C5A10E /* StateEngine.m in Sources */,
+				5C5ACC0A188D79920085711A /* FluidBalanceFluidCell.m in Sources */,
 				5C56F6101801D54C00665E22 /* CBTableViewWebViewCell.m in Sources */,
 				5C940A6E166E37FE0044A7D1 /* main.m in Sources */,
 				5C940A72166E37FE0044A7D1 /* AppDelegate.m in Sources */,
@@ -4514,6 +4541,7 @@
 				5C940C0B166E3C5B0044A7D1 /* NeurotoxicityRiskFactor.m in Sources */,
 				5C642BE11851B2AD0052337B /* AddBloodResultTableViewController.m in Sources */,
 				5C4BBFA8183A4BE3002607EC /* CFAMTermsWebViewController.m in Sources */,
+				5C5ACC06188D794D0085711A /* FluidBalanceFinalBalanceCell.m in Sources */,
 				5C4BBF98183A3C07002607EC /* CFAMOptionsTableViewController.m in Sources */,
 				5C31A3D01874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */,
 				5C06D4C11803C54400A3B46C /* VitKTableViewController.m in Sources */,
@@ -4543,6 +4571,7 @@
 				5C26A149187EBDB300C5A10E /* EventWithData.m in Sources */,
 				5C940CB9166E43800044A7D1 /* InfoTabBarController.m in Sources */,
 				5C4C49CC1854CBA200BD3E9A /* BloodResultTableViewCell.m in Sources */,
+				5C5ACC15188D8DE70085711A /* FluidBalanceHeadingCell.m in Sources */,
 				5C940CFB166E674C0044A7D1 /* ResusViewTableViewCell.m in Sources */,
 				5C940CFE166E72550044A7D1 /* IntubationDrugsTableViewCell.m in Sources */,
 				5C940D01166E83EC0044A7D1 /* InfusionsViewMinimalTableViewCell.m in Sources */,
@@ -4718,8 +4747,10 @@
 				5CD3AFC216CF38D500DE362C /* PortraitOnlyNavigationController.m in Sources */,
 				5C8F5A36186FFD4D00A7EE8C /* BiliousVomitingViewController.m in Sources */,
 				5CD3AFC316CF38D500DE362C /* AppViewController.m in Sources */,
+				5C5ACC07188D794D0085711A /* FluidBalanceFinalBalanceCell.m in Sources */,
 				5CD3AFC416CF38D500DE362C /* EnterWeightViewController.m in Sources */,
 				5CD3AFC516CF38D500DE362C /* PatientDetailsViewController.m in Sources */,
+				5C5ACC0B188D79920085711A /* FluidBalanceFluidCell.m in Sources */,
 				5CED07FC185DE8420010A291 /* AppViewModel.m in Sources */,
 				5CD3AFC616CF38D500DE362C /* PatientDetailsEnterNameViewController.m in Sources */,
 				5CD3AFC716CF38D500DE362C /* PatientDetailsEnterWeightViewController.m in Sources */,
@@ -4795,6 +4826,7 @@
 				5CD3B00116CF38D500DE362C /* BilirubinResult.m in Sources */,
 				5C13DDA21852873300DBB676 /* AddBloodResultModel.m in Sources */,
 				5C4BBFAD183A4DF9002607EC /* CFAMTermsModel.m in Sources */,
+				5C5ACC16188D8DE70085711A /* FluidBalanceHeadingCell.m in Sources */,
 				5CD3B00216CF38D500DE362C /* SimNICUWebView.m in Sources */,
 				5C26A142187EBD5500C5A10E /* HStateC.m in Sources */,
 				5C0BC57F1856654E00128CCE /* JLActionSheetStyle.m in Sources */,

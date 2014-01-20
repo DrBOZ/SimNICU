@@ -208,11 +208,7 @@
 
 - (void)done
 {
-    NSLog(@"Fluid balance date = %@", self.fluidBalanceData[@"FluidBalanceDate"]);
-    
-    
-    
-    
+    [self.delegate fluidBalanceTableViewController:self didFinishAddingNewData:self.fluidBalanceData];
 }
 
 - (void)cancel
@@ -943,13 +939,5 @@
     // update the 'Date' row with the new date
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
-
-//- (void)datePickerChangedValue
-//{
-//    // self.fluidBalanceDate = self.datePicker.date;
-//    
-//    // update the 'Date' row with the new date
-//    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-//}
 
 @end
