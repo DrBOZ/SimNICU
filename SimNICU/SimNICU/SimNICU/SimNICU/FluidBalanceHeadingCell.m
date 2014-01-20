@@ -9,6 +9,8 @@
 #define DEFAULT_TEXT_FONT 13.0f
 #define DEFAULT_TEXT_Y 0.0f
 
+#define MLPERDAY_X 205.0f
+
 #import "FluidBalanceHeadingCell.h"
 
 @implementation FluidBalanceHeadingCell
@@ -33,12 +35,12 @@
 
     if ([self.heading.text isEqualToString:@"INPUT"])
     {
-        UILabel *mlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+        UILabel *mlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(MLPERDAY_X, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
         mlPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
         mlPerDay.text = @"ml";
         [self.contentView addSubview:mlPerDay];
         
-        UILabel *mlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(255.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+        UILabel *mlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
         mlPerKgPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
         mlPerKgPerDay.text = @"ml/kg";
         [self.contentView addSubview:mlPerKgPerDay];
