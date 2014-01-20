@@ -208,7 +208,7 @@
 
 - (void)done
 {
-    
+    NSLog(@"Fluid balance date = %@", self.fluidBalanceData[@"FluidBalanceDate"]);
     
     
     
@@ -938,17 +938,18 @@
     NSDate *date = [CBTimeMethods getDateFromDaysDifference:row fromDate:self.selectedPatient.birthDate];
     
     self.fluidBalanceDate = date;
+    self.fluidBalanceData[@"FluidBalanceDate"] = date;
     
     // update the 'Date' row with the new date
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)datePickerChangedValue
-{
-    // self.fluidBalanceDate = self.datePicker.date;
-    
-    // update the 'Date' row with the new date
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-}
+//- (void)datePickerChangedValue
+//{
+//    // self.fluidBalanceDate = self.datePicker.date;
+//    
+//    // update the 'Date' row with the new date
+//    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+//}
 
 @end
