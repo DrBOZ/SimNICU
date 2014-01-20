@@ -91,20 +91,6 @@
 @property (nonatomic, retain) ADBannerView *bannerView;
 @property (strong, nonatomic) UIWindow *window;
 
-// Jobs
-// 1) Finish Daily Summary US options
-// 2) Now I have started changing over, set standard cell height for all UITableViews?
-// 3)
-// 4) Add a clear button to Daily Summary Editor
-// 5)
-// 6) Need to be able to edit the ref of new custom text
-// 7) patient.
-// 8) Finish dictation commands
-// 9) 
-//10)
-//11) Sort new patient bilirubin graphs
-//12) Add current weights
-
 @end
 
 

@@ -426,6 +426,7 @@
 		5C5A11A817D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */; };
 		5C5A11A917D2727C00CE96E5 /* AAMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */; };
 		5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5A11AA17D274B700CE96E5 /* MessageUI.framework */; };
+		5C5ACC02188D41CD0085711A /* Jobs in Resources */ = {isa = PBXBuildFile; fileRef = 5C5ACC01188D41CD0085711A /* Jobs */; };
 		5C5D24DA1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DB1843FDD800856191 /* DailySummarySectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */; };
 		5C5D24DE1844CD7E00856191 /* PostnatalWardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5D24DD1844CD7E00856191 /* PostnatalWardModel.m */; };
@@ -1291,6 +1292,7 @@
 		5C5A11A417D2727C00CE96E5 /* AAMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAMFeedbackViewController.h; sourceTree = "<group>"; };
 		5C5A11A517D2727C00CE96E5 /* AAMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAMFeedbackViewController.m; sourceTree = "<group>"; };
 		5C5A11AA17D274B700CE96E5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5C5ACC01188D41CD0085711A /* Jobs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Jobs; sourceTree = "<group>"; };
 		5C5D24D81843FDD800856191 /* DailySummarySectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailySummarySectionsTableViewController.h; sourceTree = "<group>"; };
 		5C5D24D91843FDD800856191 /* DailySummarySectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummarySectionsTableViewController.m; sourceTree = "<group>"; };
 		5C5D24DC1844CD7E00856191 /* PostnatalWardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardModel.h; sourceTree = "<group>"; };
@@ -3031,6 +3033,7 @@
 		5C940A52166E37FE0044A7D1 = {
 			isa = PBXGroup;
 			children = (
+				5C5ACC01188D41CD0085711A /* Jobs */,
 				5C940AF8166E3AB60044A7D1 /* Config */,
 				5C8EC283183B88620078593C /* Singletons */,
 				5C8EC282183B87FA0078593C /* Models */,
@@ -4087,6 +4090,7 @@
 				5C0E0614178F523900768739 /* adrenalineSideEffects.html in Resources */,
 				5C0E0617178F524700768739 /* adrenalineMonitoring.html in Resources */,
 				5C8EC28E183BDE0D0078593C /* back_button_normal.png in Resources */,
+				5C5ACC02188D41CD0085711A /* Jobs in Resources */,
 				5C0E061A178F525700768739 /* adrenalineLicenceStatus.html in Resources */,
 				5C4BBFBF183A4EB8002607EC /* artefact.html in Resources */,
 				5C0E061D178F526600768739 /* adrenalineReferences.html in Resources */,

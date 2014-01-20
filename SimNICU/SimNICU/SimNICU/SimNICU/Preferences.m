@@ -573,7 +573,7 @@
                                                           ref:NSLocalizedString(@"ml/kg/day", nil)]];
             
             // 10% Dextrose
-            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %i %@", 10, NSLocalizedString(@"Dextrose", nil)]
+            [newSection.customText addObject:[self customText:[NSString stringWithFormat:@" %i%% %@", 10, NSLocalizedString(@"Dextrose", nil)]
                                                           ref:NSLocalizedString(@"10% Dextrose", nil)]];
             
             // Minimal milky aspirates
