@@ -11,5 +11,6 @@
 @interface FluidBalanceHeadingCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *heading;
+@property (nonatomic, strong) UILabel *workingWeight;
 
 @end

@@ -464,15 +464,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "411931287.733702"
+            timestampString = "412010516.034765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6841"
-            endingLineNumber = "6841"
+            startingLineNumber = "6798"
+            endingLineNumber = "6798"
             landmarkName = "-fluidBalanceTableViewController:didFinishAddingNewData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -484,27 +484,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "411930326.393884"
+            timestampString = "412010516.034765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            startingLineNumber = "6790"
+            endingLineNumber = "6790"
+            landmarkName = "-fluidBalanceTableViewController:didFinishAddingNewData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SimNICU/FluidBalanceHeadingCell.m"
+            timestampString = "412009597.807377"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-setSelected:animated:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "411930606.10379"
+            timestampString = "412011631.031968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1222"
-            endingLineNumber = "1222"
+            startingLineNumber = "1221"
+            endingLineNumber = "1221"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

@@ -14,5 +14,6 @@
 @property (nonatomic, strong) UILabel *mlPerDay;
 @property (nonatomic, strong) UILabel *mlPerKgPerDay;
 @property (nonatomic) BOOL drawTotalLines;
+@property (nonatomic) BOOL drawDoubleTotalLines;
 
 @end

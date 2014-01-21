@@ -13,6 +13,13 @@
 
 #import "FluidBalanceHeadingCell.h"
 
+@interface FluidBalanceHeadingCell ()
+
+@property (nonatomic, strong) UILabel *mlPerDay;
+@property (nonatomic, strong) UILabel *mlPerKgPerDay;
+
+@end
+
 @implementation FluidBalanceHeadingCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -35,15 +42,31 @@
 
     if ([self.heading.text isEqualToString:@"INPUT"])
     {
-        UILabel *mlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(MLPERDAY_X, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-        mlPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-        mlPerDay.text = @"ml";
-        [self.contentView addSubview:mlPerDay];
+        if (!self.mlPerDay)
+        {
+            self.mlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(MLPERDAY_X, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            self.mlPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            self.mlPerDay.text = @"ml";
+            [self.contentView addSubview:self.mlPerDay];
+        }
         
-        UILabel *mlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
-        mlPerKgPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-        mlPerKgPerDay.text = @"ml/kg";
-        [self.contentView addSubview:mlPerKgPerDay];
+        if (!self.mlPerKgPerDay)
+        {
+            self.mlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            self.mlPerKgPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            self.mlPerKgPerDay.text = @"ml/kg";
+            [self.contentView addSubview:self.mlPerKgPerDay];
+        }
+    }
+    else if (!([self.heading.text isEqualToString:@"OUTPUT"] || [self.heading.text isEqualToString:@"BALANCE"]))
+    {
+        // must be date heading, so display working weight
+        if (!self.workingWeight)
+        {
+            self.workingWeight = [[UILabel alloc] initWithFrame:CGRectMake(MLPERDAY_X, DEFAULT_TEXT_Y, 80.0f, 22.0f)];
+            self.workingWeight.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
+            [self.contentView addSubview:self.workingWeight];
+        }
     }
 }
 

@@ -36,6 +36,7 @@
     
     // toggle
     BOOL userIsEnteringData;
+    BOOL userHasEnteredData;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -56,9 +57,15 @@
     if (self.useAsModalViewController)
     {
         // set navigation item buttons and tint for iOS 7
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                               target:self
+                                                                                               action:@selector(cancel)];
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                              target:self
+                                                                                              action:@selector(done)];
+        // done button is disabled until user has entered data
+        self.navigationItem.leftBarButtonItem.enabled = NO;
         
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
@@ -103,6 +110,7 @@
             self.fluidBalanceData = [[NSMutableDictionary alloc] init];
             
             self.fluidBalanceData[@"FluidBalanceDate"] = [NSDate date];
+            self.fluidBalanceData[@"Working Weight"] = self.workingWeight;
             
             // INPUT array
             {
@@ -188,9 +196,6 @@
     {
         self.title = NSLocalizedString(@"Weight not entered", nil);
     }
-    
-    // starts UITableView in editing mode
-    // [self.tableView setEditing:YES animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -745,7 +750,7 @@
     [fluid addObject:fluidName];
     [fluid addObject:@0];
     
-    [[self.fluidBalanceData objectForKey:section] addObject:fluid];
+    [self.fluidBalanceData[section] addObject:fluid];
     
     // update table
     NSArray *indexPaths = @[[NSIndexPath indexPathForRow:([[self.fluidBalanceData objectForKey:section] count] - 1)
@@ -768,6 +773,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     userIsEnteringData = YES;
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     
     // work out section and row of textfield from textfield.tag
     int section = textField.tag / 100;
@@ -841,6 +847,14 @@
     // update results
     self.fluidBalanceData[sectionName][row][0] = textField.text;
     self.fluidBalanceData[sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
+    
+    // check if both INPUT and OUTPUT data has been entered
+#warning this currently does not work
+    if (self.fluidBalanceData[@"InputData"] && self.fluidBalanceData[@"OutputData"])
+    {
+        userHasEnteredData = YES;
+        self.navigationItem.leftBarButtonItem.enabled = YES;
+    }
     
     [self updateResults];
 }
