@@ -105,12 +105,20 @@
         
         self.fluidBalanceDate = [gregorian dateFromComponents:dateComponents];
         
+        // instantiate time period picker
+        if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
+        self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
+        self.timePeriodPicker.dataSource = self;
+        self.timePeriodPicker.delegate = self;
+        [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
+        
         // setup dummy fluidBalanceData
         {
             self.fluidBalanceData = [[NSMutableDictionary alloc] init];
             
-            self.fluidBalanceData[@"FluidBalanceDate"] = [NSDate date];
-            self.fluidBalanceData[@"Working Weight"] = self.workingWeight;
+            self.fluidBalanceData[@"FluidBalanceDate"] = self.fluidBalanceDate;
+            
+            // self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] =
             
             // INPUT array
             {
@@ -174,6 +182,8 @@
             int workingWeightGRAMSAsInt = workingWeightKGAsFloat * 1000;
             
             self.title = [NSString stringWithFormat:@"%@ %ig", NSLocalizedString(@"Working weight", nil) ,workingWeightGRAMSAsInt];
+            
+            self.fluidBalanceData[@"Working Weight"] = [NSString stringWithFormat:@"%ig", workingWeightGRAMSAsInt];
         }
         else
         {
@@ -190,6 +200,8 @@
             formatter.maximumFractionDigits = 3;
             
             self.title = [NSString stringWithFormat:@"%@ %@ kg", NSLocalizedString(@"Working weight", nil), [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
+            
+            self.fluidBalanceData[@"Working Weight"] = [NSString stringWithFormat:@"%@ kg", [formatter stringFromNumber:[NSNumber numberWithFloat:workingWeightKGAsFloat]]];
         }
     }
     else
@@ -213,6 +225,10 @@
 
 - (void)done
 {
+    NSString *title = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
+    
+    self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = title;
+    
     [self.delegate fluidBalanceTableViewController:self didFinishAddingNewData:self.fluidBalanceData];
 }
 
@@ -471,8 +487,10 @@
             
             cell.textLabel.text = NSLocalizedString(@"Time Period", nil);
             
-            cell.detailTextLabel.text = [self twentyFourHourTimePeriodStringToDate:self.fluidBalanceDate
-                                                                        forPatient:self.selectedPatient];
+//            cell.detailTextLabel.text = [self twentyFourHourTimePeriodStringToDate:self.fluidBalanceDate
+//                                                                        forPatient:self.selectedPatient];
+            
+            cell.detailTextLabel.text = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
             
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
             
@@ -490,12 +508,12 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.backgroundColor = [UIColor whiteColor];
                 
-                // instantiate time period picker
-                if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
-                self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
-                self.timePeriodPicker.dataSource = self;
-                self.timePeriodPicker.delegate = self;
-                [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] inComponent:0 animated:YES];
+//                // instantiate time period picker
+//                if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
+//                self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
+//                self.timePeriodPicker.dataSource = self;
+//                self.timePeriodPicker.delegate = self;
+//                [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] inComponent:0 animated:YES];
                 
                 [cell.contentView addSubview:self.timePeriodPicker];
             }
@@ -949,6 +967,9 @@
     
     self.fluidBalanceDate = date;
     self.fluidBalanceData[@"FluidBalanceDate"] = date;
+    
+    // set formatted date range
+    self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = [self twentyFourHourTimePeriodStringToDate:date forPatient:self.selectedPatient];
     
     // update the 'Date' row with the new date
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];

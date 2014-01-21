@@ -164,6 +164,9 @@
 {
     [super viewDidLoad];
     
+#warning temp code
+    self.selectedPatient.allFluidBalanceData = nil;
+    
     // set neurotoxicity risk factors for selected patient
     if (self.selectedPatient.neurotoxicityRiskFactors)
     {
@@ -6879,6 +6882,9 @@
     
     // will have to cycle through all allFluidBalanceData
     
+    NSDictionary *fluidBalanceData = self.selectedPatient.allFluidBalanceData[0];
+    // NSMutableDictionary *fluidBalanceData = self.selectedPatient.allFluidBalanceData[0];
+    
     // dummy data for now...
     // UIColor *cellColor = [UIColor clearColor];
     UIColor *cellColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
@@ -6887,8 +6893,9 @@
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     dictionary[@"CellColor"] = cellColor;
     dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-    dictionary[@"HeadingText"] = @"19/1/14 - 20/1/14";
-    dictionary[@"WorkingWeight"] = @"ww 900g";
+    // dictionary[@"HeadingText"] = @"19/1/14 - 20/1/14";
+    dictionary[@"HeadingText"] = fluidBalanceData[@"FormattedFluidBalanceDateRange"];
+    dictionary[@"WorkingWeight"] = [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]];
     
     [formattedFluidBalanceResults addObject:dictionary];
     
