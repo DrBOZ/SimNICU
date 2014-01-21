@@ -191,7 +191,7 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
             // if using arabic locale, force to english
-            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            if([[NSLocale currentLocale][NSLocaleDecimalSeparator] isEqualToString:@"٫"])
             {
                 formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
             }
@@ -278,14 +278,14 @@
             // INPUT
             case 1:
                 
-                return [[self.fluidBalanceData objectForKey:@"InputData"] count];
+                return [self.fluidBalanceData[@"InputData"] count];
                 
                 break;
                 
             // OUTPUT
             case 2:
                 
-                return [[self.fluidBalanceData objectForKey:@"OutputData"] count];
+                return [self.fluidBalanceData[@"OutputData"] count];
                 
                 break;
                 
@@ -560,7 +560,7 @@
         }
         
         cell.fluidName.text = self.fluidBalanceData[@"OutputData"][indexPath.row][0];
-        cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([[self.fluidBalanceData objectForKey:@"OutputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
+        cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([self.fluidBalanceData[@"OutputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
     }
@@ -742,7 +742,7 @@
     {
         NSString *sectionName = (section - 1) ? @"OutputData" : @"InputData";
         
-        int rows = [[self.fluidBalanceData objectForKey:sectionName] count];
+        int rows = [self.fluidBalanceData[sectionName] count];
         
         for (int row = 0; row < rows; row ++)
         {
@@ -763,7 +763,7 @@
     NSMutableArray *fluid = [[NSMutableArray alloc] initWithCapacity:2];
     
     // set fluid name
-    NSString *fluidName = [NSString stringWithFormat:@"Fluid %i", ([[self.fluidBalanceData objectForKey:section] count] + 1)];
+    NSString *fluidName = [NSString stringWithFormat:@"Fluid %i", ([self.fluidBalanceData[section] count] + 1)];
     
     [fluid addObject:fluidName];
     [fluid addObject:@0];
@@ -771,7 +771,7 @@
     [self.fluidBalanceData[section] addObject:fluid];
     
     // update table
-    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:([[self.fluidBalanceData objectForKey:section] count] - 1)
+    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:([self.fluidBalanceData[section] count] - 1)
                                                inSection:sender.tag]];
     
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -779,7 +779,7 @@
     // could check if user is editing
     if (userIsEnteringData)
     {
-        FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:([[self.fluidBalanceData objectForKey:section] count] - 1) inSection:sender.tag]];
+        FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:([self.fluidBalanceData[section] count] - 1) inSection:sender.tag]];
         
         [cell.mlPerDay becomeFirstResponder];
     }
@@ -820,14 +820,14 @@
         }
         else if (newText.length == 1)
         {
-            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+            if ([string isEqualToString:[NSLocale currentLocale][NSLocaleDecimalSeparator]])
             {
                 textField.text = @"0";
             }
         }
         else if (newText.length == 2)
         {
-            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
+            if ([string isEqualToString:[NSLocale currentLocale][NSLocaleDecimalSeparator]])
             {
                 // do nothing
             }
@@ -895,13 +895,13 @@
     {
         NSString *sectionName = (section - 1) ? @"OutputData" : @"InputData";
         
-        int rows = [[self.fluidBalanceData objectForKey:sectionName] count];
+        int rows = [self.fluidBalanceData[sectionName] count];
         
         for (int row = 0; row < rows; row ++)
         {
             FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
             
-            double mlperDayDouble = [[self.fluidBalanceData objectForKey:sectionName][row][1] doubleValue];
+            double mlperDayDouble = [self.fluidBalanceData[sectionName][row][1] doubleValue];
             
             // update individual fluids 'ml/kg/day'
             cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", (mlperDayDouble / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
