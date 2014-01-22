@@ -191,7 +191,7 @@
             NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
             formatter.numberStyle = NSNumberFormatterDecimalStyle;
             // if using arabic locale, force to english
-            if([[NSLocale currentLocale][NSLocaleDecimalSeparator] isEqualToString:@"٫"])
+            if([[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator] isEqualToString:@"٫"])
             {
                 formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"];
             }
@@ -534,7 +534,7 @@
             cell.fluidName.delegate = self;
             
             cell.mlPerDay.text = [self.fluidBalanceData[@"InputData"][indexPath.row][1] stringValue];
-            cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
+            cell.mlPerDay.tag = (indexPath.section * 1000) + indexPath.row;
             cell.mlPerDay.delegate = self;
         }
         
@@ -554,8 +554,9 @@
             cell = [[FluidTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
             cell.fluidName.tag = (indexPath.section * 100) + indexPath.row;
             cell.fluidName.delegate = self;
+            
             cell.mlPerDay.text = [self.fluidBalanceData[@"OutputData"][indexPath.row][1] stringValue];
-            cell.mlPerDay.tag = (indexPath.section * 100) + indexPath.row;
+            cell.mlPerDay.tag = (indexPath.section * 1000) + indexPath.row;
             cell.mlPerDay.delegate = self;
         }
         
@@ -793,9 +794,22 @@
     userIsEnteringData = YES;
     self.navigationItem.leftBarButtonItem.enabled = NO;
     
+    int section;
+    int row;
+    
     // work out section and row of textfield from textfield.tag
-    int section = textField.tag / 100;
-    int row = textField.tag - (section * 100);
+    if (textField.tag >= 1000)
+    {
+        // mlPerDay textField
+        section = textField.tag / 1000;
+        row = textField.tag - (section * 1000);
+    }
+    else
+    {
+        // fluidName textField
+        section = textField.tag / 100;
+        row = textField.tag - (section * 100);
+    }
     
     // scroll up to middle
     NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
@@ -809,7 +823,7 @@
 {
     BOOL allowUserToChangeText = YES;
     
-    if (textField.tag == 1)
+    if (textField.tag >= 1000)
     {
         // ml/day
         NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
@@ -827,7 +841,7 @@
         }
         else if (newText.length == 2)
         {
-            if ([string isEqualToString:[NSLocale currentLocale][NSLocaleDecimalSeparator]])
+            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 // do nothing
             }
@@ -847,27 +861,48 @@
     
     NSString *sectionName;
     
-    int section = (textField.tag) / 100;
-    int row;
-    
-    if (section == 1)
+    if (textField.tag >= 1000)
     {
-        sectionName = @"InputData";
+        // mlPerDay textField
+        int section = (textField.tag) / 1000;
+        int row;
         
-        row = textField.tag - 100;
+        if (section == 1)
+        {
+            sectionName = @"InputData";
+            
+            row = textField.tag - 1000;
+        }
+        else
+        {
+            sectionName = @"OutputData";
+            row = textField.tag - 2000;
+        }
+        
+        self.fluidBalanceData[sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
     }
     else
     {
-        sectionName = @"OutputData";
-        row = textField.tag - 200;
+        // fluidName textfield
+        int section = (textField.tag) / 100;
+        int row;
+        
+        if (section == 1)
+        {
+            sectionName = @"InputData";
+            
+            row = textField.tag - 100;
+        }
+        else
+        {
+            sectionName = @"OutputData";
+            row = textField.tag - 200;
+        }
+        
+        self.fluidBalanceData[sectionName][row][0] = textField.text;
     }
     
-    // update results
-    self.fluidBalanceData[sectionName][row][0] = textField.text;
-    self.fluidBalanceData[sectionName][row][1] = [NSNumber numberWithDouble:[textField.text doubleValue]];
-    
     // check if both INPUT and OUTPUT data has been entered
-#warning this currently does not work
     if (self.fluidBalanceData[@"InputData"] && self.fluidBalanceData[@"OutputData"])
     {
         userHasEnteredData = YES;

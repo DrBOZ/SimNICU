@@ -6944,8 +6944,8 @@
             dictionary = [[NSMutableDictionary alloc] init];
             dictionary[@"CellColor"] = cellColor;
             dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-            dictionary[@"FluidName"] = @"Vamin";
-            dictionary[@"mlPerDay"] = @"540.9";
+            dictionary[@"FluidName"] = inputData[0];
+            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.0f", [inputData[1] doubleValue]];
             dictionary[@"mlPerKgPerDay"] = @"120.0";
             dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
             dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
