@@ -809,6 +809,8 @@
         // fluidName textField
         section = textField.tag / 100;
         row = textField.tag - (section * 100);
+        
+        textField.text = @"";
     }
     
     // scroll up to middle
@@ -834,7 +836,7 @@
         }
         else if (newText.length == 1)
         {
-            if ([string isEqualToString:[NSLocale currentLocale][NSLocaleDecimalSeparator]])
+            if ([string isEqualToString:[[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator]])
             {
                 textField.text = @"0";
             }

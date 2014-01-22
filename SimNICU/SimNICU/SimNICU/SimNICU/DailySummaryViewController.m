@@ -6900,8 +6900,8 @@
      *      [1] NSNumber    *mlPerDay
      */
     
-    // UIColor *cellColor = [UIColor clearColor];
-    UIColor *cellColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+    UIColor *cellColor = [UIColor clearColor];
+    // UIColor *cellColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
     
     BOOL addBlankRow = NO;
     
@@ -6945,7 +6945,7 @@
             dictionary[@"CellColor"] = cellColor;
             dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
             dictionary[@"FluidName"] = inputData[0];
-            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.0f", [inputData[1] doubleValue]];
+            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [inputData[1] doubleValue]];
             dictionary[@"mlPerKgPerDay"] = @"120.0";
             dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
             dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
@@ -6980,8 +6980,8 @@
             dictionary = [[NSMutableDictionary alloc] init];
             dictionary[@"CellColor"] = cellColor;
             dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-            dictionary[@"FluidName"] = @"Urine";
-            dictionary[@"mlPerDay"] = @"5.4";
+            dictionary[@"FluidName"] = outputData[0];
+            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [outputData[1] doubleValue]];
             dictionary[@"mlPerKgPerDay"] = @"8.7";
             dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
             dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
