@@ -294,6 +294,7 @@
         self.myTableView2.frame = CGRectMake(0.0f, 92.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 92.0f - 44.0f));
     }
     self.myTableView2.separatorColor = [UIColor clearColor];
+    self.myTableView2.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.myTableView2.sectionFooterHeight = 10.0f;
     self.myTableView2.sectionHeaderHeight = 10.0f;
     self.myTableView2.rowHeight = 44.0f;
@@ -6900,8 +6901,8 @@
      *      [1] NSNumber    *mlPerDay
      */
     
-    UIColor *cellColor = [UIColor clearColor];
-    // UIColor *cellColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+    // UIColor *cellColor = [UIColor clearColor];
+    UIColor *cellColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
     
     BOOL addBlankRow = NO;
     

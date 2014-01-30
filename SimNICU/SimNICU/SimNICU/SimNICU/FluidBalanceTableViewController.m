@@ -105,12 +105,15 @@
         
         self.fluidBalanceDate = [gregorian dateFromComponents:dateComponents];
         
-        // instantiate time period picker
-        if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
-        self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
-        self.timePeriodPicker.dataSource = self;
-        self.timePeriodPicker.delegate = self;
-        [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
+        if (self.selectedPatient)
+        {
+            // instantiate time period picker
+            if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
+            self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
+            self.timePeriodPicker.dataSource = self;
+            self.timePeriodPicker.delegate = self;
+            [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
+        }
         
         // setup dummy fluidBalanceData
         {
@@ -313,6 +316,14 @@
     
     if (section == 0) height = 0.0f;
     
+    if (self.selectedPatient)
+    {
+        if (section == 1)
+        {
+            height = 0.0f;
+        }
+    }
+    
     return height;
 }
 
@@ -458,10 +469,7 @@
     {
         height = 216.0f;
     }
-//    else if (indexPath.section == 1 && indexPath.row == 2)
-//    {
-//        height = 216.0f;
-//    }
+    else if (!self.selectedPatient && indexPath.section == 0) return 0.0f;
     
     return height;
 }

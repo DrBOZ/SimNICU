@@ -5134,7 +5134,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5150,7 +5150,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "D0BFCA0E-A2DA-4F43-918E-E95CCF6422E8";
+				PROVISIONING_PROFILE = "SimNICU Development";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5164,8 +5164,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman (57UMAT8PDB)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -5174,7 +5174,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "390D2D19-1C4A-4FC9-8F90-332F766CCFA5";
+				PROVISIONING_PROFILE = "77D79D8E-1250-4D3F-9AED-14D626F0BD29";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5183,8 +5183,8 @@
 		5C940A7C166E37FE0044A7D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Conrad Bosman (BLB8Z2DN32)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5208,8 +5208,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "SimNICU Development";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4F399F73-F6BB-4825-802D-DD0C8976F0AE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5217,8 +5217,8 @@
 		5C940A7D166E37FE0044A7D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Conrad Bosman";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Conrad Bosman (57UMAT8PDB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Conrad Bosman (57UMAT8PDB)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5242,8 +5242,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "390D2D19-1C4A-4FC9-8F90-332F766CCFA5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "390D2D19-1C4A-4FC9-8F90-332F766CCFA5";
+				PROVISIONING_PROFILE = "77D79D8E-1250-4D3F-9AED-14D626F0BD29";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -5305,8 +5304,8 @@
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = "SimNICU Lite";
-				PROVISIONING_PROFILE = "DE5D847B-18A9-46EA-BC84-70B376456830";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DE5D847B-18A9-46EA-BC84-70B376456830";
+				PROVISIONING_PROFILE = "37825269-A396-4C77-A865-AB9F62D9599A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37825269-A396-4C77-A865-AB9F62D9599A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
