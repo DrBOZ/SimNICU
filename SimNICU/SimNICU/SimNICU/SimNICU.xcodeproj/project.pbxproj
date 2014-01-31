@@ -47,8 +47,6 @@
 		5C0700CC183A8D51001EF769 /* CFAMSeizures01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C0700CA183A8D51001EF769 /* CFAMSeizures01.jpg */; };
 		5C07D7D917C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
 		5C07D7DA17C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */; };
-		5C0A6491188889FA00E3FF2C /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A6490188889FA00E3FF2C /* Fleksy.framework */; };
-		5C0A6492188889FB00E3FF2C /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0A6490188889FA00E3FF2C /* Fleksy.framework */; };
 		5C0B9B8317D2022B000B9E34 /* trackball blue highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */; };
 		5C0B9B8417D2022B000B9E34 /* trackball blue highlighted.pxm in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7817D2022B000B9E34 /* trackball blue highlighted.pxm */; };
 		5C0B9B8517D2022B000B9E34 /* trackball blue highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0B9B7917D2022B000B9E34 /* trackball blue highlighted@2x.png */; };
@@ -244,6 +242,7 @@
 		5C3C02BA17DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */; };
 		5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
 		5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
+		5C3FCEB3189B3D60007AC7A8 /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3FCEB2189B3D60007AC7A8 /* Fleksy.framework */; };
 		5C422D851800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */; };
 		5C422D861800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */; };
 		5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
@@ -1003,7 +1002,6 @@
 		5C0700CA183A8D51001EF769 /* CFAMSeizures01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CFAMSeizures01.jpg; sourceTree = "<group>"; };
 		5C07D7D717C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartPhototherapyDataSource.h; sourceTree = "<group>"; };
 		5C07D7D817C846FC005CB404 /* CBShinobiChartPhototherapyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartPhototherapyDataSource.m; sourceTree = "<group>"; };
-		5C0A6490188889FA00E3FF2C /* Fleksy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fleksy.framework; sourceTree = "<group>"; };
 		5C0B9B7717D2022B000B9E34 /* trackball blue highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted.png"; sourceTree = "<group>"; };
 		5C0B9B7817D2022B000B9E34 /* trackball blue highlighted.pxm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "trackball blue highlighted.pxm"; sourceTree = "<group>"; };
 		5C0B9B7917D2022B000B9E34 /* trackball blue highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackball blue highlighted@2x.png"; sourceTree = "<group>"; };
@@ -1160,6 +1158,7 @@
 		5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardTableViewController.m; sourceTree = "<group>"; };
 		5C3C02BB17DAA80200E4297A /* PostnatalWardSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardSection.h; sourceTree = "<group>"; };
 		5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardSection.m; sourceTree = "<group>"; };
+		5C3FCEB2189B3D60007AC7A8 /* Fleksy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fleksy.framework; path = "../../../../../../../../Desktop/iFleksySDK-master/Fleksy.framework"; sourceTree = "<group>"; };
 		5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartForJaundice.h; sourceTree = "<group>"; };
 		5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartForJaundice.m; sourceTree = "<group>"; };
 		5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSDataBase.h; sourceTree = "<group>"; };
@@ -1803,6 +1802,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C3FCEB3189B3D60007AC7A8 /* Fleksy.framework in Frameworks */,
 				5C0E01B0182C4A6900B7D8C3 /* libz.dylib in Frameworks */,
 				5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */,
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
@@ -1825,7 +1825,6 @@
 				5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */,
 				5C940CA6166E41050044A7D1 /* MobileCoreServices.framework in Frameworks */,
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
-				5C0A6491188889FA00E3FF2C /* Fleksy.framework in Frameworks */,
 				5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */,
 				5C940CA0166E40D50044A7D1 /* Security.framework in Frameworks */,
 				5CCC272316D66AC500D14080 /* Social.framework in Frameworks */,
@@ -1852,7 +1851,6 @@
 				5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */,
 				5CCC272516D66F0D00D14080 /* iAd.framework in Frameworks */,
 				5CD3B01416CF38D500DE362C /* MobileCoreServices.framework in Frameworks */,
-				5C0A6492188889FB00E3FF2C /* Fleksy.framework in Frameworks */,
 				5CD3B01516CF38D500DE362C /* OpenGLES.framework in Frameworks */,
 				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 				5CD3B01616CF38D500DE362C /* QuartzCore.framework in Frameworks */,
@@ -3084,6 +3082,7 @@
 		5C940A60166E37FE0044A7D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C3FCEB2189B3D60007AC7A8 /* Fleksy.framework */,
 				5C0E01AF182C4A6900B7D8C3 /* libz.dylib */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
@@ -3098,7 +3097,6 @@
 				5C940A65166E37FE0044A7D1 /* CoreGraphics.framework */,
 				5C940CA7166E411D0044A7D1 /* CoreMotion.framework */,
 				5C39F0AB17CFEC4F007B2CF9 /* CoreText.framework */,
-				5C0A6490188889FA00E3FF2C /* Fleksy.framework */,
 				5C940A63166E37FE0044A7D1 /* Foundation.framework */,
 				5CB46B6C17DA1194003365F6 /* GameKit.framework */,
 				5CCC271816D64A1F00D14080 /* iAd.framework */,
@@ -5191,6 +5189,7 @@
 					"$(SRCROOT)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU,
+					"/Users/conradbosman/Desktop/iFleksySDK-master",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
@@ -5225,6 +5224,7 @@
 					"$(SRCROOT)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU,
+					"/Users/conradbosman/Desktop/iFleksySDK-master",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
