@@ -7,6 +7,7 @@
  */
 
 "24G" = "Abocath";
+"% weight loss" = "percentual de perda de peso";
 "About" = "Acerca de";
 "add" = "adicionar";
 "new patient" = "um novo paciente";
@@ -92,10 +93,12 @@
 "Fluid Balance" = "Balanço Hídrico"; // correct x2
 "Fluid in the horizontal fissure" = "Líquido na incisura horizontal";
 "Fluid Requirements" = "Necessidades hídricas";
+"foot" = "pé";
 "Forename" = "First name";
 "Frusemide" = "Furosemide";
 "full stop" = "period";
 "Fully enterally fed" = "Alimentação enteral plena";
+"(gain of  g in days)" = "(ganho em gramas por dia)";
 "Gastroschisis" = "Cuidados na gastrosquise";
 "General" = "Geral";
 "Gentamicin" = "Gentamicina";
@@ -132,6 +135,8 @@
 "Male" = "Masculino";
 "Maternal APH" = "Hemorragia materna pré-parto";
 "Maternal Group B Strep positive" = "Mãe Estrepto B positivo";
+"Medically fit for discharge" = "Em condições médicas para alta hospitalar";
+"micrograms/kg/min" = "microgramas/kg/min";
 "Midazolam" = "Midazolam";
 "Minimal milky aspirates" = "Aspirado leitoso mínimo";
 "Misc" = "Outros";
@@ -144,10 +149,13 @@
 "New Bay" = "Novo Leito";
 "New custom text" = "Novo texto personalizado";
 "Nil" = "Nenhuma";
+"No concerns" = "Sem alterações";
+"No events" = "Nenhum evento";
 "no growth" = "sem crescimento bacteriano";
 "No obvious pneumothorax" = "Sem pneumotórax visível";
 "No vomits" = "Sem vômitos";
 "None" = "Nenhum";
+"Normal examination" = "Exame Físico";
 "Oxygenation Index" = "Índice de oxigenação";
 "Pancuronium" = "Pancuronium";
 "Paracetamol" = "Acetaminophen";
@@ -157,6 +165,9 @@
 "Patient" = "Paciente";
 "Patient List" = "Lista de pacientes";
 "Phototherapy" = "Fototerapia";
+
+"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discoloration" = "Rosado\nAtivo\nFC 140\nAusculta cardíaca e pulmonar normal\nPulsos femurais palpáveis bilaterais\nFrequência respiratória 40\nSaturaçāo de Oxigênio de 97% em ar ambiente\nAbdomen plano e depressível, indolor, sem distensāo ou colorações";
+
 "Plan" = "Plano ou Condutas"; // ? Planos e Condutas
 "Plastic Bag (at delivery)" = "Saco plástico (ao nascimento)";
 
@@ -167,6 +178,7 @@
 "Pneumothorax" = "Pneumotórax";
 "Postnatal Ward" = "Alojamento Conjunto";
 "Prematurity" = "Prematuridade";
+"Preterm infant establishing enteral feeds" = "Recémnascido prétermo estabelecendo dieta enteral plena";
 "Prophylactic phototherapy" = "Fototerapia profilática";
 "Pulmonary haemorrhage" = "Cuidados na Hemorragia pulmonar";
 "Pulmonary Haemorrhage" = "Cuidados na Hemorragia pulmonar";
@@ -194,6 +206,7 @@
 "Serum Bilirubin" = "Bilirrubina Sérica";
 "Serum bilirubin units" = "Serum bilirubin units";
 "Settings" = "Definições"; // ? Ajustes
+"Social concerns" = "Preocupações Sociais";
 "Some" = "Algum";
 "Spontaneous preterm labour" = "TPP espontâneo";
 "Standard preterm PN" = "Fórmula de pré-termo padrão";
@@ -222,6 +235,7 @@
 "Urea" = "Uréia";
 "Vecuronium" = "Vecuronium";
 "Ventilation & Sedation" = "Ventilação e Sedação"; // consistent
+"Visiting regularly" = "Visitas regulares";
 "Vitamin K" = "Vitamina K";
 "WARNING" = "WARNING";
 "WCC" = "Leuc";

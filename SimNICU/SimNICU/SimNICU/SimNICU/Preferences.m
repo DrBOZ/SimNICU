@@ -588,11 +588,11 @@
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Standard preterm PN", nil)
                                                           ref:NSLocalizedString(@"Standard preterm PN", nil)]];
             
-            // Yellow regime
-            [newSection.customText addObject:[self customText:@"Yellow regime" ref:@"Yellow regime"]];
-            
-            // Green regime
-            [newSection.customText addObject:[self customText:@"Green regime" ref:@"Green regime"]];
+//            // Yellow regime
+//            [newSection.customText addObject:[self customText:@"Yellow regime" ref:@"Yellow regime"]];
+//            
+//            // Green regime
+//            [newSection.customText addObject:[self customText:@"Green regime" ref:@"Green regime"]];
             
             [self.handoverSections addObject:newSection];
         }
@@ -844,7 +844,7 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
             
             // Normal examination
-            [newSection.customText addObject:[self customText:@"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discoloration"
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discoloration", nil)
                                                           ref:@"Normal examination"]];
             
             [self.handoverSections addObject:newSection];
