@@ -167,22 +167,25 @@
 #warning temp code
     self.selectedPatient.allFluidBalanceData = nil;
     
-    // set neurotoxicity risk factors for selected patient
-    if (self.selectedPatient.neurotoxicityRiskFactors)
+    // setup phototherapy chart settings
     {
-        self.neurotoxicityRiskFactors = self.selectedPatient.neurotoxicityRiskFactors;
-    }
-    
-    // set clinical status for selected patient
-    if (self.selectedPatient.clinicalStatus)
-    {
-        self.clinicalStatus = self.selectedPatient.clinicalStatus;
-    }
-    
-    // set bilirubin neurotoxicity risk
-    if (self.neurotoxicityRiskFactors && self.clinicalStatus)
-    {
-        [self calculateNeurotoxicityRisk];
+        // set neurotoxicity risk factors for selected patient
+        if (self.selectedPatient.neurotoxicityRiskFactors)
+        {
+            self.neurotoxicityRiskFactors = self.selectedPatient.neurotoxicityRiskFactors;
+        }
+        
+        // set clinical status for selected patient
+        if (self.selectedPatient.clinicalStatus)
+        {
+            self.clinicalStatus = self.selectedPatient.clinicalStatus;
+        }
+        
+        // set bilirubin neurotoxicity risk
+        if (self.neurotoxicityRiskFactors && self.clinicalStatus)
+        {
+            [self calculateNeurotoxicityRisk];
+        }
     }
     
     biochemistryResultsBackroundColors = [[NSMutableArray alloc] initWithCapacity:10];
@@ -198,27 +201,50 @@
     // delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // setup back button
-    self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self action:@selector(done)];
-    
-    // setup edit button
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    // setup toolbar
-    self.navigationController.toolbarHidden = NO;
-    
-    UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatientButtonPressed)];
-    item1.tag = 1;
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(prepareDailySummaryPDFForPatient)];
-    item2.tag = 2;
-    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(nextPatientButtonPressed:)];
-    item3.tag = 3;
-    UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(nextPatientButtonPressed:)];
-    item4.tag = 4;
-    
-    NSArray *items = [NSArray arrayWithObjects:item1, flexibleItem, item2, flexibleItem, item3, flexibleItem, item4, nil];
-    self.toolbarItems = items;
+    // setup buttons
+    {
+        // setup back button
+        self.navigationItem.leftBarButtonItem = [CBBarButtonItems backBarButtonWithTarget:self
+                                                                                   action:@selector(done)];
+        
+        // setup edit button
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        
+        // setup toolbar
+        self.navigationController.toolbarHidden = NO;
+        
+        // flexible space
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                       target:self
+                                                                                       action:nil];
+        
+        // previous patient button
+        UIBarButtonItem *previousPatient = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
+                                                                                         target:self
+                                                                                         action:@selector(previousPatientButtonPressed)];
+        previousPatient.tag = 1;
+        
+        // create PDF button
+        UIBarButtonItem *createPDFButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                                         target:self
+                                                                                         action:@selector(prepareDailySummaryPDFForPatient)];
+        createPDFButton.tag = 2;
+        
+        // next patient from the top button
+        UIBarButtonItem *nextPatientFromTheTop = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
+                                                                                               target:self
+                                                                                               action:@selector(nextPatientButtonPressed:)];
+        nextPatientFromTheTop.tag = 3;
+        
+        // next patient button
+        UIBarButtonItem *nextPatient = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
+                                                                                     target:self
+                                                                                     action:@selector(nextPatientButtonPressed:)];
+        nextPatient.tag = 4;
+        
+        // setup toolbar
+        self.toolbarItems = @[previousPatient, flexibleSpace, createPDFButton, flexibleSpace, nextPatientFromTheTop, flexibleSpace, nextPatient];
+    }
     
     // iOS 7 specifics
     if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -322,7 +348,6 @@
     }
     else
     {
-        // return [self.selectedPatient.handoverSections count];
         return [preferences.handoverSections count];
     }
 }

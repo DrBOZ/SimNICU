@@ -242,7 +242,6 @@
 		5C3C02BA17DA9FF200E4297A /* PostnatalWardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */; };
 		5C3C02BD17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
 		5C3C02BE17DAA80200E4297A /* PostnatalWardSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */; };
-		5C3FCEB3189B3D60007AC7A8 /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3FCEB2189B3D60007AC7A8 /* Fleksy.framework */; };
 		5C422D851800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */; };
 		5C422D861800B9F900C383F8 /* CBShinobiChartForJaundice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */; };
 		5C427FE117B6390C00F8CED6 /* CrUSSDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C427FE017B6390C00F8CED6 /* CrUSSDataBase.m */; };
@@ -728,6 +727,7 @@
 		5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */; };
 		5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
 		5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
+		5CB1F41A189FDEA400C0F785 /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1F419189FDEA400C0F785 /* Fleksy.framework */; };
 		5CB46B6A17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
 		5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
 		5CB46B6D17DA1194003365F6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB46B6C17DA1194003365F6 /* GameKit.framework */; };
@@ -1158,7 +1158,6 @@
 		5C3C02B817DA9FF200E4297A /* PostnatalWardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardTableViewController.m; sourceTree = "<group>"; };
 		5C3C02BB17DAA80200E4297A /* PostnatalWardSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostnatalWardSection.h; sourceTree = "<group>"; };
 		5C3C02BC17DAA80200E4297A /* PostnatalWardSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostnatalWardSection.m; sourceTree = "<group>"; };
-		5C3FCEB2189B3D60007AC7A8 /* Fleksy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fleksy.framework; path = "../../../../../../../../Desktop/iFleksySDK-master/Fleksy.framework"; sourceTree = "<group>"; };
 		5C422D831800B9F900C383F8 /* CBShinobiChartForJaundice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBShinobiChartForJaundice.h; sourceTree = "<group>"; };
 		5C422D841800B9F900C383F8 /* CBShinobiChartForJaundice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBShinobiChartForJaundice.m; sourceTree = "<group>"; };
 		5C427FDF17B6390C00F8CED6 /* CrUSSDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrUSSDataBase.h; sourceTree = "<group>"; };
@@ -1718,6 +1717,7 @@
 		5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsModel.m; sourceTree = "<group>"; };
 		5CAE2E1017E6C25C001823A3 /* CustomTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextTableViewController.h; sourceTree = "<group>"; };
 		5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextTableViewController.m; sourceTree = "<group>"; };
+		5CB1F419189FDEA400C0F785 /* Fleksy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fleksy.framework; path = "../../../../Code/iFleksySDK-master/Fleksy.framework"; sourceTree = "<group>"; };
 		5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTableViewController.h; sourceTree = "<group>"; };
 		5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTableViewController.m; sourceTree = "<group>"; };
 		5CB46B6C17DA1194003365F6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -1802,7 +1802,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C3FCEB3189B3D60007AC7A8 /* Fleksy.framework in Frameworks */,
+				5CB1F41A189FDEA400C0F785 /* Fleksy.framework in Frameworks */,
 				5C0E01B0182C4A6900B7D8C3 /* libz.dylib in Frameworks */,
 				5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */,
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
@@ -3082,7 +3082,7 @@
 		5C940A60166E37FE0044A7D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5C3FCEB2189B3D60007AC7A8 /* Fleksy.framework */,
+				5CB1F419189FDEA400C0F785 /* Fleksy.framework */,
 				5C0E01AF182C4A6900B7D8C3 /* libz.dylib */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
@@ -5190,6 +5190,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU,
 					"/Users/conradbosman/Desktop/iFleksySDK-master",
+					"/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/Code/iFleksySDK-master",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
@@ -5225,6 +5226,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/feature_ios7/SimNICU/SimNICU/SimNICU,
 					"/Users/conradbosman/Desktop/iFleksySDK-master",
+					"/Users/conradbosman/Documents/INFORMATICS/PROJECTS/SimNICU/Code/iFleksySDK-master",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimNICU/SimNICU-Prefix.pch";
