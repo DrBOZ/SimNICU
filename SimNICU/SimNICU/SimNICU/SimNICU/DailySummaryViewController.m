@@ -273,9 +273,6 @@
     // set title
     self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
     
-    // sections
-    // tableView2Sections = [[NSMutableArray alloc] initWithCapacity:12];
-    // tableView2Sections = [self loadSectionDataForPatientEditing:self.editing]; // don't think I actually need this array
     
     [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
     /*
@@ -877,7 +874,6 @@
         if (newPatientDetails)
         {
             cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-            
             newPatientDetails = NO;
         }
         else
@@ -902,7 +898,6 @@
             if (newPatientWeight)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                
                 newPatientWeight = NO;
             }
             else
@@ -924,7 +919,6 @@
             if (newPatientBackground)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                
                 newPatientBackground = NO;
             }
             else
@@ -946,6 +940,7 @@
             if (newActiveProblems)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newActiveProblems = NO;
             }
             else
             {
@@ -966,6 +961,7 @@
             if (newResolvedProblems)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newResolvedProblems = NO;
             }
             else
             {
@@ -986,6 +982,7 @@
             if (newRecentSignificantEvents)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newRecentSignificantEvents = NO;
             }
             else
             {
@@ -1006,6 +1003,7 @@
             if (newVentilationAndSedation)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newVentilationAndSedation = NO;
             }
             else
             {
@@ -1026,6 +1024,7 @@
             if (newCXR)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newCXR = NO;
             }
             else
             {
@@ -1046,6 +1045,7 @@
             if (newCardiovascular)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newCardiovascular = NO;
             }
             else
             {
@@ -1149,6 +1149,7 @@
                 if (newHaematology)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    newHaematology = NO;
                 }
                 else
                 {
@@ -1170,6 +1171,7 @@
             if (newLines)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newLines = NO;
             }
             else
             {
@@ -1190,6 +1192,7 @@
             if (newEchocardiogram)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newEchocardiogram = NO;
             }
             else
             {
@@ -1210,6 +1213,7 @@
             if (newFeedsAndFluids)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newFeedsAndFluids = NO;
             }
             else
             {
@@ -1290,6 +1294,7 @@
                 if (newFluidBalance)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    newFluidBalance = NO;
                 }
                 else
                 {
@@ -1478,6 +1483,7 @@
                 if (newElectrolytes)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    newElectrolytes = NO;
                 }
                 else
                 {
@@ -1502,7 +1508,6 @@
                 if (newBiliChart)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                    
                     newBiliChart = NO;
                 }
                 else
@@ -1629,7 +1634,6 @@
                 if (newJaundice)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                    
                     newJaundice = NO;
                 }
                 else
@@ -1704,6 +1708,7 @@
                 if (newSepsis)
                 {
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                    newSepsis = NO;
                 }
                 else
                 {
@@ -1725,6 +1730,7 @@
             if (newDrugs)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newDrugs = NO;
             }
             else
             {
@@ -1745,6 +1751,7 @@
             if (newROP)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newROP = NO;
             }
             else
             {
@@ -1765,6 +1772,7 @@
             if (newCranialUSS)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newCranialUSS = NO;
             }
             else
             {
@@ -1785,6 +1793,7 @@
             if (newParentsAndSocial)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newParentsAndSocial = NO;
             }
             else
             {
@@ -1805,6 +1814,7 @@
             if (newImpression)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newImpression = NO;
             }
             else
             {
@@ -1825,6 +1835,7 @@
             if (newPlan)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newPlan = NO;
             }
             else
             {
@@ -1845,6 +1856,7 @@
             if (newJobs)
             {
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newJobs = NO;
             }
             else
             {
@@ -2794,8 +2806,6 @@
     [self.impressionTextView resignFirstResponder];
     [self.planTextView resignFirstResponder];
     [self.jobsTextView resignFirstResponder];
-    
-    // tableView2Sections = [self loadSectionDataForPatientEditing:editing];
     
     [self.myTableView1 setEditing:editing animated:YES];
     [self.myTableView2 setEditing:editing animated:YES];
@@ -3783,8 +3793,6 @@
     
     self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
     
-    [self loadSectionDataForPatientEditing:self.editing];
-    
     [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
     
     [self.myTableView1 reloadData];
@@ -3887,8 +3895,6 @@
     self.selectedPatient = [[self.bayData[selectedBay] patientsInBay] objectAtIndex:selectedPatientInBay];
     
     self.title = [NSString stringWithFormat:@"%@ - %i", [self.bayData[selectedBay] bayName], (selectedPatientInBay + 1)];
-    
-    [self loadSectionDataForPatientEditing:self.editing];
     
     [self loadShinobiChartWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 44.0f)];
     
@@ -4135,20 +4141,6 @@
     
     self.chart.xAxis = self.xAxis;
     self.chart.yAxis = self.yAxis;
-}
-
-- (NSMutableArray *)loadSectionDataForPatientEditing:(BOOL)editing
-{
-    NSMutableArray *returnArray = [[NSMutableArray alloc] initWithCapacity:20];
-    
-    HandoverSection *section;
-    
-    for (section in self.selectedPatient.handoverSections)
-    {
-        [returnArray addObject:section.sectionName];
-    }
-    
-    return returnArray;
 }
 
 - (void)addTrackBallForUITextView:(UITextView *)textView
