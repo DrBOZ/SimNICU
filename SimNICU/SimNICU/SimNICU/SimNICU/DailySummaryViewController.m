@@ -3939,10 +3939,16 @@
     }
     
     // instantiate array
-    self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
+    if (!self.bilirubinLevelsToPlot)
+    {
+        self.bilirubinLevelsToPlot = [[NSMutableArray alloc] initWithCapacity:5];
+    }
     
     // ShinobiChart
-    self.chart = [[ShinobiChart alloc] initWithFrame:frame];
+    if (!self.chart)
+    {
+        self.chart = [[ShinobiChart alloc] initWithFrame:frame];
+    }
     
     if (!self.gestation)
     {

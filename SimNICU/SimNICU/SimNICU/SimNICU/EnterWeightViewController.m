@@ -46,6 +46,9 @@
     UIView *tapView;
     CGFloat iOS7Adjustment;
     CGFloat tableWidth;
+    
+    NSMutableArray *sectionViews;
+    BOOL tryNewMethod;
 }
 
 // lazy instantiation
@@ -166,6 +169,8 @@
     if (self) 
     {
         [self loadData];
+        
+        tryNewMethod = YES;
         
         // iOS 7 specifics
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -408,6 +413,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+//    // may need to put this somewhere else, but seems fine for now
+//    [self updateSectionViews];
+    
     return [self.bayData count] + 2;
 }
 
@@ -483,43 +491,87 @@
     return height;
 }
 
+- (void)updateSectionViews
+{
+    // create/update sectionViews array here
+    sectionViews = nil;
+    sectionViews = [[NSMutableArray alloc] initWithCapacity:[self.bayData count]];
+    
+    for (int i = 0; i < self.bayData.count; i++)
+    {
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 270.0f, 30.0f)];
+        
+        UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 250.0f, 30.0f)];
+        
+        // iOS 7 specifics
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        {
+            // do nothing
+        }
+        else
+        {
+            headerLabel.textColor = [UIColor whiteColor];
+            // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+            headerLabel.shadowColor = [UIColor blackColor];
+            headerLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+            headerLabel.backgroundColor = [self.myTableView backgroundColor];
+            headerLabel.opaque = YES;
+            headerLabel.font = [UIFont boldSystemFontOfSize:18.0f];
+            headerLabel.textAlignment = UITextAlignmentLeft;
+            headerLabel.adjustsFontSizeToFitWidth = YES;
+        }
+        
+        headerLabel.text = [self.bayData[i] bayName];
+        
+        [headerView addSubview:headerLabel];
+        
+        [sectionViews addObject:headerView];
+    }
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = nil;
+    
+    // may need to put this somewhere else, but seems fine for now
+    [self updateSectionViews];
     
     if (!self.confidentialityModeOn) 
     {
         if (!(section == 0 || section == 1))
         {
-            UIView *headerView;
-            
-            headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 270.0f, 30.0f)];
-            
-            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 250.0f, 30.0f)];
-            
-            // iOS 7 specifics
-            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            if (sectionViews)
             {
-                // do nothing
-            }
-            else
-            {
-                headerLabel.textColor = [UIColor whiteColor];
-                // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
-                headerLabel.shadowColor = [UIColor blackColor];
-                headerLabel.shadowOffset = CGSizeMake(0, 1);
-                headerLabel.backgroundColor = [self.myTableView backgroundColor];
-                headerLabel.opaque = YES;
-                headerLabel.font = [UIFont boldSystemFontOfSize:18];
-                headerLabel.textAlignment = UITextAlignmentLeft;
-                headerLabel.adjustsFontSizeToFitWidth = YES;
+                view = sectionViews[section - 2];
             }
             
-            headerLabel.text = [self.bayData[section - 2] bayName];
-            
-            [headerView addSubview:headerLabel];
-            
-            view = headerView;
+//            UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 270.0f, 30.0f)];
+//            
+//            UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 250.0f, 30.0f)];
+//            
+//            // iOS 7 specifics
+//            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//            {
+//                // do nothing
+//            }
+//            else
+//            {
+//                headerLabel.textColor = [UIColor whiteColor];
+//                // headerLabel.textColor = [UIColor colorWithRed:0.298039 green:0.337255 blue:0.423529 alpha:1];
+//                headerLabel.shadowColor = [UIColor blackColor];
+//                headerLabel.shadowOffset = CGSizeMake(0, 1);
+//                headerLabel.backgroundColor = [self.myTableView backgroundColor];
+//                headerLabel.opaque = YES;
+//                headerLabel.font = [UIFont boldSystemFontOfSize:18];
+//                headerLabel.textAlignment = UITextAlignmentLeft;
+//                headerLabel.adjustsFontSizeToFitWidth = YES;
+//            }
+//            
+//            headerLabel.text = [self.bayData[section - 2] bayName];
+//            
+//            [headerView addSubview:headerLabel];
+//            
+//            view = headerView;
         }
     }
     
@@ -578,6 +630,19 @@
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
+                
+                // add gesture recognisers
+                {
+                    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                                    action:@selector(handleGestationSwipeLeft:)];
+                    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+                    [cell addGestureRecognizer:swipeLeft];
+                    
+                    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                                     action:@selector(handleGestationSwipeRight:)];
+                    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+                    [cell addGestureRecognizer:swipeRight];
+                }
             }
             
             if (!self.gestation)
@@ -595,14 +660,6 @@
             }
             
             cell.accessoryView = self.gestation;
-            
-            UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestationSwipeLeft:)];
-            swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-            [cell addGestureRecognizer:swipeLeft];
-            
-            UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleGestationSwipeRight:)];
-            swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-            [cell addGestureRecognizer:swipeRight];
             
             cell.textLabel.text = NSLocalizedString(@"Gestation", nil);
             
@@ -632,25 +689,29 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                self.sex = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Male", nil), NSLocalizedString(@"Female", nil), NSLocalizedString(@"Unknown", nil), nil]];
-                self.sex.frame = CGRectMake(1.0, 1.0, 240, 40);
-                
-                // iOS 7 specifics
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                if (!self.sex)
                 {
-                    self.sex.tintColor = [UIColor redColor];
+                    self.sex = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Male", nil), NSLocalizedString(@"Female", nil), NSLocalizedString(@"Unknown", nil)]];
+                    
+                    self.sex.frame = CGRectMake(1.0, 1.0, 240, 40);
+                    
+                    // iOS 7 specifics
+                    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                    {
+                        self.sex.tintColor = [UIColor redColor];
+                    }
+                    else
+                    {
+                        self.sex.tintColor = [UIColor grayColor];
+                    }
+                    
+                    self.sex.segmentedControlStyle = UISegmentedControlStyleBar;
+                    self.sex.selectedSegmentIndex = 2;
+                    
+                    [self.sex addTarget:self
+                                 action:@selector(selectSex)
+                       forControlEvents:UIControlEventValueChanged];
                 }
-                else
-                {
-                    self.sex.tintColor = [UIColor grayColor];
-                }
-                
-                self.sex.segmentedControlStyle = UISegmentedControlStyleBar;
-                self.sex.selectedSegmentIndex = 2;
-                
-                [self.sex addTarget:self
-                             action:@selector(selectSex)
-                   forControlEvents:UIControlEventValueChanged];
                 
                 cell.accessoryView = self.sex;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -659,40 +720,8 @@
             }
             else 
             {
-                static NSString *CellIdentifier = @"DoneCell";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                
-                if (!cell)
-                {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.backgroundColor = [UIColor whiteColor];
-                }
-                
-                // iOS 7 specifics
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-                {
-                    self.button = [UIButton buttonWithType:UIButtonTypeSystem];
-                    self.button.frame = CGRectMake(0.0f, 1.0f, 120.0f, 30.0f);
-                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-                    
-                    [self unhighlightDoneButton];
-                    
-                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-                }
-                else
-                {
-                    self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-                    [self.button setSelected:NO];
-                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-                    [self.button setButtonColor:[UIColor darkGrayColor]];
-                }
-                
-                cell.accessoryView = self.button;
-                cell.textLabel.text = @"";
-                
-                returnCell = cell;
+                // Done button
+                returnCell = [self doneButtonCell];
             }
             
         }
@@ -709,17 +738,19 @@
                     cell.backgroundColor = [UIColor whiteColor];
                 }
                 
-                self.centile = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"0.4th", @"9th", @"50th", nil]];
-                self.centile.frame = CGRectMake(1.0, 1.0, 240, 40);
-                self.centile.tintColor = [UIColor grayColor];
-                
-                self.centile.segmentedControlStyle = UISegmentedControlStyleBar;
-                self.centile.selectedSegmentIndex = 2;
-                
-                [self.centile addTarget:self 
-                                 action:@selector(selectCentile) 
-                       forControlEvents:UIControlEventValueChanged];
-                
+                if (!self.centile)
+                {
+                    self.centile = [[UISegmentedControl alloc] initWithItems:@[@"0.4th", @"9th", @"50th"]];
+                    self.centile.frame = CGRectMake(1.0f, 1.0f, 240.0f, 40.0f);
+                    self.centile.tintColor = [UIColor grayColor];
+                    
+                    self.centile.segmentedControlStyle = UISegmentedControlStyleBar;
+                    self.centile.selectedSegmentIndex = 2;
+                    
+                    [self.centile addTarget:self
+                                     action:@selector(selectCentile)
+                           forControlEvents:UIControlEventValueChanged];
+                }
                 
                 cell.accessoryView = self.centile;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -728,69 +759,14 @@
             }
             else 
             {
-                static NSString *CellIdentifier = @"DoneCell";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                
-                if (!cell)
-                {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.backgroundColor = [UIColor whiteColor];
-                }
-                
-                /*
-                self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0, 1.0, 120, 30)];
-                [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-                [self.button setSelected:NO];
-                [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-                [self.button setButtonColor:[UIColor darkGrayColor]];
-                 */
-                
-                // iOS 7 specifics
-                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-                {
-                    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    self.button.frame = CGRectMake(1.0f, 1.0f, 120.0f, 30.0f);
-                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-                }
-                else
-                {
-                    self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-                    [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-                    [self.button setSelected:NO];
-                    [self.button setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
-                    [self.button setButtonColor:[UIColor darkGrayColor]];
-                }
-                
-                cell.accessoryView = self.button;
-                cell.textLabel.text = @"";
-                
-                returnCell = cell;
+                // Done button
+                returnCell = [self doneButtonCell];
             }
         }
         else if(indexPath.row == 4)
         {
-            static NSString *CellIdentifier = @"DoneCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
-            }
-            
-            self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
-            [self.button addTarget:self action:@selector(dismissKeyboard) forControlEvents:UIControlEventTouchDown];
-            self.button.selected = NO;
-            [self.button setTitle:NSLocalizedString(NSLocalizedString(@"Done", nil), nil) forState:UIControlStateNormal];
-            self.button.buttonColor = [UIColor darkGrayColor];
-            
-            cell.accessoryView = self.button;
-            cell.textLabel.text = @"";
-            
-            returnCell = cell;
+            // Done button
+            returnCell = [self doneButtonCell];
         }
     }
     else if (indexPath.section == 1)
@@ -858,10 +834,11 @@
             
             if ([[KKPasscodeLock sharedLock] isPasscodeRequired])
             {
-                cell.detailTextLabel.text = NSLocalizedString(@"On", "");
-            } else
+                cell.detailTextLabel.text = NSLocalizedString(@"On", nil);
+            }
+            else
             {
-                cell.detailTextLabel.text = NSLocalizedString(@"Off", "");
+                cell.detailTextLabel.text = NSLocalizedString(@"Off", nil);
             }
             
             returnCell = cell;
@@ -952,6 +929,57 @@
     return returnCell;
 }
 
+- (UITableViewCell *)doneButtonCell
+{
+    static NSString *CellIdentifier = @"DoneCell";
+    UITableViewCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = [UIColor whiteColor];
+        
+        if (!self.button)
+        {
+            if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+            {
+                // iOS 7 button
+                self.button = [UIButton buttonWithType:UIButtonTypeSystem];
+                self.button.frame = CGRectMake(0.0f, 1.0f, 120.0f, 30.0f);
+                [self.button setTitle:NSLocalizedString(@"Done", nil)
+                             forState:UIControlStateNormal];
+                
+                [self unhighlightDoneButton];
+                
+                [self.button addTarget:self
+                                action:@selector(dismissKeyboard)
+                      forControlEvents:UIControlEventTouchDown];
+            }
+            else
+            {
+                // iOS 5 & 6 button
+                self.button = [[CoolButton alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 120.0f, 30.0f)];
+                [self.button addTarget:self
+                                action:@selector(dismissKeyboard)
+                      forControlEvents:UIControlEventTouchDown];
+                
+                [self.button setSelected:NO];
+                
+                [self.button setTitle:NSLocalizedString(@"Done", nil)
+                             forState:UIControlStateNormal];
+                
+                [self.button setButtonColor:[UIColor darkGrayColor]];
+            }
+        }
+    }
+    
+    cell.accessoryView = self.button;
+    cell.textLabel.text = @"";
+    
+    return cell;
+}
+
 # pragma mark Editing
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -981,39 +1009,81 @@
         {
             self.editingModeOn = YES;
             
-            // add patient to the last bayData
-            int sectionToAddPatient = [self.bayData count] +1;
+            if (tryNewMethod)
+            {
+                // add new patient to every bay
+                for (int i = 0; i < self.bayData.count; i++)
+                {
+                    int sectionToAddPatient = i + 2;
+                    
+                    int newRowIndex = [[self.bayData[i] patientsInBay] count];
+                    
+                    Patient *newPatient = [[Patient alloc] init];
+                    newPatient.firstname = NSLocalizedString(@"add", nil);
+                    newPatient.lastname = NSLocalizedString(@"new patient", nil);
+                    
+                    [[self.bayData[i] patientsInBay] addObject:newPatient];
+                    
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddPatient];
             
-            int newRowIndex = [[self.bayData[([self.bayData count] -1)] patientsInBay] count];
-            
-            Patient *newPatient = [[Patient alloc] init];
-            newPatient.firstname = NSLocalizedString(@"add", nil);
-            newPatient.lastname = NSLocalizedString(@"new patient", nil);
-            
-            [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:newPatient];
-            
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddPatient];
-            NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-            [self.myTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-            
-            // scroll down 
-            // [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                    [self.myTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                }
+            }
+            else
+            {
+                // add patient to the last bayData
+                int sectionToAddPatient = [self.bayData count] +1;
+                
+                int newRowIndex = [[self.bayData[([self.bayData count] -1)] patientsInBay] count];
+                
+                Patient *newPatient = [[Patient alloc] init];
+                newPatient.firstname = NSLocalizedString(@"add", nil);
+                newPatient.lastname = NSLocalizedString(@"new patient", nil);
+                
+                [[self.bayData[([self.bayData count] -1)] patientsInBay] addObject:newPatient];
+                
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddPatient];
+                
+                [self.myTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
         }
         else 
         {
-            NSLog(@"not editing");
-            
             self.editingModeOn = NO;
             
-            int sectionToRemovePatient = [self.bayData count] +1;
-            
-            int oldRowIndex = [[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1;
-            
-            [[self.bayData[([self.bayData count] -1)] patientsInBay] removeLastObject];
-            
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:oldRowIndex inSection:sectionToRemovePatient];
-            NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-            [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            if (tryNewMethod)
+            {
+                // remove 'new patient's
+                
+                NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:self.bayData.count];
+                
+                for (int i = 0; i < self.bayData.count; i++)
+                {
+                    int sectionToRemovePatient = i + 2;
+                    
+                    int oldRowIndex = [[self.bayData[i] patientsInBay] count] - 1;
+                    
+                    [[self.bayData[i] patientsInBay] removeLastObject];
+                    
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:oldRowIndex inSection:sectionToRemovePatient];
+                    
+                    [indexPaths addObject:indexPath];
+                }
+                
+                [self.myTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            }
+            else
+            {
+                int sectionToRemovePatient = [self.bayData count] + 1;
+                
+                int oldRowIndex = [[self.bayData[([self.bayData count] - 1)] patientsInBay] count] - 1;
+                
+                [[self.bayData[([self.bayData count] - 1)] patientsInBay] removeLastObject];
+                
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:oldRowIndex inSection:sectionToRemovePatient];
+                
+                [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
         }
         
         [self.myTableView setEditing:editing animated:YES];
@@ -1026,9 +1096,9 @@
     {
         if (indexPath.section > 1)
         {
-            if (indexPath.section == ([self.bayData count] + 1))
+            if (tryNewMethod)
             {
-                if (indexPath.row == ([[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1))
+                if (indexPath.row == ([[self.bayData[indexPath.section - 2] patientsInBay] count] - 1))
                 {
                     return UITableViewCellEditingStyleInsert;
                 }
@@ -1039,12 +1109,29 @@
             }
             else
             {
-                return UITableViewCellEditingStyleDelete;
+                if (indexPath.section == ([self.bayData count] + 1))
+                {
+                    if (indexPath.row == ([[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1))
+                    {
+                        return UITableViewCellEditingStyleInsert;
+                    }
+                    else
+                    {
+                        return UITableViewCellEditingStyleDelete;
+                    }
+                }
+                else
+                {
+                    return UITableViewCellEditingStyleDelete;
+                }
             }
         }
     }
     else 
     {
+        NSLog(@"SHOULD NEVER GET HERE");
+        abort();
+        
         if (indexPath.section > 1)
         {
             if (indexPath.row == [[self.bayData[([self.bayData count] -1)] patientsInBay] count]) 
@@ -1090,13 +1177,22 @@
     
     if (indexPath.section > 1)
     {
-        if (indexPath.section == [self.bayData count] +1) // Unclassified section
+        if (tryNewMethod)
         {
-            int lastRow = [[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1;
+            int lastRow = [[self.bayData[indexPath.section - 2] patientsInBay] count] - 1;
             
             if (!(indexPath.row == lastRow)) result = YES;
         }
-        else result = YES;
+        else
+        {
+            if (indexPath.section == [self.bayData count] + 1)
+            {
+                int lastRow = [[self.bayData[([self.bayData count] -1)] patientsInBay] count] -1;
+                
+                if (!(indexPath.row == lastRow)) result = YES;
+            }
+            else result = YES;
+        }
     }
     
     return result;
@@ -1106,31 +1202,69 @@
 {
     NSIndexPath *path = proposedDestinationIndexPath;
     
-    int miscSection = ([self.bayData count] + 1);
-    
-    if (proposedDestinationIndexPath.section < 2)                  // above Bay 1
+    if (tryNewMethod)
     {
-        // ensures that if reorder above patient section, sets final place at top of list in Bay 1
-        path = [NSIndexPath indexPathForRow:0 inSection:2];
-    }
-    else if (proposedDestinationIndexPath.section == miscSection)  // in MiscSection
-    {
-        // ensures reorder does not place row beyond new patient cell
-        Bay *bay = self.bayData[([self.bayData count] - 1)];
-        
-        int lastRow = [bay.patientsInBay count] - 1;
-        
-        if (proposedDestinationIndexPath.row >= lastRow)
+        if (proposedDestinationIndexPath.section < 2)
         {
-            if (lastRow == 0)
+            // ensures that if reorder above patient section, sets final place at top of list in first bay
+            path = [NSIndexPath indexPathForRow:0 inSection:2];
+        }
+        else
+        {
+            Bay *bay = self.bayData[proposedDestinationIndexPath.section - 2];
+            
+            int lastRow = bay.patientsInBay.count - 1;
+            
+            if (proposedDestinationIndexPath.row >= lastRow)
             {
-                // if only 'add new patient'
-                path = [NSIndexPath indexPathForRow:(lastRow) inSection:proposedDestinationIndexPath.section]; // ([self.bayData count] +1)
+                if (lastRow == 0)
+                {
+                    // if only 'add new patient'
+                    path = [NSIndexPath indexPathForRow:(lastRow) inSection:proposedDestinationIndexPath.section]; // ([self.bayData count] +1)
+                }
+                else
+                {
+                    // more than one patient
+                    if (proposedDestinationIndexPath.section == sourceIndexPath.section)
+                    {
+                        path = [NSIndexPath indexPathForRow:(lastRow - 1) inSection:proposedDestinationIndexPath.section];
+                    }
+                    else
+                    {
+                        path = [NSIndexPath indexPathForRow:(lastRow) inSection:proposedDestinationIndexPath.section];
+                    }
+                }
             }
-            else
+        }
+    }
+    else
+    {
+        int miscSection = ([self.bayData count] + 1);
+        
+        if (proposedDestinationIndexPath.section < 2)                  // above Bay 1
+        {
+            // ensures that if reorder above patient section, sets final place at top of list in Bay 1
+            path = [NSIndexPath indexPathForRow:0 inSection:2];
+        }
+        else if (proposedDestinationIndexPath.section == miscSection)  // in MiscSection
+        {
+            // ensures reorder does not place row beyond new patient cell
+            Bay *bay = self.bayData[([self.bayData count] - 1)];
+            
+            int lastRow = [bay.patientsInBay count] - 1;
+            
+            if (proposedDestinationIndexPath.row >= lastRow)
             {
-                // more than one patient
-                path = [NSIndexPath indexPathForRow:(lastRow - 1) inSection:proposedDestinationIndexPath.section];
+                if (lastRow == 0)
+                {
+                    // if only 'add new patient'
+                    path = [NSIndexPath indexPathForRow:(lastRow) inSection:proposedDestinationIndexPath.section]; // ([self.bayData count] +1)
+                }
+                else
+                {
+                    // more than one patient
+                    path = [NSIndexPath indexPathForRow:(lastRow - 1) inSection:proposedDestinationIndexPath.section];
+                }
             }
         }
     }
