@@ -2133,21 +2133,6 @@
 
 - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient
 {
-    NSLog(@"didFinishEditingPatient");
-    // int index = [self.patientList indexOfObject:patient];
-    
-    // Patient *oldPatient = [self.patientList objectAtIndex:index];
-    // oldPatient.lastname = patient.lastname;
-    // oldPatient.firstname = patient.firstname;
-    
-    // NSString *name = [NSString stringWithFormat:@"%@ %@",[oldPatient firstname], [oldPatient lastname]];
-    
-    
-    // NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:1];
-    // UITableViewCell *cell = [self.myTableView cellForRowAtIndexPath:indexPath];
-    
-    // cell.textLabel.text = name;
-    
     [self.myTableView reloadData];
     
     [self dismissModalViewControllerAnimated:YES];
@@ -2216,7 +2201,6 @@
 - (void)APGARTabBarController:(APGARTabBarController *)controller updateAPGARValuesForTheNewPatient:(Patient *)patient
 {
     // New Baby will be the last one in the list
-    
     int lastBayInBayData = [self.bayData count] - 1;
     
     Bay *bay = self.bayData[lastBayInBayData];
@@ -2264,12 +2248,16 @@
 
 - (void)didPasscodeEnteredCorrectly:(KKPasscodeViewController *)viewController
 {
-    NSLog(@"didPasscodeEnteredCorrectly");
+    // NSLog(@"didPasscodeEnteredCorrectly");
 }
 
 - (void)didPasscodeEnteredIncorrectly:(KKPasscodeViewController*)viewController 
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You have entered an incorrect passcode too many times." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"You have entered an incorrect passcode too many times."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
     [alert show];
     
     self.switchObj.on = NO;
@@ -2283,7 +2271,11 @@
     [self.patientList removeAllObjects];
     [self saveData];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You have entered an incorrect passcode too many times. All account data in this app has been deleted." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"You have entered an incorrect passcode too many times. All account data in this app has been deleted."
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
     [alert show];
     
     self.switchObj.on = NO;
