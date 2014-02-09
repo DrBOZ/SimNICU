@@ -618,7 +618,7 @@
     [aCoder encodeObject:self.jaundiceLastEntryDate forKey:@"JaundiceLastEntryDate"];
     [aCoder encodeObject:self.sepsisLastEntryDate forKey:@"SepsisLastEntryDate"];
     [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
-    [aCoder encodeObject:self.immunisations forKey:@"ImmunisationsLastEntryDate"];
+    [aCoder encodeObject:self.immunisationsLastEntryDate forKey:@"ImmunisationsLastEntryDate"];
     [aCoder encodeObject:self.ropLastEntryDate forKey:@"ROPLastEntryDate"];
     [aCoder encodeObject:self.cranialUSSLastEntryDate forKey:@"CranialUSSLastEntryDate"];
     [aCoder encodeObject:self.parentsAndSocialLastEntryDate forKey:@"ParentsAndSocialLastEntryDate"];

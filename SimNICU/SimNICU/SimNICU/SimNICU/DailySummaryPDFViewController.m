@@ -86,6 +86,7 @@
 - (id)init
 {
     self = [super init];
+    
     if (self)
     {
         topInset = kBorderInset + kMarginInsetTop;
@@ -146,11 +147,11 @@
     
     if (printControllerClass)
     {
-        items = [NSArray arrayWithObjects:itemRewind, flexibleItem, itemPrint, flexibleItem, itemFastForward, nil];
+        items = @[itemRewind, flexibleItem, itemPrint, flexibleItem, itemFastForward];
     }
     else
     {
-        items = [NSArray arrayWithObjects:itemRewind, flexibleItem, flexibleItem, flexibleItem, itemFastForward, nil];
+        items = @[itemRewind, flexibleItem, flexibleItem, flexibleItem, itemFastForward];
     }
     
     self.toolbarItems = items;
@@ -170,7 +171,7 @@
     }
     
     // create file name
-    NSString *fileName = @"dailySummary2.pdf";
+    NSString *fileName = @"dailySummary.pdf";
     
     // obtain full path to file
     NSArray *arrayPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -183,8 +184,8 @@
     // Mark the beginning of a new page.
     UIGraphicsBeginPDFPageWithInfo(CGRectMake(0.0f, 0.0f, pageWidth, pageHeight), nil);
     
-    // create summary
-    
+    // Create Summary
+    //
     // display patient's name & birthDate
     NSString *nameAndBirthDateText;
     
@@ -217,10 +218,10 @@
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     
     // set text colour (red, green, blue, alpha)
-    CGContextSetRGBFillColor(currentContext, 0.0, 0.0, 0.0, 1.0);
+    CGContextSetRGBFillColor(currentContext, 0.0f, 0.0f, 0.0f, 1.0f);
     
     // set text
-    font = [UIFont systemFontOfSize:12.0];
+    font = [UIFont systemFontOfSize:12.0f];
     headerFont = [UIFont boldSystemFontOfSize:12.0f];
     
     // set page number
@@ -238,7 +239,7 @@
     
 #pragma mark Date and Time
     
-    CGFloat dateAndTimeAdjustment = -80.0;
+    CGFloat dateAndTimeAdjustment = -80.0f;
     
     // date
     NSDate *currentDateAndTime = [NSDate date];
@@ -335,22 +336,30 @@
     HandoverSection *section;
     // HandoverRow *row;
     
+    // set rightSidePointToPrint
+    rightSidePointToPrint = verticalPointToPrint;
+    
     // for (section in self.selectedPatient.handoverSections) // longwinded but may be useful later...
     for (section in preferences.handoverSections)
     {
-#pragma mark Background
-        if ([section.sectionName isEqual:@"Background"] && ([self.selectedPatient.background length] > 0))
+#pragma mark Weight
+        if ([section.sectionName isEqualToString:@"Weight"] && ([self.selectedPatient.weight length] > 0))
         {
-            // set rightSidePointToPrint
-            rightSidePointToPrint = verticalPointToPrint;
-            
+            [self drawHeaderText:nil
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.weight
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+        }
+#pragma mark Background
+        if ([section.sectionName isEqualToString:@"Background"] && ([self.selectedPatient.background length] > 0))
+        {
             [self drawHeaderText:NSLocalizedString(@"Background", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.background
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Active Problems
-        else if ([section.sectionName isEqual:@"Active Problems"] && ([self.selectedPatient.activeProblems length] > 0))
+        else if ([section.sectionName isEqualToString:@"Active Problems"] && ([self.selectedPatient.activeProblems length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Active Problems", nil)
                         withFont:headerFont
@@ -358,7 +367,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Resolved Problems
-        else if ([section.sectionName isEqual:@"Resolved Problems"] && ([self.selectedPatient.resolvedProblems length] > 0))
+        else if ([section.sectionName isEqualToString:@"Resolved Problems"] && ([self.selectedPatient.resolvedProblems length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Resolved Problems", nil)
                         withFont:headerFont
@@ -366,7 +375,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Recent Significant Events
-        else if ([section.sectionName isEqual:@"Recent Significant Events"] && ([self.selectedPatient.recentSignificantEvents length] > 0))
+        else if ([section.sectionName isEqualToString:@"Recent Significant Events"] && ([self.selectedPatient.recentSignificantEvents length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Recent Significant Events", nil)
                         withFont:headerFont
@@ -374,7 +383,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Recent Ventilation & Sedation
-        else if ([section.sectionName isEqual:@"Ventilation & Sedation"] && ([self.selectedPatient.ventilationAndSedation length] > 0))
+        else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"] && ([self.selectedPatient.ventilationAndSedation length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Ventilation & Sedation", nil)
                         withFont:headerFont
@@ -382,7 +391,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Recent CXR
-        else if ([section.sectionName isEqual:@"CXR"] && ([self.selectedPatient.cxr length] > 0))
+        else if ([section.sectionName isEqualToString:@"CXR"] && ([self.selectedPatient.cxr length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"CXR", nil)
                         withFont:headerFont
@@ -390,7 +399,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Cardiovascular
-        else if ([section.sectionName isEqual:@"Cardiovascular"] && ([self.selectedPatient.cardiovascular length] > 0))
+        else if ([section.sectionName isEqualToString:@"Cardiovascular"] && ([self.selectedPatient.cardiovascular length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Cardiovascular", nil)
                         withFont:headerFont
@@ -398,7 +407,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Haematology
-        else if ([section.sectionName isEqual:@"Haematology"] && ([self.selectedPatient.haematology length] > 0))
+        else if ([section.sectionName isEqualToString:@"Haematology"] && ([self.selectedPatient.haematology length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Haematology", nil)
                         withFont:headerFont
@@ -406,7 +415,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Lines
-        else if ([section.sectionName isEqual:@"Lines"] && ([self.selectedPatient.lines length] > 0))
+        else if ([section.sectionName isEqualToString:@"Lines"] && ([self.selectedPatient.lines length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Lines", nil)
                         withFont:headerFont
@@ -414,7 +423,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Echocardiogram
-        else if ([section.sectionName isEqual:@"Echocardiogram"] && ([self.selectedPatient.echocardiogram length] > 0))
+        else if ([section.sectionName isEqualToString:@"Echocardiogram"] && ([self.selectedPatient.echocardiogram length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Echocardiogram", nil)
                         withFont:headerFont
@@ -422,7 +431,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Feeds & Fluids
-        else if ([section.sectionName isEqual:@"Feeds & Fluids"] && ([self.selectedPatient.feedsAndFluids length] > 0))
+        else if ([section.sectionName isEqualToString:@"Feeds & Fluids"] && ([self.selectedPatient.feedsAndFluids length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Feeds & Fluids", nil)
                         withFont:headerFont
@@ -430,7 +439,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Fluid Balance
-        else if ([section.sectionName isEqual:@"Fluid Balance"] && ([self.selectedPatient.fluidBalance length] > 0))
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"] && ([self.selectedPatient.fluidBalance length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Fluid Balance", nil)
                         withFont:headerFont
@@ -438,7 +447,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Biochemistry
-        else if ([section.sectionName isEqual:@"Biochemistry"] && ([self.selectedPatient.electrolytes length] > 0))
+        else if ([section.sectionName isEqualToString:@"Biochemistry"] && ([self.selectedPatient.electrolytes length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Biochemistry", nil)
                         withFont:headerFont
@@ -446,7 +455,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Jaundice
-        else if ([section.sectionName isEqual:@"Jaundice"] && ([self.selectedPatient.jaundice length] > 0))
+        else if ([section.sectionName isEqualToString:@"Jaundice"] && ([self.selectedPatient.jaundice length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Jaundice", nil)
                         withFont:headerFont
@@ -454,7 +463,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Sepsis
-        else if ([section.sectionName isEqual:@"Sepsis"] && ([self.selectedPatient.sepsis length] > 0))
+        else if ([section.sectionName isEqualToString:@"Sepsis"] && ([self.selectedPatient.sepsis length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Sepsis", nil)
                         withFont:headerFont
@@ -462,15 +471,23 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Drugs
-        else if ([section.sectionName isEqual:@"Drugs"] && ([self.selectedPatient.drugs length] > 0))
+        else if ([section.sectionName isEqualToString:@"Drugs"] && ([self.selectedPatient.drugs length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Drugs", nil)
                         withFont:headerFont
                      andBodyText:self.selectedPatient.drugs
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
+#pragma mark Immunisations
+        else if ([section.sectionName isEqualToString:@"Immunisations"] && ([self.selectedPatient.immunisations length] > 0))
+        {
+            [self drawHeaderText:NSLocalizedString(@"Immunisations", nil)
+                        withFont:headerFont
+                     andBodyText:self.selectedPatient.immunisations
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+        }
 #pragma mark ROP
-        else if ([section.sectionName isEqual:@"ROP"] && ([self.selectedPatient.rop length] > 0))
+        else if ([section.sectionName isEqualToString:@"ROP"] && ([self.selectedPatient.rop length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"ROP", nil)
                         withFont:headerFont
@@ -478,7 +495,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Neurology & Cranial USS
-        else if ([section.sectionName isEqual:@"Neurology & Cranial USS"] && ([self.selectedPatient.cranialUSS length] > 0))
+        else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"] && ([self.selectedPatient.cranialUSS length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Neurology & Cranial USS", nil)
                         withFont:headerFont
@@ -486,7 +503,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Parents & Social
-        else if ([section.sectionName isEqual:@"Parents & Social"] && ([self.selectedPatient.parentsAndSocial length] > 0))
+        else if ([section.sectionName isEqualToString:@"Parents & Social"] && ([self.selectedPatient.parentsAndSocial length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Parents & Social", nil)
                         withFont:headerFont
@@ -494,7 +511,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Examination
-        else if ([section.sectionName isEqual:@"Examination"] && ([self.selectedPatient.impression length] > 0))
+        else if ([section.sectionName isEqualToString:@"Examination"] && ([self.selectedPatient.impression length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Examination", nil)
                         withFont:headerFont
@@ -502,7 +519,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Summary
-        else if ([section.sectionName isEqual:@"Summary"] && ([self.selectedPatient.plan length] > 0))
+        else if ([section.sectionName isEqualToString:@"Summary"] && ([self.selectedPatient.plan length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Summary", nil)
                         withFont:headerFont
@@ -510,7 +527,7 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Plan
-        else if ([section.sectionName isEqual:@"Plan"] && ([self.selectedPatient.jobs length] > 0))
+        else if ([section.sectionName isEqualToString:@"Plan"] && ([self.selectedPatient.jobs length] > 0))
         {
             NSString *planWithAddedCarriageReturns;
             
@@ -636,11 +653,14 @@
             displayLinesToWriteOn = YES;
             
             // increment page
-            page = 2;
+            page++;
         }
         else
         {
             // if not then start printing on the right
+            
+            // set flag to stop lines being drawn
+            displayLinesToWriteOn = NO;
             
             // first check which page
             // check if on first page or subsequent pages
@@ -648,6 +668,10 @@
             {
                 // set print position to match Background information
                 y = rightSidePointToPrint + headingSeparator;
+            }
+            else
+            {
+                y = 50.0f;
             }
             
             verticalPointToPrint = y;

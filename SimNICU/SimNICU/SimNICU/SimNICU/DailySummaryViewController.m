@@ -536,6 +536,10 @@
     {
         textViewToMeasure.text = self.selectedPatient.drugs;
     }
+    else if ([section.sectionName isEqual:@"Immunisations"])
+    {
+        textViewToMeasure.text = self.selectedPatient.immunisations;
+    }
     else if ([section.sectionName isEqual:@"ROP"])
     {
         textViewToMeasure.text = self.selectedPatient.rop;
@@ -603,39 +607,39 @@
             
             HandoverSection *section = preferences.handoverSections[indexPath.section];
             
-            if ([section.sectionName isEqual:@"Weight"])
+            if ([section.sectionName isEqualToString:@"Weight"])
             {
                 textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
             }
-            else if ([section.sectionName isEqual:@"Background"])
+            else if ([section.sectionName isEqualToString:@"Background"])
             {
                 textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
             }
-            else if ([section.sectionName isEqual:@"Active Problems"])
+            else if ([section.sectionName isEqualToString:@"Active Problems"])
             {
                 textView.text = self.selectedPatient.activeProblems;
             }
-            else if ([section.sectionName isEqual:@"Resolved Problems"])
+            else if ([section.sectionName isEqualToString:@"Resolved Problems"])
             {
                 textView.text = self.selectedPatient.resolvedProblems;
             }
-            else if ([section.sectionName isEqual:@"Recent Significant Events"])
+            else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
             {
                 textView.text = self.selectedPatient.recentSignificantEvents;
             }
-            else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+            else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
             {
                 textView.text = self.selectedPatient.ventilationAndSedation;
             }
-            else if ([section.sectionName isEqual:@"CXR"])
+            else if ([section.sectionName isEqualToString:@"CXR"])
             {
                 textView.text = self.selectedPatient.cxr;
             }
-            else if ([section.sectionName isEqual:@"Cardiovascular"])
+            else if ([section.sectionName isEqualToString:@"Cardiovascular"])
             {
                 textView.text = self.selectedPatient.cardiovascular;
             }
-            else if ([section.sectionName isEqual:@"Haematology"])
+            else if ([section.sectionName isEqualToString:@"Haematology"])
             {
                 int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
                 
@@ -655,19 +659,19 @@
                     textView.text = self.selectedPatient.haematology;
                 }
             }
-            else if ([section.sectionName isEqual:@"Lines"])
+            else if ([section.sectionName isEqualToString:@"Lines"])
             {
                 textView.text = self.selectedPatient.lines;
             }
-            else if ([section.sectionName isEqual:@"Echocardiogram"])
+            else if ([section.sectionName isEqualToString:@"Echocardiogram"])
             {
                 textView.text = self.selectedPatient.echocardiogram;
             }
-            else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+            else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
             {
                 textView.text = self.selectedPatient.feedsAndFluids;
             }
-            else if ([section.sectionName isEqual:@"Fluid Balance"])
+            else if ([section.sectionName isEqualToString:@"Fluid Balance"])
             {
                 if (indexPath.row < [self getNumberOfFluidBalanceRows])
                 {
@@ -678,7 +682,7 @@
                     textView.text = self.selectedPatient.fluidBalance;
                 }
             }
-            else if ([section.sectionName isEqual:@"Biochemistry"])
+            else if ([section.sectionName isEqualToString:@"Biochemistry"])
             {
                 int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
                 
@@ -698,7 +702,7 @@
                     textView.text = self.selectedPatient.electrolytes;
                 }
             }
-            else if ([section.sectionName isEqual:@"Jaundice"])
+            else if ([section.sectionName isEqualToString:@"Jaundice"])
             {
                 Preferences *preferences = [Preferences sharedPreferences];
                 
@@ -744,7 +748,7 @@
                     }
                 }
             }
-            else if ([section.sectionName isEqual:@"Sepsis"])
+            else if ([section.sectionName isEqualToString:@"Sepsis"])
             {
                 int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
                 
@@ -764,37 +768,41 @@
                     textView.text = self.selectedPatient.sepsis;
                 }
             }
-            else if ([section.sectionName isEqual:@"Drugs"])
+            else if ([section.sectionName isEqualToString:@"Drugs"])
             {
                 textView.text = self.selectedPatient.drugs;
             }
-            else if ([section.sectionName isEqual:@"ROP"])
+            else if ([section.sectionName isEqualToString:@"Immunisations"])
+            {
+                textView.text = self.selectedPatient.immunisations;
+            }
+            else if ([section.sectionName isEqualToString:@"ROP"])
             {
                 textView.text = self.selectedPatient.rop;
             }
-            else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+            else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
             {
                 textView.text = self.selectedPatient.cranialUSS;
             }
-            else if ([section.sectionName isEqual:@"Parents / Social"])
+            else if ([section.sectionName isEqualToString:@"Parents / Social"])
             {
                 textView.text = self.selectedPatient.parentsAndSocial;
             }
-            else if ([section.sectionName isEqual:@"Examination"])
+            else if ([section.sectionName isEqualToString:@"Examination"])
             {
                 textView.text = self.selectedPatient.impression;
             }
-            else if ([section.sectionName isEqual:@"Summary"])
+            else if ([section.sectionName isEqualToString:@"Summary"])
             {
                 textView.text = self.selectedPatient.plan;
             }
-            else if ([section.sectionName isEqual:@"Plan"])
+            else if ([section.sectionName isEqualToString:@"Plan"])
             {
                 textView.text = self.selectedPatient.jobs;
             }
             
             // Plan textView must stay large
-            if (![section.sectionName isEqual:@"Plan"])
+            if (![section.sectionName isEqualToString:@"Plan"])
             {
                 Preferences *preferences = [Preferences sharedPreferences];
                 

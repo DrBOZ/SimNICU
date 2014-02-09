@@ -1127,23 +1127,21 @@
             }
         }
     }
-    else 
-    {
-        NSLog(@"SHOULD NEVER GET HERE");
-        abort();
-        
-        if (indexPath.section > 1)
-        {
-            if (indexPath.row == [[self.bayData[([self.bayData count] -1)] patientsInBay] count]) 
-            {
-                return UITableViewCellEditingStyleInsert;
-            }
-            else
-            {
-                return UITableViewCellEditingStyleDelete;
-            }
-        }
-    }
+//    else 
+//    {
+//        if (indexPath.section > 1)
+//        {
+//            if (indexPath.row == [[self.bayData[([self.bayData count] -1)] patientsInBay] count]) 
+//            {
+//                return UITableViewCellEditingStyleInsert;
+//            }
+//            else
+//            {
+//                
+//                return UITableViewCellEditingStyleDelete;
+//            }
+//        }
+//    }
     
     return UITableViewCellEditingStyleNone;
 }

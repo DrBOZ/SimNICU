@@ -468,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "413655227.573488"
+            timestampString = "413667024.945971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6892"
-            endingLineNumber = "6892"
+            startingLineNumber = "6900"
+            endingLineNumber = "6900"
             landmarkName = "-fluidBalanceTableViewController:didFinishAddingNewData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "413655227.573488"
+            timestampString = "413667024.945971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "6988"
-            endingLineNumber = "6988"
+            startingLineNumber = "6996"
+            endingLineNumber = "6996"
             landmarkName = "-getFormattedFluidBalanceResults"
             landmarkType = "5">
          </BreakpointContent>
@@ -554,22 +554,6 @@
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimNICU/DailySummaryPDFViewController.m"
-            timestampString = "413131416.122042"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -628,11 +612,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "413655227.573488"
+            timestampString = "413667024.945971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3955"
-            endingLineNumber = "3955"
+            startingLineNumber = "3963"
+            endingLineNumber = "3963"
             landmarkName = "-nextPatientButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,12 +644,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/EnterWeightViewController.m"
-            timestampString = "413648392.321313"
+            timestampString = "413648208.830561"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1132"
-            endingLineNumber = "1132"
-            landmarkName = "-tableView:editingStyleForRowAtIndexPath:"
+            startingLineNumber = "1052"
+            endingLineNumber = "1052"
+            landmarkName = "-setEditing:animated:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -676,12 +660,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/EnterWeightViewController.m"
-            timestampString = "413648208.830561"
+            timestampString = "413664627.770504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1052"
-            endingLineNumber = "1052"
-            landmarkName = "-setEditing:animated:"
+            startingLineNumber = "1095"
+            endingLineNumber = "1095"
+            landmarkName = "-tableView:editingStyleForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
