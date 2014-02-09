@@ -816,7 +816,8 @@
     
     if ([self.userWantsToAddAPatient isEqualToString:@"YES"]) 
     {
-        [self.delegate patientDetailsViewController:self didFinishAddingPatient:self.patientToEdit];
+        // [self.delegate patientDetailsViewController:self didFinishAddingPatient:self.patientToEdit];
+        [self.delegate patientDetailsViewController:self didFinishAddingPatient:self.patientToEdit atIndexPath:self.indexPath];
     }
     else
     {

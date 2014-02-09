@@ -19,8 +19,8 @@
 
 @optional
 
+- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient atIndexPath:(NSIndexPath *)indexPath;
 - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient;
-- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient;
 - (void)patientDetailsViewControllerDidCancel:(PatientDetailsViewController *)controller;
 
 @end
@@ -37,6 +37,7 @@
 @property (nonatomic, strong) NSString *patientLastname;
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) Patient *patientToEdit;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 - (void)cancel;
 - (void)done;

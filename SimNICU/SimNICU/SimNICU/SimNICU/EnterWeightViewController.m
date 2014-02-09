@@ -1166,7 +1166,7 @@
         {
             [Flurry logEvent:@"EnterWeight: commitEditingStyle: addPatient"];
             
-            [self addPatient];
+            [self addPatientAtIndexPath:indexPath];
         }
     }
 }
@@ -1723,7 +1723,7 @@
     return formattedWeight;
 }
 
-- (void)addPatient
+- (void)addPatientAtIndexPath:(NSIndexPath *)indexPath
 {
     [Flurry logEvent:@"EnterWeight: addPatient"];
     
@@ -1761,6 +1761,7 @@
     {
         PatientDetailsViewController *patientDetailsViewController = [[PatientDetailsViewController alloc] init];
         patientDetailsViewController.delegate = self;
+        patientDetailsViewController.indexPath = indexPath;
         
         PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:patientDetailsViewController];
         
@@ -2112,25 +2113,17 @@
 
 # pragma mark - PatientDetailsViewController delegate methods
 
-- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient
+- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient atIndexPath:(NSIndexPath *)indexPath
 {
     [self setEditing:NO animated:YES];
     
-    // work out where to add new patient, both in database and in table view
-    int sectionToAddNewPatient = [self.bayData count] + 1;
-    int lastBayInBayData = [self.bayData count] - 1;
-    
-    Bay *bay = self.bayData[lastBayInBayData];
-    int newRowIndex = [bay.patientsInBay count];
+    Bay *bay = self.bayData[indexPath.section - 2];
     
     // add patient into
     [bay.patientsInBay addObject:patient];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:sectionToAddNewPatient];
-    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
-    
     // insert newly added patient into table view
-    [self.myTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.myTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     // scroll down to newly added patient
     [self.myTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
