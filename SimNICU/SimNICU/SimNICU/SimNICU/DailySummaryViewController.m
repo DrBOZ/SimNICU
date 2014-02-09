@@ -67,6 +67,7 @@
     BOOL newJaundice;
     BOOL newSepsis;
     BOOL newDrugs;
+    BOOL newImmunisations;
     BOOL newROP;
     BOOL newCranialUSS;
     BOOL newParentsAndSocial;
@@ -114,6 +115,7 @@
 @property (nonatomic, strong) UITextView *jaundiceTextView;
 @property (nonatomic, strong) UITextView *sepsisTextView;
 @property (nonatomic, strong) UITextView *drugsTextView;
+@property (nonatomic, strong) UITextView *immunisationsTextView;
 @property (nonatomic, strong) UITextView *ropTextView;
 @property (nonatomic, strong) UITextView *cranialUSSTextView;
 @property (nonatomic, strong) UITextView *parentsAndSocialTextView;
@@ -1744,6 +1746,27 @@
             
             self.drugsTextView.text = self.selectedPatient.drugs;
         }
+        else if ([section.sectionName isEqualToString:@"Immunisations"])
+        {
+            CellIdentifier = @"Immunisations";
+            
+            if (newImmunisations)
+            {
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newImmunisations = NO;
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.immunisationsTextView.text = self.selectedPatient.immunisations;
+        }
         else if ([section.sectionName isEqualToString:@"ROP"])
         {
             CellIdentifier = @"ROP";
@@ -2278,6 +2301,15 @@
         
         [cell.contentView addSubview:self.drugsTextView];
     }
+#pragma mark Immunisations
+    else if ([CellIdentifier isEqualToString:@"Immunisations"])
+    {
+        self.immunisationsTextView = [[UITextView alloc] init];
+        self.immunisationsTextView.tag = 23;
+        [self setupTextView:self.immunisationsTextView];
+        
+        [cell.contentView addSubview:self.immunisationsTextView];
+    }
 #pragma mark ROP
     else if ([CellIdentifier isEqualToString:@"ROP"])
     {
@@ -2573,6 +2605,18 @@
                 }
             }
         }
+        else if ([section.sectionName isEqualToString:@"Immunisations"])
+        {
+            textViewToMeasure.text = self.selectedPatient.immunisations;
+            
+            if (self.selectedPatient.immunisationsLastEntryDate)
+            {
+                if ([self isDate:self.selectedPatient.immunisationsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+                {
+                    textView.textColor = [UIColor redColor];
+                }
+            }
+        }
         else if ([section.sectionName isEqualToString:@"ROP"])
         {
             textViewToMeasure.text = self.selectedPatient.rop;
@@ -2800,6 +2844,7 @@
     [self.jaundiceTextView resignFirstResponder];
     [self.sepsisTextView resignFirstResponder];
     [self.drugsTextView resignFirstResponder];
+    [self.immunisationsTextView resignFirstResponder];
     [self.ropTextView resignFirstResponder];
     [self.cranialUSSTextView resignFirstResponder];
     [self.parentsAndSocialTextView resignFirstResponder];
@@ -3219,6 +3264,7 @@
         [self.jaundiceTextView resignFirstResponder];
         [self.sepsisTextView resignFirstResponder];
         [self.drugsTextView resignFirstResponder];
+        [self.immunisationsTextView resignFirstResponder];
         [self.ropTextView resignFirstResponder];
         [self.cranialUSSTextView resignFirstResponder];
         [self.parentsAndSocialTextView resignFirstResponder];
@@ -3584,6 +3630,11 @@
             self.selectedPatient.drugs = textView.text;
             self.selectedPatient.drugsLastEntryDate = [NSDate date];
         }
+        else if ([textView isEqual:self.immunisationsTextView])
+        {
+            self.selectedPatient.immunisations = textView.text;
+            self.selectedPatient.immunisationsLastEntryDate = [NSDate date];
+        }
         else if ([textView isEqual:self.ropTextView])
         {
             self.selectedPatient.rop = textView.text;
@@ -3738,6 +3789,7 @@
     newJaundice = YES;
     newSepsis = YES;
     newDrugs = YES;
+    newImmunisations = YES;
     newROP = YES;
     newCranialUSS = YES;
     newParentsAndSocial = YES;
@@ -3835,6 +3887,7 @@
     newJaundice = YES;
     newSepsis = YES;
     newDrugs = YES;
+    newImmunisations = YES;
     newROP = YES;
     newCranialUSS = YES;
     newParentsAndSocial = YES;
@@ -4179,6 +4232,7 @@
     [self.jaundiceTextView resignFirstResponder];
     [self.sepsisTextView resignFirstResponder];
     [self.drugsTextView resignFirstResponder];
+    [self.immunisationsTextView resignFirstResponder];
     [self.ropTextView resignFirstResponder];
     [self.cranialUSSTextView resignFirstResponder];
     [self.parentsAndSocialTextView resignFirstResponder];

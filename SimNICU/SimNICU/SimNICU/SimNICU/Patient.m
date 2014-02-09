@@ -131,6 +131,7 @@
             self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
             self.sepsis = [aDecoder decodeObjectForKey:@"Sepsis"];
             self.drugs = [aDecoder decodeObjectForKey:@"Drugs"];
+            self.immunisations = [aDecoder decodeObjectForKey:@"Immunisations"];
             self.rop = [aDecoder decodeObjectForKey:@"ROP"];
             self.cranialUSS = [aDecoder decodeObjectForKey:@"CranialUSS"];
             self.parentsAndSocial = [aDecoder decodeObjectForKey:@"ParentsAndSocial"];
@@ -158,6 +159,7 @@
             self.jaundiceLastEntryDate = [aDecoder decodeObjectForKey:@"JaundiceLastEntryDate"];
             self.sepsisLastEntryDate = [aDecoder decodeObjectForKey:@"SepsisLastEntryDate"];
             self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
+            self.immunisationsLastEntryDate = [aDecoder decodeObjectForKey:@"ImmunisationsLastEntryDate"];
             self.ropLastEntryDate = [aDecoder decodeObjectForKey:@"ROPLastEntryDate"];
             self.cranialUSSLastEntryDate = [aDecoder decodeObjectForKey:@"CranialUSSLastEntryDate"];
             self.parentsAndSocialLastEntryDate = [aDecoder decodeObjectForKey:@"ParentsAndSocialLastEntryDate"];
@@ -497,6 +499,18 @@
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
+        
+        // 23 - Immunisations
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Immunisations";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowText = self.immunisations;
+        [newSection.rows addObject:newRow];
+        
+        [self.handoverSections addObject:newSection];
     }
 }
 
@@ -578,6 +592,7 @@
     [aCoder encodeObject:self.jaundice forKey:@"Jaundice"];
     [aCoder encodeObject:self.sepsis forKey:@"Sepsis"];
     [aCoder encodeObject:self.drugs forKey:@"Drugs"];
+    [aCoder encodeObject:self.immunisations forKey:@"Immunisations"];
     [aCoder encodeObject:self.rop forKey:@"ROP"];
     [aCoder encodeObject:self.cranialUSS forKey:@"CranialUSS"];
     [aCoder encodeObject:self.parentsAndSocial forKey:@"ParentsAndSocial"];
@@ -603,6 +618,7 @@
     [aCoder encodeObject:self.jaundiceLastEntryDate forKey:@"JaundiceLastEntryDate"];
     [aCoder encodeObject:self.sepsisLastEntryDate forKey:@"SepsisLastEntryDate"];
     [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
+    [aCoder encodeObject:self.immunisations forKey:@"ImmunisationsLastEntryDate"];
     [aCoder encodeObject:self.ropLastEntryDate forKey:@"ROPLastEntryDate"];
     [aCoder encodeObject:self.cranialUSSLastEntryDate forKey:@"CranialUSSLastEntryDate"];
     [aCoder encodeObject:self.parentsAndSocialLastEntryDate forKey:@"ParentsAndSocialLastEntryDate"];

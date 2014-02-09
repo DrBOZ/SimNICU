@@ -116,6 +116,7 @@
 @property (nonatomic, retain) NSString *jaundice;
 @property (nonatomic, retain) NSString *sepsis;
 @property (nonatomic, retain) NSString *drugs;
+@property (nonatomic, retain) NSString *immunisations;
 @property (nonatomic, retain) NSString *rop;
 @property (nonatomic, retain) NSString *cranialUSS;
 @property (nonatomic, retain) NSString *parentsAndSocial;
@@ -141,6 +142,7 @@
 @property (nonatomic, retain) NSDate *jaundiceLastEntryDate;
 @property (nonatomic, retain) NSDate *sepsisLastEntryDate;
 @property (nonatomic, retain) NSDate *drugsLastEntryDate;
+@property (nonatomic, retain) NSDate *immunisationsLastEntryDate;
 @property (nonatomic, retain) NSDate *ropLastEntryDate;
 @property (nonatomic, retain) NSDate *cranialUSSLastEntryDate;
 @property (nonatomic, retain) NSDate *parentsAndSocialLastEntryDate;

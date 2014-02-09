@@ -783,6 +783,24 @@
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Drugs
+        // 17 - Immunisations
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Immunisations";
+            newSection.sectionEditable = @"NO";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // Nil
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Nil", nil)
+                                                          ref:NSLocalizedString(@"Nil", nil)]];
+            
+            // current date
+            [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            
+            [self.handoverSections addObject:newSection];
+        }
+        
 #pragma mark Retinopathy of Prematurity
         // 17 - ROP
         {
