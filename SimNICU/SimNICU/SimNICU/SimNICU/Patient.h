@@ -168,4 +168,9 @@
 
 - (BOOL)meetsCriteriaForROPScreening;
 
+// fluid balance data
+- (NSInteger)getNumberOfFluidBalanceRows;
+- (NSMutableArray *)getFormattedFluidBalanceResults;
+- (NSString *)getFormattedFluidBalanceResultsForPrinting;
+
 @end

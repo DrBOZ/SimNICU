@@ -52,8 +52,6 @@
 
 @end
 
-#warning bug - check Alice MOON
-
 @implementation DailySummaryPDFViewController
 {
     float pageWidth;
@@ -331,7 +329,7 @@
     [self drawText:text
           withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
     
-    // need to loop through the sections to deterine printing height and when to start printing on the right hand side of the paper
+    // need to loop through the sections to determine printing height and when to start printing on the right hand side of the paper
     
     HandoverSection *section;
     // HandoverRow *row;
@@ -339,7 +337,7 @@
     // set rightSidePointToPrint
     rightSidePointToPrint = verticalPointToPrint;
     
-    // for (section in self.selectedPatient.handoverSections) // longwinded but may be useful later...
+    // cycling through user defined order of daily summary section headers
     for (section in preferences.handoverSections)
     {
 #pragma mark Weight
@@ -347,6 +345,7 @@
         {
             [self drawHeaderText:nil
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.weight
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -355,6 +354,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Background", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.background
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -363,6 +363,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Active Problems", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.activeProblems
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -371,6 +372,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Resolved Problems", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.resolvedProblems
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -379,6 +381,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Recent Significant Events", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.recentSignificantEvents
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -387,6 +390,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Ventilation & Sedation", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.ventilationAndSedation
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -395,6 +399,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"CXR", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.cxr
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -403,6 +408,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Cardiovascular", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.cardiovascular
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -411,6 +417,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Haematology", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.haematology
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -419,6 +426,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Lines", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.lines
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -427,6 +435,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Echocardiogram", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.echocardiogram
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -435,14 +444,16 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Feeds & Fluids", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.feedsAndFluids
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Fluid Balance
-        else if ([section.sectionName isEqualToString:@"Fluid Balance"] && ([self.selectedPatient.fluidBalance length] > 0))
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"] && (self.selectedPatient.allFluidBalanceData.count || [self.selectedPatient.fluidBalance length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Fluid Balance", nil)
                         withFont:headerFont
+              andSpecialPrinting:(self.selectedPatient.allFluidBalanceData.count) ? @"Fluid Balance Data" : nil
                      andBodyText:self.selectedPatient.fluidBalance
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -451,6 +462,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Biochemistry", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.electrolytes
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -459,6 +471,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Jaundice", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.jaundice
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -467,6 +480,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Sepsis", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.sepsis
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -475,6 +489,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Drugs", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.drugs
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -483,6 +498,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Immunisations", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.immunisations
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -491,6 +507,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"ROP", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.rop
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -499,6 +516,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Neurology & Cranial USS", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.cranialUSS
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -507,6 +525,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Parents & Social", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.parentsAndSocial
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -515,6 +534,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Examination", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.impression
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -523,6 +543,7 @@
         {
             [self drawHeaderText:NSLocalizedString(@"Summary", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:self.selectedPatient.plan
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -535,6 +556,7 @@
             
             [self drawHeaderText:NSLocalizedString(@"Plan", nil)
                         withFont:headerFont
+              andSpecialPrinting:nil
                      andBodyText:planWithAddedCarriageReturns
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
@@ -575,15 +597,37 @@
                  alignment:UITextAlignmentLeft];
 }
 
-- (void)drawHeaderText:(NSString *)theHeaderText withFont:(UIFont *)theHeaderFont andBodyText:(NSString *)theBodyText withFont:(UIFont *)theBodyFont onLeftSideOfPageAtVerticalPosition:(float)y
+// main printing routine
+- (void)drawHeaderText:(NSString *)theHeaderText withFont:(UIFont *)theHeaderFont andSpecialPrinting:(NSString *)specialPrinting andBodyText:(NSString *)theBodyText withFont:(UIFont *)theBodyFont onLeftSideOfPageAtVerticalPosition:(float)y
 {
-    // get the size of both the header text and the body text
-    CGSize theHeaderTextSize = [theHeaderText sizeWithFont:theHeaderFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
-    CGSize theBodyTextSize = [theBodyText sizeWithFont:theBodyFont constrainedToSize:printableArea lineBreakMode:UILineBreakModeWordWrap];
+    // get the size of both the header text, special Printing text and the body text
+    CGSize theHeaderTextSize = [theHeaderText sizeWithFont:theHeaderFont
+                                         constrainedToSize:printableArea
+                                             lineBreakMode:UILineBreakModeWordWrap];
     
-    float combinedTextHeight = theHeaderTextSize.height + normalSeparator + theBodyTextSize.height;
+    CGSize specialPrintingTextSize = [self getSpecialPrintingTextSizeForSpecialPrinting:specialPrinting withFont:theBodyFont];
     
-    // check that there is available vertical space on the page
+    CGSize theBodyTextSize = [theBodyText sizeWithFont:theBodyFont
+                                     constrainedToSize:printableArea
+                                         lineBreakMode:UILineBreakModeWordWrap];
+    
+    // calculate the combinedTextHeight
+    float combinedTextHeight;
+    
+    if (specialPrintingTextSize.height == 0.0f)
+    {
+        combinedTextHeight = theHeaderTextSize.height + normalSeparator + theBodyTextSize.height;
+    }
+    else if (theBodyTextSize.height == 0.0f)
+    {
+        combinedTextHeight = theHeaderTextSize.height + normalSeparator + specialPrintingTextSize.height;
+    }
+    else
+    {
+        combinedTextHeight = theHeaderTextSize.height + normalSeparator + specialPrintingTextSize.height + normalSeparator + theBodyTextSize.height;
+    }
+    
+    // setting printing position for text
     if (topInset + y >= (pageHeight - kBorderInset - kMarginInsetBottom - combinedTextHeight))
     {
         // No, there is not enought space...
@@ -703,35 +747,119 @@
         renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, theHeaderTextSize.height);
     }
     
-    // draw text
+    // draw Header text
     [theHeaderText drawInRect:renderingRect
-                  withFont:theHeaderFont
-             lineBreakMode:UILineBreakModeWordWrap
-                 alignment:UITextAlignmentLeft];
+                     withFont:theHeaderFont
+                lineBreakMode:UILineBreakModeWordWrap
+                    alignment:UITextAlignmentLeft];
     
     // increment print head vertical position
     y = y + theHeaderTextSize.height + normalSeparator;
     
-    // create a rectangle to display body text based on the text size
-    if (horizontalPointToPrint == kLeftPrintingAdjustment)
+    if (specialPrintingTextSize.height > 0.0f)
     {
-        renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), theBodyTextSize.height);
-    }
-    else
-    {
-        renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, theBodyTextSize.height);
+        // create a rectangle to display Special Printing text based on the text size
+        if (horizontalPointToPrint == kLeftPrintingAdjustment)
+        {
+            renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), specialPrintingTextSize.height);
+        }
+        else
+        {
+            renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, specialPrintingTextSize.height);
+        }
+        
+        // draw Special text
+        NSString *specialPrintingText = [self getSpecialPrintingTextForSpecialPrinting:specialPrinting withFont:theBodyFont];
+        
+        [specialPrintingText drawInRect:renderingRect
+                               withFont:theBodyFont
+                          lineBreakMode:UILineBreakModeWordWrap
+                              alignment:UITextAlignmentLeft];
+        
+        // update print points
+        if (theBodyTextSize.height == 0.0f)
+        {
+            // update next print point
+            verticalPointToPrint = y + specialPrintingTextSize.height;
+        }
+        else
+        {
+            // increment print head vertical position
+            y = y + specialPrintingTextSize.height + normalSeparator;
+        }
     }
     
-    // draw text
-    [theBodyText drawInRect:renderingRect
-                  withFont:theBodyFont
-             lineBreakMode:UILineBreakModeWordWrap
-                 alignment:UITextAlignmentLeft];
+    if (theBodyTextSize.height > 0.0f)
+    {
+        // create a rectangle to display Body text based on the text size
+        if (horizontalPointToPrint == kLeftPrintingAdjustment)
+        {
+            renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), theBodyTextSize.height);
+        }
+        else
+        {
+            renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, theBodyTextSize.height);
+        }
+        
+        // draw Body text
+        [theBodyText drawInRect:renderingRect
+                       withFont:theBodyFont
+                  lineBreakMode:UILineBreakModeWordWrap
+                      alignment:UITextAlignmentLeft];
+        
+        // update next print point
+        verticalPointToPrint = y + theBodyTextSize.height;
+    }
+
     
-    // update next print point
-    verticalPointToPrint = y + theBodyTextSize.height;
+    
 }
 
+- (CGSize)getSpecialPrintingTextSizeForSpecialPrinting:(NSString *)specialPrinting withFont:(UIFont *)theFont
+{
+    CGSize size = CGSizeMake(0.0f, 0.0f);
+    
+    if ([specialPrinting isEqualToString:@"Fluid Balance Data"])
+    {
+        NSString *dummyText;
+        
+        for (int i = 1; i <= [self.selectedPatient getNumberOfFluidBalanceRows]; i++)
+        {
+            NSString *rowText;
+            
+            if (i > 1)
+            {
+                rowText = [NSString stringWithFormat:@"\ndummyTextForRow:%i", i];
+                dummyText = [dummyText stringByAppendingString:rowText];
+            }
+            else
+            {
+                rowText = [NSString stringWithFormat:@"dummyTextForRow:%i", i];
+                dummyText = rowText;
+            }
+        }
+        
+        size = [dummyText sizeWithFont:theFont
+                     constrainedToSize:printableArea
+                         lineBreakMode:UILineBreakModeWordWrap];
+    }
+    
+    return size;
+}
+
+- (NSString *)getSpecialPrintingTextForSpecialPrinting:(NSString *)specialPrinting withFont:(UIFont *)theBodyFont
+{
+    NSString *specialPrintingText;
+    
+    if ([specialPrinting isEqualToString:@"Fluid Balance Data"])
+    {
+        specialPrintingText = [self.selectedPatient getFormattedFluidBalanceResultsForPrinting];
+    }
+    
+    return specialPrintingText;
+}
+
+// this method must not be changed, use main routine above!!!
 - (void)drawText:(NSString *)textToDraw withFont:(UIFont *)textFont onLeftSideOfPageAtVerticalPosition:(float)y
 {
     // get the size of the text
@@ -865,7 +993,7 @@
     float verticalLineSpacing = 22.0f;
     
     // draw lines
-    for (int x = y; x < heightToStopDrawingLines; x = x + verticalLineSpacing)
+    for (int x = y + 40.0f; x < heightToStopDrawingLines; x = x + verticalLineSpacing)
     {
         CGContextRef currentContext = UIGraphicsGetCurrentContext();
         
