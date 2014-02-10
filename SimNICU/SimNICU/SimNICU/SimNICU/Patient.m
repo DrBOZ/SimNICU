@@ -511,6 +511,18 @@
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
+        
+        // 24 - Suggestions
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Suggestions";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowText = nil;
+        [newSection.rows addObject:newRow];
+        
+        [self.handoverSections addObject:newSection];
     }
 }
 

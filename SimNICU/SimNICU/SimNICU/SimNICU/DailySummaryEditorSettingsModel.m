@@ -50,12 +50,21 @@
     
     HandoverSection *section;
     
-    for (section in preferences.handoverSections)
+    for (int i = 0; i < preferences.handoverSections.count - 1; i++)
     {
+        section = preferences.handoverSections[i];
+        
         rowData = [[CBTableViewRowData alloc] init];
         rowData.text = NSLocalizedString(section.sectionName, nil);
         [sectionData.rowData addObject:rowData];
     }
+    
+//    for (section in preferences.handoverSections)
+//    {
+//        rowData = [[CBTableViewRowData alloc] init];
+//        rowData.text = NSLocalizedString(section.sectionName, nil);
+//        [sectionData.rowData addObject:rowData];
+//    }
     
     [tableData addObject:sectionData];
     

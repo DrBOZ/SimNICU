@@ -891,11 +891,26 @@
             newSection = [[HandoverSection alloc] init];
             newSection.sectionName = @"Plan";
             newSection.sectionEditable = @"NO";
-            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:10];
+            
+            // long line
+            [newSection.customText addObject:[self customText:@"Long line" ref:@"Long line"]];
             
             // ml/kg/day
             [newSection.customText addObject:[self customText:@" ml/kg/day" ref:@"ml/kg/day"]];
-        
+            
+            // U&Es
+            [newSection.customText addObject:[self customText:@"U&Es" ref:@"U&Es"]];
+            [self.handoverSections addObject:newSection];
+        }
+#pragma mark Suggestions
+        // 23 - Suggestions
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Suggestions";
+            newSection.sectionEditable = @"NO";
+            // newSection.customText = [[NSMutableArray alloc] initWithCapacity:0];
+            
             [self.handoverSections addObject:newSection];
         }
     }

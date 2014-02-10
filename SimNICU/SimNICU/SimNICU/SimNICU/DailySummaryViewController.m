@@ -16,6 +16,7 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "DailySummaryViewController.h"
 #import "BloodResultTableViewCell.h"
+#import "SuggestionTableViewCell.h"
 #import "FluidBalanceHeadingCell.h"
 #import "JaundiceViewController.h"
 #import "CBTableViewSectionData.h"
@@ -29,14 +30,13 @@
 #import "BilirubinResult.h"
 #import "HandoverSection.h"
 #import "CBStringMethods.h"
+#import "JLActionSheet.h"
 #import "CBTimeMethods.h"
 #import "CBModalPanel.h"
 #import "HandoverRow.h"
 #import "AppDelegate.h"
 #import "Patient.h"
 #import "Bay.h"
-
-#import "JLActionSheet.h"
 
 // #import "CBBarCustomTableViewTextItem.h"
 
@@ -406,6 +406,12 @@
                     // find out how many results to display plus free text
                     rows = ([[self getCRPResultsToDisplay] count] + 1);
                 }
+                else if ([handoverSection.sectionName isEqualToString:@"Suggestions"])
+                {
+                    AI *brain = [AI sharedAI];
+                    
+                    rows = [brain getSuggestionsForPatient:self.selectedPatient].count + 1;
+                }
                 else
                 {
                     rows = [handoverSectionForPatient.rows count];
@@ -438,7 +444,23 @@
     else
     {
         // localisation of section name occurs here
+#if AI_SUGGESTIONS_PREVIEW_MODE
+        
         returnString = NSLocalizedString(handoverSection.sectionName, nil);
+        
+#else
+        
+        if ([handoverSection.sectionName isEqualToString:@"Suggestions"])
+        {
+            returnString = nil;
+        }
+        else
+        {
+            returnString = NSLocalizedString(handoverSection.sectionName, nil);
+        }
+        
+#endif
+        
     }
     
     return returnString;
@@ -590,11 +612,8 @@
 {
     CGFloat height = 55.0f;
     
-    if ([tableView isEqual:self.myTableView1])
-    {
-        // height = 70.0f;
-        height = 90.0f;
-    }
+    if ([tableView isEqual:self.myTableView1]) height = 90.0f;
+    
     else
     {
         // iOS 7 specifics
@@ -801,8 +820,8 @@
                 textView.text = self.selectedPatient.jobs;
             }
             
-            // Plan textView must stay large
-            if (![section.sectionName isEqualToString:@"Plan"])
+            // If section is not the last one, then adjust textView height to text
+            if (![section.sectionName isEqualToString:@"Suggestions"])
             {
                 Preferences *preferences = [Preferences sharedPreferences];
                 
@@ -821,37 +840,26 @@
             }
             else
             {
-                Preferences *preferences = [Preferences sharedPreferences];
+                AI *brain = [AI sharedAI];
                 
-                if ([preferences.dynamicText intValue])
+                int numberOfSuggestionsToDisplay = [brain getSuggestionsForPatient:self.selectedPatient ].count;
+            
+                if (indexPath.row < numberOfSuggestionsToDisplay)
                 {
-                    textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+                    return 28.0f;
                 }
                 else
                 {
-                    textView.font = [UIFont systemFontOfSize:14.0f];
-                }
-                
-                [textView sizeToFit];
-                
-                height = textView.frame.size.height;
-                
-                // delegate
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                
-                // set a minimum height for the plan textView
-                if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-                {
-                    if (height < 344.0f)
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    
+                    // set a minimum height for the 'Suggestions' cell
+                    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
                     {
-                        height = 344.0f;
+                        return 291.0f;
                     }
-                }
-                else
-                {
-                    if (height < 192.0f)
+                    else
                     {
-                        height = 192.0f;
+                        return 151.0f;
                     }
                 }
             }
@@ -901,6 +909,7 @@
     {
         HandoverSection *section = preferences.handoverSections[indexPath.section];
         
+#pragma mark Weight
         if ([section.sectionName isEqualToString:@"Weight"])
         {
             CellIdentifier = @"Weight";
@@ -922,6 +931,7 @@
             
             self.weightTextView.text = self.selectedPatient.weight;
         }
+#pragma mark Background
         else if ([section.sectionName isEqualToString:@"Background"])
         {
             CellIdentifier = @"Background";
@@ -943,6 +953,7 @@
             
             self.backgroundTextView.text = self.selectedPatient.background;
         }
+#pragma mark Active Problems
         else if ([section.sectionName isEqualToString:@"Active Problems"])
         {
             CellIdentifier = @"ActiveProblems";
@@ -964,6 +975,7 @@
             
             self.activeProblemsTextView.text = self.selectedPatient.activeProblems;
         }
+#pragma mark Resolved Problems
         else if ([section.sectionName isEqualToString:@"Resolved Problems"])
         {
             CellIdentifier = @"ResolvedProblems";
@@ -985,6 +997,7 @@
             
             self.resolvedProblemsTextView.text = self.selectedPatient.resolvedProblems;
         }
+#pragma mark Recent Significant Events
         else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
         {
             CellIdentifier = @"RecentSignificantEvents";
@@ -1006,6 +1019,7 @@
             
             self.recentSignificantEventsTextView.text = self.selectedPatient.recentSignificantEvents;
         }
+#pragma mark Ventilation & Sedation
         else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
         {
             CellIdentifier = @"VentilationAndSedation";
@@ -1027,6 +1041,7 @@
             
             self.ventilationAndSedationTextView.text = self.selectedPatient.ventilationAndSedation;
         }
+#pragma mark CXR
         else if ([section.sectionName isEqualToString:@"CXR"])
         {
             CellIdentifier = @"CXR";
@@ -1048,6 +1063,7 @@
             
             self.cxrTextView.text = self.selectedPatient.cxr;
         }
+#pragma mark Cardiovascular
         else if ([section.sectionName isEqualToString:@"Cardiovascular"])
         {
             CellIdentifier = @"Cardiovascular";
@@ -1069,6 +1085,7 @@
             
             self.cardiovascularTextView.text = self.selectedPatient.cardiovascular;
         }
+#pragma mark Haematology
         else if ([section.sectionName isEqualToString:@"Haematology"])
         {
             NSArray *haematologyResults = [self getHaematologyResultsToDisplay];
@@ -1174,6 +1191,7 @@
                 self.haematologyTextView.text = self.selectedPatient.haematology;
             }
         }
+#pragma mark Lines
         else if ([section.sectionName isEqualToString:@"Lines"])
         {
             CellIdentifier = @"Lines";
@@ -1195,6 +1213,7 @@
             
             self.linesTextView.text = self.selectedPatient.lines;
         }
+#pragma mark Echocardiogram
         else if ([section.sectionName isEqualToString:@"Echocardiogram"])
         {
             CellIdentifier = @"Echocardiogram";
@@ -1216,6 +1235,7 @@
             
             self.echocardiogramTextView.text = self.selectedPatient.echocardiogram;
         }
+#pragma mark Feeds & Fluids
         else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
         {
             CellIdentifier = @"FeedsAndFluids";
@@ -1237,6 +1257,7 @@
             
             self.feedsAndFluidsTextView.text = self.selectedPatient.feedsAndFluids;
         }
+#pragma mark Fluid Balance
         else if ([section.sectionName isEqualToString:@"Fluid Balance"])
         {
             if (indexPath.row < [self getNumberOfFluidBalanceRows])
@@ -1319,6 +1340,7 @@
                 self.fluidBalanceTextView.text = self.selectedPatient.fluidBalance;
             }
         }
+#pragma mark Biochemistry
         else if ([section.sectionName isEqualToString:@"Biochemistry"])
         {
             NSArray *biochemistryResults = [self getBiochemistryResultsToDisplay];
@@ -1508,6 +1530,7 @@
                 self.electrolytesTextView.text = self.selectedPatient.electrolytes;
             }
         }
+#pragma mark Jaundice
         else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             if (indexPath.row == 0)
@@ -1659,6 +1682,7 @@
                 self.jaundiceTextView.text = self.selectedPatient.jaundice;
             }
         }
+#pragma mark Sepsis
         else if ([section.sectionName isEqualToString:@"Sepsis"])
         {
             NSArray *crpResults = [self getCRPResultsToDisplay];
@@ -1733,6 +1757,7 @@
                 self.sepsisTextView.text = self.selectedPatient.sepsis;
             }
         }
+#pragma mark Drugs
         else if ([section.sectionName isEqualToString:@"Drugs"])
         {
             CellIdentifier = @"Drugs";
@@ -1754,6 +1779,7 @@
             
             self.drugsTextView.text = self.selectedPatient.drugs;
         }
+#pragma mark Immunisations
         else if ([section.sectionName isEqualToString:@"Immunisations"])
         {
             CellIdentifier = @"Immunisations";
@@ -1775,6 +1801,7 @@
             
             self.immunisationsTextView.text = self.selectedPatient.immunisations;
         }
+#pragma mark ROP
         else if ([section.sectionName isEqualToString:@"ROP"])
         {
             CellIdentifier = @"ROP";
@@ -1796,6 +1823,7 @@
             
             self.ropTextView.text = self.selectedPatient.rop;
         }
+#pragma mark Neurology & Cranial USS
         else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
         {
             CellIdentifier = @"NeurologyAndCranialUSS";
@@ -1817,6 +1845,7 @@
             
             self.cranialUSSTextView.text = self.selectedPatient.cranialUSS;
         }
+#pragma mark Parents / Social
         else if ([section.sectionName isEqualToString:@"Parents / Social"])
         {
             CellIdentifier = @"ParentsSocial";
@@ -1838,6 +1867,7 @@
             
             self.parentsAndSocialTextView.text = self.selectedPatient.parentsAndSocial;
         }
+#pragma mark Examination
         else if ([section.sectionName isEqualToString:@"Examination"])
         {
             CellIdentifier = @"Examination";
@@ -1859,6 +1889,7 @@
             
             self.impressionTextView.text = self.selectedPatient.impression;
         }
+#pragma mark Summary
         else if ([section.sectionName isEqualToString:@"Summary"])
         {
             CellIdentifier = @"Summary";
@@ -1880,6 +1911,7 @@
             
             self.planTextView.text = self.selectedPatient.plan;
         }
+#pragma mark Plan
         else if ([section.sectionName isEqualToString:@"Plan"])
         {
             CellIdentifier = @"Plan";
@@ -1901,8 +1933,61 @@
             
             self.jobsTextView.text = self.selectedPatient.jobs;
         }
+#pragma mark Suggestion
+        else if ([section.sectionName isEqualToString:@"Suggestions"])
+        {
+            AI *brain = [AI sharedAI];
+            
+            NSArray *suggestions = [brain getSuggestionsForPatient:self.selectedPatient];
+            
+            int numberOfSuggestionsToDisplay = suggestions.count;
+            
+            if (indexPath.row < numberOfSuggestionsToDisplay)
+            {
+                CellIdentifier = [NSString stringWithFormat:@"Suggestion %i", indexPath.row];
+                
+                SuggestionTableViewCell *suggestionCell;
+                
+                suggestionCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!suggestionCell)
+                {
+                    suggestionCell = [[SuggestionTableViewCell alloc] initWithStyle:nil reuseIdentifier:CellIdentifier];
+                }
+                
+                NSString *suggestionText = suggestions[indexPath.row];
+                
+                // special case
+                if ([suggestionText isEqualToString:@"None at present"])
+                {
+                    suggestionCell.noSuggestions.text = suggestionText;
+                    suggestionCell.selectionStyle = UITableViewCellSelectionStyleNone;
+                }
+                else
+                {
+                    suggestionCell.suggestionNumber.text = [NSString stringWithFormat:@"%i.", indexPath.row + 1];
+                    suggestionCell.suggestion.text = suggestionText;
+                }
+                
+                return suggestionCell;
+            }
+            else
+            {
+                CellIdentifier = @"BlankSpace";
+                
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    cell.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                }
+            }
+        }
         else
         {
+            // stops App from crashing if I add sections
             CellIdentifier = @"Misc";
             
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -2781,6 +2866,34 @@
     return textView;
 }
 
+- (void)loseFocusOnAllTextViews
+{
+    [self.weightTextView resignFirstResponder];
+    [self.backgroundTextView resignFirstResponder];
+    [self.activeProblemsTextView resignFirstResponder];
+    [self.resolvedProblemsTextView resignFirstResponder];
+    [self.recentSignificantEventsTextView resignFirstResponder];
+    [self.ventilationAndSedationTextView resignFirstResponder];
+    [self.cxrTextView resignFirstResponder];
+    [self.cardiovascularTextView resignFirstResponder];
+    [self.haematologyTextView resignFirstResponder];
+    [self.linesTextView resignFirstResponder];
+    [self.echocardiogramTextView resignFirstResponder];
+    [self.fluidBalanceTextView resignFirstResponder];
+    [self.feedsAndFluidsTextView resignFirstResponder];
+    [self.electrolytesTextView resignFirstResponder];
+    [self.jaundiceTextView resignFirstResponder];
+    [self.sepsisTextView resignFirstResponder];
+    [self.drugsTextView resignFirstResponder];
+    [self.immunisationsTextView resignFirstResponder];
+    [self.ropTextView resignFirstResponder];
+    [self.cranialUSSTextView resignFirstResponder];
+    [self.parentsAndSocialTextView resignFirstResponder];
+    [self.impressionTextView resignFirstResponder];
+    [self.planTextView resignFirstResponder];
+    [self.jobsTextView resignFirstResponder];
+}
+
 - (BOOL)isDate:(NSDate *)date moreThanTwelveHoursLaterThanDate:(NSDate *)currentDate
 {
     double daysSinceEdit = [CBTimeMethods getDaysDifferenceDoubleBetween:date and:currentDate];
@@ -2837,28 +2950,7 @@
 {
     [super setEditing:editing animated:animated];
     
-    [self.weightTextView resignFirstResponder];
-    [self.backgroundTextView resignFirstResponder];
-    [self.activeProblemsTextView resignFirstResponder];
-    [self.resolvedProblemsTextView resignFirstResponder];
-    [self.recentSignificantEventsTextView resignFirstResponder];
-    [self.ventilationAndSedationTextView resignFirstResponder];
-    [self.cxrTextView resignFirstResponder];
-    [self.cardiovascularTextView resignFirstResponder];
-    [self.linesTextView resignFirstResponder];
-    [self.fluidBalanceTextView resignFirstResponder];
-    [self.feedsAndFluidsTextView resignFirstResponder];
-    [self.electrolytesTextView resignFirstResponder];
-    [self.jaundiceTextView resignFirstResponder];
-    [self.sepsisTextView resignFirstResponder];
-    [self.drugsTextView resignFirstResponder];
-    [self.immunisationsTextView resignFirstResponder];
-    [self.ropTextView resignFirstResponder];
-    [self.cranialUSSTextView resignFirstResponder];
-    [self.parentsAndSocialTextView resignFirstResponder];
-    [self.impressionTextView resignFirstResponder];
-    [self.planTextView resignFirstResponder];
-    [self.jobsTextView resignFirstResponder];
+    [self loseFocusOnAllTextViews];
     
     [self.myTableView1 setEditing:editing animated:YES];
     [self.myTableView2 setEditing:editing animated:YES];
@@ -3255,30 +3347,7 @@
     
     if ([tableView isEqual:self.myTableView1])
     {
-        [self.weightTextView resignFirstResponder];
-        [self.backgroundTextView resignFirstResponder];
-        [self.activeProblemsTextView resignFirstResponder];
-        [self.resolvedProblemsTextView resignFirstResponder];
-        [self.recentSignificantEventsTextView resignFirstResponder];
-        [self.ventilationAndSedationTextView resignFirstResponder];
-        [self.cxrTextView resignFirstResponder];
-        [self.cardiovascularTextView resignFirstResponder];
-        [self.haematologyTextView resignFirstResponder];
-        [self.linesTextView resignFirstResponder];
-        [self.echocardiogramTextView resignFirstResponder];
-        [self.fluidBalanceTextView resignFirstResponder];
-        [self.feedsAndFluidsTextView resignFirstResponder];
-        [self.electrolytesTextView resignFirstResponder];
-        [self.jaundiceTextView resignFirstResponder];
-        [self.sepsisTextView resignFirstResponder];
-        [self.drugsTextView resignFirstResponder];
-        [self.immunisationsTextView resignFirstResponder];
-        [self.ropTextView resignFirstResponder];
-        [self.cranialUSSTextView resignFirstResponder];
-        [self.parentsAndSocialTextView resignFirstResponder];
-        [self.impressionTextView resignFirstResponder];
-        [self.planTextView resignFirstResponder];
-        [self.jobsTextView resignFirstResponder];
+        [self loseFocusOnAllTextViews];
     }
     else
     {
@@ -4223,30 +4292,7 @@
 
 - (void)fingerprintTouched
 {
-    [self.backgroundTextView resignFirstResponder];
-    [self.weightTextView resignFirstResponder];
-    [self.activeProblemsTextView resignFirstResponder];
-    [self.resolvedProblemsTextView resignFirstResponder];
-    [self.recentSignificantEventsTextView resignFirstResponder];
-    [self.ventilationAndSedationTextView resignFirstResponder];
-    [self.cxrTextView resignFirstResponder];
-    [self.cardiovascularTextView resignFirstResponder];
-    [self.haematologyTextView resignFirstResponder];
-    [self.linesTextView resignFirstResponder];
-    [self.echocardiogramTextView resignFirstResponder];
-    [self.fluidBalanceTextView resignFirstResponder];
-    [self.feedsAndFluidsTextView resignFirstResponder];
-    [self.electrolytesTextView resignFirstResponder];
-    [self.jaundiceTextView resignFirstResponder];
-    [self.sepsisTextView resignFirstResponder];
-    [self.drugsTextView resignFirstResponder];
-    [self.immunisationsTextView resignFirstResponder];
-    [self.ropTextView resignFirstResponder];
-    [self.cranialUSSTextView resignFirstResponder];
-    [self.parentsAndSocialTextView resignFirstResponder];
-    [self.impressionTextView resignFirstResponder];
-    [self.planTextView resignFirstResponder];
-    [self.jobsTextView resignFirstResponder];
+    [self loseFocusOnAllTextViews];
     
     if (self.fingerprintButton.hidden == NO)
     {

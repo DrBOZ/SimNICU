@@ -20,4 +20,5 @@
     #import "CBTrackers.h"
     #import "CBFonts.h"
     #import "Flurry.h"
+    #import "AI.h"
 #endif

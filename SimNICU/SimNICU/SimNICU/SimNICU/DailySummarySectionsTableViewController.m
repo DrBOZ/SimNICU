@@ -114,12 +114,25 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    return (indexPath.row == preferences.handoverSections.count - 1) ? NO : YES;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-    return proposedDestinationIndexPath;
+    NSIndexPath *path = proposedDestinationIndexPath;
+    
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    int suggestionsRowNumber = preferences.handoverSections.count - 1;
+    
+    if (proposedDestinationIndexPath.row >= suggestionsRowNumber)
+    {
+        path = [NSIndexPath indexPathForRow:(suggestionsRowNumber - 1) inSection:proposedDestinationIndexPath.section];
+    }
+    
+    return path;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
