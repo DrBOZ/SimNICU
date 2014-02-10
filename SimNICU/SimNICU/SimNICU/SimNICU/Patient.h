@@ -172,5 +172,6 @@
 - (NSInteger)getNumberOfFluidBalanceRows;
 - (NSMutableArray *)getFormattedFluidBalanceResults;
 - (NSString *)getFormattedFluidBalanceResultsForPrinting;
+- (NSString *)getFormattedFluidBalanceResultsForPrintingForSpecificText:(NSString *)specificText;
 
 @end
