@@ -758,23 +758,93 @@
     
     if (specialPrintingTextSize.height > 0.0f)
     {
-        // create a rectangle to display Special Printing text based on the text size
-        if (horizontalPointToPrint == kLeftPrintingAdjustment)
+        if ([specialPrinting isEqualToString:@"Fluid Balance Data"])
         {
-            renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), specialPrintingTextSize.height);
+            // three tab points
+            float leftSidedPrintingWidth = ((pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)));
+            float rightSidedPrintingWidth = (((pageWidth / 2) - (kBorderInset) - (kMarginInsetRight)) / 2);
+            float adjustment;
+            
+            
+            // create tab point 0 rectangle
+            if (horizontalPointToPrint == kLeftPrintingAdjustment)
+            {
+                adjustment = 10.0f;
+                
+                renderingRect = CGRectMake(leftInset, topInset + y, ((leftSidedPrintingWidth / 2) + adjustment), specialPrintingTextSize.height);
+            }
+            else
+            {
+                adjustment = 60.0f;
+                
+                renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, ((rightSidedPrintingWidth / 2) + adjustment), specialPrintingTextSize.height);
+            }
+            
+            // draw Special text
+            NSString *specialPrintingText = [self getSpecialPrintingTextForSpecialPrinting:specialPrinting withFont:theBodyFont atTabPoint:@"Tab 0"];
+            
+            [specialPrintingText drawInRect:renderingRect
+                                   withFont:theBodyFont
+                              lineBreakMode:UILineBreakModeWordWrap
+                                  alignment:UITextAlignmentLeft];
+            
+            // create tab point 1 rectangle
+            if (horizontalPointToPrint == kLeftPrintingAdjustment)
+            {
+                renderingRect = CGRectMake(leftInset + ((leftSidedPrintingWidth / 2) + adjustment), topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), specialPrintingTextSize.height);
+            }
+            else
+            {
+                renderingRect = CGRectMake(horizontalPointToPrint + ((rightSidedPrintingWidth / 2) + adjustment), topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, specialPrintingTextSize.height);
+            }
+            
+            // draw Special text
+            specialPrintingText = [self getSpecialPrintingTextForSpecialPrinting:specialPrinting withFont:theBodyFont atTabPoint:@"Tab 1"];
+            
+            [specialPrintingText drawInRect:renderingRect
+                                   withFont:theBodyFont
+                              lineBreakMode:UILineBreakModeWordWrap
+                                  alignment:UITextAlignmentLeft];
+            
+            // create tab point 2 rectangle
+            if (horizontalPointToPrint == kLeftPrintingAdjustment)
+            {
+                renderingRect = CGRectMake(leftInset + ((leftSidedPrintingWidth / 2) + adjustment) + ((leftSidedPrintingWidth / 4) + adjustment), topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), specialPrintingTextSize.height);
+            }
+            else
+            {
+                renderingRect = CGRectMake(horizontalPointToPrint + ((rightSidedPrintingWidth / 2) + adjustment) + ((rightSidedPrintingWidth / 4) + adjustment - 20.0f), topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, specialPrintingTextSize.height);
+            }
+            
+            // draw Special text
+            specialPrintingText = [self getSpecialPrintingTextForSpecialPrinting:specialPrinting withFont:theBodyFont atTabPoint:@"Tab 2"];
+            
+            [specialPrintingText drawInRect:renderingRect
+                                   withFont:theBodyFont
+                              lineBreakMode:UILineBreakModeWordWrap
+                                  alignment:UITextAlignmentLeft];
         }
         else
         {
-            renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, specialPrintingTextSize.height);
+            // zero tab points
+            // create a rectangle to display Special Printing text based on the text size
+            if (horizontalPointToPrint == kLeftPrintingAdjustment)
+            {
+                renderingRect = CGRectMake(leftInset, topInset + y, (pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)), specialPrintingTextSize.height);
+            }
+            else
+            {
+                renderingRect = CGRectMake(horizontalPointToPrint, topInset + y, (pageWidth / 2) - kBorderInset - kMarginInsetRight, specialPrintingTextSize.height);
+            }
+            
+            // draw Special text
+            NSString *specialPrintingText = [self getSpecialPrintingTextForSpecialPrinting:specialPrinting withFont:theBodyFont atTabPoint:nil];
+            
+            [specialPrintingText drawInRect:renderingRect
+                                   withFont:theBodyFont
+                              lineBreakMode:UILineBreakModeWordWrap
+                                  alignment:UITextAlignmentLeft];
         }
-        
-        // draw Special text
-        NSString *specialPrintingText = [self getSpecialPrintingTextForSpecialPrinting:specialPrinting withFont:theBodyFont];
-        
-        [specialPrintingText drawInRect:renderingRect
-                               withFont:theBodyFont
-                          lineBreakMode:UILineBreakModeWordWrap
-                              alignment:UITextAlignmentLeft];
         
         // update print points
         if (theBodyTextSize.height == 0.0f)
@@ -847,13 +917,13 @@
     return size;
 }
 
-- (NSString *)getSpecialPrintingTextForSpecialPrinting:(NSString *)specialPrinting withFont:(UIFont *)theBodyFont
+- (NSString *)getSpecialPrintingTextForSpecialPrinting:(NSString *)specialPrinting withFont:(UIFont *)theBodyFont atTabPoint:(NSString *)tabPoint
 {
     NSString *specialPrintingText;
     
     if ([specialPrinting isEqualToString:@"Fluid Balance Data"])
     {
-        specialPrintingText = [self.selectedPatient getFormattedFluidBalanceResultsForPrinting];
+        specialPrintingText = [self.selectedPatient getFormattedFluidBalanceResultsForPrintingAtTabPoint:tabPoint];
     }
     
     return specialPrintingText;

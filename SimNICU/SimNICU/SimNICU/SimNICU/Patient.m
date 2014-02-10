@@ -1280,7 +1280,7 @@
     return formattedFluidBalanceResultsForPrinting;
 }
 
-- (NSString *)getFormattedFluidBalanceResultsForPrintingForSpecificText:(NSString *)specificText
+- (NSString *)getFormattedFluidBalanceResultsForPrintingAtTabPoint:(NSString *)tabPoint;
 {
     // This is the array that the tableView will be populated
     NSString *formattedFluidBalanceResultsForPrinting = @"";
@@ -1311,15 +1311,15 @@
         
         // "Date Range & Working Weight"
         NSString *dateRangeAndWorkingWeight;
-        if ([specificText isEqualToString:@"Tab 0"])
+        if ([tabPoint isEqualToString:@"Tab 0"])
         {
             dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"]];
         }
-        else if ([specificText isEqualToString:@"Tab 1"])
+        else if ([tabPoint isEqualToString:@"Tab 1"])
         {
             dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
         }
-        else if ([specificText isEqualToString:@"Tab 2"])
+        else if ([tabPoint isEqualToString:@"Tab 2"])
         {
             dateRangeAndWorkingWeight = @" ";
         }
@@ -1332,15 +1332,15 @@
         
         // "INPUT" heading
         NSString *inputHeading;
-        if ([specificText isEqualToString:@"Tab 0"])
+        if ([tabPoint isEqualToString:@"Tab 0"])
         {
             inputHeading = @"\nINPUT";
         }
-        else if ([specificText isEqualToString:@"Tab 1"])
+        else if ([tabPoint isEqualToString:@"Tab 1"])
         {
             inputHeading = @"\nml";
         }
-        else if ([specificText isEqualToString:@"Tab 2"])
+        else if ([tabPoint isEqualToString:@"Tab 2"])
         {
             inputHeading = @"\nml/kg";
         }
@@ -1356,15 +1356,15 @@
         for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
         {
             NSString *inputFluids;
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 inputFluids = [NSString stringWithFormat:@"\n%@", inputData[0]];
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 inputFluids = [NSString stringWithFormat:@"\n%0.1f", [inputData[1] doubleValue]];
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 inputFluids = @"\n120.0";
             }
@@ -1391,15 +1391,15 @@
         // "INPUT" totals
         NSString *inputTotals;
         {
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 inputTotals = @"\n";
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 inputTotals = @"\n25.4";
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 inputTotals = @"\n18.7";
             }
@@ -1415,15 +1415,15 @@
         // "OUTPUT" heading
         NSString *outputHeading;
         {
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 outputHeading = @"\nOUTPUT";
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 outputHeading = @"\n";
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 outputHeading = @"\n";
             }
@@ -1440,15 +1440,15 @@
         for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
         {
             NSString *outputFluids;
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 outputFluids = [NSString stringWithFormat:@"\n%@", outputData[0]];
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 outputFluids = [NSString stringWithFormat:@"\n%0.1f", [outputData[1] doubleValue]];
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 outputFluids = @"\n120.0";
             }
@@ -1475,15 +1475,15 @@
         // "OUTPUT" totals
         NSString *outputTotals;
         {
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 outputTotals = @"\n";
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 outputTotals = @"\n25.4";
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 outputTotals = @"\n18.7";
             }
@@ -1499,15 +1499,15 @@
         // "BALANCE" heading
         NSString *balanceHeading;
         {
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 balanceHeading = @"\nBALANCE";
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 balanceHeading = @"\n";
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 balanceHeading = @"\n";
             }
@@ -1523,21 +1523,21 @@
         // "BALANCE" totals
         NSString *balanceTotals;
         {
-            if ([specificText isEqualToString:@"Tab 0"])
+            if ([tabPoint isEqualToString:@"Tab 0"])
             {
                 balanceTotals = @"\n";
             }
-            else if ([specificText isEqualToString:@"Tab 1"])
+            else if ([tabPoint isEqualToString:@"Tab 1"])
             {
                 balanceTotals = @"\n+25.4";
             }
-            else if ([specificText isEqualToString:@"Tab 2"])
+            else if ([tabPoint isEqualToString:@"Tab 2"])
             {
                 balanceTotals = @"\n(+18.7)";
             }
             else
             {
-                balanceTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t+25.4\t(+18.7)"];
+                balanceTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t+25.4\t+18.7"];
             }
         }
         
