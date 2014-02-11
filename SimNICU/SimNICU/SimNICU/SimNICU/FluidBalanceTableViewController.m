@@ -135,9 +135,11 @@
                 
                 NSString *fluid1Name = @"Fluid 1";
                 NSNumber *fluid1MlPerDay = @0;
+                NSNumber *fluid1MlPerKgPerDay = @0;
                 
                 [fluid1 addObject:fluid1Name];
                 [fluid1 addObject:fluid1MlPerDay];
+                [fluid1 addObject:fluid1MlPerKgPerDay];
                 
                 [inputData addObject:fluid1];
                 
@@ -152,9 +154,11 @@
                 
                 NSString *fluid2Name = @"Urine";
                 NSNumber *fluid2MlPerDay = @0;
+                NSNumber *fluid2MlPerKgPerDay = @0;
                 
                 [fluid2 addObject:fluid2Name];
                 [fluid2 addObject:fluid2MlPerDay];
+                [fluid2 addObject:fluid2MlPerKgPerDay];
                 
                 [outputData addObject:fluid2];
                 
@@ -769,13 +773,14 @@
     NSString *section = (sender.tag - 1) ? @"OutputData" : @"InputData";
     
     // create new fluid data
-    NSMutableArray *fluid = [[NSMutableArray alloc] initWithCapacity:2];
+    NSMutableArray *fluid = [[NSMutableArray alloc] initWithCapacity:3];
     
     // set fluid name
     NSString *fluidName = [NSString stringWithFormat:@"Fluid %i", ([self.fluidBalanceData[section] count] + 1)];
     
     [fluid addObject:fluidName];
-    [fluid addObject:@0];
+    [fluid addObject:@0];               // ml/day
+    [fluid addObject:@0];               // ml/kg/day
     
     [self.fluidBalanceData[section] addObject:fluid];
     
@@ -931,9 +936,12 @@
 
 - (void)updateResults
 {
-    double totalIn = 0.0f;
-    double totalOut = 0.0f;
-    double balance = 0.0f;
+    double inputTotalMlPerDay = 0.0f;
+    double inputTotalMlPerKgPerDay = 0.0f;
+    double outputTotalMlPerDay = 0.0f;
+    double outputTotalMlPerKgPerDay = 0.0f;
+    double balanceMlPerDay = 0.0f;
+    double balanceMlPerKgPerDay = 0.0f;
     
     // loop through all of the cells
     for (int section = 1; section <= 2; section ++)
@@ -946,41 +954,61 @@
         {
             FluidTableViewCell *cell = (FluidTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
             
-            double mlperDayDouble = [self.fluidBalanceData[sectionName][row][1] doubleValue];
+            double mlPerDayDouble = [self.fluidBalanceData[sectionName][row][1] doubleValue];
+            
+            double mlPerKgPerDayDouble = (mlPerDayDouble / workingWeightKGAsDouble);
+            
+            // update data
+            self.fluidBalanceData[sectionName][row][2] = [NSNumber numberWithDouble:mlPerKgPerDayDouble];
             
             // update individual fluids 'ml/kg/day'
-            cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", (mlperDayDouble / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
+            cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", mlPerKgPerDayDouble, NSLocalizedString(@"day", nil)];
             
             // update footer calculations
             if ([sectionName isEqualToString:@"InputData"])
             {
-                totalIn = totalIn + mlperDayDouble;
+                inputTotalMlPerDay = inputTotalMlPerDay + mlPerDayDouble;
+                
+                self.fluidBalanceData[@"InputTotalMlPerDay"] = [NSNumber numberWithDouble:inputTotalMlPerDay];
+                
+                inputTotalMlPerKgPerDay = (inputTotalMlPerDay / workingWeightKGAsDouble);
+                
+                self.fluidBalanceData[@"InputTotalMlPerKgPerDay"] = [NSNumber numberWithDouble:inputTotalMlPerKgPerDay];
             }
             else
             {
-                totalOut = totalOut + mlperDayDouble;
+                outputTotalMlPerDay = outputTotalMlPerDay + mlPerDayDouble;
+                
+                self.fluidBalanceData[@"OutputTotalMlPerDay"] = [NSNumber numberWithDouble:outputTotalMlPerDay];
+                
+                outputTotalMlPerKgPerDay = (outputTotalMlPerDay / workingWeightKGAsDouble);
+                
+                self.fluidBalanceData[@"OutputTotalMlPerKgPerDay"] = [NSNumber numberWithDouble:outputTotalMlPerKgPerDay];
             }
         }
     }
     
     // update balance
-    balance = totalIn - totalOut;
+    balanceMlPerDay = inputTotalMlPerDay - outputTotalMlPerDay;
+    balanceMlPerKgPerDay = (balanceMlPerDay / workingWeightKGAsDouble);
+    self.fluidBalanceData[@"BalanceMlPerDay"] = [NSNumber numberWithDouble:balanceMlPerDay];
+    self.fluidBalanceData[@"BalanceMlPerKgPerDay"] = [NSNumber numberWithDouble:balanceMlPerKgPerDay];
     
     // update labels
     
-    self.totalInMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", totalIn];
-    self.totalInMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", (totalIn / workingWeightKGAsDouble)];
+    self.totalInMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", inputTotalMlPerDay];
+    self.totalInMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", inputTotalMlPerKgPerDay];
     
-    self.totalOutMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", totalOut];
-    self.totalOutMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", (totalOut / workingWeightKGAsDouble)];
+    self.totalOutMlPerDay.text = [NSString stringWithFormat:@"%0.0f ml/day", outputTotalMlPerDay];
+    self.totalOutMlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/day", outputTotalMlPerKgPerDay];
     
-    if (balance > 0)
+    if (balanceMlPerDay > 0)
     {
-        self.balance.text = [NSString stringWithFormat:@"+%0.0f ml (+%0.0f ml/kg)", balance, (balance / workingWeightKGAsDouble)];
+        self.balance.text = [NSString stringWithFormat:@"+%0.0f ml (+%0.0f ml/kg)", balanceMlPerDay, balanceMlPerKgPerDay];
     }
     else
     {
-        self.balance.text = [NSString stringWithFormat:@"%0.0f ml (%0.0f ml/kg)", balance, (balance / workingWeightKGAsDouble)];
+        self.balance.text = [NSString stringWithFormat:@"%0.0f ml (%0.0f ml/kg)", balanceMlPerDay, balanceMlPerKgPerDay];
     }
 }
 

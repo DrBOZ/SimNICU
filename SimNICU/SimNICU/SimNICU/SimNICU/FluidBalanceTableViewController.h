@@ -39,13 +39,3 @@
 @property (nonatomic, strong) NSDate *fluidBalanceDate;
 
 @end
-
-
-// Things I need to fix:
-//
-#warning fix spacing in both modal and non-modal views
-#warning fix custom UITableViewCell to display results
-#warning fix printing
-#warning fix fluid list name editing
-#warning fix fluid class to containt futher information
-#warning test accuracy of calculations

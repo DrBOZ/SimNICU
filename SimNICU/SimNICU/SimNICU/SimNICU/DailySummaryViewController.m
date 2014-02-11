@@ -167,7 +167,7 @@
     [super viewDidLoad];
     
 #warning temp code
-    // self.selectedPatient.allFluidBalanceData = nil;
+    self.selectedPatient.allFluidBalanceData = nil;
     
     // setup phototherapy chart settings
     {
@@ -877,6 +877,40 @@
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([tableView isEqual:self.myTableView2])
+    {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        HandoverSection *section = preferences.handoverSections[indexPath.section];
+        
+        if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        {
+            // only change background color of disclosure indicator if there are results shown
+            if ([self.selectedPatient getNumberOfFluidBalanceRows])
+            {
+                if (indexPath.row == 0)
+                {
+                    UIColor *systemGray = [UIColor colorWithRed:247.0/255.0
+                                                          green:247.0/255.0
+                                                           blue:247.0/255.0
+                                                          alpha:1.0];
+                    
+                    cell.contentView.backgroundColor = systemGray;
+                    cell.backgroundColor = systemGray;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.accessoryView.backgroundColor = [UIColor clearColor];
+                }
+                else
+                {
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                }
+            }
+        }
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Preferences *preferences = [Preferences sharedPreferences];
@@ -1263,8 +1297,6 @@
             if (indexPath.row < [self.selectedPatient getNumberOfFluidBalanceRows])
             {
                 self.formattedFluidBalanceResults = [self.selectedPatient getFormattedFluidBalanceResults];
-                
-                NSLog(@"indexPath.row = %i", indexPath.row);
                 
                 NSDictionary *dictionary = self.formattedFluidBalanceResults[indexPath.row];
                 
@@ -2923,7 +2955,20 @@
         // whether a section is editable is contained in data from the preferences handover sections
         HandoverSection *section = preferences.handoverSections[indexPath.section];
         
-        if ([section.sectionName isEqualToString:@"Jaundice"])
+        if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        {
+            int numberOfFluidBalanceRows = [self.selectedPatient getNumberOfFluidBalanceRows];
+            
+            if (indexPath.row < numberOfFluidBalanceRows)
+            {
+                return NO;
+            }
+            else
+            {
+                return YES;
+            }
+        }
+        else if ([section.sectionName isEqualToString:@"Jaundice"])
         {
             if ([preferences.guidelineCountry isEqualToString:@"US"])
             {
@@ -2982,6 +3027,19 @@
             else
             {
                 // this is for the free text
+                editingStyle = UITableViewCellEditingStyleInsert;
+            }
+        }
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        {
+            int numberOfFluidBalanceRows = [self.selectedPatient getNumberOfFluidBalanceRows];
+            
+            if (indexPath.row < numberOfFluidBalanceRows)
+            {
+                editingStyle = UITableViewCellEditingStyleNone;
+            }
+            else
+            {
                 editingStyle = UITableViewCellEditingStyleInsert;
             }
         }
@@ -3369,6 +3427,8 @@
         NSArray *haematologyResults = [self getHaematologyResultsToDisplay];
         
         // use @"Unique Reference" to change display value
+#warning unique reference will not be unique if syncing data
+        
         NSDictionary *sampleData;
         
         // cycle through all selected patient's sampledata
@@ -3388,6 +3448,10 @@
                 [self setupAndPresentModalNavController:navController];
             }
         }
+    }
+    else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+    {
+        // code
     }
     else if ([section.sectionName isEqualToString:@"Biochemistry"])
     {
@@ -6920,6 +6984,8 @@
 
 - (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishAddingNewData:(NSMutableDictionary *)fluidBalanceData
 {
+    [self setEditing:NO animated:NO];
+    
     if (!self.selectedPatient.allFluidBalanceData)
     {
         self.selectedPatient.allFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:5];
