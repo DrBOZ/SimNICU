@@ -112,7 +112,7 @@
 @property (nonatomic, retain) NSString *echocardiogram;
 @property (nonatomic, retain) NSString *feedsAndFluids;
 @property (nonatomic, retain) NSString *fluidBalance;
-@property (nonatomic, retain) NSString *electrolytes;
+@property (nonatomic, retain) NSString *biochemistry;
 @property (nonatomic, retain) NSString *jaundice;
 @property (nonatomic, retain) NSString *sepsis;
 @property (nonatomic, retain) NSString *drugs;
@@ -120,9 +120,9 @@
 @property (nonatomic, retain) NSString *rop;
 @property (nonatomic, retain) NSString *cranialUSS;
 @property (nonatomic, retain) NSString *parentsAndSocial;
-@property (nonatomic, retain) NSString *impression;
+@property (nonatomic, retain) NSString *examination;
+@property (nonatomic, retain) NSString *summary;
 @property (nonatomic, retain) NSString *plan;
-@property (nonatomic, retain) NSString *jobs;
 
 // text entry dates
 @property (nonatomic, retain) NSDate *weightLastEntryDate;
@@ -138,7 +138,7 @@
 @property (nonatomic, retain) NSDate *echocardiogramLastEntryDate;
 @property (nonatomic, retain) NSDate *feedsAndFluidLastEntryDate;
 @property (nonatomic, retain) NSDate *fluidBalanceLastEntryDate;
-@property (nonatomic, retain) NSDate *electrolytesLastEntryDate;
+@property (nonatomic, retain) NSDate *biochemistryLastEntryDate;
 @property (nonatomic, retain) NSDate *jaundiceLastEntryDate;
 @property (nonatomic, retain) NSDate *sepsisLastEntryDate;
 @property (nonatomic, retain) NSDate *drugsLastEntryDate;
@@ -146,9 +146,9 @@
 @property (nonatomic, retain) NSDate *ropLastEntryDate;
 @property (nonatomic, retain) NSDate *cranialUSSLastEntryDate;
 @property (nonatomic, retain) NSDate *parentsAndSocialLastEntryDate;
-@property (nonatomic, retain) NSDate *impressionLastEntryDate;
+@property (nonatomic, retain) NSDate *examinationLastEntryDate;
+@property (nonatomic, retain) NSDate *summaryLastEntryDate;
 @property (nonatomic, retain) NSDate *planLastEntryDate;
-@property (nonatomic, retain) NSDate *jobsLastEntryDate;
 
 @property (nonatomic, retain) NSString *maternalBloodGroup;
 @property (nonatomic, retain) NSString *maternalRhesus;

@@ -27,7 +27,7 @@
 
 // testing tools
 #define IRATE_PREVIEW_MODE 0
-#define DCINTROSPECT_ON 0
+#define DCINTROSPECT_ON 1
 #define RESET_CELL_INFO 1                                   // Should leave this on
 #define RESET_PREFERENCES_HANDOVER_SECTIONS_CUSTOM_TEXT 1   // Resets custom text in preferences
 #define CLOCK_IN_TO_HOURSTRACKER_REMINDER 0

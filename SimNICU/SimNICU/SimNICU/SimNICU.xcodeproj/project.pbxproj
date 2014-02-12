@@ -226,6 +226,8 @@
 		5C28EAB917FD6691009DDF17 /* ScreenHack01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C28EAB717FD6691009DDF17 /* ScreenHack01.png */; };
 		5C2B164917DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
 		5C2B164A17DC15FE0038B4A8 /* PaperSizeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */; };
+		5C2ECB7E18AB65BC00E3B303 /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2ECB7D18AB65BC00E3B303 /* PatientDetailsTableViewController.m */; };
+		5C2ECB7F18AB65BD00E3B303 /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2ECB7D18AB65BC00E3B303 /* PatientDetailsTableViewController.m */; };
 		5C316CFB17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
 		5C316CFC17C2BF830096B8D3 /* CBTrackers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C316CFA17C2BF830096B8D3 /* CBTrackers.m */; };
 		5C31A3D01874D6EE00B585D9 /* FluidBalanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C31A3CF1874D6EE00B585D9 /* FluidBalanceTableViewController.m */; };
@@ -1144,6 +1146,8 @@
 		5C28EAB717FD6691009DDF17 /* ScreenHack01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenHack01.png; sourceTree = "<group>"; };
 		5C2B164717DC15FE0038B4A8 /* PaperSizeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperSizeTableViewController.h; sourceTree = "<group>"; };
 		5C2B164817DC15FE0038B4A8 /* PaperSizeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperSizeTableViewController.m; sourceTree = "<group>"; };
+		5C2ECB7C18AB65BC00E3B303 /* PatientDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsTableViewController.h; sourceTree = "<group>"; };
+		5C2ECB7D18AB65BC00E3B303 /* PatientDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsTableViewController.m; sourceTree = "<group>"; };
 		5C316CF917C2BF830096B8D3 /* CBTrackers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTrackers.h; sourceTree = "<group>"; };
 		5C316CFA17C2BF830096B8D3 /* CBTrackers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTrackers.m; sourceTree = "<group>"; };
 		5C31A3CE1874D6EE00B585D9 /* FluidBalanceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluidBalanceTableViewController.h; sourceTree = "<group>"; };
@@ -3381,6 +3385,8 @@
 			children = (
 				5C940B0A166E3B650044A7D1 /* PatientDetailsViewController.h */,
 				5C940B0B166E3B650044A7D1 /* PatientDetailsViewController.m */,
+				5C2ECB7C18AB65BC00E3B303 /* PatientDetailsTableViewController.h */,
+				5C2ECB7D18AB65BC00E3B303 /* PatientDetailsTableViewController.m */,
 				5C940B0D166E3B6A0044A7D1 /* Sub Views */,
 			);
 			name = "Patient Details";
@@ -4694,6 +4700,7 @@
 				5C88570C17E443FB00446E5F /* CBTableViewController.m in Sources */,
 				5C4DC70817E512C300412C72 /* CBBarCustomTextItem.m in Sources */,
 				5C4DC72517E5340C00412C72 /* UIView+JMNoise.m in Sources */,
+				5C2ECB7E18AB65BC00E3B303 /* PatientDetailsTableViewController.m in Sources */,
 				5C4DC73317E5340C00412C72 /* UAModalPanel.m in Sources */,
 				5C56F61E1801E3A600665E22 /* PlateletTransfusionModel.m in Sources */,
 				5C4DC73517E5340C00412C72 /* UATitledModalPanel.m in Sources */,
@@ -4720,6 +4727,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2ECB7F18AB65BD00E3B303 /* PatientDetailsTableViewController.m in Sources */,
 				5CD3AFA816CF38D500DE362C /* main.m in Sources */,
 				5CD3AFA916CF38D500DE362C /* AppDelegate.m in Sources */,
 				5C56F64418021BA300665E22 /* BloodTransfusionCriteriaModel.m in Sources */,

@@ -1,6 +1,6 @@
 //
 //  PatientDetailsViewController.m
-//  SimNICU
+//  Neonatal Intensive Care
 //
 //  Created by Conrad Bosman on 20/06/2012.
 //  Copyright (c) 2012 SimNICU. All rights reserved.
@@ -257,7 +257,7 @@
             }
             else 
             {
-                cell.detailTextLabel.text = @"";
+                cell.detailTextLabel.text = nil;
             }
             
             returnCell = cell;
@@ -510,11 +510,8 @@
     {
         if (indexPath.row == 0) // Name
         {
-            // create PatientDetailsEnterNameViewController and push onto navigationController stack
             PatientDetailsEnterNameViewController *nameController = [[PatientDetailsEnterNameViewController alloc] init];
-            
             nameController.patientToEdit = self.patientToEdit;
-            
             nameController.delegate = self;
             
             [self.navigationController pushViewController:nameController animated:YES];
@@ -574,8 +571,6 @@
 
 - (void)patientDetailsEnterNameViewController:(PatientDetailsEnterNameViewController *)controller didFinishAddingPatientName:(Patient *)patient
 {
-    NSLog(@"DidFinishADDINGPatientName");
-    
     if ([patient.lastname isEqualToString:@""]) 
     {
         patient.lastname = NULL;
@@ -692,8 +687,6 @@
 
 - (void)patientDetailsEnterWeightViewController:(PatientDetailsEnterWeightViewController *)controller didFinishEditingPatientBirthWeight:(Patient *)patient
 {
-    NSLog(@"patientDetailsEnterWeightViewController didFinishEditingPatientWeight");
-    
     // self.patientToEdit.birthWeight = patient.birthWeight;
     self.patientToEdit.gestation = patient.gestation;
     
@@ -713,8 +706,6 @@
 
 - (void)patientDetailsEnterWorkingWeightViewController:(PatientDetailsEnterWorkingWeightViewController *)controller didFinishAddingPatientWorkingWeight:(Patient *)patient measuredOnDate:(NSDate *)date
 {
-    NSLog(@"PatientDetailsEnterWorkingWeightViewController didFinishAddingPatientWorkingWeight");
-    
     self.patientToEdit.workingWeight = patient.workingWeight;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -731,9 +722,6 @@
 
 - (void)patientDetailsEnterWorkingWeightViewController:(PatientDetailsEnterWorkingWeightViewController *)controller didFinishEditingPatientWorkingWeight:(Patient *)patient measuredOnDate:(NSDate *)date
 {
-    NSLog(@" ");
-    NSLog(@"PatientDetailsEnterWorkingWeightViewController didFinishEditingPatientWorkingWeight");
-
     self.patientToEdit.workingWeight = patient.workingWeight;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

@@ -2129,12 +2129,13 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient
-{
-    [self.myTableView reloadData];
-    
-    [self dismissModalViewControllerAnimated:YES];
-}
+//- (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishEditingPatient:(Patient *)patient
+//{
+//    // This code should not be called anymore...
+//    [self.myTableView reloadData];
+//    
+//    [self dismissModalViewControllerAnimated:YES];
+//}
 
 - (void)patientDetailsViewControllerDidCancel:(PatientDetailsViewController *)controller
 {

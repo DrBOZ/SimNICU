@@ -62,7 +62,7 @@
     BOOL newEchocardiogram;
     BOOL newFeedsAndFluids;
     BOOL newFluidBalance;
-    BOOL newElectrolytes;
+    BOOL newBiochemistry;
     BOOL newBiliChart;
     BOOL newJaundice;
     BOOL newSepsis;
@@ -71,9 +71,9 @@
     BOOL newROP;
     BOOL newCranialUSS;
     BOOL newParentsAndSocial;
-    BOOL newImpression;
+    BOOL newExamination;
+    BOOL newSummary;
     BOOL newPlan;
-    BOOL newJobs;
     
     BOOL firstButtonPressSinceScroll; // used to line up sections when pressing fast forward
     
@@ -111,7 +111,7 @@
 @property (nonatomic, strong) UITextView *echocardiogramTextView;
 @property (nonatomic, strong) UITextView *feedsAndFluidsTextView;
 @property (nonatomic, strong) UITextView *fluidBalanceTextView;
-@property (nonatomic, strong) UITextView *electrolytesTextView;
+@property (nonatomic, strong) UITextView *biochemistryTextView;
 @property (nonatomic, strong) UITextView *jaundiceTextView;
 @property (nonatomic, strong) UITextView *sepsisTextView;
 @property (nonatomic, strong) UITextView *drugsTextView;
@@ -119,9 +119,9 @@
 @property (nonatomic, strong) UITextView *ropTextView;
 @property (nonatomic, strong) UITextView *cranialUSSTextView;
 @property (nonatomic, strong) UITextView *parentsAndSocialTextView;
-@property (nonatomic, strong) UITextView *impressionTextView;
+@property (nonatomic, strong) UITextView *examinationTextView;
+@property (nonatomic, strong) UITextView *summaryTextView;
 @property (nonatomic, strong) UITextView *planTextView;
-@property (nonatomic, strong) UITextView *jobsTextView;
 
 @property (nonatomic, strong) UITableViewCell *shinobiCell;
 @property (nonatomic, strong) UIImage *shinobiChartImage;
@@ -167,7 +167,7 @@
     [super viewDidLoad];
     
 #warning temp code
-    self.selectedPatient.allFluidBalanceData = nil;
+    // self.selectedPatient.allFluidBalanceData = nil;
     
     // setup phototherapy chart settings
     {
@@ -192,11 +192,11 @@
     
     biochemistryResultsBackroundColors = [[NSMutableArray alloc] initWithCapacity:10];
     
-    NSLog(@"2");
-    
-    NSLog(@"Neurotoxicity risk factors = %@", self.neurotoxicityRiskFactors);
-    NSLog(@"Clinical Status = %@", self.clinicalStatus);
-    NSLog(@"Neurotoxicity risk = %@", self.neurotoxicityRisk);
+//    NSLog(@"2");
+//    
+//    NSLog(@"Neurotoxicity risk factors = %@", self.neurotoxicityRiskFactors);
+//    NSLog(@"Clinical Status = %@", self.clinicalStatus);
+//    NSLog(@"Neurotoxicity risk = %@", self.neurotoxicityRisk);
     
     portraitOrientationDefaultsSet = YES;
     
@@ -341,14 +341,9 @@
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    if  ([tableView isEqual:self.myTableView1])
-    {
-        return 1;
-    }
-    else
-    {
-        return [preferences.handoverSections count];
-    }
+    if  ([tableView isEqual:self.myTableView1]) return 1;
+    
+    else return [preferences.handoverSections count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -393,7 +388,7 @@
                 }
                 else if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"])
                 {
-                    NSLog(@"Fluid balance rows = %i", [self.selectedPatient getNumberOfFluidBalanceRows] + 1);
+                    // NSLog(@"Fluid balance rows = %i", [self.selectedPatient getNumberOfFluidBalanceRows] + 1);
                     rows = [self.selectedPatient getNumberOfFluidBalanceRows] + 1;
                 }
                 else if ([handoverSection.sectionName isEqualToString:@"Biochemistry"])
@@ -414,6 +409,8 @@
                 }
                 else
                 {
+                    // this should always be 1...
+                    // I could test for this using a breakpoint and/or NSLog
                     rows = [handoverSectionForPatient.rows count];
                 }
             }
@@ -430,7 +427,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *returnString = nil;
+    NSString *titleForHeader = nil;
     
     // order as per the user's preferences
     Preferences *preferences = [Preferences sharedPreferences];
@@ -439,439 +436,701 @@
     
     if ([tableView isEqual:self.myTableView1])
     {
-        returnString = NSLocalizedString(@"Patient", nil);
+        titleForHeader = NSLocalizedString(@"Patient", nil);
     }
     else
     {
         // localisation of section name occurs here
 #if AI_SUGGESTIONS_PREVIEW_MODE
         
-        returnString = NSLocalizedString(handoverSection.sectionName, nil);
+        titleForHeader = NSLocalizedString(handoverSection.sectionName, nil);
         
 #else
         
         if ([handoverSection.sectionName isEqualToString:@"Suggestions"])
         {
-            returnString = nil;
+            titleForHeader = nil;
         }
         else
         {
-            returnString = NSLocalizedString(handoverSection.sectionName, nil);
+            titleForHeader = NSLocalizedString(handoverSection.sectionName, nil);
         }
         
 #endif
         
     }
     
-    return returnString;
+    return titleForHeader;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    // can use the method to work out header font height here
-    if ([tableView isEqual:self.myTableView1])
-    {
-        return 22.0f;
-    }
-    else
-    {
-        return 22.0f;
-    }
+    return 22.0f;
 }
 
 - (CGFloat)heightForTextView:(UITextView *)textView
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    // get textView height
+    //  get textView height
+    
+    /*
+     *  This method is called when the user changes text to see if 
+     *  the actual textView needs to adjust height.
+     
+     *  Therefore I can see why it needs a proxy TextView
+     */
     
     // as based on textView.tag, get from selected patient info
-    HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+    // HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];     this was how I was doing it...
     
     UITextView *textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
     
-    if ([section.sectionName isEqual:@"Weight"])
+    if ([textView isEqual:self.weightTextView])                                     // if ([section.sectionName isEqualToString:@"Weight"])
     {
-        textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
+        textViewToMeasure.text = self.selectedPatient.weight;
     }
-    else if ([section.sectionName isEqual:@"Background"])
+    else if ([textView isEqual:self.backgroundTextView])                            // else if ([section.sectionName isEqualToString:@"Background"])
     {
-        textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+        textViewToMeasure.text = self.selectedPatient.background;
     }
-    else if ([section.sectionName isEqual:@"Active Problems"])
+    else if ([textView isEqual:self.activeProblemsTextView])                        // else if ([section.sectionName isEqualToString:@"Active Problems"])
     {
         textViewToMeasure.text = self.selectedPatient.activeProblems;
     }
-    else if ([section.sectionName isEqual:@"Resolved Problems"])
+    else if ([textView isEqual:self.resolvedProblemsTextView])                      // else if ([section.sectionName isEqualToString:@"Resolved Problems"])
     {
         textViewToMeasure.text = self.selectedPatient.resolvedProblems;
     }
-    else if ([section.sectionName isEqual:@"Recent Significant Events"])
+    else if ([textView isEqual:self.recentSignificantEventsTextView])               // else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
     {
         textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
     }
-    else if ([section.sectionName isEqual:@"Ventilation & Sedation"])
+    else if ([textView isEqual:self.ventilationAndSedationTextView])                // else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
     {
         textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
     }
-    else if ([section.sectionName isEqual:@"CXR"])
+    else if ([textView isEqual:self.cxrTextView])                                   // else if ([section.sectionName isEqualToString:@"CXR"])
     {
         textViewToMeasure.text = self.selectedPatient.cxr;
     }
-    else if ([section.sectionName isEqual:@"Cardiovascular"])
+    else if ([textView isEqual:self.cardiovascularTextView])                        // else if ([section.sectionName isEqualToString:@"Cardiovascular"])
     {
         textViewToMeasure.text = self.selectedPatient.cardiovascular;
     }
-    else if ([section.sectionName isEqual:@"Haematology"])
+    else if ([textView isEqual:self.haematologyTextView])                           // else if ([section.sectionName isEqualToString:@"Haematology"])
     {
         textViewToMeasure.text = self.selectedPatient.haematology;
     }
-    else if ([section.sectionName isEqual:@"Lines"])
+    else if ([textView isEqual:self.linesTextView])                                 // else if ([section.sectionName isEqualToString:@"Lines"])
     {
         textViewToMeasure.text = self.selectedPatient.lines;
     }
-    else if ([section.sectionName isEqual:@"Echocardiogram"])
+    else if ([textView isEqual:self.echocardiogramTextView])                        // else if ([section.sectionName isEqualToString:@"Echocardiogram"])
     {
         textViewToMeasure.text = self.selectedPatient.echocardiogram;
     }
-    else if ([section.sectionName isEqual:@"Feeds & Fluids"])
+    else if ([textView isEqual:self.feedsAndFluidsTextView])                        // else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
     {
         textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
     }
-    else if ([section.sectionName isEqual:@"Fluid Balance"])
+    else if ([textView isEqual:self.fluidBalanceTextView])                          // else if ([section.sectionName isEqualToString:@"Fluid Balance"])
     {
         textViewToMeasure.text = self.selectedPatient.fluidBalance;
     }
-    else if ([section.sectionName isEqual:@"Biochemistry"])
+    else if ([textView isEqual:self.biochemistryTextView])                          // else if ([section.sectionName isEqualToString:@"Biochemistry"])
     {
-        textViewToMeasure.text = self.selectedPatient.electrolytes;
+        textViewToMeasure.text = self.selectedPatient.biochemistry;
     }
-    else if ([section.sectionName isEqual:@"Jaundice"])
+    else if ([textView isEqual:self.jaundiceTextView])                              // else if ([section.sectionName isEqualToString:@"Jaundice"])
     {
         textViewToMeasure.text = self.selectedPatient.jaundice;
     }
-    else if ([section.sectionName isEqual:@"Sepsis"])
+    else if ([textView isEqual:self.sepsisTextView])                                // else if ([section.sectionName isEqualToString:@"Sepsis"])
     {
         textViewToMeasure.text = self.selectedPatient.sepsis;
     }
-    else if ([section.sectionName isEqual:@"Drugs"])
+    else if ([textView isEqual:self.drugsTextView])                                 // else if ([section.sectionName isEqualToString:@"Drugs"])
     {
         textViewToMeasure.text = self.selectedPatient.drugs;
     }
-    else if ([section.sectionName isEqual:@"Immunisations"])
+    else if ([textView isEqual:self.immunisationsTextView])                         // else if ([section.sectionName isEqualToString:@"Immunisations"])
     {
         textViewToMeasure.text = self.selectedPatient.immunisations;
     }
-    else if ([section.sectionName isEqual:@"ROP"])
+    else if ([textView isEqual:self.ropTextView])                                   // else if ([section.sectionName isEqualToString:@"ROP"])
     {
         textViewToMeasure.text = self.selectedPatient.rop;
     }
-    else if ([section.sectionName isEqual:@"Neurology & Cranial USS"])
+    else if ([textView isEqual:self.cranialUSSTextView])                            // else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
     {
         textViewToMeasure.text = self.selectedPatient.cranialUSS;
     }
-    else if ([section.sectionName isEqual:@"Parents / Social"])
+    else if ([textView isEqual:self.parentsAndSocialTextView])                      // else if ([section.sectionName isEqualToString:@"Parents / Social"])
     {
         textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
     }
-    else if ([section.sectionName isEqual:@"Examination"])
+    else if ([textView isEqual:self.examinationTextView])                           // else if ([section.sectionName isEqualToString:@"Examination"])
     {
-        textViewToMeasure.text = self.selectedPatient.impression;
+        textViewToMeasure.text = self.selectedPatient.examination;
     }
-    else if ([section.sectionName isEqual:@"Summary"])
+    else if ([textView isEqual:self.summaryTextView])                               // else if ([section.sectionName isEqualToString:@"Summary"])
+    {
+        textViewToMeasure.text = self.selectedPatient.summary;
+    }
+    else if ([textView isEqual:self.planTextView])                                  // else if ([section.sectionName isEqualToString:@"Plan"])
     {
         textViewToMeasure.text = self.selectedPatient.plan;
     }
-    else if ([section.sectionName isEqual:@"Plan"])
-    {
-        textViewToMeasure.text = self.selectedPatient.jobs;
-    }
     
-    // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+    // Calculate textViewToMeasure height
+    if ([preferences.dynamicText intValue] && [[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        // ensuring iOS 7
+        textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    }
+    else
+    {
+        textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+    }
     
     [textViewToMeasure sizeToFit];
     
     CGFloat height = textViewToMeasure.frame.size.height;
     
-    textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+    // what exactly am I doing here?
+    // not sure, so comment out...
     
-    if ([preferences.dynamicText intValue])
-    {
-        textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    }
-    else
-    {
-        textView.font = [UIFont systemFontOfSize:14.0f];
-    }
+//    textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+//    
+//    if ([preferences.dynamicText intValue] && [[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//    {
+//        textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//    }
+//    else
+//    {
+//        textView.font = [UIFont systemFontOfSize:14.0f];
+//    }
     
     return height;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Note: this is height for row, which includes the UITextView cells and others.
     CGFloat height = 55.0f;
     
     if ([tableView isEqual:self.myTableView1]) height = 90.0f;
     
     else
     {
-        // iOS 7 specifics
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+        // have to use this textView as actual textViews have not been created yet...
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+        
+        // in order of preferences
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        HandoverSection *section = preferences.handoverSections[indexPath.section];
+        
+        if ([section.sectionName isEqualToString:@"Weight"])
         {
-            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+            textView.text = self.selectedPatient.weight;
+        }
+        else if ([section.sectionName isEqualToString:@"Background"])
+        {
+            textView.text = self.selectedPatient.background;
+        }
+        else if ([section.sectionName isEqualToString:@"Active Problems"])
+        {
+            textView.text = self.selectedPatient.activeProblems;
+        }
+        else if ([section.sectionName isEqualToString:@"Resolved Problems"])
+        {
+            textView.text = self.selectedPatient.resolvedProblems;
+        }
+        else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
+        {
+            textView.text = self.selectedPatient.recentSignificantEvents;
+        }
+        else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
+        {
+            textView.text = self.selectedPatient.ventilationAndSedation;
+        }
+        else if ([section.sectionName isEqualToString:@"CXR"])
+        {
+            textView.text = self.selectedPatient.cxr;
+        }
+        else if ([section.sectionName isEqualToString:@"Cardiovascular"])
+        {
+            textView.text = self.selectedPatient.cardiovascular;
+        }
+        else if ([section.sectionName isEqualToString:@"Haematology"])
+        {
+            int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
             
-            // in order of preferences
-            Preferences *preferences = [Preferences sharedPreferences];
-            
-            HandoverSection *section = preferences.handoverSections[indexPath.section];
-            
-            if ([section.sectionName isEqualToString:@"Weight"])
+            if (numberOfHaematologyResultsToDisplay)
             {
-                textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
-            }
-            else if ([section.sectionName isEqualToString:@"Background"])
-            {
-                textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
-            }
-            else if ([section.sectionName isEqualToString:@"Active Problems"])
-            {
-                textView.text = self.selectedPatient.activeProblems;
-            }
-            else if ([section.sectionName isEqualToString:@"Resolved Problems"])
-            {
-                textView.text = self.selectedPatient.resolvedProblems;
-            }
-            else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
-            {
-                textView.text = self.selectedPatient.recentSignificantEvents;
-            }
-            else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
-            {
-                textView.text = self.selectedPatient.ventilationAndSedation;
-            }
-            else if ([section.sectionName isEqualToString:@"CXR"])
-            {
-                textView.text = self.selectedPatient.cxr;
-            }
-            else if ([section.sectionName isEqualToString:@"Cardiovascular"])
-            {
-                textView.text = self.selectedPatient.cardiovascular;
-            }
-            else if ([section.sectionName isEqualToString:@"Haematology"])
-            {
-                int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
-                
-                if (numberOfHaematologyResultsToDisplay)
+                if (indexPath.row < numberOfHaematologyResultsToDisplay)
                 {
-                    if (indexPath.row < numberOfHaematologyResultsToDisplay)
-                    {
-                        return 28.0f;
-                    }
-                    else
-                    {
-                        textView.text = self.selectedPatient.haematology;
-                    }
+                    return 28.0f;
                 }
                 else
                 {
                     textView.text = self.selectedPatient.haematology;
                 }
             }
-            else if ([section.sectionName isEqualToString:@"Lines"])
+            else
             {
-                textView.text = self.selectedPatient.lines;
+                textView.text = self.selectedPatient.haematology;
             }
-            else if ([section.sectionName isEqualToString:@"Echocardiogram"])
+        }
+        else if ([section.sectionName isEqualToString:@"Lines"])
+        {
+            textView.text = self.selectedPatient.lines;
+        }
+        else if ([section.sectionName isEqualToString:@"Echocardiogram"])
+        {
+            textView.text = self.selectedPatient.echocardiogram;
+        }
+        else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
+        {
+            textView.text = self.selectedPatient.feedsAndFluids;
+        }
+        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        {
+            if (indexPath.row < [self.selectedPatient getNumberOfFluidBalanceRows])
             {
-                textView.text = self.selectedPatient.echocardiogram;
+                return 20.0f;
             }
-            else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
+            else
             {
-                textView.text = self.selectedPatient.feedsAndFluids;
+                textView.text = self.selectedPatient.fluidBalance;
             }
-            else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        }
+        else if ([section.sectionName isEqualToString:@"Biochemistry"])
+        {
+            int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
+            
+            if (numberOfBiochemistryResultsToDisplay)
             {
-                if (indexPath.row < [self.selectedPatient getNumberOfFluidBalanceRows])
+                if (indexPath.row < numberOfBiochemistryResultsToDisplay)
                 {
-                    return 20.0f;
+                    return 28.0f;
                 }
                 else
                 {
-                    textView.text = self.selectedPatient.fluidBalance;
+                    textView.text = self.selectedPatient.biochemistry;
                 }
             }
-            else if ([section.sectionName isEqualToString:@"Biochemistry"])
+            else
             {
-                int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
+                textView.text = self.selectedPatient.biochemistry;
+            }
+        }
+        else if ([section.sectionName isEqualToString:@"Jaundice"])
+        {
+            Preferences *preferences = [Preferences sharedPreferences];
+            
+            if (indexPath.row == 0)
+            {
+                /*
+                 HandoverRow *row = section.rows[indexPath.row];
+                 
+                 height = [row.rowHeight floatValue];
+                 
+                 return height;
+                 */
                 
-                if (numberOfBiochemistryResultsToDisplay)
+                // delegate
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                // Different graph sizes for iPhone 4 and iPhone 5
+                if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
                 {
-                    if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+                    return 320.0f;
+                }
+                else
+                {
+                    return 260.0f;
+                }
+                
+            }
+            else
+            {
+                if ([preferences.guidelineCountry isEqualToString:@"US"])
+                {
+                    if (indexPath.row == 3)
                     {
-                        return 28.0f;
-                    }
-                    else
-                    {
-                        textView.text = self.selectedPatient.electrolytes;
+                        textView.text = self.selectedPatient.jaundice;
                     }
                 }
                 else
                 {
-                    textView.text = self.selectedPatient.electrolytes;
-                }
-            }
-            else if ([section.sectionName isEqualToString:@"Jaundice"])
-            {
-                Preferences *preferences = [Preferences sharedPreferences];
-                
-                if (indexPath.row == 0)
-                {
-                    /*
-                     HandoverRow *row = section.rows[indexPath.row];
-                     
-                     height = [row.rowHeight floatValue];
-                     
-                     return height;
-                     */
-                    
-                    // delegate
-                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    
-                    // Different graph sizes for iPhone 4 and iPhone 5
-                    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+                    if (indexPath.row == 1)
                     {
-                        return 320.0f;
-                    }
-                    else
-                    {
-                        return 260.0f;
-                    }
-                    
-                }
-                else
-                {
-                    if ([preferences.guidelineCountry isEqualToString:@"US"])
-                    {
-                        if (indexPath.row == 3)
-                        {
-                            textView.text = self.selectedPatient.jaundice;
-                        }
-                    }
-                    else
-                    {
-                        if (indexPath.row == 1)
-                        {
-                            textView.text = self.selectedPatient.jaundice;
-                        }
+                        textView.text = self.selectedPatient.jaundice;
                     }
                 }
             }
-            else if ([section.sectionName isEqualToString:@"Sepsis"])
+        }
+        else if ([section.sectionName isEqualToString:@"Sepsis"])
+        {
+            int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
+            
+            if (numberOfCRPResultsToDisplay)
             {
-                int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
-                
-                if (numberOfCRPResultsToDisplay)
+                if (indexPath.row < numberOfCRPResultsToDisplay)
                 {
-                    if (indexPath.row < numberOfCRPResultsToDisplay)
-                    {
-                        return 28.0f;
-                    }
-                    else
-                    {
-                        textView.text = self.selectedPatient.sepsis;
-                    }
+                    return 28.0f;
                 }
                 else
                 {
                     textView.text = self.selectedPatient.sepsis;
                 }
             }
-            else if ([section.sectionName isEqualToString:@"Drugs"])
+            else
             {
-                textView.text = self.selectedPatient.drugs;
+                textView.text = self.selectedPatient.sepsis;
             }
-            else if ([section.sectionName isEqualToString:@"Immunisations"])
-            {
-                textView.text = self.selectedPatient.immunisations;
-            }
-            else if ([section.sectionName isEqualToString:@"ROP"])
-            {
-                textView.text = self.selectedPatient.rop;
-            }
-            else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
-            {
-                textView.text = self.selectedPatient.cranialUSS;
-            }
-            else if ([section.sectionName isEqualToString:@"Parents / Social"])
-            {
-                textView.text = self.selectedPatient.parentsAndSocial;
-            }
-            else if ([section.sectionName isEqualToString:@"Examination"])
-            {
-                textView.text = self.selectedPatient.impression;
-            }
-            else if ([section.sectionName isEqualToString:@"Summary"])
-            {
-                textView.text = self.selectedPatient.plan;
-            }
-            else if ([section.sectionName isEqualToString:@"Plan"])
-            {
-                textView.text = self.selectedPatient.jobs;
-            }
+        }
+        else if ([section.sectionName isEqualToString:@"Drugs"])
+        {
+            textView.text = self.selectedPatient.drugs;
+        }
+        else if ([section.sectionName isEqualToString:@"Immunisations"])
+        {
+            textView.text = self.selectedPatient.immunisations;
+        }
+        else if ([section.sectionName isEqualToString:@"ROP"])
+        {
+            textView.text = self.selectedPatient.rop;
+        }
+        else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
+        {
+            textView.text = self.selectedPatient.cranialUSS;
+        }
+        else if ([section.sectionName isEqualToString:@"Parents / Social"])
+        {
+            textView.text = self.selectedPatient.parentsAndSocial;
+        }
+        else if ([section.sectionName isEqualToString:@"Examination"])
+        {
+            textView.text = self.selectedPatient.examination;
+        }
+        else if ([section.sectionName isEqualToString:@"Summary"])
+        {
+            textView.text = self.selectedPatient.summary;
+        }
+        else if ([section.sectionName isEqualToString:@"Plan"])
+        {
+            textView.text = self.selectedPatient.plan;
+        }
+        
+        // If section is not the last one, then adjust textView height to text
+        if (![section.sectionName isEqualToString:@"Suggestions"])
+        {
+            Preferences *preferences = [Preferences sharedPreferences];
             
-            // If section is not the last one, then adjust textView height to text
-            if (![section.sectionName isEqualToString:@"Suggestions"])
+            if ([preferences.dynamicText intValue] && [[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
             {
-                Preferences *preferences = [Preferences sharedPreferences];
-                
-                if ([preferences.dynamicText intValue])
-                {
-                    textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-                }
-                else
-                {
-                    textView.font = [UIFont systemFontOfSize:14.0f];
-                }
-                
-                [textView sizeToFit];
-                
-                height = textView.frame.size.height;
+                // ensuring iOS 7
+                textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
             }
             else
             {
-                AI *brain = [AI sharedAI];
-                
-                int numberOfSuggestionsToDisplay = [brain getSuggestionsForPatient:self.selectedPatient ].count;
-            
-                if (indexPath.row < numberOfSuggestionsToDisplay)
-                {
-                    return 28.0f;
-                }
-                else
-                {
-                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    
-                    // set a minimum height for the 'Suggestions' cell
-                    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
-                    {
-                        return 286.0f - 22.0f;
-                    }
-                    else
-                    {
-                        return 146.0f - 22.0f;
-                    }
-                }
+                textView.font = [UIFont systemFontOfSize:14.0f];
             }
+            
+            [textView sizeToFit];
+            
+            height = textView.frame.size.height;
         }
         else
         {
-            HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+            AI *brain = [AI sharedAI];
             
-            HandoverRow *row = section.rows[indexPath.row];
+            int numberOfSuggestionsToDisplay = [brain getSuggestionsForPatient:self.selectedPatient ].count;
             
-            height = [row.rowHeight floatValue];
+            if (indexPath.row < numberOfSuggestionsToDisplay)
+            {
+                return 28.0f;
+            }
+            else
+            {
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                
+                // set a minimum height for the 'Suggestions' cell
+                if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+                {
+                    return 286.0f - 22.0f;
+                }
+                else
+                {
+                    return 146.0f - 22.0f;
+                }
+            }
         }
+        
+        
+        
+//        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
+//        {
+//            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+//            
+//            // in order of preferences
+//            Preferences *preferences = [Preferences sharedPreferences];
+//            
+//            HandoverSection *section = preferences.handoverSections[indexPath.section];
+//            
+//            if ([section.sectionName isEqualToString:@"Weight"])
+//            {
+//                // textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
+//                textView.text = self.selectedPatient.weight;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Background"])
+//            {
+//                // textView.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+//                textView.text = self.selectedPatient.background;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Active Problems"])
+//            {
+//                textView.text = self.selectedPatient.activeProblems;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Resolved Problems"])
+//            {
+//                textView.text = self.selectedPatient.resolvedProblems;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
+//            {
+//                textView.text = self.selectedPatient.recentSignificantEvents;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
+//            {
+//                textView.text = self.selectedPatient.ventilationAndSedation;
+//            }
+//            else if ([section.sectionName isEqualToString:@"CXR"])
+//            {
+//                textView.text = self.selectedPatient.cxr;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Cardiovascular"])
+//            {
+//                textView.text = self.selectedPatient.cardiovascular;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Haematology"])
+//            {
+//                int numberOfHaematologyResultsToDisplay = [[self getHaematologyResultsToDisplay] count];
+//                
+//                if (numberOfHaematologyResultsToDisplay)
+//                {
+//                    if (indexPath.row < numberOfHaematologyResultsToDisplay)
+//                    {
+//                        return 28.0f;
+//                    }
+//                    else
+//                    {
+//                        textView.text = self.selectedPatient.haematology;
+//                    }
+//                }
+//                else
+//                {
+//                    textView.text = self.selectedPatient.haematology;
+//                }
+//            }
+//            else if ([section.sectionName isEqualToString:@"Lines"])
+//            {
+//                textView.text = self.selectedPatient.lines;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Echocardiogram"])
+//            {
+//                textView.text = self.selectedPatient.echocardiogram;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
+//            {
+//                textView.text = self.selectedPatient.feedsAndFluids;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+//            {
+//                if (indexPath.row < [self.selectedPatient getNumberOfFluidBalanceRows])
+//                {
+//                    return 20.0f;
+//                }
+//                else
+//                {
+//                    textView.text = self.selectedPatient.fluidBalance;
+//                }
+//            }
+//            else if ([section.sectionName isEqualToString:@"Biochemistry"])
+//            {
+//                int numberOfBiochemistryResultsToDisplay = [[self getBiochemistryResultsToDisplay] count];
+//                
+//                if (numberOfBiochemistryResultsToDisplay)
+//                {
+//                    if (indexPath.row < numberOfBiochemistryResultsToDisplay)
+//                    {
+//                        return 28.0f;
+//                    }
+//                    else
+//                    {
+//                        textView.text = self.selectedPatient.biochemistry;
+//                    }
+//                }
+//                else
+//                {
+//                    textView.text = self.selectedPatient.biochemistry;
+//                }
+//            }
+//            else if ([section.sectionName isEqualToString:@"Jaundice"])
+//            {
+//                Preferences *preferences = [Preferences sharedPreferences];
+//                
+//                if (indexPath.row == 0)
+//                {
+//                    /*
+//                     HandoverRow *row = section.rows[indexPath.row];
+//                     
+//                     height = [row.rowHeight floatValue];
+//                     
+//                     return height;
+//                     */
+//                    
+//                    // delegate
+//                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                    
+//                    // Different graph sizes for iPhone 4 and iPhone 5
+//                    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+//                    {
+//                        return 320.0f;
+//                    }
+//                    else
+//                    {
+//                        return 260.0f;
+//                    }
+//                    
+//                }
+//                else
+//                {
+//                    if ([preferences.guidelineCountry isEqualToString:@"US"])
+//                    {
+//                        if (indexPath.row == 3)
+//                        {
+//                            textView.text = self.selectedPatient.jaundice;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        if (indexPath.row == 1)
+//                        {
+//                            textView.text = self.selectedPatient.jaundice;
+//                        }
+//                    }
+//                }
+//            }
+//            else if ([section.sectionName isEqualToString:@"Sepsis"])
+//            {
+//                int numberOfCRPResultsToDisplay = [[self getCRPResultsToDisplay] count];
+//                
+//                if (numberOfCRPResultsToDisplay)
+//                {
+//                    if (indexPath.row < numberOfCRPResultsToDisplay)
+//                    {
+//                        return 28.0f;
+//                    }
+//                    else
+//                    {
+//                        textView.text = self.selectedPatient.sepsis;
+//                    }
+//                }
+//                else
+//                {
+//                    textView.text = self.selectedPatient.sepsis;
+//                }
+//            }
+//            else if ([section.sectionName isEqualToString:@"Drugs"])
+//            {
+//                textView.text = self.selectedPatient.drugs;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Immunisations"])
+//            {
+//                textView.text = self.selectedPatient.immunisations;
+//            }
+//            else if ([section.sectionName isEqualToString:@"ROP"])
+//            {
+//                textView.text = self.selectedPatient.rop;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
+//            {
+//                textView.text = self.selectedPatient.cranialUSS;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Parents / Social"])
+//            {
+//                textView.text = self.selectedPatient.parentsAndSocial;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Examination"])
+//            {
+//                textView.text = self.selectedPatient.examination;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Summary"])
+//            {
+//                textView.text = self.selectedPatient.summary;
+//            }
+//            else if ([section.sectionName isEqualToString:@"Plan"])
+//            {
+//                textView.text = self.selectedPatient.plan;
+//            }
+//            
+//            // If section is not the last one, then adjust textView height to text
+//            if (![section.sectionName isEqualToString:@"Suggestions"])
+//            {
+//                Preferences *preferences = [Preferences sharedPreferences];
+//                
+//                if ([preferences.dynamicText intValue])
+//                {
+//                    textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//                }
+//                else
+//                {
+//                    textView.font = [UIFont systemFontOfSize:14.0f];
+//                }
+//                
+//                [textView sizeToFit];
+//                
+//                height = textView.frame.size.height;
+//            }
+//            else
+//            {
+//                AI *brain = [AI sharedAI];
+//                
+//                int numberOfSuggestionsToDisplay = [brain getSuggestionsForPatient:self.selectedPatient ].count;
+//            
+//                if (indexPath.row < numberOfSuggestionsToDisplay)
+//                {
+//                    return 28.0f;
+//                }
+//                else
+//                {
+//                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//                    
+//                    // set a minimum height for the 'Suggestions' cell
+//                    if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+//                    {
+//                        return 286.0f - 22.0f;
+//                    }
+//                    else
+//                    {
+//                        return 146.0f - 22.0f;
+//                    }
+//                }
+//            }
+//        }
+//        else
+//        {
+//            abort();
+//            HandoverSection *section = self.selectedPatient.handoverSections[indexPath.section];
+//            
+//            HandoverRow *row = section.rows[indexPath.row];
+//            
+//            height = [row.rowHeight floatValue];
+//        }
     }
     
     return height;
@@ -925,6 +1184,10 @@
         
         if (newPatientDetails)
         {
+            // memory leaks
+            // might have to do this:
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            cell = nil;
             cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
             newPatientDetails = NO;
         }
@@ -950,6 +1213,8 @@
             
             if (newPatientWeight)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newPatientWeight = NO;
             }
@@ -972,6 +1237,8 @@
             
             if (newPatientBackground)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newPatientBackground = NO;
             }
@@ -994,6 +1261,8 @@
             
             if (newActiveProblems)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newActiveProblems = NO;
             }
@@ -1016,6 +1285,8 @@
             
             if (newResolvedProblems)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newResolvedProblems = NO;
             }
@@ -1038,6 +1309,8 @@
             
             if (newRecentSignificantEvents)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newRecentSignificantEvents = NO;
             }
@@ -1060,6 +1333,8 @@
             
             if (newVentilationAndSedation)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newVentilationAndSedation = NO;
             }
@@ -1082,6 +1357,8 @@
             
             if (newCXR)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newCXR = NO;
             }
@@ -1104,6 +1381,8 @@
             
             if (newCardiovascular)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newCardiovascular = NO;
             }
@@ -1209,6 +1488,8 @@
                 
                 if (newHaematology)
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    cell = nil;
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     newHaematology = NO;
                 }
@@ -1232,6 +1513,8 @@
             
             if (newLines)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newLines = NO;
             }
@@ -1254,6 +1537,8 @@
             
             if (newEchocardiogram)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newEchocardiogram = NO;
             }
@@ -1276,6 +1561,8 @@
             
             if (newFeedsAndFluids)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newFeedsAndFluids = NO;
             }
@@ -1356,6 +1643,8 @@
                 
                 if (newFluidBalance)
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    cell = nil;
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     newFluidBalance = NO;
                 }
@@ -1544,10 +1833,12 @@
             {
                 CellIdentifier = @"Biochemistry";
                 
-                if (newElectrolytes)
+                if (newBiochemistry)
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    cell = nil;
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                    newElectrolytes = NO;
+                    newBiochemistry = NO;
                 }
                 else
                 {
@@ -1559,7 +1850,7 @@
                     }
                 }
                 
-                self.electrolytesTextView.text = self.selectedPatient.electrolytes;
+                self.biochemistryTextView.text = self.selectedPatient.biochemistry;
             }
         }
 #pragma mark Jaundice
@@ -1572,6 +1863,8 @@
                 
                 if (newBiliChart)
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    cell = nil;
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     newBiliChart = NO;
                 }
@@ -1635,6 +1928,8 @@
                     
                     if (newJaundice)
                     {
+                        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                        cell = nil;
                         cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                         
                         newJaundice = NO;
@@ -1698,6 +1993,8 @@
                 
                 if (newJaundice)
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    cell = nil;
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     newJaundice = NO;
                 }
@@ -1773,6 +2070,8 @@
                 
                 if (newSepsis)
                 {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                    cell = nil;
                     cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                     newSepsis = NO;
                 }
@@ -1796,6 +2095,8 @@
             
             if (newDrugs)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newDrugs = NO;
             }
@@ -1818,6 +2119,8 @@
             
             if (newImmunisations)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newImmunisations = NO;
             }
@@ -1840,6 +2143,8 @@
             
             if (newROP)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newROP = NO;
             }
@@ -1862,6 +2167,8 @@
             
             if (newCranialUSS)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newCranialUSS = NO;
             }
@@ -1884,6 +2191,8 @@
             
             if (newParentsAndSocial)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newParentsAndSocial = NO;
             }
@@ -1904,10 +2213,12 @@
         {
             CellIdentifier = @"Examination";
             
-            if (newImpression)
+            if (newExamination)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                newImpression = NO;
+                newExamination = NO;
             }
             else
             {
@@ -1919,15 +2230,41 @@
                 }
             }
             
-            self.impressionTextView.text = self.selectedPatient.impression;
+            self.examinationTextView.text = self.selectedPatient.examination;
         }
 #pragma mark Summary
         else if ([section.sectionName isEqualToString:@"Summary"])
         {
             CellIdentifier = @"Summary";
             
+            if (newSummary)
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newSummary = NO;
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.summaryTextView.text = self.selectedPatient.summary;
+        }
+#pragma mark Plan
+        else if ([section.sectionName isEqualToString:@"Plan"])
+        {
+            CellIdentifier = @"Plan";
+            
             if (newPlan)
             {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
                 cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
                 newPlan = NO;
             }
@@ -1942,28 +2279,6 @@
             }
             
             self.planTextView.text = self.selectedPatient.plan;
-        }
-#pragma mark Plan
-        else if ([section.sectionName isEqualToString:@"Plan"])
-        {
-            CellIdentifier = @"Plan";
-            
-            if (newJobs)
-            {
-                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                newJobs = NO;
-            }
-            else
-            {
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                
-                if (!cell)
-                {
-                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
-                }
-            }
-            
-            self.jobsTextView.text = self.selectedPatient.jobs;
         }
 #pragma mark Suggestion
         else if ([section.sectionName isEqualToString:@"Suggestions"])
@@ -2245,6 +2560,9 @@
 #pragma mark Weight
     else if ([CellIdentifier isEqualToString:@"Weight"])
     {
+        // should I not be using:
+        // if (!self.weightTextView...
+#warning Possible memory leak...
         self.weightTextView = [[UITextView alloc] init];
         self.weightTextView.tag = 22;
         [self setupTextView:self.weightTextView];
@@ -2362,11 +2680,11 @@
 #pragma mark Biochemistry
     else if ([CellIdentifier isEqualToString:@"Biochemistry"])
     {
-        self.electrolytesTextView = [[UITextView alloc] init];
-        self.electrolytesTextView.tag = 10;
-        [self setupTextView:self.electrolytesTextView];
+        self.biochemistryTextView = [[UITextView alloc] init];
+        self.biochemistryTextView.tag = 10;
+        [self setupTextView:self.biochemistryTextView];
         
-        [cell.contentView addSubview:self.electrolytesTextView];
+        [cell.contentView addSubview:self.biochemistryTextView];
     }
 #pragma mark Jaundice/Phototherapy
     else if ([CellIdentifier isEqualToString:@"Phototherapy"])
@@ -2465,29 +2783,29 @@
 #pragma mark Examination
     else if ([CellIdentifier isEqualToString:@"Examination"])
     {
-        self.impressionTextView = [[UITextView alloc] init];
-        self.impressionTextView.tag = 17;
-        [self setupTextView:self.impressionTextView];
+        self.examinationTextView = [[UITextView alloc] init];
+        self.examinationTextView.tag = 17;
+        [self setupTextView:self.examinationTextView];
         
-        [cell.contentView addSubview:self.impressionTextView];
+        [cell.contentView addSubview:self.examinationTextView];
     }
 #pragma mark Summary
     else if ([CellIdentifier isEqualToString:@"Summary"])
     {
-        self.planTextView = [[UITextView alloc] init];
-        self.planTextView.tag = 18;
-        [self setupTextView:self.planTextView];
+        self.summaryTextView = [[UITextView alloc] init];
+        self.summaryTextView.tag = 18;
+        [self setupTextView:self.summaryTextView];
         
-        [cell.contentView addSubview:self.planTextView];
+        [cell.contentView addSubview:self.summaryTextView];
     }
 #pragma mark Plan
     else if ([CellIdentifier isEqualToString:@"Plan"])
     {
-        self.jobsTextView = [[UITextView alloc] init];
-        self.jobsTextView.tag = 19;
-        [self setupTextView:self.jobsTextView];
+        self.planTextView = [[UITextView alloc] init];
+        self.planTextView.tag = 19;
+        [self setupTextView:self.planTextView];
         
-        [cell.contentView addSubview:self.jobsTextView];
+        [cell.contentView addSubview:self.planTextView];
     }
     
     return cell;
@@ -2495,386 +2813,781 @@
 
 - (UITextView *)setupTextView:(UITextView *)textView
 {
-    Preferences *preferences = [Preferences sharedPreferences];
+    // Preferences *preferences = [Preferences sharedPreferences];
     
     // get textView height
     HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
     
-    // this could be deleted with code lower down
-    HandoverRow *row;
-    
-    if (textView.tag == 11)
-    {
-        row = section.rows[1];
-    }
-    else
-    {
-        row = section.rows[0];
-    }
+//    // this could be deleted with code lower down
+//    HandoverRow *row;
+//    
+//    if (textView.tag == 11)
+//    {
+//        row = section.rows[1];
+//    }
+//    else
+//    {
+//        row = section.rows[0];
+//    }
     
     // set values
     textView.textColor = [UIColor grayColor];
     textView.scrollEnabled = NO;
     
-    // iOS 7 specifics
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    
+    UITextView *textViewToMeasure;
+    
+    if (!textViewToMeasure)
     {
-        UITextView *textViewToMeasure;
+        textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+    }
+    
+    if ([section.sectionName isEqualToString:@"Weight"])
+    {
+        textViewToMeasure.text = self.selectedPatient.weight;
         
-        if (!textViewToMeasure)
+        if (self.selectedPatient.weightLastEntryDate)
         {
-            textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+            if ([self isDate:self.selectedPatient.weightLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
         }
+    }
+    else if ([section.sectionName isEqualToString:@"Background"])
+    {
+        // textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+        textViewToMeasure.text = self.selectedPatient.background;
         
-        if ([section.sectionName isEqualToString:@"Weight"])
+        if (self.selectedPatient.backgroundLastEntryDate)
         {
-            textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
-            
-            if (self.selectedPatient.weightLastEntryDate)
+            if ([self isDate:self.selectedPatient.backgroundLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
             {
-                if ([self isDate:self.selectedPatient.weightLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
+                textView.textColor = [UIColor redColor];
             }
         }
-        else if ([section.sectionName isEqualToString:@"Background"])
-        {
-            textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
-            
-            if (self.selectedPatient.backgroundLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.backgroundLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Active Problems"])
-        {
-            textViewToMeasure.text = self.selectedPatient.activeProblems;
-            
-            if (self.selectedPatient.activeProblemsLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.activeProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Resolved Problems"])
-        {
-            textViewToMeasure.text = self.selectedPatient.resolvedProblems;
-            
-            if (self.selectedPatient.resolvedProblemsLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.resolvedProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
-        {
-            textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
-            
-            if (self.selectedPatient.recentSignificantEventsLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.recentSignificantEventsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
-        {
-            textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
-            
-            if (self.selectedPatient.ventilationAndSedationLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.ventilationAndSedationLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"CXR"])
-        {
-            textViewToMeasure.text = self.selectedPatient.cxr;
-            
-            if (self.selectedPatient.cxrLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.cxrLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Cardiovascular"])
-        {
-            textViewToMeasure.text = self.selectedPatient.cardiovascular;
-            
-            if (self.selectedPatient.cardiovascularLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.cardiovascularLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Haematology"])
-        {
-            textViewToMeasure.text = self.selectedPatient.haematology;
-            
-            if (self.selectedPatient.haematologyLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.haematologyLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Lines"])
-        {
-            textViewToMeasure.text = self.selectedPatient.lines;
-            
-            if (self.selectedPatient.linesLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.linesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Echocardiogram"])
-        {
-            textViewToMeasure.text = self.selectedPatient.echocardiogram;
-            
-            if (self.selectedPatient.echocardiogramLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.echocardiogramLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
-        {
-            textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
-            
-            if (self.selectedPatient.feedsAndFluidLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.feedsAndFluidLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
-        {
-            textViewToMeasure.text = self.selectedPatient.fluidBalance;
-            
-            if (self.selectedPatient.fluidBalanceLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.fluidBalanceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Biochemistry"])
-        {
-            textViewToMeasure.text = self.selectedPatient.electrolytes;
-            
-            if (self.selectedPatient.electrolytesLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.electrolytesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Jaundice"])
-        {
-            textViewToMeasure.text = self.selectedPatient.jaundice;
-            
-            if (self.selectedPatient.jaundiceLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.jaundiceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Sepsis"])
-        {
-            textViewToMeasure.text = self.selectedPatient.sepsis;
-            
-            if (self.selectedPatient.sepsisLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.sepsisLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Drugs"])
-        {
-            textViewToMeasure.text = self.selectedPatient.drugs;
-            
-            if (self.selectedPatient.drugsLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.drugsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Immunisations"])
-        {
-            textViewToMeasure.text = self.selectedPatient.immunisations;
-            
-            if (self.selectedPatient.immunisationsLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.immunisationsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"ROP"])
-        {
-            textViewToMeasure.text = self.selectedPatient.rop;
-            
-            if (self.selectedPatient.ropLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.ropLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
-        {
-            textViewToMeasure.text = self.selectedPatient.cranialUSS;
-            
-            if (self.selectedPatient.cranialUSSLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.cranialUSSLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Parents / Social"])
-        {
-            textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
-            
-            if (self.selectedPatient.parentsAndSocialLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.parentsAndSocialLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Examination"])
-        {
-            textViewToMeasure.text = self.selectedPatient.impression;
-            
-            if (self.selectedPatient.impressionLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.impressionLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Summary"])
-        {
-            textViewToMeasure.text = self.selectedPatient.plan;
-            
-            if (self.selectedPatient.planLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.planLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
-        else if ([section.sectionName isEqualToString:@"Plan"])
-        {
-            textViewToMeasure.text = self.selectedPatient.jobs;
-            
-            if (self.selectedPatient.jobsLastEntryDate)
-            {
-                if ([self isDate:self.selectedPatient.jobsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
-                {
-                    textView.textColor = [UIColor redColor];
-                }
-            }
-        }
+    }
+    else if ([section.sectionName isEqualToString:@"Active Problems"])
+    {
+        textViewToMeasure.text = self.selectedPatient.activeProblems;
         
-        // Plan textView must stay large
-        if (![section.sectionName isEqualToString:@"Plan"])
+        if (self.selectedPatient.activeProblemsLastEntryDate)
         {
-            // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
-            
-            [textViewToMeasure sizeToFit];
-            
-            CGFloat height = textViewToMeasure.frame.size.height;
-            
-            textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
-        }
-        else
-        {
-            // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
-            
-            [textViewToMeasure sizeToFit];
-            
-            CGFloat height = textViewToMeasure.frame.size.height;
-            
-            // delegate
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            
-            // set a minimum height for the plan textView
-            if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+            if ([self isDate:self.selectedPatient.activeProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
             {
-                if (height < 344.0f)
-                {
-                    height = 344.0f;
-                }
+                textView.textColor = [UIColor redColor];
             }
-            else
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Resolved Problems"])
+    {
+        textViewToMeasure.text = self.selectedPatient.resolvedProblems;
+        
+        if (self.selectedPatient.resolvedProblemsLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.resolvedProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
             {
-                if (height < 192.0f)
-                {
-                    height = 192.0f;
-                }
+                textView.textColor = [UIColor redColor];
             }
-            
-            textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
         }
+    }
+    else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
+    {
+        textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
         
-        Preferences *preferences = [Preferences sharedPreferences];
+        if (self.selectedPatient.recentSignificantEventsLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.recentSignificantEventsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
+    {
+        textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
         
-        if ([preferences.dynamicText intValue])
+        if (self.selectedPatient.ventilationAndSedationLastEntryDate)
         {
-            textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+            if ([self isDate:self.selectedPatient.ventilationAndSedationLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
         }
-        else
+    }
+    else if ([section.sectionName isEqualToString:@"CXR"])
+    {
+        textViewToMeasure.text = self.selectedPatient.cxr;
+        
+        if (self.selectedPatient.cxrLastEntryDate)
         {
-            textView.font = [UIFont systemFontOfSize:14.0f];
+            if ([self isDate:self.selectedPatient.cxrLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
         }
+    }
+    else if ([section.sectionName isEqualToString:@"Cardiovascular"])
+    {
+        textViewToMeasure.text = self.selectedPatient.cardiovascular;
+        
+        if (self.selectedPatient.cardiovascularLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.cardiovascularLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Haematology"])
+    {
+        textViewToMeasure.text = self.selectedPatient.haematology;
+        
+        if (self.selectedPatient.haematologyLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.haematologyLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Lines"])
+    {
+        textViewToMeasure.text = self.selectedPatient.lines;
+        
+        if (self.selectedPatient.linesLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.linesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Echocardiogram"])
+    {
+        textViewToMeasure.text = self.selectedPatient.echocardiogram;
+        
+        if (self.selectedPatient.echocardiogramLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.echocardiogramLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
+    {
+        textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
+        
+        if (self.selectedPatient.feedsAndFluidLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.feedsAndFluidLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+    {
+        textViewToMeasure.text = self.selectedPatient.fluidBalance;
+        
+        if (self.selectedPatient.fluidBalanceLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.fluidBalanceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Biochemistry"])
+    {
+        textViewToMeasure.text = self.selectedPatient.biochemistry;
+        
+        if (self.selectedPatient.biochemistryLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.biochemistryLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Jaundice"])
+    {
+        textViewToMeasure.text = self.selectedPatient.jaundice;
+        
+        if (self.selectedPatient.jaundiceLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.jaundiceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Sepsis"])
+    {
+        textViewToMeasure.text = self.selectedPatient.sepsis;
+        
+        if (self.selectedPatient.sepsisLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.sepsisLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Drugs"])
+    {
+        textViewToMeasure.text = self.selectedPatient.drugs;
+        
+        if (self.selectedPatient.drugsLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.drugsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Immunisations"])
+    {
+        textViewToMeasure.text = self.selectedPatient.immunisations;
+        
+        if (self.selectedPatient.immunisationsLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.immunisationsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"ROP"])
+    {
+        textViewToMeasure.text = self.selectedPatient.rop;
+        
+        if (self.selectedPatient.ropLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.ropLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
+    {
+        textViewToMeasure.text = self.selectedPatient.cranialUSS;
+        
+        if (self.selectedPatient.cranialUSSLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.cranialUSSLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Parents / Social"])
+    {
+        textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
+        
+        if (self.selectedPatient.parentsAndSocialLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.parentsAndSocialLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Examination"])
+    {
+        textViewToMeasure.text = self.selectedPatient.examination;
+        
+        if (self.selectedPatient.examinationLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.examinationLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Summary"])
+    {
+        textViewToMeasure.text = self.selectedPatient.summary;
+        
+        if (self.selectedPatient.summaryLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.summaryLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Plan"])
+    {
+        textViewToMeasure.text = self.selectedPatient.plan;
+        
+        if (self.selectedPatient.planLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.planLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    
+    Preferences *preferences = [Preferences sharedPreferences];
+    
+    if ([preferences.dynamicText intValue] && [[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    {
+        textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     }
     else
     {
-        // this could be deleted iOS 6 & iOS 7 should be the same...
-        textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
         textView.font = [UIFont systemFontOfSize:14.0f];
+        textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
     }
+    
+    [textViewToMeasure sizeToFit];
+    
+    CGFloat height = textViewToMeasure.frame.size.height;
+    
+    textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+    
+    
+//    // Plan textView must stay large
+//    if (![section.sectionName isEqualToString:@"Plan"])
+//    {
+//        // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//        textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+//        
+//        [textViewToMeasure sizeToFit];
+//        
+//        CGFloat height = textViewToMeasure.frame.size.height;
+//        
+//        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+//    }
+//    else
+//    {
+//        // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//        textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+//        
+//        [textViewToMeasure sizeToFit];
+//        
+//        CGFloat height = textViewToMeasure.frame.size.height;
+//        
+//        // delegate
+//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//        
+//        // set a minimum height for the plan textView
+//        if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+//        {
+//            if (height < 344.0f)
+//            {
+//                height = 344.0f;
+//            }
+//        }
+//        else
+//        {
+//            if (height < 192.0f)
+//            {
+//                height = 192.0f;
+//            }
+//        }
+//        
+//        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+//    }
+    
+    //        Preferences *preferences = [Preferences sharedPreferences];
+    //
+    //        if ([preferences.dynamicText intValue])
+    //        {
+    //            textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    //        }
+    //        else
+    //        {
+    //            textView.font = [UIFont systemFontOfSize:14.0f];
+    //        }
+    
+    
+    // iOS 7 specifics
+//    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 5.1)
+//    {
+//        UITextView *textViewToMeasure;
+//        
+//        if (!textViewToMeasure)
+//        {
+//            textViewToMeasure = [[UITextView alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 310.0f, FLT_MAX)];
+//        }
+//        
+//        if ([section.sectionName isEqualToString:@"Weight"])
+//        {
+//            // textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.weight];
+//            textViewToMeasure.text = self.selectedPatient.weight;
+//            
+//            if (self.selectedPatient.weightLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.weightLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Background"])
+//        {
+//            // textViewToMeasure.text = [NSString stringWithFormat:@"%@", self.selectedPatient.background];
+//            textViewToMeasure.text = self.selectedPatient.background;
+//            
+//            if (self.selectedPatient.backgroundLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.backgroundLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Active Problems"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.activeProblems;
+//            
+//            if (self.selectedPatient.activeProblemsLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.activeProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Resolved Problems"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.resolvedProblems;
+//            
+//            if (self.selectedPatient.resolvedProblemsLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.resolvedProblemsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
+//            
+//            if (self.selectedPatient.recentSignificantEventsLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.recentSignificantEventsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
+//            
+//            if (self.selectedPatient.ventilationAndSedationLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.ventilationAndSedationLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"CXR"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.cxr;
+//            
+//            if (self.selectedPatient.cxrLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.cxrLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Cardiovascular"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.cardiovascular;
+//            
+//            if (self.selectedPatient.cardiovascularLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.cardiovascularLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Haematology"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.haematology;
+//            
+//            if (self.selectedPatient.haematologyLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.haematologyLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Lines"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.lines;
+//            
+//            if (self.selectedPatient.linesLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.linesLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Echocardiogram"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.echocardiogram;
+//            
+//            if (self.selectedPatient.echocardiogramLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.echocardiogramLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Feeds & Fluids"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.feedsAndFluids;
+//            
+//            if (self.selectedPatient.feedsAndFluidLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.feedsAndFluidLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Fluid Balance"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.fluidBalance;
+//            
+//            if (self.selectedPatient.fluidBalanceLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.fluidBalanceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Biochemistry"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.biochemistry;
+//            
+//            if (self.selectedPatient.biochemistryLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.biochemistryLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Jaundice"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.jaundice;
+//            
+//            if (self.selectedPatient.jaundiceLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.jaundiceLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Sepsis"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.sepsis;
+//            
+//            if (self.selectedPatient.sepsisLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.sepsisLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Drugs"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.drugs;
+//            
+//            if (self.selectedPatient.drugsLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.drugsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Immunisations"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.immunisations;
+//            
+//            if (self.selectedPatient.immunisationsLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.immunisationsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"ROP"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.rop;
+//            
+//            if (self.selectedPatient.ropLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.ropLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Neurology & Cranial USS"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.cranialUSS;
+//            
+//            if (self.selectedPatient.cranialUSSLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.cranialUSSLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Parents / Social"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.parentsAndSocial;
+//            
+//            if (self.selectedPatient.parentsAndSocialLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.parentsAndSocialLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Examination"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.examination;
+//            
+//            if (self.selectedPatient.examinationLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.examinationLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Summary"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.summary;
+//            
+//            if (self.selectedPatient.summaryLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.summaryLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        else if ([section.sectionName isEqualToString:@"Plan"])
+//        {
+//            textViewToMeasure.text = self.selectedPatient.plan;
+//            
+//            if (self.selectedPatient.planLastEntryDate)
+//            {
+//                if ([self isDate:self.selectedPatient.planLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+//                {
+//                    textView.textColor = [UIColor redColor];
+//                }
+//            }
+//        }
+//        
+//        Preferences *preferences = [Preferences sharedPreferences];
+//        
+//        if ([preferences.dynamicText intValue])
+//        {
+//            textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//            textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//        }
+//        else
+//        {
+//            textView.font = [UIFont systemFontOfSize:14.0f];
+//            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+//        }
+//        
+//        [textViewToMeasure sizeToFit];
+//        
+//        CGFloat height = textViewToMeasure.frame.size.height;
+//        
+//        textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+//        
+//        
+//        // Plan textView must stay large
+//        if (![section.sectionName isEqualToString:@"Plan"])
+//        {
+//            // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+//            
+//            [textViewToMeasure sizeToFit];
+//            
+//            CGFloat height = textViewToMeasure.frame.size.height;
+//            
+//            textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+//        }
+//        else
+//        {
+//            // textViewToMeasure.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//            textViewToMeasure.font = [UIFont systemFontOfSize:14.0f];
+//            
+//            [textViewToMeasure sizeToFit];
+//            
+//            CGFloat height = textViewToMeasure.frame.size.height;
+//            
+//            // delegate
+//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//            
+//            // set a minimum height for the plan textView
+//            if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
+//            {
+//                if (height < 344.0f)
+//                {
+//                    height = 344.0f;
+//                }
+//            }
+//            else
+//            {
+//                if (height < 192.0f)
+//                {
+//                    height = 192.0f;
+//                }
+//            }
+//            
+//            textView.frame = CGRectMake(10.0f, 0.0f, 310.0f, height);
+//        }
+//        
+////        Preferences *preferences = [Preferences sharedPreferences];
+////        
+////        if ([preferences.dynamicText intValue])
+////        {
+////            textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+////        }
+////        else
+////        {
+////            textView.font = [UIFont systemFontOfSize:14.0f];
+////        }
+//    }
+//    else
+//    {
+//        // this could be deleted iOS 6 & iOS 7 should be the same...
+//        textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, [row.rowHeight floatValue]);
+//        textView.font = [UIFont systemFontOfSize:14.0f];
+//    }
     
     // set delegate
     textView.delegate = self;
@@ -2913,7 +3626,7 @@
     [self.echocardiogramTextView resignFirstResponder];
     [self.fluidBalanceTextView resignFirstResponder];
     [self.feedsAndFluidsTextView resignFirstResponder];
-    [self.electrolytesTextView resignFirstResponder];
+    [self.biochemistryTextView resignFirstResponder];
     [self.jaundiceTextView resignFirstResponder];
     [self.sepsisTextView resignFirstResponder];
     [self.drugsTextView resignFirstResponder];
@@ -2921,9 +3634,9 @@
     [self.ropTextView resignFirstResponder];
     [self.cranialUSSTextView resignFirstResponder];
     [self.parentsAndSocialTextView resignFirstResponder];
-    [self.impressionTextView resignFirstResponder];
+    [self.examinationTextView resignFirstResponder];
+    [self.summaryTextView resignFirstResponder];
     [self.planTextView resignFirstResponder];
-    [self.jobsTextView resignFirstResponder];
 }
 
 - (BOOL)isDate:(NSDate *)date moreThanTwelveHoursLaterThanDate:(NSDate *)currentDate
@@ -3516,68 +4229,56 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    BOOL userCanEditTextField = YES;
-    
-    if (self.editing)
-    {
-        userCanEditTextField = NO;
-    }
-    
-    return userCanEditTextField;
+    // user can only enter text if editing is off
+    return !self.editing;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    // delegate
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    Preferences *preferences = [Preferences sharedPreferences];
+    /*  Code to handle the following functions:
+     *  1) Determine the correct indexPath.row that the user is at
+     *  2) Animate the 'Patient Details' upwards off the screen if the user is using a 3.5inch screen (iPhone 4/4S)
+     *  3) Determine scrollPosition depending on height of text in TextView
+     */
     
     int row = 0;
     
-    // Biochemistry free text
-    if (textView.tag == 10)
+    // Haematology textView
+    if ([textView isEqual:self.haematologyTextView])                            // == (textView.tag == 20)
+    {
+        row = [self getHaematologyResultsToDisplay].count;
+    }
+    // Biochemistry textView
+    else if ([textView isEqual:self.biochemistryTextView])                      // == (textView.tag == 10)
     {
         row = [self getBiochemistryResultsToDisplay].count;
     }
     // Jaundice cell different
-    else if (textView.tag == 11)
+    else if ([textView isEqual:self.jaundiceTextView])                          // == (textView.tag == 11)
     {
+        Preferences *preferences = [Preferences sharedPreferences];
         if ([preferences.guidelineCountry isEqualToString:@"US"]) row = 3;
         else row = 1;
     }
     // Sepsis textView
-    else if (textView.tag == 12)
-    {
-        row = [self getCRPResultsToDisplay].count;
-    }
-    // Haematology textView
-    else if (textView.tag == 20)
-    {
-        row = [self getHaematologyResultsToDisplay].count;
-    }
-    // Sepsis textView
-    else if (textView.tag == 12)
+    else if ([textView isEqual:self.sepsisTextView])                            // == (textView.tag == 12)
     {
         row = [self getCRPResultsToDisplay].count;
     }
     
     // check if user is using the 3.5 inch screen or 4 inch screen
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
     {
         // animate patient details off to make room
         [self animatePatientDetailsOff];
     }
     
+    // get correct indexPath (as user can reorder sections in preferences)
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:[self getUserDefinedSectionForTextView:textView]];
+    
     // check if text is greater than the available screen height
     CGFloat heightOfTextView = [self heightForTextView:textView];
-    
-    // get correct indexPath
-    // this is because the user can reorder the sections
-    
-    int correctedSection = [self getUserDefinedSectionForTextView:textView];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:correctedSection];
     
     if (appDelegate.window.bounds.size.height == 568) // 4 inch Retina
     {
@@ -3606,9 +4307,8 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    // delegate
+    // animate 'Patient Details' back on if using 3.5inch iPhone 4/4S
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     if (appDelegate.window.bounds.size.height == 480) // 3.5 inch Retina
     {
         [self animatePatientDetailsOn];
@@ -3678,11 +4378,21 @@
     // get height of UITextView before change
     CGFloat heightBeforeChange;
     
-    // iOS 7 specifics
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-    {
-        heightBeforeChange = [self heightForTextView:textView];
-    }
+    // This is actually referencing the height of
+    // a new textViewToMeasure filled with text from before
+    // the change.
+    
+    heightBeforeChange = [self heightForTextView:textView];
+    
+//    // iOS 7 specifics
+//    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//    {
+//        // This is actually referencing the height of
+//        // a new textViewToMeasure filled with text from before
+//        // the change.
+//        
+//        heightBeforeChange = [self heightForTextView:textView];
+//    }
     
     // set text
     {
@@ -3751,10 +4461,10 @@
             self.selectedPatient.fluidBalance = textView.text;
             self.selectedPatient.fluidBalanceLastEntryDate = [NSDate date];
         }
-        else if ([textView isEqual:self.electrolytesTextView])
+        else if ([textView isEqual:self.biochemistryTextView])
         {
-            self.selectedPatient.electrolytes = textView.text;
-            self.selectedPatient.electrolytesLastEntryDate = [NSDate date];
+            self.selectedPatient.biochemistry = textView.text;
+            self.selectedPatient.biochemistryLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.jaundiceTextView])
         {
@@ -3791,20 +4501,20 @@
             self.selectedPatient.parentsAndSocial = textView.text;
             self.selectedPatient.parentsAndSocialLastEntryDate = [NSDate date];
         }
-        else if ([textView isEqual:self.impressionTextView])
+        else if ([textView isEqual:self.examinationTextView])
         {
-            self.selectedPatient.impression = textView.text;
-            self.selectedPatient.impressionLastEntryDate = [NSDate date];
+            self.selectedPatient.examination = textView.text;
+            self.selectedPatient.examinationLastEntryDate = [NSDate date];
+        }
+        else if ([textView isEqual:self.summaryTextView])
+        {
+            self.selectedPatient.summary = textView.text;
+            self.selectedPatient.summaryLastEntryDate = [NSDate date];
         }
         else if ([textView isEqual:self.planTextView])
         {
             self.selectedPatient.plan = textView.text;
             self.selectedPatient.planLastEntryDate = [NSDate date];
-        }
-        else if ([textView isEqual:self.jobsTextView])
-        {
-            self.selectedPatient.jobs = textView.text;
-            self.selectedPatient.jobsLastEntryDate = [NSDate date];
         }
     }
     
@@ -3812,85 +4522,98 @@
     textView.textColor = [UIColor grayColor];
     
     // adjust height
-    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+    
+    // re-check height of a textField filled with updated text
+    // check if an update is required
+    if (!([self heightForTextView:textView] == heightBeforeChange))
     {
-        // check if an update is required
-        if (!([self heightForTextView:textView] == heightBeforeChange))
-        {
-            // update size of textView
-            [self setupTextView:textView];
-            
-            [self.myTableView2 beginUpdates];
-            [self.myTableView2 endUpdates];
-        }
+        // update size of textView
+        [self setupTextView:textView];
+        
+        [self.myTableView2 beginUpdates];
+        [self.myTableView2 endUpdates];
     }
-    else
-    {
-        // this was just for playing around with
-        CGFloat adjustment = 0.0f;
-        
-        // get reference to row data
-        HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
-        HandoverRow *row;
-        
-        if (textView.tag == 11)
-        {
-            row = section.rows[1];
-        }
-        else
-        {
-            row = section.rows[0];
-        }
-        
-        // get row height
-        float rowHeight = [row.rowHeight floatValue];
-        
-        // get textView height
-        float contentHeight = textView.contentSize.height;
-        
-        // first check if contentHeight is greater than rowHeight
-        // YES...
-        if ((contentHeight + adjustment) > rowHeight)
-        {
-            // update rowHeight
-            rowHeight = contentHeight;
-            
-            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
-            
-            // update textView frame
-            textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, rowHeight);
-            
-            // update tableView
-            [self.myTableView2 beginUpdates];
-            [self.myTableView2 endUpdates];
-        }
-        // NO...
-        else if ((contentHeight + adjustment) < rowHeight)
-        {
-            if (textView.tag == 19) // special case for last one
-            {
-                if (rowHeight > (346 + adjustment))
-                {
-                    // rowHeight -= (rowHeight - (contentHeight + adjustment));
-                    rowHeight = contentHeight;
-                }
-            }
-            else
-            {
-                rowHeight = contentHeight;
-            }
-            
-            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
-            
-            textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, (rowHeight + adjustment));
-            
-            [self.myTableView2 beginUpdates];
-            [self.myTableView2 endUpdates];
-        }
-        
-        // This is going to be the main code
-        // row.rowText = textView.text;
-    }
+    
+//    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//    {
+//        // re-check height of a textField filled with updated text
+//        // check if an update is required
+//        if (!([self heightForTextView:textView] == heightBeforeChange))
+//        {
+//            // update size of textView
+//            [self setupTextView:textView];
+//            
+//            [self.myTableView2 beginUpdates];
+//            [self.myTableView2 endUpdates];
+//        }
+//    }
+//    else
+//    {
+//        // this was just for playing around with
+//        CGFloat adjustment = 0.0f;
+//        
+//        // get reference to row data
+//        HandoverSection *section = self.selectedPatient.handoverSections[textView.tag];
+//        HandoverRow *row;
+//        
+//        if (textView.tag == 11)
+//        {
+//            row = section.rows[1];
+//        }
+//        else
+//        {
+//            row = section.rows[0];
+//        }
+//        
+//        // get row height
+//        float rowHeight = [row.rowHeight floatValue];
+//        
+//        // get textView height
+//        float contentHeight = textView.contentSize.height;
+//        
+//        // first check if contentHeight is greater than rowHeight
+//        // YES...
+//        if ((contentHeight + adjustment) > rowHeight)
+//        {
+//            // update rowHeight
+//            rowHeight = contentHeight;
+//            
+//            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+//            
+//            // update textView frame
+//            textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, rowHeight);
+//            
+//            // update tableView
+//            [self.myTableView2 beginUpdates];
+//            [self.myTableView2 endUpdates];
+//        }
+//        // NO...
+//        else if ((contentHeight + adjustment) < rowHeight)
+//        {
+//            if (textView.tag == 19) // special case for last one
+//            {
+//                if (rowHeight > (346 + adjustment))
+//                {
+//                    // rowHeight -= (rowHeight - (contentHeight + adjustment));
+//                    rowHeight = contentHeight;
+//                }
+//            }
+//            else
+//            {
+//                rowHeight = contentHeight;
+//            }
+//            
+//            row.rowHeight = [NSNumber numberWithFloat:rowHeight];
+//            
+//            textView.frame = CGRectMake(5.0f, 0.0f, 310.0f, (rowHeight + adjustment));
+//            
+//            [self.myTableView2 beginUpdates];
+//            [self.myTableView2 endUpdates];
+//        }
+//        
+//        // This is going to be the main code
+//        // row.rowText = textView.text;
+//    }
 }
 
 #pragma mark - UIScrollView delegate
@@ -3925,7 +4648,7 @@
     newEchocardiogram = YES;
     newFeedsAndFluids = YES;
     newFluidBalance = YES;
-    newElectrolytes = YES;
+    newBiochemistry = YES;
     newBiliChart = YES;
     newJaundice = YES;
     newSepsis = YES;
@@ -3934,9 +4657,9 @@
     newROP = YES;
     newCranialUSS = YES;
     newParentsAndSocial = YES;
-    newImpression = YES;
+    newExamination = YES;
+    newSummary = YES;
     newPlan = YES;
-    newJobs = YES;
     
     // check to see if there is another patient in the bay
     if (selectedPatientInBay == 0)
@@ -4023,7 +4746,7 @@
     newEchocardiogram = YES;
     newFeedsAndFluids = YES;
     newFluidBalance = YES;
-    newElectrolytes = YES;
+    newBiochemistry = YES;
     newBiliChart = YES;
     newJaundice = YES;
     newSepsis = YES;
@@ -4032,9 +4755,9 @@
     newROP = YES;
     newCranialUSS = YES;
     newParentsAndSocial = YES;
-    newImpression = YES;
+    newExamination = YES;
+    newSummary = YES;
     newPlan = YES;
-    newJobs = YES;
     
     // check the number of patients in the current bay
     int numberOfPatientsInCurrentBay = [[self.bayData[selectedBay] patientsInBay] count];
@@ -4139,10 +4862,8 @@
     }
     
     // ShinobiChart
-    if (!self.chart)
-    {
-        self.chart = [[ShinobiChart alloc] initWithFrame:frame];
-    }
+    self.chart = nil; // clear memory
+    self.chart = [[ShinobiChart alloc] initWithFrame:frame];
     
     if (!self.gestation)
     {

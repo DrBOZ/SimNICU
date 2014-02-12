@@ -458,12 +458,12 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Biochemistry
-        else if ([section.sectionName isEqualToString:@"Biochemistry"] && ([self.selectedPatient.electrolytes length] > 0))
+        else if ([section.sectionName isEqualToString:@"Biochemistry"] && ([self.selectedPatient.biochemistry length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Biochemistry", nil)
                         withFont:headerFont
               andSpecialPrinting:nil
-                     andBodyText:self.selectedPatient.electrolytes
+                     andBodyText:self.selectedPatient.biochemistry
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Jaundice
@@ -530,29 +530,29 @@
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Examination
-        else if ([section.sectionName isEqualToString:@"Examination"] && ([self.selectedPatient.impression length] > 0))
+        else if ([section.sectionName isEqualToString:@"Examination"] && ([self.selectedPatient.examination length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Examination", nil)
                         withFont:headerFont
               andSpecialPrinting:nil
-                     andBodyText:self.selectedPatient.impression
+                     andBodyText:self.selectedPatient.examination
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Summary
-        else if ([section.sectionName isEqualToString:@"Summary"] && ([self.selectedPatient.plan length] > 0))
+        else if ([section.sectionName isEqualToString:@"Summary"] && ([self.selectedPatient.summary length] > 0))
         {
             [self drawHeaderText:NSLocalizedString(@"Summary", nil)
                         withFont:headerFont
               andSpecialPrinting:nil
-                     andBodyText:self.selectedPatient.plan
+                     andBodyText:self.selectedPatient.summary
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
 #pragma mark Plan
-        else if ([section.sectionName isEqualToString:@"Plan"] && ([self.selectedPatient.jobs length] > 0))
+        else if ([section.sectionName isEqualToString:@"Plan"] && ([self.selectedPatient.plan length] > 0))
         {
             NSString *planWithAddedCarriageReturns;
             
-            planWithAddedCarriageReturns = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n", self.selectedPatient.jobs];
+            planWithAddedCarriageReturns = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n", self.selectedPatient.plan];
             
             [self drawHeaderText:NSLocalizedString(@"Plan", nil)
                         withFont:headerFont

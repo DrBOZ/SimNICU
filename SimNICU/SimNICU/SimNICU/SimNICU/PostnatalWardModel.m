@@ -41,6 +41,9 @@
     problem = NSLocalizedString(@"Breast Feeding", nil);
     [problems addObject:problem];
     
+    problem = NSLocalizedString(@"Cataracts", nil);
+    [problems addObject:problem];
+    
     problem = NSLocalizedString(@"Cardiac Arrhythmia", nil);
     [problems addObject:problem];
     

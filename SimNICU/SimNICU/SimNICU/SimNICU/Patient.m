@@ -127,7 +127,7 @@
             self.echocardiogram = [aDecoder decodeObjectForKey:@"Echocardiogram"];
             self.feedsAndFluids = [aDecoder decodeObjectForKey:@"FeedsAndFluids"];
             self.fluidBalance = [aDecoder decodeObjectForKey:@"FluidBalance"];
-            self.electrolytes = [aDecoder decodeObjectForKey:@"Electrolytes"];
+            self.biochemistry = [aDecoder decodeObjectForKey:@"Electrolytes"];
             self.jaundice = [aDecoder decodeObjectForKey:@"Jaundice"];
             self.sepsis = [aDecoder decodeObjectForKey:@"Sepsis"];
             self.drugs = [aDecoder decodeObjectForKey:@"Drugs"];
@@ -135,9 +135,9 @@
             self.rop = [aDecoder decodeObjectForKey:@"ROP"];
             self.cranialUSS = [aDecoder decodeObjectForKey:@"CranialUSS"];
             self.parentsAndSocial = [aDecoder decodeObjectForKey:@"ParentsAndSocial"];
-            self.impression = [aDecoder decodeObjectForKey:@"Impression"];
-            self.plan = [aDecoder decodeObjectForKey:@"Plan"];
-            self.jobs = [aDecoder decodeObjectForKey:@"Jobs"];
+            self.examination = [aDecoder decodeObjectForKey:@"Impression"];
+            self.summary = [aDecoder decodeObjectForKey:@"Plan"];
+            self.plan = [aDecoder decodeObjectForKey:@"Jobs"];
         }
         
         // UITextView entry dates
@@ -155,7 +155,7 @@
             self.echocardiogramLastEntryDate = [aDecoder decodeObjectForKey:@"EchocardiogramLastEntryDate"];
             self.feedsAndFluidLastEntryDate = [aDecoder decodeObjectForKey:@"FeedsAndFluidsLastEntryDate"];
             self.fluidBalanceLastEntryDate = [aDecoder decodeObjectForKey:@"FluidBalanceLastEntryDate"];
-            self.electrolytesLastEntryDate = [aDecoder decodeObjectForKey:@"ElectrolytesLastEntryDate"];
+            self.biochemistryLastEntryDate = [aDecoder decodeObjectForKey:@"ElectrolytesLastEntryDate"];
             self.jaundiceLastEntryDate = [aDecoder decodeObjectForKey:@"JaundiceLastEntryDate"];
             self.sepsisLastEntryDate = [aDecoder decodeObjectForKey:@"SepsisLastEntryDate"];
             self.drugsLastEntryDate = [aDecoder decodeObjectForKey:@"DrugsLastEntryDate"];
@@ -163,9 +163,9 @@
             self.ropLastEntryDate = [aDecoder decodeObjectForKey:@"ROPLastEntryDate"];
             self.cranialUSSLastEntryDate = [aDecoder decodeObjectForKey:@"CranialUSSLastEntryDate"];
             self.parentsAndSocialLastEntryDate = [aDecoder decodeObjectForKey:@"ParentsAndSocialLastEntryDate"];
-            self.impressionLastEntryDate = [aDecoder decodeObjectForKey:@"ImpressionLastEntryDate"];
-            self.planLastEntryDate = [aDecoder decodeObjectForKey:@"PlanLastEntryDate"];
-            self.jobsLastEntryDate = [aDecoder decodeObjectForKey:@"JobsLastEntryDate"];
+            self.examinationLastEntryDate = [aDecoder decodeObjectForKey:@"ImpressionLastEntryDate"];
+            self.summaryLastEntryDate = [aDecoder decodeObjectForKey:@"PlanLastEntryDate"];
+            self.planLastEntryDate = [aDecoder decodeObjectForKey:@"JobsLastEntryDate"];
         }
         
         // handover sections
@@ -335,7 +335,7 @@
         
         newRow = [[HandoverRow alloc] init];
         newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        newRow.rowText = self.electrolytes;
+        newRow.rowText = self.biochemistry;
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
@@ -432,7 +432,7 @@
         
         newRow = [[HandoverRow alloc] init];
         newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        newRow.rowText = self.impression;
+        newRow.rowText = self.examination;
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
@@ -445,7 +445,7 @@
         
         newRow = [[HandoverRow alloc] init];
         newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
-        newRow.rowText = self.plan;
+        newRow.rowText = self.summary;
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
@@ -458,7 +458,7 @@
         
         newRow = [[HandoverRow alloc] init];
         newRow.rowHeight = [NSNumber numberWithFloat:346.0f];
-        newRow.rowText = self.jobs;
+        newRow.rowText = self.plan;
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
@@ -600,7 +600,7 @@
     [aCoder encodeObject:self.echocardiogram forKey:@"Echocardiogram"];
     [aCoder encodeObject:self.feedsAndFluids forKey:@"FeedsAndFluids"];
     [aCoder encodeObject:self.fluidBalance forKey:@"FluidBalance"];
-    [aCoder encodeObject:self.electrolytes forKey:@"Electrolytes"];
+    [aCoder encodeObject:self.biochemistry forKey:@"Electrolytes"];
     [aCoder encodeObject:self.jaundice forKey:@"Jaundice"];
     [aCoder encodeObject:self.sepsis forKey:@"Sepsis"];
     [aCoder encodeObject:self.drugs forKey:@"Drugs"];
@@ -608,9 +608,9 @@
     [aCoder encodeObject:self.rop forKey:@"ROP"];
     [aCoder encodeObject:self.cranialUSS forKey:@"CranialUSS"];
     [aCoder encodeObject:self.parentsAndSocial forKey:@"ParentsAndSocial"];
-    [aCoder encodeObject:self.impression forKey:@"Impression"];
-    [aCoder encodeObject:self.plan forKey:@"Plan"];
-    [aCoder encodeObject:self.jobs forKey:@"Jobs"];
+    [aCoder encodeObject:self.examination forKey:@"Impression"];
+    [aCoder encodeObject:self.summary forKey:@"Plan"];
+    [aCoder encodeObject:self.plan forKey:@"Jobs"];
     
     // UITextView text entry dates
     [aCoder encodeObject:self.weightLastEntryDate forKey:@"WeightLastEntryDate"];
@@ -626,7 +626,7 @@
     [aCoder encodeObject:self.echocardiogramLastEntryDate forKey:@"EchocardiogramLastEntryDate"];
     [aCoder encodeObject:self.feedsAndFluidLastEntryDate forKey:@"FeedsAndFluidsLastEntryDate"];
     [aCoder encodeObject:self.fluidBalanceLastEntryDate forKey:@"FluidBalanceLastEntryDate"];
-    [aCoder encodeObject:self.electrolytesLastEntryDate forKey:@"ElectrolytesLastEntryDate"];
+    [aCoder encodeObject:self.biochemistryLastEntryDate forKey:@"ElectrolytesLastEntryDate"];
     [aCoder encodeObject:self.jaundiceLastEntryDate forKey:@"JaundiceLastEntryDate"];
     [aCoder encodeObject:self.sepsisLastEntryDate forKey:@"SepsisLastEntryDate"];
     [aCoder encodeObject:self.drugsLastEntryDate forKey:@"DrugsLastEntryDate"];
@@ -634,9 +634,9 @@
     [aCoder encodeObject:self.ropLastEntryDate forKey:@"ROPLastEntryDate"];
     [aCoder encodeObject:self.cranialUSSLastEntryDate forKey:@"CranialUSSLastEntryDate"];
     [aCoder encodeObject:self.parentsAndSocialLastEntryDate forKey:@"ParentsAndSocialLastEntryDate"];
-    [aCoder encodeObject:self.impressionLastEntryDate forKey:@"ImpressionLastEntryDate"];
-    [aCoder encodeObject:self.planLastEntryDate forKey:@"PlanLastEntryDate"];
-    [aCoder encodeObject:self.jobsLastEntryDate forKey:@"JobsLastEntryDate"];
+    [aCoder encodeObject:self.examinationLastEntryDate forKey:@"ImpressionLastEntryDate"];
+    [aCoder encodeObject:self.summaryLastEntryDate forKey:@"PlanLastEntryDate"];
+    [aCoder encodeObject:self.planLastEntryDate forKey:@"JobsLastEntryDate"];
     
     // handover sections
     [aCoder encodeObject:self.handoverSections forKey:@"HandoverSections"];
@@ -920,8 +920,8 @@
         patient.drugs = @"Chlorothiazide 10ml/kg BD\nSpironolactone 1mg/kg BD\nCaffeine citrate";
         patient.rop = @"In book for 23rd December";
         patient.cranialUSS = @"Day 2 CrUSS normal\nDay 7 CrUSS normal";
-        patient.impression = @"Pink\nActive\nHR 157\nNo murmurs\nNo bounding pulses\nCRT less than 1 sec\nRR 50\nMinimal recession\nSaO2 91% on NCPAP FiO2 31%\nAbdomen distended with everted umbilicus\nNon-tender, not shiny or tense\nNot oedematous";
-        patient.plan = @"Persisting NCPAP requirement in higher FiO2.\nAbdomen more distended than yesterday now nearing full enteral feeds";
+        patient.examination = @"Pink\nActive\nHR 157\nNo murmurs\nNo bounding pulses\nCRT less than 1 sec\nRR 50\nMinimal recession\nSaO2 91% on NCPAP FiO2 31%\nAbdomen distended with everted umbilicus\nNon-tender, not shiny or tense\nNot oedematous";
+        patient.summary = @"Persisting NCPAP requirement in higher FiO2.\nAbdomen more distended than yesterday now nearing full enteral feeds";
         
         
         patient.allBloodResultSampleData = [[NSMutableArray alloc] initWithCapacity:5];

@@ -17,6 +17,13 @@
 
 @protocol PatientDetailsViewControllerDelegate <NSObject>
 
+/*  Protocol is optional as:
+ *  user adds a patient from the EnterWeightViewController class only
+ *  
+ *  edits a patient from the DailySummaryViewController
+ *
+ *  cancel should be in both, as it is so important...
+ */
 @optional
 
 - (void)patientDetailsViewController:(PatientDetailsViewController *)controller didFinishAddingPatient:(Patient *)patient atIndexPath:(NSIndexPath *)indexPath;
@@ -43,3 +50,5 @@
 - (void)done;
 
 @end
+
+// This whole thing needs updating...

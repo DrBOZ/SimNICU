@@ -31,7 +31,7 @@
     webViewRows = [[NSMutableArray alloc] initWithCapacity:1];
     webView = [CBWebView createWebViewWithFrame:CGRectMake(0.0f, 0.0f, 300.0f, 135.0f)
                                          header:@"Neonatal Unit"
-                                       resource:@"gastroschisis0"
+                                       resource:@"gastroschisis1"
                                  cellIdentifier:@"Cell1"];
     [webViewRows addObject:webView];
     [webViewSections addObject:webViewRows];
