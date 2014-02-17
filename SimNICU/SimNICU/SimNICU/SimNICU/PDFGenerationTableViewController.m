@@ -205,8 +205,8 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
@@ -264,8 +264,8 @@
             if(!cell)
             {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.accessoryType = UITableViewCellAccessoryNone;
                 cell.backgroundColor = [UIColor whiteColor];
             }
             
@@ -334,8 +334,8 @@
         if(!cell)
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-            cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.backgroundColor = [UIColor whiteColor];
         }
         
@@ -360,13 +360,6 @@
     
     return returnCell;
 }
-
-//- (void)borderSwitchChangedValue
-//{
-//    Preferences *preferences = [Preferences sharedPreferences];
-//    
-//    preferences.border = [NSNumber numberWithInt:self.borderSwitch.on];
-//}
 
 - (void)switchChangedValue:(UISwitch *)sender
 {
@@ -397,7 +390,11 @@
             path = nil;
         }
     }
-    else if (indexPath.section == 2)
+    else if (indexPath.section == 1)
+    {
+        path = nil;
+    }
+    else if (indexPath.section == 3)
     {
         path = nil;
     }
@@ -420,7 +417,7 @@
             [self.navigationController pushViewController:newViewController animated:YES];
         }
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == 2)
     {
         CBPhotoCropperViewController *newViewController = [[CBPhotoCropperViewController alloc] init];
         newViewController.delegate = self;
@@ -437,7 +434,7 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     // move tableview up
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
