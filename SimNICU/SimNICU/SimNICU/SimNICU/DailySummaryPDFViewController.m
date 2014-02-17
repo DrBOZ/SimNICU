@@ -41,7 +41,7 @@
 #define kLeftPrintingAdjustment 0.0f
 #define kRightPrintingAdjustment 306.0f
 
-@interface DailySummaryPDFViewController ()
+@interface DailySummaryPDFViewController () <UIPrintInteractionControllerDelegate>
 
 @property (nonatomic, strong) UIPrintInteractionController *printController;
 @property (nonatomic, strong) NSString *fileNamePath;
@@ -146,6 +146,7 @@
         // self.printController = [printControllerClass sharedPrintController];
         
         self.printController = [UIPrintInteractionController sharedPrintController];
+        self.printController.delegate = self;
         
         items = @[itemRewind, flexibleItem, itemPrint, flexibleItem, itemFastForward];
     }
@@ -585,6 +586,29 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Tell the system what we support
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+// Tell the system It should autorotate
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
+
+// Tell the system which initial orientation we want to have
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)drawText:(NSString *)textToDraw withFont:(UIFont *)textFont atVerticalPosition:(float)y
@@ -1197,7 +1221,8 @@
     
     self.printController.printInfo = printInfo;
     
-    [self.printController presentAnimated:YES completionHandler:completionHandler];
+    // [self.printController presentAnimated:YES completionHandler:completionHandler];
+    [self.printController presentAnimated:YES completionHandler:nil];
 }
 
 - (void)deleteFile
@@ -1336,6 +1361,13 @@
     displayLinesToWriteOn = NO;
     
     [self viewDidLoad];
+}
+
+#pragma mark - UIPrintInteractionController Delegate
+
+- (void)printInteractionControllerWillDismissPrinterOptions:(UIPrintInteractionController *)printInteractionController
+{
+    // [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

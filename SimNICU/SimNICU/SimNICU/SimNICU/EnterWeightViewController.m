@@ -347,7 +347,8 @@
     [archiver encodeObject:preferences forKey:@"Preferences"];
     [archiver encodeObject:self.bayData forKey:@"BayData"];
     [archiver finishEncoding];
-    [data writeToFile:[self dataFilePath] atomically:YES];
+    // [data writeToFile:[self dataFilePath] atomically:YES];
+    [data writeToFile:[self dataFilePath] options:NSDataWritingFileProtectionComplete error:nil];
     
 #ifdef LITE_VERSION
     

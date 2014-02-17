@@ -150,11 +150,7 @@
 {
     float height = 44.0f;
     
-    if (indexPath.section == 2)
-    {
-        height = 110.0f;
-    }
-    else if (indexPath.section == 3)
+    if (indexPath.section == 2 || indexPath.section == 3)
     {
         height = 110.0f;
     }
