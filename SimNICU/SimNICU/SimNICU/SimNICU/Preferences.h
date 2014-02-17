@@ -51,6 +51,7 @@
 @property (nonatomic, retain) NSNumber *bloodResultUniqueReferenceCounter;
 
 // PDF settings
+@property (nonatomic, retain) NSNumber *grayscale;
 @property (nonatomic, retain) NSString *paperSize;
 @property (nonatomic, retain) NSString *signature;
 @property (nonatomic, retain) NSNumber *border;

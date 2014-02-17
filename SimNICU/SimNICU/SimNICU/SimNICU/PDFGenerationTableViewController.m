@@ -15,8 +15,9 @@
 @interface PDFGenerationTableViewController () <PaperSizeTableViewControllerDelegate, UITextViewDelegate, CBPhotoCropperDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UITextView *signatureTextView;
-@property (nonatomic, strong) UISwitch *borderSwitch;
 @property (nonatomic, strong) UIImageView *logoImageView;
+@property (nonatomic, strong) UISwitch *grayscaleSwitch;
+@property (nonatomic, strong) UISwitch *borderSwitch;
 
 @end
 
@@ -42,7 +43,7 @@
                                                                                                               longPressTarget:self
                                                                                                               longPressAction:@selector(backButtonLongPressed)];
     
-    tableData = [[NSMutableArray alloc] initWithCapacity:3];
+    tableData = [[NSMutableArray alloc] initWithCapacity:2];
     CBTableViewSectionData *sectionData;
     CBTableViewRowData *rowData;
     
@@ -57,6 +58,17 @@
     
     rowData = [[CBTableViewRowData alloc] init];
     rowData.text = @"Border";
+    [sectionData.rowData addObject:rowData];
+    
+    [tableData addObject:sectionData];
+    
+    // section 1
+    sectionData = [[CBTableViewSectionData alloc] init];
+    sectionData.titleForHeader = @"Printing";
+    sectionData.rowData = [[NSMutableArray alloc] initWithCapacity:2];
+    
+    rowData = [[CBTableViewRowData alloc] init];
+    rowData.text = @"Grayscale";
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];
@@ -87,14 +99,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int rows = nil;
     
-    if (section == 0)
+    if (section == 0 || section == 1)
     {
         CBTableViewSectionData *sectionData = tableData[section];
         
@@ -117,16 +129,16 @@
 {
     NSString *header = nil;
     
-    if (section == 0)
+    if (section == 0 || section == 1)
     {
         CBTableViewSectionData *sectionData = tableData[section];
         header = sectionData.titleForHeader;
     }
-    else if (section == 1)
+    else if (section == 2)
     {
         header = @"Hospital Logo";
     }
-    else if (section == 2)
+    else if (section == 3)
     {
         header = @"Name & Designation";
     }
@@ -138,11 +150,11 @@
 {
     float height = 44.0f;
     
-    if (indexPath.section == 1)
+    if (indexPath.section == 2)
     {
         height = 110.0f;
     }
-    else if (indexPath.section == 2)
+    else if (indexPath.section == 3)
     {
         height = 110.0f;
     }
@@ -152,7 +164,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 2)
+    if (section == 3)
     {
         return 240.0f;
     }
@@ -203,7 +215,9 @@
             if (!self.borderSwitch)
             {
                 self.borderSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
-                [self.borderSwitch addTarget:self action:@selector(borderSwitchChangedValue) forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                [self.borderSwitch addTarget:self
+                                      action:@selector(switchChangedValue:)
+                            forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
                 
                 // iOS 7 specifics
                 if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
@@ -242,6 +256,44 @@
     }
     else if (indexPath.section == 1)
     {
+        if (indexPath.row == 0)
+        {
+            static NSString *CellIdentifier = @"Grayscale";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if(!cell)
+            {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.backgroundColor = [UIColor whiteColor];
+            }
+            
+            cell.textLabel.text = @"Grayscale";
+            
+            if (!self.grayscaleSwitch)
+            {
+                self.grayscaleSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(1.0f, 1.0f, 20.0f, 20.0f)];
+                [self.grayscaleSwitch addTarget:self
+                                         action:@selector(switchChangedValue:)
+                               forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+                
+                // iOS 7 specifics
+                if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+                {
+                    self.grayscaleSwitch.onTintColor = [UIColor redColor];
+                }
+            }
+            
+            self.grayscaleSwitch.on = [preferences.grayscale intValue];
+            cell.accessoryView = self.grayscaleSwitch;
+            cell.detailTextLabel.text = nil;
+            
+            returnCell = cell;
+        }
+    }
+    else if (indexPath.section == 2)
+    {
         static NSString *CellIdentifier = @"Logo";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
@@ -274,7 +326,7 @@
         
         returnCell = cell;
     }
-    else if (indexPath.section == 2)
+    else if (indexPath.section == 3)
     {
         static NSString *CellIdentifier = @"Name & Designation";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -309,11 +361,25 @@
     return returnCell;
 }
 
-- (void)borderSwitchChangedValue
+//- (void)borderSwitchChangedValue
+//{
+//    Preferences *preferences = [Preferences sharedPreferences];
+//    
+//    preferences.border = [NSNumber numberWithInt:self.borderSwitch.on];
+//}
+
+- (void)switchChangedValue:(UISwitch *)sender
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
-    preferences.border = [NSNumber numberWithInt:self.borderSwitch.on];
+    if ([sender isEqual:self.borderSwitch])
+    {
+        preferences.border = [NSNumber numberWithInt:self.borderSwitch.on];
+    }
+    else if ([sender isEqual:self.grayscaleSwitch])
+    {
+        preferences.grayscale = [NSNumber numberWithInt:self.grayscaleSwitch.on];
+    }
 }
 
 #pragma mark - UITable view delegate

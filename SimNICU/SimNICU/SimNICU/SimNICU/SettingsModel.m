@@ -44,7 +44,7 @@
     [sectionData.rowData addObject:rowData];
     
     rowData = [[CBTableViewRowData alloc] init];
-    rowData.text = NSLocalizedString(@"PDF", @"a type of document");
+    rowData.text = NSLocalizedString(@"PDF / Printing", nil);
     [sectionData.rowData addObject:rowData];
     
     [tableData addObject:sectionData];

@@ -166,6 +166,22 @@
         // paste formatted date and time
         pasteboard.string = [NSString stringWithFormat:@" %@", [CBStringMethods dayAndMonthAndTimeInParenthesesForDate:[NSDate date] andLocale:[NSLocale currentLocale]]];
     }
+    else if ([customText.customText isEqualToString:@"[yesterday's date]"])
+    {
+        NSDate *now = [NSDate date];
+        int daysToAdd = -1;
+        
+        // set up date components
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        [components setDay:daysToAdd];
+        
+        // create a calendar
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        
+        NSDate *yesterday = [gregorian dateByAddingComponents:components toDate:now options:0];
+        
+        pasteboard.string = [NSString stringWithFormat:@" %@", [CBStringMethods dayAndMonthInParenthesesForDate:yesterday andLocale:[NSLocale currentLocale]]];
+    }
     else
     {
         // copy text into clipboard

@@ -128,10 +128,6 @@
         [self.view addSubview:self.webView];
     }
     
-    // setup Print Controller
-    Class printControllerClass = NSClassFromString(@"UIPrintInteractionController");
-    self.printController = [printControllerClass sharedPrintController];
-    
     // setup toolbar
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *itemRewind = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(previousPatientButtonPressed)];
@@ -143,8 +139,14 @@
     
     NSArray *items;
     
-    if (printControllerClass)
+    // setup Print Controller
+    if ([UIPrintInteractionController isPrintingAvailable])
     {
+        // Class printControllerClass = NSClassFromString(@"UIPrintInteractionController");
+        // self.printController = [printControllerClass sharedPrintController];
+        
+        self.printController = [UIPrintInteractionController sharedPrintController];
+        
         items = @[itemRewind, flexibleItem, itemPrint, flexibleItem, itemFastForward];
     }
     else
@@ -1167,13 +1169,33 @@
 
 - (void)print
 {
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//    {
+//        [pc presentFromBarButtonItem:self.printButton animated:YES
+//                   completionHandler:completionHandler];
+//    }
+//    else
+//    {
+//        [pc presentAnimated:YES completionHandler:completionHandler];
+//    }
+    
     void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
-    ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
+    ^(UIPrintInteractionController *pic, BOOL completed, NSError *error)
+    {
         if (!completed && error) NSLog(@"Print error: %@", error);
     };
     
     NSData *pdfData = [NSData dataWithContentsOfFile:self.fileNamePath];
     self.printController.printingItem = pdfData;
+    
+    // set printInfo
+    UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+    
+    // printInfo.outputType = UIPrintInfoOutputGeneral;
+    printInfo.outputType = UIPrintInfoOutputGrayscale;
+    // printInfo.jobName = self.query;
+    
+    self.printController.printInfo = printInfo;
     
     [self.printController presentAnimated:YES completionHandler:completionHandler];
 }

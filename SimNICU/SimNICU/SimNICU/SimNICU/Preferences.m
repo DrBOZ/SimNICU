@@ -56,6 +56,7 @@
         self.paperSize = [aDecoder decodeObjectForKey:@"paperSize"];
         self.signature = [aDecoder decodeObjectForKey:@"signature"];
         self.border = [aDecoder decodeObjectForKey:@"border"];
+        self.grayscale = [aDecoder decodeObjectForKey:@"grayscale"];
         self.image = [aDecoder decodeObjectForKey:@"image"];
         self.autocorrection = [aDecoder decodeObjectForKey:@"autocorrection"];
         self.trackball = [aDecoder decodeObjectForKey:@"trackball"];
@@ -99,6 +100,8 @@
                   forKey:@"signature"];
     [aCoder encodeObject:self.border
                   forKey:@"border"];
+    [aCoder encodeObject:self.grayscale
+                  forKey:@"grayscale"];
     [aCoder encodeObject:self.image
                   forKey:@"image"];
     [aCoder encodeObject:self.autocorrection
@@ -281,10 +284,6 @@
             [newSection.customText addObject:[self customText:NSLocalizedString(@"RDS", nil)
                                                           ref:NSLocalizedString(@"RDS", nil)]];
             
-            // Hypotension
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypotension", nil)
-                                                          ref:NSLocalizedString(@"Hypotension", nil)]];
-            
             // Anaemia
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Anaemia", nil)
                                                           ref:NSLocalizedString(@"Anaemia", nil)]];
@@ -292,10 +291,6 @@
             // Establishing enteral feeds
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Establishing enteral feeds", nil)
                                                           ref:NSLocalizedString(@"Establishing enteral feeds", nil)]];
-            
-            // Hypoglycaemia
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"Hypoglycaemia", nil)
-                                                          ref:NSLocalizedString(@"Hypoglycaemia", nil)]];
             
             // Jaundice requiring phototherapy
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Jaundice requiring phototherapy", nil)
@@ -491,6 +486,10 @@
             [newSection.customText addObject:[self customText:@"[current date]"
                                                           ref:NSLocalizedString(@"[current date]", nil)]];
             
+            // yesterday's date
+            [newSection.customText addObject:[self customText:@"[yesterday's date]"
+                                                          ref:NSLocalizedString(@"[yesterday's date]", nil)]];
+            
             [self.handoverSections addObject:newSection];
         }
         
@@ -672,6 +671,10 @@
             [newSection.customText addObject:[self customText:@"[current date and time]"
                                                           ref:@"[current date and time]"]];
             
+            // yesterday's date
+            [newSection.customText addObject:[self customText:@"[yesterday's date]"
+                                                          ref:NSLocalizedString(@"[yesterday's date]", nil)]];
+            
             [self.handoverSections addObject:newSection];
         }
         
@@ -737,6 +740,10 @@
             // current date
             [newSection.customText addObject:[self customText:@"[current date]"
                                                           ref:NSLocalizedString(@"[current date]", nil)]];
+            
+            // yesterday's date
+            [newSection.customText addObject:[self customText:@"[yesterday's date]"
+                                                          ref:NSLocalizedString(@"[yesterday's date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -756,29 +763,21 @@
             // Stopped antibiotics
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Stopped antibiotics", nil)
                                                           ref:NSLocalizedString(@"Stopped antibiotics", nil)]];
-            
-            // Aciclovir
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"Aciclovir", nil)
-                                                          ref:NSLocalizedString(@"Aciclovir", nil)]];
         
             // Benzylpenicillin
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Benzylpenicillin", nil)
                                                           ref:NSLocalizedString(@"Benzylpenicillin", nil)]];
-        
-            // Flucloxacillin
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"Flucloxacillin", nil)
-                                                          ref:NSLocalizedString(@"Flucloxacillin", nil)]];
             
             // Gentamicin
             [newSection.customText addObject:[self customText:NSLocalizedString(@"Gentamicin", nil)
                                                           ref:NSLocalizedString(@"Gentamicin", nil)]];
             
-            // Caffeine
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"Caffeine", nil)
-                                                          ref:NSLocalizedString(@"Caffeine", nil)]];
-            
             // current date
             [newSection.customText addObject:[self customText:@"[current date]" ref:@"[current date]"]];
+            
+            // yesterday's date
+            [newSection.customText addObject:[self customText:@"[yesterday's date]"
+                                                          ref:NSLocalizedString(@"[yesterday's date]", nil)]];
         
             [self.handoverSections addObject:newSection];
         }
@@ -862,7 +861,7 @@
             newSection.customText = [[NSMutableArray alloc] initWithCapacity:1];
             
             // Normal examination
-            [newSection.customText addObject:[self customText:NSLocalizedString(@"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discoloration", nil)
+            [newSection.customText addObject:[self customText:NSLocalizedString(@"Pink\nActive\nHR 140\nHeart sounds normal\nNo murmurs\nFemorals bilaterally palpable\nRR 40\nSaO2 97% in air\nNo recession\nAbdomen soft and non-tender\nNo distension or discolouration", nil)
                                                           ref:@"Normal examination"]];
             
             [self.handoverSections addObject:newSection];
