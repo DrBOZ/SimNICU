@@ -15,13 +15,10 @@
 @interface FluidBalanceTableViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIPickerView *timePeriodPicker;
-
-@property (nonatomic, strong) UILabel *totalInMlPerDay;
-@property (nonatomic, strong) UILabel *totalInMlPerKgPerDay;
-
-@property (nonatomic, strong) UILabel *totalOutMlPerDay;
 @property (nonatomic, strong) UILabel *totalOutMlPerKgPerDay;
-
+@property (nonatomic, strong) UILabel *totalInMlPerKgPerDay;
+@property (nonatomic, strong) UILabel *totalOutMlPerDay;
+@property (nonatomic, strong) UILabel *totalInMlPerDay;
 @property (nonatomic, strong) UILabel *balance;
 
 @end
@@ -39,22 +36,12 @@
     BOOL userHasEnteredData;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // set up buttons if used modally
-    if (self.useAsModalViewController)
+    if (self.isBeingUsedAsAModalViewController)
     {
         // set navigation item buttons and tint for iOS 7
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -73,12 +60,8 @@
         }
     }
     
-    if (self.selectedPatient)
-    {
-        self.workingWeight = self.selectedPatient.workingWeight;
-        
-        // self.fluidBalanceData = self.selectedPatient.allFluidBalanceData[];
-    }
+    // if a patient has been selected, then set the working weight
+    if (self.selectedPatient) self.workingWeight = self.selectedPatient.workingWeight;
     
     // check if a working weight has been set - if no working weight then setup instructions
     if (!self.workingWeight)
@@ -91,7 +74,7 @@
     else
     {
         // log tracker
-        if (self.useAsModalViewController) [CBTrackers logEvent:@"Daily Summary/Fluid Balance"];
+        if (self.isBeingUsedAsAModalViewController) [CBTrackers logEvent:@"Daily Summary/Fluid Balance"];
         else [CBTrackers logEvent:@"Fluid Balance"];
         
         // do not show date picker
@@ -232,10 +215,10 @@
 
 - (void)done
 {
-    NSString *title = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
+    // set the date range
+    self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
     
-    self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = title;
-    
+    // returns the new data to the delegate
     [self.delegate fluidBalanceTableViewController:self didFinishAddingNewData:self.fluidBalanceData];
 }
 
@@ -272,7 +255,7 @@
             // Date picker
             case 0:
                 
-                if (self.useAsModalViewController)
+                if (self.isBeingUsedAsAModalViewController)
                 {
                     if (showTimePeriodPicker) return 2;
                     else return 1;

@@ -32,7 +32,9 @@
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
 
-@property (nonatomic) BOOL useAsModalViewController;
+// This view controller is used modally from the DailySummaryVC
+@property (nonatomic) BOOL isBeingUsedAsAModalViewController;
+
 @property (nonatomic, strong) NSString *editOrAddFluidBalance;
 
 @property (nonatomic, strong) NSMutableDictionary *fluidBalanceData;

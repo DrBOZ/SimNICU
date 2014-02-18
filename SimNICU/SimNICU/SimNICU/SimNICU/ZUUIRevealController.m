@@ -763,7 +763,6 @@
     return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-// Tell the system what we support
 - (NSUInteger)supportedInterfaceOrientations
 {
     // NSLog(@"ZUUI supportedInterfaceOrientations");

@@ -1169,26 +1169,9 @@
 
 - (void)displayPDF
 {
-//    // delegate
-//    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    
-//    UIWebView *webView;
-//    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-//    {
-//        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height) - 64.0f - 44.0f)];
-//        [webView setScalesPageToFit:YES];
-//    }
-//    else
-//    {
-//        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, (appDelegate.window.bounds.size.height - 20.0f - 44.0f - 44.0f))];
-//        [webView setScalesPageToFit:YES];
-//    }
-    
     NSURL *url = [NSURL fileURLWithPath:self.fileNamePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
-    
-//    [self.view addSubview:webView];
 }
 
 - (void)print
@@ -1221,8 +1204,8 @@
     
     self.printController.printInfo = printInfo;
     
-    // [self.printController presentAnimated:YES completionHandler:completionHandler];
-    [self.printController presentAnimated:YES completionHandler:nil];
+    [self.printController presentAnimated:YES completionHandler:completionHandler];
+    // [self.printController presentAnimated:YES completionHandler:nil];
 }
 
 - (void)deleteFile
@@ -1367,7 +1350,8 @@
 
 - (void)printInteractionControllerWillDismissPrinterOptions:(UIPrintInteractionController *)printInteractionController
 {
-    // [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    // [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
 }
 
 @end
