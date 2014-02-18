@@ -468,22 +468,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "413923817.417644"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7735"
-            endingLineNumber = "7735"
-            landmarkName = "-fluidBalanceTableViewControllerDidCancel:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SimNICU/DailySummaryViewController.m"
             timestampString = "413655227.573488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -548,11 +532,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "413919843.086486"
+            timestampString = "414455447.063393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2816"
-            endingLineNumber = "2816"
+            startingLineNumber = "2852"
+            endingLineNumber = "2852"
             landmarkName = "-setupTextView:"
             landmarkType = "5">
          </BreakpointContent>

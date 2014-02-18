@@ -990,45 +990,52 @@
     int rows = 0;
     BOOL addBlankRow = NO;
     
-    for (NSMutableDictionary *dictionary in self.allFluidBalanceData)
+    for (NSMutableDictionary *fluidBalanceData in self.allFluidBalanceData)
     {
-        if (addBlankRow)
+        if ([fluidBalanceData[@"ShowMinimized"] boolValue] == YES)
         {
             rows++;
         }
-        
-        // header line
-        rows++;
-        
-        // INPUT line
-        rows++;
-        
-        for (NSMutableArray *inputData in dictionary[@"InputData"])
+        else
         {
+            if (addBlankRow)
+            {
+                rows++;
+            }
+            
+            // header line
             rows++;
-        }
-        
-        // INPUT totals
-        rows++;
-        
-        // OUTPUT line
-        rows++;
-        
-        for (NSMutableArray *inputData in dictionary[@"OutputData"])
-        {
+            
+            // INPUT line
             rows++;
+            
+            for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
+            {
+                rows++;
+            }
+            
+            // INPUT totals
+            rows++;
+            
+            // OUTPUT line
+            rows++;
+            
+            for (NSMutableArray *inputData in fluidBalanceData[@"OutputData"])
+            {
+                rows++;
+            }
+            
+            // OUTPUT totals
+            rows++;
+            
+            // BALANCE line
+            rows++;
+            
+            // BALANCE results
+            rows++;
+            
+            addBlankRow = YES;
         }
-        
-        // OUTPUT totals
-        rows++;
-        
-        // BALANCE line
-        rows++;
-        
-        // BALANCE results
-        rows++;
-        
-        addBlankRow = YES;
     }
     
     return rows;
@@ -1041,6 +1048,7 @@
     
     /*
      *  NSMutableDictionary     *fluidBalanceData
+     *      NSNumber            @"ShowMinimized"
      *      NSString            @"Working Weight"
      *      NSDate              @"FluidBalanceDate"
      *      NSString            @"FormattedFluidBalanceDateRange"
@@ -1069,235 +1077,179 @@
     // will have to cycle through all allFluidBalanceData
     for (NSMutableDictionary *fluidBalanceData in self.allFluidBalanceData)
     {
-        if (addBlankRow)
+        if ([fluidBalanceData[@"ShowMinimized"] boolValue] == YES)
         {
-            // "Blank Row"
+            // "Date Range & Working Weight"
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+            dictionary[@"CellColor"] = cellColor;
+            dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
+            dictionary[@"FluidName"] = fluidBalanceData[@"FormattedFluidBalanceDateRange"]; // i.e. @"19/1/14 - 20/1/14";
+            
+            if ([fluidBalanceData[@"BalanceMlPerDay"] doubleValue] > 0)
+            {
+                dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"+%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+            }
+            else
+            {
+                dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+            }
+            
+            if ([fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue] > 0)
+            {
+                dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"+%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+            }
+            else
+            {
+                dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+            }
+            
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
+            
+            [formattedFluidBalanceResults addObject:dictionary];
+            
+        }
+        // else show full results
+        else
+        {
+            if (addBlankRow)
+            {
+                // "Blank Row"
+                NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+                dictionary[@"CellColor"] = cellColor;
+                dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
+                dictionary[@"HeadingText"] = @"";
+                dictionary[@"WorkingWeight"] = @"";
+                
+                [formattedFluidBalanceResults addObject:dictionary];
+            }
+            
+            // "Date Range & Working Weight"
             NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
             dictionary[@"CellColor"] = cellColor;
             dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-            dictionary[@"HeadingText"] = @"";
+            dictionary[@"HeadingText"] = fluidBalanceData[@"FormattedFluidBalanceDateRange"]; // i.e. @"19/1/14 - 20/1/14";
+            // dictionary[@"WorkingWeight"] = [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]];
             dictionary[@"WorkingWeight"] = @"";
             
             [formattedFluidBalanceResults addObject:dictionary];
-        }
-        
-        // "Date Range & Working Weight"
-        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-        dictionary[@"HeadingText"] = fluidBalanceData[@"FormattedFluidBalanceDateRange"]; // i.e. @"19/1/14 - 20/1/14";
-        dictionary[@"WorkingWeight"] = [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]];
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        // "INPUT" heading
-        dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-        dictionary[@"HeadingText"] = @"INPUT";
-        dictionary[@"WorkingWeight"] = @"";
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
-        {
-            // "INPUT" fluids
+            
+            // "INPUT" heading
+            dictionary = [[NSMutableDictionary alloc] init];
+            dictionary[@"CellColor"] = cellColor;
+            dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
+            dictionary[@"HeadingText"] = @"INPUT";
+            dictionary[@"WorkingWeight"] = @"";
+            
+            [formattedFluidBalanceResults addObject:dictionary];
+            
+            for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
+            {
+                // "INPUT" fluids
+                dictionary = [[NSMutableDictionary alloc] init];
+                dictionary[@"CellColor"] = cellColor;
+                dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
+                dictionary[@"FluidName"] = inputData[0];
+                dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [inputData[1] doubleValue]];
+                dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [inputData[2] doubleValue]];
+                dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+                dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
+                
+                [formattedFluidBalanceResults addObject:dictionary];
+            }
+            
+            // "INPUT" totals
             dictionary = [[NSMutableDictionary alloc] init];
             dictionary[@"CellColor"] = cellColor;
             dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-            dictionary[@"FluidName"] = inputData[0];
-            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [inputData[1] doubleValue]];
-            dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [inputData[2] doubleValue]];
-            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"FluidName"] = @"";
+            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"InputTotalMlPerDay"] doubleValue]];
+            dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"InputTotalMlPerKgPerDay"] doubleValue]];
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:YES];
             dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
             
             [formattedFluidBalanceResults addObject:dictionary];
-        }
-        
-        // "INPUT" totals
-        dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-        dictionary[@"FluidName"] = @"";
-        dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"InputTotalMlPerDay"] doubleValue]];
-        dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"InputTotalMlPerKgPerDay"] doubleValue]];
-        dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:YES];
-        dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        // "OUTPUT" heading
-        dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-        dictionary[@"HeadingText"] = @"OUTPUT";
-        dictionary[@"WorkingWeight"] = @"";
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
-        {
-            // "OUTPUT" fluids
+            
+            // "OUTPUT" heading
+            dictionary = [[NSMutableDictionary alloc] init];
+            dictionary[@"CellColor"] = cellColor;
+            dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
+            dictionary[@"HeadingText"] = @"OUTPUT";
+            dictionary[@"WorkingWeight"] = @"";
+            
+            [formattedFluidBalanceResults addObject:dictionary];
+            
+            for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
+            {
+                // "OUTPUT" fluids
+                dictionary = [[NSMutableDictionary alloc] init];
+                dictionary[@"CellColor"] = cellColor;
+                dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
+                dictionary[@"FluidName"] = outputData[0];
+                dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [outputData[1] doubleValue]];
+                dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [outputData[2] doubleValue]];
+                dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+                dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
+                
+                [formattedFluidBalanceResults addObject:dictionary];
+            }
+            
+            // "OUTPUT" totals
             dictionary = [[NSMutableDictionary alloc] init];
             dictionary[@"CellColor"] = cellColor;
             dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-            dictionary[@"FluidName"] = outputData[0];
-            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [outputData[1] doubleValue]];
-            dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [outputData[2] doubleValue]];
-            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"FluidName"] = @"";
+            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"OutputTotalMlPerDay"] doubleValue]];
+            dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"OutputTotalMlPerKgPerDay"] doubleValue]];
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:YES];
             dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
             
             [formattedFluidBalanceResults addObject:dictionary];
+            
+            // "BALANCE" heading
+            dictionary = [[NSMutableDictionary alloc] init];
+            dictionary[@"CellColor"] = cellColor;
+            dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
+            dictionary[@"HeadingText"] = @"BALANCE";
+            dictionary[@"WorkingWeight"] = @"";
+            
+            [formattedFluidBalanceResults addObject:dictionary];
+            
+            // "BALANCE" totals
+            dictionary = [[NSMutableDictionary alloc] init];
+            dictionary[@"CellColor"] = cellColor;
+            dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
+            dictionary[@"FluidName"] = @"";
+            
+            if ([fluidBalanceData[@"BalanceMlPerDay"] doubleValue] > 0)
+            {
+                dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"+%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+            }
+            else
+            {
+                dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+            }
+            
+            if ([fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue] > 0)
+            {
+                dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"+%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+            }
+            else
+            {
+                dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+            }
+            
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:YES];
+            
+            [formattedFluidBalanceResults addObject:dictionary];
+            
+            addBlankRow = YES;
         }
-        
-        // "OUTPUT" totals
-        dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-        dictionary[@"FluidName"] = @"";
-        dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"OutputTotalMlPerDay"] doubleValue]];
-        dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"OutputTotalMlPerKgPerDay"] doubleValue]];
-        dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:YES];
-        dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        // "BALANCE" heading
-        dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-        dictionary[@"HeadingText"] = @"BALANCE";
-        dictionary[@"WorkingWeight"] = @"";
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        // "BALANCE" totals
-        dictionary = [[NSMutableDictionary alloc] init];
-        dictionary[@"CellColor"] = cellColor;
-        dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-        dictionary[@"FluidName"] = @"";
-        dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
-        dictionary[@"mlPerKgPerDay"] = [NSString stringWithFormat:@"%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
-        dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
-        dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:YES];
-        
-        [formattedFluidBalanceResults addObject:dictionary];
-        
-        addBlankRow = YES;
     }
     
     return formattedFluidBalanceResults;
 }
-
-// use the other one
-//- (NSString *)getFormattedFluidBalanceResultsForPrinting
-//{
-//    // This is the array that the tableView will be populated
-//    NSString *formattedFluidBalanceResultsForPrinting = @"";
-//    
-//    /*
-//     *  NSMutableDictionary     *fluidBalanceData
-//     *      NSString            @"Working Weight"
-//     *      NSDate              @"FluidBalanceDate"
-//     *      NSString            @"FormattedFluidBalanceDateRange"
-//     *      NSMutableArray      @"InputData"
-//     *          [0] NSString    *fluidName
-//     *          [1] NSNumber    *mlPerDay
-//     *          [2] NSNumber    *mlPerKgPerDay
-//     *      NSNumber            @"InputTotalMlPerDay"
-//     *      NSNumber            @"InputTotalMlPerKgPerDay"
-//     *      NSMutalbeArray      @"OutputData"
-//     *          [0] NSString    *fluidName
-//     *          [1] NSNumber    *mlPerDay
-//     *          [2] NSNumber    *mlPerKgPerDay
-//     *      NSNumber            @"OutputTotalMlPerDay"
-//     *      NSNumber            @"OutputTotalMlPerKgPerDay"
-//     *
-//     *      NSNumber            @"BalanceMlPerDay"
-//     *      NSNumber            @"BalanceMlPerKgPerDay"
-//     */
-//    
-//    BOOL addBlankRow = NO;
-//    
-//    // will have to cycle through all allFluidBalanceData
-//    for (NSMutableDictionary *fluidBalanceData in self.allFluidBalanceData)
-//    {
-//        if (addBlankRow)
-//        {
-//            // "Blank Row"
-//            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:@"\n\n"];
-//        }
-//        
-//        // "Date Range & Working Weight"
-//        NSString *dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@\t\t%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"], [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
-//        
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:dateRangeAndWorkingWeight];
-//        
-//        // "INPUT" heading
-//        
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:@"\nINPUT\t\t\t\tml\t\tml/kg"];
-//        
-//        // "INPUT" fluids
-//        for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
-//        {
-//            // set number of tabs depending on fluidName length
-//            NSString *tabs;
-//            if ([inputData[0] length] <= 5)
-//            {
-//                tabs = @"\t\t\t\t";
-//            }
-//            else
-//            {
-//                tabs = @"\t\t\t";
-//            }
-//            
-//            NSString *fluid = [NSString stringWithFormat:@"\n%@%@%@\t%@", inputData[0], tabs, [NSString stringWithFormat:@"%0.1f", [inputData[1] doubleValue]], @"120.0"];
-//            
-//            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:fluid];
-//        }
-//        
-//        // "INPUT" totals
-//        NSString *inputTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t25.4\t\t18.7"];
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputTotals];
-//        
-//        // "OUTPUT" heading
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:@"\nOUTPUT"];
-//        
-//        // "OUTPUT" fluids
-//        for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
-//        {
-//            // set number of tabs depending on fluidName length
-//            NSString *tabs;
-//            if ([outputData[0] length] <= 5)
-//            {
-//                tabs = @"\t\t\t\t";
-//            }
-//            else
-//            {
-//                tabs = @"\t\t\t";
-//            }
-//            
-//            NSString *fluid = [NSString stringWithFormat:@"\n%@%@%@\t%@", outputData[0], tabs, [NSString stringWithFormat:@"%0.1f", [outputData[1] doubleValue]], @"8.7"];
-//            
-//            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:fluid];
-//        }
-//        
-//        // "OUTPUT" totals
-//        NSString *outputTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t25.4\t18.7"];
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputTotals];
-//        
-//        // "BALANCE" heading
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:@"\nBALANCE"];
-//        
-//        // "BALANCE" totals
-//        NSString *balanceTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t+25.4\t(+18.7)"];
-//        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceTotals];
-//        
-//        addBlankRow = YES;
-//    }
-//    
-//    return formattedFluidBalanceResultsForPrinting;
-//}
 
 - (NSString *)getFormattedFluidBalanceResultsForPrintingAtTabPoint:(NSString *)tabPoint;
 {
@@ -1306,6 +1258,7 @@
     
     /*
      *  NSMutableDictionary     *fluidBalanceData
+     *      NSNumber            @"ShowMinimized"
      *      NSString            @"Working Weight"
      *      NSDate              @"FluidBalanceDate"
      *      NSString            @"FormattedFluidBalanceDateRange"
@@ -1331,276 +1284,274 @@
     // will have to cycle through all allFluidBalanceData
     for (NSMutableDictionary *fluidBalanceData in self.allFluidBalanceData)
     {
-        if (addBlankRow)
+        if ([fluidBalanceData[@"ShowMinimized"] boolValue] == YES)
         {
-            // "Blank Row"
-            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:@"\n\n"];
-        }
-        
-        // "Date Range & Working Weight"
-        NSString *dateRangeAndWorkingWeight;
-        if ([tabPoint isEqualToString:@"Tab 0"])
-        {
-            dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"]];
-        }
-        else if ([tabPoint isEqualToString:@"Tab 1"])
-        {
-            dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
-        }
-        else if ([tabPoint isEqualToString:@"Tab 2"])
-        {
-            dateRangeAndWorkingWeight = @" ";
-        }
-//        else
-//        {
-//            dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@\t\t%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"], [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
-//        }
-        
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:dateRangeAndWorkingWeight];
-        
-        // "INPUT" heading
-        NSString *inputHeading;
-        if ([tabPoint isEqualToString:@"Tab 0"])
-        {
-            inputHeading = @"\nINPUT";
-        }
-        else if ([tabPoint isEqualToString:@"Tab 1"])
-        {
-            inputHeading = @"\nml";
-        }
-        else if ([tabPoint isEqualToString:@"Tab 2"])
-        {
-            inputHeading = @"\nml/kg";
-        }
-//        else
-//        {
-//            inputHeading = @"\nINPUT\t\t\t\tml\t\tml/kg";
-//        }
-        
-        // Append "INPUT" heading
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputHeading];
-        
-        // "INPUT" fluids
-        for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
-        {
-            NSString *inputFluids;
+            // "Date Range & Working Weight"
+            NSString *dateRangeAndWorkingWeight;
             if ([tabPoint isEqualToString:@"Tab 0"])
             {
-                inputFluids = [NSString stringWithFormat:@"\n%@", inputData[0]];
+                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"]];
             }
             else if ([tabPoint isEqualToString:@"Tab 1"])
             {
-                inputFluids = [NSString stringWithFormat:@"\n%0.1f", [inputData[1] doubleValue]];
+                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
             }
             else if ([tabPoint isEqualToString:@"Tab 2"])
             {
-                inputFluids = [NSString stringWithFormat:@"\n%0.1f", [inputData[2] doubleValue]];
+                dateRangeAndWorkingWeight = @" ";
             }
-//            else
-//            {
-//                // set number of tabs depending on fluidName length
-//                NSString *tabs;
-//                if ([inputData[0] length] <= 5)
-//                {
-//                    tabs = @"\t\t\t\t";
-//                }
-//                else
-//                {
-//                    tabs = @"\t\t\t";
-//                }
-//                
-//                inputFluids = [NSString stringWithFormat:@"\n%@%@%@\t%@", inputData[0], tabs, [NSString stringWithFormat:@"%0.1f", [inputData[1] doubleValue]], @"120.0"];
-//            }
             
-            // Append "INPUT" fluids
-            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputFluids];
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:dateRangeAndWorkingWeight];
+            
+            // "BALANCE" totals
+            NSString *balanceTotals;
+            {
+                if ([tabPoint isEqualToString:@"Tab 0"])
+                {
+                    balanceTotals = @"\n";
+                }
+                else if ([tabPoint isEqualToString:@"Tab 1"])
+                {
+                    balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+                }
+                else if ([tabPoint isEqualToString:@"Tab 2"])
+                {
+                    balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+                }
+            }
+            
+            // Append "BALANCE" totals
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceTotals];
         }
-        
-        // "INPUT" totals
-        NSString *inputTotals;
+        else
         {
+            if (addBlankRow)
+            {
+                // "Blank Row"
+                formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:@"\n\n"];
+            }
+            
+            // "Date Range & Working Weight"
+            NSString *dateRangeAndWorkingWeight;
             if ([tabPoint isEqualToString:@"Tab 0"])
             {
-                inputTotals = @"\n";
+                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"]];
             }
             else if ([tabPoint isEqualToString:@"Tab 1"])
             {
-                if ([fluidBalanceData[@"InputData"] count] > 1)
+                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
+            }
+            else if ([tabPoint isEqualToString:@"Tab 2"])
+            {
+                dateRangeAndWorkingWeight = @" ";
+            }
+            
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:dateRangeAndWorkingWeight];
+            
+            // "INPUT" heading
+            NSString *inputHeading;
+            if ([tabPoint isEqualToString:@"Tab 0"])
+            {
+                inputHeading = @"\nINPUT";
+            }
+            else if ([tabPoint isEqualToString:@"Tab 1"])
+            {
+                inputHeading = @"\nml";
+            }
+            else if ([tabPoint isEqualToString:@"Tab 2"])
+            {
+                inputHeading = @"\nml/kg";
+            }
+            
+            // Append "INPUT" heading
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputHeading];
+            
+            // "INPUT" fluids
+            for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
+            {
+                NSString *inputFluids;
+                if ([tabPoint isEqualToString:@"Tab 0"])
                 {
-                    inputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"InputTotalMlPerDay"] doubleValue]];
+                    inputFluids = [NSString stringWithFormat:@"\n%@", inputData[0]];
                 }
-                else
+                else if ([tabPoint isEqualToString:@"Tab 1"])
+                {
+                    inputFluids = [NSString stringWithFormat:@"\n%0.1f", [inputData[1] doubleValue]];
+                }
+                else if ([tabPoint isEqualToString:@"Tab 2"])
+                {
+                    inputFluids = [NSString stringWithFormat:@"\n%0.1f", [inputData[2] doubleValue]];
+                }
+                
+                // Append "INPUT" fluids
+                formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputFluids];
+            }
+            
+            // "INPUT" totals
+            NSString *inputTotals;
+            {
+                if ([tabPoint isEqualToString:@"Tab 0"])
                 {
                     inputTotals = @"\n";
                 }
-            }
-            else if ([tabPoint isEqualToString:@"Tab 2"])
-            {
-                if ([fluidBalanceData[@"InputData"] count] > 1)
+                else if ([tabPoint isEqualToString:@"Tab 1"])
                 {
-                    inputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"InputTotalMlPerKgPerDay"] doubleValue]];
+                    if ([fluidBalanceData[@"InputData"] count] > 1)
+                    {
+                        inputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"InputTotalMlPerDay"] doubleValue]];
+                    }
+                    else
+                    {
+                        inputTotals = @"\n";
+                    }
                 }
-                else
+                else if ([tabPoint isEqualToString:@"Tab 2"])
                 {
-                    inputTotals = @"\n";
+                    if ([fluidBalanceData[@"InputData"] count] > 1)
+                    {
+                        inputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"InputTotalMlPerKgPerDay"] doubleValue]];
+                    }
+                    else
+                    {
+                        inputTotals = @"\n";
+                    }
                 }
             }
-//            else
-//            {
-//                inputTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t25.4\t\t18.7"];
-//            }
-        }
-        
-        // Append "INPUT" totals
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputTotals];
-        
-        // "OUTPUT" heading
-        NSString *outputHeading;
-        {
-            if ([tabPoint isEqualToString:@"Tab 0"])
-            {
-                outputHeading = @"\nOUTPUT";
-            }
-            else if ([tabPoint isEqualToString:@"Tab 1"])
-            {
-                outputHeading = @"\n";
-            }
-            else if ([tabPoint isEqualToString:@"Tab 2"])
-            {
-                outputHeading = @"\n";
-            }
-//            else
-//            {
-//                outputHeading = @"\nOUTPUT";
-//            }
-        }
-        
-        // Append "OUTPUT" heading
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputHeading];
-        
-        // "OUTPUT" fluids
-        for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
-        {
-            NSString *outputFluids;
-            if ([tabPoint isEqualToString:@"Tab 0"])
-            {
-                outputFluids = [NSString stringWithFormat:@"\n%@", outputData[0]];
-            }
-            else if ([tabPoint isEqualToString:@"Tab 1"])
-            {
-                outputFluids = [NSString stringWithFormat:@"\n%0.1f", [outputData[1] doubleValue]];
-            }
-            else if ([tabPoint isEqualToString:@"Tab 2"])
-            {
-                outputFluids = [NSString stringWithFormat:@"\n%0.1f", [outputData[2] doubleValue]];
-            }
-//            else
-//            {
-//                // set number of tabs depending on fluidName length
-//                NSString *tabs;
-//                if ([outputData[0] length] <= 5)
-//                {
-//                    tabs = @"\t\t\t\t";
-//                }
-//                else
-//                {
-//                    tabs = @"\t\t\t";
-//                }
-//                
-//                outputFluids = [NSString stringWithFormat:@"\n%@%@%@\t%@", outputData[0], tabs, [NSString stringWithFormat:@"%0.1f", [outputData[1] doubleValue]], @"8.7"];
-//            }
             
-            // Append "OUTPUT" fluids
-            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputFluids];
-        }
-        
-        // "OUTPUT" totals
-        NSString *outputTotals;
-        {
-            if ([tabPoint isEqualToString:@"Tab 0"])
+            // Append "INPUT" totals
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:inputTotals];
+            
+            // "OUTPUT" heading
+            NSString *outputHeading;
             {
-                outputTotals = @"\n";
-            }
-            else if ([tabPoint isEqualToString:@"Tab 1"])
-            {
-                if ([fluidBalanceData[@"OutputData"] count] > 1)
+                if ([tabPoint isEqualToString:@"Tab 0"])
                 {
-                    outputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"OutputTotalMlPerDay"] doubleValue]];
+                    outputHeading = @"\nOUTPUT";
                 }
-                else
+                else if ([tabPoint isEqualToString:@"Tab 1"])
+                {
+                    outputHeading = @"\n";
+                }
+                else if ([tabPoint isEqualToString:@"Tab 2"])
+                {
+                    outputHeading = @"\n";
+                }
+            }
+            
+            // Append "OUTPUT" heading
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputHeading];
+            
+            // "OUTPUT" fluids
+            for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
+            {
+                NSString *outputFluids;
+                if ([tabPoint isEqualToString:@"Tab 0"])
+                {
+                    outputFluids = [NSString stringWithFormat:@"\n%@", outputData[0]];
+                }
+                else if ([tabPoint isEqualToString:@"Tab 1"])
+                {
+                    outputFluids = [NSString stringWithFormat:@"\n%0.1f", [outputData[1] doubleValue]];
+                }
+                else if ([tabPoint isEqualToString:@"Tab 2"])
+                {
+                    outputFluids = [NSString stringWithFormat:@"\n%0.1f", [outputData[2] doubleValue]];
+                }
+                
+                // Append "OUTPUT" fluids
+                formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputFluids];
+            }
+            
+            // "OUTPUT" totals
+            NSString *outputTotals;
+            {
+                if ([tabPoint isEqualToString:@"Tab 0"])
                 {
                     outputTotals = @"\n";
                 }
-            }
-            else if ([tabPoint isEqualToString:@"Tab 2"])
-            {
-                if ([fluidBalanceData[@"OutputData"] count] > 1)
+                else if ([tabPoint isEqualToString:@"Tab 1"])
                 {
-                    outputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"OutputTotalMlPerKgPerDay"] doubleValue]];
+                    if ([fluidBalanceData[@"OutputData"] count] > 1)
+                    {
+                        outputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"OutputTotalMlPerDay"] doubleValue]];
+                    }
+                    else
+                    {
+                        outputTotals = @"\n";
+                    }
                 }
-                else
+                else if ([tabPoint isEqualToString:@"Tab 2"])
                 {
-                    outputTotals = @"\n";
+                    if ([fluidBalanceData[@"OutputData"] count] > 1)
+                    {
+                        outputTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"OutputTotalMlPerKgPerDay"] doubleValue]];
+                    }
+                    else
+                    {
+                        outputTotals = @"\n";
+                    }
                 }
             }
-//            else
-//            {
-//                outputTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t25.4\t\t18.7"];
-//            }
+            
+            // Append "OUTPUT" totals
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputTotals];
+            
+            // "BALANCE" heading
+            NSString *balanceHeading;
+            {
+                if ([tabPoint isEqualToString:@"Tab 0"])
+                {
+                    balanceHeading = @"\nBALANCE";
+                }
+                else if ([tabPoint isEqualToString:@"Tab 1"])
+                {
+                    balanceHeading = @"\n";
+                }
+                else if ([tabPoint isEqualToString:@"Tab 2"])
+                {
+                    balanceHeading = @"\n";
+                }
+            }
+            
+            // Append "BALANCE" heading
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceHeading];
+            
+            // "BALANCE" totals
+            NSString *balanceTotals;
+            {
+                if ([tabPoint isEqualToString:@"Tab 0"])
+                {
+                    balanceTotals = @"\n";
+                }
+                else if ([tabPoint isEqualToString:@"Tab 1"])
+                {
+                    if ([fluidBalanceData[@"BalanceMlPerDay"] doubleValue] > 0)
+                    {
+                        balanceTotals = [NSString stringWithFormat:@"\n+%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+                    }
+                    else
+                    {
+                        balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+                    }
+                }
+                else if ([tabPoint isEqualToString:@"Tab 2"])
+                {
+                    if ([fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue] > 0)
+                    {
+                        balanceTotals = [NSString stringWithFormat:@"\n+%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+                    }
+                    else
+                    {
+                        balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+                    }
+                }
+            }
+            
+            // Append "BALANCE" totals
+            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceTotals];
+            
+            addBlankRow = YES;
         }
-        
-        // Append "OUTPUT" totals
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:outputTotals];
-        
-        // "BALANCE" heading
-        NSString *balanceHeading;
-        {
-            if ([tabPoint isEqualToString:@"Tab 0"])
-            {
-                balanceHeading = @"\nBALANCE";
-            }
-            else if ([tabPoint isEqualToString:@"Tab 1"])
-            {
-                balanceHeading = @"\n";
-            }
-            else if ([tabPoint isEqualToString:@"Tab 2"])
-            {
-                balanceHeading = @"\n";
-            }
-//            else
-//            {
-//                balanceHeading = @"\nBALANCE";
-//            }
-        }
-        
-        // Append "BALANCE" heading
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceHeading];
-        
-        // "BALANCE" totals
-        NSString *balanceTotals;
-        {
-            if ([tabPoint isEqualToString:@"Tab 0"])
-            {
-                balanceTotals = @"\n";
-            }
-            else if ([tabPoint isEqualToString:@"Tab 1"])
-            {
-                balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
-            }
-            else if ([tabPoint isEqualToString:@"Tab 2"])
-            {
-                balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
-            }
-//            else
-//            {
-//                balanceTotals = [NSString stringWithFormat:@"\n\t\t\t\t\t+25.4\t+18.7"];
-//            }
-        }
-        
-        // Append "BALANCE" totals
-        formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceTotals];
-        
-        addBlankRow = YES;
     }
     
     return formattedFluidBalanceResultsForPrinting;

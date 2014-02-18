@@ -463,6 +463,42 @@
     return titleForHeader;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *viewForHeader = nil;
+    
+    if ([tableView isEqual:self.myTableView2])
+    {
+        Preferences *preferences = [Preferences sharedPreferences];
+        
+        HandoverSection *handoverSection = preferences.handoverSections[section];
+        
+        if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"] && self.selectedPatient.allFluidBalanceData.count > 1)
+        {
+            viewForHeader = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)];
+            viewForHeader.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
+            
+            UILabel *sectionHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 100.0f, 22.0f)];
+            sectionHeaderLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+            sectionHeaderLabel.text = NSLocalizedString(@"Fluid Balance", nil);
+            
+            UILabel *ml = [[UILabel alloc] initWithFrame:CGRectMake(205.0f, 2.0f, 40.0f, 22.0f)];
+            ml.font = [UIFont systemFontOfSize:13.0f];
+            ml.text = NSLocalizedString(@"ml", nil);
+            
+            UILabel *mlPerKg = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, 2.0f, 40.0f, 22.0f)];
+            mlPerKg.font = [UIFont systemFontOfSize:13.0f];
+            mlPerKg.text = NSLocalizedString(@"ml/kg", nil);
+            
+            [viewForHeader addSubview:sectionHeaderLabel];
+            [viewForHeader addSubview:ml];
+            [viewForHeader addSubview:mlPerKg];
+        }
+    }
+    
+    return viewForHeader;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 22.0f;
@@ -4046,7 +4082,7 @@
         {
             FluidBalanceTableViewController *vc = [[FluidBalanceTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.selectedPatient = self.selectedPatient;
-            vc.useAsModalViewController = YES;
+            vc.isBeingUsedAsAModalViewController = YES;
             vc.delegate = self;
             
             PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
@@ -7705,26 +7741,26 @@
 
 - (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishAddingNewData:(NSMutableDictionary *)fluidBalanceData
 {
+    // turn off editing
     [self setEditing:NO animated:NO];
     
+    // if selected patient fluid balance array has not been instantiated, then instantiate it
     if (!self.selectedPatient.allFluidBalanceData)
     {
         self.selectedPatient.allFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:5];
     }
     
-    // update daily summary with fluid balance data
+    // ensure all previous data will be shown minimized
+    for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
+    {
+        fluidBalanceData[@"ShowMinimized"] = [NSNumber numberWithBool:YES];
+    }
+    
+    // add new data to array
     [self.selectedPatient.allFluidBalanceData addObject:fluidBalanceData];
     
     // sort data by date
     [self reorderFluidBalanceResultsDataByDate:self.selectedPatient.allFluidBalanceData];
-    
-    // debugging code
-//    NSLog(@"Number of fluid balance results = %i", self.selectedPatient.allFluidBalanceData.count);
-//    
-//    for (NSMutableDictionary *dictionary in self.selectedPatient.allFluidBalanceData)
-//    {
-//        NSLog(@"result date = %@", dictionary[@"FluidBalanceDate"]);
-//    }
     
     // reload table
     [self.myTableView2 reloadData];
@@ -7735,11 +7771,9 @@
 - (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
-    
-    // deselect row
-//    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
 }
 
+// reorder fluid balance data by @"FluidBalanceDate"
 - (NSMutableArray *)reorderFluidBalanceResultsDataByDate:(NSMutableArray *)allFluidBalanceResultsData
 {
     NSArray *sortedFluidBalanceResultsData = [allFluidBalanceResultsData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
@@ -7751,152 +7785,6 @@
     
     return [NSMutableArray arrayWithArray:sortedFluidBalanceResultsData];
 }
-
-//- (NSMutableArray *)getFormattedFluidBalanceResults
-//{
-//    // This is the array that the tableView will be populated
-//    NSMutableArray *formattedFluidBalanceResults = [[NSMutableArray alloc] initWithCapacity:self.selectedPatient.allFluidBalanceData.count];
-//    
-//    /*
-//     *  NSMutableDictionary *fluidBalanceData
-//     *  NSString            @"Working Weight"
-//     *  NSDate              @"FluidBalanceDate"
-//     *  NSString            @"FormattedFluidBalanceDateRange"
-//     *  NSMutableArray      @"InputData"
-//     *      [0] NSString    *fluidName
-//     *      [1] NSNumber    *mlPerDay
-//     *  NSMutalbeArray      @"OutputData"
-//     *      [0] NSString    *fluidName
-//     *      [1] NSNumber    *mlPerDay
-//     */
-//    
-//    // UIColor *cellColor = [UIColor clearColor];
-//    UIColor *cellColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
-//    
-//    BOOL addBlankRow = NO;
-//    
-//    // will have to cycle through all allFluidBalanceData
-//    for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
-//    {
-//        if (addBlankRow)
-//        {
-//            // "Blank Row"
-//            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-//            dictionary[@"CellColor"] = cellColor;
-//            dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-//            dictionary[@"HeadingText"] = @"";
-//            dictionary[@"WorkingWeight"] = @"";
-//            
-//            [formattedFluidBalanceResults addObject:dictionary];
-//        }
-//        
-//        // "Date Range & Working Weight"
-//        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-//        dictionary[@"HeadingText"] = fluidBalanceData[@"FormattedFluidBalanceDateRange"]; // i.e. @"19/1/14 - 20/1/14";
-//        dictionary[@"WorkingWeight"] = [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]];
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        // "INPUT" heading
-//        dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-//        dictionary[@"HeadingText"] = @"INPUT";
-//        dictionary[@"WorkingWeight"] = @"";
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        for (NSMutableArray *inputData in fluidBalanceData[@"InputData"])
-//        {
-//            // "INPUT" fluids
-//            dictionary = [[NSMutableDictionary alloc] init];
-//            dictionary[@"CellColor"] = cellColor;
-//            dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-//            dictionary[@"FluidName"] = inputData[0];
-//            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [inputData[1] doubleValue]];
-//            dictionary[@"mlPerKgPerDay"] = @"120.0";
-//            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
-//            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
-//            
-//            [formattedFluidBalanceResults addObject:dictionary];
-//        }
-//        
-//        // "INPUT" totals
-//        dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-//        dictionary[@"FluidName"] = @"";
-//        dictionary[@"mlPerDay"] = @"25.4";
-//        dictionary[@"mlPerKgPerDay"] = @"18.7";
-//        dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:YES];
-//        dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        // "OUTPUT" heading
-//        dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-//        dictionary[@"HeadingText"] = @"OUTPUT";
-//        dictionary[@"WorkingWeight"] = @"";
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        for (NSMutableArray *outputData in fluidBalanceData[@"OutputData"])
-//        {
-//            // "OUTPUT" fluids
-//            dictionary = [[NSMutableDictionary alloc] init];
-//            dictionary[@"CellColor"] = cellColor;
-//            dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-//            dictionary[@"FluidName"] = outputData[0];
-//            dictionary[@"mlPerDay"] = [NSString stringWithFormat:@"%0.1f", [outputData[1] doubleValue]];
-//            dictionary[@"mlPerKgPerDay"] = @"8.7";
-//            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
-//            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
-//            
-//            [formattedFluidBalanceResults addObject:dictionary];
-//        }
-//        
-//        // "OUTPUT" totals
-//        dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-//        dictionary[@"FluidName"] = @"";
-//        dictionary[@"mlPerDay"] = @"25.4";
-//        dictionary[@"mlPerKgPerDay"] = @"18.7";
-//        dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:YES];
-//        dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        // "BALANCE" heading
-//        dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
-//        dictionary[@"HeadingText"] = @"BALANCE";
-//        dictionary[@"WorkingWeight"] = @"";
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        // "BALANCE" totals
-//        dictionary = [[NSMutableDictionary alloc] init];
-//        dictionary[@"CellColor"] = cellColor;
-//        dictionary[@"CellIdentifier"] = @"FluidBalanceLine";
-//        dictionary[@"FluidName"] = @"";
-//        dictionary[@"mlPerDay"] = @"+25.4";
-//        dictionary[@"mlPerKgPerDay"] = @"+18.7";
-//        dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
-//        dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:YES];
-//        
-//        [formattedFluidBalanceResults addObject:dictionary];
-//        
-//        addBlankRow = YES;
-//    }
-//    
-//    return formattedFluidBalanceResults;
-//}
 
 #pragma mark - JaundiceViewController delegate
 
