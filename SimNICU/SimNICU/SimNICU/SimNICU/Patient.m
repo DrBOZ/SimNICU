@@ -1300,38 +1300,32 @@
             NSString *dateRangeAndWorkingWeight;
             if ([tabPoint isEqualToString:@"Tab 0"])
             {
-                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", fluidBalanceData[@"FormattedFluidBalanceDateRange"]];
+                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@\n", fluidBalanceData[@"FormattedFluidBalanceDateRange"]];
             }
             else if ([tabPoint isEqualToString:@"Tab 1"])
             {
-                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
+                if ([fluidBalanceData[@"BalanceMlPerDay"] doubleValue] > 0)
+                {
+                    dateRangeAndWorkingWeight = [NSString stringWithFormat:@"+%0.1f\n",[fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+                }
+                else
+                {
+                    dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%0.1f\n",[fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
+                }
             }
             else if ([tabPoint isEqualToString:@"Tab 2"])
             {
-                dateRangeAndWorkingWeight = @" ";
+                if ([fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue] > 0)
+                {
+                    dateRangeAndWorkingWeight = [NSString stringWithFormat:@"+%0.1f\n", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+                }
+                else
+                {
+                    dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%0.1f\n", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
+                }
             }
             
             formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:dateRangeAndWorkingWeight];
-            
-            // "BALANCE" totals
-            NSString *balanceTotals;
-            {
-                if ([tabPoint isEqualToString:@"Tab 0"])
-                {
-                    balanceTotals = @"\n";
-                }
-                else if ([tabPoint isEqualToString:@"Tab 1"])
-                {
-                    balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerDay"] doubleValue]];
-                }
-                else if ([tabPoint isEqualToString:@"Tab 2"])
-                {
-                    balanceTotals = [NSString stringWithFormat:@"\n%0.1f", [fluidBalanceData[@"BalanceMlPerKgPerDay"] doubleValue]];
-                }
-            }
-            
-            // Append "BALANCE" totals
-            formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:balanceTotals];
         }
         else
         {
@@ -1349,7 +1343,8 @@
             }
             else if ([tabPoint isEqualToString:@"Tab 1"])
             {
-                dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
+                // dateRangeAndWorkingWeight = [NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]]];
+                dateRangeAndWorkingWeight = @" ";
             }
             else if ([tabPoint isEqualToString:@"Tab 2"])
             {
@@ -1366,11 +1361,13 @@
             }
             else if ([tabPoint isEqualToString:@"Tab 1"])
             {
-                inputHeading = @"\nml";
+                // inputHeading = @"\nml";
+                inputHeading = @"\n ";
             }
             else if ([tabPoint isEqualToString:@"Tab 2"])
             {
-                inputHeading = @"\nml/kg";
+                // inputHeading = @"\nml/kg";
+                inputHeading = @"\n ";
             }
             
             // Append "INPUT" heading

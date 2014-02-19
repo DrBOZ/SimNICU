@@ -454,7 +454,7 @@
 #pragma mark Fluid Balance
         else if ([section.sectionName isEqualToString:@"Fluid Balance"] && (self.selectedPatient.allFluidBalanceData.count || [self.selectedPatient.fluidBalance length] > 0))
         {
-            [self drawHeaderText:NSLocalizedString(@"Fluid Balance", nil)
+            [self drawHeaderText:[NSString stringWithFormat:@"%@\t\t      ml\t\t   ml/kg", NSLocalizedString(@"Fluid Balance", nil)]
                         withFont:headerFont
               andSpecialPrinting:(self.selectedPatient.allFluidBalanceData.count) ? @"Fluid Balance Data" : nil
                      andBodyText:self.selectedPatient.fluidBalance
@@ -790,7 +790,6 @@
             float leftSidedPrintingWidth = ((pageWidth / 2) - (kBorderInset) - (kMarginInsetLeft + (kMarginInsetRight / 2)));
             float rightSidedPrintingWidth = (((pageWidth / 2) - (kBorderInset) - (kMarginInsetRight)) / 2);
             float adjustment;
-            
             
             // create tab point 0 rectangle
             if (horizontalPointToPrint == kLeftPrintingAdjustment)
