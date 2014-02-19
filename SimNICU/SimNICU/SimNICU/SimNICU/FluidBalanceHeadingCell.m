@@ -9,7 +9,7 @@
 #define DEFAULT_TEXT_FONT 13.0f
 #define DEFAULT_TEXT_Y 0.0f
 
-#define MLPERDAY_X 205.0f
+#define MLPERDAY_X 195.0f
 
 #import "FluidBalanceHeadingCell.h"
 
@@ -46,15 +46,17 @@
         {
             self.mlPerDay = [[UILabel alloc] initWithFrame:CGRectMake(MLPERDAY_X, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
             self.mlPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-            self.mlPerDay.text = @"ml";
+            // self.mlPerDay.text = @"ml";
+            self.mlPerDay.text = @"";
             [self.contentView addSubview:self.mlPerDay];
         }
         
         if (!self.mlPerKgPerDay)
         {
-            self.mlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
+            self.mlPerKgPerDay = [[UILabel alloc] initWithFrame:CGRectMake(250.0f, DEFAULT_TEXT_Y, 50.0f, 22.0f)];
             self.mlPerKgPerDay.font = [UIFont systemFontOfSize:DEFAULT_TEXT_FONT];
-            self.mlPerKgPerDay.text = @"ml/kg";
+            // self.mlPerKgPerDay.text = @"ml/kg";
+            self.mlPerKgPerDay.text = @"";
             [self.contentView addSubview:self.mlPerKgPerDay];
         }
     }

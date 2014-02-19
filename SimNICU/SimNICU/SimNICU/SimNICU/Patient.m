@@ -1120,6 +1120,8 @@
                 dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
                 dictionary[@"HeadingText"] = @"";
                 dictionary[@"WorkingWeight"] = @"";
+                dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+                dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
                 
                 [formattedFluidBalanceResults addObject:dictionary];
             }
@@ -1131,6 +1133,8 @@
             dictionary[@"HeadingText"] = fluidBalanceData[@"FormattedFluidBalanceDateRange"]; // i.e. @"19/1/14 - 20/1/14";
             // dictionary[@"WorkingWeight"] = [NSString stringWithFormat:@"ww %@", fluidBalanceData[@"Working Weight"]];
             dictionary[@"WorkingWeight"] = @"";
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
             
             [formattedFluidBalanceResults addObject:dictionary];
             
@@ -1140,6 +1144,8 @@
             dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
             dictionary[@"HeadingText"] = @"INPUT";
             dictionary[@"WorkingWeight"] = @"";
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
             
             [formattedFluidBalanceResults addObject:dictionary];
             
@@ -1176,6 +1182,8 @@
             dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
             dictionary[@"HeadingText"] = @"OUTPUT";
             dictionary[@"WorkingWeight"] = @"";
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
             
             [formattedFluidBalanceResults addObject:dictionary];
             
@@ -1212,6 +1220,8 @@
             dictionary[@"CellIdentifier"] = @"FluidBalanceHeading";
             dictionary[@"HeadingText"] = @"BALANCE";
             dictionary[@"WorkingWeight"] = @"";
+            dictionary[@"drawTotalLines"] = [NSNumber numberWithBool:NO];
+            dictionary[@"drawDoubleTotalLines"] = [NSNumber numberWithBool:NO];
             
             [formattedFluidBalanceResults addObject:dictionary];
             

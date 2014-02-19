@@ -473,7 +473,7 @@
         
         HandoverSection *handoverSection = preferences.handoverSections[section];
         
-        if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"] && self.selectedPatient.allFluidBalanceData.count > 1)
+        if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"] && self.selectedPatient.allFluidBalanceData.count)
         {
             viewForHeader = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)];
             viewForHeader.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
@@ -482,11 +482,11 @@
             sectionHeaderLabel.font = [UIFont boldSystemFontOfSize:14.0f];
             sectionHeaderLabel.text = NSLocalizedString(@"Fluid Balance", nil);
             
-            UILabel *ml = [[UILabel alloc] initWithFrame:CGRectMake(205.0f, 2.0f, 40.0f, 22.0f)];
+            UILabel *ml = [[UILabel alloc] initWithFrame:CGRectMake(195.0f, 2.0f, 40.0f, 22.0f)];
             ml.font = [UIFont systemFontOfSize:13.0f];
             ml.text = NSLocalizedString(@"ml", nil);
             
-            UILabel *mlPerKg = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, 2.0f, 40.0f, 22.0f)];
+            UILabel *mlPerKg = [[UILabel alloc] initWithFrame:CGRectMake(250.0f, 2.0f, 40.0f, 22.0f)];
             mlPerKg.font = [UIFont systemFontOfSize:13.0f];
             mlPerKg.text = NSLocalizedString(@"ml/kg", nil);
             
@@ -1185,7 +1185,7 @@
             // only change background color of disclosure indicator if there are results shown
             if ([self.selectedPatient getNumberOfFluidBalanceRows])
             {
-                if (indexPath.row == 0)
+                if (indexPath.row < self.selectedPatient.allFluidBalanceData.count)
                 {
                     UIColor *systemGray = [UIColor colorWithRed:247.0/255.0
                                                           green:247.0/255.0
@@ -1196,6 +1196,8 @@
                     cell.backgroundColor = systemGray;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.accessoryView.backgroundColor = [UIColor clearColor];
+                    
+                    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
                 }
                 else
                 {
@@ -1660,9 +1662,18 @@
                     {
                         cell.drawTotalLines = YES;
                     }
-                    else if (dictionary[@"drawDoubleTotalLines"] == [NSNumber numberWithBool:YES])
+                    else
+                    {
+                        cell.drawTotalLines = NO;
+                    }
+                    
+                    if (dictionary[@"drawDoubleTotalLines"] == [NSNumber numberWithBool:YES])
                     {
                         cell.drawDoubleTotalLines = YES;
+                    }
+                    else
+                    {
+                        cell.drawDoubleTotalLines = NO;
                     }
                     
                     return cell;
@@ -7750,17 +7761,24 @@
         self.selectedPatient.allFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:5];
     }
     
-    // ensure all previous data will be shown minimized
-    for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
-    {
-        fluidBalanceData[@"ShowMinimized"] = [NSNumber numberWithBool:YES];
-    }
-    
     // add new data to array
     [self.selectedPatient.allFluidBalanceData addObject:fluidBalanceData];
     
     // sort data by date
-    [self reorderFluidBalanceResultsDataByDate:self.selectedPatient.allFluidBalanceData];
+    self.selectedPatient.allFluidBalanceData = [self reorderFluidBalanceResultsDataByDate:self.selectedPatient.allFluidBalanceData];
+    
+    // ensure only last result is displayed in full
+    for (int i = 0; i < self.selectedPatient.allFluidBalanceData.count; i++)
+    {
+        if (i < self.selectedPatient.allFluidBalanceData.count - 1)
+        {
+            self.selectedPatient.allFluidBalanceData[i][@"ShowMinimized"] = [NSNumber numberWithBool:YES];
+        }
+        else
+        {
+            self.selectedPatient.allFluidBalanceData[i][@"ShowMinimized"] = [NSNumber numberWithBool:NO];
+        }
+    }
     
     // reload table
     [self.myTableView2 reloadData];
