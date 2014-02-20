@@ -1197,17 +1197,17 @@
             // only change background color of disclosure indicator if there are results shown
             if ([self.selectedPatient getNumberOfFluidBalanceRows])
             {
-                int numberOfDisplayingRows = 0;
+                int numberOfDisplayingResults = 0;
                 
                 for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
                 {
                     if ([fluidBalanceData[@"ShowData"] boolValue] == YES)
                     {
-                        numberOfDisplayingRows++;
+                        numberOfDisplayingResults++;
                     }
                 }
                 
-                if (indexPath.row < numberOfDisplayingRows)
+                if (indexPath.row < numberOfDisplayingResults)
                 {
                     UIColor *systemGray = [UIColor colorWithRed:247.0/255.0
                                                           green:247.0/255.0
@@ -4233,7 +4233,36 @@
     }
     else if ([section.sectionName isEqualToString:@"Fluid Balance"])
     {
-        // code
+        FluidBalanceTableViewController *vc = [[FluidBalanceTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.isBeingUsedAsAModalViewController = YES;
+        vc.selectedPatient = self.selectedPatient;
+        vc.delegate = self;
+        
+        // int numberOfDisplayingResults = 0;
+        NSMutableArray *tempAllFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:self.selectedPatient.allFluidBalanceData.count];
+        
+        for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
+        {
+            if ([fluidBalanceData[@"ShowData"] boolValue] == YES)
+            {
+                // numberOfDisplayingResults++;
+                [tempAllFluidBalanceData addObject:fluidBalanceData];
+            }
+        }
+        
+        // add one day on
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        
+        NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
+        [componentsToAdd setDay:+1];
+        
+        vc.dateToDisplay = [gregorian dateByAddingComponents:componentsToAdd
+                                                      toDate:tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"]
+                                                     options:0];
+        
+        PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
+        
+        [self setupAndPresentModalNavController:navController];
     }
     else if ([section.sectionName isEqualToString:@"Biochemistry"])
     {
@@ -7810,6 +7839,8 @@
     [self setEditing:NO animated:NO];
     
     [self dismissModalViewControllerAnimated:YES];
+    
+    [self.myTableView2 deselectRowAtIndexPath:[self.myTableView2 indexPathForSelectedRow] animated:YES];
 }
 
 // reorder fluid balance data by @"FluidBalanceDate"

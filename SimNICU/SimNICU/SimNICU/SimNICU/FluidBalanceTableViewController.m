@@ -101,7 +101,13 @@
             self.timePeriodPicker.dataSource = self;
             self.timePeriodPicker.delegate = self;
             
-            // pre-select the previous 24 hour period, unless is is the date of birth
+            // if date to display has been passed in, use it
+            if (self.dateToDisplay)
+            {
+                self.fluidBalanceDate = self.dateToDisplay;
+            }
+            
+            // select date to display on time picker
             [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
             
             // update date to match selected date

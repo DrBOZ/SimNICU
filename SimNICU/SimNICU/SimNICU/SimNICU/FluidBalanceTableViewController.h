@@ -29,6 +29,8 @@
 // This view controller is used modally from the DailySummaryVC
 @property (nonatomic) BOOL isBeingUsedAsAModalViewController;
 
+@property (nonatomic, strong) NSDate *dateToDisplay;
+
 @property (nonatomic, strong) NSMutableDictionary *fluidBalanceData;
 @property (nonatomic, strong) NSDate *fluidBalanceDate;
 
