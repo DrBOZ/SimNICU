@@ -7750,6 +7750,39 @@
 
 #pragma mark - FluidBalanceTableViewController delegate
 
+- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinish:(NSMutableArray *)newAllFluidBalanceData
+{
+    // turn off editing
+    [self setEditing:NO animated:NO];
+    
+    // if selected patient fluid balance array has not been instantiated, then instantiate it
+    if (!self.selectedPatient.allFluidBalanceData)
+    {
+        self.selectedPatient.allFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:5];
+    }
+    
+    // update array
+    self.selectedPatient.allFluidBalanceData = [NSMutableArray arrayWithArray:newAllFluidBalanceData];
+    
+    // ensure only last result is displayed in full
+    for (int i = 0; i < self.selectedPatient.allFluidBalanceData.count; i++)
+    {
+        if (i < self.selectedPatient.allFluidBalanceData.count - 1)
+        {
+            self.selectedPatient.allFluidBalanceData[i][@"ShowMinimized"] = [NSNumber numberWithBool:YES];
+        }
+        else
+        {
+            self.selectedPatient.allFluidBalanceData[i][@"ShowMinimized"] = [NSNumber numberWithBool:NO];
+        }
+    }
+    
+    // reload table
+    [self.myTableView2 reloadData];
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishAddingNewData:(NSMutableDictionary *)fluidBalanceData
 {
     // turn off editing

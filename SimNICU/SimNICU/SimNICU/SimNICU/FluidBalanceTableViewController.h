@@ -12,16 +12,22 @@
 
 @protocol FluidBalanceTableViewControllerDelegate <NSObject>
 
+- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinish:(NSMutableArray *)newAllFluidBalanceData;
+
+- (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller;
+
+@optional
+
+// trying to get rid of this one
 - (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller
                  didFinishAddingNewData:(NSMutableDictionary *)fluidBalanceData;
 
+// this isn't used at present
 - (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller
                    didFinishEditingData:(NSMutableDictionary *)fluidBalanceData;
 
 - (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller
                   didFinishDeletingData:(NSMutableDictionary *)fluidBalanceData;
-
-- (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller;
 
 @end
 

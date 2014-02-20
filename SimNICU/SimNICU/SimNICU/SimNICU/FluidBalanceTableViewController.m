@@ -267,7 +267,8 @@
     self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
     
     // returns the new data to the delegate
-    [self.delegate fluidBalanceTableViewController:self didFinishAddingNewData:self.fluidBalanceData];
+    // [self.delegate fluidBalanceTableViewController:self didFinishAddingNewData:self.fluidBalanceData];
+    [self.delegate fluidBalanceTableViewController:self didFinish:self.tempAllFluidBalanceData];
 }
 
 - (void)cancel
@@ -630,17 +631,21 @@
     }
     
     // show data switch is disabled unless there is data to show
-    cell.toggleSwitch.enabled = NO;
-    
-    for (NSMutableDictionary *fluidBalanceData in self.tempAllFluidBalanceData)
+    if ([self.tempAllFluidBalanceData containsObject:self.fluidBalanceData])
     {
-        if ([fluidBalanceData[@"FluidBalanceDate"] isEqualToDate:self.fluidBalanceDate])
-        {
-            cell.toggleSwitch.enabled = YES;
-            
-            break;
-        }
+        cell.toggleSwitch.enabled = YES;
     }
+    else cell.toggleSwitch.enabled = NO;
+    
+//    for (NSMutableDictionary *fluidBalanceData in self.tempAllFluidBalanceData)
+//    {
+//        if ([fluidBalanceData[@"FluidBalanceDate"] isEqualToDate:self.fluidBalanceDate])
+//        {
+//            cell.toggleSwitch.enabled = YES;
+//            
+//            break;
+//        }
+//    }
     
     cell.toggleSwitch.on = [self.fluidBalanceData[@"ShowData"] boolValue];
     cell.textLabel.text = @"Show data";
@@ -991,9 +996,30 @@
     cell.toggleSwitch.enabled = YES;
     cell.toggleSwitch.on = YES;
     
-    [self.tempAllFluidBalanceData addObject:self.fluidBalanceData];
+    // update array
+    if (![self.tempAllFluidBalanceData containsObject:self.fluidBalanceData])
+    {
+        // add data
+        [self.tempAllFluidBalanceData addObject:self.fluidBalanceData];
+        
+        // reorder data by date
+        self.tempAllFluidBalanceData = [self reorderFluidBalanceResultsDataByDate:self.tempAllFluidBalanceData];
+    }
     
     [self updateResults];
+}
+
+// reorder fluid balance data by @"FluidBalanceDate"
+- (NSMutableArray *)reorderFluidBalanceResultsDataByDate:(NSMutableArray *)allFluidBalanceResultsData
+{
+    NSArray *sortedFluidBalanceResultsData = [allFluidBalanceResultsData sortedArrayUsingComparator:^NSComparisonResult(id a, id b)
+                                              {
+                                                  NSDate *first = [(NSDictionary *)a objectForKey:@"FluidBalanceDate"];
+                                                  NSDate *second = [(NSDictionary *)b objectForKey:@"FluidBalanceDate"];
+                                                  return [first compare:second];
+                                              }];
+    
+    return [NSMutableArray arrayWithArray:sortedFluidBalanceResultsData];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
