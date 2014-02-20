@@ -929,38 +929,38 @@
         NSMutableDictionary *sampleData = [NSMutableDictionary dictionary];
         
         // admission blood results (30 min)
-        [sampleData setValue:@"YES" forKey:@"Display FBC"];
-        [sampleData setValue:@"18.6" forKey:@"Haemoglobin value"];
-        [sampleData setValue:@"15.6" forKey:@"Total White Cell Count value"];
-        [sampleData setValue:@"366" forKey:@"Platelet value"];
+        sampleData[@"Display FBC"] = @"YES";
+        sampleData[@"Haemoglobin value"] = @"186";
+        sampleData[@"Total White Cell Count value"] = @"15.6";
+        sampleData[@"Platelet value"] = @"366";
         
-        [sampleData setValue:@"YES" forKey:@"Display CRP"];
-        [sampleData setValue:@"<5" forKey:@"C Reactive Protein value"];
+        sampleData[@"Display CRP"] = @"YES";
+        sampleData[@"C Reactive Protein value"] = @"<5";
         
-        [sampleData setValue:[NSDate dateWithTimeIntervalSinceNow:-243000] forKey:@"Result Date"];
-        [sampleData setValue:@1 forKey:@"Unique Reference"];
+        sampleData[@"Result Date"] = [NSDate dateWithTimeIntervalSinceNow:-243000];
+        sampleData[@"Unique Reference"] = @1;
         
         [patient.allBloodResultSampleData addObject:sampleData];
         
         sampleData = [NSMutableDictionary dictionary];
         
         // 8 hour blood results
-        [sampleData setValue:@"YES" forKey:@"Display FBC"];
-        [sampleData setValue:@"16.4" forKey:@"Haemoglobin value"];
-        [sampleData setValue:@"12.7" forKey:@"Total White Cell Count value"];
-        [sampleData setValue:@"290" forKey:@"Platelet value"];
+        sampleData[@"Display FBC"] = @"YES";
+        sampleData[@"Haemoglobin value"] = @"16.4";
+        sampleData[@"Total White Cell Count value"] = @"12.7";
+        sampleData[@"Platelet value"] = @"290";
         
-        [sampleData setValue:@"YES" forKey:@"Display U&Es"];
-        [sampleData setValue:@"139" forKey:@"Sodium value (serum)"];
-        [sampleData setValue:@"5.0" forKey:@"Potassium value (serum)"];
-        [sampleData setValue:@"7.3" forKey:@"Urea value (serum)"];
-        [sampleData setValue:@"58" forKey:@"Creatinine value (serum)"];
+        sampleData[@"Display U&Es"] = @"YES";
+        sampleData[@"Sodium value (serum)"] = @"139";
+        sampleData[@"Potassium value (serum)"] = @"5.0";
+        sampleData[@"Urea value (serum)"] = @"7.3";
+        sampleData[@"Creatinine value (serum)"] = @"58";
         
-        [sampleData setValue:@"YES" forKey:@"Display CRP"];
-        [sampleData setValue:@"<5" forKey:@"C Reactive Protein value"];
+        sampleData[@"Display CRP"] = @"YES";
+        sampleData[@"C Reactive Protein value"] = @"<5";
         
-        [sampleData setValue:[NSDate dateWithTimeIntervalSinceNow:-216000] forKey:@"Result Date"];
-        [sampleData setValue:@2 forKey:@"Unique Reference"];
+        sampleData[@"Result Date"] = [NSDate dateWithTimeIntervalSinceNow:-216000];
+        sampleData[@"Unique Reference"] = @2;
         
         [patient.allBloodResultSampleData addObject:sampleData];
     }
