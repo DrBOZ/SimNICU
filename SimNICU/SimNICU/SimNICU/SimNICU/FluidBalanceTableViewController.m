@@ -979,9 +979,9 @@
     self.fluidBalanceData[@"ShowData"] = [NSNumber numberWithBool:YES];
     
     //turn on switch
-    CBTableViewSwitchCell *cell = (CBTableViewSwitchCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    CBTableViewSwitchCell *cell = (CBTableViewSwitchCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(showTimePeriodPicker + 1) inSection:0]];
     cell.toggleSwitch.enabled = YES;
-    cell.toggleSwitch.on = YES;
+    [cell.toggleSwitch setOn:YES animated:YES];
     
     // update array
     if (![self.tempAllFluidBalanceData containsObject:self.fluidBalanceData])
