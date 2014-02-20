@@ -1269,9 +1269,9 @@
 
 - (NSString *)getFormattedFluidBalanceResultsForPrintingAtTabPoint:(NSString *)tabPoint;
 {
-    // This is the array that the tableView will be populated
     NSString *formattedFluidBalanceResultsForPrinting = @"";
     
+    // This is the array that the tableView will be populated
     /*
      *  NSMutableDictionary     *fluidBalanceData
      *      NSNumber            @"ShowMinimized"
@@ -1294,6 +1294,22 @@
      *      NSNumber            @"BalanceMlPerDay"
      *      NSNumber            @"BalanceMlPerKgPerDay"
      */
+    
+    // labels
+    NSString *labels;
+    if ([tabPoint isEqualToString:@"Tab 0"])
+    {
+        labels = @" \n";
+    }
+    else if ([tabPoint isEqualToString:@"Tab 1"])
+    {
+        labels = [NSString stringWithFormat:@"%@\n", NSLocalizedString(@"ml", nil)];
+    }
+    else if ([tabPoint isEqualToString:@"Tab 2"])
+    {
+        labels = [NSString stringWithFormat:@"%@\n", NSLocalizedString(@"ml/kg", nil)];
+    }
+    formattedFluidBalanceResultsForPrinting = [formattedFluidBalanceResultsForPrinting stringByAppendingString:labels];
     
     BOOL addBlankRow = NO;
     

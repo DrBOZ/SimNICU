@@ -454,7 +454,7 @@
 #pragma mark Fluid Balance
         else if ([section.sectionName isEqualToString:@"Fluid Balance"] && (self.selectedPatient.allFluidBalanceData.count || [self.selectedPatient.fluidBalance length] > 0))
         {
-            [self drawHeaderText:[NSString stringWithFormat:@"%@\t\t      ml\t\t   ml/kg", NSLocalizedString(@"Fluid Balance", nil)]
+            [self drawHeaderText:NSLocalizedString(@"Fluid Balance", nil)
                         withFont:headerFont
               andSpecialPrinting:(self.selectedPatient.allFluidBalanceData.count) ? @"Fluid Balance Data" : nil
                      andBodyText:self.selectedPatient.fluidBalance
@@ -918,7 +918,7 @@
     {
         NSString *dummyText;
         
-        for (int i = 1; i <= [self.selectedPatient getNumberOfFluidBalanceRows]; i++)
+        for (int i = 1; i <= [self.selectedPatient getNumberOfFluidBalanceRows] + 1; i++)
         {
             NSString *rowText;
             
