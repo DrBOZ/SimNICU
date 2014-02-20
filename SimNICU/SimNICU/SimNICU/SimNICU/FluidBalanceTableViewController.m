@@ -7,6 +7,7 @@
 //
 
 #import "FluidBalanceTableViewController.h"
+#import "CBTableViewSwitchCell.h"
 #import "FluidTableViewCell.h"
 #import "UnderlineLabel.h"
 #import "CBTimeMethods.h"
@@ -14,6 +15,7 @@
 
 @interface FluidBalanceTableViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UIActionSheetDelegate>
 
+@property (nonatomic, strong) NSMutableArray *tempAllFluidBalanceData;
 @property (nonatomic, strong) UIPickerView *timePeriodPicker;
 @property (nonatomic, strong) UILabel *totalOutMlPerKgPerDay;
 @property (nonatomic, strong) UILabel *totalInMlPerKgPerDay;
@@ -35,8 +37,6 @@
     BOOL userIsEnteringData;
     BOOL userHasEnteredData;
 }
-
-// 
 
 - (void)viewDidLoad
 {
@@ -84,23 +84,64 @@
         
         // round current date
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        
         int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
+        
         NSDateComponents *dateComponents = [gregorian components:flags fromDate:[NSDate date]];
         
         self.fluidBalanceDate = [gregorian dateFromComponents:dateComponents];
         
         if (self.selectedPatient)
         {
-            // instantiate time period picker
+            // setup the temporary array
+            self.tempAllFluidBalanceData = [NSMutableArray arrayWithArray:self.selectedPatient.allFluidBalanceData];
+            
+            // will need the picker, so instantiate
             if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
             self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
             self.timePeriodPicker.dataSource = self;
             self.timePeriodPicker.delegate = self;
+            
+            // pre-select the previous 24 hour period, unless is is the date of birth
             [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
+            
+            // update date to match selected date
+            if (([CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]] + 1) > 1)
+            {
+                NSDateComponents *components = [[NSDateComponents alloc] init];
+                [components setDay:-1];
+                NSDate *previousDay = [gregorian dateByAddingComponents:components toDate:self.fluidBalanceDate options:0];
+                
+                self.fluidBalanceDate = previousDay;
+            }
+        }
+        
+        BOOL useDummyData;
+        
+        // if no fluidBalanceData for the default date, then create dummy data
+        if (self.selectedPatient.allFluidBalanceData.count)
+        {
+            // for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
+            for (NSMutableDictionary *fluidBalanceData in self.tempAllFluidBalanceData)
+            {
+                if ([fluidBalanceData[@"FluidBalanceDate"] isEqualToDate:self.fluidBalanceDate])
+                {
+                    self.fluidBalanceData = fluidBalanceData;
+                    useDummyData = NO;
+                    break;
+                }
+                else
+                {
+                    useDummyData = YES;
+                }
+            }
+        }
+        else
+        {
+            useDummyData = YES;
         }
         
         // setup dummy fluidBalanceData
+        if (useDummyData)
         {
             self.fluidBalanceData = [[NSMutableDictionary alloc] init];
             
@@ -151,6 +192,11 @@
             }
         }
     }
+}
+
+- (void)getFluidBalanceDataForDate:(NSDate *)date
+{
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -259,8 +305,8 @@
                 
                 if (self.isBeingUsedAsAModalViewController)
                 {
-                    if (showTimePeriodPicker) return 2;
-                    else return 1;
+                    if (showTimePeriodPicker) return 3;
+                    else return 2;
                 }
                 
                 else return 0;
@@ -493,29 +539,33 @@
             
             return cell;
         }
+        else if (indexPath.row == 1)
+        {
+            if (showTimePeriodPicker)
+            {
+                static NSString *CellIdentifier = @"Time Period Picker";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if(!cell)
+                {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                    cell.backgroundColor = [UIColor whiteColor];
+                    
+                    [cell.contentView addSubview:self.timePeriodPicker];
+                }
+                
+                return cell;
+            }
+            else
+            {
+                return [self getShowDataToggleCell];
+            }
+        }
         else
         {
-            static NSString *CellIdentifier = @"Time Period Picker";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if(!cell)
-            {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.accessoryType = UITableViewCellAccessoryNone;
-                cell.backgroundColor = [UIColor whiteColor];
-                
-//                // instantiate time period picker
-//                if (!self.timePeriodPicker) self.timePeriodPicker = [UIPickerView new];
-//                self.timePeriodPicker.frame = CGRectMake(0.0f, 0.0f, 320.0f, 216.0f);
-//                self.timePeriodPicker.dataSource = self;
-//                self.timePeriodPicker.delegate = self;
-//                [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] inComponent:0 animated:YES];
-                
-                [cell.contentView addSubview:self.timePeriodPicker];
-            }
-            
-            return cell;
+            return [self getShowDataToggleCell];
         }
     }
     else if (indexPath.section == 1)
@@ -530,12 +580,12 @@
             cell.fluidName.tag = (indexPath.section * 100) + indexPath.row;
             cell.fluidName.delegate = self;
             
-            cell.mlPerDay.text = [self.fluidBalanceData[@"InputData"][indexPath.row][1] stringValue];
             cell.mlPerDay.tag = (indexPath.section * 1000) + indexPath.row;
             cell.mlPerDay.delegate = self;
         }
         
         cell.fluidName.text = self.fluidBalanceData[@"InputData"][indexPath.row][0];
+        cell.mlPerDay.text = [self.fluidBalanceData[@"InputData"][indexPath.row][1] stringValue];
         cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([self.fluidBalanceData[@"InputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
@@ -552,12 +602,12 @@
             cell.fluidName.tag = (indexPath.section * 100) + indexPath.row;
             cell.fluidName.delegate = self;
             
-            cell.mlPerDay.text = [self.fluidBalanceData[@"OutputData"][indexPath.row][1] stringValue];
             cell.mlPerDay.tag = (indexPath.section * 1000) + indexPath.row;
             cell.mlPerDay.delegate = self;
         }
         
         cell.fluidName.text = self.fluidBalanceData[@"OutputData"][indexPath.row][0];
+        cell.mlPerDay.text = [self.fluidBalanceData[@"OutputData"][indexPath.row][1] stringValue];
         cell.mlPerKgPerDay.text = [NSString stringWithFormat:@"%0.0f ml/kg/%@", ([self.fluidBalanceData[@"OutputData"][indexPath.row][1] doubleValue] / workingWeightKGAsDouble), NSLocalizedString(@"day", nil)];
         
         return cell;
@@ -565,10 +615,47 @@
     else return nil;
 }
 
+- (CBTableViewSwitchCell *)getShowDataToggleCell
+{
+    static NSString *CellIdentifier = @"Show data toggle";
+    CBTableViewSwitchCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(!cell)
+    {
+        cell = [[CBTableViewSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        [cell.toggleSwitch addTarget:self
+                              action:nil
+                    forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
+    }
+    
+    // show data switch is disabled unless there is data to show
+    cell.toggleSwitch.enabled = NO;
+    
+    for (NSMutableDictionary *fluidBalanceData in self.tempAllFluidBalanceData)
+    {
+        if ([fluidBalanceData[@"FluidBalanceDate"] isEqualToDate:self.fluidBalanceDate])
+        {
+            cell.toggleSwitch.enabled = YES;
+            
+            break;
+        }
+    }
+    
+    cell.toggleSwitch.on = [self.fluidBalanceData[@"ShowData"] boolValue];
+    cell.textLabel.text = @"Show data";
+    
+    return cell;
+}
+
+- (void)showDataToggleChanged:(UISwitch *)sender
+{
+    self.fluidBalanceData[@"ShowData"] = [NSNumber numberWithBool:sender.on];
+}
+
 - (NSString *)twentyFourHourTimePeriodStringToDate:(NSDate *)date forPatient:(Patient *)patient
 {
     // this may make no sense, but it works...
-    
     NSString *timePeriod;
     
     // create time period text
@@ -717,16 +804,6 @@
         // update table
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-//    else if (indexPath.section == tableData.count - 1)
-//    {
-//        // should implement a second check to see if user really wants to do this
-//        UIActionSheet *confirmDelete = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Result will be permanently deleted", nil)
-//                                                                   delegate:self
-//                                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
-//                                                     destructiveButtonTitle:NSLocalizedString(@"Delete", @"")
-//                                                          otherButtonTitles:nil];
-//		[confirmDelete showInView:self.view];
-//    }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -782,7 +859,6 @@
         
         [cell.mlPerDay becomeFirstResponder];
     }
-    // [self resignAllTextFields];
 }
 
 #pragma mark - UITextField delegate
@@ -902,12 +978,12 @@
         self.fluidBalanceData[sectionName][row][0] = textField.text;
     }
     
-    // check if both INPUT and OUTPUT data has been entered
-    if (self.fluidBalanceData[@"InputData"] && self.fluidBalanceData[@"OutputData"])
-    {
-        userHasEnteredData = YES;
-        self.navigationItem.leftBarButtonItem.enabled = YES;
-    }
+    userHasEnteredData = YES;
+    self.navigationItem.leftBarButtonItem.enabled = YES;
+    
+    self.fluidBalanceData[@"ShowData"] = [NSNumber numberWithBool:YES];
+    
+    [self.tempAllFluidBalanceData addObject:self.fluidBalanceData];
     
     [self updateResults];
 }
@@ -1023,14 +1099,115 @@
 {
     NSDate *date = [CBTimeMethods getDateFromDaysDifference:row fromDate:self.selectedPatient.birthDate];
     
-    self.fluidBalanceDate = date;
-    self.fluidBalanceData[@"FluidBalanceDate"] = date;
+    if ([date isEqualToDate:self.selectedPatient.birthDate])
+    {
+        // round date
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        int flags = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+        
+        NSDateComponents *dateComponents = [gregorian components:flags fromDate:date];
+        
+        self.fluidBalanceDate = [gregorian dateFromComponents:dateComponents];
+    }
+    else
+    {
+        self.fluidBalanceDate = date;
+    }
+    
+    BOOL useDummyData;
+    
+    // if no fluidBalanceData for the selected date, then create dummy data
+    if (self.tempAllFluidBalanceData.count)
+    {
+        for (NSMutableDictionary *fluidBalanceData in self.tempAllFluidBalanceData)
+        {
+            if ([fluidBalanceData[@"FluidBalanceDate"] isEqualToDate:self.fluidBalanceDate])
+            {
+                self.fluidBalanceData = fluidBalanceData;
+                useDummyData = NO;
+                
+                [self.tableView reloadData];
+                
+                [self updateResults];
+                
+                break;
+            }
+            else
+            {
+                useDummyData = YES;
+            }
+        }
+    }
+    else
+    {
+        useDummyData = YES;
+    }
+    
+    // setup dummy fluidBalanceData
+    if (useDummyData)
+    {
+        // reset
+        self.fluidBalanceData = nil;
+        
+        // re-instantiate
+        self.fluidBalanceData = [[NSMutableDictionary alloc] init];
+        
+        self.fluidBalanceData[@"FluidBalanceDate"] = self.fluidBalanceDate;
+        
+        // self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] =
+        
+        // INPUT array
+        {
+            NSMutableArray *inputData = [[NSMutableArray alloc] initWithCapacity:5];
+            
+            NSMutableArray *fluid1 = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            /* create Fluid class
+             / for now create fluid NSString
+             */
+            
+            NSString *fluid1Name = @"Fluid 1";
+            NSNumber *fluid1MlPerDay = @0;
+            NSNumber *fluid1MlPerKgPerDay = @0;
+            
+            [fluid1 addObject:fluid1Name];
+            [fluid1 addObject:fluid1MlPerDay];
+            [fluid1 addObject:fluid1MlPerKgPerDay];
+            
+            [inputData addObject:fluid1];
+            
+            self.fluidBalanceData[@"InputData"] = inputData;
+        }
+        
+        // OUTPUT array
+        {
+            NSMutableArray *outputData = [[NSMutableArray alloc] initWithCapacity:5];
+            
+            NSMutableArray *fluid2 = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            NSString *fluid2Name = @"Urine";
+            NSNumber *fluid2MlPerDay = @0;
+            NSNumber *fluid2MlPerKgPerDay = @0;
+            
+            [fluid2 addObject:fluid2Name];
+            [fluid2 addObject:fluid2MlPerDay];
+            [fluid2 addObject:fluid2MlPerKgPerDay];
+            
+            [outputData addObject:fluid2];
+            
+            self.fluidBalanceData[@"OutputData"] = outputData;
+            
+            [self.tableView reloadData];
+            
+            [self updateResults];
+        }
+    }
     
     // set formatted date range
     self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = [self twentyFourHourTimePeriodStringToDate:date forPatient:self.selectedPatient];
     
     // update the 'Date' row with the new date
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end

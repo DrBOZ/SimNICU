@@ -178,6 +178,8 @@
 		5C13B42E17C910BB00C88EEF /* HandoverRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13B42C17C910BB00C88EEF /* HandoverRow.m */; };
 		5C13DDA11852873300DBB676 /* AddBloodResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13DDA01852873300DBB676 /* AddBloodResultModel.m */; };
 		5C13DDA21852873300DBB676 /* AddBloodResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C13DDA01852873300DBB676 /* AddBloodResultModel.m */; };
+		5C17AAE318B56F8800CA744C /* CBTableViewSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C17AAE218B56F8800CA744C /* CBTableViewSwitchCell.m */; };
+		5C17AAE418B56F8800CA744C /* CBTableViewSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C17AAE218B56F8800CA744C /* CBTableViewSwitchCell.m */; };
 		5C195CDD17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CDE17A661CC00D4339F /* CBBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */; };
 		5C195CE517A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C195CE417A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.m */; };
@@ -1097,6 +1099,8 @@
 		5C13B42C17C910BB00C88EEF /* HandoverRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandoverRow.m; sourceTree = "<group>"; };
 		5C13DD9F1852873300DBB676 /* AddBloodResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBloodResultModel.h; sourceTree = "<group>"; };
 		5C13DDA01852873300DBB676 /* AddBloodResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBloodResultModel.m; sourceTree = "<group>"; };
+		5C17AAE118B56F8800CA744C /* CBTableViewSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTableViewSwitchCell.h; sourceTree = "<group>"; };
+		5C17AAE218B56F8800CA744C /* CBTableViewSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTableViewSwitchCell.m; sourceTree = "<group>"; };
 		5C195CDB17A661CC00D4339F /* CBBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBarButtonItems.h; sourceTree = "<group>"; };
 		5C195CDC17A661CC00D4339F /* CBBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBBarButtonItems.m; sourceTree = "<group>"; };
 		5C195CE317A684F600D4339F /* CorrectedAgeCorrectToAgeSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectedAgeCorrectToAgeSettingsViewController.h; sourceTree = "<group>"; };
@@ -2871,6 +2875,8 @@
 				5C930AEF17B0CA6900CBE616 /* CBTableViewSectionData.m */,
 				5C930AF217B0CA7D00CBE616 /* CBTableViewRowData.h */,
 				5C930AF317B0CA7D00CBE616 /* CBTableViewRowData.m */,
+				5C17AAE118B56F8800CA744C /* CBTableViewSwitchCell.h */,
+				5C17AAE218B56F8800CA744C /* CBTableViewSwitchCell.m */,
 				5C56F6201801EC4A00665E22 /* CBTableViewWebViewController.h */,
 				5C56F6211801EC4A00665E22 /* CBTableViewWebViewController.m */,
 				5C56F60E1801D54C00665E22 /* CBTableViewWebViewCell.h */,
@@ -4498,6 +4504,7 @@
 				5C0700A1183A7B06001EF769 /* CFAMInterpretationWebViewController.m in Sources */,
 				5C940AE7166E39A10044A7D1 /* DCStatusBarOverlay.m in Sources */,
 				5C940AE8166E39A10044A7D1 /* DCFrameView.m in Sources */,
+				5C17AAE318B56F8800CA744C /* CBTableViewSwitchCell.m in Sources */,
 				5C940AE9166E39A10044A7D1 /* DCCrossHairView.m in Sources */,
 				5C65858317FCBF3300454277 /* APGARVCFormats.m in Sources */,
 				5C940AEC166E39B30044A7D1 /* CoolButton.m in Sources */,
@@ -4898,6 +4905,7 @@
 				5C756CA617989E15002F983E /* Calculator.m in Sources */,
 				5C7A453117999A7000D95614 /* AgeResultsCell.m in Sources */,
 				5C0C9D9D179AC5DE0077B881 /* CBTimeMethods.m in Sources */,
+				5C17AAE418B56F8800CA744C /* CBTableViewSwitchCell.m in Sources */,
 				5C88D0CF18A89FBB00A8DB1B /* AI.m in Sources */,
 				5C56F6561802285F00665E22 /* PulmonaryHaemorrhageModel.m in Sources */,
 				5C56F60B1801CA4300665E22 /* BloodProductsTableViewCell.m in Sources */,

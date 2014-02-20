@@ -29,6 +29,7 @@
 
 @property (nonatomic, unsafe_unretained) id <FluidBalanceTableViewControllerDelegate> delegate;
 
+// patient, and therefore allFluidBalanceData is passed through
 @property (nonatomic, strong) Patient *selectedPatient;
 @property (nonatomic, strong) NSString *workingWeight;
 
