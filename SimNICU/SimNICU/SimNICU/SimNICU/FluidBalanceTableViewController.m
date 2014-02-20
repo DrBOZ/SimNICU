@@ -54,7 +54,7 @@
                                                                                               target:self
                                                                                               action:@selector(done)];
         // done button is disabled until user has entered data
-        self.navigationItem.leftBarButtonItem.enabled = NO;
+        // self.navigationItem.leftBarButtonItem.enabled = NO;
         
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
         {
@@ -267,7 +267,6 @@
     self.fluidBalanceData[@"FormattedFluidBalanceDateRange"] = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
     
     // returns the new data to the delegate
-    // [self.delegate fluidBalanceTableViewController:self didFinishAddingNewData:self.fluidBalanceData];
     [self.delegate fluidBalanceTableViewController:self didFinish:self.tempAllFluidBalanceData];
 }
 
@@ -280,19 +279,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (self.workingWeight)
-    {
-        // if adding a result (i.e. not editing) then do not show 'delete result' section
-        if (![self.editOrAddFluidBalance isEqualToString:@"Edit"]) return 4;
-        
-        // show all sections, even date though might not have a row if used from main screen...
-        else return 5;
-    }
-    else
-    {
-        // footer view stating that weight is required
-        return 1;
-    }
+    if (self.workingWeight) return 4;
+    
+    else return 1;  // footer view only stating that weight is required
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -311,34 +300,29 @@
                 }
                 
                 else return 0;
-                
                 break;
              
             // INPUT
             case 1:
                 
                 return [self.fluidBalanceData[@"InputData"] count];
-                
                 break;
                 
             // OUTPUT
             case 2:
                 
                 return [self.fluidBalanceData[@"OutputData"] count];
-                
                 break;
                 
             // BALANCE
             case 3:
                 
                 return 0;
-                
                 break;
                 
             default:
                 
                 return 0;
-                
                 break;
         }
     }
@@ -531,9 +515,6 @@
             
             cell.textLabel.text = NSLocalizedString(@"Time Period", nil);
             
-//            cell.detailTextLabel.text = [self twentyFourHourTimePeriodStringToDate:self.fluidBalanceDate
-//                                                                        forPatient:self.selectedPatient];
-            
             cell.detailTextLabel.text = [self pickerView:self.timePeriodPicker titleForRow:[self.timePeriodPicker selectedRowInComponent:0] forComponent:0];
             
             cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
@@ -626,7 +607,7 @@
         cell = [[CBTableViewSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
         [cell.toggleSwitch addTarget:self
-                              action:nil
+                              action:@selector(showDataToggleChanged:)
                     forControlEvents:(UIControlEventValueChanged | UIControlEventTouchDragInside)];
     }
     

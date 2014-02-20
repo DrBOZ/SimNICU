@@ -16,19 +16,6 @@
 
 - (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller;
 
-@optional
-
-// trying to get rid of this one
-- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller
-                 didFinishAddingNewData:(NSMutableDictionary *)fluidBalanceData;
-
-// this isn't used at present
-- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller
-                   didFinishEditingData:(NSMutableDictionary *)fluidBalanceData;
-
-- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller
-                  didFinishDeletingData:(NSMutableDictionary *)fluidBalanceData;
-
 @end
 
 @interface FluidBalanceTableViewController : CBTableViewController
@@ -41,8 +28,6 @@
 
 // This view controller is used modally from the DailySummaryVC
 @property (nonatomic) BOOL isBeingUsedAsAModalViewController;
-
-@property (nonatomic, strong) NSString *editOrAddFluidBalance;
 
 @property (nonatomic, strong) NSMutableDictionary *fluidBalanceData;
 @property (nonatomic, strong) NSDate *fluidBalanceDate;

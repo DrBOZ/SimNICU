@@ -166,7 +166,7 @@
 {
     [super viewDidLoad];
     
-#warning temp code
+    // toggle for testing...
     // self.selectedPatient.allFluidBalanceData = nil;
     
     // setup phototherapy chart settings
@@ -473,7 +473,19 @@
         
         HandoverSection *handoverSection = preferences.handoverSections[section];
         
-        if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"] && self.selectedPatient.allFluidBalanceData.count)
+        BOOL showMlPerDayAndMlPerKgPerDayInHeader = NO;
+        
+        // check if there are any results to display
+        for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
+        {
+            if ([fluidBalanceData[@"ShowData"] boolValue] == YES)
+            {
+                showMlPerDayAndMlPerKgPerDayInHeader = YES;
+                break;
+            }
+        }
+        
+        if ([handoverSection.sectionName isEqualToString:@"Fluid Balance"] && showMlPerDayAndMlPerKgPerDayInHeader)
         {
             viewForHeader = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)];
             viewForHeader.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:247.0/255.0 alpha:1.0];
@@ -1185,7 +1197,17 @@
             // only change background color of disclosure indicator if there are results shown
             if ([self.selectedPatient getNumberOfFluidBalanceRows])
             {
-                if (indexPath.row < self.selectedPatient.allFluidBalanceData.count)
+                int numberOfDisplayingRows = 0;
+                
+                for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
+                {
+                    if ([fluidBalanceData[@"ShowData"] boolValue] == YES)
+                    {
+                        numberOfDisplayingRows++;
+                    }
+                }
+                
+                if (indexPath.row < numberOfDisplayingRows)
                 {
                     UIColor *systemGray = [UIColor colorWithRed:247.0/255.0
                                                           green:247.0/255.0
@@ -7763,42 +7785,6 @@
     
     // update array
     self.selectedPatient.allFluidBalanceData = [NSMutableArray arrayWithArray:newAllFluidBalanceData];
-    
-    // ensure only last result is displayed in full
-    for (int i = 0; i < self.selectedPatient.allFluidBalanceData.count; i++)
-    {
-        if (i < self.selectedPatient.allFluidBalanceData.count - 1)
-        {
-            self.selectedPatient.allFluidBalanceData[i][@"ShowMinimized"] = [NSNumber numberWithBool:YES];
-        }
-        else
-        {
-            self.selectedPatient.allFluidBalanceData[i][@"ShowMinimized"] = [NSNumber numberWithBool:NO];
-        }
-    }
-    
-    // reload table
-    [self.myTableView2 reloadData];
-    
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (void)fluidBalanceTableViewController:(FluidBalanceTableViewController *)controller didFinishAddingNewData:(NSMutableDictionary *)fluidBalanceData
-{
-    // turn off editing
-    [self setEditing:NO animated:NO];
-    
-    // if selected patient fluid balance array has not been instantiated, then instantiate it
-    if (!self.selectedPatient.allFluidBalanceData)
-    {
-        self.selectedPatient.allFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:5];
-    }
-    
-    // add new data to array
-    [self.selectedPatient.allFluidBalanceData addObject:fluidBalanceData];
-    
-    // sort data by date
-    self.selectedPatient.allFluidBalanceData = [self reorderFluidBalanceResultsDataByDate:self.selectedPatient.allFluidBalanceData];
     
     // ensure only last result is displayed in full
     for (int i = 0; i < self.selectedPatient.allFluidBalanceData.count; i++)
