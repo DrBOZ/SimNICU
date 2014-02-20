@@ -979,9 +979,17 @@
     }
     
     userHasEnteredData = YES;
+    
+    // enable 'done' button
     self.navigationItem.leftBarButtonItem.enabled = YES;
     
+    // enable show
     self.fluidBalanceData[@"ShowData"] = [NSNumber numberWithBool:YES];
+    
+    //turn on switch
+    CBTableViewSwitchCell *cell = (CBTableViewSwitchCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    cell.toggleSwitch.enabled = YES;
+    cell.toggleSwitch.on = YES;
     
     [self.tempAllFluidBalanceData addObject:self.fluidBalanceData];
     

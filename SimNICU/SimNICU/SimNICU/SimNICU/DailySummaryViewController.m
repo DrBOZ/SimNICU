@@ -7788,6 +7788,8 @@
 
 - (void)fluidBalanceTableViewControllerDidCancel:(FluidBalanceTableViewController *)controller
 {
+    [self setEditing:NO animated:NO];
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
