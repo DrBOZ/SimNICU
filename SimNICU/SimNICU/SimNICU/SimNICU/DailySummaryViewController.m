@@ -4276,12 +4276,27 @@
         // add one day on
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         
-        NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
-        [componentsToAdd setDay:+1];
+        // NSLog(@"Date = %@", tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"]);
         
-        vc.dateToDisplay = [gregorian dateByAddingComponents:componentsToAdd
-                                                      toDate:tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"]
-                                                     options:0];
+        // round current date
+        int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
+        NSDateComponents *dateComponents = [gregorian components:flags fromDate:[NSDate date]];
+        NSDate *roundedCurrentDate = [gregorian dateFromComponents:dateComponents];
+        
+        // if date is not current date, then add a day on
+        if (![tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"] isEqualToDate:roundedCurrentDate])
+        {
+            NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
+            [componentsToAdd setDay:+1];
+            
+            vc.dateToDisplay = [gregorian dateByAddingComponents:componentsToAdd
+                                                          toDate:tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"]
+                                                         options:0];
+        }
+        else
+        {
+            vc.dateToDisplay = tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"];
+        }
         
         PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
         
