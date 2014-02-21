@@ -727,6 +727,8 @@
 		5CA3CC2217B799A5002E96DC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */; };
 		5CA40AE216740F190010BC0A /* SimNICU_iPhone_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */; };
 		5CA40AE416740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */; };
+		5CA5761718B7D92C00851FEF /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA5761618B7D92C00851FEF /* Fleksy.framework */; };
+		5CA5761818B7D92C00851FEF /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CA5761618B7D92C00851FEF /* Fleksy.framework */; };
 		5CA71F8717FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA71F8617FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png */; };
 		5CA71F8817FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA71F8617FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png */; };
 		5CAE2E0417E6A910001823A3 /* SettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0317E6A910001823A3 /* SettingsModel.m */; };
@@ -735,7 +737,6 @@
 		5CAE2E0E17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */; };
 		5CAE2E1217E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
 		5CAE2E1317E6C25C001823A3 /* CustomTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */; };
-		5CB1F41A189FDEA400C0F785 /* Fleksy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB1F419189FDEA400C0F785 /* Fleksy.framework */; };
 		5CB46B6A17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
 		5CB46B6B17DA02A6003365F6 /* SyncTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */; };
 		5CB46B6D17DA1194003365F6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB46B6C17DA1194003365F6 /* GameKit.framework */; };
@@ -1726,6 +1727,7 @@
 		5CA3CC2117B799A5002E96DC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5CA40AE116740F190010BC0A /* SimNICU_iPhone_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon.png; sourceTree = SOURCE_ROOT; };
 		5CA40AE316740F1E0010BC0A /* SimNICU_iPhone_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SimNICU_iPhone_Icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		5CA5761618B7D92C00851FEF /* Fleksy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fleksy.framework; sourceTree = "<group>"; };
 		5CA71F8617FF672500436EBC /* SimNICU_iPhone_Icon_iOS7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SimNICU_iPhone_Icon_iOS7.png; sourceTree = "<group>"; };
 		5CAE2E0217E6A910001823A3 /* SettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsModel.h; sourceTree = "<group>"; };
 		5CAE2E0317E6A910001823A3 /* SettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsModel.m; sourceTree = "<group>"; };
@@ -1733,7 +1735,6 @@
 		5CAE2E0C17E6BD31001823A3 /* DailySummaryEditorSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailySummaryEditorSettingsModel.m; sourceTree = "<group>"; };
 		5CAE2E1017E6C25C001823A3 /* CustomTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextTableViewController.h; sourceTree = "<group>"; };
 		5CAE2E1117E6C25C001823A3 /* CustomTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextTableViewController.m; sourceTree = "<group>"; };
-		5CB1F419189FDEA400C0F785 /* Fleksy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fleksy.framework; path = "../../../../Code/iFleksySDK-master/Fleksy.framework"; sourceTree = "<group>"; };
 		5CB46B6817DA02A5003365F6 /* SyncTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTableViewController.h; sourceTree = "<group>"; };
 		5CB46B6917DA02A5003365F6 /* SyncTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTableViewController.m; sourceTree = "<group>"; };
 		5CB46B6C17DA1194003365F6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -1818,7 +1819,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CB1F41A189FDEA400C0F785 /* Fleksy.framework in Frameworks */,
 				5C0E01B0182C4A6900B7D8C3 /* libz.dylib in Frameworks */,
 				5CCC271F16D66A3300D14080 /* libsqlite3.dylib in Frameworks */,
 				5C940CB0166E41720044A7D1 /* libz.1.1.3.dylib in Frameworks */,
@@ -1841,6 +1841,7 @@
 				5C5A11AB17D274B700CE96E5 /* MessageUI.framework in Frameworks */,
 				5C940CA6166E41050044A7D1 /* MobileCoreServices.framework in Frameworks */,
 				5C940CA4166E40F30044A7D1 /* OpenGLES.framework in Frameworks */,
+				5CA5761718B7D92C00851FEF /* Fleksy.framework in Frameworks */,
 				5C940CA2166E40E40044A7D1 /* QuartzCore.framework in Frameworks */,
 				5C940CA0166E40D50044A7D1 /* Security.framework in Frameworks */,
 				5CCC272316D66AC500D14080 /* Social.framework in Frameworks */,
@@ -1867,6 +1868,7 @@
 				5CD3B01A16CF38D500DE362C /* Foundation.framework in Frameworks */,
 				5CCC272516D66F0D00D14080 /* iAd.framework in Frameworks */,
 				5CD3B01416CF38D500DE362C /* MobileCoreServices.framework in Frameworks */,
+				5CA5761818B7D92C00851FEF /* Fleksy.framework in Frameworks */,
 				5CD3B01516CF38D500DE362C /* OpenGLES.framework in Frameworks */,
 				5CE04B6716D04AFB0002BBD7 /* Parse.framework in Frameworks */,
 				5CD3B01616CF38D500DE362C /* QuartzCore.framework in Frameworks */,
@@ -3104,7 +3106,7 @@
 		5C940A60166E37FE0044A7D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5CB1F419189FDEA400C0F785 /* Fleksy.framework */,
+				5CA5761618B7D92C00851FEF /* Fleksy.framework */,
 				5C0E01AF182C4A6900B7D8C3 /* libz.dylib */,
 				5C940CAF166E41720044A7D1 /* libz.1.1.3.dylib */,
 				5CE04B6E16D04B570002BBD7 /* libsqlite3.dylib */,
