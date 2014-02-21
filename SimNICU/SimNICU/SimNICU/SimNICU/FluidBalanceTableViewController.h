@@ -28,6 +28,7 @@
 
 // This view controller is used modally from the DailySummaryVC
 @property (nonatomic) BOOL isBeingUsedAsAModalViewController;
+@property (nonatomic) BOOL showPrevious24Hours;
 
 @property (nonatomic, strong) NSDate *dateToDisplay;
 

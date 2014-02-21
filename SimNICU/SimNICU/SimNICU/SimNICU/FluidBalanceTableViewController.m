@@ -38,6 +38,17 @@
     BOOL userHasEnteredData;
 }
 
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self)
+    {
+        // Custom initialization
+        self.showPrevious24Hours = YES;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -107,17 +118,24 @@
                 self.fluidBalanceDate = self.dateToDisplay;
             }
             
-            // select date to display on time picker
-            [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
-            
-            // update date to match selected date
-            if (([CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]] + 1) > 1)
+            if (self.showPrevious24Hours)
             {
-                NSDateComponents *components = [[NSDateComponents alloc] init];
-                [components setDay:-1];
-                NSDate *previousDay = [gregorian dateByAddingComponents:components toDate:self.fluidBalanceDate options:0];
+                // select date to display on time picker
+                [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] - 1 inComponent:0 animated:YES];
                 
-                self.fluidBalanceDate = previousDay;
+                // update date to match selected date
+                if (([CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:[NSDate date]] + 1) > 1)
+                {
+                    NSDateComponents *components = [[NSDateComponents alloc] init];
+                    [components setDay:-1];
+                    NSDate *previousDay = [gregorian dateByAddingComponents:components toDate:self.fluidBalanceDate options:0];
+                    
+                    self.fluidBalanceDate = previousDay;
+                }
+            }
+            else
+            {
+                [self.timePeriodPicker selectRow:[CBTimeMethods getDaysDifferenceIntBetween:self.selectedPatient.birthDate and:self.fluidBalanceDate] inComponent:0 animated:YES];
             }
         }
         
@@ -252,11 +270,6 @@
     {
         self.title = NSLocalizedString(@"Weight not entered", nil);
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
     [self updateResults];
 }
@@ -876,7 +889,8 @@
         section = textField.tag / 100;
         row = textField.tag - (section * 100);
         
-        textField.text = @"";
+        // resets text to nil
+        // textField.text = @"";
     }
     
     // scroll up to middle
@@ -891,11 +905,11 @@
 {
     BOOL allowUserToChangeText = YES;
     
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    // if textField.tag >= 1000 then it is one of the ml/day textFields
     if (textField.tag >= 1000)
     {
-        // ml/day
-        NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        
         if (newText.length > 5)
         {
             allowUserToChangeText = NO;
@@ -917,6 +931,14 @@
             {
                 textField.text = @"";
             }
+        }
+    }
+    else
+    {
+        // validate Fluid name length
+        if (newText.length > 18)
+        {
+            allowUserToChangeText = NO;
         }
     }
     

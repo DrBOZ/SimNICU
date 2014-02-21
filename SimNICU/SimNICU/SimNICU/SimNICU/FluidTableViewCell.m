@@ -24,7 +24,7 @@
         self.fluidName.autocorrectionType = UITextAutocorrectionTypeNo;
         self.fluidName.keyboardAppearance = UIKeyboardAppearanceAlert;
         self.fluidName.frame = CGRectMake(14.0f, 0.0f, 200.0f, 30.0f);
-        self.fluidName.clearButtonMode = UITextFieldViewModeNever;
+        self.fluidName.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.fluidName.keyboardType = UIKeyboardTypeAlphabet;
         self.fluidName.textAlignment = UITextAlignmentLeft;
         self.fluidName.borderStyle = UITextBorderStyleNone;
@@ -46,7 +46,7 @@
         self.mlPerDay.placeholder = [CBStringMethods localisedString:@"ml/day"];
         self.mlPerDay.keyboardAppearance = UIKeyboardAppearanceAlert;
         self.mlPerDay.frame = CGRectMake(230.0f, 8.0f, 80.0f, 30.0f);
-        self.mlPerDay.clearButtonMode = UITextFieldViewModeNever;
+        self.mlPerDay.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.mlPerDay.borderStyle = UITextBorderStyleRoundedRect;
         self.mlPerDay.keyboardType = UIKeyboardTypeDecimalPad;
         self.mlPerDay.textAlignment = UITextAlignmentLeft;

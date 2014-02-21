@@ -4261,42 +4261,18 @@
         vc.selectedPatient = self.selectedPatient;
         vc.delegate = self;
         
-        // int numberOfDisplayingResults = 0;
         NSMutableArray *tempAllFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:self.selectedPatient.allFluidBalanceData.count];
         
         for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
         {
             if ([fluidBalanceData[@"ShowData"] boolValue] == YES)
             {
-                // numberOfDisplayingResults++;
                 [tempAllFluidBalanceData addObject:fluidBalanceData];
             }
         }
         
-        // add one day on
-        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        
-        // NSLog(@"Date = %@", tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"]);
-        
-        // round current date
-        int flags = (NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit);
-        NSDateComponents *dateComponents = [gregorian components:flags fromDate:[NSDate date]];
-        NSDate *roundedCurrentDate = [gregorian dateFromComponents:dateComponents];
-        
-        // if date is not current date, then add a day on
-        if (![tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"] isEqualToDate:roundedCurrentDate])
-        {
-            NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
-            [componentsToAdd setDay:+1];
-            
-            vc.dateToDisplay = [gregorian dateByAddingComponents:componentsToAdd
-                                                          toDate:tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"]
-                                                         options:0];
-        }
-        else
-        {
-            vc.dateToDisplay = tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"];
-        }
+        vc.showPrevious24Hours = NO;
+        vc.dateToDisplay = tempAllFluidBalanceData[indexPath.row][@"FluidBalanceDate"];
         
         PortraitOnlyNavigationController *navController = [[PortraitOnlyNavigationController alloc] initWithRootViewController:vc];
         
