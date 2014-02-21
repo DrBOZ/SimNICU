@@ -58,6 +58,10 @@
         
         [self done];
         
+        // workaround
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.orientation = @"PreventRotation";
+        
         [self.navigationController dismissModalViewControllerAnimated:YES];
     }
 }

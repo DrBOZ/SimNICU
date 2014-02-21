@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CED19007-335D-4F08-9CD2-EE8E4368BAE2</string>
+	<string>1698EE0E-2301-41E2-8B16-1ACC339D2793</string>
 	<key>IDESourceControlProjectName</key>
 	<string>SimNICU</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/DrBOZ/SimNICU.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SimNICU/SimNICU/SimNICU/SimNICU.xcodeproj/project.xcworkspace</string>
+	<string>feature_ios7/SimNICU/SimNICU/SimNICU/SimNICU.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</key>
-		<string>../../../../..</string>
+		<string>../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/DrBOZ/SimNICU.git</string>
@@ -28,6 +28,14 @@
 	<string>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CC75DB15-92FD-40C9-848B-3DDB50F7D7E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>feature_ios7</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

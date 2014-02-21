@@ -26,6 +26,17 @@
     BOOL portraitOrientationDefaultsSet;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.orientation = nil;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -47,30 +58,40 @@
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    // ShinobiChart
-    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+//    // ShinobiChart
+//    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+//    {
+//        // iOS 7 specifics
+//        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//        {
+//            self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
+//        }
+//        else
+//        {
+//            self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
+//        }
+//    }
+//    else
+//    {
+//        // iOS 7 specifics
+//        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
+//        {
+//            self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
+//        }
+//        else
+//        {
+//            self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
+//        }
+//    }
+    
+    // iOS 7 specifics
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
     {
-        // iOS 7 specifics
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
-        }
-        else
-        {
-            self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
-        }
+        self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
     }
     else
     {
-        // iOS 7 specifics
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0)
-        {
-            self.chart = [[ShinobiChart alloc] initWithFrame:CGRectMake(0.0f, 64.0f, 320.0f, (appDelegate.window.bounds.size.height - 64.0f))];
-        }
-        else
-        {
-            self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
-        }
+        self.chart = [[ShinobiChart alloc] initWithFrame:self.view.bounds];
     }
     
     self.chart.datasource = self;
@@ -292,6 +313,10 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = @"PreventRotation";
 }
 
 - (void)didReceiveMemoryWarning
@@ -306,6 +331,12 @@
         
         self.chart = nil;
     }
+}
+
+// Tell the system what we support
+- (NSUInteger)supportedInterfaceOrientations
+{    
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -2201,6 +2232,10 @@
     [self.chart reloadData];
     [self.chart redrawChart];
     
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = nil;
+    
     self.dateAndTimeOfBirthForThisChart = date;
 }
 
@@ -2427,11 +2462,19 @@
     [self.chart reloadData];
     [self.chart redrawChart];
     
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = nil;
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)phototherapyAddBilirubinResultViewControllerDidCancel:(PhototherapyAddBilirubinResultViewController *)controller
 {
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = nil;
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 

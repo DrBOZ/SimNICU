@@ -32,6 +32,7 @@
     
     //delegate
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = @"PreventRotation";
     
     //menu table
     // iOS 7 specifics

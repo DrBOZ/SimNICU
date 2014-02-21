@@ -38,6 +38,10 @@
 // Tell the system what we support
 - (NSUInteger)supportedInterfaceOrientations
 {
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = @"PreventRotation";
+    
     return UIInterfaceOrientationMaskPortrait;
 }
 

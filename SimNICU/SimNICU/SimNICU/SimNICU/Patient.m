@@ -963,6 +963,53 @@
         sampleData[@"Unique Reference"] = @2;
         
         [patient.allBloodResultSampleData addObject:sampleData];
+        
+        // Fluid Balance data
+        patient.allFluidBalanceData = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        NSMutableDictionary *fluidBalanceData = [[NSMutableDictionary alloc] init];
+        fluidBalanceData[@"ShowData"] = [NSNumber numberWithBool:YES];
+        fluidBalanceData[@"ShowMinimized"] = [NSNumber numberWithBool:NO];
+        fluidBalanceData[@"Working Weight"] = @"1.255 kg";
+        fluidBalanceData[@"FormattedFluidBalanceDateRange"] = @"19/20 - 20/02/2014";
+        fluidBalanceData[@"FluidBalaneDate"] = [NSDate date];
+        
+        NSMutableArray *inputData = [[NSMutableArray alloc] initWithCapacity:2];
+        
+        NSMutableArray *fluid = [[NSMutableArray alloc] initWithCapacity:3];
+        [fluid addObject:@"Vamin"];
+        [fluid addObject:[NSNumber numberWithDouble:148]];
+        [fluid addObject:[NSNumber numberWithDouble:117.928]];
+        [inputData addObject:fluid];
+        
+        fluid = [[NSMutableArray alloc] initWithCapacity:2];
+        [fluid addObject:@"Lipid"];
+        [fluid addObject:[NSNumber numberWithDouble:2.5]];
+        [fluid addObject:[NSNumber numberWithDouble:1.99203]];
+        [inputData addObject:fluid];
+        
+        fluidBalanceData[@"InputData"] = inputData;
+        
+        NSMutableArray *outputData = [[NSMutableArray alloc] initWithCapacity:3];
+        
+        fluid = [[NSMutableArray alloc] initWithCapacity:3];
+        [fluid addObject:@"Urine"];
+        [fluid addObject:[NSNumber numberWithDouble:135]];
+        [fluid addObject:[NSNumber numberWithDouble:107.57]];
+        [outputData addObject:fluid];
+        
+        fluidBalanceData[@"OutputData"] = outputData;
+        
+        fluidBalanceData[@"InputTotalMlPerKgPerDay"] = [NSNumber numberWithDouble:119.92];
+        fluidBalanceData[@"InputTotalMlPerDay"] = [NSNumber numberWithDouble:150.5];
+        
+        fluidBalanceData[@"OutputTotalMlPerDay"] = [NSNumber numberWithDouble:135];
+        fluidBalanceData[@"OutputTotalMlPerKgPerDay"] = [NSNumber numberWithDouble:107.57];
+        
+        fluidBalanceData[@"BalanceMlPerDay"] = [NSNumber numberWithDouble:15.5];
+        fluidBalanceData[@"BalanceMlPerKgPerDay"] = [NSNumber numberWithDouble:12.3506];
+        
+        [patient.allFluidBalanceData addObject:fluidBalanceData];
     }
     
     return patient;

@@ -29,6 +29,8 @@
 #import "HState.h"
 #import "State.h"
 
+#import "SettingsTableViewController.h"
+
 // Google Analytics dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
 
@@ -413,6 +415,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     {
         [self.currentController bannerViewActionDidFinish];
     }
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    NSUInteger *supportedOrientation = UIInterfaceOrientationMaskAllButUpsideDown;
+    
+    if ([self.orientation isEqualToString:@"PreventRotation"])
+    {
+        supportedOrientation = UIInterfaceOrientationMaskPortrait;
+    }
+    
+    return supportedOrientation;
 }
 
 @end

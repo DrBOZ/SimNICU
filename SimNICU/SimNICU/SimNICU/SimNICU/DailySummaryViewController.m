@@ -4191,10 +4191,33 @@
     }
     else
     {
-        selectedPath = indexPath;
+        Preferences *preferences = [Preferences sharedPreferences];
+        HandoverSection *section = preferences.handoverSections[indexPath.section];
+        
+        if ([section.sectionName isEqualToString:@"Fluid Balance"])
+        {
+            int numberOfDisplayingResults = 0;
+            
+            for (NSMutableDictionary *fluidBalanceData in self.selectedPatient.allFluidBalanceData)
+            {
+                if ([fluidBalanceData[@"ShowData"] boolValue] == YES)
+                {
+                    numberOfDisplayingResults++;
+                }
+            }
+            
+            if (indexPath.row < numberOfDisplayingResults)
+            {
+                selectedPath = indexPath;
+            }
+        }
+        else
+        {
+            selectedPath = indexPath;
+        }
     }
     
-    return indexPath;
+    return selectedPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

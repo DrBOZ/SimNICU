@@ -44,8 +44,41 @@
     tableData = [SettingsModel getArrayForTableView];
 }
 
+// Tell the system what we support
+- (NSUInteger)supportedInterfaceOrientations
+{
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = nil;
+    
+    return UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+// Tell the system It should autorotate
+- (BOOL) shouldAutorotate
+{
+    return YES;
+}
+
+// Tell the system which initial orientation we want to have
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // should change this to:
+    // return !(interfaceOrientation == UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
 - (void)backButtonPressed
 {
+    // workaround
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.orientation = @"PreventRotation";
+    
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
@@ -54,6 +87,10 @@
     if (!backButtonLongPressed)
     {
         backButtonLongPressed = YES;
+        
+        // workaround
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.orientation = @"PreventRotation";
         
         [self.navigationController dismissModalViewControllerAnimated:YES];
     }

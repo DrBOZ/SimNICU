@@ -588,29 +588,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-// Tell the system what we support
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-// Tell the system It should autorotate
-- (BOOL) shouldAutorotate
-{
-    return NO;
-}
-
-// Tell the system which initial orientation we want to have
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    return UIInterfaceOrientationPortrait;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 - (void)drawText:(NSString *)textToDraw withFont:(UIFont *)textFont atVerticalPosition:(float)y
 {
     // create a rectangle to display text based on the page size
@@ -1175,16 +1152,6 @@
 
 - (void)print
 {
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-//    {
-//        [pc presentFromBarButtonItem:self.printButton animated:YES
-//                   completionHandler:completionHandler];
-//    }
-//    else
-//    {
-//        [pc presentAnimated:YES completionHandler:completionHandler];
-//    }
-    
     void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
     ^(UIPrintInteractionController *pic, BOOL completed, NSError *error)
     {
