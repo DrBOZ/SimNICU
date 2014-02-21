@@ -511,13 +511,17 @@
 
 - (void)photoCropperDidCancel:(CBPhotoCropperViewController *)photoCropper
 {
-    
+    // do nothing
 }
 
 - (void)photoCropper:(CBPhotoCropperViewController *)photoCropper didCropPhoto:(UIImage *)photo
 {
     Preferences *preferences = [Preferences sharedPreferences];
     
+    // save a backup
+    preferences.lastImage = preferences.image;
+    
+    // assign new image
     preferences.image = photo;
     
     [self.tableView reloadData];

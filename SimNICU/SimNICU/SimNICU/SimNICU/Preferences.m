@@ -58,6 +58,7 @@
         self.border = [aDecoder decodeObjectForKey:@"border"];
         self.grayscale = [aDecoder decodeObjectForKey:@"grayscale"];
         self.image = [aDecoder decodeObjectForKey:@"image"];
+        self.lastImage = [aDecoder decodeObjectForKey:@"lastImage"];
         self.autocorrection = [aDecoder decodeObjectForKey:@"autocorrection"];
         self.trackball = [aDecoder decodeObjectForKey:@"trackball"];
         self.dynamicText = [aDecoder decodeObjectForKey:@"dynamicText"];
@@ -104,6 +105,8 @@
                   forKey:@"grayscale"];
     [aCoder encodeObject:self.image
                   forKey:@"image"];
+    [aCoder encodeObject:self.lastImage
+                  forKey:@"lastImage"];
     [aCoder encodeObject:self.autocorrection
                   forKey:@"autocorrection"];
     [aCoder encodeObject:self.trackball

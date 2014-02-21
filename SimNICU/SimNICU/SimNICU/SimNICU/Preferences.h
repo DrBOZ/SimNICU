@@ -56,6 +56,7 @@
 @property (nonatomic, retain) NSString *signature;
 @property (nonatomic, retain) NSNumber *border;
 @property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) UIImage *lastImage;
 
 // returns singleton object
 + (id)sharedPreferences;
