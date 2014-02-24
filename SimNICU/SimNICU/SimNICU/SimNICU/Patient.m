@@ -1314,6 +1314,11 @@
     return formattedFluidBalanceResults;
 }
 
+- (NSString *)getFormattedFluidBalanceResultsForPrinting
+{
+    return [self getFormattedFluidBalanceResultsForPrintingAtTabPoint:nil];
+}
+
 - (NSString *)getFormattedFluidBalanceResultsForPrintingAtTabPoint:(NSString *)tabPoint;
 {
     NSString *formattedFluidBalanceResultsForPrinting = @"";
