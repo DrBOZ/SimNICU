@@ -388,6 +388,15 @@
                      andBodyText:self.selectedPatient.recentSignificantEvents
                         withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
         }
+#pragma mark Surgery
+        else if ([section.sectionName isEqualToString:@"Surgery"] && ([self.selectedPatient.surgery length] > 0))
+        {
+            [self drawHeaderText:NSLocalizedString(@"Surgery", nil)
+                        withFont:headerFont
+              andSpecialPrinting:nil
+                     andBodyText:self.selectedPatient.surgery
+                        withFont:font onLeftSideOfPageAtVerticalPosition:verticalPointToPrint + headingSeparator];
+        }
 #pragma mark Recent Ventilation & Sedation
         else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"] && ([self.selectedPatient.ventilationAndSedation length] > 0))
         {

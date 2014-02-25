@@ -376,6 +376,21 @@
             [self.handoverSections addObject:newSection];
         }
         
+#pragma mark Surgery
+        // 05 - Surgery
+        {
+            newSection = [[HandoverSection alloc] init];
+            newSection.sectionName = @"Surgery";
+            newSection.sectionEditable = @"NO";
+            newSection.customText = [[NSMutableArray alloc] initWithCapacity:2];
+            
+            // current date
+            [newSection.customText addObject:[self customText:@"[current date]"
+                                                          ref:NSLocalizedString(@"[current date]", nil)]];
+            
+            [self.handoverSections addObject:newSection];
+        }
+        
 #pragma mark Ventilation & Sedation
         // 05 - Ventilation & Sedation
         {
@@ -915,6 +930,7 @@
             
             [self.handoverSections addObject:newSection];
         }
+        
     }
 }
 

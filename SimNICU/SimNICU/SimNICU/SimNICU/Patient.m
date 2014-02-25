@@ -119,6 +119,7 @@
             self.activeProblems = [aDecoder decodeObjectForKey:@"ActiveProblems"];
             self.resolvedProblems = [aDecoder decodeObjectForKey:@"ResolvedProblems"];
             self.recentSignificantEvents = [aDecoder decodeObjectForKey:@"RecentSignificantEvents"];
+            self.surgery = [aDecoder decodeObjectForKey:@"Surgery"];
             self.ventilationAndSedation = [aDecoder decodeObjectForKey:@"VentilationAndSedation"];
             self.cxr = [aDecoder decodeObjectForKey:@"CXR"];
             self.cardiovascular = [aDecoder decodeObjectForKey:@"Cardiovascular"];
@@ -147,6 +148,7 @@
             self.activeProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ActiveProblemsLastEntryDate"];
             self.resolvedProblemsLastEntryDate = [aDecoder decodeObjectForKey:@"ResolvedProblemsLastEntryDate"];
             self.recentSignificantEventsLastEntryDate = [aDecoder decodeObjectForKey:@"RecentSignificantEventsLastEntryDate"];
+            self.surgeryLastEntryDate = [aDecoder decodeObjectForKey:@"SurgeryLastEntryDate"];
             self.ventilationAndSedationLastEntryDate = [aDecoder decodeObjectForKey:@"VentilationAndSedationLastEntryDate"];
             self.cxrLastEntryDate = [aDecoder decodeObjectForKey:@"CXRLastEntryDate"];
             self.cardiovascularLastEntryDate = [aDecoder decodeObjectForKey:@"CardiovascularLastEntryDate"];
@@ -523,6 +525,18 @@
         [newSection.rows addObject:newRow];
         
         [self.handoverSections addObject:newSection];
+        
+        // 25 - Surgery
+        newSection = [[HandoverSection alloc] init];
+        newSection.sectionName = @"Surgery";
+        newSection.rows = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        newRow = [[HandoverRow alloc] init];
+        newRow.rowHeight = [NSNumber numberWithFloat:55.0f];
+        newRow.rowText = nil;
+        [newSection.rows addObject:newRow];
+        
+        [self.handoverSections addObject:newSection];
     }
 }
 
@@ -592,6 +606,7 @@
     [aCoder encodeObject:self.activeProblems forKey:@"ActiveProblems"];
     [aCoder encodeObject:self.resolvedProblems forKey:@"ResolvedProblems"];
     [aCoder encodeObject:self.recentSignificantEvents forKey:@"RecentSignificantEvents"];
+    [aCoder encodeObject:self.surgery forKey:@"Surgery"];
     [aCoder encodeObject:self.ventilationAndSedation forKey:@"VentilationAndSedation"];
     [aCoder encodeObject:self.cxr forKey:@"CXR"];
     [aCoder encodeObject:self.cardiovascular forKey:@"Cardiovascular"];
@@ -618,6 +633,7 @@
     [aCoder encodeObject:self.activeProblemsLastEntryDate forKey:@"ActiveProblemsLastEntryDate"];
     [aCoder encodeObject:self.resolvedProblemsLastEntryDate forKey:@"ResolvedProblemsLastEntryDate"];
     [aCoder encodeObject:self.recentSignificantEventsLastEntryDate forKey:@"RecentSignificantEventsLastEntryDate"];
+    [aCoder encodeObject:self.surgeryLastEntryDate forKey:@"SurgeryLastEntryDate"];
     [aCoder encodeObject:self.ventilationAndSedationLastEntryDate forKey:@"VentilationAndSedationLastEntryDate"];
     [aCoder encodeObject:self.cxrLastEntryDate forKey:@"CXRLastEntryDate"];
     [aCoder encodeObject:self.cardiovascularLastEntryDate forKey:@"CardiovascularLastEntryDate"];

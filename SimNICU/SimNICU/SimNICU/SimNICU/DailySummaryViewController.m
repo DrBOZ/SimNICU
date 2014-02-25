@@ -54,6 +54,7 @@
     BOOL newActiveProblems;
     BOOL newResolvedProblems;
     BOOL newRecentSignificantEvents;
+    BOOL newSurgery;
     BOOL newVentilationAndSedation;
     BOOL newCXR;
     BOOL newCardiovascular;
@@ -103,6 +104,7 @@
 @property (nonatomic, strong) UITextView *activeProblemsTextView;
 @property (nonatomic, strong) UITextView *resolvedProblemsTextView;
 @property (nonatomic, strong) UITextView *recentSignificantEventsTextView;
+@property (nonatomic, strong) UITextView *surgeryTextView;
 @property (nonatomic, strong) UITextView *ventilationAndSedationTextView;
 @property (nonatomic, strong) UITextView *cxrTextView;
 @property (nonatomic, strong) UITextView *cardiovascularTextView;
@@ -554,6 +556,10 @@
     {
         textViewToMeasure.text = self.selectedPatient.recentSignificantEvents;
     }
+    else if ([textView isEqual:self.surgeryTextView])
+    {
+        textViewToMeasure.text = self.selectedPatient.surgery;
+    }
     else if ([textView isEqual:self.ventilationAndSedationTextView])                // else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
     {
         textViewToMeasure.text = self.selectedPatient.ventilationAndSedation;
@@ -699,6 +705,10 @@
         else if ([section.sectionName isEqualToString:@"Recent Significant Events"])
         {
             textView.text = self.selectedPatient.recentSignificantEvents;
+        }
+        else if ([section.sectionName isEqualToString:@"Surgery"])
+        {
+            textView.text = self.selectedPatient.surgery;
         }
         else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
         {
@@ -1385,6 +1395,30 @@
             }
             
             self.recentSignificantEventsTextView.text = self.selectedPatient.recentSignificantEvents;
+        }
+#pragma mark Surgery
+        else if ([section.sectionName isEqualToString:@"Surgery"])
+        {
+            CellIdentifier = @"Surgery";
+            
+            if (newSurgery)
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                cell = nil;
+                cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                newSurgery = NO;
+            }
+            else
+            {
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                if (!cell)
+                {
+                    cell = [self formatCellForTableWithCellIdentifier:CellIdentifier];
+                }
+            }
+            
+            self.surgeryTextView.text = self.selectedPatient.surgery;
         }
 #pragma mark Ventilation & Sedation
         else if ([section.sectionName isEqualToString:@"Ventilation & Sedation"])
@@ -2674,6 +2708,15 @@
         
         [cell.contentView addSubview:self.recentSignificantEventsTextView];
     }
+#pragma mark Surgery
+    else if ([CellIdentifier isEqualToString:@"Surgery"])
+    {
+        self.surgeryTextView = [[UITextView alloc] init];
+        self.surgeryTextView.tag = 25;
+        [self setupTextView:self.surgeryTextView];
+        
+        [cell.contentView addSubview:self.surgeryTextView];
+    }
 #pragma mark Ventilation & Sedation
     else if ([CellIdentifier isEqualToString:@"VentilationAndSedation"])
     {
@@ -2967,6 +3010,18 @@
         if (self.selectedPatient.recentSignificantEventsLastEntryDate)
         {
             if ([self isDate:self.selectedPatient.recentSignificantEventsLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
+            {
+                textView.textColor = [UIColor redColor];
+            }
+        }
+    }
+    else if ([section.sectionName isEqualToString:@"Surgery"])
+    {
+        textViewToMeasure.text = self.selectedPatient.surgery;
+        
+        if (self.selectedPatient.surgeryLastEntryDate)
+        {
+            if ([self isDate:self.selectedPatient.surgeryLastEntryDate moreThanTwelveHoursLaterThanDate:[NSDate date]])
             {
                 textView.textColor = [UIColor redColor];
             }
@@ -3687,6 +3742,7 @@
     [self.activeProblemsTextView resignFirstResponder];
     [self.resolvedProblemsTextView resignFirstResponder];
     [self.recentSignificantEventsTextView resignFirstResponder];
+    [self.surgeryTextView resignFirstResponder];
     [self.ventilationAndSedationTextView resignFirstResponder];
     [self.cxrTextView resignFirstResponder];
     [self.cardiovascularTextView resignFirstResponder];
@@ -4533,6 +4589,11 @@
             self.selectedPatient.recentSignificantEvents = textView.text;
             self.selectedPatient.recentSignificantEventsLastEntryDate = [NSDate date];
         }
+        else if ([textView isEqual:self.surgeryTextView])
+        {
+            self.selectedPatient.surgery = textView.text;
+            self.selectedPatient.surgeryLastEntryDate = [NSDate date];
+        }
         else if ([textView isEqual:self.ventilationAndSedationTextView])
         {
             self.selectedPatient.ventilationAndSedation = textView.text;
@@ -4752,6 +4813,7 @@
     newActiveProblems = YES;
     newResolvedProblems = YES;
     newRecentSignificantEvents = YES;
+    newSurgery = YES;
     newVentilationAndSedation = YES;
     newCXR = YES;
     newCardiovascular = YES;
@@ -4850,6 +4912,7 @@
     newActiveProblems = YES;
     newResolvedProblems = YES;
     newRecentSignificantEvents = YES;
+    newSurgery = YES;
     newVentilationAndSedation = YES;
     newCXR = YES;
     newCardiovascular = YES;

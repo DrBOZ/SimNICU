@@ -468,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "413898512.18203"
+            timestampString = "415029392.72632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryViewController.m"
-            timestampString = "414590269.815652"
+            timestampString = "415029392.72632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2885"
-            endingLineNumber = "2885"
+            startingLineNumber = "2928"
+            endingLineNumber = "2928"
             landmarkName = "-setupTextView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -548,11 +548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SimNICU/DailySummaryPDFViewController.m"
-            timestampString = "414672304.384658"
+            timestampString = "415029832.175177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1337"
-            endingLineNumber = "1337">
+            startingLineNumber = "1346"
+            endingLineNumber = "1346">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -104,6 +104,7 @@
 @property (nonatomic, retain) NSString *activeProblems;
 @property (nonatomic, retain) NSString *resolvedProblems;
 @property (nonatomic, retain) NSString *recentSignificantEvents;
+@property (nonatomic, retain) NSString *surgery;
 @property (nonatomic, retain) NSString *ventilationAndSedation;
 @property (nonatomic, retain) NSString *cxr;
 @property (nonatomic, retain) NSString *cardiovascular;
@@ -130,6 +131,7 @@
 @property (nonatomic, retain) NSDate *activeProblemsLastEntryDate;
 @property (nonatomic, retain) NSDate *resolvedProblemsLastEntryDate;
 @property (nonatomic, retain) NSDate *recentSignificantEventsLastEntryDate;
+@property (nonatomic, retain) NSDate *surgeryLastEntryDate;
 @property (nonatomic, retain) NSDate *ventilationAndSedationLastEntryDate;
 @property (nonatomic, retain) NSDate *cxrLastEntryDate;
 @property (nonatomic, retain) NSDate *cardiovascularLastEntryDate;
